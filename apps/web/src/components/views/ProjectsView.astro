@@ -1,0 +1,172 @@
+---
+import StatusBadge from "@components/StatusBadge.astro";
+import Layout from "@layouts/Layout.astro";
+import { categoryColors, projectStatusLabels, ui, type Lang } from "@i18n/ui";
+import { field, localizePath } from "@i18n/utils";
+import { projects } from "@lib/data";
+import { categoryLabel, formatMoney, projectStatusLabel } from "@lib/format";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const categories = Array.from(new Set(projects.map((p) => p.category))).sort();
+const statuses = Object.keys(projectStatusLabels[lang]);
+const years = Array.from(new Set(projects.map((p) => p.budget.year))).sort((a, b) => b - a);
+
+const config = {
+  of: lang === "bg" ? "от" : "of",
+  one: lang === "bg" ? "проект" : "project",
+  many: lang === "bg" ? "проекта" : "projects",
+  empty: t.projects.empty
+};
+
+function searchable(p: (typeof projects)[number]): string {
+  return [field(p, "title", lang), field(p, "summary", lang), field(p.location, "address", lang)]
+    .join(" ")
+    .toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+}
+---
+
+<Layout lang={lang} path="/projects" title={t.projects.title} description={t.projects.lead}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t.projects.eyebrow}</p>
+      <h1>{t.projects.title}</h1>
+      <p class="lead">{t.projects.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="toolbar">
+        <div class="filters">
+          <div class="field">
+            <label for="project-search">{t.projects.search}</label>
+            <input id="project-search" type="search" placeholder={t.projects.searchPlaceholder} />
+          </div>
+          <div class="field">
+            <label for="project-category">{t.projects.category}</label>
+            <select id="project-category">
+              <option value="all">{t.common.all}</option>
+              {categories.map((c) => <option value={c}>{categoryLabel(c, lang)}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="project-status">{t.projects.status}</label>
+            <select id="project-status">
+              <option value="all">{t.common.all}</option>
+              {statuses.map((s) => <option value={s}>{projectStatusLabel(s, lang)}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="project-year">{t.projects.year}</label>
+            <select id="project-year">
+              <option value="all">{t.common.all}</option>
+              {years.map((y) => <option value={y}>{y}</option>)}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-bar">
+        <p id="project-count" class="meta">{t.projects.count(projects.length)}</p>
+        <button type="button" id="project-reset" class="link-button" hidden>{t.projects.reset}</button>
+      </div>
+
+      <div id="project-list" class="grid grid-2">
+        {projects.map((project) => (
+          <article
+            class="card project-card"
+            data-project-card
+            data-search={searchable(project)}
+            data-category={project.category}
+            data-status={project.status}
+            data-year={project.budget.year}
+          >
+            <header>
+              <div>
+                <h2><a href={localizePath(`/projects/${project.id}`, lang)}>{field(project, "title", lang)}</a></h2>
+                <p class="meta">
+                  <span class="cat-dot" style={`--dot:${categoryColors[project.category]}`}></span>
+                  {categoryLabel(project.category, lang)} · {field(project.location, "address", lang)}
+                </p>
+              </div>
+              <StatusBadge status={project.status} type="project" lang={lang} />
+            </header>
+            <p>{field(project, "summary", lang)}</p>
+            <div class="pill-row">
+              <span class="money">{formatMoney(project.budget.amount_bgn, lang)}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p id="project-empty" class="empty" hidden>{t.projects.empty}</p>
+    </div>
+  </section>
+
+  <script type="application/json" id="projects-config" set:html={JSON.stringify(config)}></script>
+
+  <script>
+    const config = JSON.parse(
+      document.getElementById("projects-config")?.textContent ?? "{}"
+    );
+    const search = document.querySelector<HTMLInputElement>("#project-search")!;
+    const category = document.querySelector<HTMLSelectElement>("#project-category")!;
+    const status = document.querySelector<HTMLSelectElement>("#project-status")!;
+    const year = document.querySelector<HTMLSelectElement>("#project-year")!;
+    const reset = document.querySelector<HTMLButtonElement>("#project-reset")!;
+    const cards = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-project-card]")
+    );
+    const count = document.querySelector<HTMLElement>("#project-count")!;
+    const empty = document.querySelector<HTMLElement>("#project-empty")!;
+
+    function noun(n: number): string {
+      return n === 1 ? config.one : config.many;
+    }
+
+    function applyFilters() {
+      const query = search.value.trim().toLowerCase();
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const matches =
+          (!query || (card.dataset.search ?? "").includes(query)) &&
+          (category.value === "all" || card.dataset.category === category.value) &&
+          (status.value === "all" || card.dataset.status === status.value) &&
+          (year.value === "all" || card.dataset.year === year.value);
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+
+      const filtering =
+        Boolean(query) ||
+        category.value !== "all" ||
+        status.value !== "all" ||
+        year.value !== "all";
+
+      count.textContent = filtering
+        ? `${visible} ${config.of} ${cards.length} ${noun(cards.length)}`
+        : `${cards.length} ${noun(cards.length)}`;
+      empty.hidden = visible > 0;
+      reset.hidden = !filtering;
+    }
+
+    function resetFilters() {
+      search.value = "";
+      category.value = "all";
+      status.value = "all";
+      year.value = "all";
+      applyFilters();
+      search.focus();
+    }
+
+    search.addEventListener("input", applyFilters);
+    category.addEventListener("change", applyFilters);
+    status.addEventListener("change", applyFilters);
+    year.addEventListener("change", applyFilters);
+    reset.addEventListener("click", resetFilters);
+  </script>
+</Layout>

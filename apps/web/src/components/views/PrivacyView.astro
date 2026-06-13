@@ -1,0 +1,31 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { ui, type Lang } from "@i18n/utils";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<Layout lang={lang} path="/privacy" title={t.privacy.title} description={t.privacy.lead}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t.privacy.eyebrow}</p>
+      <h1>{t.privacy.title}</h1>
+      <p class="lead">{t.privacy.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container grid grid-2">
+      <article class="card">
+        <h2 style="font-size:1.3rem">{t.privacy.notCollectTitle}</h2>
+        <p class="meta">{t.privacy.notCollectText}</p>
+      </article>
+      <article class="card">
+        <h2 style="font-size:1.3rem">{t.privacy.beforeTitle}</h2>
+        <p class="meta">{t.privacy.beforeText}</p>
+      </article>
+    </div>
+  </section>
+</Layout>

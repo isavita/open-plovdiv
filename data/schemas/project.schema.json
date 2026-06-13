@@ -37,6 +37,10 @@
       "type": "string",
       "minLength": 10
     },
+    "summary_en": {
+      "type": "string",
+      "minLength": 10
+    },
     "category": {
       "type": "string",
       "enum": [
@@ -96,6 +100,10 @@
         "address_bg": {
           "type": "string",
           "minLength": 3
+        },
+        "address_en": {
+          "type": "string",
+          "minLength": 3
         }
       }
     },
@@ -142,6 +150,10 @@
             "format": "date"
           },
           "label_bg": {
+            "type": "string",
+            "minLength": 3
+          },
+          "label_en": {
             "type": "string",
             "minLength": 3
           },

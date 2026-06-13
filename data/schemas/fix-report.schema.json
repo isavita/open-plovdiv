@@ -27,7 +27,15 @@
       "type": "string",
       "minLength": 3
     },
+    "title_en": {
+      "type": "string",
+      "minLength": 3
+    },
     "description_bg": {
+      "type": "string",
+      "minLength": 10
+    },
+    "description_en": {
       "type": "string",
       "minLength": 10
     },
@@ -76,6 +84,10 @@
           "maximum": 24.9
         },
         "address_bg": {
+          "type": "string",
+          "minLength": 3
+        },
+        "address_en": {
           "type": "string",
           "minLength": 3
         }

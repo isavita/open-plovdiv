@@ -1,0 +1,284 @@
+---
+import Layout from "@layouts/Layout.astro";
+import {
+  categoryColors,
+  categoryLabels,
+  fixStatusDescriptions,
+  fixStatusLabels,
+  ui,
+  type Lang
+} from "@i18n/ui";
+import { localizePath } from "@i18n/utils";
+import { fixReports } from "@lib/data";
+import { categoryLabel, fixStatusLabel } from "@lib/format";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const fixCategories = Array.from(new Set(fixReports.map((r) => r.category))).sort();
+const fixStatuses = Object.keys(fixStatusLabels[lang]);
+
+const config = {
+  lang,
+  locale: lang === "bg" ? "bg-BG" : "en-GB",
+  projectBase: localizePath("/projects", lang),
+  categoryLabels: categoryLabels[lang],
+  categoryColors,
+  statusLabels: fixStatusLabels[lang],
+  statusDescriptions: fixStatusDescriptions[lang],
+  labels: {
+    statusLabel: t.fixMap.statusLabel,
+    nearby: t.fixMap.nearbyProjects,
+    noNearby: t.fixMap.noNearbyRadius,
+    sample: t.site.sampleData,
+    of: lang === "bg" ? "от" : "of",
+    km: lang === "bg" ? "км" : "km",
+    errorTitle: t.fixMap.loadErrorTitle,
+    errorText: t.fixMap.loadErrorText
+  }
+};
+---
+
+<Layout lang={lang} path="/fix-map" title={t.fixMap.title} description={t.fixMap.lead}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t.fixMap.eyebrow}</p>
+      <h1>{t.fixMap.title}</h1>
+      <p class="lead">{t.fixMap.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="notice">
+        <span class="notice-icon" aria-hidden="true">ⓘ</span>
+        <span>{t.fixMap.notice}</span>
+      </div>
+
+      <div class="toolbar">
+        <div class="filters">
+          <div class="field">
+            <label for="category-filter">{t.fixMap.category}</label>
+            <select id="category-filter">
+              <option value="all">{t.fixMap.allCategories}</option>
+              {fixCategories.map((c) => <option value={c}>{categoryLabel(c, lang)}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="status-filter">{t.fixMap.status}</label>
+            <select id="status-filter">
+              <option value="all">{t.fixMap.allStatuses}</option>
+              {fixStatuses.map((s) => <option value={s}>{fixStatusLabel(s, lang)}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="radius-filter">{t.fixMap.radius}</label>
+            <select id="radius-filter">
+              <option value="0.5">{t.fixMap.radius500}</option>
+              <option value="1" selected>{t.fixMap.radius1}</option>
+              <option value="2">{t.fixMap.radius2}</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="visible-count">{t.fixMap.visible}</label>
+            <input id="visible-count" type="text" readonly value={t.common.loading} />
+          </div>
+        </div>
+      </div>
+
+      <div class="map-layout">
+        <div id="fix-map-canvas" class="map-canvas" aria-label={t.fixMap.title}></div>
+        <aside id="report-detail" class="detail-panel" aria-live="polite">
+          <h2>{t.fixMap.selectTitle}</h2>
+          <p class="meta">{t.fixMap.selectHint}</p>
+        </aside>
+      </div>
+
+      <h3 style="margin-top:22px">{t.fixMap.legend}</h3>
+      <div class="legend">
+        {fixCategories.map((c) => (
+          <span class="legend-item">
+            <span class="cat-dot" style={`--dot:${categoryColors[c]}`}></span>
+            {categoryLabel(c, lang)}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container grid grid-2">
+      <article>
+        <div class="section-head"><h2>{t.fixMap.statusesTitle}</h2></div>
+        <div class="list">
+          {Object.entries(fixStatusDescriptions[lang]).map(([status, description]) => (
+            <div class="card">
+              <span class={`badge status-${status}`}>{fixStatusLabel(status, lang)}</span>
+              <p class="meta" style="margin-top:8px">{description}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+      <article>
+        <div class="section-head"><h2>{t.fixMap.officialTitle}</h2></div>
+        <div class="card">
+          <p>{t.fixMap.officialText}</p>
+          <a class="button secondary" style="margin-top:8px" href="https://www.plovdiv.bg/" target="_blank" rel="noreferrer">
+            {t.fixMap.officialLink}<span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <script type="application/json" id="fixmap-config" set:html={JSON.stringify(config)}></script>
+
+  <script>
+    import L from "leaflet";
+    import "leaflet/dist/leaflet.css";
+
+    const config = JSON.parse(
+      document.getElementById("fixmap-config")?.textContent ?? "{}"
+    );
+    const LB = config.labels;
+
+    function escapeHtml(value: unknown): string {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function loc(record: any, base: string): string {
+      return record[`${base}_${config.lang}`] ?? record[`${base}_bg`] ?? "";
+    }
+
+    const catLabel = (c: string) => config.categoryLabels[c] ?? c;
+    const catColor = (c: string) => config.categoryColors[c] ?? "#6b7280";
+    const statusLabel = (s: string) => config.statusLabels[s] ?? s;
+    const statusDesc = (s: string) => config.statusDescriptions[s] ?? "";
+
+    const categoryFilter = document.querySelector<HTMLSelectElement>("#category-filter")!;
+    const statusFilter = document.querySelector<HTMLSelectElement>("#status-filter")!;
+    const radiusFilter = document.querySelector<HTMLSelectElement>("#radius-filter")!;
+    const countField = document.querySelector<HTMLInputElement>("#visible-count")!;
+    const detail = document.querySelector<HTMLElement>("#report-detail")!;
+
+    const map = L.map("fix-map-canvas", { scrollWheelZoom: false }).setView([42.141, 24.75], 13);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    const markerLayer = L.layerGroup().addTo(map);
+    let selectedReport: any = null;
+    let reports: any[] = [];
+    let projects: any[] = [];
+
+    function distanceKm(a: any, b: any): number {
+      const radiusKm = 6371;
+      const toRad = (d: number) => (d * Math.PI) / 180;
+      const dLat = toRad(b.lat - a.lat);
+      const dLng = toRad(b.lng - a.lng);
+      const h =
+        Math.sin(dLat / 2) ** 2 +
+        Math.sin(dLng / 2) ** 2 * Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat));
+      return 2 * radiusKm * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
+    }
+
+    function markerIcon(report: any) {
+      return L.divIcon({
+        className: "",
+        html: `<span class="marker-pin" style="--pin:${catColor(report.category)}"></span>`,
+        iconSize: [28, 28],
+        iconAnchor: [14, 28]
+      });
+    }
+
+    function visibleReports() {
+      const category = categoryFilter.value;
+      const status = statusFilter.value;
+      return reports.filter(
+        (r) =>
+          (category === "all" || r.category === category) &&
+          (status === "all" || r.status === status)
+      );
+    }
+
+    function nearbyProjects(report: any) {
+      const radius = Number(radiusFilter.value);
+      return projects
+        .map((p) => ({ ...p, distance: distanceKm(report.location, p.location) }))
+        .filter((p) => p.distance <= radius)
+        .sort((a, b) => a.distance - b.distance)
+        .slice(0, 5);
+    }
+
+    function renderDetail(report: any) {
+      selectedReport = report;
+      const nearby = nearbyProjects(report);
+      detail.innerHTML = `
+        <span class="badge status-${escapeHtml(report.status)}">${escapeHtml(statusLabel(report.status))}</span>
+        <h2 style="margin-top:10px">${escapeHtml(loc(report, "title"))}</h2>
+        <p>${escapeHtml(loc(report, "description"))}</p>
+        <p class="meta"><span class="cat-dot" style="--dot:${catColor(report.category)}"></span> ${escapeHtml(catLabel(report.category))} · ${escapeHtml(loc(report.location, "address"))}</p>
+        <p><strong>${escapeHtml(LB.statusLabel)}:</strong> ${escapeHtml(statusDesc(report.status))}</p>
+        <p><span class="badge sample">${escapeHtml(LB.sample)}</span></p>
+        <h3>${escapeHtml(LB.nearby)}</h3>
+        ${
+          nearby.length
+            ? `<ul class="source-list">${nearby
+                .map(
+                  (p) =>
+                    `<li><a href="${config.projectBase}/${escapeHtml(p.id)}">${escapeHtml(loc(p, "title"))}</a><span class="meta"> · ${p.distance.toFixed(1)} ${escapeHtml(LB.km)}</span></li>`
+                )
+                .join("")}</ul>`
+            : `<p class="meta">${escapeHtml(LB.noNearby)}</p>`
+        }
+      `;
+    }
+
+    function renderMarkers() {
+      markerLayer.clearLayers();
+      const visible = visibleReports();
+      countField.value = `${visible.length} ${LB.of} ${reports.length}`;
+
+      visible.forEach((report) => {
+        L.marker([report.location.lat, report.location.lng], {
+          icon: markerIcon(report),
+          title: loc(report, "title")
+        })
+          .on("click", () => renderDetail(report))
+          .addTo(markerLayer);
+      });
+
+      if (selectedReport) renderDetail(selectedReport);
+    }
+
+    categoryFilter.addEventListener("change", renderMarkers);
+    statusFilter.addEventListener("change", renderMarkers);
+    radiusFilter.addEventListener("change", () => {
+      if (selectedReport) renderDetail(selectedReport);
+    });
+
+    try {
+      [reports, projects] = await Promise.all([
+        fetch("/data/fix-reports.json").then((r) => {
+          if (!r.ok) throw new Error("fix reports failed");
+          return r.json();
+        }),
+        fetch("/data/projects.json").then((r) => {
+          if (!r.ok) throw new Error("projects failed");
+          return r.json();
+        })
+      ]);
+      renderMarkers();
+    } catch {
+      countField.value = config.lang === "bg" ? "Грешка" : "Error";
+      detail.innerHTML = `<h2>${escapeHtml(LB.errorTitle)}</h2><p class="error">${escapeHtml(LB.errorText)}</p>`;
+    }
+  </script>
+</Layout>

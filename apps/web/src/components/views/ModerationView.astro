@@ -1,0 +1,27 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { ui, type Lang } from "@i18n/utils";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<Layout lang={lang} path="/moderation" title={t.moderation.title} description={t.moderation.lead}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t.moderation.eyebrow}</p>
+      <h1>{t.moderation.title}</h1>
+      <p class="lead">{t.moderation.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="notice">
+        <span class="notice-icon" aria-hidden="true">ⓘ</span>
+        <span>{t.moderation.notice}</span>
+      </div>
+    </div>
+  </section>
+</Layout>

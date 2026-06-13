@@ -121,7 +121,7 @@ The project should start simple, avoid storing user data, and avoid a normal dat
 * [x] Static or mostly-static data files
 * [x] Admin-free or minimal-admin workflow
 * [x] Bulgarian-first interface
-* [ ] English optional later
+* [x] English optional later (Bulgarian at the root, English under `/en/`, with a language switcher)
 
 ## Excluded from MVP
 

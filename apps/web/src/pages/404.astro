@@ -1,0 +1,29 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { ui } from "@i18n/utils";
+
+const bg = ui.bg;
+const en = ui.en;
+---
+
+<Layout lang="bg" path="/" title={bg.notFound.title}>
+  <section class="notfound">
+    <div class="container">
+      <p class="display-num" aria-hidden="true">404</p>
+
+      <p class="eyebrow" style="justify-content:center">{bg.notFound.eyebrow}</p>
+      <h1 style="margin-inline:auto">{bg.notFound.title}</h1>
+      <p class="lead" style="margin-inline:auto">{bg.notFound.text}</p>
+      <div class="actions" style="justify-content:center">
+        <a class="button" href="/">{bg.common.backHome}<span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--line);max-width:340px;margin:36px auto" />
+
+      <p class="lead" style="margin-inline:auto;font-size:1rem">{en.notFound.text}</p>
+      <div class="actions" style="justify-content:center">
+        <a class="button secondary" href="/en">{en.common.backHome}<span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</Layout>

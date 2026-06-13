@@ -8,17 +8,36 @@
     "status": "planned",
     "municipality": "plovdiv",
     "district": "Централен",
-    "location": { "lat": 42.1421, "lng": 24.7483, "address_bg": "Централен район, Пловдив" },
-    "budget": { "amount_bgn": 480000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1421,
+      "lng": 24.7483,
+      "address_bg": "Централен район, Пловдив",
+      "address_en": "Tsentralen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 480000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-roads",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for street-surface repair. Not an official statement; used to test the interface."
   },
   {
     "id": "plovdiv-demo-pavement-002",
@@ -29,17 +48,36 @@
     "status": "funded",
     "municipality": "plovdiv",
     "district": "Северен",
-    "location": { "lat": 42.1584, "lng": 24.7449, "address_bg": "Северен район, Пловдив" },
-    "budget": { "amount_bgn": 160000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1584,
+      "lng": 24.7449,
+      "address_bg": "Северен район, Пловдив",
+      "address_en": "Severen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 160000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-pavement",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for a pavement and pedestrian safety near a public area."
   },
   {
     "id": "plovdiv-demo-lighting-003",
@@ -50,17 +88,36 @@
     "status": "contracted",
     "municipality": "plovdiv",
     "district": "Южен",
-    "location": { "lat": 42.1248, "lng": 24.7425, "address_bg": "Южен район, Пловдив" },
-    "budget": { "amount_bgn": 95000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1248,
+      "lng": 24.7425,
+      "address_bg": "Южен район, Пловдив",
+      "address_en": "Yuzhen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 95000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-lighting",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for energy-efficient street lighting and clearer night-time visibility."
   },
   {
     "id": "plovdiv-demo-parks-004",
@@ -71,17 +128,36 @@
     "status": "in_progress",
     "municipality": "plovdiv",
     "district": "Тракия",
-    "location": { "lat": 42.1325, "lng": 24.7868, "address_bg": "Тракия, Пловдив" },
-    "budget": { "amount_bgn": 220000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1325,
+      "lng": 24.7868,
+      "address_bg": "Тракия, Пловдив",
+      "address_en": "Trakiya, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 220000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-parks",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for a green space with benches, paths and tree maintenance."
   },
   {
     "id": "plovdiv-demo-waste-005",
@@ -92,17 +168,36 @@
     "status": "planned",
     "municipality": "plovdiv",
     "district": "Западен",
-    "location": { "lat": 42.1454, "lng": 24.7145, "address_bg": "Западен район, Пловдив" },
-    "budget": { "amount_bgn": 130000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1454,
+      "lng": 24.7145,
+      "address_bg": "Западен район, Пловдив",
+      "address_en": "Zapaden district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 130000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-waste",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for improving access to waste containers and cleaner public spaces."
   },
   {
     "id": "plovdiv-demo-transport-006",
@@ -113,17 +208,36 @@
     "status": "unknown",
     "municipality": "plovdiv",
     "district": "Източен",
-    "location": { "lat": 42.1412, "lng": 24.7718, "address_bg": "Източен район, Пловдив" },
-    "budget": { "amount_bgn": 310000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1412,
+      "lng": 24.7718,
+      "address_bg": "Източен район, Пловдив",
+      "address_en": "Iztochen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 310000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-public-transport",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for clearer public-transport information at public stops."
   },
   {
     "id": "plovdiv-demo-accessibility-007",
@@ -134,17 +248,36 @@
     "status": "completed",
     "municipality": "plovdiv",
     "district": "Централен",
-    "location": { "lat": 42.1396, "lng": 24.7536, "address_bg": "Централен район, Пловдив" },
-    "budget": { "amount_bgn": 70000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1396,
+      "lng": 24.7536,
+      "address_bg": "Централен район, Пловдив",
+      "address_en": "Tsentralen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 70000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-accessibility",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for a more accessible crossing for wheelchairs, mobility aids and bicycles."
   },
   {
     "id": "plovdiv-demo-drainage-008",
@@ -155,17 +288,36 @@
     "status": "delayed",
     "municipality": "plovdiv",
     "district": "Северен",
-    "location": { "lat": 42.1606, "lng": 24.7582, "address_bg": "Северен район, Пловдив" },
-    "budget": { "amount_bgn": 115000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1606,
+      "lng": 24.7582,
+      "address_bg": "Северен район, Пловдив",
+      "address_en": "Severen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 115000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-drainage",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for reducing local water pooling after rainfall."
   },
   {
     "id": "plovdiv-demo-culture-009",
@@ -176,17 +328,36 @@
     "status": "funded",
     "municipality": "plovdiv",
     "district": "Стар град",
-    "location": { "lat": 42.1492, "lng": 24.7519, "address_bg": "Старинен Пловдив" },
-    "budget": { "amount_bgn": 260000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1492,
+      "lng": 24.7519,
+      "address_bg": "Старинен Пловдив",
+      "address_en": "Old Town, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 260000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-culture",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for an urban space with a cultural function and public access."
   },
   {
     "id": "plovdiv-demo-education-010",
@@ -197,17 +368,36 @@
     "status": "planned",
     "municipality": "plovdiv",
     "district": "Южен",
-    "location": { "lat": 42.1198, "lng": 24.7512, "address_bg": "Южен район, Пловдив" },
-    "budget": { "amount_bgn": 190000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1198,
+      "lng": 24.7512,
+      "address_bg": "Южен район, Пловдив",
+      "address_en": "Yuzhen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 190000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-education",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for pedestrian access and organisation around an educational building."
   },
   {
     "id": "plovdiv-demo-roads-011",
@@ -218,17 +408,36 @@
     "status": "contracted",
     "municipality": "plovdiv",
     "district": "Тракия",
-    "location": { "lat": 42.1309, "lng": 24.7974, "address_bg": "Тракия, Пловдив" },
-    "budget": { "amount_bgn": 145000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1309,
+      "lng": 24.7974,
+      "address_bg": "Тракия, Пловдив",
+      "address_en": "Trakiya, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 145000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-roads",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for road markings, visibility and traffic organisation."
   },
   {
     "id": "plovdiv-demo-pavement-012",
@@ -239,17 +448,36 @@
     "status": "in_progress",
     "municipality": "plovdiv",
     "district": "Западен",
-    "location": { "lat": 42.1442, "lng": 24.7016, "address_bg": "Западен район, Пловдив" },
-    "budget": { "amount_bgn": 125000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1442,
+      "lng": 24.7016,
+      "address_bg": "Западен район, Пловдив",
+      "address_en": "Zapaden district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 125000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-pavement",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for improving the surface along a pedestrian route."
   },
   {
     "id": "plovdiv-demo-lighting-013",
@@ -260,17 +488,36 @@
     "status": "planned",
     "municipality": "plovdiv",
     "district": "Северен",
-    "location": { "lat": 42.1662, "lng": 24.7461, "address_bg": "Северен район, Пловдив" },
-    "budget": { "amount_bgn": 88000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1662,
+      "lng": 24.7461,
+      "address_bg": "Северен район, Пловдив",
+      "address_en": "Severen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 88000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-lighting",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for lighting a route used by pedestrians in the evening."
   },
   {
     "id": "plovdiv-demo-parks-014",
@@ -281,17 +528,36 @@
     "status": "completed",
     "municipality": "plovdiv",
     "district": "Централен",
-    "location": { "lat": 42.1459, "lng": 24.7406, "address_bg": "Централен район, Пловдив" },
-    "budget": { "amount_bgn": 175000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1459,
+      "lng": 24.7406,
+      "address_bg": "Централен район, Пловдив",
+      "address_en": "Tsentralen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 175000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-parks",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for benches, shaded spots and better upkeep of a green area."
   },
   {
     "id": "plovdiv-demo-waste-015",
@@ -302,17 +568,36 @@
     "status": "funded",
     "municipality": "plovdiv",
     "district": "Източен",
-    "location": { "lat": 42.1375, "lng": 24.7769, "address_bg": "Източен район, Пловдив" },
-    "budget": { "amount_bgn": 105000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1375,
+      "lng": 24.7769,
+      "address_bg": "Източен район, Пловдив",
+      "address_en": "Iztochen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 105000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-waste",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for cleaner stops, pavements and small public spaces."
   },
   {
     "id": "plovdiv-demo-transport-016",
@@ -323,17 +608,36 @@
     "status": "planned",
     "municipality": "plovdiv",
     "district": "Южен",
-    "location": { "lat": 42.1214, "lng": 24.7351, "address_bg": "Южен район, Пловдив" },
-    "budget": { "amount_bgn": 135000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1214,
+      "lng": 24.7351,
+      "address_bg": "Южен район, Пловдив",
+      "address_en": "Yuzhen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 135000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-public-transport",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for a stop with better waiting conditions, access and information."
   },
   {
     "id": "plovdiv-demo-accessibility-017",
@@ -344,17 +648,36 @@
     "status": "contracted",
     "municipality": "plovdiv",
     "district": "Централен",
-    "location": { "lat": 42.1467, "lng": 24.7543, "address_bg": "Централен район, Пловдив" },
-    "budget": { "amount_bgn": 98000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1467,
+      "lng": 24.7543,
+      "address_bg": "Централен район, Пловдив",
+      "address_en": "Tsentralen district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 98000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-accessibility",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for an accessible environment around a public service."
   },
   {
     "id": "plovdiv-demo-drainage-018",
@@ -365,17 +688,36 @@
     "status": "funded",
     "municipality": "plovdiv",
     "district": "Западен",
-    "location": { "lat": 42.1395, "lng": 24.7098, "address_bg": "Западен район, Пловдив" },
-    "budget": { "amount_bgn": 155000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1395,
+      "lng": 24.7098,
+      "address_bg": "Западен район, Пловдив",
+      "address_en": "Zapaden district, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 155000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-drainage",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for better drainage at a location with heavy pedestrian traffic."
   },
   {
     "id": "plovdiv-demo-culture-019",
@@ -386,17 +728,36 @@
     "status": "planned",
     "municipality": "plovdiv",
     "district": "Стар град",
-    "location": { "lat": 42.1501, "lng": 24.7538, "address_bg": "Старинен Пловдив" },
-    "budget": { "amount_bgn": 76000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1501,
+      "lng": 24.7538,
+      "address_bg": "Старинен Пловдив",
+      "address_en": "Old Town, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 76000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-culture",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for clearer wayfinding to public cultural sites."
   },
   {
     "id": "plovdiv-demo-education-020",
@@ -407,16 +768,35 @@
     "status": "unknown",
     "municipality": "plovdiv",
     "district": "Тракия",
-    "location": { "lat": 42.1351, "lng": 24.7902, "address_bg": "Тракия, Пловдив" },
-    "budget": { "amount_bgn": 240000, "year": 2025, "funding_source": "municipal_budget" },
+    "location": {
+      "lat": 42.1351,
+      "lng": 24.7902,
+      "address_bg": "Тракия, Пловдив",
+      "address_en": "Trakiya, Plovdiv"
+    },
+    "budget": {
+      "amount_bgn": 240000,
+      "year": 2025,
+      "funding_source": "municipal_budget"
+    },
     "related_budget_item_id": "budget-plovdiv-2025-education",
     "timeline": [
-      { "date": "2026-06-13", "label_bg": "Добавен като примерен запис", "source_url": "https://openplovdiv.example/methodology" }
+      {
+        "date": "2026-06-13",
+        "label_bg": "Добавен като примерен запис",
+        "source_url": "https://openplovdiv.example/methodology",
+        "label_en": "Added as a sample record"
+      }
     ],
     "sources": [
-      { "title": "Примерни данни за прототип", "url": "https://openplovdiv.example/methodology", "accessed_at": "2026-06-13" }
+      {
+        "title": "Примерни данни за прототип",
+        "url": "https://openplovdiv.example/methodology",
+        "accessed_at": "2026-06-13"
+      }
     ],
     "data_quality": "sample",
-    "updated_at": "2026-06-13"
+    "updated_at": "2026-06-13",
+    "summary_en": "Demonstration record for a safe and convenient outdoor environment around a school."
   }
 ]

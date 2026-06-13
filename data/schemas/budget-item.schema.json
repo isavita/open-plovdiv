@@ -47,11 +47,19 @@
       "type": "string",
       "minLength": 3
     },
+    "title_en": {
+      "type": "string",
+      "minLength": 3
+    },
     "amount_bgn": {
       "type": "number",
       "minimum": 0
     },
     "plain_language_bg": {
+      "type": "string",
+      "minLength": 10
+    },
+    "plain_language_en": {
       "type": "string",
       "minLength": 10
     },

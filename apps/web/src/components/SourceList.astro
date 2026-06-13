@@ -1,4 +1,7 @@
 ---
+import { ui, type Lang } from "@i18n/utils";
+import { sourceTitle } from "@lib/format";
+
 type Source = {
   title: string;
   url: string;
@@ -7,9 +10,11 @@ type Source = {
 
 type Props = {
   sources: Source[];
+  lang: Lang;
 };
 
-const { sources } = Astro.props;
+const { sources, lang } = Astro.props;
+const t = ui[lang];
 ---
 
 {
@@ -17,12 +22,12 @@ const { sources } = Astro.props;
     <ul class="source-list">
       {sources.map((source) => (
         <li>
-          <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
-          <span class="meta"> · достъп {source.accessed_at}</span>
+          <a href={source.url} target="_blank" rel="noreferrer">{sourceTitle(source.title, lang)}</a>
+          <span class="meta"> · {`${t.common.accessed} ${source.accessed_at}`}</span>
         </li>
       ))}
     </ul>
   ) : (
-    <p class="meta">Няма публичен източник за този примерен сигнал.</p>
+    <p class="meta">{t.common.noSource}</p>
   )
 }

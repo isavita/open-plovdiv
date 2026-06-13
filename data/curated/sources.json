@@ -5,7 +5,10 @@
     "url": "https://www.plovdiv.bg/",
     "used_for": "Начална точка за официални документи, бюджети, решения и публични съобщения.",
     "accessed_at": "2026-06-13",
-    "limitations_bg": "Текущите записи в прототипа са примерни и трябва да бъдат заменени с конкретни документи."
+    "limitations_bg": "Текущите записи в прототипа са примерни и трябва да бъдат заменени с конкретни документи.",
+    "title_en": "Plovdiv Municipality",
+    "used_for_en": "Starting point for official documents, budgets, decisions and public announcements.",
+    "limitations_en": "Current prototype records are samples and should be replaced with specific documents."
   },
   {
     "id": "public-procurement-register",
@@ -13,7 +16,10 @@
     "url": "https://www2.aop.bg/",
     "used_for": "Бъдеща проверка на обществени поръчки и договори.",
     "accessed_at": "2026-06-13",
-    "limitations_bg": "Не е използван автоматичен импорт в първата версия."
+    "limitations_bg": "Не е използван автоматичен импорт в първата версия.",
+    "title_en": "Public Procurement Register",
+    "used_for_en": "Future verification of public tenders and contracts.",
+    "limitations_en": "No automated import is used in the first version."
   },
   {
     "id": "openstreetmap",
@@ -21,7 +27,10 @@
     "url": "https://www.openstreetmap.org/",
     "used_for": "Картова основа и пространствен контекст.",
     "accessed_at": "2026-06-13",
-    "limitations_bg": "Картовите данни се поддържат от общност и може да имат непълноти."
+    "limitations_bg": "Картовите данни се поддържат от общност и може да имат непълноти.",
+    "title_en": "OpenStreetMap",
+    "used_for_en": "Map base layer and spatial context.",
+    "limitations_en": "Map data is community-maintained and may be incomplete."
   },
   {
     "id": "prototype-seed-data",
@@ -29,6 +38,9 @@
     "url": "https://openplovdiv.example/methodology",
     "used_for": "Демонстрационни записи, с които се тества интерфейсът преди реална редакторска проверка.",
     "accessed_at": "2026-06-13",
-    "limitations_bg": "Не трябва да се третират като официални твърдения."
+    "limitations_bg": "Не трябва да се третират като официални твърдения.",
+    "title_en": "Prototype sample data",
+    "used_for_en": "Demonstration records used to test the interface before real editorial review.",
+    "limitations_en": "Should not be treated as official statements."
   }
 ]

@@ -1,55 +1,220 @@
 ---
 import "../styles/global.css";
+import { localizePath, ui, type Lang } from "@i18n/utils";
 
 type Props = {
+  lang: Lang;
+  /** Logical (default-locale) path of this page, e.g. "/budget" or "/". */
+  path: string;
   title?: string;
   description?: string;
 };
 
-const {
-  title = "Open Plovdiv",
-  description = "Статичен обществен прототип за проекти, бюджет и градски проблеми в Пловдив."
-} = Astro.props;
+const { lang, path, title, description } = Astro.props;
+const t = ui[lang];
 
-const nav = [
-  { href: "/fix-map", label: "Карта" },
-  { href: "/budget", label: "Бюджет" },
-  { href: "/projects", label: "Проекти" },
-  { href: "/data-sources", label: "Източници" },
-  { href: "/methodology", label: "Методология" }
+const pageTitle = title ? `${title} · ${t.site.name}` : t.site.name;
+const pageDescription = description ?? t.site.tagline;
+
+const otherLang: Lang = lang === "bg" ? "en" : "bg";
+
+const navItems = [
+  { href: localizePath("/fix-map", lang), base: "/fix-map", label: t.nav.fixMap },
+  { href: localizePath("/budget", lang), base: "/budget", label: t.nav.budget },
+  { href: localizePath("/projects", lang), base: "/projects", label: t.nav.projects },
+  { href: localizePath("/data-sources", lang), base: "/data-sources", label: t.nav.sources },
+  { href: localizePath("/methodology", lang), base: "/methodology", label: t.nav.methodology }
+];
+
+function isActive(base: string): boolean {
+  if (base === "/") return path === "/";
+  return path === base || path.startsWith(`${base}/`);
+}
+
+const site = Astro.site ?? new URL("https://openplovdiv.example");
+const canonical = new URL(localizePath(path, lang), site).href;
+const bgHref = new URL(localizePath(path, "bg"), site).href;
+const enHref = new URL(localizePath(path, "en"), site).href;
+const switchHref = localizePath(path, otherLang);
+
+const footerExplore = [
+  { href: localizePath("/fix-map", lang), label: t.nav.fixMap },
+  { href: localizePath("/budget", lang), label: t.nav.budget },
+  { href: localizePath("/projects", lang), label: t.nav.projects }
+];
+const footerAbout = [
+  { href: localizePath("/methodology", lang), label: t.footer.methodology },
+  { href: localizePath("/data-sources", lang), label: t.footer.sources },
+  { href: localizePath("/privacy", lang), label: t.footer.privacy },
+  { href: localizePath("/moderation", lang), label: t.footer.moderation }
 ];
 ---
 
 <!doctype html>
-<html lang="bg">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="bg" href={bgHref} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="x-default" href={bgHref} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#15657f" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1316" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={t.site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === "bg" ? "bg_BG" : "en_GB"} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Source+Serif+4:opsz,wght@8..60,400..600&display=swap"
+    />
+
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem("op-theme");
+          if (t === "dark" || t === "light") {
+            document.documentElement.setAttribute("data-theme", t);
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div class="site-shell">
-      <header class="site-header">
-        <nav class="nav" aria-label="Основна навигация">
-          <a class="brand" href="/" aria-label="Open Plovdiv начало">
-            <span class="brand-mark" aria-hidden="true">OP</span>
-            <span>Отворен Пловдив</span>
+      <a class="skip-link" href="#main">{t.site.skip}</a>
+
+      <header class="site-header" id="site-header">
+        <nav class="nav" aria-label={t.nav.home}>
+          <a class="brand" href={localizePath("/", lang)} aria-label={`${t.site.name} — ${t.nav.home}`}>
+            <span class="brand-mark" aria-hidden="true">{t.site.short}</span>
+            <span>{t.site.name}</span>
           </a>
-          <div class="nav-links">
-            {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+
+          <div class="nav-links" id="nav-links">
+            {navItems.map((item) => (
+              <a href={item.href} aria-current={isActive(item.base) ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          <div class="nav-right">
+            <a class="icon-btn lang-switch" href={switchHref} aria-label={t.site.langSwitch} title={t.site.langName} hreflang={otherLang}>
+              <span class="flag" aria-hidden="true">{otherLang.toUpperCase()}</span>
+            </a>
+            <button
+              type="button"
+              class="icon-btn theme-toggle"
+              id="theme-toggle"
+              aria-label={t.site.theme}
+              title={t.site.theme}
+            >
+              <span class="sun" aria-hidden="true">☀</span>
+              <span class="moon" aria-hidden="true">☾</span>
+            </button>
+            <button
+              type="button"
+              class="icon-btn nav-toggle"
+              id="nav-toggle"
+              aria-controls="nav-links"
+              aria-expanded="false"
+              aria-label={t.site.menu}
+            >
+              <span aria-hidden="true">☰</span>
+            </button>
           </div>
         </nav>
       </header>
-      <main class="main">
+
+      <main class="main" id="main">
         <slot />
       </main>
+
       <footer class="site-footer">
         <div class="container">
-          <span>Open Plovdiv · public data prototype</span>
-          <a href="/privacy">Поверителност</a>
+          <div class="footer-top">
+            <div class="footer-brand">
+              <a class="brand" href={localizePath("/", lang)}>
+                <span class="brand-mark" aria-hidden="true">{t.site.short}</span>
+                <span>{t.site.name}</span>
+              </a>
+              <p>{t.footer.blurb}</p>
+            </div>
+            <div class="footer-col">
+              <h4>{t.footer.explore}</h4>
+              <ul>
+                {footerExplore.map((item) => (
+                  <li><a href={item.href}>{item.label}</a></li>
+                ))}
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>{t.footer.about}</h4>
+              <ul>
+                {footerAbout.map((item) => (
+                  <li><a href={item.href}>{item.label}</a></li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>{t.footer.note}</span>
+            <span class="badge sample no-dot">{t.site.sampleData}</span>
+          </div>
         </div>
       </footer>
     </div>
+
+    <script is:inline>
+      (function () {
+        var header = document.getElementById("site-header");
+        var navToggle = document.getElementById("nav-toggle");
+        var themeToggle = document.getElementById("theme-toggle");
+
+        if (navToggle && header) {
+          navToggle.addEventListener("click", function () {
+            var open = header.getAttribute("data-open") === "true";
+            header.setAttribute("data-open", open ? "false" : "true");
+            navToggle.setAttribute("aria-expanded", open ? "false" : "true");
+          });
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && header && header.getAttribute("data-open") === "true") {
+            header.setAttribute("data-open", "false");
+            if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        if (themeToggle) {
+          themeToggle.addEventListener("click", function () {
+            var root = document.documentElement;
+            var current = root.getAttribute("data-theme");
+            var prefersDark =
+              window.matchMedia &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches;
+            var effective = current || (prefersDark ? "dark" : "light");
+            var next = effective === "dark" ? "light" : "dark";
+            root.setAttribute("data-theme", next);
+            try {
+              localStorage.setItem("op-theme", next);
+            } catch (e) {}
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

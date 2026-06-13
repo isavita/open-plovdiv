@@ -1,0 +1,53 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { field, ui, type Lang } from "@i18n/utils";
+import { sourceRegistry } from "@lib/data";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const usedFor = (s: (typeof sourceRegistry)[number]) =>
+  lang === "en" ? s.used_for_en ?? s.used_for : s.used_for;
+const limits = (s: (typeof sourceRegistry)[number]) =>
+  lang === "en" ? s.limitations_en ?? s.limitations_bg : s.limitations_bg;
+---
+
+<Layout lang={lang} path="/data-sources" title={t.sources.title} description={t.sources.lead}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t.sources.eyebrow}</p>
+      <h1>{t.sources.title}</h1>
+      <p class="lead">{t.sources.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>{t.sources.colSource}</th>
+              <th>{t.sources.colUsedFor}</th>
+              <th>{t.sources.colLimits}</th>
+              <th>{t.sources.colAccessed}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sourceRegistry.map((source) => (
+              <tr>
+                <td>
+                  <a href={source.url} target="_blank" rel="noreferrer">{field(source, "title", lang)}</a>
+                </td>
+                <td>{usedFor(source)}</td>
+                <td class="meta">{limits(source)}</td>
+                <td><span class="meta">{source.accessed_at}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</Layout>

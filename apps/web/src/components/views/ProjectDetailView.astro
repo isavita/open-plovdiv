@@ -1,0 +1,185 @@
+---
+import SourceList from "@components/SourceList.astro";
+import StatusBadge from "@components/StatusBadge.astro";
+import Layout from "@layouts/Layout.astro";
+import { categoryColors, ui, type Lang } from "@i18n/ui";
+import { field, localizePath } from "@i18n/utils";
+import { budgetItems, fixReports, type Project } from "@lib/data";
+import {
+  categoryLabel,
+  districtLabel,
+  distanceKm,
+  fixStatusLabel,
+  formatDate,
+  formatMoney,
+  fundingSourceLabel,
+  sourceTitle
+} from "@lib/format";
+
+type Props = { lang: Lang; project: Project };
+const { lang, project } = Astro.props;
+const t = ui[lang];
+
+const title = field(project, "title", lang);
+const relatedBudget = budgetItems.find((item) => item.id === project.related_budget_item_id);
+const nearbyReports = fixReports
+  .map((report) => ({ ...report, distance: distanceKm(project.location, report.location) }))
+  .filter((report) => report.distance <= 1)
+  .sort((a, b) => a.distance - b.distance)
+  .slice(0, 6);
+
+const pinColor = categoryColors[project.category] ?? "var(--brand)";
+---
+
+<Layout lang={lang} path={`/projects/${project.id}`} title={title} description={field(project, "summary", lang)}>
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="breadcrumb">
+        <a href={localizePath("/", lang)}>{t.nav.home}</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a href={localizePath("/projects", lang)}>{t.project.breadcrumb}</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <span aria-current="page">{title}</span>
+      </nav>
+      <p class="eyebrow" style={`color:${pinColor}`}>{categoryLabel(project.category, lang)}</p>
+      <h1>{title}</h1>
+      <p class="lead">{field(project, "summary", lang)}</p>
+      <div class="pill-row" style="margin-top:18px">
+        <StatusBadge status={project.status} type="project" lang={lang} />
+        <span class="badge sample">{t.site.sampleData}</span>
+        <span class="meta">{`${t.project.updated} ${formatDate(project.updated_at, lang)}`}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container grid grid-2">
+      <article class="card">
+        <h2>{t.project.keyFacts}</h2>
+        <table class="table facts">
+          <tbody>
+            <tr><th>{t.project.budget}</th><td class="money">{formatMoney(project.budget.amount_bgn, lang)}</td></tr>
+            <tr><th>{t.project.year}</th><td>{project.budget.year}</td></tr>
+            <tr><th>{t.project.funding}</th><td>{fundingSourceLabel(project.budget.funding_source, lang)}</td></tr>
+            <tr><th>{t.project.status}</th><td><StatusBadge status={project.status} type="project" lang={lang} /></td></tr>
+            <tr><th>{t.project.district}</th><td>{districtLabel(project.district, lang) || t.project.notSpecified}</td></tr>
+            <tr><th>{t.project.location}</th><td>{field(project.location, "address", lang)}</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card">
+        <h2>{t.project.sources}</h2>
+        <SourceList sources={project.sources} lang={lang} />
+        <p class="meta" style="margin-top:14px">{t.project.sourcesNote}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container grid grid-2">
+      <article>
+        <div class="section-head"><h2>{t.project.location}</h2></div>
+        <div
+          id="project-map"
+          class="map-canvas mini-map"
+          data-lat={project.location.lat}
+          data-lng={project.location.lng}
+          data-color={pinColor}
+          aria-label={t.project.mapLabel}
+        >
+        </div>
+      </article>
+
+      <article>
+        <div class="section-head"><h2>{t.project.relatedBudget}</h2></div>
+        {
+          relatedBudget ? (
+            <div class="card">
+              <h3>{field(relatedBudget, "title", lang)}</h3>
+              <p class="money">{formatMoney(relatedBudget.amount_bgn, lang)}</p>
+              <p class="meta">{field(relatedBudget, "plain_language", lang)}</p>
+              <p>
+                <a href={relatedBudget.source_document.url} target="_blank" rel="noreferrer">
+                  {sourceTitle(relatedBudget.source_document.title, lang)}
+                </a>
+                <span class="meta"> · {`${t.common.accessed} ${relatedBudget.source_document.accessed_at}`}</span>
+              </p>
+            </div>
+          ) : (
+            <p class="empty">{t.project.noRelatedBudget}</p>
+          )
+        }
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <article>
+        <div class="section-head"><h2>{t.project.nearbyReports}</h2></div>
+        <div class="list">
+          {
+            nearbyReports.length > 0 ? (
+              nearbyReports.map((report) => (
+                <div class="card">
+                  <div class="pill-row">
+                    <span class={`badge status-${report.status}`}>{fixStatusLabel(report.status, lang)}</span>
+                    <span class="meta">{report.distance.toFixed(1)} km</span>
+                  </div>
+                  <h3 style="margin-top:8px">{field(report, "title", lang)}</h3>
+                  <p class="meta">{field(report, "description", lang)}</p>
+                </div>
+              ))
+            ) : (
+              <p class="empty">{t.project.noNearby}</p>
+            )
+          }
+        </div>
+      </article>
+
+      <article>
+        <div class="section-head"><h2>{t.project.timeline}</h2></div>
+        <div class="list">
+          {
+            project.timeline?.length ? (
+              project.timeline.map((event) => (
+                <div class="card">
+                  <p class="meta">{formatDate(event.date, lang)}</p>
+                  <h3>{field(event, "label", lang)}</h3>
+                  <a href={event.source_url} target="_blank" rel="noreferrer">{t.common.source}</a>
+                </div>
+              ))
+            ) : (
+              <p class="empty">{t.project.noTimeline}</p>
+            )
+          }
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <script>
+    import L from "leaflet";
+    import "leaflet/dist/leaflet.css";
+
+    const mapElement = document.querySelector<HTMLElement>("#project-map");
+    if (mapElement) {
+      const lat = Number(mapElement.dataset.lat);
+      const lng = Number(mapElement.dataset.lng);
+      const color = mapElement.dataset.color ?? "#15657f";
+      const map = L.map(mapElement, { scrollWheelZoom: false }).setView([lat, lng], 15);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+      const icon = L.divIcon({
+        className: "",
+        html: `<span class="marker-pin" style="--pin:${color}"></span>`,
+        iconSize: [28, 28],
+        iconAnchor: [14, 28]
+      });
+      L.marker([lat, lng], { icon }).addTo(map);
+    }
+  </script>
+</Layout>

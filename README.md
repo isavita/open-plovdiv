@@ -7,7 +7,8 @@ The current repository uses sample data that is clearly labeled as prototype dat
 ## Stack
 
 - Astro + TypeScript for the static website
-- JSON files as the source of truth
+- Bilingual interface: Bulgarian at the root, English under `/en/`, with a language switcher and light/dark themes
+- JSON files as the source of truth (each record carries Bulgarian and English text)
 - Node scripts for validation and public data generation
 - No database, no user accounts, no personal data collection
 

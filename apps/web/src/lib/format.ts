@@ -1,29 +1,67 @@
-import { categoryLabels, fixStatusLabels, projectStatusLabels } from "./constants";
+import {
+  categoryLabels,
+  districtLabels,
+  fixStatusLabels,
+  fundingSourceLabels,
+  projectStatusLabels,
+  sourceTitleLabels,
+  type Lang
+} from "../i18n/ui";
 
-export function formatMoneyBGN(amount: number): string {
-  return new Intl.NumberFormat("bg-BG", {
+const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB" };
+
+export function formatMoney(amount: number, lang: Lang = "bg"): string {
+  return new Intl.NumberFormat(moneyLocale[lang], {
     style: "currency",
     currency: "BGN",
     maximumFractionDigits: 0
   }).format(amount);
 }
 
-export function formatPlainNumber(value: number): string {
-  return new Intl.NumberFormat("bg-BG", {
+/** Backwards-compatible Bulgarian money formatter. */
+export function formatMoneyBGN(amount: number): string {
+  return formatMoney(amount, "bg");
+}
+
+export function formatPlainNumber(value: number, lang: Lang = "bg"): string {
+  return new Intl.NumberFormat(moneyLocale[lang], {
     maximumFractionDigits: 0
   }).format(value);
 }
 
-export function categoryLabel(category: string): string {
-  return categoryLabels[category] ?? category;
+export function formatDate(iso: string, lang: Lang = "bg"): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return new Intl.DateTimeFormat(moneyLocale[lang], {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }).format(date);
 }
 
-export function projectStatusLabel(status: string): string {
-  return projectStatusLabels[status] ?? status;
+export function categoryLabel(category: string, lang: Lang = "bg"): string {
+  return categoryLabels[lang][category] ?? category;
 }
 
-export function fixStatusLabel(status: string): string {
-  return fixStatusLabels[status] ?? status;
+export function projectStatusLabel(status: string, lang: Lang = "bg"): string {
+  return projectStatusLabels[lang][status] ?? status;
+}
+
+export function fixStatusLabel(status: string, lang: Lang = "bg"): string {
+  return fixStatusLabels[lang][status] ?? status;
+}
+
+export function fundingSourceLabel(value: string, lang: Lang = "bg"): string {
+  return fundingSourceLabels[lang][value] ?? value;
+}
+
+export function districtLabel(value: string | null, lang: Lang = "bg"): string {
+  if (!value) return "";
+  return lang === "en" ? districtLabels[value] ?? value : value;
+}
+
+export function sourceTitle(title: string, lang: Lang = "bg"): string {
+  return sourceTitleLabels[lang]?.[title] ?? title;
 }
 
 export function distanceKm(

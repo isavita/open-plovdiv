@@ -1,13 +1,16 @@
 ---
+import type { Lang } from "@i18n/ui";
 import { fixStatusLabel, projectStatusLabel } from "@lib/format";
 
 type Props = {
   status: string;
   type: "project" | "fix";
+  lang: Lang;
 };
 
-const { status, type } = Astro.props;
-const label = type === "project" ? projectStatusLabel(status) : fixStatusLabel(status);
+const { status, type, lang } = Astro.props;
+const label =
+  type === "project" ? projectStatusLabel(status, lang) : fixStatusLabel(status, lang);
 ---
 
 <span class={`badge status-${status}`}>{label}</span>
