@@ -36,7 +36,7 @@ need to point Railway at the config file manually, use `/railway.json`.
 
 Railway can read `railway.json`, which sets:
 
-- Build command: `npm ci && npm run build`
+- Build command: `npm run build`
 - Start command: `npm start`
 - Healthcheck path: `/`
 
