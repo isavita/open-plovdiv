@@ -15,19 +15,39 @@ export const GET: APIRoute = async ({ request }) => {
   const encoder = new TextEncoder();
   let closed = false;
   let lastUpdated = "";
+  let interval: ReturnType<typeof setInterval> | undefined;
 
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
+      const cleanup = (closeController: boolean) => {
+        if (closed) return;
+        closed = true;
+        if (interval) clearInterval(interval);
+        if (closeController) {
+          try {
+            controller.close();
+          } catch {
+            /* The client may have already canceled the stream. */
+          }
+        }
+      };
+
       const send = (event: string, data: unknown) => {
-        controller.enqueue(
-          encoder.encode(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`)
-        );
+        if (closed) return;
+        try {
+          controller.enqueue(
+            encoder.encode(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`)
+          );
+        } catch {
+          cleanup(false);
+        }
       };
 
       async function tick() {
         if (closed) return;
         try {
           const data = await snapshot();
+          if (closed) return;
           if (data.updated_at !== lastUpdated) {
             lastUpdated = data.updated_at;
             send("reports", data);
@@ -40,15 +60,14 @@ export const GET: APIRoute = async ({ request }) => {
       }
 
       await tick();
-      const interval = setInterval(tick, 30000);
+      interval = setInterval(tick, 30000);
       request.signal.addEventListener("abort", () => {
-        closed = true;
-        clearInterval(interval);
-        controller.close();
-      });
+        cleanup(true);
+      }, { once: true });
     },
     cancel() {
       closed = true;
+      if (interval) clearInterval(interval);
     }
   });
 
