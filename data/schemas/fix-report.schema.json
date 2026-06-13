@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/fix-report.schema.json",
+  "title": "Open Plovdiv fix report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title_bg",
+    "description_bg",
+    "category",
+    "status",
+    "location",
+    "photo_url",
+    "submitted_source",
+    "sources",
+    "data_quality",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^fix-plovdiv-[0-9]{4}$"
+    },
+    "title_bg": {
+      "type": "string",
+      "minLength": 3
+    },
+    "description_bg": {
+      "type": "string",
+      "minLength": 10
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "roads",
+        "pavement",
+        "street_lighting",
+        "parks",
+        "waste",
+        "public_transport",
+        "accessibility",
+        "drainage",
+        "other"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "unverified",
+        "verified",
+        "sent_to_municipality",
+        "in_progress",
+        "fixed",
+        "closed"
+      ]
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lat",
+        "lng",
+        "address_bg"
+      ],
+      "properties": {
+        "lat": {
+          "type": "number",
+          "minimum": 42,
+          "maximum": 42.25
+        },
+        "lng": {
+          "type": "number",
+          "minimum": 24.6,
+          "maximum": 24.9
+        },
+        "address_bg": {
+          "type": "string",
+          "minLength": 3
+        }
+      }
+    },
+    "photo_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "submitted_source": {
+      "type": "string",
+      "enum": [
+        "manual_seed",
+        "official_public_source",
+        "partner_dataset"
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/source"
+      }
+    },
+    "data_quality": {
+      "type": "string",
+      "enum": [
+        "sample",
+        "public_source",
+        "manual_reviewed"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "definitions": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "url",
+        "accessed_at"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "accessed_at": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="Методология · Отворен Пловдив">
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Как работи</p>
+      <h1>Методология</h1>
+      <p class="lead">
+        Данните минават през преглед, схема и публични източници, преди да бъдат публикувани като
+        факти. AI може да помага за чернови, но не е източник на истина.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <article class="card">
+        <h2>Събиране</h2>
+        <p>
+          MVP версията е manual-first. Редактор добавя записи в <code>data/curated</code>, а
+          оригинални документи могат да се пазят в <code>data/raw</code>.
+        </p>
+      </article>
+      <article class="card">
+        <h2>Проверка</h2>
+        <p>
+          Валидират се задължителни полета, статуси, URL адреси, суми, координати и липса на
+          лични данни в сигналите.
+        </p>
+      </article>
+      <article class="card">
+        <h2>AI</h2>
+        <p>
+          AI изходът трябва да бъде чернова или човешки прегледан. Той не може да измисля факти,
+          обвинения или липсващи стойности.
+        </p>
+      </article>
+      <article class="card">
+        <h2>Корекции</h2>
+        <p>
+          Корекцията трябва да добави или смени публичен източник, да обнови curated JSON и да
+          мине през validation/build.
+        </p>
+      </article>
+    </div>
+  </section>
+</Layout>

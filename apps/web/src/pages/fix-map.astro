@@ -1,0 +1,295 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { categoryLabels, fixStatusDescriptions, fixStatusLabels } from "@lib/constants";
+
+const fixCategories = [
+  "roads",
+  "pavement",
+  "street_lighting",
+  "parks",
+  "waste",
+  "public_transport",
+  "accessibility",
+  "drainage",
+  "other"
+];
+const fixStatuses = Object.keys(fixStatusLabels);
+---
+
+<Layout title="Карта на градски проблеми · Отворен Пловдив">
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Fix Map</p>
+      <h1>Карта на градски проблеми</h1>
+      <p class="lead">
+        Примерни сигнали без лични данни. Филтрирайте по категория и статус, вижте детайли и
+        близки публични проекти.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="notice">
+        Сигналите в тази версия са примерни. Статусът показва дали записът е проверен, изпратен,
+        в процес или затворен.
+      </div>
+
+      <div class="filters">
+        <div class="field">
+          <label for="category-filter">Категория</label>
+          <select id="category-filter">
+            <option value="all">Всички категории</option>
+            {fixCategories.map((category) => (
+              <option value={category}>{categoryLabels[category]}</option>
+            ))}
+          </select>
+        </div>
+        <div class="field">
+          <label for="status-filter">Статус</label>
+          <select id="status-filter">
+            <option value="all">Всички статуси</option>
+            {fixStatuses.map((status) => (
+              <option value={status}>{fixStatusLabels[status]}</option>
+            ))}
+          </select>
+        </div>
+        <div class="field">
+          <label for="radius-filter">Близки проекти</label>
+          <select id="radius-filter">
+            <option value="0.5">до 500 м</option>
+            <option value="1" selected>до 1 км</option>
+            <option value="2">до 2 км</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="visible-count">Видими записи</label>
+          <input id="visible-count" type="text" readonly value="Зареждане" />
+        </div>
+      </div>
+
+      <div class="map-layout">
+        <div id="fix-map-canvas" class="map-canvas" aria-label="Карта на примерни сигнали"></div>
+        <aside id="report-detail" class="detail-panel" aria-live="polite">
+          <h2>Изберете сигнал</h2>
+          <p class="meta">Кликнете върху маркер, за да видите детайли, статус и близки проекти.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <article>
+        <h2>Статуси на сигналите</h2>
+        <div class="list">
+          {Object.entries(fixStatusDescriptions).map(([status, description]) => (
+            <div class="card">
+              <span class={`badge status-${status}`}>{fixStatusLabels[status]}</span>
+              <p>{description}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+      <article>
+        <h2>Официално подаване</h2>
+        <div class="card">
+          <p>
+            За реални сигнали използвайте официалните канали на общината или районната администрация.
+            Open Plovdiv не заменя официалното подаване и в MVP не приема публични сигнали.
+          </p>
+          <a href="https://www.plovdiv.bg/" target="_blank" rel="noreferrer">Община Пловдив</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <script>
+    import L from "leaflet";
+    import "leaflet/dist/leaflet.css";
+
+    const categoryLabels = {
+      roads: "Улици",
+      pavement: "Тротоари",
+      street_lighting: "Осветление",
+      parks: "Паркове",
+      waste: "Чистота",
+      public_transport: "Транспорт",
+      accessibility: "Достъпност",
+      drainage: "Отводняване",
+      culture: "Култура",
+      education: "Образование",
+      other: "Друго"
+    };
+
+    const categoryMarks = {
+      roads: "ПТ",
+      pavement: "ТР",
+      street_lighting: "ОС",
+      parks: "ПР",
+      waste: "ЧС",
+      public_transport: "ГТ",
+      accessibility: "ДС",
+      drainage: "ВД",
+      culture: "КЛ",
+      education: "ОБ",
+      other: "ДР"
+    };
+
+    const statusLabels = {
+      unverified: "Непроверен",
+      verified: "Проверен",
+      sent_to_municipality: "Изпратен",
+      in_progress: "В процес",
+      fixed: "Поправен",
+      closed: "Затворен"
+    };
+
+    const statusDescriptions = {
+      unverified: "Сигналът е примерен или очаква проверка.",
+      verified: "Проверен е от редактор или публичен източник.",
+      sent_to_municipality: "Маркиран е като изпратен към институция.",
+      in_progress: "Има отбелязан текущ ремонт или проверка.",
+      fixed: "Маркиран е като поправен.",
+      closed: "Затворен е без активен следващ етап."
+    };
+
+    const categoryFilter = document.querySelector("#category-filter");
+    const statusFilter = document.querySelector("#status-filter");
+    const radiusFilter = document.querySelector("#radius-filter");
+    const countField = document.querySelector("#visible-count");
+    const detail = document.querySelector("#report-detail");
+
+    const map = L.map("fix-map-canvas", { scrollWheelZoom: false }).setView([42.141, 24.75], 13);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    const markerLayer = L.layerGroup().addTo(map);
+    let selectedReport = null;
+    let reports = [];
+    let projects = [];
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function distanceKm(a, b) {
+      const radiusKm = 6371;
+      const toRad = (degrees) => (degrees * Math.PI) / 180;
+      const dLat = toRad(b.lat - a.lat);
+      const dLng = toRad(b.lng - a.lng);
+      const lat1 = toRad(a.lat);
+      const lat2 = toRad(b.lat);
+      const h =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.sin(dLng / 2) * Math.sin(dLng / 2) * Math.cos(lat1) * Math.cos(lat2);
+      return 2 * radiusKm * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
+    }
+
+    function markerIcon(report) {
+      return L.divIcon({
+        className: "",
+        html: `<span class="marker-pin">${escapeHtml(categoryMarks[report.category] ?? "ДР")}</span>`,
+        iconSize: [30, 30],
+        iconAnchor: [15, 15]
+      });
+    }
+
+    function visibleReports() {
+      const category = categoryFilter.value;
+      const status = statusFilter.value;
+      return reports.filter((report) => {
+        const categoryMatch = category === "all" || report.category === category;
+        const statusMatch = status === "all" || report.status === status;
+        return categoryMatch && statusMatch;
+      });
+    }
+
+    function nearbyProjects(report) {
+      const radius = Number(radiusFilter.value);
+      return projects
+        .map((project) => ({
+          ...project,
+          distance: distanceKm(report.location, project.location)
+        }))
+        .filter((project) => project.distance <= radius)
+        .sort((a, b) => a.distance - b.distance)
+        .slice(0, 5);
+    }
+
+    function renderDetail(report) {
+      selectedReport = report;
+      const nearby = nearbyProjects(report);
+      detail.innerHTML = `
+        <span class="badge status-${escapeHtml(report.status)}">${escapeHtml(statusLabels[report.status] ?? report.status)}</span>
+        <h2>${escapeHtml(report.title_bg)}</h2>
+        <p>${escapeHtml(report.description_bg)}</p>
+        <p class="meta">${escapeHtml(categoryLabels[report.category] ?? report.category)} · ${escapeHtml(report.location.address_bg)}</p>
+        <p><strong>Статус:</strong> ${escapeHtml(statusDescriptions[report.status] ?? "Няма описание.")}</p>
+        <p><span class="badge sample">Примерни данни</span></p>
+        <h3>Близки проекти</h3>
+        ${
+          nearby.length
+            ? `<ul class="source-list">${nearby
+                .map(
+                  (project) =>
+                    `<li><a href="/projects/${escapeHtml(project.id)}">${escapeHtml(project.title_bg)}</a><span class="meta"> · ${project.distance.toFixed(1)} км</span></li>`
+                )
+                .join("")}</ul>`
+            : `<p class="meta">Няма проект в избрания радиус.</p>`
+        }
+      `;
+    }
+
+    function renderMarkers() {
+      markerLayer.clearLayers();
+      const visible = visibleReports();
+      countField.value = `${visible.length} от ${reports.length}`;
+
+      visible.forEach((report) => {
+        const marker = L.marker([report.location.lat, report.location.lng], {
+          icon: markerIcon(report),
+          title: report.title_bg
+        }).on("click", () => renderDetail(report));
+        marker.addTo(markerLayer);
+      });
+
+      if (selectedReport) {
+        renderDetail(selectedReport);
+      }
+    }
+
+    categoryFilter.addEventListener("change", renderMarkers);
+    statusFilter.addEventListener("change", renderMarkers);
+    radiusFilter.addEventListener("change", () => {
+      if (selectedReport) renderDetail(selectedReport);
+    });
+
+    try {
+      [reports, projects] = await Promise.all([
+        fetch("/data/fix-reports.json").then((response) => {
+          if (!response.ok) throw new Error("fix reports failed");
+          return response.json();
+        }),
+        fetch("/data/projects.json").then((response) => {
+          if (!response.ok) throw new Error("projects failed");
+          return response.json();
+        })
+      ]);
+      renderMarkers();
+    } catch {
+      countField.value = "Грешка";
+      detail.innerHTML = `
+        <h2>Данните не се заредиха</h2>
+        <p class="error">Проверете дали публичните JSON файлове са генерирани с <code>make data</code>.</p>
+      `;
+    }
+  </script>
+</Layout>

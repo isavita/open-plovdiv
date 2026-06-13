@@ -1,0 +1,123 @@
+---
+import StatusBadge from "@components/StatusBadge.astro";
+import Layout from "@layouts/Layout.astro";
+import { categoryLabels, projectStatusLabels } from "@lib/constants";
+import { projects } from "@lib/data";
+import { categoryLabel, formatMoneyBGN } from "@lib/format";
+
+const categories = Array.from(new Set(projects.map((project) => project.category))).sort();
+const statuses = Object.keys(projectStatusLabels);
+const years = Array.from(new Set(projects.map((project) => project.budget.year))).sort((a, b) => b - a);
+---
+
+<Layout title="Публични проекти · Отворен Пловдив">
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Публични проекти</p>
+      <h1>Проекти</h1>
+      <p class="lead">
+        Търсете по заглавие и филтрирайте по категория, статус и година. Всеки проект има отделна
+        статична страница.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filters">
+        <div class="field">
+          <label for="project-search">Търсене</label>
+          <input id="project-search" type="search" placeholder="Напр. тротоар, парк, спирка" />
+        </div>
+        <div class="field">
+          <label for="project-category">Категория</label>
+          <select id="project-category">
+            <option value="all">Всички</option>
+            {categories.map((category) => (
+              <option value={category}>{categoryLabels[category]}</option>
+            ))}
+          </select>
+        </div>
+        <div class="field">
+          <label for="project-status">Статус</label>
+          <select id="project-status">
+            <option value="all">Всички</option>
+            {statuses.map((status) => (
+              <option value={status}>{projectStatusLabels[status]}</option>
+            ))}
+          </select>
+        </div>
+        <div class="field">
+          <label for="project-year">Година</label>
+          <select id="project-year">
+            <option value="all">Всички</option>
+            {years.map((year) => <option value={year}>{year}</option>)}
+          </select>
+        </div>
+      </div>
+
+      <p id="project-count" class="meta">{projects.length} проекта</p>
+
+      <div id="project-list" class="grid grid-2">
+        {projects.map((project) => (
+          <article
+            class="card project-card"
+            data-project-card
+            data-title={project.title_bg.toLocaleLowerCase("bg-BG")}
+            data-category={project.category}
+            data-status={project.status}
+            data-year={project.budget.year}
+          >
+            <header>
+              <div>
+                <h2><a href={`/projects/${project.id}`}>{project.title_bg}</a></h2>
+                <p class="meta">{categoryLabel(project.category)} · {project.location.address_bg}</p>
+              </div>
+              <StatusBadge status={project.status} type="project" />
+            </header>
+            <p>{project.summary_bg}</p>
+            <div class="pill-row">
+              <span class="money">{formatMoneyBGN(project.budget.amount_bgn)}</span>
+              <span class="badge sample">Примерни данни</span>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p id="project-empty" class="empty" hidden>Няма проекти с избраните филтри.</p>
+    </div>
+  </section>
+
+  <script>
+    const search = document.querySelector("#project-search");
+    const category = document.querySelector("#project-category");
+    const status = document.querySelector("#project-status");
+    const year = document.querySelector("#project-year");
+    const cards = Array.from(document.querySelectorAll("[data-project-card]"));
+    const count = document.querySelector("#project-count");
+    const empty = document.querySelector("#project-empty");
+
+    function applyFilters() {
+      const query = search.value.trim().toLocaleLowerCase("bg-BG");
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const matches =
+          (!query || card.dataset.title.includes(query)) &&
+          (category.value === "all" || card.dataset.category === category.value) &&
+          (status.value === "all" || card.dataset.status === status.value) &&
+          (year.value === "all" || card.dataset.year === year.value);
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+
+      count.textContent = `${visible} от ${cards.length} проекта`;
+      empty.hidden = visible > 0;
+    }
+
+    search.addEventListener("input", applyFilters);
+    category.addEventListener("change", applyFilters);
+    status.addEventListener("change", applyFilters);
+    year.addEventListener("change", applyFilters);
+  </script>
+</Layout>

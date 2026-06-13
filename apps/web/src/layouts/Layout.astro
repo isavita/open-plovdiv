@@ -1,0 +1,55 @@
+---
+import "../styles/global.css";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const {
+  title = "Open Plovdiv",
+  description = "Статичен обществен прототип за проекти, бюджет и градски проблеми в Пловдив."
+} = Astro.props;
+
+const nav = [
+  { href: "/fix-map", label: "Карта" },
+  { href: "/budget", label: "Бюджет" },
+  { href: "/projects", label: "Проекти" },
+  { href: "/data-sources", label: "Източници" },
+  { href: "/methodology", label: "Методология" }
+];
+---
+
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <nav class="nav" aria-label="Основна навигация">
+          <a class="brand" href="/" aria-label="Open Plovdiv начало">
+            <span class="brand-mark" aria-hidden="true">OP</span>
+            <span>Отворен Пловдив</span>
+          </a>
+          <div class="nav-links">
+            {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+          </div>
+        </nav>
+      </header>
+      <main class="main">
+        <slot />
+      </main>
+      <footer class="site-footer">
+        <div class="container">
+          <span>Open Plovdiv · public data prototype</span>
+          <a href="/privacy">Поверителност</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

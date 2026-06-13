@@ -1,0 +1,171 @@
+---
+import SourceList from "@components/SourceList.astro";
+import StatusBadge from "@components/StatusBadge.astro";
+import Layout from "@layouts/Layout.astro";
+import { budgetItems, fixReports, projects } from "@lib/data";
+import { categoryLabel, distanceKm, fixStatusLabel, formatMoneyBGN } from "@lib/format";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+const relatedBudget = budgetItems.find((item) => item.id === project.related_budget_item_id);
+const nearbyReports = fixReports
+  .map((report) => ({
+    ...report,
+    distance: distanceKm(project.location, report.location)
+  }))
+  .filter((report) => report.distance <= 1)
+  .sort((a, b) => a.distance - b.distance)
+  .slice(0, 6);
+---
+
+<Layout title={`${project.title_bg} · Отворен Пловдив`}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{categoryLabel(project.category)}</p>
+      <h1>{project.title_bg}</h1>
+      <p class="lead">{project.summary_bg}</p>
+      <div class="pill-row" style="margin-top: 18px;">
+        <StatusBadge status={project.status} type="project" />
+        <span class="badge sample">Примерни данни</span>
+        <span class="meta">Обновено {project.updated_at}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <article class="card">
+        <h2>Основни данни</h2>
+        <table class="table">
+          <tbody>
+            <tr><th>Бюджет</th><td class="money">{formatMoneyBGN(project.budget.amount_bgn)}</td></tr>
+            <tr><th>Година</th><td>{project.budget.year}</td></tr>
+            <tr><th>Финансиране</th><td>{project.budget.funding_source}</td></tr>
+            <tr><th>Статус</th><td><StatusBadge status={project.status} type="project" /></td></tr>
+            <tr><th>Район</th><td>{project.district ?? "Не е посочен"}</td></tr>
+            <tr><th>Локация</th><td>{project.location.address_bg}</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card">
+        <h2>Източници</h2>
+        <SourceList sources={project.sources} />
+        <p class="meta">
+          Този запис е маркиран като примерен и не трябва да се третира като официално твърдение.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <article>
+        <h2>Локация</h2>
+        <div
+          id="project-map"
+          class="map-canvas mini-map"
+          data-lat={project.location.lat}
+          data-lng={project.location.lng}
+          data-title={project.title_bg}
+          aria-label="Карта на проекта"
+        >
+        </div>
+      </article>
+
+      <article>
+        <h2>Свързан бюджетен ред</h2>
+        {
+          relatedBudget ? (
+            <div class="card">
+              <h3>{relatedBudget.title_bg}</h3>
+              <p class="money">{formatMoneyBGN(relatedBudget.amount_bgn)}</p>
+              <p>{relatedBudget.plain_language_bg}</p>
+              <a href={relatedBudget.source_document.url} target="_blank" rel="noreferrer">
+                {relatedBudget.source_document.title}
+              </a>
+              <span class="meta"> · достъп {relatedBudget.source_document.accessed_at}</span>
+            </div>
+          ) : (
+            <p class="empty">Няма свързан бюджетен ред.</p>
+          )
+        }
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <article>
+        <h2>Близки сигнали</h2>
+        <div class="list">
+          {
+            nearbyReports.length > 0 ? (
+              nearbyReports.map((report) => (
+                <div class="card">
+                  <div class="pill-row">
+                    <span class={`badge status-${report.status}`}>{fixStatusLabel(report.status)}</span>
+                    <span class="meta">{report.distance.toFixed(1)} км</span>
+                  </div>
+                  <h3>{report.title_bg}</h3>
+                  <p>{report.description_bg}</p>
+                </div>
+              ))
+            ) : (
+              <p class="empty">Няма примерни сигнали в радиус 1 км.</p>
+            )
+          }
+        </div>
+      </article>
+
+      <article>
+        <h2>Хронология</h2>
+        <div class="list">
+          {
+            project.timeline?.length ? (
+              project.timeline.map((event) => (
+                <div class="card">
+                  <p class="meta">{event.date}</p>
+                  <h3>{event.label_bg}</h3>
+                  <a href={event.source_url} target="_blank" rel="noreferrer">Източник</a>
+                </div>
+              ))
+            ) : (
+              <p class="empty">Няма добавена хронология.</p>
+            )
+          }
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <script>
+    import L from "leaflet";
+    import "leaflet/dist/leaflet.css";
+
+    const mapElement = document.querySelector("#project-map");
+    if (mapElement) {
+      const lat = Number(mapElement.dataset.lat);
+      const lng = Number(mapElement.dataset.lng);
+      const title = mapElement.dataset.title ?? "Проект";
+      const map = L.map(mapElement, { scrollWheelZoom: false }).setView([lat, lng], 15);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+      const icon = L.divIcon({
+        className: "",
+        html: '<span class="marker-pin">ПР</span>',
+        iconSize: [30, 30],
+        iconAnchor: [15, 15]
+      });
+      L.marker([lat, lng], { icon, title }).addTo(map);
+    }
+  </script>
+</Layout>

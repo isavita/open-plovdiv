@@ -1,0 +1,362 @@
+[
+  {
+    "id": "fix-plovdiv-0001",
+    "title_bg": "Примерен сигнал: неравна настилка",
+    "description_bg": "Демонстрационен запис за неравна пешеходна настилка без лични данни.",
+    "category": "pavement",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1415,
+      "lng": 24.7488,
+      "address_bg": "Централен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0002",
+    "title_bg": "Примерен сигнал: дупка на улица",
+    "description_bg": "Демонстрационен запис за повредена пътна настилка, очакващ проверка.",
+    "category": "roads",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1428,
+      "lng": 24.7467,
+      "address_bg": "Централен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0003",
+    "title_bg": "Примерен сигнал: тъмна пешеходна връзка",
+    "description_bg": "Демонстрационен запис за място с недостатъчно осветление вечер.",
+    "category": "street_lighting",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1253,
+      "lng": 24.7419,
+      "address_bg": "Южен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0004",
+    "title_bg": "Примерен сигнал: счупена пейка",
+    "description_bg": "Демонстрационен запис за елемент в зелена зона, нуждаещ се от ремонт.",
+    "category": "parks",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1322,
+      "lng": 24.7874,
+      "address_bg": "Тракия, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0005",
+    "title_bg": "Примерен сигнал: препълнени кошчета",
+    "description_bg": "Демонстрационен запис за зона, в която е нужна проверка на графика за почистване.",
+    "category": "waste",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1451,
+      "lng": 24.715,
+      "address_bg": "Западен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0006",
+    "title_bg": "Примерен сигнал: неясна спиркова информация",
+    "description_bg": "Демонстрационен запис за липсваща или нечетлива информация на спирка.",
+    "category": "public_transport",
+    "status": "unverified",
+    "location": {
+      "lat": 42.141,
+      "lng": 24.7714,
+      "address_bg": "Източен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0007",
+    "title_bg": "Примерен сигнал: висок бордюр",
+    "description_bg": "Демонстрационен запис за труден достъп при пресичане на кръстовище.",
+    "category": "accessibility",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1392,
+      "lng": 24.7531,
+      "address_bg": "Централен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0008",
+    "title_bg": "Примерен сигнал: запушена шахта",
+    "description_bg": "Демонстрационен запис за възможен проблем с отводняване след валеж.",
+    "category": "drainage",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1609,
+      "lng": 24.7588,
+      "address_bg": "Северен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0009",
+    "title_bg": "Примерен сигнал: счупена плочка",
+    "description_bg": "Демонстрационен запис за настилка около обществен маршрут.",
+    "category": "pavement",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1495,
+      "lng": 24.7524,
+      "address_bg": "Старинен Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0010",
+    "title_bg": "Примерен сигнал: опасно пресичане",
+    "description_bg": "Демонстрационен запис за нужда от по-ясна маркировка или видимост.",
+    "category": "roads",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1305,
+      "lng": 24.7979,
+      "address_bg": "Тракия, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0011",
+    "title_bg": "Примерен сигнал: липсваща сянка",
+    "description_bg": "Демонстрационен запис за зона с нужда от по-добри условия за престой.",
+    "category": "parks",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1457,
+      "lng": 24.7402,
+      "address_bg": "Централен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0012",
+    "title_bg": "Примерен сигнал: счупен кош",
+    "description_bg": "Демонстрационен запис за повреден съд за отпадъци до публичен маршрут.",
+    "category": "waste",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1379,
+      "lng": 24.7775,
+      "address_bg": "Източен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0013",
+    "title_bg": "Примерен сигнал: неудобна спирка",
+    "description_bg": "Демонстрационен запис за спирка с нужда от по-добър достъп и място за изчакване.",
+    "category": "public_transport",
+    "status": "unverified",
+    "location": {
+      "lat": 42.121,
+      "lng": 24.7355,
+      "address_bg": "Южен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0014",
+    "title_bg": "Примерен сигнал: труден вход",
+    "description_bg": "Демонстрационен запис за публичен вход, който може да се подобри за достъпност.",
+    "category": "accessibility",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1464,
+      "lng": 24.7549,
+      "address_bg": "Централен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0015",
+    "title_bg": "Примерен сигнал: локва след дъжд",
+    "description_bg": "Демонстрационен запис за място, където водата се задържа след валеж.",
+    "category": "drainage",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1391,
+      "lng": 24.7102,
+      "address_bg": "Западен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0016",
+    "title_bg": "Примерен сигнал: неравна алея",
+    "description_bg": "Демонстрационен запис за пешеходен маршрут в жилищна зона.",
+    "category": "pavement",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1446,
+      "lng": 24.7011,
+      "address_bg": "Западен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0017",
+    "title_bg": "Примерен сигнал: слаба светлина",
+    "description_bg": "Демонстрационен запис за лампа или осветителна линия с нужда от проверка.",
+    "category": "street_lighting",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1658,
+      "lng": 24.7458,
+      "address_bg": "Северен район, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0018",
+    "title_bg": "Примерен сигнал: липсваща маркировка",
+    "description_bg": "Демонстрационен запис за пресичане, където маркировката е трудно видима.",
+    "category": "roads",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1313,
+      "lng": 24.7969,
+      "address_bg": "Тракия, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0019",
+    "title_bg": "Примерен сигнал: нужда от указателна табела",
+    "description_bg": "Демонстрационен запис за по-ясна ориентация към обществено място.",
+    "category": "other",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1504,
+      "lng": 24.7542,
+      "address_bg": "Старинен Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  },
+  {
+    "id": "fix-plovdiv-0020",
+    "title_bg": "Примерен сигнал: двор с нужда от поддръжка",
+    "description_bg": "Демонстрационен запис за публична зона около образователна сграда.",
+    "category": "other",
+    "status": "unverified",
+    "location": {
+      "lat": 42.1356,
+      "lng": 24.7906,
+      "address_bg": "Тракия, Пловдив"
+    },
+    "photo_url": null,
+    "submitted_source": "manual_seed",
+    "sources": [],
+    "data_quality": "sample",
+    "created_at": "2026-06-13",
+    "updated_at": "2026-06-13"
+  }
+]

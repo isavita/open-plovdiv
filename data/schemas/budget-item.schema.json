@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/budget-item.schema.json",
+  "title": "Open Plovdiv budget item",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "year",
+    "municipality",
+    "category",
+    "title_bg",
+    "amount_bgn",
+    "source_document",
+    "data_quality"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^budget-plovdiv-[0-9]{4}-[a-z0-9-]+$"
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 2000,
+      "maximum": 2100
+    },
+    "municipality": {
+      "const": "plovdiv"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "roads",
+        "pavement",
+        "street_lighting",
+        "parks",
+        "waste",
+        "public_transport",
+        "accessibility",
+        "drainage",
+        "culture",
+        "education",
+        "other"
+      ]
+    },
+    "title_bg": {
+      "type": "string",
+      "minLength": 3
+    },
+    "amount_bgn": {
+      "type": "number",
+      "minimum": 0
+    },
+    "plain_language_bg": {
+      "type": "string",
+      "minLength": 10
+    },
+    "source_document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "url",
+        "accessed_at"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "accessed_at": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "data_quality": {
+      "type": "string",
+      "enum": [
+        "sample",
+        "public_source",
+        "manual_reviewed"
+      ]
+    }
+  }
+}

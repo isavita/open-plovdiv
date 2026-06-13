@@ -1,0 +1,42 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { sourceRegistry } from "@lib/data";
+---
+
+<Layout title="Източници · Отворен Пловдив">
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Проверимост</p>
+      <h1>Източници на данни</h1>
+      <p class="lead">
+        Всеки официален запис трябва да сочи към публичен документ. Текущите записи са примерни и са
+        маркирани като прототипни.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Източник</th>
+            <th>Използва се за</th>
+            <th>Ограничения</th>
+            <th>Достъп</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sourceRegistry.map((source) => (
+            <tr>
+              <td><a href={source.url} target="_blank" rel="noreferrer">{source.title_bg}</a></td>
+              <td>{source.used_for}</td>
+              <td>{source.limitations_bg}</td>
+              <td>{source.accessed_at}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</Layout>

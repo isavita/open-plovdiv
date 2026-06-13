@@ -1,0 +1,34 @@
+[
+  {
+    "id": "plovdiv-municipality",
+    "title_bg": "Община Пловдив",
+    "url": "https://www.plovdiv.bg/",
+    "used_for": "Начална точка за официални документи, бюджети, решения и публични съобщения.",
+    "accessed_at": "2026-06-13",
+    "limitations_bg": "Текущите записи в прототипа са примерни и трябва да бъдат заменени с конкретни документи."
+  },
+  {
+    "id": "public-procurement-register",
+    "title_bg": "Регистър на обществените поръчки",
+    "url": "https://www2.aop.bg/",
+    "used_for": "Бъдеща проверка на обществени поръчки и договори.",
+    "accessed_at": "2026-06-13",
+    "limitations_bg": "Не е използван автоматичен импорт в първата версия."
+  },
+  {
+    "id": "openstreetmap",
+    "title_bg": "OpenStreetMap",
+    "url": "https://www.openstreetmap.org/",
+    "used_for": "Картова основа и пространствен контекст.",
+    "accessed_at": "2026-06-13",
+    "limitations_bg": "Картовите данни се поддържат от общност и може да имат непълноти."
+  },
+  {
+    "id": "prototype-seed-data",
+    "title_bg": "Примерни данни за прототип",
+    "url": "https://openplovdiv.example/methodology",
+    "used_for": "Демонстрационни записи, с които се тества интерфейсът преди реална редакторска проверка.",
+    "accessed_at": "2026-06-13",
+    "limitations_bg": "Не трябва да се третират като официални твърдения."
+  }
+]

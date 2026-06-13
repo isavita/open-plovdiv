@@ -1,0 +1,109 @@
+---
+import StatusBadge from "@components/StatusBadge.astro";
+import Layout from "@layouts/Layout.astro";
+import { budgetItems, fixReports, projects } from "@lib/data";
+import { categoryLabel, formatMoneyBGN } from "@lib/format";
+
+const totalBudget = budgetItems.reduce((sum, item) => sum + item.amount_bgn, 0);
+const latestProjects = projects.slice(0, 4);
+const latestReports = fixReports.slice(0, 4);
+---
+
+<Layout
+  title="Отворен Пловдив"
+  description="Обществен прототип за проекти, бюджет и градски проблеми в Пловдив."
+>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Обществени данни · статичен MVP</p>
+      <h1>Отворен Пловдив</h1>
+      <p class="lead">
+        Обществени проекти, публични средства и градски проблеми — представени ясно, с видими
+        източници и без потребителски профили.
+      </p>
+      <div class="actions">
+        <a class="button" href="/fix-map">Карта на проблеми</a>
+        <a class="button secondary" href="/budget">Къде отиват местните данъци?</a>
+      </div>
+      <div class="stat-row" aria-label="Данни в прототипа">
+        <div class="stat"><strong>{projects.length}</strong><span>примерни проекта</span></div>
+        <div class="stat"><strong>{fixReports.length}</strong><span>примерни сигнала</span></div>
+        <div class="stat"><strong>{budgetItems.length}</strong><span>бюджетни категории</span></div>
+        <div class="stat"><strong>{formatMoneyBGN(totalBudget)}</strong><span>примерен общ размер</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        <a class="card card-link" href="/fix-map">
+          <p class="eyebrow">Карта</p>
+          <h2>Fix Map</h2>
+          <p>Вижте примерни градски проблеми по категории, статус и близки публични проекти.</p>
+        </a>
+        <a class="card card-link" href="/budget">
+          <p class="eyebrow">Бюджет</p>
+          <h2>Местни данъци</h2>
+          <p>Преглед на примерни бюджетни категории, суми, източници и свързани проекти.</p>
+        </a>
+        <a class="card card-link" href="/projects">
+          <p class="eyebrow">Проекти</p>
+          <h2>Публични проекти</h2>
+          <p>Търсене и филтриране на проектни записи с бюджет, статус и източници.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <div>
+        <h2>Последно обновени проекти</h2>
+        <div class="list">
+          {latestProjects.map((project) => (
+            <article class="card project-card">
+              <header>
+                <div>
+                  <h3><a href={`/projects/${project.id}`}>{project.title_bg}</a></h3>
+                  <p class="meta">{categoryLabel(project.category)} · {formatMoneyBGN(project.budget.amount_bgn)}</p>
+                </div>
+                <StatusBadge status={project.status} type="project" />
+              </header>
+              <p>{project.summary_bg}</p>
+              <span class="badge sample">Примерни данни</span>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h2>Последно добавени сигнали</h2>
+        <div class="list">
+          {latestReports.map((report) => (
+            <article class="card project-card">
+              <header>
+                <div>
+                  <h3>{report.title_bg}</h3>
+                  <p class="meta">{categoryLabel(report.category)} · {report.location.address_bg}</p>
+                </div>
+                <StatusBadge status={report.status} type="fix" />
+              </header>
+              <p>{report.description_bg}</p>
+              <span class="badge sample">Примерни данни</span>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="notice">
+        Тази версия използва примерни записи за прототип. Преди публично ползване те трябва да се
+        заменят с проверени записи и конкретни публични документи.
+        <a href="/data-sources">Вижте източниците</a> и <a href="/methodology">методологията</a>.
+      </div>
+    </div>
+  </section>
+</Layout>

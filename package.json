@@ -1,0 +1,30 @@
+{
+  "name": "open-plovdiv",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm --workspace apps/web run dev -- --host 0.0.0.0",
+    "build": "npm run data && npm --workspace apps/web run build",
+    "preview": "npm --workspace apps/web run preview",
+    "data": "node scripts/normalize/generate_public_data.mjs",
+    "validate": "node scripts/validate/validate_data.mjs",
+    "test": "npm run validate && npm --workspace apps/web run test"
+  },
+  "overrides": {
+    "astro": {
+      "esbuild": "0.28.1"
+    },
+    "vite": {
+      "esbuild": "0.28.1"
+    },
+    "esbuild": "0.28.1"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}
