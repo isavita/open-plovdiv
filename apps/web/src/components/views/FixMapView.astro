@@ -23,6 +23,9 @@ const config = {
   lang,
   locale: lang === "bg" ? "bg-BG" : "en-GB",
   projectBase: localizePath("/projects", lang),
+  publicUrl: "/api/reports/public",
+  streamUrl: "/api/reports/stream",
+  fallbackUrl: "/data/community-fix-reports.json",
   categoryLabels: categoryLabels[lang],
   categoryColors,
   statusLabels: fixStatusLabels[lang],
@@ -32,10 +35,14 @@ const config = {
     nearby: t.fixMap.nearbyProjects,
     noNearby: t.fixMap.noNearbyRadius,
     sample: t.site.sampleData,
+    community: t.fixMap.communityBadge,
+    updated: t.fixMap.lastUpdated,
+    justNow: t.fixMap.justNow,
     of: lang === "bg" ? "от" : "of",
     km: lang === "bg" ? "км" : "km",
     errorTitle: t.fixMap.loadErrorTitle,
-    errorText: t.fixMap.loadErrorText
+    errorText: t.fixMap.loadErrorText,
+    newReports: t.fixMap.newReports
   }
 };
 ---
@@ -46,6 +53,11 @@ const config = {
       <p class="eyebrow">{t.fixMap.eyebrow}</p>
       <h1>{t.fixMap.title}</h1>
       <p class="lead">{t.fixMap.lead}</p>
+      <div class="actions">
+        <a class="button" href={localizePath("/fix-map/report", lang)}>
+          {t.fixMap.reportCta}<span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -85,6 +97,13 @@ const config = {
             <input id="visible-count" type="text" readonly value={t.common.loading} />
           </div>
         </div>
+      </div>
+
+      <div class="results-bar">
+        <span class="meta">{t.fixMap.liveNote}</span>
+        <span class="meta" id="map-live-indicator" aria-live="polite"></span>
+        <a class="meta" href="/data/community-fix-reports.json" download>{t.fixMap.downloadCommunityData}</a>
+        <span class="meta" id="map-updated"></span>
       </div>
 
       <div class="map-layout">
@@ -174,9 +193,13 @@ const config = {
     }).addTo(map);
 
     const markerLayer = L.layerGroup().addTo(map);
+    const updatedEl = document.querySelector<HTMLElement>("#map-updated");
+    const liveIndicator = document.querySelector<HTMLElement>("#map-live-indicator");
     let selectedReport: any = null;
-    let reports: any[] = [];
+    let officialReports: any[] = [];
+    let communityReports: any[] = [];
     let projects: any[] = [];
+    const allReports = () => officialReports.concat(communityReports);
 
     function distanceKm(a: any, b: any): number {
       const radiusKm = 6371;
@@ -192,7 +215,7 @@ const config = {
     function markerIcon(report: any) {
       return L.divIcon({
         className: "",
-        html: `<span class="marker-pin" style="--pin:${catColor(report.category)}"></span>`,
+        html: `<span class="marker-pin${report.source === "citizen_submission" ? " community" : ""}" style="--pin:${catColor(report.category)}"></span>`,
         iconSize: [28, 28],
         iconAnchor: [14, 28]
       });
@@ -201,7 +224,7 @@ const config = {
     function visibleReports() {
       const category = categoryFilter.value;
       const status = statusFilter.value;
-      return reports.filter(
+      return allReports().filter(
         (r) =>
           (category === "all" || r.category === category) &&
           (status === "all" || r.status === status)
@@ -220,13 +243,30 @@ const config = {
     function renderDetail(report: any) {
       selectedReport = report;
       const nearby = nearbyProjects(report);
+      const photos = Array.isArray(report.photo_thumbnail_urls)
+        ? report.photo_thumbnail_urls
+        : [];
       detail.innerHTML = `
         <span class="badge status-${escapeHtml(report.status)}">${escapeHtml(statusLabel(report.status))}</span>
         <h2 style="margin-top:10px">${escapeHtml(loc(report, "title"))}</h2>
         <p>${escapeHtml(loc(report, "description"))}</p>
         <p class="meta"><span class="cat-dot" style="--dot:${catColor(report.category)}"></span> ${escapeHtml(catLabel(report.category))} · ${escapeHtml(loc(report.location, "address"))}</p>
         <p><strong>${escapeHtml(LB.statusLabel)}:</strong> ${escapeHtml(statusDesc(report.status))}</p>
-        <p><span class="badge sample">${escapeHtml(LB.sample)}</span></p>
+        <p>${
+          report.source === "citizen_submission"
+            ? `<span class="badge" style="background:var(--accent-soft);color:var(--accent)">${escapeHtml(LB.community)}</span>`
+            : `<span class="badge sample">${escapeHtml(LB.sample)}</span>`
+        }</p>
+        ${
+          photos.length
+            ? `<div class="photo-grid">${photos
+                .map(
+                  (url: string) =>
+                    `<a class="photo-preview" href="${escapeHtml(url)}" target="_blank" rel="noreferrer"><img src="${escapeHtml(url)}" alt="" loading="lazy" /></a>`
+                )
+                .join("")}</div>`
+            : ""
+        }
         <h3>${escapeHtml(LB.nearby)}</h3>
         ${
           nearby.length
@@ -244,7 +284,7 @@ const config = {
     function renderMarkers() {
       markerLayer.clearLayers();
       const visible = visibleReports();
-      countField.value = `${visible.length} ${LB.of} ${reports.length}`;
+      countField.value = `${visible.length} ${LB.of} ${allReports().length}`;
 
       visible.forEach((report) => {
         L.marker([report.location.lat, report.location.lng], {
@@ -264,8 +304,53 @@ const config = {
       if (selectedReport) renderDetail(selectedReport);
     });
 
+    function setUpdated(iso?: string) {
+      if (!updatedEl) return;
+      const when = iso ? new Date(iso) : new Date();
+      const time = Number.isNaN(when.getTime())
+        ? LB.justNow
+        : when.toLocaleTimeString(config.locale, { hour: "2-digit", minute: "2-digit" });
+      updatedEl.textContent = `${LB.updated}: ${time}`;
+    }
+
+    function setLiveIndicator(previous: number, next: number) {
+      if (!liveIndicator) return;
+      if (next > previous) {
+        liveIndicator.textContent = LB.newReports.replace("{count}", String(next - previous));
+      } else {
+        liveIndicator.textContent = "";
+      }
+    }
+
+    // Approved citizen reports come from the live API; if it is unavailable
+    // (e.g. on a purely static deploy) fall back to the exported JSON snapshot.
+    async function loadCommunity() {
+      const previousCount = communityReports.length;
+      try {
+        const res = await fetch(config.publicUrl, { headers: { Accept: "application/json" } });
+        if (!res.ok) throw new Error("api");
+        const data = await res.json();
+        communityReports = Array.isArray(data.reports) ? data.reports : [];
+        setLiveIndicator(previousCount, communityReports.length);
+        setUpdated(data.updated_at || undefined);
+        return;
+      } catch {
+        try {
+          const res = await fetch(config.fallbackUrl);
+          if (res.ok) {
+            const data = await res.json();
+            communityReports = Array.isArray(data) ? data : data.reports ?? [];
+            setLiveIndicator(previousCount, communityReports.length);
+          }
+        } catch {
+          /* no community reports available */
+        }
+        setUpdated();
+      }
+    }
+
     try {
-      [reports, projects] = await Promise.all([
+      [officialReports, projects] = await Promise.all([
         fetch("/data/fix-reports.json").then((r) => {
           if (!r.ok) throw new Error("fix reports failed");
           return r.json();
@@ -275,7 +360,28 @@ const config = {
           return r.json();
         })
       ]);
+      await loadCommunity();
       renderMarkers();
+      if ("EventSource" in window) {
+        try {
+          const events = new EventSource(config.streamUrl);
+          events.addEventListener("reports", (event: MessageEvent) => {
+            const previousCount = communityReports.length;
+            const data = JSON.parse(event.data);
+            communityReports = Array.isArray(data.reports) ? data.reports : [];
+            setLiveIndicator(previousCount, communityReports.length);
+            setUpdated(data.updated_at || undefined);
+            renderMarkers();
+          });
+        } catch {
+          /* polling remains the reliable fallback */
+        }
+      }
+      // Near-real-time: refresh approved citizen reports every 30 seconds.
+      setInterval(async () => {
+        await loadCommunity();
+        renderMarkers();
+      }, 30000);
     } catch {
       countField.value = config.lang === "bg" ? "Грешка" : "Error";
       detail.innerHTML = `<h2>${escapeHtml(LB.errorTitle)}</h2><p class="error">${escapeHtml(LB.errorText)}</p>`;

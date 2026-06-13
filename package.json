@@ -11,6 +11,7 @@
     "build": "npm run data && npm --workspace apps/web run build",
     "preview": "npm --workspace apps/web run preview",
     "data": "node scripts/normalize/generate_public_data.mjs",
+    "export:reports": "node scripts/export/export_approved_reports.mjs",
     "validate": "node scripts/validate/validate_data.mjs",
     "test": "npm run validate && npm --workspace apps/web run test"
   },

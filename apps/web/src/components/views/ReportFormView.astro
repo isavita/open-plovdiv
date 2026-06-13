@@ -1,0 +1,229 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { ui, type Lang } from "@i18n/ui";
+import { localizePath } from "@i18n/utils";
+import { categoryLabel } from "@lib/format";
+import { FIX_CATEGORIES } from "@lib/server/moderation";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const config = {
+  lang,
+  apiUrl: "/api/reports",
+  submit: t.reportForm.submit,
+  submitting: t.reportForm.submitting,
+  successText: t.reportForm.successText,
+  errors: {
+    rate_limited: t.reportForm.errRateLimited,
+    invalid_category: t.reportForm.errCategory,
+    invalid_title: t.reportForm.errTitle,
+    invalid_description: t.reportForm.errDescription,
+    contains_personal_data: t.reportForm.errPersonalData,
+    invalid_location: t.reportForm.errLocation,
+    missing_confirmation: t.reportForm.errConfirmation,
+    too_many_photos: t.reportForm.errTooManyPhotos,
+    photo_too_large: t.reportForm.errPhotoLarge,
+    invalid_photo_type: t.reportForm.errPhotoType,
+    invalid_photo: t.reportForm.errPhotoInvalid,
+    invalid_body: t.reportForm.errorGeneric,
+    default: t.reportForm.errorGeneric
+  }
+};
+---
+
+<Layout lang={lang} path="/fix-map/report" title={t.reportForm.title} description={t.reportForm.lead}>
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="breadcrumb">
+        <a href={localizePath("/", lang)}>{t.nav.home}</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a href={localizePath("/fix-map", lang)}>{t.nav.fixMap}</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <span aria-current="page">{t.reportForm.title}</span>
+      </nav>
+      <p class="eyebrow">{t.reportForm.eyebrow}</p>
+      <h1>{t.reportForm.title}</h1>
+      <p class="lead">{t.reportForm.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="notice" style="margin-bottom:22px">
+        <span class="notice-icon" aria-hidden="true">ⓘ</span>
+        <span>{t.reportForm.notice}</span>
+      </div>
+
+      <div class="grid grid-2" id="report-grid">
+        <form id="report-form" class="card" novalidate>
+          <div class="field" style="margin-bottom:16px">
+            <label for="rf-category">{t.reportForm.category}</label>
+            <select id="rf-category" name="category" required>
+              {FIX_CATEGORIES.map((c) => <option value={c}>{categoryLabel(c, lang)}</option>)}
+            </select>
+          </div>
+
+          <div class="field" style="margin-bottom:16px">
+            <label for="rf-title">{t.reportForm.titleLabel}</label>
+            <input id="rf-title" name="title" type="text" maxlength="120" required placeholder={t.reportForm.titlePlaceholder} />
+          </div>
+
+          <div class="field" style="margin-bottom:16px">
+            <label for="rf-description">{t.reportForm.description}</label>
+            <textarea id="rf-description" name="description" rows="4" maxlength="1000" required placeholder={t.reportForm.descriptionPlaceholder} style="background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-sm);color:var(--ink);padding:10px 12px;width:100%;resize:vertical"></textarea>
+          </div>
+
+          <div class="field" style="margin-bottom:16px">
+            <label for="rf-photos">{t.reportForm.photos}</label>
+            <input id="rf-photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple />
+            <p class="meta" style="margin:0">{t.reportForm.photoHint}</p>
+          </div>
+
+          <input type="hidden" name="lat" id="rf-lat" />
+          <input type="hidden" name="lng" id="rf-lng" />
+          <input type="hidden" name="lang" value={lang} />
+
+          <label class="field" style="margin-bottom:10px;cursor:pointer;flex-direction:row;align-items:flex-start;gap:10px;display:flex">
+            <input type="checkbox" id="rf-confirm-personal" name="no_personal_data" style="margin-top:4px;width:18px;height:18px;flex:none" />
+            <span>{t.reportForm.confirmNoPersonal}</span>
+          </label>
+          <label class="field" style="margin-bottom:16px;cursor:pointer;flex-direction:row;align-items:flex-start;gap:10px;display:flex">
+            <input type="checkbox" id="rf-confirm-interest" name="public_interest" style="margin-top:4px;width:18px;height:18px;flex:none" />
+            <span>{t.reportForm.confirmPublicInterest}</span>
+          </label>
+
+          <p id="rf-error" class="error" role="alert" hidden style="text-align:left;padding:12px 14px;margin-bottom:14px"></p>
+
+          <button type="submit" class="button" id="rf-submit" style="width:100%;justify-content:center">{t.reportForm.submit}</button>
+        </form>
+
+        <div>
+          <div class="field" style="margin-bottom:8px">
+            <label>{t.reportForm.location}</label>
+            <p class="meta" style="margin:0">{t.reportForm.locationHint}</p>
+          </div>
+          <div id="rf-map" class="map-canvas mini-map" aria-label={t.reportForm.location}></div>
+          <p class="meta" id="rf-coords" style="margin-top:10px">{t.reportForm.noLocation}</p>
+        </div>
+      </div>
+
+      <div id="report-success" class="card" hidden style="text-align:center;padding:40px">
+        <p class="eyebrow" style="justify-content:center">✓</p>
+        <h2>{t.reportForm.successTitle}</h2>
+        <p class="lead" style="margin-inline:auto">{t.reportForm.successText} <strong id="rf-id"></strong></p>
+        <div class="actions" style="justify-content:center">
+          <button type="button" class="button secondary" id="rf-again">{t.reportForm.submitAnother}</button>
+          <a class="button" href={localizePath("/fix-map", lang)}>{t.reportForm.backToMap}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/json" id="report-config" set:html={JSON.stringify(config)}></script>
+
+  <script>
+    import L from "leaflet";
+    import "leaflet/dist/leaflet.css";
+
+    const config = JSON.parse(document.getElementById("report-config")?.textContent ?? "{}");
+    const form = document.querySelector<HTMLFormElement>("#report-form")!;
+    const grid = document.querySelector<HTMLElement>("#report-grid")!;
+    const success = document.querySelector<HTMLElement>("#report-success")!;
+    const latInput = document.querySelector<HTMLInputElement>("#rf-lat")!;
+    const lngInput = document.querySelector<HTMLInputElement>("#rf-lng")!;
+    const coords = document.querySelector<HTMLElement>("#rf-coords")!;
+    const errorBox = document.querySelector<HTMLElement>("#rf-error")!;
+    const submitBtn = document.querySelector<HTMLButtonElement>("#rf-submit")!;
+    const noLocationText = coords.textContent ?? "";
+
+    const map = L.map("rf-map", { scrollWheelZoom: false }).setView([42.141, 24.75], 13);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    const icon = L.divIcon({
+      className: "",
+      html: `<span class="marker-pin" style="--pin:var(--brand)"></span>`,
+      iconSize: [28, 28],
+      iconAnchor: [14, 28]
+    });
+    let marker: L.Marker | null = null;
+
+    map.on("click", (e: L.LeafletMouseEvent) => {
+      const { lat, lng } = e.latlng;
+      latInput.value = lat.toFixed(6);
+      lngInput.value = lng.toFixed(6);
+      coords.textContent = `${config.lang === "bg" ? "Избрана точка" : "Selected point"}: ${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+      if (marker) marker.setLatLng(e.latlng);
+      else marker = L.marker(e.latlng, { icon }).addTo(map);
+    });
+
+    function showError(code: string) {
+      errorBox.textContent = config.errors[code] ?? config.errors.default;
+      errorBox.hidden = false;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorBox.hidden = true;
+
+      if (!latInput.value || !lngInput.value) {
+        showError("invalid_location");
+        return;
+      }
+
+      const payload = new FormData(form);
+      payload.set("lat", latInput.value);
+      payload.set("lng", lngInput.value);
+      payload.set("lang", config.lang);
+      payload.set(
+        "no_personal_data",
+        String((document.getElementById("rf-confirm-personal") as HTMLInputElement).checked)
+      );
+      payload.set(
+        "public_interest",
+        String((document.getElementById("rf-confirm-interest") as HTMLInputElement).checked)
+      );
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = config.submitting;
+
+      try {
+        const res = await fetch(config.apiUrl, {
+          method: "POST",
+          body: payload
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok) {
+          document.getElementById("rf-id")!.textContent = data.id ?? "";
+          grid.hidden = true;
+          success.hidden = false;
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          showError(data.error ?? "default");
+        }
+      } catch {
+        showError("default");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = config.submit;
+      }
+    });
+
+    document.getElementById("rf-again")?.addEventListener("click", () => {
+      form.reset();
+      latInput.value = "";
+      lngInput.value = "";
+      coords.textContent = noLocationText;
+      if (marker) {
+        map.removeLayer(marker);
+        marker = null;
+      }
+      success.hidden = true;
+      grid.hidden = false;
+    });
+  </script>
+</Layout>

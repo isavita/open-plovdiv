@@ -170,14 +170,21 @@ const bg = {
     statusesTitle: "Какво означават статусите",
     officialTitle: "Официално подаване",
     officialText:
-      "За реални сигнали използвайте официалните канали на общината или районната администрация. Open Plovdiv не заменя официалното подаване и в тази версия не приема публични сигнали.",
+      "За реални сигнали използвайте официалните канали на общината или районната администрация. Open Plovdiv приема граждански сигнали, които се преглеждат преди публикуване, но не заменя официалното подаване.",
     officialLink: "Община Пловдив",
     statusLabel: "Статус",
     nearbyProjects: "Близки проекти",
     noNearbyRadius: "Няма проект в избрания радиус.",
     loadErrorTitle: "Данните не се заредиха",
     loadErrorText:
-      "Проверете дали публичните JSON файлове са генерирани с make data."
+      "Проверете дали публичните JSON файлове са генерирани с make data.",
+    reportCta: "Подай сигнал",
+    communityBadge: "Граждански сигнал",
+    lastUpdated: "Обновено",
+    justNow: "току-що",
+    liveNote: "Картата се обновява автоматично на всеки 30 секунди.",
+    newReports: "Нови сигнали: {count}",
+    downloadCommunityData: "Изтегли гражданските сигнали"
   },
   sources: {
     eyebrow: "Проверимост",
@@ -214,23 +221,91 @@ const bg = {
       "Първата версия работи без потребителски профили, коментари, гласуване и публично събиране на лични данни.",
     notCollectTitle: "Какво не събираме",
     notCollectText:
-      "Няма имена, имейли, телефони, IP адреси, акаунти или точни частни адреси в сигналите.",
-    beforeTitle: "Преди публични сигнали",
+      "Няма имена, имейли, телефони, акаунти или точни частни адреси в сигналите.",
+    beforeTitle: "Граждански сигнали",
     beforeText:
-      "Нужни са правила за модерация, снимки, злоупотреби и корекции, преди да се позволят обществени подавания."
+      "Сигналите събират категория, кратък текст, приблизителна точка на картата и по избор снимки. IP адресите се използват само като временен хеш за ограничаване на честотата и не се съхраняват в явен вид."
   },
   moderation: {
-    eyebrow: "Без публични подавания в прототипа",
+    eyebrow: "Граждански сигнали с преглед",
     title: "Модерация",
     lead:
-      "Публични сигнали не са включени в първата версия. Преди това е нужен процес за лични данни, снимки, неточности и злоупотреби.",
+      "Гражданите могат да подават сигнали за градски проблеми. Всеки сигнал се преглежда от редактор и се публикува само ако е безопасен и от обществен интерес.",
     notice:
-      "Модерацията трябва да бъде консервативна: публикуват се проверими градски проблеми, не обиди, обвинения или политическа кампания."
+      "Модерацията е консервативна: публикуват се проверими градски проблеми без лични данни — не обиди, обвинения или политическа кампания. Снимките се публикуват само след преглед и могат да бъдат скрити."
   },
   notFound: {
     eyebrow: "Грешка 404",
     title: "Страницата не е намерена",
     text: "Връзката може да е остаряла или сгрешена. Върнете се към началото или изберете секция."
+  },
+  reportForm: {
+    eyebrow: "Граждански сигнал",
+    title: "Подаване на сигнал",
+    lead:
+      "Опишете публичен градски проблем и посочете мястото на картата. Сигналът се преглежда от редактор, преди да се появи на картата.",
+    notice:
+      "Не въвеждайте лични данни — имена, телефони, имейли или точни частни адреси. Снимките се преглеждат ръчно и не се публикуват преди одобрение.",
+    category: "Категория",
+    titleLabel: "Кратко заглавие",
+    titlePlaceholder: "Напр. неравна настилка до спирка",
+    description: "Описание",
+    descriptionPlaceholder: "Опишете проблема накратко и обективно.",
+    photos: "Снимки",
+    photoHint:
+      "По избор, до 3 снимки, максимум 5 MB всяка. EXIF/GPS данните се премахват и снимките се конвертират преди преглед.",
+    location: "Локация",
+    locationHint: "Кликнете върху картата, за да отбележите мястото.",
+    selected: "Избрана точка",
+    noLocation: "Все още не е избрана точка",
+    confirmNoPersonal: "Потвърждавам, че сигналът не съдържа лични данни.",
+    confirmPublicInterest: "Потвърждавам, че това е въпрос от обществен интерес.",
+    submit: "Изпрати сигнала",
+    submitting: "Изпращане…",
+    successTitle: "Благодарим!",
+    successText:
+      "Сигналът е получен и ще бъде прегледан преди публикуване. Номер за справка:",
+    submitAnother: "Подай нов сигнал",
+    backToMap: "Към картата",
+    errorGeneric: "Сигналът не можа да бъде изпратен. Опитайте отново.",
+    errRateLimited: "Твърде много сигнали за кратко време. Опитайте по-късно.",
+    errCategory: "Изберете валидна категория.",
+    errTitle: "Заглавието трябва да е между 3 и 120 знака.",
+    errDescription: "Описанието трябва да е между 10 и 1000 знака.",
+    errPersonalData: "Текстът съдържа нещо, което прилича на лични данни.",
+    errLocation: "Изберете точка в рамките на Пловдив.",
+    errConfirmation: "Моля, отметнете двете потвърждения.",
+    errTooManyPhotos: "Качете най-много 3 снимки.",
+    errPhotoLarge: "Всяка снимка трябва да е до 5 MB.",
+    errPhotoType: "Позволени са само JPEG, PNG или WebP снимки.",
+    errPhotoInvalid: "Снимката не може да бъде обработена."
+  },
+  admin: {
+    title: "Модерация на сигнали",
+    lead: "Преглед на граждански сигнали преди публикуване. Достъпът е защитен.",
+    tokenLabel: "Администраторски ключ",
+    tokenPlaceholder: "Въведете ключ",
+    signIn: "Вход",
+    signOut: "Изход",
+    authError: "Невалиден ключ.",
+    refresh: "Опресни",
+    pendingTitle: "Чакащи преглед",
+    noPending: "Няма чакащи сигнали.",
+    publicStatus: "Публичен статус",
+    rejectReason: "Причина за отхвърляне (по избор)",
+    approve: "Одобри и публикувай",
+    reject: "Отхвърли",
+    publishedTitle: "Публикувани сигнали",
+    noPublished: "Няма публикувани граждански сигнали.",
+    saveStatus: "Запази статус",
+    photos: "Снимки",
+    hidePhoto: "Скрий снимка",
+    hiddenPhoto: "Скрита снимка",
+    moderationWarning:
+      "Публикувайте снимки само ако не съдържат лица, деца, регистрационни номера, документи, частни интериори или лична информация.",
+    submitted: "Подаден",
+    loading: "Зареждане…",
+    actionError: "Действието не бе успешно."
   }
 };
 
@@ -397,14 +472,21 @@ const en: typeof bg = {
     statusesTitle: "What the statuses mean",
     officialTitle: "Official reporting",
     officialText:
-      "For real issues, use the official channels of the municipality or district administration. Open Plovdiv does not replace official reporting and does not accept public reports in this version.",
+      "For real issues, use the official channels of the municipality or district administration. Open Plovdiv accepts citizen reports that are reviewed before publishing, but does not replace official reporting.",
     officialLink: "Plovdiv Municipality",
     statusLabel: "Status",
     nearbyProjects: "Nearby projects",
     noNearbyRadius: "No project within the selected radius.",
     loadErrorTitle: "Data failed to load",
     loadErrorText:
-      "Check that the public JSON files were generated with make data."
+      "Check that the public JSON files were generated with make data.",
+    reportCta: "Report a problem",
+    communityBadge: "Citizen report",
+    lastUpdated: "Updated",
+    justNow: "just now",
+    liveNote: "The map refreshes automatically every 30 seconds.",
+    newReports: "New reports: {count}",
+    downloadCommunityData: "Download citizen report data"
   },
   sources: {
     eyebrow: "Verifiability",
@@ -441,23 +523,91 @@ const en: typeof bg = {
       "The first version works without user accounts, comments, voting or public collection of personal data.",
     notCollectTitle: "What we don't collect",
     notCollectText:
-      "No names, emails, phone numbers, IP addresses, accounts or exact private addresses in reports.",
-    beforeTitle: "Before public reports",
+      "No names, emails, phone numbers, accounts or exact private addresses in reports.",
+    beforeTitle: "Citizen reports",
     beforeText:
-      "Rules for moderation, photos, abuse and corrections are needed before public submissions can be allowed."
+      "Reports collect a category, short text, an approximate point on the map and optional photos. IP addresses are used only as a temporary hash for rate limiting and are never stored in clear text."
   },
   moderation: {
-    eyebrow: "No public submissions in the prototype",
+    eyebrow: "Reviewed citizen reports",
     title: "Moderation",
     lead:
-      "Public reports are not included in the first version. A process for personal data, photos, inaccuracies and abuse is needed first.",
+      "Citizens can submit reports about city problems. Each report is reviewed by an editor and published only if it is safe and in the public interest.",
     notice:
-      "Moderation must be conservative: verifiable city problems are published, not insults, accusations or political campaigning."
+      "Moderation is conservative: verifiable city problems with no personal data are published — not insults, accusations or political campaigning. Photos are published only after review and can be hidden."
   },
   notFound: {
     eyebrow: "Error 404",
     title: "Page not found",
     text: "The link may be outdated or mistyped. Return home or choose a section."
+  },
+  reportForm: {
+    eyebrow: "Citizen report",
+    title: "Submit a report",
+    lead:
+      "Describe a public city problem and mark its place on the map. An editor reviews each report before it appears on the map.",
+    notice:
+      "Do not enter personal data — names, phone numbers, emails or exact private addresses. Photos are reviewed manually and are not published before approval.",
+    category: "Category",
+    titleLabel: "Short title",
+    titlePlaceholder: "e.g. uneven pavement near a stop",
+    description: "Description",
+    descriptionPlaceholder: "Describe the problem briefly and objectively.",
+    photos: "Photos",
+    photoHint:
+      "Optional, up to 3 photos, maximum 5 MB each. EXIF/GPS metadata is removed and photos are converted before review.",
+    location: "Location",
+    locationHint: "Click on the map to mark the place.",
+    selected: "Selected point",
+    noLocation: "No point selected yet",
+    confirmNoPersonal: "I confirm this report contains no personal data.",
+    confirmPublicInterest: "I confirm this is a public-interest issue.",
+    submit: "Submit report",
+    submitting: "Submitting…",
+    successTitle: "Thank you!",
+    successText:
+      "Your report was received and will be reviewed before publishing. Reference number:",
+    submitAnother: "Submit another report",
+    backToMap: "Back to the map",
+    errorGeneric: "The report could not be sent. Please try again.",
+    errRateLimited: "Too many reports in a short time. Please try later.",
+    errCategory: "Choose a valid category.",
+    errTitle: "The title must be between 3 and 120 characters.",
+    errDescription: "The description must be between 10 and 1000 characters.",
+    errPersonalData: "The text contains something that looks like personal data.",
+    errLocation: "Choose a point within Plovdiv.",
+    errConfirmation: "Please tick both confirmations.",
+    errTooManyPhotos: "Upload at most 3 photos.",
+    errPhotoLarge: "Each photo must be 5 MB or smaller.",
+    errPhotoType: "Only JPEG, PNG or WebP photos are allowed.",
+    errPhotoInvalid: "The photo could not be processed."
+  },
+  admin: {
+    title: "Report moderation",
+    lead: "Review citizen reports before publishing. Access is protected.",
+    tokenLabel: "Admin token",
+    tokenPlaceholder: "Enter token",
+    signIn: "Sign in",
+    signOut: "Sign out",
+    authError: "Invalid token.",
+    refresh: "Refresh",
+    pendingTitle: "Pending review",
+    noPending: "No pending reports.",
+    publicStatus: "Public status",
+    rejectReason: "Rejection reason (optional)",
+    approve: "Approve & publish",
+    reject: "Reject",
+    publishedTitle: "Published reports",
+    noPublished: "No published citizen reports.",
+    saveStatus: "Save status",
+    photos: "Photos",
+    hidePhoto: "Hide photo",
+    hiddenPhoto: "Hidden photo",
+    moderationWarning:
+      "Publish photos only if they contain no faces, children, license plates, documents, private interiors or personal information.",
+    submitted: "Submitted",
+    loading: "Loading…",
+    actionError: "The action failed."
   }
 };
 

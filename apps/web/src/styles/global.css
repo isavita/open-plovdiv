@@ -1019,6 +1019,16 @@ p:last-child {
   transform: rotate(45deg);
 }
 
+/* Citizen-submitted reports get a white centre dot to set them apart. */
+.marker-pin.community::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -1032,6 +1042,37 @@ p:last-child {
   gap: 7px;
   font-size: 0.86rem;
   color: var(--ink-2);
+}
+
+.photo-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 180px));
+}
+
+.photo-preview {
+  align-items: center;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  display: grid;
+  gap: 8px;
+  min-height: 140px;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.photo-preview img {
+  aspect-ratio: 1;
+  border-radius: calc(var(--r-sm) - 2px);
+  object-fit: cover;
+  width: 100%;
+}
+
+.photo-preview.hidden {
+  color: var(--muted);
+  place-items: center;
+  text-align: center;
 }
 
 /* Dark map tiles */

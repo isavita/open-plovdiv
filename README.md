@@ -1,6 +1,6 @@
 # Open Plovdiv
 
-Open Plovdiv is a static civic-transparency prototype for Plovdiv. It helps people browse public projects, budget categories, and city-fix reports without accounts, comments, or a database.
+Open Plovdiv is a civic-transparency prototype for Plovdiv. It helps people browse public projects, budget categories, city-fix reports, and reviewed citizen-submitted reports without accounts or comments.
 
 The current repository uses sample data that is clearly labeled as prototype data. Replace the curated JSON files with reviewed public records before treating the site as a live public-information service.
 
@@ -10,7 +10,9 @@ The current repository uses sample data that is clearly labeled as prototype dat
 - Bilingual interface: Bulgarian at the root, English under `/en/`, with a language switcher and light/dark themes
 - JSON files as the source of truth (each record carries Bulgarian and English text)
 - Node scripts for validation and public data generation
-- No database, no user accounts, no personal data collection
+- Existing public data remains static JSON
+- Citizen reports use a small dynamic layer with Redis when configured, or a local file store in development
+- No user accounts and no contact details in report submissions
 
 ## Run Locally
 
@@ -29,8 +31,22 @@ make dev       # start the Astro development server
 make build     # regenerate public JSON and build the static site
 make data      # copy curated JSON into apps/web/public/data
 make validate  # validate curated data against JSON schemas
+make export-reports # export approved citizen reports to public JSON
 make test      # run validation and unit tests
 ```
+
+## Citizen Reports
+
+The report layer adds:
+
+- `/fix-map/report` for citizen submissions
+- `/admin/reports` for moderation
+- `POST /api/reports` for submission
+- `GET /api/reports/public` for approved map reports
+- `GET /api/reports/stream` for Server-Sent Events
+- admin-only approve, reject, hide-photo, and status update endpoints
+
+Set `ADMIN_TOKEN` before using the admin dashboard outside local development. With no Redis environment variables, reports are stored locally under `apps/web/.data/`. With `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`, metadata is stored in Redis. Uploaded photos are converted to WebP with metadata stripped, kept private until approval, and then copied to the configured public uploads directory.
 
 ## Repository Layout
 
@@ -46,4 +62,4 @@ tests/                 shared test fixtures or future integration tests
 
 ## Data Safety
 
-The MVP avoids private user data. Fix reports are seed records only and do not include names, emails, phone numbers, IP addresses, account identifiers, or exact private addresses.
+The MVP avoids private contact data. Citizen reports reject text that looks like email or phone details, store only a temporary salted IP hash for rate limiting, and never publish reports or photos before moderation.

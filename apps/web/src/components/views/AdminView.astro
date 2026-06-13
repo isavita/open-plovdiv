@@ -1,0 +1,317 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { categoryColors, categoryLabels, fixStatusLabels, ui, type Lang } from "@i18n/ui";
+import { PUBLIC_STATUSES } from "@lib/server/moderation";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const config = {
+  lang,
+  apiBase: "/api/admin/reports",
+  categoryLabels: categoryLabels[lang],
+  categoryColors,
+  statusLabels: fixStatusLabels[lang],
+  statuses: PUBLIC_STATUSES,
+  labels: {
+    authError: t.admin.authError,
+    noPending: t.admin.noPending,
+    loading: t.admin.loading,
+    publicStatus: t.admin.publicStatus,
+    rejectReason: t.admin.rejectReason,
+    approve: t.admin.approve,
+    reject: t.admin.reject,
+    publishedTitle: t.admin.publishedTitle,
+    noPublished: t.admin.noPublished,
+    saveStatus: t.admin.saveStatus,
+    photos: t.admin.photos,
+    hidePhoto: t.admin.hidePhoto,
+    hiddenPhoto: t.admin.hiddenPhoto,
+    moderationWarning: t.admin.moderationWarning,
+    submitted: t.admin.submitted,
+    actionError: t.admin.actionError
+  }
+};
+---
+
+<Layout lang={lang} path="/admin/reports" title={t.admin.title} description={t.admin.lead}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t.admin.title}</p>
+      <h1>{t.admin.title}</h1>
+      <p class="lead">{t.admin.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <form id="admin-login" class="card" style="max-width:420px">
+        <div class="field" style="margin-bottom:14px">
+          <label for="admin-token">{t.admin.tokenLabel}</label>
+          <input id="admin-token" type="password" autocomplete="current-password" placeholder={t.admin.tokenPlaceholder} />
+        </div>
+        <p id="admin-auth-error" class="error" role="alert" hidden style="text-align:left;padding:10px 12px;margin-bottom:12px"></p>
+        <button type="submit" class="button" style="width:100%;justify-content:center">{t.admin.signIn}</button>
+      </form>
+
+      <div id="admin-dash" hidden>
+        <div class="results-bar">
+          <h2 id="pending-title" style="margin:0;font-size:1.4rem">{t.admin.pendingTitle}</h2>
+          <div class="pill-row">
+            <button type="button" id="admin-refresh" class="button secondary">{t.admin.refresh}</button>
+            <button type="button" id="admin-signout" class="link-button">{t.admin.signOut}</button>
+          </div>
+        </div>
+        <div id="pending-list" class="list" aria-live="polite"></div>
+        <div class="results-bar" style="margin-top:28px">
+          <h2 style="margin:0;font-size:1.4rem">{t.admin.publishedTitle}</h2>
+        </div>
+        <div id="published-list" class="list" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/json" id="admin-config" set:html={JSON.stringify(config)}></script>
+
+  <script>
+    const config = JSON.parse(document.getElementById("admin-config")?.textContent ?? "{}");
+    const LB = config.labels;
+    const TOKEN_KEY = "op-admin-token";
+
+    const loginForm = document.querySelector<HTMLFormElement>("#admin-login")!;
+    const tokenInput = document.querySelector<HTMLInputElement>("#admin-token")!;
+    const authError = document.querySelector<HTMLElement>("#admin-auth-error")!;
+    const dash = document.querySelector<HTMLElement>("#admin-dash")!;
+    const list = document.querySelector<HTMLElement>("#pending-list")!;
+    const publishedList = document.querySelector<HTMLElement>("#published-list")!;
+
+    function token(): string {
+      return sessionStorage.getItem(TOKEN_KEY) ?? "";
+    }
+
+    function escapeHtml(value: unknown): string {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function loc(record: any, base: string): string {
+      return record[`${base}_${config.lang}`] ?? record[`${base}_bg`] ?? "";
+    }
+
+    function authHeaders(): Record<string, string> {
+      return { Authorization: `Bearer ${token()}`, "Content-Type": "application/json" };
+    }
+
+    function showLogin(message?: string) {
+      dash.hidden = true;
+      loginForm.hidden = false;
+      if (message) {
+        authError.textContent = message;
+        authError.hidden = false;
+      }
+    }
+
+    function statusOptions(selected = "verified"): string {
+      return config.statuses
+        .map(
+          (s: string) =>
+            `<option value="${s}"${s === selected ? " selected" : ""}>${escapeHtml(config.statusLabels[s] ?? s)}</option>`
+        )
+        .join("");
+    }
+
+    function photoHtml(report: any): string {
+      const photos = Array.isArray(report.admin_photo_previews) ? report.admin_photo_previews : [];
+      if (!photos.length) return "";
+      return `
+        <div style="margin-top:14px">
+          <p class="meta" style="margin:0 0 8px">${escapeHtml(LB.photos)} · ${escapeHtml(LB.moderationWarning)}</p>
+          <div class="photo-grid">
+            ${photos
+              .map((photo: any) =>
+                photo.hidden
+                  ? `<div class="photo-preview hidden">${escapeHtml(LB.hiddenPhoto)}</div>`
+                  : `<div class="photo-preview">
+                      ${photo.preview_data_url ? `<img src="${escapeHtml(photo.preview_data_url)}" alt="" loading="lazy" />` : ""}
+                      <button type="button" class="button secondary" data-action="hide-photo" data-photo-id="${escapeHtml(photo.id)}">${escapeHtml(LB.hidePhoto)}</button>
+                    </div>`
+              )
+              .join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function card(report: any, mode: "pending" | "published"): string {
+      const color = config.categoryColors[report.category] ?? "var(--muted)";
+      const catLabel = config.categoryLabels[report.category] ?? report.category;
+      return `
+        <article class="card" data-id="${escapeHtml(report.id)}">
+          <header style="display:flex;justify-content:space-between;gap:12px;align-items:start">
+            <div>
+              <h3>${escapeHtml(loc(report, "title"))}</h3>
+              <p class="meta"><span class="cat-dot" style="--dot:${color}"></span>${escapeHtml(catLabel)} · ${report.location.lat.toFixed(4)}, ${report.location.lng.toFixed(4)}</p>
+            </div>
+            <span class="meta">${escapeHtml(LB.submitted)}: ${escapeHtml((report.created_at || "").slice(0, 16).replace("T", " "))}</span>
+          </header>
+          <p>${escapeHtml(loc(report, "description"))}</p>
+          <div class="filters" style="grid-template-columns:1fr 1fr;margin:0">
+            <div class="field">
+              <label>${escapeHtml(LB.publicStatus)}</label>
+              <select data-role="status">${statusOptions(report.public_status)}</select>
+            </div>
+            ${
+              mode === "pending"
+                ? `<div class="field">
+                    <label>${escapeHtml(LB.rejectReason)}</label>
+                    <input type="text" data-role="reason" maxlength="300" />
+                  </div>`
+                : ""
+            }
+          </div>
+          ${photoHtml(report)}
+          <div class="pill-row" style="margin-top:14px">
+            ${
+              mode === "pending"
+                ? `<button type="button" class="button" data-action="approve">${escapeHtml(LB.approve)}</button>
+                   <button type="button" class="button secondary" data-action="reject">${escapeHtml(LB.reject)}</button>`
+                : `<button type="button" class="button" data-action="update-status">${escapeHtml(LB.saveStatus)}</button>`
+            }
+          </div>
+          <p class="error" data-role="error" hidden style="text-align:left;padding:8px 10px;margin-top:10px"></p>
+        </article>
+      `;
+    }
+
+    async function loadPending() {
+      list.innerHTML = `<p class="loading">${escapeHtml(LB.loading)}</p>`;
+      const res = await fetch(`${config.apiBase}/pending`, { headers: authHeaders() });
+      if (res.status === 401) {
+        sessionStorage.removeItem(TOKEN_KEY);
+        showLogin(LB.authError);
+        return;
+      }
+      const data = await res.json().catch(() => ({ reports: [] }));
+      loginForm.hidden = true;
+      dash.hidden = false;
+      list.innerHTML = data.reports?.length
+        ? data.reports.map((report: any) => card(report, "pending")).join("")
+        : `<p class="empty">${escapeHtml(LB.noPending)}</p>`;
+    }
+
+    async function loadPublished() {
+      publishedList.innerHTML = `<p class="loading">${escapeHtml(LB.loading)}</p>`;
+      const res = await fetch(`${config.apiBase}/published`, { headers: authHeaders() });
+      if (res.status === 401) {
+        sessionStorage.removeItem(TOKEN_KEY);
+        showLogin(LB.authError);
+        return;
+      }
+      const data = await res.json().catch(() => ({ reports: [] }));
+      publishedList.innerHTML = data.reports?.length
+        ? data.reports.map((report: any) => card(report, "published")).join("")
+        : `<p class="empty">${escapeHtml(LB.noPublished)}</p>`;
+    }
+
+    async function loadAll() {
+      await loadPending();
+      if (!dash.hidden) await loadPublished();
+    }
+
+    async function act(article: HTMLElement, action: "approve" | "reject") {
+      const id = article.dataset.id!;
+      const errorEl = article.querySelector<HTMLElement>('[data-role="error"]')!;
+      errorEl.hidden = true;
+      const body: Record<string, string> =
+        action === "approve"
+          ? { public_status: article.querySelector<HTMLSelectElement>('[data-role="status"]')!.value }
+          : { reason: article.querySelector<HTMLInputElement>('[data-role="reason"]')!.value };
+
+      const res = await fetch(`${config.apiBase}/${encodeURIComponent(id)}/${action}`, {
+        method: "POST",
+        headers: authHeaders(),
+        body: JSON.stringify(body)
+      });
+      if (res.ok) {
+        await loadAll();
+      } else {
+        errorEl.textContent = LB.actionError;
+        errorEl.hidden = false;
+      }
+    }
+
+    async function updateStatus(article: HTMLElement) {
+      const id = article.dataset.id!;
+      const errorEl = article.querySelector<HTMLElement>('[data-role="error"]')!;
+      errorEl.hidden = true;
+      const res = await fetch(`${config.apiBase}/${encodeURIComponent(id)}/update-status`, {
+        method: "POST",
+        headers: authHeaders(),
+        body: JSON.stringify({
+          public_status: article.querySelector<HTMLSelectElement>('[data-role="status"]')!.value
+        })
+      });
+      if (!res.ok) {
+        errorEl.textContent = LB.actionError;
+        errorEl.hidden = false;
+      }
+    }
+
+    async function hidePhoto(article: HTMLElement, photoId: string) {
+      const id = article.dataset.id!;
+      const errorEl = article.querySelector<HTMLElement>('[data-role="error"]')!;
+      errorEl.hidden = true;
+      const res = await fetch(`${config.apiBase}/${encodeURIComponent(id)}/hide-photo`, {
+        method: "POST",
+        headers: authHeaders(),
+        body: JSON.stringify({ photo_id: photoId })
+      });
+      if (res.ok) await loadAll();
+      else {
+        errorEl.textContent = LB.actionError;
+        errorEl.hidden = false;
+      }
+    }
+
+    list.addEventListener("click", (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-action]");
+      if (!btn) return;
+      const article = btn.closest<HTMLElement>("[data-id]");
+      if (!article) return;
+      const action = btn.dataset.action;
+      if (action === "approve" || action === "reject") act(article, action);
+      if (action === "hide-photo" && btn.dataset.photoId) hidePhoto(article, btn.dataset.photoId);
+    });
+
+    publishedList.addEventListener("click", (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-action]");
+      if (!btn) return;
+      const article = btn.closest<HTMLElement>("[data-id]");
+      if (!article) return;
+      const action = btn.dataset.action;
+      if (action === "update-status") updateStatus(article);
+      if (action === "hide-photo" && btn.dataset.photoId) hidePhoto(article, btn.dataset.photoId);
+    });
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      authError.hidden = true;
+      sessionStorage.setItem(TOKEN_KEY, tokenInput.value.trim());
+      loadAll();
+    });
+
+    document.getElementById("admin-refresh")?.addEventListener("click", loadAll);
+    document.getElementById("admin-signout")?.addEventListener("click", () => {
+      sessionStorage.removeItem(TOKEN_KEY);
+      showLogin();
+    });
+
+    if (token()) loadAll();
+    else showLogin();
+  </script>
+</Layout>
