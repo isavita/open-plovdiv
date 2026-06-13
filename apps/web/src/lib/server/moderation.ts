@@ -101,12 +101,38 @@ export type CleanSubmission = {
   lang: "bg" | "en";
 };
 
+export type ReportUpdateInput = {
+  category?: unknown;
+  title_bg?: unknown;
+  title_en?: unknown;
+  description_bg?: unknown;
+  description_en?: unknown;
+  lat?: unknown;
+  lng?: unknown;
+  address_bg?: unknown;
+  address_en?: unknown;
+};
+
+export type CleanReportUpdate = {
+  category: string;
+  title_bg: string;
+  title_en?: string;
+  description_bg: string;
+  description_en?: string;
+  location: { lat: number; lng: number; address_bg?: string; address_en?: string };
+};
+
 const EMAIL_RE = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i;
 // Seven or more digits in a row reads like a phone number — reject as PII.
 const PHONE_RE = /\d[\d\s().-]{6,}\d/;
 
 function clean(text: string): string {
   return text.replace(/[<>]/g, "").replace(/\s+/g, " ").trim();
+}
+
+function optionalClean(value: unknown): string | undefined {
+  const text = clean(String(value ?? ""));
+  return text ? text : undefined;
 }
 
 function isBool(value: unknown): boolean {
@@ -154,6 +180,71 @@ export function validateSubmission(input: SubmissionInput): ValidationResult {
   }
 
   return { ok: true, value: { category, title, description, lat, lng, lang } };
+}
+
+export function validateReportUpdate(
+  input: ReportUpdateInput
+): { ok: true; value: CleanReportUpdate } | { ok: false; error: string } {
+  const category = String(input.category ?? "");
+  if (!FIX_CATEGORIES.includes(category as (typeof FIX_CATEGORIES)[number])) {
+    return { ok: false, error: "invalid_category" };
+  }
+
+  const title_bg = clean(String(input.title_bg ?? ""));
+  if (title_bg.length < 3 || title_bg.length > 120) {
+    return { ok: false, error: "invalid_title" };
+  }
+
+  const title_en = optionalClean(input.title_en);
+  if (title_en && (title_en.length < 3 || title_en.length > 120)) {
+    return { ok: false, error: "invalid_title" };
+  }
+
+  const description_bg = clean(String(input.description_bg ?? ""));
+  if (description_bg.length < 10 || description_bg.length > 1000) {
+    return { ok: false, error: "invalid_description" };
+  }
+
+  const description_en = optionalClean(input.description_en);
+  if (description_en && (description_en.length < 10 || description_en.length > 1000)) {
+    return { ok: false, error: "invalid_description" };
+  }
+
+  const combined = [title_bg, title_en, description_bg, description_en].filter(Boolean).join(" ");
+  if (EMAIL_RE.test(combined) || PHONE_RE.test(combined)) {
+    return { ok: false, error: "contains_personal_data" };
+  }
+
+  const lat = Number(input.lat);
+  const lng = Number(input.lng);
+  if (
+    !Number.isFinite(lat) ||
+    !Number.isFinite(lng) ||
+    lat < PLOVDIV_BOUNDS.latMin ||
+    lat > PLOVDIV_BOUNDS.latMax ||
+    lng < PLOVDIV_BOUNDS.lngMin ||
+    lng > PLOVDIV_BOUNDS.lngMax
+  ) {
+    return { ok: false, error: "invalid_location" };
+  }
+
+  const address_bg = optionalClean(input.address_bg);
+  const address_en = optionalClean(input.address_en);
+  if ((address_bg && address_bg.length > 160) || (address_en && address_en.length > 160)) {
+    return { ok: false, error: "invalid_location" };
+  }
+
+  return {
+    ok: true,
+    value: {
+      category,
+      title_bg,
+      title_en,
+      description_bg,
+      description_en,
+      location: { lat, lng, address_bg, address_en }
+    }
+  };
 }
 
 export function formatReportId(year: number, seq: number): string {

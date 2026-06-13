@@ -19,6 +19,7 @@ Moderators can:
 
 - approve and publish a report
 - reject a report with an optional reason
+- edit report title, description, category, coordinates, and optional address
 - choose the public status shown on the map
 - update a published report status
 - hide unsafe photos before or after publishing

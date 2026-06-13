@@ -4,12 +4,10 @@ import StatusBadge from "@components/StatusBadge.astro";
 import Layout from "@layouts/Layout.astro";
 import { categoryColors, ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
-import { budgetItems, fixReports, type Project } from "@lib/data";
+import { budgetItems, type Project } from "@lib/data";
 import {
   categoryLabel,
   districtLabel,
-  distanceKm,
-  fixStatusLabel,
   formatDate,
   formatMoney,
   fundingSourceLabel,
@@ -22,11 +20,6 @@ const t = ui[lang];
 
 const title = field(project, "title", lang);
 const relatedBudget = budgetItems.find((item) => item.id === project.related_budget_item_id);
-const nearbyReports = fixReports
-  .map((report) => ({ ...report, distance: distanceKm(project.location, report.location) }))
-  .filter((report) => report.distance <= 1)
-  .sort((a, b) => a.distance - b.distance)
-  .slice(0, 6);
 
 const pinColor = categoryColors[project.category] ?? "var(--brand)";
 ---
@@ -119,22 +112,10 @@ const pinColor = categoryColors[project.category] ?? "var(--brand)";
       <article>
         <div class="section-head"><h2>{t.project.nearbyReports}</h2></div>
         <div class="list">
-          {
-            nearbyReports.length > 0 ? (
-              nearbyReports.map((report) => (
-                <div class="card">
-                  <div class="pill-row">
-                    <span class={`badge status-${report.status}`}>{fixStatusLabel(report.status, lang)}</span>
-                    <span class="meta">{report.distance.toFixed(1)} km</span>
-                  </div>
-                  <h3 style="margin-top:8px">{field(report, "title", lang)}</h3>
-                  <p class="meta">{field(report, "description", lang)}</p>
-                </div>
-              ))
-            ) : (
-              <p class="empty">{t.project.noNearby}</p>
-            )
-          }
+          <div class="card">
+            <p>{t.project.nearbyReportsText}</p>
+            <a class="button secondary" href={localizePath("/fix-map", lang)}>{t.home.ctaMap}</a>
+          </div>
         </div>
       </article>
 

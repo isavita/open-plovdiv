@@ -25,7 +25,7 @@ const datasets = [
     label: "fix reports",
     dataPath: "data/curated/fix-reports.json",
     schemaPath: "data/schemas/fix-report.schema.json",
-    minRecords: 20
+    minRecords: 0
   }
 ];
 

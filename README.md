@@ -1,8 +1,8 @@
 # Open Plovdiv
 
-Open Plovdiv is a civic-transparency prototype for Plovdiv. It helps people browse public projects, budget categories, city-fix reports, and reviewed citizen-submitted reports without accounts or comments.
+Open Plovdiv is a civic-transparency prototype for Plovdiv. It helps people browse public projects, budget categories, and reviewed citizen-submitted city-fix reports without accounts or comments.
 
-The current repository uses sample data that is clearly labeled as prototype data. Replace the curated JSON files with reviewed public records before treating the site as a live public-information service.
+The current repository still uses sample project and budget data. The public signal map is driven by moderated citizen submissions, not seed/demo signal records.
 
 ## Stack
 
@@ -10,8 +10,8 @@ The current repository uses sample data that is clearly labeled as prototype dat
 - Bilingual interface: Bulgarian at the root, English under `/en/`, with a language switcher and light/dark themes
 - JSON files as the source of truth (each record carries Bulgarian and English text)
 - Node scripts for validation and public data generation
-- Existing public data remains static JSON
-- Citizen reports use a small dynamic layer with Redis when configured, or a local file store in development
+- Existing project and budget data remains static JSON
+- Citizen reports use a dynamic layer with Redis when configured, or a local file store in development
 - No user accounts and no contact details in report submissions
 
 ## Run Locally
@@ -74,9 +74,9 @@ The report layer adds:
 - `POST /api/reports` for submission
 - `GET /api/reports/public` for approved map reports
 - `GET /api/reports/stream` for Server-Sent Events
-- admin-only approve, reject, hide-photo, and status update endpoints
+- admin-only approve, reject, edit details, hide-photo, and status update endpoints
 
-Set `ADMIN_TOKEN` before using the admin dashboard outside local development. With no Redis environment variables, reports are stored locally under `apps/web/.data/`. With `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`, metadata is stored in Redis. Uploaded photos are converted to WebP with metadata stripped, kept private until approval, and then copied to the configured public uploads directory.
+Set `ADMIN_TOKEN` before using the admin dashboard outside local development. With no Redis environment variables, reports are stored locally under `apps/web/.data/`. With `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`, metadata is stored in Redis. Moderators can update report text, category, coordinates, address, public status, and photo visibility. Uploaded photos are converted to WebP with metadata stripped, kept private until approval, and then copied to the configured public uploads directory.
 
 ## Repository Layout
 

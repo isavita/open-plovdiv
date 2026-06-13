@@ -9,14 +9,14 @@ import {
   type Lang
 } from "@i18n/ui";
 import { localizePath } from "@i18n/utils";
-import { fixReports } from "@lib/data";
+import { FIX_CATEGORIES } from "@lib/server/moderation";
 import { categoryLabel, fixStatusLabel } from "@lib/format";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
 
-const fixCategories = Array.from(new Set(fixReports.map((r) => r.category))).sort();
+const fixCategories = [...FIX_CATEGORIES];
 const fixStatuses = Object.keys(fixStatusLabels[lang]);
 
 const config = {
@@ -34,8 +34,10 @@ const config = {
     statusLabel: t.fixMap.statusLabel,
     nearby: t.fixMap.nearbyProjects,
     noNearby: t.fixMap.noNearbyRadius,
-    sample: t.site.sampleData,
     community: t.fixMap.communityBadge,
+    emptyTitle: t.fixMap.emptyTitle,
+    emptyText: t.fixMap.emptyText,
+    noFilterResults: t.fixMap.noFilterResults,
     updated: t.fixMap.lastUpdated,
     justNow: t.fixMap.justNow,
     of: lang === "bg" ? "от" : "of",
@@ -196,10 +198,9 @@ const config = {
     const updatedEl = document.querySelector<HTMLElement>("#map-updated");
     const liveIndicator = document.querySelector<HTMLElement>("#map-live-indicator");
     let selectedReport: any = null;
-    let officialReports: any[] = [];
     let communityReports: any[] = [];
     let projects: any[] = [];
-    const allReports = () => officialReports.concat(communityReports);
+    const allReports = () => communityReports;
 
     function distanceKm(a: any, b: any): number {
       const radiusKm = 6371;
@@ -252,11 +253,7 @@ const config = {
         <p>${escapeHtml(loc(report, "description"))}</p>
         <p class="meta"><span class="cat-dot" style="--dot:${catColor(report.category)}"></span> ${escapeHtml(catLabel(report.category))} · ${escapeHtml(loc(report.location, "address"))}</p>
         <p><strong>${escapeHtml(LB.statusLabel)}:</strong> ${escapeHtml(statusDesc(report.status))}</p>
-        <p>${
-          report.source === "citizen_submission"
-            ? `<span class="badge" style="background:var(--accent-soft);color:var(--accent)">${escapeHtml(LB.community)}</span>`
-            : `<span class="badge sample">${escapeHtml(LB.sample)}</span>`
-        }</p>
+        <p><span class="badge" style="background:var(--accent-soft);color:var(--accent)">${escapeHtml(LB.community)}</span></p>
         ${
           photos.length
             ? `<div class="photo-grid">${photos
@@ -285,6 +282,9 @@ const config = {
       markerLayer.clearLayers();
       const visible = visibleReports();
       countField.value = `${visible.length} ${LB.of} ${allReports().length}`;
+      if (selectedReport && !allReports().some((report) => report.id === selectedReport.id)) {
+        selectedReport = null;
+      }
 
       visible.forEach((report) => {
         L.marker([report.location.lat, report.location.lng], {
@@ -296,6 +296,11 @@ const config = {
       });
 
       if (selectedReport) renderDetail(selectedReport);
+      else if (allReports().length === 0) {
+        detail.innerHTML = `<h2>${escapeHtml(LB.emptyTitle)}</h2><p class="meta">${escapeHtml(LB.emptyText)}</p>`;
+      } else if (visible.length === 0) {
+        detail.innerHTML = `<h2>${escapeHtml(LB.noFilterResults)}</h2><p class="meta">${escapeHtml(LB.emptyText)}</p>`;
+      }
     }
 
     categoryFilter.addEventListener("change", renderMarkers);
@@ -350,16 +355,10 @@ const config = {
     }
 
     try {
-      [officialReports, projects] = await Promise.all([
-        fetch("/data/fix-reports.json").then((r) => {
-          if (!r.ok) throw new Error("fix reports failed");
-          return r.json();
-        }),
-        fetch("/data/projects.json").then((r) => {
-          if (!r.ok) throw new Error("projects failed");
-          return r.json();
-        })
-      ]);
+      projects = await fetch("/data/projects.json").then((r) => {
+        if (!r.ok) throw new Error("projects failed");
+        return r.json();
+      });
       await loadCommunity();
       renderMarkers();
       if ("EventSource" in window) {

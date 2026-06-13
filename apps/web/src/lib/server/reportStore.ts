@@ -10,6 +10,7 @@ import {
   formatReportId,
   type CommunityReport,
   type CleanSubmission,
+  type CleanReportUpdate,
   type ModerationStatus,
   type PublicStatus,
   type ReportPhoto
@@ -264,6 +265,31 @@ export async function updateReportStatus(
   report.audit.push({ at: now, action: "update_status", note: publicStatus });
   await persist(report);
   await moveStatusIndex(id, previousStatus, publicStatus);
+  if (report.moderation_status === "published") await publishEvent(report);
+  return report;
+}
+
+export async function updateReportDetails(
+  id: string,
+  value: CleanReportUpdate
+): Promise<CommunityReport | null> {
+  const report = await getReport(id);
+  if (!report) return null;
+  const now = new Date().toISOString();
+  const previousCategory = report.category;
+  report.category = value.category;
+  report.title_bg = value.title_bg;
+  report.title_en = value.title_en;
+  report.description_bg = value.description_bg;
+  report.description_en = value.description_en;
+  report.location = value.location;
+  report.updated_at = now;
+  report.audit.push({ at: now, action: "update_details" });
+  await persist(report);
+  if (redisEnabled() && previousCategory !== report.category) {
+    await redis("SREM", KEY_CATEGORY(previousCategory), id);
+    await redis("SADD", KEY_CATEGORY(report.category), id);
+  }
   if (report.moderation_status === "published") await publishEvent(report);
   return report;
 }

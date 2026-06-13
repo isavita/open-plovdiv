@@ -65,14 +65,15 @@ const bg = {
     ctaBudget: "Къде отиват местните данъци?",
     statsLabel: "Данни в прототипа",
     statProjects: "примерни проекта",
-    statReports: "примерни сигнала",
+    statReportsValue: "На живо",
+    statReports: "модерирани сигнали",
     statBudget: "бюджетни категории",
     statTotal: "примерен общ размер",
     exploreTitle: "Откъде да започнете",
     cardMapEyebrow: "Карта",
     cardMapTitle: "Карта на проблемите",
     cardMapText:
-      "Вижте примерни градски проблеми по категория и статус, с близки публични проекти.",
+      "Вижте публикувани граждански сигнали по категория и статус, с близки публични проекти.",
     cardBudgetEyebrow: "Бюджет",
     cardBudgetTitle: "Местни данъци",
     cardBudgetText:
@@ -83,6 +84,9 @@ const bg = {
       "Търсене и филтриране на проектни записи с бюджет, статус и източници.",
     latestProjects: "Последно обновени проекти",
     latestReports: "Последно добавени сигнали",
+    liveReportsTitle: "Реални сигнали след модерация",
+    liveReportsText:
+      "Картата вече показва само граждански сигнали, които са подадени през формата и одобрени от модератор.",
     viewAll: "Виж всички",
     noticeTitle: "Прототипни данни",
     notice:
@@ -141,7 +145,9 @@ const bg = {
     relatedBudget: "Свързан бюджетен ред",
     noRelatedBudget: "Няма свързан бюджетен ред.",
     nearbyReports: "Близки сигнали",
-    noNearby: "Няма примерни сигнали в радиус 1 км.",
+    noNearby: "Няма публикувани сигнали в радиус 1 км.",
+    nearbyReportsText:
+      "Публичната карта показва само модерирани граждански сигнали. Отворете картата, за да видите текущите публикувани сигнали около този район.",
     timeline: "Хронология",
     noTimeline: "Няма добавена хронология.",
     updated: "Обновено",
@@ -151,9 +157,9 @@ const bg = {
     eyebrow: "Карта на проблемите",
     title: "Карта на градски проблеми",
     lead:
-      "Примерни сигнали без лични данни. Филтрирайте по категория и статус, вижте детайли и близки публични проекти.",
+      "Публикувани граждански сигнали без лични данни. Филтрирайте по категория и статус, вижте детайли и близки публични проекти.",
     notice:
-      "Сигналите в тази версия са примерни. Статусът показва дали записът е проверен, изпратен, в процес или затворен.",
+      "Картата показва само сигнали, които са подадени през формата и одобрени от модератор. Статусът показва дали записът е проверен, изпратен, в процес или затворен.",
     category: "Категория",
     allCategories: "Всички категории",
     status: "Статус",
@@ -166,6 +172,10 @@ const bg = {
     selectTitle: "Изберете сигнал",
     selectHint:
       "Кликнете върху маркер, за да видите детайли, статус и близки проекти.",
+    emptyTitle: "Все още няма публикувани сигнали",
+    emptyText:
+      "Подадените сигнали се появяват тук след преглед и одобрение от модератор.",
+    noFilterResults: "Няма сигнали с тези филтри",
     legend: "Легенда",
     statusesTitle: "Какво означават статусите",
     officialTitle: "Официално подаване",
@@ -298,6 +308,17 @@ const bg = {
     publishedTitle: "Публикувани сигнали",
     noPublished: "Няма публикувани граждански сигнали.",
     saveStatus: "Запази статус",
+    editDetails: "Данни за сигнала",
+    saveDetails: "Запази данни",
+    titleBg: "Заглавие (BG)",
+    titleEn: "Заглавие (EN, по избор)",
+    descriptionBg: "Описание (BG)",
+    descriptionEn: "Описание (EN, по избор)",
+    category: "Категория",
+    latitude: "Ширина",
+    longitude: "Дължина",
+    addressBg: "Адрес/ориентир (BG, по избор)",
+    addressEn: "Адрес/ориентир (EN, по избор)",
     photos: "Снимки",
     hidePhoto: "Скрий снимка",
     hiddenPhoto: "Скрита снимка",
@@ -367,14 +388,15 @@ const en: typeof bg = {
     ctaBudget: "Where do local taxes go?",
     statsLabel: "Data in the prototype",
     statProjects: "sample projects",
-    statReports: "sample reports",
+    statReportsValue: "Live",
+    statReports: "moderated reports",
     statBudget: "budget categories",
     statTotal: "sample total",
     exploreTitle: "Where to start",
     cardMapEyebrow: "Map",
     cardMapTitle: "Problem map",
     cardMapText:
-      "See sample city problems by category and status, with nearby public projects.",
+      "See published citizen reports by category and status, with nearby public projects.",
     cardBudgetEyebrow: "Budget",
     cardBudgetTitle: "Local taxes",
     cardBudgetText:
@@ -385,6 +407,9 @@ const en: typeof bg = {
       "Search and filter project records with budget, status and sources.",
     latestProjects: "Recently updated projects",
     latestReports: "Recently added reports",
+    liveReportsTitle: "Real reports after moderation",
+    liveReportsText:
+      "The map now shows only citizen reports submitted through the form and approved by a moderator.",
     viewAll: "View all",
     noticeTitle: "Prototype data",
     notice:
@@ -443,7 +468,9 @@ const en: typeof bg = {
     relatedBudget: "Related budget line",
     noRelatedBudget: "No related budget line.",
     nearbyReports: "Nearby reports",
-    noNearby: "No sample reports within 1 km.",
+    noNearby: "No published reports within 1 km.",
+    nearbyReportsText:
+      "The public map shows only moderated citizen reports. Open the map to see currently published reports around this area.",
     timeline: "Timeline",
     noTimeline: "No timeline added.",
     updated: "Updated",
@@ -453,9 +480,9 @@ const en: typeof bg = {
     eyebrow: "Problem map",
     title: "City problem map",
     lead:
-      "Sample reports with no personal data. Filter by category and status, see details and nearby public projects.",
+      "Published citizen reports with no personal data. Filter by category and status, see details and nearby public projects.",
     notice:
-      "Reports in this version are samples. The status shows whether a record is verified, sent, in progress or closed.",
+      "The map shows only reports submitted through the form and approved by a moderator. The status shows whether a record is verified, sent, in progress or closed.",
     category: "Category",
     allCategories: "All categories",
     status: "Status",
@@ -468,6 +495,10 @@ const en: typeof bg = {
     selectTitle: "Select a report",
     selectHint:
       "Click a marker to see details, status and nearby projects.",
+    emptyTitle: "No published reports yet",
+    emptyText:
+      "Submitted reports appear here after review and approval by a moderator.",
+    noFilterResults: "No reports match these filters",
     legend: "Legend",
     statusesTitle: "What the statuses mean",
     officialTitle: "Official reporting",
@@ -600,6 +631,17 @@ const en: typeof bg = {
     publishedTitle: "Published reports",
     noPublished: "No published citizen reports.",
     saveStatus: "Save status",
+    editDetails: "Report details",
+    saveDetails: "Save details",
+    titleBg: "Title (BG)",
+    titleEn: "Title (EN, optional)",
+    descriptionBg: "Description (BG)",
+    descriptionEn: "Description (EN, optional)",
+    category: "Category",
+    latitude: "Latitude",
+    longitude: "Longitude",
+    addressBg: "Address/landmark (BG, optional)",
+    addressEn: "Address/landmark (EN, optional)",
     photos: "Photos",
     hidePhoto: "Hide photo",
     hiddenPhoto: "Hidden photo",
@@ -712,7 +754,7 @@ export const fixStatusLabels: Record<Lang, Record<string, string>> = {
 
 export const fixStatusDescriptions: Record<Lang, Record<string, string>> = {
   bg: {
-    unverified: "Сигналът е примерен или очаква проверка.",
+    unverified: "Сигналът е публикуван, но още не е независимо проверен.",
     verified: "Проверен е от редактор или публичен източник.",
     sent_to_municipality: "Маркиран е като изпратен към институция.",
     in_progress: "Има отбелязан текущ ремонт или проверка.",
@@ -720,7 +762,7 @@ export const fixStatusDescriptions: Record<Lang, Record<string, string>> = {
     closed: "Затворен е без активен следващ етап."
   },
   en: {
-    unverified: "The report is a sample or awaits verification.",
+    unverified: "The report is published but not yet independently verified.",
     verified: "Verified by an editor or a public source.",
     sent_to_municipality: "Marked as sent to an institution.",
     in_progress: "An ongoing repair or check is noted.",

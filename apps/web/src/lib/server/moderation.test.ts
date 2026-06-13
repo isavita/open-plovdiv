@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildReport, formatReportId, validateSubmission } from "./moderation";
+import { buildReport, formatReportId, validateReportUpdate, validateSubmission } from "./moderation";
 
 const valid = {
   category: "pavement",
@@ -72,5 +72,42 @@ describe("report building", () => {
     expect(report.source).toBe("citizen_submission");
     expect(report.title_en).toBe(valid.title); // mirrored for EN submissions
     expect(report.audit[0].action).toBe("submitted");
+  });
+});
+
+describe("validateReportUpdate", () => {
+  const update = {
+    category: "roads",
+    title_bg: "Дупка на пътя",
+    title_en: "Pothole in the road",
+    description_bg: "Има дупка в платното до обществена спирка.",
+    description_en: "There is a pothole in the road near a public stop.",
+    lat: 42.1421,
+    lng: 24.7483,
+    address_bg: "Централен район",
+    address_en: "Tsentralen district"
+  };
+
+  it("accepts edited public report details", () => {
+    const result = validateReportUpdate(update);
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.value.category).toBe("roads");
+      expect(result.value.location.address_bg).toBe("Централен район");
+    }
+  });
+
+  it("rejects edited details outside Plovdiv", () => {
+    expect(validateReportUpdate({ ...update, lat: 41.9 })).toEqual({
+      ok: false,
+      error: "invalid_location"
+    });
+  });
+
+  it("rejects edited details with personal data", () => {
+    expect(validateReportUpdate({ ...update, description_bg: "Пишете на person@example.com за детайли." })).toEqual({
+      ok: false,
+      error: "contains_personal_data"
+    });
   });
 });

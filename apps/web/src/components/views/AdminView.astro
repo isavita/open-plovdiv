@@ -25,6 +25,17 @@ const config = {
     publishedTitle: t.admin.publishedTitle,
     noPublished: t.admin.noPublished,
     saveStatus: t.admin.saveStatus,
+    editDetails: t.admin.editDetails,
+    saveDetails: t.admin.saveDetails,
+    titleBg: t.admin.titleBg,
+    titleEn: t.admin.titleEn,
+    descriptionBg: t.admin.descriptionBg,
+    descriptionEn: t.admin.descriptionEn,
+    category: t.admin.category,
+    latitude: t.admin.latitude,
+    longitude: t.admin.longitude,
+    addressBg: t.admin.addressBg,
+    addressEn: t.admin.addressEn,
     photos: t.admin.photos,
     hidePhoto: t.admin.hidePhoto,
     hiddenPhoto: t.admin.hiddenPhoto,
@@ -125,6 +136,16 @@ const config = {
         .join("");
     }
 
+    function categoryOptions(selected = "other"): string {
+      return Object.entries(config.categoryLabels)
+        .filter(([key]) => !["culture", "education"].includes(key))
+        .map(
+          ([key, label]) =>
+            `<option value="${escapeHtml(key)}"${key === selected ? " selected" : ""}>${escapeHtml(label as string)}</option>`
+        )
+        .join("");
+    }
+
     function photoHtml(report: any): string {
       const photos = Array.isArray(report.admin_photo_previews) ? report.admin_photo_previews : [];
       if (!photos.length) return "";
@@ -159,8 +180,54 @@ const config = {
             </div>
             <span class="meta">${escapeHtml(LB.submitted)}: ${escapeHtml((report.created_at || "").slice(0, 16).replace("T", " "))}</span>
           </header>
-          <p>${escapeHtml(loc(report, "description"))}</p>
-          <div class="filters" style="grid-template-columns:1fr 1fr;margin:0">
+          <div style="margin-top:14px">
+            <p class="meta" style="margin:0 0 8px">${escapeHtml(LB.editDetails)}</p>
+            <div class="filters" style="grid-template-columns:1fr 1fr;margin:0 0 12px">
+              <div class="field">
+                <label>${escapeHtml(LB.titleBg)}</label>
+                <input type="text" data-role="title-bg" maxlength="120" value="${escapeHtml(report.title_bg ?? "")}" />
+              </div>
+              <div class="field">
+                <label>${escapeHtml(LB.titleEn)}</label>
+                <input type="text" data-role="title-en" maxlength="120" value="${escapeHtml(report.title_en ?? "")}" />
+              </div>
+            </div>
+            <div class="filters" style="grid-template-columns:1fr 1fr;margin:0 0 12px">
+              <div class="field">
+                <label>${escapeHtml(LB.descriptionBg)}</label>
+                <textarea data-role="description-bg" rows="4" maxlength="1000" style="background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-sm);color:var(--ink);padding:10px 12px;width:100%;resize:vertical">${escapeHtml(report.description_bg ?? "")}</textarea>
+              </div>
+              <div class="field">
+                <label>${escapeHtml(LB.descriptionEn)}</label>
+                <textarea data-role="description-en" rows="4" maxlength="1000" style="background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-sm);color:var(--ink);padding:10px 12px;width:100%;resize:vertical">${escapeHtml(report.description_en ?? "")}</textarea>
+              </div>
+            </div>
+            <div class="filters" style="grid-template-columns:1fr 1fr 1fr;margin:0 0 12px">
+              <div class="field">
+                <label>${escapeHtml(LB.category)}</label>
+                <select data-role="category">${categoryOptions(report.category)}</select>
+              </div>
+              <div class="field">
+                <label>${escapeHtml(LB.latitude)}</label>
+                <input type="number" data-role="lat" step="0.000001" value="${escapeHtml(report.location.lat)}" />
+              </div>
+              <div class="field">
+                <label>${escapeHtml(LB.longitude)}</label>
+                <input type="number" data-role="lng" step="0.000001" value="${escapeHtml(report.location.lng)}" />
+              </div>
+            </div>
+            <div class="filters" style="grid-template-columns:1fr 1fr;margin:0">
+              <div class="field">
+                <label>${escapeHtml(LB.addressBg)}</label>
+                <input type="text" data-role="address-bg" maxlength="160" value="${escapeHtml(report.location.address_bg ?? "")}" />
+              </div>
+              <div class="field">
+                <label>${escapeHtml(LB.addressEn)}</label>
+                <input type="text" data-role="address-en" maxlength="160" value="${escapeHtml(report.location.address_en ?? "")}" />
+              </div>
+            </div>
+          </div>
+          <div class="filters" style="grid-template-columns:1fr 1fr;margin:14px 0 0">
             <div class="field">
               <label>${escapeHtml(LB.publicStatus)}</label>
               <select data-role="status">${statusOptions(report.public_status)}</select>
@@ -176,6 +243,7 @@ const config = {
           </div>
           ${photoHtml(report)}
           <div class="pill-row" style="margin-top:14px">
+            <button type="button" class="button secondary" data-action="save-details">${escapeHtml(LB.saveDetails)}</button>
             ${
               mode === "pending"
                 ? `<button type="button" class="button" data-action="approve">${escapeHtml(LB.approve)}</button>
@@ -262,6 +330,35 @@ const config = {
       }
     }
 
+    async function updateDetails(article: HTMLElement) {
+      const id = article.dataset.id!;
+      const errorEl = article.querySelector<HTMLElement>('[data-role="error"]')!;
+      errorEl.hidden = true;
+      const read = (role: string) =>
+        article.querySelector<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(`[data-role="${role}"]`)!
+          .value;
+      const res = await fetch(`${config.apiBase}/${encodeURIComponent(id)}/update`, {
+        method: "POST",
+        headers: authHeaders(),
+        body: JSON.stringify({
+          category: read("category"),
+          title_bg: read("title-bg"),
+          title_en: read("title-en"),
+          description_bg: read("description-bg"),
+          description_en: read("description-en"),
+          lat: read("lat"),
+          lng: read("lng"),
+          address_bg: read("address-bg"),
+          address_en: read("address-en")
+        })
+      });
+      if (res.ok) await loadAll();
+      else {
+        errorEl.textContent = LB.actionError;
+        errorEl.hidden = false;
+      }
+    }
+
     async function hidePhoto(article: HTMLElement, photoId: string) {
       const id = article.dataset.id!;
       const errorEl = article.querySelector<HTMLElement>('[data-role="error"]')!;
@@ -284,6 +381,7 @@ const config = {
       const article = btn.closest<HTMLElement>("[data-id]");
       if (!article) return;
       const action = btn.dataset.action;
+      if (action === "save-details") updateDetails(article);
       if (action === "approve" || action === "reject") act(article, action);
       if (action === "hide-photo" && btn.dataset.photoId) hidePhoto(article, btn.dataset.photoId);
     });
@@ -294,6 +392,7 @@ const config = {
       const article = btn.closest<HTMLElement>("[data-id]");
       if (!article) return;
       const action = btn.dataset.action;
+      if (action === "save-details") updateDetails(article);
       if (action === "update-status") updateStatus(article);
       if (action === "hide-photo" && btn.dataset.photoId) hidePhoto(article, btn.dataset.photoId);
     });

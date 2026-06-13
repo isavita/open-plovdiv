@@ -20,7 +20,7 @@ Citizen report submissions are validated at the API boundary. The API checks cat
 
 ## Moderation
 
-Moderators use `/admin/reports` with a bearer token. They can approve, reject, hide unsafe photos, and update a public status such as `unverified`, `verified`, `sent_to_municipality`, `in_progress`, `fixed`, or `closed`.
+Moderators use `/admin/reports` with a bearer token. They can approve, reject, edit report text/category/location, hide unsafe photos, and update a public status such as `unverified`, `verified`, `sent_to_municipality`, `in_progress`, `fixed`, or `closed`.
 
 Approved citizen reports are available through `/api/reports/public`, `/api/reports/stream`, and the exported snapshot at `/data/community-fix-reports.json`.
 
@@ -34,7 +34,7 @@ AI may later draft summaries, categories, or location candidates. AI output is n
 
 ## Corrections
 
-Corrections should cite a public source where possible. The preferred workflow is to update the curated JSON record, add or replace the relevant source URL, run validation, and rebuild the static site.
+Corrections to citizen reports should be made in `/admin/reports`, where they are audited and pushed to the live report stream. Corrections to project or budget records should cite a public source where possible, update the curated JSON record, add or replace the relevant source URL, run validation, and rebuild the static site.
 
 ## What This Site Does Not Claim
 

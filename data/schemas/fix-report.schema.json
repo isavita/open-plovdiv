@@ -103,7 +103,6 @@
     "submitted_source": {
       "type": "string",
       "enum": [
-        "manual_seed",
         "official_public_source",
         "partner_dataset"
       ]
