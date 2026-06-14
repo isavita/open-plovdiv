@@ -91,7 +91,7 @@ const cards = [
                   <h3><a href={localizePath(`/projects/${project.id}`, lang)}>{field(project, "title", lang)}</a></h3>
                   <p class="meta">
                     <span class="cat-dot" style={`--dot:${categoryColors[project.category]}`}></span>
-                    {categoryLabel(project.category, lang)} · {formatMoney(project.budget.amount_bgn, lang)}
+                    {categoryLabel(project.category, lang)} · {project.budget.year}
                   </p>
                 </div>
                 <StatusBadge status={project.status} type="project" lang={lang} />

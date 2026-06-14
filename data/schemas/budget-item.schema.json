@@ -40,6 +40,9 @@
         "drainage",
         "culture",
         "education",
+        "environment",
+        "social",
+        "sport",
         "other"
       ]
     },
@@ -54,6 +57,11 @@
     "amount_bgn": {
       "type": "number",
       "minimum": 0
+    },
+    "share_percent": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
     },
     "plain_language_bg": {
       "type": "string",
@@ -89,9 +97,9 @@
     "data_quality": {
       "type": "string",
       "enum": [
-        "sample",
         "public_source",
-        "manual_reviewed"
+        "manual_reviewed",
+        "provisional"
       ]
     }
   }

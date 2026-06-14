@@ -22,6 +22,15 @@ const title = field(project, "title", lang);
 const relatedBudget = budgetItems.find((item) => item.id === project.related_budget_item_id);
 
 const pinColor = categoryColors[project.category] ?? "var(--brand)";
+
+const amount =
+  project.budget.amount_eur != null
+    ? formatMoney(project.budget.amount_eur, lang, "EUR")
+    : project.budget.amount_bgn != null
+      ? formatMoney(project.budget.amount_bgn, lang, "BGN")
+      : null;
+const isProvisional = project.data_quality === "provisional";
+const note = field(project, "note", lang);
 ---
 
 <Layout lang={lang} path={`/projects/${project.id}`} title={title} description={field(project, "summary", lang)}>
@@ -39,9 +48,12 @@ const pinColor = categoryColors[project.category] ?? "var(--brand)";
       <p class="lead">{field(project, "summary", lang)}</p>
       <div class="pill-row" style="margin-top:18px">
         <StatusBadge status={project.status} type="project" lang={lang} />
-        <span class="badge sample">{t.site.sampleData}</span>
+        {isProvisional && (
+          <span class="badge" style="background:var(--accent-soft);color:var(--accent)">{t.project.provisional}</span>
+        )}
         <span class="meta">{`${t.project.updated} ${formatDate(project.updated_at, lang)}`}</span>
       </div>
+      {note && <p class="lead" style="font-size:1rem;margin-top:12px">{note}</p>}
     </div>
   </section>
 
@@ -51,7 +63,7 @@ const pinColor = categoryColors[project.category] ?? "var(--brand)";
         <h2>{t.project.keyFacts}</h2>
         <table class="table facts">
           <tbody>
-            <tr><th>{t.project.budget}</th><td class="money">{formatMoney(project.budget.amount_bgn, lang)}</td></tr>
+            <tr><th>{t.project.budget}</th><td>{amount ? <span class="money">{amount}</span> : <span class="meta">{t.project.noAmount}</span>}</td></tr>
             <tr><th>{t.project.year}</th><td>{project.budget.year}</td></tr>
             <tr><th>{t.project.funding}</th><td>{fundingSourceLabel(project.budget.funding_source, lang)}</td></tr>
             <tr><th>{t.project.status}</th><td><StatusBadge status={project.status} type="project" lang={lang} /></td></tr>
@@ -82,6 +94,7 @@ const pinColor = categoryColors[project.category] ?? "var(--brand)";
           aria-label={t.project.mapLabel}
         >
         </div>
+        {project.location.approximate && <p class="meta" style="margin-top:10px">{t.project.approxLocation}</p>}
       </article>
 
       <article>

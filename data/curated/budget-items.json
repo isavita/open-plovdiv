@@ -1,172 +1,110 @@
 [
   {
-    "id": "budget-plovdiv-2025-roads",
+    "id": "budget-plovdiv-2025-education",
     "year": 2025,
     "municipality": "plovdiv",
-    "category": "roads",
-    "title_bg": "Пътна инфраструктура",
-    "amount_bgn": 6200000,
-    "plain_language_bg": "Примерна категория за ремонти на улици, кръстовища и пътна настилка.",
+    "category": "education",
+    "title_bg": "Образование",
+    "title_en": "Education",
+    "amount_bgn": 61702285,
+    "share_percent": 44.2,
+    "plain_language_bg": "Най-големият дял от капиталовата програма за 2025 г. — училища, детски градини и образователна среда (приблизителна стойност по публикувания дял).",
+    "plain_language_en": "The largest share of the 2025 capital programme — schools, kindergartens and educational facilities (approximate value from the published share).",
     "source_document": {
-      "title": "Община Пловдив - публична информация",
-      "url": "https://www.plovdiv.bg/",
-      "accessed_at": "2026-06-13"
+      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
+      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "accessed_at": "2026-06-14"
     },
-    "data_quality": "sample",
-    "title_en": "Road infrastructure",
-    "plain_language_en": "Sample category for repairs of streets, intersections and road surfaces."
+    "data_quality": "public_source"
   },
   {
-    "id": "budget-plovdiv-2025-pavement",
+    "id": "budget-plovdiv-2025-environment",
     "year": 2025,
     "municipality": "plovdiv",
-    "category": "pavement",
-    "title_bg": "Тротоари и пешеходна среда",
-    "amount_bgn": 1800000,
-    "plain_language_bg": "Примерна категория за тротоари, пешеходни алеи и безопасни пресичания.",
+    "category": "environment",
+    "title_bg": "Околна среда, чистота и улици",
+    "title_en": "Environment, cleanliness and streets",
+    "amount_bgn": 26523607,
+    "share_percent": 19,
+    "plain_language_bg": "Опазване на околната среда, чистота, благоустрояване и ремонт на улици (приблизителна стойност по публикувания дял).",
+    "plain_language_en": "Environmental protection, cleanliness, improvement and street repairs (approximate value from the published share).",
     "source_document": {
-      "title": "Община Пловдив - публична информация",
-      "url": "https://www.plovdiv.bg/",
-      "accessed_at": "2026-06-13"
+      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
+      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "accessed_at": "2026-06-14"
     },
-    "data_quality": "sample",
-    "title_en": "Pavements and pedestrian environment",
-    "plain_language_en": "Sample category for pavements, pedestrian paths and safe crossings."
+    "data_quality": "public_source"
   },
   {
-    "id": "budget-plovdiv-2025-lighting",
+    "id": "budget-plovdiv-2025-social",
     "year": 2025,
     "municipality": "plovdiv",
-    "category": "street_lighting",
-    "title_bg": "Улично осветление",
-    "amount_bgn": 1400000,
-    "plain_language_bg": "Примерна категория за поддръжка и подмяна на улично осветление.",
+    "category": "social",
+    "title_bg": "Социални дейности",
+    "title_en": "Social activities",
+    "amount_bgn": 13122205,
+    "share_percent": 9.4,
+    "plain_language_bg": "Социална подкрепа и свързана инфраструктура (приблизителна стойност по публикувания дял).",
+    "plain_language_en": "Social support and related infrastructure (approximate value from the published share).",
     "source_document": {
-      "title": "Община Пловдив - публична информация",
-      "url": "https://www.plovdiv.bg/",
-      "accessed_at": "2026-06-13"
+      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
+      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "accessed_at": "2026-06-14"
     },
-    "data_quality": "sample",
-    "title_en": "Street lighting",
-    "plain_language_en": "Sample category for maintenance and replacement of street lighting."
-  },
-  {
-    "id": "budget-plovdiv-2025-parks",
-    "year": 2025,
-    "municipality": "plovdiv",
-    "category": "parks",
-    "title_bg": "Паркове и зелени площи",
-    "amount_bgn": 2300000,
-    "plain_language_bg": "Примерна категория за поддръжка на паркове, градинки и дървета.",
-    "source_document": {
-      "title": "Община Пловдив - публична информация",
-      "url": "https://www.plovdiv.bg/",
-      "accessed_at": "2026-06-13"
-    },
-    "data_quality": "sample",
-    "title_en": "Parks and green spaces",
-    "plain_language_en": "Sample category for maintenance of parks, gardens and trees."
-  },
-  {
-    "id": "budget-plovdiv-2025-waste",
-    "year": 2025,
-    "municipality": "plovdiv",
-    "category": "waste",
-    "title_bg": "Чистота и отпадъци",
-    "amount_bgn": 5100000,
-    "plain_language_bg": "Примерна категория за сметосъбиране, почистване и кошчета.",
-    "source_document": {
-      "title": "Община Пловдив - публична информация",
-      "url": "https://www.plovdiv.bg/",
-      "accessed_at": "2026-06-13"
-    },
-    "data_quality": "sample",
-    "title_en": "Cleanliness and waste",
-    "plain_language_en": "Sample category for waste collection, cleaning and bins."
-  },
-  {
-    "id": "budget-plovdiv-2025-public-transport",
-    "year": 2025,
-    "municipality": "plovdiv",
-    "category": "public_transport",
-    "title_bg": "Градски транспорт",
-    "amount_bgn": 3600000,
-    "plain_language_bg": "Примерна категория за спирки, линии, информация за пътници и транспортна достъпност.",
-    "source_document": {
-      "title": "Община Пловдив - публична информация",
-      "url": "https://www.plovdiv.bg/",
-      "accessed_at": "2026-06-13"
-    },
-    "data_quality": "sample",
-    "title_en": "Public transport",
-    "plain_language_en": "Sample category for stops, lines, passenger information and transport accessibility."
-  },
-  {
-    "id": "budget-plovdiv-2025-accessibility",
-    "year": 2025,
-    "municipality": "plovdiv",
-    "category": "accessibility",
-    "title_bg": "Достъпна градска среда",
-    "amount_bgn": 950000,
-    "plain_language_bg": "Примерна категория за рампи, понижаване на бордюри и достъпни маршрути.",
-    "source_document": {
-      "title": "Община Пловдив - публична информация",
-      "url": "https://www.plovdiv.bg/",
-      "accessed_at": "2026-06-13"
-    },
-    "data_quality": "sample",
-    "title_en": "Accessible urban environment",
-    "plain_language_en": "Sample category for ramps, lowered curbs and accessible routes."
-  },
-  {
-    "id": "budget-plovdiv-2025-drainage",
-    "year": 2025,
-    "municipality": "plovdiv",
-    "category": "drainage",
-    "title_bg": "Отводняване",
-    "amount_bgn": 1250000,
-    "plain_language_bg": "Примерна категория за шахти, канали и предотвратяване на локални наводнения.",
-    "source_document": {
-      "title": "Община Пловдив - публична информация",
-      "url": "https://www.plovdiv.bg/",
-      "accessed_at": "2026-06-13"
-    },
-    "data_quality": "sample",
-    "title_en": "Drainage",
-    "plain_language_en": "Sample category for drains, channels and prevention of local flooding."
+    "data_quality": "public_source"
   },
   {
     "id": "budget-plovdiv-2025-culture",
     "year": 2025,
     "municipality": "plovdiv",
     "category": "culture",
-    "title_bg": "Култура и наследство",
-    "amount_bgn": 2100000,
-    "plain_language_bg": "Примерна категория за културна инфраструктура и публични пространства с културна стойност.",
+    "title_bg": "Култура",
+    "title_en": "Culture",
+    "amount_bgn": 7957082,
+    "share_percent": 5.7,
+    "plain_language_bg": "Културна инфраструктура и публични пространства с културна стойност (приблизителна стойност по публикувания дял).",
+    "plain_language_en": "Cultural infrastructure and public spaces with cultural value (approximate value from the published share).",
     "source_document": {
-      "title": "Община Пловдив - публична информация",
-      "url": "https://www.plovdiv.bg/",
-      "accessed_at": "2026-06-13"
+      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
+      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "accessed_at": "2026-06-14"
     },
-    "data_quality": "sample",
-    "title_en": "Culture and heritage",
-    "plain_language_en": "Sample category for cultural infrastructure and public spaces with cultural value."
+    "data_quality": "public_source"
   },
   {
-    "id": "budget-plovdiv-2025-education",
+    "id": "budget-plovdiv-2025-sport",
     "year": 2025,
     "municipality": "plovdiv",
-    "category": "education",
-    "title_bg": "Образователна инфраструктура",
-    "amount_bgn": 2900000,
-    "plain_language_bg": "Примерна категория за дворове, подходи и публични зони около училища и детски градини.",
+    "category": "sport",
+    "title_bg": "Спорт",
+    "title_en": "Sport",
+    "amount_bgn": 5863113,
+    "share_percent": 4.2,
+    "plain_language_bg": "Спортна инфраструктура, включително стадиони и зали (приблизителна стойност по публикувания дял).",
+    "plain_language_en": "Sports infrastructure, including stadiums and halls (approximate value from the published share).",
     "source_document": {
-      "title": "Община Пловдив - публична информация",
-      "url": "https://www.plovdiv.bg/",
-      "accessed_at": "2026-06-13"
+      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
+      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "accessed_at": "2026-06-14"
     },
-    "data_quality": "sample",
-    "title_en": "Educational infrastructure",
-    "plain_language_en": "Sample category for yards, approaches and public areas around schools and kindergartens."
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2025-other",
+    "year": 2025,
+    "municipality": "plovdiv",
+    "category": "other",
+    "title_bg": "Други капиталови разходи",
+    "title_en": "Other capital expenditure",
+    "amount_bgn": 24429637,
+    "share_percent": 17.5,
+    "plain_language_bg": "Останалата част от капиталовата програма извън посочените сектори (приблизителна стойност).",
+    "plain_language_en": "The remaining part of the capital programme outside the listed sectors (approximate value).",
+    "source_document": {
+      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
+      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
   }
 ]

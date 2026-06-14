@@ -14,6 +14,7 @@ export type Location = {
   lng: number;
   address_bg: string;
   address_en?: string;
+  approximate?: boolean;
 };
 
 export type Project = {
@@ -24,15 +25,19 @@ export type Project = {
   summary_en?: string;
   category: string;
   status: string;
+  note_bg?: string;
+  note_en?: string;
   municipality: "plovdiv";
   district: string | null;
   location: Location;
   budget: {
-    amount_bgn: number;
+    amount_bgn?: number;
+    amount_eur?: number;
+    currency?: "BGN" | "EUR";
     year: number;
     funding_source: string;
   };
-  related_budget_item_id: string;
+  related_budget_item_id?: string;
   timeline?: Array<{
     date: string;
     label_bg: string;
@@ -69,6 +74,7 @@ export type BudgetItem = {
   title_bg: string;
   title_en?: string;
   amount_bgn: number;
+  share_percent?: number;
   plain_language_bg?: string;
   plain_language_en?: string;
   source_document: Source;

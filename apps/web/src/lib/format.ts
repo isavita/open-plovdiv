@@ -10,10 +10,14 @@ import {
 
 const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB" };
 
-export function formatMoney(amount: number, lang: Lang = "bg"): string {
+export function formatMoney(
+  amount: number,
+  lang: Lang = "bg",
+  currency: "BGN" | "EUR" = "BGN"
+): string {
   return new Intl.NumberFormat(moneyLocale[lang], {
     style: "currency",
-    currency: "BGN",
+    currency,
     maximumFractionDigits: 0
   }).format(amount);
 }

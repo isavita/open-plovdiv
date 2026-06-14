@@ -15,7 +15,6 @@
     "district",
     "location",
     "budget",
-    "related_budget_item_id",
     "sources",
     "data_quality",
     "updated_at"
@@ -54,6 +53,7 @@
         "drainage",
         "culture",
         "education",
+        "sport",
         "other"
       ]
     },
@@ -66,8 +66,15 @@
         "in_progress",
         "completed",
         "delayed",
+        "postponed",
         "unknown"
       ]
+    },
+    "note_bg": {
+      "type": "string"
+    },
+    "note_en": {
+      "type": "string"
     },
     "municipality": {
       "const": "plovdiv"
@@ -104,6 +111,9 @@
         "address_en": {
           "type": "string",
           "minLength": 3
+        },
+        "approximate": {
+          "type": "boolean"
         }
       }
     },
@@ -111,7 +121,6 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "amount_bgn",
         "year",
         "funding_source"
       ],
@@ -119,6 +128,14 @@
         "amount_bgn": {
           "type": "number",
           "minimum": 0
+        },
+        "amount_eur": {
+          "type": "number",
+          "minimum": 0
+        },
+        "currency": {
+          "type": "string",
+          "enum": ["BGN", "EUR"]
         },
         "year": {
           "type": "integer",
@@ -174,9 +191,9 @@
     "data_quality": {
       "type": "string",
       "enum": [
-        "sample",
         "public_source",
-        "manual_reviewed"
+        "manual_reviewed",
+        "provisional"
       ]
     },
     "updated_at": {

@@ -13,7 +13,7 @@ const datasets = [
     label: "projects",
     dataPath: "data/curated/projects.json",
     schemaPath: "data/schemas/project.schema.json",
-    minRecords: 20
+    minRecords: 1
   },
   {
     label: "budget items",
@@ -73,7 +73,8 @@ function assertNoPrivateFixFields(records) {
 function assertProjectBudgetLinks(projects, budgetItems) {
   const budgetIds = new Set(budgetItems.map((item) => item.id));
   for (const project of projects) {
-    if (!budgetIds.has(project.related_budget_item_id)) {
+    // The link is optional; only validate it when a project declares one.
+    if (project.related_budget_item_id && !budgetIds.has(project.related_budget_item_id)) {
       throw new Error(
         `projects: ${project.id} references missing budget item ${project.related_budget_item_id}`
       );

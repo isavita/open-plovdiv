@@ -1,46 +1,101 @@
 [
   {
-    "id": "plovdiv-municipality",
-    "title_bg": "Община Пловдив",
-    "url": "https://www.plovdiv.bg/",
-    "used_for": "Начална точка за официални документи, бюджети, решения и публични съобщения.",
-    "accessed_at": "2026-06-13",
-    "limitations_bg": "Текущите записи в прототипа са примерни и трябва да бъдат заменени с конкретни документи.",
-    "title_en": "Plovdiv Municipality",
-    "used_for_en": "Starting point for official documents, budgets, decisions and public announcements.",
-    "limitations_en": "Current prototype records are samples and should be replaced with specific documents."
+    "id": "plovdiv-budget-2025",
+    "title_bg": "Община Пловдив — бюджет 2025",
+    "title_en": "Plovdiv Municipality — 2025 budget",
+    "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+    "used_for": "Общ размер на бюджета за 2025 г. и капиталовата програма по сектори.",
+    "used_for_en": "Total 2025 budget and the capital programme breakdown by sector.",
+    "accessed_at": "2026-06-14",
+    "limitations_bg": "Официална страница на общината. Част от детайлите се цитират и през местни медии.",
+    "limitations_en": "Official municipal page. Some details are also reported via local media."
+  },
+  {
+    "id": "plovdiv-current-projects",
+    "title_bg": "Община Пловдив — текущи проекти",
+    "title_en": "Plovdiv Municipality — current projects",
+    "url": "https://www.plovdiv.bg/en/item/projects/current_projects/",
+    "used_for": "Списък на текущи проекти на общината, включително европейски програми.",
+    "used_for_en": "List of the municipality's current projects, including EU programmes.",
+    "accessed_at": "2026-06-14",
+    "limitations_bg": "Страницата не публикува единен статус „завършен/в ход“ за всеки проект.",
+    "limitations_en": "The page does not publish a single completed/ongoing status per project."
+  },
+  {
+    "id": "plovdiv-obs",
+    "title_bg": "Общински съвет — Пловдив (решения)",
+    "title_en": "Plovdiv Municipal Council (decisions)",
+    "url": "http://plovdiv.bg/obs/",
+    "used_for": "Решения за бюджета и капиталовата програма, включително прогнозния разчет за 2026 г.",
+    "used_for_en": "Budget and capital-programme decisions, including the 2026 provisional estimate.",
+    "accessed_at": "2026-06-14",
+    "limitations_bg": "Решенията са официални, но са обемни PDF документи.",
+    "limitations_en": "Decisions are official but are lengthy PDF documents."
+  },
+  {
+    "id": "trafficnews-budget-2025",
+    "title_bg": "TrafficNews — бюджет на Пловдив за 2025 г.",
+    "title_en": "TrafficNews — Plovdiv 2025 budget",
+    "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/",
+    "used_for": "Общ размер 715 154 301 лв., капиталова програма и започващи проекти за 2025 г.",
+    "used_for_en": "Total of BGN 715,154,301, the capital programme and projects starting in 2025.",
+    "accessed_at": "2026-06-14",
+    "limitations_bg": "Медийна публикация, базирана на проектобюджета на общината.",
+    "limitations_en": "Media report based on the municipality's draft budget."
+  },
+  {
+    "id": "podtepeto-capital-2026",
+    "title_bg": "Под тепето — капиталова програма за 2026 г.",
+    "title_en": "Pod tepeto — 2026 capital programme",
+    "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
+    "used_for": "Прогнозна капиталова програма за 2026 г. (≈87 млн. евро) и източници на финансиране.",
+    "used_for_en": "Provisional 2026 capital programme (≈EUR 87M) and funding sources.",
+    "accessed_at": "2026-06-14",
+    "limitations_bg": "Прогнозен разчет — стойностите подлежат на промяна с приемането на държавния бюджет.",
+    "limitations_en": "Provisional estimate — figures may change once the state budget is adopted."
+  },
+  {
+    "id": "plovdivnow-frozen-2026",
+    "title_bg": "PlovdivNow — замразени проекти в бюджета",
+    "title_en": "PlovdivNow — projects frozen in the budget",
+    "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/",
+    "used_for": "Проекти с прогнозна стойност 0 лв. за 2025–2026 (отложени).",
+    "used_for_en": "Projects with a forecast value of BGN 0 for 2025–2026 (postponed).",
+    "accessed_at": "2026-06-14",
+    "limitations_bg": "Медийна публикация по Приложение 3 към бюджета.",
+    "limitations_en": "Media report based on Appendix 3 of the budget."
+  },
+  {
+    "id": "darik-euro-budget-2026",
+    "title_bg": "Дарик — първи бюджет в евро за Пловдив",
+    "title_en": "Darik — Plovdiv's first budget in euros",
+    "url": "https://darik.bg/parvi-budzet-v-evro-za-plovdiv-vliza-na-glasuvane-v-obstinskia-savet~503815.html",
+    "used_for": "Контекст за бюджета за 2026 г. — първият изготвен в евро.",
+    "used_for_en": "Context for the 2026 budget — the first prepared in euros.",
+    "accessed_at": "2026-06-14",
+    "limitations_bg": "Медийна публикация от етапа на гласуване на бюджета.",
+    "limitations_en": "Media report from the budget-voting stage."
   },
   {
     "id": "public-procurement-register",
-    "title_bg": "Регистър на обществените поръчки",
-    "url": "https://www2.aop.bg/",
-    "used_for": "Бъдеща проверка на обществени поръчки и договори.",
-    "accessed_at": "2026-06-13",
-    "limitations_bg": "Не е използван автоматичен импорт в първата версия.",
-    "title_en": "Public Procurement Register",
-    "used_for_en": "Future verification of public tenders and contracts.",
-    "limitations_en": "No automated import is used in the first version."
+    "title_bg": "Регистър на обществените поръчки (АОП)",
+    "title_en": "Public Procurement Register (AOP)",
+    "url": "https://www.aop.bg/",
+    "used_for": "Проверка на обществени поръчки и договори за конкретни проекти.",
+    "used_for_en": "Verification of public tenders and contracts for specific projects.",
+    "accessed_at": "2026-06-14",
+    "limitations_bg": "Изисква търсене по конкретен възложител или предмет на поръчка.",
+    "limitations_en": "Requires searching by a specific contracting authority or subject."
   },
   {
     "id": "openstreetmap",
     "title_bg": "OpenStreetMap",
+    "title_en": "OpenStreetMap",
     "url": "https://www.openstreetmap.org/",
     "used_for": "Картова основа и пространствен контекст.",
-    "accessed_at": "2026-06-13",
-    "limitations_bg": "Картовите данни се поддържат от общност и може да имат непълноти.",
-    "title_en": "OpenStreetMap",
     "used_for_en": "Map base layer and spatial context.",
+    "accessed_at": "2026-06-14",
+    "limitations_bg": "Картовите данни се поддържат от общност и може да имат непълноти.",
     "limitations_en": "Map data is community-maintained and may be incomplete."
-  },
-  {
-    "id": "prototype-seed-data",
-    "title_bg": "Примерни данни за прототип",
-    "url": "https://openplovdiv.example/methodology",
-    "used_for": "Демонстрационни записи, с които се тества интерфейсът преди реална редакторска проверка.",
-    "accessed_at": "2026-06-13",
-    "limitations_bg": "Не трябва да се третират като официални твърдения.",
-    "title_en": "Prototype sample data",
-    "used_for_en": "Demonstration records used to test the interface before real editorial review.",
-    "limitations_en": "Should not be treated as official statements."
   }
 ]

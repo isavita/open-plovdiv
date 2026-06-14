@@ -1,802 +1,389 @@
 [
   {
-    "id": "plovdiv-demo-roads-001",
-    "title_bg": "Примерен проект: обновяване на улична настилка в Централен",
-    "title_en": "Sample project: street surface renewal in Tsentralen",
-    "summary_bg": "Демонстрационен запис за ремонт на улична настилка. Не е официално твърдение и служи за тестване на интерфейса.",
-    "category": "roads",
-    "status": "planned",
-    "municipality": "plovdiv",
-    "district": "Централен",
-    "location": {
-      "lat": 42.1421,
-      "lng": 24.7483,
-      "address_bg": "Централен район, Пловдив",
-      "address_en": "Tsentralen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 480000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-roads",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
-    "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
-    ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for street-surface repair. Not an official statement; used to test the interface."
-  },
-  {
-    "id": "plovdiv-demo-pavement-002",
-    "title_bg": "Примерен проект: безопасен тротоар до училищна зона",
-    "title_en": "Sample project: safe pavement near a school area",
-    "summary_bg": "Демонстрационен запис за тротоар и пешеходна безопасност около обществена зона.",
-    "category": "pavement",
-    "status": "funded",
-    "municipality": "plovdiv",
-    "district": "Северен",
-    "location": {
-      "lat": 42.1584,
-      "lng": 24.7449,
-      "address_bg": "Северен район, Пловдив",
-      "address_en": "Severen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 160000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-pavement",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
-    "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
-    ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for a pavement and pedestrian safety near a public area."
-  },
-  {
-    "id": "plovdiv-demo-lighting-003",
-    "title_bg": "Примерен проект: подмяна на осветление по квартална улица",
-    "title_en": "Sample project: lighting replacement on a neighborhood street",
-    "summary_bg": "Демонстрационен запис за енергийно ефективно улично осветление и по-ясна нощна видимост.",
-    "category": "street_lighting",
-    "status": "contracted",
+    "id": "plovdiv-stadium-hristo-botev",
+    "title_bg": "Стадион „Христо Ботев“",
+    "title_en": "Hristo Botev Stadium",
+    "summary_bg": "Изграждане и реконструкция на градския стадион „Христо Ботев“ — обект от капиталовата програма на Община Пловдив.",
+    "summary_en": "Construction and reconstruction of the Hristo Botev city stadium — part of Plovdiv Municipality's capital programme.",
+    "category": "sport",
+    "status": "in_progress",
+    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
+    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
     "municipality": "plovdiv",
     "district": "Южен",
-    "location": {
-      "lat": 42.1248,
-      "lng": 24.7425,
-      "address_bg": "Южен район, Пловдив",
-      "address_en": "Yuzhen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 95000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-lighting",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
+    "location": { "lat": 42.1304, "lng": 24.7449, "address_bg": "Южен район, Пловдив", "address_en": "Yuzhen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2025, "funding_source": "municipal_capital" },
     "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
+      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
     ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for energy-efficient street lighting and clearer night-time visibility."
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
   },
   {
-    "id": "plovdiv-demo-parks-004",
-    "title_bg": "Примерен проект: обновяване на квартална градинка",
-    "title_en": "Sample project: neighborhood garden renewal",
-    "summary_bg": "Демонстрационен запис за зелена площ, пейки, алеи и поддръжка на дървета.",
-    "category": "parks",
+    "id": "plovdiv-stadium-lokomotiv",
+    "title_bg": "Стадион „Локомотив“",
+    "title_en": "Lokomotiv Stadium",
+    "summary_bg": "Проект за стадион „Локомотив“ в капиталовата програма на общината.",
+    "summary_en": "Project for the Lokomotiv stadium within the municipality's capital programme.",
+    "category": "sport",
     "status": "in_progress",
-    "municipality": "plovdiv",
-    "district": "Тракия",
-    "location": {
-      "lat": 42.1325,
-      "lng": 24.7868,
-      "address_bg": "Тракия, Пловдив",
-      "address_en": "Trakiya, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 220000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-parks",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
-    "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
-    ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for a green space with benches, paths and tree maintenance."
-  },
-  {
-    "id": "plovdiv-demo-waste-005",
-    "title_bg": "Примерен проект: нови съдове за разделно събиране",
-    "title_en": "Sample project: new separate waste collection containers",
-    "summary_bg": "Демонстрационен запис за подобряване на достъпа до съдове за отпадъци и по-чисти обществени места.",
-    "category": "waste",
-    "status": "planned",
-    "municipality": "plovdiv",
-    "district": "Западен",
-    "location": {
-      "lat": 42.1454,
-      "lng": 24.7145,
-      "address_bg": "Западен район, Пловдив",
-      "address_en": "Zapaden district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 130000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-waste",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
-    "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
-    ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for improving access to waste containers and cleaner public spaces."
-  },
-  {
-    "id": "plovdiv-demo-transport-006",
-    "title_bg": "Примерен проект: информационни табла на спирки",
-    "title_en": "Sample project: information boards at bus stops",
-    "summary_bg": "Демонстрационен запис за по-ясна информация за градски транспорт на публични спирки.",
-    "category": "public_transport",
-    "status": "unknown",
+    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
+    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
     "municipality": "plovdiv",
     "district": "Източен",
-    "location": {
-      "lat": 42.1412,
-      "lng": 24.7718,
-      "address_bg": "Източен район, Пловдив",
-      "address_en": "Iztochen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 310000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-public-transport",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
+    "location": { "lat": 42.1385, "lng": 24.772, "address_bg": "Лаута, Източен район, Пловдив", "address_en": "Lauta, Iztochen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2025, "funding_source": "municipal_capital" },
     "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
+      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
     ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for clearer public-transport information at public stops."
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
   },
   {
-    "id": "plovdiv-demo-accessibility-007",
-    "title_bg": "Примерен проект: понижени бордюри на кръстовище",
-    "title_en": "Sample project: lowered curbs at an intersection",
-    "summary_bg": "Демонстрационен запис за по-достъпно пресичане за хора с колички, помощни средства и велосипеди.",
-    "category": "accessibility",
-    "status": "completed",
-    "municipality": "plovdiv",
-    "district": "Централен",
-    "location": {
-      "lat": 42.1396,
-      "lng": 24.7536,
-      "address_bg": "Централен район, Пловдив",
-      "address_en": "Tsentralen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 70000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-accessibility",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
-    "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
-    ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for a more accessible crossing for wheelchairs, mobility aids and bicycles."
-  },
-  {
-    "id": "plovdiv-demo-drainage-008",
-    "title_bg": "Примерен проект: почистване и ремонт на отводнителни шахти",
-    "title_en": "Sample project: drainage inlet cleaning and repair",
-    "summary_bg": "Демонстрационен запис за намаляване на локални събирания на вода след валежи.",
-    "category": "drainage",
-    "status": "delayed",
-    "municipality": "plovdiv",
-    "district": "Северен",
-    "location": {
-      "lat": 42.1606,
-      "lng": 24.7582,
-      "address_bg": "Северен район, Пловдив",
-      "address_en": "Severen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 115000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-drainage",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
-    "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
-    ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for reducing local water pooling after rainfall."
-  },
-  {
-    "id": "plovdiv-demo-culture-009",
-    "title_bg": "Примерен проект: подобрение на публично културно пространство",
-    "title_en": "Sample project: public cultural space improvement",
-    "summary_bg": "Демонстрационен запис за градско пространство с културна функция и обществен достъп.",
-    "category": "culture",
-    "status": "funded",
-    "municipality": "plovdiv",
-    "district": "Стар град",
-    "location": {
-      "lat": 42.1492,
-      "lng": 24.7519,
-      "address_bg": "Старинен Пловдив",
-      "address_en": "Old Town, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 260000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-culture",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
-    "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
-    ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for an urban space with a cultural function and public access."
-  },
-  {
-    "id": "plovdiv-demo-education-010",
-    "title_bg": "Примерен проект: безопасен подход до детска градина",
-    "title_en": "Sample project: safer access to a kindergarten",
-    "summary_bg": "Демонстрационен запис за пешеходен достъп и организация около образователна сграда.",
-    "category": "education",
-    "status": "planned",
-    "municipality": "plovdiv",
-    "district": "Южен",
-    "location": {
-      "lat": 42.1198,
-      "lng": 24.7512,
-      "address_bg": "Южен район, Пловдив",
-      "address_en": "Yuzhen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 190000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-education",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
-    "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
-    ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for pedestrian access and organisation around an educational building."
-  },
-  {
-    "id": "plovdiv-demo-roads-011",
-    "title_bg": "Примерен проект: маркировка и безопасност на кръстовище",
-    "title_en": "Sample project: intersection markings and safety",
-    "summary_bg": "Демонстрационен запис за пътна маркировка, видимост и организация на движение.",
+    "id": "plovdiv-road-golyamokonarsko",
+    "title_bg": "Голямоконарско шосе",
+    "title_en": "Golyamokonarsko Road",
+    "summary_bg": "Разширение и реконструкция на Голямоконарско шосе (втори етап).",
+    "summary_en": "Widening and reconstruction of Golyamokonarsko Road (phase two).",
     "category": "roads",
-    "status": "contracted",
-    "municipality": "plovdiv",
-    "district": "Тракия",
-    "location": {
-      "lat": 42.1309,
-      "lng": 24.7974,
-      "address_bg": "Тракия, Пловдив",
-      "address_en": "Trakiya, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 145000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-roads",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
-    "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
-    ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for road markings, visibility and traffic organisation."
-  },
-  {
-    "id": "plovdiv-demo-pavement-012",
-    "title_bg": "Примерен проект: ремонт на пешеходна алея",
-    "title_en": "Sample project: pedestrian alley repair",
-    "summary_bg": "Демонстрационен запис за подобрение на настилка по пешеходен маршрут.",
-    "category": "pavement",
     "status": "in_progress",
+    "note_bg": "Втори етап, заложен за 2025 г.; продължава в капиталовата програма за 2026 г.",
+    "note_en": "Phase two, scheduled for 2025; continues in the 2026 capital programme.",
     "municipality": "plovdiv",
     "district": "Западен",
-    "location": {
-      "lat": 42.1442,
-      "lng": 24.7016,
-      "address_bg": "Западен район, Пловдив",
-      "address_en": "Zapaden district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 125000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-pavement",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
+    "location": { "lat": 42.1645, "lng": 24.695, "address_bg": "Западен район, Пловдив", "address_en": "Zapaden district, Plovdiv", "approximate": true },
+    "budget": { "year": 2025, "funding_source": "municipal_capital" },
     "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
+      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
     ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for improving the surface along a pedestrian route."
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
   },
   {
-    "id": "plovdiv-demo-lighting-013",
-    "title_bg": "Примерен проект: осветяване на пешеходна връзка",
-    "title_en": "Sample project: pedestrian link lighting",
-    "summary_bg": "Демонстрационен запис за осветление на маршрут, използван вечер от пешеходци.",
-    "category": "street_lighting",
-    "status": "planned",
+    "id": "plovdiv-road-rogoshko",
+    "title_bg": "Рогошко шосе",
+    "title_en": "Rogoshko Road",
+    "summary_bg": "Ремонт и реконструкция на Рогошко шосе.",
+    "summary_en": "Repair and reconstruction of Rogoshko Road.",
+    "category": "roads",
+    "status": "funded",
+    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
+    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
     "municipality": "plovdiv",
     "district": "Северен",
-    "location": {
-      "lat": 42.1662,
-      "lng": 24.7461,
-      "address_bg": "Северен район, Пловдив",
-      "address_en": "Severen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 88000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-lighting",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
+    "location": { "lat": 42.17, "lng": 24.785, "address_bg": "Северен район, Пловдив", "address_en": "Severen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2025, "funding_source": "municipal_capital" },
     "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
+      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
     ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for lighting a route used by pedestrians in the evening."
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
   },
   {
-    "id": "plovdiv-demo-parks-014",
-    "title_bg": "Примерен проект: нови сенчести места в парк",
-    "title_en": "Sample project: new shaded areas in a park",
-    "summary_bg": "Демонстрационен запис за пейки, сенчести места и по-добра поддръжка на зелена зона.",
-    "category": "parks",
-    "status": "completed",
+    "id": "plovdiv-road-kuklensko",
+    "title_bg": "Кукленско шосе",
+    "title_en": "Kuklensko Road",
+    "summary_bg": "Проект за Кукленско шосе в прогнозната капиталова програма за 2026 г.",
+    "summary_en": "Kuklensko Road project in the provisional 2026 capital programme.",
+    "category": "roads",
+    "status": "planned",
+    "note_bg": "Включен в прогнозната капиталова програма за 2026 г. (подлежи на промяна).",
+    "note_en": "Included in the provisional 2026 capital programme (subject to change).",
     "municipality": "plovdiv",
-    "district": "Централен",
-    "location": {
-      "lat": 42.1459,
-      "lng": 24.7406,
-      "address_bg": "Централен район, Пловдив",
-      "address_en": "Tsentralen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 175000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-parks",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
+    "district": "Южен",
+    "location": { "lat": 42.115, "lng": 24.756, "address_bg": "Южен район, Пловдив", "address_en": "Yuzhen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2026, "funding_source": "municipal_capital" },
     "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
     ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for benches, shaded spots and better upkeep of a green area."
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14"
   },
   {
-    "id": "plovdiv-demo-waste-015",
-    "title_bg": "Примерен проект: подмяна на улични кошчета",
-    "title_en": "Sample project: street bin replacement",
-    "summary_bg": "Демонстрационен запис за по-чисти спирки, тротоари и малки обществени пространства.",
-    "category": "waste",
-    "status": "funded",
+    "id": "plovdiv-road-general-kolev",
+    "title_bg": "Улица „Генерал Колев“",
+    "title_en": "General Kolev Street",
+    "summary_bg": "Реконструкция на улица „Генерал Колев“.",
+    "summary_en": "Reconstruction of General Kolev Street.",
+    "category": "roads",
+    "status": "in_progress",
+    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
+    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
     "municipality": "plovdiv",
     "district": "Източен",
-    "location": {
-      "lat": 42.1375,
-      "lng": 24.7769,
-      "address_bg": "Източен район, Пловдив",
-      "address_en": "Iztochen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 105000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-waste",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
+    "location": { "lat": 42.136, "lng": 24.779, "address_bg": "Източен район, Пловдив", "address_en": "Iztochen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2025, "funding_source": "municipal_capital" },
     "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
+      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
     ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for cleaner stops, pavements and small public spaces."
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
   },
   {
-    "id": "plovdiv-demo-transport-016",
-    "title_bg": "Примерен проект: достъпна спирка на градски транспорт",
-    "title_en": "Sample project: accessible public transport stop",
-    "summary_bg": "Демонстрационен запис за спирка с по-добро чакане, достъп и информация.",
-    "category": "public_transport",
-    "status": "planned",
-    "municipality": "plovdiv",
-    "district": "Южен",
-    "location": {
-      "lat": 42.1214,
-      "lng": 24.7351,
-      "address_bg": "Южен район, Пловдив",
-      "address_en": "Yuzhen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 135000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-public-transport",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
-    "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
-    ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for a stop with better waiting conditions, access and information."
-  },
-  {
-    "id": "plovdiv-demo-accessibility-017",
-    "title_bg": "Примерен проект: достъпен вход към обществена сграда",
-    "title_en": "Sample project: accessible public building entrance",
-    "summary_bg": "Демонстрационен запис за достъпна среда около обществена услуга.",
-    "category": "accessibility",
-    "status": "contracted",
+    "id": "plovdiv-road-slavyanska",
+    "title_bg": "Улица „Славянска“",
+    "title_en": "Slavyanska Street",
+    "summary_bg": "Реконструкция на улица „Славянска“ в централната част на града.",
+    "summary_en": "Reconstruction of Slavyanska Street in the city centre.",
+    "category": "roads",
+    "status": "in_progress",
+    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
+    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
     "municipality": "plovdiv",
     "district": "Централен",
-    "location": {
-      "lat": 42.1467,
-      "lng": 24.7543,
-      "address_bg": "Централен район, Пловдив",
-      "address_en": "Tsentralen district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 98000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-accessibility",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
+    "location": { "lat": 42.1495, "lng": 24.7525, "address_bg": "Централен район, Пловдив", "address_en": "Tsentralen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2025, "funding_source": "municipal_capital" },
     "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
+      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
     ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for an accessible environment around a public service."
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
   },
   {
-    "id": "plovdiv-demo-drainage-018",
-    "title_bg": "Примерен проект: отвеждане на вода край подлез",
-    "title_en": "Sample project: drainage near an underpass",
-    "summary_bg": "Демонстрационен запис за по-добро отводняване на място с интензивно пешеходно движение.",
-    "category": "drainage",
-    "status": "funded",
+    "id": "plovdiv-roads-mladezhki-halm",
+    "title_bg": "Улици в квартал „Младежки хълм“",
+    "title_en": "Streets in the Mladezhki Halm neighbourhood",
+    "summary_bg": "Ремонт на улици в квартал „Младежки хълм“.",
+    "summary_en": "Street repairs in the Mladezhki Halm neighbourhood.",
+    "category": "roads",
+    "status": "planned",
+    "note_bg": "Включен в прогнозната капиталова програма за 2026 г. (подлежи на промяна).",
+    "note_en": "Included in the provisional 2026 capital programme (subject to change).",
+    "municipality": "plovdiv",
+    "district": "Централен",
+    "location": { "lat": 42.1432, "lng": 24.7345, "address_bg": "Младежки хълм, Пловдив", "address_en": "Mladezhki Halm, Plovdiv", "approximate": true },
+    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "sources": [
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+    ],
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14"
+  },
+  {
+    "id": "plovdiv-culture-cinema-kosmos",
+    "title_bg": "Кино „Космос“",
+    "title_en": "Cinema Kosmos",
+    "summary_bg": "Обновяване на кино „Космос“ като публично културно пространство.",
+    "summary_en": "Renewal of Cinema Kosmos as a public cultural space.",
+    "category": "culture",
+    "status": "in_progress",
+    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
+    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
+    "municipality": "plovdiv",
+    "district": "Централен",
+    "location": { "lat": 42.1465, "lng": 24.748, "address_bg": "Централен район, Пловдив", "address_en": "Tsentralen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2025, "funding_source": "municipal_capital" },
+    "sources": [
+      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+    ],
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
+  },
+  {
+    "id": "plovdiv-sport-zapaden-halls",
+    "title_bg": "Спортни зали в район „Западен“",
+    "title_en": "Sports halls in the Zapaden district",
+    "summary_bg": "Изграждане на нови спортни зали в район „Западен“.",
+    "summary_en": "Construction of new sports halls in the Zapaden district.",
+    "category": "sport",
+    "status": "planned",
+    "note_bg": "Включен в прогнозната капиталова програма за 2026 г. (подлежи на промяна).",
+    "note_en": "Included in the provisional 2026 capital programme (subject to change).",
     "municipality": "plovdiv",
     "district": "Западен",
-    "location": {
-      "lat": 42.1395,
-      "lng": 24.7098,
-      "address_bg": "Западен район, Пловдив",
-      "address_en": "Zapaden district, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 155000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-drainage",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
+    "location": { "lat": 42.145, "lng": 24.716, "address_bg": "Западен район, Пловдив", "address_en": "Zapaden district, Plovdiv", "approximate": true },
+    "budget": { "year": 2026, "funding_source": "municipal_capital" },
     "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
     ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for better drainage at a location with heavy pedestrian traffic."
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14"
   },
   {
-    "id": "plovdiv-demo-culture-019",
-    "title_bg": "Примерен проект: указателни табели за културен маршрут",
-    "title_en": "Sample project: wayfinding signs for a cultural route",
-    "summary_bg": "Демонстрационен запис за по-ясна ориентация към публични културни обекти.",
-    "category": "culture",
+    "id": "plovdiv-pavement-ivan-vazov",
+    "title_bg": "Пешеходна зона на ул. „Иван Вазов“",
+    "title_en": "Ivan Vazov Street pedestrian zone",
+    "summary_bg": "Изграждане на пешеходна зона по ул. „Иван Вазов“.",
+    "summary_en": "Creation of a pedestrian zone along Ivan Vazov Street.",
+    "category": "pavement",
     "status": "planned",
+    "note_bg": "Заложен за стартиране през 2025 г.",
+    "note_en": "Scheduled to start in 2025.",
     "municipality": "plovdiv",
-    "district": "Стар град",
-    "location": {
-      "lat": 42.1501,
-      "lng": 24.7538,
-      "address_bg": "Старинен Пловдив",
-      "address_en": "Old Town, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 76000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-culture",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
+    "district": "Централен",
+    "location": { "lat": 42.1455, "lng": 24.7495, "address_bg": "Централен район, Пловдив", "address_en": "Tsentralen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2025, "funding_source": "municipal_capital" },
     "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
+      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" }
     ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for clearer wayfinding to public cultural sites."
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
   },
   {
-    "id": "plovdiv-demo-education-020",
-    "title_bg": "Примерен проект: подобрение на училищен двор",
-    "title_en": "Sample project: school yard improvement",
-    "summary_bg": "Демонстрационен запис за безопасна и удобна външна среда около училище.",
+    "id": "plovdiv-education-kiril-metodii",
+    "title_bg": "Хуманитарна гимназия „Св. св. Кирил и Методий“ — ремонт",
+    "title_en": "Humanities High School „Sts. Cyril and Methodius“ — renovation",
+    "summary_bg": "Ремонт и обновяване на сградата и двора на гимназията.",
+    "summary_en": "Repair and renewal of the school building and courtyard.",
     "category": "education",
-    "status": "unknown",
+    "status": "funded",
+    "note_bg": "Нов обект в прогнозната капиталова програма за 2026 г. с целева държавна субсидия.",
+    "note_en": "New project in the provisional 2026 capital programme with a state targeted subsidy.",
+    "municipality": "plovdiv",
+    "district": "Централен",
+    "location": { "lat": 42.1472, "lng": 24.7512, "address_bg": "Централен район, Пловдив", "address_en": "Tsentralen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2026, "funding_source": "state_subsidy", "amount_eur": 2060000, "currency": "EUR" },
+    "sources": [
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+    ],
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14"
+  },
+  {
+    "id": "plovdiv-road-kukush",
+    "title_bg": "Реконструкция на ул. „Кукуш“ (I етап)",
+    "title_en": "Kukush Street reconstruction (phase 1)",
+    "summary_bg": "Реконструкция на ул. „Кукуш“ в участъка от надлез „Родопи“ до ул. „Македония“ (първи етап).",
+    "summary_en": "Reconstruction of Kukush Street from the Rodopi overpass to Macedonia Street (phase one).",
+    "category": "roads",
+    "status": "funded",
+    "note_bg": "Нов обект в прогнозната капиталова програма за 2026 г. с целева държавна субсидия.",
+    "note_en": "New project in the provisional 2026 capital programme with a state targeted subsidy.",
+    "municipality": "plovdiv",
+    "district": "Северен",
+    "location": { "lat": 42.1585, "lng": 24.7425, "address_bg": "Северен район, Пловдив", "address_en": "Severen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2026, "funding_source": "state_subsidy", "amount_eur": 900000, "currency": "EUR" },
+    "sources": [
+      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+    ],
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14"
+  },
+  {
+    "id": "plovdiv-road-severen-blvd",
+    "title_bg": "Булевард „Северен“ — II етап",
+    "title_en": "Severen Boulevard — phase 2",
+    "summary_bg": "Втори етап на булевард „Северен“.",
+    "summary_en": "Second phase of Severen Boulevard.",
+    "category": "roads",
+    "status": "postponed",
+    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
+    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
+    "municipality": "plovdiv",
+    "district": "Северен",
+    "location": { "lat": 42.165, "lng": 24.7555, "address_bg": "Северен район, Пловдив", "address_en": "Severen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "sources": [
+      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
+    ],
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
+  },
+  {
+    "id": "plovdiv-road-tsarevets",
+    "title_bg": "Улица „Царевец“ — II етап",
+    "title_en": "Tsarevets Street — phase 2",
+    "summary_bg": "Втори етап на улица „Царевец“.",
+    "summary_en": "Second phase of Tsarevets Street.",
+    "category": "roads",
+    "status": "postponed",
+    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
+    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
     "municipality": "plovdiv",
     "district": "Тракия",
-    "location": {
-      "lat": 42.1351,
-      "lng": 24.7902,
-      "address_bg": "Тракия, Пловдив",
-      "address_en": "Trakiya, Plovdiv"
-    },
-    "budget": {
-      "amount_bgn": 240000,
-      "year": 2025,
-      "funding_source": "municipal_budget"
-    },
-    "related_budget_item_id": "budget-plovdiv-2025-education",
-    "timeline": [
-      {
-        "date": "2026-06-13",
-        "label_bg": "Добавен като примерен запис",
-        "source_url": "https://openplovdiv.example/methodology",
-        "label_en": "Added as a sample record"
-      }
-    ],
+    "location": { "lat": 42.1505, "lng": 24.77, "address_bg": "Тракия, Пловдив", "address_en": "Trakiya, Plovdiv", "approximate": true },
+    "budget": { "year": 2026, "funding_source": "municipal_capital" },
     "sources": [
-      {
-        "title": "Примерни данни за прототип",
-        "url": "https://openplovdiv.example/methodology",
-        "accessed_at": "2026-06-13"
-      }
+      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
     ],
-    "data_quality": "sample",
-    "updated_at": "2026-06-13",
-    "summary_en": "Demonstration record for a safe and convenient outdoor environment around a school."
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
+  },
+  {
+    "id": "plovdiv-road-polet",
+    "title_bg": "Улица „Полет“",
+    "title_en": "Polet Street",
+    "summary_bg": "Ремонт на улица „Полет“.",
+    "summary_en": "Repair of Polet Street.",
+    "category": "roads",
+    "status": "postponed",
+    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
+    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
+    "municipality": "plovdiv",
+    "district": "Северен",
+    "location": { "lat": 42.16, "lng": 24.7305, "address_bg": "Северен район, Пловдив", "address_en": "Severen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "sources": [
+      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
+    ],
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
+  },
+  {
+    "id": "plovdiv-road-lyuben-karavelov",
+    "title_bg": "Улица „Любен Каравелов“",
+    "title_en": "Lyuben Karavelov Street",
+    "summary_bg": "Ремонт на улица „Любен Каравелов“.",
+    "summary_en": "Repair of Lyuben Karavelov Street.",
+    "category": "roads",
+    "status": "postponed",
+    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
+    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
+    "municipality": "plovdiv",
+    "district": "Централен",
+    "location": { "lat": 42.144, "lng": 24.76, "address_bg": "Централен район, Пловдив", "address_en": "Tsentralen district, Plovdiv", "approximate": true },
+    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "sources": [
+      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
+    ],
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
+  },
+  {
+    "id": "plovdiv-education-new-kindergartens",
+    "title_bg": "Нови детски градини и ясли („Западен“, „Тракия“, „Северен“)",
+    "title_en": "New kindergartens and nurseries (Zapaden, Trakiya, Severen)",
+    "summary_bg": "Изграждане на нови детски градини и ясли в няколко района.",
+    "summary_en": "Construction of new kindergartens and nurseries in several districts.",
+    "category": "education",
+    "status": "postponed",
+    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
+    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
+    "municipality": "plovdiv",
+    "district": null,
+    "location": { "lat": 42.138, "lng": 24.788, "address_bg": "район „Тракия“, Пловдив (един от обектите)", "address_en": "Trakiya district, Plovdiv (one of the sites)", "approximate": true },
+    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "sources": [
+      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
+    ],
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
+  },
+  {
+    "id": "plovdiv-road-trakiya-junction",
+    "title_bg": "Ремонт на околовръстен възел в „Тракия“",
+    "title_en": "Ring-road junction repair in Trakiya",
+    "summary_bg": "Ремонт на пътен възел при околовръстния път в район „Тракия“.",
+    "summary_en": "Repair of a ring-road junction in the Trakiya district.",
+    "category": "roads",
+    "status": "postponed",
+    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
+    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
+    "municipality": "plovdiv",
+    "district": "Тракия",
+    "location": { "lat": 42.14, "lng": 24.795, "address_bg": "Тракия, Пловдив", "address_en": "Trakiya, Plovdiv", "approximate": true },
+    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "sources": [
+      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
+    ],
+    "data_quality": "public_source",
+    "updated_at": "2026-06-14"
   }
 ]

@@ -35,16 +35,15 @@ const bg = {
   },
   footer: {
     blurb:
-      "Нестопански прототип с обществени данни. Без профили, без коментари, без база данни.",
+      "Нестопански проект с обществени данни за Пловдив. Без профили, без коментари, без база данни.",
     explore: "Разглеждане",
     about: "За проекта",
     privacy: "Поверителност",
     moderation: "Модерация",
     methodology: "Методология",
     sources: "Източници",
-    note: "Open Plovdiv · обществен прототип за данни",
-    sampleNote:
-      "Всички записи в момента са примерни и са маркирани като прототипни.",
+    note: "Open Plovdiv · обществени данни за Пловдив",
+    sampleNote: "Данни от публични източници · актуални към юни 2026 г.",
     rights: "Обществени данни"
   },
   common: {
@@ -58,17 +57,17 @@ const bg = {
     noSource: "Няма публичен източник."
   },
   home: {
-    eyebrow: "Обществени данни · статичен прототип",
+    eyebrow: "Обществени данни · Пловдив",
     lead:
       "Обществени проекти, публични средства и градски проблеми — представени ясно, с видими източници и без потребителски профили.",
     ctaMap: "Виж картата на проблемите",
     ctaBudget: "Къде отиват местните данъци?",
-    statsLabel: "Данни в прототипа",
-    statProjects: "примерни проекта",
+    statsLabel: "Проследявани данни",
+    statProjects: "проследявани проекта",
     statReportsValue: "На живо",
     statReports: "модерирани сигнали",
-    statBudget: "бюджетни категории",
-    statTotal: "примерен общ размер",
+    statBudget: "бюджетни сектора",
+    statTotal: "капиталова програма 2025",
     exploreTitle: "Откъде да започнете",
     cardMapEyebrow: "Карта",
     cardMapTitle: "Карта на проблемите",
@@ -77,7 +76,7 @@ const bg = {
     cardBudgetEyebrow: "Бюджет",
     cardBudgetTitle: "Местни данъци",
     cardBudgetText:
-      "Преглед на примерни бюджетни категории, суми, източници и свързани проекти.",
+      "Бюджет 2025 и прогнозна капиталова програма 2026 — суми, дялове и публични източници.",
     cardProjectsEyebrow: "Проекти",
     cardProjectsTitle: "Публични проекти",
     cardProjectsText:
@@ -88,30 +87,33 @@ const bg = {
     liveReportsText:
       "Картата вече показва само граждански сигнали, които са подадени през формата и одобрени от модератор.",
     viewAll: "Виж всички",
-    noticeTitle: "Прототипни данни",
+    noticeTitle: "Данни и източници",
     notice:
-      "Тази версия използва примерни записи. Преди публично ползване те трябва да се заменят с проверени публични документи.",
+      "Данните са актуални към юни 2026 г. Бюджетът за 2025 г. е приет, а капиталовата програма за 2026 г. е прогнозна. Всеки запис сочи към публичен източник.",
     noticeSources: "Вижте източниците",
     noticeMethodology: "методологията"
   },
   budget: {
     eyebrow: "Къде отиват местните данъци?",
-    title: "Бюджетен преглед",
+    title: "Бюджет и капиталова програма",
     lead:
-      "Примерни бюджетни категории с ясно показани суми, източници и свързани проектни записи.",
-    year: "Година",
-    total: "Общо за годината",
-    notice:
-      "Това са примерни бюджетни редове за тестване на интерфейса. Реална версия трябва да сочи към конкретен бюджетен документ за всеки ред.",
-    categories: "Категории",
-    distribution: "Разпределение",
-    sourcesTitle: "Източници и свързани проекти",
-    relatedProjects: "Свързани проекти",
-    noRelated: "Няма свързани проекти.",
-    shareOfTotal: "дял от бюджета",
-    loadError: "Бюджетните данни не се заредиха.",
-    chartError: "Графиката не може да бъде показана.",
-    sourcesError: "Източниците не могат да бъдат показани."
+      "Бюджетът за 2025 г. и прогнозната капиталова програма за 2026 г. — с ясно показани суми, дялове и публични източници.",
+    totalLabel: "Общ бюджет за 2025 г.",
+    capitalLabel: "Капиталова програма за 2025 г.",
+    sectorTitle: "Капиталова програма за 2025 г. по сектори",
+    approxNote:
+      "Стойностите по сектори са приблизителни — изчислени от публикуваните дялове на капиталовата програма.",
+    shareOfTotal: "дял от капиталовата програма",
+    provTitle: "Капиталова програма за 2026 г. (прогнозна)",
+    provText:
+      "2026 г. е първият бюджет на Пловдив в евро. Прогнозната капиталова програма е около 87 млн. евро. Стойностите са прогнозни и подлежат на промяна с приемането на държавния бюджет.",
+    fundingTitle: "Източници на финансиране за 2026 г.",
+    fundEu: "Европейски средства",
+    fundOwn: "Собствени приходи и преходен остатък",
+    fundOpco: "Съфинансиране по програми",
+    fundState: "Целева държавна субсидия",
+    fundOther: "Други (дарения, заеми)",
+    sourceLabel: "Източник"
   },
   projects: {
     eyebrow: "Публични проекти",
@@ -141,7 +143,11 @@ const bg = {
     notSpecified: "Не е посочен",
     sources: "Източници",
     sourcesNote:
-      "Този запис е маркиран като примерен и не трябва да се третира като официално твърдение.",
+      "Данните за проекта са събрани от публични източници. За официални детайли проверете първоизточника.",
+    noteLabel: "Бележка",
+    noAmount: "Сумата не е публикувана.",
+    approxLocation: "Приблизително местоположение (по район).",
+    provisional: "Прогнозни данни",
     relatedBudget: "Свързан бюджетен ред",
     noRelatedBudget: "Няма свързан бюджетен ред.",
     nearbyReports: "Близки сигнали",
@@ -200,7 +206,7 @@ const bg = {
     eyebrow: "Проверимост",
     title: "Източници на данни",
     lead:
-      "Всеки официален запис трябва да сочи към публичен документ. Текущите записи са примерни и са маркирани като прототипни.",
+      "Всеки запис на сайта сочи към публичен източник. По-долу са основните използвани източници и за какво служат.",
     colSource: "Източник",
     colUsedFor: "Използва се за",
     colLimits: "Ограничения",
@@ -213,7 +219,7 @@ const bg = {
       "Данните минават през преглед, схема и публични източници, преди да бъдат публикувани като факти. AI може да помага за чернови, но не е източник на истина.",
     collectTitle: "Събиране",
     collectText:
-      "Версията е manual-first. Редактор добавя записи в data/curated, а оригинални документи могат да се пазят в data/raw.",
+      "Данните се събират ръчно от публични източници — бюджета и решенията на Община Пловдив, капиталовата програма и местни медии — и всеки запис се въвежда с препратка към източника.",
     verifyTitle: "Проверка",
     verifyText:
       "Валидират се задължителни полета, статуси, URL адреси, суми, координати и липса на лични данни в сигналите.",
@@ -225,7 +231,7 @@ const bg = {
       "Корекцията трябва да добави или смени публичен източник, да обнови curated JSON и да мине през validation и build."
   },
   privacy: {
-    eyebrow: "Без лични данни в прототипа",
+    eyebrow: "Без лични данни",
     title: "Поверителност",
     lead:
       "Първата версия работи без потребителски профили, коментари, гласуване и публично събиране на лични данни.",
@@ -358,16 +364,15 @@ const en: typeof bg = {
   },
   footer: {
     blurb:
-      "A non-profit public-data prototype. No accounts, no comments, no database.",
+      "A non-profit public-data project for Plovdiv. No accounts, no comments, no database.",
     explore: "Explore",
     about: "About",
     privacy: "Privacy",
     moderation: "Moderation",
     methodology: "Methodology",
     sources: "Sources",
-    note: "Open Plovdiv · public data prototype",
-    sampleNote:
-      "All records are currently samples and are clearly marked as prototype data.",
+    note: "Open Plovdiv · public data for Plovdiv",
+    sampleNote: "Data from public sources · updated June 2026.",
     rights: "Public data"
   },
   common: {
@@ -381,17 +386,17 @@ const en: typeof bg = {
     noSource: "No public source."
   },
   home: {
-    eyebrow: "Public data · static prototype",
+    eyebrow: "Public data · Plovdiv",
     lead:
       "Public projects, public money and city problems — shown clearly, with visible sources and no user accounts.",
     ctaMap: "Open the problem map",
     ctaBudget: "Where do local taxes go?",
-    statsLabel: "Data in the prototype",
-    statProjects: "sample projects",
+    statsLabel: "Tracked data",
+    statProjects: "tracked projects",
     statReportsValue: "Live",
     statReports: "moderated reports",
-    statBudget: "budget categories",
-    statTotal: "sample total",
+    statBudget: "budget sectors",
+    statTotal: "2025 capital programme",
     exploreTitle: "Where to start",
     cardMapEyebrow: "Map",
     cardMapTitle: "Problem map",
@@ -400,7 +405,7 @@ const en: typeof bg = {
     cardBudgetEyebrow: "Budget",
     cardBudgetTitle: "Local taxes",
     cardBudgetText:
-      "Browse sample budget categories, amounts, sources and related projects.",
+      "2025 budget and provisional 2026 capital programme — amounts, shares and public sources.",
     cardProjectsEyebrow: "Projects",
     cardProjectsTitle: "Public projects",
     cardProjectsText:
@@ -411,30 +416,33 @@ const en: typeof bg = {
     liveReportsText:
       "The map now shows only citizen reports submitted through the form and approved by a moderator.",
     viewAll: "View all",
-    noticeTitle: "Prototype data",
+    noticeTitle: "Data and sources",
     notice:
-      "This version uses sample records. Before public use they must be replaced with reviewed public documents.",
+      "Data is current as of June 2026. The 2025 budget is adopted, while the 2026 capital programme is provisional. Every record links to a public source.",
     noticeSources: "See the sources",
     noticeMethodology: "the methodology"
   },
   budget: {
     eyebrow: "Where do local taxes go?",
-    title: "Budget overview",
+    title: "Budget and capital programme",
     lead:
-      "Sample budget categories with clearly shown amounts, sources and related project records.",
-    year: "Year",
-    total: "Total for the year",
-    notice:
-      "These are sample budget lines for testing the interface. A real version must point to a specific budget document for each line.",
-    categories: "Categories",
-    distribution: "Distribution",
-    sourcesTitle: "Sources and related projects",
-    relatedProjects: "Related projects",
-    noRelated: "No related projects.",
-    shareOfTotal: "share of budget",
-    loadError: "Budget data failed to load.",
-    chartError: "The chart cannot be shown.",
-    sourcesError: "The sources cannot be shown."
+      "The 2025 budget and the provisional 2026 capital programme — with clearly shown amounts, shares and public sources.",
+    totalLabel: "Total 2025 budget",
+    capitalLabel: "2025 capital programme",
+    sectorTitle: "2025 capital programme by sector",
+    approxNote:
+      "Sector values are approximate — derived from the published shares of the capital programme.",
+    shareOfTotal: "share of the capital programme",
+    provTitle: "2026 capital programme (provisional)",
+    provText:
+      "2026 is Plovdiv's first budget in euros. The provisional capital programme is about EUR 87 million. Figures are provisional and may change once the state budget is adopted.",
+    fundingTitle: "2026 funding sources",
+    fundEu: "EU funds",
+    fundOwn: "Own revenue and carry-over",
+    fundOpco: "Programme co-financing",
+    fundState: "State targeted subsidy",
+    fundOther: "Other (donations, loans)",
+    sourceLabel: "Source"
   },
   projects: {
     eyebrow: "Public projects",
@@ -464,7 +472,11 @@ const en: typeof bg = {
     notSpecified: "Not specified",
     sources: "Sources",
     sourcesNote:
-      "This record is marked as a sample and must not be treated as an official statement.",
+      "The project data is collected from public sources. For official details, check the original source.",
+    noteLabel: "Note",
+    noAmount: "Amount not published.",
+    approxLocation: "Approximate location (by district).",
+    provisional: "Provisional data",
     relatedBudget: "Related budget line",
     noRelatedBudget: "No related budget line.",
     nearbyReports: "Nearby reports",
@@ -523,7 +535,7 @@ const en: typeof bg = {
     eyebrow: "Verifiability",
     title: "Data sources",
     lead:
-      "Every official record should point to a public document. Current records are samples and are marked as prototype data.",
+      "Every record on the site links to a public source. Below are the main sources used and what they are for.",
     colSource: "Source",
     colUsedFor: "Used for",
     colLimits: "Limitations",
@@ -536,7 +548,7 @@ const en: typeof bg = {
       "Data goes through review, a schema and public sources before being published as fact. AI can help draft, but is not a source of truth.",
     collectTitle: "Collection",
     collectText:
-      "The version is manual-first. An editor adds records to data/curated, and original documents can be kept in data/raw.",
+      "Data is collected manually from public sources — Plovdiv Municipality's budget and decisions, the capital programme and local media — and each record is entered with a link to its source.",
     verifyTitle: "Verification",
     verifyText:
       "Required fields, statuses, URLs, amounts, coordinates and the absence of personal data in reports are validated.",
@@ -548,7 +560,7 @@ const en: typeof bg = {
       "A correction must add or change a public source, update the curated JSON and pass validation and build."
   },
   privacy: {
-    eyebrow: "No personal data in the prototype",
+    eyebrow: "No personal data",
     title: "Privacy",
     lead:
       "The first version works without user accounts, comments, voting or public collection of personal data.",
@@ -680,6 +692,9 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     drainage: "Отводняване",
     culture: "Култура",
     education: "Образование",
+    environment: "Околна среда",
+    social: "Социални дейности",
+    sport: "Спорт",
     other: "Друго"
   },
   en: {
@@ -693,6 +708,9 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     drainage: "Drainage",
     culture: "Culture",
     education: "Education",
+    environment: "Environment",
+    social: "Social",
+    sport: "Sport",
     other: "Other"
   }
 };
@@ -709,6 +727,9 @@ export const categoryColors: Record<string, string> = {
   drainage: "#2f7fb0",
   culture: "#9a5b8f",
   education: "#a85a4a",
+  environment: "#3f8a5b",
+  social: "#7a5ca8",
+  sport: "#2f7fb0",
   other: "#6b7280"
 };
 
@@ -720,6 +741,7 @@ export const projectStatusLabels: Record<Lang, Record<string, string>> = {
     in_progress: "В процес",
     completed: "Завършен",
     delayed: "Забавен",
+    postponed: "Отложен",
     unknown: "Неизвестен"
   },
   en: {
@@ -729,6 +751,7 @@ export const projectStatusLabels: Record<Lang, Record<string, string>> = {
     in_progress: "In progress",
     completed: "Completed",
     delayed: "Delayed",
+    postponed: "Postponed",
     unknown: "Unknown"
   }
 };
@@ -782,8 +805,18 @@ export const districtLabels: Record<string, string> = {
 };
 
 export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
-  bg: { municipal_budget: "Общински бюджет" },
-  en: { municipal_budget: "Municipal budget" }
+  bg: {
+    municipal_budget: "Общински бюджет",
+    municipal_capital: "Капиталова програма (общинска)",
+    state_subsidy: "Целева държавна субсидия",
+    eu_program: "Европейска програма"
+  },
+  en: {
+    municipal_budget: "Municipal budget",
+    municipal_capital: "Municipal capital programme",
+    state_subsidy: "State targeted subsidy",
+    eu_program: "EU programme"
+  }
 };
 
 // Citation titles embedded in records (project sources, budget source documents).

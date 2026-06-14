@@ -1,8 +1,8 @@
 # Open Plovdiv
 
-Open Plovdiv is a civic-transparency prototype for Plovdiv. It helps people browse public projects, budget categories, and reviewed citizen-submitted city-fix reports without accounts or comments.
+Open Plovdiv is a civic-transparency website for Plovdiv. It helps people browse current public projects, the city budget and capital programme, and reviewed citizen-submitted city-fix reports without accounts or comments.
 
-The current repository still uses sample project and budget data. The public signal map is driven by moderated citizen submissions, not seed/demo signal records.
+The project and budget data is drawn from public sources (Plovdiv Municipality's budget and capital programme, municipal-council decisions and local media) and every record links to its source. Data is current as of June 2026: the 2025 budget is adopted, while the 2026 capital programme is provisional. The fix map is driven by moderated citizen submissions, not demo records. Always verify against the linked originals before relying on a figure.
 
 ## Stack
 

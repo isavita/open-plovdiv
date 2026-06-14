@@ -96,7 +96,13 @@ function searchable(p: (typeof projects)[number]): string {
             </header>
             <p>{field(project, "summary", lang)}</p>
             <div class="pill-row">
-              <span class="money">{formatMoney(project.budget.amount_bgn, lang)}</span>
+              <span class="badge no-dot">{project.budget.year}</span>
+              {project.budget.amount_eur != null && (
+                <span class="money">{formatMoney(project.budget.amount_eur, lang, "EUR")}</span>
+              )}
+              {project.budget.amount_eur == null && project.budget.amount_bgn != null && (
+                <span class="money">{formatMoney(project.budget.amount_bgn, lang, "BGN")}</span>
+              )}
             </div>
           </article>
         ))}

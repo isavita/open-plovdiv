@@ -1,37 +1,36 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { categoryColors, categoryLabels, sourceTitleLabels, ui, type Lang } from "@i18n/ui";
+import { categoryColors, ui, type Lang } from "@i18n/ui";
 import { localizePath } from "@i18n/utils";
 import { budgetItems } from "@lib/data";
-import { formatMoney } from "@lib/format";
+import { categoryLabel, formatMoney } from "@lib/format";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
 
-const years = Array.from(new Set(budgetItems.map((item) => item.year))).sort((a, b) => b - a);
-const initialTotal = budgetItems
-  .filter((item) => item.year === years[0])
-  .reduce((sum, item) => sum + item.amount_bgn, 0);
+// 2025 — adopted budget (BGN). Figures from the municipality's 2025 budget.
+const TOTAL_2025 = 715154301;
+const CAPITAL_2025 = 139597929;
+const budget2025Source = "https://www.plovdiv.bg/en/proekt-budget-2025/";
 
-const config = {
-  lang,
-  locale: lang === "bg" ? "bg-BG" : "en-GB",
-  projectBase: localizePath("/projects", lang),
-  categoryLabels: categoryLabels[lang],
-  categoryColors,
-  sourceTitles: sourceTitleLabels[lang],
-  labels: {
-    related: t.budget.relatedProjects,
-    noRelated: t.budget.noRelated,
-    accessed: t.common.accessed,
-    share: t.budget.shareOfTotal,
-    errorTotal: lang === "bg" ? "Грешка" : "Error",
-    errorLoad: t.budget.loadError,
-    errorChart: t.budget.chartError,
-    errorSources: t.budget.sourcesError
-  }
-};
+const sectors = budgetItems
+  .filter((item) => item.year === 2025)
+  .sort((a, b) => b.amount_bgn - a.amount_bgn);
+const maxShare = Math.max(...sectors.map((s) => s.share_percent ?? 0), 1);
+
+// 2026 — provisional capital programme (EUR). Figures reported June 2026.
+const funding2026 = [
+  { label: t.budget.fundEu, amount: 51100000, color: "#2f7fb0" },
+  { label: t.budget.fundOwn, amount: 20900000, color: "#3f8a5b" },
+  { label: t.budget.fundOpco, amount: 7130000, color: "#9a5b8f" },
+  { label: t.budget.fundState, amount: 2960000, color: "#b07d1a" },
+  { label: t.budget.fundOther, amount: 5080000, color: "#6b7280" }
+];
+const capital2026 = funding2026.reduce((sum, f) => sum + f.amount, 0);
+const maxFund = Math.max(...funding2026.map((f) => f.amount), 1);
+const budget2026Source =
+  "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/";
 ---
 
 <Layout lang={lang} path="/budget" title={t.budget.title} description={t.budget.lead}>
@@ -43,204 +42,89 @@ const config = {
     </div>
   </section>
 
+  <!-- 2025 -->
   <section class="section" style="padding-top:0">
     <div class="container">
-      <div class="toolbar">
-        <div class="filters" style="grid-template-columns: repeat(2, minmax(0,1fr))">
-          <div class="field">
-            <label for="year-select">{t.budget.year}</label>
-            <select id="year-select">
-              {years.map((year) => <option value={year}>{year}</option>)}
-            </select>
-          </div>
-          <div class="field">
-            <label for="budget-total">{t.budget.total}</label>
-            <input id="budget-total" type="text" readonly value={formatMoney(initialTotal, lang)} />
-          </div>
+      <div class="stat-row" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+        <div class="stat">
+          <strong>{formatMoney(TOTAL_2025, lang, "BGN")}</strong>
+          <span>{t.budget.totalLabel}</span>
+        </div>
+        <div class="stat">
+          <strong>{formatMoney(CAPITAL_2025, lang, "BGN")}</strong>
+          <span>{t.budget.capitalLabel}</span>
         </div>
       </div>
 
-      <div class="notice">
-        <span class="notice-icon" aria-hidden="true">ⓘ</span>
-        <span>{t.budget.notice}</span>
+      <div class="section-head" style="margin-top:28px"><h2>{t.budget.sectorTitle}</h2></div>
+      <div class="chart card">
+        {sectors.map((item) => (
+          <div class="bar-row">
+            <span class="bar-label">
+              <span class="cat-dot" style={`--dot:${categoryColors[item.category] ?? "var(--muted)"}`}></span>
+              {categoryLabel(item.category, lang)}
+            </span>
+            <div class="bar-track" aria-hidden="true">
+              <div class="bar-fill" style={`width:${Math.max(3, ((item.share_percent ?? 0) / maxShare) * 100)}%`}></div>
+            </div>
+            <span class="money">{item.share_percent}% · ≈{formatMoney(item.amount_bgn, lang, "BGN")}</span>
+          </div>
+        ))}
       </div>
+      <p class="meta" style="margin-top:12px">
+        {t.budget.approxNote}{" "}
+        <a href={budget2025Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a>
+      </p>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
-    <div class="container grid grid-2">
-      <article>
-        <div class="section-head"><h2>{t.budget.categories}</h2></div>
-        <div id="category-cards" class="grid" aria-live="polite">
-          <p class="loading">{t.common.loading}</p>
-        </div>
-      </article>
-      <article>
-        <div class="section-head"><h2>{t.budget.distribution}</h2></div>
-        <div id="budget-chart" class="chart card" aria-live="polite">
-          <p class="loading">{t.common.loading}</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
+  <!-- 2026 -->
   <section class="section section-tint">
     <div class="container">
-      <div class="section-head"><h2>{t.budget.sourcesTitle}</h2></div>
-      <div id="budget-sources" class="grid grid-2" aria-live="polite">
-        <p class="loading">{t.common.loading}</p>
+      <div class="section-head"><h2>{t.budget.provTitle}</h2></div>
+      <div class="notice" style="margin-bottom:22px">
+        <span class="notice-icon" aria-hidden="true">ⓘ</span>
+        <span>{t.budget.provText}</span>
       </div>
+
+      <div class="stat-row" style="grid-template-columns:repeat(1,minmax(0,1fr));max-width:360px">
+        <div class="stat">
+          <strong>{formatMoney(capital2026, lang, "EUR")}</strong>
+          <span>{t.budget.provTitle}</span>
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-top:28px"><h2 style="font-size:1.3rem">{t.budget.fundingTitle}</h2></div>
+      <div class="chart card">
+        {funding2026.map((f) => (
+          <div class="bar-row">
+            <span class="bar-label">
+              <span class="cat-dot" style={`--dot:${f.color}`}></span>
+              {f.label}
+            </span>
+            <div class="bar-track" aria-hidden="true">
+              <div class="bar-fill" style={`width:${Math.max(3, (f.amount / maxFund) * 100)}%`}></div>
+            </div>
+            <span class="money">{formatMoney(f.amount, lang, "EUR")}</span>
+          </div>
+        ))}
+      </div>
+      <p class="meta" style="margin-top:12px">
+        <a href={budget2026Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a>
+      </p>
     </div>
   </section>
 
-  <script type="application/json" id="budget-config" set:html={JSON.stringify(config)}></script>
-
-  <script>
-    type BudgetConfig = {
-      lang: string;
-      locale: string;
-      projectBase: string;
-      categoryLabels: Record<string, string>;
-      categoryColors: Record<string, string>;
-      sourceTitles: Record<string, string>;
-      labels: Record<string, string>;
-    };
-
-    const config: BudgetConfig = JSON.parse(
-      document.getElementById("budget-config")?.textContent ?? "{}"
-    );
-    const L = config.labels;
-
-    const yearSelect = document.querySelector<HTMLSelectElement>("#year-select")!;
-    const totalField = document.querySelector<HTMLInputElement>("#budget-total")!;
-    const categoryCards = document.querySelector<HTMLElement>("#category-cards")!;
-    const budgetChart = document.querySelector<HTMLElement>("#budget-chart")!;
-    const budgetSources = document.querySelector<HTMLElement>("#budget-sources")!;
-
-    let budgetItems: any[] = [];
-    let projects: any[] = [];
-
-    function escapeHtml(value: unknown): string {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    function loc(record: any, base: string): string {
-      return record[`${base}_${config.lang}`] ?? record[`${base}_bg`] ?? "";
-    }
-
-    function catLabel(category: string): string {
-      return config.categoryLabels[category] ?? category;
-    }
-
-    function catColor(category: string): string {
-      return config.categoryColors[category] ?? "var(--muted)";
-    }
-
-    function formatMoney(amount: number): string {
-      return new Intl.NumberFormat(config.locale, {
-        style: "currency",
-        currency: "BGN",
-        maximumFractionDigits: 0
-      }).format(amount);
-    }
-
-    function selectedItems() {
-      return budgetItems.filter((item) => String(item.year) === yearSelect.value);
-    }
-
-    function relatedProjects(item: any) {
-      return projects
-        .filter((project) => project.related_budget_item_id === item.id)
-        .slice(0, 4);
-    }
-
-    function renderBudget() {
-      const items = selectedItems();
-      const total = items.reduce((sum, item) => sum + item.amount_bgn, 0);
-      totalField.value = formatMoney(total);
-
-      categoryCards.innerHTML = items
-        .map(
-          (item) => `
-            <article class="card">
-              <p class="eyebrow" style="color:${catColor(item.category)}">${escapeHtml(catLabel(item.category))}</p>
-              <h3>${escapeHtml(loc(item, "title"))}</h3>
-              <p class="money">${formatMoney(item.amount_bgn)}</p>
-              <p class="meta">${escapeHtml(loc(item, "plain_language"))}</p>
-            </article>
-          `
-        )
-        .join("");
-
-      budgetChart.innerHTML = items
-        .slice()
-        .sort((a, b) => b.amount_bgn - a.amount_bgn)
-        .map((item) => {
-          const percent = total > 0 ? Math.max(2, (item.amount_bgn / total) * 100) : 0;
-          return `
-            <div class="bar-row">
-              <span class="bar-label"><span class="cat-dot" style="--dot:${catColor(item.category)}"></span>${escapeHtml(catLabel(item.category))}</span>
-              <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:${percent}%"></div></div>
-              <span class="money">${formatMoney(item.amount_bgn)}</span>
-            </div>
-          `;
-        })
-        .join("");
-
-      budgetSources.innerHTML = items
-        .map((item) => {
-          const linked = relatedProjects(item);
-          return `
-            <article class="card">
-              <header style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
-                <h3>${escapeHtml(loc(item, "title"))}</h3>
-                <span class="money">${formatMoney(item.amount_bgn)}</span>
-              </header>
-              <p class="stack-sm">
-                <a href="${escapeHtml(item.source_document.url)}" target="_blank" rel="noreferrer">${escapeHtml(config.sourceTitles[item.source_document.title] ?? item.source_document.title)}</a>
-                <span class="meta"> · ${escapeHtml(L.accessed)} ${escapeHtml(item.source_document.accessed_at)}</span>
-              </p>
-              <h4>${escapeHtml(L.related)}</h4>
-              ${
-                linked.length
-                  ? `<ul class="source-list">${linked
-                      .map(
-                        (project) =>
-                          `<li><a href="${config.projectBase}/${escapeHtml(project.id)}">${escapeHtml(loc(project, "title"))}</a></li>`
-                      )
-                      .join("")}</ul>`
-                  : `<p class="meta">${escapeHtml(L.noRelated)}</p>`
-              }
-            </article>
-          `;
-        })
-        .join("");
-    }
-
-    yearSelect.addEventListener("change", renderBudget);
-
-    try {
-      [budgetItems, projects] = await Promise.all([
-        fetch("/data/budget-items.json").then((r) => {
-          if (!r.ok) throw new Error("budget failed");
-          return r.json();
-        }),
-        fetch("/data/projects.json").then((r) => {
-          if (!r.ok) throw new Error("projects failed");
-          return r.json();
-        })
-      ]);
-      renderBudget();
-    } catch {
-      totalField.value = L.errorTotal;
-      categoryCards.innerHTML = `<p class="error">${L.errorLoad}</p>`;
-      budgetChart.innerHTML = `<p class="error">${L.errorChart}</p>`;
-      budgetSources.innerHTML = `<p class="error">${L.errorSources}</p>`;
-    }
-  </script>
+  <section class="section">
+    <div class="container">
+      <div class="notice">
+        <span class="notice-icon" aria-hidden="true">ⓘ</span>
+        <span>
+          {t.home.notice}{" "}
+          <a href={localizePath("/data-sources", lang)}>{t.home.noticeSources}</a> ·
+          <a href={localizePath("/projects", lang)}> {t.nav.projects}</a>.
+        </span>
+      </div>
+    </div>
+  </section>
 </Layout>
