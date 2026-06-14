@@ -29,6 +29,7 @@ const bg = {
     fixMap: "Карта",
     budget: "Бюджет",
     projects: "Проекти",
+    community: "Доброволци",
     sources: "Източници",
     methodology: "Методология"
   },
@@ -39,6 +40,7 @@ const bg = {
     about: "За проекта",
     privacy: "Поверителност",
     moderation: "Модерация",
+    community: "Доброволци",
     methodology: "Методология",
     sources: "Източници",
     note: "Open Plovdiv · обществени данни за Пловдив",
@@ -64,6 +66,7 @@ const bg = {
     statProjects: "проследявани проекта",
     statReportsValue: "На живо",
     statReports: "модерирани сигнали",
+    statCommunity: "доброволчески инициативи",
     statBudget: "бюджетни сектора",
     statTotal: "капиталова програма 2025",
     exploreTitle: "Откъде да започнете",
@@ -79,6 +82,10 @@ const bg = {
     cardProjectsTitle: "Публични проекти",
     cardProjectsText:
       "Търсене и филтриране на проектни записи с бюджет, статус и източници.",
+    cardCommunityEyebrow: "Доброволци",
+    cardCommunityTitle: "Граждански инициативи",
+    cardCommunityText:
+      "Групи и кампании, които организират почиствания, грижа за спирки, паркове и квартали.",
     latestProjects: "Последно обновени проекти",
     latestReports: "Последно добавени сигнали",
     liveReportsTitle: "Реални сигнали след модерация",
@@ -131,6 +138,33 @@ const bg = {
       `${visible} от ${total} ${plural(total, "проект", "проекта")}`,
     empty: "Няма проекти с избраните филтри."
   },
+  community: {
+    eyebrow: "Гражданско участие",
+    title: "Доброволчески инициативи",
+    lead:
+      "Реални пловдивски групи и кампании, които организират доброволци за почистване, обновяване и грижа за публични места.",
+    dataNotice:
+      "Записите са открити чрез AI търсене в публични източници или са добавени от администратор. Всяка инициатива трябва да има видими линкове към група, сайт или публикация, за да не изглежда като официален общински проект без източник.",
+    search: "Търсене",
+    searchPlaceholder: "Напр. спирки, Марица, Лаута",
+    category: "Категория",
+    status: "Статус",
+    organizer: "Организатор",
+    links: "Връзки",
+    sources: "Източници",
+    relatedProjects: "Свързани публични проекти",
+    noRelatedProjects: "Няма свързан публичен проект.",
+    discovered: "Намерено чрез",
+    lastChecked: "Последна проверка",
+    viewSource: "Източник",
+    contact: "Контакт / група",
+    reset: "Изчисти филтрите",
+    count: (n: number) => `${n} ${plural(n, "инициатива", "инициативи")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} от ${total} ${plural(total, "инициатива", "инициативи")}`,
+    empty: "Няма инициативи с избраните филтри.",
+    adminCta: "Админ: добави или провери инициатива"
+  },
   project: {
     breadcrumb: "Проекти",
     keyFacts: "Основни данни",
@@ -150,6 +184,10 @@ const bg = {
     provisional: "Прогнозни данни",
     relatedBudget: "Свързан бюджетен ред",
     noRelatedBudget: "Няма свързан бюджетен ред.",
+    communityInitiatives: "Доброволчески инициативи",
+    communityInitiativesText:
+      "Граждански групи или кампании, които са свързани с тази зона или тема. Това не е официален статус на проекта.",
+    noCommunityInitiatives: "Няма свързана доброволческа инициатива.",
     nearbyReports: "Близки сигнали",
     noNearby: "Няма публикувани сигнали в радиус 1 км.",
     nearbyReportsText:
@@ -333,6 +371,57 @@ const bg = {
     submitted: "Подаден",
     loading: "Зареждане…",
     actionError: "Действието не бе успешно."
+  },
+  adminCommunity: {
+    title: "Доброволчески инициативи",
+    lead:
+      "Добавяне и обновяване на реални граждански групи и доброволчески кампании с публични линкове.",
+    tokenLabel: "Администраторски ключ",
+    tokenPlaceholder: "Въведете ключ",
+    signIn: "Вход",
+    signOut: "Изход",
+    authError: "Невалиден ключ.",
+    refresh: "Опресни",
+    discoveryTitle: "AI/онлайн търсене",
+    discoveryLead:
+      "Потърсете публични страници и публикации. Резултатът само предлага източници; администраторът избира какво да запази.",
+    queryLabel: "Търсене",
+    queryPlaceholder: "Напр. доброволци почистване спирки Пловдив",
+    find: "Намери онлайн",
+    sourceUrl: "URL на източник",
+    inspectUrl: "Провери URL",
+    noCandidates: "Няма намерени резултати.",
+    useCandidate: "Използвай като източник",
+    formTitle: "Добави или обнови инициатива",
+    id: "ID (по избор)",
+    titleBg: "Заглавие (BG)",
+    titleEn: "Заглавие (EN)",
+    summaryBg: "Описание (BG)",
+    summaryEn: "Описание (EN, по избор)",
+    category: "Категория",
+    status: "Статус",
+    organizerBg: "Организатор (BG)",
+    organizerEn: "Организатор (EN, по избор)",
+    organizerType: "Тип организатор",
+    website: "Уебсайт",
+    facebook: "Facebook",
+    callToActionBg: "Призив (BG, по избор)",
+    callToActionEn: "Призив (EN, по избор)",
+    addressBg: "Адрес/район (BG)",
+    addressEn: "Адрес/район (EN, по избор)",
+    latitude: "Ширина",
+    longitude: "Дължина",
+    relatedProjects: "Свързани project ID-та (разделени със запетая)",
+    tags: "Тагове (разделени със запетая)",
+    sourceTitle: "Заглавие на източник",
+    sourceUrlLabel: "Линк към източник",
+    save: "Запази инициатива",
+    saved: "Инициативата е запазена.",
+    existingTitle: "Записани инициативи",
+    noExisting: "Няма записани инициативи.",
+    edit: "Редактирай",
+    loading: "Зареждане…",
+    actionError: "Действието не бе успешно."
   }
 };
 
@@ -358,6 +447,7 @@ const en: typeof bg = {
     fixMap: "Map",
     budget: "Budget",
     projects: "Projects",
+    community: "Volunteers",
     sources: "Sources",
     methodology: "Methodology"
   },
@@ -368,6 +458,7 @@ const en: typeof bg = {
     about: "About",
     privacy: "Privacy",
     moderation: "Moderation",
+    community: "Volunteers",
     methodology: "Methodology",
     sources: "Sources",
     note: "Open Plovdiv · public data for Plovdiv",
@@ -393,6 +484,7 @@ const en: typeof bg = {
     statProjects: "tracked projects",
     statReportsValue: "Live",
     statReports: "moderated reports",
+    statCommunity: "volunteer initiatives",
     statBudget: "budget sectors",
     statTotal: "2025 capital programme",
     exploreTitle: "Where to start",
@@ -408,6 +500,10 @@ const en: typeof bg = {
     cardProjectsTitle: "Public projects",
     cardProjectsText:
       "Search and filter project records with budget, status and sources.",
+    cardCommunityEyebrow: "Volunteers",
+    cardCommunityTitle: "Civic initiatives",
+    cardCommunityText:
+      "Groups and campaigns organising cleanups, bus-stop care, parks and neighbourhood work.",
     latestProjects: "Recently updated projects",
     latestReports: "Recently added reports",
     liveReportsTitle: "Real reports after moderation",
@@ -460,6 +556,33 @@ const en: typeof bg = {
       `${visible} of ${total} ${plural(total, "project", "projects")}`,
     empty: "No projects match the selected filters."
   },
+  community: {
+    eyebrow: "Civic participation",
+    title: "Volunteer initiatives",
+    lead:
+      "Real Plovdiv groups and campaigns organising volunteers for cleaning, renewal and care of public places.",
+    dataNotice:
+      "Records are discovered through AI search of public sources or added by an admin. Every initiative must keep visible links to a group, website or public post so it is not mistaken for an unsourced official municipal project.",
+    search: "Search",
+    searchPlaceholder: "e.g. stops, Maritsa, Lauta",
+    category: "Category",
+    status: "Status",
+    organizer: "Organizer",
+    links: "Links",
+    sources: "Sources",
+    relatedProjects: "Related public projects",
+    noRelatedProjects: "No related public project.",
+    discovered: "Discovered by",
+    lastChecked: "Last checked",
+    viewSource: "Source",
+    contact: "Contact / group",
+    reset: "Clear filters",
+    count: (n: number) => `${n} ${plural(n, "initiative", "initiatives")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} of ${total} ${plural(total, "initiative", "initiatives")}`,
+    empty: "No initiatives match the selected filters.",
+    adminCta: "Admin: add or verify initiative"
+  },
   project: {
     breadcrumb: "Projects",
     keyFacts: "Key facts",
@@ -479,6 +602,10 @@ const en: typeof bg = {
     provisional: "Provisional data",
     relatedBudget: "Related budget line",
     noRelatedBudget: "No related budget line.",
+    communityInitiatives: "Volunteer initiatives",
+    communityInitiativesText:
+      "Civic groups or campaigns related to this area or theme. This is not an official project status.",
+    noCommunityInitiatives: "No related volunteer initiative.",
     nearbyReports: "Nearby reports",
     noNearby: "No published reports within 1 km.",
     nearbyReportsText:
@@ -662,6 +789,57 @@ const en: typeof bg = {
     submitted: "Submitted",
     loading: "Loading…",
     actionError: "The action failed."
+  },
+  adminCommunity: {
+    title: "Volunteer initiatives",
+    lead:
+      "Add and update real civic groups and volunteer campaigns with public links.",
+    tokenLabel: "Admin token",
+    tokenPlaceholder: "Enter token",
+    signIn: "Sign in",
+    signOut: "Sign out",
+    authError: "Invalid token.",
+    refresh: "Refresh",
+    discoveryTitle: "AI/online search",
+    discoveryLead:
+      "Search public pages and posts. Results only suggest sources; an admin chooses what to save.",
+    queryLabel: "Search",
+    queryPlaceholder: "e.g. Plovdiv volunteers cleaning bus stops",
+    find: "Find online",
+    sourceUrl: "Source URL",
+    inspectUrl: "Inspect URL",
+    noCandidates: "No results found.",
+    useCandidate: "Use as source",
+    formTitle: "Add or update initiative",
+    id: "ID (optional)",
+    titleBg: "Title (BG)",
+    titleEn: "Title (EN)",
+    summaryBg: "Summary (BG)",
+    summaryEn: "Summary (EN, optional)",
+    category: "Category",
+    status: "Status",
+    organizerBg: "Organizer (BG)",
+    organizerEn: "Organizer (EN, optional)",
+    organizerType: "Organizer type",
+    website: "Website",
+    facebook: "Facebook",
+    callToActionBg: "Call to action (BG, optional)",
+    callToActionEn: "Call to action (EN, optional)",
+    addressBg: "Address/area (BG)",
+    addressEn: "Address/area (EN, optional)",
+    latitude: "Latitude",
+    longitude: "Longitude",
+    relatedProjects: "Related project IDs (comma-separated)",
+    tags: "Tags (comma-separated)",
+    sourceTitle: "Source title",
+    sourceUrlLabel: "Source link",
+    save: "Save initiative",
+    saved: "Initiative saved.",
+    existingTitle: "Saved initiatives",
+    noExisting: "No saved initiatives.",
+    edit: "Edit",
+    loading: "Loading…",
+    actionError: "The action failed."
   }
 };
 
@@ -678,6 +856,10 @@ export type CategoryKey =
   | "drainage"
   | "culture"
   | "education"
+  | "environment"
+  | "social"
+  | "sport"
+  | "civic"
   | "other";
 
 export const categoryLabels: Record<Lang, Record<string, string>> = {
@@ -692,6 +874,7 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     drainage: "Отводняване",
     culture: "Култура",
     education: "Образование",
+    civic: "Граждански инициативи",
     environment: "Околна среда",
     social: "Социални дейности",
     sport: "Спорт",
@@ -708,6 +891,7 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     drainage: "Drainage",
     culture: "Culture",
     education: "Education",
+    civic: "Civic initiatives",
     environment: "Environment",
     social: "Social",
     sport: "Sport",
@@ -727,6 +911,7 @@ export const categoryColors: Record<string, string> = {
   drainage: "#2f7fb0",
   culture: "#9a5b8f",
   education: "#a85a4a",
+  civic: "#a45f2a",
   environment: "#3f8a5b",
   social: "#7a5ca8",
   sport: "#2f7fb0",
@@ -753,6 +938,23 @@ export const projectStatusLabels: Record<Lang, Record<string, string>> = {
     delayed: "Delayed",
     postponed: "Postponed",
     unknown: "Unknown"
+  }
+};
+
+export const communityStatusLabels: Record<Lang, Record<string, string>> = {
+  bg: {
+    active: "Активна",
+    recurring: "Повтаряща се",
+    completed: "Завършена",
+    planned: "Планирана",
+    unknown: "Неясен статус"
+  },
+  en: {
+    active: "Active",
+    recurring: "Recurring",
+    completed: "Completed",
+    planned: "Planned",
+    unknown: "Unknown status"
   }
 };
 
@@ -827,6 +1029,16 @@ export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
     "Община Пловдив — представяне на Бюджет 2025": "Plovdiv Municipality — 2025 budget presentation",
     "TrafficNews — бюджет на Пловдив за 2025 г.": "TrafficNews — Plovdiv 2025 budget",
     "TrafficNews — проектобюджет 2026 и замразени проекти": "TrafficNews — 2026 draft budget and frozen projects",
-    "Под тепето — капиталова програма за 2026 г.": "Pod tepeto — 2026 capital programme"
+    "Под тепето — капиталова програма за 2026 г.": "Pod tepeto — 2026 capital programme",
+    "Plovdiv24 — доброволци се заемат с реновирането на спирки": "Plovdiv24 — volunteers start renovating bus stops",
+    "NOVA — доброволци реновират автобусни спирки": "NOVA — volunteers renovate bus stops",
+    "Plovdiv24 — търсят се доброволци за почистване на 11 км от река Марица": "Plovdiv24 — volunteers wanted for cleaning 11 km of the Maritsa river",
+    "BG Be Active — контакт": "BG Be Active — contact",
+    "Красив Пловдив — будни граждани с кауза": "Krasiv Plovdiv — active citizens with a cause",
+    "Красив Пловдив — начало": "Krasiv Plovdiv — home",
+    "Община Пловдив — „Мисия Лаута 5“": "Plovdiv Municipality — Mission Lauta 5",
+    "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5": "TrafficNews — record number of volunteers at Mission Lauta 5",
+    "БНТ — почистват квартал „Столипиново“": "BNT — cleanup in Stolipinovo",
+    "Радио Пловдив — доброволци чистят и облагородяват Столипиново": "Radio Plovdiv — volunteers clean and improve Stolipinovo"
   }
 };

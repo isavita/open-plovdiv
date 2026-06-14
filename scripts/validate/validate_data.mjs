@@ -16,6 +16,12 @@ const datasets = [
     minRecords: 1
   },
   {
+    label: "community initiatives",
+    dataPath: "data/curated/community-initiatives.json",
+    schemaPath: "data/schemas/community-initiative.schema.json",
+    minRecords: 1
+  },
+  {
     label: "budget items",
     dataPath: "data/curated/budget-items.json",
     schemaPath: "data/schemas/budget-item.schema.json",
@@ -82,6 +88,19 @@ function assertProjectBudgetLinks(projects, budgetItems) {
   }
 }
 
+function assertCommunityProjectLinks(initiatives, projects) {
+  const projectIds = new Set(projects.map((project) => project.id));
+  for (const initiative of initiatives) {
+    for (const projectId of initiative.related_project_ids ?? []) {
+      if (!projectIds.has(projectId)) {
+        throw new Error(
+          `community initiatives: ${initiative.id} references missing project ${projectId}`
+        );
+      }
+    }
+  }
+}
+
 const loaded = new Map();
 
 for (const dataset of datasets) {
@@ -113,5 +132,6 @@ for (const dataset of datasets) {
 
 assertNoPrivateFixFields(loaded.get("fix reports"));
 assertProjectBudgetLinks(loaded.get("projects"), loaded.get("budget items"));
+assertCommunityProjectLinks(loaded.get("community initiatives"), loaded.get("projects"));
 
 console.log("data validation passed");

@@ -1,5 +1,6 @@
 import {
   categoryLabels,
+  communityStatusLabels,
   districtLabels,
   fixStatusLabels,
   fundingSourceLabels,
@@ -49,6 +50,10 @@ export function categoryLabel(category: string, lang: Lang = "bg"): string {
 
 export function projectStatusLabel(status: string, lang: Lang = "bg"): string {
   return projectStatusLabels[lang][status] ?? status;
+}
+
+export function communityStatusLabel(status: string, lang: Lang = "bg"): string {
+  return communityStatusLabels[lang][status] ?? status;
 }
 
 export function fixStatusLabel(status: string, lang: Lang = "bg"): string {

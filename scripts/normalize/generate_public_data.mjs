@@ -8,6 +8,7 @@ const publicDir = path.join(root, "apps/web/public/data");
 
 const files = [
   "projects.json",
+  "community-initiatives.json",
   "budget-items.json",
   "fix-reports.json",
   "sources.json"

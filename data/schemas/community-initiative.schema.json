@@ -1,0 +1,276 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/community-initiative.schema.json",
+  "title": "Open Plovdiv community initiative",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title_bg",
+    "title_en",
+    "summary_bg",
+    "category",
+    "status",
+    "organizer",
+    "location",
+    "sources",
+    "discovery",
+    "data_quality",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^community-plovdiv-[a-z0-9-]+$"
+    },
+    "title_bg": {
+      "type": "string",
+      "minLength": 3
+    },
+    "title_en": {
+      "type": "string",
+      "minLength": 3
+    },
+    "summary_bg": {
+      "type": "string",
+      "minLength": 10
+    },
+    "summary_en": {
+      "type": "string",
+      "minLength": 10
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "public_transport",
+        "parks",
+        "waste",
+        "environment",
+        "civic",
+        "social",
+        "other"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "recurring",
+        "completed",
+        "planned",
+        "unknown"
+      ]
+    },
+    "organizer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name_bg",
+        "type"
+      ],
+      "properties": {
+        "name_bg": {
+          "type": "string",
+          "minLength": 2
+        },
+        "name_en": {
+          "type": "string",
+          "minLength": 2
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "association",
+            "foundation",
+            "citizen_group",
+            "municipal_partner",
+            "company_volunteers",
+            "unknown"
+          ]
+        },
+        "website_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "facebook_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "instagram_url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "call_to_action_bg": {
+      "type": "string",
+      "minLength": 3
+    },
+    "call_to_action_en": {
+      "type": "string",
+      "minLength": 3
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lat",
+        "lng",
+        "address_bg"
+      ],
+      "properties": {
+        "lat": {
+          "type": "number",
+          "minimum": 42,
+          "maximum": 42.25
+        },
+        "lng": {
+          "type": "number",
+          "minimum": 24.6,
+          "maximum": 24.9
+        },
+        "address_bg": {
+          "type": "string",
+          "minLength": 3
+        },
+        "address_en": {
+          "type": "string",
+          "minLength": 3
+        },
+        "approximate": {
+          "type": "boolean"
+        }
+      }
+    },
+    "related_project_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^plovdiv-[a-z0-9-]+$"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 2
+      }
+    },
+    "contact_links": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/link"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/source"
+      }
+    },
+    "discovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "discovered_at",
+        "last_checked_at"
+      ],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": [
+            "ai_search",
+            "admin_manual"
+          ]
+        },
+        "query_bg": {
+          "type": "string"
+        },
+        "query_en": {
+          "type": "string"
+        },
+        "discovered_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "last_checked_at": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "data_quality": {
+      "type": "string",
+      "enum": [
+        "public_source",
+        "manual_reviewed",
+        "provisional"
+      ]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "definitions": {
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label_bg",
+        "url",
+        "type"
+      ],
+      "properties": {
+        "label_bg": {
+          "type": "string",
+          "minLength": 2
+        },
+        "label_en": {
+          "type": "string",
+          "minLength": 2
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "website",
+            "facebook",
+            "instagram",
+            "event",
+            "source",
+            "other"
+          ]
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "url",
+        "accessed_at"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "accessed_at": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    }
+  }
+}

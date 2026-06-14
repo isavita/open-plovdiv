@@ -1,0 +1,506 @@
+---
+import Layout from "@layouts/Layout.astro";
+import {
+  categoryLabels,
+  communityStatusLabels,
+  ui,
+  type Lang
+} from "@i18n/ui";
+import { field } from "@i18n/utils";
+import { projects } from "@lib/data";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const categories = ["public_transport", "parks", "waste", "environment", "civic", "social", "other"];
+const statuses = Object.keys(communityStatusLabels[lang]);
+const organizerTypes = [
+  "association",
+  "foundation",
+  "citizen_group",
+  "municipal_partner",
+  "company_volunteers",
+  "unknown"
+];
+
+const config = {
+  lang,
+  apiBase: "/api/admin/community-initiatives",
+  discoverUrl: "/api/admin/community-initiatives/discover",
+  categoryLabels: categoryLabels[lang],
+  statusLabels: communityStatusLabels[lang],
+  projectOptions: projects.map((project) => ({ id: project.id, title: field(project, "title", lang) })),
+  labels: {
+    authError: t.adminCommunity.authError,
+    loading: t.adminCommunity.loading,
+    actionError: t.adminCommunity.actionError,
+    noCandidates: t.adminCommunity.noCandidates,
+    useCandidate: t.adminCommunity.useCandidate,
+    saved: t.adminCommunity.saved,
+    noExisting: t.adminCommunity.noExisting,
+    edit: t.adminCommunity.edit,
+    source: t.common.source
+  }
+};
+---
+
+<Layout lang={lang} path="/admin/community" title={t.adminCommunity.title} description={t.adminCommunity.lead}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t.adminCommunity.title}</p>
+      <h1>{t.adminCommunity.title}</h1>
+      <p class="lead">{t.adminCommunity.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <form id="community-admin-login" class="card" style="max-width:420px">
+        <div class="field">
+          <label for="community-admin-token">{t.adminCommunity.tokenLabel}</label>
+          <input id="community-admin-token" type="password" autocomplete="current-password" placeholder={t.adminCommunity.tokenPlaceholder} />
+        </div>
+        <p id="community-admin-auth-error" class="error" role="alert" hidden style="text-align:left;padding:10px 12px;margin:12px 0 0"></p>
+        <button type="submit" class="button" style="width:100%;justify-content:center;margin-top:14px">{t.adminCommunity.signIn}</button>
+      </form>
+
+      <div id="community-admin-dash" hidden>
+        <div class="results-bar">
+          <h2 style="margin:0;font-size:1.4rem">{t.adminCommunity.discoveryTitle}</h2>
+          <div class="pill-row">
+            <button type="button" id="community-admin-refresh" class="button secondary">{t.adminCommunity.refresh}</button>
+            <button type="button" id="community-admin-signout" class="link-button">{t.adminCommunity.signOut}</button>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>{t.adminCommunity.discoveryTitle}</h3>
+            <p class="meta">{t.adminCommunity.discoveryLead}</p>
+            <div class="field" style="margin-top:14px">
+              <label for="community-discovery-query">{t.adminCommunity.queryLabel}</label>
+              <input id="community-discovery-query" type="search" placeholder={t.adminCommunity.queryPlaceholder} />
+            </div>
+            <div class="actions" style="margin-top:12px">
+              <button type="button" id="community-discovery-search" class="button">{t.adminCommunity.find}</button>
+            </div>
+            <div class="field" style="margin-top:18px">
+              <label for="community-discovery-url">{t.adminCommunity.sourceUrl}</label>
+              <input id="community-discovery-url" type="url" placeholder="https://…" />
+            </div>
+            <div class="actions" style="margin-top:12px">
+              <button type="button" id="community-discovery-inspect" class="button secondary">{t.adminCommunity.inspectUrl}</button>
+            </div>
+            <div id="community-discovery-results" class="list" style="margin-top:18px"></div>
+          </article>
+
+          <form id="community-initiative-form" class="card">
+            <h3>{t.adminCommunity.formTitle}</h3>
+            <div class="grid grid-2" style="margin-top:14px">
+              <div class="field">
+                <label for="community-id">{t.adminCommunity.id}</label>
+                <input id="community-id" name="id" />
+              </div>
+              <div class="field">
+                <label for="community-category">{t.adminCommunity.category}</label>
+                <select id="community-category" name="category" required>
+                  {categories.map((category) => <option value={category}>{categoryLabels[lang][category] ?? category}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="community-title-bg">{t.adminCommunity.titleBg}</label>
+                <input id="community-title-bg" name="title_bg" required />
+              </div>
+              <div class="field">
+                <label for="community-title-en">{t.adminCommunity.titleEn}</label>
+                <input id="community-title-en" name="title_en" required />
+              </div>
+              <div class="field" style="grid-column:1/-1">
+                <label for="community-summary-bg">{t.adminCommunity.summaryBg}</label>
+                <textarea id="community-summary-bg" name="summary_bg" rows="3" required></textarea>
+              </div>
+              <div class="field" style="grid-column:1/-1">
+                <label for="community-summary-en">{t.adminCommunity.summaryEn}</label>
+                <textarea id="community-summary-en" name="summary_en" rows="3"></textarea>
+              </div>
+              <div class="field">
+                <label for="community-status">{t.adminCommunity.status}</label>
+                <select id="community-status" name="status" required>
+                  {statuses.map((status) => <option value={status}>{communityStatusLabels[lang][status] ?? status}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="community-organizer-type">{t.adminCommunity.organizerType}</label>
+                <select id="community-organizer-type" name="organizer_type" required>
+                  {organizerTypes.map((type) => <option value={type}>{type}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="community-organizer-bg">{t.adminCommunity.organizerBg}</label>
+                <input id="community-organizer-bg" name="organizer_bg" required />
+              </div>
+              <div class="field">
+                <label for="community-organizer-en">{t.adminCommunity.organizerEn}</label>
+                <input id="community-organizer-en" name="organizer_en" />
+              </div>
+              <div class="field">
+                <label for="community-website">{t.adminCommunity.website}</label>
+                <input id="community-website" name="website" type="url" placeholder="https://…" />
+              </div>
+              <div class="field">
+                <label for="community-facebook">{t.adminCommunity.facebook}</label>
+                <input id="community-facebook" name="facebook" type="url" placeholder="https://facebook.com/…" />
+              </div>
+              <div class="field" style="grid-column:1/-1">
+                <label for="community-cta-bg">{t.adminCommunity.callToActionBg}</label>
+                <input id="community-cta-bg" name="call_to_action_bg" />
+              </div>
+              <div class="field" style="grid-column:1/-1">
+                <label for="community-cta-en">{t.adminCommunity.callToActionEn}</label>
+                <input id="community-cta-en" name="call_to_action_en" />
+              </div>
+              <div class="field">
+                <label for="community-lat">{t.adminCommunity.latitude}</label>
+                <input id="community-lat" name="lat" type="number" min="42" max="42.25" step="0.0001" required />
+              </div>
+              <div class="field">
+                <label for="community-lng">{t.adminCommunity.longitude}</label>
+                <input id="community-lng" name="lng" type="number" min="24.6" max="24.9" step="0.0001" required />
+              </div>
+              <div class="field">
+                <label for="community-address-bg">{t.adminCommunity.addressBg}</label>
+                <input id="community-address-bg" name="address_bg" required />
+              </div>
+              <div class="field">
+                <label for="community-address-en">{t.adminCommunity.addressEn}</label>
+                <input id="community-address-en" name="address_en" />
+              </div>
+              <div class="field">
+                <label for="community-related-projects">{t.adminCommunity.relatedProjects}</label>
+                <input id="community-related-projects" name="related_project_ids" list="community-project-ids" />
+                <datalist id="community-project-ids">
+                  {projects.map((project) => <option value={project.id}>{field(project, "title", lang)}</option>)}
+                </datalist>
+              </div>
+              <div class="field">
+                <label for="community-tags">{t.adminCommunity.tags}</label>
+                <input id="community-tags" name="tags" />
+              </div>
+              <div class="field">
+                <label for="community-source-title">{t.adminCommunity.sourceTitle}</label>
+                <input id="community-source-title" name="source_title" required />
+              </div>
+              <div class="field">
+                <label for="community-source-url">{t.adminCommunity.sourceUrlLabel}</label>
+                <input id="community-source-url" name="source_url" type="url" required />
+              </div>
+            </div>
+            <p id="community-admin-message" class="meta" role="status" style="margin:14px 0 0"></p>
+            <div class="actions" style="margin-top:14px">
+              <button type="submit" class="button">{t.adminCommunity.save}</button>
+            </div>
+          </form>
+        </div>
+
+        <section class="section" style="padding-bottom:0">
+          <div class="section-head">
+            <h2>{t.adminCommunity.existingTitle}</h2>
+          </div>
+          <div id="community-existing-list" class="grid grid-2"></div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/json" id="community-admin-config" set:html={JSON.stringify(config)}></script>
+
+  <script>
+    type Initiative = {
+      id: string;
+      title_bg: string;
+      title_en?: string;
+      summary_bg: string;
+      summary_en?: string;
+      category: string;
+      status: string;
+      organizer: {
+        name_bg: string;
+        name_en?: string;
+        type: string;
+        website_url?: string;
+        facebook_url?: string;
+      };
+      call_to_action_bg?: string;
+      call_to_action_en?: string;
+      location: { lat: number; lng: number; address_bg: string; address_en?: string };
+      related_project_ids?: string[];
+      tags?: string[];
+      sources: Array<{ title: string; url: string; accessed_at: string }>;
+      discovery?: { query_bg?: string };
+    };
+
+    const config = JSON.parse(
+      document.getElementById("community-admin-config")?.textContent ?? "{}"
+    );
+    const TOKEN_KEY = "op-admin-token";
+    const loginForm = document.querySelector<HTMLFormElement>("#community-admin-login")!;
+    const tokenInput = document.querySelector<HTMLInputElement>("#community-admin-token")!;
+    const authError = document.querySelector<HTMLElement>("#community-admin-auth-error")!;
+    const dash = document.querySelector<HTMLElement>("#community-admin-dash")!;
+    const form = document.querySelector<HTMLFormElement>("#community-initiative-form")!;
+    const message = document.querySelector<HTMLElement>("#community-admin-message")!;
+    const existingList = document.querySelector<HTMLElement>("#community-existing-list")!;
+    const discoveryQuery = document.querySelector<HTMLInputElement>("#community-discovery-query")!;
+    const discoveryUrl = document.querySelector<HTMLInputElement>("#community-discovery-url")!;
+    const discoveryResults = document.querySelector<HTMLElement>("#community-discovery-results")!;
+
+    function token(): string {
+      return localStorage.getItem(TOKEN_KEY) ?? "";
+    }
+
+    function escapeHtml(value: unknown): string {
+      return String(value ?? "").replace(/[&<>"']/g, (char) => {
+        const map: Record<string, string> = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "\"": "&quot;",
+          "'": "&#039;"
+        };
+        return map[char] ?? char;
+      });
+    }
+
+    function field(record: Record<string, unknown> | undefined, base: string): string {
+      if (!record) return "";
+      const localized = record[`${base}_${config.lang}`];
+      if (typeof localized === "string" && localized.length > 0) return localized;
+      const fallback = record[`${base}_bg`];
+      return typeof fallback === "string" ? fallback : "";
+    }
+
+    async function adminFetch(path: string, init: RequestInit = {}) {
+      const res = await fetch(path, {
+        ...init,
+        headers: {
+          Authorization: `Bearer ${token()}`,
+          "Content-Type": "application/json",
+          ...(init.headers ?? {})
+        }
+      });
+      if (res.status === 401) throw new Error(config.labels.authError);
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? config.labels.actionError);
+      return data;
+    }
+
+    function setAuthed(authed: boolean) {
+      loginForm.hidden = authed;
+      dash.hidden = !authed;
+      authError.hidden = true;
+      if (authed) loadExisting();
+    }
+
+    function formValue(name: string): string {
+      return String(new FormData(form).get(name) ?? "").trim();
+    }
+
+    function setFormValue(name: string, value: unknown) {
+      const element = form.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null;
+      if (element) element.value = String(value ?? "");
+    }
+
+    function initiativePayload() {
+      return {
+        id: formValue("id"),
+        title_bg: formValue("title_bg"),
+        title_en: formValue("title_en"),
+        summary_bg: formValue("summary_bg"),
+        summary_en: formValue("summary_en"),
+        category: formValue("category"),
+        status: formValue("status"),
+        organizer: {
+          name_bg: formValue("organizer_bg"),
+          name_en: formValue("organizer_en"),
+          type: formValue("organizer_type"),
+          website_url: formValue("website"),
+          facebook_url: formValue("facebook")
+        },
+        call_to_action_bg: formValue("call_to_action_bg"),
+        call_to_action_en: formValue("call_to_action_en"),
+        location: {
+          lat: Number(formValue("lat")),
+          lng: Number(formValue("lng")),
+          address_bg: formValue("address_bg"),
+          address_en: formValue("address_en"),
+          approximate: true
+        },
+        related_project_ids: formValue("related_project_ids"),
+        tags: formValue("tags"),
+        source_title: formValue("source_title"),
+        source_url: formValue("source_url"),
+        query_bg: discoveryQuery.value.trim()
+      };
+    }
+
+    function fillForm(item: Initiative) {
+      setFormValue("id", item.id);
+      setFormValue("title_bg", item.title_bg);
+      setFormValue("title_en", item.title_en ?? item.title_bg);
+      setFormValue("summary_bg", item.summary_bg);
+      setFormValue("summary_en", item.summary_en ?? "");
+      setFormValue("category", item.category);
+      setFormValue("status", item.status);
+      setFormValue("organizer_bg", item.organizer.name_bg);
+      setFormValue("organizer_en", item.organizer.name_en ?? "");
+      setFormValue("organizer_type", item.organizer.type);
+      setFormValue("website", item.organizer.website_url ?? "");
+      setFormValue("facebook", item.organizer.facebook_url ?? "");
+      setFormValue("call_to_action_bg", item.call_to_action_bg ?? "");
+      setFormValue("call_to_action_en", item.call_to_action_en ?? "");
+      setFormValue("lat", item.location.lat);
+      setFormValue("lng", item.location.lng);
+      setFormValue("address_bg", item.location.address_bg);
+      setFormValue("address_en", item.location.address_en ?? "");
+      setFormValue("related_project_ids", item.related_project_ids?.join(", ") ?? "");
+      setFormValue("tags", item.tags?.join(", ") ?? "");
+      setFormValue("source_title", item.sources[0]?.title ?? "");
+      setFormValue("source_url", item.sources[0]?.url ?? "");
+      discoveryQuery.value = item.discovery?.query_bg ?? "";
+      form.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function renderExisting(items: Initiative[]) {
+      if (!items.length) {
+        existingList.innerHTML = `<p class="empty">${escapeHtml(config.labels.noExisting)}</p>`;
+        return;
+      }
+      existingList.innerHTML = items
+        .map(
+          (item) => `
+            <article class="card project-card">
+              <header>
+                <div>
+                  <h3>${escapeHtml(field(item, "title"))}</h3>
+                  <p class="meta">${escapeHtml(config.categoryLabels[item.category] ?? item.category)} · ${escapeHtml(item.id)}</p>
+                </div>
+                <span class="badge status-${escapeHtml(item.status)}">${escapeHtml(config.statusLabels[item.status] ?? item.status)}</span>
+              </header>
+              <p>${escapeHtml(field(item, "summary"))}</p>
+              <p class="meta">${escapeHtml(field(item.organizer, "name"))}</p>
+              <div class="pill-row">
+                <button type="button" class="button secondary" data-edit="${escapeHtml(item.id)}">${escapeHtml(config.labels.edit)}</button>
+                <a href="${escapeHtml(item.sources[0]?.url ?? "#")}" target="_blank" rel="noreferrer">${escapeHtml(config.labels.source)}</a>
+              </div>
+            </article>
+          `
+        )
+        .join("");
+      existingList.querySelectorAll<HTMLButtonElement>("[data-edit]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = items.find((entry) => entry.id === button.dataset.edit);
+          if (item) fillForm(item);
+        });
+      });
+    }
+
+    async function loadExisting() {
+      existingList.innerHTML = `<p class="loading">${escapeHtml(config.labels.loading)}</p>`;
+      try {
+        const data = await adminFetch(config.apiBase);
+        renderExisting(Array.isArray(data.initiatives) ? data.initiatives : []);
+      } catch (error) {
+        existingList.innerHTML = `<p class="error">${escapeHtml(error instanceof Error ? error.message : config.labels.actionError)}</p>`;
+      }
+    }
+
+    function renderCandidates(candidates: Array<{ title: string; url: string; snippet?: string }>) {
+      if (!candidates.length) {
+        discoveryResults.innerHTML = `<p class="empty">${escapeHtml(config.labels.noCandidates)}</p>`;
+        return;
+      }
+      discoveryResults.innerHTML = candidates
+        .map(
+          (candidate, index) => `
+            <article class="muted-card">
+              <h4 style="margin:0 0 6px">${escapeHtml(candidate.title)}</h4>
+              ${candidate.snippet ? `<p class="meta">${escapeHtml(candidate.snippet)}</p>` : ""}
+              <p><a href="${escapeHtml(candidate.url)}" target="_blank" rel="noreferrer">${escapeHtml(candidate.url)}</a></p>
+              <button type="button" class="button secondary" data-candidate="${index}">${escapeHtml(config.labels.useCandidate)}</button>
+            </article>
+          `
+        )
+        .join("");
+      discoveryResults.querySelectorAll<HTMLButtonElement>("[data-candidate]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const candidate = candidates[Number(button.dataset.candidate)];
+          if (!candidate) return;
+          setFormValue("source_title", candidate.title);
+          setFormValue("source_url", candidate.url);
+          if (!formValue("title_bg")) setFormValue("title_bg", candidate.title);
+          if (!formValue("summary_bg") && candidate.snippet) setFormValue("summary_bg", candidate.snippet);
+        });
+      });
+    }
+
+    async function discover(body: Record<string, string>) {
+      discoveryResults.innerHTML = `<p class="loading">${escapeHtml(config.labels.loading)}</p>`;
+      try {
+        const data = await adminFetch(config.discoverUrl, {
+          method: "POST",
+          body: JSON.stringify(body)
+        });
+        renderCandidates(Array.isArray(data.candidates) ? data.candidates : []);
+      } catch (error) {
+        discoveryResults.innerHTML = `<p class="error">${escapeHtml(error instanceof Error ? error.message : config.labels.actionError)}</p>`;
+      }
+    }
+
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      localStorage.setItem(TOKEN_KEY, tokenInput.value.trim());
+      try {
+        await adminFetch(config.apiBase);
+        setAuthed(true);
+      } catch {
+        authError.textContent = config.labels.authError;
+        authError.hidden = false;
+      }
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      message.textContent = config.labels.loading;
+      try {
+        await adminFetch(config.apiBase, {
+          method: "POST",
+          body: JSON.stringify(initiativePayload())
+        });
+        message.textContent = config.labels.saved;
+        await loadExisting();
+      } catch (error) {
+        message.textContent = error instanceof Error ? error.message : config.labels.actionError;
+      }
+    });
+
+    document.getElementById("community-admin-refresh")?.addEventListener("click", loadExisting);
+    document.getElementById("community-admin-signout")?.addEventListener("click", () => {
+      localStorage.removeItem(TOKEN_KEY);
+      tokenInput.value = "";
+      setAuthed(false);
+    });
+    document.getElementById("community-discovery-search")?.addEventListener("click", () => {
+      discover({ query: discoveryQuery.value.trim() });
+    });
+    document.getElementById("community-discovery-inspect")?.addEventListener("click", () => {
+      discover({ source_url: discoveryUrl.value.trim() });
+    });
+
+    const savedToken = token();
+    if (savedToken) {
+      tokenInput.value = savedToken;
+      setAuthed(true);
+    }
+  </script>
+</Layout>

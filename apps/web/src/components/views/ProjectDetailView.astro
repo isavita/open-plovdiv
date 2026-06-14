@@ -4,9 +4,10 @@ import StatusBadge from "@components/StatusBadge.astro";
 import Layout from "@layouts/Layout.astro";
 import { categoryColors, ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
-import { budgetItems, type Project } from "@lib/data";
+import { budgetItems, communityInitiatives, type Project } from "@lib/data";
 import {
   categoryLabel,
+  communityStatusLabel,
   districtLabel,
   formatDate,
   formatMoney,
@@ -20,6 +21,9 @@ const t = ui[lang];
 
 const title = field(project, "title", lang);
 const relatedBudget = budgetItems.find((item) => item.id === project.related_budget_item_id);
+const relatedInitiatives = communityInitiatives.filter((item) =>
+  item.related_project_ids?.includes(project.id)
+);
 
 const pinColor = categoryColors[project.category] ?? "var(--brand)";
 
@@ -123,6 +127,52 @@ const note = field(project, "note", lang);
           )
         }
       </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{t.project.communityInitiatives}</h2>
+          <p class="meta">{t.project.communityInitiativesText}</p>
+        </div>
+        <a href={localizePath("/community", lang)}>{t.home.viewAll} →</a>
+      </div>
+      {
+        relatedInitiatives.length ? (
+          <div class="grid grid-2">
+            {relatedInitiatives.map((initiative) => (
+              <article class="card project-card">
+                <header>
+                  <div>
+                    <h3>{field(initiative, "title", lang)}</h3>
+                    <p class="meta">
+                      <span class="cat-dot" style={`--dot:${categoryColors[initiative.category] ?? "var(--brand)"}`}></span>
+                      {categoryLabel(initiative.category, lang)} · {field(initiative.location, "address", lang)}
+                    </p>
+                  </div>
+                  <span class={`badge status-${initiative.status}`}>{communityStatusLabel(initiative.status, lang)}</span>
+                </header>
+                <p>{field(initiative, "summary", lang)}</p>
+                <p class="meta">{t.community.organizer}: {field(initiative.organizer, "name", lang)}</p>
+                {initiative.contact_links?.length ? (
+                  <div class="pill-row">
+                    {initiative.contact_links.map((link) => (
+                      <a class="button secondary" href={link.url} target="_blank" rel="noreferrer">
+                        {field(link, "label", lang)}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+                <SourceList sources={initiative.sources} lang={lang} />
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p class="empty">{t.project.noCommunityInitiatives}</p>
+        )
+      }
     </div>
   </section>
 

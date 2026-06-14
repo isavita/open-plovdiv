@@ -1,0 +1,333 @@
+---
+import Layout from "@layouts/Layout.astro";
+import {
+  categoryColors,
+  categoryLabels,
+  communityStatusLabels,
+  ui,
+  type Lang
+} from "@i18n/ui";
+import { field, localizePath } from "@i18n/utils";
+import { communityInitiatives, projects } from "@lib/data";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const categories = Array.from(new Set(communityInitiatives.map((item) => item.category))).sort();
+const statuses = Object.keys(communityStatusLabels[lang]);
+const projectLinks = Object.fromEntries(
+  projects.map((project) => [
+    project.id,
+    {
+      title: field(project, "title", lang),
+      href: localizePath(`/projects/${project.id}`, lang)
+    }
+  ])
+);
+
+const config = {
+  lang,
+  endpoint: "/api/community-initiatives/public",
+  initial: communityInitiatives,
+  categoryLabels: categoryLabels[lang],
+  statusLabels: communityStatusLabels[lang],
+  categoryColors,
+  projectLinks,
+  labels: {
+    all: t.common.all,
+    accessed: t.common.accessed,
+    source: t.common.source,
+    empty: t.community.empty,
+    organizer: t.community.organizer,
+    links: t.community.links,
+    sources: t.community.sources,
+    relatedProjects: t.community.relatedProjects,
+    noRelatedProjects: t.community.noRelatedProjects,
+    discovered: t.community.discovered,
+    lastChecked: t.community.lastChecked,
+    contact: t.community.contact,
+    of: lang === "bg" ? "от" : "of",
+    one: lang === "bg" ? "инициатива" : "initiative",
+    many: lang === "bg" ? "инициативи" : "initiatives"
+  }
+};
+---
+
+<Layout lang={lang} path="/community" title={t.community.title} description={t.community.lead}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t.community.eyebrow}</p>
+      <h1>{t.community.title}</h1>
+      <p class="lead">{t.community.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="notice" style="margin-bottom:22px">
+        <span class="notice-icon" aria-hidden="true">ⓘ</span>
+        <span>{t.community.dataNotice}</span>
+      </div>
+
+      <div class="toolbar">
+        <div class="filters" style="grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));">
+          <div class="field">
+            <label for="community-search">{t.community.search}</label>
+            <input id="community-search" type="search" placeholder={t.community.searchPlaceholder} />
+          </div>
+          <div class="field">
+            <label for="community-category">{t.community.category}</label>
+            <select id="community-category">
+              <option value="all">{t.common.all}</option>
+              {categories.map((category) => <option value={category}>{categoryLabels[lang][category] ?? category}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="community-status">{t.community.status}</label>
+            <select id="community-status">
+              <option value="all">{t.common.all}</option>
+              {statuses.map((status) => <option value={status}>{communityStatusLabels[lang][status] ?? status}</option>)}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-bar">
+        <p id="community-count" class="meta">{t.community.count(communityInitiatives.length)}</p>
+        <div class="pill-row">
+          <a class="link-button" href={localizePath("/admin/community", lang)}>{t.community.adminCta}</a>
+          <button type="button" id="community-reset" class="link-button" hidden>{t.community.reset}</button>
+        </div>
+      </div>
+
+      <div id="community-list" class="grid grid-2" aria-live="polite"></div>
+      <p id="community-empty" class="empty" hidden>{t.community.empty}</p>
+    </div>
+  </section>
+
+  <script type="application/json" id="community-config" set:html={JSON.stringify(config)}></script>
+
+  <script>
+    type Source = { title: string; url: string; accessed_at: string };
+    type Link = { label_bg: string; label_en?: string; url: string; type: string };
+    type Initiative = {
+      id: string;
+      title_bg: string;
+      title_en?: string;
+      summary_bg: string;
+      summary_en?: string;
+      category: string;
+      status: string;
+      organizer: {
+        name_bg: string;
+        name_en?: string;
+        website_url?: string;
+        facebook_url?: string;
+      };
+      call_to_action_bg?: string;
+      call_to_action_en?: string;
+      location: { address_bg: string; address_en?: string };
+      related_project_ids?: string[];
+      tags?: string[];
+      contact_links?: Link[];
+      sources: Source[];
+      discovery: { method: string; last_checked_at: string };
+    };
+
+    const config = JSON.parse(
+      document.getElementById("community-config")?.textContent ?? "{}"
+    );
+    const search = document.querySelector<HTMLInputElement>("#community-search")!;
+    const category = document.querySelector<HTMLSelectElement>("#community-category")!;
+    const status = document.querySelector<HTMLSelectElement>("#community-status")!;
+    const reset = document.querySelector<HTMLButtonElement>("#community-reset")!;
+    const list = document.querySelector<HTMLElement>("#community-list")!;
+    const count = document.querySelector<HTMLElement>("#community-count")!;
+    const empty = document.querySelector<HTMLElement>("#community-empty")!;
+    let initiatives: Initiative[] = Array.isArray(config.initial) ? config.initial : [];
+
+    function escapeHtml(value: unknown): string {
+      return String(value ?? "").replace(/[&<>"']/g, (char) => {
+        const map: Record<string, string> = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "\"": "&quot;",
+          "'": "&#039;"
+        };
+        return map[char] ?? char;
+      });
+    }
+
+    function field(record: Record<string, unknown> | undefined, base: string): string {
+      if (!record) return "";
+      const localized = record[`${base}_${config.lang}`];
+      if (typeof localized === "string" && localized.length > 0) return localized;
+      const fallback = record[`${base}_bg`];
+      return typeof fallback === "string" ? fallback : "";
+    }
+
+    function label(map: Record<string, string>, value: string): string {
+      return map[value] ?? value;
+    }
+
+    function noun(n: number): string {
+      return n === 1 ? config.labels.one : config.labels.many;
+    }
+
+    function searchable(item: Initiative): string {
+      return [
+        field(item, "title"),
+        field(item, "summary"),
+        field(item.organizer, "name"),
+        field(item.location, "address"),
+        item.tags?.join(" ") ?? ""
+      ]
+        .join(" ")
+        .toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB");
+    }
+
+    function sourceList(sources: Source[]): string {
+      if (!sources.length) return "";
+      return `
+        <section class="stack-sm">
+          <h3>${escapeHtml(config.labels.sources)}</h3>
+          <ul class="source-list">
+            ${sources
+              .map(
+                (source) => `
+                  <li>
+                    <a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.title)}</a>
+                    <span class="meta"> · ${escapeHtml(config.labels.accessed)} ${escapeHtml(source.accessed_at)}</span>
+                  </li>
+                `
+              )
+              .join("")}
+          </ul>
+        </section>
+      `;
+    }
+
+    function linkButtons(links: Link[] = []): string {
+      if (!links.length) return "";
+      return `
+        <div class="pill-row" aria-label="${escapeHtml(config.labels.links)}">
+          ${links
+            .map(
+              (link) => `
+                <a class="button secondary" href="${escapeHtml(link.url)}" target="_blank" rel="noreferrer">
+                  ${escapeHtml(field(link, "label") || config.labels.contact)}
+                </a>
+              `
+            )
+            .join("")}
+        </div>
+      `;
+    }
+
+    function relatedProjects(ids: string[] = []): string {
+      const links = ids
+        .map((id) => config.projectLinks[id])
+        .filter(Boolean)
+        .map(
+          (project: { href: string; title: string }) =>
+            `<li><a href="${escapeHtml(project.href)}">${escapeHtml(project.title)}</a></li>`
+        )
+        .join("");
+      if (!links) return `<p class="meta">${escapeHtml(config.labels.noRelatedProjects)}</p>`;
+      return `<ul class="source-list">${links}</ul>`;
+    }
+
+    function card(item: Initiative): string {
+      const title = field(item, "title");
+      const summary = field(item, "summary");
+      const address = field(item.location, "address");
+      const organizer = field(item.organizer, "name");
+      const color = config.categoryColors[item.category] ?? "var(--brand)";
+      const cta = field(item, "call_to_action");
+      const statusLabel = label(config.statusLabels, item.status);
+      const categoryLabel = label(config.categoryLabels, item.category);
+
+      return `
+        <article class="card project-card" data-community-card data-search="${escapeHtml(searchable(item))}" data-category="${escapeHtml(item.category)}" data-status="${escapeHtml(item.status)}">
+          <header>
+            <div>
+              <h2>${escapeHtml(title)}</h2>
+              <p class="meta">
+                <span class="cat-dot" style="--dot:${escapeHtml(color)}"></span>
+                ${escapeHtml(categoryLabel)} · ${escapeHtml(address)}
+              </p>
+            </div>
+            <span class="badge status-${escapeHtml(item.status)}">${escapeHtml(statusLabel)}</span>
+          </header>
+          <p>${escapeHtml(summary)}</p>
+          <div class="pill-row">
+            <span class="badge no-dot">${escapeHtml(config.labels.organizer)}: ${escapeHtml(organizer)}</span>
+            <span class="meta">${escapeHtml(config.labels.lastChecked)} ${escapeHtml(item.discovery?.last_checked_at ?? "")}</span>
+          </div>
+          ${cta ? `<p class="meta">${escapeHtml(cta)}</p>` : ""}
+          ${linkButtons(item.contact_links ?? [])}
+          <section class="stack-sm">
+            <h3>${escapeHtml(config.labels.relatedProjects)}</h3>
+            ${relatedProjects(item.related_project_ids ?? [])}
+          </section>
+          ${sourceList(item.sources ?? [])}
+        </article>
+      `;
+    }
+
+    function applyFilters() {
+      const query = search.value.trim().toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB");
+      let visible = 0;
+
+      document.querySelectorAll<HTMLElement>("[data-community-card]").forEach((item) => {
+        const matches =
+          (!query || (item.dataset.search ?? "").includes(query)) &&
+          (category.value === "all" || item.dataset.category === category.value) &&
+          (status.value === "all" || item.dataset.status === status.value);
+        item.hidden = !matches;
+        if (matches) visible += 1;
+      });
+
+      const filtering = Boolean(query) || category.value !== "all" || status.value !== "all";
+      count.textContent = filtering
+        ? `${visible} ${config.labels.of} ${initiatives.length} ${noun(initiatives.length)}`
+        : `${initiatives.length} ${noun(initiatives.length)}`;
+      empty.hidden = visible > 0;
+      reset.hidden = !filtering;
+    }
+
+    function render() {
+      list.innerHTML = initiatives.map(card).join("");
+      applyFilters();
+    }
+
+    function resetFilters() {
+      search.value = "";
+      category.value = "all";
+      status.value = "all";
+      applyFilters();
+      search.focus();
+    }
+
+    search.addEventListener("input", applyFilters);
+    category.addEventListener("change", applyFilters);
+    status.addEventListener("change", applyFilters);
+    reset.addEventListener("click", resetFilters);
+
+    render();
+
+    fetch(config.endpoint)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data && Array.isArray(data.initiatives)) {
+          initiatives = data.initiatives;
+          render();
+        }
+      })
+      .catch(() => {
+        /* keep curated data */
+      });
+  </script>
+</Layout>
