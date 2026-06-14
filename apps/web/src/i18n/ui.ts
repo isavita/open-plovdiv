@@ -216,19 +216,19 @@ const bg = {
     eyebrow: "Как работи",
     title: "Методология",
     lead:
-      "Данните минават през преглед, схема и публични източници, преди да бъдат публикувани като факти. AI може да помага за чернови, но не е източник на истина.",
-    collectTitle: "Събиране",
+      "AI търси публични източници, извлича проектни и бюджетни записи и ги проверява срещу схеми, URL адреси, суми и координати преди публикуване. Източниците остават видими, защото AI може да сгреши.",
+    collectTitle: "AI търсене",
     collectText:
-      "Данните се събират ръчно от публични източници — бюджета и решенията на Община Пловдив, капиталовата програма и местни медии — и всеки запис се въвежда с препратка към източника.",
-    verifyTitle: "Проверка",
+      "AI намира и сравнява публични източници — бюджета и решенията на Община Пловдив, капиталовата програма и местни медии — и добавя към всеки запис линк към използвания източник.",
+    verifyTitle: "AI проверка",
     verifyText:
-      "Валидират се задължителни полета, статуси, URL адреси, суми, координати и липса на лични данни в сигналите.",
+      "AI извлича и сверява полета, статуси, URL адреси, суми, години, координати и липса на лични данни в сигналите. След това JSON схемите валидират структурата преди билд.",
     aiTitle: "AI",
     aiText:
-      "AI изходът трябва да бъде чернова или човешки прегледан. Той не може да измисля факти, обвинения или липсващи стойности.",
+      "Търсенето, обобщаването и проверката се извършват от AI. Когато източникът не публикува сума, статус или завършване, сайтът трябва да го показва като липсващи или прогнозни данни, а не да го измисля.",
     correctTitle: "Корекции",
     correctText:
-      "Корекцията трябва да добави или смени публичен източник, да обнови curated JSON и да мине през validation и build."
+      "Корекцията трябва да добави или смени публичен източник, да обнови curated JSON и да мине през автоматична валидация и билд."
   },
   privacy: {
     eyebrow: "Без лични данни",
@@ -545,19 +545,19 @@ const en: typeof bg = {
     eyebrow: "How it works",
     title: "Methodology",
     lead:
-      "Data goes through review, a schema and public sources before being published as fact. AI can help draft, but is not a source of truth.",
-    collectTitle: "Collection",
+      "AI searches public sources, extracts project and budget records, and checks them against schemas, URLs, amounts and coordinates before publication. Sources stay visible because AI can still be wrong.",
+    collectTitle: "AI search",
     collectText:
-      "Data is collected manually from public sources — Plovdiv Municipality's budget and decisions, the capital programme and local media — and each record is entered with a link to its source.",
-    verifyTitle: "Verification",
+      "AI finds and compares public sources — Plovdiv Municipality's budget and decisions, the capital programme and local media — and each record includes a link to the source used.",
+    verifyTitle: "AI verification",
     verifyText:
-      "Required fields, statuses, URLs, amounts, coordinates and the absence of personal data in reports are validated.",
+      "AI extracts and checks fields, statuses, URLs, amounts, years, coordinates and the absence of personal data in reports. JSON schemas then validate structure before the build.",
     aiTitle: "AI",
     aiText:
-      "AI output must be a draft or human-reviewed. It cannot invent facts, accusations or missing values.",
+      "Search, summarisation and verification are performed by AI. When a source does not publish an amount, status or completion record, the site must show that as missing or provisional data instead of inventing it.",
     correctTitle: "Corrections",
     correctText:
-      "A correction must add or change a public source, update the curated JSON and pass validation and build."
+      "A correction must add or change a public source, update the curated JSON and pass automated validation and build."
   },
   privacy: {
     eyebrow: "No personal data",

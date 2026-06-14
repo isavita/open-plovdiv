@@ -4,11 +4,11 @@ Open Plovdiv separates three things:
 
 - source facts copied from public documents
 - plain-language summaries written for readability
-- manual or AI-assisted interpretation that must be reviewed before publication
+- AI extraction and verification that must stay tied to public sources
 
-## Collection
+## AI Search
 
-Official/project data is manual-first. Editors add records to `data/curated` and keep original public files in `data/raw` when available.
+AI searches public sources such as Plovdiv Municipality budget pages and decisions, capital-programme reporting, and local media. It extracts candidate project and budget records and stores them in `data/curated` with links to the sources used.
 
 Citizen reports are submitted through `/fix-map/report`. A submitted report is stored with `moderation_status: "needs_review"` and is not public until a moderator approves it.
 
@@ -30,11 +30,11 @@ Photos are optional. Uploaded images are limited to 5 MB each, converted to WebP
 
 ## AI Use
 
-AI may later draft summaries, categories, or location candidates. AI output is not a source of truth. It must be marked as draft or reviewed, and it must not invent facts.
+AI performs the source search, extraction, summarisation and verification workflow for project and budget data. Public sources remain visible because AI can still make mistakes. When a source does not publish an amount, status or completion record, the site should show that as missing or provisional data instead of inventing a value.
 
 ## Corrections
 
-Corrections to citizen reports should be made in `/admin/reports`, where they are audited and pushed to the live report stream. Corrections to project or budget records should cite a public source where possible, update the curated JSON record, add or replace the relevant source URL, run validation, and rebuild the static site.
+Corrections to citizen reports should be made in `/admin/reports`, where they are audited and pushed to the live report stream. Corrections to project or budget records should cite a public source where possible, update the curated JSON record, add or replace the relevant source URL, run automated validation, and rebuild the static site.
 
 ## What This Site Does Not Claim
 
