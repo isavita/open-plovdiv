@@ -1129,6 +1129,156 @@ p:last-child {
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Let a bar-fill carry its own colour (overview category/status charts). */
+.bar-fill[data-flat] {
+  background: var(--fill, var(--brand));
+}
+
+/* ---- Overview charts ----------------------------------------------------- */
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+}
+
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: clamp(16px, 2.2vw, 22px);
+  box-shadow: var(--shadow-sm);
+}
+
+.chart-card h3 {
+  margin: 0 0 16px;
+}
+
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3vw, 28px);
+  flex-wrap: wrap;
+}
+
+.donut {
+  width: 168px;
+  height: 168px;
+  flex: none;
+  transform: rotate(-90deg);
+}
+
+.donut-seg {
+  fill: none;
+  stroke-width: 22;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.donut-figure {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.donut-center {
+  position: absolute;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.donut-center strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--ink);
+}
+
+.donut-center span {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.chart-legend {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  min-width: 160px;
+}
+
+.chart-legend li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.92rem;
+}
+
+.chart-legend .swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex: none;
+}
+
+.chart-legend .legend-value {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.compare-cols {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(20px, 6vw, 56px);
+  height: 220px;
+  padding: 8px 8px 0;
+}
+
+.compare-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  gap: 10px;
+}
+
+.compare-bar {
+  width: min(100%, 90px);
+  border-radius: var(--r-sm) var(--r-sm) 0 0;
+  background: linear-gradient(180deg, var(--brand), var(--brand-strong));
+  min-height: 6px;
+  transition: height 0.6s ease;
+}
+
+.compare-bar.provisional {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent) 9px,
+    color-mix(in srgb, var(--accent) 70%, transparent) 9px,
+    color-mix(in srgb, var(--accent) 70%, transparent) 18px
+  );
+}
+
+.compare-meta {
+  text-align: center;
+}
+
+.compare-meta strong {
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+
+.compare-meta span {
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
 /* ---- Table --------------------------------------------------------------- */
 
 .table-wrap {

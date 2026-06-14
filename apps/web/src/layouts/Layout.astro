@@ -19,6 +19,7 @@ const pageDescription = description ?? t.site.tagline;
 const otherLang: Lang = lang === "bg" ? "en" : "bg";
 
 const navItems = [
+  { href: localizePath("/overview", lang), base: "/overview", label: t.nav.overview },
   { href: localizePath("/fix-map", lang), base: "/fix-map", label: t.nav.fixMap },
   { href: localizePath("/budget", lang), base: "/budget", label: t.nav.budget },
   { href: localizePath("/projects", lang), base: "/projects", label: t.nav.projects },

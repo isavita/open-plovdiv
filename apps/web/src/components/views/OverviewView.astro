@@ -1,0 +1,302 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { categoryColors, ui, type Lang } from "@i18n/ui";
+import { field, localizePath } from "@i18n/utils";
+import { budgetItems, projects } from "@lib/data";
+import { categoryLabel, formatMoney, projectStatusLabel } from "@lib/format";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const EUR_RATE = 1.95583;
+
+// ---- Projects: status, category, year -------------------------------------
+const statusColors: Record<string, string> = {
+  in_progress: "#1b5f7c",
+  funded: "#1f6b48",
+  contracted: "#1b5f7c",
+  planned: "#6a7278",
+  completed: "#1f6b48",
+  delayed: "#93412f",
+  postponed: "#b07d1a",
+  unknown: "#6a7278"
+};
+
+function countBy<T>(items: T[], key: (item: T) => string): Map<string, number> {
+  const map = new Map<string, number>();
+  for (const item of items) {
+    const k = key(item);
+    map.set(k, (map.get(k) ?? 0) + 1);
+  }
+  return map;
+}
+
+const statusCounts = [...countBy(projects, (p) => p.status).entries()].sort((a, b) => b[1] - a[1]);
+const categoryCounts = [...countBy(projects, (p) => p.category).entries()].sort((a, b) => b[1] - a[1]);
+
+const postponedCount = projects.filter((p) => p.status === "postponed").length;
+
+// ---- Budget figures --------------------------------------------------------
+const capital2025 = budgetItems.find(
+  (b) => b.year === 2025 && b.kind === "summary" && b.summary_key === "capital_programme"
+);
+const sectors2025 = budgetItems
+  .filter((b) => b.year === 2025 && b.kind === "sector" && b.share_percent != null)
+  .sort((a, b) => (b.share_percent ?? 0) - (a.share_percent ?? 0));
+const funding2026 = budgetItems
+  .filter((b) => b.year === 2026 && b.kind === "funding_source" && b.amount_eur != null)
+  .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0));
+
+const capital2025Bgn = capital2025?.amount_bgn ?? 0;
+const capital2025Eur = Math.round(capital2025Bgn / EUR_RATE);
+const capital2026Eur = funding2026.reduce((sum, f) => sum + (f.amount_eur ?? 0), 0);
+const compareMax = Math.max(capital2025Eur, capital2026Eur, 1);
+
+const budget2025Source = capital2025?.source_document.url;
+const budget2026Source = funding2026[0]?.source_document.url;
+
+// Multi-year total budget (BGN), for the historical trend.
+const totalsByYear = budgetItems
+  .filter((b) => b.kind === "summary" && b.summary_key === "total_budget" && b.amount_bgn != null)
+  .sort((a, b) => a.year - b.year);
+const totalsMax = Math.max(...totalsByYear.map((b) => b.amount_bgn ?? 0), 1);
+function compactBgn(amount: number): string {
+  const millions = Math.round(amount / 1e6);
+  return lang === "bg" ? `${millions} млн лв` : `BGN ${millions}M`;
+}
+
+// ---- Donut helper ----------------------------------------------------------
+const R = 68;
+const CIRC = 2 * Math.PI * R;
+
+type Seg = { label: string; value: number; color: string; len: number; gap: number; offset: number };
+
+function donut(items: { label: string; value: number; color: string }[]): Seg[] {
+  const total = items.reduce((s, i) => s + i.value, 0) || 1;
+  let acc = 0;
+  return items.map((it) => {
+    const len = (it.value / total) * CIRC;
+    const seg: Seg = { ...it, len, gap: CIRC - len, offset: -acc };
+    acc += len;
+    return seg;
+  });
+}
+
+const statusSegs = donut(
+  statusCounts.map(([status, count]) => ({
+    label: projectStatusLabel(status, lang),
+    value: count,
+    color: statusColors[status] ?? "#6a7278"
+  }))
+);
+
+const sectorSegs = donut(
+  sectors2025.map((s) => ({
+    label: categoryLabel(s.category, lang),
+    value: s.share_percent ?? 0,
+    color: categoryColors[s.category] ?? "var(--muted)"
+  }))
+);
+
+const maxCategory = Math.max(...categoryCounts.map(([, c]) => c), 1);
+const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
+---
+
+<Layout lang={lang} path="/overview" title={t.overview.title} description={t.overview.lead}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t.overview.eyebrow}</p>
+      <h1>{t.overview.title}</h1>
+      <p class="lead">{t.overview.lead}</p>
+      <p class="meta" style="margin-top:10px">{t.overview.asOf}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="stat-row">
+        <div class="stat"><strong>{projects.length}</strong><span>{t.overview.statProjects}</span></div>
+        <div class="stat"><strong>{postponedCount}</strong><span>{t.overview.statPostponed}</span></div>
+        <div class="stat"><strong>{formatMoney(capital2025Bgn, lang, "BGN")}</strong><span>{t.overview.statCapital2025}</span></div>
+        <div class="stat"><strong>{formatMoney(capital2026Eur, lang, "EUR")}</strong><span>{t.overview.statCapital2026}</span></div>
+      </div>
+
+      <div class="chart-grid" style="margin-top:24px">
+        <!-- Projects by status (donut) -->
+        <div class="chart-card">
+          <h3>{t.overview.byStatusTitle}</h3>
+          <div class="donut-wrap">
+            <div class="donut-figure">
+              <svg class="donut" viewBox="0 0 168 168" role="img" aria-label={t.overview.byStatusTitle}>
+                <circle cx="84" cy="84" r={R} fill="none" stroke="var(--surface-3)" stroke-width="22" />
+                {statusSegs.map((s) => (
+                  <circle
+                    class="donut-seg"
+                    cx="84"
+                    cy="84"
+                    r={R}
+                    stroke={s.color}
+                    stroke-dasharray={`${s.len} ${s.gap}`}
+                    stroke-dashoffset={s.offset}
+                  />
+                ))}
+              </svg>
+              <div class="donut-center"><strong>{projects.length}</strong><span>{t.nav.projects.toLowerCase()}</span></div>
+            </div>
+            <ul class="chart-legend">
+              {statusSegs.map((s) => (
+                <li>
+                  <span class="swatch" style={`background:${s.color}`}></span>
+                  {s.label}
+                  <span class="legend-value">{s.value}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Projects by category (bars) -->
+        <div class="chart-card">
+          <h3>{t.overview.byCategoryTitle}</h3>
+          <div class="chart">
+            {categoryCounts.map(([category, count]) => (
+              <div class="bar-row">
+                <span class="bar-label">
+                  <span class="cat-dot" style={`--dot:${categoryColors[category] ?? "var(--muted)"}`}></span>
+                  {categoryLabel(category, lang)}
+                </span>
+                <div class="bar-track" aria-hidden="true">
+                  <div class="bar-fill" data-flat style={`width:${Math.max(6, (count / maxCategory) * 100)}%;--fill:${categoryColors[category] ?? "var(--brand)"}`}></div>
+                </div>
+                <span class="money">{count}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- 2025 capital by sector (donut) -->
+        <div class="chart-card">
+          <h3>{t.overview.sector2025Title}</h3>
+          <div class="donut-wrap">
+            <div class="donut-figure">
+              <svg class="donut" viewBox="0 0 168 168" role="img" aria-label={t.overview.sector2025Title}>
+                <circle cx="84" cy="84" r={R} fill="none" stroke="var(--surface-3)" stroke-width="22" />
+                {sectorSegs.map((s) => (
+                  <circle
+                    class="donut-seg"
+                    cx="84"
+                    cy="84"
+                    r={R}
+                    stroke={s.color}
+                    stroke-dasharray={`${s.len} ${s.gap}`}
+                    stroke-dashoffset={s.offset}
+                  />
+                ))}
+              </svg>
+              <div class="donut-center"><strong>2025</strong><span>лв.</span></div>
+            </div>
+            <ul class="chart-legend">
+              {sectorSegs.map((s) => (
+                <li>
+                  <span class="swatch" style={`background:${s.color}`}></span>
+                  {s.label}
+                  <span class="legend-value">{s.value}%</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2026 funding (bars) -->
+        <div class="chart-card">
+          <h3>{t.overview.funding2026Title}</h3>
+          <div class="chart">
+            {funding2026.map((f) => (
+              <div class="bar-row">
+                <span class="bar-label">{field(f, "title", lang)}</span>
+                <div class="bar-track" aria-hidden="true">
+                  <div class="bar-fill" style={`width:${Math.max(6, ((f.amount_eur ?? 0) / maxFunding) * 100)}%`}></div>
+                </div>
+                <span class="money">{formatMoney(f.amount_eur ?? 0, lang, "EUR")}</span>
+              </div>
+            ))}
+          </div>
+          <p class="meta" style="margin-top:12px">
+            {budget2026Source && <a href={budget2026Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a>}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Total budget by year (historical trend) -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head"><h2>{t.overview.totalTrendTitle}</h2></div>
+      <div class="chart-card">
+        <div class="compare-cols">
+          {totalsByYear.map((b) => (
+            <div class="compare-col">
+              <div class="compare-bar" style={`height:${((b.amount_bgn ?? 0) / totalsMax) * 100}%`}></div>
+              <div class="compare-meta">
+                <strong>{compactBgn(b.amount_bgn ?? 0)}</strong>
+                <span>{b.year}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <p class="meta" style="margin-top:14px;max-width:66ch">{t.overview.totalTrendNote}</p>
+      <div class="pill-row" style="margin-top:8px">
+        {totalsByYear.map((b) => (
+          <a class="meta" href={b.source_document.url} target="_blank" rel="noreferrer">{b.year}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Capital trend 2025 -> 2026 -->
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-head"><h2>{t.overview.capitalTrendTitle}</h2></div>
+      <div class="chart-card" style="max-width:520px">
+        <div class="compare-cols">
+          <div class="compare-col">
+            <div class="compare-bar" style={`height:${(capital2025Eur / compareMax) * 100}%`}></div>
+            <div class="compare-meta">
+              <strong>{formatMoney(capital2025Eur, lang, "EUR")}</strong>
+              <span>{t.overview.year2025}</span>
+            </div>
+          </div>
+          <div class="compare-col">
+            <div class="compare-bar provisional" style={`height:${(capital2026Eur / compareMax) * 100}%`}></div>
+            <div class="compare-meta">
+              <strong>{formatMoney(capital2026Eur, lang, "EUR")}</strong>
+              <span>{t.overview.year2026}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="meta" style="margin-top:14px;max-width:60ch">
+        {t.overview.capitalTrendNote}{" "}
+        {budget2025Source && <a href={budget2025Source} target="_blank" rel="noreferrer">2025</a>}
+        {" · "}
+        {budget2026Source && <a href={budget2026Source} target="_blank" rel="noreferrer">2026</a>}
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="notice">
+        <span class="notice-icon" aria-hidden="true">ⓘ</span>
+        <span>{t.overview.historyNote}</span>
+      </div>
+      <div class="actions">
+        <a class="button secondary" href={localizePath("/budget", lang)}>{t.overview.viewBudget}</a>
+        <a class="button secondary" href={localizePath("/projects", lang)}>{t.overview.viewProjects}</a>
+      </div>
+    </div>
+  </section>
+</Layout>

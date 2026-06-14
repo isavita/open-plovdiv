@@ -26,12 +26,42 @@ const bg = {
   },
   nav: {
     home: "Начало",
+    overview: "Преглед",
     fixMap: "Карта",
     budget: "Бюджет",
     projects: "Проекти",
     community: "Доброволци",
     sources: "Източници",
     methodology: "Методология"
+  },
+  overview: {
+    eyebrow: "Графичен преглед",
+    title: "Преглед в графики",
+    lead:
+      "Обобщен поглед върху проследяваните проекти и публичните средства за Пловдив — по статус, категория и година, с източници.",
+    asOf: "Данни към юни 2026 г.",
+    statProjects: "проследявани проекта",
+    statPostponed: "отложени проекта",
+    statCapital2025: "капиталова програма 2025",
+    statCapital2026: "капиталова програма 2026 (прогнозна)",
+    byStatusTitle: "Проекти по статус",
+    byCategoryTitle: "Проекти по категория",
+    byYearTitle: "Проекти по бюджетна година",
+    sector2025Title: "Капиталова програма 2025 по сектори",
+    funding2026Title: "Финансиране на капиталовата програма за 2026 г.",
+    capitalTrendTitle: "Капиталова програма: 2025 спрямо 2026",
+    capitalTrendNote:
+      "Стойността за 2025 г. е преизчислена в евро по фиксирания курс 1,95583 лв. за евро, за да е сравнима. Данните за 2026 г. са прогнозни.",
+    totalTrendTitle: "Общ бюджет на Пловдив по години",
+    totalTrendNote:
+      "Общ годишен бюджет на Община Пловдив (в лева). Стойностите за 2022 и 2024 г. са приблизителни/закръглени; всяка година сочи към публичен източник. 2026 г. е първата в евро и е показана отделно по-горе.",
+    historyNote:
+      "Числата са от публични източници (бюджети на общината и медийни публикации). Сверявайте с оригиналните документи, преди да цитирате конкретна стойност.",
+    year2025: "2025 г.",
+    year2026: "2026 г. (прогнозно)",
+    sourcesNote: "Всички стойности са с публични източници.",
+    viewBudget: "Към бюджета",
+    viewProjects: "Към проектите"
   },
   footer: {
     blurb:
@@ -444,12 +474,42 @@ const en: typeof bg = {
   },
   nav: {
     home: "Home",
+    overview: "Overview",
     fixMap: "Map",
     budget: "Budget",
     projects: "Projects",
     community: "Volunteers",
     sources: "Sources",
     methodology: "Methodology"
+  },
+  overview: {
+    eyebrow: "Visual overview",
+    title: "Overview in charts",
+    lead:
+      "A summary view of the tracked projects and public money for Plovdiv — by status, category and year, with sources.",
+    asOf: "Data as of June 2026",
+    statProjects: "tracked projects",
+    statPostponed: "postponed projects",
+    statCapital2025: "2025 capital programme",
+    statCapital2026: "2026 capital programme (provisional)",
+    byStatusTitle: "Projects by status",
+    byCategoryTitle: "Projects by category",
+    byYearTitle: "Projects by budget year",
+    sector2025Title: "2025 capital programme by sector",
+    funding2026Title: "2026 capital programme funding",
+    capitalTrendTitle: "Capital programme: 2025 vs 2026",
+    capitalTrendNote:
+      "The 2025 value is converted to euros at the fixed rate of BGN 1.95583 per euro for comparison. The 2026 figures are provisional.",
+    totalTrendTitle: "Plovdiv total budget by year",
+    totalTrendNote:
+      "Plovdiv Municipality's total annual budget (in BGN). The 2022 and 2024 values are approximate/rounded; each year links to a public source. 2026 is the first in euros and is shown separately above.",
+    historyNote:
+      "Figures come from public sources (municipal budgets and media reports). Verify against the original documents before quoting a specific value.",
+    year2025: "2025",
+    year2026: "2026 (provisional)",
+    sourcesNote: "All values have public sources.",
+    viewBudget: "Go to budget",
+    viewProjects: "Go to projects"
   },
   footer: {
     blurb:

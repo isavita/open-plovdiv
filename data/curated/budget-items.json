@@ -1,5 +1,65 @@
 [
   {
+    "id": "budget-plovdiv-2022-total",
+    "year": 2022,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2022 г.",
+    "title_en": "Total 2022 budget",
+    "amount_bgn": 526000000,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2022 г. (приблизително, по съобщения за приемането).",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2022 (approximate, per adoption reports).",
+    "source_document": {
+      "title": "news.bg — приет бюджет на Пловдив за 2022 г.",
+      "url": "https://news.bg/politics/prieha-rekorden-byudzhet-na-obshtina-plovdiv-nad-526-mln-lv.html",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2023-total",
+    "year": 2023,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2023 г.",
+    "title_en": "Total 2023 budget",
+    "amount_bgn": 655255005,
+    "currency": "BGN",
+    "plain_language_bg": "Бюджет на Община Пловдив за 2023 г. (655 255 005 лв.).",
+    "plain_language_en": "Plovdiv Municipality budget for 2023 (BGN 655,255,005).",
+    "source_document": {
+      "title": "Focus News — бюджет на Пловдив за 2023 г.",
+      "url": "https://www.focus-news.net/novini/regioni/Proektobyudzhetut-na-Plovdiv-za-2023-g-e-655-255-005-leva-13-otiva-za-zaplati-1795125",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2024-total",
+    "year": 2024,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2024 г.",
+    "title_en": "Total 2024 budget",
+    "amount_bgn": 684000000,
+    "currency": "BGN",
+    "plain_language_bg": "Бюджет на Община Пловдив за 2024 г. (приблизително; ръст от около 29 млн. лв. спрямо 2023 г.).",
+    "plain_language_en": "Plovdiv Municipality budget for 2024 (approximate; an increase of about BGN 29M over 2023).",
+    "source_document": {
+      "title": "Марица — бюджет на Пловдив за 2024 г. (ръст 29 млн. лв.)",
+      "url": "https://www.marica.bg/plovdiv/gradat/byudjetat-na-plovdiv-pod-indigo-samo-29-mln-leva-rast",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
+  },
+  {
     "id": "budget-plovdiv-2025-total",
     "year": 2025,
     "municipality": "plovdiv",
