@@ -1,5 +1,65 @@
 [
   {
+    "id": "budget-plovdiv-2019-total",
+    "year": 2019,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2019 г.",
+    "title_en": "Total 2019 budget",
+    "amount_bgn": 341959020,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2019 г. (341 959 020 лв.).",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2019 (BGN 341,959,020).",
+    "source_document": {
+      "title": "БНР — приет бюджет на Пловдив за 2019 г.",
+      "url": "https://old-news.bnr.bg/plovdiv/post/101075189/prieha-budjeta-na-plovdiv-kapitalovata-programa-e-za-60-miliona-leva",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2020-total",
+    "year": 2020,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2020 г.",
+    "title_en": "Total 2020 budget",
+    "amount_bgn": 343000000,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2020 г. (около 343 млн. лв.: 186 млн. държавни и 157 млн. собствени приходи).",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2020 (about BGN 343M: BGN 186M state and BGN 157M local revenue).",
+    "source_document": {
+      "title": "Община Пловдив — бюджет за 2020 г.",
+      "url": "https://www.plovdiv.bg/slider/%D0%B1%D1%8E%D0%B4%D0%B6%D0%B5%D1%82-%D0%B7%D0%B0-2020-%D0%B3%D0%BE%D0%B4%D0%B8%D0%BD%D0%B0/",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2021-total",
+    "year": 2021,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2021 г.",
+    "title_en": "Total 2021 budget",
+    "amount_bgn": 345631629,
+    "currency": "BGN",
+    "plain_language_bg": "Първоначално гласуван бюджет на Община Пловдив за 2021 г. (345 631 629 лв.; по-късно актуализиран до около 400 млн. лв.).",
+    "plain_language_en": "Initially adopted Plovdiv Municipality budget for 2021 (BGN 345,631,629; later updated to about BGN 400M).",
+    "source_document": {
+      "title": "Марица — бюджет на Пловдив за 2021 г.",
+      "url": "https://www.marica.bg/plovdiv/politika/byudjetat-na-plovdiv-za-2021-g-mestnite-danaci-i-taksi-bez-promqna-izbivat-lipsite-s-po-skapi-uslugi",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
+  },
+  {
     "id": "budget-plovdiv-2022-total",
     "year": 2022,
     "municipality": "plovdiv",

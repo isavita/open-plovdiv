@@ -54,7 +54,7 @@ const bg = {
       "Стойността за 2025 г. е преизчислена в евро по фиксирания курс 1,95583 лв. за евро, за да е сравнима. Данните за 2026 г. са прогнозни.",
     totalTrendTitle: "Общ бюджет на Пловдив по години",
     totalTrendNote:
-      "Общ годишен бюджет на Община Пловдив (в лева). Стойностите за 2022 и 2024 г. са приблизителни/закръглени; всяка година сочи към публичен източник. 2026 г. е първата в евро и е показана отделно по-горе.",
+      "Общ годишен бюджет на Община Пловдив (в лева, приет). Стойностите за 2020, 2022 и 2024 г. са приблизителни/закръглени; всяка година сочи към публичен източник. 2026 г. е първата в евро и е показана отделно по-горе.",
     historyNote:
       "Числата са от публични източници (бюджети на общината и медийни публикации). Сверявайте с оригиналните документи, преди да цитирате конкретна стойност.",
     year2025: "2025 г.",
@@ -502,7 +502,7 @@ const en: typeof bg = {
       "The 2025 value is converted to euros at the fixed rate of BGN 1.95583 per euro for comparison. The 2026 figures are provisional.",
     totalTrendTitle: "Plovdiv total budget by year",
     totalTrendNote:
-      "Plovdiv Municipality's total annual budget (in BGN). The 2022 and 2024 values are approximate/rounded; each year links to a public source. 2026 is the first in euros and is shown separately above.",
+      "Plovdiv Municipality's total annual adopted budget (in BGN). The 2020, 2022 and 2024 values are approximate/rounded; each year links to a public source. 2026 is the first in euros and is shown separately above.",
     historyNote:
       "Figures come from public sources (municipal budgets and media reports). Verify against the original documents before quoting a specific value.",
     year2025: "2025",
