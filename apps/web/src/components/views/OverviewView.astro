@@ -49,12 +49,28 @@ const funding2026 = budgetItems
   .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0));
 
 const capital2025Bgn = capital2025?.amount_bgn ?? 0;
-const capital2025Eur = Math.round(capital2025Bgn / EUR_RATE);
 const capital2026Eur = funding2026.reduce((sum, f) => sum + (f.amount_eur ?? 0), 0);
-const compareMax = Math.max(capital2025Eur, capital2026Eur, 1);
 
 const budget2025Source = capital2025?.source_document.url;
 const budget2026Source = funding2026[0]?.source_document.url;
+
+// Capital programme by year (BGN). Only years reported on a comparable
+// total basis (incl. EU funds) are plotted: 2024+. 2026 is the provisional
+// EUR figure converted to BGN at the fixed rate.
+const capital2026Lev = Math.round(capital2026Eur * EUR_RATE);
+const capitalByYear = [
+  ...budgetItems
+    .filter((b) => b.kind === "summary" && b.summary_key === "capital_programme" && b.amount_bgn != null)
+    .sort((a, b) => a.year - b.year)
+    .map((b) => ({
+      year: b.year,
+      lev: b.amount_bgn ?? 0,
+      provisional: false,
+      src: b.source_document.url
+    })),
+  { year: 2026, lev: capital2026Lev, provisional: true, src: budget2026Source }
+];
+const capitalByYearMax = Math.max(...capitalByYear.map((c) => c.lev), 1);
 
 // Multi-year total budget (BGN), for the historical trend.
 const totalsByYear = budgetItems
@@ -256,34 +272,32 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
     </div>
   </section>
 
-  <!-- Capital trend 2025 -> 2026 -->
+  <!-- Capital programme by year -->
   <section class="section section-tint">
     <div class="container">
       <div class="section-head"><h2>{t.overview.capitalTrendTitle}</h2></div>
-      <div class="chart-card" style="max-width:520px">
+      <div class="chart-card">
         <div class="compare-cols">
-          <div class="compare-col">
-            <div class="compare-bar" style={`height:${(capital2025Eur / compareMax) * 100}%`}></div>
-            <div class="compare-meta">
-              <strong>{formatMoney(capital2025Eur, lang, "EUR")}</strong>
-              <span>{t.overview.year2025}</span>
+          {capitalByYear.map((c) => (
+            <div class="compare-col">
+              <div
+                class={`compare-bar${c.provisional ? " provisional" : ""}`}
+                style={`height:${(c.lev / capitalByYearMax) * 100}%`}
+              ></div>
+              <div class="compare-meta">
+                <strong>{compactBgn(c.lev)}</strong>
+                <span>{c.provisional ? t.overview.year2026 : c.year}</span>
+              </div>
             </div>
-          </div>
-          <div class="compare-col">
-            <div class="compare-bar provisional" style={`height:${(capital2026Eur / compareMax) * 100}%`}></div>
-            <div class="compare-meta">
-              <strong>{formatMoney(capital2026Eur, lang, "EUR")}</strong>
-              <span>{t.overview.year2026}</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-      <p class="meta" style="margin-top:14px;max-width:60ch">
-        {t.overview.capitalTrendNote}{" "}
-        {budget2025Source && <a href={budget2025Source} target="_blank" rel="noreferrer">2025</a>}
-        {" · "}
-        {budget2026Source && <a href={budget2026Source} target="_blank" rel="noreferrer">2026</a>}
-      </p>
+      <p class="meta" style="margin-top:14px;max-width:66ch">{t.overview.capitalTrendNote}</p>
+      <div class="pill-row" style="margin-top:8px">
+        {capitalByYear.map((c) => (
+          c.src && <a class="meta" href={c.src} target="_blank" rel="noreferrer">{c.year}</a>
+        ))}
+      </div>
     </div>
   </section>
 

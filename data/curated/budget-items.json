@@ -140,6 +140,26 @@
     "data_quality": "public_source"
   },
   {
+    "id": "budget-plovdiv-2024-capital-programme",
+    "year": 2024,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "category": "other",
+    "title_bg": "Капиталова програма за 2024 г.",
+    "title_en": "2024 capital programme",
+    "amount_bgn": 123375273,
+    "currency": "BGN",
+    "plain_language_bg": "Общ размер на капиталовата програма за 2024 г. (123 375 273 лв., включва държавни и европейски средства).",
+    "plain_language_en": "Total size of the 2024 capital programme (BGN 123,375,273; includes state and European funds).",
+    "source_document": {
+      "title": "Марица — бюджет 2024 на Пловдив (капиталова програма)",
+      "url": "https://www.marica.bg/plovdiv/gradat/byudjet-2024-na-plovdiv-nay-mnogo-pari-za-obrazovanie-nqma-da-se-vdigat-danacite",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
+  },
+  {
     "id": "budget-plovdiv-2025-capital-programme",
     "year": 2025,
     "municipality": "plovdiv",

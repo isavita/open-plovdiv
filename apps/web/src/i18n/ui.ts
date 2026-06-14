@@ -49,9 +49,9 @@ const bg = {
     byYearTitle: "Проекти по бюджетна година",
     sector2025Title: "Капиталова програма 2025 по сектори",
     funding2026Title: "Финансиране на капиталовата програма за 2026 г.",
-    capitalTrendTitle: "Капиталова програма: 2025 спрямо 2026",
+    capitalTrendTitle: "Капиталова програма по години",
     capitalTrendNote:
-      "Стойността за 2025 г. е преизчислена в евро по фиксирания курс 1,95583 лв. за евро, за да е сравнима. Данните за 2026 г. са прогнозни.",
+      "Капиталова програма по години (в лева, общо — включва държавни и европейски средства, които варират по години). 2026 г. е прогнозна и е преизчислена от около 87 млн. евро по курс 1,95583 лв. Сравними данни има от 2024 г.; за по-ранни години програмата е отчитана само с общински средства.",
     totalTrendTitle: "Общ бюджет на Пловдив по години",
     totalTrendNote:
       "Общ годишен бюджет на Община Пловдив (в лева, приет). Стойностите за 2020, 2022 и 2024 г. са приблизителни/закръглени; всяка година сочи към публичен източник. 2026 г. е първата в евро и е показана отделно по-горе.",
@@ -497,9 +497,9 @@ const en: typeof bg = {
     byYearTitle: "Projects by budget year",
     sector2025Title: "2025 capital programme by sector",
     funding2026Title: "2026 capital programme funding",
-    capitalTrendTitle: "Capital programme: 2025 vs 2026",
+    capitalTrendTitle: "Capital programme by year",
     capitalTrendNote:
-      "The 2025 value is converted to euros at the fixed rate of BGN 1.95583 per euro for comparison. The 2026 figures are provisional.",
+      "Capital programme by year (in BGN, total — includes state and European funds, which vary year to year). 2026 is provisional and converted from about EUR 87M at 1.95583. Comparable data is available from 2024; earlier years reported the capital programme with municipal funds only.",
     totalTrendTitle: "Plovdiv total budget by year",
     totalTrendNote:
       "Plovdiv Municipality's total annual adopted budget (in BGN). The 2020, 2022 and 2024 values are approximate/rounded; each year links to a public source. 2026 is the first in euros and is shown separately above.",
