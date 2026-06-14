@@ -8,11 +8,15 @@
     "id",
     "year",
     "municipality",
+    "kind",
     "category",
     "title_bg",
-    "amount_bgn",
     "source_document",
     "data_quality"
+  ],
+  "anyOf": [
+    { "required": ["amount_bgn"] },
+    { "required": ["amount_eur"] }
   ],
   "properties": {
     "id": {
@@ -26,6 +30,14 @@
     },
     "municipality": {
       "const": "plovdiv"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "summary",
+        "sector",
+        "funding_source"
+      ]
     },
     "category": {
       "type": "string",
@@ -58,10 +70,39 @@
       "type": "number",
       "minimum": 0
     },
+    "amount_eur": {
+      "type": "number",
+      "minimum": 0
+    },
+    "currency": {
+      "type": "string",
+      "enum": ["BGN", "EUR"]
+    },
     "share_percent": {
       "type": "number",
       "minimum": 0,
       "maximum": 100
+    },
+    "summary_key": {
+      "type": "string",
+      "enum": [
+        "total_budget",
+        "capital_programme"
+      ]
+    },
+    "funding_key": {
+      "type": "string",
+      "enum": [
+        "eu_funds",
+        "own_remainder",
+        "programme_cofinancing",
+        "state_subsidy",
+        "other_sources"
+      ]
+    },
+    "display_order": {
+      "type": "integer",
+      "minimum": 0
     },
     "plain_language_bg": {
       "type": "string",

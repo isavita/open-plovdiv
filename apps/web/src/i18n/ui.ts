@@ -17,7 +17,6 @@ const bg = {
     short: "ОП",
     tagline:
       "Обществени проекти, публични средства и градски проблеми — представени ясно.",
-    sampleData: "Примерни данни",
     skip: "Към съдържанието",
     menu: "Меню",
     close: "Затвори",
@@ -43,7 +42,7 @@ const bg = {
     methodology: "Методология",
     sources: "Източници",
     note: "Open Plovdiv · обществени данни за Пловдив",
-    sampleNote: "Данни от публични източници · актуални към юни 2026 г.",
+    dataNote: "Данни от публични източници · актуални към юни 2026 г.",
     rights: "Обществени данни"
   },
   common: {
@@ -52,7 +51,6 @@ const bg = {
     source: "Източник",
     loading: "Зареждане…",
     error: "Възникна грешка.",
-    sampleBadge: "Примерни данни",
     backHome: "Към началото",
     noSource: "Няма публичен източник."
   },
@@ -120,6 +118,8 @@ const bg = {
     title: "Проекти",
     lead:
       "Търсете по заглавие и филтрирайте по категория, статус и година. Всеки проект има отделна страница.",
+    dataNotice:
+      "Няма публикуван единен официален списък „завършени през 2025 г.“. Затова проектите са означени само според източника: започнал/очаква финансиране през 2026 г., нов за 2026 г. или отложен с 0 лв. за 2025-2026 г.",
     search: "Търсене",
     searchPlaceholder: "Напр. тротоар, парк, спирка",
     category: "Категория",
@@ -346,7 +346,6 @@ const en: typeof bg = {
     short: "OP",
     tagline:
       "Public projects, public money, public problems — made easier to understand.",
-    sampleData: "Sample data",
     skip: "Skip to content",
     menu: "Menu",
     close: "Close",
@@ -372,7 +371,7 @@ const en: typeof bg = {
     methodology: "Methodology",
     sources: "Sources",
     note: "Open Plovdiv · public data for Plovdiv",
-    sampleNote: "Data from public sources · updated June 2026.",
+    dataNote: "Data from public sources · updated June 2026.",
     rights: "Public data"
   },
   common: {
@@ -381,7 +380,6 @@ const en: typeof bg = {
     source: "Source",
     loading: "Loading…",
     error: "Something went wrong.",
-    sampleBadge: "Sample data",
     backHome: "Back to home",
     noSource: "No public source."
   },
@@ -449,6 +447,8 @@ const en: typeof bg = {
     title: "Projects",
     lead:
       "Search by title and filter by category, status and year. Each project has its own page.",
+    dataNotice:
+      "There is no single official public list of projects completed in 2025. Projects are therefore labelled only according to the available source: started/expected 2026 funding, new for 2026, or postponed with BGN 0 for 2025-2026.",
     search: "Search",
     searchPlaceholder: "e.g. pavement, park, stop",
     category: "Category",
@@ -820,12 +820,13 @@ export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
 };
 
 // Citation titles embedded in records (project sources, budget source documents).
-// Real public documents keep their original-language name; our own sample/system
-// labels get an English equivalent so the EN site reads cleanly.
+// Original public-source titles get English equivalents so the EN site reads cleanly.
 export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
   bg: {},
   en: {
-    "Примерни данни за прототип": "Prototype sample data",
-    "Община Пловдив - публична информация": "Plovdiv Municipality — public information"
+    "Община Пловдив — представяне на Бюджет 2025": "Plovdiv Municipality — 2025 budget presentation",
+    "TrafficNews — бюджет на Пловдив за 2025 г.": "TrafficNews — Plovdiv 2025 budget",
+    "TrafficNews — проектобюджет 2026 и замразени проекти": "TrafficNews — 2026 draft budget and frozen projects",
+    "Под тепето — капиталова програма за 2026 г.": "Pod tepeto — 2026 capital programme"
   }
 };

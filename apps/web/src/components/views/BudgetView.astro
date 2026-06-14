@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { categoryColors, ui, type Lang } from "@i18n/ui";
-import { localizePath } from "@i18n/utils";
+import { field, localizePath } from "@i18n/utils";
 import { budgetItems } from "@lib/data";
 import { categoryLabel, formatMoney } from "@lib/format";
 
@@ -9,28 +9,32 @@ type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
 
-// 2025 — adopted budget (BGN). Figures from the municipality's 2025 budget.
-const TOTAL_2025 = 715154301;
-const CAPITAL_2025 = 139597929;
-const budget2025Source = "https://www.plovdiv.bg/en/proekt-budget-2025/";
-
+const budget2025Total = budgetItems.find(
+  (item) => item.year === 2025 && item.kind === "summary" && item.summary_key === "total_budget"
+);
+const budget2025Capital = budgetItems.find(
+  (item) => item.year === 2025 && item.kind === "summary" && item.summary_key === "capital_programme"
+);
 const sectors = budgetItems
-  .filter((item) => item.year === 2025)
-  .sort((a, b) => b.amount_bgn - a.amount_bgn);
+  .filter((item) => item.year === 2025 && item.kind === "sector" && item.amount_bgn != null)
+  .sort((a, b) => (b.amount_bgn ?? 0) - (a.amount_bgn ?? 0));
 const maxShare = Math.max(...sectors.map((s) => s.share_percent ?? 0), 1);
+const budget2025Source =
+  budget2025Capital?.source_document.url ?? budget2025Total?.source_document.url ?? sectors[0]?.source_document.url;
 
-// 2026 — provisional capital programme (EUR). Figures reported June 2026.
-const funding2026 = [
-  { label: t.budget.fundEu, amount: 51100000, color: "#2f7fb0" },
-  { label: t.budget.fundOwn, amount: 20900000, color: "#3f8a5b" },
-  { label: t.budget.fundOpco, amount: 7130000, color: "#9a5b8f" },
-  { label: t.budget.fundState, amount: 2960000, color: "#b07d1a" },
-  { label: t.budget.fundOther, amount: 5080000, color: "#6b7280" }
-];
-const capital2026 = funding2026.reduce((sum, f) => sum + f.amount, 0);
-const maxFund = Math.max(...funding2026.map((f) => f.amount), 1);
-const budget2026Source =
-  "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/";
+const fundingColors: Record<string, string> = {
+  eu_funds: "#2f7fb0",
+  own_remainder: "#3f8a5b",
+  programme_cofinancing: "#9a5b8f",
+  state_subsidy: "#b07d1a",
+  other_sources: "#6b7280"
+};
+const funding2026 = budgetItems
+  .filter((item) => item.year === 2026 && item.kind === "funding_source" && item.amount_eur != null)
+  .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0));
+const capital2026 = funding2026.reduce((sum, f) => sum + (f.amount_eur ?? 0), 0);
+const maxFund = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
+const budget2026Source = funding2026[0]?.source_document.url;
 ---
 
 <Layout lang={lang} path="/budget" title={t.budget.title} description={t.budget.lead}>
@@ -47,11 +51,11 @@ const budget2026Source =
     <div class="container">
       <div class="stat-row" style="grid-template-columns:repeat(2,minmax(0,1fr))">
         <div class="stat">
-          <strong>{formatMoney(TOTAL_2025, lang, "BGN")}</strong>
+          <strong>{formatMoney(budget2025Total?.amount_bgn ?? 0, lang, "BGN")}</strong>
           <span>{t.budget.totalLabel}</span>
         </div>
         <div class="stat">
-          <strong>{formatMoney(CAPITAL_2025, lang, "BGN")}</strong>
+          <strong>{formatMoney(budget2025Capital?.amount_bgn ?? 0, lang, "BGN")}</strong>
           <span>{t.budget.capitalLabel}</span>
         </div>
       </div>
@@ -67,13 +71,13 @@ const budget2026Source =
             <div class="bar-track" aria-hidden="true">
               <div class="bar-fill" style={`width:${Math.max(3, ((item.share_percent ?? 0) / maxShare) * 100)}%`}></div>
             </div>
-            <span class="money">{item.share_percent}% · ≈{formatMoney(item.amount_bgn, lang, "BGN")}</span>
+            <span class="money">{item.share_percent}% · ≈{formatMoney(item.amount_bgn ?? 0, lang, "BGN")}</span>
           </div>
         ))}
       </div>
       <p class="meta" style="margin-top:12px">
         {t.budget.approxNote}{" "}
-        <a href={budget2025Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a>
+        {budget2025Source && <a href={budget2025Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a>}
       </p>
     </div>
   </section>
@@ -99,18 +103,18 @@ const budget2026Source =
         {funding2026.map((f) => (
           <div class="bar-row">
             <span class="bar-label">
-              <span class="cat-dot" style={`--dot:${f.color}`}></span>
-              {f.label}
+              <span class="cat-dot" style={`--dot:${fundingColors[f.funding_key ?? ""] ?? "var(--muted)"}`}></span>
+              {field(f, "title", lang)}
             </span>
             <div class="bar-track" aria-hidden="true">
-              <div class="bar-fill" style={`width:${Math.max(3, (f.amount / maxFund) * 100)}%`}></div>
+              <div class="bar-fill" style={`width:${Math.max(3, ((f.amount_eur ?? 0) / maxFund) * 100)}%`}></div>
             </div>
-            <span class="money">{formatMoney(f.amount, lang, "EUR")}</span>
+            <span class="money">{formatMoney(f.amount_eur ?? 0, lang, "EUR")}</span>
           </div>
         ))}
       </div>
       <p class="meta" style="margin-top:12px">
-        <a href={budget2026Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a>
+        {budget2026Source && <a href={budget2026Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a>}
       </p>
     </div>
   </section>

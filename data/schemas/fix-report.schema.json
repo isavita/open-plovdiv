@@ -116,7 +116,6 @@
     "data_quality": {
       "type": "string",
       "enum": [
-        "sample",
         "public_source",
         "manual_reviewed"
       ]

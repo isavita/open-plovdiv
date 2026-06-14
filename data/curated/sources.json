@@ -1,14 +1,14 @@
 [
   {
     "id": "plovdiv-budget-2025",
-    "title_bg": "Община Пловдив — бюджет 2025",
-    "title_en": "Plovdiv Municipality — 2025 budget",
-    "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
-    "used_for": "Общ размер на бюджета за 2025 г. и капиталовата програма по сектори.",
-    "used_for_en": "Total 2025 budget and the capital programme breakdown by sector.",
+    "title_bg": "Община Пловдив — представяне на Бюджет 2025",
+    "title_en": "Plovdiv Municipality — 2025 budget presentation",
+    "url": "https://www.plovdiv.bg/presentation-budget-2025/",
+    "used_for": "Общ размер на бюджета за 2025 г., капиталовата програма и секторни дялове.",
+    "used_for_en": "Total 2025 budget, capital programme and sector shares.",
     "accessed_at": "2026-06-14",
-    "limitations_bg": "Официална страница на общината. Част от детайлите се цитират и през местни медии.",
-    "limitations_en": "Official municipal page. Some details are also reported via local media."
+    "limitations_bg": "Официална публикация на общината при представянето на бюджета; при нужда се сверява с приетите бюджетни приложения.",
+    "limitations_en": "Official municipal post from the budget presentation; should be cross-checked against the adopted budget appendices when needed."
   },
   {
     "id": "plovdiv-current-projects",
@@ -48,22 +48,11 @@
     "title_bg": "Под тепето — капиталова програма за 2026 г.",
     "title_en": "Pod tepeto — 2026 capital programme",
     "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
-    "used_for": "Прогнозна капиталова програма за 2026 г. (≈87 млн. евро) и източници на финансиране.",
-    "used_for_en": "Provisional 2026 capital programme (≈EUR 87M) and funding sources.",
+    "used_for": "Прогнозна капиталова програма за 2026 г., източници на финансиране и двата обекта с целева държавна субсидия.",
+    "used_for_en": "Provisional 2026 capital programme, funding sources and the two state-subsidy projects.",
     "accessed_at": "2026-06-14",
     "limitations_bg": "Прогнозен разчет — стойностите подлежат на промяна с приемането на държавния бюджет.",
     "limitations_en": "Provisional estimate — figures may change once the state budget is adopted."
-  },
-  {
-    "id": "plovdivnow-frozen-2026",
-    "title_bg": "PlovdivNow — замразени проекти в бюджета",
-    "title_en": "PlovdivNow — projects frozen in the budget",
-    "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/",
-    "used_for": "Проекти с прогнозна стойност 0 лв. за 2025–2026 (отложени).",
-    "used_for_en": "Projects with a forecast value of BGN 0 for 2025–2026 (postponed).",
-    "accessed_at": "2026-06-14",
-    "limitations_bg": "Медийна публикация по Приложение 3 към бюджета.",
-    "limitations_en": "Media report based on Appendix 3 of the budget."
   },
   {
     "id": "darik-euro-budget-2026",
@@ -97,5 +86,16 @@
     "accessed_at": "2026-06-14",
     "limitations_bg": "Картовите данни се поддържат от общност и може да имат непълноти.",
     "limitations_en": "Map data is community-maintained and may be incomplete."
+  },
+  {
+    "id": "trafficnews-frozen-2026",
+    "title_bg": "TrafficNews — проектобюджет 2026 и замразени проекти",
+    "title_en": "TrafficNews — 2026 draft budget and frozen projects",
+    "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+    "used_for": "Обекти с очаквано финансиране през 2026 г., нови обекти за старт през 2026 г. и проекти с прогнозна стойност 0 лв. за 2025-2026 г.",
+    "used_for_en": "Projects expected to receive 2026 funding, new projects expected to start in 2026 and projects with forecast financing of BGN 0 for 2025-2026.",
+    "accessed_at": "2026-06-14",
+    "limitations_bg": "Медийна публикация по проектобюджета/Приложение 3; не е официален регистър на статуса на всеки проект.",
+    "limitations_en": "Media report based on the draft budget/Appendix 3; not an official project-by-project status register."
   }
 ]

@@ -29,6 +29,12 @@ const amount =
     : project.budget.amount_bgn != null
       ? formatMoney(project.budget.amount_bgn, lang, "BGN")
       : null;
+const relatedBudgetAmount =
+  relatedBudget?.amount_eur != null
+    ? formatMoney(relatedBudget.amount_eur, lang, "EUR")
+    : relatedBudget?.amount_bgn != null
+      ? formatMoney(relatedBudget.amount_bgn, lang, "BGN")
+      : null;
 const isProvisional = project.data_quality === "provisional";
 const note = field(project, "note", lang);
 ---
@@ -103,7 +109,7 @@ const note = field(project, "note", lang);
           relatedBudget ? (
             <div class="card">
               <h3>{field(relatedBudget, "title", lang)}</h3>
-              <p class="money">{formatMoney(relatedBudget.amount_bgn, lang)}</p>
+              {relatedBudgetAmount && <p class="money">{relatedBudgetAmount}</p>}
               <p class="meta">{field(relatedBudget, "plain_language", lang)}</p>
               <p>
                 <a href={relatedBudget.source_document.url} target="_blank" rel="noreferrer">

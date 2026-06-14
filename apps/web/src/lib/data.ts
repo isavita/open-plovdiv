@@ -70,11 +70,17 @@ export type BudgetItem = {
   id: string;
   year: number;
   municipality: "plovdiv";
+  kind: "summary" | "sector" | "funding_source";
   category: string;
   title_bg: string;
   title_en?: string;
-  amount_bgn: number;
+  amount_bgn?: number;
+  amount_eur?: number;
+  currency?: "BGN" | "EUR";
   share_percent?: number;
+  summary_key?: "total_budget" | "capital_programme";
+  funding_key?: "eu_funds" | "own_remainder" | "programme_cofinancing" | "state_subsidy" | "other_sources";
+  display_order?: number;
   plain_language_bg?: string;
   plain_language_en?: string;
   source_document: Source;

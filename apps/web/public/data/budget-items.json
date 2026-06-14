@@ -1,5 +1,45 @@
 [
   {
+    "id": "budget-plovdiv-2025-total",
+    "year": 2025,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2025 г.",
+    "title_en": "Total 2025 budget",
+    "amount_bgn": 715154301,
+    "currency": "BGN",
+    "plain_language_bg": "Общата рамка на бюджета на Община Пловдив за 2025 г.",
+    "plain_language_en": "The total 2025 budget framework for Plovdiv Municipality.",
+    "source_document": {
+      "title": "Община Пловдив — представяне на Бюджет 2025",
+      "url": "https://www.plovdiv.bg/presentation-budget-2025/",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2025-capital-programme",
+    "year": 2025,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "category": "other",
+    "title_bg": "Капиталова програма за 2025 г.",
+    "title_en": "2025 capital programme",
+    "amount_bgn": 139597929,
+    "currency": "BGN",
+    "plain_language_bg": "Общият размер на капиталовата програма за 2025 г.",
+    "plain_language_en": "The total size of the 2025 capital programme.",
+    "source_document": {
+      "title": "Община Пловдив — представяне на Бюджет 2025",
+      "url": "https://www.plovdiv.bg/presentation-budget-2025/",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
+  },
+  {
     "id": "budget-plovdiv-2025-education",
     "year": 2025,
     "municipality": "plovdiv",
@@ -11,11 +51,13 @@
     "plain_language_bg": "Най-големият дял от капиталовата програма за 2025 г. — училища, детски градини и образователна среда (приблизителна стойност по публикувания дял).",
     "plain_language_en": "The largest share of the 2025 capital programme — schools, kindergartens and educational facilities (approximate value from the published share).",
     "source_document": {
-      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
-      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "title": "Община Пловдив — представяне на Бюджет 2025",
+      "url": "https://www.plovdiv.bg/presentation-budget-2025/",
       "accessed_at": "2026-06-14"
     },
-    "data_quality": "public_source"
+    "data_quality": "public_source",
+    "kind": "sector",
+    "currency": "BGN"
   },
   {
     "id": "budget-plovdiv-2025-environment",
@@ -29,11 +71,13 @@
     "plain_language_bg": "Опазване на околната среда, чистота, благоустрояване и ремонт на улици (приблизителна стойност по публикувания дял).",
     "plain_language_en": "Environmental protection, cleanliness, improvement and street repairs (approximate value from the published share).",
     "source_document": {
-      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
-      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "title": "Община Пловдив — представяне на Бюджет 2025",
+      "url": "https://www.plovdiv.bg/presentation-budget-2025/",
       "accessed_at": "2026-06-14"
     },
-    "data_quality": "public_source"
+    "data_quality": "public_source",
+    "kind": "sector",
+    "currency": "BGN"
   },
   {
     "id": "budget-plovdiv-2025-social",
@@ -47,11 +91,13 @@
     "plain_language_bg": "Социална подкрепа и свързана инфраструктура (приблизителна стойност по публикувания дял).",
     "plain_language_en": "Social support and related infrastructure (approximate value from the published share).",
     "source_document": {
-      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
-      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "title": "Община Пловдив — представяне на Бюджет 2025",
+      "url": "https://www.plovdiv.bg/presentation-budget-2025/",
       "accessed_at": "2026-06-14"
     },
-    "data_quality": "public_source"
+    "data_quality": "public_source",
+    "kind": "sector",
+    "currency": "BGN"
   },
   {
     "id": "budget-plovdiv-2025-culture",
@@ -65,11 +111,13 @@
     "plain_language_bg": "Културна инфраструктура и публични пространства с културна стойност (приблизителна стойност по публикувания дял).",
     "plain_language_en": "Cultural infrastructure and public spaces with cultural value (approximate value from the published share).",
     "source_document": {
-      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
-      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "title": "Община Пловдив — представяне на Бюджет 2025",
+      "url": "https://www.plovdiv.bg/presentation-budget-2025/",
       "accessed_at": "2026-06-14"
     },
-    "data_quality": "public_source"
+    "data_quality": "public_source",
+    "kind": "sector",
+    "currency": "BGN"
   },
   {
     "id": "budget-plovdiv-2025-sport",
@@ -83,11 +131,13 @@
     "plain_language_bg": "Спортна инфраструктура, включително стадиони и зали (приблизителна стойност по публикувания дял).",
     "plain_language_en": "Sports infrastructure, including stadiums and halls (approximate value from the published share).",
     "source_document": {
-      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
-      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "title": "Община Пловдив — представяне на Бюджет 2025",
+      "url": "https://www.plovdiv.bg/presentation-budget-2025/",
       "accessed_at": "2026-06-14"
     },
-    "data_quality": "public_source"
+    "data_quality": "public_source",
+    "kind": "sector",
+    "currency": "BGN"
   },
   {
     "id": "budget-plovdiv-2025-other",
@@ -101,10 +151,117 @@
     "plain_language_bg": "Останалата част от капиталовата програма извън посочените сектори (приблизителна стойност).",
     "plain_language_en": "The remaining part of the capital programme outside the listed sectors (approximate value).",
     "source_document": {
-      "title": "Община Пловдив — бюджет 2025 (капиталова програма)",
-      "url": "https://www.plovdiv.bg/en/proekt-budget-2025/",
+      "title": "Община Пловдив — представяне на Бюджет 2025",
+      "url": "https://www.plovdiv.bg/presentation-budget-2025/",
       "accessed_at": "2026-06-14"
     },
-    "data_quality": "public_source"
+    "data_quality": "public_source",
+    "kind": "sector",
+    "currency": "BGN"
+  },
+  {
+    "id": "budget-plovdiv-2026-eu-funds",
+    "year": 2026,
+    "municipality": "plovdiv",
+    "kind": "funding_source",
+    "funding_key": "eu_funds",
+    "display_order": 1,
+    "category": "other",
+    "title_bg": "Европейски средства",
+    "title_en": "European funds",
+    "amount_eur": 51100000,
+    "currency": "EUR",
+    "plain_language_bg": "Най-големият източник в прогнозната капиталова програма за 2026 г.",
+    "plain_language_en": "The largest funding source in the provisional 2026 capital programme.",
+    "source_document": {
+      "title": "Под тепето — капиталова програма за 2026 г.",
+      "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "provisional"
+  },
+  {
+    "id": "budget-plovdiv-2026-own-remainder",
+    "year": 2026,
+    "municipality": "plovdiv",
+    "kind": "funding_source",
+    "funding_key": "own_remainder",
+    "display_order": 2,
+    "category": "other",
+    "title_bg": "Собствени приходи и преходен остатък",
+    "title_en": "Own revenue and carry-over balance",
+    "amount_eur": 20900000,
+    "currency": "EUR",
+    "plain_language_bg": "Собствени средства на общината и преходен остатък.",
+    "plain_language_en": "Municipal own revenue and carry-over balance.",
+    "source_document": {
+      "title": "Под тепето — капиталова програма за 2026 г.",
+      "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "provisional"
+  },
+  {
+    "id": "budget-plovdiv-2026-programme-cofinancing",
+    "year": 2026,
+    "municipality": "plovdiv",
+    "kind": "funding_source",
+    "funding_key": "programme_cofinancing",
+    "display_order": 3,
+    "category": "other",
+    "title_bg": "Съфинансиране по програми",
+    "title_en": "Programme co-financing",
+    "amount_eur": 7130000,
+    "currency": "EUR",
+    "plain_language_bg": "Съфинансиране по оперативни и други програми.",
+    "plain_language_en": "Co-financing under operational and other programmes.",
+    "source_document": {
+      "title": "Под тепето — капиталова програма за 2026 г.",
+      "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "provisional"
+  },
+  {
+    "id": "budget-plovdiv-2026-state-subsidy",
+    "year": 2026,
+    "municipality": "plovdiv",
+    "kind": "funding_source",
+    "funding_key": "state_subsidy",
+    "display_order": 4,
+    "category": "other",
+    "title_bg": "Целева държавна субсидия",
+    "title_en": "State targeted subsidy",
+    "amount_eur": 2960000,
+    "currency": "EUR",
+    "plain_language_bg": "Целева държавна субсидия, насочена към конкретни обекти.",
+    "plain_language_en": "State targeted subsidy allocated to specific projects.",
+    "source_document": {
+      "title": "Под тепето — капиталова програма за 2026 г.",
+      "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "provisional"
+  },
+  {
+    "id": "budget-plovdiv-2026-other-sources",
+    "year": 2026,
+    "municipality": "plovdiv",
+    "kind": "funding_source",
+    "funding_key": "other_sources",
+    "display_order": 5,
+    "category": "other",
+    "title_bg": "Други източници",
+    "title_en": "Other sources",
+    "amount_eur": 5080000,
+    "currency": "EUR",
+    "plain_language_bg": "Други източници, включително дарения, средства от ПУДООС и заеми.",
+    "plain_language_en": "Other sources, including donations, PUDOOS funds and loans.",
+    "source_document": {
+      "title": "Под тепето — капиталова програма за 2026 г.",
+      "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "provisional"
   }
 ]

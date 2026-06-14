@@ -7,18 +7,49 @@
     "summary_en": "Construction and reconstruction of the Hristo Botev city stadium — part of Plovdiv Municipality's capital programme.",
     "category": "sport",
     "status": "in_progress",
-    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
-    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
+    "note_bg": "Заложен за старт или финансиране през 2025 г.; медийният преглед на проектобюджета за 2026 г. го посочва сред започналите обекти с очаквано финансиране. Няма публикувана отделна сума или официален запис за завършване.",
+    "note_en": "Listed for start or funding in 2025; the 2026 draft-budget coverage lists it among started projects expected to receive funding. No separate amount or official completion record is published.",
     "municipality": "plovdiv",
     "district": "Южен",
-    "location": { "lat": 42.1304, "lng": 24.7449, "address_bg": "Южен район, Пловдив", "address_en": "Yuzhen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2025, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.1304,
+      "lng": 24.7449,
+      "address_bg": "Южен район, Пловдив",
+      "address_en": "Yuzhen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2025,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — бюджет на Пловдив за 2025 г.",
+        "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/",
+        "accessed_at": "2026-06-14"
+      },
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-04-09",
+        "label_bg": "Стадион „Христо Ботев“ е посочен сред проектите, които трябва да започнат през 2025 г.",
+        "label_en": "Hristo Botev Stadium was listed among projects expected to start in 2025.",
+        "source_url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/"
+      },
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е сред започналите обекти, за които се очаква финансиране през 2026 г.; няма публикувана отделна сума.",
+        "label_en": "Listed among started projects expected to receive 2026 funding; no separate amount was published.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-stadium-lokomotiv",
@@ -28,18 +59,49 @@
     "summary_en": "Project for the Lokomotiv stadium within the municipality's capital programme.",
     "category": "sport",
     "status": "in_progress",
-    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
-    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
+    "note_bg": "Заложен за старт или финансиране през 2025 г.; медийният преглед на проектобюджета за 2026 г. го посочва сред започналите обекти с очаквано финансиране. Няма публикувана отделна сума или официален запис за завършване.",
+    "note_en": "Listed for start or funding in 2025; the 2026 draft-budget coverage lists it among started projects expected to receive funding. No separate amount or official completion record is published.",
     "municipality": "plovdiv",
     "district": "Източен",
-    "location": { "lat": 42.1385, "lng": 24.772, "address_bg": "Лаута, Източен район, Пловдив", "address_en": "Lauta, Iztochen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2025, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.1385,
+      "lng": 24.772,
+      "address_bg": "Лаута, Източен район, Пловдив",
+      "address_en": "Lauta, Iztochen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2025,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — бюджет на Пловдив за 2025 г.",
+        "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/",
+        "accessed_at": "2026-06-14"
+      },
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-04-09",
+        "label_bg": "Стадион „Локомотив“ е посочен сред проектите, които трябва да започнат през 2025 г.",
+        "label_en": "Lokomotiv Stadium was listed among projects expected to start in 2025.",
+        "source_url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/"
+      },
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е сред започналите обекти, за които се очаква финансиране през 2026 г.; няма публикувана отделна сума.",
+        "label_en": "Listed among started projects expected to receive 2026 funding; no separate amount was published.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-road-golyamokonarsko",
@@ -49,18 +111,49 @@
     "summary_en": "Widening and reconstruction of Golyamokonarsko Road (phase two).",
     "category": "roads",
     "status": "in_progress",
-    "note_bg": "Втори етап, заложен за 2025 г.; продължава в капиталовата програма за 2026 г.",
-    "note_en": "Phase two, scheduled for 2025; continues in the 2026 capital programme.",
+    "note_bg": "Заложен за старт или финансиране през 2025 г.; медийният преглед на проектобюджета за 2026 г. го посочва сред започналите обекти с очаквано финансиране. Няма публикувана отделна сума или официален запис за завършване.",
+    "note_en": "Listed for start or funding in 2025; the 2026 draft-budget coverage lists it among started projects expected to receive funding. No separate amount or official completion record is published.",
     "municipality": "plovdiv",
     "district": "Западен",
-    "location": { "lat": 42.1645, "lng": 24.695, "address_bg": "Западен район, Пловдив", "address_en": "Zapaden district, Plovdiv", "approximate": true },
-    "budget": { "year": 2025, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.1645,
+      "lng": 24.695,
+      "address_bg": "Западен район, Пловдив",
+      "address_en": "Zapaden district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2025,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — бюджет на Пловдив за 2025 г.",
+        "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/",
+        "accessed_at": "2026-06-14"
+      },
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-04-09",
+        "label_bg": "Голямоконарско шосе е посочен сред проектите, които трябва да започнат през 2025 г.",
+        "label_en": "Golyamokonarsko Road was listed among projects expected to start in 2025.",
+        "source_url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/"
+      },
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е сред започналите обекти, за които се очаква финансиране през 2026 г.; няма публикувана отделна сума.",
+        "label_en": "Listed among started projects expected to receive 2026 funding; no separate amount was published.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-road-rogoshko",
@@ -69,19 +162,50 @@
     "summary_bg": "Ремонт и реконструкция на Рогошко шосе.",
     "summary_en": "Repair and reconstruction of Rogoshko Road.",
     "category": "roads",
-    "status": "funded",
-    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
-    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
+    "status": "in_progress",
+    "note_bg": "Заложен за старт или финансиране през 2025 г.; медийният преглед на проектобюджета за 2026 г. го посочва сред започналите обекти с очаквано финансиране. Няма публикувана отделна сума или официален запис за завършване.",
+    "note_en": "Listed for start or funding in 2025; the 2026 draft-budget coverage lists it among started projects expected to receive funding. No separate amount or official completion record is published.",
     "municipality": "plovdiv",
     "district": "Северен",
-    "location": { "lat": 42.17, "lng": 24.785, "address_bg": "Северен район, Пловдив", "address_en": "Severen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2025, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.17,
+      "lng": 24.785,
+      "address_bg": "Северен район, Пловдив",
+      "address_en": "Severen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2025,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — бюджет на Пловдив за 2025 г.",
+        "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/",
+        "accessed_at": "2026-06-14"
+      },
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-04-09",
+        "label_bg": "Рогошко шосе е посочен сред проектите, които трябва да започнат през 2025 г.",
+        "label_en": "Rogoshko Road was listed among projects expected to start in 2025.",
+        "source_url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/"
+      },
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е сред започналите обекти, за които се очаква финансиране през 2026 г.; няма публикувана отделна сума.",
+        "label_en": "Listed among started projects expected to receive 2026 funding; no separate amount was published.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-road-kuklensko",
@@ -90,18 +214,39 @@
     "summary_bg": "Проект за Кукленско шосе в прогнозната капиталова програма за 2026 г.",
     "summary_en": "Kuklensko Road project in the provisional 2026 capital programme.",
     "category": "roads",
-    "status": "planned",
-    "note_bg": "Включен в прогнозната капиталова програма за 2026 г. (подлежи на промяна).",
-    "note_en": "Included in the provisional 2026 capital programme (subject to change).",
+    "status": "in_progress",
+    "note_bg": "Посочен сред започналите обекти, за които се очаква финансиране през 2026 г.; конкретна сума не е публикувана.",
+    "note_en": "Listed among started projects expected to receive 2026 funding; no specific amount was published.",
     "municipality": "plovdiv",
     "district": "Южен",
-    "location": { "lat": 42.115, "lng": 24.756, "address_bg": "Южен район, Пловдив", "address_en": "Yuzhen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.115,
+      "lng": 24.756,
+      "address_bg": "Южен район, Пловдив",
+      "address_en": "Yuzhen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "provisional",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е сред започналите обекти, за които се очаква финансиране през 2026 г.; няма публикувана отделна сума.",
+        "label_en": "Listed among started projects expected to receive 2026 funding; no separate amount was published.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-road-general-kolev",
@@ -111,18 +256,49 @@
     "summary_en": "Reconstruction of General Kolev Street.",
     "category": "roads",
     "status": "in_progress",
-    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
-    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
+    "note_bg": "Заложен за старт или финансиране през 2025 г.; медийният преглед на проектобюджета за 2026 г. го посочва сред започналите обекти с очаквано финансиране. Няма публикувана отделна сума или официален запис за завършване.",
+    "note_en": "Listed for start or funding in 2025; the 2026 draft-budget coverage lists it among started projects expected to receive funding. No separate amount or official completion record is published.",
     "municipality": "plovdiv",
     "district": "Източен",
-    "location": { "lat": 42.136, "lng": 24.779, "address_bg": "Източен район, Пловдив", "address_en": "Iztochen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2025, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.136,
+      "lng": 24.779,
+      "address_bg": "Източен район, Пловдив",
+      "address_en": "Iztochen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2025,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — бюджет на Пловдив за 2025 г.",
+        "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/",
+        "accessed_at": "2026-06-14"
+      },
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-04-09",
+        "label_bg": "Улица „Генерал Колев“ е посочен сред проектите, които трябва да започнат през 2025 г.",
+        "label_en": "General Kolev Street was listed among projects expected to start in 2025.",
+        "source_url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/"
+      },
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е сред започналите обекти, за които се очаква финансиране през 2026 г.; няма публикувана отделна сума.",
+        "label_en": "Listed among started projects expected to receive 2026 funding; no separate amount was published.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-road-slavyanska",
@@ -132,18 +308,49 @@
     "summary_en": "Reconstruction of Slavyanska Street in the city centre.",
     "category": "roads",
     "status": "in_progress",
-    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
-    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
+    "note_bg": "Заложен за старт или финансиране през 2025 г.; медийният преглед на проектобюджета за 2026 г. го посочва сред започналите обекти с очаквано финансиране. Няма публикувана отделна сума или официален запис за завършване.",
+    "note_en": "Listed for start or funding in 2025; the 2026 draft-budget coverage lists it among started projects expected to receive funding. No separate amount or official completion record is published.",
     "municipality": "plovdiv",
     "district": "Централен",
-    "location": { "lat": 42.1495, "lng": 24.7525, "address_bg": "Централен район, Пловдив", "address_en": "Tsentralen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2025, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.1495,
+      "lng": 24.7525,
+      "address_bg": "Централен район, Пловдив",
+      "address_en": "Tsentralen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2025,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — бюджет на Пловдив за 2025 г.",
+        "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/",
+        "accessed_at": "2026-06-14"
+      },
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-04-09",
+        "label_bg": "Улица „Славянска“ е посочен сред проектите, които трябва да започнат през 2025 г.",
+        "label_en": "Slavyanska Street was listed among projects expected to start in 2025.",
+        "source_url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/"
+      },
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е сред започналите обекти, за които се очаква финансиране през 2026 г.; няма публикувана отделна сума.",
+        "label_en": "Listed among started projects expected to receive 2026 funding; no separate amount was published.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-roads-mladezhki-halm",
@@ -152,18 +359,39 @@
     "summary_bg": "Ремонт на улици в квартал „Младежки хълм“.",
     "summary_en": "Street repairs in the Mladezhki Halm neighbourhood.",
     "category": "roads",
-    "status": "planned",
-    "note_bg": "Включен в прогнозната капиталова програма за 2026 г. (подлежи на промяна).",
-    "note_en": "Included in the provisional 2026 capital programme (subject to change).",
+    "status": "in_progress",
+    "note_bg": "Посочен сред започналите обекти, за които се очаква финансиране през 2026 г.; конкретна сума не е публикувана.",
+    "note_en": "Listed among started projects expected to receive 2026 funding; no specific amount was published.",
     "municipality": "plovdiv",
     "district": "Централен",
-    "location": { "lat": 42.1432, "lng": 24.7345, "address_bg": "Младежки хълм, Пловдив", "address_en": "Mladezhki Halm, Plovdiv", "approximate": true },
-    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.1432,
+      "lng": 24.7345,
+      "address_bg": "Младежки хълм, Пловдив",
+      "address_en": "Mladezhki Halm, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "provisional",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е сред започналите обекти, за които се очаква финансиране през 2026 г.; няма публикувана отделна сума.",
+        "label_en": "Listed among started projects expected to receive 2026 funding; no separate amount was published.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-culture-cinema-kosmos",
@@ -173,18 +401,49 @@
     "summary_en": "Renewal of Cinema Kosmos as a public cultural space.",
     "category": "culture",
     "status": "in_progress",
-    "note_bg": "Заложен в бюджета за 2025 г. и продължава в капиталовата програма за 2026 г.",
-    "note_en": "Included in the 2025 budget and continues in the 2026 capital programme.",
+    "note_bg": "Заложен за старт или финансиране през 2025 г.; медийният преглед на проектобюджета за 2026 г. го посочва сред започналите обекти с очаквано финансиране. Няма публикувана отделна сума или официален запис за завършване.",
+    "note_en": "Listed for start or funding in 2025; the 2026 draft-budget coverage lists it among started projects expected to receive funding. No separate amount or official completion record is published.",
     "municipality": "plovdiv",
     "district": "Централен",
-    "location": { "lat": 42.1465, "lng": 24.748, "address_bg": "Централен район, Пловдив", "address_en": "Tsentralen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2025, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.1465,
+      "lng": 24.748,
+      "address_bg": "Централен район, Пловдив",
+      "address_en": "Tsentralen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2025,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" },
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — бюджет на Пловдив за 2025 г.",
+        "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/",
+        "accessed_at": "2026-06-14"
+      },
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-04-09",
+        "label_bg": "Кино „Космос“ е посочен сред проектите, които трябва да започнат през 2025 г.",
+        "label_en": "Cinema Kosmos was listed among projects expected to start in 2025.",
+        "source_url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/"
+      },
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е сред започналите обекти, за които се очаква финансиране през 2026 г.; няма публикувана отделна сума.",
+        "label_en": "Listed among started projects expected to receive 2026 funding; no separate amount was published.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-sport-zapaden-halls",
@@ -193,18 +452,39 @@
     "summary_bg": "Изграждане на нови спортни зали в район „Западен“.",
     "summary_en": "Construction of new sports halls in the Zapaden district.",
     "category": "sport",
-    "status": "planned",
-    "note_bg": "Включен в прогнозната капиталова програма за 2026 г. (подлежи на промяна).",
-    "note_en": "Included in the provisional 2026 capital programme (subject to change).",
+    "status": "in_progress",
+    "note_bg": "Посочен сред започналите обекти, за които се очаква финансиране през 2026 г.; конкретна сума не е публикувана.",
+    "note_en": "Listed among started projects expected to receive 2026 funding; no specific amount was published.",
     "municipality": "plovdiv",
     "district": "Западен",
-    "location": { "lat": 42.145, "lng": 24.716, "address_bg": "Западен район, Пловдив", "address_en": "Zapaden district, Plovdiv", "approximate": true },
-    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.145,
+      "lng": 24.716,
+      "address_bg": "Западен район, Пловдив",
+      "address_en": "Zapaden district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "provisional",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е сред започналите обекти, за които се очаква финансиране през 2026 г.; няма публикувана отделна сума.",
+        "label_en": "Listed among started projects expected to receive 2026 funding; no separate amount was published.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-pavement-ivan-vazov",
@@ -213,18 +493,50 @@
     "summary_bg": "Изграждане на пешеходна зона по ул. „Иван Вазов“.",
     "summary_en": "Creation of a pedestrian zone along Ivan Vazov Street.",
     "category": "pavement",
-    "status": "planned",
-    "note_bg": "Заложен за стартиране през 2025 г.",
-    "note_en": "Scheduled to start in 2025.",
+    "status": "contracted",
+    "note_bg": "Планиран за старт през 2026 г.; медийната публикация посочва избран изпълнител. Няма публикувана отделна сума.",
+    "note_en": "Planned to start in 2026; the media report says a contractor has been selected. No separate amount was published.",
     "municipality": "plovdiv",
     "district": "Централен",
-    "location": { "lat": 42.1455, "lng": 24.7495, "address_bg": "Централен район, Пловдив", "address_en": "Tsentralen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2025, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.1455,
+      "lng": 24.7495,
+      "address_bg": "Централен район, Пловдив",
+      "address_en": "Tsentralen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "TrafficNews — бюджет на Пловдив за 2025 г.", "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — бюджет на Пловдив за 2025 г.",
+        "url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/",
+        "accessed_at": "2026-06-14"
+      },
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
-    "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-04-09",
+        "label_bg": "Посочен е сред проектите, които трябва да започнат през 2025 г.",
+        "label_en": "Listed among projects expected to start in 2025.",
+        "source_url": "https://trafficnews.bg/plovdiv/obshtina-plovdiv-shte-harchi-715-mln-leva-prez-2025-a-chaka-341501/"
+      },
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е като нов обект за 2026 г.; публикацията съобщава, че има избран изпълнител.",
+        "label_en": "Listed as a new 2026 project; the report says a contractor has been selected.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-education-kiril-metodii",
@@ -238,13 +550,36 @@
     "note_en": "New project in the provisional 2026 capital programme with a state targeted subsidy.",
     "municipality": "plovdiv",
     "district": "Централен",
-    "location": { "lat": 42.1472, "lng": 24.7512, "address_bg": "Централен район, Пловдив", "address_en": "Tsentralen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2026, "funding_source": "state_subsidy", "amount_eur": 2060000, "currency": "EUR" },
+    "location": {
+      "lat": 42.1472,
+      "lng": 24.7512,
+      "address_bg": "Централен район, Пловдив",
+      "address_en": "Tsentralen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "state_subsidy",
+      "amount_eur": 2060000,
+      "currency": "EUR"
+    },
     "sources": [
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "Под тепето — капиталова програма за 2026 г.",
+        "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "provisional",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2026-05-25",
+        "label_bg": "Прогнозната капиталова програма за 2026 г. посочва целева държавна субсидия от 2,06 млн. евро.",
+        "label_en": "The provisional 2026 capital programme lists a state targeted subsidy of EUR 2.06 million.",
+        "source_url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/"
+      }
+    ]
   },
   {
     "id": "plovdiv-road-kukush",
@@ -258,13 +593,36 @@
     "note_en": "New project in the provisional 2026 capital programme with a state targeted subsidy.",
     "municipality": "plovdiv",
     "district": "Северен",
-    "location": { "lat": 42.1585, "lng": 24.7425, "address_bg": "Северен район, Пловдив", "address_en": "Severen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2026, "funding_source": "state_subsidy", "amount_eur": 900000, "currency": "EUR" },
+    "location": {
+      "lat": 42.1585,
+      "lng": 24.7425,
+      "address_bg": "Северен район, Пловдив",
+      "address_en": "Severen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "state_subsidy",
+      "amount_eur": 900000,
+      "currency": "EUR"
+    },
     "sources": [
-      { "title": "Под тепето — капиталова програма за 2026 г.", "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/", "accessed_at": "2026-06-14" }
+      {
+        "title": "Под тепето — капиталова програма за 2026 г.",
+        "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
+        "accessed_at": "2026-06-14"
+      }
     ],
     "data_quality": "provisional",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2026-05-25",
+        "label_bg": "Прогнозната капиталова програма за 2026 г. посочва целева държавна субсидия от 900 хил. евро.",
+        "label_en": "The provisional 2026 capital programme lists a state targeted subsidy of EUR 900,000.",
+        "source_url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/"
+      }
+    ]
   },
   {
     "id": "plovdiv-road-severen-blvd",
@@ -274,17 +632,38 @@
     "summary_en": "Second phase of Severen Boulevard.",
     "category": "roads",
     "status": "postponed",
-    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
-    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
+    "note_bg": "Отложен: в проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; възможно е финансиране при бъдеща актуализация.",
+    "note_en": "Postponed: the draft budget lists forecast financing of BGN 0 for 2025-2026; funding could be added in a future budget update.",
     "municipality": "plovdiv",
     "district": "Северен",
-    "location": { "lat": 42.165, "lng": 24.7555, "address_bg": "Северен район, Пловдив", "address_en": "Severen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.165,
+      "lng": 24.7555,
+      "address_bg": "Северен район, Пловдив",
+      "address_en": "Severen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
-    "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-12-09",
+        "label_bg": "В проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; проектът е замразен поне до 2027 г., освен при промяна на бюджета.",
+        "label_en": "The draft budget lists forecast financing of BGN 0 for 2025-2026; the project is frozen at least until 2027 unless the budget changes.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-road-tsarevets",
@@ -294,17 +673,38 @@
     "summary_en": "Second phase of Tsarevets Street.",
     "category": "roads",
     "status": "postponed",
-    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
-    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
+    "note_bg": "Отложен: в проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; възможно е финансиране при бъдеща актуализация.",
+    "note_en": "Postponed: the draft budget lists forecast financing of BGN 0 for 2025-2026; funding could be added in a future budget update.",
     "municipality": "plovdiv",
     "district": "Тракия",
-    "location": { "lat": 42.1505, "lng": 24.77, "address_bg": "Тракия, Пловдив", "address_en": "Trakiya, Plovdiv", "approximate": true },
-    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.1505,
+      "lng": 24.77,
+      "address_bg": "Тракия, Пловдив",
+      "address_en": "Trakiya, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
-    "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-12-09",
+        "label_bg": "В проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; проектът е замразен поне до 2027 г., освен при промяна на бюджета.",
+        "label_en": "The draft budget lists forecast financing of BGN 0 for 2025-2026; the project is frozen at least until 2027 unless the budget changes.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-road-polet",
@@ -314,17 +714,38 @@
     "summary_en": "Repair of Polet Street.",
     "category": "roads",
     "status": "postponed",
-    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
-    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
+    "note_bg": "Отложен: в проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; възможно е финансиране при бъдеща актуализация.",
+    "note_en": "Postponed: the draft budget lists forecast financing of BGN 0 for 2025-2026; funding could be added in a future budget update.",
     "municipality": "plovdiv",
     "district": "Северен",
-    "location": { "lat": 42.16, "lng": 24.7305, "address_bg": "Северен район, Пловдив", "address_en": "Severen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.16,
+      "lng": 24.7305,
+      "address_bg": "Северен район, Пловдив",
+      "address_en": "Severen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
-    "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-12-09",
+        "label_bg": "В проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; проектът е замразен поне до 2027 г., освен при промяна на бюджета.",
+        "label_en": "The draft budget lists forecast financing of BGN 0 for 2025-2026; the project is frozen at least until 2027 unless the budget changes.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-road-lyuben-karavelov",
@@ -334,17 +755,38 @@
     "summary_en": "Repair of Lyuben Karavelov Street.",
     "category": "roads",
     "status": "postponed",
-    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
-    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
+    "note_bg": "Отложен: в проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; възможно е финансиране при бъдеща актуализация.",
+    "note_en": "Postponed: the draft budget lists forecast financing of BGN 0 for 2025-2026; funding could be added in a future budget update.",
     "municipality": "plovdiv",
     "district": "Централен",
-    "location": { "lat": 42.144, "lng": 24.76, "address_bg": "Централен район, Пловдив", "address_en": "Tsentralen district, Plovdiv", "approximate": true },
-    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.144,
+      "lng": 24.76,
+      "address_bg": "Централен район, Пловдив",
+      "address_en": "Tsentralen district, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
-    "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-12-09",
+        "label_bg": "В проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; проектът е замразен поне до 2027 г., освен при промяна на бюджета.",
+        "label_en": "The draft budget lists forecast financing of BGN 0 for 2025-2026; the project is frozen at least until 2027 unless the budget changes.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-education-new-kindergartens",
@@ -354,17 +796,38 @@
     "summary_en": "Construction of new kindergartens and nurseries in several districts.",
     "category": "education",
     "status": "postponed",
-    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
-    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
+    "note_bg": "Отложен: в проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; възможно е финансиране при бъдеща актуализация.",
+    "note_en": "Postponed: the draft budget lists forecast financing of BGN 0 for 2025-2026; funding could be added in a future budget update.",
     "municipality": "plovdiv",
     "district": null,
-    "location": { "lat": 42.138, "lng": 24.788, "address_bg": "район „Тракия“, Пловдив (един от обектите)", "address_en": "Trakiya district, Plovdiv (one of the sites)", "approximate": true },
-    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.138,
+      "lng": 24.788,
+      "address_bg": "район „Тракия“, Пловдив (един от обектите)",
+      "address_en": "Trakiya district, Plovdiv (one of the sites)",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
-    "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-12-09",
+        "label_bg": "В проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; проектът е замразен поне до 2027 г., освен при промяна на бюджета.",
+        "label_en": "The draft budget lists forecast financing of BGN 0 for 2025-2026; the project is frozen at least until 2027 unless the budget changes.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
   },
   {
     "id": "plovdiv-road-trakiya-junction",
@@ -374,16 +837,119 @@
     "summary_en": "Repair of a ring-road junction in the Trakiya district.",
     "category": "roads",
     "status": "postponed",
-    "note_bg": "Отложен: с прогнозна стойност за финансиране 0 лв. за 2025–2026 г. (Приложение 3 към бюджета).",
-    "note_en": "Postponed: forecast financing of BGN 0 for 2025–2026 (Appendix 3 of the budget).",
+    "note_bg": "Отложен: в проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; възможно е финансиране при бъдеща актуализация.",
+    "note_en": "Postponed: the draft budget lists forecast financing of BGN 0 for 2025-2026; funding could be added in a future budget update.",
     "municipality": "plovdiv",
     "district": "Тракия",
-    "location": { "lat": 42.14, "lng": 24.795, "address_bg": "Тракия, Пловдив", "address_en": "Trakiya, Plovdiv", "approximate": true },
-    "budget": { "year": 2026, "funding_source": "municipal_capital" },
+    "location": {
+      "lat": 42.14,
+      "lng": 24.795,
+      "address_bg": "Тракия, Пловдив",
+      "address_en": "Trakiya, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
     "sources": [
-      { "title": "PlovdivNow — замразени проекти в бюджета", "url": "https://plovdivnow.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-126079/", "accessed_at": "2026-06-14" }
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
     ],
-    "data_quality": "public_source",
+    "data_quality": "provisional",
+    "updated_at": "2026-06-14",
+    "timeline": [
+      {
+        "date": "2025-12-09",
+        "label_bg": "В проектобюджета е посочена прогнозна стойност за финансиране 0 лв. за 2025-2026 г.; проектът е замразен поне до 2027 г., освен при промяна на бюджета.",
+        "label_en": "The draft budget lists forecast financing of BGN 0 for 2025-2026; the project is frozen at least until 2027 unless the budget changes.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ]
+  },
+  {
+    "id": "plovdiv-road-maritsa-sever",
+    "title_bg": "Булевард „Марица-север“ — реконструкция",
+    "title_en": "Maritsa-sever Boulevard reconstruction",
+    "summary_bg": "Реконструкция на бул. „Марица-север“ от моста на Панаира до Пешеходния мост.",
+    "summary_en": "Reconstruction of Maritsa-sever Boulevard from the Fair bridge to the Pedestrian bridge.",
+    "category": "roads",
+    "status": "planned",
+    "note_bg": "Посочен като нов обект за старт през 2026 г.; няма публикувана отделна сума в използвания източник.",
+    "note_en": "Listed as a new project expected to start in 2026; no separate amount was published in the source used.",
+    "municipality": "plovdiv",
+    "district": "Централен",
+    "location": {
+      "lat": 42.1535,
+      "lng": 24.7555,
+      "address_bg": "бул. „Марица-север“, от моста на Панаира до Пешеходния мост, Пловдив",
+      "address_en": "Maritsa-sever Boulevard, Fair bridge to Pedestrian bridge, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
+    "sources": [
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
+    ],
+    "data_quality": "provisional",
+    "timeline": [
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е като нов обект, който трябва да стартира през 2026 г.",
+        "label_en": "Listed as a new project expected to start in 2026.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ],
+    "updated_at": "2026-06-14"
+  },
+  {
+    "id": "plovdiv-road-macedonia-extension",
+    "title_bg": "Продължение на бул. „Македония“",
+    "title_en": "Macedonia Boulevard extension",
+    "summary_bg": "Продължение на бул. „Македония“, което трябва да свърже бул. „Никола Вапцаров“ с бул. „Александър Стамболийски“ и ул. „Димитър Талев“.",
+    "summary_en": "Extension of Macedonia Boulevard intended to connect Nikola Vaptsarov Boulevard with Aleksandar Stamboliyski Boulevard and Dimitar Talev Street.",
+    "category": "roads",
+    "status": "planned",
+    "note_bg": "Посочен като нов обект за старт през 2026 г.; няма публикувана отделна сума в използвания източник.",
+    "note_en": "Listed as a new project expected to start in 2026; no separate amount was published in the source used.",
+    "municipality": "plovdiv",
+    "district": "Южен",
+    "location": {
+      "lat": 42.1245,
+      "lng": 24.737,
+      "address_bg": "между бул. „Никола Вапцаров“, бул. „Александър Стамболийски“ и ул. „Димитър Талев“, Пловдив",
+      "address_en": "between Nikola Vaptsarov Boulevard, Aleksandar Stamboliyski Boulevard and Dimitar Talev Street, Plovdiv",
+      "approximate": true
+    },
+    "budget": {
+      "year": 2026,
+      "funding_source": "municipal_capital"
+    },
+    "sources": [
+      {
+        "title": "TrafficNews — проектобюджет 2026 и замразени проекти",
+        "url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/",
+        "accessed_at": "2026-06-14"
+      }
+    ],
+    "data_quality": "provisional",
+    "timeline": [
+      {
+        "date": "2025-12-09",
+        "label_bg": "Посочен е като нов обект, който трябва да стартира през 2026 г.",
+        "label_en": "Listed as a new project expected to start in 2026.",
+        "source_url": "https://trafficnews.bg/plovdiv/bez-promiana-plovdiv-noviia-byudzhet-no-zamraziha-15-golemi-363745/"
+      }
+    ],
     "updated_at": "2026-06-14"
   }
 ]

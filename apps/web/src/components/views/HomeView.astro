@@ -11,7 +11,11 @@ type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
 
-const totalBudget = budgetItems.reduce((sum, item) => sum + item.amount_bgn, 0);
+const budgetSectors = budgetItems.filter((item) => item.year === 2025 && item.kind === "sector");
+const capital2025 = budgetItems.find(
+  (item) => item.year === 2025 && item.kind === "summary" && item.summary_key === "capital_programme"
+);
+const totalBudget = capital2025?.amount_bgn ?? budgetSectors.reduce((sum, item) => sum + (item.amount_bgn ?? 0), 0);
 const latestProjects = projects.slice(0, 4);
 
 const cards = [
@@ -52,7 +56,7 @@ const cards = [
       <div class="stat-row" aria-label={t.home.statsLabel}>
         <div class="stat"><strong>{projects.length}</strong><span>{t.home.statProjects}</span></div>
         <div class="stat"><strong>{t.home.statReportsValue}</strong><span>{t.home.statReports}</span></div>
-        <div class="stat"><strong>{budgetItems.length}</strong><span>{t.home.statBudget}</span></div>
+        <div class="stat"><strong>{budgetSectors.length}</strong><span>{t.home.statBudget}</span></div>
         <div class="stat"><strong>{formatMoney(totalBudget, lang)}</strong><span>{t.home.statTotal}</span></div>
       </div>
     </div>
