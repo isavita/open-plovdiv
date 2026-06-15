@@ -1,14 +1,17 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import {
+  categoryActionTrack,
   categoryColors,
+  categoryHelpGroups,
   categoryLabels,
   fixStatusDescriptions,
   fixStatusLabels,
   ui,
   type Lang
 } from "@i18n/ui";
-import { localizePath } from "@i18n/utils";
+import { field, localizePath } from "@i18n/utils";
+import { communityInitiatives } from "@lib/data";
 import { FIX_CATEGORIES } from "@lib/server/moderation";
 import { categoryLabel, fixStatusLabel } from "@lib/format";
 
@@ -18,6 +21,19 @@ const t = ui[lang];
 
 const fixCategories = [...FIX_CATEGORIES];
 const fixStatuses = Object.keys(fixStatusLabels[lang]);
+
+// Civic-action model: which categories need official action vs civic help.
+const officialCats = fixCategories.filter((c) => categoryActionTrack[c] !== "civic");
+const civicCats = fixCategories.filter((c) => categoryActionTrack[c] !== "municipal");
+const helpGroups = communityInitiatives.map((g) => ({
+  title: field(g, "title", lang),
+  category: g.category,
+  url:
+    g.organizer?.website_url ??
+    g.organizer?.facebook_url ??
+    g.contact_links?.[0]?.url ??
+    localizePath("/community", lang)
+}));
 
 const config = {
   lang,
@@ -30,6 +46,25 @@ const config = {
   categoryColors,
   statusLabels: fixStatusLabels[lang],
   statusDescriptions: fixStatusDescriptions[lang],
+  track: categoryActionTrack,
+  helpGroupsMap: categoryHelpGroups,
+  groups: helpGroups,
+  officialUrl: "https://www.plovdiv.bg/",
+  reportHref: localizePath("/fix-map/report", lang),
+  communityHref: localizePath("/community", lang),
+  civic: {
+    whatYouCanDo: t.civic.whatYouCanDo,
+    reportOfficial: t.civic.actReportOfficial,
+    joinGroup: t.civic.actJoinGroup,
+    addReport: t.civic.actAddReport,
+    document: t.civic.actDocument,
+    follow: t.civic.actFollow,
+    groupsTitle: t.civic.groupsTitle,
+    noGroups: t.civic.noGroups,
+    trackOfficial: t.civic.trackOfficial,
+    trackCivic: t.civic.trackCivic,
+    trackBoth: t.civic.trackBoth
+  },
   labels: {
     statusLabel: t.fixMap.statusLabel,
     nearby: t.fixMap.nearbyProjects,
@@ -128,6 +163,47 @@ const config = {
     </div>
   </section>
 
+  <section class="section" id="how-to-help" style="scroll-margin-top:84px">
+    <div class="container">
+      <div class="section-head"><h2>{t.civic.title}</h2></div>
+      <p class="lead" style="font-size:1.02rem;max-width:72ch">{t.civic.lead}</p>
+      <div class="grid grid-2" style="margin-top:20px">
+        <article class="card">
+          <span class="badge no-dot" style="background:var(--badge-info-bg);color:var(--badge-info-fg)">{t.civic.trackOfficial}</span>
+          <p class="meta" style="margin-top:10px">{t.civic.trackOfficialText}</p>
+          <div class="legend" style="margin-top:12px">
+            {officialCats.map((c) => (
+              <span class="legend-item"><span class="cat-dot" style={`--dot:${categoryColors[c]}`}></span>{categoryLabel(c, lang)}</span>
+            ))}
+          </div>
+          <h4 style="margin-top:16px">{t.civic.whatYouCanDo}</h4>
+          <ul class="source-list">
+            <li><a href="https://www.plovdiv.bg/" target="_blank" rel="noreferrer">{t.civic.actReportOfficial}</a></li>
+            <li><a href={localizePath("/fix-map/report", lang)}>{t.civic.actAddReport}</a></li>
+            <li>{t.civic.actDocument}</li>
+            <li>{t.civic.actFollow}</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="badge no-dot" style="background:var(--badge-ok-bg);color:var(--badge-ok-fg)">{t.civic.trackCivic}</span>
+          <p class="meta" style="margin-top:10px">{t.civic.trackCivicText}</p>
+          <div class="legend" style="margin-top:12px">
+            {civicCats.map((c) => (
+              <span class="legend-item"><span class="cat-dot" style={`--dot:${categoryColors[c]}`}></span>{categoryLabel(c, lang)}</span>
+            ))}
+          </div>
+          <h4 style="margin-top:16px">{t.civic.whatYouCanDo}</h4>
+          <ul class="source-list">
+            <li><a href={localizePath("/community", lang)}>{t.civic.actJoinGroup}</a></li>
+            <li><a href={localizePath("/fix-map/report", lang)}>{t.civic.actAddReport}</a></li>
+            <li>{t.civic.actDocument}</li>
+            <li>{t.civic.actFollow}</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="section section-tint">
     <div class="container grid grid-2">
       <article>
@@ -181,6 +257,50 @@ const config = {
     const catColor = (c: string) => config.categoryColors[c] ?? "#6b7280";
     const statusLabel = (s: string) => config.statusLabels[s] ?? s;
     const statusDesc = (s: string) => config.statusDescriptions[s] ?? "";
+
+    // Civic-action block: classifies the problem (official / civic / shared),
+    // lists concrete next actions, and links volunteer groups that can help.
+    function actionBlock(report: any): string {
+      const C = config.civic ?? {};
+      const track = config.track?.[report.category] ?? "civic";
+      const trackLabel =
+        track === "municipal" ? C.trackOfficial : track === "civic" ? C.trackCivic : C.trackBoth;
+      const trackBg =
+        track === "civic" ? "var(--badge-ok-bg)" : track === "municipal" ? "var(--badge-info-bg)" : "var(--badge-sample-bg)";
+      const trackFg =
+        track === "civic" ? "var(--badge-ok-fg)" : track === "municipal" ? "var(--badge-info-fg)" : "var(--badge-sample-fg)";
+
+      const items: string[] = [];
+      if (track !== "civic") {
+        items.push(`<li><a href="${escapeHtml(config.officialUrl)}" target="_blank" rel="noreferrer">${escapeHtml(C.reportOfficial)}</a></li>`);
+      }
+      if (track !== "municipal") {
+        items.push(`<li><a href="${escapeHtml(config.communityHref)}">${escapeHtml(C.joinGroup)}</a></li>`);
+      }
+      items.push(`<li><a href="${escapeHtml(config.reportHref)}">${escapeHtml(C.addReport)}</a></li>`);
+      items.push(`<li>${escapeHtml(C.document)}</li>`);
+      items.push(`<li>${escapeHtml(C.follow)}</li>`);
+
+      const cats = config.helpGroupsMap?.[report.category] ?? ["civic"];
+      const groups = (config.groups ?? []).filter((g: any) => cats.includes(g.category)).slice(0, 3);
+      const groupsHtml = groups.length
+        ? `<h3>${escapeHtml(C.groupsTitle)}</h3><ul class="source-list">${groups
+            .map(
+              (g: any) =>
+                `<li><a href="${escapeHtml(g.url)}" target="_blank" rel="noreferrer">${escapeHtml(g.title)}</a></li>`
+            )
+            .join("")}</ul>`
+        : track !== "municipal"
+          ? `<p class="meta">${escapeHtml(C.noGroups)}</p>`
+          : "";
+
+      return `
+        <p style="margin-top:14px"><span class="badge no-dot" style="background:${trackBg};color:${trackFg}">${escapeHtml(trackLabel)}</span></p>
+        <h3>${escapeHtml(C.whatYouCanDo)}</h3>
+        <ul class="source-list">${items.join("")}</ul>
+        ${groupsHtml}
+      `;
+    }
 
     const categoryFilter = document.querySelector<HTMLSelectElement>("#category-filter")!;
     const statusFilter = document.querySelector<HTMLSelectElement>("#status-filter")!;
@@ -264,6 +384,7 @@ const config = {
                 .join("")}</div>`
             : ""
         }
+        ${actionBlock(report)}
         <h3>${escapeHtml(LB.nearby)}</h3>
         ${
           nearby.length

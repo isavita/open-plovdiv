@@ -193,7 +193,8 @@ const bg = {
     countFiltered: (visible: number, total: number) =>
       `${visible} от ${total} ${plural(total, "инициатива", "инициативи")}`,
     empty: "Няма инициативи с избраните филтри.",
-    adminCta: "Админ: добави или провери инициатива"
+    adminCta: "Админ: добави или провери инициатива",
+    seeProblems: "Виж проблеми, с които можеш да помогнеш"
   },
   project: {
     breadcrumb: "Проекти",
@@ -269,6 +270,27 @@ const bg = {
     liveNote: "Картата се обновява автоматично на всеки 30 секунди.",
     newReports: "Нови сигнали: {count}",
     downloadCommunityData: "Изтегли гражданските сигнали"
+  },
+  civic: {
+    title: "Как можете да помогнете",
+    lead:
+      "Различните проблеми изискват различни действия. Някои са отговорност на общината, други могат да бъдат подобрени и от граждани и доброволци.",
+    trackOfficial: "Изисква официална намеса",
+    trackOfficialText:
+      "Опасни пътища, осветление, отводняване и инфраструктурни ремонти трябва да се поемат от общината или съответната институция.",
+    trackCivic: "Подходящо за гражданско участие",
+    trackCivicText:
+      "Почистване на отпадъци, малки зелени подобрения, картографиране на пречки за достъпност и документиране могат да се организират от граждани и групи.",
+    trackBoth: "Споделена отговорност",
+    whatYouCanDo: "Какво можете да направите",
+    actReportOfficial: "Подайте сигнал до общината",
+    actJoinGroup: "Включете се в гражданска група",
+    actAddReport: "Отбележете проблема на картата",
+    actDocument: "Помогнете с документиране и снимки",
+    actFollow: "Следете развитието",
+    groupsTitle: "Групи, които могат да помогнат",
+    noGroups: "Все още няма вписана група за тази категория.",
+    seeAllGroups: "Вижте всички доброволчески групи"
   },
   sources: {
     eyebrow: "Проверимост",
@@ -641,7 +663,8 @@ const en: typeof bg = {
     countFiltered: (visible: number, total: number) =>
       `${visible} of ${total} ${plural(total, "initiative", "initiatives")}`,
     empty: "No initiatives match the selected filters.",
-    adminCta: "Admin: add or verify initiative"
+    adminCta: "Admin: add or verify initiative",
+    seeProblems: "See problems you can help with"
   },
   project: {
     breadcrumb: "Projects",
@@ -717,6 +740,27 @@ const en: typeof bg = {
     liveNote: "The map refreshes automatically every 30 seconds.",
     newReports: "New reports: {count}",
     downloadCommunityData: "Download citizen report data"
+  },
+  civic: {
+    title: "How you can help",
+    lead:
+      "Different problems need different actions. Some are the municipality's responsibility; others can also be improved by citizens and volunteers.",
+    trackOfficial: "Requires official action",
+    trackOfficialText:
+      "Dangerous roads, lighting, drainage and infrastructure repairs must be handled by the municipality or the responsible institution.",
+    trackCivic: "Open to civic participation",
+    trackCivicText:
+      "Litter clean-ups, small green improvements, mapping accessibility barriers and documenting can be organised by citizens and groups.",
+    trackBoth: "Shared responsibility",
+    whatYouCanDo: "What you can do",
+    actReportOfficial: "Report it to the municipality",
+    actJoinGroup: "Join a citizen group",
+    actAddReport: "Mark the problem on the map",
+    actDocument: "Help document it with photos",
+    actFollow: "Follow progress",
+    groupsTitle: "Groups that can help",
+    noGroups: "No group is listed for this category yet.",
+    seeAllGroups: "See all volunteer groups"
   },
   sources: {
     eyebrow: "Verifiability",
@@ -976,6 +1020,37 @@ export const categoryColors: Record<string, string> = {
   social: "#7a5ca8",
   sport: "#2f7fb0",
   other: "#6b7280"
+};
+
+// Civic-action track per problem category: whether a problem typically needs
+// official (municipal) action, is open to civic participation, or both.
+export const categoryActionTrack: Record<string, "municipal" | "civic" | "both"> = {
+  roads: "municipal",
+  pavement: "municipal",
+  street_lighting: "municipal",
+  drainage: "municipal",
+  education: "municipal",
+  public_transport: "both",
+  accessibility: "both",
+  parks: "both",
+  waste: "both",
+  culture: "both",
+  other: "civic"
+};
+
+// Which community-initiative categories are relevant to each problem category,
+// used to surface volunteer groups that can help with a given issue.
+export const categoryHelpGroups: Record<string, string[]> = {
+  roads: ["civic"],
+  pavement: ["civic"],
+  street_lighting: ["civic"],
+  drainage: ["civic", "environment"],
+  public_transport: ["public_transport", "civic"],
+  accessibility: ["civic", "social"],
+  parks: ["parks", "environment", "civic"],
+  waste: ["waste", "environment", "civic"],
+  culture: ["civic", "social"],
+  other: ["civic", "environment", "social", "other"]
 };
 
 export const projectStatusLabels: Record<Lang, Record<string, string>> = {
