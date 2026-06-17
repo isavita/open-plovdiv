@@ -10,6 +10,7 @@ const files = [
   "projects.json",
   "community-initiatives.json",
   "budget-items.json",
+  "city-archive.json",
   "fix-reports.json",
   "sources.json"
 ];

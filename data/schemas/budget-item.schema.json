@@ -25,7 +25,7 @@
     },
     "year": {
       "type": "integer",
-      "minimum": 2000,
+      "minimum": 1800,
       "maximum": 2100
     },
     "municipality": {
@@ -87,7 +87,17 @@
       "type": "string",
       "enum": [
         "total_budget",
-        "capital_programme"
+        "capital_programme",
+        "budget_execution"
+      ]
+    },
+    "basis": {
+      "type": "string",
+      "enum": [
+        "adopted",
+        "executed",
+        "provisional",
+        "historical_nominal"
       ]
     },
     "funding_key": {

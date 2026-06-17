@@ -66,15 +66,21 @@ const capitalByYear = [
       year: b.year,
       lev: b.amount_bgn ?? 0,
       provisional: false,
+      executed: b.basis === "executed",
       src: b.source_document.url
     })),
-  { year: 2026, lev: capital2026Lev, provisional: true, src: budget2026Source }
+  { year: 2026, lev: capital2026Lev, provisional: true, executed: false, src: budget2026Source }
 ];
 const capitalByYearMax = Math.max(...capitalByYear.map((c) => c.lev), 1);
 
 // Multi-year total budget (BGN), for the historical trend.
 const totalsByYear = budgetItems
-  .filter((b) => b.kind === "summary" && b.summary_key === "total_budget" && b.amount_bgn != null)
+  .filter(
+    (b) =>
+      b.kind === "summary" &&
+      (b.summary_key === "total_budget" || b.summary_key === "budget_execution") &&
+      b.amount_bgn != null
+  )
   .sort((a, b) => a.year - b.year);
 const totalsMax = Math.max(...totalsByYear.map((b) => b.amount_bgn ?? 0), 1);
 function compactBgn(amount: number): string {
@@ -251,13 +257,16 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
     <div class="container">
       <div class="section-head"><h2>{t.overview.totalTrendTitle}</h2></div>
       <div class="chart-card">
-        <div class="compare-cols">
+        <div class="compare-cols" data-dense>
           {totalsByYear.map((b) => (
             <div class="compare-col">
-              <div class="compare-bar" style={`height:${((b.amount_bgn ?? 0) / totalsMax) * 100}%`}></div>
+              <div
+                class={`compare-bar${b.basis === "executed" ? " archive" : ""}`}
+                style={`height:${((b.amount_bgn ?? 0) / totalsMax) * 100}%`}
+              ></div>
               <div class="compare-meta">
                 <strong>{compactBgn(b.amount_bgn ?? 0)}</strong>
-                <span>{b.year}</span>
+                <span>{b.basis === "executed" ? `${b.year} · ${t.budget.executedShort}` : b.year}</span>
               </div>
             </div>
           ))}
@@ -277,16 +286,18 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
     <div class="container">
       <div class="section-head"><h2>{t.overview.capitalTrendTitle}</h2></div>
       <div class="chart-card">
-        <div class="compare-cols">
+        <div class="compare-cols" data-dense>
           {capitalByYear.map((c) => (
             <div class="compare-col">
               <div
-                class={`compare-bar${c.provisional ? " provisional" : ""}`}
+                class={`compare-bar${c.provisional ? " provisional" : c.executed ? " archive" : ""}`}
                 style={`height:${(c.lev / capitalByYearMax) * 100}%`}
               ></div>
               <div class="compare-meta">
                 <strong>{compactBgn(c.lev)}</strong>
-                <span>{c.provisional ? t.overview.year2026 : c.year}</span>
+                <span>
+                  {c.provisional ? t.overview.year2026 : c.executed ? `${c.year} · ${t.budget.executedShort}` : c.year}
+                </span>
               </div>
             </div>
           ))}

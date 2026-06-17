@@ -1,5 +1,515 @@
 [
   {
+    "id": "budget-plovdiv-2002-total",
+    "year": 2002,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "basis": "adopted",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2002 г.",
+    "title_en": "Total 2002 budget",
+    "amount_bgn": 86100000,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2002 г. - 86 100 000 лв., цитиран в одитния доклад на Сметната палата за изпълнението към 30.09.2002 г.",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2002 - BGN 86,100,000, cited in the National Audit Office report on execution as of 30.09.2002.",
+    "source_document": {
+      "title": "Сметна палата - финансов одит на бюджета на Община Пловдив към 30.09.2002 г.",
+      "url": "https://www.bulnao.government.bg/media/documents/doklad_Pv.doc",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2002-capital-programme",
+    "year": 2002,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "basis": "adopted",
+    "category": "other",
+    "title_bg": "Капиталови разходи за 2002 г.",
+    "title_en": "2002 capital expenditure",
+    "amount_bgn": 13125766,
+    "currency": "BGN",
+    "plain_language_bg": "Средствата за капиталови разходи през 2002 г. са определени в размер на 13 125 766 лв., според одитния доклад на Сметната палата.",
+    "plain_language_en": "Capital expenditure for 2002 was set at BGN 13,125,766, according to the National Audit Office report.",
+    "source_document": {
+      "title": "Сметна палата - финансов одит на бюджета на Община Пловдив към 30.09.2002 г.",
+      "url": "https://www.bulnao.government.bg/media/documents/doklad_Pv.doc",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2005-capital-execution",
+    "year": 2005,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "basis": "executed",
+    "category": "other",
+    "title_bg": "Реализирани капиталови разходи за 2005 г.",
+    "title_en": "Executed 2005 capital expenditure",
+    "amount_bgn": 16988269,
+    "currency": "BGN",
+    "plain_language_bg": "Функционалният анализ на Общинска администрация Пловдив отчита реализирани капиталови разходи за 2005 г. в размер на 16 988 269 лв.",
+    "plain_language_en": "The functional analysis of Plovdiv municipal administration reports executed 2005 capital expenditure of BGN 16,988,269.",
+    "source_document": {
+      "title": "Доклад за функционален анализ в Общинска администрация Пловдив, януари 2009 г.",
+      "url": "https://www.strategy.bg/files/publications/%D0%94%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%20%D0%B7%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%20%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D0%B5%D0%BD%20%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D0%B2%20%D0%9E%D0%B1%D1%89%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2.pdf",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2006-capital-execution",
+    "year": 2006,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "basis": "executed",
+    "category": "other",
+    "title_bg": "Реализирани капиталови разходи за 2006 г.",
+    "title_en": "Executed 2006 capital expenditure",
+    "amount_bgn": 26898140,
+    "currency": "BGN",
+    "plain_language_bg": "Функционалният анализ на Общинска администрация Пловдив отчита реализирани капиталови разходи за 2006 г. в размер на 26 898 140 лв.",
+    "plain_language_en": "The functional analysis of Plovdiv municipal administration reports executed 2006 capital expenditure of BGN 26,898,140.",
+    "source_document": {
+      "title": "Доклад за функционален анализ в Общинска администрация Пловдив, януари 2009 г.",
+      "url": "https://www.strategy.bg/files/publications/%D0%94%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%20%D0%B7%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%20%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D0%B5%D0%BD%20%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D0%B2%20%D0%9E%D0%B1%D1%89%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2.pdf",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2007-capital-execution",
+    "year": 2007,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "basis": "executed",
+    "category": "other",
+    "title_bg": "Реализирани капиталови разходи за 2007 г.",
+    "title_en": "Executed 2007 capital expenditure",
+    "amount_bgn": 50858123,
+    "currency": "BGN",
+    "plain_language_bg": "Функционалният анализ на Общинска администрация Пловдив отчита реализирани капиталови разходи за 2007 г. в размер на 50 858 123 лв.",
+    "plain_language_en": "The functional analysis of Plovdiv municipal administration reports executed 2007 capital expenditure of BGN 50,858,123.",
+    "source_document": {
+      "title": "Доклад за функционален анализ в Общинска администрация Пловдив, януари 2009 г.",
+      "url": "https://www.strategy.bg/files/publications/%D0%94%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%20%D0%B7%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%20%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D0%B5%D0%BD%20%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D0%B2%20%D0%9E%D0%B1%D1%89%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2.pdf",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2008-draft-total",
+    "year": 2008,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "basis": "provisional",
+    "category": "other",
+    "title_bg": "Проектобюджет за 2008 г.",
+    "title_en": "2008 draft budget",
+    "amount_bgn": 218300000,
+    "currency": "BGN",
+    "plain_language_bg": "Съвременна публикация на gradat.bg описва предложението Пловдив да се управлява през 2008 г. с проектобюджет от 218,3 млн. лв. Това е проектна стойност, не открито официално решение за приет бюджет.",
+    "plain_language_en": "A contemporary gradat.bg report describes a proposal for Plovdiv to operate in 2008 with a BGN 218.3M draft budget. This is a draft value, not a located official adopted-budget decision.",
+    "source_document": {
+      "title": "Градът - Община Пловдив с проектобюджет от 218.3 млн. лева",
+      "url": "https://gradat.bg/news/2008/02/16/459862_obshtina_plovdiv_s_proektobjudjet_ot_2183_mln_leva",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2008-draft-capital-programme",
+    "year": 2008,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "basis": "provisional",
+    "category": "other",
+    "title_bg": "Проектна капиталова програма за 2008 г.",
+    "title_en": "2008 draft capital programme",
+    "amount_bgn": 73064443,
+    "currency": "BGN",
+    "plain_language_bg": "В проектобюджета за 2008 г., описан от gradat.bg, за капиталови разходи са заложени 73 064 443 лв., или около 30% от общия проектобюджет.",
+    "plain_language_en": "In the 2008 draft budget described by gradat.bg, BGN 73,064,443 was planned for capital expenditure, about 30% of the total draft budget.",
+    "source_document": {
+      "title": "Градът - Община Пловдив с проектобюджет от 218.3 млн. лева",
+      "url": "https://gradat.bg/news/2008/02/16/459862_obshtina_plovdiv_s_proektobjudjet_ot_2183_mln_leva",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2009-total",
+    "year": 2009,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "basis": "adopted",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2009 г.",
+    "title_en": "Total 2009 budget",
+    "amount_bgn": 260702383,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2009 г. - 260 702 383 лв., цитиран от Plovdiv24.bg при гласуването на бюджета на 5 март 2009 г.",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2009 - BGN 260,702,383, cited by Plovdiv24.bg during the 5 March 2009 budget vote.",
+    "source_document": {
+      "title": "Plovdiv24.bg - Рекорден бюджет - 260 702 383 лева",
+      "url": "https://www.plovdiv24.bg/novini/plovdiv/Rekorden-byudzhet-260-702-383-leva-79980",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2009-capital-programme",
+    "year": 2009,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "basis": "adopted",
+    "category": "other",
+    "title_bg": "Капиталови разходи за 2009 г.",
+    "title_en": "2009 capital expenditure",
+    "amount_bgn": 77000000,
+    "currency": "BGN",
+    "plain_language_bg": "При приемането на бюджета за 2009 г. Plovdiv24.bg съобщава, че за капиталови разходи и инфраструктура са отделени 77 млн. лв.",
+    "plain_language_en": "When the 2009 budget was adopted, Plovdiv24.bg reported BGN 77M allocated for capital expenditure and infrastructure.",
+    "source_document": {
+      "title": "Plovdiv24.bg - Рекорден бюджет - 260 702 383 лева",
+      "url": "https://www.plovdiv24.bg/novini/plovdiv/Rekorden-byudzhet-260-702-383-leva-79980",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2010-execution-total",
+    "year": 2010,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "budget_execution",
+    "basis": "executed",
+    "category": "other",
+    "title_bg": "Изпълнение на сборния бюджет за 2010 г.",
+    "title_en": "2010 consolidated budget execution",
+    "amount_bgn": 212194674,
+    "currency": "BGN",
+    "plain_language_bg": "Отчет за изпълнение на сборния бюджет на Община Пловдив за 2010 г. - 212 194 674 лв. отчетени приходи/разходи към 31.12.2010 г.",
+    "plain_language_en": "Execution report for Plovdiv Municipality consolidated 2010 budget - BGN 212,194,674 reported revenue/expenditure as of 31.12.2010.",
+    "source_document": {
+      "title": "Общински съвет - Пловдив, Решение №58 за отчет на бюджет 2010",
+      "url": "https://plovdiv.bg/obs/%d0%b4%d0%b5%d0%b9%d1%81%d1%82%d0%b2%d0%b0%d1%89%d0%b8-%d0%b0%d0%ba%d1%82%d0%be%d0%b2%d0%b5/%d1%80%d0%b5%d1%88%d0%b5%d0%bd%d0%b8%d0%b5-58-1/",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2011-total",
+    "year": 2011,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2011 г.",
+    "title_en": "Total 2011 budget",
+    "amount_bgn": 189636285,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2011 г. (189 636 285 лв.) според решение на Общински съвет - Пловдив.",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2011 (BGN 189,636,285), from a Plovdiv Municipal Council decision.",
+    "source_document": {
+      "title": "Общински съвет - Пловдив, Решение № 26 за бюджет 2011",
+      "url": "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-26-1/",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2012-total",
+    "year": 2012,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2012 г.",
+    "title_en": "Total 2012 budget",
+    "amount_bgn": 193344980,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2012 г. (193 344 980 лв.) според решение на Общински съвет - Пловдив.",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2012 (BGN 193,344,980), from a Plovdiv Municipal Council decision.",
+    "source_document": {
+      "title": "Общински съвет - Пловдив, Решение 66 за бюджет 2012",
+      "url": "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-66/",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2013-capital-programme",
+    "year": 2013,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "category": "other",
+    "title_bg": "Капиталова програма за 2013 г.",
+    "title_en": "2013 capital programme",
+    "amount_bgn": 10105064,
+    "currency": "BGN",
+    "plain_language_bg": "Разчет за финансиране на капиталовите разходи през 2013 г. (10 105 064 лв.).",
+    "plain_language_en": "Capital-expenditure financing plan for 2013 (BGN 10,105,064).",
+    "source_document": {
+      "title": "Общински съвет - Пловдив, Решение 509 за бюджет 2013",
+      "url": "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-509/",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2013-total",
+    "year": 2013,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2013 г.",
+    "title_en": "Total 2013 budget",
+    "amount_bgn": 191486024,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2013 г. (191 486 024 лв.).",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2013 (BGN 191,486,024).",
+    "source_document": {
+      "title": "Общински съвет - Пловдив, Решение 509 за бюджет 2013",
+      "url": "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-509/",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2014-capital-programme",
+    "year": 2014,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "category": "other",
+    "title_bg": "Капиталова програма за 2014 г.",
+    "title_en": "2014 capital programme",
+    "amount_bgn": 39000000,
+    "currency": "BGN",
+    "plain_language_bg": "Приблизителна капиталова програма за 2014 г. - близо 39 млн. лв., според публичното представяне на бюджета.",
+    "plain_language_en": "Approximate 2014 capital programme - nearly BGN 39M, from the public budget presentation.",
+    "source_document": {
+      "title": "Община Пловдив - представяне на проектобюджет 2014",
+      "url": "https://www.plovdiv.bg/%D0%BA%D0%BC%D0%B5%D1%82%D1%8A%D1%82-%D0%B8%D0%B2%D0%B0%D0%BD-%D1%82%D0%BE%D1%82%D0%B5%D0%B2-%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%B8-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0-%D0%B7/",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2014-total",
+    "year": 2014,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2014 г.",
+    "title_en": "Total 2014 budget",
+    "amount_bgn": 219257495,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2014 г. (219 257 495 лв.).",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2014 (BGN 219,257,495).",
+    "source_document": {
+      "title": "Общински съвет - Пловдив, Решение №4 за бюджет 2014",
+      "url": "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-4-3/",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2015-capital-programme",
+    "year": 2015,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "category": "other",
+    "title_bg": "Капиталова програма за 2015 г.",
+    "title_en": "2015 capital programme",
+    "amount_bgn": 63468864,
+    "currency": "BGN",
+    "plain_language_bg": "Разчет за финансиране на капиталовите разходи през 2015 г. (63 468 864 лв.).",
+    "plain_language_en": "Capital-expenditure financing plan for 2015 (BGN 63,468,864).",
+    "source_document": {
+      "title": "Община Пловдив - бюджет 2015, Решение №34",
+      "url": "https://www.plovdiv.bg/wp-content/uploads/2015/02/%D1%80%D0%B5%D1%88.34-15.pdf",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2015-total",
+    "year": 2015,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2015 г.",
+    "title_en": "Total 2015 budget",
+    "amount_bgn": 264665694,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2015 г. (264 665 694 лв.) според сканираното решение на Общинския съвет.",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2015 (BGN 264,665,694), from the scanned council decision.",
+    "source_document": {
+      "title": "Община Пловдив - бюджет 2015, Решение №34",
+      "url": "https://www.plovdiv.bg/wp-content/uploads/2015/02/%D1%80%D0%B5%D1%88.34-15.pdf",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2016-capital-programme",
+    "year": 2016,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "category": "other",
+    "title_bg": "Капиталова програма за 2016 г.",
+    "title_en": "2016 capital programme",
+    "amount_bgn": 47188431,
+    "currency": "BGN",
+    "plain_language_bg": "Разчет за финансиране на капиталовите разходи през 2016 г. (47 188 431 лв.).",
+    "plain_language_en": "Capital-expenditure financing plan for 2016 (BGN 47,188,431).",
+    "source_document": {
+      "title": "Община Пловдив - бюджет 2016, Решение №5",
+      "url": "https://www.plovdiv.bg/wp-content/uploads/2015/11/5-budjet-16.pdf",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2016-total",
+    "year": 2016,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2016 г.",
+    "title_en": "Total 2016 budget",
+    "amount_bgn": 256167127,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2016 г. (256 167 127 лв.) според сканираното решение на Общинския съвет.",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2016 (BGN 256,167,127), from the scanned council decision.",
+    "source_document": {
+      "title": "Община Пловдив - бюджет 2016, Решение №5",
+      "url": "https://www.plovdiv.bg/wp-content/uploads/2015/11/5-budjet-16.pdf",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2017-capital-programme",
+    "year": 2017,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "category": "other",
+    "title_bg": "Капиталова програма за 2017 г.",
+    "title_en": "2017 capital programme",
+    "amount_bgn": 47629902,
+    "currency": "BGN",
+    "plain_language_bg": "Разчет за финансиране на капиталовите разходи през 2017 г. (47 629 902 лв.).",
+    "plain_language_en": "Capital-expenditure financing plan for 2017 (BGN 47,629,902).",
+    "source_document": {
+      "title": "Община Пловдив - бюджет 2017, Решение №18",
+      "url": "https://www.plovdiv.bg/wp-content/uploads/2017/02/Reshenie18.Protokol2.26.01.2017.pdf",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2017-total",
+    "year": 2017,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2017 г.",
+    "title_en": "Total 2017 budget",
+    "amount_bgn": 277750459,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2017 г. (277 750 459 лв.) според сканираното решение на Общинския съвет.",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2017 (BGN 277,750,459), from the scanned council decision.",
+    "source_document": {
+      "title": "Община Пловдив - бюджет 2017, Решение №18",
+      "url": "https://www.plovdiv.bg/wp-content/uploads/2017/02/Reshenie18.Protokol2.26.01.2017.pdf",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2018-capital-programme",
+    "year": 2018,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "category": "other",
+    "title_bg": "Капиталова програма за 2018 г.",
+    "title_en": "2018 capital programme",
+    "amount_bgn": 88182229,
+    "currency": "BGN",
+    "plain_language_bg": "Разчет за финансиране на капиталовите разходи през 2018 г. (88 182 229 лв.).",
+    "plain_language_en": "Capital-expenditure financing plan for 2018 (BGN 88,182,229).",
+    "source_document": {
+      "title": "Общински съвет - Пловдив, Решение 33 за бюджет 2018",
+      "url": "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-33-7/",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2018-total",
+    "year": 2018,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2018 г.",
+    "title_en": "Total 2018 budget",
+    "amount_bgn": 323794323,
+    "currency": "BGN",
+    "plain_language_bg": "Приет бюджет на Община Пловдив за 2018 г. (323 794 323 лв.) според решение на Общински съвет - Пловдив.",
+    "plain_language_en": "Adopted Plovdiv Municipality budget for 2018 (BGN 323,794,323), from a Plovdiv Municipal Council decision.",
+    "source_document": {
+      "title": "Общински съвет - Пловдив, Решение 33 за бюджет 2018",
+      "url": "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-33-7/",
+      "accessed_at": "2026-06-17"
+    },
+    "data_quality": "manual_reviewed"
+  },
+  {
+    "id": "budget-plovdiv-2019-capital-programme",
+    "year": 2019,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "capital_programme",
+    "category": "other",
+    "title_bg": "Капиталова програма за 2019 г.",
+    "title_en": "2019 capital programme",
+    "amount_bgn": 60000000,
+    "currency": "BGN",
+    "plain_language_bg": "Капиталова програма за 2019 г. - около 60 млн. лв. според съобщение за приемането на бюджета.",
+    "plain_language_en": "2019 capital programme - about BGN 60M, from a budget-adoption report.",
+    "source_document": {
+      "title": "БНР - приет бюджет на Пловдив за 2019 г.",
+      "url": "https://old-news.bnr.bg/plovdiv/post/101075189/prieha-budjeta-na-plovdiv-kapitalovata-programa-e-za-60-miliona-leva",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
+  },
+  {
     "id": "budget-plovdiv-2019-total",
     "year": 2019,
     "municipality": "plovdiv",
@@ -100,46 +610,6 @@
     "data_quality": "public_source"
   },
   {
-    "id": "budget-plovdiv-2024-total",
-    "year": 2024,
-    "municipality": "plovdiv",
-    "kind": "summary",
-    "summary_key": "total_budget",
-    "category": "other",
-    "title_bg": "Общ бюджет за 2024 г.",
-    "title_en": "Total 2024 budget",
-    "amount_bgn": 684000000,
-    "currency": "BGN",
-    "plain_language_bg": "Бюджет на Община Пловдив за 2024 г. (приблизително; ръст от около 29 млн. лв. спрямо 2023 г.).",
-    "plain_language_en": "Plovdiv Municipality budget for 2024 (approximate; an increase of about BGN 29M over 2023).",
-    "source_document": {
-      "title": "Марица — бюджет на Пловдив за 2024 г. (ръст 29 млн. лв.)",
-      "url": "https://www.marica.bg/plovdiv/gradat/byudjetat-na-plovdiv-pod-indigo-samo-29-mln-leva-rast",
-      "accessed_at": "2026-06-14"
-    },
-    "data_quality": "public_source"
-  },
-  {
-    "id": "budget-plovdiv-2025-total",
-    "year": 2025,
-    "municipality": "plovdiv",
-    "kind": "summary",
-    "summary_key": "total_budget",
-    "category": "other",
-    "title_bg": "Общ бюджет за 2025 г.",
-    "title_en": "Total 2025 budget",
-    "amount_bgn": 715154301,
-    "currency": "BGN",
-    "plain_language_bg": "Общата рамка на бюджета на Община Пловдив за 2025 г.",
-    "plain_language_en": "The total 2025 budget framework for Plovdiv Municipality.",
-    "source_document": {
-      "title": "Община Пловдив — представяне на Бюджет 2025",
-      "url": "https://www.plovdiv.bg/presentation-budget-2025/",
-      "accessed_at": "2026-06-14"
-    },
-    "data_quality": "public_source"
-  },
-  {
     "id": "budget-plovdiv-2024-capital-programme",
     "year": 2024,
     "municipality": "plovdiv",
@@ -155,6 +625,26 @@
     "source_document": {
       "title": "Марица — бюджет 2024 на Пловдив (капиталова програма)",
       "url": "https://www.marica.bg/plovdiv/gradat/byudjet-2024-na-plovdiv-nay-mnogo-pari-za-obrazovanie-nqma-da-se-vdigat-danacite",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2024-total",
+    "year": 2024,
+    "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
+    "category": "other",
+    "title_bg": "Общ бюджет за 2024 г.",
+    "title_en": "Total 2024 budget",
+    "amount_bgn": 684000000,
+    "currency": "BGN",
+    "plain_language_bg": "Бюджет на Община Пловдив за 2024 г. (приблизително; ръст от около 29 млн. лв. спрямо 2023 г.).",
+    "plain_language_en": "Plovdiv Municipality budget for 2024 (approximate; an increase of about BGN 29M over 2023).",
+    "source_document": {
+      "title": "Марица — бюджет на Пловдив за 2024 г. (ръст 29 млн. лв.)",
+      "url": "https://www.marica.bg/plovdiv/gradat/byudjetat-na-plovdiv-pod-indigo-samo-29-mln-leva-rast",
       "accessed_at": "2026-06-14"
     },
     "data_quality": "public_source"
@@ -178,6 +668,26 @@
       "accessed_at": "2026-06-14"
     },
     "data_quality": "public_source"
+  },
+  {
+    "id": "budget-plovdiv-2025-culture",
+    "year": 2025,
+    "municipality": "plovdiv",
+    "category": "culture",
+    "title_bg": "Култура",
+    "title_en": "Culture",
+    "amount_bgn": 7957082,
+    "share_percent": 5.7,
+    "plain_language_bg": "Културна инфраструктура и публични пространства с културна стойност (приблизителна стойност по публикувания дял).",
+    "plain_language_en": "Cultural infrastructure and public spaces with cultural value (approximate value from the published share).",
+    "source_document": {
+      "title": "Община Пловдив — представяне на Бюджет 2025",
+      "url": "https://www.plovdiv.bg/presentation-budget-2025/",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "public_source",
+    "kind": "sector",
+    "currency": "BGN"
   },
   {
     "id": "budget-plovdiv-2025-education",
@@ -220,16 +730,16 @@
     "currency": "BGN"
   },
   {
-    "id": "budget-plovdiv-2025-social",
+    "id": "budget-plovdiv-2025-other",
     "year": 2025,
     "municipality": "plovdiv",
-    "category": "social",
-    "title_bg": "Социални дейности",
-    "title_en": "Social activities",
-    "amount_bgn": 13122205,
-    "share_percent": 9.4,
-    "plain_language_bg": "Социална подкрепа и свързана инфраструктура (приблизителна стойност по публикувания дял).",
-    "plain_language_en": "Social support and related infrastructure (approximate value from the published share).",
+    "category": "other",
+    "title_bg": "Други капиталови разходи",
+    "title_en": "Other capital expenditure",
+    "amount_bgn": 24429637,
+    "share_percent": 17.5,
+    "plain_language_bg": "Останалата част от капиталовата програма извън посочените сектори (приблизителна стойност).",
+    "plain_language_en": "The remaining part of the capital programme outside the listed sectors (approximate value).",
     "source_document": {
       "title": "Община Пловдив — представяне на Бюджет 2025",
       "url": "https://www.plovdiv.bg/presentation-budget-2025/",
@@ -240,16 +750,16 @@
     "currency": "BGN"
   },
   {
-    "id": "budget-plovdiv-2025-culture",
+    "id": "budget-plovdiv-2025-social",
     "year": 2025,
     "municipality": "plovdiv",
-    "category": "culture",
-    "title_bg": "Култура",
-    "title_en": "Culture",
-    "amount_bgn": 7957082,
-    "share_percent": 5.7,
-    "plain_language_bg": "Културна инфраструктура и публични пространства с културна стойност (приблизителна стойност по публикувания дял).",
-    "plain_language_en": "Cultural infrastructure and public spaces with cultural value (approximate value from the published share).",
+    "category": "social",
+    "title_bg": "Социални дейности",
+    "title_en": "Social activities",
+    "amount_bgn": 13122205,
+    "share_percent": 9.4,
+    "plain_language_bg": "Социална подкрепа и свързана инфраструктура (приблизителна стойност по публикувания дял).",
+    "plain_language_en": "Social support and related infrastructure (approximate value from the published share).",
     "source_document": {
       "title": "Община Пловдив — представяне на Бюджет 2025",
       "url": "https://www.plovdiv.bg/presentation-budget-2025/",
@@ -280,24 +790,24 @@
     "currency": "BGN"
   },
   {
-    "id": "budget-plovdiv-2025-other",
+    "id": "budget-plovdiv-2025-total",
     "year": 2025,
     "municipality": "plovdiv",
+    "kind": "summary",
+    "summary_key": "total_budget",
     "category": "other",
-    "title_bg": "Други капиталови разходи",
-    "title_en": "Other capital expenditure",
-    "amount_bgn": 24429637,
-    "share_percent": 17.5,
-    "plain_language_bg": "Останалата част от капиталовата програма извън посочените сектори (приблизителна стойност).",
-    "plain_language_en": "The remaining part of the capital programme outside the listed sectors (approximate value).",
+    "title_bg": "Общ бюджет за 2025 г.",
+    "title_en": "Total 2025 budget",
+    "amount_bgn": 715154301,
+    "currency": "BGN",
+    "plain_language_bg": "Общата рамка на бюджета на Община Пловдив за 2025 г.",
+    "plain_language_en": "The total 2025 budget framework for Plovdiv Municipality.",
     "source_document": {
       "title": "Община Пловдив — представяне на Бюджет 2025",
       "url": "https://www.plovdiv.bg/presentation-budget-2025/",
       "accessed_at": "2026-06-14"
     },
-    "data_quality": "public_source",
-    "kind": "sector",
-    "currency": "BGN"
+    "data_quality": "public_source"
   },
   {
     "id": "budget-plovdiv-2026-eu-funds",
@@ -313,6 +823,27 @@
     "currency": "EUR",
     "plain_language_bg": "Най-големият източник в прогнозната капиталова програма за 2026 г.",
     "plain_language_en": "The largest funding source in the provisional 2026 capital programme.",
+    "source_document": {
+      "title": "Под тепето — капиталова програма за 2026 г.",
+      "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
+      "accessed_at": "2026-06-14"
+    },
+    "data_quality": "provisional"
+  },
+  {
+    "id": "budget-plovdiv-2026-other-sources",
+    "year": 2026,
+    "municipality": "plovdiv",
+    "kind": "funding_source",
+    "funding_key": "other_sources",
+    "display_order": 5,
+    "category": "other",
+    "title_bg": "Други източници",
+    "title_en": "Other sources",
+    "amount_eur": 5080000,
+    "currency": "EUR",
+    "plain_language_bg": "Други източници, включително дарения, средства от ПУДООС и заеми.",
+    "plain_language_en": "Other sources, including donations, PUDOOS funds and loans.",
     "source_document": {
       "title": "Под тепето — капиталова програма за 2026 г.",
       "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
@@ -376,27 +907,6 @@
     "currency": "EUR",
     "plain_language_bg": "Целева държавна субсидия, насочена към конкретни обекти.",
     "plain_language_en": "State targeted subsidy allocated to specific projects.",
-    "source_document": {
-      "title": "Под тепето — капиталова програма за 2026 г.",
-      "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",
-      "accessed_at": "2026-06-14"
-    },
-    "data_quality": "provisional"
-  },
-  {
-    "id": "budget-plovdiv-2026-other-sources",
-    "year": 2026,
-    "municipality": "plovdiv",
-    "kind": "funding_source",
-    "funding_key": "other_sources",
-    "display_order": 5,
-    "category": "other",
-    "title_bg": "Други източници",
-    "title_en": "Other sources",
-    "amount_eur": 5080000,
-    "currency": "EUR",
-    "plain_language_bg": "Други източници, включително дарения, средства от ПУДООС и заеми.",
-    "plain_language_en": "Other sources, including donations, PUDOOS funds and loans.",
     "source_document": {
       "title": "Под тепето — капиталова програма за 2026 г.",
       "url": "https://podtepeto.com/aktualno/obsthina-plovdiv-planira-blizo-87-mln-evro-za-kapitalovi-razhodi-prez-2026-g/",

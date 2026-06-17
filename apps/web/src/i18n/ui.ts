@@ -31,6 +31,7 @@ const bg = {
     budget: "Бюджет",
     projects: "Проекти",
     community: "Доброволци",
+    archive: "Архив",
     sources: "Източници",
     methodology: "Методология"
   },
@@ -51,10 +52,10 @@ const bg = {
     funding2026Title: "Финансиране на капиталовата програма за 2026 г.",
     capitalTrendTitle: "Капиталова програма по години",
     capitalTrendNote:
-      "Капиталова програма по години (в лева, общо — включва държавни и европейски средства, които варират по години). 2026 г. е прогнозна и е преизчислена от около 87 млн. евро по курс 1,95583 лв. Сравними данни има от 2024 г.; за по-ранни години програмата е отчитана само с общински средства.",
+      "Капиталова програма по години (в лева). Данните за 2013-2018 г. са от решения на Общинския съвет, а по-новите години са от официални страници и публични публикации. 2026 г. е прогнозна и е преизчислена от около 87 млн. евро по курс 1,95583 лв.",
     totalTrendTitle: "Общ бюджет на Пловдив по години",
     totalTrendNote:
-      "Общ годишен бюджет на Община Пловдив (в лева, приет). Стойностите за 2020, 2022 и 2024 г. са приблизителни/закръглени; всяка година сочи към публичен източник. 2026 г. е първата в евро и е показана отделно по-горе.",
+      "Общ годишен бюджет на Община Пловдив (в лева). Архивът включва отчетено изпълнение за 2010 г. и приети бюджети за 2011-2018 г.; стойностите за 2020, 2022 и 2024 г. остават приблизителни/закръглени. Всяка година сочи към публичен източник.",
     historyNote:
       "Числата са от публични източници (бюджети на общината и медийни публикации). Сверявайте с оригиналните документи, преди да цитирате конкретна стойност.",
     year2025: "2025 г.",
@@ -116,6 +117,10 @@ const bg = {
     cardCommunityTitle: "Граждански инициативи",
     cardCommunityText:
       "Групи и кампании, които организират почиствания, грижа за спирки, паркове и квартали.",
+    cardArchiveEyebrow: "Архив",
+    cardArchiveTitle: "Кметове и исторически данни",
+    cardArchiveText:
+      "Пълна вътрешна хронология на кметските мандати, стари финансови записи и градски програми.",
     latestProjects: "Последно обновени проекти",
     latestReports: "Последно добавени сигнали",
     liveReportsTitle: "Реални сигнали след модерация",
@@ -132,7 +137,7 @@ const bg = {
     eyebrow: "Къде отиват местните данъци?",
     title: "Бюджет и капиталова програма",
     lead:
-      "Бюджетът за 2025 г. и прогнозната капиталова програма за 2026 г. — с ясно показани суми, дялове и публични източници.",
+      "Бюджетът за 2025 г., прогнозната капиталова програма за 2026 г. и исторически архив за управлението на града — с ясно показани суми, дялове и публични източници.",
     totalLabel: "Общ бюджет за 2025 г.",
     capitalLabel: "Капиталова програма за 2025 г.",
     sectorTitle: "Капиталова програма за 2025 г. по сектори",
@@ -148,7 +153,51 @@ const bg = {
     fundOpco: "Съфинансиране по програми",
     fundState: "Целева държавна субсидия",
     fundOther: "Други (дарения, заеми)",
+    historyTitle: "Исторически бюджетен архив",
+    historyLead:
+      "Добавени са приет бюджет за 2002 г., реализирани капиталови разходи за 2005-2007 г., отчет за 2010 г., приети бюджетни стойности назад до 2011 г. и капиталови програми от по-старите решения, когато са публикувани отделно.",
+    totalHistoryTitle: "Общ бюджет и отчетено изпълнение",
+    capitalHistoryTitle: "Капиталова програма",
+    historyNote:
+      "2008 г. е проектобюджет от вторичен източник и е маркирана като прогнозна/проектна стойност. 2005-2007 г. в капиталовата графика и 2010 г. в общата графика са отчетени/реализирани стойности, а не първоначално приети рамки. По-старите решения понякога са сканирани документи и различават делегирани, местни и капиталови разходи. Затова графиките са насочващ архив, а конкретна стойност трябва да се цитира от оригиналния документ.",
+    executedShort: "отчет",
+    provisionalShort: "проект",
+    mayorsTitle: "Кой управлява града",
+    mayorsLead:
+      "Архивът включва официално публикуваните кметски мандати от 1878 г. насам и текущия кмет, проверен в Административния регистър.",
+    mayorTermCount: "кметски мандата в архива",
+    currentMayorLabel: "действащ кмет",
+    recentMayorsTitle: "Последни мандати",
+    earlyMayorsTitle: "Първи записи след Освобождението",
+    fullMayorArchive: "Пълен списък на кметовете",
+    eventsTitle: "Събития и програми",
+    eventsLead:
+      "Кратък архив на значими градски инициативи, които помагат да се свържат бюджетните години с публични програми и културни събития.",
     sourceLabel: "Източник"
+  },
+  archive: {
+    eyebrow: "Исторически архив",
+    title: "Кметове, бюджети и градски програми",
+    lead:
+      "Вътрешен архив на управлението на Пловдив: кметски мандати, исторически финансови записи, културни и социални програми, с видими източници.",
+    statMayors: "кметски мандата",
+    statFinance: "финансови исторически записи",
+    statProgrammes: "програми и събития",
+    currentMayor: "Действащ кмет",
+    financeTitle: "Финансови архивни снимки",
+    financeLead:
+      "Номинални стойности от исторически източници. Старите левове не са директно сравними със съвременния BGN и са показани като архивни ориентири.",
+    programmesTitle: "Какво е организирала общината",
+    programmesLead:
+      "Подбрани записи за социални, културни и управленски действия, които свързват хората начело на града с реални публични програми.",
+    mayorsTitle: "Пълна хронология на кметовете",
+    mayorsLead:
+      "Списъкът е вътрешно копие на официалния архив на Община Пловдив, допълнен с текущия мандат от Административния регистър.",
+    amountLabel: "Сума",
+    yearLabel: "Година",
+    sourceLabel: "Източник",
+    noAmount: "без публикувана сума",
+    viewBudget: "Към бюджетните графики"
   },
   projects: {
     eyebrow: "Публични проекти",
@@ -501,6 +550,7 @@ const en: typeof bg = {
     budget: "Budget",
     projects: "Projects",
     community: "Volunteers",
+    archive: "Archive",
     sources: "Sources",
     methodology: "Methodology"
   },
@@ -521,10 +571,10 @@ const en: typeof bg = {
     funding2026Title: "2026 capital programme funding",
     capitalTrendTitle: "Capital programme by year",
     capitalTrendNote:
-      "Capital programme by year (in BGN, total — includes state and European funds, which vary year to year). 2026 is provisional and converted from about EUR 87M at 1.95583. Comparable data is available from 2024; earlier years reported the capital programme with municipal funds only.",
+      "Capital programme by year (in BGN). The 2013-2018 figures come from Municipal Council decisions; newer years use official pages and public reports. 2026 is provisional and converted from about EUR 87M at 1.95583.",
     totalTrendTitle: "Plovdiv total budget by year",
     totalTrendNote:
-      "Plovdiv Municipality's total annual adopted budget (in BGN). The 2020, 2022 and 2024 values are approximate/rounded; each year links to a public source. 2026 is the first in euros and is shown separately above.",
+      "Plovdiv Municipality's total annual budget (in BGN). The archive includes executed 2010 figures and adopted budgets for 2011-2018; 2020, 2022 and 2024 remain approximate/rounded. Every year links to a public source.",
     historyNote:
       "Figures come from public sources (municipal budgets and media reports). Verify against the original documents before quoting a specific value.",
     year2025: "2025",
@@ -586,6 +636,10 @@ const en: typeof bg = {
     cardCommunityTitle: "Civic initiatives",
     cardCommunityText:
       "Groups and campaigns organising cleanups, bus-stop care, parks and neighbourhood work.",
+    cardArchiveEyebrow: "Archive",
+    cardArchiveTitle: "Mayors and historical data",
+    cardArchiveText:
+      "A full internal timeline of mayoral terms, old finance records and city programmes.",
     latestProjects: "Recently updated projects",
     latestReports: "Recently added reports",
     liveReportsTitle: "Real reports after moderation",
@@ -602,7 +656,7 @@ const en: typeof bg = {
     eyebrow: "Where do local taxes go?",
     title: "Budget and capital programme",
     lead:
-      "The 2025 budget and the provisional 2026 capital programme — with clearly shown amounts, shares and public sources.",
+      "The 2025 budget, provisional 2026 capital programme and historical archive of city governance — with clearly shown amounts, shares and public sources.",
     totalLabel: "Total 2025 budget",
     capitalLabel: "2025 capital programme",
     sectorTitle: "2025 capital programme by sector",
@@ -618,7 +672,51 @@ const en: typeof bg = {
     fundOpco: "Programme co-financing",
     fundState: "State targeted subsidy",
     fundOther: "Other (donations, loans)",
+    historyTitle: "Historical budget archive",
+    historyLead:
+      "The archive now includes the adopted 2002 budget, executed capital expenditure for 2005-2007, 2010 execution, adopted budget totals back to 2011 and older capital-programme figures where decisions publish them separately.",
+    totalHistoryTitle: "Total budget and execution",
+    capitalHistoryTitle: "Capital programme",
+    historyNote:
+      "2008 is a draft-budget value from a secondary source and is marked as provisional/draft. The 2005-2007 capital chart values and the 2010 total chart value are executed figures, not initially adopted envelopes. Older decisions are sometimes scanned documents and separate delegated, local and capital spending differently. Treat the charts as a navigable archive and quote exact figures from the original document.",
+    executedShort: "exec.",
+    provisionalShort: "draft",
+    mayorsTitle: "Who governed the city",
+    mayorsLead:
+      "The archive includes officially published mayoral terms since 1878 and the current mayor checked against the Bulgarian Administrative Register.",
+    mayorTermCount: "mayoral terms in the archive",
+    currentMayorLabel: "incumbent mayor",
+    recentMayorsTitle: "Recent terms",
+    earlyMayorsTitle: "First post-Liberation records",
+    fullMayorArchive: "Full mayor archive",
+    eventsTitle: "Events and programmes",
+    eventsLead:
+      "A short archive of notable city initiatives that helps connect budget years with public programmes and cultural events.",
     sourceLabel: "Source"
+  },
+  archive: {
+    eyebrow: "Historical archive",
+    title: "Mayors, budgets and city programmes",
+    lead:
+      "An internal archive of Plovdiv governance: mayoral terms, historical finance records, cultural and social programmes, with visible sources.",
+    statMayors: "mayoral terms",
+    statFinance: "historical finance records",
+    statProgrammes: "programmes and events",
+    currentMayor: "Incumbent mayor",
+    financeTitle: "Financial archive snapshots",
+    financeLead:
+      "Nominal values from historical sources. Old lev amounts are not directly comparable with modern BGN and are shown as archival markers.",
+    programmesTitle: "What the municipality organised",
+    programmesLead:
+      "Selected records for social, cultural and governance actions that connect city leaders with real public programmes.",
+    mayorsTitle: "Full mayoral chronology",
+    mayorsLead:
+      "This is an internal copy of Plovdiv Municipality's official archive, supplemented with the incumbent term from the Administrative Register.",
+    amountLabel: "Amount",
+    yearLabel: "Year",
+    sourceLabel: "Source",
+    noAmount: "no published amount",
+    viewBudget: "Open budget charts"
   },
   projects: {
     eyebrow: "Public projects",

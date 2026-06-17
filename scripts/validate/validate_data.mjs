@@ -28,6 +28,12 @@ const datasets = [
     minRecords: 1
   },
   {
+    label: "city archive",
+    dataPath: "data/curated/city-archive.json",
+    schemaPath: "data/schemas/city-archive.schema.json",
+    minRecords: 1
+  },
+  {
     label: "fix reports",
     dataPath: "data/curated/fix-reports.json",
     schemaPath: "data/schemas/fix-report.schema.json",

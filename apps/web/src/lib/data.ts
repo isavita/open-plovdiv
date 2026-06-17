@@ -1,4 +1,5 @@
 import budgetItemsJson from "../../../../data/curated/budget-items.json";
+import cityArchiveJson from "../../../../data/curated/city-archive.json";
 import communityInitiativesJson from "../../../../data/curated/community-initiatives.json";
 import fixReportsJson from "../../../../data/curated/fix-reports.json";
 import projectsJson from "../../../../data/curated/projects.json";
@@ -79,11 +80,39 @@ export type BudgetItem = {
   amount_eur?: number;
   currency?: "BGN" | "EUR";
   share_percent?: number;
-  summary_key?: "total_budget" | "capital_programme";
+  summary_key?: "total_budget" | "capital_programme" | "budget_execution";
   funding_key?: "eu_funds" | "own_remainder" | "programme_cofinancing" | "state_subsidy" | "other_sources";
+  basis?: "adopted" | "executed" | "provisional" | "historical_nominal";
   display_order?: number;
   plain_language_bg?: string;
   plain_language_en?: string;
+  source_document: Source;
+  data_quality: string;
+};
+
+export type CityArchiveRecord = {
+  id: string;
+  municipality: "plovdiv";
+  kind:
+    | "mayor_term"
+    | "historical_event"
+    | "cultural_programme"
+    | "historical_finance"
+    | "municipal_programme"
+    | "governance_change"
+    | "archive_source";
+  year_start: number;
+  year_end?: number;
+  period_bg: string;
+  period_en?: string;
+  title_bg: string;
+  title_en?: string;
+  actor_bg?: string;
+  actor_en?: string;
+  amount_bgn?: number;
+  amount_eur?: number;
+  summary_bg: string;
+  summary_en?: string;
   source_document: Source;
   data_quality: string;
 };
@@ -143,4 +172,5 @@ export const projects = projectsJson as Project[];
 export const communityInitiatives = communityInitiativesJson as CommunityInitiative[];
 export const fixReports = fixReportsJson as FixReport[];
 export const budgetItems = budgetItemsJson as BudgetItem[];
+export const cityArchive = cityArchiveJson as CityArchiveRecord[];
 export const sourceRegistry = sourcesJson as SourceRegistryItem[];

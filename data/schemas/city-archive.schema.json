@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/city-archive.schema.json",
+  "title": "Open Plovdiv city archive record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "municipality",
+    "kind",
+    "year_start",
+    "period_bg",
+    "title_bg",
+    "summary_bg",
+    "source_document",
+    "data_quality"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^archive-plovdiv-[0-9a-z-]+$"
+    },
+    "municipality": {
+      "const": "plovdiv"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "mayor_term",
+        "historical_event",
+        "cultural_programme",
+        "historical_finance",
+        "municipal_programme",
+        "governance_change",
+        "archive_source"
+      ]
+    },
+    "year_start": {
+      "type": "integer",
+      "minimum": 1800,
+      "maximum": 2100
+    },
+    "year_end": {
+      "type": "integer",
+      "minimum": 1800,
+      "maximum": 2100
+    },
+    "period_bg": {
+      "type": "string",
+      "minLength": 3
+    },
+    "period_en": {
+      "type": "string",
+      "minLength": 3
+    },
+    "title_bg": {
+      "type": "string",
+      "minLength": 3
+    },
+    "title_en": {
+      "type": "string",
+      "minLength": 3
+    },
+    "actor_bg": {
+      "type": "string",
+      "minLength": 2
+    },
+    "actor_en": {
+      "type": "string",
+      "minLength": 2
+    },
+    "amount_bgn": {
+      "type": "number",
+      "minimum": 0
+    },
+    "amount_eur": {
+      "type": "number",
+      "minimum": 0
+    },
+    "summary_bg": {
+      "type": "string",
+      "minLength": 10
+    },
+    "summary_en": {
+      "type": "string",
+      "minLength": 10
+    },
+    "source_document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "url",
+        "accessed_at"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "accessed_at": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "data_quality": {
+      "type": "string",
+      "enum": [
+        "public_source",
+        "manual_reviewed",
+        "provisional"
+      ]
+    }
+  }
+}

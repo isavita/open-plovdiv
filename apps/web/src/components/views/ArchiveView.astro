@@ -1,0 +1,162 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { ui, type Lang } from "@i18n/ui";
+import { field, localizePath } from "@i18n/utils";
+import { cityArchive } from "@lib/data";
+import { formatMoney } from "@lib/format";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const mayorTerms = cityArchive
+  .filter((record) => record.kind === "mayor_term")
+  .sort((a, b) => b.year_start - a.year_start);
+const currentMayor = mayorTerms.find((record) => record.year_end == null) ?? mayorTerms[0];
+const mayorChronology = [...mayorTerms].sort(
+  (a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start)
+);
+
+const financeRecords = cityArchive
+  .filter((record) => record.kind === "historical_finance" && record.amount_bgn != null)
+  .sort((a, b) => a.year_start - b.year_start || (a.amount_bgn ?? 0) - (b.amount_bgn ?? 0));
+const financeMax = Math.max(...financeRecords.map((record) => record.amount_bgn ?? 0), 1);
+
+const programmeRecords = cityArchive
+  .filter((record) => record.kind !== "mayor_term" && record.kind !== "historical_finance")
+  .sort((a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start));
+---
+
+<Layout lang={lang} path="/archive" title={t.archive.title} description={t.archive.lead}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t.archive.eyebrow}</p>
+      <h1>{t.archive.title}</h1>
+      <p class="lead">{t.archive.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="stat-row">
+        <div class="stat"><strong>{mayorTerms.length}</strong><span>{t.archive.statMayors}</span></div>
+        <div class="stat"><strong>{financeRecords.length}</strong><span>{t.archive.statFinance}</span></div>
+        <div class="stat"><strong>{programmeRecords.length}</strong><span>{t.archive.statProgrammes}</span></div>
+        {currentMayor && (
+          <div class="stat"><strong>{field(currentMayor, "actor", lang)}</strong><span>{t.archive.currentMayor}</span></div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{t.archive.financeTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{t.archive.financeLead}</p>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="compare-cols" data-dense>
+          {financeRecords.map((record) => (
+            <div class="compare-col">
+              <div
+                class="compare-bar archive"
+                style={`height:${((record.amount_bgn ?? 0) / financeMax) * 100}%`}
+              ></div>
+              <div class="compare-meta">
+                <strong>{formatMoney(record.amount_bgn ?? 0, lang, "BGN")}</strong>
+                <span>{record.year_start}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:22px">
+        {financeRecords.map((record) => (
+          <article class="card project-card">
+            <header>
+              <div>
+                <p class="eyebrow">{field(record, "period", lang)}</p>
+                <h3>{field(record, "title", lang)}</h3>
+              </div>
+              <span class="badge no-dot">{formatMoney(record.amount_bgn ?? 0, lang, "BGN")}</span>
+            </header>
+            <p>{field(record, "summary", lang)}</p>
+            <div class="pill-row">
+              <a class="meta" href={record.source_document.url} target="_blank" rel="noreferrer">
+                {t.archive.sourceLabel}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{t.archive.programmesTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{t.archive.programmesLead}</p>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        {programmeRecords.map((record) => (
+          <article class="card project-card">
+            <header>
+              <div>
+                <p class="eyebrow">{field(record, "period", lang)}</p>
+                <h3>{field(record, "title", lang)}</h3>
+              </div>
+              {record.amount_bgn ? (
+                <span class="badge no-dot">{formatMoney(record.amount_bgn, lang, "BGN")}</span>
+              ) : (
+                <span class="meta">{t.archive.noAmount}</span>
+              )}
+            </header>
+            <p>{field(record, "summary", lang)}</p>
+            <div class="pill-row">
+              <a class="meta" href={record.source_document.url} target="_blank" rel="noreferrer">
+                {t.archive.sourceLabel}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{t.archive.mayorsTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{t.archive.mayorsLead}</p>
+        </div>
+        <a href={localizePath("/budget", lang)}>{t.archive.viewBudget} →</a>
+      </div>
+
+      <div class="chart-card">
+        <ul class="archive-list">
+          {mayorChronology.map((record) => (
+            <li>
+              <div>
+                <strong>{field(record, "actor", lang)}</strong>
+                <span>{field(record, "period", lang)}</span>
+              </div>
+              <a class="meta" href={record.source_document.url} target="_blank" rel="noreferrer">
+                {record.year_start}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>
