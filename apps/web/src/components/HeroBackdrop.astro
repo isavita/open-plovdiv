@@ -1,24 +1,7 @@
 ---
-// Lightweight decorative "map" backdrop for hero sections. Purely presentational.
+import PlovdivSkyline from "@components/PlovdivSkyline.astro";
+// Heritage hero backdrop: a faint sepia skyline of Plovdiv landmarks anchored
+// to the bottom of the hero. Purely presentational.
 ---
 
-<svg class="hero-grid" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-  <defs>
-    <pattern id="hero-cells" width="46" height="46" patternUnits="userSpaceOnUse">
-      <path d="M46 0H0V46" fill="none" stroke="var(--brand)" stroke-width="1" opacity="0.10" />
-    </pattern>
-  </defs>
-  <rect width="1200" height="600" fill="url(#hero-cells)" />
-  <g fill="none" stroke="var(--brand)" stroke-width="2.5" opacity="0.22" stroke-linecap="round">
-    <path d="M-20 470 C 220 430, 360 250, 600 250 S 980 120, 1240 150" />
-    <path d="M-20 540 C 260 520, 420 360, 720 360 S 1020 250, 1240 280" />
-  </g>
-  <g fill="var(--accent)" opacity="0.5">
-    <circle cx="600" cy="250" r="7" />
-  </g>
-  <g fill="var(--brand)" opacity="0.4">
-    <circle cx="360" cy="295" r="5" />
-    <circle cx="720" cy="360" r="5" />
-    <circle cx="980" cy="178" r="5" />
-  </g>
-</svg>
+<PlovdivSkyline class="hero-skyline" />

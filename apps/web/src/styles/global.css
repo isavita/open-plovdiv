@@ -511,13 +511,29 @@ p:last-child {
   padding: clamp(48px, 8vw, 104px) 0 clamp(36px, 5vw, 64px);
 }
 
-.hero-grid {
+/* Heritage skyline anchored to the bottom of the hero. */
+.hero-skyline {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.5;
-  mask-image: radial-gradient(120% 90% at 75% 0%, #000 30%, transparent 75%);
+  color: var(--accent);
+  opacity: 0.16;
+  mask-image: linear-gradient(to top, #000 62%, transparent 100%);
+}
+
+[data-theme="dark"] .hero-skyline {
+  opacity: 0.24;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero-skyline {
+    opacity: 0.24;
+  }
 }
 
 .hero > .container {
@@ -1482,11 +1498,42 @@ code {
 /* ---- Footer -------------------------------------------------------------- */
 
 .site-footer {
+  position: relative;
+  overflow: hidden;
   border-top: 1px solid var(--line);
   background: var(--surface);
   color: var(--muted);
   padding: clamp(36px, 5vw, 56px) 0 28px;
   margin-top: 20px;
+}
+
+/* Faint heritage skyline rising from the bottom of every page. */
+.footer-skyline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  color: var(--ink);
+  opacity: 0.05;
+}
+
+[data-theme="dark"] .footer-skyline {
+  opacity: 0.09;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .footer-skyline {
+    opacity: 0.09;
+  }
+}
+
+.site-footer .container {
+  position: relative;
+  z-index: 1;
 }
 
 .footer-top {

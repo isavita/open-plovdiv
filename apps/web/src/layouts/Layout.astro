@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import PlovdivSkyline from "@components/PlovdivSkyline.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
 
 type Props = {
@@ -149,6 +150,7 @@ const footerAbout = [
       </main>
 
       <footer class="site-footer">
+        <PlovdivSkyline class="footer-skyline" />
         <div class="container">
           <div class="footer-top">
             <div class="footer-brand">
