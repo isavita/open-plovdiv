@@ -286,5 +286,91 @@
     },
     "data_quality": "public_source",
     "updated_at": "2026-06-14"
+  },
+  {
+    "id": "community-plovdiv-zeleni-balkani",
+    "title_bg": "Зелени Балкани",
+    "title_en": "Green Balkans",
+    "summary_bg": "Най-старата природозащитна организация в България (от 1988 г.) със седалище в Пловдив — опазване на видове и местообитания, доброволчески програми и кампании.",
+    "summary_en": "Bulgaria's oldest environmental NGO (since 1988), headquartered in Plovdiv — species and habitat conservation, volunteer programmes and campaigns.",
+    "category": "environment",
+    "status": "active",
+    "organizer": {
+      "name_bg": "Сдружение „Зелени Балкани“",
+      "name_en": "Green Balkans NGO",
+      "type": "association",
+      "website_url": "https://greenbalkans.org/",
+      "facebook_url": "https://www.facebook.com/GreenBalkans"
+    },
+    "call_to_action_bg": "Разгледайте сайта на „Зелени Балкани“ за доброволчески програми и природозащитни кампании.",
+    "call_to_action_en": "Explore Green Balkans' website for volunteer programmes and conservation campaigns.",
+    "location": {
+      "lat": 42.1502,
+      "lng": 24.7556,
+      "address_bg": "бул. „Шести септември“, Пловдив",
+      "address_en": "6 September Blvd, Plovdiv",
+      "approximate": true
+    },
+    "related_project_ids": [],
+    "tags": ["природа", "опазване", "биоразнообразие", "доброволци"],
+    "contact_links": [
+      { "label_bg": "Сайт", "label_en": "Website", "type": "website", "url": "https://greenbalkans.org/" },
+      { "label_bg": "Facebook страница", "label_en": "Facebook page", "type": "facebook", "url": "https://www.facebook.com/GreenBalkans" }
+    ],
+    "sources": [
+      { "title": "Зелени Балкани — официален сайт", "url": "https://greenbalkans.org/en/", "accessed_at": "2026-06-17" },
+      { "title": "НПО портал — Зелени Балкани, Пловдив", "url": "https://www.ngobg.info/bg/organizations/765-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8-%D0%B1%D0%B0%D0%BB%D0%BA%D0%B0%D0%BD%D0%B8-%D0%BF%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2.html", "accessed_at": "2026-06-17" }
+    ],
+    "discovery": {
+      "method": "ai_search",
+      "query_bg": "Зелени Балкани Пловдив природозащитна организация доброволци",
+      "query_en": "Green Balkans Plovdiv environmental NGO volunteers",
+      "discovered_at": "2026-06-17",
+      "last_checked_at": "2026-06-17"
+    },
+    "data_quality": "public_source",
+    "updated_at": "2026-06-17"
+  },
+  {
+    "id": "community-plovdiv-cyclists",
+    "title_bg": "Колоездачи / велосипедисти в Пловдив",
+    "title_en": "Plovdiv cyclists community",
+    "summary_bg": "Отворена общност на колоездачи в Пловдив, която популяризира велосипедното придвижване, споделя маршрути и обиколки и поставя теми за по-безопасна градска мобилност.",
+    "summary_en": "An open community of cyclists in Plovdiv promoting cycling, sharing routes and rides, and raising safer urban-mobility topics.",
+    "category": "public_transport",
+    "status": "active",
+    "organizer": {
+      "name_bg": "Колоездачи / велосипедисти в Пловдив (общност)",
+      "name_en": "Plovdiv cyclists (community)",
+      "type": "citizen_group",
+      "facebook_url": "https://www.facebook.com/p/%D0%9A%D0%BE%D0%BB%D0%BE%D0%B5%D0%B7%D0%B4%D0%B0%D1%87%D0%B8-%D0%B2%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%81%D1%82%D0%B8-%D0%B2-%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2-100070168143097/"
+    },
+    "call_to_action_bg": "Последвайте общността във Facebook, за да се включите в обиколки и инициативи.",
+    "call_to_action_en": "Follow the community on Facebook to join rides and initiatives.",
+    "location": {
+      "lat": 42.1421,
+      "lng": 24.7499,
+      "address_bg": "Пловдив (градска велосипедна общност)",
+      "address_en": "Plovdiv (city-wide cycling community)",
+      "approximate": true
+    },
+    "related_project_ids": [],
+    "tags": ["велосипеди", "мобилност", "общност"],
+    "contact_links": [
+      { "label_bg": "Facebook общност", "label_en": "Facebook community", "type": "facebook", "url": "https://www.facebook.com/p/%D0%9A%D0%BE%D0%BB%D0%BE%D0%B5%D0%B7%D0%B4%D0%B0%D1%87%D0%B8-%D0%B2%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%81%D1%82%D0%B8-%D0%B2-%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2-100070168143097/" }
+    ],
+    "sources": [
+      { "title": "Facebook — Колоездачи / велосипедисти в Пловдив", "url": "https://www.facebook.com/p/%D0%9A%D0%BE%D0%BB%D0%BE%D0%B5%D0%B7%D0%B4%D0%B0%D1%87%D0%B8-%D0%B2%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%81%D1%82%D0%B8-%D0%B2-%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2-100070168143097/", "accessed_at": "2026-06-17" },
+      { "title": "Под тепето — колоездачи поставят теми за градска мобилност", "url": "https://podtepeto.com/aktualno/koloezdachi-pitat-zastho-ne-se-reklamira-kolodruma-po-vreme-na-giro-ditalia/", "accessed_at": "2026-06-17" }
+    ],
+    "discovery": {
+      "method": "ai_search",
+      "query_bg": "Пловдив велосипеден клуб критична маса колоездачи общност",
+      "query_en": "Plovdiv cyclists community critical mass",
+      "discovered_at": "2026-06-17",
+      "last_checked_at": "2026-06-17"
+    },
+    "data_quality": "public_source",
+    "updated_at": "2026-06-17"
   }
 ]
