@@ -60,6 +60,7 @@ export type CommunityInitiativeInput = {
   };
   call_to_action_bg?: unknown;
   call_to_action_en?: unknown;
+  donation_url?: unknown;
   location?: {
     lat?: unknown;
     lng?: unknown;
@@ -278,6 +279,7 @@ export async function buildCommunityInitiative(
   const addressEn = optionalString(input.location?.address_en);
   const callToActionBg = optionalString(input.call_to_action_bg);
   const callToActionEn = optionalString(input.call_to_action_en);
+  const donationUrl = validUrl(input.donation_url);
   const queryBg = optionalString(input.query_bg);
   const queryEn = optionalString(input.query_en);
   const tags = splitList(input.tags);
@@ -292,6 +294,7 @@ export async function buildCommunityInitiative(
   if (addressEn) initiative.location.address_en = addressEn;
   if (callToActionBg) initiative.call_to_action_bg = callToActionBg;
   if (callToActionEn) initiative.call_to_action_en = callToActionEn;
+  if (donationUrl) initiative.donation_url = donationUrl;
   if (tags.length > 0) initiative.tags = tags;
   if (relatedProjectIds.length > 0) initiative.related_project_ids = relatedProjectIds;
   if (contactLinks) initiative.contact_links = contactLinks;

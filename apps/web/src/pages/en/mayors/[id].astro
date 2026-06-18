@@ -1,0 +1,14 @@
+---
+import MayorDetailView from "@components/views/MayorDetailView.astro";
+import { cityArchive } from "@lib/data";
+
+export function getStaticPaths() {
+  return cityArchive
+    .filter((record) => record.kind === "mayor_term")
+    .map((mayor) => ({ params: { id: mayor.id }, props: { mayor } }));
+}
+
+const { mayor } = Astro.props;
+---
+
+<MayorDetailView lang="en" mayor={mayor} />

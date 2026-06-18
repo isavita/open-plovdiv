@@ -1,0 +1,137 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { ui, type Lang } from "@i18n/ui";
+import { field, localizePath } from "@i18n/utils";
+import { cityArchive, type CityArchiveRecord } from "@lib/data";
+import { sourceTitle } from "@lib/format";
+
+type Props = { lang: Lang; mayor: CityArchiveRecord };
+const { lang, mayor } = Astro.props;
+const t = ui[lang];
+const currentYear = new Date().getFullYear();
+
+const terms = cityArchive
+  .filter((r) => r.kind === "mayor_term")
+  .sort(
+    (a, b) => a.year_start - b.year_start || (a.year_end ?? currentYear) - (b.year_end ?? currentYear)
+  );
+const index = terms.findIndex((r) => r.id === mayor.id);
+const prev = index > 0 ? terms[index - 1] : null;
+const next = index < terms.length - 1 ? terms[index + 1] : null;
+
+const name = field(mayor, "actor", lang);
+const period = field(mayor, "period", lang);
+const isCurrent = mayor.year_end == null;
+const isActing = period.toLocaleLowerCase("bg-BG").includes("и.д.");
+const yearLabel = `${mayor.year_start}${mayor.year_end ? `-${mayor.year_end}` : `-${currentYear}`}`;
+const century = Math.floor((mayor.year_start - 1) / 100) + 1;
+const duration = Math.max(1, (mayor.year_end ?? currentYear) - mayor.year_start + 1);
+
+const otherTerms = terms.filter((r) => r.id !== mayor.id && field(r, "actor", lang) === name);
+const wikiSearch = `https://${lang === "bg" ? "bg" : "en"}.wikipedia.org/w/index.php?search=${encodeURIComponent(
+  field(mayor, "actor", "bg")
+)}`;
+const bio = mayor.bio_bg ? field(mayor, "bio", lang) : null;
+---
+
+<Layout lang={lang} path={`/mayors/${mayor.id}`} title={name} description={field(mayor, "summary", lang)}>
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="breadcrumb">
+        <a href={localizePath("/", lang)}>{t.nav.home}</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a href={localizePath("/mayors", lang)}>{t.nav.mayors}</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <span aria-current="page">{name}</span>
+      </nav>
+      <p class="eyebrow">{t.mayors.termNumber} {index + 1} · {t.mayors.centuryLabel(century)}</p>
+      <h1>{name}</h1>
+      <div class="pill-row" style="margin-top:14px">
+        <span class="badge no-dot">{yearLabel}</span>
+        {isCurrent && <span class="badge status-active">{t.mayors.currentBadge}</span>}
+        {isActing && <span class="badge no-dot">{t.mayors.actingBadge}</span>}
+      </div>
+      <p class="lead" style="font-size:1.06rem;margin-top:14px"><strong>{period}</strong></p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container grid grid-2">
+      <article class="card">
+        <h2>{t.mayors.detailsTitle}</h2>
+        <div class="mayor-facts">
+          <div><span>{t.mayors.years}</span><strong>{yearLabel}</strong></div>
+          <div><span>{t.mayors.duration}</span><strong>{t.mayors.yearsApprox(duration)}</strong></div>
+          <div><span>{t.mayors.century}</span><strong>{t.mayors.centuryLabel(century)}</strong></div>
+        </div>
+        {bio ? (
+          <>
+            <h3 style="margin-top:18px;margin-bottom:6px">{t.mayors.biography}</h3>
+            <p style="font-size:1.02rem">{bio}</p>
+            <p class="meta" style="margin-top:12px">{field(mayor, "summary", lang)}</p>
+          </>
+        ) : (
+          <p style="margin-top:14px">{field(mayor, "summary", lang)}</p>
+        )}
+      </article>
+
+      <article class="card">
+        <h2>{t.mayors.moreInfo}</h2>
+        <ul class="source-list">
+          <li>
+            <a href={mayor.source_document.url} target="_blank" rel="noreferrer">
+              {sourceTitle(mayor.source_document.title, lang)}
+            </a>
+            <span class="meta"> · {mayor.source_document.accessed_at}</span>
+          </li>
+          {mayor.more_url ? (
+            <li>
+              <a href={mayor.more_url} target="_blank" rel="noreferrer">{t.mayors.wikipediaArticle}: {name}</a>
+            </li>
+          ) : (
+            <li>
+              <a href={wikiSearch} target="_blank" rel="noreferrer">{t.mayors.wikipediaSearch}: {name}</a>
+            </li>
+          )}
+        </ul>
+        <p class="meta" style="margin-top:14px">{t.mayors.sourceNote}</p>
+      </article>
+    </div>
+  </section>
+
+  {otherTerms.length > 0 && (
+    <section class="section section-tint">
+      <div class="container">
+        <div class="section-head"><h2>{t.mayors.otherTerms}</h2></div>
+        <div class="grid grid-3">
+          {otherTerms.map((term) => (
+            <a class="card card-link" href={localizePath(`/mayors/${term.id}`, lang)}>
+              <p class="eyebrow">{term.year_start}{term.year_end ? `-${term.year_end}` : `-${currentYear}`}</p>
+              <h3>{field(term, "actor", lang)}</h3>
+              <p class="meta">{field(term, "period", lang)}</p>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container">
+      <div class="results-bar">
+        {prev ? (
+          <a class="button secondary" href={localizePath(`/mayors/${prev.id}`, lang)}>
+            <span class="arrow" aria-hidden="true">←</span> {t.mayors.prevTerm}: {field(prev, "actor", lang)}
+          </a>
+        ) : <span></span>}
+        <a class="link-button" href={localizePath("/mayors", lang)}>{t.mayors.backToAll}</a>
+        {next ? (
+          <a class="button secondary" href={localizePath(`/mayors/${next.id}`, lang)}>
+            {t.mayors.nextTerm}: {field(next, "actor", lang)} <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        ) : <span></span>}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -21,13 +21,13 @@ const otherLang: Lang = lang === "bg" ? "en" : "bg";
 
 const navItems = [
   { href: localizePath("/overview", lang), base: "/overview", label: t.nav.overview },
+  { href: localizePath("/mayors", lang), base: "/mayors", label: t.nav.mayors },
   { href: localizePath("/fix-map", lang), base: "/fix-map", label: t.nav.fixMap },
   { href: localizePath("/budget", lang), base: "/budget", label: t.nav.budget },
   { href: localizePath("/projects", lang), base: "/projects", label: t.nav.projects },
   { href: localizePath("/community", lang), base: "/community", label: t.nav.community },
   { href: localizePath("/archive", lang), base: "/archive", label: t.nav.archive },
-  { href: localizePath("/data-sources", lang), base: "/data-sources", label: t.nav.sources },
-  { href: localizePath("/methodology", lang), base: "/methodology", label: t.nav.methodology }
+  { href: localizePath("/data-sources", lang), base: "/data-sources", label: t.nav.sources }
 ];
 
 function isActive(base: string): boolean {
@@ -42,6 +42,7 @@ const enHref = new URL(localizePath(path, "en"), site).href;
 const switchHref = localizePath(path, otherLang);
 
 const footerExplore = [
+  { href: localizePath("/mayors", lang), label: t.nav.mayors },
   { href: localizePath("/fix-map", lang), label: t.nav.fixMap },
   { href: localizePath("/budget", lang), label: t.nav.budget },
   { href: localizePath("/projects", lang), label: t.nav.projects },
@@ -49,7 +50,6 @@ const footerExplore = [
   { href: localizePath("/archive", lang), label: t.nav.archive }
 ];
 const footerAbout = [
-  { href: localizePath("/methodology", lang), label: t.footer.methodology },
   { href: localizePath("/data-sources", lang), label: t.footer.sources },
   { href: localizePath("/privacy", lang), label: t.footer.privacy },
   { href: localizePath("/moderation", lang), label: t.footer.moderation }

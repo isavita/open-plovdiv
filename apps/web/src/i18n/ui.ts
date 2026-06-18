@@ -27,13 +27,13 @@ const bg = {
   nav: {
     home: "Начало",
     overview: "Преглед",
+    mayors: "Кметове",
     fixMap: "Карта",
     budget: "Бюджет",
     projects: "Проекти",
     community: "Доброволци",
     archive: "Архив",
-    sources: "Източници",
-    methodology: "Методология"
+    sources: "Източници"
   },
   overview: {
     eyebrow: "Графичен преглед",
@@ -121,6 +121,10 @@ const bg = {
     cardArchiveTitle: "Кметове и исторически данни",
     cardArchiveText:
       "Пълна вътрешна хронология на кметските мандати, стари финансови записи и градски програми.",
+    cardMayorsEyebrow: "Кметове",
+    cardMayorsTitle: "Всички кметове на Пловдив",
+    cardMayorsText:
+      "Подробна хронология от 1878 г. до действащия мандат, с търсене, векове и източници.",
     latestProjects: "Последно обновени проекти",
     latestReports: "Последно добавени сигнали",
     liveReportsTitle: "Реални сигнали след модерация",
@@ -199,6 +203,59 @@ const bg = {
     noAmount: "без публикувана сума",
     viewBudget: "Към бюджетните графики"
   },
+  mayors: {
+    eyebrow: "Управление на града",
+    title: "Всички кметове на Пловдив",
+    lead:
+      "Пълна хронология на кметските мандати от първия кмет след Освобождението през 1878 г. до действащия кмет през 2026 г.",
+    sourceNote:
+      "Основата е официалната страница „Кметове на Пловдив“ на Община Пловдив. Действащият мандат е добавен от Административния регистър, защото общинският исторически списък все още спира при мандата 2019-2023.",
+    statTerms: "кметски мандата",
+    statPeople: "различни личности",
+    statYears: "години хронология",
+    statCurrent: "действащ кмет",
+    search: "Търсене",
+    searchPlaceholder: "Име, година или период",
+    century: "Век",
+    status: "Статус",
+    allCenturies: "Всички векове",
+    allStatuses: "Всички",
+    currentOnly: "Само действащ",
+    actingOnly: "Само и.д. кметове",
+    reset: "Изчисти филтрите",
+    count: (n: number) => `${n} ${plural(n, "мандат", "мандата")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} от ${total} ${plural(total, "мандат", "мандата")}`,
+    empty: "Няма мандати с избраните филтри.",
+    timelineTitle: "Скролируема времева линия",
+    timelineLead:
+      "Плъзнете хоризонтално, за да минете през всички мандати. Подробният списък отдолу остава филтрируем.",
+    detailsTitle: "Подробен списък",
+    sourcesTitle: "Проверка на обхвата",
+    sourcesText:
+      "В локалния архив има всички 65 мандата от официалния общински списък плюс действащия мандат на Костадин Димитров.",
+    termNumber: "Мандат",
+    years: "Години",
+    duration: "Прибл. продължителност",
+    source: "Източник / повече информация",
+    currentBadge: "Действащ",
+    actingBadge: "и.д. кмет",
+    officialArchive: "Официален списък",
+    currentRegistry: "Административен регистър",
+    yearsApprox: (n: number) => `${n} ${plural(n, "година", "години")}`,
+    centuryLabel: (century: number) => `${century} век`,
+    centuryRange: (start: number, end: number) => `${start}–${end}`,
+    openSource: "Отвори източника",
+    profile: "Профил",
+    backToAll: "Към всички кметове",
+    otherTerms: "Други мандати на същата личност",
+    moreInfo: "Повече информация",
+    biography: "Биография",
+    wikipediaArticle: "Статия в Уикипедия",
+    wikipediaSearch: "Търсене в Уикипедия",
+    prevTerm: "Предишен",
+    nextTerm: "Следващ"
+  },
   projects: {
     eyebrow: "Публични проекти",
     title: "Проекти",
@@ -243,7 +300,11 @@ const bg = {
       `${visible} от ${total} ${plural(total, "инициатива", "инициативи")}`,
     empty: "Няма инициативи с избраните филтри.",
     adminCta: "Админ: добави или провери инициатива",
-    seeProblems: "Виж проблеми, с които можеш да помогнеш"
+    seeProblems: "Виж проблеми, с които можеш да помогнеш",
+    donate: "Дарете на организацията",
+    acceptsDonations: "Приема дарения",
+    donationsFilter: "Само приемащи дарения",
+    donationDisclaimer: "Open Plovdiv не приема и не обработва дарения. Връзките „Дарете“ водят директно към сайтовете на самите организации."
   },
   project: {
     breadcrumb: "Проекти",
@@ -506,6 +567,7 @@ const bg = {
     organizerType: "Тип организатор",
     website: "Уебсайт",
     facebook: "Facebook",
+    donationUrl: "Връзка за дарение (по избор)",
     callToActionBg: "Призив (BG, по избор)",
     callToActionEn: "Призив (EN, по избор)",
     addressBg: "Адрес/район (BG)",
@@ -546,13 +608,13 @@ const en: typeof bg = {
   nav: {
     home: "Home",
     overview: "Overview",
+    mayors: "Mayors",
     fixMap: "Map",
     budget: "Budget",
     projects: "Projects",
     community: "Volunteers",
     archive: "Archive",
-    sources: "Sources",
-    methodology: "Methodology"
+    sources: "Sources"
   },
   overview: {
     eyebrow: "Visual overview",
@@ -640,6 +702,10 @@ const en: typeof bg = {
     cardArchiveTitle: "Mayors and historical data",
     cardArchiveText:
       "A full internal timeline of mayoral terms, old finance records and city programmes.",
+    cardMayorsEyebrow: "Mayors",
+    cardMayorsTitle: "Every mayor of Plovdiv",
+    cardMayorsText:
+      "Detailed chronology from 1878 to the incumbent term, with search, centuries and sources.",
     latestProjects: "Recently updated projects",
     latestReports: "Recently added reports",
     liveReportsTitle: "Real reports after moderation",
@@ -718,6 +784,64 @@ const en: typeof bg = {
     noAmount: "no published amount",
     viewBudget: "Open budget charts"
   },
+  mayors: {
+    eyebrow: "City governance",
+    title: "Every mayor of Plovdiv",
+    lead:
+      "A complete chronology of mayoral terms from the first post-Liberation mayor in 1878 to the incumbent mayor in 2026.",
+    sourceNote:
+      "The base is Plovdiv Municipality's official “Mayors of Plovdiv” page. The incumbent term is added from Bulgaria's Administrative Register because the municipal historical list still stops at the 2019-2023 term.",
+    statTerms: "mayoral terms",
+    statPeople: "different people",
+    statYears: "years covered",
+    statCurrent: "incumbent mayor",
+    search: "Search",
+    searchPlaceholder: "Name, year or period",
+    century: "Century",
+    status: "Status",
+    allCenturies: "All centuries",
+    allStatuses: "All",
+    currentOnly: "Incumbent only",
+    actingOnly: "Acting mayors only",
+    reset: "Clear filters",
+    count: (n: number) => `${n} ${plural(n, "term", "terms")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} of ${total} ${plural(total, "term", "terms")}`,
+    empty: "No terms match the selected filters.",
+    timelineTitle: "Scrollable timeline",
+    timelineLead:
+      "Scroll horizontally to move through every term. The detailed list below remains filterable.",
+    detailsTitle: "Detailed list",
+    sourcesTitle: "Coverage check",
+    sourcesText:
+      "The local archive contains all 65 terms from the official municipal list plus the incumbent term of Kostadin Dimitrov.",
+    termNumber: "Term",
+    years: "Years",
+    duration: "Approx. duration",
+    source: "Source / more information",
+    currentBadge: "Incumbent",
+    actingBadge: "Acting mayor",
+    officialArchive: "Official list",
+    currentRegistry: "Administrative Register",
+    yearsApprox: (n: number) => `${n} ${plural(n, "year", "years")}`,
+    centuryLabel: (century: number) => {
+      const mod10 = century % 10;
+      const mod100 = century % 100;
+      const suffix = mod10 === 1 && mod100 !== 11 ? "st" : mod10 === 2 && mod100 !== 12 ? "nd" : mod10 === 3 && mod100 !== 13 ? "rd" : "th";
+      return `${century}${suffix} century`;
+    },
+    centuryRange: (start: number, end: number) => `${start}–${end}`,
+    openSource: "Open source",
+    profile: "Profile",
+    backToAll: "Back to all mayors",
+    otherTerms: "Other terms by the same person",
+    moreInfo: "More information",
+    biography: "Biography",
+    wikipediaArticle: "Wikipedia article",
+    wikipediaSearch: "Search Wikipedia",
+    prevTerm: "Previous",
+    nextTerm: "Next"
+  },
   projects: {
     eyebrow: "Public projects",
     title: "Projects",
@@ -762,7 +886,11 @@ const en: typeof bg = {
       `${visible} of ${total} ${plural(total, "initiative", "initiatives")}`,
     empty: "No initiatives match the selected filters.",
     adminCta: "Admin: add or verify initiative",
-    seeProblems: "See problems you can help with"
+    seeProblems: "See problems you can help with",
+    donate: "Donate to the organisation",
+    acceptsDonations: "Accepts donations",
+    donationsFilter: "Only accepting donations",
+    donationDisclaimer: "Open Plovdiv does not accept or process donations. The “Donate” links go directly to the organisations' own pages."
   },
   project: {
     breadcrumb: "Projects",
@@ -1025,6 +1153,7 @@ const en: typeof bg = {
     organizerType: "Organizer type",
     website: "Website",
     facebook: "Facebook",
+    donationUrl: "Donation link (optional)",
     callToActionBg: "Call to action (BG, optional)",
     callToActionEn: "Call to action (EN, optional)",
     addressBg: "Address/area (BG)",
@@ -1263,6 +1392,8 @@ export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
     "TrafficNews — бюджет на Пловдив за 2025 г.": "TrafficNews — Plovdiv 2025 budget",
     "TrafficNews — проектобюджет 2026 и замразени проекти": "TrafficNews — 2026 draft budget and frozen projects",
     "Под тепето — капиталова програма за 2026 г.": "Pod tepeto — 2026 capital programme",
+    "Община Пловдив - Кметове на Пловдив": "Plovdiv Municipality — Mayors of Plovdiv",
+    "Административен регистър - кмет на Община Пловдив": "Administrative Register — Mayor of Plovdiv Municipality",
     "Plovdiv24 — доброволци се заемат с реновирането на спирки": "Plovdiv24 — volunteers start renovating bus stops",
     "NOVA — доброволци реновират автобусни спирки": "NOVA — volunteers renovate bus stops",
     "Plovdiv24 — търсят се доброволци за почистване на 11 км от река Марица": "Plovdiv24 — volunteers wanted for cleaning 11 km of the Maritsa river",

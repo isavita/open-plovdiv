@@ -40,10 +40,10 @@ const cards = [
     text: t.home.cardCommunityText
   },
   {
-    href: localizePath("/archive", lang),
-    eyebrow: t.home.cardArchiveEyebrow,
-    title: t.home.cardArchiveTitle,
-    text: t.home.cardArchiveText
+    href: localizePath("/mayors", lang),
+    eyebrow: t.home.cardMayorsEyebrow,
+    title: t.home.cardMayorsTitle,
+    text: t.home.cardMayorsText
   }
 ];
 ---
@@ -127,20 +127,6 @@ const cards = [
             </div>
           </article>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="notice">
-        <span class="notice-icon" aria-hidden="true">ⓘ</span>
-        <span>
-          <strong>{t.home.noticeTitle}</strong>
-          {t.home.notice}{" "}
-          <a href={localizePath("/data-sources", lang)}>{t.home.noticeSources}</a> ·
-          <a href={localizePath("/methodology", lang)}> {t.home.noticeMethodology}</a>.
-        </span>
       </div>
     </div>
   </section>

@@ -107,6 +107,36 @@ function assertCommunityProjectLinks(initiatives, projects) {
   }
 }
 
+function assertMayorArchiveCompleteness(cityArchive) {
+  const mayors = cityArchive
+    .filter((record) => record.kind === "mayor_term")
+    .sort((a, b) => a.year_start - b.year_start || (a.year_end ?? 9999) - (b.year_end ?? 9999));
+  const officialHistoricalTerms = mayors.filter((record) =>
+    record.source_document.url.includes("/administration/mayor/mayors-of-plovdiv/")
+  );
+  const current = mayors.find(
+    (record) => record.actor_bg === "Костадин Димитров" && record.year_start === 2023 && record.year_end == null
+  );
+
+  if (officialHistoricalTerms.length !== 65) {
+    throw new Error(
+      `city archive: expected 65 official historical mayor terms, got ${officialHistoricalTerms.length}`
+    );
+  }
+  if (mayors.length !== 66) {
+    throw new Error(`city archive: expected 66 mayor terms including incumbent, got ${mayors.length}`);
+  }
+  if (mayors[0]?.actor_bg !== "Атанас Самоковлиев" || mayors[0]?.year_start !== 1878) {
+    throw new Error("city archive: first mayor term must be Атанас Самоковлиев in 1878");
+  }
+  if (officialHistoricalTerms.at(-1)?.actor_bg !== "Здравко Димитров") {
+    throw new Error("city archive: official municipality list should end with Здравко Димитров");
+  }
+  if (!current) {
+    throw new Error("city archive: missing incumbent mayor term for Костадин Димитров from 2023");
+  }
+}
+
 const loaded = new Map();
 
 for (const dataset of datasets) {
@@ -139,5 +169,6 @@ for (const dataset of datasets) {
 assertNoPrivateFixFields(loaded.get("fix reports"));
 assertProjectBudgetLinks(loaded.get("projects"), loaded.get("budget items"));
 assertCommunityProjectLinks(loaded.get("community initiatives"), loaded.get("projects"));
+assertMayorArchiveCompleteness(loaded.get("city archive"));
 
 console.log("data validation passed");

@@ -1,0 +1,310 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { ui, type Lang } from "@i18n/ui";
+import { field, localizePath } from "@i18n/utils";
+import { cityArchive } from "@lib/data";
+import { sourceTitle } from "@lib/format";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const currentYear = new Date().getFullYear();
+
+const mayorTerms = cityArchive
+  .filter((record) => record.kind === "mayor_term")
+  .sort((a, b) => a.year_start - b.year_start || (a.year_end ?? currentYear) - (b.year_end ?? currentYear));
+
+function centuryFor(year: number): number {
+  return Math.floor((year - 1) / 100) + 1;
+}
+
+function normalizeName(name: string): string {
+  return name
+    .replace(/^(д-р|Д-р|инж\.)\s+/u, "")
+    .replace(/^Mayor:\s+/u, "")
+    .trim()
+    .toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+}
+
+function durationYears(start: number, end?: number): number {
+  return Math.max(1, (end ?? currentYear) - start + 1);
+}
+
+const uniqueMayors = new Set(mayorTerms.map((term) => normalizeName(field(term, "actor", lang))));
+const currentMayor = mayorTerms.find((term) => term.year_end == null);
+const firstYear = mayorTerms[0]?.year_start ?? 1878;
+const lastYear = currentMayor?.year_start ?? mayorTerms[mayorTerms.length - 1]?.year_end ?? currentYear;
+const coveredYears = currentYear - firstYear + 1;
+
+const centuries = [...new Set(mayorTerms.map((term) => centuryFor(term.year_start)))].sort((a, b) => a - b);
+const centuryCounts = new Map(
+  centuries.map((century) => [
+    century,
+    mayorTerms.filter((term) => centuryFor(term.year_start) === century).length
+  ])
+);
+
+const sourceUrls = [...new Map(mayorTerms.map((term) => [term.source_document.url, term.source_document])).values()];
+
+const config = {
+  countAll: t.mayors.count(mayorTerms.length),
+  countFiltered: "{visible} " + (lang === "bg" ? "от" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : "terms"),
+  empty: t.mayors.empty
+};
+---
+
+<Layout lang={lang} path="/mayors" title={t.mayors.title} description={t.mayors.lead}>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">{t.mayors.eyebrow}</p>
+      <h1>{t.mayors.title}</h1>
+      <p class="lead">{t.mayors.lead}</p>
+      <p class="meta" style="margin-top:10px">{t.mayors.sourceNote}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="stat-row">
+        <div class="stat"><strong>{mayorTerms.length}</strong><span>{t.mayors.statTerms}</span></div>
+        <div class="stat"><strong>{uniqueMayors.size}</strong><span>{t.mayors.statPeople}</span></div>
+        <div class="stat"><strong>{coveredYears}</strong><span>{t.mayors.statYears}</span></div>
+        {currentMayor && <div class="stat"><strong>{field(currentMayor, "actor", lang)}</strong><span>{t.mayors.statCurrent}</span></div>}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{t.mayors.timelineTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{t.mayors.timelineLead}</p>
+        </div>
+      </div>
+
+      <div class="mayor-timeline" aria-label={t.mayors.timelineTitle}>
+        {mayorTerms.map((term, index) => {
+          const isCurrent = term.year_end == null;
+          const isActing = field(term, "period", lang).toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB").includes("и.д.");
+          const search = [
+            field(term, "actor", lang),
+            field(term, "period", lang),
+            term.year_start,
+            term.year_end ?? currentYear,
+            field(term, "summary", lang)
+          ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+          return (
+            <a
+              class="mayor-chip"
+              href={`#${term.id}`}
+              data-mayor-chip
+              data-search={search}
+              data-century={centuryFor(term.year_start)}
+              data-status={isCurrent ? "current" : isActing ? "acting" : "regular"}
+            >
+              <span>{index + 1}</span>
+              <strong>{field(term, "actor", lang)}</strong>
+              <small>{term.year_start}{term.year_end ? `-${term.year_end}` : `-${currentYear}`}</small>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="toolbar">
+        <div class="filters" style="grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));">
+          <div class="field">
+            <label for="mayor-search">{t.mayors.search}</label>
+            <input id="mayor-search" type="search" placeholder={t.mayors.searchPlaceholder} />
+          </div>
+          <div class="field">
+            <label for="mayor-century">{t.mayors.century}</label>
+            <select id="mayor-century">
+              <option value="all">{t.mayors.allCenturies}</option>
+              {centuries.map((century) => (
+                <option value={century}>
+                  {t.mayors.centuryLabel(century)} ({centuryCounts.get(century)})
+                </option>
+              ))}
+            </select>
+          </div>
+          <div class="field">
+            <label for="mayor-status">{t.mayors.status}</label>
+            <select id="mayor-status">
+              <option value="all">{t.mayors.allStatuses}</option>
+              <option value="current">{t.mayors.currentOnly}</option>
+              <option value="acting">{t.mayors.actingOnly}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-bar">
+        <p id="mayor-count" class="meta">{t.mayors.count(mayorTerms.length)}</p>
+        <button type="button" id="mayor-reset" class="link-button" hidden>{t.mayors.reset}</button>
+      </div>
+
+      <div class="mayor-layout">
+        <aside class="mayor-index" aria-label={t.mayors.century}>
+          <h2>{t.mayors.detailsTitle}</h2>
+          <ol>
+            {centuries.map((century) => (
+              <li>
+                <a href={`#century-${century}`}>{t.mayors.centuryLabel(century)}</a>
+                <span>{centuryCounts.get(century)}</span>
+              </li>
+            ))}
+          </ol>
+          <div class="muted-card">
+            <h3>{t.mayors.sourcesTitle}</h3>
+            <p class="meta">{t.mayors.sourcesText}</p>
+            <ul class="source-list" style="margin-top:12px">
+              {sourceUrls.map((source) => (
+                <li>
+                  <a href={source.url} target="_blank" rel="noreferrer">{sourceTitle(source.title, lang)}</a>
+                  <span class="meta"> · {source.accessed_at}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+
+        <div class="mayor-list">
+          {centuries.map((century) => (
+            <section class="mayor-century" id={`century-${century}`}>
+              <div class="section-head">
+                <h2>{t.mayors.centuryLabel(century)}</h2>
+                <p class="meta">{centuryCounts.get(century)} {t.mayors.statTerms}</p>
+              </div>
+              <div class="list">
+                {mayorTerms
+                  .filter((term) => centuryFor(term.year_start) === century)
+                  .map((term) => {
+                    const index = mayorTerms.findIndex((item) => item.id === term.id) + 1;
+                    const isCurrent = term.year_end == null;
+                    const period = field(term, "period", lang);
+                    const isActing = period.toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB").includes("и.д.");
+                    const search = [
+                      field(term, "actor", lang),
+                      period,
+                      term.year_start,
+                      term.year_end ?? currentYear,
+                      field(term, "summary", lang)
+                    ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+                    return (
+                      <article
+                        class="card mayor-card"
+                        id={term.id}
+                        data-mayor-card
+                        data-search={search}
+                        data-century={century}
+                        data-status={isCurrent ? "current" : isActing ? "acting" : "regular"}
+                      >
+                        <header>
+                          <div>
+                            <p class="eyebrow">{t.mayors.termNumber} {index}</p>
+                            <h3>{field(term, "actor", lang)}</h3>
+                          </div>
+                          <div class="pill-row">
+                            {isCurrent && <span class="badge status-active">{t.mayors.currentBadge}</span>}
+                            {isActing && <span class="badge no-dot">{t.mayors.actingBadge}</span>}
+                            {term.bio_bg && <span class="badge no-dot">{t.mayors.biography}</span>}
+                          </div>
+                        </header>
+                        <div class="mayor-facts">
+                          <div>
+                            <span>{t.mayors.years}</span>
+                            <strong>{term.year_start}{term.year_end ? `-${term.year_end}` : `-${currentYear}`}</strong>
+                          </div>
+                          <div>
+                            <span>{t.mayors.duration}</span>
+                            <strong>{t.mayors.yearsApprox(durationYears(term.year_start, term.year_end))}</strong>
+                          </div>
+                          <div>
+                            <span>{t.mayors.century}</span>
+                            <strong>{t.mayors.centuryLabel(centuryFor(term.year_start))}</strong>
+                          </div>
+                        </div>
+                        <p><strong>{period}</strong></p>
+                        <p>{field(term, "summary", lang)}</p>
+                        <div class="pill-row">
+                          <a class="button secondary" href={localizePath(`/mayors/${term.id}`, lang)}>
+                            {t.mayors.profile}<span class="arrow" aria-hidden="true">→</span>
+                          </a>
+                          <a href={term.source_document.url} target="_blank" rel="noreferrer">
+                            {t.mayors.openSource}: {sourceTitle(term.source_document.title, lang)}
+                          </a>
+                        </div>
+                      </article>
+                    );
+                  })}
+              </div>
+            </section>
+          ))}
+          <p id="mayor-empty" class="empty" hidden>{t.mayors.empty}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/json" id="mayor-config" set:html={JSON.stringify(config)}></script>
+  <script>
+    const config = JSON.parse(document.getElementById("mayor-config")?.textContent ?? "{}");
+    const search = document.querySelector<HTMLInputElement>("#mayor-search")!;
+    const century = document.querySelector<HTMLSelectElement>("#mayor-century")!;
+    const status = document.querySelector<HTMLSelectElement>("#mayor-status")!;
+    const reset = document.querySelector<HTMLButtonElement>("#mayor-reset")!;
+    const count = document.querySelector<HTMLElement>("#mayor-count")!;
+    const empty = document.querySelector<HTMLElement>("#mayor-empty")!;
+
+    function applyFilters() {
+      const query = search.value.trim().toLocaleLowerCase();
+      const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-mayor-card]"));
+      const chips = Array.from(document.querySelectorAll<HTMLElement>("[data-mayor-chip]"));
+      let visible = 0;
+
+      const matches = (item: HTMLElement) =>
+        (!query || (item.dataset.search ?? "").includes(query)) &&
+        (century.value === "all" || item.dataset.century === century.value) &&
+        (status.value === "all" || item.dataset.status === status.value);
+
+      cards.forEach((card) => {
+        const show = matches(card);
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      chips.forEach((chip) => {
+        chip.hidden = !matches(chip);
+      });
+      document.querySelectorAll<HTMLElement>(".mayor-century").forEach((section) => {
+        const visibleCards = section.querySelectorAll<HTMLElement>("[data-mayor-card]:not([hidden])").length;
+        section.hidden = visibleCards === 0;
+      });
+
+      const filtering = Boolean(query) || century.value !== "all" || status.value !== "all";
+      count.textContent = filtering
+        ? config.countFiltered.replace("{visible}", String(visible))
+        : config.countAll;
+      reset.hidden = !filtering;
+      empty.hidden = visible > 0;
+    }
+
+    function resetFilters() {
+      search.value = "";
+      century.value = "all";
+      status.value = "all";
+      applyFilters();
+      search.focus();
+    }
+
+    search.addEventListener("input", applyFilters);
+    century.addEventListener("change", applyFilters);
+    status.addEventListener("change", applyFilters);
+    reset.addEventListener("click", resetFilters);
+  </script>
+</Layout>

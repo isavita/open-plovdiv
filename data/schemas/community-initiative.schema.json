@@ -110,6 +110,10 @@
       "type": "string",
       "minLength": 3
     },
+    "donation_url": {
+      "type": "string",
+      "format": "uri"
+    },
     "location": {
       "type": "object",
       "additionalProperties": false,

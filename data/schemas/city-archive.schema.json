@@ -85,6 +85,18 @@
       "type": "string",
       "minLength": 10
     },
+    "bio_bg": {
+      "type": "string",
+      "minLength": 20
+    },
+    "bio_en": {
+      "type": "string",
+      "minLength": 20
+    },
+    "more_url": {
+      "type": "string",
+      "format": "uri"
+    },
     "source_document": {
       "type": "object",
       "additionalProperties": false,

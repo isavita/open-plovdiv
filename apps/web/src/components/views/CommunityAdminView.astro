@@ -152,6 +152,10 @@ const config = {
                 <label for="community-facebook">{t.adminCommunity.facebook}</label>
                 <input id="community-facebook" name="facebook" type="url" placeholder="https://facebook.com/…" />
               </div>
+              <div class="field">
+                <label for="community-donation">{t.adminCommunity.donationUrl}</label>
+                <input id="community-donation" name="donation_url" type="url" placeholder="https://…" />
+              </div>
               <div class="field" style="grid-column:1/-1">
                 <label for="community-cta-bg">{t.adminCommunity.callToActionBg}</label>
                 <input id="community-cta-bg" name="call_to_action_bg" />
@@ -233,6 +237,7 @@ const config = {
       };
       call_to_action_bg?: string;
       call_to_action_en?: string;
+      donation_url?: string;
       location: { lat: number; lng: number; address_bg: string; address_en?: string };
       related_project_ids?: string[];
       tags?: string[];
@@ -329,6 +334,7 @@ const config = {
         },
         call_to_action_bg: formValue("call_to_action_bg"),
         call_to_action_en: formValue("call_to_action_en"),
+        donation_url: formValue("donation_url"),
         location: {
           lat: Number(formValue("lat")),
           lng: Number(formValue("lng")),
@@ -359,6 +365,7 @@ const config = {
       setFormValue("facebook", item.organizer.facebook_url ?? "");
       setFormValue("call_to_action_bg", item.call_to_action_bg ?? "");
       setFormValue("call_to_action_en", item.call_to_action_en ?? "");
+      setFormValue("donation_url", item.donation_url ?? "");
       setFormValue("lat", item.location.lat);
       setFormValue("lng", item.location.lng);
       setFormValue("address_bg", item.location.address_bg);

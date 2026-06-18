@@ -1367,6 +1367,179 @@ p:last-child {
   font-size: 0.9rem;
 }
 
+/* ---- Mayor chronology ---------------------------------------------------- */
+
+.mayor-timeline {
+  display: grid;
+  grid-auto-columns: minmax(180px, 240px);
+  grid-auto-flow: column;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 4px 2px 14px;
+  scroll-snap-type: x proximity;
+}
+
+.mayor-chip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  color: var(--ink);
+  display: grid;
+  gap: 5px;
+  min-height: 138px;
+  padding: 15px;
+  scroll-snap-align: start;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.mayor-chip:hover,
+.mayor-chip:focus-visible {
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+
+.mayor-chip span {
+  align-items: center;
+  background: var(--brand-soft);
+  border-radius: var(--r-pill);
+  color: var(--brand);
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 750;
+  height: 28px;
+  justify-content: center;
+  width: 38px;
+}
+
+.mayor-chip strong {
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.mayor-chip small {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  margin-top: auto;
+}
+
+.mayor-layout {
+  align-items: start;
+  display: grid;
+  gap: clamp(18px, 3vw, 30px);
+  grid-template-columns: minmax(240px, 0.34fr) minmax(0, 1fr);
+}
+
+.mayor-index {
+  display: grid;
+  gap: 16px;
+  position: sticky;
+  top: 92px;
+}
+
+.mayor-index h2 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.mayor-index ol {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 8px 14px;
+}
+
+.mayor-index li {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.mayor-index li:first-child {
+  border-top: 0;
+}
+
+.mayor-index a {
+  color: var(--ink);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.mayor-index a:hover {
+  color: var(--brand);
+}
+
+.mayor-index li span {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.mayor-list {
+  display: grid;
+  gap: 28px;
+  min-width: 0;
+}
+
+.mayor-century,
+.mayor-card {
+  scroll-margin-top: 92px;
+}
+
+.mayor-card header {
+  align-items: flex-start;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.mayor-card h3 {
+  font-size: clamp(1.18rem, 2.4vw, 1.55rem);
+  margin: 0;
+}
+
+.mayor-card p {
+  color: var(--ink-2);
+}
+
+.mayor-facts {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mayor-facts div {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+}
+
+.mayor-facts span,
+.mayor-facts strong {
+  display: block;
+}
+
+.mayor-facts span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.mayor-facts strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+}
+
 /* ---- Table --------------------------------------------------------------- */
 
 .table-wrap {
@@ -1626,9 +1799,14 @@ code {
   .grid-3,
   .grid-2,
   .chart-grid,
+  .mayor-layout,
   .map-layout,
   .footer-top {
     grid-template-columns: 1fr;
+  }
+
+  .mayor-index {
+    position: static;
   }
 
   .stat-row {
@@ -1668,5 +1846,13 @@ code {
 
   .project-card header {
     flex-direction: column;
+  }
+
+  .mayor-card header {
+    flex-direction: column;
+  }
+
+  .mayor-facts {
+    grid-template-columns: 1fr;
   }
 }

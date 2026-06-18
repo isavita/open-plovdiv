@@ -113,6 +113,9 @@ export type CityArchiveRecord = {
   amount_eur?: number;
   summary_bg: string;
   summary_en?: string;
+  bio_bg?: string;
+  bio_en?: string;
+  more_url?: string;
   source_document: Source;
   data_quality: string;
 };
@@ -135,6 +138,7 @@ export type CommunityInitiative = {
   };
   call_to_action_bg?: string;
   call_to_action_en?: string;
+  donation_url?: string;
   location: Location;
   related_project_ids?: string[];
   tags?: string[];

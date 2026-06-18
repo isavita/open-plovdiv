@@ -24,6 +24,7 @@ const relatedBudget = budgetItems.find((item) => item.id === project.related_bud
 const relatedInitiatives = communityInitiatives.filter((item) =>
   item.related_project_ids?.includes(project.id)
 );
+const hasDonationLinks = relatedInitiatives.some((item) => item.donation_url);
 
 const pinColor = categoryColors[project.category] ?? "var(--brand)";
 
@@ -136,6 +137,7 @@ const note = field(project, "note", lang);
         <div>
           <h2>{t.project.communityInitiatives}</h2>
           <p class="meta">{t.project.communityInitiativesText}</p>
+          {hasDonationLinks && <p class="meta">{t.community.donationDisclaimer}</p>}
         </div>
         <a href={localizePath("/community", lang)}>{t.home.viewAll} →</a>
       </div>
@@ -156,6 +158,11 @@ const note = field(project, "note", lang);
                 </header>
                 <p>{field(initiative, "summary", lang)}</p>
                 <p class="meta">{t.community.organizer}: {field(initiative.organizer, "name", lang)}</p>
+                {initiative.donation_url && (
+                  <div class="pill-row">
+                    <a class="button secondary" href={initiative.donation_url} target="_blank" rel="noreferrer">{t.community.donate} ↗</a>
+                  </div>
+                )}
                 {initiative.contact_links?.length ? (
                   <div class="pill-row">
                     {initiative.contact_links.map((link) => (
