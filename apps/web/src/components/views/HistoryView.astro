@@ -1,0 +1,136 @@
+---
+import Layout from "@layouts/Layout.astro";
+import HeroBackdrop from "@components/HeroBackdrop.astro";
+import { ui, type Lang } from "@i18n/ui";
+import { field, localizePath } from "@i18n/utils";
+import { plovdivHistory, plovdivLandmarks, cityArchive, type HistoryEra } from "@lib/data";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const eraOrder: HistoryEra[] = [
+  "prehistory",
+  "thracian",
+  "roman",
+  "medieval",
+  "ottoman",
+  "revival",
+  "liberation",
+  "modern"
+];
+
+const entries = [...plovdivHistory].sort((a, b) => a.year - b.year);
+const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
+const mayorCount = cityArchive.filter((r) => r.kind === "mayor_term").length;
+
+const stats = [
+  { value: t.home.statYearsValue, label: t.history.statYears },
+  { value: String(erasPresent.length), label: t.history.statEras },
+  { value: String(plovdivLandmarks.length), label: t.history.statLandmarks },
+  { value: String(mayorCount), label: t.home.statMayors }
+];
+---
+
+<Layout lang={lang} path="/history" title={t.history.title} description={t.history.lead}>
+  <section class="hero hero-compact">
+    <HeroBackdrop />
+    <div class="container">
+      <p class="eyebrow">{t.history.eyebrow}</p>
+      <h1>{t.history.title}</h1>
+      <p class="lead">{t.history.lead}</p>
+      <div class="stat-row" style="margin-top:22px">
+        {stats.map((s) => (
+          <div class="stat"><strong>{s.value}</strong><span>{s.label}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <nav class="era-nav" aria-label={t.history.erasNav}>
+        {erasPresent.map((era) => (
+          <a class="era-pill" href={`#era-${era}`}>{t.history.eraLabels[era]}</a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{t.history.timelineTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{t.history.timelineLead}</p>
+        </div>
+      </div>
+
+      <div class="history-timeline">
+        {erasPresent.map((era) => (
+          <section class="era-block" id={`era-${era}`}>
+            <header class="era-head">
+              <span class={`era-tag era-${era}`}>{t.history.eraLabels[era]}</span>
+              <p class="era-blurb">{t.history.eraBlurbs[era]}</p>
+            </header>
+            <ol class="timeline">
+              {entries
+                .filter((e) => e.era === era)
+                .map((e) => (
+                  <li class="timeline-item">
+                    <div class="timeline-marker" aria-hidden="true"></div>
+                    <article class="timeline-card">
+                      <p class="timeline-period">{field(e, "period", lang)}</p>
+                      <h3>{field(e, "title", lang)}</h3>
+                      <p>{field(e, "summary", lang)}</p>
+                      <a class="src-link" href={e.source.url} target="_blank" rel="noreferrer">
+                        {`${t.common.source}: ${e.source.title} ↗`}
+                      </a>
+                    </article>
+                  </li>
+                ))}
+            </ol>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="landmarks">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{t.history.landmarksTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{t.history.landmarksLead}</p>
+        </div>
+      </div>
+      <div class="grid grid-3">
+        {plovdivLandmarks.map((lm) => (
+          <article class={`card landmark-card landmark-${lm.category}`}>
+            <p class="eyebrow">{field(lm, "era", lang)}</p>
+            <h3>{field(lm, "name", lang)}</h3>
+            <p>{field(lm, "summary", lang)}</p>
+            <a class="src-link" href={lm.source.url} target="_blank" rel="noreferrer">
+              {`${t.common.source}: ${lm.source.title} ↗`}
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <article class="card cta-card">
+        <div>
+          <h2>{t.history.mayorsTitle}</h2>
+          <p style="margin-top:8px;max-width:70ch">{t.history.mayorsLead}</p>
+        </div>
+        <a class="button" href={localizePath("/mayors", lang)}>
+          {t.history.mayorsCta}<span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </article>
+      <p class="meta" style="margin-top:18px;max-width:80ch">{t.history.sourceNote}</p>
+    </div>
+  </section>
+</Layout>

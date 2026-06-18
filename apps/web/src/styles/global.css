@@ -561,6 +561,22 @@ p:last-child {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 980px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---- Cards --------------------------------------------------------------- */
 
 .card {
@@ -1855,4 +1871,188 @@ code {
   .mayor-facts {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---- History / timeline -------------------------------------------------- */
+
+.hero.hero-compact {
+  min-height: auto;
+}
+.hero.hero-compact > .container {
+  padding-top: clamp(48px, 8vw, 84px);
+  padding-bottom: clamp(28px, 5vw, 44px);
+}
+
+/* era accent colours (heritage palette) */
+.era-prehistory { --era-color: #7d8471; }
+.era-thracian   { --era-color: #9c6b3f; }
+.era-roman      { --era-color: #a23b2d; }
+.era-medieval   { --era-color: #5d6b8a; }
+.era-ottoman    { --era-color: #2f7d6b; }
+.era-revival    { --era-color: #b4632a; }
+.era-liberation { --era-color: #8a2f3b; }
+.era-modern     { --era-color: #15657f; }
+
+/* era navigation chips */
+.era-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.era-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 0.86rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.era-pill:hover,
+.era-pill:focus-visible {
+  background: var(--brand-soft);
+  border-color: var(--brand);
+  color: var(--brand-strong);
+}
+
+/* timeline */
+.history-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vw, 44px);
+}
+.era-block {
+  scroll-margin-top: 90px;
+}
+.era-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--era-color, var(--accent));
+}
+.era-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display, "Source Serif 4", serif);
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 600;
+  color: var(--ink);
+}
+.era-tag::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--era-color, var(--accent));
+}
+.era-blurb {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.timeline-item {
+  position: relative;
+  padding-left: 30px;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: -24px;
+  width: 2px;
+  background: var(--line-strong);
+}
+.timeline-item:last-child::before {
+  display: none;
+}
+.timeline-marker {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 3px solid var(--era-color, var(--accent));
+}
+.timeline-period {
+  margin: 0 0 2px;
+  font-weight: 600;
+  color: var(--era-color, var(--accent));
+  font-size: 0.9rem;
+}
+.timeline-card h3 {
+  margin: 0 0 6px;
+}
+.timeline-card p {
+  margin: 0 0 8px;
+}
+
+/* compact source link */
+.src-link {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+.src-link:hover,
+.src-link:focus-visible {
+  color: var(--brand-strong);
+  text-decoration: underline;
+}
+
+/* landmark cards */
+.landmark-card {
+  border-top: 3px solid var(--era-color, var(--accent));
+}
+.landmark-thracian { --era-color: #9c6b3f; }
+.landmark-roman { --era-color: #a23b2d; }
+.landmark-ottoman { --era-color: #2f7d6b; }
+.landmark-revival { --era-color: #b4632a; }
+.landmark-religious { --era-color: #5d6b8a; }
+.landmark-hill { --era-color: #7d8471; }
+
+/* homepage era tiles */
+.era-grid .era-tile {
+  border-left: 3px solid var(--era-color, var(--accent));
+}
+.era-tile .eyebrow {
+  color: var(--era-color, var(--accent));
+}
+.era-tile .eyebrow::before {
+  background: var(--era-color, var(--accent));
+}
+.featured-moment .timeline-period {
+  color: var(--accent);
+}
+
+/* call-to-action card */
+.cta-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.cta-card-stack {
+  flex-direction: column;
+  align-items: flex-start;
 }

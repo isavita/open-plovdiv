@@ -34,6 +34,18 @@ const datasets = [
     minRecords: 1
   },
   {
+    label: "history timeline",
+    dataPath: "data/curated/plovdiv-history.json",
+    schemaPath: "data/schemas/plovdiv-history.schema.json",
+    minRecords: 1
+  },
+  {
+    label: "landmarks",
+    dataPath: "data/curated/plovdiv-landmarks.json",
+    schemaPath: "data/schemas/plovdiv-landmark.schema.json",
+    minRecords: 1
+  },
+  {
     label: "fix reports",
     dataPath: "data/curated/fix-reports.json",
     schemaPath: "data/schemas/fix-report.schema.json",

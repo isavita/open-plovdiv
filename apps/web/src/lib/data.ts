@@ -4,6 +4,8 @@ import communityInitiativesJson from "../../../../data/curated/community-initiat
 import fixReportsJson from "../../../../data/curated/fix-reports.json";
 import projectsJson from "../../../../data/curated/projects.json";
 import sourcesJson from "../../../../data/curated/sources.json";
+import historyJson from "../../../../data/curated/plovdiv-history.json";
+import landmarksJson from "../../../../data/curated/plovdiv-landmarks.json";
 
 export type Source = {
   title: string;
@@ -172,9 +174,50 @@ export type SourceRegistryItem = {
   limitations_en?: string;
 };
 
+export type HistoryEra =
+  | "prehistory"
+  | "thracian"
+  | "roman"
+  | "medieval"
+  | "ottoman"
+  | "revival"
+  | "liberation"
+  | "modern";
+
+export type HistoryEntry = {
+  id: string;
+  era: HistoryEra;
+  year: number;
+  period_bg: string;
+  period_en: string;
+  title_bg: string;
+  title_en: string;
+  summary_bg: string;
+  summary_en: string;
+  source: Source;
+  data_quality: string;
+};
+
+export type LandmarkCategory = "thracian" | "roman" | "ottoman" | "revival" | "religious" | "hill";
+
+export type Landmark = {
+  id: string;
+  category: LandmarkCategory;
+  era_bg: string;
+  era_en: string;
+  name_bg: string;
+  name_en: string;
+  summary_bg: string;
+  summary_en: string;
+  source: Source;
+  data_quality: string;
+};
+
 export const projects = projectsJson as Project[];
 export const communityInitiatives = communityInitiativesJson as CommunityInitiative[];
 export const fixReports = fixReportsJson as FixReport[];
 export const budgetItems = budgetItemsJson as BudgetItem[];
 export const cityArchive = cityArchiveJson as CityArchiveRecord[];
+export const plovdivHistory = historyJson as HistoryEntry[];
+export const plovdivLandmarks = landmarksJson as Landmark[];
 export const sourceRegistry = sourcesJson as SourceRegistryItem[];

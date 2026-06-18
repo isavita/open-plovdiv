@@ -26,8 +26,9 @@ const bg = {
   },
   nav: {
     home: "Начало",
-    overview: "Преглед",
+    history: "История",
     mayors: "Кметове",
+    overview: "Преглед",
     fixMap: "Карта",
     budget: "Бюджет",
     projects: "Проекти",
@@ -88,9 +89,20 @@ const bg = {
     noSource: "Няма публичен източник."
   },
   home: {
-    eyebrow: "Обществени данни · Пловдив",
+    eyebrow: "Един от най-старите градове в света",
     lead:
-      "Обществени проекти, публични средства и градски проблеми — представени ясно, с видими източници и без потребителски профили.",
+      "Пловдив е жив от над 8000 години. Тракийска Евмолпия, Филипопол на Филип II Македонски, римски Тримонциум, османско Филибе — и градът на Съединението.",
+    ctaHistory: "Разгледай хронологията",
+    ctaMayors: "Кметовете на Пловдив",
+    statYearsValue: "8000+",
+    statYears: "години история",
+    statEras: "епохи",
+    statMayors: "кметове",
+    statLandmarks: "забележителности",
+    featuredTitle: "Моменти от историята",
+    civicTitle: "Граждански данни за днешния град",
+    civicLead:
+      "Освен историята, Open Plovdiv поддържа и обществени данни за съвременния Пловдив — бюджет, проекти, граждански сигнали и доброволци, всяко с публичен източник.",
     ctaMap: "Виж картата на проблемите",
     ctaBudget: "Къде отиват местните данъци?",
     statsLabel: "Проследявани данни",
@@ -136,6 +148,49 @@ const bg = {
       "Данните са актуални към юни 2026 г. Бюджетът за 2025 г. е приет, а капиталовата програма за 2026 г. е прогнозна. Всеки запис сочи към публичен източник.",
     noticeSources: "Вижте източниците",
     noticeMethodology: "методологията"
+  },
+  history: {
+    eyebrow: "Хронология на града",
+    title: "Историята на Пловдив",
+    lead:
+      "Над осем хилядолетия върху седем хълма — от тракийската Евмолпия и римския Тримонциум, през османското Филибе и Възраждането, до Съединението и наши дни.",
+    timelineTitle: "Хронология",
+    timelineLead:
+      "Ключови моменти от историята на града, подредени по епохи. Всеки запис сочи към публичен източник.",
+    erasTitle: "Епохите на Пловдив",
+    erasNav: "Епохи",
+    landmarksTitle: "Забележителности",
+    landmarksLead:
+      "Паметници, които разказват историята на града — от тракийската крепост до възрожденския Стар град.",
+    mayorsTitle: "Кметовете на Пловдив",
+    mayorsLead:
+      "66 мандата от Освобождението до днес — подробна хронология с биографии и публични източници.",
+    mayorsCta: "Виж всички кметове",
+    sourceNote:
+      "Историческите данни са обобщени от публични източници (Уикипедия и официални страници). Сверявайте с първоизточника, преди да цитирате конкретен факт.",
+    statYears: "години история",
+    statEras: "епохи",
+    statLandmarks: "забележителности",
+    eraLabels: {
+      prehistory: "Праистория",
+      thracian: "Тракийска епоха",
+      roman: "Римски период",
+      medieval: "Средновековие",
+      ottoman: "Османски период",
+      revival: "Възраждане",
+      liberation: "Освобождение и Съединение",
+      modern: "Нова история"
+    },
+    eraBlurbs: {
+      prehistory: "Селища върху тепетата още от VI хилядолетие пр.н.е.",
+      thracian: "Тракийската Евмолпия и Филипопол на Филип II Македонски.",
+      roman: "Тримонциум — блестящ римски град с театър и стадион.",
+      medieval: "Векове на сменящо се владение между България и Византия.",
+      ottoman: "Пет века като Филибе — кръстопът на Балканите.",
+      revival: "Българското просветно и църковно пробуждане.",
+      liberation: "Освобождението, столица на Източна Румелия и Съединението.",
+      modern: "Панаирният град и Европейска столица на културата."
+    }
   },
   budget: {
     eyebrow: "Къде отиват местните данъци?",
@@ -607,8 +662,9 @@ const en: typeof bg = {
   },
   nav: {
     home: "Home",
-    overview: "Overview",
+    history: "History",
     mayors: "Mayors",
+    overview: "Overview",
     fixMap: "Map",
     budget: "Budget",
     projects: "Projects",
@@ -669,9 +725,20 @@ const en: typeof bg = {
     noSource: "No public source."
   },
   home: {
-    eyebrow: "Public data · Plovdiv",
+    eyebrow: "One of the oldest cities in the world",
     lead:
-      "Public projects, public money and city problems — shown clearly, with visible sources and no user accounts.",
+      "Plovdiv has been alive for over 8,000 years. Thracian Eumolpias, Philip II of Macedon's Philippopolis, Roman Trimontium, Ottoman Filibe — and the city of the Unification.",
+    ctaHistory: "Explore the timeline",
+    ctaMayors: "The mayors of Plovdiv",
+    statYearsValue: "8000+",
+    statYears: "years of history",
+    statEras: "eras",
+    statMayors: "mayors",
+    statLandmarks: "landmarks",
+    featuredTitle: "Moments from history",
+    civicTitle: "Civic data on the city today",
+    civicLead:
+      "Beyond history, Open Plovdiv also keeps public data on the modern city — budget, projects, citizen reports and volunteers, each with a public source.",
     ctaMap: "Open the problem map",
     ctaBudget: "Where do local taxes go?",
     statsLabel: "Tracked data",
@@ -717,6 +784,49 @@ const en: typeof bg = {
       "Data is current as of June 2026. The 2025 budget is adopted, while the 2026 capital programme is provisional. Every record links to a public source.",
     noticeSources: "See the sources",
     noticeMethodology: "the methodology"
+  },
+  history: {
+    eyebrow: "The city's timeline",
+    title: "The history of Plovdiv",
+    lead:
+      "Over eight millennia on seven hills — from Thracian Eumolpias and Roman Trimontium, through Ottoman Filibe and the National Revival, to the Unification and the present day.",
+    timelineTitle: "Timeline",
+    timelineLead:
+      "Key moments in the city's history, arranged by era. Every entry links to a public source.",
+    erasTitle: "The eras of Plovdiv",
+    erasNav: "Eras",
+    landmarksTitle: "Landmarks",
+    landmarksLead:
+      "Monuments that tell the city's story — from the Thracian citadel to the Revival-era Old Town.",
+    mayorsTitle: "The mayors of Plovdiv",
+    mayorsLead:
+      "66 terms from the Liberation to today — a detailed chronology with biographies and public sources.",
+    mayorsCta: "See all mayors",
+    sourceNote:
+      "The historical data is summarised from public sources (Wikipedia and official pages). Check the original source before quoting a specific fact.",
+    statYears: "years of history",
+    statEras: "eras",
+    statLandmarks: "landmarks",
+    eraLabels: {
+      prehistory: "Prehistory",
+      thracian: "Thracian era",
+      roman: "Roman period",
+      medieval: "Middle Ages",
+      ottoman: "Ottoman period",
+      revival: "National Revival",
+      liberation: "Liberation & Unification",
+      modern: "Modern era"
+    },
+    eraBlurbs: {
+      prehistory: "Settlements on the hills as early as the 6th millennium BC.",
+      thracian: "Thracian Eumolpias and Philip II of Macedon's Philippopolis.",
+      roman: "Trimontium — a brilliant Roman city with a theatre and stadium.",
+      medieval: "Centuries of control alternating between Bulgaria and Byzantium.",
+      ottoman: "Five centuries as Filibe — a crossroads of the Balkans.",
+      revival: "The Bulgarian educational and church awakening.",
+      liberation: "Liberation, the capital of Eastern Rumelia and the Unification.",
+      modern: "The fair city and a European Capital of Culture."
+    }
   },
   budget: {
     eyebrow: "Where do local taxes go?",

@@ -1,50 +1,54 @@
 ---
 import HeroBackdrop from "@components/HeroBackdrop.astro";
-import StatusBadge from "@components/StatusBadge.astro";
 import Layout from "@layouts/Layout.astro";
-import { categoryColors, ui, type Lang } from "@i18n/ui";
+import { ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
-import { budgetItems, communityInitiatives, projects } from "@lib/data";
-import { categoryLabel } from "@lib/format";
+import { plovdivHistory, plovdivLandmarks, cityArchive, type HistoryEra } from "@lib/data";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
 
-const budgetSectors = budgetItems.filter((item) => item.year === 2025 && item.kind === "sector");
-const latestProjects = projects.slice(0, 4);
+const eraOrder: HistoryEra[] = [
+  "prehistory",
+  "thracian",
+  "roman",
+  "medieval",
+  "ottoman",
+  "revival",
+  "liberation",
+  "modern"
+];
 
-const cards = [
-  {
-    href: localizePath("/fix-map", lang),
-    eyebrow: t.home.cardMapEyebrow,
-    title: t.home.cardMapTitle,
-    text: t.home.cardMapText
-  },
-  {
-    href: localizePath("/budget", lang),
-    eyebrow: t.home.cardBudgetEyebrow,
-    title: t.home.cardBudgetTitle,
-    text: t.home.cardBudgetText
-  },
-  {
-    href: localizePath("/projects", lang),
-    eyebrow: t.home.cardProjectsEyebrow,
-    title: t.home.cardProjectsTitle,
-    text: t.home.cardProjectsText
-  },
-  {
-    href: localizePath("/community", lang),
-    eyebrow: t.home.cardCommunityEyebrow,
-    title: t.home.cardCommunityTitle,
-    text: t.home.cardCommunityText
-  },
-  {
-    href: localizePath("/mayors", lang),
-    eyebrow: t.home.cardMayorsEyebrow,
-    title: t.home.cardMayorsTitle,
-    text: t.home.cardMayorsText
-  }
+const mayorCount = cityArchive.filter((r) => r.kind === "mayor_term").length;
+
+const stats = [
+  { value: t.home.statYearsValue, label: t.home.statYears },
+  { value: String(eraOrder.length), label: t.home.statEras },
+  { value: String(mayorCount), label: t.home.statMayors },
+  { value: String(plovdivLandmarks.length), label: t.home.statLandmarks }
+];
+
+const featuredIds = [
+  "history-philip-philippopolis",
+  "history-roman-theatre",
+  "history-unification-1885",
+  "history-capital-of-culture-2019"
+];
+const featured = featuredIds
+  .map((id) => plovdivHistory.find((e) => e.id === id))
+  .filter((e): e is NonNullable<typeof e> => Boolean(e));
+
+const teaserLandmarkIds = ["landmark-nebet-tepe", "landmark-ancient-theatre", "landmark-old-town"];
+const teaserLandmarks = teaserLandmarkIds
+  .map((id) => plovdivLandmarks.find((l) => l.id === id))
+  .filter((l): l is NonNullable<typeof l> => Boolean(l));
+
+const civicCards = [
+  { href: localizePath("/budget", lang), eyebrow: t.home.cardBudgetEyebrow, title: t.home.cardBudgetTitle, text: t.home.cardBudgetText },
+  { href: localizePath("/projects", lang), eyebrow: t.home.cardProjectsEyebrow, title: t.home.cardProjectsTitle, text: t.home.cardProjectsText },
+  { href: localizePath("/fix-map", lang), eyebrow: t.home.cardMapEyebrow, title: t.home.cardMapTitle, text: t.home.cardMapText },
+  { href: localizePath("/community", lang), eyebrow: t.home.cardCommunityEyebrow, title: t.home.cardCommunityTitle, text: t.home.cardCommunityText }
 ];
 ---
 
@@ -56,16 +60,15 @@ const cards = [
       <h1>{t.site.name}</h1>
       <p class="lead">{t.home.lead}</p>
       <div class="actions">
-        <a class="button" href={localizePath("/fix-map", lang)}>
-          {t.home.ctaMap}<span class="arrow" aria-hidden="true">→</span>
+        <a class="button" href={localizePath("/history", lang)}>
+          {t.home.ctaHistory}<span class="arrow" aria-hidden="true">→</span>
         </a>
-        <a class="button secondary" href={localizePath("/budget", lang)}>{t.home.ctaBudget}</a>
+        <a class="button secondary" href={localizePath("/mayors", lang)}>{t.home.ctaMayors}</a>
       </div>
-      <div class="stat-row" aria-label={t.home.statsLabel}>
-        <div class="stat"><strong>{projects.length}</strong><span>{t.home.statProjects}</span></div>
-        <div class="stat"><strong>{t.home.statReportsValue}</strong><span>{t.home.statReports}</span></div>
-        <div class="stat"><strong>{communityInitiatives.length}</strong><span>{t.home.statCommunity}</span></div>
-        <div class="stat"><strong>{budgetSectors.length}</strong><span>{t.home.statBudget}</span></div>
+      <div class="stat-row" aria-label={t.history.title}>
+        {stats.map((s) => (
+          <div class="stat"><strong>{s.value}</strong><span>{s.label}</span></div>
+        ))}
       </div>
     </div>
   </section>
@@ -73,14 +76,14 @@ const cards = [
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <h2>{t.home.exploreTitle}</h2>
+        <h2>{t.history.erasTitle}</h2>
+        <a href={localizePath("/history", lang)}>{t.history.timelineTitle} →</a>
       </div>
-      <div class="grid grid-3">
-        {cards.map((card) => (
-          <a class="card card-link" href={card.href}>
-            <p class="eyebrow">{card.eyebrow}</p>
-            <h3>{card.title}</h3>
-            <p>{card.text}</p>
+      <div class="grid grid-3 era-grid">
+        {eraOrder.map((era) => (
+          <a class={`card card-link era-tile era-${era}`} href={`${localizePath("/history", lang)}#era-${era}`}>
+            <p class="eyebrow">{t.history.eraLabels[era]}</p>
+            <p>{t.history.eraBlurbs[era]}</p>
             <span class="arrow" aria-hidden="true">→</span>
           </a>
         ))}
@@ -89,44 +92,77 @@ const cards = [
   </section>
 
   <section class="section section-tint">
+    <div class="container">
+      <div class="section-head">
+        <h2>{t.home.featuredTitle}</h2>
+        <a href={localizePath("/history", lang)}>{t.home.viewAll} →</a>
+      </div>
+      <div class="grid grid-2">
+        {featured.map((e) => (
+          <a class="card card-link featured-moment" href={`${localizePath("/history", lang)}#era-${e.era}`}>
+            <p class="timeline-period">{field(e, "period", lang)}</p>
+            <h3>{field(e, "title", lang)}</h3>
+            <p>{field(e, "summary", lang)}</p>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container grid grid-2">
       <div>
         <div class="section-head">
-          <h2>{t.home.latestProjects}</h2>
-          <a href={localizePath("/projects", lang)}>{t.home.viewAll} →</a>
+          <h2>{t.history.landmarksTitle}</h2>
+          <a href={`${localizePath("/history", lang)}#landmarks`}>{t.home.viewAll} →</a>
         </div>
         <div class="list">
-          {latestProjects.map((project) => (
-            <article class="card project-card">
-              <header>
-                <div>
-                  <h3><a href={localizePath(`/projects/${project.id}`, lang)}>{field(project, "title", lang)}</a></h3>
-                  <p class="meta">
-                    <span class="cat-dot" style={`--dot:${categoryColors[project.category]}`}></span>
-                    {categoryLabel(project.category, lang)} · {project.budget.year}
-                  </p>
-                </div>
-                <StatusBadge status={project.status} type="project" lang={lang} />
-              </header>
-              <p>{field(project, "summary", lang)}</p>
+          {teaserLandmarks.map((lm) => (
+            <article class="card">
+              <p class="eyebrow">{field(lm, "era", lang)}</p>
+              <h3>{field(lm, "name", lang)}</h3>
+              <p>{field(lm, "summary", lang)}</p>
             </article>
           ))}
         </div>
       </div>
       <div>
         <div class="section-head">
-          <h2>{t.home.latestReports}</h2>
-          <a href={localizePath("/fix-map", lang)}>{t.home.viewAll} →</a>
+          <h2>{t.history.mayorsTitle}</h2>
+          <a href={localizePath("/mayors", lang)}>{t.home.viewAll} →</a>
         </div>
-        <div class="list">
-          <article class="card project-card">
-            <h3>{t.home.liveReportsTitle}</h3>
-            <p>{t.home.liveReportsText}</p>
-            <div class="actions" style="margin-top:12px">
-              <a class="button secondary" href={localizePath("/fix-map/report", lang)}>{t.fixMap.reportCta}</a>
-            </div>
-          </article>
+        <article class="card cta-card cta-card-stack">
+          <div>
+            <p class="eyebrow">{`1878 – ${new Date().getFullYear()}`}</p>
+            <p>{t.history.mayorsLead}</p>
+          </div>
+          <a class="button secondary" href={localizePath("/mayors", lang)}>
+            {t.history.mayorsCta}<span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{t.home.civicTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{t.home.civicLead}</p>
         </div>
+        <a href={localizePath("/overview", lang)}>{t.nav.overview} →</a>
+      </div>
+      <div class="grid grid-4">
+        {civicCards.map((card) => (
+          <a class="card card-link civic-card" href={card.href}>
+            <p class="eyebrow">{card.eyebrow}</p>
+            <h3>{card.title}</h3>
+            <p class="meta">{card.text}</p>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>

@@ -20,14 +20,13 @@ const pageDescription = description ?? t.site.tagline;
 const otherLang: Lang = lang === "bg" ? "en" : "bg";
 
 const navItems = [
-  { href: localizePath("/overview", lang), base: "/overview", label: t.nav.overview },
+  { href: localizePath("/history", lang), base: "/history", label: t.nav.history },
   { href: localizePath("/mayors", lang), base: "/mayors", label: t.nav.mayors },
-  { href: localizePath("/fix-map", lang), base: "/fix-map", label: t.nav.fixMap },
+  { href: localizePath("/archive", lang), base: "/archive", label: t.nav.archive },
   { href: localizePath("/budget", lang), base: "/budget", label: t.nav.budget },
   { href: localizePath("/projects", lang), base: "/projects", label: t.nav.projects },
-  { href: localizePath("/community", lang), base: "/community", label: t.nav.community },
-  { href: localizePath("/archive", lang), base: "/archive", label: t.nav.archive },
-  { href: localizePath("/data-sources", lang), base: "/data-sources", label: t.nav.sources }
+  { href: localizePath("/fix-map", lang), base: "/fix-map", label: t.nav.fixMap },
+  { href: localizePath("/community", lang), base: "/community", label: t.nav.community }
 ];
 
 function isActive(base: string): boolean {
@@ -42,12 +41,14 @@ const enHref = new URL(localizePath(path, "en"), site).href;
 const switchHref = localizePath(path, otherLang);
 
 const footerExplore = [
+  { href: localizePath("/history", lang), label: t.nav.history },
   { href: localizePath("/mayors", lang), label: t.nav.mayors },
-  { href: localizePath("/fix-map", lang), label: t.nav.fixMap },
+  { href: localizePath("/archive", lang), label: t.nav.archive },
+  { href: localizePath("/overview", lang), label: t.nav.overview },
   { href: localizePath("/budget", lang), label: t.nav.budget },
   { href: localizePath("/projects", lang), label: t.nav.projects },
-  { href: localizePath("/community", lang), label: t.footer.community },
-  { href: localizePath("/archive", lang), label: t.nav.archive }
+  { href: localizePath("/fix-map", lang), label: t.nav.fixMap },
+  { href: localizePath("/community", lang), label: t.footer.community }
 ];
 const footerAbout = [
   { href: localizePath("/data-sources", lang), label: t.footer.sources },
