@@ -19,18 +19,15 @@ const pageDescription = description ?? t.site.tagline;
 
 const otherLang: Lang = lang === "bg" ? "en" : "bg";
 
+// History-first primary nav (kept tight for usability); civic + reference
+// links live in the footer and the homepage "civic data" section.
 const navItems = [
   { href: localizePath("/history", lang), base: "/history", label: t.nav.history },
   { href: localizePath("/mayors", lang), base: "/mayors", label: t.nav.mayors },
   { href: localizePath("/people", lang), base: "/people", label: t.nav.people },
   { href: localizePath("/places", lang), base: "/places", label: t.nav.places },
   { href: localizePath("/stories", lang), base: "/stories", label: t.nav.stories },
-  { href: localizePath("/education", lang), base: "/education", label: t.nav.education },
-  { href: localizePath("/archive", lang), base: "/archive", label: t.nav.archive },
-  { href: localizePath("/budget", lang), base: "/budget", label: t.nav.budget },
-  { href: localizePath("/projects", lang), base: "/projects", label: t.nav.projects },
-  { href: localizePath("/fix-map", lang), base: "/fix-map", label: t.nav.fixMap },
-  { href: localizePath("/community", lang), base: "/community", label: t.nav.community }
+  { href: localizePath("/education", lang), base: "/education", label: t.nav.education }
 ];
 
 function isActive(base: string): boolean {
@@ -78,8 +75,15 @@ const footerAbout = [
     <link rel="alternate" hreflang="x-default" href={bgHref} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#15657f" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0e1316" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f2ead8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16120c" media="(prefers-color-scheme: dark)" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"
+    />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={t.site.name} />

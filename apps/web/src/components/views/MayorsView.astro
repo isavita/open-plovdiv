@@ -110,6 +110,34 @@ const familyArcs = familyPairs
 
 const axisTicks: number[] = [];
 for (let y = Math.ceil(firstYear / 20) * 20; y <= currentYear; y += 20) axisTicks.push(y);
+
+// --- birthplaces of mayors (from Wikidata: place of birth + coordinates) ---
+const birthPersons = new Map<string, (typeof mayorTerms)[number]>();
+for (const term of mayorTerms) {
+  if (term.birth_lat == null || term.birth_lng == null || !term.more_url) continue;
+  if (!birthPersons.has(term.more_url)) birthPersons.set(term.more_url, term);
+}
+const birthTownsMap = new Map<
+  string,
+  { lat: number; lng: number; name: string; country: string; people: string[] }
+>();
+for (const p of birthPersons.values()) {
+  const key = p.birth_wikidata ?? `${p.birth_lat},${p.birth_lng}`;
+  if (!birthTownsMap.has(key)) {
+    birthTownsMap.set(key, {
+      lat: p.birth_lat!,
+      lng: p.birth_lng!,
+      name: field(p, "birthplace", lang),
+      country: field(p, "birth_country", lang),
+      people: []
+    });
+  }
+  birthTownsMap.get(key)!.people.push(field(p, "actor", lang));
+}
+const birthTowns = [...birthTownsMap.values()].sort((a, b) => b.people.length - a.people.length);
+const maxBirthCount = Math.max(1, ...birthTowns.map((tw) => tw.people.length));
+const birthCountries = new Set(birthTowns.map((tw) => tw.country).filter(Boolean));
+const birthConfig = { markers: birthTowns, mayorsLabel: t.mayors.birthPopupMayors };
 ---
 
 <Layout lang={lang} path="/mayors" title={t.mayors.title} description={t.mayors.lead}>
@@ -217,6 +245,46 @@ for (let y = Math.ceil(firstYear / 20) * 20; y <= currentYear; y += 20) axisTick
       </div>
     </div>
   </section>
+
+  {birthTowns.length > 0 && (
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>{t.mayors.birthTitle}</h2>
+            <p class="meta" style="margin-top:8px;max-width:74ch">{t.mayors.birthLead}</p>
+          </div>
+          <div class="pill-row">
+            <span class="badge no-dot">{`${birthTowns.length} ${t.mayors.birthStatTowns}`}</span>
+            <span class="badge no-dot">{`${birthCountries.size} ${t.mayors.birthStatCountries}`}</span>
+          </div>
+        </div>
+
+        <div class="grid grid-2 birth-layout">
+          <div class="card map-card" style="padding:0;overflow:hidden">
+            <div id="mayor-birth-map" class="birth-map"></div>
+          </div>
+          <div class="card">
+            <h3>{t.mayors.birthByTown}</h3>
+            <ul class="birth-bars">
+              {birthTowns.map((town) => (
+                <li>
+                  <span class="birth-town" title={town.name}>{town.name}</span>
+                  <span class="birth-bar">
+                    <span
+                      class="birth-bar-fill"
+                      style={`width:${Math.round((town.people.length / maxBirthCount) * 100)}%`}
+                    ></span>
+                  </span>
+                  <span class="birth-count">{town.people.length}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="section section-tint">
     <div class="container">
@@ -464,5 +532,58 @@ for (let y = Math.ceil(firstYear / 20) * 20; y <= currentYear; y += 20) axisTick
     century.addEventListener("change", applyFilters);
     status.addEventListener("change", applyFilters);
     reset.addEventListener("click", resetFilters);
+  </script>
+
+  <script type="application/json" id="mayor-birth-config" set:html={JSON.stringify(birthConfig)}></script>
+  <script>
+    import L from "leaflet";
+    import "leaflet/dist/leaflet.css";
+
+    const cfg = JSON.parse(document.getElementById("mayor-birth-config")?.textContent ?? "{}");
+    const el = document.getElementById("mayor-birth-map");
+    const markers = (cfg.markers ?? []) as Array<{
+      lat: number;
+      lng: number;
+      name: string;
+      country: string;
+      people: string[];
+    }>;
+
+    function esc(value: string): string {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    if (el && markers.length) {
+      const map = L.map(el, { scrollWheelZoom: false }).setView([42.4, 24.4], 7);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+
+      const maxCount = Math.max(1, ...markers.map((m) => m.people.length));
+      const points: [number, number][] = [];
+      for (const m of markers) {
+        const radius = 7 + (m.people.length / maxCount) * 15;
+        const names = m.people.map((n) => `<li>${esc(n)}</li>`).join("");
+        L.circleMarker([m.lat, m.lng], {
+          radius,
+          color: "#b4632a",
+          weight: 2,
+          fillColor: "#b4632a",
+          fillOpacity: 0.45
+        })
+          .addTo(map)
+          .bindPopup(
+            `<strong>${esc(m.name)}</strong>${m.country ? ` · ${esc(m.country)}` : ""}` +
+              `<br><span class="meta">${esc(cfg.mayorsLabel)} (${m.people.length})</span>` +
+              `<ul style="margin:6px 0 0;padding-left:18px">${names}</ul>`
+          );
+        points.push([m.lat, m.lng]);
+      }
+      if (points.length > 1) map.fitBounds(points, { padding: [32, 32] });
+    }
   </script>
 </Layout>

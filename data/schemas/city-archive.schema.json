@@ -111,6 +111,13 @@
     },
     "fate_note_bg": { "type": "string", "minLength": 5 },
     "fate_note_en": { "type": "string", "minLength": 5 },
+    "birthplace_bg": { "type": "string", "minLength": 2 },
+    "birthplace_en": { "type": "string", "minLength": 2 },
+    "birth_lat": { "type": "number", "minimum": -90, "maximum": 90 },
+    "birth_lng": { "type": "number", "minimum": -180, "maximum": 180 },
+    "birth_country_bg": { "type": "string", "minLength": 2 },
+    "birth_country_en": { "type": "string", "minLength": 2 },
+    "birth_wikidata": { "type": "string", "pattern": "^Q[0-9]+$" },
     "source_document": {
       "type": "object",
       "additionalProperties": false,

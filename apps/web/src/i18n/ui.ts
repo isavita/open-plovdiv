@@ -349,6 +349,13 @@ const bg = {
     },
     portraitNote: "Историческите портрети са в обществено достояние.",
     portraitAlt: (name: string) => `Портрет на ${name}`,
+    birthTitle: "Къде са родени кметовете",
+    birthLead:
+      "Родните места на проучените кметове, нанесени на картата. Щракнете върху точка, за да видите имената.",
+    birthByTown: "Родни места по брой кметове",
+    birthStatTowns: "населени места",
+    birthStatCountries: "държави",
+    birthPopupMayors: "Кметове",
     prevTerm: "Предишен",
     nextTerm: "Следващ"
   },
@@ -1034,6 +1041,13 @@ const en: typeof bg = {
     },
     portraitNote: "The historical portraits are in the public domain.",
     portraitAlt: (name: string) => `Portrait of ${name}`,
+    birthTitle: "Where the mayors were born",
+    birthLead:
+      "The birthplaces of the documented mayors, mapped. Click a point to see the names.",
+    birthByTown: "Birthplaces by number of mayors",
+    birthStatTowns: "birth towns",
+    birthStatCountries: "countries",
+    birthPopupMayors: "Mayors",
     prevTerm: "Previous",
     nextTerm: "Next"
   },

@@ -137,6 +137,13 @@ export type CityArchiveRecord = {
   fate?: "killed" | "executed" | "assassinated" | "died_in_office";
   fate_note_bg?: string;
   fate_note_en?: string;
+  birthplace_bg?: string;
+  birthplace_en?: string;
+  birth_lat?: number;
+  birth_lng?: number;
+  birth_country_bg?: string;
+  birth_country_en?: string;
+  birth_wikidata?: string;
   source_document: Source;
   data_quality: string;
 };

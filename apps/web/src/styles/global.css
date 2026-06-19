@@ -5,23 +5,23 @@
 
 :root {
   /* Brand + neutrals (light) */
-  --bg: #f4f2ec;
-  --bg-tint: #eceae2;
-  --surface: #ffffff;
-  --surface-2: #f3f1ea;
-  --surface-3: #ece9df;
-  --ink: #1c2225;
-  --ink-2: #3c4348;
-  --muted: #555e64;
-  --line: #e0dccf;
-  --line-strong: #cdc8b8;
+  --bg: #f2ead8;
+  --bg-tint: #ebe0ca;
+  --surface: #fdf8ec;
+  --surface-2: #f5edd9;
+  --surface-3: #ece1c9;
+  --ink: #2a2318;
+  --ink-2: #4a4030;
+  --muted: #6a5f48;
+  --line: #e3d7bc;
+  --line-strong: #cdbd98;
 
   --brand: #15657f;
   --brand-strong: #0f4f64;
   --brand-ink: #ffffff;
-  --brand-soft: #e3eef2;
+  --brand-soft: #dfeaef;
   --accent: #b4632a;
-  --accent-soft: #f3e6da;
+  --accent-soft: #f0e1cb;
 
   /* Status palette */
   --badge-neutral-bg: #eceae1;
@@ -36,14 +36,14 @@
   --notice-fg: #79551a;
 
   --ring: 0 0 0 3px rgb(21 101 127 / 35%);
-  --shadow-sm: 0 1px 2px rgb(28 34 37 / 6%), 0 1px 1px rgb(28 34 37 / 4%);
-  --shadow: 0 6px 22px rgb(28 34 37 / 8%);
-  --shadow-lg: 0 22px 50px rgb(28 34 37 / 14%);
+  --shadow-sm: 0 1px 2px rgb(74 56 30 / 8%), 0 1px 1px rgb(74 56 30 / 5%);
+  --shadow: 0 6px 22px rgb(74 56 30 / 10%);
+  --shadow-lg: 0 22px 50px rgb(74 56 30 / 16%);
 
-  --r-xs: 7px;
-  --r-sm: 10px;
-  --r: 14px;
-  --r-lg: 20px;
+  --r-xs: 5px;
+  --r-sm: 8px;
+  --r: 11px;
+  --r-lg: 15px;
   --r-pill: 999px;
 
   --maxw: 1180px;
@@ -51,29 +51,29 @@
 
   --font-ui: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, sans-serif;
-  --font-display: Georgia, "Times New Roman", serif;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
 
   color-scheme: light;
 }
 
 [data-theme="dark"] {
-  --bg: #0e1316;
-  --bg-tint: #121a1f;
-  --surface: #161d22;
-  --surface-2: #1b242b;
-  --surface-3: #212d35;
-  --ink: #e9ecee;
-  --ink-2: #c2cace;
-  --muted: #94a0a7;
-  --line: #28333b;
-  --line-strong: #38454e;
+  --bg: #16120c;
+  --bg-tint: #1d1710;
+  --surface: #201a12;
+  --surface-2: #281f16;
+  --surface-3: #31271b;
+  --ink: #efe6d4;
+  --ink-2: #cabfa6;
+  --muted: #9a8e76;
+  --line: #342a1e;
+  --line-strong: #483c2b;
 
   --brand: #57aecb;
   --brand-strong: #7cc3da;
   --brand-ink: #06181f;
   --brand-soft: #15303a;
-  --accent: #e08a4f;
-  --accent-soft: #2c2018;
+  --accent: #e0935a;
+  --accent-soft: #2e2114;
 
   --badge-neutral-bg: #232c2e;
   --badge-neutral-fg: #b7c0bd;
@@ -96,22 +96,22 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0e1316;
-    --bg-tint: #121a1f;
-    --surface: #161d22;
-    --surface-2: #1b242b;
-    --surface-3: #212d35;
-    --ink: #e9ecee;
-    --ink-2: #c2cace;
-    --muted: #94a0a7;
-    --line: #28333b;
-    --line-strong: #38454e;
+    --bg: #16120c;
+    --bg-tint: #1d1710;
+    --surface: #201a12;
+    --surface-2: #281f16;
+    --surface-3: #31271b;
+    --ink: #efe6d4;
+    --ink-2: #cabfa6;
+    --muted: #9a8e76;
+    --line: #342a1e;
+    --line-strong: #483c2b;
     --brand: #57aecb;
     --brand-strong: #7cc3da;
     --brand-ink: #06181f;
     --brand-soft: #15303a;
-    --accent: #e08a4f;
-    --accent-soft: #2c2018;
+    --accent: #e0935a;
+    --accent-soft: #2e2114;
     --badge-neutral-bg: #232c2e;
     --badge-neutral-fg: #b7c0bd;
     --badge-ok-bg: #14352a;
@@ -4131,4 +4131,104 @@ code {
   .education-quiz details {
     break-inside: avoid;
   }
+}
+
+/* ---- Mayor birthplaces map + bars --------------------------------------- */
+.birth-map {
+  height: 440px;
+  width: 100%;
+}
+.birth-layout {
+  align-items: stretch;
+}
+.birth-bars {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.birth-bars li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2fr auto;
+  gap: 10px;
+  align-items: center;
+}
+.birth-town {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.birth-bar {
+  background: var(--surface-3);
+  border-radius: 999px;
+  height: 9px;
+  overflow: hidden;
+}
+.birth-bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 999px;
+}
+.birth-count {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  font-size: 0.85rem;
+  min-width: 1.6em;
+  text-align: right;
+}
+
+/* ---- Heritage editorial detailing --------------------------------------- */
+.section-head {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+}
+.hero .eyebrow,
+.page-head .eyebrow {
+  letter-spacing: 0.14em;
+}
+.hero h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 20px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Stat-card grid (People / Places / Stories / Education / Editorial views) */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: clamp(12px, 2vw, 18px);
+  margin: 0;
+  padding: 0;
+}
+.stat-card {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 5px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+}
+.stat-card dt {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.stat-card dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 600;
+  color: var(--brand);
+  line-height: 1;
 }
