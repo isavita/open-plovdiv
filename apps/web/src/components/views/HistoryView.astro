@@ -2,8 +2,20 @@
 import Layout from "@layouts/Layout.astro";
 import HeroBackdrop from "@components/HeroBackdrop.astro";
 import { ui, type Lang } from "@i18n/ui";
-import { field, localizePath } from "@i18n/utils";
-import { plovdivHistory, plovdivLandmarks, cityArchive, type HistoryEra } from "@lib/data";
+import { localizePath } from "@i18n/utils";
+import {
+  historyEditorialReview,
+  historyKnowledgeEvents,
+  historyKnowledgeIndex,
+  historyKnowledgeOrganizations,
+  historyKnowledgePeople,
+  historyKnowledgePlaces,
+  historyKnowledgeSources,
+  historicalArchiveItems,
+  thenNowPairs,
+  type HistoryEra,
+  type KnowledgeEvent
+} from "@lib/data";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -20,16 +32,611 @@ const eraOrder: HistoryEra[] = [
   "modern"
 ];
 
-const entries = [...plovdivHistory].sort((a, b) => a.year - b.year);
+const entries = [...historyKnowledgeEvents].sort(
+  (a, b) =>
+    a.date.year - b.date.year ||
+    (a.date.year_end ?? a.date.year) - (b.date.year_end ?? b.date.year) ||
+    a.id.localeCompare(b.id)
+);
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
-const mayorCount = cityArchive.filter((r) => r.kind === "mayor_term").length;
+const mayorEvents = entries.filter((event) => event.category === "mayor_term");
+const signedOffCount = historyEditorialReview.summary.signed_off_records;
+const totalEditorialRecords = historyEditorialReview.summary.total_tracked_records;
 
 const stats = [
   { value: t.home.statYearsValue, label: t.history.statYears },
-  { value: String(erasPresent.length), label: t.history.statEras },
-  { value: String(plovdivLandmarks.length), label: t.history.statLandmarks },
-  { value: String(mayorCount), label: t.home.statMayors }
+  { value: String(historyKnowledgeEvents.length), label: lang === "bg" ? "събития" : "events" },
+  { value: String(historyKnowledgePeople.length), label: lang === "bg" ? "хора" : "people" },
+  { value: String(historyKnowledgeSources.length), label: lang === "bg" ? "източника" : "sources" }
 ];
+
+const labels =
+  lang === "bg"
+    ? {
+        coverageTitle: "Покритие на историческата база",
+        coverageLead:
+          "Нормализираната база вече свързва събития, хора, места, организации и източници. Броят по-долу показва докъде е стигнало съдържанието спрямо редакторските цели.",
+        events: "Събития",
+        people: "Хора",
+        places: "Места",
+        placeImages: "Места със снимки",
+        sources: "Източници",
+        contribute: "Изпрати снимка или спомен",
+        editorial: "Редакторско одобрение",
+        records: "записа",
+        of: "от",
+        timelineTitle: "Дълбока хронология",
+        timelineLead:
+          "Датирани записи от праисторията до днес, включително 66 кметски мандата и градски архивни събития. Всеки запис има източник и машинно проверени връзки.",
+        search: "Търсене",
+        searchPlaceholder: "име, място, събитие…",
+        era: "Епоха",
+        category: "Тип",
+        theme: "Тема",
+        person: "Личност",
+        place: "Място",
+        linked: "Връзки",
+        allEras: "Всички епохи",
+        allCategories: "Всички типове",
+        allThemes: "Всички теми",
+        allPeople: "Всички личности",
+        allPlaces: "Всички места",
+        allLinks: "Всички записи",
+        withPeople: "с хора",
+        withPlaces: "с места",
+        withOrganizations: "с организации",
+        visible: "Видими",
+        reset: "Изчисти филтрите",
+        noResults: "Няма записи за тези филтри.",
+        onThisDayTitle: "На този ден",
+        onThisDayLead:
+          "Събития с точна дата от нормализираната хронология. Записите без проверен ден/месец остават извън този изглед.",
+        today: "Днес",
+        noOnThisDay: "Засега няма запис с точна дата за този ден.",
+        exactDateCount: "Записи с точна дата",
+        source: "Източник",
+        sourcePlural: "Източници",
+        conflictNote: "Бележка за конфликт",
+        needsReview: "чака редакторски преглед",
+        mapTitle: "Историческа карта",
+        mapLead:
+          "Първите места в знанието са геореферирани с приблизителни координати и отделен източник за картовия контекст.",
+        mapLayer: "Слой по епоха",
+        allMapEras: "Всички епохи",
+        mapRoutes: "Тематични маршрути",
+        noRoute: "Без маршрут",
+        visiblePlaces: "Видими места",
+        mapArchiveLayer: "Архивен слой",
+        noArchiveOverlay: "Без архив",
+        archiveOverlayMaps: "Стари карти",
+        archiveOverlayAll: "Всички архиви",
+        archiveOverlayPhotos: "Снимки и картички",
+        archiveOverlayDocuments: "Документи",
+        visibleArchiveItems: "архивни маркера",
+        archiveOverlayNote: "Слоят показва геореферирани архивни записи. Старите карти се наслагват с валидиран приблизителен обхват; точна контролно-точкова ректификация предстои.",
+        routeStops: "спирки",
+        routeAncientTitle: "Античен Филипопол",
+        routeAncientLead:
+          "Кратък маршрут през римските и късноантичните обекти около Трихълмието.",
+        routeRevivalTitle: "Възрожденски Стар град",
+        routeRevivalLead:
+          "Пешеходна нишка през къщи, църкви и училищни места от Възраждането.",
+        routeHillsTitle: "Тепетата",
+        routeHillsLead:
+          "Географски маршрут през хълмовете, които държат ранната история и градската памет.",
+        openPlaces: "Всички места",
+        selectPlace: "Избрано място",
+        coordinates: "Координати",
+        built: "Дата/строеж",
+        architect: "Архитект",
+        builder: "Строител",
+        creator: "Архитект/строител",
+        archiveTitle: "Георефериран архив и тогава/сега",
+        archiveLead:
+          "Началният архивен слой свързва исторически карти, снимки и картички с нормализираните места. Всеки елемент пази Commons източник, лиценз и метод на георефериране.",
+        georeferencedItems: "геореферирани архивни обекта",
+        thenNowPairs: "тогава/сега двойки",
+        archiveDate: "Дата",
+        archivePlace: "Място",
+        georeference: "Георефериране",
+        license: "Лиценз",
+        thenNowTitle: "Тогава/сега сравнения",
+        thenNowLead:
+          "Плъзгачите сравняват архивния образ със съвременна свободно лицензирана снимка на същото място или най-близкия проверим градски контекст.",
+        thenLabel: "Тогава",
+        nowLabel: "Сега",
+        peopleTitle: "Връзки между хората",
+        peopleLead:
+          "Пълният граф вече обхваща всички нормализирани личности, а кметската наследственост остава отделен source-backed слой в мрежата.",
+        repeatTerms: "повторни мандати",
+        successionLinks: "връзки наследяване",
+        openMayors: "Пълният граф на хората",
+        dataTitle: "Отворени данни и API",
+        dataLead:
+          "Петте типа исторически обекти се публикуват като JSON и CSV, а статичните API маршрути връщат същите валидирани записи.",
+        endpoint: "Маршрут",
+        download: "Сваляне",
+        jsonData: "JSON данни",
+        csvData: "CSV таблици",
+        reviewDashboard: "Опашка за редакторски преглед"
+      }
+    : {
+        coverageTitle: "Historical Knowledge Coverage",
+        coverageLead:
+          "The normalized base now connects events, people, places, organizations and sources. The counts below show current content against the editorial targets.",
+        events: "Events",
+        people: "People",
+        places: "Places",
+        placeImages: "Places with images",
+        sources: "Sources",
+        contribute: "Submit a photo or memory",
+        editorial: "Editorial sign-off",
+        records: "records",
+        of: "of",
+        timelineTitle: "Deep Timeline",
+        timelineLead:
+          "Dated records from prehistory to today, including 66 mayoral terms and city-archive events. Every record has a source and machine-checked links.",
+        search: "Search",
+        searchPlaceholder: "name, place, event...",
+        era: "Era",
+        category: "Type",
+        theme: "Theme",
+        person: "Person",
+        place: "Place",
+        linked: "Links",
+        allEras: "All eras",
+        allCategories: "All types",
+        allThemes: "All themes",
+        allPeople: "All people",
+        allPlaces: "All places",
+        allLinks: "All records",
+        withPeople: "with people",
+        withPlaces: "with places",
+        withOrganizations: "with organizations",
+        visible: "Visible",
+        reset: "Clear filters",
+        noResults: "No records match these filters.",
+        onThisDayTitle: "On this day",
+        onThisDayLead:
+          "Events with an exact date from the normalized timeline. Records without a verified day/month stay out of this view.",
+        today: "Today",
+        noOnThisDay: "No exact-date record for this day yet.",
+        exactDateCount: "Exact-date records",
+        source: "Source",
+        sourcePlural: "Sources",
+        conflictNote: "Conflict note",
+        needsReview: "awaiting editorial review",
+        mapTitle: "Historical Map",
+        mapLead:
+          "The first knowledge-base places are georeferenced with approximate coordinates and a separate source for map context.",
+        mapLayer: "Era layer",
+        allMapEras: "All eras",
+        mapRoutes: "Themed walking routes",
+        noRoute: "No route",
+        visiblePlaces: "Visible places",
+        mapArchiveLayer: "Archive layer",
+        noArchiveOverlay: "No archive",
+        archiveOverlayMaps: "Old maps",
+        archiveOverlayAll: "All archive media",
+        archiveOverlayPhotos: "Photos and postcards",
+        archiveOverlayDocuments: "Documents",
+        visibleArchiveItems: "archive markers",
+        archiveOverlayNote: "The layer shows georeferenced archive records. Old maps use a validated approximate image extent; precision control-point rectification is still pending.",
+        routeStops: "stops",
+        routeAncientTitle: "Ancient Philippopolis",
+        routeAncientLead:
+          "A short route through Roman and Late Antique sites around the Three Hills.",
+        routeRevivalTitle: "Revival Old Town",
+        routeRevivalLead:
+          "A walking thread through houses, churches and school-related sites from the National Revival.",
+        routeHillsTitle: "The hills",
+        routeHillsLead:
+          "A geographic route through the hills that hold early history and urban memory.",
+        openPlaces: "All places",
+        selectPlace: "Selected place",
+        coordinates: "Coordinates",
+        built: "Built/date",
+        architect: "Architect",
+        builder: "Builder",
+        creator: "Architect/builder",
+        archiveTitle: "Georeferenced Archive and Then/Now",
+        archiveLead:
+          "The starter archive layer links historical maps, photographs and postcards to normalized places. Every item keeps its Commons source, license and georeferencing method.",
+        georeferencedItems: "georeferenced archive items",
+        thenNowPairs: "then/now pairs",
+        archiveDate: "Date",
+        archivePlace: "Place",
+        georeference: "Georeference",
+        license: "License",
+        thenNowTitle: "Then/now comparisons",
+        thenNowLead:
+          "The sliders compare an archive image with a modern open-licensed photo of the same place or the nearest verifiable urban context.",
+        thenLabel: "Then",
+        nowLabel: "Now",
+        peopleTitle: "People Connections",
+        peopleLead:
+          "The full graph now includes every normalized person, while mayoral succession remains a separate source-backed layer in the network.",
+        repeatTerms: "repeat terms",
+        successionLinks: "succession links",
+        openMayors: "Full people graph",
+        dataTitle: "Open Data and API",
+        dataLead:
+          "The five historical object types are published as JSON and CSV, and static API routes return the same validated records.",
+        endpoint: "Endpoint",
+        download: "Download",
+        jsonData: "JSON data",
+        csvData: "CSV tables",
+        reviewDashboard: "Editorial review queue"
+      };
+
+const dataResourceLabels: Record<string, string> =
+  lang === "bg"
+    ? {
+        index: "Индекс",
+        events: "Събития",
+        people: "Хора",
+        person_relationships: "Връзки между личности",
+        places: "Места",
+        organizations: "Организации",
+        sources: "Източници",
+        archive_items: "Архивни обекти",
+        then_now_pairs: "Двойки тогава/сега",
+        primary_documents: "Първични документи",
+        story_longreads: "Дълги разкази",
+        education_resources: "Образователни ресурси",
+        editorial_signoffs: "Редакторски подписи",
+        editorial_review: "Редакторски преглед"
+      }
+    : {
+        index: "Index",
+        events: "Events",
+        people: "People",
+        person_relationships: "Person relationships",
+        places: "Places",
+        organizations: "Organizations",
+        sources: "Sources",
+        archive_items: "Archive items",
+        then_now_pairs: "Then/now pairs",
+        primary_documents: "Primary documents",
+        story_longreads: "Story longreads",
+        education_resources: "Education resources",
+        editorial_signoffs: "Editorial sign-offs",
+        editorial_review: "Editorial review"
+      };
+
+function dataResourceLabel(key: string) {
+  return dataResourceLabels[key] ?? key.replaceAll("_", " ");
+}
+
+function fileNameFromHref(href: string) {
+  return href.split("/").filter(Boolean).at(-1) ?? href;
+}
+
+const endpointRows = Object.entries(historyKnowledgeIndex.endpoints).map(([key, href]) => ({
+  key,
+  href,
+  label: dataResourceLabel(key)
+}));
+const downloadRows = Object.entries(historyKnowledgeIndex.downloads)
+  .filter(([key]) => key.endsWith("_json") || key.endsWith("_csv"))
+  .map(([key, href]) => {
+    const format = key.endsWith("_csv") ? "CSV" : "JSON";
+    const resourceKey = key.replace(/_(json|csv)$/u, "");
+    return {
+      key,
+      href,
+      format,
+      label: dataResourceLabel(resourceKey),
+      fileName: fileNameFromHref(href)
+    };
+  });
+
+const categoryLabels: Record<string, { bg: string; en: string }> = {
+  historical_timeline: { bg: "Хронология", en: "Timeline" },
+  mayor_term: { bg: "Кметски мандат", en: "Mayoral term" },
+  historical_event: { bg: "Историческо събитие", en: "Historical event" },
+  cultural_programme: { bg: "Културна програма", en: "Cultural programme" },
+  historical_finance: { bg: "Исторически финанси", en: "Historical finance" },
+  municipal_programme: { bg: "Общинска програма", en: "Municipal programme" },
+  governance_change: { bg: "Управленска промяна", en: "Governance change" },
+  archive_source: { bg: "Архивен източник", en: "Archive source" }
+};
+
+function labelCategory(category: string) {
+  const known = categoryLabels[category];
+  if (known) return known[lang];
+  return category.replaceAll("_", " ");
+}
+
+function labelTheme(theme: string) {
+  if (theme in t.history.eraLabels) return t.history.eraLabels[theme as HistoryEra];
+  return labelCategory(theme).replaceAll("_", " ");
+}
+
+function localized(record: Record<string, any>, base: string): string {
+  return String(record[`${base}_${lang}`] ?? record[`${base}_bg`] ?? "");
+}
+
+function dateLabel(event: KnowledgeEvent) {
+  return localized(event.date, "display");
+}
+
+function placeFacts(place: Record<string, any>) {
+  const hasNamedCreator = Boolean(localized(place, "architect") || localized(place, "builder"));
+  return [
+    localized(place.date_context, "display") ? { label: labels.built, value: localized(place.date_context, "display") } : null,
+    localized(place, "architect") ? { label: labels.architect, value: localized(place, "architect") } : null,
+    localized(place, "builder") ? { label: labels.builder, value: localized(place, "builder") } : null,
+    !hasNamedCreator && localized(place.creator_context, "display")
+      ? { label: labels.creator, value: localized(place.creator_context, "display") }
+      : null
+  ].filter(Boolean) as Array<{ label: string; value: string }>;
+}
+
+const categories = [...new Set(entries.map((event) => event.category))].sort((a, b) =>
+  labelCategory(a).localeCompare(labelCategory(b), lang === "bg" ? "bg-BG" : "en-GB")
+);
+const themeTags = [...new Set(entries.flatMap((event) => event.theme_tags))].sort((a, b) =>
+  labelTheme(a).localeCompare(labelTheme(b), lang === "bg" ? "bg-BG" : "en-GB")
+);
+const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
+const peopleById = new Map(historyKnowledgePeople.map((person) => [person.id, person]));
+const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
+const orgsById = new Map(historyKnowledgeOrganizations.map((org) => [org.id, org]));
+const mapPlaces = historyKnowledgePlaces.filter((place) => place.coordinates);
+const mapPlaceIds = new Set(mapPlaces.map((place) => place.id));
+const mapErasPresent = eraOrder.filter((era) => mapPlaces.some((place) => place.era === era));
+const mapArchiveItems = historicalArchiveItems
+  .filter((item) => item.coordinates)
+  .sort((a, b) => a.date_year - b.date_year || a.id.localeCompare(b.id));
+const mapRoutes = [
+  {
+    id: "ancient-philippopolis",
+    title: labels.routeAncientTitle,
+    summary: labels.routeAncientLead,
+    color: "#a23b2d",
+    stop_ids: [
+      "place-nebet-tepe",
+      "place-ancient-theatre",
+      "place-ancient-stadium",
+      "place-eastern-gate-of-philippopolis-q20500154",
+      "place-odeon-of-philippopolis-q26046109",
+      "place-bishop-s-basilica-of-philippopolis-q20500169"
+    ].filter((id) => mapPlaceIds.has(id))
+  },
+  {
+    id: "revival-old-town",
+    title: labels.routeRevivalTitle,
+    summary: labels.routeRevivalLead,
+    color: "#b4632a",
+    stop_ids: [
+      "place-old-town",
+      "place-holy-mother-of-god",
+      "place-stoyan-chomakov-house",
+      "place-lamartine-house",
+      "place-house-of-hristo-g-danov-q29961385",
+      "place-hindliyan-house-q19810343"
+    ].filter((id) => mapPlaceIds.has(id))
+  },
+  {
+    id: "seven-hills",
+    title: labels.routeHillsTitle,
+    summary: labels.routeHillsLead,
+    color: "#7d8471",
+    stop_ids: [
+      "place-nebet-tepe",
+      "place-dzhambaz-hill-in-plovdiv-q12277962",
+      "place-taksim-hill-in-plovdiv-q12295975",
+      "place-sahat-hill-in-plovdiv-q12293012",
+      "place-bunardzhik-q12274023",
+      "place-dzhendem-tepe-q5319673",
+      "place-markovo-tepe-q6771348"
+    ].filter((id) => mapPlaceIds.has(id))
+  }
+].filter((route) => route.stop_ids.length >= 2);
+const timelinePeople = [...new Set(entries.flatMap((event) => event.person_ids))]
+  .map((id) => peopleById.get(id))
+  .filter(Boolean)
+  .sort((a, b) =>
+    localized(a as Record<string, any>, "name").localeCompare(
+      localized(b as Record<string, any>, "name"),
+      lang === "bg" ? "bg-BG" : "en-GB"
+    )
+  )
+  .map((person) => ({
+    id: person!.id,
+    name: localized(person as Record<string, any>, "name")
+  }));
+const timelinePlaces = [...new Set(entries.flatMap((event) => event.place_ids))]
+  .map((id) => placesById.get(id))
+  .filter(Boolean)
+  .sort((a, b) =>
+    localized(a as Record<string, any>, "name").localeCompare(
+      localized(b as Record<string, any>, "name"),
+      lang === "bg" ? "bg-BG" : "en-GB"
+    )
+  )
+  .map((place) => ({
+    id: place!.id,
+    name: localized(place as Record<string, any>, "name")
+  }));
+
+const clientCategoryLabels = Object.fromEntries(categories.map((category) => [category, labelCategory(category)]));
+const clientThemeLabels = Object.fromEntries(themeTags.map((theme) => [theme, labelTheme(theme)]));
+
+const coverageRows = [
+  { label: labels.events, count: historyKnowledgeIndex.counts.events, target: historyKnowledgeIndex.targets.events },
+  {
+    label: labels.exactDateCount,
+    count: historyKnowledgeIndex.counts.exact_date_events ?? 0,
+    target: historyKnowledgeIndex.targets.exact_date_events ?? 60
+  },
+  { label: labels.people, count: historyKnowledgeIndex.counts.people, target: historyKnowledgeIndex.targets.people },
+  { label: labels.places, count: historyKnowledgeIndex.counts.places, target: historyKnowledgeIndex.targets.places },
+  {
+    label: labels.placeImages,
+    count: historyKnowledgeIndex.counts.places_with_media ?? 0,
+    target: historyKnowledgeIndex.targets.places_with_media ?? historyKnowledgeIndex.targets.places
+  },
+  {
+    label: labels.georeferencedItems,
+    count: historyKnowledgeIndex.counts.georeferenced_archive_items ?? historicalArchiveItems.length,
+    target: historyKnowledgeIndex.targets.georeferenced_archive_items
+  },
+  {
+    label: labels.thenNowPairs,
+    count: historyKnowledgeIndex.counts.then_now_pairs ?? thenNowPairs.length,
+    target: historyKnowledgeIndex.targets.then_now_pairs
+  },
+  { label: labels.sources, count: historyKnowledgeIndex.counts.sources, target: historyKnowledgeIndex.counts.sources },
+  { label: labels.editorial, count: signedOffCount, target: totalEditorialRecords }
+].map((row) => ({
+  ...row,
+  pct: row.target ? Math.min(100, Math.round((row.count / row.target) * 100)) : 100,
+  pctLabel: `${row.target ? Math.min(100, Math.round((row.count / row.target) * 100)) : 100}%`,
+  barStyle: `width:${row.target ? Math.min(100, Math.round((row.count / row.target) * 100)) : 100}%`,
+  meta: `${row.count} ${labels.of} ${row.target} ${labels.records}`
+}));
+
+const repeatedPeople = historyKnowledgePeople.filter((person) => person.term_events.length > 1);
+const successionCount = historyKnowledgePeople.reduce(
+  (sum, person) => sum + person.relationships.filter((relationship) => relationship.type === "succeeded_by").length,
+  0
+);
+const firstYear = mayorEvents[0]?.date.year ?? 1878;
+const lastYear = mayorEvents.at(-1)?.date.year_end ?? new Date().getFullYear();
+const graphWidth = 1000;
+const graphAxis = 146;
+const graphPad = 28;
+const graphSpan = Math.max(1, lastYear - firstYear);
+const graphX = (year: number) => graphPad + ((year - firstYear) / graphSpan) * (graphWidth - graphPad * 2);
+const repeatArcs = repeatedPeople.flatMap((person) => {
+  const termEvents = person.term_events
+    .map((id) => entries.find((event) => event.id === id))
+    .filter(Boolean) as KnowledgeEvent[];
+  termEvents
+    .sort((a, b) => a.date.year - b.date.year);
+  return termEvents.slice(1).map((event, index) => {
+    const previous = termEvents[index];
+    const x1 = graphX(previous.date.year);
+    const x2 = graphX(event.date.year);
+    const lift = Math.min(110, 24 + Math.abs(x2 - x1) * 0.42);
+    return `M ${x1.toFixed(1)} ${graphAxis} C ${x1.toFixed(1)} ${(graphAxis - lift).toFixed(1)}, ${x2.toFixed(1)} ${(graphAxis - lift).toFixed(1)}, ${x2.toFixed(1)} ${graphAxis}`;
+  });
+});
+
+const historyMapConfig = {
+  lang,
+  api: {
+    archiveItems: historyKnowledgeIndex.endpoints.archive_items,
+    places: historyKnowledgeIndex.endpoints.places,
+    sources: historyKnowledgeIndex.endpoints.sources
+  },
+  labels: {
+    selectPlace: labels.selectPlace,
+    source: labels.source,
+    coordinates: labels.coordinates,
+    built: labels.built,
+    architect: labels.architect,
+    builder: labels.builder,
+    creator: labels.creator,
+    archivePlace: labels.archivePlace,
+    georeference: labels.georeference,
+    license: labels.license,
+    visiblePlaces: labels.visiblePlaces,
+    visibleArchiveItems: labels.visibleArchiveItems,
+    routeStops: labels.routeStops,
+    archiveOverlayNote: labels.archiveOverlayNote
+  },
+  routes: mapRoutes
+};
+
+const timelineItems = entries.map((event) => {
+  const linkedNames = [
+    ...event.person_ids
+      .map((id) => peopleById.get(id))
+      .filter(Boolean)
+      .map((person) => localized(person as Record<string, any>, "name")),
+    ...event.place_ids
+      .map((id) => placesById.get(id))
+      .filter(Boolean)
+      .map((place) => localized(place as Record<string, any>, "name")),
+    ...event.organization_ids
+      .map((id) => orgsById.get(id))
+      .filter(Boolean)
+      .map((org) => localized(org as Record<string, any>, "name"))
+  ];
+  const source = sourceById.get(event.source_ids[0]);
+  return {
+    event,
+    linkedNames,
+    date: dateLabel(event),
+    title: localized(event, "title"),
+    summary: localized(event, "summary"),
+    conflictNote: localized(event, "conflict_notes"),
+    category: labelCategory(event.category),
+    themes: event.theme_tags.map(labelTheme),
+    sourceUrl: source?.url ?? "",
+    sourceTitle: source ? localized(source, "title") : "",
+    search: [
+      localized(event, "title"),
+      localized(event, "summary"),
+      dateLabel(event),
+      labelCategory(event.category),
+      t.history.eraLabels[event.era],
+      ...linkedNames
+    ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB")
+  };
+});
+
+const exactDateItems = timelineItems
+  .filter((item) => item.event.date.month && item.event.date.day)
+  .map((item) => ({
+    id: item.event.id,
+    year: item.event.date.year,
+    month: item.event.date.month,
+    day: item.event.date.day,
+    date: item.date,
+    title: item.title,
+    summary: item.summary,
+    conflictNote: item.conflictNote,
+    sourceUrl: item.sourceUrl,
+    sourceTitle: item.sourceTitle
+  }));
+
+const timelineConfig = {
+  lang,
+  api: {
+    events: historyKnowledgeIndex.endpoints.events,
+    organizations: historyKnowledgeIndex.endpoints.organizations,
+    people: historyKnowledgeIndex.endpoints.people,
+    places: historyKnowledgeIndex.endpoints.places,
+    sources: historyKnowledgeIndex.endpoints.sources
+  },
+  categoryLabels: clientCategoryLabels,
+  themeLabels: clientThemeLabels,
+  labels: {
+    visible: labels.visible,
+    of: labels.of,
+    noResults: labels.noResults,
+    today: labels.today,
+    noOnThisDay: labels.noOnThisDay,
+    exactDateCount: labels.exactDateCount,
+    source: labels.source,
+    sourcePlural: labels.sourcePlural,
+    conflictNote: labels.conflictNote,
+    needsReview: labels.needsReview
+  },
+  total: entries.length,
+  exactDateItems
+};
+
+const archiveItemsForView = [...historicalArchiveItems].sort(
+  (a, b) => a.date_year - b.date_year || a.id.localeCompare(b.id)
+);
+const thenNowPairsForView = [...thenNowPairs].sort((a, b) =>
+  localized(a, "title").localeCompare(localized(b, "title"), lang === "bg" ? "bg-BG" : "en-GB")
+);
 ---
 
 <Layout lang={lang} path="/history" title={t.history.title} description={t.history.lead}>
@@ -39,6 +646,9 @@ const stats = [
       <p class="eyebrow">{t.history.eyebrow}</p>
       <h1>{t.history.title}</h1>
       <p class="lead">{t.history.lead}</p>
+      <div class="button-row" style="margin-top:18px">
+        <a class="button secondary" href={localizePath("/history/contribute", lang)}>{labels.contribute}</a>
+      </div>
       <div class="stat-row" style="margin-top:22px">
         {stats.map((s) => (
           <div class="stat"><strong>{s.value}</strong><span>{s.label}</span></div>
@@ -51,7 +661,9 @@ const stats = [
     <div class="container">
       <nav class="era-nav" aria-label={t.history.erasNav}>
         {erasPresent.map((era) => (
-          <a class="era-pill" href={`#era-${era}`}>{t.history.eraLabels[era]}</a>
+          <button class="era-pill" type="button" data-era-button={era} aria-pressed="false">
+            {t.history.eraLabels[era]}
+          </button>
         ))}
       </nav>
     </div>
@@ -61,76 +673,1254 @@ const stats = [
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>{t.history.timelineTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:74ch">{t.history.timelineLead}</p>
+          <h2>{labels.coverageTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.coverageLead}</p>
         </div>
       </div>
 
-      <div class="history-timeline">
-        {erasPresent.map((era) => (
-          <section class="era-block" id={`era-${era}`}>
-            <header class="era-head">
-              <span class={`era-tag era-${era}`}>{t.history.eraLabels[era]}</span>
-              <p class="era-blurb">{t.history.eraBlurbs[era]}</p>
-            </header>
-            <ol class="timeline">
-              {entries
-                .filter((e) => e.era === era)
-                .map((e) => (
-                  <li class="timeline-item">
-                    <div class="timeline-marker" aria-hidden="true"></div>
-                    <article class="timeline-card">
-                      <p class="timeline-period">{field(e, "period", lang)}</p>
-                      <h3>{field(e, "title", lang)}</h3>
-                      <p>{field(e, "summary", lang)}</p>
-                      <a class="src-link" href={e.source.url} target="_blank" rel="noreferrer">
-                        {`${t.common.source}: ${e.source.title} ↗`}
-                      </a>
-                    </article>
-                  </li>
-                ))}
-            </ol>
-          </section>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-tint" id="landmarks">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>{t.history.landmarksTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:74ch">{t.history.landmarksLead}</p>
-        </div>
-      </div>
-      <div class="grid grid-3">
-        {plovdivLandmarks.map((lm) => (
-          <article class={`card landmark-card landmark-${lm.category}`}>
-            <p class="eyebrow">{field(lm, "era", lang)}</p>
-            <h3>{field(lm, "name", lang)}</h3>
-            <p>{field(lm, "summary", lang)}</p>
-            <a class="src-link" href={lm.source.url} target="_blank" rel="noreferrer">
-              {`${t.common.source}: ${lm.source.title} ↗`}
-            </a>
+      <div class="coverage-grid">
+        {coverageRows.map((coverage) => (
+          <article class="card coverage-card">
+            <div>
+              <h3>{coverage.label}</h3>
+              <p class="meta">{coverage.meta}</p>
+            </div>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill" style={coverage.barStyle}></div></div>
+            <strong>{coverage.pctLabel}</strong>
           </article>
         ))}
       </div>
     </div>
   </section>
 
+  <section class="section section-tint" id="timeline">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{labels.timelineTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.timelineLead}</p>
+        </div>
+      </div>
+
+      <div class="on-this-day-card card">
+        <div>
+          <p class="eyebrow">{labels.onThisDayTitle}</p>
+          <h3>{labels.onThisDayTitle}</h3>
+          <p>{labels.onThisDayLead}</p>
+        </div>
+        <div class="on-this-day-controls">
+          <input id="history-on-this-day-date" type="date" aria-label={labels.onThisDayTitle} />
+          <button type="button" id="history-on-this-day-today" class="link-button">{labels.today}</button>
+        </div>
+        <ul id="history-on-this-day-list" class="on-this-day-list" aria-live="polite"></ul>
+        <p id="history-on-this-day-empty" class="meta" aria-live="polite"></p>
+      </div>
+
+      <div class="toolbar">
+        <div class="filters">
+          <div class="field">
+            <label for="history-search">{labels.search}</label>
+            <input id="history-search" type="search" placeholder={labels.searchPlaceholder} />
+          </div>
+          <div class="field">
+            <label for="history-era">{labels.era}</label>
+            <select id="history-era">
+              <option value="all">{labels.allEras}</option>
+              {erasPresent.map((era) => <option value={era}>{t.history.eraLabels[era]}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="history-category">{labels.category}</label>
+            <select id="history-category">
+              <option value="all">{labels.allCategories}</option>
+              {categories.map((category) => <option value={category}>{labelCategory(category)}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="history-theme">{labels.theme}</label>
+            <select id="history-theme">
+              <option value="all">{labels.allThemes}</option>
+              {themeTags.map((theme) => <option value={theme}>{labelTheme(theme)}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="history-person">{labels.person}</label>
+            <select id="history-person">
+              <option value="all">{labels.allPeople}</option>
+              {timelinePeople.map((person) => <option value={person.id}>{person.name}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="history-place">{labels.place}</label>
+            <select id="history-place">
+              <option value="all">{labels.allPlaces}</option>
+              {timelinePlaces.map((place) => <option value={place.id}>{place.name}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="history-linked">{labels.linked}</label>
+            <select id="history-linked">
+              <option value="all">{labels.allLinks}</option>
+              <option value="people">{labels.withPeople}</option>
+              <option value="places">{labels.withPlaces}</option>
+              <option value="organizations">{labels.withOrganizations}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-bar">
+        <p id="history-count" class="meta" aria-live="polite">
+          {entries.length} {labels.of} {entries.length} {labels.records}
+        </p>
+        <button type="button" id="history-reset" class="link-button" hidden>{labels.reset}</button>
+      </div>
+
+      <ol class="timeline history-deep-list" id="history-event-list" aria-live="polite"></ol>
+      <p id="history-empty" class="empty" hidden>{labels.noResults}</p>
+    </div>
+  </section>
+
+  <section class="section" id="landmarks">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{labels.mapTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.mapLead}</p>
+        </div>
+        <a href={localizePath("/places", lang)}>{labels.openPlaces} →</a>
+      </div>
+      <div class="map-tools card">
+        <div class="field map-era-field">
+          <label for="history-map-era">{labels.mapLayer}</label>
+          <select id="history-map-era">
+            <option value="all">{labels.allMapEras}</option>
+            {mapErasPresent.map((era) => <option value={era}>{t.history.eraLabels[era]}</option>)}
+          </select>
+        </div>
+        <div class="field map-archive-field">
+          <label for="history-map-archive">{labels.mapArchiveLayer}</label>
+          <select id="history-map-archive">
+            <option value="map">{labels.archiveOverlayMaps}</option>
+            <option value="all">{labels.archiveOverlayAll}</option>
+            <option value="photo">{labels.archiveOverlayPhotos}</option>
+            <option value="document">{labels.archiveOverlayDocuments}</option>
+            <option value="off">{labels.noArchiveOverlay}</option>
+          </select>
+        </div>
+        <div class="map-route-panel">
+          <p class="eyebrow">{labels.mapRoutes}</p>
+          <div class="map-route-buttons" role="group" aria-label={labels.mapRoutes}>
+            <button type="button" class="route-button is-active" data-history-route="all" aria-pressed="true">
+              {labels.noRoute}
+            </button>
+            {mapRoutes.map((route) => (
+              <button type="button" class="route-button" data-history-route={route.id} aria-pressed="false">
+                <span>{route.title}</span>
+                <small>{route.stop_ids.length} {labels.routeStops}</small>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div class="map-count-stack">
+          <p id="history-map-count" class="meta" aria-live="polite">{mapPlaces.length} {labels.visiblePlaces}</p>
+          <p id="history-archive-map-count" class="meta" aria-live="polite">
+            {mapArchiveItems.filter((item) => item.kind === "map").length} {labels.visibleArchiveItems}
+          </p>
+        </div>
+      </div>
+      <div class="map-layout history-map-layout">
+        <div id="history-map-canvas" class="map-canvas history-map-canvas" role="region" aria-label={labels.mapTitle}></div>
+        <aside id="history-place-detail" class="detail-panel" aria-live="polite">
+          <h2>{labels.selectPlace}</h2>
+          <p class="meta">{mapPlaces[0] ? localized(mapPlaces[0], "name") : ""}</p>
+        </aside>
+      </div>
+      <div class="grid grid-3" style="margin-top:22px">
+        {historyKnowledgePlaces.slice(0, 12).map((place) => {
+          const source = sourceById.get(place.source_ids[0]);
+          const image = place.media[0];
+          const facts = placeFacts(place);
+          return (
+            <article class={`card landmark-card landmark-${place.category}`}>
+              {image && (
+                <figure class="landmark-media">
+                  <img
+                    src={image.url}
+                    alt={localized(place, "name")}
+                    loading="lazy"
+                    decoding="async"
+                    crossorigin="anonymous"
+                    referrerpolicy="no-referrer"
+                  />
+                  <figcaption>{`${image.credit} · ${image.license}`}</figcaption>
+                </figure>
+              )}
+              <p class="eyebrow">{localized(place, "era")}</p>
+              <h3>{localized(place, "name")}</h3>
+              {facts.length > 0 && (
+                <dl class="place-facts">
+                  {facts.map((fact) => (
+                    <>
+                      <dt>{fact.label}</dt>
+                      <dd>{fact.value}</dd>
+                    </>
+                  ))}
+                </dl>
+              )}
+              <p>{localized(place, "summary")}</p>
+              {source && (
+                <a class="src-link" href={source.url} target="_blank" rel="noreferrer">
+                  {`${labels.source}: ${localized(source, "title")} ↗`}
+                </a>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="archive-layer">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{labels.archiveTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:76ch">{labels.archiveLead}</p>
+        </div>
+      </div>
+
+      <div class="stat-row budget-summary-stats" style="margin-top:0">
+        <div class="stat">
+          <strong>{historicalArchiveItems.length}</strong>
+          <span>{labels.georeferencedItems}</span>
+        </div>
+        <div class="stat">
+          <strong>{thenNowPairs.length}</strong>
+          <span>{labels.thenNowPairs}</span>
+        </div>
+        <div class="stat">
+          <strong>{new Set(historicalArchiveItems.map((item) => item.place_id)).size}</strong>
+          <span>{labels.places}</span>
+        </div>
+      </div>
+
+      <div class="archive-grid">
+        {archiveItemsForView.slice(0, 12).map((item) => {
+          const place = placesById.get(item.place_id);
+          return (
+            <article class="card archive-card" data-archive-item>
+              <figure class="archive-media">
+                <img
+                  src={item.media.url}
+                  alt={localized(item, "title")}
+                  loading="lazy"
+                  decoding="async"
+                  crossorigin="anonymous"
+                  referrerpolicy="no-referrer"
+                />
+                <figcaption>{`${item.media.credit} · ${item.media.license}`}</figcaption>
+              </figure>
+              <p class="eyebrow">{localized(item, "date_display")}</p>
+              <h3>{localized(item, "title")}</h3>
+              <p>{localized(item, "description")}</p>
+              <dl class="place-facts">
+                <dt>{labels.archivePlace}</dt>
+                <dd>{place ? localized(place, "name") : item.place_id}</dd>
+                <dt>{labels.georeference}</dt>
+                <dd>{localized(item.georeference, "notes")}</dd>
+                <dt>{labels.license}</dt>
+                <dd>{item.media.license}</dd>
+              </dl>
+              <a class="src-link" href={item.source.url} target="_blank" rel="noreferrer">
+                {`${labels.source}: ${item.source.title} ↗`}
+              </a>
+            </article>
+          );
+        })}
+      </div>
+
+      <div class="section-head archive-subhead">
+        <div>
+          <h3>{labels.thenNowTitle}</h3>
+          <p class="meta" style="margin-top:8px;max-width:76ch">{labels.thenNowLead}</p>
+        </div>
+      </div>
+
+      <div class="then-now-grid">
+        {thenNowPairsForView.slice(0, 8).map((pair) => (
+          <article class="card then-now-card" data-then-now-pair>
+            <div class="compare-frame" style="--split:50%">
+              <img
+                class="compare-now"
+                src={pair.now_media.url}
+                alt={`${labels.nowLabel}: ${localized(pair, "title")}`}
+                loading="lazy"
+                decoding="async"
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+              />
+              <div class="compare-then" aria-hidden="true">
+                <img
+                  src={pair.then_media.url}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  crossorigin="anonymous"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+              <span class="compare-label compare-label-then">{labels.thenLabel}</span>
+              <span class="compare-label compare-label-now">{labels.nowLabel}</span>
+              <input
+                class="compare-range"
+                data-compare-range
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+                aria-label={localized(pair, "title")}
+              />
+            </div>
+            <h3>{localized(pair, "title")}</h3>
+            <p>{localized(pair, "caption")}</p>
+            <p class="meta">
+              {`${labels.thenLabel}: ${pair.then_media.credit} · ${pair.then_media.license}`}
+              <br />
+              {`${labels.nowLabel}: ${pair.now_media.credit} · ${pair.now_media.license}`}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{labels.peopleTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.peopleLead}</p>
+        </div>
+        <a href={localizePath("/people", lang)}>{labels.openMayors} →</a>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card arc-card">
+          <svg
+            class="mayor-arc"
+            viewBox="0 0 1000 190"
+            role="img"
+            aria-label={labels.peopleTitle}
+            preserveAspectRatio="xMidYMid meet"
+          >
+            {repeatArcs.map((d) => <path class="arc-repeat" d={d} fill="none" />)}
+            <line class="arc-axis" x1={graphPad} y1={graphAxis} x2={graphWidth - graphPad} y2={graphAxis} />
+            {mayorEvents.map((event) => {
+              const cx = graphX(event.date.year);
+              return (
+                <circle class="dot" cx={cx} cy={graphAxis} r={event.date.year_end ? 4 : 6}>
+                  <title>{`${localized(event, "title")} · ${dateLabel(event)}`}</title>
+                </circle>
+              );
+            })}
+          </svg>
+          <div class="arc-legend">
+            <span class="lg lg-repeat">{labels.repeatTerms}</span>
+            <span class="lg lg-current">{t.mayors.legendCurrent}</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="stat-row budget-summary-stats" style="margin-top:0">
+            <div class="stat"><strong>{historyKnowledgePeople.length}</strong><span>{labels.people}</span></div>
+            <div class="stat"><strong>{mayorEvents.length}</strong><span>{t.mayors.statTerms}</span></div>
+            <div class="stat"><strong>{repeatedPeople.length}</strong><span>{labels.repeatTerms}</span></div>
+            <div class="stat"><strong>{successionCount}</strong><span>{labels.successionLinks}</span></div>
+          </div>
+          <ul class="connect-list" style="margin-top:18px">
+            {repeatedPeople.slice(0, 8).map((person) => (
+              <li>
+                <span>{localized(person, "name")}</span>
+                <span class="connect-years">{person.term_events.length} {t.mayors.statTerms}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
-      <article class="card cta-card">
+      <div class="section-head">
         <div>
-          <h2>{t.history.mayorsTitle}</h2>
-          <p style="margin-top:8px;max-width:70ch">{t.history.mayorsLead}</p>
+          <h2>{labels.dataTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.dataLead}</p>
+          <div class="button-row" style="margin-top:14px">
+            <a class="button secondary" href={localizePath("/history/editorial-review", lang)}>
+              {labels.reviewDashboard}
+            </a>
+          </div>
         </div>
-        <a class="button" href={localizePath("/mayors", lang)}>
-          {t.history.mayorsCta}<span class="arrow" aria-hidden="true">→</span>
-        </a>
-      </article>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>{labels.endpoint}</h3>
+          <ul class="source-list">
+            {endpointRows.map((row) => (
+              <li><a href={row.href}>{row.label}: {row.href}</a></li>
+            ))}
+          </ul>
+        </article>
+        <article class="card">
+          <h3>{labels.download}</h3>
+          <ul class="source-list">
+            {downloadRows.map((row) => (
+              <li>
+                <a href={row.href} download>
+                  {row.format}: {row.label} <span class="meta">({row.fileName})</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </div>
       <p class="meta" style="margin-top:18px;max-width:80ch">{t.history.sourceNote}</p>
     </div>
   </section>
+
+  <script type="application/json" id="history-timeline-config" set:html={JSON.stringify(timelineConfig)}></script>
+  <script type="application/json" id="history-map-config" set:html={JSON.stringify(historyMapConfig)}></script>
+
+  <script>
+    const timelineConfig = JSON.parse(
+      document.getElementById("history-timeline-config")?.textContent ?? "{}"
+    );
+    const search = document.querySelector<HTMLInputElement>("#history-search")!;
+    const era = document.querySelector<HTMLSelectElement>("#history-era")!;
+    const category = document.querySelector<HTMLSelectElement>("#history-category")!;
+    const theme = document.querySelector<HTMLSelectElement>("#history-theme")!;
+    const person = document.querySelector<HTMLSelectElement>("#history-person")!;
+    const place = document.querySelector<HTMLSelectElement>("#history-place")!;
+    const linked = document.querySelector<HTMLSelectElement>("#history-linked")!;
+    const count = document.querySelector<HTMLElement>("#history-count")!;
+    const reset = document.querySelector<HTMLButtonElement>("#history-reset")!;
+    const empty = document.querySelector<HTMLElement>("#history-empty")!;
+    const list = document.querySelector<HTMLElement>("#history-event-list")!;
+    let items: any[] = [];
+    const eraButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-era-button]")];
+    const onThisDayDate = document.querySelector<HTMLInputElement>("#history-on-this-day-date")!;
+    const onThisDayToday = document.querySelector<HTMLButtonElement>("#history-on-this-day-today")!;
+    const onThisDayList = document.querySelector<HTMLElement>("#history-on-this-day-list")!;
+    const onThisDayEmpty = document.querySelector<HTMLElement>("#history-on-this-day-empty")!;
+
+    function escapeTimelineHtml(value: unknown): string {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function splitDataset(value: string | undefined) {
+      return (value ?? "").split(" ").filter(Boolean);
+    }
+
+    async function fetchHistoryJson(url: string) {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Unable to load ${url}`);
+      return await response.json();
+    }
+
+    function collectionFromPayload(payload: any, preferredKey: string) {
+      if (Array.isArray(payload)) return payload;
+      if (payload && Array.isArray(payload[preferredKey])) return payload[preferredKey];
+      return [];
+    }
+
+    function localizedApi(record: Record<string, any> | undefined, base: string) {
+      if (!record) return "";
+      return String(record[`${base}_${timelineConfig.lang}`] ?? record[`${base}_bg`] ?? "");
+    }
+
+    function dateApiLabel(event: any) {
+      return localizedApi(event.date, "display");
+    }
+
+    function labelApiCategory(category: string) {
+      return timelineConfig.categoryLabels?.[category] ?? category.replaceAll("_", " ");
+    }
+
+    function labelApiTheme(theme: string) {
+      return timelineConfig.themeLabels?.[theme] ?? labelApiCategory(theme);
+    }
+
+    async function loadTimelineItems() {
+      if (items.length > 0) return items;
+      const api = timelineConfig.api ?? {};
+      const [eventPayload, sourcePayload, peoplePayload, placePayload, organizationPayload] = await Promise.all([
+        fetchHistoryJson(api.events),
+        fetchHistoryJson(api.sources),
+        fetchHistoryJson(api.people),
+        fetchHistoryJson(api.places),
+        fetchHistoryJson(api.organizations)
+      ]);
+      const events = collectionFromPayload(eventPayload, "events").sort(
+        (a: any, b: any) =>
+          a.date.year - b.date.year ||
+          (a.date.year_end ?? a.date.year) - (b.date.year_end ?? b.date.year) ||
+          a.id.localeCompare(b.id)
+      );
+      const sourcesById = new Map(collectionFromPayload(sourcePayload, "sources").map((source: any) => [source.id, source]));
+      const peopleById = new Map(collectionFromPayload(peoplePayload, "people").map((person: any) => [person.id, person]));
+      const placesById = new Map(collectionFromPayload(placePayload, "places").map((place: any) => [place.id, place]));
+      const organizationsById = new Map(
+        collectionFromPayload(organizationPayload, "organizations").map((organization: any) => [organization.id, organization])
+      );
+      items = events.map((event: any) => {
+        const linkedNames = [
+          ...event.person_ids.map((id: string) => localizedApi(peopleById.get(id) as any, "name")),
+          ...event.place_ids.map((id: string) => localizedApi(placesById.get(id) as any, "name")),
+          ...event.organization_ids.map((id: string) => localizedApi(organizationsById.get(id) as any, "name"))
+        ].filter(Boolean);
+        const eventSources = event.source_ids
+          .map((id: string) => sourcesById.get(id) as any)
+          .filter(Boolean)
+          .map((source: any) => ({
+            url: source.url ?? "",
+            title: localizedApi(source, "title")
+          }));
+        return {
+          id: event.id,
+          era: event.era,
+          category: event.category,
+          themeTags: event.theme_tags,
+          personIds: event.person_ids,
+          placeIds: event.place_ids,
+          organizationIds: event.organization_ids,
+          peopleCount: event.person_ids.length,
+          placesCount: event.place_ids.length,
+          organizationCount: event.organization_ids.length,
+          search: [
+            localizedApi(event, "title"),
+            localizedApi(event, "summary"),
+            localizedApi(event, "conflict_notes"),
+            dateApiLabel(event),
+            labelApiCategory(event.category),
+            ...(event.theme_tags ?? []).map(labelApiTheme),
+            ...linkedNames
+          ].join(" ").toLocaleLowerCase(timelineConfig.lang === "bg" ? "bg-BG" : "en-GB"),
+          date: dateApiLabel(event),
+          title: localizedApi(event, "title"),
+          summary: localizedApi(event, "summary"),
+          conflictNote: localizedApi(event, "conflict_notes"),
+          themes: (event.theme_tags ?? []).map(labelApiTheme).slice(0, 4),
+          linkedNames: linkedNames.slice(0, 5),
+          sources: eventSources
+        };
+      });
+      return items;
+    }
+
+    function renderPills(values: unknown[]) {
+      return values.length
+        ? `<div class="pill-row">${values
+            .map((value) => `<span class="badge no-dot">${escapeTimelineHtml(value)}</span>`)
+            .join("")}</div>`
+        : "";
+    }
+
+    function renderTimelineItem(item: any) {
+      const sources = Array.isArray(item.sources) ? item.sources : [];
+      const sourceLinks = sources.length
+        ? `<div class="history-source-links"><span>${escapeTimelineHtml(timelineConfig.labels.sourcePlural ?? timelineConfig.labels.source)}</span>${sources
+            .map(
+              (source: any) =>
+                `<a class="src-link" href="${escapeTimelineHtml(source.url)}" target="_blank" rel="noreferrer">${escapeTimelineHtml(source.title)} ↗</a>`
+            )
+            .join("")}</div>`
+        : "";
+      const conflictNote = item.conflictNote
+        ? `<p class="history-conflict-note"><strong>${escapeTimelineHtml(timelineConfig.labels.conflictNote)}:</strong> ${escapeTimelineHtml(item.conflictNote)}</p>`
+        : "";
+      return `
+        <li
+          id="${escapeTimelineHtml(item.id)}"
+          class="timeline-item history-event-item"
+          data-history-event
+          data-history-event-id="${escapeTimelineHtml(item.id)}"
+          data-era="${escapeTimelineHtml(item.era)}"
+          data-category="${escapeTimelineHtml(item.category)}"
+        >
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <article class="timeline-card history-event-card era-${escapeTimelineHtml(item.era)}">
+            <header>
+              <div>
+                <p class="timeline-period">${escapeTimelineHtml(item.date)}</p>
+                <h3>${escapeTimelineHtml(item.title)}</h3>
+              </div>
+              <span class="badge no-dot">${escapeTimelineHtml(item.category)}</span>
+            </header>
+            <p>${escapeTimelineHtml(item.summary)}</p>
+            ${conflictNote}
+            ${renderPills(Array.isArray(item.themes) ? item.themes : [])}
+            ${renderPills(Array.isArray(item.linkedNames) ? item.linkedNames : [])}
+            <div class="history-source-row">
+              ${sourceLinks}
+              <span class="meta">${escapeTimelineHtml(timelineConfig.labels.needsReview ?? "")}</span>
+            </div>
+          </article>
+        </li>`;
+    }
+
+    function matchesHistoryItem(item: any) {
+      const q = search.value.trim().toLocaleLowerCase(timelineConfig.lang === "bg" ? "bg-BG" : "en-GB");
+      const linkMode = linked.value;
+      const themeTags = Array.isArray(item.themeTags) ? item.themeTags : splitDataset(item.themeTags);
+      const personIds = Array.isArray(item.personIds) ? item.personIds : splitDataset(item.personIds);
+      const placeIds = Array.isArray(item.placeIds) ? item.placeIds : splitDataset(item.placeIds);
+      return (
+        (!q || (item.search ?? "").includes(q)) &&
+        (era.value === "all" || item.era === era.value) &&
+        (category.value === "all" || item.category === category.value) &&
+        (theme.value === "all" || themeTags.includes(theme.value)) &&
+        (person.value === "all" || personIds.includes(person.value)) &&
+        (place.value === "all" || placeIds.includes(place.value)) &&
+        (linkMode === "all" ||
+          (linkMode === "people" && Number(item.peopleCount) > 0) ||
+          (linkMode === "places" && Number(item.placesCount) > 0) ||
+          (linkMode === "organizations" && Number(item.organizationCount) > 0))
+      );
+    }
+
+    function syncEraButtons() {
+      eraButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", button.dataset.eraButton === era.value ? "true" : "false");
+      });
+    }
+
+    function applyHistoryFilters() {
+      const visibleItems = items.filter(matchesHistoryItem);
+      list.innerHTML = visibleItems.map(renderTimelineItem).join("");
+      count.textContent = `${timelineConfig.labels.visible}: ${visibleItems.length} ${timelineConfig.labels.of} ${items.length}`;
+      empty.hidden = visibleItems.length !== 0;
+      reset.hidden = !(
+        search.value ||
+        era.value !== "all" ||
+        category.value !== "all" ||
+        theme.value !== "all" ||
+        person.value !== "all" ||
+        place.value !== "all" ||
+        linked.value !== "all"
+      );
+      syncEraButtons();
+    }
+
+    function refreshHistoryTimeline() {
+      loadTimelineItems()
+        .then(() => applyHistoryFilters())
+        .catch(() => {
+          empty.hidden = false;
+          empty.textContent = timelineConfig.labels.noResults;
+        });
+    }
+
+    function scheduleInitialTimelineRender() {
+      const timelineSection = document.getElementById("timeline");
+      if (timelineSection && "IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              observer.disconnect();
+              refreshHistoryTimeline();
+            }
+          },
+          { rootMargin: "180px 0px" }
+        );
+        observer.observe(timelineSection);
+      } else {
+        window.setTimeout(refreshHistoryTimeline, 900);
+      }
+    }
+
+    search.addEventListener("input", refreshHistoryTimeline);
+    era.addEventListener("change", refreshHistoryTimeline);
+    category.addEventListener("change", refreshHistoryTimeline);
+    theme.addEventListener("change", refreshHistoryTimeline);
+    person.addEventListener("change", refreshHistoryTimeline);
+    place.addEventListener("change", refreshHistoryTimeline);
+    linked.addEventListener("change", refreshHistoryTimeline);
+    reset.addEventListener("click", () => {
+      search.value = "";
+      era.value = "all";
+      category.value = "all";
+      theme.value = "all";
+      person.value = "all";
+      place.value = "all";
+      linked.value = "all";
+      refreshHistoryTimeline();
+    });
+    eraButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        era.value = button.dataset.eraButton ?? "all";
+        refreshHistoryTimeline();
+        document.getElementById("timeline")?.scrollIntoView({ block: "start" });
+      });
+    });
+
+    function dateInputValue(date: Date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function renderOnThisDay() {
+      const parts = onThisDayDate.value.split("-").map((part) => Number(part));
+      const month = parts[1];
+      const day = parts[2];
+      const exactDateItems = Array.isArray(timelineConfig.exactDateItems)
+        ? timelineConfig.exactDateItems
+        : [];
+      const matches = exactDateItems.filter((item: any) => item.month === month && item.day === day);
+      onThisDayList.innerHTML = matches
+        .map((item: any) => {
+          const source = item.sourceUrl
+            ? `<a href="${escapeTimelineHtml(item.sourceUrl)}" target="_blank" rel="noreferrer">${escapeTimelineHtml(timelineConfig.labels.source)} ↗</a>`
+            : "";
+          const conflictNote = item.conflictNote
+            ? `<p class="history-conflict-note"><strong>${escapeTimelineHtml(timelineConfig.labels.conflictNote)}:</strong> ${escapeTimelineHtml(item.conflictNote)}</p>`
+            : "";
+          return `<li><strong>${escapeTimelineHtml(item.date)}</strong><span>${escapeTimelineHtml(item.title)}</span><p>${escapeTimelineHtml(item.summary)}</p>${conflictNote}${source}</li>`;
+        })
+        .join("");
+      onThisDayEmpty.textContent = matches.length
+        ? `${timelineConfig.labels.exactDateCount}: ${exactDateItems.length}`
+        : `${timelineConfig.labels.noOnThisDay} ${timelineConfig.labels.exactDateCount}: ${exactDateItems.length}`;
+    }
+
+    onThisDayDate.value = dateInputValue(new Date());
+    onThisDayDate.addEventListener("change", renderOnThisDay);
+    onThisDayToday.addEventListener("click", () => {
+      onThisDayDate.value = dateInputValue(new Date());
+      renderOnThisDay();
+    });
+    syncEraButtons();
+    renderOnThisDay();
+    scheduleInitialTimelineRender();
+  </script>
+
+  <script>
+    document.querySelectorAll<HTMLInputElement>("[data-compare-range]").forEach((range) => {
+      const frame = range.closest<HTMLElement>(".compare-frame");
+      const update = () => frame?.style.setProperty("--split", `${range.value}%`);
+      const setValue = (value: number) => {
+        range.value = String(Math.min(100, Math.max(0, Math.round(value))));
+        update();
+      };
+      const setFromPointer = (event: PointerEvent | MouseEvent) => {
+        const rect = range.getBoundingClientRect();
+        if (!rect.width) return;
+        setValue(((event.clientX - rect.left) / rect.width) * 100);
+        range.focus();
+      };
+      range.addEventListener("input", update);
+      range.addEventListener("change", update);
+      range.addEventListener("pointerdown", setFromPointer);
+      range.addEventListener("click", setFromPointer);
+      range.addEventListener("keydown", (event) => {
+        const current = Number(range.value);
+        const step = event.shiftKey ? 10 : 1;
+        if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
+          event.preventDefault();
+          setValue(current - step);
+        } else if (event.key === "ArrowRight" || event.key === "ArrowUp") {
+          event.preventDefault();
+          setValue(current + step);
+        } else if (event.key === "PageDown") {
+          event.preventDefault();
+          setValue(current - 10);
+        } else if (event.key === "PageUp") {
+          event.preventDefault();
+          setValue(current + 10);
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          setValue(0);
+        } else if (event.key === "End") {
+          event.preventDefault();
+          setValue(100);
+        }
+      });
+      update();
+    });
+  </script>
+
+  <script>
+    const config = JSON.parse(document.getElementById("history-map-config")?.textContent ?? "{}");
+    const routes = Array.isArray(config.routes) ? config.routes : [];
+    const detail = document.querySelector<HTMLElement>("#history-place-detail")!;
+    const mapEra = document.querySelector<HTMLSelectElement>("#history-map-era");
+    const archiveSelect = document.querySelector<HTMLSelectElement>("#history-map-archive");
+    const mapCount = document.querySelector<HTMLElement>("#history-map-count");
+    const archiveCount = document.querySelector<HTMLElement>("#history-archive-map-count");
+    const routeButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-history-route]")];
+
+    function escapeHtml(value: unknown): string {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    async function fetchMapJson(url: string) {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Unable to load ${url}`);
+      return await response.json();
+    }
+
+    function mapCollection(payload: any, preferredKey: string) {
+      if (Array.isArray(payload)) return payload;
+      if (payload && Array.isArray(payload[preferredKey])) return payload[preferredKey];
+      return [];
+    }
+
+    function localizedMap(record: Record<string, any> | undefined, base: string) {
+      if (!record) return "";
+      return String(record[`${base}_${config.lang}`] ?? record[`${base}_bg`] ?? "");
+    }
+
+    function mapPlaceFacts(place: any) {
+      const hasNamedCreator = Boolean(localizedMap(place, "architect") || localizedMap(place, "builder"));
+      return [
+        localizedMap(place.date_context, "display")
+          ? { label: config.labels.built, value: localizedMap(place.date_context, "display") }
+          : null,
+        localizedMap(place, "architect") ? { label: config.labels.architect, value: localizedMap(place, "architect") } : null,
+        localizedMap(place, "builder") ? { label: config.labels.builder, value: localizedMap(place, "builder") } : null,
+        !hasNamedCreator && localizedMap(place.creator_context, "display")
+          ? { label: config.labels.creator, value: localizedMap(place.creator_context, "display") }
+          : null
+      ].filter(Boolean);
+    }
+
+    async function loadHistoryMapData() {
+      const api = config.api ?? {};
+      const [placePayload, archivePayload, sourcePayload] = await Promise.all([
+        fetchMapJson(api.places),
+        fetchMapJson(api.archiveItems),
+        fetchMapJson(api.sources)
+      ]);
+      const rawPlaces = mapCollection(placePayload, "places");
+      const sourcesById = new Map(mapCollection(sourcePayload, "sources").map((source: any) => [source.id, source]));
+      const rawPlaceById = new Map(rawPlaces.map((place: any) => [place.id, place]));
+      const places = rawPlaces
+        .filter((place: any) => place.coordinates)
+        .map((place: any) => {
+          const source = sourcesById.get(place.source_ids?.[0]) as any;
+          return {
+            id: place.id,
+            category: place.category,
+            eraKey: place.era,
+            name: localizedMap(place, "name"),
+            era: localizedMap(place, "era"),
+            summary: localizedMap(place, "summary"),
+            status: localizedMap(place, "current_status"),
+            facts: mapPlaceFacts(place),
+            coordinates: place.coordinates,
+            media: place.media?.[0] ?? null,
+            source: source
+              ? {
+                  url: source.url,
+                  title: localizedMap(source, "title")
+                }
+              : null
+          };
+        });
+      const archiveItems = mapCollection(archivePayload, "archive_items")
+        .filter((item: any) => item.coordinates)
+        .map((item: any) => {
+          const place = rawPlaceById.get(item.place_id) as any;
+          return {
+            id: item.id,
+            kind: item.kind,
+            title: localizedMap(item, "title"),
+            description: localizedMap(item, "description"),
+            dateDisplay: localizedMap(item, "date_display"),
+            place: place ? localizedMap(place, "name") : item.place_id,
+            coordinates: item.coordinates,
+            georeference: {
+              method: item.georeference.method,
+              confidence: item.georeference.confidence,
+              notes: localizedMap(item.georeference, "notes")
+            },
+            overlayBounds: item.overlay_bounds
+              ? {
+                  south: item.overlay_bounds.south,
+                  west: item.overlay_bounds.west,
+                  north: item.overlay_bounds.north,
+                  east: item.overlay_bounds.east,
+                  method: item.overlay_bounds.method,
+                  notes: localizedMap(item.overlay_bounds, "notes")
+                }
+              : null,
+            media: item.media,
+            source: {
+              url: item.source.url,
+              title: item.source.title,
+              license: item.source.license.label
+            }
+          };
+        });
+      return { places, archiveItems };
+    }
+
+    function renderPlace(place: any) {
+      const coords = place.coordinates;
+      const image = place.media;
+      const factRows = Array.isArray(place.facts)
+        ? place.facts
+            .map(
+              (fact: any) =>
+                `<dt>${escapeHtml(fact.label)}</dt><dd>${escapeHtml(fact.value)}</dd>`
+            )
+            .join("")
+        : "";
+      detail.innerHTML = `
+        ${
+          image
+            ? `<figure class="landmark-media detail-media"><img src="${escapeHtml(image.url)}" alt="${escapeHtml(place.name)}" loading="lazy" decoding="async"><figcaption>${escapeHtml(image.credit)} · ${escapeHtml(image.license)}</figcaption></figure>`
+            : ""
+        }
+        <p class="eyebrow">${escapeHtml(place.era)}</p>
+        <h2>${escapeHtml(place.name)}</h2>
+        ${factRows ? `<dl class="place-facts">${factRows}</dl>` : ""}
+        <p>${escapeHtml(place.summary)}</p>
+        <p class="meta">${escapeHtml(config.labels.coordinates)}: ${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)} · ${escapeHtml(coords.accuracy)}</p>
+        <p class="meta">${escapeHtml(place.status)}</p>
+        ${
+          place.source
+            ? `<a class="src-link" href="${escapeHtml(place.source.url)}" target="_blank" rel="noreferrer">${escapeHtml(config.labels.source)}: ${escapeHtml(place.source.title)} ↗</a>`
+            : ""
+        }
+      `;
+    }
+
+    function renderRoute(route: any, routePlaces: any[]) {
+      const stops = routePlaces
+        .map((place, index) => `<li><strong>${index + 1}.</strong> ${escapeHtml(place.name)}</li>`)
+        .join("");
+      detail.innerHTML = `
+        <p class="eyebrow">${escapeHtml(config.labels.routeStops)} · ${routePlaces.length}</p>
+        <h2>${escapeHtml(route.title)}</h2>
+        <p>${escapeHtml(route.summary)}</p>
+        <ol class="route-stop-list">${stops}</ol>
+      `;
+    }
+
+    function archiveKindInitial(kind: string) {
+      if (kind === "map") return "M";
+      if (kind === "document") return "D";
+      return "P";
+    }
+
+    function renderArchiveItem(item: any) {
+      const coords = item.coordinates;
+      detail.innerHTML = `
+        <figure class="landmark-media detail-media"><img src="${escapeHtml(item.media.url)}" alt="${escapeHtml(item.title)}" loading="lazy" decoding="async"><figcaption>${escapeHtml(item.media.credit)} · ${escapeHtml(item.media.license)}</figcaption></figure>
+        <p class="eyebrow">${escapeHtml(item.dateDisplay)} · ${escapeHtml(item.kind)}</p>
+        <h2>${escapeHtml(item.title)}</h2>
+        <p>${escapeHtml(item.description)}</p>
+        <dl class="place-facts">
+          <dt>${escapeHtml(config.labels.coordinates)}</dt>
+          <dd>${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)} · ${escapeHtml(coords.accuracy)}</dd>
+          <dt>${escapeHtml(config.labels.archivePlace)}</dt>
+          <dd>${escapeHtml(item.place)}</dd>
+          <dt>${escapeHtml(config.labels.license)}</dt>
+          <dd>${escapeHtml(item.source.license)}</dd>
+          ${
+            item.overlayBounds
+              ? `<dt>${escapeHtml(config.labels.mapArchiveLayer)}</dt><dd>${escapeHtml(item.overlayBounds.notes)}</dd>`
+              : ""
+          }
+        </dl>
+        <p class="meta"><strong>${escapeHtml(config.labels.georeference)}:</strong> ${escapeHtml(item.georeference.notes)}</p>
+        <p class="meta">${escapeHtml(config.labels.archiveOverlayNote)}</p>
+        <a class="src-link" href="${escapeHtml(item.source.url)}" target="_blank" rel="noreferrer">${escapeHtml(config.labels.source)}: ${escapeHtml(item.source.title)} ↗</a>
+      `;
+    }
+
+    async function initHistoryMap() {
+      const leaflet = await import("leaflet");
+      const L = leaflet.default;
+      const { places, archiveItems } = await loadHistoryMapData();
+
+      if (places.length) {
+      const map = L.map("history-map-canvas", { scrollWheelZoom: false }).setView([42.148, 24.75], 14);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+      const bounds = L.latLngBounds([]);
+      const markerByPlaceId = new Map<string, any>();
+      const placeById = new Map<string, any>(places.map((place: any) => [place.id, place]));
+      const archiveMarkerById = new Map<string, any>();
+      const archiveOverlayById = new Map<string, any>();
+      let activeRouteId = "all";
+      let routeLine: any = null;
+      for (const place of places) {
+        const coords = place.coordinates;
+        bounds.extend([coords.lat, coords.lng]);
+        const marker = L.marker([coords.lat, coords.lng], {
+          title: place.name,
+          icon: L.divIcon({
+            className: "",
+            html: `<span class="marker-pin history-pin marker-era-${escapeHtml(place.eraKey)}"><span>${escapeHtml(place.name.slice(0, 1))}</span></span>`,
+            iconSize: [28, 28],
+            iconAnchor: [14, 28]
+          })
+        }).on("click", () => renderPlace(place));
+        markerByPlaceId.set(place.id, marker);
+      }
+      for (const item of archiveItems) {
+        const coords = item.coordinates;
+        const marker = L.marker([coords.lat, coords.lng], {
+          title: item.title,
+          zIndexOffset: 500,
+          icon: L.divIcon({
+            className: "",
+            html: `<span class="marker-pin archive-pin archive-kind-${escapeHtml(item.kind)}"><span>${escapeHtml(archiveKindInitial(item.kind))}</span></span>`,
+            iconSize: [28, 28],
+            iconAnchor: [14, 14]
+          })
+        }).on("click", () => renderArchiveItem(item));
+        archiveMarkerById.set(item.id, marker);
+        if (item.kind === "map" && item.overlayBounds?.south < item.overlayBounds?.north && item.overlayBounds?.west < item.overlayBounds?.east) {
+          const overlay = L.imageOverlay(
+            item.media.url,
+            [
+              [item.overlayBounds.south, item.overlayBounds.west],
+              [item.overlayBounds.north, item.overlayBounds.east]
+            ],
+            {
+              alt: item.title,
+              className: "historical-map-overlay",
+              interactive: true,
+              opacity: 0.38,
+              zIndex: 180
+            }
+          ).on("click", () => renderArchiveItem(item));
+          archiveOverlayById.set(item.id, overlay);
+        }
+      }
+
+      function selectedRoute() {
+        return routes.find((route: any) => route.id === activeRouteId) ?? null;
+      }
+
+      function visiblePlaces() {
+        const route = selectedRoute();
+        const routeIds = route ? new Set(route.stop_ids) : null;
+        const selectedEra = mapEra?.value ?? "all";
+        return places.filter((place: any) => {
+          const matchesRoute = !routeIds || routeIds.has(place.id);
+          const matchesEra = selectedEra === "all" || place.eraKey === selectedEra;
+          return matchesRoute && matchesEra;
+        });
+      }
+
+      function visibleArchiveItems() {
+        const selectedArchive = archiveSelect?.value ?? "map";
+        if (selectedArchive === "off") return [];
+        if (selectedArchive === "all") return archiveItems;
+        if (selectedArchive === "photo") return archiveItems.filter((item: any) => item.kind === "photo");
+        return archiveItems.filter((item: any) => item.kind === selectedArchive);
+      }
+
+      function syncMapLayers() {
+        const visible = visiblePlaces();
+        const visibleIds = new Set(visible.map((place: any) => place.id));
+        const visibleArchive = visibleArchiveItems();
+        const visibleArchiveIds = new Set(visibleArchive.map((item: any) => item.id));
+        for (const [placeId, marker] of markerByPlaceId.entries()) {
+          const shouldShow = visibleIds.has(placeId);
+          const isShown = map.hasLayer(marker);
+          if (shouldShow && !isShown) marker.addTo(map);
+          if (!shouldShow && isShown) marker.removeFrom(map);
+        }
+        for (const [itemId, marker] of archiveMarkerById.entries()) {
+          const shouldShow = visibleArchiveIds.has(itemId);
+          const isShown = map.hasLayer(marker);
+          if (shouldShow && !isShown) marker.addTo(map);
+          if (!shouldShow && isShown) marker.removeFrom(map);
+        }
+        for (const [itemId, overlay] of archiveOverlayById.entries()) {
+          const shouldShow = visibleArchiveIds.has(itemId);
+          const isShown = map.hasLayer(overlay);
+          if (shouldShow && !isShown) overlay.addTo(map);
+          if (!shouldShow && isShown) overlay.removeFrom(map);
+        }
+
+        if (routeLine) {
+          routeLine.removeFrom(map);
+          routeLine = null;
+        }
+        const route = selectedRoute();
+        if (route) {
+          const routePlaces = route.stop_ids.map((id: string) => placeById.get(id)).filter(Boolean);
+          const visibleRoutePlaces = routePlaces.filter((place: any) => visibleIds.has(place.id));
+          if (visibleRoutePlaces.length >= 2) {
+            routeLine = L.polyline(
+              visibleRoutePlaces.map((place: any) => [place.coordinates.lat, place.coordinates.lng]),
+              { color: route.color, weight: 4, opacity: 0.82, dashArray: "7 8" }
+            ).addTo(map);
+          }
+          renderRoute(route, visibleRoutePlaces.length ? visibleRoutePlaces : routePlaces);
+        } else if (visible[0]) {
+          renderPlace(visible[0]);
+        }
+
+        if (mapCount) {
+          mapCount.textContent = `${visible.length} ${config.labels.visiblePlaces}`;
+        }
+        if (archiveCount) {
+          archiveCount.textContent = `${visibleArchive.length} ${config.labels.visibleArchiveItems}`;
+        }
+
+        const visibleMapOverlays = visibleArchive.filter((item: any) => archiveOverlayById.has(item.id));
+        if (visibleMapOverlays.length && (archiveSelect?.value ?? "map") === "map") {
+          const nextBounds = L.latLngBounds([]);
+          for (const item of visibleMapOverlays) {
+            nextBounds.extend([item.overlayBounds.south, item.overlayBounds.west]);
+            nextBounds.extend([item.overlayBounds.north, item.overlayBounds.east]);
+          }
+          map.fitBounds(nextBounds.pad(0.08));
+        } else if (visible.length) {
+          const nextBounds = L.latLngBounds(
+            visible.map((place: any) => [place.coordinates.lat, place.coordinates.lng])
+          );
+          map.fitBounds(nextBounds.pad(visible.length === 1 ? 3 : 0.22));
+        }
+      }
+
+      mapEra?.addEventListener("change", syncMapLayers);
+      archiveSelect?.addEventListener("change", syncMapLayers);
+      routeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeRouteId = button.dataset.historyRoute ?? "all";
+          routeButtons.forEach((item) => {
+            const active = item === button;
+            item.classList.toggle("is-active", active);
+            item.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          syncMapLayers();
+        });
+      });
+      if (places.length > 1) map.fitBounds(bounds.pad(0.22));
+      syncMapLayers();
+      }
+    }
+
+    function scheduleHistoryMapInit() {
+      const mapSection = document.getElementById("landmarks");
+      const start = () => {
+        initHistoryMap().catch(() => {
+          detail.innerHTML = `<h2>${escapeHtml(config.labels.selectPlace)}</h2><p class="meta">${escapeHtml(config.labels.archiveOverlayNote)}</p>`;
+        });
+      };
+
+      if (mapSection && "IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              observer.disconnect();
+              start();
+            }
+          },
+          { rootMargin: "600px 0px" }
+        );
+        observer.observe(mapSection);
+      } else if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(start, { timeout: 2500 });
+      } else {
+        window.setTimeout(start, 500);
+      }
+    }
+
+    scheduleHistoryMapInit();
+  </script>
 </Layout>
+
+<style>
+  .on-this-day-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(190px, 260px);
+    gap: 18px;
+    align-items: start;
+    margin-bottom: 22px;
+  }
+
+  .on-this-day-card h3,
+  .on-this-day-card p {
+    margin: 0;
+  }
+
+  .on-this-day-controls {
+    display: grid;
+    gap: 10px;
+  }
+
+  .on-this-day-controls input {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xs);
+    background: var(--surface);
+  }
+
+  .on-this-day-list {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .on-this-day-list:empty {
+    display: none;
+  }
+
+  .on-this-day-list li {
+    display: grid;
+    gap: 4px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xs);
+    background: var(--surface-2);
+  }
+
+  .on-this-day-list p {
+    color: var(--ink-2);
+  }
+
+  .on-this-day-list a {
+    justify-self: start;
+    font-size: 0.9rem;
+    font-weight: 650;
+  }
+
+  #history-on-this-day-empty {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 720px) {
+    .on-this-day-card {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

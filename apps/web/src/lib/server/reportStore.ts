@@ -34,6 +34,7 @@ const DATA_FILE = path.join(DATA_DIR, "community-reports.json");
 type FileShape = { seq: number; reports: Record<string, CommunityReport> };
 
 function normalizeReport(report: CommunityReport): CommunityReport {
+  report.kind ??= "fix_report";
   report.photo_urls ??= [];
   report.photo_thumbnail_urls ??= [];
   report.photos ??= [];
@@ -73,7 +74,7 @@ export async function createReport(value: CleanSubmission): Promise<CommunityRep
 
   if (redisEnabled()) {
     const seq = Number(await redis("INCR", KEY_SEQ));
-    const report = buildReport(value, formatReportId(year, seq));
+    const report = buildReport(value, formatReportId(year, seq, value.kind));
     await redis("SET", KEY_REPORT(report.id), JSON.stringify(report));
     await redis("SADD", KEY_PENDING, report.id);
     await redis("SADD", KEY_CATEGORY(report.category), report.id);
@@ -83,7 +84,7 @@ export async function createReport(value: CleanSubmission): Promise<CommunityRep
 
   const store = await readFileStore();
   store.seq += 1;
-  const report = buildReport(value, formatReportId(year, store.seq));
+  const report = buildReport(value, formatReportId(year, store.seq, value.kind));
   store.reports[report.id] = report;
   await writeFileStore(store);
   return report;
@@ -122,6 +123,11 @@ export function listPending(): Promise<CommunityReport[]> {
 
 export function listPublished(): Promise<CommunityReport[]> {
   return listByModeration("published");
+}
+
+export async function listPublishedFixReports(): Promise<CommunityReport[]> {
+  const reports = await listPublished();
+  return reports.filter((report) => (report.kind ?? "fix_report") === "fix_report");
 }
 
 async function persist(report: CommunityReport): Promise<void> {

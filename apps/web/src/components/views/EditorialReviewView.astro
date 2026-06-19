@@ -1,0 +1,633 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { localizePath, ui, type Lang } from "@i18n/utils";
+import {
+  historyEditorialReview,
+  historyKnowledgeIndex,
+  historySourceCoverage,
+  type EditorialReviewRecord
+} from "@lib/data";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const labels =
+  lang === "bg"
+    ? {
+        title: "Редакторски преглед",
+        eyebrow: "Независим sign-off ledger",
+        lead:
+          "Публична опашка за независим редакторски преглед на историческата база. Записите са източниково проследими и валидирани, но не се броят за завършени, докато не получат отделен редакторски подпис с име и дата.",
+        status: "Статус",
+        total: "проследени записа",
+        signedOff: "одобрени",
+        needsReview: "чакат преглед",
+        blockers: "с блокери",
+        trackingGaps: "пропуски в проследяването",
+        sourceCoverageTitle: "Покритие на източниците",
+        sourceCoverageLead:
+          "Отделна проверка на същите записи: дали всеки има публичен източник, лиценз/условия за повторна употреба и дали редовете само с един източник са маркирани за по-силен преглед.",
+        traceability: "проследимост",
+        multiSourceReview: "multi-source преглед",
+        complete: "завършено",
+        incomplete: "незавършено",
+        needsSourceReview: "нужен преглед",
+        recordsWithSources: "с източници",
+        missingSources: "без източник",
+        licenseReady: "с лиценз/условия",
+        missingLicenses: "без лиценз/условия",
+        singleSource: "един източник",
+        multiSource: "2+ източника",
+        openLicenseRows: "отворен лиценз",
+        publicTermsRows: "публични условия",
+        sourceCoverageApi: "Source coverage JSON",
+        sourceCoverageCsv: "Source coverage CSV",
+        requirement: "Критерий",
+        collections: "Колекции",
+        collection: "Колекция",
+        records: "Записи",
+        reviewer: "Редакторски подпис",
+        sources: "Източници",
+        sourceLicense: "Източници и лиценз",
+        blockersLabel: "Блокери",
+        search: "Търсене",
+        searchPlaceholder: "запис, колекция, блокер...",
+        allCollections: "Всички колекции",
+        allStatuses: "Всички статуси",
+        allBlockers: "Всички блокери",
+        record: "Запис",
+        visible: "Видими",
+        of: "от",
+        empty: "Няма записи за тези филтри.",
+        loading: "Зареждане на редакторската опашка...",
+        api: "JSON API",
+        csv: "CSV опашка",
+        openRecord: "Отвори записа",
+        openApi: "API",
+        signedOffStatus: "одобрен",
+        needsStatus: "чака преглед",
+        missingStatus: "липсва статус",
+        unsigned: "няма подпис",
+        hasLicense: "има лиценз/условия",
+        missingLicense: "липсва лиценз/условия",
+        reset: "Изчисти филтрите",
+        tableLimit: "Показани са първите",
+        tableLimitSuffix: "записа от текущия филтър. CSV файлът съдържа цялата опашка."
+      }
+    : {
+        title: "Editorial Review",
+        eyebrow: "Independent sign-off ledger",
+        lead:
+          "A public queue for independent editorial review of the historical knowledge base. Records are source-traceable and validated, but they do not count as complete until a separate editor signs them off with name and date.",
+        status: "Status",
+        total: "tracked records",
+        signedOff: "signed off",
+        needsReview: "awaiting review",
+        blockers: "with blockers",
+        trackingGaps: "tracking gaps",
+        sourceCoverageTitle: "Source Coverage",
+        sourceCoverageLead:
+          "A separate audit of the same records: whether each row has a public source, license/reuse metadata, and whether single-source rows are flagged for stronger evidence review.",
+        traceability: "traceability",
+        multiSourceReview: "multi-source review",
+        complete: "complete",
+        incomplete: "incomplete",
+        needsSourceReview: "needs review",
+        recordsWithSources: "with sources",
+        missingSources: "without sources",
+        licenseReady: "license/terms present",
+        missingLicenses: "license/terms missing",
+        singleSource: "single source",
+        multiSource: "2+ sources",
+        openLicenseRows: "open-license rows",
+        publicTermsRows: "public-reference rows",
+        sourceCoverageApi: "Source coverage JSON",
+        sourceCoverageCsv: "Source coverage CSV",
+        requirement: "Requirement",
+        collections: "Collections",
+        collection: "Collection",
+        records: "Records",
+        reviewer: "Review log",
+        sources: "Sources",
+        sourceLicense: "Sources and license",
+        blockersLabel: "Blockers",
+        search: "Search",
+        searchPlaceholder: "record, collection, blocker...",
+        allCollections: "All collections",
+        allStatuses: "All statuses",
+        allBlockers: "All blockers",
+        record: "Record",
+        visible: "Visible",
+        of: "of",
+        empty: "No records match these filters.",
+        loading: "Loading editorial queue...",
+        api: "JSON API",
+        csv: "CSV queue",
+        openRecord: "Open record",
+        openApi: "API",
+        signedOffStatus: "signed off",
+        needsStatus: "awaiting review",
+        missingStatus: "missing status",
+        unsigned: "no sign-off logged",
+        hasLicense: "license/terms present",
+        missingLicense: "missing license/terms",
+        reset: "Clear filters",
+        tableLimit: "Showing the first",
+        tableLimitSuffix: "records for the current filter. The CSV file contains the full queue."
+      };
+
+const blockerLabels: Record<string, { bg: string; en: string }> = {
+  needs_independent_editorial_signoff: {
+    bg: "нужен независим редакторски подпис",
+    en: "needs independent editorial sign-off"
+  },
+  missing_independent_editorial_signoff_log: {
+    bg: "липсва име или дата на редактора",
+    en: "missing reviewer name or date"
+  },
+  missing_source_reference: {
+    bg: "липсва източникова връзка",
+    en: "missing source reference"
+  },
+  missing_license_or_reuse_status: {
+    bg: "липсва лиценз или статус за повторна употреба",
+    en: "missing license or reuse status"
+  },
+  missing_external_editorial_signoff_record: {
+    bg: "липсва външен запис в sign-off ledger",
+    en: "missing external sign-off ledger record"
+  },
+  editorial_signoff_log_mismatch: {
+    bg: "несъответствие със sign-off ledger",
+    en: "sign-off ledger mismatch"
+  }
+};
+
+function blockerLabel(id: string) {
+  return blockerLabels[id]?.[lang] ?? id.replaceAll("_", " ");
+}
+
+function collectionLabel(id: string) {
+  const collection = historyEditorialReview.collections[id];
+  return collection?.[`label_${lang}`] ?? collection?.label_bg ?? id.replaceAll("_", " ");
+}
+
+function statusLabel(status: EditorialReviewRecord["editorial_status"]) {
+  if (status === "signed_off") return labels.signedOffStatus;
+  if (status === "needs_editorial_signoff") return labels.needsStatus;
+  return labels.missingStatus;
+}
+
+const collectionRows = Object.entries(historyEditorialReview.collections).map(([id, collection]) => {
+  const signedPct = collection.total_records
+    ? Math.round((collection.signed_off_records / collection.total_records) * 100)
+    : 100;
+  return {
+    id,
+    label: collectionLabel(id),
+    role: collection.role,
+    total: collection.total_records,
+    signedOff: collection.signed_off_records,
+    needsReview: collection.records_needing_review,
+    blockers: collection.records_with_blockers,
+    pct: signedPct,
+    style: `width:${signedPct}%`
+  };
+});
+
+const sourceCoverageRows = Object.entries(historySourceCoverage.collections).map(([id, collection]) => ({
+  id,
+  label: collectionLabel(id),
+  role: collection.role,
+  total: collection.total_records,
+  withSources: collection.records_with_sources,
+  missingSources: collection.records_without_sources,
+  singleSource: collection.single_source_records,
+  multiSource: collection.multi_source_records,
+  missingLicenses: collection.records_missing_license_or_reuse_status
+}));
+
+const blockerOptions = [...new Set(historyEditorialReview.records.flatMap((record) => record.blockers))].sort();
+const statusOptions = [...new Set(historyEditorialReview.records.map((record) => record.editorial_status))].sort();
+const generatedLabel = new Intl.DateTimeFormat(lang === "bg" ? "bg-BG" : "en-GB", {
+  dateStyle: "medium"
+}).format(new Date(historyEditorialReview.generated_at));
+
+const reviewConfig = {
+  lang,
+  api: {
+    editorialReview: historyKnowledgeIndex.endpoints.editorial_review,
+    sourceCoverage: historyKnowledgeIndex.endpoints.source_coverage,
+    csv: historyKnowledgeIndex.downloads.editorial_review_csv
+  },
+  tableLimit: 160,
+  labels: {
+    visible: labels.visible,
+    of: labels.of,
+    empty: labels.empty,
+    loading: labels.loading,
+    unsigned: labels.unsigned,
+    hasLicense: labels.hasLicense,
+    missingLicense: labels.missingLicense,
+    openRecord: labels.openRecord,
+    openApi: labels.openApi,
+    tableLimit: labels.tableLimit,
+    tableLimitSuffix: labels.tableLimitSuffix
+  },
+  collectionLabels: Object.fromEntries(collectionRows.map((row) => [row.id, row.label])),
+  statusLabels: Object.fromEntries(statusOptions.map((status) => [status, statusLabel(status)])),
+  blockerLabels: Object.fromEntries(blockerOptions.map((blocker) => [blocker, blockerLabel(blocker)]))
+};
+---
+
+<Layout lang={lang} path="/history/editorial-review" title={labels.title} description={labels.lead}>
+  <section class="section hero hero-compact review-hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">{labels.eyebrow}</p>
+        <h1>{labels.title}</h1>
+        <p class="lead">{labels.lead}</p>
+        <div class="button-row">
+          <a class="button" href={historyKnowledgeIndex.endpoints.editorial_review}>{labels.api}</a>
+          <a class="button secondary" href={historyKnowledgeIndex.downloads.editorial_review_csv} download>{labels.csv}</a>
+        </div>
+      </div>
+      <dl class="stats-grid review-stats" aria-label={labels.title}>
+        <div class="stat-card">
+          <dt>{labels.total}</dt>
+          <dd>{historyEditorialReview.summary.total_tracked_records}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.signedOff}</dt>
+          <dd>{historyEditorialReview.summary.signed_off_records}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.needsReview}</dt>
+          <dd>{historyEditorialReview.summary.records_needing_review}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.blockers}</dt>
+          <dd>{historyEditorialReview.summary.records_with_blockers}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="editorial-review-dashboard">
+    <div class="container">
+      <div class="review-status">
+        <div>
+          <p class="eyebrow">{labels.status}</p>
+          <h2>{historyEditorialReview.status === "complete" ? labels.signedOffStatus : labels.needsStatus}</h2>
+          <p class="meta">{labels.requirement}: {historyEditorialReview.acceptance_requirement}</p>
+          <p class="meta">{historyEditorialReview.version} · {generatedLabel}</p>
+        </div>
+        <div class="review-meter" aria-label={`${historyEditorialReview.summary.signed_off_percent}%`}>
+          <span style={`width:${historyEditorialReview.summary.signed_off_percent}%`}></span>
+        </div>
+      </div>
+
+      <div class="table-wrap review-collection-table" style="margin-top:22px">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>{labels.collection}</th>
+              <th>{labels.records}</th>
+              <th>{labels.signedOff}</th>
+              <th>{labels.needsReview}</th>
+              <th>{labels.blockers}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {collectionRows.map((row) => (
+              <tr>
+                <td>
+                  <strong>{row.label}</strong>
+                  <span class="meta">{row.role}</span>
+                  <span class="review-meter mini" aria-label={`${row.pct}%`}>
+                    <span style={row.style}></span>
+                  </span>
+                </td>
+                <td>{row.total}</td>
+                <td>{row.signedOff}</td>
+                <td>{row.needsReview}</td>
+                <td>{row.blockers}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="source-coverage-dashboard">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">{labels.sourceCoverageTitle}</p>
+          <h2>{labels.sourceCoverageTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:76ch">{labels.sourceCoverageLead}</p>
+        </div>
+        <div class="button-row">
+          <a class="button secondary" href={historyKnowledgeIndex.endpoints.source_coverage}>{labels.sourceCoverageApi}</a>
+          <a class="button secondary" href={historyKnowledgeIndex.downloads.source_coverage_csv} download>{labels.sourceCoverageCsv}</a>
+        </div>
+      </div>
+
+      <dl class="stats-grid review-stats" aria-label={labels.sourceCoverageTitle}>
+        <div class="stat-card">
+          <dt>{labels.traceability}</dt>
+          <dd>{historySourceCoverage.source_traceability_status === "complete" ? labels.complete : labels.incomplete}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.recordsWithSources}</dt>
+          <dd>{historySourceCoverage.summary.records_with_sources}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.licenseReady}</dt>
+          <dd>{historySourceCoverage.summary.records_with_license_or_reuse_status}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.multiSourceReview}</dt>
+          <dd>{historySourceCoverage.multi_source_review_status === "complete" ? labels.complete : labels.needsSourceReview}</dd>
+        </div>
+      </dl>
+
+      <dl class="review-source-summary">
+        <div class="stat-card">
+          <dt>{labels.missingSources}</dt>
+          <dd>{historySourceCoverage.summary.records_without_sources}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.missingLicenses}</dt>
+          <dd>{historySourceCoverage.summary.records_missing_license_or_reuse_status}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.singleSource}</dt>
+          <dd>{historySourceCoverage.summary.single_source_records}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.multiSource}</dt>
+          <dd>{historySourceCoverage.summary.multi_source_records}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.openLicenseRows}</dt>
+          <dd>{historySourceCoverage.summary.open_license_records}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.publicTermsRows}</dt>
+          <dd>{historySourceCoverage.summary.public_reference_terms_records}</dd>
+        </div>
+      </dl>
+
+      <div class="table-wrap review-collection-table" style="margin-top:22px">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>{labels.collection}</th>
+              <th>{labels.records}</th>
+              <th>{labels.recordsWithSources}</th>
+              <th>{labels.singleSource}</th>
+              <th>{labels.multiSource}</th>
+              <th>{labels.missingLicenses}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sourceCoverageRows.map((row) => (
+              <tr>
+                <td>
+                  <strong>{row.label}</strong>
+                  <span class="meta">{row.role}</span>
+                </td>
+                <td>{row.total}</td>
+                <td>{row.withSources}</td>
+                <td>{row.singleSource}</td>
+                <td>{row.multiSource}</td>
+                <td>{row.missingLicenses}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="editorial-records">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{labels.records}</h2>
+          <p id="editorial-review-count" class="meta">{labels.loading}</p>
+        </div>
+      </div>
+
+      <div class="toolbar review-toolbar">
+        <div class="filters">
+          <div class="field">
+            <label for="editorial-review-search">{labels.search}</label>
+            <input id="editorial-review-search" type="search" placeholder={labels.searchPlaceholder} />
+          </div>
+          <div class="field">
+            <label for="editorial-review-collection">{labels.collection}</label>
+            <select id="editorial-review-collection">
+              <option value="all">{labels.allCollections}</option>
+              {collectionRows.map((row) => <option value={row.id}>{row.label}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="editorial-review-status">{labels.status}</label>
+            <select id="editorial-review-status">
+              <option value="all">{labels.allStatuses}</option>
+              {statusOptions.map((status) => <option value={status}>{statusLabel(status)}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="editorial-review-blocker">{labels.blockersLabel}</label>
+            <select id="editorial-review-blocker">
+              <option value="all">{labels.allBlockers}</option>
+              {blockerOptions.map((blocker) => <option value={blocker}>{blockerLabel(blocker)}</option>)}
+            </select>
+          </div>
+        </div>
+        <button type="button" id="editorial-review-reset" class="link-button" hidden>{labels.reset}</button>
+      </div>
+
+      <div class="table-wrap" style="margin-top:18px">
+        <table class="table review-record-table">
+          <thead>
+            <tr>
+              <th>{labels.collection}</th>
+              <th>{labels.record}</th>
+              <th>{labels.status}</th>
+              <th>{labels.sourceLicense}</th>
+              <th>{labels.reviewer}</th>
+              <th>{labels.blockersLabel}</th>
+            </tr>
+          </thead>
+          <tbody id="editorial-review-list">
+            <tr><td colspan="6">{labels.loading}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="editorial-review-limit" class="meta" style="margin-top:14px" hidden></p>
+    </div>
+  </section>
+
+  <script type="application/json" id="editorial-review-config" set:html={JSON.stringify(reviewConfig)}></script>
+  <script>
+    const config = JSON.parse(document.getElementById("editorial-review-config")?.textContent ?? "{}");
+    const search = document.querySelector<HTMLInputElement>("#editorial-review-search")!;
+    const collection = document.querySelector<HTMLSelectElement>("#editorial-review-collection")!;
+    const status = document.querySelector<HTMLSelectElement>("#editorial-review-status")!;
+    const blocker = document.querySelector<HTMLSelectElement>("#editorial-review-blocker")!;
+    const reset = document.querySelector<HTMLButtonElement>("#editorial-review-reset")!;
+    const count = document.querySelector<HTMLElement>("#editorial-review-count")!;
+    const list = document.querySelector<HTMLTableSectionElement>("#editorial-review-list")!;
+    const limit = document.querySelector<HTMLElement>("#editorial-review-limit")!;
+    let records = [];
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function labelFrom(map, key) {
+      return map?.[key] ?? String(key ?? "").replaceAll("_", " ");
+    }
+
+    function localizedTitle(record) {
+      return config.lang === "bg"
+        ? record.title_bg || record.title_en || record.id
+        : record.title_en || record.title_bg || record.id;
+    }
+
+    function recordSearchText(record) {
+      return [
+        record.id,
+        record.collection,
+        localizedTitle(record),
+        labelFrom(config.collectionLabels, record.collection),
+        labelFrom(config.statusLabels, record.editorial_status),
+        record.review_url_bg,
+        record.review_url_en,
+        record.api_url,
+        ...(record.source_ids ?? []),
+        ...(record.source_urls ?? []),
+        ...(record.blockers ?? []).map((item) => labelFrom(config.blockerLabels, item))
+      ]
+        .join(" ")
+        .toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB");
+    }
+
+    function filteredRecords() {
+      const query = search.value.trim().toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB");
+      return records.filter((record) => {
+        return (
+          (!query || recordSearchText(record).includes(query)) &&
+          (collection.value === "all" || record.collection === collection.value) &&
+          (status.value === "all" || record.editorial_status === status.value) &&
+          (blocker.value === "all" || (record.blockers ?? []).includes(blocker.value))
+        );
+      });
+    }
+
+    function renderRows() {
+      const rows = filteredRecords();
+      const visible = rows.slice(0, config.tableLimit);
+      count.textContent = `${config.labels.visible}: ${rows.length} ${config.labels.of} ${records.length}`;
+      reset.hidden = !(
+        search.value ||
+        collection.value !== "all" ||
+        status.value !== "all" ||
+        blocker.value !== "all"
+      );
+      limit.hidden = rows.length <= visible.length;
+      if (!limit.hidden) {
+        limit.textContent = `${config.labels.tableLimit} ${visible.length} ${config.labels.tableLimitSuffix}`;
+      }
+      if (visible.length === 0) {
+        list.innerHTML = `<tr><td colspan="6">${escapeHtml(config.labels.empty)}</td></tr>`;
+        return;
+      }
+      list.innerHTML = visible
+        .map((record) => {
+          const blockers = (record.blockers ?? []).length
+            ? record.blockers
+                .map((item) => `<span class="review-chip">${escapeHtml(labelFrom(config.blockerLabels, item))}</span>`)
+                .join("")
+            : "—";
+          const reviewer = record.reviewed_by && record.reviewed_at
+            ? `${escapeHtml(record.reviewed_by)}<span class="meta">${escapeHtml(record.reviewed_at)}${record.signoff_id ? ` · ${escapeHtml(record.signoff_id)}` : ""}</span>`
+            : `<span class="meta">${escapeHtml(config.labels.unsigned)}</span>`;
+          const license = record.has_license_or_reuse_status
+            ? config.labels.hasLicense
+            : config.labels.missingLicense;
+          const reviewUrl = config.lang === "bg" ? record.review_url_bg : record.review_url_en;
+          const recordTitle = reviewUrl
+            ? `<a class="review-record-link" href="${escapeHtml(reviewUrl)}">${escapeHtml(localizedTitle(record))}</a>`
+            : `<strong>${escapeHtml(localizedTitle(record))}</strong>`;
+          const apiUrl = record.api_url
+            ? `<a class="src-link" href="${escapeHtml(record.api_url)}">${escapeHtml(config.labels.openApi)}</a>`
+            : "";
+          const sources = Array.isArray(record.review_sources) ? record.review_sources : [];
+          const sourceLinks = sources
+            .slice(0, 2)
+            .map((source) => {
+              const title = config.lang === "bg"
+                ? source.title_bg || source.title_en || source.source_id || source.url
+                : source.title_en || source.title_bg || source.source_id || source.url;
+              return `<a class="src-link review-source-link" href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(title)}</a>`;
+            })
+            .join("");
+          const sourceMore = sources.length > 2
+            ? `<span class="meta">+${sources.length - 2}</span>`
+            : "";
+          return `
+            <tr>
+              <td><strong>${escapeHtml(labelFrom(config.collectionLabels, record.collection))}</strong><span class="meta">${escapeHtml(record.role)}</span></td>
+              <td>${recordTitle}<span class="meta">${escapeHtml(record.id)}${apiUrl ? ` · ${apiUrl}` : ""}</span></td>
+              <td><span class="badge status-unverified">${escapeHtml(labelFrom(config.statusLabels, record.editorial_status))}</span></td>
+              <td>
+                <strong>${escapeHtml(record.source_count)} · ${escapeHtml(license)}</strong>
+                <div class="review-source-list">${sourceLinks}${sourceMore}</div>
+              </td>
+              <td>${reviewer}</td>
+              <td><div class="review-chip-list">${blockers}</div></td>
+            </tr>
+          `;
+        })
+        .join("");
+    }
+
+    async function loadReviewRecords() {
+      const response = await fetch(config.api.editorialReview, { headers: { Accept: "application/json" } });
+      if (!response.ok) throw new Error(`Editorial review API failed: ${response.status}`);
+      const payload = await response.json();
+      records = Array.isArray(payload.records) ? payload.records : [];
+      renderRows();
+    }
+
+    search.addEventListener("input", renderRows);
+    collection.addEventListener("change", renderRows);
+    status.addEventListener("change", renderRows);
+    blocker.addEventListener("change", renderRows);
+    reset.addEventListener("click", () => {
+      search.value = "";
+      collection.value = "all";
+      status.value = "all";
+      blocker.value = "all";
+      renderRows();
+      search.focus();
+    });
+
+    loadReviewRecords().catch((error) => {
+      list.innerHTML = `<tr><td colspan="6">${escapeHtml(error.message)}</td></tr>`;
+      count.textContent = error.message;
+    });
+  </script>
+</Layout>

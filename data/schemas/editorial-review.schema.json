@@ -1,0 +1,250 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/editorial-review.schema.json",
+  "title": "Open Plovdiv generated editorial review report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "generated_at",
+    "acceptance_requirement",
+    "status",
+    "summary",
+    "collections",
+    "tracking_gaps",
+    "records"
+  ],
+  "properties": {
+    "version": { "type": "string", "pattern": "^20[0-9]{2}\\.[0-9]{2}\\.[0-9]{2}$" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "acceptance_requirement": { "type": "string", "minLength": 20 },
+    "status": { "type": "string", "enum": ["complete", "incomplete"] },
+    "summary": { "$ref": "#/definitions/summary" },
+    "collections": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events",
+        "people",
+        "person_relationships",
+        "places",
+        "organizations",
+        "archive_items",
+        "then_now_pairs",
+        "primary_documents",
+        "story_longreads",
+        "education_resources"
+      ],
+      "patternProperties": {
+        "^[a-z_]+$": { "$ref": "#/definitions/collection_summary" }
+      }
+    },
+    "tracking_gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["collection"],
+        "properties": {
+          "collection": { "type": "string", "minLength": 2 }
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/record" }
+    }
+  },
+  "definitions": {
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_tracked_records",
+        "signed_off_records",
+        "records_needing_review",
+        "records_with_blockers",
+        "signed_off_percent",
+        "tracking_gap_collections"
+      ],
+      "properties": {
+        "total_tracked_records": { "type": "integer", "minimum": 0 },
+        "signed_off_records": { "type": "integer", "minimum": 0 },
+        "records_needing_review": { "type": "integer", "minimum": 0 },
+        "records_with_blockers": { "type": "integer", "minimum": 0 },
+        "signed_off_percent": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "tracking_gap_collections": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "collection_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label_bg",
+        "label_en",
+        "role",
+        "total_records",
+        "signed_off_records",
+        "records_needing_review",
+        "records_with_blockers"
+      ],
+      "properties": {
+        "label_bg": { "type": "string", "minLength": 2 },
+        "label_en": { "type": "string", "minLength": 2 },
+        "role": { "type": "string", "minLength": 2 },
+        "total_records": { "type": "integer", "minimum": 0 },
+        "signed_off_records": { "type": "integer", "minimum": 0 },
+        "records_needing_review": { "type": "integer", "minimum": 0 },
+        "records_with_blockers": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "collection",
+        "role",
+        "title_bg",
+        "title_en",
+        "editorial_status",
+        "reviewed_by",
+        "reviewed_at",
+        "signoff_id",
+        "reviewer_affiliation",
+        "review_scope",
+        "review_artifact_url",
+        "review_notes_bg",
+        "review_notes_en",
+        "review_url_bg",
+        "review_url_en",
+        "api_url",
+        "review_sources",
+        "source_ids",
+        "source_urls",
+        "license_statuses",
+        "source_count",
+        "has_license_or_reuse_status",
+        "blockers"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 3 },
+        "collection": {
+          "type": "string",
+          "enum": [
+            "events",
+            "people",
+            "person_relationships",
+            "places",
+            "organizations",
+            "archive_items",
+            "then_now_pairs",
+            "primary_documents",
+            "story_longreads",
+            "education_resources"
+          ]
+        },
+        "role": { "type": "string", "minLength": 2 },
+        "title_bg": { "type": "string", "minLength": 1 },
+        "title_en": { "type": "string", "minLength": 1 },
+        "editorial_status": {
+          "type": "string",
+          "enum": ["needs_editorial_signoff", "signed_off", "missing_editorial_status"]
+        },
+        "reviewed_by": { "type": ["string", "null"], "minLength": 2 },
+        "reviewed_at": { "type": ["string", "null"], "format": "date" },
+        "signoff_id": { "type": ["string", "null"], "pattern": "^signoff-[0-9a-z-]+$" },
+        "reviewer_affiliation": { "type": ["string", "null"], "minLength": 2 },
+        "review_scope": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "historical_accuracy",
+              "source_traceability",
+              "bg_en_content_parity",
+              "license_and_media_rights",
+              "relationship_graph_integrity",
+              "pedagogical_suitability"
+            ]
+          }
+        },
+        "review_artifact_url": { "type": ["string", "null"], "format": "uri" },
+        "review_notes_bg": { "type": ["string", "null"], "minLength": 10 },
+        "review_notes_en": { "type": ["string", "null"], "minLength": 10 },
+        "review_url_bg": { "type": "string", "pattern": "^/" },
+        "review_url_en": { "type": "string", "pattern": "^/en/" },
+        "api_url": { "type": "string", "pattern": "^/api/history/[0-9a-z-]+\\.json$" },
+        "review_sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/review_source" }
+        },
+        "source_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
+        },
+        "source_urls": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "format": "uri" }
+        },
+        "license_statuses": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": ["string", "null"] }
+        },
+        "source_count": { "type": "integer", "minimum": 1 },
+        "has_license_or_reuse_status": { "type": "boolean" },
+        "blockers": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "needs_independent_editorial_signoff",
+              "missing_independent_editorial_signoff_log",
+              "missing_external_editorial_signoff_record",
+              "editorial_signoff_log_mismatch",
+              "missing_source_reference",
+              "missing_license_or_reuse_status"
+            ]
+          }
+        }
+      }
+    },
+    "review_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "title_bg",
+        "title_en",
+        "url",
+        "accessed_at",
+        "license_status",
+        "license_label",
+        "license_url",
+        "evidence_type",
+        "claim_bg",
+        "claim_en"
+      ],
+      "properties": {
+        "source_id": { "type": ["string", "null"], "pattern": "^source-[0-9a-z-]+$" },
+        "title_bg": { "type": "string", "minLength": 1 },
+        "title_en": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" },
+        "accessed_at": { "type": "string", "format": "date" },
+        "license_status": { "type": ["string", "null"], "minLength": 3 },
+        "license_label": { "type": ["string", "null"], "minLength": 2 },
+        "license_url": { "type": ["string", "null"], "format": "uri" },
+        "evidence_type": { "type": ["string", "null"], "minLength": 3 },
+        "claim_bg": { "type": "string" },
+        "claim_en": { "type": "string" }
+      }
+    }
+  }
+}

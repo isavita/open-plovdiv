@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/notable-person.schema.json",
+  "title": "Open Plovdiv notable person entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "wikidata_id",
+    "name_bg",
+    "name_en",
+    "description_bg",
+    "description_en",
+    "roles",
+    "birth_year",
+    "death_year",
+    "source",
+    "data_quality"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^notable-person-[0-9a-z-]+$"
+    },
+    "wikidata_id": {
+      "type": "string",
+      "pattern": "^Q[0-9]+$"
+    },
+    "name_bg": { "type": "string", "minLength": 2 },
+    "name_en": { "type": "string", "minLength": 2 },
+    "description_bg": { "type": "string", "minLength": 5 },
+    "description_en": { "type": "string", "minLength": 5 },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]+$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "birth_year": { "type": ["integer", "null"], "minimum": 0, "maximum": 2100 },
+    "death_year": { "type": ["integer", "null"], "minimum": 0, "maximum": 2100 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "url", "accessed_at"],
+      "properties": {
+        "title": { "type": "string", "minLength": 3 },
+        "url": { "type": "string", "format": "uri" },
+        "accessed_at": { "type": "string", "format": "date" }
+      }
+    },
+    "data_quality": {
+      "type": "string",
+      "enum": ["public_source", "manual_reviewed", "provisional"]
+    }
+  }
+}

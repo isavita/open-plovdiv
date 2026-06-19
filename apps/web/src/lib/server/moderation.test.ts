@@ -18,12 +18,35 @@ describe("validateSubmission", () => {
     expect(result.ok).toBe(true);
     if (result.ok) {
       expect(result.value.category).toBe("pavement");
+      expect(result.value.kind).toBe("fix_report");
       expect(result.value.lang).toBe("en");
+    }
+  });
+
+  it("accepts a historical contribution submission", () => {
+    const result = validateSubmission({
+      ...valid,
+      kind: "history_contribution",
+      category: "historic_photo",
+      title: "Old photo of Dzhumaya",
+      description: "A family archive photo that should be checked before publication.",
+      source_url: "https://example.com/archive-item",
+      source_note: "Scanned postcard with approximate date."
+    });
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.value.kind).toBe("history_contribution");
+      expect(result.value.source_url).toBe("https://example.com/archive-item");
     }
   });
 
   it("rejects an unknown category", () => {
     const result = validateSubmission({ ...valid, category: "spaceport" });
+    expect(result).toEqual({ ok: false, error: "invalid_category" });
+  });
+
+  it("rejects fix-report categories on historical contributions", () => {
+    const result = validateSubmission({ ...valid, kind: "history_contribution", category: "pavement" });
     expect(result).toEqual({ ok: false, error: "invalid_category" });
   });
 
@@ -61,6 +84,7 @@ describe("report building", () => {
   it("formats ids with a zero-padded sequence", () => {
     expect(formatReportId(2026, 1)).toBe("fix-plovdiv-2026-000001");
     expect(formatReportId(2026, 42)).toBe("fix-plovdiv-2026-000042");
+    expect(formatReportId(2026, 7, "history_contribution")).toBe("history-plovdiv-2026-000007");
   });
 
   it("creates a pending report from a clean submission", () => {
@@ -68,6 +92,7 @@ describe("report building", () => {
     if (!result.ok) throw new Error("expected valid submission");
     const report = buildReport(result.value, "fix-plovdiv-2026-000001");
     expect(report.moderation_status).toBe("needs_review");
+    expect(report.kind).toBe("fix_report");
     expect(report.public_status).toBe("unverified");
     expect(report.source).toBe("citizen_submission");
     expect(report.title_en).toBe(valid.title); // mirrored for EN submissions

@@ -2,7 +2,13 @@
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
-import { cityArchive } from "@lib/data";
+import {
+  budgetItems,
+  cityArchive,
+  historyKnowledgeEvents,
+  historyKnowledgeOrganizations,
+  primaryDocuments
+} from "@lib/data";
 import { formatMoney } from "@lib/format";
 
 type Props = { lang: Lang };
@@ -25,6 +31,30 @@ const financeMax = Math.max(...financeRecords.map((record) => record.amount_bgn 
 const programmeRecords = cityArchive
   .filter((record) => record.kind !== "mayor_term" && record.kind !== "historical_finance")
   .sort((a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start));
+
+const documentRecords = [...primaryDocuments].sort(
+  (a, b) => b.date.localeCompare(a.date) || a.title_bg.localeCompare(b.title_bg, "bg-BG")
+);
+const eventById = new Map(historyKnowledgeEvents.map((record) => [record.id, record]));
+const budgetItemById = new Map(budgetItems.map((record) => [record.id, record]));
+const organizationById = new Map(historyKnowledgeOrganizations.map((record) => [record.id, record]));
+
+function linkedLabels(record: (typeof documentRecords)[number]) {
+  return [
+    ...record.linked_event_ids.map((id) => {
+      const event = eventById.get(id);
+      return event ? field(event, "title", lang) : null;
+    }),
+    ...record.linked_budget_item_ids.map((id) => {
+      const budgetItem = budgetItemById.get(id);
+      return budgetItem ? field(budgetItem, "title", lang) : null;
+    }),
+    ...record.linked_organization_ids.map((id) => {
+      const organization = organizationById.get(id);
+      return organization ? field(organization, "name", lang) : null;
+    })
+  ].filter((label): label is string => Boolean(label));
+}
 ---
 
 <Layout lang={lang} path="/archive" title={t.archive.title} description={t.archive.lead}>
@@ -42,9 +72,65 @@ const programmeRecords = cityArchive
         <div class="stat"><strong>{mayorTerms.length}</strong><span>{t.archive.statMayors}</span></div>
         <div class="stat"><strong>{financeRecords.length}</strong><span>{t.archive.statFinance}</span></div>
         <div class="stat"><strong>{programmeRecords.length}</strong><span>{t.archive.statProgrammes}</span></div>
+        <div class="stat"><strong>{documentRecords.length}</strong><span>{t.archive.statDocuments}</span></div>
         {currentMayor && (
           <div class="stat"><strong>{field(currentMayor, "actor", lang)}</strong><span>{t.archive.currentMayor}</span></div>
         )}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{t.archive.documentsTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{t.archive.documentsLead}</p>
+        </div>
+      </div>
+
+      <div class="document-grid">
+        {documentRecords.map((record) => {
+          const linked = linkedLabels(record);
+          return (
+            <article class="card project-card document-card">
+              <header>
+                <div>
+                  <p class="eyebrow">
+                    {record.date} · {t.archive.documentTypes[record.kind]}
+                  </p>
+                  <h3>{field(record, "title", lang)}</h3>
+                </div>
+                <span class="badge no-dot">{t.archive.transcriptionTypes[record.transcription.type]}</span>
+              </header>
+              <p>{field(record, "summary", lang)}</p>
+              <div class="document-excerpt">
+                <p class="eyebrow">{t.archive.transcriptLabel}</p>
+                <blockquote>
+                  {lang === "bg" ? record.transcription.excerpt_bg : record.transcription.excerpt_en}
+                </blockquote>
+                <p class="meta">
+                  {lang === "bg" ? record.transcription.notes_bg : record.transcription.notes_en}
+                </p>
+              </div>
+              {linked.length > 0 && (
+                <div class="document-links">
+                  <p class="eyebrow">{t.archive.linkedRecords}</p>
+                  <ul>
+                    {linked.map((label) => (
+                      <li>{label}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <div class="pill-row">
+                <a class="meta" href={record.source.url} target="_blank" rel="noreferrer">
+                  {t.archive.sourceLabel}
+                </a>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -160,3 +246,65 @@ const programmeRecords = cityArchive
     </div>
   </section>
 </Layout>
+
+<style>
+  .document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 18px;
+  }
+
+  .document-card {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .document-card > p {
+    margin: 0;
+  }
+
+  .document-excerpt {
+    display: grid;
+    gap: 8px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xs);
+    background: var(--surface-2);
+  }
+
+  .document-excerpt blockquote {
+    margin: 0;
+    padding-inline-start: 12px;
+    border-inline-start: 3px solid var(--accent);
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    line-height: 1.5;
+  }
+
+  .document-links {
+    display: grid;
+    gap: 8px;
+  }
+
+  .document-links ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .document-links li {
+    padding: 5px 9px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xs);
+    color: var(--ink-2);
+    background: var(--surface);
+    font-size: 0.86rem;
+    line-height: 1.35;
+  }
+</style>

@@ -1,0 +1,219 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/history-index.schema.json",
+  "title": "Open Plovdiv generated history bundle index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "generated_at",
+    "license_note",
+    "counts",
+    "targets",
+    "endpoints",
+    "downloads",
+    "editorial_review",
+    "source_coverage"
+  ],
+  "properties": {
+    "version": { "type": "string", "pattern": "^20[0-9]{2}\\.[0-9]{2}\\.[0-9]{2}$" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "license_note": { "type": "string", "minLength": 20 },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events",
+        "exact_date_events",
+        "people",
+        "person_relationships",
+        "places",
+        "places_with_media",
+        "place_media_items",
+        "organizations",
+        "sources",
+        "georeferenced_archive_items",
+        "then_now_pairs",
+        "primary_documents",
+        "story_longreads",
+        "lesson_plans",
+        "audio_tour_scripts",
+        "editorial_tracked_records",
+        "editorial_signed_off_records",
+        "editorial_signoff_logs",
+        "editorial_records_needing_review",
+        "editorial_records_with_blockers",
+        "source_coverage_records"
+      ],
+      "properties": {
+        "events": { "type": "integer", "minimum": 0 },
+        "exact_date_events": { "type": "integer", "minimum": 0 },
+        "people": { "type": "integer", "minimum": 0 },
+        "person_relationships": { "type": "integer", "minimum": 0 },
+        "places": { "type": "integer", "minimum": 0 },
+        "places_with_media": { "type": "integer", "minimum": 0 },
+        "place_media_items": { "type": "integer", "minimum": 0 },
+        "organizations": { "type": "integer", "minimum": 0 },
+        "sources": { "type": "integer", "minimum": 0 },
+        "georeferenced_archive_items": { "type": "integer", "minimum": 0 },
+        "then_now_pairs": { "type": "integer", "minimum": 0 },
+        "primary_documents": { "type": "integer", "minimum": 0 },
+        "story_longreads": { "type": "integer", "minimum": 0 },
+        "lesson_plans": { "type": "integer", "minimum": 0 },
+        "audio_tour_scripts": { "type": "integer", "minimum": 0 },
+        "editorial_tracked_records": { "type": "integer", "minimum": 0 },
+        "editorial_signed_off_records": { "type": "integer", "minimum": 0 },
+        "editorial_signoff_logs": { "type": "integer", "minimum": 0 },
+        "editorial_records_needing_review": { "type": "integer", "minimum": 0 },
+        "editorial_records_with_blockers": { "type": "integer", "minimum": 0 },
+        "source_coverage_records": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "targets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events",
+        "exact_date_events",
+        "people",
+        "places",
+        "places_with_media",
+        "georeferenced_archive_items",
+        "then_now_pairs",
+        "longreads",
+        "lesson_plans"
+      ],
+      "properties": {
+        "events": { "type": "integer", "minimum": 1 },
+        "exact_date_events": { "type": "integer", "minimum": 1 },
+        "people": { "type": "integer", "minimum": 1 },
+        "places": { "type": "integer", "minimum": 1 },
+        "places_with_media": { "type": "integer", "minimum": 1 },
+        "georeferenced_archive_items": { "type": "integer", "minimum": 1 },
+        "then_now_pairs": { "type": "integer", "minimum": 1 },
+        "longreads": { "type": "integer", "minimum": 1 },
+        "lesson_plans": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "endpoints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events",
+        "people",
+        "person_relationships",
+        "places",
+        "organizations",
+        "sources",
+        "archive_items",
+        "then_now_pairs",
+        "primary_documents",
+        "story_longreads",
+        "education_resources",
+        "editorial_signoffs",
+        "editorial_review",
+        "source_coverage"
+      ],
+      "patternProperties": {
+        "^[a-z_]+$": { "type": "string", "pattern": "^/api/history/[0-9a-z-]+\\.json$" }
+      }
+    },
+    "downloads": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "json_directory",
+        "csv_directory",
+        "index_json",
+        "events_json",
+        "people_json",
+        "person_relationships_json",
+        "places_json",
+        "organizations_json",
+        "sources_json",
+        "archive_items_json",
+        "then_now_pairs_json",
+        "primary_documents_json",
+        "story_longreads_json",
+        "education_resources_json",
+        "editorial_signoffs_json",
+        "editorial_review_json",
+        "source_coverage_json",
+        "events_csv",
+        "people_csv",
+        "person_relationships_csv",
+        "places_csv",
+        "organizations_csv",
+        "sources_csv",
+        "archive_items_csv",
+        "then_now_pairs_csv",
+        "primary_documents_csv",
+        "story_longreads_csv",
+        "education_resources_csv",
+        "editorial_signoffs_csv",
+        "editorial_review_csv",
+        "source_coverage_csv"
+      ],
+      "properties": {
+        "json_directory": { "const": "/data/history/" },
+        "csv_directory": { "const": "/data/history/csv/" }
+      },
+      "patternProperties": {
+        "^[a-z_]+_json$": { "type": "string", "pattern": "^/data/history/[0-9a-z-]+\\.json$" },
+        "^[a-z_]+_csv$": { "type": "string", "pattern": "^/data/history/csv/[0-9a-z-]+\\.csv$" }
+      }
+    },
+    "editorial_review": { "$ref": "#/definitions/editorial_summary" },
+    "source_coverage": { "$ref": "#/definitions/source_coverage_summary" }
+  },
+  "definitions": {
+    "editorial_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_tracked_records",
+        "signed_off_records",
+        "records_needing_review",
+        "records_with_blockers",
+        "signed_off_percent",
+        "tracking_gap_collections"
+      ],
+      "properties": {
+        "total_tracked_records": { "type": "integer", "minimum": 0 },
+        "signed_off_records": { "type": "integer", "minimum": 0 },
+        "records_needing_review": { "type": "integer", "minimum": 0 },
+        "records_with_blockers": { "type": "integer", "minimum": 0 },
+        "signed_off_percent": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "tracking_gap_collections": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "source_coverage_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_records",
+        "records_with_sources",
+        "records_without_sources",
+        "records_with_license_or_reuse_status",
+        "records_missing_license_or_reuse_status",
+        "single_source_records",
+        "multi_source_records",
+        "needs_multi_source_review_records",
+        "open_license_records",
+        "public_reference_terms_records"
+      ],
+      "properties": {
+        "total_records": { "type": "integer", "minimum": 0 },
+        "records_with_sources": { "type": "integer", "minimum": 0 },
+        "records_without_sources": { "type": "integer", "minimum": 0 },
+        "records_with_license_or_reuse_status": { "type": "integer", "minimum": 0 },
+        "records_missing_license_or_reuse_status": { "type": "integer", "minimum": 0 },
+        "single_source_records": { "type": "integer", "minimum": 0 },
+        "multi_source_records": { "type": "integer", "minimum": 0 },
+        "needs_multi_source_review_records": { "type": "integer", "minimum": 0 },
+        "open_license_records": { "type": "integer", "minimum": 0 },
+        "public_reference_terms_records": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

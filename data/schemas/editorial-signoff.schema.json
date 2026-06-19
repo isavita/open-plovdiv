@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/editorial-signoff.schema.json",
+  "title": "Open Plovdiv editorial sign-off log",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "collection",
+      "record_id",
+      "decision",
+      "reviewed_by",
+      "reviewer_affiliation",
+      "reviewed_at",
+      "review_scope",
+      "review_artifact_url",
+      "notes_bg",
+      "notes_en"
+    ],
+    "properties": {
+      "id": { "type": "string", "pattern": "^signoff-[0-9a-z-]+$" },
+      "collection": {
+        "type": "string",
+        "enum": [
+          "events",
+          "people",
+          "person_relationships",
+          "places",
+          "organizations",
+          "archive_items",
+          "then_now_pairs",
+          "primary_documents",
+          "story_longreads",
+          "education_resources"
+        ]
+      },
+      "record_id": { "type": "string", "minLength": 3 },
+      "decision": { "const": "signed_off" },
+      "reviewed_by": { "type": "string", "minLength": 2 },
+      "reviewer_affiliation": { "type": "string", "minLength": 2 },
+      "reviewed_at": { "type": "string", "format": "date" },
+      "review_scope": {
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "historical_accuracy",
+            "source_traceability",
+            "bg_en_content_parity",
+            "license_and_media_rights",
+            "relationship_graph_integrity",
+            "pedagogical_suitability"
+          ]
+        }
+      },
+      "review_artifact_url": { "type": "string", "format": "uri" },
+      "notes_bg": { "type": "string", "minLength": 10 },
+      "notes_en": { "type": "string", "minLength": 10 }
+    }
+  }
+}

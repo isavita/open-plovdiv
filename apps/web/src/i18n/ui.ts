@@ -28,6 +28,10 @@ const bg = {
     home: "Начало",
     history: "История",
     mayors: "Кметове",
+    people: "Хора",
+    places: "Места",
+    stories: "Разкази",
+    education: "Образование",
     overview: "Преглед",
     fixMap: "Карта",
     budget: "Бюджет",
@@ -242,6 +246,7 @@ const bg = {
     statMayors: "кметски мандата",
     statFinance: "финансови исторически записи",
     statProgrammes: "програми и събития",
+    statDocuments: "първични документа",
     currentMayor: "Действащ кмет",
     financeTitle: "Финансови архивни снимки",
     financeLead:
@@ -249,6 +254,24 @@ const bg = {
     programmesTitle: "Какво е организирала общината",
     programmesLead:
       "Подбрани записи за социални, културни и управленски действия, които свързват хората начело на града с реални публични програми.",
+    documentsTitle: "Първични документи",
+    documentsLead:
+      "Начален слой с кратки транскрибирани откъси от общински актове и Държавен вестник. Всеки откъс сочи към пълния публичен документ и свързани записи.",
+    transcriptLabel: "Транскрибиран откъс",
+    linkedRecords: "Свързани записи",
+    documentTypes: {
+      municipal_decision: "общинско решение",
+      state_gazette_decree: "държавен акт",
+      municipal_rule: "общински правилник",
+      council_minutes: "протокол",
+      period_press: "периодичен печат",
+      other: "документ"
+    },
+    transcriptionTypes: {
+      excerpt: "откъс",
+      full: "пълен текст",
+      diplomatic_excerpt: "дипломатичен откъс"
+    },
     mayorsTitle: "Пълна хронология на кметовете",
     mayorsLead:
       "Списъкът е вътрешно копие на официалния архив на Община Пловдив, допълнен с текущия мандат от Административния регистър.",
@@ -588,6 +611,9 @@ const bg = {
     noPublished: "Няма публикувани граждански сигнали.",
     saveStatus: "Запази статус",
     editDetails: "Данни за сигнала",
+    kind: "Тип запис",
+    kindFix: "Градски сигнал",
+    kindHistory: "Исторически принос",
     saveDetails: "Запази данни",
     titleBg: "Заглавие (BG)",
     titleEn: "Заглавие (EN, по избор)",
@@ -682,6 +708,10 @@ const en: typeof bg = {
     home: "Home",
     history: "History",
     mayors: "Mayors",
+    people: "People",
+    places: "Places",
+    stories: "Stories",
+    education: "Education",
     overview: "Overview",
     fixMap: "Map",
     budget: "Budget",
@@ -896,6 +926,7 @@ const en: typeof bg = {
     statMayors: "mayoral terms",
     statFinance: "historical finance records",
     statProgrammes: "programmes and events",
+    statDocuments: "primary documents",
     currentMayor: "Incumbent mayor",
     financeTitle: "Financial archive snapshots",
     financeLead:
@@ -903,6 +934,24 @@ const en: typeof bg = {
     programmesTitle: "What the municipality organised",
     programmesLead:
       "Selected records for social, cultural and governance actions that connect city leaders with real public programmes.",
+    documentsTitle: "Primary documents",
+    documentsLead:
+      "A starter layer of short transcribed excerpts from municipal acts and the State Gazette. Each excerpt points to the full public document and linked records.",
+    transcriptLabel: "Transcribed excerpt",
+    linkedRecords: "Linked records",
+    documentTypes: {
+      municipal_decision: "municipal decision",
+      state_gazette_decree: "state decree",
+      municipal_rule: "municipal rule",
+      council_minutes: "minutes",
+      period_press: "period press",
+      other: "document"
+    },
+    transcriptionTypes: {
+      excerpt: "excerpt",
+      full: "full text",
+      diplomatic_excerpt: "diplomatic excerpt"
+    },
     mayorsTitle: "Full mayoral chronology",
     mayorsLead:
       "This is an internal copy of Plovdiv Municipality's official archive, supplemented with the incumbent term from the Administrative Register.",
@@ -1247,6 +1296,9 @@ const en: typeof bg = {
     noPublished: "No published citizen reports.",
     saveStatus: "Save status",
     editDetails: "Report details",
+    kind: "Record type",
+    kindFix: "Fix report",
+    kindHistory: "Historical contribution",
     saveDetails: "Save details",
     titleBg: "Title (BG)",
     titleEn: "Title (EN, optional)",
@@ -1355,6 +1407,10 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     environment: "Околна среда",
     social: "Социални дейности",
     sport: "Спорт",
+    historic_photo: "Историческа снимка",
+    oral_memory: "Устен спомен",
+    source_tip: "Източник/архивна следа",
+    history_correction: "Историческа корекция",
     other: "Друго"
   },
   en: {
@@ -1372,6 +1428,10 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     environment: "Environment",
     social: "Social",
     sport: "Sport",
+    historic_photo: "Historical photo",
+    oral_memory: "Oral memory",
+    source_tip: "Source/archive lead",
+    history_correction: "History correction",
     other: "Other"
   }
 };
@@ -1392,6 +1452,10 @@ export const categoryColors: Record<string, string> = {
   environment: "#3f8a5b",
   social: "#7a5ca8",
   sport: "#2f7fb0",
+  historic_photo: "#8a6d3b",
+  oral_memory: "#7a5ca8",
+  source_tip: "#2f7d6b",
+  history_correction: "#a23b2d",
   other: "#6b7280"
 };
 

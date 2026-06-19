@@ -16,6 +16,8 @@ export type PublicStatus =
   | "fixed"
   | "closed";
 
+export type ReportKind = "fix_report" | "history_contribution";
+
 export const FIX_CATEGORIES = [
   "roads",
   "pavement",
@@ -26,6 +28,18 @@ export const FIX_CATEGORIES = [
   "accessibility",
   "drainage",
   "other"
+] as const;
+
+export const HISTORY_CONTRIBUTION_CATEGORIES = [
+  "historic_photo",
+  "oral_memory",
+  "source_tip",
+  "history_correction"
+] as const;
+
+export const REPORT_CATEGORIES = [
+  ...FIX_CATEGORIES,
+  ...HISTORY_CONTRIBUTION_CATEGORIES
 ] as const;
 
 export const PUBLIC_STATUSES: PublicStatus[] = [
@@ -58,6 +72,7 @@ export type ReportPhoto = {
 
 export type CommunityReport = {
   id: string;
+  kind: ReportKind;
   title_bg: string;
   title_en?: string;
   description_bg: string;
@@ -70,6 +85,8 @@ export type CommunityReport = {
   photo_thumbnail_urls: string[];
   photos: ReportPhoto[];
   source: "citizen_submission";
+  source_url?: string;
+  source_note?: string;
   lang: "bg" | "en";
   created_at: string;
   updated_at: string;
@@ -78,9 +95,12 @@ export type CommunityReport = {
 };
 
 export type SubmissionInput = {
+  kind?: unknown;
   category?: unknown;
   title?: unknown;
   description?: unknown;
+  source_url?: unknown;
+  source_note?: unknown;
   lat?: unknown;
   lng?: unknown;
   lang?: unknown;
@@ -93,9 +113,12 @@ export type ValidationResult =
   | { ok: false; error: string };
 
 export type CleanSubmission = {
+  kind: ReportKind;
   category: string;
   title: string;
   description: string;
+  source_url?: string;
+  source_note?: string;
   lat: number;
   lng: number;
   lang: "bg" | "en";
@@ -135,13 +158,28 @@ function optionalClean(value: unknown): string | undefined {
   return text ? text : undefined;
 }
 
+function optionalHttpUrl(value: unknown): string | undefined | null {
+  const text = clean(String(value ?? ""));
+  if (!text) return undefined;
+  try {
+    const url = new URL(text);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+    return url.href;
+  } catch {
+    return null;
+  }
+}
+
 function isBool(value: unknown): boolean {
   return value === true || value === "true" || value === "on" || value === "1";
 }
 
 export function validateSubmission(input: SubmissionInput): ValidationResult {
+  const kind: ReportKind = input.kind === "history_contribution" ? "history_contribution" : "fix_report";
   const category = String(input.category ?? "");
-  if (!FIX_CATEGORIES.includes(category as (typeof FIX_CATEGORIES)[number])) {
+  const allowedCategories =
+    kind === "history_contribution" ? HISTORY_CONTRIBUTION_CATEGORIES : FIX_CATEGORIES;
+  if (!(allowedCategories as readonly string[]).includes(category)) {
     return { ok: false, error: "invalid_category" };
   }
 
@@ -155,7 +193,12 @@ export function validateSubmission(input: SubmissionInput): ValidationResult {
     return { ok: false, error: "invalid_description" };
   }
 
-  const combined = `${title} ${description}`;
+  const sourceUrl = optionalHttpUrl(input.source_url);
+  if (sourceUrl === null) return { ok: false, error: "invalid_source" };
+  const sourceNote = optionalClean(input.source_note);
+  if (sourceNote && sourceNote.length > 500) return { ok: false, error: "invalid_source" };
+
+  const combined = `${title} ${description} ${sourceNote ?? ""}`;
   if (EMAIL_RE.test(combined) || PHONE_RE.test(combined)) {
     return { ok: false, error: "contains_personal_data" };
   }
@@ -179,14 +222,14 @@ export function validateSubmission(input: SubmissionInput): ValidationResult {
     return { ok: false, error: "missing_confirmation" };
   }
 
-  return { ok: true, value: { category, title, description, lat, lng, lang } };
+  return { ok: true, value: { kind, category, title, description, source_url: sourceUrl, source_note: sourceNote, lat, lng, lang } };
 }
 
 export function validateReportUpdate(
   input: ReportUpdateInput
 ): { ok: true; value: CleanReportUpdate } | { ok: false; error: string } {
   const category = String(input.category ?? "");
-  if (!FIX_CATEGORIES.includes(category as (typeof FIX_CATEGORIES)[number])) {
+  if (!REPORT_CATEGORIES.includes(category as (typeof REPORT_CATEGORIES)[number])) {
     return { ok: false, error: "invalid_category" };
   }
 
@@ -247,8 +290,9 @@ export function validateReportUpdate(
   };
 }
 
-export function formatReportId(year: number, seq: number): string {
-  return `fix-plovdiv-${year}-${String(seq).padStart(6, "0")}`;
+export function formatReportId(year: number, seq: number, kind: ReportKind = "fix_report"): string {
+  const prefix = kind === "history_contribution" ? "history-plovdiv" : "fix-plovdiv";
+  return `${prefix}-${year}-${String(seq).padStart(6, "0")}`;
 }
 
 /** Build a fresh pending report from a validated submission. */
@@ -256,6 +300,7 @@ export function buildReport(value: CleanSubmission, id: string): CommunityReport
   const now = new Date().toISOString();
   const report: CommunityReport = {
     id,
+    kind: value.kind,
     title_bg: value.title,
     description_bg: value.description,
     category: value.category,
@@ -266,6 +311,8 @@ export function buildReport(value: CleanSubmission, id: string): CommunityReport
     photo_thumbnail_urls: [],
     photos: [],
     source: "citizen_submission",
+    source_url: value.source_url,
+    source_note: value.source_note,
     lang: value.lang,
     created_at: now,
     updated_at: now,

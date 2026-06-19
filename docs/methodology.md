@@ -10,19 +10,19 @@ Open Plovdiv separates three things:
 
 AI searches public sources such as Plovdiv Municipality budget pages and decisions, capital-programme reporting, and local media. It extracts candidate project and budget records and stores them in `data/curated` with links to the sources used.
 
-Citizen reports are submitted through `/fix-map/report`. A submitted report is stored with `moderation_status: "needs_review"` and is not public until a moderator approves it.
+Citizen reports are submitted through `/fix-map/report`. Historical photos, memories, source leads and corrections are submitted through `/history/contribute`. A submitted item is stored with `moderation_status: "needs_review"` and is not public until a moderator approves it.
 
 ## Cleaning
 
 Data must pass JSON schema validation before it can be copied into `apps/web/public/data`. Validation checks required fields, status values, source URLs, money amounts, coordinates, unique IDs, and forbidden private fields.
 
-Citizen report submissions are validated at the API boundary. The API checks category, title length, description length, Plovdiv coordinate bounds, required privacy confirmations, rate limits, and text that looks like email or phone data.
+Citizen report and history contribution submissions are validated at the API boundary. The API checks submission kind, category, title length, description length, Plovdiv coordinate bounds, optional source URL format, required privacy confirmations, rate limits, and text that looks like email or phone data.
 
 ## Moderation
 
 Moderators use `/admin/reports` with a bearer token. They can approve, reject, edit report text/category/location, hide unsafe photos, and update a public status such as `unverified`, `verified`, `sent_to_municipality`, `in_progress`, `fixed`, or `closed`.
 
-Approved citizen reports are available through `/api/reports/public`, `/api/reports/stream`, and the exported snapshot at `/data/community-fix-reports.json`.
+Approved fix-map citizen reports are available through `/api/reports/public`, `/api/reports/stream`, and the exported snapshot at `/data/community-fix-reports.json`. Historical contributions use the same moderation queue but are excluded from the public Fix Map feed until an editor turns them into sourced history/archive records.
 
 ## Photos
 

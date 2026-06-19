@@ -1,0 +1,325 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { localizePath, ui, type Lang } from "@i18n/utils";
+import { sourceTitle } from "@lib/format";
+import {
+  historicalArchiveItems,
+  historyKnowledgeEvents,
+  historyKnowledgeIndex,
+  historyKnowledgePlaces,
+  historyKnowledgeSources,
+  thenNowPairs,
+  type KnowledgePlace
+} from "@lib/data";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const labels =
+  lang === "bg"
+    ? {
+        title: "Места и забележителности",
+        eyebrow: "Координати, изображения и източници",
+        lead:
+          "Каталог на нормализираните места в историческата база: забележителности, площади, хълмове, обществени сгради и културни обекти с координати, медия, статус и публични източници.",
+        places: "места",
+        coordinates: "координати",
+        images: "изображения",
+        events: "събития",
+        thenNow: "тогава/сега",
+        archive: "архив",
+        search: "Търсене",
+        searchPlaceholder: "място, епоха, архитект...",
+        era: "Епоха",
+        category: "Категория",
+        evidence: "Архив",
+        allEras: "Всички епохи",
+        allCategories: "Всички категории",
+        allEvidence: "Всички записи",
+        withThenNow: "с тогава/сега",
+        withArchive: "с архив",
+        visible: "Видими",
+        of: "от",
+        reset: "Изчисти филтрите",
+        noResults: "Няма места за тези филтри.",
+        source: "Източник",
+        status: "Статус",
+        built: "Дата/строеж",
+        architect: "Архитект",
+        builder: "Строител",
+        creator: "Архитект/строител",
+        open: "Отвори"
+      }
+    : {
+        title: "Places and Landmarks",
+        eyebrow: "Coordinates, images and sources",
+        lead:
+          "A catalogue of normalized places in the historical knowledge base: landmarks, squares, hills, public buildings and cultural sites with coordinates, media, status and public sources.",
+        places: "places",
+        coordinates: "coordinates",
+        images: "images",
+        events: "events",
+        thenNow: "then/now",
+        archive: "archive",
+        search: "Search",
+        searchPlaceholder: "place, era, architect...",
+        era: "Era",
+        category: "Category",
+        evidence: "Archive",
+        allEras: "All eras",
+        allCategories: "All categories",
+        allEvidence: "All records",
+        withThenNow: "with then/now",
+        withArchive: "with archive",
+        visible: "Visible",
+        of: "of",
+        reset: "Clear filters",
+        noResults: "No places match these filters.",
+        source: "Source",
+        status: "Status",
+        built: "Built/date",
+        architect: "Architect",
+        builder: "Builder",
+        creator: "Architect/builder",
+        open: "Open"
+      };
+
+const categoryLabels: Record<string, { bg: string; en: string }> = {
+  civic: { bg: "Градска среда", en: "Civic" },
+  hill: { bg: "Хълм", en: "Hill" },
+  medieval: { bg: "Средновековие", en: "Medieval" },
+  monument: { bg: "Паметник", en: "Monument" },
+  ottoman: { bg: "Османски пласт", en: "Ottoman" },
+  religious: { bg: "Религиозен обект", en: "Religious" },
+  revival: { bg: "Възраждане", en: "Revival" },
+  roman: { bg: "Римски пласт", en: "Roman" },
+  thracian: { bg: "Тракийски пласт", en: "Thracian" }
+};
+
+function localized(record: Record<string, any>, base: string): string {
+  return String(record[`${base}_${lang}`] ?? record[`${base}_bg`] ?? "");
+}
+
+function categoryLabel(category: string): string {
+  return categoryLabels[category]?.[lang] ?? category.replaceAll("_", " ");
+}
+
+function placeFacts(place: KnowledgePlace, options: { includeCreatorFallback?: boolean } = {}) {
+  const includeCreatorFallback = options.includeCreatorFallback ?? true;
+  const hasNamedCreator = Boolean(localized(place, "architect") || localized(place, "builder"));
+  return [
+    localized(place.date_context, "display") ? { label: labels.built, value: localized(place.date_context, "display") } : null,
+    localized(place, "architect") ? { label: labels.architect, value: localized(place, "architect") } : null,
+    localized(place, "builder") ? { label: labels.builder, value: localized(place, "builder") } : null,
+    includeCreatorFallback && !hasNamedCreator && localized(place.creator_context, "display")
+      ? { label: labels.creator, value: localized(place.creator_context, "display") }
+      : null
+  ].filter(Boolean) as Array<{ label: string; value: string }>;
+}
+
+const places = [...historyKnowledgePlaces].sort((a, b) =>
+  localized(a, "name").localeCompare(localized(b, "name"), lang === "bg" ? "bg-BG" : "en-GB")
+);
+const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
+const archiveCountByPlace = new Map<string, number>();
+const pairCountByPlace = new Map<string, number>();
+const eventCountByPlace = new Map<string, number>();
+for (const item of historicalArchiveItems) archiveCountByPlace.set(item.place_id, (archiveCountByPlace.get(item.place_id) ?? 0) + 1);
+for (const pair of thenNowPairs) pairCountByPlace.set(pair.place_id, (pairCountByPlace.get(pair.place_id) ?? 0) + 1);
+for (const event of historyKnowledgeEvents) {
+  for (const placeId of event.place_ids) eventCountByPlace.set(placeId, (eventCountByPlace.get(placeId) ?? 0) + 1);
+}
+
+const eras = [...new Set(places.map((place) => place.era))].sort();
+const categories = [...new Set(places.map((place) => place.category))].sort((a, b) =>
+  categoryLabel(a).localeCompare(categoryLabel(b), lang === "bg" ? "bg-BG" : "en-GB")
+);
+const config = {
+  labels: {
+    visible: labels.visible,
+    of: labels.of,
+    noResults: labels.noResults
+  },
+  total: places.length
+};
+---
+
+<Layout lang={lang} path="/places" title={labels.title} description={labels.lead}>
+  <section class="section hero hero-compact places-hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">{labels.eyebrow}</p>
+        <h1>{labels.title}</h1>
+        <p class="lead">{labels.lead}</p>
+      </div>
+      <dl class="stats-grid places-stats" aria-label={labels.title}>
+        <div class="stat-card">
+          <dt>{labels.places}</dt>
+          <dd>{historyKnowledgeIndex.counts.places}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.coordinates}</dt>
+          <dd>{places.filter((place) => place.coordinates).length}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.images}</dt>
+          <dd>{places.filter((place) => place.media.length).length}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.thenNow}</dt>
+          <dd>{thenNowPairs.length}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="places-catalog">
+    <div class="container">
+      <div class="toolbar places-toolbar">
+        <div class="filters">
+          <div class="field">
+            <label for="places-search">{labels.search}</label>
+            <input id="places-search" type="search" placeholder={labels.searchPlaceholder} />
+          </div>
+          <div class="field">
+            <label for="places-era">{labels.era}</label>
+            <select id="places-era">
+              <option value="all">{labels.allEras}</option>
+              {eras.map((era) => <option value={era}>{t.history.eraLabels[era]}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="places-category">{labels.category}</label>
+            <select id="places-category">
+              <option value="all">{labels.allCategories}</option>
+              {categories.map((category) => <option value={category}>{categoryLabel(category)}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="places-evidence">{labels.evidence}</label>
+            <select id="places-evidence">
+              <option value="all">{labels.allEvidence}</option>
+              <option value="then-now">{labels.withThenNow}</option>
+              <option value="archive">{labels.withArchive}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-bar">
+        <p id="places-count" class="meta">{places.length} {labels.of} {places.length} {labels.places}</p>
+        <button type="button" id="places-reset" class="link-button" hidden>{labels.reset}</button>
+      </div>
+
+      <div class="place-grid" id="places-list">
+        {places.map((place) => {
+          const source = sourceById.get(place.source_ids[0]);
+          const facts = placeFacts(place, { includeCreatorFallback: false });
+          const archiveCount = archiveCountByPlace.get(place.id) ?? 0;
+          const pairCount = pairCountByPlace.get(place.id) ?? 0;
+          const eventCount = eventCountByPlace.get(place.id) ?? 0;
+          const search = [
+            localized(place, "name"),
+            localized(place, "summary"),
+            localized(place, "current_status"),
+            localized(place, "era"),
+            categoryLabel(place.category),
+            ...facts.map((fact) => fact.value)
+          ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+          return (
+            <article
+              class={`place-card landmark-${place.category}`}
+              data-place-card
+              data-search={search}
+              data-era={place.era}
+              data-category={place.category}
+              data-archive={archiveCount}
+              data-then-now={pairCount}
+            >
+              <div class="place-card-body">
+                <p class="eyebrow">{localized(place, "era")} · {categoryLabel(place.category)}</p>
+                <h2><a href={localizePath(`/places/${place.id}`, lang)}>{localized(place, "name")}</a></h2>
+                <p>{localized(place, "summary")}</p>
+                {facts.length > 0 && (
+                  <dl class="place-facts">
+                    {facts.map((fact) => (
+                      <>
+                        <dt>{fact.label}</dt>
+                        <dd>{fact.value}</dd>
+                      </>
+                    ))}
+                  </dl>
+                )}
+                <dl class="place-evidence-counts">
+                  <div><dt>{labels.events}</dt><dd>{eventCount}</dd></div>
+                  <div><dt>{labels.archive}</dt><dd>{archiveCount}</dd></div>
+                  <div><dt>{labels.thenNow}</dt><dd>{pairCount}</dd></div>
+                </dl>
+                {source && (
+                  <a class="src-link" href={source.url} target="_blank" rel="noreferrer">
+                    {labels.source}: {sourceTitle(localized(source, "title"), lang)} ↗
+                  </a>
+                )}
+                <a class="text-link" href={localizePath(`/places/${place.id}`, lang)}>{labels.open}</a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      <p id="places-empty" class="empty" hidden>{labels.noResults}</p>
+    </div>
+  </section>
+
+  <script type="application/json" id="places-config" set:html={JSON.stringify(config)}></script>
+  <script>
+    const config = JSON.parse(document.getElementById("places-config")?.textContent ?? "{}");
+    const search = document.querySelector<HTMLInputElement>("#places-search")!;
+    const era = document.querySelector<HTMLSelectElement>("#places-era")!;
+    const category = document.querySelector<HTMLSelectElement>("#places-category")!;
+    const evidence = document.querySelector<HTMLSelectElement>("#places-evidence")!;
+    const count = document.querySelector<HTMLElement>("#places-count")!;
+    const reset = document.querySelector<HTMLButtonElement>("#places-reset")!;
+    const empty = document.querySelector<HTMLElement>("#places-empty")!;
+    const cards = [...document.querySelectorAll<HTMLElement>("[data-place-card]")];
+
+    function applyPlacesFilters() {
+      const q = search.value.trim().toLocaleLowerCase();
+      let visible = 0;
+      for (const card of cards) {
+        const evidenceMode = evidence.value;
+        const show =
+          (!q || (card.dataset.search ?? "").includes(q)) &&
+          (era.value === "all" || card.dataset.era === era.value) &&
+          (category.value === "all" || card.dataset.category === category.value) &&
+          (evidenceMode === "all" ||
+            (evidenceMode === "archive" && Number(card.dataset.archive) > 0) ||
+            (evidenceMode === "then-now" && Number(card.dataset.thenNow) > 0));
+        card.hidden = !show;
+        if (show) visible += 1;
+      }
+      count.textContent = `${config.labels.visible}: ${visible} ${config.labels.of} ${cards.length}`;
+      empty.hidden = visible !== 0;
+      reset.hidden = !(
+        search.value ||
+        era.value !== "all" ||
+        category.value !== "all" ||
+        evidence.value !== "all"
+      );
+    }
+
+    search.addEventListener("input", applyPlacesFilters);
+    era.addEventListener("change", applyPlacesFilters);
+    category.addEventListener("change", applyPlacesFilters);
+    evidence.addEventListener("change", applyPlacesFilters);
+    reset.addEventListener("click", () => {
+      search.value = "";
+      era.value = "all";
+      category.value = "all";
+      evidence.value = "all";
+      applyPlacesFilters();
+      search.focus();
+    });
+    applyPlacesFilters();
+  </script>
+</Layout>

@@ -1,0 +1,1115 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { ui, type Lang } from "@i18n/ui";
+import {
+  historyKnowledgeEvents,
+  historyKnowledgeIndex,
+  historyKnowledgePeople,
+  historyKnowledgeSources,
+  type KnowledgePerson
+} from "@lib/data";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const labels =
+  lang === "bg"
+    ? {
+        title: "Хората на Пловдив",
+        eyebrow: "Просопография и връзки",
+        lead:
+          "Граф и каталог на нормализираните личности в Open Plovdiv: всички кметове и стартовата просопография от забележителни пловдивчани, свързани със събития, роли и източници.",
+        people: "хора",
+        roles: "роли",
+        links: "връзки",
+        events: "събития",
+        graphTitle: "Граф по време и роля",
+        graphLead:
+          "Всеки кръг е човек. Позицията по хоризонтала следва година на раждане или първи мандат; вертикалните групи показват водеща роля. Линиите са само проверените връзки човек-към-човек в базата.",
+        successionLinks: "последователност на кметове",
+        familyLinks: "роднински и семейни връзки",
+        catalogTitle: "Каталог",
+        search: "Търсене",
+        searchPlaceholder: "име, роля, описание…",
+        group: "Група",
+        allGroups: "Всички групи",
+        century: "Век",
+        allCenturies: "Всички векове",
+        relationship: "Връзки",
+        allRelationships: "Всички",
+        withRelationships: "с person-to-person връзки",
+        withoutRelationships: "без person-to-person връзки",
+        visible: "Видими",
+        of: "от",
+        reset: "Изчисти филтрите",
+        noResults: "Няма хора за тези филтри.",
+        born: "Роден/а",
+        life: "Години",
+        linkedEvents: "свързани събития",
+        relationshipCount: "връзки",
+        relationshipSources: "Източникови връзки",
+        ledgerTitle: "Регистър на връзките",
+        ledgerLead:
+          "Проверима разбивка на линиите в графа: всяка връзка показва участниците, типа, свързаното събитие при кметска последователност и публичния източник.",
+        ledgerRows: "реда с връзки",
+        from: "От",
+        to: "Към",
+        type: "Тип",
+        evidence: "Доказателство",
+        linkedEvent: "Събитие",
+        sources: "Източници",
+        source: "Източник",
+        profile: "Профил",
+        editorial:
+          "Записите са източниково проследими и валидирани, но остават с редакционен статус needs_editorial_signoff до независим преглед."
+      }
+    : {
+        title: "People of Plovdiv",
+        eyebrow: "Prosopography and connections",
+        lead:
+          "A graph and catalogue of normalized people in Open Plovdiv: all mayors and the starter prosopography of notable Plovdivians, linked to events, roles and sources.",
+        people: "people",
+        roles: "roles",
+        links: "links",
+        events: "events",
+        graphTitle: "Graph by Time and Role",
+        graphLead:
+          "Each circle is a person. The horizontal position follows birth year or first mayoral term; vertical groups show primary role. Lines are only the verified person-to-person links currently in the base.",
+        successionLinks: "mayoral succession",
+        familyLinks: "family and kinship links",
+        catalogTitle: "Catalogue",
+        search: "Search",
+        searchPlaceholder: "name, role, description...",
+        group: "Group",
+        allGroups: "All groups",
+        century: "Century",
+        allCenturies: "All centuries",
+        relationship: "Links",
+        allRelationships: "All",
+        withRelationships: "with person-to-person links",
+        withoutRelationships: "without person-to-person links",
+        visible: "Visible",
+        of: "of",
+        reset: "Clear filters",
+        noResults: "No people match these filters.",
+        born: "Born",
+        life: "Years",
+        linkedEvents: "linked events",
+        relationshipCount: "links",
+        relationshipSources: "Source-backed links",
+        ledgerTitle: "Relationship Ledger",
+        ledgerLead:
+          "A verifiable breakdown of the graph lines: each relationship shows the people, type, linked event for mayoral succession, and public source.",
+        ledgerRows: "relationship rows",
+        from: "From",
+        to: "To",
+        type: "Type",
+        evidence: "Evidence",
+        linkedEvent: "Event",
+        sources: "Sources",
+        source: "Source",
+        profile: "Profile",
+        editorial:
+          "Records are source-backed and validated, but remain at needs_editorial_signoff until independent review."
+      };
+
+const roleLabels: Record<string, { bg: string; en: string }> = {
+  academic: { bg: "академик", en: "academic" },
+  actor: { bg: "актьор", en: "actor" },
+  art_historian: { bg: "изкуствовед", en: "art historian" },
+  artist: { bg: "художник", en: "artist" },
+  athlete: { bg: "спортист", en: "athlete" },
+  basketball_player: { bg: "баскетболист", en: "basketball player" },
+  boxer: { bg: "боксьор", en: "boxer" },
+  canoeist: { bg: "кануист", en: "canoeist" },
+  chef: { bg: "готвач", en: "chef" },
+  chess_player: { bg: "шахматист", en: "chess player" },
+  choreographer: { bg: "хореограф", en: "choreographer" },
+  clergy: { bg: "духовник", en: "clergy" },
+  composer: { bg: "композитор", en: "composer" },
+  conductor: { bg: "диригент", en: "conductor" },
+  cultural_manager: { bg: "културен мениджър", en: "cultural manager" },
+  designer: { bg: "дизайнер", en: "designer" },
+  diplomat: { bg: "дипломат", en: "diplomat" },
+  economist: { bg: "икономист", en: "economist" },
+  educator: { bg: "педагог", en: "educator" },
+  electrical_engineer: { bg: "електроинженер", en: "electrical engineer" },
+  equestrian: { bg: "състезател по конен спорт", en: "equestrian" },
+  fencer: { bg: "фехтовач", en: "fencer" },
+  film_director: { bg: "филмов режисьор", en: "film director" },
+  first_lady: { bg: "първа дама", en: "first lady" },
+  football_referee: { bg: "футболен съдия", en: "football referee" },
+  footballer: { bg: "футболист", en: "footballer" },
+  general: { bg: "генерал", en: "general" },
+  geographer: { bg: "географ", en: "geographer" },
+  gymnast: { bg: "гимнастик", en: "gymnast" },
+  high_jumper: { bg: "скачач на височина", en: "high jumper" },
+  illustrator: { bg: "илюстратор", en: "illustrator" },
+  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower" },
+  journalist: { bg: "журналист", en: "journalist" },
+  jurist: { bg: "юрист", en: "jurist" },
+  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist" },
+  mathematician: { bg: "математик", en: "mathematician" },
+  mayor: { bg: "кмет", en: "mayor" },
+  merchant: { bg: "търговец", en: "merchant" },
+  military_officer: { bg: "офицер", en: "military officer" },
+  mineralogist: { bg: "минералог", en: "mineralogist" },
+  missionary: { bg: "мисионер", en: "missionary" },
+  model: { bg: "модел", en: "model" },
+  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete" },
+  musician: { bg: "музикант", en: "musician" },
+  opera_singer: { bg: "оперен певец", en: "opera singer" },
+  painter: { bg: "живописец", en: "painter" },
+  paleontologist: { bg: "палеонтолог", en: "paleontologist" },
+  patriarch: { bg: "патриарх", en: "patriarch" },
+  philosopher: { bg: "философ", en: "philosopher" },
+  physicist: { bg: "физик", en: "physicist" },
+  pianist: { bg: "пианист", en: "pianist" },
+  poet: { bg: "поет", en: "poet" },
+  politician: { bg: "политик", en: "politician" },
+  priest: { bg: "свещеник", en: "priest" },
+  printmaker: { bg: "график", en: "printmaker" },
+  producer: { bg: "продуцент", en: "producer" },
+  public_figure: { bg: "обществена фигура", en: "public figure" },
+  racing_driver: { bg: "автомобилен състезател", en: "racing driver" },
+  revolutionary: { bg: "революционер", en: "revolutionary" },
+  rower: { bg: "гребец", en: "rower" },
+  saint: { bg: "светец", en: "saint" },
+  scholar: { bg: "учен", en: "scholar" },
+  scientist: { bg: "учен", en: "scientist" },
+  screenwriter: { bg: "сценарист", en: "screenwriter" },
+  sculptor: { bg: "скулптор", en: "sculptor" },
+  singer: { bg: "певец", en: "singer" },
+  sports_shooter: { bg: "спортен стрелец", en: "sport shooter" },
+  swimmer: { bg: "плувец", en: "swimmer" },
+  tennis_player: { bg: "тенисист", en: "tennis player" },
+  theatre_director: { bg: "театрален режисьор", en: "theatre director" },
+  violinist: { bg: "цигулар", en: "violinist" },
+  visual_artist: { bg: "визуален художник", en: "visual artist" },
+  volleyball_player: { bg: "волейболист", en: "volleyball player" },
+  weightlifter: { bg: "щангист", en: "weightlifter" },
+  wrestler: { bg: "борец", en: "wrestler" },
+  writer: { bg: "писател", en: "writer" },
+  zoologist: { bg: "зоолог", en: "zoologist" }
+};
+
+const groupLabels = {
+  bg: {
+    governance: "Управление",
+    culture: "Култура",
+    science: "Наука",
+    faith: "Духовност",
+    sport: "Спорт",
+    civic: "Общество"
+  },
+  en: {
+    governance: "Governance",
+    culture: "Culture",
+    science: "Science",
+    faith: "Faith",
+    sport: "Sport",
+    civic: "Civic"
+  }
+}[lang];
+
+const relationshipTypeLabels: Record<string, { bg: string; en: string }> = {
+  succeeds: { bg: "наследява", en: "succeeds" },
+  succeeded_by: { bg: "наследен/а от", en: "succeeded by" },
+  spouse: { bg: "съпруг/съпруга", en: "spouse" },
+  father: { bg: "баща", en: "father" },
+  mother: { bg: "майка", en: "mother" },
+  parent: { bg: "родител", en: "parent" },
+  child: { bg: "дете", en: "child" },
+  sibling: { bg: "брат/сестра", en: "sibling" },
+  mentor: { bg: "ментор", en: "mentor" },
+  student: { bg: "ученик/студент", en: "student" },
+  partner: { bg: "партньор", en: "partner" },
+  influenced_by: { bg: "повлиян/а от", en: "influenced by" }
+};
+
+const roleGroups: Record<string, keyof typeof groupLabels> = {
+  mayor: "governance",
+  politician: "governance",
+  diplomat: "governance",
+  jurist: "governance",
+  economist: "governance",
+  first_lady: "governance",
+  general: "governance",
+  military_officer: "governance",
+  public_figure: "governance",
+  merchant: "civic",
+  actor: "culture",
+  art_historian: "culture",
+  artist: "culture",
+  chef: "culture",
+  choreographer: "culture",
+  composer: "culture",
+  conductor: "culture",
+  cultural_manager: "culture",
+  designer: "culture",
+  film_director: "culture",
+  illustrator: "culture",
+  journalist: "culture",
+  model: "culture",
+  musician: "culture",
+  opera_singer: "culture",
+  painter: "culture",
+  pianist: "culture",
+  poet: "culture",
+  printmaker: "culture",
+  producer: "culture",
+  screenwriter: "culture",
+  sculptor: "culture",
+  singer: "culture",
+  theatre_director: "culture",
+  violinist: "culture",
+  visual_artist: "culture",
+  writer: "culture",
+  electrical_engineer: "science",
+  academic: "science",
+  educator: "science",
+  geographer: "science",
+  mathematician: "science",
+  mineralogist: "science",
+  paleontologist: "science",
+  philosopher: "science",
+  physicist: "science",
+  scholar: "science",
+  scientist: "science",
+  zoologist: "science",
+  clergy: "faith",
+  missionary: "faith",
+  patriarch: "faith",
+  priest: "faith",
+  saint: "faith",
+  athlete: "sport",
+  basketball_player: "sport",
+  boxer: "sport",
+  canoeist: "sport",
+  chess_player: "sport",
+  equestrian: "sport",
+  fencer: "sport",
+  football_referee: "sport",
+  footballer: "sport",
+  gymnast: "sport",
+  high_jumper: "sport",
+  javelin_thrower: "sport",
+  martial_artist: "sport",
+  modern_pentathlete: "sport",
+  racing_driver: "sport",
+  rower: "sport",
+  sports_shooter: "sport",
+  swimmer: "sport",
+  tennis_player: "sport",
+  volleyball_player: "sport",
+  weightlifter: "sport",
+  wrestler: "sport",
+  revolutionary: "civic"
+};
+
+const groupOrder = ["governance", "culture", "science", "faith", "sport", "civic"] as const;
+const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
+const eventByPerson = new Map<string, typeof historyKnowledgeEvents>();
+for (const event of historyKnowledgeEvents) {
+  for (const personId of event.person_ids) {
+    if (!eventByPerson.has(personId)) eventByPerson.set(personId, []);
+    eventByPerson.get(personId)!.push(event);
+  }
+}
+
+function localized(record: Record<string, any>, base: string): string {
+  return String(record[`${base}_${lang}`] ?? record[`${base}_bg`] ?? "");
+}
+
+function roleLabel(role: string): string {
+  return roleLabels[role]?.[lang] ?? role.replaceAll("_", " ");
+}
+
+function relationshipLabel(type: string): string {
+  return relationshipTypeLabels[type]?.[lang] ?? type.replaceAll("_", " ");
+}
+
+function relationshipCategory(type: string): "succession" | "family" {
+  return type === "succeeds" || type === "succeeded_by" ? "succession" : "family";
+}
+
+function primaryGroup(person: KnowledgePerson): keyof typeof groupLabels {
+  return roleGroups[person.roles[0]] ?? "civic";
+}
+
+function graphYear(person: KnowledgePerson): number {
+  if (person.birth_year) return person.birth_year;
+  const termYears = person.term_events
+    .map((id) => historyKnowledgeEvents.find((event) => event.id === id)?.date.year)
+    .filter((year): year is number => typeof year === "number");
+  return termYears[0] ?? 1900;
+}
+
+function centuryFor(year: number): number {
+  return Math.floor((year - 1) / 100) + 1;
+}
+
+function lifeLabel(person: KnowledgePerson): string {
+  if (person.birth_year && person.death_year) return `${person.birth_year}-${person.death_year}`;
+  if (person.birth_year) return `${labels.born} ${person.birth_year}`;
+  return "n/a";
+}
+
+function hash(input: string): number {
+  let value = 0;
+  for (const char of input) value = (value * 31 + char.charCodeAt(0)) % 9973;
+  return value;
+}
+
+const people = [...historyKnowledgePeople].sort((a, b) =>
+  localized(a, "name").localeCompare(localized(b, "name"), lang === "bg" ? "bg-BG" : "en-GB")
+);
+const personById = new Map(people.map((person) => [person.id, person]));
+const uniqueRoles = new Set(people.flatMap((person) => person.roles));
+const relationCount = people.reduce((sum, person) => sum + person.relationships.length, 0);
+const peopleEventCount = historyKnowledgeEvents.filter((event) => event.person_ids.length > 0).length;
+
+const minYear = Math.min(...people.map(graphYear));
+const maxYear = Math.max(...people.map(graphYear));
+const graph = {
+  width: 1100,
+  height: 520,
+  padX: 56,
+  padY: 42
+};
+const span = Math.max(1, maxYear - minYear);
+const xFor = (year: number) => graph.padX + ((year - minYear) / span) * (graph.width - graph.padX * 2);
+const yForGroup = (group: keyof typeof groupLabels) =>
+  graph.padY + groupOrder.indexOf(group) * ((graph.height - graph.padY * 2) / (groupOrder.length - 1));
+
+const nodes = people.map((person) => {
+  const year = graphYear(person);
+  const group = primaryGroup(person);
+  const y = yForGroup(group) + ((hash(person.id) % 13) - 6) * 4.5;
+  return {
+    person,
+    id: person.id,
+    year,
+    century: centuryFor(year),
+    group,
+    x: xFor(year),
+    y,
+    hasRelationships: person.relationships.length > 0,
+    eventCount: eventByPerson.get(person.id)?.length ?? 0,
+    search: [
+      localized(person, "name"),
+      localized(person, "summary"),
+      lifeLabel(person),
+      ...person.roles.map(roleLabel),
+      groupLabels[group]
+    ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB")
+  };
+});
+const nodeById = new Map(nodes.map((node) => [node.id, node]));
+const edgeByKey = new Map<
+  string,
+  {
+    from: string;
+    to: string;
+    category: "succession" | "family";
+    labels: string[];
+    entries: Array<{
+      from: string;
+      to: string;
+      type: string;
+      eventId: string | null;
+      sourceId: string;
+      evidenceProperty?: string;
+      label: string;
+    }>;
+  }
+>();
+for (const person of people) {
+  for (const relationship of person.relationships) {
+    if (!nodeById.has(person.id) || !nodeById.has(relationship.person_id)) continue;
+    if (relationship.type === "succeeds") continue;
+
+    const category = relationshipCategory(relationship.type);
+    const key =
+      category === "succession"
+        ? `${person.id}|${relationship.person_id}|${relationship.event_id ?? relationship.type}`
+        : `${[person.id, relationship.person_id].sort().join("|")}|family`;
+    const target = personById.get(relationship.person_id);
+    const label = `${localized(person, "name")} — ${relationshipLabel(relationship.type)} — ${
+      target ? localized(target, "name") : relationship.person_id
+    }`;
+    const entry = {
+      from: person.id,
+      to: relationship.person_id,
+      type: relationship.type,
+      eventId: relationship.event_id,
+      sourceId: relationship.source_id,
+      evidenceProperty: relationship.evidence_property,
+      label
+    };
+    const existing = edgeByKey.get(key);
+    if (existing) {
+      if (!existing.labels.includes(label)) existing.labels.push(label);
+      existing.entries.push(entry);
+    } else {
+      edgeByKey.set(key, {
+        from: person.id,
+        to: relationship.person_id,
+        category,
+        labels: [label],
+        entries: [entry]
+      });
+    }
+  }
+}
+const relationEdges = [...edgeByKey.values()];
+const relationshipRows = relationEdges
+  .map((edge, index) => {
+    const from = personById.get(edge.from);
+    const to = personById.get(edge.to);
+    const sourceIds = [...new Set(edge.entries.map((entry) => entry.sourceId))];
+    const eventIds = [...new Set(edge.entries.map((entry) => entry.eventId).filter(Boolean))] as string[];
+    const typeLabels = [...new Set(edge.entries.map((entry) => relationshipLabel(entry.type)))];
+    const evidenceProperties = [...new Set(edge.entries.map((entry) => entry.evidenceProperty).filter(Boolean))] as string[];
+    const eventYears = eventIds
+      .map((id) => historyKnowledgeEvents.find((event) => event.id === id)?.date.year)
+      .filter((year): year is number => typeof year === "number");
+
+    return {
+      id: `relationship-${index}`,
+      edge,
+      from,
+      to,
+      typeLabels,
+      sourceIds,
+      eventIds,
+      evidenceProperties,
+      year: eventYears[0] ?? Math.min(graphYear(from!), graphYear(to!)),
+      search: [
+        from ? localized(from, "name") : edge.from,
+        to ? localized(to, "name") : edge.to,
+        ...typeLabels,
+        ...sourceIds.map((id) => localized(sourceById.get(id) ?? {}, "title")),
+        ...eventIds.map((id) => localized(historyKnowledgeEvents.find((event) => event.id === id) ?? {}, "title")),
+        ...evidenceProperties
+      ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB")
+    };
+  })
+  .filter((row) => row.from && row.to)
+  .sort((a, b) => a.year - b.year || localized(a.from!, "name").localeCompare(localized(b.from!, "name"), lang === "bg" ? "bg-BG" : "en-GB"));
+
+const centuries = [...new Set(nodes.map((node) => node.century))].sort((a, b) => a - b);
+const clientRoleLabels = Object.fromEntries([...uniqueRoles].map((role) => [role, roleLabel(role)]));
+const clientRelationshipLabels = Object.fromEntries(
+  Object.keys(relationshipTypeLabels).map((type) => [type, relationshipLabel(type)])
+);
+const nodeConfig = {
+  lang,
+  api: {
+    events: historyKnowledgeIndex.endpoints.events,
+    people: historyKnowledgeIndex.endpoints.people,
+    personRelationships: historyKnowledgeIndex.endpoints.person_relationships,
+    sources: historyKnowledgeIndex.endpoints.sources
+  },
+  groupLabels,
+  relationshipLabels: clientRelationshipLabels,
+  roleGroups,
+  roleLabels: clientRoleLabels,
+  labels: {
+    visible: labels.visible,
+    of: labels.of,
+    noResults: labels.noResults,
+    born: labels.born,
+    ledgerRows: labels.ledgerRows,
+    source: labels.source,
+    profile: labels.profile,
+    relationshipSources: labels.relationshipSources,
+    linkedEvents: labels.linkedEvents,
+    relationshipCount: labels.relationshipCount,
+    from: labels.from,
+    to: labels.to,
+    type: labels.type,
+    evidence: labels.evidence,
+    linkedEvent: labels.linkedEvent,
+    sources: labels.sources
+  },
+  total: nodes.length
+};
+---
+
+<Layout lang={lang} path="/people" title={labels.title} description={labels.lead}>
+  <section class="section hero hero-compact people-hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">{labels.eyebrow}</p>
+        <h1>{labels.title}</h1>
+        <p class="lead">{labels.lead}</p>
+        <p class="meta" style="margin-top:14px;max-width:78ch">{labels.editorial}</p>
+      </div>
+      <dl class="stats-grid people-stats" aria-label={labels.title}>
+        <div class="stat-card">
+          <dt>{labels.people}</dt>
+          <dd>{historyKnowledgeIndex.counts.people}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.roles}</dt>
+          <dd>{uniqueRoles.size}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.links}</dt>
+          <dd>{relationCount}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.events}</dt>
+          <dd>{peopleEventCount}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="people-graph">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{labels.graphTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:78ch">{labels.graphLead}</p>
+        </div>
+      </div>
+
+      <div class="toolbar people-toolbar">
+        <div class="filters">
+          <div class="field">
+            <label for="people-search">{labels.search}</label>
+            <input id="people-search" type="search" placeholder={labels.searchPlaceholder} />
+          </div>
+          <div class="field">
+            <label for="people-group">{labels.group}</label>
+            <select id="people-group">
+              <option value="all">{labels.allGroups}</option>
+              {groupOrder.map((group) => <option value={group}>{groupLabels[group]}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="people-century">{labels.century}</label>
+            <select id="people-century">
+              <option value="all">{labels.allCenturies}</option>
+              {centuries.map((century) => <option value={century}>{century}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="people-relationship">{labels.relationship}</label>
+            <select id="people-relationship">
+              <option value="all">{labels.allRelationships}</option>
+              <option value="with">{labels.withRelationships}</option>
+              <option value="without">{labels.withoutRelationships}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-bar">
+        <p id="people-count" class="meta">{nodes.length} {labels.of} {nodes.length} {labels.people}</p>
+        <button type="button" id="people-reset" class="link-button" hidden>{labels.reset}</button>
+      </div>
+
+      <div class="people-graph-wrap">
+        <ul class="people-graph-legend" aria-label={labels.graphTitle}>
+          <li><span class="legend-line legend-line-succession" aria-hidden="true"></span>{labels.successionLinks}</li>
+          <li><span class="legend-line legend-line-family" aria-hidden="true"></span>{labels.familyLinks}</li>
+        </ul>
+        <svg
+          class="people-graph"
+          viewBox={`0 0 ${graph.width} ${graph.height}`}
+          role="img"
+          aria-label={labels.graphTitle}
+          preserveAspectRatio="xMidYMid meet"
+        >
+          {groupOrder.map((group) => (
+            <>
+              <line class="people-graph-band" x1={graph.padX} x2={graph.width - graph.padX} y1={yForGroup(group)} y2={yForGroup(group)} />
+              <text class="people-graph-label" x={12} y={yForGroup(group) + 5}>{groupLabels[group]}</text>
+            </>
+          ))}
+          {centuries.map((century) => {
+            const year = (century - 1) * 100 + 1;
+            if (year < minYear || year > maxYear) return null;
+            return (
+              <>
+                <line class="people-graph-year" x1={xFor(year)} x2={xFor(year)} y1={28} y2={graph.height - 24} />
+                <text class="people-graph-year-label" x={xFor(year)} y={graph.height - 6} text-anchor="middle">{century}</text>
+              </>
+            );
+          })}
+          {relationEdges.map((edge) => {
+            const from = nodeById.get(edge.from)!;
+            const to = nodeById.get(edge.to)!;
+            const midY = Math.min(from.y, to.y) - Math.min(36, Math.abs(to.x - from.x) * 0.06 + 10);
+            return (
+              <path
+                class={`person-link person-link-${edge.category}`}
+                data-person-edge
+                data-edge-from={edge.from}
+                data-edge-to={edge.to}
+                data-edge-type={edge.category}
+                d={`M ${from.x.toFixed(1)} ${from.y.toFixed(1)} C ${from.x.toFixed(1)} ${midY.toFixed(1)}, ${to.x.toFixed(1)} ${midY.toFixed(1)}, ${to.x.toFixed(1)} ${to.y.toFixed(1)}`}
+              >
+                <title>{edge.labels.join(" · ")}</title>
+              </path>
+            );
+          })}
+          {nodes.map((node) => (
+            <circle
+              class={`person-node people-group-${node.group}`}
+              data-person-node={node.id}
+              data-search={node.search}
+              data-group={node.group}
+              data-century={node.century}
+              data-relationships={node.hasRelationships ? "with" : "without"}
+              cx={node.x}
+              cy={node.y}
+              r={node.hasRelationships ? 5.8 : 4.4}
+            >
+              <title>{`${localized(node.person, "name")} · ${lifeLabel(node.person)} · ${node.person.roles.map(roleLabel).join(", ")}`}</title>
+            </circle>
+          ))}
+        </svg>
+      </div>
+
+      <section class="relationship-ledger" aria-labelledby="relationship-ledger-title">
+        <div class="relationship-ledger-head">
+          <div>
+            <h3 id="relationship-ledger-title">{labels.ledgerTitle}</h3>
+            <p class="meta">{labels.ledgerLead}</p>
+          </div>
+          <p id="people-relationship-count" class="meta">
+            {relationshipRows.length} {labels.ledgerRows}
+          </p>
+        </div>
+        <div class="relationship-list" id="people-relationship-list" aria-live="polite"></div>
+      </section>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="people-catalog">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{labels.catalogTitle}</h2>
+        </div>
+      </div>
+
+      <div class="person-grid" id="people-list" aria-live="polite"></div>
+      <p id="people-empty" class="empty" hidden>{labels.noResults}</p>
+    </div>
+  </section>
+
+  <script type="application/json" id="people-config" set:html={JSON.stringify(nodeConfig)}></script>
+  <script>
+    const config = JSON.parse(document.getElementById("people-config")?.textContent ?? "{}");
+    const search = document.querySelector<HTMLInputElement>("#people-search")!;
+    const group = document.querySelector<HTMLSelectElement>("#people-group")!;
+    const century = document.querySelector<HTMLSelectElement>("#people-century")!;
+    const relationship = document.querySelector<HTMLSelectElement>("#people-relationship")!;
+    const count = document.querySelector<HTMLElement>("#people-count")!;
+    const reset = document.querySelector<HTMLButtonElement>("#people-reset")!;
+    const empty = document.querySelector<HTMLElement>("#people-empty")!;
+    const list = document.querySelector<HTMLElement>("#people-list")!;
+    const relationshipList = document.querySelector<HTMLElement>("#people-relationship-list")!;
+    const relationshipCount = document.querySelector<HTMLElement>("#people-relationship-count");
+    let cards: any[] = [];
+    const nodes = [...document.querySelectorAll<SVGElement>("[data-person-node]")];
+    const edges = [...document.querySelectorAll<SVGElement>("[data-person-edge]")];
+    let relationshipRows = [...document.querySelectorAll<HTMLElement>("[data-relationship-row]")];
+
+    function escapePeopleHtml(value: unknown): string {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    async function fetchPeopleJson(url: string) {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Unable to load ${url}`);
+      return await response.json();
+    }
+
+    function collectionFromPayload(payload: any, preferredKey: string) {
+      if (Array.isArray(payload)) return payload;
+      if (payload && Array.isArray(payload[preferredKey])) return payload[preferredKey];
+      return [];
+    }
+
+    function localizedPerson(record: Record<string, any> | undefined, base: string) {
+      if (!record) return "";
+      return String(record[`${base}_${config.lang}`] ?? record[`${base}_bg`] ?? "");
+    }
+
+    function roleLabel(role: string) {
+      return config.roleLabels?.[role] ?? role.replaceAll("_", " ");
+    }
+
+    function relationshipLabel(type: string) {
+      return config.relationshipLabels?.[type] ?? type.replaceAll("_", " ");
+    }
+
+    function primaryGroup(person: any) {
+      return config.roleGroups?.[person.roles?.[0]] ?? "civic";
+    }
+
+    function graphYear(person: any) {
+      if (person.birth_year) return person.birth_year;
+      return 1900;
+    }
+
+    function centuryFor(year: number) {
+      return Math.floor((year - 1) / 100) + 1;
+    }
+
+    function lifeLabel(person: any) {
+      if (person.birth_year && person.death_year) return `${person.birth_year}-${person.death_year}`;
+      if (person.birth_year) return `${config.labels.born ?? ""} ${person.birth_year}`.trim();
+      return "n/a";
+    }
+
+    function eventDateLabel(event: any) {
+      return localizedPerson(event?.date, "display");
+    }
+
+    async function loadPeopleCards() {
+      if (cards.length > 0) return cards;
+      const api = config.api ?? {};
+      const [peoplePayload, sourcePayload, eventPayload] = await Promise.all([
+        fetchPeopleJson(api.people),
+        fetchPeopleJson(api.sources),
+        fetchPeopleJson(api.events)
+      ]);
+      const people = collectionFromPayload(peoplePayload, "people");
+      const personById = new Map(people.map((person: any) => [person.id, person]));
+      const sourceById = new Map(collectionFromPayload(sourcePayload, "sources").map((source: any) => [source.id, source]));
+      const eventCountByPerson = new Map<string, number>();
+      for (const event of collectionFromPayload(eventPayload, "events")) {
+        for (const personId of event.person_ids ?? []) {
+          eventCountByPerson.set(personId, (eventCountByPerson.get(personId) ?? 0) + 1);
+        }
+      }
+      cards = people
+        .sort((a: any, b: any) =>
+          localizedPerson(a, "name").localeCompare(localizedPerson(b, "name"), config.lang === "bg" ? "bg-BG" : "en-GB")
+        )
+        .map((person: any) => {
+          const group = primaryGroup(person);
+          const primarySource = sourceById.get(person.source_ids?.[0]) as any;
+          const relationshipPreview = (person.relationships ?? [])
+            .map((relationship: any) => ({
+              relationship,
+              target: personById.get(relationship.person_id) as any,
+              source: sourceById.get(relationship.source_id) as any
+            }))
+            .filter((item: any) => item.target && item.source)
+            .slice(0, 4)
+            .map(({ relationship, target, source }: any) => ({
+              label: relationshipLabel(relationship.type),
+              targetName: localizedPerson(target, "name"),
+              sourceUrl: source.url
+            }));
+          return {
+            id: person.id,
+            search: [
+              localizedPerson(person, "name"),
+              localizedPerson(person, "summary"),
+              lifeLabel(person),
+              ...(person.roles ?? []).map(roleLabel),
+              config.groupLabels?.[group] ?? group
+            ].join(" ").toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB"),
+            group,
+            groupLabel: config.groupLabels?.[group] ?? group,
+            century: centuryFor(graphYear(person)),
+            relationshipsMode: (person.relationships ?? []).length > 0 ? "with" : "without",
+            name: localizedPerson(person, "name"),
+            life: lifeLabel(person),
+            summary: localizedPerson(person, "summary"),
+            avatar: person.image,
+            initials: localizedPerson(person, "name").slice(0, 2),
+            roles: (person.roles ?? []).slice(0, 4).map(roleLabel),
+            eventCount: eventCountByPerson.get(person.id) ?? 0,
+            relationshipCount: (person.relationships ?? []).length,
+            relationshipPreview,
+            primarySource: primarySource
+              ? {
+                  url: primarySource.url,
+                  title: localizedPerson(primarySource, "title")
+                }
+              : null
+          };
+        });
+      return cards;
+    }
+
+    function renderRelationshipRow(row: any) {
+      const linkedEvent = row.event
+        ? `<p>${escapePeopleHtml(config.labels.linkedEvent)}: ${escapePeopleHtml(row.event.title)} (${escapePeopleHtml(row.event.date)})</p>`
+        : "";
+      const evidence = row.evidenceProperty ? `<p>${escapePeopleHtml(row.evidenceProperty)}</p>` : "";
+      const sources = row.sources.length
+        ? `<p>${escapePeopleHtml(config.labels.sources)}: ${row.sources
+            .map(
+              (source: any, index: number) =>
+                `${index > 0 ? ", " : ""}<a href="${escapePeopleHtml(source.url)}" target="_blank" rel="noreferrer">${escapePeopleHtml(source.title)} ↗</a>`
+            )
+            .join("")}</p>`
+        : "";
+      return `
+        <article
+          class="relationship-row relationship-row-${escapePeopleHtml(row.category)}"
+          data-relationship-row="${escapePeopleHtml(row.id)}"
+          data-edge-from="${escapePeopleHtml(row.fromId)}"
+          data-edge-to="${escapePeopleHtml(row.toId)}"
+          data-search="${escapePeopleHtml(row.search)}"
+        >
+          <div>
+            <span class="relationship-label">${escapePeopleHtml(config.labels.from)}</span>
+            <strong>${escapePeopleHtml(row.fromName)}</strong>
+          </div>
+          <div>
+            <span class="relationship-label">${escapePeopleHtml(config.labels.type)}</span>
+            <span>${escapePeopleHtml(row.typeLabel)}</span>
+          </div>
+          <div>
+            <span class="relationship-label">${escapePeopleHtml(config.labels.to)}</span>
+            <strong>${escapePeopleHtml(row.toName)}</strong>
+          </div>
+          <div class="relationship-evidence">
+            <span class="relationship-label">${escapePeopleHtml(config.labels.evidence)}</span>
+            ${linkedEvent}
+            ${evidence}
+            ${sources}
+          </div>
+        </article>`;
+    }
+
+    async function loadRelationshipRows() {
+      if (relationshipRows.length > 0) return relationshipRows;
+      const api = config.api ?? {};
+      const [relationshipPayload, peoplePayload, sourcePayload, eventPayload] = await Promise.all([
+        fetchPeopleJson(api.personRelationships),
+        fetchPeopleJson(api.people),
+        fetchPeopleJson(api.sources),
+        fetchPeopleJson(api.events)
+      ]);
+      const peopleById = new Map(collectionFromPayload(peoplePayload, "people").map((person: any) => [person.id, person]));
+      const sourcesById = new Map(collectionFromPayload(sourcePayload, "sources").map((source: any) => [source.id, source]));
+      const eventsById = new Map(collectionFromPayload(eventPayload, "events").map((event: any) => [event.id, event]));
+      const rows = collectionFromPayload(relationshipPayload, "person_relationships").map((relationship: any) => {
+        const from = peopleById.get(relationship.from_person_id) as any;
+        const to = peopleById.get(relationship.to_person_id) as any;
+        const event = relationship.event_id ? (eventsById.get(relationship.event_id) as any) : null;
+        const sources = (relationship.source_ids ?? [])
+          .map((id: string) => sourcesById.get(id) as any)
+          .filter(Boolean)
+          .map((source: any) => ({
+            title: localizedPerson(source, "title"),
+            url: source.url
+          }));
+        const typeLabel = relationshipLabel(relationship.relationship_type);
+        const eventView = event
+          ? {
+              title: localizedPerson(event, "title"),
+              date: eventDateLabel(event)
+            }
+          : null;
+        return {
+          id: relationship.id,
+          fromId: relationship.from_person_id,
+          toId: relationship.to_person_id,
+          fromName: localizedPerson(from, "name"),
+          toName: localizedPerson(to, "name"),
+          typeLabel,
+          category: relationship.relationship_type === "succeeded_by" ? "succession" : "family",
+          evidenceProperty: relationship.evidence_property,
+          event: eventView,
+          sources,
+          search: [
+            localizedPerson(from, "name"),
+            localizedPerson(to, "name"),
+            typeLabel,
+            localizedPerson(event, "title"),
+            ...sources.map((source: any) => source.title),
+            relationship.evidence_property
+          ].join(" ").toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB")
+        };
+      });
+      relationshipList.innerHTML = rows.map(renderRelationshipRow).join("");
+      relationshipRows = [...document.querySelectorAll<HTMLElement>("[data-relationship-row]")];
+      if (relationshipCount) {
+        relationshipCount.textContent = `${relationshipRows.length} ${config.labels.ledgerRows}`;
+      }
+      return relationshipRows;
+    }
+
+    function renderPersonCard(card: any) {
+      const profileHref = `${config.lang === "en" ? "/en" : ""}/people/${encodeURIComponent(card.id)}/`;
+      const avatar = card.avatar
+        ? `<img class="person-avatar" src="${escapePeopleHtml(card.avatar)}" alt="${escapePeopleHtml(card.name)}" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" />`
+        : `<span class="person-avatar person-avatar-fallback" aria-hidden="true">${escapePeopleHtml(card.initials)}</span>`;
+      const roles = Array.isArray(card.roles)
+        ? `<div class="tag-row">${card.roles.map((role: string) => `<span>${escapePeopleHtml(role)}</span>`).join("")}</div>`
+        : "";
+      const relationshipPreview = Array.isArray(card.relationshipPreview) && card.relationshipPreview.length
+        ? `<div class="person-relations"><p>${escapePeopleHtml(config.labels.relationshipSources)}</p><ul>${card.relationshipPreview
+            .map(
+              (item: any) =>
+                `<li><a href="${escapePeopleHtml(item.sourceUrl)}" target="_blank" rel="noreferrer">${escapePeopleHtml(item.label)}: ${escapePeopleHtml(item.targetName)} ↗</a></li>`
+            )
+            .join("")}</ul></div>`
+        : "";
+      const source = card.primarySource
+        ? `<a class="src-link" href="${escapePeopleHtml(card.primarySource.url)}" target="_blank" rel="noreferrer">${escapePeopleHtml(config.labels.source)}: ${escapePeopleHtml(card.primarySource.title)} ↗</a>`
+        : "";
+
+      return `
+        <article
+          class="person-card people-group-${escapePeopleHtml(card.group)}"
+          data-person-card="${escapePeopleHtml(card.id)}"
+          data-group="${escapePeopleHtml(card.group)}"
+          data-century="${escapePeopleHtml(card.century)}"
+          data-relationships="${escapePeopleHtml(card.relationshipsMode)}"
+        >
+          <header>
+            ${avatar}
+            <div>
+              <p class="eyebrow">${escapePeopleHtml(card.groupLabel)}</p>
+              <h3><a href="${escapePeopleHtml(profileHref)}">${escapePeopleHtml(card.name)}</a></h3>
+              <p class="meta">${escapePeopleHtml(card.life)}</p>
+            </div>
+          </header>
+          <p>${escapePeopleHtml(card.summary)}</p>
+          ${roles}
+          ${relationshipPreview}
+          <dl class="person-metrics">
+            <div>
+              <dt>${escapePeopleHtml(config.labels.linkedEvents)}</dt>
+              <dd>${escapePeopleHtml(card.eventCount)}</dd>
+            </div>
+            <div>
+              <dt>${escapePeopleHtml(config.labels.relationshipCount)}</dt>
+              <dd>${escapePeopleHtml(card.relationshipCount)}</dd>
+            </div>
+          </dl>
+          <a class="text-link" href="${escapePeopleHtml(profileHref)}">${escapePeopleHtml(config.labels.profile)}</a>
+          ${source}
+        </article>`;
+    }
+
+    function matches(card: any) {
+      const q = search.value.trim().toLocaleLowerCase();
+      return (
+        (!q || (card.search ?? "").includes(q)) &&
+        (group.value === "all" || card.group === group.value) &&
+        (century.value === "all" || String(card.century) === century.value) &&
+        (relationship.value === "all" || card.relationshipsMode === relationship.value)
+      );
+    }
+
+    function applyPeopleFilters() {
+      const visibleCards = cards.filter(matches);
+      const visibleIds = new Set<string>(visibleCards.map((card: any) => card.id));
+      list.innerHTML = visibleCards.map(renderPersonCard).join("");
+
+      for (const node of nodes) {
+        const id = node.dataset.personNode ?? "";
+        node.style.display = visibleIds.has(id) ? "" : "none";
+      }
+
+      for (const edge of edges) {
+        const show =
+          visibleIds.has(edge.dataset.edgeFrom ?? "") &&
+          visibleIds.has(edge.dataset.edgeTo ?? "");
+        edge.style.display = show ? "" : "none";
+      }
+
+      let visibleRelationshipRows = 0;
+      for (const row of relationshipRows) {
+        const show =
+          visibleIds.has(row.dataset.edgeFrom ?? "") ||
+          visibleIds.has(row.dataset.edgeTo ?? "");
+        row.hidden = !show;
+        if (show) visibleRelationshipRows += 1;
+      }
+
+      count.textContent = `${config.labels.visible}: ${visibleCards.length} ${config.labels.of} ${cards.length}`;
+      if (relationshipCount) {
+        relationshipCount.textContent = `${config.labels.visible}: ${visibleRelationshipRows} ${config.labels.of} ${relationshipRows.length} ${config.labels.ledgerRows}`;
+      }
+      empty.hidden = visibleCards.length !== 0;
+      reset.hidden = !(
+        search.value ||
+        group.value !== "all" ||
+        century.value !== "all" ||
+        relationship.value !== "all"
+      );
+    }
+
+    function refreshPeopleCatalogue() {
+      loadPeopleCards()
+        .then(() => applyPeopleFilters())
+        .catch(() => {
+          empty.hidden = false;
+          empty.textContent = config.labels.noResults;
+        });
+    }
+
+    search.addEventListener("input", refreshPeopleCatalogue);
+    group.addEventListener("change", refreshPeopleCatalogue);
+    century.addEventListener("change", refreshPeopleCatalogue);
+    relationship.addEventListener("change", refreshPeopleCatalogue);
+    reset.addEventListener("click", () => {
+      search.value = "";
+      group.value = "all";
+      century.value = "all";
+      relationship.value = "all";
+      refreshPeopleCatalogue();
+      search.focus();
+    });
+    const catalogSection = document.getElementById("people-catalog");
+    if (catalogSection && "IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            observer.disconnect();
+            refreshPeopleCatalogue();
+          }
+        },
+        { rootMargin: "220px 0px" }
+      );
+      observer.observe(catalogSection);
+    } else {
+      window.setTimeout(refreshPeopleCatalogue, 900);
+    }
+
+    const ledgerSection = document.querySelector<HTMLElement>(".relationship-ledger");
+    if (ledgerSection && "IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            observer.disconnect();
+            loadRelationshipRows()
+              .then(() => {
+                if (cards.length > 0) applyPeopleFilters();
+              })
+              .catch(() => {});
+          }
+        },
+        { rootMargin: "220px 0px" }
+      );
+      observer.observe(ledgerSection);
+    } else {
+      window.setTimeout(() => {
+        loadRelationshipRows().catch(() => {});
+      }, 900);
+    }
+  </script>
+</Layout>

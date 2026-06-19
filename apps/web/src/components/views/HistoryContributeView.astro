@@ -1,0 +1,317 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { localizePath, ui, type Lang } from "@i18n/utils";
+import { categoryLabel } from "@lib/format";
+import { HISTORY_CONTRIBUTION_CATEGORIES } from "@lib/server/moderation";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const labels =
+  lang === "bg"
+    ? {
+        eyebrow: "Граждански архив",
+        title: "Изпратете снимка, спомен или източник",
+        lead:
+          "Историческите приноси влизат в същата модерационна опашка като гражданските сигнали. Нищо не се публикува автоматично: редактор проверява лични данни, права върху снимките и източник преди записът да стане публичен.",
+        notice:
+          "Не изпращайте лични данни, точни частни адреси или снимки с лица без права за публикуване. Посочете източник, архивен линк или контекст, когато го имате.",
+        category: "Тип принос",
+        titleLabel: "Кратко заглавие",
+        titlePlaceholder: "Напр. стара снимка на Джумая",
+        description: "Описание / спомен",
+        descriptionPlaceholder: "Опишете какво се вижда, кога приблизително е, откъде идва и какво трябва да се провери.",
+        sourceUrl: "Източник или архивен линк",
+        sourceUrlPlaceholder: "https://...",
+        sourceNote: "Бележка за произхода",
+        sourceNotePlaceholder: "Напр. семейна снимка, сканирана картичка, публикация в архив...",
+        photos: "Снимки",
+        photoHint:
+          "По избор, до 3 снимки, максимум 5 MB всяка. EXIF/GPS данните се премахват и снимките се конвертират преди преглед.",
+        location: "Място",
+        locationHint: "Кликнете върху картата, ако приносът е свързан с конкретно място.",
+        noLocation: "Все още не е избрана точка",
+        confirmNoPersonal: "Потвърждавам, че приносът не съдържа лични данни.",
+        confirmPublicInterest: "Потвърждавам, че приносът може да бъде проверен и е от обществен интерес.",
+        submit: "Изпрати за преглед",
+        submitting: "Изпращане...",
+        successTitle: "Получено",
+        successText: "Приносът е в модерационната опашка. Номер за справка:",
+        submitAnother: "Изпрати още един",
+        backToHistory: "Към историята",
+        selected: "Избрана точка",
+        errors: {
+          rate_limited: "Твърде много изпращания за кратко време. Опитайте по-късно.",
+          invalid_category: "Изберете валиден тип принос.",
+          invalid_title: "Заглавието трябва да е между 3 и 120 знака.",
+          invalid_description: "Описанието трябва да е между 10 и 1000 знака.",
+          invalid_source: "Източникът трябва да е валиден http/https линк или кратка бележка.",
+          contains_personal_data: "Текстът съдържа нещо, което прилича на лични данни.",
+          invalid_location: "Изберете точка в рамките на Пловдив.",
+          missing_confirmation: "Моля, отметнете двете потвърждения.",
+          too_many_photos: "Качете най-много 3 снимки.",
+          photo_too_large: "Всяка снимка трябва да е до 5 MB.",
+          invalid_photo_type: "Позволени са само JPEG, PNG или WebP снимки.",
+          invalid_photo: "Снимката не може да бъде обработена.",
+          default: "Приносът не можа да бъде изпратен. Опитайте отново."
+        }
+      }
+    : {
+        eyebrow: "Community archive",
+        title: "Submit a photo, memory or source",
+        lead:
+          "Historical contributions enter the same moderation queue as citizen reports. Nothing is published automatically: an editor checks personal data, image rights and source context before a record can become public.",
+        notice:
+          "Do not submit personal data, exact private addresses or photos with faces unless you have publication rights. Add a source, archive link or provenance note when you have one.",
+        category: "Contribution type",
+        titleLabel: "Short title",
+        titlePlaceholder: "e.g. old photo of Dzhumaya",
+        description: "Description / memory",
+        descriptionPlaceholder: "Describe what is shown, approximate date, origin and what should be checked.",
+        sourceUrl: "Source or archive link",
+        sourceUrlPlaceholder: "https://...",
+        sourceNote: "Provenance note",
+        sourceNotePlaceholder: "e.g. family photo, scanned postcard, archive post...",
+        photos: "Photos",
+        photoHint:
+          "Optional, up to 3 photos, maximum 5 MB each. EXIF/GPS metadata is removed and photos are converted before review.",
+        location: "Place",
+        locationHint: "Click the map if the contribution is tied to a specific place.",
+        noLocation: "No point selected yet",
+        confirmNoPersonal: "I confirm this contribution contains no personal data.",
+        confirmPublicInterest: "I confirm this contribution can be checked and is in the public interest.",
+        submit: "Submit for review",
+        submitting: "Submitting...",
+        successTitle: "Received",
+        successText: "The contribution is in the moderation queue. Reference number:",
+        submitAnother: "Submit another",
+        backToHistory: "Back to history",
+        selected: "Selected point",
+        errors: {
+          rate_limited: "Too many submissions in a short time. Please try later.",
+          invalid_category: "Choose a valid contribution type.",
+          invalid_title: "The title must be between 3 and 120 characters.",
+          invalid_description: "The description must be between 10 and 1000 characters.",
+          invalid_source: "The source must be a valid http/https link or a short note.",
+          contains_personal_data: "The text contains something that looks like personal data.",
+          invalid_location: "Choose a point within Plovdiv.",
+          missing_confirmation: "Please tick both confirmations.",
+          too_many_photos: "Upload at most 3 photos.",
+          photo_too_large: "Each photo must be 5 MB or smaller.",
+          invalid_photo_type: "Only JPEG, PNG or WebP photos are allowed.",
+          invalid_photo: "The photo could not be processed.",
+          default: "The contribution could not be sent. Please try again."
+        }
+      };
+
+const config = {
+  lang,
+  apiUrl: "/api/reports",
+  submit: labels.submit,
+  submitting: labels.submitting,
+  selected: labels.selected,
+  errors: labels.errors
+};
+---
+
+<Layout lang={lang} path="/history/contribute" title={labels.title} description={labels.lead}>
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="breadcrumb">
+        <a href={localizePath("/", lang)}>{t.nav.home}</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a href={localizePath("/history", lang)}>{t.nav.history}</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <span aria-current="page">{labels.title}</span>
+      </nav>
+      <p class="eyebrow">{labels.eyebrow}</p>
+      <h1>{labels.title}</h1>
+      <p class="lead">{labels.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="notice" style="margin-bottom:22px">
+        <span class="notice-icon" aria-hidden="true">ⓘ</span>
+        <span>{labels.notice}</span>
+      </div>
+
+      <div class="grid grid-2" id="history-contribution-grid">
+        <form id="history-contribution-form" class="card" novalidate>
+          <div class="field" style="margin-bottom:16px">
+            <label for="hc-category">{labels.category}</label>
+            <select id="hc-category" name="category" required>
+              {HISTORY_CONTRIBUTION_CATEGORIES.map((c) => <option value={c}>{categoryLabel(c, lang)}</option>)}
+            </select>
+          </div>
+
+          <div class="field" style="margin-bottom:16px">
+            <label for="hc-title">{labels.titleLabel}</label>
+            <input id="hc-title" name="title" type="text" maxlength="120" required placeholder={labels.titlePlaceholder} />
+          </div>
+
+          <div class="field" style="margin-bottom:16px">
+            <label for="hc-description">{labels.description}</label>
+            <textarea id="hc-description" name="description" rows="5" maxlength="1000" required placeholder={labels.descriptionPlaceholder} style="background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-sm);color:var(--ink);padding:10px 12px;width:100%;resize:vertical"></textarea>
+          </div>
+
+          <div class="field" style="margin-bottom:16px">
+            <label for="hc-source-url">{labels.sourceUrl}</label>
+            <input id="hc-source-url" name="source_url" type="url" placeholder={labels.sourceUrlPlaceholder} />
+          </div>
+
+          <div class="field" style="margin-bottom:16px">
+            <label for="hc-source-note">{labels.sourceNote}</label>
+            <textarea id="hc-source-note" name="source_note" rows="3" maxlength="500" placeholder={labels.sourceNotePlaceholder} style="background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-sm);color:var(--ink);padding:10px 12px;width:100%;resize:vertical"></textarea>
+          </div>
+
+          <div class="field" style="margin-bottom:16px">
+            <label for="hc-photos">{labels.photos}</label>
+            <input id="hc-photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple />
+            <p class="meta" style="margin:0">{labels.photoHint}</p>
+          </div>
+
+          <input type="hidden" name="kind" value="history_contribution" />
+          <input type="hidden" name="lat" id="hc-lat" />
+          <input type="hidden" name="lng" id="hc-lng" />
+          <input type="hidden" name="lang" value={lang} />
+
+          <label class="field" style="margin-bottom:10px;cursor:pointer;flex-direction:row;align-items:flex-start;gap:10px;display:flex">
+            <input type="checkbox" id="hc-confirm-personal" name="no_personal_data" style="margin-top:4px;width:18px;height:18px;flex:none" />
+            <span>{labels.confirmNoPersonal}</span>
+          </label>
+          <label class="field" style="margin-bottom:16px;cursor:pointer;flex-direction:row;align-items:flex-start;gap:10px;display:flex">
+            <input type="checkbox" id="hc-confirm-interest" name="public_interest" style="margin-top:4px;width:18px;height:18px;flex:none" />
+            <span>{labels.confirmPublicInterest}</span>
+          </label>
+
+          <p id="hc-error" class="error" role="alert" hidden style="text-align:left;padding:12px 14px;margin-bottom:14px"></p>
+          <button type="submit" class="button" id="hc-submit" style="width:100%;justify-content:center">{labels.submit}</button>
+        </form>
+
+        <div>
+          <div class="field" style="margin-bottom:8px">
+            <label>{labels.location}</label>
+            <p class="meta" style="margin:0">{labels.locationHint}</p>
+          </div>
+          <div id="hc-map" class="map-canvas mini-map" aria-label={labels.location}></div>
+          <p class="meta" id="hc-coords" style="margin-top:10px">{labels.noLocation}</p>
+        </div>
+      </div>
+
+      <div id="history-contribution-success" class="card" hidden style="text-align:center;padding:40px">
+        <p class="eyebrow" style="justify-content:center">✓</p>
+        <h2>{labels.successTitle}</h2>
+        <p class="lead" style="margin-inline:auto">{labels.successText} <strong id="hc-id"></strong></p>
+        <div class="actions" style="justify-content:center">
+          <button type="button" class="button secondary" id="hc-again">{labels.submitAnother}</button>
+          <a class="button" href={localizePath("/history", lang)}>{labels.backToHistory}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/json" id="history-contribution-config" set:html={JSON.stringify(config)}></script>
+  <script>
+    import L from "leaflet";
+    import "leaflet/dist/leaflet.css";
+
+    const config = JSON.parse(document.getElementById("history-contribution-config")?.textContent ?? "{}");
+    const form = document.querySelector<HTMLFormElement>("#history-contribution-form")!;
+    const grid = document.querySelector<HTMLElement>("#history-contribution-grid")!;
+    const success = document.querySelector<HTMLElement>("#history-contribution-success")!;
+    const latInput = document.querySelector<HTMLInputElement>("#hc-lat")!;
+    const lngInput = document.querySelector<HTMLInputElement>("#hc-lng")!;
+    const coords = document.querySelector<HTMLElement>("#hc-coords")!;
+    const errorBox = document.querySelector<HTMLElement>("#hc-error")!;
+    const submitBtn = document.querySelector<HTMLButtonElement>("#hc-submit")!;
+    const noLocationText = coords.textContent ?? "";
+
+    const map = L.map("hc-map", { scrollWheelZoom: false }).setView([42.141, 24.75], 13);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    const icon = L.divIcon({
+      className: "",
+      html: `<span class="marker-pin" style="--pin:var(--brand)"></span>`,
+      iconSize: [28, 28],
+      iconAnchor: [14, 28]
+    });
+    let marker: L.Marker | null = null;
+
+    map.on("click", (e: L.LeafletMouseEvent) => {
+      const { lat, lng } = e.latlng;
+      latInput.value = lat.toFixed(6);
+      lngInput.value = lng.toFixed(6);
+      coords.textContent = `${config.selected}: ${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+      if (marker) marker.setLatLng(e.latlng);
+      else marker = L.marker(e.latlng, { icon }).addTo(map);
+    });
+
+    function showError(code: string) {
+      errorBox.textContent = config.errors[code] ?? config.errors.default;
+      errorBox.hidden = false;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorBox.hidden = true;
+
+      if (!latInput.value || !lngInput.value) {
+        showError("invalid_location");
+        return;
+      }
+
+      const payload = new FormData(form);
+      payload.set("lat", latInput.value);
+      payload.set("lng", lngInput.value);
+      payload.set("lang", config.lang);
+      payload.set("kind", "history_contribution");
+      payload.set(
+        "no_personal_data",
+        String((document.getElementById("hc-confirm-personal") as HTMLInputElement).checked)
+      );
+      payload.set(
+        "public_interest",
+        String((document.getElementById("hc-confirm-interest") as HTMLInputElement).checked)
+      );
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = config.submitting;
+      try {
+        const res = await fetch(config.apiUrl, { method: "POST", body: payload });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok) {
+          document.getElementById("hc-id")!.textContent = data.id ?? "";
+          grid.hidden = true;
+          success.hidden = false;
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          showError(data.error ?? "default");
+        }
+      } catch {
+        showError("default");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = config.submit;
+      }
+    });
+
+    document.getElementById("hc-again")?.addEventListener("click", () => {
+      form.reset();
+      latInput.value = "";
+      lngInput.value = "";
+      coords.textContent = noLocationText;
+      if (marker) {
+        map.removeLayer(marker);
+        marker = null;
+      }
+      success.hidden = true;
+      grid.hidden = false;
+    });
+  </script>
+</Layout>

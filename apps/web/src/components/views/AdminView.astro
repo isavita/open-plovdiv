@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { categoryColors, categoryLabels, fixStatusLabels, ui, type Lang } from "@i18n/ui";
-import { PUBLIC_STATUSES } from "@lib/server/moderation";
+import { PUBLIC_STATUSES, REPORT_CATEGORIES } from "@lib/server/moderation";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -12,6 +12,7 @@ const config = {
   apiBase: "/api/admin/reports",
   categoryLabels: categoryLabels[lang],
   categoryColors,
+  categories: REPORT_CATEGORIES,
   statusLabels: fixStatusLabels[lang],
   statuses: PUBLIC_STATUSES,
   labels: {
@@ -26,6 +27,9 @@ const config = {
     noPublished: t.admin.noPublished,
     saveStatus: t.admin.saveStatus,
     editDetails: t.admin.editDetails,
+    kind: t.admin.kind,
+    kindFix: t.admin.kindFix,
+    kindHistory: t.admin.kindHistory,
     saveDetails: t.admin.saveDetails,
     titleBg: t.admin.titleBg,
     titleEn: t.admin.titleEn,
@@ -137,11 +141,10 @@ const config = {
     }
 
     function categoryOptions(selected = "other"): string {
-      return Object.entries(config.categoryLabels)
-        .filter(([key]) => !["culture", "education"].includes(key))
+      return config.categories
         .map(
-          ([key, label]) =>
-            `<option value="${escapeHtml(key)}"${key === selected ? " selected" : ""}>${escapeHtml(label as string)}</option>`
+          (key: string) =>
+            `<option value="${escapeHtml(key)}"${key === selected ? " selected" : ""}>${escapeHtml(config.categoryLabels[key] ?? key)}</option>`
         )
         .join("");
     }
@@ -171,12 +174,18 @@ const config = {
     function card(report: any, mode: "pending" | "published"): string {
       const color = config.categoryColors[report.category] ?? "var(--muted)";
       const catLabel = config.categoryLabels[report.category] ?? report.category;
+      const kindLabel = report.kind === "history_contribution" ? LB.kindHistory : LB.kindFix;
       return `
         <article class="card" data-id="${escapeHtml(report.id)}">
           <header style="display:flex;justify-content:space-between;gap:12px;align-items:start">
             <div>
               <h3>${escapeHtml(loc(report, "title"))}</h3>
-              <p class="meta"><span class="cat-dot" style="--dot:${color}"></span>${escapeHtml(catLabel)} · ${report.location.lat.toFixed(4)}, ${report.location.lng.toFixed(4)}</p>
+              <p class="meta"><span class="cat-dot" style="--dot:${color}"></span>${escapeHtml(kindLabel)} · ${escapeHtml(catLabel)} · ${report.location.lat.toFixed(4)}, ${report.location.lng.toFixed(4)}</p>
+              ${
+                report.source_url || report.source_note
+                  ? `<p class="meta">${escapeHtml(report.source_url ?? "")}${report.source_url && report.source_note ? " · " : ""}${escapeHtml(report.source_note ?? "")}</p>`
+                  : ""
+              }
             </div>
             <span class="meta">${escapeHtml(LB.submitted)}: ${escapeHtml((report.created_at || "").slice(0, 16).replace("T", " "))}</span>
           </header>

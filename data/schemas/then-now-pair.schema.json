@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/then-now-pair.schema.json",
+  "title": "Open Plovdiv then-now pair",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "place_id",
+    "historical_archive_item_id",
+    "title_bg",
+    "title_en",
+    "caption_bg",
+    "caption_en",
+    "then_media",
+    "now_media",
+    "match_quality",
+    "data_quality",
+    "editorial"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^then-now-[0-9a-z-]+$" },
+    "place_id": { "type": "string", "pattern": "^place-[0-9a-z-]+$" },
+    "historical_archive_item_id": { "type": "string", "pattern": "^archive-[0-9a-z-]+$" },
+    "title_bg": { "type": "string", "minLength": 3 },
+    "title_en": { "type": "string", "minLength": 3 },
+    "caption_bg": { "type": "string", "minLength": 20 },
+    "caption_en": { "type": "string", "minLength": 20 },
+    "then_media": { "$ref": "historical-archive-item.schema.json#/definitions/media" },
+    "now_media": { "$ref": "historical-archive-item.schema.json#/definitions/media" },
+    "match_quality": {
+      "type": "string",
+      "enum": ["same_place_approximate_viewpoint", "same_place_close_viewpoint", "city_context"]
+    },
+    "data_quality": { "type": "string", "enum": ["public_source", "manual_reviewed", "provisional"] },
+    "editorial": { "$ref": "historical-archive-item.schema.json#/definitions/editorial" }
+  }
+}

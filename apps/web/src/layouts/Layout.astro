@@ -22,6 +22,10 @@ const otherLang: Lang = lang === "bg" ? "en" : "bg";
 const navItems = [
   { href: localizePath("/history", lang), base: "/history", label: t.nav.history },
   { href: localizePath("/mayors", lang), base: "/mayors", label: t.nav.mayors },
+  { href: localizePath("/people", lang), base: "/people", label: t.nav.people },
+  { href: localizePath("/places", lang), base: "/places", label: t.nav.places },
+  { href: localizePath("/stories", lang), base: "/stories", label: t.nav.stories },
+  { href: localizePath("/education", lang), base: "/education", label: t.nav.education },
   { href: localizePath("/archive", lang), base: "/archive", label: t.nav.archive },
   { href: localizePath("/budget", lang), base: "/budget", label: t.nav.budget },
   { href: localizePath("/projects", lang), base: "/projects", label: t.nav.projects },
@@ -43,6 +47,10 @@ const switchHref = localizePath(path, otherLang);
 const footerExplore = [
   { href: localizePath("/history", lang), label: t.nav.history },
   { href: localizePath("/mayors", lang), label: t.nav.mayors },
+  { href: localizePath("/people", lang), label: t.nav.people },
+  { href: localizePath("/places", lang), label: t.nav.places },
+  { href: localizePath("/stories", lang), label: t.nav.stories },
+  { href: localizePath("/education", lang), label: t.nav.education },
   { href: localizePath("/archive", lang), label: t.nav.archive },
   { href: localizePath("/overview", lang), label: t.nav.overview },
   { href: localizePath("/budget", lang), label: t.nav.budget },
@@ -80,13 +88,6 @@ const footerAbout = [
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={lang === "bg" ? "bg_BG" : "en_GB"} />
     <meta name="twitter:card" content="summary" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Source+Serif+4:opsz,wght@8..60,400..600&display=swap"
-    />
 
     <script is:inline>
       (function () {

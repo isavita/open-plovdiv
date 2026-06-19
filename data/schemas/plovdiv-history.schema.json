@@ -40,12 +40,38 @@
       "minimum": -10000,
       "maximum": 2100
     },
+    "date_month": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "date_day": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 31
+    },
     "period_bg": { "type": "string", "minLength": 2 },
     "period_en": { "type": "string", "minLength": 2 },
     "title_bg": { "type": "string", "minLength": 3 },
     "title_en": { "type": "string", "minLength": 3 },
     "summary_bg": { "type": "string", "minLength": 20 },
     "summary_en": { "type": "string", "minLength": 20 },
+    "conflict_notes_bg": { "type": "string", "minLength": 20 },
+    "conflict_notes_en": { "type": "string", "minLength": 20 },
+    "source": {
+      "$ref": "#/definitions/source"
+    },
+    "secondary_sources": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/source" },
+      "minItems": 1
+    },
+    "data_quality": {
+      "type": "string",
+      "enum": ["public_source", "manual_reviewed", "provisional"]
+    }
+  },
+  "definitions": {
     "source": {
       "type": "object",
       "additionalProperties": false,
@@ -55,10 +81,6 @@
         "url": { "type": "string", "format": "uri" },
         "accessed_at": { "type": "string", "format": "date" }
       }
-    },
-    "data_quality": {
-      "type": "string",
-      "enum": ["public_source", "manual_reviewed", "provisional"]
     }
   }
 }

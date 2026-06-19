@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/knowledge-source.schema.json",
+  "title": "Open Plovdiv knowledge source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "title_bg",
+    "title_en",
+    "publisher",
+    "url",
+    "accessed_at",
+    "license",
+    "used_for_bg",
+    "used_for_en",
+    "limitations_bg",
+    "limitations_en"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^source-[0-9a-z-]+$" },
+    "type": { "const": "source" },
+    "title_bg": { "type": "string", "minLength": 2 },
+    "title_en": { "type": "string", "minLength": 2 },
+    "publisher": { "type": "string", "minLength": 2 },
+    "url": { "type": "string", "format": "uri" },
+    "accessed_at": { "type": "string", "format": "date" },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "label", "url"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["open_license", "public_reference_terms_unverified"]
+        },
+        "label": { "type": "string", "minLength": 3 },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "used_for_bg": { "type": "string" },
+    "used_for_en": { "type": "string" },
+    "limitations_bg": { "type": "string", "minLength": 5 },
+    "limitations_en": { "type": "string", "minLength": 5 }
+  }
+}

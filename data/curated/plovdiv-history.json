@@ -10,6 +10,13 @@
     "summary_bg": "Археолозите датират най-ранните селища на пловдивските тепета (Яса тепе) към VI–V хилядолетие пр.н.е. Това нарежда Пловдив сред най-старите непрекъснато обитавани градове в света.",
     "summary_en": "Archaeologists date the earliest settlements on Plovdiv's hills (Yasa Tepe) to the 6th–5th millennium BC, placing Plovdiv among the oldest continuously inhabited cities in the world.",
     "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-18" },
+    "secondary_sources": [
+      {
+        "title": "Visit Plovdiv — The Antique Plovdiv",
+        "url": "https://www.visitplovdiv.com/en/node/520",
+        "accessed_at": "2026-06-19"
+      }
+    ],
     "data_quality": "public_source"
   },
   {
@@ -23,6 +30,13 @@
     "summary_bg": "Селището става част от Одриското царство като тракийски град, известен като Евмолпия (Пулпудева), с укрепено ядро на хълма Небет тепе.",
     "summary_en": "The settlement became part of the Odrysian kingdom as a Thracian town known as Eumolpias (Pulpudeva), with a fortified core on Nebet Tepe hill.",
     "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-18" },
+    "secondary_sources": [
+      {
+        "title": "Visit Plovdiv — The Antique Plovdiv",
+        "url": "https://www.visitplovdiv.com/en/node/520",
+        "accessed_at": "2026-06-19"
+      }
+    ],
     "data_quality": "public_source"
   },
   {
@@ -36,6 +50,13 @@
     "summary_bg": "Филип II Македонски завладява града и го преименува на Филипопол, заселвайки в него траки и 2000 македонци.",
     "summary_en": "Philip II of Macedon captured the town and renamed it Philippopolis, settling there both Thracians and 2,000 Macedonians.",
     "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-18" },
+    "secondary_sources": [
+      {
+        "title": "Visit Plovdiv — The Antique Plovdiv",
+        "url": "https://www.visitplovdiv.com/en/node/520",
+        "accessed_at": "2026-06-19"
+      }
+    ],
     "data_quality": "public_source"
   },
   {
@@ -62,6 +83,13 @@
     "summary_bg": "През 90-те години на I в. е изграден римският театър; надписи сочат, че е побирал около 7000 зрители. Днес той е сред най-добре запазените в света и още се използва.",
     "summary_en": "In the 90s of the 1st century AD the Roman theatre was built; inscriptions indicate it could hold about 7,000 spectators. Today it is among the best preserved in the world and still in use.",
     "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-18" },
+    "secondary_sources": [
+      {
+        "title": "Visit Plovdiv — Ancient Theatre",
+        "url": "https://www.visitplovdiv.com/en/node/522",
+        "accessed_at": "2026-06-19"
+      }
+    ],
     "data_quality": "public_source"
   },
   {
@@ -75,6 +103,13 @@
     "summary_bg": "По времето на император Адриан е построен стадионът — около 240 на 50 метра, с капацитет за близо 30 000 зрители.",
     "summary_en": "During the reign of Emperor Hadrian the stadium was built — roughly 240 by 50 metres, with a capacity of nearly 30,000 spectators.",
     "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-18" },
+    "secondary_sources": [
+      {
+        "title": "Ancient Stadium of Philippopolis — site history",
+        "url": "https://ancient-stadium-plovdiv.eu/?l=2&p=12",
+        "accessed_at": "2026-06-19"
+      }
+    ],
     "data_quality": "public_source"
   },
   {
@@ -211,13 +246,24 @@
     "id": "history-liberation-1878",
     "era": "liberation",
     "year": 1878,
+    "date_month": 1,
+    "date_day": 17,
     "period_bg": "17 януари 1878 г.",
     "period_en": "17 January 1878",
     "title_bg": "Освобождение",
     "title_en": "Liberation",
     "summary_bg": "По време на Руско-турската война руски части под командването на Александър Бураго освобождават града; за кратко той е седалище на Временното руско управление.",
     "summary_en": "During the Russo-Turkish War, Russian units under Aleksandr Burago captured the city; for a time it was the seat of the Provisional Russian Administration.",
+    "conflict_notes_bg": "Датата изисква редакторски преглед: основният обобщаващ запис използва 17 януари 1878 г., а Регионалният исторически музей - Пловдив представя освобождението като 16 януари 1878 г.",
+    "conflict_notes_en": "The date needs editorial review: the primary summary record uses 17 January 1878, while the Regional History Museum Plovdiv presents the liberation as 16 January 1878.",
     "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-18" },
+    "secondary_sources": [
+      {
+        "title": "Regional History Museum Plovdiv — The Liberation of Plovdiv",
+        "url": "https://rimplovdiv.com/en/2026/01/16/the-liberation-of-plovdiv-16-january-1878/",
+        "accessed_at": "2026-06-19"
+      }
+    ],
     "data_quality": "public_source"
   },
   {
@@ -237,6 +283,8 @@
     "id": "history-unification-1885",
     "era": "liberation",
     "year": 1885,
+    "date_month": 9,
+    "date_day": 6,
     "period_bg": "6 септември 1885 г.",
     "period_en": "6 September 1885",
     "title_bg": "Съединението на България",
@@ -244,45 +292,117 @@
     "summary_bg": "Безкръвен преврат в Пловдив обединява Източна Румелия с Княжество България. 6 септември се чества като Ден на Съединението и Ден на Пловдив.",
     "summary_en": "A bloodless coup in Plovdiv united Eastern Rumelia with the Principality of Bulgaria. 6 September is celebrated as Unification Day and the Day of Plovdiv.",
     "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-18" },
+    "secondary_sources": [
+      {
+        "title": "Museu.MS — The Unification of Bulgaria of 1885",
+        "url": "https://museu.ms/museum/details/16378/the-unification-of-bulgaria-of-1885",
+        "accessed_at": "2026-06-19"
+      }
+    ],
     "data_quality": "public_source"
   },
   {
     "id": "history-fair-1892",
     "era": "modern",
     "year": 1892,
-    "period_bg": "1892 г.",
-    "period_en": "1892",
+    "date_month": 8,
+    "date_day": 15,
+    "period_bg": "15 август 1892 г.",
+    "period_en": "15 August 1892",
     "title_bg": "Първото международно изложение",
     "title_en": "The first international fair",
     "summary_bg": "Пловдив е домакин на Първото българско изложение с международно участие — началото на Международния панаир Пловдив.",
     "summary_en": "Plovdiv hosted the First Bulgarian Fair with international participation — the origin of the International Fair Plovdiv.",
-    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-18" },
+    "source": {
+      "title": "BTA — August 15, 1892: First Agricultural and Industrial Exhibition in Bulgaria opens",
+      "url": "https://www.bta.bg/en/news/archives/949332-august-15-1892-first-agricultural-and-industrial-exhibition-in-bulgaria-opens-",
+      "accessed_at": "2026-06-19"
+    },
+    "secondary_sources": [
+      {
+        "title": "International Fair Plovdiv — 1892, the beginning",
+        "url": "https://www.fair.bg/uploads/event/form/file/5d15dd4f521c7017390091.pdf",
+        "accessed_at": "2026-06-19"
+      }
+    ],
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-1928-earthquake",
+    "era": "modern",
+    "year": 1928,
+    "date_month": 4,
+    "date_day": 14,
+    "period_bg": "14 април 1928 г.",
+    "period_en": "14 April 1928",
+    "title_bg": "Чирпанско-пловдивските земетресения",
+    "title_en": "The Chirpan-Plovdiv earthquakes",
+    "summary_bg": "Първият от разрушителните трусове в поредицата Чирпан-Пловдив удря Южна България на 14 април 1928 г.; следва нов силен трус на 18 април и тежки щети в Пловдив и околните селища.",
+    "summary_en": "The first destructive shock in the Chirpan-Plovdiv earthquake sequence struck southern Bulgaria on 14 April 1928; a second strong shock followed on 18 April, with severe damage in Plovdiv and nearby settlements.",
+    "source": {
+      "title": "NOAA NCEI — 1928 Bulgaria earthquake information",
+      "url": "https://www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-more-info/3363",
+      "accessed_at": "2026-06-19"
+    },
+    "secondary_sources": [
+      {
+        "title": "Journal of Geophysical Research — Paleoseismologic investigation of the 14 April 1928 Chirpan earthquake",
+        "url": "https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2005JB003814",
+        "accessed_at": "2026-06-19"
+      }
+    ],
     "data_quality": "public_source"
   },
   {
     "id": "history-jews-1943",
     "era": "modern",
     "year": 1943,
-    "period_bg": "1943 г.",
-    "period_en": "1943",
+    "date_month": 3,
+    "date_day": 10,
+    "period_bg": "10 март 1943 г.",
+    "period_en": "10 March 1943",
     "title_bg": "Спасяването на пловдивските евреи",
     "title_en": "Saving Plovdiv's Jews",
-    "summary_bg": "Митрополит Кирил и общественици се противопоставят на депортирането и допринасят за спасяването на около 1500 евреи от града през Втората световна война.",
-    "summary_en": "Metropolitan Kiril and public figures opposed the deportation and helped save around 1,500 Jews from the city during World War II.",
-    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-18" },
+    "summary_bg": "На 10 март 1943 г. пловдивският митрополит Кирил се застъпва за местната еврейска общност, събрана за депортация, и става една от видимите фигури в предотвратяването на депортацията на евреите от старите предели на България.",
+    "summary_en": "On 10 March 1943 Metropolitan Kiril of Plovdiv intervened for the local Jewish community gathered for deportation and became one of the visible figures in preventing the deportation of Jews from Bulgaria's pre-war territory.",
+    "source": {
+      "title": "Center for Jewish Art — Metropolitan Kiril plaque in Plovdiv",
+      "url": "https://cja.huji.ac.il/browser.php?id=58077&mode=set",
+      "accessed_at": "2026-06-19"
+    },
+    "secondary_sources": [
+      {
+        "title": "Yad Vashem — Two Bulgarian Clergymen Named as Righteous Among the Nations",
+        "url": "https://www.yadvashem.org/press-release/29-november-2001-10-23.html",
+        "accessed_at": "2026-06-19"
+      }
+    ],
     "data_quality": "public_source"
   },
   {
     "id": "history-capital-of-culture-2019",
     "era": "modern",
     "year": 2019,
-    "period_bg": "2019 г.",
-    "period_en": "2019",
-    "title_bg": "Европейска столица на културата",
-    "title_en": "European Capital of Culture",
-    "summary_bg": "Пловдив е Европейска столица на културата през 2019 г. — първият български град с тази титла (след Европейския месец на културата през 1999 г.).",
-    "summary_en": "Plovdiv was a European Capital of Culture in 2019 — the first Bulgarian city to hold the title (after the European Month of Culture in 1999).",
-    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-18" },
+    "date_month": 1,
+    "date_day": 12,
+    "period_bg": "12 януари 2019 г.",
+    "period_en": "12 January 2019",
+    "title_bg": "Откриване на Европейска столица на културата",
+    "title_en": "European Capital of Culture opening",
+    "summary_bg": "Официалната церемония за Пловдив — Европейска столица на културата 2019 се провежда на 12 януари, в рамките на откриващия уикенд 11–13 януари.",
+    "summary_en": "The official opening ceremony for Plovdiv — European Capital of Culture 2019 took place on 12 January, during the 11-13 January opening weekend.",
+    "source": {
+      "title": "European Commission — 2019 European Capitals of Culture: Plovdiv and Matera",
+      "url": "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera",
+      "accessed_at": "2026-06-19"
+    },
+    "secondary_sources": [
+      {
+        "title": "Plovdiv 2019 — Opening of Plovdiv European Capital of Culture 2019",
+        "url": "https://plovdiv2019.eu/en/platform/revive/189-culture-meets-people/773-opening-of-plovdiv-european-capital-of-culture-2019",
+        "accessed_at": "2026-06-19"
+      }
+    ],
     "data_quality": "public_source"
   }
 ]

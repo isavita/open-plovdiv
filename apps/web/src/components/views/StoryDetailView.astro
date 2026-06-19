@@ -1,0 +1,180 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { localizePath, ui, type Lang } from "@i18n/utils";
+import { sourceTitle } from "@lib/format";
+import {
+  historicalArchiveItems,
+  historyKnowledgeEvents,
+  historyKnowledgePlaces,
+  historyKnowledgeSources,
+  storyLongreads,
+  thenNowPairs,
+  type StoryLongread
+} from "@lib/data";
+
+type Props = {
+  lang: Lang;
+  story: StoryLongread;
+};
+
+const { lang, story } = Astro.props;
+const t = ui[lang];
+
+const labels = {
+  bg: {
+    back: "Всички разкази",
+    minutes: "мин четене",
+    sources: "Източници",
+    linkedEvidence: "Свързани записи",
+    events: "Събития",
+    places: "Места",
+    archive: "Архив",
+    thenNow: "Тогава/сега",
+    editorial: "Редакционен статус"
+  },
+  en: {
+    back: "All stories",
+    minutes: "min read",
+    sources: "Sources",
+    linkedEvidence: "Linked records",
+    events: "Events",
+    places: "Places",
+    archive: "Archive",
+    thenNow: "Then/Now",
+    editorial: "Editorial status"
+  }
+}[lang];
+
+const eventById = new Map(historyKnowledgeEvents.map((event) => [event.id, event]));
+const placeById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
+const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
+const archiveById = new Map(historicalArchiveItems.map((item) => [item.id, item]));
+const pairById = new Map(thenNowPairs.map((pair) => [pair.id, pair]));
+
+function localized(record: Record<string, unknown>, field: string): string {
+  return String(record[`${field}_${lang}`] ?? record[`${field}_bg`] ?? "");
+}
+
+function sourceLabel(source: { title_bg: string; title_en: string }): string {
+  return sourceTitle(lang === "bg" ? source.title_bg : source.title_en, lang);
+}
+
+function heroMedia(item: StoryLongread) {
+  if (item.hero.kind === "archive_item") return archiveById.get(item.hero.ref_id)?.media;
+  if (item.hero.kind === "then_now_pair") return pairById.get(item.hero.ref_id)?.then_media;
+  return placeById.get(item.hero.ref_id)?.media[0];
+}
+
+function titles(ids: string[], map: Map<string, Record<string, unknown>>, field: "title" | "name") {
+  return ids.map((id) => localized((map.get(id) ?? { id }) as Record<string, unknown>, field));
+}
+
+const media = heroMedia(story);
+const sourceRecords = story.source_ids.map((sourceId) => sourceById.get(sourceId)).filter(Boolean);
+const relatedStories = storyLongreads
+  .filter((item) => item.id !== story.id && item.era_tags.some((tag) => story.era_tags.includes(tag)))
+  .slice(0, 3);
+---
+
+<Layout lang={lang} path={`/stories/${story.id}`} title={localized(story, "title")} description={localized(story, "dek")}>
+  <article class="story-detail" data-story-detail>
+    <header class="section story-detail-hero">
+      <div class="container story-detail-grid">
+        <div>
+          <a class="text-link" href={localizePath("/stories", lang)}>{labels.back}</a>
+          <p class="eyebrow">{`${story.reading_minutes} ${labels.minutes}`}</p>
+          <h1>{localized(story, "title")}</h1>
+          <p class="lead">{localized(story, "dek")}</p>
+          <div class="tag-row">
+            {story.era_tags.map((tag) => <span>{t.history.eraLabels[tag]}</span>)}
+            {story.theme_tags.map((tag) => <span>{tag.replaceAll("_", " ")}</span>)}
+          </div>
+        </div>
+        {media && (
+          <figure class="story-detail-media">
+            <img src={media.url} alt={localized(story.hero, "caption")} />
+            <figcaption>
+              {localized(story.hero, "caption")}
+              <a href={media.page_url} target="_blank" rel="noreferrer">{media.credit}</a>
+            </figcaption>
+          </figure>
+        )}
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container story-detail-layout">
+        <div class="story-sections">
+          {story.sections.map((section, index) => {
+            const sectionSources = section.source_ids.map((sourceId) => sourceById.get(sourceId)).filter(Boolean);
+            return (
+              <section class="story-section">
+                <p class="eyebrow">{String(index + 1).padStart(2, "0")}</p>
+                <h2>{localized(section, "heading")}</h2>
+                <p>{localized(section, "body")}</p>
+                <div class="story-section-sources">
+                  <h3>{labels.sources}</h3>
+                  <ul class="source-list compact">
+                    {sectionSources.map((source) => (
+                      <li>
+                        <a href={source!.url} target="_blank" rel="noreferrer">{sourceLabel(source!)}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            );
+          })}
+        </div>
+
+        <aside class="story-evidence-panel" aria-label={labels.linkedEvidence}>
+          <h2>{labels.linkedEvidence}</h2>
+          <dl class="evidence-list">
+            <dt>{labels.events}</dt>
+            <dd>{titles(story.linked_event_ids, eventById, "title").join(" · ")}</dd>
+            <dt>{labels.places}</dt>
+            <dd>{titles(story.linked_place_ids, placeById, "name").join(" · ")}</dd>
+            <dt>{labels.archive}</dt>
+            <dd>{titles(story.linked_archive_item_ids, archiveById, "title").join(" · ")}</dd>
+            <dt>{labels.thenNow}</dt>
+            <dd>{titles(story.linked_then_now_pair_ids, pairById, "title").join(" · ")}</dd>
+          </dl>
+
+          <h2>{labels.sources}</h2>
+          <ul class="source-list">
+            {sourceRecords.map((source) => (
+              <li>
+                <a href={source!.url} target="_blank" rel="noreferrer">{sourceLabel(source!)}</a>
+                <span class="meta"> · {`${t.common.accessed} ${source!.accessed_at}`}</span>
+              </li>
+            ))}
+          </ul>
+
+          <h2>{labels.editorial}</h2>
+          <p class="meta">{localized(story.editorial, "notes")}</p>
+        </aside>
+      </div>
+    </section>
+
+    {relatedStories.length > 0 && (
+      <section class="section section-muted">
+        <div class="container">
+          <div class="section-head compact">
+            <h2>{labels.back}</h2>
+          </div>
+          <div class="story-grid compact">
+            {relatedStories.map((item) => (
+              <article class="story-card compact">
+                <div class="story-card-body">
+                  <p class="eyebrow">{`${item.reading_minutes} ${labels.minutes}`}</p>
+                  <h3><a href={localizePath(`/stories/${item.id}`, lang)}>{localized(item, "title")}</a></h3>
+                  <p>{localized(item, "dek")}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </article>
+</Layout>

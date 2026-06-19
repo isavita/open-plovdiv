@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/knowledge-person-relationship.schema.json",
+  "title": "Open Plovdiv knowledge person relationship",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "relationship_type",
+    "direction",
+    "from_person_id",
+    "to_person_id",
+    "event_id",
+    "evidence_property",
+    "title_bg",
+    "title_en",
+    "summary_bg",
+    "summary_en",
+    "source_ids",
+    "provenance",
+    "editorial"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^person-rel-[0-9a-z-]+$" },
+    "type": { "const": "person_relationship" },
+    "relationship_type": {
+      "type": "string",
+      "enum": [
+        "succeeds",
+        "succeeded_by",
+        "spouse",
+        "father",
+        "mother",
+        "parent",
+        "child",
+        "sibling",
+        "mentor",
+        "student",
+        "partner",
+        "influenced_by"
+      ]
+    },
+    "direction": { "const": "directed" },
+    "from_person_id": { "type": "string", "pattern": "^person-[0-9a-z-]+$" },
+    "to_person_id": { "type": "string", "pattern": "^person-[0-9a-z-]+$" },
+    "event_id": { "type": ["string", "null"], "pattern": "^event-[0-9a-z-]+$" },
+    "evidence_property": { "type": ["string", "null"], "pattern": "^P[0-9]+$" },
+    "title_bg": { "type": "string", "minLength": 3 },
+    "title_en": { "type": "string", "minLength": 3 },
+    "summary_bg": { "type": "string", "minLength": 10 },
+    "summary_en": { "type": "string", "minLength": 10 },
+    "source_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^source-[0-9a-z-]+$" },
+      "minItems": 1
+    },
+    "provenance": { "$ref": "knowledge-event.schema.json#/definitions/provenance" },
+    "editorial": { "$ref": "knowledge-event.schema.json#/definitions/editorial" }
+  }
+}

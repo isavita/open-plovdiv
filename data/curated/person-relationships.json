@@ -1,0 +1,106 @@
+[
+  {
+    "id": "person-rel-emil-stoyanov-petar-stoyanov-sibling",
+    "from_wikidata_id": "Q1336888",
+    "to_wikidata_id": "Q81215",
+    "type": "sibling",
+    "evidence_property": "P3373",
+    "source": {
+      "title": "Wikidata — Emil Stoyanov",
+      "url": "https://www.wikidata.org/wiki/Q1336888",
+      "accessed_at": "2026-06-19"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "person-rel-isaac-passy-solomon-passy-child",
+    "from_wikidata_id": "Q2901020",
+    "to_wikidata_id": "Q1371792",
+    "type": "child",
+    "evidence_property": "P40",
+    "source": {
+      "title": "Wikidata — Isaac Passy",
+      "url": "https://www.wikidata.org/wiki/Q2901020",
+      "accessed_at": "2026-06-19"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "person-rel-lalka-berberova-nenko-dobrev-spouse",
+    "from_wikidata_id": "Q6480436",
+    "to_wikidata_id": "Q47456054",
+    "type": "spouse",
+    "evidence_property": "P26",
+    "source": {
+      "title": "Wikidata — Lalka Berberova",
+      "url": "https://www.wikidata.org/wiki/Q6480436",
+      "accessed_at": "2026-06-19"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "person-rel-milcho-leviev-yoan-leviev-sibling",
+    "from_wikidata_id": "Q358753",
+    "to_wikidata_id": "Q12282012",
+    "type": "sibling",
+    "evidence_property": "P3373",
+    "source": {
+      "title": "Wikidata — Milcho Leviev",
+      "url": "https://www.wikidata.org/wiki/Q358753",
+      "accessed_at": "2026-06-19"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "person-rel-nenko-dobrev-lalka-berberova-spouse",
+    "from_wikidata_id": "Q47456054",
+    "to_wikidata_id": "Q6480436",
+    "type": "spouse",
+    "evidence_property": "P26",
+    "source": {
+      "title": "Wikidata — Nenko Dobrev",
+      "url": "https://www.wikidata.org/wiki/Q47456054",
+      "accessed_at": "2026-06-19"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "person-rel-petar-stoyanov-emil-stoyanov-sibling",
+    "from_wikidata_id": "Q81215",
+    "to_wikidata_id": "Q1336888",
+    "type": "sibling",
+    "evidence_property": "P3373",
+    "source": {
+      "title": "Wikidata — Petar Stoyanov",
+      "url": "https://www.wikidata.org/wiki/Q81215",
+      "accessed_at": "2026-06-19"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "person-rel-solomon-passy-isaac-passy-father",
+    "from_wikidata_id": "Q1371792",
+    "to_wikidata_id": "Q2901020",
+    "type": "father",
+    "evidence_property": "P22",
+    "source": {
+      "title": "Wikidata — Solomon Passy",
+      "url": "https://www.wikidata.org/wiki/Q1371792",
+      "accessed_at": "2026-06-19"
+    },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "person-rel-yoan-leviev-milcho-leviev-sibling",
+    "from_wikidata_id": "Q12282012",
+    "to_wikidata_id": "Q358753",
+    "type": "sibling",
+    "evidence_property": "P3373",
+    "source": {
+      "title": "Wikidata — Yoan Leviev",
+      "url": "https://www.wikidata.org/wiki/Q12282012",
+      "accessed_at": "2026-06-19"
+    },
+    "data_quality": "public_source"
+  }
+]

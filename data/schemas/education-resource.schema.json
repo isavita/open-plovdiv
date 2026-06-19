@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/education-resource.schema.json",
+  "title": "Open Plovdiv education resource",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "audience_bg",
+    "audience_en",
+    "duration_minutes",
+    "era_tags",
+    "subject_tags",
+    "title_bg",
+    "title_en",
+    "summary_bg",
+    "summary_en",
+    "driving_question_bg",
+    "driving_question_en",
+    "objectives_bg",
+    "objectives_en",
+    "preparation_bg",
+    "preparation_en",
+    "lesson_steps",
+    "quiz",
+    "printable_handout",
+    "audio_tour",
+    "linked_event_ids",
+    "linked_place_ids",
+    "linked_archive_item_ids",
+    "linked_then_now_pair_ids",
+    "source_ids",
+    "data_quality",
+    "editorial"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^education-[0-9a-z-]+$" },
+    "audience_bg": { "type": "string", "minLength": 3 },
+    "audience_en": { "type": "string", "minLength": 3 },
+    "duration_minutes": { "type": "integer", "minimum": 20, "maximum": 180 },
+    "era_tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["prehistory", "thracian", "roman", "medieval", "ottoman", "revival", "liberation", "modern"]
+      }
+    },
+    "subject_tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[0-9a-z_]+$" }
+    },
+    "title_bg": { "type": "string", "minLength": 5 },
+    "title_en": { "type": "string", "minLength": 5 },
+    "summary_bg": { "type": "string", "minLength": 30 },
+    "summary_en": { "type": "string", "minLength": 30 },
+    "driving_question_bg": { "type": "string", "minLength": 10 },
+    "driving_question_en": { "type": "string", "minLength": 10 },
+    "objectives_bg": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 10 }
+    },
+    "objectives_en": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 10 }
+    },
+    "preparation_bg": { "type": "string", "minLength": 10 },
+    "preparation_en": { "type": "string", "minLength": 10 },
+    "lesson_steps": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["minutes", "phase_bg", "phase_en", "activity_bg", "activity_en"],
+        "properties": {
+          "minutes": { "type": "integer", "minimum": 1, "maximum": 60 },
+          "phase_bg": { "type": "string", "minLength": 3 },
+          "phase_en": { "type": "string", "minLength": 3 },
+          "activity_bg": { "type": "string", "minLength": 20 },
+          "activity_en": { "type": "string", "minLength": 20 }
+        }
+      }
+    },
+    "quiz": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question_bg",
+          "question_en",
+          "answers_bg",
+          "answers_en",
+          "correct_answer_index",
+          "explanation_bg",
+          "explanation_en"
+        ],
+        "properties": {
+          "question_bg": { "type": "string", "minLength": 10 },
+          "question_en": { "type": "string", "minLength": 10 },
+          "answers_bg": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 4,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "answers_en": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 4,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "correct_answer_index": { "type": "integer", "minimum": 0, "maximum": 3 },
+          "explanation_bg": { "type": "string", "minLength": 10 },
+          "explanation_en": { "type": "string", "minLength": 10 }
+        }
+      }
+    },
+    "printable_handout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title_bg", "title_en", "tasks_bg", "tasks_en"],
+      "properties": {
+        "title_bg": { "type": "string", "minLength": 5 },
+        "title_en": { "type": "string", "minLength": 5 },
+        "tasks_bg": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "type": "string", "minLength": 10 }
+        },
+        "tasks_en": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "type": "string", "minLength": 10 }
+        }
+      }
+    },
+    "audio_tour": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title_bg", "title_en", "production_status", "stops"],
+      "properties": {
+        "title_bg": { "type": "string", "minLength": 5 },
+        "title_en": { "type": "string", "minLength": 5 },
+        "production_status": { "type": "string", "enum": ["script_ready", "recorded"] },
+        "stops": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["place_id", "title_bg", "title_en", "narration_bg", "narration_en"],
+            "properties": {
+              "place_id": { "type": "string", "pattern": "^place-[0-9a-z-]+$" },
+              "title_bg": { "type": "string", "minLength": 3 },
+              "title_en": { "type": "string", "minLength": 3 },
+              "narration_bg": { "type": "string", "minLength": 30 },
+              "narration_en": { "type": "string", "minLength": 30 }
+            }
+          }
+        }
+      }
+    },
+    "linked_event_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^event-[0-9a-z-]+$" }
+    },
+    "linked_place_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^place-[0-9a-z-]+$" }
+    },
+    "linked_archive_item_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^archive-[0-9a-z-]+$" }
+    },
+    "linked_then_now_pair_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^then-now-[0-9a-z-]+$" }
+    },
+    "source_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
+    },
+    "provenance": { "$ref": "knowledge-event.schema.json#/definitions/provenance" },
+    "data_quality": { "type": "string", "enum": ["public_source", "manual_reviewed", "provisional"] },
+    "editorial": { "$ref": "historical-archive-item.schema.json#/definitions/editorial" }
+  }
+}

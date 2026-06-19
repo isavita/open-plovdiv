@@ -56,14 +56,16 @@ async function fromRedis() {
   return raws
     .filter(Boolean)
     .map((raw) => JSON.parse(raw))
-    .filter((r) => r.moderation_status === "published");
+    .filter((r) => r.moderation_status === "published" && (r.kind ?? "fix_report") === "fix_report");
 }
 
 async function fromFile() {
   try {
     const raw = await fs.readFile(sourceFile, "utf8");
     const parsed = JSON.parse(raw);
-    return Object.values(parsed.reports ?? {}).filter((r) => r.moderation_status === "published");
+    return Object.values(parsed.reports ?? {}).filter(
+      (r) => r.moderation_status === "published" && (r.kind ?? "fix_report") === "fix_report"
+    );
   } catch {
     return [];
   }

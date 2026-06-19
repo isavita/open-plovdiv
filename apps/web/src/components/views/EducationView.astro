@@ -1,0 +1,462 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { ui, type Lang } from "@i18n/utils";
+import { sourceTitle } from "@lib/format";
+import {
+  educationResources,
+  historicalArchiveItems,
+  historyKnowledgeEvents,
+  historyKnowledgeIndex,
+  historyKnowledgePlaces,
+  historyKnowledgeSources,
+  thenNowPairs,
+  type EducationResource
+} from "@lib/data";
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const labels = {
+  bg: {
+    title: "Образователен хъб",
+    eyebrow: "Уроци, работни листове и аудио маршрути",
+    lead:
+      "Пет двуезични урока за историята на Пловдив, свързани с нормализираните събития, места, архивни изображения и публични източници в Open Plovdiv.",
+    lessons: "урока",
+    quiz: "въпроса в тестове",
+    audio: "аудио сценария",
+    sources: "източника",
+    minutes: "мин",
+    lessonPlan: "План на урока",
+    objectives: "Цели",
+    preparation: "Подготовка",
+    evidence: "Свързани записи",
+    events: "Събития",
+    places: "Места",
+    archive: "Архив",
+    thenNow: "Тогава/сега",
+    quizTitle: "Кратък тест",
+    answer: "Отговор",
+    handout: "Работен лист",
+    audioTour: "Аудио маршрут",
+    scriptReady: "сценарий готов",
+    audioRoutesTitle: "Аудио маршрути за разходка",
+    audioRoutesLead:
+      "Всеки маршрут използва проверените сценарии от урока и може да се слуша в браузъра или да се отпечата като текст за водене на група.",
+    playAudio: "Пусни",
+    pauseAudio: "Пауза",
+    stopAudio: "Стоп",
+    audioReady: "Готово за слушане",
+    audioPlaying: "Звучи",
+    audioPaused: "На пауза",
+    audioUnavailable: "Браузърът не поддържа автоматичен глас; използвайте текста на маршрута.",
+    stops: "спирки",
+    openLesson: "Отвори урока",
+    sourcesTitle: "Източници",
+    openApi: "API",
+    jsonData: "JSON",
+    csvData: "CSV",
+    print: "Печат",
+    editorialNote:
+      "Материалите са готови като източниково проследими чернови. Преди официално училищно използване остават педагогически и независим редакторски преглед."
+  },
+  en: {
+    title: "Education Hub",
+    eyebrow: "Lessons, worksheets and audio routes",
+    lead:
+      "Five bilingual lessons on Plovdiv's history, linked to the normalized events, places, archive images and public sources in Open Plovdiv.",
+    lessons: "lessons",
+    quiz: "quiz questions",
+    audio: "audio scripts",
+    sources: "sources",
+    minutes: "min",
+    lessonPlan: "Lesson Plan",
+    objectives: "Objectives",
+    preparation: "Preparation",
+    evidence: "Linked Records",
+    events: "Events",
+    places: "Places",
+    archive: "Archive",
+    thenNow: "Then/Now",
+    quizTitle: "Short Quiz",
+    answer: "Answer",
+    handout: "Worksheet",
+    audioTour: "Audio Route",
+    scriptReady: "script ready",
+    audioRoutesTitle: "Audio Walking Routes",
+    audioRoutesLead:
+      "Each route uses the reviewed lesson script and can be played in the browser or printed as a text guide for a group walk.",
+    playAudio: "Play",
+    pauseAudio: "Pause",
+    stopAudio: "Stop",
+    audioReady: "Ready to listen",
+    audioPlaying: "Playing",
+    audioPaused: "Paused",
+    audioUnavailable: "This browser does not support automatic voice playback; use the route text instead.",
+    stops: "stops",
+    openLesson: "Open lesson",
+    sourcesTitle: "Sources",
+    openApi: "API",
+    jsonData: "JSON",
+    csvData: "CSV",
+    print: "Print",
+    editorialNote:
+      "The materials are source-traceable drafts. Pedagogical review and independent editorial sign-off are still required before formal classroom use."
+  }
+}[lang];
+
+function localized(record: Record<string, unknown>, field: string): string {
+  return String(record[`${field}_${lang}`] ?? record[`${field}_bg`] ?? "");
+}
+
+function localizedList(record: Record<string, unknown>, field: string): string[] {
+  const value = record[`${field}_${lang}`] ?? record[`${field}_bg`] ?? [];
+  return Array.isArray(value) ? value.map(String) : [];
+}
+
+function sourceLabel(source: { title_bg: string; title_en: string }): string {
+  return sourceTitle(lang === "bg" ? source.title_bg : source.title_en, lang);
+}
+
+const eventById = new Map(historyKnowledgeEvents.map((event) => [event.id, event]));
+const placeById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
+const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
+const archiveById = new Map(historicalArchiveItems.map((item) => [item.id, item]));
+const pairById = new Map(thenNowPairs.map((pair) => [pair.id, pair]));
+
+const quizCount = educationResources.reduce((sum, resource) => sum + resource.quiz.length, 0);
+const audioCount = educationResources.filter((resource) => resource.audio_tour.production_status === "script_ready").length;
+const sourceCount = new Set(educationResources.flatMap((resource) => resource.source_ids)).size;
+const speechLang = lang === "bg" ? "bg-BG" : "en-US";
+const audioRouteSummaries = educationResources.map((resource) => ({
+  id: resource.id,
+  title: localized(resource.audio_tour, "title"),
+  lessonTitle: localized(resource, "title"),
+  duration: resource.duration_minutes,
+  stops: resource.audio_tour.stops.length,
+  firstStop: localized(resource.audio_tour.stops[0] ?? {}, "title")
+}));
+
+function evidenceNames(resource: EducationResource, type: "events" | "places" | "archive" | "thenNow") {
+  const lookup = {
+    events: {
+      ids: resource.linked_event_ids,
+      map: eventById
+    },
+    places: {
+      ids: resource.linked_place_ids,
+      map: placeById
+    },
+    archive: {
+      ids: resource.linked_archive_item_ids,
+      map: archiveById
+    },
+    thenNow: {
+      ids: resource.linked_then_now_pair_ids,
+      map: pairById
+    }
+  }[type];
+  return lookup.ids.map((id) => localized((lookup.map.get(id) ?? { id }) as Record<string, unknown>, type === "places" ? "name" : "title"));
+}
+---
+
+<Layout lang={lang} path="/education" title={labels.title} description={labels.lead}>
+  <div class="education-page">
+    <section class="section hero hero-compact education-hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">{labels.eyebrow}</p>
+          <h1>{labels.title}</h1>
+          <p class="lead">{labels.lead}</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#lessons">{labels.lessonPlan}</a>
+            <button class="btn btn-secondary" type="button" data-print-education>{labels.print}</button>
+          </div>
+        </div>
+        <dl class="stats-grid education-stats" aria-label={labels.title}>
+          <div class="stat-card">
+            <dt>{labels.lessons}</dt>
+            <dd>{educationResources.length}/{historyKnowledgeIndex.targets.lesson_plans}</dd>
+          </div>
+          <div class="stat-card">
+            <dt>{labels.quiz}</dt>
+            <dd>{quizCount}</dd>
+          </div>
+          <div class="stat-card">
+            <dt>{labels.audio}</dt>
+            <dd>{audioCount}</dd>
+          </div>
+          <div class="stat-card">
+            <dt>{labels.sources}</dt>
+            <dd>{sourceCount}</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="lessons">
+      <div class="container">
+        <div class="education-toolbar">
+          <p class="meta">{labels.editorialNote}</p>
+          <div class="data-actions">
+            <a class="src-link" href="/api/history/education-resources.json">{labels.openApi}</a>
+            <a class="src-link" href="/data/history/education-resources.json" download>{labels.jsonData}</a>
+            <a class="src-link" href="/data/history/csv/education-resources.csv" download>{labels.csvData}</a>
+          </div>
+        </div>
+
+        <section class="audio-route-overview" aria-labelledby="audio-routes-title">
+          <div>
+            <h2 id="audio-routes-title">{labels.audioRoutesTitle}</h2>
+            <p>{labels.audioRoutesLead}</p>
+          </div>
+          <div class="audio-route-grid">
+            {audioRouteSummaries.map((route) => (
+              <article class="audio-route-card">
+                <p class="eyebrow">{`${route.stops} ${labels.stops} · ${route.duration} ${labels.minutes}`}</p>
+                <h3>{route.title}</h3>
+                <p>{route.lessonTitle}</p>
+                <p class="meta">{route.firstStop}</p>
+                <a class="src-link" href={`#${route.id}`}>{labels.openLesson}</a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <div class="education-grid">
+          {educationResources.map((resource) => {
+            const sourceRecords = resource.source_ids
+              .map((sourceId) => sourceById.get(sourceId))
+              .filter(Boolean);
+            return (
+              <article class="education-card" id={resource.id} data-education-resource>
+                <header>
+                  <p class="eyebrow">{`${localized(resource, "audience")} · ${resource.duration_minutes} ${labels.minutes}`}</p>
+                  <h2>{localized(resource, "title")}</h2>
+                  <p>{localized(resource, "summary")}</p>
+                  <p class="education-question">{localized(resource, "driving_question")}</p>
+                  <div class="tag-row">
+                    {resource.era_tags.map((tag) => <span>{t.history.eraLabels[tag]}</span>)}
+                    {resource.subject_tags.slice(0, 3).map((tag) => <span>{tag.replaceAll("_", " ")}</span>)}
+                  </div>
+                </header>
+
+                <div class="education-columns">
+                  <section>
+                    <h3>{labels.objectives}</h3>
+                    <ul>
+                      {localizedList(resource, "objectives").map((item) => <li>{item}</li>)}
+                    </ul>
+                  </section>
+                  <section>
+                    <h3>{labels.preparation}</h3>
+                    <p>{localized(resource, "preparation")}</p>
+                  </section>
+                </div>
+
+                <section class="lesson-plan">
+                  <h3>{labels.lessonPlan}</h3>
+                  <ol>
+                    {resource.lesson_steps.map((step) => (
+                      <li>
+                        <strong>{`${localized(step, "phase")} · ${step.minutes} ${labels.minutes}`}</strong>
+                        <span>{localized(step, "activity")}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+
+                <section>
+                  <h3>{labels.evidence}</h3>
+                  <dl class="evidence-list">
+                    <dt>{labels.events}</dt>
+                    <dd>{evidenceNames(resource, "events").join(" · ")}</dd>
+                    <dt>{labels.places}</dt>
+                    <dd>{evidenceNames(resource, "places").join(" · ")}</dd>
+                    <dt>{labels.archive}</dt>
+                    <dd>{evidenceNames(resource, "archive").join(" · ")}</dd>
+                    <dt>{labels.thenNow}</dt>
+                    <dd>{evidenceNames(resource, "thenNow").join(" · ")}</dd>
+                  </dl>
+                </section>
+
+                <section class="education-quiz">
+                  <h3>{labels.quizTitle}</h3>
+                  {resource.quiz.map((item) => (
+                    <details>
+                      <summary>{localized(item, "question")}</summary>
+                      <ol>
+                        {localizedList(item, "answers").map((answer, index) => (
+                          <li class={index === item.correct_answer_index ? "is-correct" : undefined}>{answer}</li>
+                        ))}
+                      </ol>
+                      <p class="meta">{`${labels.answer}: ${localized(item, "explanation")}`}</p>
+                    </details>
+                  ))}
+                </section>
+
+                <section class="education-printable">
+                  <h3>{localized(resource.printable_handout, "title")}</h3>
+                  <ol>
+                    {localizedList(resource.printable_handout, "tasks").map((task) => <li>{task}</li>)}
+                  </ol>
+                </section>
+
+                <section
+                  class="audio-tour"
+                  data-audio-tour
+                  data-audio-lang={speechLang}
+                  data-audio-ready={labels.audioReady}
+                  data-audio-playing={labels.audioPlaying}
+                  data-audio-paused={labels.audioPaused}
+                  data-audio-unavailable={labels.audioUnavailable}
+                >
+                  <div class="section-head compact">
+                    <div>
+                      <h3>{localized(resource.audio_tour, "title")}</h3>
+                      <p class="meta">{labels.scriptReady}</p>
+                    </div>
+                    <div class="audio-controls" role="group" aria-label={localized(resource.audio_tour, "title")}>
+                      <button class="icon-btn" type="button" data-audio-action="play" aria-label={labels.playAudio} title={labels.playAudio}>
+                        <span aria-hidden="true">▶</span>
+                      </button>
+                      <button class="icon-btn" type="button" data-audio-action="pause" aria-label={labels.pauseAudio} title={labels.pauseAudio}>
+                        <span aria-hidden="true">Ⅱ</span>
+                      </button>
+                      <button class="icon-btn" type="button" data-audio-action="stop" aria-label={labels.stopAudio} title={labels.stopAudio}>
+                        <span aria-hidden="true">■</span>
+                      </button>
+                    </div>
+                  </div>
+                  <p class="audio-status meta" data-audio-status>{labels.audioReady}</p>
+                  <ol>
+                    {resource.audio_tour.stops.map((stop) => (
+                      <li data-audio-stop data-audio-text={localized(stop, "narration")}>
+                        <strong>{localized(stop, "title")}</strong>
+                        <span>{localized(stop, "narration")}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+
+                <section>
+                  <h3>{labels.sourcesTitle}</h3>
+                  <ul class="source-list">
+                    {sourceRecords.map((source) => (
+                      <li>
+                        <a href={source!.url} target="_blank" rel="noreferrer">
+                          {sourceLabel(source!)}
+                        </a>
+                        <span class="meta"> · {`${t.common.accessed} ${source!.accessed_at}`}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.querySelector("[data-print-education]")?.addEventListener("click", () => window.print());
+
+    const audioTours = [...document.querySelectorAll("[data-audio-tour]")];
+    const speechApi = window.speechSynthesis;
+    let activeTour = null;
+    let activeUtterance = null;
+    let activeStopIndex = 0;
+
+    function setTourStatus(tour, status) {
+      const statusNode = tour.querySelector("[data-audio-status]");
+      if (statusNode) statusNode.textContent = status;
+    }
+
+    function clearActiveStops(tour) {
+      tour.querySelectorAll("[data-audio-stop]").forEach((stop) => stop.classList.remove("is-speaking"));
+    }
+
+    function stopAudio() {
+      if (speechApi) speechApi.cancel();
+      if (activeTour) {
+        clearActiveStops(activeTour);
+        setTourStatus(activeTour, activeTour.dataset.audioReady ?? "");
+      }
+      activeTour = null;
+      activeUtterance = null;
+      activeStopIndex = 0;
+    }
+
+    function speakStop(tour, index) {
+      const stops = [...tour.querySelectorAll("[data-audio-stop]")];
+      if (!speechApi || index >= stops.length) {
+        clearActiveStops(tour);
+        setTourStatus(tour, tour.dataset.audioReady ?? "");
+        activeTour = null;
+        activeUtterance = null;
+        activeStopIndex = 0;
+        return;
+      }
+
+      activeTour = tour;
+      activeStopIndex = index;
+      clearActiveStops(tour);
+      const stop = stops[index];
+      stop.classList.add("is-speaking");
+      setTourStatus(tour, `${tour.dataset.audioPlaying ?? ""}: ${stop.querySelector("strong")?.textContent ?? ""}`);
+
+      const utterance = new SpeechSynthesisUtterance(stop.dataset.audioText ?? stop.textContent ?? "");
+      utterance.lang = tour.dataset.audioLang ?? document.documentElement.lang;
+      utterance.rate = 0.92;
+      utterance.onend = () => {
+        if (activeTour === tour) speakStop(tour, index + 1);
+      };
+      utterance.onerror = () => {
+        if (activeTour === tour) {
+          clearActiveStops(tour);
+          setTourStatus(tour, tour.dataset.audioUnavailable ?? "");
+        }
+      };
+      activeUtterance = utterance;
+      speechApi.speak(utterance);
+    }
+
+    audioTours.forEach((tour) => {
+      if (!speechApi) {
+        setTourStatus(tour, tour.dataset.audioUnavailable ?? "");
+      }
+
+      tour.querySelector("[data-audio-action='play']")?.addEventListener("click", () => {
+        if (!speechApi) {
+          setTourStatus(tour, tour.dataset.audioUnavailable ?? "");
+          return;
+        }
+        if (activeTour === tour && speechApi.paused) {
+          speechApi.resume();
+          setTourStatus(tour, tour.dataset.audioPlaying ?? "");
+          return;
+        }
+        stopAudio();
+        speakStop(tour, 0);
+      });
+
+      tour.querySelector("[data-audio-action='pause']")?.addEventListener("click", () => {
+        if (activeTour !== tour || !speechApi?.speaking) return;
+        speechApi.pause();
+        setTourStatus(tour, tour.dataset.audioPaused ?? "");
+      });
+
+      tour.querySelector("[data-audio-action='stop']")?.addEventListener("click", () => {
+        if (activeTour === tour || activeUtterance) stopAudio();
+      });
+    });
+
+    window.addEventListener("beforeunload", stopAudio);
+  </script>
+</Layout>

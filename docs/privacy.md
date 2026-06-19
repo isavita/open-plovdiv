@@ -13,9 +13,9 @@ Open Plovdiv is designed to work without collecting personal data.
 
 ## Data Stored
 
-The first version stores public project records, budget items, and source links in JSON files. The seed fix-report JSON is intentionally empty. Citizen reports are stored separately as dynamic report metadata in Redis when configured, or in a local development file store.
+The first version stores public project records, budget items, and source links in JSON files. The seed fix-report JSON is intentionally empty. Citizen reports and historical photo/memory contributions are stored separately as dynamic report metadata in Redis when configured, or in a local development file store.
 
-Citizen report submissions collect category, title, description, approximate map coordinates, optional photos, and two privacy confirmations. They do not collect name, email, phone, or account details. Rate limiting uses a temporary salted hash of the requester IP rather than storing the raw IP.
+Citizen report and history contribution submissions collect category, title, description, approximate map coordinates, optional photos, optional source/provenance context, and two privacy confirmations. They do not collect name, email, phone, or account details. Rate limiting uses a temporary salted hash of the requester IP rather than storing the raw IP.
 
 ## Photos
 

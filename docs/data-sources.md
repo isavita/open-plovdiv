@@ -2,6 +2,8 @@
 
 Open Plovdiv uses reviewed JSON files for project and budget records, not live scraping. Every record links to a public source. Citizen problem reports are stored separately and appear publicly only after moderation.
 
+The history platform also generates a normalized knowledge base from local curated JSON files. Its five entity exports, archive layers, primary-document excerpts, story longreads and education resources are documented in [`docs/history-api.md`](history-api.md) and published under `/api/history/*.json` plus `/data/history/` JSON/CSV downloads. Generated historical records are source-backed and schema-valid, but remain marked as needing independent editorial sign-off until reviewed. The people layer combines the official mayor archive with `data/curated/notable-people.json` and the starter relationship seed in `data/curated/person-relationships.json`.
+
 ## Sources used
 
 | Source | URL | Used for | Accessed |
@@ -26,6 +28,7 @@ Open Plovdiv uses reviewed JSON files for project and budget records, not live s
 | Градът — инфраструктурата като акцент в бюджетите на общините през 2010 г. | https://gradat.bg/forumgradat/2010/02/08/854044_infrastrukturata_e_osnoven_akcent_v_bjudjetite_na | 2010 draft budget and infrastructure-priority context | 2026-06-17 |
 | Община Пловдив — Кметове на Пловдив | https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/ | Official mayoral-term archive from 1878 to 2023 | 2026-06-17 |
 | Административен регистър — кмет на Община Пловдив | https://iisda.government.bg/ras/governing_bodies/governing_body/4700 | Current mayor and entry-into-office date | 2026-06-17 |
+| Wikidata | https://www.wikidata.org/ | Wikidata IDs and first family/kinship relationship statements between notable people already present in the prosopography | 2026-06-19 |
 | РИМ Пловдив — Ролята на Община Пловдив за развитието на града, 1886-1944 | https://rimplovdiv.com/wp-content/uploads/2025/12/rolqta.pdf | Historical finance, governance and municipal-programme records before 1944 | 2026-06-17 |
 | РИМ Пловдив — Пловдивската община и изграждането на градската и туристическа инфраструктура, 1944-1990 | https://rimplovdiv.com/wp-content/uploads/2025/12/infrastruktura.pdf | Postwar finance, governance, infrastructure and municipal-programme records | 2026-06-17 |
 | Общински съвет — Пловдив, Решение №32 от 28.01.2011 г. | https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-32-1/ | Waste-linked targeted infrastructure works from the 2009-2011 decision chain | 2026-06-17 |
@@ -44,6 +47,8 @@ Open Plovdiv uses reviewed JSON files for project and budget records, not live s
 | Дарик | https://darik.bg/parvi-budzet-v-evro-za-plovdiv-vliza-na-glasuvane-v-obstinskia-savet~503815.html | 2026 budget context (first in euros) | 2026-06-14 |
 | Регистър на обществените поръчки (АОП) | https://www.aop.bg/ | Procurement and contract verification | 2026-06-14 |
 | OpenStreetMap | https://www.openstreetmap.org/ | Map tiles and spatial context | 2026-06-14 |
+| Wikimedia Commons — historical Plovdiv media | https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv | Historical photographs, postcards, maps and file-level license metadata for the archive layer and then/now pairs | 2026-06-19 |
+| Wikimedia Commons — Bulgarian Archives State Agency cooperation files | https://commons.wikimedia.org/wiki/Commons:Bulgarian_Archives_State_Agency | Public-domain archive images and maps from Bulgarian Archives State Agency uploads used in the archive layer | 2026-06-19 |
 | Citizen submissions | /fix-map/report | Public problem reports after moderator approval | 2026-06-14 |
 
 The same list is shown to visitors at `/data-sources` (and `/en/data-sources`).
@@ -67,6 +72,12 @@ The same list is shown to visitors at `/data-sources` (and `/en/data-sources`).
 - **1999 culture records are programme scale, not municipal spending.** The European Month of Culture records include programme scale, participant counts, event counts and venue-repair context, but no total municipal budget or expenditure statement.
 - **Audit-derived governance records are contextual.** The 1998-2005 and 2006-2008 National Audit Office documents are used to document planning, property-management and financial-management changes. They are not used as replacements for missing annual budget decisions.
 - **City archive is source-backed, not interpretive.** `data/curated/city-archive.json` stores official mayor terms and a small set of event/programme records. It does not infer party affiliation, policy responsibility, or biographical claims.
+- **Notable people are a starter prosopography.** `data/curated/notable-people.json` stores article-backed Plovdiv-born people with role tags and life years. `data/curated/person-relationships.json` adds a first Wikidata-backed set of family/kinship links between people already present in the graph. These records raise coverage but still need independent editorial review, broader family/mentorship/organization relationships and image/license work before they satisfy the final people requirement.
+- **Archive georeferencing is a starter layer.** `data/curated/historical-archive-items.json` links 30 Commons/BASA maps, photographs and postcards to existing place coordinates. Most items use matched place centroids, not rectified raster control points; the map overlay/control-point work remains to be done.
+- **Then/now pairs use approximate viewpoints.** `data/curated/then-now-pairs.json` provides open-licensed archival/current image comparisons for the same place record or nearest clear city context. They should not be treated as exact camera-position reconstructions until manually reviewed.
+- **Primary documents are excerpt-level.** `data/curated/primary-documents.json` starts the transcription layer with short, cited excerpts from municipal and State Gazette acts. These records should not be treated as full diplomatic transcriptions until the complete source text is transcribed and independently reviewed.
+- **Story longreads are editorial drafts.** `data/curated/story-longreads.json` contains BG/EN illustrated feature drafts linked to normalized events, places, archive items, then/now pairs and source IDs. They are source-traceable but still require independent editorial sign-off before they count as final published content.
+- **Education resources are draft teaching packs.** `data/curated/education-resources.json` links lesson plans, quizzes, printable tasks and BG/EN audio-tour scripts back to source-backed knowledge records. They still require pedagogical review, recorded audio production and independent editorial sign-off before being treated as final curriculum.
 - **No per-project completion list.** The municipality does not publish a single, citable "completed in 2025" status per project. Statuses here reflect what is sourced and each project page shows a source-backed timeline where available: started/continuing, new for 2026, or postponed (frozen with BGN 0 for 2025–2026).
 - **Locations are approximate**, placed by street/district and marked as such on each project.
 - `data/curated/fix-reports.json` is intentionally empty; the live map uses approved citizen reports from the report store.

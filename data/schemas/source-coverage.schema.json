@@ -1,0 +1,204 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/source-coverage.schema.json",
+  "title": "Open Plovdiv generated source coverage report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "generated_at",
+    "purpose",
+    "source_traceability_status",
+    "multi_source_review_status",
+    "summary",
+    "collections",
+    "license_statuses",
+    "records"
+  ],
+  "properties": {
+    "version": { "type": "string", "pattern": "^20[0-9]{2}\\.[0-9]{2}\\.[0-9]{2}$" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "purpose": { "type": "string", "minLength": 40 },
+    "source_traceability_status": { "type": "string", "enum": ["complete", "incomplete"] },
+    "multi_source_review_status": { "type": "string", "enum": ["complete", "needs_review"] },
+    "summary": { "$ref": "#/definitions/coverage_summary" },
+    "collections": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events",
+        "people",
+        "person_relationships",
+        "places",
+        "organizations",
+        "archive_items",
+        "then_now_pairs",
+        "primary_documents",
+        "story_longreads",
+        "education_resources"
+      ],
+      "patternProperties": {
+        "^[a-z_]+$": { "$ref": "#/definitions/collection_summary" }
+      }
+    },
+    "license_statuses": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "records": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/coverage_record" }
+    }
+  },
+  "definitions": {
+    "coverage_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_records",
+        "records_with_sources",
+        "records_without_sources",
+        "records_with_license_or_reuse_status",
+        "records_missing_license_or_reuse_status",
+        "single_source_records",
+        "multi_source_records",
+        "needs_multi_source_review_records",
+        "open_license_records",
+        "public_reference_terms_records"
+      ],
+      "properties": {
+        "total_records": { "type": "integer", "minimum": 0 },
+        "records_with_sources": { "type": "integer", "minimum": 0 },
+        "records_without_sources": { "type": "integer", "minimum": 0 },
+        "records_with_license_or_reuse_status": { "type": "integer", "minimum": 0 },
+        "records_missing_license_or_reuse_status": { "type": "integer", "minimum": 0 },
+        "single_source_records": { "type": "integer", "minimum": 0 },
+        "multi_source_records": { "type": "integer", "minimum": 0 },
+        "needs_multi_source_review_records": { "type": "integer", "minimum": 0 },
+        "open_license_records": { "type": "integer", "minimum": 0 },
+        "public_reference_terms_records": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "collection_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label_bg",
+        "label_en",
+        "role",
+        "total_records",
+        "records_with_sources",
+        "records_without_sources",
+        "records_with_license_or_reuse_status",
+        "records_missing_license_or_reuse_status",
+        "single_source_records",
+        "multi_source_records",
+        "needs_multi_source_review_records",
+        "open_license_records",
+        "public_reference_terms_records"
+      ],
+      "properties": {
+        "label_bg": { "type": "string", "minLength": 2 },
+        "label_en": { "type": "string", "minLength": 2 },
+        "role": { "type": "string", "minLength": 2 },
+        "total_records": { "type": "integer", "minimum": 0 },
+        "records_with_sources": { "type": "integer", "minimum": 0 },
+        "records_without_sources": { "type": "integer", "minimum": 0 },
+        "records_with_license_or_reuse_status": { "type": "integer", "minimum": 0 },
+        "records_missing_license_or_reuse_status": { "type": "integer", "minimum": 0 },
+        "single_source_records": { "type": "integer", "minimum": 0 },
+        "multi_source_records": { "type": "integer", "minimum": 0 },
+        "needs_multi_source_review_records": { "type": "integer", "minimum": 0 },
+        "open_license_records": { "type": "integer", "minimum": 0 },
+        "public_reference_terms_records": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "coverage_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "collection",
+        "role",
+        "title_bg",
+        "title_en",
+        "review_url_bg",
+        "review_url_en",
+        "api_url",
+        "source_count",
+        "source_ids",
+        "source_urls",
+        "license_statuses",
+        "has_open_license",
+        "has_public_reference_terms",
+        "has_license_or_reuse_status",
+        "needs_multi_source_review",
+        "editorial_status",
+        "blockers"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 3 },
+        "collection": {
+          "type": "string",
+          "enum": [
+            "events",
+            "people",
+            "person_relationships",
+            "places",
+            "organizations",
+            "archive_items",
+            "then_now_pairs",
+            "primary_documents",
+            "story_longreads",
+            "education_resources"
+          ]
+        },
+        "role": { "type": "string", "minLength": 2 },
+        "title_bg": { "type": "string", "minLength": 1 },
+        "title_en": { "type": "string", "minLength": 1 },
+        "review_url_bg": { "type": "string", "pattern": "^/" },
+        "review_url_en": { "type": "string", "pattern": "^/en/" },
+        "api_url": { "type": "string", "pattern": "^/api/history/[0-9a-z-]+\\.json$" },
+        "source_count": { "type": "integer", "minimum": 0 },
+        "source_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
+        },
+        "source_urls": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "format": "uri" }
+        },
+        "license_statuses": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3 }
+        },
+        "has_open_license": { "type": "boolean" },
+        "has_public_reference_terms": { "type": "boolean" },
+        "has_license_or_reuse_status": { "type": "boolean" },
+        "needs_multi_source_review": { "type": "boolean" },
+        "editorial_status": {
+          "type": "string",
+          "enum": ["needs_editorial_signoff", "signed_off", "missing_editorial_status"]
+        },
+        "blockers": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "needs_independent_editorial_signoff",
+              "missing_independent_editorial_signoff_log",
+              "missing_external_editorial_signoff_record",
+              "editorial_signoff_log_mismatch",
+              "missing_source_reference",
+              "missing_license_or_reuse_status"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,184 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { localizePath, ui, type Lang } from "@i18n/utils";
+import { sourceTitle } from "@lib/format";
+import {
+  historicalArchiveItems,
+  historyKnowledgeIndex,
+  historyKnowledgeSources,
+  historyKnowledgePlaces,
+  storyLongreads,
+  thenNowPairs,
+  type StoryLongread
+} from "@lib/data";
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const labels = {
+  bg: {
+    title: "Исторически разкази",
+    eyebrow: "Илюстрирани дълги четива",
+    lead:
+      "Двуезични разкази за Пловдив, изградени върху нормализираните събития, места, архивни изображения и публични източници в Open Plovdiv.",
+    stories: "разказа",
+    target: "цел",
+    sources: "източника",
+    archive: "архивни връзки",
+    minutes: "мин четене",
+    read: "Чети",
+    evidence: "Свързани записи",
+    openApi: "API",
+    jsonData: "JSON",
+    csvData: "CSV",
+    editorialNote:
+      "Разказите са източниково проследими редакционни чернови. Преди да се броят като завършени, изискват независим редакторски преглед."
+  },
+  en: {
+    title: "Historical Stories",
+    eyebrow: "Illustrated longreads",
+    lead:
+      "Bilingual stories on Plovdiv, built from normalized events, places, archive images and public sources in Open Plovdiv.",
+    stories: "stories",
+    target: "target",
+    sources: "sources",
+    archive: "archive links",
+    minutes: "min read",
+    read: "Read",
+    evidence: "Linked records",
+    openApi: "API",
+    jsonData: "JSON",
+    csvData: "CSV",
+    editorialNote:
+      "These stories are source-traceable editorial drafts. Independent editorial review is required before they count as complete."
+  }
+}[lang];
+
+const archiveById = new Map(historicalArchiveItems.map((item) => [item.id, item]));
+const pairById = new Map(thenNowPairs.map((pair) => [pair.id, pair]));
+const placeById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
+const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
+
+function localized(record: Record<string, unknown>, field: string): string {
+  return String(record[`${field}_${lang}`] ?? record[`${field}_bg`] ?? "");
+}
+
+function sourceLabel(source: { title_bg: string; title_en: string }): string {
+  return sourceTitle(lang === "bg" ? source.title_bg : source.title_en, lang);
+}
+
+function heroMedia(story: StoryLongread) {
+  if (story.hero.kind === "archive_item") return archiveById.get(story.hero.ref_id)?.media;
+  if (story.hero.kind === "then_now_pair") return pairById.get(story.hero.ref_id)?.then_media;
+  return placeById.get(story.hero.ref_id)?.media[0];
+}
+
+function linkCount(story: StoryLongread): number {
+  return (
+    story.linked_event_ids.length +
+    story.linked_place_ids.length +
+    story.linked_archive_item_ids.length +
+    story.linked_then_now_pair_ids.length
+  );
+}
+
+const sourceCount = new Set(storyLongreads.flatMap((story) => story.source_ids)).size;
+const archiveLinkCount = storyLongreads.reduce(
+  (sum, story) => sum + story.linked_archive_item_ids.length + story.linked_then_now_pair_ids.length,
+  0
+);
+---
+
+<Layout lang={lang} path="/stories" title={labels.title} description={labels.lead}>
+  <section class="section hero hero-compact stories-hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">{labels.eyebrow}</p>
+        <h1>{labels.title}</h1>
+        <p class="lead">{labels.lead}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#stories">{labels.read}</a>
+          <a class="btn btn-secondary" href="/api/history/story-longreads.json">{labels.openApi}</a>
+        </div>
+      </div>
+      <dl class="stats-grid stories-stats" aria-label={labels.title}>
+        <div class="stat-card">
+          <dt>{labels.stories}</dt>
+          <dd>{storyLongreads.length}/{historyKnowledgeIndex.targets.longreads}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.sources}</dt>
+          <dd>{sourceCount}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.archive}</dt>
+          <dd>{archiveLinkCount}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="stories">
+    <div class="container">
+      <div class="stories-toolbar">
+        <p class="meta">{labels.editorialNote}</p>
+        <div class="data-actions">
+          <a class="src-link" href="/api/history/story-longreads.json">{labels.openApi}</a>
+          <a class="src-link" href="/data/history/story-longreads.json" download>{labels.jsonData}</a>
+          <a class="src-link" href="/data/history/csv/story-longreads.csv" download>{labels.csvData}</a>
+        </div>
+      </div>
+
+      <div class="story-grid">
+        {storyLongreads.map((story) => {
+          const media = heroMedia(story);
+          const sourceRecords = story.source_ids
+            .map((sourceId) => sourceById.get(sourceId))
+            .filter(Boolean)
+            .slice(0, 3);
+          return (
+            <article class="story-card" data-story-card>
+              {media && (
+                <a class="story-card-media" href={localizePath(`/stories/${story.id}`, lang)} aria-label={localized(story, "title")}>
+                  <img
+                    src={media.url}
+                    alt={localized(story.hero, "caption")}
+                    loading="lazy"
+                    decoding="async"
+                    crossorigin="anonymous"
+                    referrerpolicy="no-referrer"
+                  />
+                </a>
+              )}
+              <div class="story-card-body">
+                <p class="eyebrow">{`${story.reading_minutes} ${labels.minutes}`}</p>
+                <h2><a href={localizePath(`/stories/${story.id}`, lang)}>{localized(story, "title")}</a></h2>
+                <p>{localized(story, "dek")}</p>
+                <div class="tag-row">
+                  {story.era_tags.map((tag) => <span>{t.history.eraLabels[tag]}</span>)}
+                  {story.theme_tags.slice(0, 3).map((tag) => <span>{tag.replaceAll("_", " ")}</span>)}
+                </div>
+                <dl class="story-evidence-counts">
+                  <dt>{labels.evidence}</dt>
+                  <dd>{linkCount(story)}</dd>
+                </dl>
+                <ul class="source-list compact">
+                  {sourceRecords.map((source) => (
+                    <li>
+                      <a href={source!.url} target="_blank" rel="noreferrer">{sourceLabel(source!)}</a>
+                    </li>
+                  ))}
+                </ul>
+                <a class="text-link" href={localizePath(`/stories/${story.id}`, lang)}>{labels.read}</a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</Layout>

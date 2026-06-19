@@ -1,0 +1,453 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { localizePath, type Lang } from "@i18n/utils";
+import {
+  historyKnowledgeEvents,
+  historyKnowledgePeople,
+  historyKnowledgeSources,
+  type KnowledgeEvent,
+  type KnowledgePerson,
+  type KnowledgeSource
+} from "@lib/data";
+
+type Props = {
+  lang: Lang;
+  person: KnowledgePerson;
+};
+
+type RoleGroup = "governance" | "culture" | "science" | "faith" | "sport" | "civic";
+
+const { lang, person } = Astro.props;
+
+const labels =
+  lang === "bg"
+    ? {
+        back: "Всички хора",
+        profile: "Профил",
+        facts: "Данни",
+        roles: "Роли",
+        life: "Години",
+        born: "Роден/а",
+        wikidata: "Wikidata",
+        linkedEvents: "Свързани събития",
+        relationships: "Връзки с други личности",
+        noRelationships: "В базата още няма отделни person-to-person връзки за този запис.",
+        evidence: "Източници и произход",
+        source: "Източник",
+        accessed: "Достъп",
+        license: "Лиценз",
+        editorial: "Редакторски статус",
+        provenance: "Произход на твърденията",
+        relationshipSource: "Източник за връзката",
+        linkedEvent: "Свързано събитие",
+        imageCredit: "Кредит за изображение",
+        pending:
+          "Записът е валидиран и източниково проследим, но остава с редакционен статус needs_editorial_signoff до независим преглед."
+      }
+    : {
+        back: "All people",
+        profile: "Profile",
+        facts: "Facts",
+        roles: "Roles",
+        life: "Life dates",
+        born: "Born",
+        wikidata: "Wikidata",
+        linkedEvents: "Linked events",
+        relationships: "Connections to other people",
+        noRelationships: "No separate person-to-person links are in the base for this record yet.",
+        evidence: "Sources and provenance",
+        source: "Source",
+        accessed: "Accessed",
+        license: "License",
+        editorial: "Editorial status",
+        provenance: "Claim provenance",
+        relationshipSource: "Relationship source",
+        linkedEvent: "Linked event",
+        imageCredit: "Image credit",
+        pending:
+          "The record is validated and source-traceable, but remains at needs_editorial_signoff until independent review."
+      };
+
+const roleLabels: Record<string, { bg: string; en: string }> = {
+  academic: { bg: "академик", en: "academic" },
+  actor: { bg: "актьор", en: "actor" },
+  art_historian: { bg: "изкуствовед", en: "art historian" },
+  artist: { bg: "художник", en: "artist" },
+  athlete: { bg: "спортист", en: "athlete" },
+  basketball_player: { bg: "баскетболист", en: "basketball player" },
+  boxer: { bg: "боксьор", en: "boxer" },
+  canoeist: { bg: "кануист", en: "canoeist" },
+  chef: { bg: "готвач", en: "chef" },
+  chess_player: { bg: "шахматист", en: "chess player" },
+  choreographer: { bg: "хореограф", en: "choreographer" },
+  clergy: { bg: "духовник", en: "clergy" },
+  composer: { bg: "композитор", en: "composer" },
+  conductor: { bg: "диригент", en: "conductor" },
+  cultural_manager: { bg: "културен мениджър", en: "cultural manager" },
+  designer: { bg: "дизайнер", en: "designer" },
+  diplomat: { bg: "дипломат", en: "diplomat" },
+  economist: { bg: "икономист", en: "economist" },
+  educator: { bg: "педагог", en: "educator" },
+  electrical_engineer: { bg: "електроинженер", en: "electrical engineer" },
+  equestrian: { bg: "състезател по конен спорт", en: "equestrian" },
+  fencer: { bg: "фехтовач", en: "fencer" },
+  film_director: { bg: "филмов режисьор", en: "film director" },
+  first_lady: { bg: "първа дама", en: "first lady" },
+  football_referee: { bg: "футболен съдия", en: "football referee" },
+  footballer: { bg: "футболист", en: "footballer" },
+  general: { bg: "генерал", en: "general" },
+  geographer: { bg: "географ", en: "geographer" },
+  gymnast: { bg: "гимнастик", en: "gymnast" },
+  high_jumper: { bg: "скачач на височина", en: "high jumper" },
+  illustrator: { bg: "илюстратор", en: "illustrator" },
+  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower" },
+  journalist: { bg: "журналист", en: "journalist" },
+  jurist: { bg: "юрист", en: "jurist" },
+  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist" },
+  mathematician: { bg: "математик", en: "mathematician" },
+  mayor: { bg: "кмет", en: "mayor" },
+  merchant: { bg: "търговец", en: "merchant" },
+  military_officer: { bg: "офицер", en: "military officer" },
+  mineralogist: { bg: "минералог", en: "mineralogist" },
+  missionary: { bg: "мисионер", en: "missionary" },
+  model: { bg: "модел", en: "model" },
+  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete" },
+  musician: { bg: "музикант", en: "musician" },
+  opera_singer: { bg: "оперен певец", en: "opera singer" },
+  painter: { bg: "живописец", en: "painter" },
+  paleontologist: { bg: "палеонтолог", en: "paleontologist" },
+  patriarch: { bg: "патриарх", en: "patriarch" },
+  philosopher: { bg: "философ", en: "philosopher" },
+  physicist: { bg: "физик", en: "physicist" },
+  pianist: { bg: "пианист", en: "pianist" },
+  poet: { bg: "поет", en: "poet" },
+  politician: { bg: "политик", en: "politician" },
+  priest: { bg: "свещеник", en: "priest" },
+  printmaker: { bg: "график", en: "printmaker" },
+  producer: { bg: "продуцент", en: "producer" },
+  public_figure: { bg: "обществена фигура", en: "public figure" },
+  racing_driver: { bg: "автомобилен състезател", en: "racing driver" },
+  revolutionary: { bg: "революционер", en: "revolutionary" },
+  rower: { bg: "гребец", en: "rower" },
+  saint: { bg: "светец", en: "saint" },
+  scholar: { bg: "учен", en: "scholar" },
+  scientist: { bg: "учен", en: "scientist" },
+  screenwriter: { bg: "сценарист", en: "screenwriter" },
+  sculptor: { bg: "скулптор", en: "sculptor" },
+  singer: { bg: "певец", en: "singer" },
+  sports_shooter: { bg: "спортен стрелец", en: "sport shooter" },
+  swimmer: { bg: "плувец", en: "swimmer" },
+  tennis_player: { bg: "тенисист", en: "tennis player" },
+  theatre_director: { bg: "театрален режисьор", en: "theatre director" },
+  violinist: { bg: "цигулар", en: "violinist" },
+  visual_artist: { bg: "визуален художник", en: "visual artist" },
+  volleyball_player: { bg: "волейболист", en: "volleyball player" },
+  weightlifter: { bg: "щангист", en: "weightlifter" },
+  wrestler: { bg: "борец", en: "wrestler" },
+  writer: { bg: "писател", en: "writer" },
+  zoologist: { bg: "зоолог", en: "zoologist" }
+};
+
+const relationshipLabels: Record<string, { bg: string; en: string }> = {
+  succeeds: { bg: "наследява", en: "succeeds" },
+  succeeded_by: { bg: "наследен/а от", en: "succeeded by" },
+  spouse: { bg: "съпруг/съпруга", en: "spouse" },
+  father: { bg: "баща", en: "father" },
+  mother: { bg: "майка", en: "mother" },
+  parent: { bg: "родител", en: "parent" },
+  child: { bg: "дете", en: "child" },
+  sibling: { bg: "брат/сестра", en: "sibling" },
+  mentor: { bg: "ментор", en: "mentor" },
+  student: { bg: "ученик/студент", en: "student" },
+  partner: { bg: "партньор", en: "partner" },
+  influenced_by: { bg: "повлиян/а от", en: "influenced by" }
+};
+
+const roleGroups: Record<string, RoleGroup> = {
+  mayor: "governance",
+  politician: "governance",
+  diplomat: "governance",
+  jurist: "governance",
+  economist: "governance",
+  first_lady: "governance",
+  general: "governance",
+  military_officer: "governance",
+  public_figure: "governance",
+  merchant: "civic",
+  clergy: "faith",
+  missionary: "faith",
+  patriarch: "faith",
+  priest: "faith",
+  saint: "faith",
+  academic: "science",
+  educator: "science",
+  electrical_engineer: "science",
+  geographer: "science",
+  mathematician: "science",
+  mineralogist: "science",
+  paleontologist: "science",
+  philosopher: "science",
+  physicist: "science",
+  scholar: "science",
+  scientist: "science",
+  zoologist: "science",
+  athlete: "sport",
+  basketball_player: "sport",
+  boxer: "sport",
+  canoeist: "sport",
+  chess_player: "sport",
+  equestrian: "sport",
+  fencer: "sport",
+  football_referee: "sport",
+  footballer: "sport",
+  gymnast: "sport",
+  high_jumper: "sport",
+  javelin_thrower: "sport",
+  martial_artist: "sport",
+  modern_pentathlete: "sport",
+  racing_driver: "sport",
+  rower: "sport",
+  sports_shooter: "sport",
+  swimmer: "sport",
+  tennis_player: "sport",
+  volleyball_player: "sport",
+  weightlifter: "sport",
+  wrestler: "sport"
+};
+
+const cultureRoles = [
+  "actor",
+  "art_historian",
+  "artist",
+  "chef",
+  "choreographer",
+  "composer",
+  "conductor",
+  "cultural_manager",
+  "designer",
+  "film_director",
+  "illustrator",
+  "journalist",
+  "model",
+  "musician",
+  "opera_singer",
+  "painter",
+  "pianist",
+  "poet",
+  "printmaker",
+  "producer",
+  "screenwriter",
+  "sculptor",
+  "singer",
+  "theatre_director",
+  "violinist",
+  "visual_artist",
+  "writer"
+];
+for (const role of cultureRoles) roleGroups[role] = "culture";
+roleGroups.revolutionary = "civic";
+
+function localized(record: Record<string, any> | undefined, base: string): string {
+  if (!record) return "";
+  return String(record[`${base}_${lang}`] ?? record[`${base}_bg`] ?? "");
+}
+
+function roleLabel(role: string): string {
+  return roleLabels[role]?.[lang] ?? role.replaceAll("_", " ");
+}
+
+function relationshipLabel(type: string): string {
+  return relationshipLabels[type]?.[lang] ?? type.replaceAll("_", " ");
+}
+
+function primaryGroup(item: KnowledgePerson): RoleGroup {
+  return roleGroups[item.roles[0]] ?? "civic";
+}
+
+function lifeLabel(item: KnowledgePerson): string {
+  if (item.birth_year && item.death_year) return `${item.birth_year}-${item.death_year}`;
+  if (item.birth_year) return `${labels.born} ${item.birth_year}`;
+  return "n/a";
+}
+
+function eventDateLabel(event: KnowledgeEvent): string {
+  return localized(event.date, "display");
+}
+
+const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
+const eventById = new Map(historyKnowledgeEvents.map((event) => [event.id, event]));
+const personById = new Map(historyKnowledgePeople.map((item) => [item.id, item]));
+const group = primaryGroup(person);
+const roleList = person.roles.map(roleLabel).join(" · ");
+const imageCredit = person.image_credit ?? "";
+const wikidataHref = person.wikidata_id ? `https://www.wikidata.org/wiki/${person.wikidata_id}` : "";
+
+const eventIds = new Set([
+  ...person.term_events,
+  ...historyKnowledgeEvents.filter((event) => event.person_ids.includes(person.id)).map((event) => event.id)
+]);
+const linkedEvents = [...eventIds]
+  .map((id) => eventById.get(id))
+  .filter((event): event is KnowledgeEvent => Boolean(event))
+  .sort((a, b) => a.date.year - b.date.year || a.id.localeCompare(b.id));
+
+const outgoingConnections = person.relationships.map((relationship) => ({
+  key: `out:${relationship.type}:${relationship.person_id}:${relationship.event_id ?? ""}:${relationship.source_id}`,
+  from: person,
+  to: personById.get(relationship.person_id),
+  relationship
+}));
+const incomingConnections = historyKnowledgePeople
+  .filter((item) => item.id !== person.id)
+  .flatMap((item) =>
+    item.relationships
+      .filter((relationship) => relationship.person_id === person.id)
+      .map((relationship) => ({
+        key: `in:${item.id}:${relationship.type}:${relationship.event_id ?? ""}:${relationship.source_id}`,
+        from: item,
+        to: person,
+        relationship
+      }))
+  );
+const seenConnectionKeys = new Set<string>();
+const connections = [...outgoingConnections, ...incomingConnections]
+  .filter((connection) => connection.to)
+  .filter((connection) => {
+    if (seenConnectionKeys.has(connection.key)) return false;
+    seenConnectionKeys.add(connection.key);
+    return true;
+  })
+  .map((connection) => ({
+    ...connection,
+    event: connection.relationship.event_id ? eventById.get(connection.relationship.event_id) : null,
+    source: sourceById.get(connection.relationship.source_id)
+  }))
+  .sort((a, b) => localized(a.from, "name").localeCompare(localized(b.from, "name"), lang === "bg" ? "bg-BG" : "en-GB"));
+
+const sourceIds = new Set<string>([
+  ...person.source_ids,
+  ...connections.map((connection) => connection.relationship.source_id),
+  ...linkedEvents.flatMap((event) => event.source_ids)
+]);
+const sourceRecords = [...sourceIds]
+  .map((id) => sourceById.get(id))
+  .filter((source): source is KnowledgeSource => Boolean(source))
+  .sort((a, b) => localized(a, "title").localeCompare(localized(b, "title"), lang === "bg" ? "bg-BG" : "en-GB"));
+---
+
+<Layout lang={lang} path={`/people/${person.id}`} title={localized(person, "name")} description={localized(person, "summary")}>
+  <article class={`person-profile people-group-${group}`} data-person-profile={person.id}>
+    <header class="section person-profile-hero">
+      <div class="container person-profile-grid">
+        <div>
+          <a class="text-link" href={localizePath("/people", lang)}>{labels.back}</a>
+          <p class="eyebrow">{roleList}</p>
+          <h1>{localized(person, "name")}</h1>
+          <p class="lead">{localized(person, "summary")}</p>
+          <p class="meta" style="margin-top:12px">{labels.pending}</p>
+        </div>
+        <figure class="person-profile-media">
+          {person.image ? (
+            <img src={person.image} alt={localized(person, "name")} loading="eager" decoding="async" />
+          ) : (
+            <div class="person-profile-initials" aria-hidden="true">{localized(person, "name").slice(0, 2)}</div>
+          )}
+          {imageCredit && <figcaption>{labels.imageCredit}: {imageCredit}</figcaption>}
+        </figure>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container person-profile-layout">
+        <div class="person-profile-main">
+          <section class="person-panel">
+            <h2>{labels.facts}</h2>
+            <dl class="place-facts">
+              <dt>{labels.roles}</dt>
+              <dd>{roleList}</dd>
+              <dt>{labels.life}</dt>
+              <dd>{lifeLabel(person)}</dd>
+              <dt>{labels.editorial}</dt>
+              <dd>{person.editorial.status}</dd>
+              {person.wikidata_id && (
+                <>
+                  <dt>{labels.wikidata}</dt>
+                  <dd><a href={wikidataHref} target="_blank" rel="noreferrer">{person.wikidata_id}</a></dd>
+                </>
+              )}
+            </dl>
+          </section>
+
+          <section class="person-panel">
+            <h2>{labels.linkedEvents}</h2>
+            <ol class="profile-event-list">
+              {linkedEvents.map((event) => (
+                <li>
+                  <p class="eyebrow">{eventDateLabel(event)}</p>
+                  <h3>{localized(event, "title")}</h3>
+                  <p>{localized(event, "summary")}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section class="person-panel">
+            <h2>{labels.relationships}</h2>
+            {connections.length > 0 ? (
+              <ul class="profile-relationship-list">
+                {connections.map((connection) => (
+                  <li>
+                    <p>
+                      <strong>{localized(connection.from, "name")}</strong>
+                      {" · "}
+                      {relationshipLabel(connection.relationship.type)}
+                      {" · "}
+                      <a href={localizePath(`/people/${connection.to!.id}`, lang)}>{localized(connection.to, "name")}</a>
+                    </p>
+                    {connection.event && (
+                      <p class="meta">{labels.linkedEvent}: {localized(connection.event, "title")} ({eventDateLabel(connection.event)})</p>
+                    )}
+                    {connection.source && (
+                      <p class="meta">
+                        {labels.relationshipSource}: <a href={connection.source.url} target="_blank" rel="noreferrer">{localized(connection.source, "title")}</a>
+                      </p>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>{labels.noRelationships}</p>
+            )}
+          </section>
+        </div>
+
+        <aside class="person-profile-side">
+          <section>
+            <h2>{labels.evidence}</h2>
+            <ul class="profile-source-list">
+              {sourceRecords.map((source) => (
+                <li>
+                  <a href={source.url} target="_blank" rel="noreferrer">{localized(source, "title")}</a>
+                  <span>{labels.accessed}: {source.accessed_at}</span>
+                  <span>{labels.license}: {source.license.label}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h2>{labels.provenance}</h2>
+            <ul class="profile-provenance-list">
+              {person.provenance.map((item) => (
+                <li>
+                  <p>{localized(item, "claim")}</p>
+                  <a href={item.url} target="_blank" rel="noreferrer">{labels.source}: {item.source_id}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </article>
+</Layout>

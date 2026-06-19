@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/story-longread.schema.json",
+  "title": "Open Plovdiv story longread",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title_bg",
+    "title_en",
+    "dek_bg",
+    "dek_en",
+    "reading_minutes",
+    "era_tags",
+    "theme_tags",
+    "hero",
+    "sections",
+    "linked_event_ids",
+    "linked_place_ids",
+    "linked_archive_item_ids",
+    "linked_then_now_pair_ids",
+    "source_ids",
+    "data_quality",
+    "editorial"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^story-[0-9a-z-]+$" },
+    "title_bg": { "type": "string", "minLength": 5 },
+    "title_en": { "type": "string", "minLength": 5 },
+    "dek_bg": { "type": "string", "minLength": 30 },
+    "dek_en": { "type": "string", "minLength": 30 },
+    "reading_minutes": { "type": "integer", "minimum": 3, "maximum": 30 },
+    "era_tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["prehistory", "thracian", "roman", "medieval", "ottoman", "revival", "liberation", "modern"]
+      }
+    },
+    "theme_tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[0-9a-z_]+$" }
+    },
+    "hero": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "ref_id", "caption_bg", "caption_en"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["archive_item", "then_now_pair", "place_media"] },
+        "ref_id": { "type": "string", "minLength": 3 },
+        "caption_bg": { "type": "string", "minLength": 10 },
+        "caption_en": { "type": "string", "minLength": 10 }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "heading_bg",
+          "heading_en",
+          "body_bg",
+          "body_en",
+          "source_ids",
+          "linked_event_ids",
+          "linked_place_ids"
+        ],
+        "properties": {
+          "heading_bg": { "type": "string", "minLength": 3 },
+          "heading_en": { "type": "string", "minLength": 3 },
+          "body_bg": { "type": "string", "minLength": 80 },
+          "body_en": { "type": "string", "minLength": 80 },
+          "source_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
+          },
+          "linked_event_ids": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^event-[0-9a-z-]+$" }
+          },
+          "linked_place_ids": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^place-[0-9a-z-]+$" }
+          }
+        }
+      }
+    },
+    "linked_event_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^event-[0-9a-z-]+$" }
+    },
+    "linked_place_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^place-[0-9a-z-]+$" }
+    },
+    "linked_archive_item_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^archive-[0-9a-z-]+$" }
+    },
+    "linked_then_now_pair_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^then-now-[0-9a-z-]+$" }
+    },
+    "source_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
+    },
+    "provenance": { "$ref": "knowledge-event.schema.json#/definitions/provenance" },
+    "data_quality": { "type": "string", "enum": ["public_source", "manual_reviewed", "provisional"] },
+    "editorial": { "$ref": "historical-archive-item.schema.json#/definitions/editorial" }
+  }
+}

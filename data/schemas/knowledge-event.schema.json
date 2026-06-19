@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/knowledge-event.schema.json",
+  "title": "Open Plovdiv knowledge event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "category",
+    "era",
+    "date",
+    "title_bg",
+    "title_en",
+    "summary_bg",
+    "summary_en",
+    "theme_tags",
+    "person_ids",
+    "place_ids",
+    "organization_ids",
+    "source_ids",
+    "provenance",
+    "editorial"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^event-[0-9a-z-]+$" },
+    "type": { "const": "event" },
+    "category": { "type": "string", "minLength": 3 },
+    "era": {
+      "type": "string",
+      "enum": ["prehistory", "thracian", "roman", "medieval", "ottoman", "revival", "liberation", "modern"]
+    },
+    "date": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["year", "year_end", "precision", "display_bg", "display_en"],
+      "properties": {
+        "year": { "type": "integer", "minimum": -10000, "maximum": 2100 },
+        "year_end": { "type": ["integer", "null"], "minimum": -10000, "maximum": 2100 },
+        "month": { "type": ["integer", "null"], "minimum": 1, "maximum": 12 },
+        "day": { "type": ["integer", "null"], "minimum": 1, "maximum": 31 },
+        "month_end": { "type": ["integer", "null"], "minimum": 1, "maximum": 12 },
+        "day_end": { "type": ["integer", "null"], "minimum": 1, "maximum": 31 },
+        "precision": {
+          "type": "string",
+          "enum": ["day", "year", "date_range_or_year_range", "display_period"]
+        },
+        "display_bg": { "type": "string", "minLength": 1 },
+        "display_en": { "type": "string", "minLength": 1 }
+      }
+    },
+    "title_bg": { "type": "string", "minLength": 3 },
+    "title_en": { "type": "string", "minLength": 3 },
+    "summary_bg": { "type": "string", "minLength": 10 },
+    "summary_en": { "type": "string", "minLength": 10 },
+    "conflict_notes_bg": { "type": ["string", "null"], "minLength": 20 },
+    "conflict_notes_en": { "type": ["string", "null"], "minLength": 20 },
+    "theme_tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "person_ids": { "type": "array", "items": { "type": "string", "pattern": "^person-[0-9a-z-]+$" } },
+    "place_ids": { "type": "array", "items": { "type": "string", "pattern": "^place-[0-9a-z-]+$" } },
+    "organization_ids": { "type": "array", "items": { "type": "string", "pattern": "^org-[0-9a-z-]+$" } },
+    "source_ids": { "type": "array", "items": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }, "minItems": 1 },
+    "provenance": { "$ref": "#/definitions/provenance" },
+    "editorial": { "$ref": "#/definitions/editorial" }
+  },
+  "definitions": {
+    "provenance": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "evidence_type", "claim_bg", "claim_en", "url", "accessed_at", "license_status"],
+        "properties": {
+          "source_id": { "type": "string", "pattern": "^source-[0-9a-z-]+$" },
+          "evidence_type": { "type": "string", "minLength": 3 },
+          "claim_bg": { "type": "string", "minLength": 5 },
+          "claim_en": { "type": "string", "minLength": 5 },
+          "url": { "type": "string", "format": "uri" },
+          "accessed_at": { "type": "string", "format": "date" },
+          "license_status": { "type": "string", "minLength": 3 }
+        }
+      }
+    },
+    "editorial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reviewed_by", "reviewed_at", "notes_bg", "notes_en"],
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "signed_off" } },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "reviewed_by": { "type": "string", "minLength": 2 },
+              "reviewed_at": { "type": "string", "format": "date" }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "status": { "type": "string", "enum": ["needs_editorial_signoff", "signed_off"] },
+        "reviewed_by": { "type": ["string", "null"] },
+        "reviewed_at": { "type": ["string", "null"], "format": "date" },
+        "notes_bg": { "type": "string", "minLength": 5 },
+        "notes_en": { "type": "string", "minLength": 5 }
+      }
+    }
+  }
+}
