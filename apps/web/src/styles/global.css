@@ -2056,3 +2056,194 @@ code {
   flex-direction: column;
   align-items: flex-start;
 }
+
+/* ---- Mayor portraits, fate & relationship graph ------------------------- */
+
+.mayor-portrait {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid var(--line-strong);
+  flex-shrink: 0;
+  background: var(--surface-3);
+}
+.mayor-portrait-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.mayor-card-head {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.mayor-card-headtext {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.badge-killed {
+  background: rgba(178, 60, 45, 0.12);
+  color: #a4382b;
+  border-color: rgba(178, 60, 45, 0.4);
+}
+.badge-killed::before {
+  background: #b23c2d;
+}
+[data-theme="dark"] .badge-killed {
+  color: #e98c7c;
+  background: rgba(224, 122, 100, 0.16);
+  border-color: rgba(224, 122, 100, 0.4);
+}
+
+.mayor-detail-head {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.mayor-portrait-lg {
+  width: 128px;
+  height: 128px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  background: var(--surface-3);
+}
+.mayor-portrait-lg.mayor-portrait-fallback {
+  font-size: 2.6rem;
+}
+.mayor-detail-headtext {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.fate-callout {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  border-left: 4px solid #b23c2d;
+  background: rgba(178, 60, 45, 0.06);
+}
+.fate-callout h2 {
+  font-size: 1.1rem;
+}
+.fate-icon {
+  font-size: 1.7rem;
+  line-height: 1;
+  color: #b23c2d;
+}
+[data-theme="dark"] .fate-icon {
+  color: #e98c7c;
+}
+
+.arc-card {
+  overflow: hidden;
+}
+.mayor-arc {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.arc-axis {
+  stroke: var(--line-strong);
+  stroke-width: 1.5;
+}
+.arc-tick-label {
+  fill: var(--muted);
+  font-size: 13px;
+  font-family: var(--font-ui);
+}
+.arc-repeat {
+  stroke: var(--brand);
+  stroke-width: 1.6;
+  opacity: 0.5;
+}
+.arc-family {
+  stroke: #b4632a;
+  stroke-width: 2;
+  stroke-dasharray: 5 3;
+  opacity: 0.85;
+}
+.dot {
+  fill: var(--muted);
+}
+.dot-repeat {
+  fill: var(--brand);
+}
+.dot-current {
+  fill: #c8962a;
+}
+.dot-killed {
+  fill: #c0392b;
+  stroke: var(--surface);
+  stroke-width: 1.5;
+}
+.arc-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  margin-top: 12px;
+}
+.lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+.lg::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.lg-repeat::before {
+  background: var(--brand);
+}
+.lg-current::before {
+  background: #c8962a;
+}
+.lg-killed::before {
+  background: #c0392b;
+}
+.lg-family::before {
+  border-radius: 0;
+  height: 0;
+  width: 18px;
+  border-top: 2px dashed #b4632a;
+}
+
+.connect-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.connect-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 9px;
+}
+.connect-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.connect-years {
+  color: var(--muted);
+  font-size: 0.86rem;
+  text-align: right;
+}

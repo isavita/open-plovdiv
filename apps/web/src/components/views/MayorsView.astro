@@ -52,6 +52,64 @@ const config = {
   countFiltered: "{visible} " + (lang === "bg" ? "от" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : "terms"),
   empty: t.mayors.empty
 };
+
+function initials(name: string): string {
+  return name
+    .replace(/^(д-р|Д-р|инж\.|Mayor:)\s*/u, "")
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0] ?? "")
+    .join("")
+    .toLocaleUpperCase(lang === "bg" ? "bg-BG" : "en-GB");
+}
+
+// --- relationship graph: connections between mayors ---
+const groups = new Map<string, typeof mayorTerms>();
+for (const term of mayorTerms) {
+  const key = normalizeName(field(term, "actor", lang));
+  if (!groups.has(key)) groups.set(key, []);
+  groups.get(key)!.push(term);
+}
+const multiTerm = [...groups.values()]
+  .filter((g) => g.length > 1)
+  .sort((a, b) => a[0].year_start - b[0].year_start);
+const repeatTermIds = new Set(multiTerm.flat().map((tm) => tm.id));
+
+// sourced family ties between mayors
+const familyPairs = [
+  { a: "Христо Г. Данов", b: "Милош Данов", label_bg: "баща и син", label_en: "father & son" }
+];
+
+const W = 1000;
+const AX = 168;
+const PAD = 28;
+const span = Math.max(1, currentYear - firstYear);
+const xFor = (year: number) => PAD + ((year - firstYear) / span) * (W - 2 * PAD);
+const arcPath = (x1: number, x2: number, lift: number) =>
+  `M ${x1.toFixed(1)} ${AX} C ${x1.toFixed(1)} ${(AX - lift).toFixed(1)}, ${x2.toFixed(1)} ${(AX - lift).toFixed(1)}, ${x2.toFixed(1)} ${AX}`;
+
+const repeatArcs = multiTerm.flatMap((g) =>
+  g.slice(1).map((term, i) => {
+    const x1 = xFor(g[i].year_start);
+    const x2 = xFor(term.year_start);
+    return arcPath(x1, x2, Math.min(118, 24 + Math.abs(x2 - x1) * 0.42));
+  })
+);
+
+const familyArcs = familyPairs
+  .map((pair) => {
+    const ta = mayorTerms.find((m) => m.actor_bg === pair.a);
+    const tb = mayorTerms.find((m) => m.actor_bg === pair.b);
+    if (!ta || !tb) return null;
+    const x1 = xFor(ta.year_start);
+    const x2 = xFor(tb.year_start);
+    return { d: arcPath(x1, x2, Math.min(150, 54 + Math.abs(x2 - x1) * 0.5)), pair };
+  })
+  .filter((x): x is NonNullable<typeof x> => x !== null);
+
+const axisTicks: number[] = [];
+for (let y = Math.ceil(firstYear / 20) * 20; y <= currentYear; y += 20) axisTicks.push(y);
 ---
 
 <Layout lang={lang} path="/mayors" title={t.mayors.title} description={t.mayors.lead}>
@@ -71,6 +129,91 @@ const config = {
         <div class="stat"><strong>{uniqueMayors.size}</strong><span>{t.mayors.statPeople}</span></div>
         <div class="stat"><strong>{coveredYears}</strong><span>{t.mayors.statYears}</span></div>
         {currentMayor && <div class="stat"><strong>{field(currentMayor, "actor", lang)}</strong><span>{t.mayors.statCurrent}</span></div>}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{t.mayors.connectionsTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{t.mayors.connectionsLead}</p>
+        </div>
+      </div>
+
+      <div class="card arc-card">
+        <svg
+          class="mayor-arc"
+          viewBox="0 0 1000 200"
+          role="img"
+          aria-label={t.mayors.connectionsTitle}
+          preserveAspectRatio="xMidYMid meet"
+        >
+          {repeatArcs.map((d) => <path class="arc-repeat" d={d} fill="none" />)}
+          {familyArcs.map((fa) => <path class="arc-family" d={fa.d} fill="none" />)}
+          <line class="arc-axis" x1={PAD} y1={AX} x2={W - PAD} y2={AX} />
+          {axisTicks.map((y) => (
+            <text class="arc-tick-label" x={xFor(y)} y={AX + 20} text-anchor="middle">{y}</text>
+          ))}
+          {mayorTerms.map((term) => {
+            const cx = xFor(term.year_start);
+            const cls =
+              term.fate === "killed"
+                ? "dot dot-killed"
+                : term.year_end == null
+                  ? "dot dot-current"
+                  : repeatTermIds.has(term.id)
+                    ? "dot dot-repeat"
+                    : "dot";
+            const big = term.fate === "killed" || term.year_end == null;
+            return (
+              <circle class={cls} cx={cx} cy={AX} r={big ? 6 : 4}>
+                <title>
+                  {`${field(term, "actor", lang)} · ${term.year_start}${term.year_end ? `–${term.year_end}` : `–${currentYear}`}`}
+                </title>
+              </circle>
+            );
+          })}
+        </svg>
+        <div class="arc-legend">
+          <span class="lg lg-repeat">{t.mayors.legendSame}</span>
+          <span class="lg lg-family">{t.mayors.legendFamily}</span>
+          <span class="lg lg-killed">{t.mayors.legendKilled}</span>
+          <span class="lg lg-current">{t.mayors.legendCurrent}</span>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:18px">
+        <div class="card">
+          <h3>{t.mayors.multiTermTitle}</h3>
+          <ul class="connect-list">
+            {multiTerm.map((g) => (
+              <li>
+                <a href={localizePath(`/mayors/${g[0].id}`, lang)}>{field(g[0], "actor", lang)}</a>
+                <span class="connect-years">
+                  {g
+                    .map((tm) => `${tm.year_start}${tm.year_end ? `–${tm.year_end}` : `–${currentYear}`}`)
+                    .join(" · ")}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {familyArcs.length > 0 && (
+          <div class="card">
+            <h3>{t.mayors.familyTitle}</h3>
+            <ul class="connect-list">
+              {familyArcs.map((fa) => (
+                <li>
+                  <span>{`${fa.pair.a} — ${fa.pair.b}`}</span>
+                  <span class="connect-years">{lang === "bg" ? fa.pair.label_bg : fa.pair.label_en}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="meta" style="margin-top:14px">{t.mayors.portraitNote}</p>
+          </div>
+        )}
       </div>
     </div>
   </section>
@@ -205,14 +348,29 @@ const config = {
                         data-century={century}
                         data-status={isCurrent ? "current" : isActing ? "acting" : "regular"}
                       >
-                        <header>
-                          <div>
+                        <header class="mayor-card-head">
+                          {term.image ? (
+                            <img
+                              class="mayor-portrait"
+                              src={term.image}
+                              alt={t.mayors.portraitAlt(field(term, "actor", lang))}
+                              width="52"
+                              height="52"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <span class="mayor-portrait mayor-portrait-fallback" aria-hidden="true">
+                              {initials(field(term, "actor", lang))}
+                            </span>
+                          )}
+                          <div class="mayor-card-headtext">
                             <p class="eyebrow">{t.mayors.termNumber} {index}</p>
                             <h3>{field(term, "actor", lang)}</h3>
                           </div>
                           <div class="pill-row">
                             {isCurrent && <span class="badge status-active">{t.mayors.currentBadge}</span>}
                             {isActing && <span class="badge no-dot">{t.mayors.actingBadge}</span>}
+                            {term.fate === "killed" && <span class="badge badge-killed">{t.mayors.fateLabels.killed}</span>}
                             {term.bio_bg && <span class="badge no-dot">{t.mayors.biography}</span>}
                           </div>
                         </header>

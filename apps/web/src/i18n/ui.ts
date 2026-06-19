@@ -308,6 +308,24 @@ const bg = {
     biography: "Биография",
     wikipediaArticle: "Статия в Уикипедия",
     wikipediaSearch: "Търсене в Уикипедия",
+    connectionsTitle: "Връзки между кметовете",
+    connectionsLead:
+      "Кои кметове са управлявали по няколко пъти и кои са свързани роднински — подредени по години.",
+    multiTermTitle: "Многомандатни кметове",
+    familyTitle: "Родове и семейства",
+    legendSame: "Същият кмет (повторен мандат)",
+    legendFamily: "Роднинска връзка",
+    legendKilled: "Убит",
+    legendCurrent: "Действащ",
+    fateHeading: "Съдба",
+    fateLabels: {
+      killed: "Убит",
+      executed: "Екзекутиран",
+      assassinated: "Убит при атентат",
+      died_in_office: "Починал в длъжност"
+    },
+    portraitNote: "Историческите портрети са в обществено достояние.",
+    portraitAlt: (name: string) => `Портрет на ${name}`,
     prevTerm: "Предишен",
     nextTerm: "Следващ"
   },
@@ -949,6 +967,24 @@ const en: typeof bg = {
     biography: "Biography",
     wikipediaArticle: "Wikipedia article",
     wikipediaSearch: "Search Wikipedia",
+    connectionsTitle: "Connections between the mayors",
+    connectionsLead:
+      "Which mayors served more than once and which are related — arranged by year.",
+    multiTermTitle: "Multi-term mayors",
+    familyTitle: "Families & dynasties",
+    legendSame: "Same mayor (repeat term)",
+    legendFamily: "Family tie",
+    legendKilled: "Killed",
+    legendCurrent: "Incumbent",
+    fateHeading: "Fate",
+    fateLabels: {
+      killed: "Killed",
+      executed: "Executed",
+      assassinated: "Assassinated",
+      died_in_office: "Died in office"
+    },
+    portraitNote: "The historical portraits are in the public domain.",
+    portraitAlt: (name: string) => `Portrait of ${name}`,
     prevTerm: "Previous",
     nextTerm: "Next"
   },
