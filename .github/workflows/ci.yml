@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  validate-build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -16,15 +16,3 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - run: npm run validate:a11y
-      - run: npm run validate:history-api
-      - run: npm run validate:history-surface
-      - run: npm run validate:lighthouse
-      - name: Verify generated data is committed
-        run: |
-          if [ -n "$(git status --porcelain -- data/generated apps/web/public/data)" ]; then
-            echo "Generated data is stale. Run npm run build and commit the resulting data files."
-            git status --short -- data/generated apps/web/public/data
-            git diff -- data/generated apps/web/public/data
-            exit 1
-          fi

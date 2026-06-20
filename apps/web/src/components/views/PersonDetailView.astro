@@ -37,12 +37,13 @@ const labels =
         accessed: "Достъп",
         license: "Лиценз",
         editorial: "Редакторски статус",
+        statusPending: "Очаква независим редакторски преглед",
+        statusSignedOff: "Редакционно потвърден",
         provenance: "Произход на твърденията",
         relationshipSource: "Източник за връзката",
         linkedEvent: "Свързано събитие",
         imageCredit: "Кредит за изображение",
-        pending:
-          "Записът е валидиран и източниково проследим, но остава с редакционен статус needs_editorial_signoff до независим преглед."
+        pending: "Записът е валидиран и източниково проследим, но очаква независим редакторски преглед."
       }
     : {
         back: "All people",
@@ -60,12 +61,13 @@ const labels =
         accessed: "Accessed",
         license: "License",
         editorial: "Editorial status",
+        statusPending: "Awaiting independent editorial review",
+        statusSignedOff: "Editorially signed off",
         provenance: "Claim provenance",
         relationshipSource: "Relationship source",
         linkedEvent: "Linked event",
         imageCredit: "Image credit",
-        pending:
-          "The record is validated and source-traceable, but remains at needs_editorial_signoff until independent review."
+        pending: "The record is validated and source-traceable, but still awaits independent editorial review."
       };
 
 const roleLabels: Record<string, { bg: string; en: string }> = {
@@ -260,6 +262,12 @@ function relationshipLabel(type: string): string {
   return relationshipLabels[type]?.[lang] ?? type.replaceAll("_", " ");
 }
 
+function editorialStatusLabel(status: string): string {
+  if (status === "needs_editorial_signoff") return labels.statusPending;
+  if (status === "signed_off") return labels.statusSignedOff;
+  return status.replaceAll("_", " ");
+}
+
 function primaryGroup(item: KnowledgePerson): RoleGroup {
   return roleGroups[item.roles[0]] ?? "civic";
 }
@@ -368,7 +376,7 @@ const sourceRecords = [...sourceIds]
               <dt>{labels.life}</dt>
               <dd>{lifeLabel(person)}</dd>
               <dt>{labels.editorial}</dt>
-              <dd>{person.editorial.status}</dd>
+              <dd>{editorialStatusLabel(person.editorial.status)}</dd>
               {person.wikidata_id && (
                 <>
                   <dt>{labels.wikidata}</dt>

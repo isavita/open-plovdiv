@@ -147,7 +147,7 @@ const categories = [...new Set(places.map((place) => place.category))].sort((a, 
   categoryLabel(a).localeCompare(categoryLabel(b), lang === "bg" ? "bg-BG" : "en-GB")
 );
 const placeholderImage = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
-const initialPlaceCount = 36;
+const initialPlaceCount = 24;
 const placeCards = places.map((place) => {
   const source = sourceById.get(place.source_ids[0]);
   const facts = placeFacts(place, { includeCreatorFallback: false });
@@ -709,15 +709,12 @@ const placesMapConfig = {
               start();
             }
           },
-          { rootMargin: "180px 0px" }
+          { rootMargin: "60px 0px" }
         );
         observer.observe(mapEl);
+        return;
       }
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(start, { timeout: 1800 });
-      } else {
-        window.setTimeout(start, 900);
-      }
+      window.setTimeout(start, 1600);
     }
 
     schedulePlacesMap();
