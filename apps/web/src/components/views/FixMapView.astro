@@ -79,7 +79,9 @@ const config = {
     km: lang === "bg" ? "км" : "km",
     errorTitle: t.fixMap.loadErrorTitle,
     errorText: t.fixMap.loadErrorText,
-    newReports: t.fixMap.newReports
+    newReports: t.fixMap.newReports,
+    selectTitle: t.fixMap.selectTitle,
+    selectHint: t.fixMap.selectHint
   }
 };
 ---
@@ -399,11 +401,15 @@ const config = {
       `;
     }
 
+    function renderSelectionPrompt() {
+      detail.innerHTML = `<h2>${escapeHtml(LB.selectTitle)}</h2><p class="meta">${escapeHtml(LB.selectHint)}</p>`;
+    }
+
     function renderMarkers() {
       markerLayer.clearLayers();
       const visible = visibleReports();
       countField.value = `${visible.length} ${LB.of} ${allReports().length}`;
-      if (selectedReport && !allReports().some((report) => report.id === selectedReport.id)) {
+      if (selectedReport && !visible.some((report) => report.id === selectedReport.id)) {
         selectedReport = null;
       }
 
@@ -421,6 +427,8 @@ const config = {
         detail.innerHTML = `<h2>${escapeHtml(LB.emptyTitle)}</h2><p class="meta">${escapeHtml(LB.emptyText)}</p>`;
       } else if (visible.length === 0) {
         detail.innerHTML = `<h2>${escapeHtml(LB.noFilterResults)}</h2><p class="meta">${escapeHtml(LB.emptyText)}</p>`;
+      } else {
+        renderSelectionPrompt();
       }
     }
 

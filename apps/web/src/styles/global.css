@@ -881,6 +881,8 @@ p:last-child {
 .project-card {
   display: grid;
   gap: 12px;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
 }
 
 .project-card header {
@@ -888,6 +890,11 @@ p:last-child {
   display: flex;
   justify-content: space-between;
   gap: 12px;
+  min-width: 0;
+}
+
+.project-card header > * {
+  min-width: 0;
 }
 
 .project-card h2,
@@ -910,6 +917,19 @@ p:last-child {
 .project-card p {
   color: var(--ink-2);
   margin: 0;
+}
+
+.project-card .badge,
+.project-card .meta,
+.project-card .source-list a {
+  overflow-wrap: anywhere;
+}
+
+.project-card .badge {
+  line-height: 1.25;
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
 }
 
 /* ---- Notice -------------------------------------------------------------- */
@@ -1728,6 +1748,14 @@ p:last-child {
   white-space: nowrap;
 }
 
+.table.facts {
+  min-width: 0;
+}
+
+.table.facts td {
+  overflow-wrap: anywhere;
+}
+
 /* ---- Editorial review --------------------------------------------------- */
 
 .review-status {
@@ -1838,12 +1866,14 @@ p:last-child {
 .source-list {
   display: grid;
   gap: 10px;
+  grid-template-columns: minmax(0, 1fr);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .source-list li {
+  min-width: 0;
   padding-left: 18px;
   position: relative;
 }
@@ -4413,4 +4443,13 @@ code {
 .nb-map {
   height: 460px;
   width: 100%;
+}
+
+/* all-places map (Places page) */
+.places-map {
+  height: 480px;
+  width: 100%;
+}
+.places-map-head {
+  margin-bottom: 14px;
 }

@@ -41,14 +41,16 @@ const bgHref = new URL(localizePath(path, "bg"), site).href;
 const enHref = new URL(localizePath(path, "en"), site).href;
 const switchHref = localizePath(path, otherLang);
 
-const footerExplore = [
+const footerHistory = [
   { href: localizePath("/history", lang), label: t.nav.history },
   { href: localizePath("/mayors", lang), label: t.nav.mayors },
   { href: localizePath("/people", lang), label: t.nav.people },
   { href: localizePath("/places", lang), label: t.nav.places },
   { href: localizePath("/stories", lang), label: t.nav.stories },
   { href: localizePath("/education", lang), label: t.nav.education },
-  { href: localizePath("/archive", lang), label: t.nav.archive },
+  { href: localizePath("/archive", lang), label: t.nav.archive }
+];
+const footerCivic = [
   { href: localizePath("/overview", lang), label: t.nav.overview },
   { href: localizePath("/budget", lang), label: t.nav.budget },
   { href: localizePath("/projects", lang), label: t.nav.projects },
@@ -162,7 +164,15 @@ const footerAbout = [
             <div class="footer-col">
               <h4>{t.footer.explore}</h4>
               <ul>
-                {footerExplore.map((item) => (
+                {footerHistory.map((item) => (
+                  <li><a href={item.href}>{item.label}</a></li>
+                ))}
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>{t.footer.civic}</h4>
+              <ul>
+                {footerCivic.map((item) => (
                   <li><a href={item.href}>{item.label}</a></li>
                 ))}
               </ul>

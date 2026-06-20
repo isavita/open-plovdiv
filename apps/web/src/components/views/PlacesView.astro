@@ -212,6 +212,23 @@ const config = {
   lang,
   cardsEndpoint: "/api/history/place-cards.json"
 };
+
+// --- all-places map (pins every place with coordinates, synced to filters) ---
+const mapL =
+  lang === "bg"
+    ? {
+        title: "Карта на местата",
+        lead: "Всички документирани места с координати, оцветени по категория. Филтрите по-долу важат и за картата."
+      }
+    : {
+        title: "Map of the places",
+        lead: "All documented places with coordinates, coloured by category. The filters below also drive the map."
+      };
+const placesMapConfig = {
+  openLabel: labels.open,
+  lang,
+  mapEndpoint: "/api/history/place-map.json"
+};
 ---
 
 <Layout lang={lang} path="/places" title={labels.title} description={labels.lead}>
@@ -245,6 +262,14 @@ const config = {
 
   <section class="section" id="places-catalog">
     <div class="container">
+      <div class="places-map-head">
+        <h2>{mapL.title}</h2>
+        <p class="meta" style="max-width:74ch;margin-top:6px">{mapL.lead}</p>
+      </div>
+      <div class="card map-card" style="padding:0;overflow:hidden;margin-bottom:24px">
+        <div id="places-map" class="places-map"></div>
+      </div>
+
       <div class="toolbar places-toolbar">
         <div class="filters">
           <div class="field">
@@ -580,5 +605,121 @@ const config = {
     refreshPlaceCards();
     applyPlacesFilters();
     window.setTimeout(hydratePlaceImages, 1200);
+  </script>
+
+  <script type="application/json" id="places-map-config" set:html={JSON.stringify(placesMapConfig)}></script>
+  <script>
+    const mapCfg = JSON.parse(document.getElementById("places-map-config")?.textContent ?? "{}");
+    const mapEl = document.getElementById("places-map");
+    type PlaceMapItem = {
+      lat: number;
+      lng: number;
+      name: string;
+      category: string;
+      era: string;
+      catLabel: string;
+      href: string;
+      color: string;
+      archive: boolean;
+      thenNow: boolean;
+      search: string;
+    };
+    const mEsc = (v: unknown) =>
+      String(v).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+
+    async function loadPlaceMapItems(): Promise<PlaceMapItem[]> {
+      const response = await fetch(mapCfg.mapEndpoint);
+      if (!response.ok) throw new Error("Unable to load place map data");
+      const payload = await response.json();
+      const localizedPlaces = payload?.places?.[mapCfg.lang];
+      return Array.isArray(localizedPlaces) ? localizedPlaces : [];
+    }
+
+    async function initPlacesMap() {
+      if (!mapEl) return;
+      const placeItems = await loadPlaceMapItems();
+      if (!placeItems.length) return;
+      const leaflet = await import("leaflet");
+      const L = leaflet.default;
+      const map = L.map(mapEl, { scrollWheelZoom: false }).setView([42.145, 24.75], 13);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+      const layer = L.layerGroup().addTo(map);
+      const markers = placeItems.map((it) => {
+        const marker = L.circleMarker([it.lat, it.lng], {
+          radius: 6,
+          color: it.color,
+          weight: 1.5,
+          fillColor: it.color,
+          fillOpacity: 0.62
+        });
+        marker.bindPopup(
+          `<strong>${mEsc(it.name)}</strong><br><span class="meta">${mEsc(it.catLabel)}</span><br><a href="${mEsc(it.href)}">${mEsc(mapCfg.openLabel)} →</a>`
+        );
+        return { marker, it };
+      });
+
+      const fSearch = document.querySelector<HTMLInputElement>("#places-search");
+      const fEra = document.querySelector<HTMLSelectElement>("#places-era");
+      const fCat = document.querySelector<HTMLSelectElement>("#places-category");
+      const fEvi = document.querySelector<HTMLSelectElement>("#places-evidence");
+
+      function applyMap(refit: boolean) {
+        const q = (fSearch?.value ?? "").trim().toLowerCase();
+        const era = fEra?.value ?? "all";
+        const cat = fCat?.value ?? "all";
+        const evi = fEvi?.value ?? "all";
+        layer.clearLayers();
+        const visible: [number, number][] = [];
+        for (const { marker, it } of markers) {
+          const ok =
+            (!q || it.search.includes(q)) &&
+            (era === "all" || it.era === era) &&
+            (cat === "all" || it.category === cat) &&
+            (evi === "all" || (evi === "archive" ? it.archive : evi === "then-now" ? it.thenNow : true));
+          if (ok) {
+            marker.addTo(layer);
+            visible.push([it.lat, it.lng]);
+          }
+        }
+        if (refit && visible.length) map.fitBounds(visible, { padding: [30, 30], maxZoom: 15 });
+      }
+
+      applyMap(true);
+      fSearch?.addEventListener("input", () => applyMap(false));
+      [fEra, fCat, fEvi].forEach((el) => el?.addEventListener("change", () => applyMap(true)));
+      document.querySelector("#places-reset")?.addEventListener("click", () => window.setTimeout(() => applyMap(true), 0));
+    }
+
+    function schedulePlacesMap() {
+      if (!mapEl) return;
+      let started = false;
+      const start = () => {
+        if (started) return;
+        started = true;
+        void initPlacesMap();
+      };
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              observer.disconnect();
+              start();
+            }
+          },
+          { rootMargin: "180px 0px" }
+        );
+        observer.observe(mapEl);
+      }
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(start, { timeout: 1800 });
+      } else {
+        window.setTimeout(start, 900);
+      }
+    }
+
+    schedulePlacesMap();
   </script>
 </Layout>

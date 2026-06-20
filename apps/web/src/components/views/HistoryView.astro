@@ -2041,7 +2041,12 @@ const nbByEra = nbOrder
 
     function scheduleHistoryMapInit() {
       const mapSection = document.getElementById("landmarks");
+      let started = false;
+      let removeIntentFallback = () => {};
       const start = () => {
+        if (started) return;
+        started = true;
+        removeIntentFallback();
         initHistoryMap().catch(() => {
           detail.innerHTML = `<h2>${escapeHtml(config.labels.selectPlace)}</h2><p class="meta">${escapeHtml(config.labels.archiveOverlayNote)}</p>`;
         });
@@ -2063,6 +2068,17 @@ const nbByEra = nbOrder
       } else {
         window.setTimeout(start, 500);
       }
+
+      const intentEvents = ["scroll", "wheel", "touchstart", "keydown"] as const;
+      removeIntentFallback = () => {
+        intentEvents.forEach((eventName) => window.removeEventListener(eventName, start));
+      };
+      intentEvents.forEach((eventName) => {
+        window.addEventListener(eventName, start, {
+          once: true,
+          passive: eventName !== "keydown"
+        });
+      });
     }
 
     scheduleHistoryMapInit();
@@ -2070,8 +2086,6 @@ const nbByEra = nbOrder
 
   <script type="application/json" id="nb-map-config" set:html={JSON.stringify(nbMapConfig)}></script>
   <script>
-    import L from "leaflet";
-    import "leaflet/dist/leaflet.css";
     const nbCfg = JSON.parse(document.getElementById("nb-map-config")?.textContent ?? "{}");
     const nbEl = document.getElementById("nb-map");
     const nbMarkers = (nbCfg.markers ?? []) as Array<{
@@ -2085,7 +2099,11 @@ const nbByEra = nbOrder
     }>;
     const nbEsc = (v: string) =>
       String(v).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
-    if (nbEl && nbMarkers.length) {
+
+    async function initNeighbourhoodMap() {
+      if (!nbEl || !nbMarkers.length) return;
+      const leaflet = await import("leaflet");
+      const L = leaflet.default;
       const map = L.map(nbEl, { scrollWheelZoom: false }).setView([42.14, 24.75], 12);
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
@@ -2108,10 +2126,48 @@ const nbByEra = nbOrder
       }
       if (pts.length > 1) map.fitBounds(pts, { padding: [40, 40] });
     }
+
+    function scheduleNeighbourhoodMap() {
+      if (!nbEl || !nbMarkers.length) return;
+      let started = false;
+      let removeIntentFallback = () => {};
+      const start = () => {
+        if (started) return;
+        started = true;
+        removeIntentFallback();
+        void initNeighbourhoodMap();
+      };
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              observer.disconnect();
+              start();
+            }
+          },
+          { rootMargin: "220px 0px" }
+        );
+        observer.observe(nbEl);
+      } else {
+        window.setTimeout(start, 1000);
+      }
+      const intentEvents = ["scroll", "wheel", "touchstart", "keydown"] as const;
+      removeIntentFallback = () => {
+        intentEvents.forEach((eventName) => window.removeEventListener(eventName, start));
+      };
+      intentEvents.forEach((eventName) => {
+        window.addEventListener(eventName, start, {
+          once: true,
+          passive: eventName !== "keydown"
+        });
+      });
+    }
+
+    scheduleNeighbourhoodMap();
   </script>
 </Layout>
 
-<style>
+<style is:global>
   .on-this-day-card {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(190px, 260px);

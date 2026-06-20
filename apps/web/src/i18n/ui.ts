@@ -73,6 +73,7 @@ const bg = {
     blurb:
       "Нестопански проект с обществени данни за Пловдив. Без профили, без коментари, без база данни.",
     explore: "Разглеждане",
+    civic: "Граждански данни",
     about: "За проекта",
     privacy: "Поверителност",
     moderation: "Модерация",
@@ -760,6 +761,7 @@ const en: typeof bg = {
     blurb:
       "A non-profit public-data project for Plovdiv. No accounts, no comments, no database.",
     explore: "Explore",
+    civic: "Civic data",
     about: "About",
     privacy: "Privacy",
     moderation: "Moderation",
