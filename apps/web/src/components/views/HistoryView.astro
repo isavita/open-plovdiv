@@ -554,59 +554,6 @@ const historyMapConfig = {
   routes: mapRoutes
 };
 
-const timelineItems = entries.map((event) => {
-  const linkedNames = [
-    ...event.person_ids
-      .map((id) => peopleById.get(id))
-      .filter(Boolean)
-      .map((person) => localized(person as Record<string, any>, "name")),
-    ...event.place_ids
-      .map((id) => placesById.get(id))
-      .filter(Boolean)
-      .map((place) => localized(place as Record<string, any>, "name")),
-    ...event.organization_ids
-      .map((id) => orgsById.get(id))
-      .filter(Boolean)
-      .map((org) => localized(org as Record<string, any>, "name"))
-  ];
-  const source = sourceById.get(event.source_ids[0]);
-  return {
-    event,
-    linkedNames,
-    date: dateLabel(event),
-    title: localized(event, "title"),
-    summary: localized(event, "summary"),
-    conflictNote: localized(event, "conflict_notes"),
-    category: labelCategory(event.category),
-    themes: event.theme_tags.map(labelTheme),
-    sourceUrl: source?.url ?? "",
-    sourceTitle: source ? localized(source, "title") : "",
-    search: [
-      localized(event, "title"),
-      localized(event, "summary"),
-      dateLabel(event),
-      labelCategory(event.category),
-      t.history.eraLabels[event.era],
-      ...linkedNames
-    ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB")
-  };
-});
-
-const exactDateItems = timelineItems
-  .filter((item) => item.event.date.month && item.event.date.day)
-  .map((item) => ({
-    id: item.event.id,
-    year: item.event.date.year,
-    month: item.event.date.month,
-    day: item.event.date.day,
-    date: item.date,
-    title: item.title,
-    summary: item.summary,
-    conflictNote: item.conflictNote,
-    sourceUrl: item.sourceUrl,
-    sourceTitle: item.sourceTitle
-  }));
-
 const timelineConfig = {
   lang,
   api: {
@@ -631,7 +578,6 @@ const timelineConfig = {
     needsReview: labels.needsReview
   },
   total: entries.length,
-  exactDateItems
 };
 
 const archiveItemsForView = [...historicalArchiveItems].sort(
@@ -1239,6 +1185,7 @@ const nbByEra = nbOrder
     const empty = document.querySelector<HTMLElement>("#history-empty")!;
     const list = document.querySelector<HTMLElement>("#history-event-list")!;
     let items: any[] = [];
+    let exactDateItems: any[] = [];
     const eraButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-era-button]")];
     const onThisDayDate = document.querySelector<HTMLInputElement>("#history-on-this-day-date")!;
     const onThisDayToday = document.querySelector<HTMLButtonElement>("#history-on-this-day-today")!;
@@ -1349,10 +1296,21 @@ const nbByEra = nbOrder
           conflictNote: localizedApi(event, "conflict_notes"),
           themes: (event.theme_tags ?? []).map(labelApiTheme).slice(0, 4),
           linkedNames: linkedNames.slice(0, 5),
-          sources: eventSources
+          sources: eventSources,
+          year: event.date.year,
+          month: event.date.month,
+          day: event.date.day,
+          sourceUrl: eventSources[0]?.url ?? ""
         };
       });
       return items;
+    }
+
+    async function loadExactDateItems() {
+      if (exactDateItems.length > 0) return exactDateItems;
+      const timelineItems = await loadTimelineItems();
+      exactDateItems = timelineItems.filter((item) => item.month && item.day);
+      return exactDateItems;
     }
 
     function renderPills(values: unknown[]) {
@@ -1452,7 +1410,10 @@ const nbByEra = nbOrder
 
     function refreshHistoryTimeline() {
       loadTimelineItems()
-        .then(() => applyHistoryFilters())
+        .then(() => {
+          applyHistoryFilters();
+          void renderOnThisDay();
+        })
         .catch(() => {
           empty.hidden = false;
           empty.textContent = timelineConfig.labels.noResults;
@@ -1509,14 +1470,12 @@ const nbByEra = nbOrder
       return `${year}-${month}-${day}`;
     }
 
-    function renderOnThisDay() {
+    async function renderOnThisDay() {
       const parts = onThisDayDate.value.split("-").map((part) => Number(part));
       const month = parts[1];
       const day = parts[2];
-      const exactDateItems = Array.isArray(timelineConfig.exactDateItems)
-        ? timelineConfig.exactDateItems
-        : [];
-      const matches = exactDateItems.filter((item: any) => item.month === month && item.day === day);
+      const datedItems = await loadExactDateItems();
+      const matches = datedItems.filter((item: any) => item.month === month && item.day === day);
       onThisDayList.innerHTML = matches
         .map((item: any) => {
           const source = item.sourceUrl
@@ -1529,18 +1488,17 @@ const nbByEra = nbOrder
         })
         .join("");
       onThisDayEmpty.textContent = matches.length
-        ? `${timelineConfig.labels.exactDateCount}: ${exactDateItems.length}`
-        : `${timelineConfig.labels.noOnThisDay} ${timelineConfig.labels.exactDateCount}: ${exactDateItems.length}`;
+        ? `${timelineConfig.labels.exactDateCount}: ${datedItems.length}`
+        : `${timelineConfig.labels.noOnThisDay} ${timelineConfig.labels.exactDateCount}: ${datedItems.length}`;
     }
 
     onThisDayDate.value = dateInputValue(new Date());
-    onThisDayDate.addEventListener("change", renderOnThisDay);
+    onThisDayDate.addEventListener("change", () => void renderOnThisDay());
     onThisDayToday.addEventListener("click", () => {
       onThisDayDate.value = dateInputValue(new Date());
-      renderOnThisDay();
+      void renderOnThisDay();
     });
     syncEraButtons();
-    renderOnThisDay();
     scheduleInitialTimelineRender();
   </script>
 

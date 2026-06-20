@@ -49,7 +49,8 @@ const labels =
         architect: "Архитект",
         builder: "Строител",
         creator: "Архитект/строител",
-        open: "Отвори"
+        open: "Отвори",
+        loadMore: "Покажи още"
       }
     : {
         title: "Places and Landmarks",
@@ -82,7 +83,8 @@ const labels =
         architect: "Architect",
         builder: "Builder",
         creator: "Architect/builder",
-        open: "Open"
+        open: "Open",
+        loadMore: "Load more"
       };
 
 const categoryLabels: Record<string, { bg: string; en: string }> = {
@@ -131,26 +133,84 @@ for (const event of historyKnowledgeEvents) {
   for (const placeId of event.place_ids) eventCountByPlace.set(placeId, (eventCountByPlace.get(placeId) ?? 0) + 1);
 }
 
-// Lightweight Wikimedia Commons thumbnail via the official Special:FilePath
-// sized-image endpoint (avoids hotlinking full-size originals).
 function commonsThumb(url: string, width: number): string {
-  if (!url.includes("/wikipedia/commons/")) return url;
-  const file = url.split("/").pop();
+  const marker = "/wikipedia/commons/";
+  if (!url.includes(marker) || url.includes("/wikipedia/commons/thumb/")) return url;
+  const commonsPath = url.split(marker)[1];
+  const file = commonsPath?.split("/").pop();
   if (!file) return url;
-  return `https://commons.wikimedia.org/wiki/Special:FilePath/${file}?width=${width}`;
+  return `https://upload.wikimedia.org/wikipedia/commons/thumb/${commonsPath}/${width}px-${file}`;
 }
 
 const eras = [...new Set(places.map((place) => place.era))].sort();
 const categories = [...new Set(places.map((place) => place.category))].sort((a, b) =>
   categoryLabel(a).localeCompare(categoryLabel(b), lang === "bg" ? "bg-BG" : "en-GB")
 );
+const placeholderImage = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
+const initialPlaceCount = 36;
+const placeCards = places.map((place) => {
+  const source = sourceById.get(place.source_ids[0]);
+  const facts = placeFacts(place, { includeCreatorFallback: false });
+  const archiveCount = archiveCountByPlace.get(place.id) ?? 0;
+  const pairCount = pairCountByPlace.get(place.id) ?? 0;
+  const eventCount = eventCountByPlace.get(place.id) ?? 0;
+  const search = [
+    localized(place, "name"),
+    localized(place, "summary"),
+    localized(place, "current_status"),
+    localized(place, "era"),
+    categoryLabel(place.category),
+    ...facts.map((fact) => fact.value)
+  ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+
+  return {
+    id: place.id,
+    href: localizePath(`/places/${place.id}`, lang),
+    className: `place-card landmark-${place.category}`,
+    category: place.category,
+    era: place.era,
+    eraLabel: localized(place, "era"),
+    categoryLabel: categoryLabel(place.category),
+    name: localized(place, "name"),
+    summary: localized(place, "summary"),
+    search,
+    facts,
+    eventCount,
+    archiveCount,
+    pairCount,
+    media: place.media?.[0]
+      ? {
+          src: commonsThumb(place.media[0].url, 500),
+          credit: `${place.media[0].credit} · ${place.media[0].license}`,
+          licenseUrl: place.media[0].license_url
+        }
+      : null,
+    source: source
+      ? {
+          url: source.url,
+          title: sourceTitle(localized(source, "title"), lang)
+        }
+      : null
+  };
+});
+const initialPlaceCards = placeCards.slice(0, initialPlaceCount);
 const config = {
   labels: {
     visible: labels.visible,
     of: labels.of,
-    noResults: labels.noResults
+    noResults: labels.noResults,
+    places: labels.places,
+    events: labels.events,
+    archive: labels.archive,
+    thenNow: labels.thenNow,
+    source: labels.source,
+    open: labels.open
   },
-  total: places.length
+  total: placeCards.length,
+  batchSize: initialPlaceCount,
+  placeholderImage,
+  lang,
+  cardsEndpoint: "/api/history/place-cards.json"
 };
 ---
 
@@ -217,57 +277,50 @@ const config = {
       </div>
 
       <div class="results-bar">
-        <p id="places-count" class="meta">{places.length} {labels.of} {places.length} {labels.places}</p>
+        <p id="places-count" class="meta">{initialPlaceCards.length} {labels.of} {placeCards.length} {labels.places}</p>
         <button type="button" id="places-reset" class="link-button" hidden>{labels.reset}</button>
       </div>
 
       <div class="place-grid" id="places-list">
-        {places.map((place) => {
-          const source = sourceById.get(place.source_ids[0]);
-          const facts = placeFacts(place, { includeCreatorFallback: false });
-          const archiveCount = archiveCountByPlace.get(place.id) ?? 0;
-          const pairCount = pairCountByPlace.get(place.id) ?? 0;
-          const eventCount = eventCountByPlace.get(place.id) ?? 0;
-          const search = [
-            localized(place, "name"),
-            localized(place, "summary"),
-            localized(place, "current_status"),
-            localized(place, "era"),
-            categoryLabel(place.category),
-            ...facts.map((fact) => fact.value)
-          ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+        {initialPlaceCards.map((card) => {
           return (
             <article
-              class={`place-card landmark-${place.category}`}
+              class={card.className}
               data-place-card
-              data-search={search}
-              data-era={place.era}
-              data-category={place.category}
-              data-archive={archiveCount}
-              data-then-now={pairCount}
+              data-search={card.search}
+              data-era={card.era}
+              data-category={card.category}
+              data-archive={card.archiveCount}
+              data-then-now={card.pairCount}
             >
-              {place.media?.[0] && (
+              {card.media && (
                 <figure class="place-card-media">
                   <img
-                    src={commonsThumb(place.media[0].url, 480)}
-                    alt={localized(place, "name")}
+                    src={placeholderImage}
+                    data-src={card.media.src}
+                    data-place-image
+                    alt={card.name}
+                    width="500"
+                    height="313"
                     loading="lazy"
                     decoding="async"
+                    crossorigin="anonymous"
+                    referrerpolicy="no-referrer"
                   />
                   <figcaption class="place-card-credit">
-                    <a href={place.media[0].license_url} target="_blank" rel="noreferrer">
-                      {`${place.media[0].credit} · ${place.media[0].license}`}
+                    <a href={card.media.licenseUrl} target="_blank" rel="noreferrer">
+                      {card.media.credit}
                     </a>
                   </figcaption>
                 </figure>
               )}
               <div class="place-card-body">
-                <p class="eyebrow">{localized(place, "era")} · {categoryLabel(place.category)}</p>
-                <h2><a href={localizePath(`/places/${place.id}`, lang)}>{localized(place, "name")}</a></h2>
-                <p>{localized(place, "summary")}</p>
-                {facts.length > 0 && (
+                <p class="eyebrow">{card.eraLabel} · {card.categoryLabel}</p>
+                <h2><a href={card.href}>{card.name}</a></h2>
+                <p>{card.summary}</p>
+                {card.facts.length > 0 && (
                   <dl class="place-facts">
-                    {facts.map((fact) => (
+                    {card.facts.map((fact) => (
                       <>
                         <dt>{fact.label}</dt>
                         <dd>{fact.value}</dd>
@@ -275,31 +328,36 @@ const config = {
                     ))}
                   </dl>
                 )}
-                {eventCount + archiveCount + pairCount > 0 && (
+                {card.eventCount + card.archiveCount + card.pairCount > 0 && (
                   <dl class="place-evidence-counts">
-                    <div><dt>{labels.events}</dt><dd>{eventCount}</dd></div>
-                    <div><dt>{labels.archive}</dt><dd>{archiveCount}</dd></div>
-                    <div><dt>{labels.thenNow}</dt><dd>{pairCount}</dd></div>
+                    <div><dt>{labels.events}</dt><dd>{card.eventCount}</dd></div>
+                    <div><dt>{labels.archive}</dt><dd>{card.archiveCount}</dd></div>
+                    <div><dt>{labels.thenNow}</dt><dd>{card.pairCount}</dd></div>
                   </dl>
                 )}
-                {source && (
-                  <a class="src-link" href={source.url} target="_blank" rel="noreferrer">
-                    {labels.source}: {sourceTitle(localized(source, "title"), lang)} ↗
+                {card.source && (
+                  <a class="src-link" href={card.source.url} target="_blank" rel="noreferrer">
+                    {labels.source}: {card.source.title} ↗
                   </a>
                 )}
-                <a class="text-link" href={localizePath(`/places/${place.id}`, lang)}>{labels.open}</a>
+                <a class="text-link" href={card.href}>{labels.open}</a>
               </div>
             </article>
           );
         })}
       </div>
       <p id="places-empty" class="empty" hidden>{labels.noResults}</p>
+      <button type="button" id="places-load-more" class="btn btn-secondary places-load-more">
+        {labels.loadMore}
+      </button>
     </div>
   </section>
 
   <script type="application/json" id="places-config" set:html={JSON.stringify(config)}></script>
   <script>
     const config = JSON.parse(document.getElementById("places-config")?.textContent ?? "{}");
+    const placeholderImage = config.placeholderImage ?? "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
+    const totalCards = Number(config.total) || 0;
     const search = document.querySelector<HTMLInputElement>("#places-search")!;
     const era = document.querySelector<HTMLSelectElement>("#places-era")!;
     const category = document.querySelector<HTMLSelectElement>("#places-category")!;
@@ -307,7 +365,89 @@ const config = {
     const count = document.querySelector<HTMLElement>("#places-count")!;
     const reset = document.querySelector<HTMLButtonElement>("#places-reset")!;
     const empty = document.querySelector<HTMLElement>("#places-empty")!;
-    const cards = [...document.querySelectorAll<HTMLElement>("[data-place-card]")];
+    const list = document.querySelector<HTMLElement>("#places-list")!;
+    const loadMore = document.querySelector<HTMLButtonElement>("#places-load-more")!;
+    let renderedCount = document.querySelectorAll<HTMLElement>("[data-place-card]").length;
+    let cards = [...document.querySelectorAll<HTMLElement>("[data-place-card]")];
+    let allPlaceCards: any[] | null = null;
+    let placeCardsPromise: Promise<any[]> | null = null;
+    let imageObserver: IntersectionObserver | null = null;
+
+    function escapePlacesHtml(value: unknown): string {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function renderPlaceCard(card: any): string {
+      const media = card.media
+        ? `<figure class="place-card-media">
+            <img
+              src="${placeholderImage}"
+              data-src="${escapePlacesHtml(card.media.src)}"
+              data-place-image
+              alt="${escapePlacesHtml(card.name)}"
+              width="500"
+              height="313"
+              loading="lazy"
+              decoding="async"
+              crossorigin="anonymous"
+              referrerpolicy="no-referrer"
+            />
+            <figcaption class="place-card-credit">
+              <a href="${escapePlacesHtml(card.media.licenseUrl)}" target="_blank" rel="noreferrer">${escapePlacesHtml(card.media.credit)}</a>
+            </figcaption>
+          </figure>`
+        : "";
+      const facts = Array.isArray(card.facts) && card.facts.length
+        ? `<dl class="place-facts">${card.facts
+            .map(
+              (fact: any) =>
+                `<dt>${escapePlacesHtml(fact.label)}</dt><dd>${escapePlacesHtml(fact.value)}</dd>`
+            )
+            .join("")}</dl>`
+        : "";
+      const hasEvidence = Number(card.eventCount) + Number(card.archiveCount) + Number(card.pairCount) > 0;
+      const evidenceCounts = hasEvidence
+        ? `<dl class="place-evidence-counts">
+            <div><dt>${escapePlacesHtml(config.labels.events)}</dt><dd>${escapePlacesHtml(card.eventCount)}</dd></div>
+            <div><dt>${escapePlacesHtml(config.labels.archive)}</dt><dd>${escapePlacesHtml(card.archiveCount)}</dd></div>
+            <div><dt>${escapePlacesHtml(config.labels.thenNow)}</dt><dd>${escapePlacesHtml(card.pairCount)}</dd></div>
+          </dl>`
+        : "";
+      const source = card.source
+        ? `<a class="src-link" href="${escapePlacesHtml(card.source.url)}" target="_blank" rel="noreferrer">${escapePlacesHtml(config.labels.source)}: ${escapePlacesHtml(card.source.title)} ↗</a>`
+        : "";
+
+      return `<article
+          class="${escapePlacesHtml(card.className)}"
+          data-place-card
+          data-search="${escapePlacesHtml(card.search)}"
+          data-era="${escapePlacesHtml(card.era)}"
+          data-category="${escapePlacesHtml(card.category)}"
+          data-archive="${escapePlacesHtml(card.archiveCount)}"
+          data-then-now="${escapePlacesHtml(card.pairCount)}"
+        >
+          ${media}
+          <div class="place-card-body">
+            <p class="eyebrow">${escapePlacesHtml(card.eraLabel)} · ${escapePlacesHtml(card.categoryLabel)}</p>
+            <h2><a href="${escapePlacesHtml(card.href)}">${escapePlacesHtml(card.name)}</a></h2>
+            <p>${escapePlacesHtml(card.summary)}</p>
+            ${facts}
+            ${evidenceCounts}
+            ${source}
+            <a class="text-link" href="${escapePlacesHtml(card.href)}">${escapePlacesHtml(config.labels.open)}</a>
+          </div>
+        </article>`;
+    }
+
+    function refreshPlaceCards() {
+      cards = [...document.querySelectorAll<HTMLElement>("[data-place-card]")];
+      loadMore.hidden = renderedCount >= totalCards || hasActiveFilters();
+    }
 
     function applyPlacesFilters() {
       const q = search.value.trim().toLocaleLowerCase();
@@ -324,7 +464,8 @@ const config = {
         card.hidden = !show;
         if (show) visible += 1;
       }
-      count.textContent = `${config.labels.visible}: ${visible} ${config.labels.of} ${cards.length}`;
+      const total = hasActiveFilters() ? cards.length : totalCards;
+      count.textContent = `${config.labels.visible}: ${visible} ${config.labels.of} ${total} ${config.labels.places}`;
       empty.hidden = visible !== 0;
       reset.hidden = !(
         search.value ||
@@ -332,12 +473,82 @@ const config = {
         category.value !== "all" ||
         evidence.value !== "all"
       );
+      loadMore.hidden = renderedCount >= totalCards || hasActiveFilters();
     }
 
-    search.addEventListener("input", applyPlacesFilters);
-    era.addEventListener("change", applyPlacesFilters);
-    category.addEventListener("change", applyPlacesFilters);
-    evidence.addEventListener("change", applyPlacesFilters);
+    function hasActiveFilters() {
+      return Boolean(
+        search.value.trim() ||
+        era.value !== "all" ||
+        category.value !== "all" ||
+        evidence.value !== "all"
+      );
+    }
+
+    function loadPlaceImage(image: HTMLImageElement) {
+      const source = image.dataset.src;
+      if (!source) return;
+      image.addEventListener("load", () => image.removeAttribute("data-src"), { once: true });
+      image.src = source;
+    }
+
+    function observePlaceImages(scope: ParentNode = document) {
+      const images = [...scope.querySelectorAll<HTMLImageElement>("[data-place-image][data-src]")];
+      if (!imageObserver) {
+        images.forEach(loadPlaceImage);
+        return;
+      }
+      images.forEach((image) => imageObserver?.observe(image));
+    }
+
+    async function loadAllPlaceCards() {
+      if (allPlaceCards) return allPlaceCards;
+      if (!placeCardsPromise) {
+        placeCardsPromise = fetch(config.cardsEndpoint)
+          .then((response) => {
+            if (!response.ok) throw new Error("Unable to load places");
+            return response.json();
+          })
+          .then((payload) => {
+            const localizedCards = payload?.cards?.[config.lang];
+            return Array.isArray(localizedCards) ? localizedCards : [];
+          });
+      }
+      allPlaceCards = await placeCardsPromise;
+      return allPlaceCards;
+    }
+
+    async function renderNextPlaces(batchSize = Number(config.batchSize) || 36) {
+      if (renderedCount >= totalCards) return;
+      const allCards = await loadAllPlaceCards();
+      const nextCards = allCards.slice(renderedCount, renderedCount + batchSize);
+      list.insertAdjacentHTML("beforeend", nextCards.map(renderPlaceCard).join(""));
+      renderedCount += nextCards.length;
+      refreshPlaceCards();
+      observePlaceImages(list);
+      applyPlacesFilters();
+    }
+
+    async function renderAllPlaces() {
+      if (renderedCount >= totalCards) return;
+      const allCards = await loadAllPlaceCards();
+      const nextCards = allCards.slice(renderedCount);
+      list.insertAdjacentHTML("beforeend", nextCards.map(renderPlaceCard).join(""));
+      renderedCount = allCards.length;
+      refreshPlaceCards();
+      observePlaceImages(list);
+    }
+
+    async function applyFiltersFromControls() {
+      if (hasActiveFilters()) await renderAllPlaces();
+      applyPlacesFilters();
+    }
+
+    search.addEventListener("input", () => void applyFiltersFromControls());
+    era.addEventListener("change", () => void applyFiltersFromControls());
+    category.addEventListener("change", () => void applyFiltersFromControls());
+    evidence.addEventListener("change", () => void applyFiltersFromControls());
+    loadMore.addEventListener("click", () => void renderNextPlaces());
     reset.addEventListener("click", () => {
       search.value = "";
       era.value = "all";
@@ -346,6 +557,28 @@ const config = {
       applyPlacesFilters();
       search.focus();
     });
+
+    function hydratePlaceImages() {
+      if (!("IntersectionObserver" in window)) {
+        observePlaceImages();
+        return;
+      }
+      imageObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            const image = entry.target as HTMLImageElement;
+            imageObserver?.unobserve(image);
+            loadPlaceImage(image);
+          }
+        },
+        { rootMargin: "120px 0px" }
+      );
+      observePlaceImages();
+    }
+
+    refreshPlaceCards();
     applyPlacesFilters();
+    window.setTimeout(hydratePlaceImages, 1200);
   </script>
 </Layout>
