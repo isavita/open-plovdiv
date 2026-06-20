@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import SectionNav from "@components/SectionNav.astro";
 import { ui, type Lang } from "@i18n/ui";
 import {
   historyKnowledgeEvents,
@@ -568,7 +569,14 @@ const nodeConfig = {
     </div>
   </section>
 
-  <section class="section" id="people-graph">
+  <SectionNav
+    items={lang === "bg"
+      ? [{ id: "people-graph", label: "Граф" }, { id: "people-catalog", label: "Каталог" }]
+      : [{ id: "people-graph", label: "Graph" }, { id: "people-catalog", label: "Catalog" }]}
+    label={lang === "bg" ? "Раздели на страницата" : "Page sections"}
+  />
+
+  <section class="section" id="people-graph" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>
@@ -691,7 +699,7 @@ const nodeConfig = {
     </div>
   </section>
 
-  <section class="section section-tint" id="people-catalog">
+  <section class="section section-tint" id="people-catalog" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>

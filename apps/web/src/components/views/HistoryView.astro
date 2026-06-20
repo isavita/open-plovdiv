@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import HeroBackdrop from "@components/HeroBackdrop.astro";
+import SectionNav from "@components/SectionNav.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { localizePath } from "@i18n/utils";
 import {
@@ -647,6 +648,7 @@ const nbEraLabels: Record<NeighbourhoodEra, string> =
 const sectionNav =
   lang === "bg"
     ? [
+        { id: "coverage", label: "Обхват" },
         { id: "timeline", label: "Хронология" },
         { id: "city-growth", label: "Растеж" },
         { id: "landmarks", label: "Места" },
@@ -655,6 +657,7 @@ const sectionNav =
         { id: "data", label: "Данни" }
       ]
     : [
+        { id: "coverage", label: "Coverage" },
         { id: "timeline", label: "Timeline" },
         { id: "city-growth", label: "Growth" },
         { id: "landmarks", label: "Landmarks" },
@@ -748,13 +751,7 @@ const nbByEra = nbOrder
     </div>
   </section>
 
-  <nav class="page-subnav" aria-label={sectionNavLabel} id="history-subnav">
-    <div class="container page-subnav-inner">
-      {sectionNav.map((s) => (
-        <a href={`#${s.id}`} data-subnav-link={s.id}>{s.label}</a>
-      ))}
-    </div>
-  </nav>
+  <SectionNav items={sectionNav} label={sectionNavLabel} />
 
   <section class="section" style="padding-top:0">
     <div class="container">
@@ -768,7 +765,7 @@ const nbByEra = nbOrder
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <section class="section" style="padding-top:0" id="coverage">
     <div class="container">
       <div class="section-head">
         <div>
@@ -2195,48 +2192,6 @@ const nbByEra = nbOrder
     scheduleNeighbourhoodMap();
   </script>
 
-  <script>
-    const subnavLinks = [...document.querySelectorAll<HTMLAnchorElement>("[data-subnav-link]")];
-    const subnavIds = subnavLinks
-      .map((a) => a.getAttribute("data-subnav-link"))
-      .filter((id): id is string => Boolean(id));
-    if (subnavIds.length) {
-      let activeId = "";
-      const setActive = (id: string) => {
-        if (id === activeId) return;
-        activeId = id;
-        for (const link of subnavLinks) {
-          link.setAttribute(
-            "aria-current",
-            link.getAttribute("data-subnav-link") === id ? "true" : "false"
-          );
-        }
-      };
-      // Active = the last section whose top has scrolled above the sticky bar line.
-      let ticking = false;
-      const update = () => {
-        ticking = false;
-        const line = 140;
-        let current = subnavIds[0];
-        for (const id of subnavIds) {
-          const el = document.getElementById(id);
-          if (el && el.getBoundingClientRect().top <= line) current = id;
-        }
-        setActive(current);
-      };
-      window.addEventListener(
-        "scroll",
-        () => {
-          if (!ticking) {
-            ticking = true;
-            requestAnimationFrame(update);
-          }
-        },
-        { passive: true }
-      );
-      update();
-    }
-  </script>
 </Layout>
 
 <style is:global>

@@ -4493,11 +4493,13 @@ code {
   background: var(--accent);
   color: #fff;
 }
+#coverage,
 #timeline,
 #city-growth,
 #landmarks,
 #archive-layer,
 #people,
-#data {
+#data,
+[data-subnav-target] {
   scroll-margin-top: 124px;
 }

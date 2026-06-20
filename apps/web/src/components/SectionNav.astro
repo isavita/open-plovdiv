@@ -1,0 +1,62 @@
+---
+// Sticky in-page section navigation with scroll-spy (active-section highlight).
+// Targets must carry the matching id AND `data-subnav-target` (for scroll offset).
+type Item = { id: string; label: string };
+interface Props {
+  items: Item[];
+  label?: string;
+}
+const { items, label } = Astro.props;
+---
+
+<nav class="page-subnav" aria-label={label ?? "Sections"}>
+  <div class="container page-subnav-inner">
+    {items.map((s) => (
+      <a href={`#${s.id}`} data-subnav-link={s.id}>{s.label}</a>
+    ))}
+  </div>
+</nav>
+
+<script>
+  (() => {
+    const links = [...document.querySelectorAll<HTMLAnchorElement>("[data-subnav-link]")];
+    const ids = links
+      .map((a) => a.getAttribute("data-subnav-link"))
+      .filter((id): id is string => Boolean(id));
+    if (!ids.length) return;
+    let activeId = "";
+    const setActive = (id: string) => {
+      if (id === activeId) return;
+      activeId = id;
+      for (const link of links) {
+        link.setAttribute(
+          "aria-current",
+          link.getAttribute("data-subnav-link") === id ? "true" : "false"
+        );
+      }
+    };
+    // Active = the last target whose top has scrolled above the sticky-bar line.
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const line = 140;
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= line) current = id;
+      }
+      setActive(current);
+    };
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      },
+      { passive: true }
+    );
+    update();
+  })();
+</script>
