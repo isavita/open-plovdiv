@@ -4453,3 +4453,51 @@ code {
 .places-map-head {
   margin-bottom: 14px;
 }
+
+/* sticky in-page section navigation (History page) */
+.page-subnav {
+  position: sticky;
+  top: 66px;
+  z-index: 30;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: saturate(1.3) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.page-subnav-inner {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+.page-subnav-inner::-webkit-scrollbar {
+  display: none;
+}
+.page-subnav a {
+  flex: 0 0 auto;
+  padding: 7px 14px;
+  border-radius: var(--r-pill);
+  color: var(--ink-2);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.page-subnav a:hover {
+  background: var(--surface-3);
+  color: var(--ink);
+}
+.page-subnav a[aria-current="true"] {
+  background: var(--accent);
+  color: #fff;
+}
+#timeline,
+#city-growth,
+#landmarks,
+#archive-layer,
+#people,
+#data {
+  scroll-margin-top: 124px;
+}

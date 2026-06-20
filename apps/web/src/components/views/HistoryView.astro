@@ -643,6 +643,27 @@ const nbEraLabels: Record<NeighbourhoodEra, string> =
     ? { ottoman: "Османски период", revival: "Възраждане", modern: "Ново време (XX в.)", socialist: "Социалистически период" }
     : { ottoman: "Ottoman period", revival: "National Revival", modern: "Modern era (20th c.)", socialist: "Socialist period" };
 
+// sticky in-page section navigation
+const sectionNav =
+  lang === "bg"
+    ? [
+        { id: "timeline", label: "Хронология" },
+        { id: "city-growth", label: "Растеж" },
+        { id: "landmarks", label: "Места" },
+        { id: "archive-layer", label: "Архив" },
+        { id: "people", label: "Хора" },
+        { id: "data", label: "Данни" }
+      ]
+    : [
+        { id: "timeline", label: "Timeline" },
+        { id: "city-growth", label: "Growth" },
+        { id: "landmarks", label: "Landmarks" },
+        { id: "archive-layer", label: "Archive" },
+        { id: "people", label: "People" },
+        { id: "data", label: "Data" }
+      ];
+const sectionNavLabel = lang === "bg" ? "Раздели на страницата" : "Page sections";
+
 const numberFmt = new Intl.NumberFormat(lang === "bg" ? "bg-BG" : "en-GB");
 
 const pop = [...plovdivPopulation].sort((a, b) => a.year - b.year);
@@ -726,6 +747,14 @@ const nbByEra = nbOrder
       </div>
     </div>
   </section>
+
+  <nav class="page-subnav" aria-label={sectionNavLabel} id="history-subnav">
+    <div class="container page-subnav-inner">
+      {sectionNav.map((s) => (
+        <a href={`#${s.id}`} data-subnav-link={s.id}>{s.label}</a>
+      ))}
+    </div>
+  </nav>
 
   <section class="section" style="padding-top:0">
     <div class="container">
@@ -1196,7 +1225,7 @@ const nbByEra = nbOrder
     </div>
   </section>
 
-  <section class="section section-tint">
+  <section class="section section-tint" id="people">
     <div class="container">
       <div class="section-head">
         <div>
@@ -1251,7 +1280,7 @@ const nbByEra = nbOrder
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="data">
     <div class="container">
       <div class="section-head">
         <div>
@@ -2164,6 +2193,49 @@ const nbByEra = nbOrder
     }
 
     scheduleNeighbourhoodMap();
+  </script>
+
+  <script>
+    const subnavLinks = [...document.querySelectorAll<HTMLAnchorElement>("[data-subnav-link]")];
+    const subnavIds = subnavLinks
+      .map((a) => a.getAttribute("data-subnav-link"))
+      .filter((id): id is string => Boolean(id));
+    if (subnavIds.length) {
+      let activeId = "";
+      const setActive = (id: string) => {
+        if (id === activeId) return;
+        activeId = id;
+        for (const link of subnavLinks) {
+          link.setAttribute(
+            "aria-current",
+            link.getAttribute("data-subnav-link") === id ? "true" : "false"
+          );
+        }
+      };
+      // Active = the last section whose top has scrolled above the sticky bar line.
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        const line = 140;
+        let current = subnavIds[0];
+        for (const id of subnavIds) {
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= line) current = id;
+        }
+        setActive(current);
+      };
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+          }
+        },
+        { passive: true }
+      );
+      update();
+    }
   </script>
 </Layout>
 
