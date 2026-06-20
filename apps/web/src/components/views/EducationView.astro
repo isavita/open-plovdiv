@@ -46,7 +46,7 @@ const labels = {
     scriptReady: "сценарий готов",
     audioRoutesTitle: "Аудио маршрути за разходка",
     audioRoutesLead:
-      "Всеки маршрут използва проверените сценарии от урока и може да се слуша в браузъра или да се отпечата като текст за водене на група.",
+      "Всеки маршрут използва проверените сценарии от урока и може да се слуша в браузъра или да се следва като текст за водене на група.",
     playAudio: "Пусни",
     pauseAudio: "Пауза",
     stopAudio: "Стоп",
@@ -60,7 +60,6 @@ const labels = {
     openApi: "API",
     jsonData: "JSON",
     csvData: "CSV",
-    print: "Печат",
     editorialNote:
       "Материалите са готови като източниково проследими чернови. Преди официално училищно използване остават педагогически и независим редакторски преглед."
   },
@@ -89,7 +88,7 @@ const labels = {
     scriptReady: "script ready",
     audioRoutesTitle: "Audio Walking Routes",
     audioRoutesLead:
-      "Each route uses the reviewed lesson script and can be played in the browser or printed as a text guide for a group walk.",
+      "Each route uses the reviewed lesson script and can be played in the browser or followed as a text guide for a group walk.",
     playAudio: "Play",
     pauseAudio: "Pause",
     stopAudio: "Stop",
@@ -103,7 +102,6 @@ const labels = {
     openApi: "API",
     jsonData: "JSON",
     csvData: "CSV",
-    print: "Print",
     editorialNote:
       "The materials are source-traceable drafts. Pedagogical review and independent editorial sign-off are still required before formal classroom use."
   }
@@ -173,8 +171,7 @@ function evidenceNames(resource: EducationResource, type: "events" | "places" | 
           <h1>{labels.title}</h1>
           <p class="lead">{labels.lead}</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#lessons">{labels.lessonPlan}</a>
-            <button class="btn btn-secondary" type="button" data-print-education>{labels.print}</button>
+            <a class="button" href="#lessons">{labels.lessonPlan}</a>
           </div>
         </div>
         <dl class="stats-grid education-stats" aria-label={labels.title}>
@@ -365,8 +362,6 @@ function evidenceNames(resource: EducationResource, type: "events" | "places" | 
   </div>
 
   <script>
-    document.querySelector("[data-print-education]")?.addEventListener("click", () => window.print());
-
     const audioTours = [...document.querySelectorAll("[data-audio-tour]")];
     const speechApi = window.speechSynthesis;
     let activeTour = null;

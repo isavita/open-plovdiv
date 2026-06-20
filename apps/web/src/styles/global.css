@@ -727,6 +727,13 @@ p:last-child {
   margin-top: 28px;
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
 .button {
   align-items: center;
   background: var(--brand);
