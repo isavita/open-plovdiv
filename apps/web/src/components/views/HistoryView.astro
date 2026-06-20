@@ -1196,6 +1196,7 @@ const thenNowPairsForView = [...thenNowPairs].sort((a, b) =>
           id: event.id,
           era: event.era,
           category: event.category,
+          categoryLabel: labelApiCategory(event.category),
           themeTags: event.theme_tags,
           personIds: event.person_ids,
           placeIds: event.place_ids,
@@ -1233,6 +1234,7 @@ const thenNowPairsForView = [...thenNowPairs].sort((a, b) =>
     }
 
     function renderTimelineItem(item: any) {
+      const categoryLabel = item.categoryLabel ?? labelApiCategory(item.category ?? "");
       const sources = Array.isArray(item.sources) ? item.sources : [];
       const sourceLinks = sources.length
         ? `<div class="history-source-links"><span>${escapeTimelineHtml(timelineConfig.labels.sourcePlural ?? timelineConfig.labels.source)}</span>${sources
@@ -1261,7 +1263,7 @@ const thenNowPairsForView = [...thenNowPairs].sort((a, b) =>
                 <p class="timeline-period">${escapeTimelineHtml(item.date)}</p>
                 <h3>${escapeTimelineHtml(item.title)}</h3>
               </div>
-              <span class="badge no-dot">${escapeTimelineHtml(item.category)}</span>
+              <span class="badge no-dot">${escapeTimelineHtml(categoryLabel)}</span>
             </header>
             <p>${escapeTimelineHtml(item.summary)}</p>
             ${conflictNote}

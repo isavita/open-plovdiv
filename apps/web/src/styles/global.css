@@ -3885,6 +3885,9 @@ code {
 .place-card-media {
   background: var(--surface-3);
   display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
 }
 
 .place-card-media img {
@@ -3892,6 +3895,24 @@ code {
   height: 100%;
   object-fit: cover;
   width: 100%;
+  display: block;
+}
+
+.place-card-credit {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 4px 9px;
+  font-size: 0.66rem;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.92);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
+}
+.place-card-credit a {
+  color: inherit;
+  text-decoration: none;
+}
+.place-card-credit a:hover {
+  text-decoration: underline;
 }
 
 .place-card-body {

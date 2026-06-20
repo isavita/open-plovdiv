@@ -131,6 +131,15 @@ for (const event of historyKnowledgeEvents) {
   for (const placeId of event.place_ids) eventCountByPlace.set(placeId, (eventCountByPlace.get(placeId) ?? 0) + 1);
 }
 
+// Lightweight Wikimedia Commons thumbnail via the official Special:FilePath
+// sized-image endpoint (avoids hotlinking full-size originals).
+function commonsThumb(url: string, width: number): string {
+  if (!url.includes("/wikipedia/commons/")) return url;
+  const file = url.split("/").pop();
+  if (!file) return url;
+  return `https://commons.wikimedia.org/wiki/Special:FilePath/${file}?width=${width}`;
+}
+
 const eras = [...new Set(places.map((place) => place.era))].sort();
 const categories = [...new Set(places.map((place) => place.category))].sort((a, b) =>
   categoryLabel(a).localeCompare(categoryLabel(b), lang === "bg" ? "bg-BG" : "en-GB")
@@ -237,6 +246,21 @@ const config = {
               data-archive={archiveCount}
               data-then-now={pairCount}
             >
+              {place.media?.[0] && (
+                <figure class="place-card-media">
+                  <img
+                    src={commonsThumb(place.media[0].url, 480)}
+                    alt={localized(place, "name")}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="place-card-credit">
+                    <a href={place.media[0].license_url} target="_blank" rel="noreferrer">
+                      {`${place.media[0].credit} · ${place.media[0].license}`}
+                    </a>
+                  </figcaption>
+                </figure>
+              )}
               <div class="place-card-body">
                 <p class="eyebrow">{localized(place, "era")} · {categoryLabel(place.category)}</p>
                 <h2><a href={localizePath(`/places/${place.id}`, lang)}>{localized(place, "name")}</a></h2>
@@ -251,11 +275,13 @@ const config = {
                     ))}
                   </dl>
                 )}
-                <dl class="place-evidence-counts">
-                  <div><dt>{labels.events}</dt><dd>{eventCount}</dd></div>
-                  <div><dt>{labels.archive}</dt><dd>{archiveCount}</dd></div>
-                  <div><dt>{labels.thenNow}</dt><dd>{pairCount}</dd></div>
-                </dl>
+                {eventCount + archiveCount + pairCount > 0 && (
+                  <dl class="place-evidence-counts">
+                    <div><dt>{labels.events}</dt><dd>{eventCount}</dd></div>
+                    <div><dt>{labels.archive}</dt><dd>{archiveCount}</dd></div>
+                    <div><dt>{labels.thenNow}</dt><dd>{pairCount}</dd></div>
+                  </dl>
+                )}
                 {source && (
                   <a class="src-link" href={source.url} target="_blank" rel="noreferrer">
                     {labels.source}: {sourceTitle(localized(source, "title"), lang)} ↗
