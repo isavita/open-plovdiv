@@ -819,6 +819,9 @@ export type Neighbourhood = {
   period_en: string;
   summary_bg: string;
   summary_en: string;
+  lat: number;
+  lng: number;
+  approximate?: boolean;
   source: Source;
 };
 

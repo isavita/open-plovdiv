@@ -4386,3 +4386,31 @@ code {
 .nb-socialist {
   --era-color: #8a6d3b;
 }
+
+/* growth-rate bar chart */
+.rate-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.rate-bar {
+  fill: var(--brand);
+}
+.rate-pos {
+  fill: var(--brand);
+}
+.rate-neg {
+  fill: #b23c2d;
+}
+.rate-val {
+  fill: var(--muted);
+  font-size: 14px;
+  font-family: var(--font-ui);
+}
+
+/* neighbourhood map */
+.nb-map {
+  height: 460px;
+  width: 100%;
+}

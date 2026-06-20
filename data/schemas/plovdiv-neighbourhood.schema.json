@@ -14,6 +14,8 @@
     "period_en",
     "summary_bg",
     "summary_en",
+    "lat",
+    "lng",
     "source"
   ],
   "properties": {
@@ -22,6 +24,9 @@
     "name_en": { "type": "string", "minLength": 2 },
     "era_key": { "type": "string", "enum": ["ottoman", "revival", "modern", "socialist"] },
     "year": { "type": "integer", "minimum": 1000, "maximum": 2100 },
+    "lat": { "type": "number", "minimum": -90, "maximum": 90 },
+    "lng": { "type": "number", "minimum": -180, "maximum": 180 },
+    "approximate": { "type": "boolean" },
     "period_bg": { "type": "string", "minLength": 3 },
     "period_en": { "type": "string", "minLength": 3 },
     "summary_bg": { "type": "string", "minLength": 20 },

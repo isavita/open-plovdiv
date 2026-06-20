@@ -595,9 +595,23 @@ const growth =
         popTitle: "Население на Пловдив през годините",
         popLead:
           "Преброявания от Освобождението до днес. След бурния ръст през XX век населението достига връх през 1985 г., а след това намалява.",
+        rateTitle: "Темп на растеж между преброяванията",
+        rateLead:
+          "Среден годишен темп на изменение на населението за всеки период между две преброявания.",
+        perYear: "%/год.",
+        densityTitle: "Гъстота на населението",
+        areaLabel: "Площ на града",
+        densityNow: "Гъстота (2021)",
+        densityPeak: "Гъстота при върха (1985)",
+        perKm: "д./км²",
+        densityNote:
+          "Гъстотата е изчислена спрямо днешната площ на града (101,98 км²). Пловдив е най-гъсто населеният град в България.",
         nbTitle: "Кога са се появили кварталите",
         nbLead:
           "Подбрани квартали и райони на Пловдив, подредени по времето на възникване — всеки с публичен източник.",
+        mapTitle: "Кварталите върху картата",
+        mapLead: "Приблизително разположение на кварталите, оцветени по епоха на възникване.",
+        approxNote: "Приблизително местоположение",
         source: "Източник"
       }
     : {
@@ -605,9 +619,23 @@ const growth =
         popTitle: "Population of Plovdiv over time",
         popLead:
           "Censuses from the Liberation to today. After rapid 20th-century growth the population peaked in 1985, then declined.",
+        rateTitle: "Growth rate between censuses",
+        rateLead:
+          "Average annual rate of population change for each period between two censuses.",
+        perYear: "%/yr",
+        densityTitle: "Population density",
+        areaLabel: "City area",
+        densityNow: "Density (2021)",
+        densityPeak: "Density at peak (1985)",
+        perKm: "res./km²",
+        densityNote:
+          "Density is computed against the city's present area (101.98 km²). Plovdiv is the most densely populated city in Bulgaria.",
         nbTitle: "When the neighbourhoods appeared",
         nbLead:
           "Selected Plovdiv neighbourhoods and districts, ordered by when they emerged — each with a public source.",
+        mapTitle: "The neighbourhoods on the map",
+        mapLead: "Approximate location of the neighbourhoods, coloured by the era they emerged.",
+        approxNote: "Approximate location",
         source: "Source"
       };
 const nbEraLabels: Record<NeighbourhoodEra, string> =
@@ -631,6 +659,46 @@ const popArea = `M ${popX(minYear).toFixed(1)} ${(PH - popB).toFixed(1)} L ${pop
 const popYTicks = [0, 100000, 200000, 300000].concat(niceMax > 300000 ? [niceMax] : []);
 const popXTicks = [1880, 1900, 1920, 1946, 1965, 1985, 2001, 2021].filter((y) => y >= minYear && y <= maxYear);
 const peakPoint = pop.reduce((a, b) => (b.population > a.population ? b : a));
+
+// growth rate between consecutive censuses (annualised %/yr)
+const growthRates = pop.slice(1).map((p, i) => {
+  const prev = pop[i];
+  const years = p.year - prev.year;
+  return { from: prev.year, to: p.year, rate: (Math.pow(p.population / prev.population, 1 / years) - 1) * 100 };
+});
+const maxAbsRate = Math.max(...growthRates.map((g) => Math.abs(g.rate)), 1);
+const RW = 1000, RH = 250, rL = 28, rR = 14, rT = 24, rB = 40;
+const rPlotH = RH - rT - rB;
+const rZero = rT + rPlotH / 2;
+const rStep = (RW - rL - rR) / growthRates.length;
+const rBarW = rStep * 0.62;
+const rateBarH = (rate: number) => (Math.abs(rate) / maxAbsRate) * (rPlotH / 2);
+
+// density (against the present city area)
+const cityAreaKm2 = 101.98;
+const areaUnit = lang === "bg" ? "км²" : "km²";
+const densityNowVal = Math.round(pop[pop.length - 1].population / cityAreaKm2);
+const densityPeakVal = Math.round(peakPoint.population / cityAreaKm2);
+
+// neighbourhood map markers, coloured by era
+const nbEraColors: Record<NeighbourhoodEra, string> = {
+  ottoman: "#2f7d6b",
+  revival: "#b4632a",
+  modern: "#15657f",
+  socialist: "#8a6d3b"
+};
+const nbMapConfig = {
+  approxNote: growth.approxNote,
+  markers: plovdivNeighbourhoods.map((n) => ({
+    lat: n.lat,
+    lng: n.lng,
+    name: localized(n, "name"),
+    period: localized(n, "period"),
+    summary: localized(n, "summary"),
+    era: nbEraLabels[n.era_key],
+    color: nbEraColors[n.era_key]
+  }))
+};
 
 const nbOrder: NeighbourhoodEra[] = ["ottoman", "revival", "modern", "socialist"];
 const nbByEra = nbOrder
@@ -826,6 +894,53 @@ const nbByEra = nbOrder
         </p>
       </div>
 
+      <div class="grid grid-2" style="margin-top:18px">
+        <div class="card chart-card">
+          <h3 style="font-size:clamp(1.05rem,2vw,1.3rem)">{growth.rateTitle}</h3>
+          <p class="meta" style="margin:6px 0 14px">{growth.rateLead}</p>
+          <svg class="rate-chart" viewBox={`0 0 ${RW} ${RH}`} role="img" aria-label={growth.rateTitle}>
+            <line class="pop-grid" x1={rL} y1={rZero} x2={RW - rR} y2={rZero} />
+            {growthRates.map((g, i) => {
+              const h = Math.max(1, rateBarH(g.rate));
+              const x = rL + i * rStep + (rStep - rBarW) / 2;
+              const y = g.rate >= 0 ? rZero - h : rZero;
+              return (
+                <g>
+                  <rect class={g.rate >= 0 ? "rate-bar rate-pos" : "rate-bar rate-neg"} x={x} y={y} width={rBarW} height={h} rx="1.5">
+                    <title>{`${g.from}–${g.to}: ${g.rate >= 0 ? "+" : ""}${g.rate.toFixed(1)} ${growth.perYear}`}</title>
+                  </rect>
+                  <text class="rate-val" x={x + rBarW / 2} y={g.rate >= 0 ? y - 5 : y + h + 15} text-anchor="middle">{g.rate.toFixed(1)}</text>
+                  <text class="pop-axis-label" x={x + rBarW / 2} y={RH - rB + 22} text-anchor="middle">{g.to}</text>
+                </g>
+              );
+            })}
+          </svg>
+          <p class="meta" style="margin-top:6px">{`${growth.perYear}`}</p>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size:clamp(1.05rem,2vw,1.3rem)">{growth.densityTitle}</h3>
+          <dl class="stats-grid" style="margin-top:14px">
+            <div class="stat-card">
+              <dt>{`${growth.areaLabel} (${areaUnit})`}</dt>
+              <dd>{numberFmt.format(cityAreaKm2)}</dd>
+            </div>
+            <div class="stat-card">
+              <dt>{`${growth.densityNow} · ${growth.perKm}`}</dt>
+              <dd>{numberFmt.format(densityNowVal)}</dd>
+            </div>
+            <div class="stat-card">
+              <dt>{`${growth.densityPeak} · ${growth.perKm}`}</dt>
+              <dd>{numberFmt.format(densityPeakVal)}</dd>
+            </div>
+          </dl>
+          <p class="meta" style="margin-top:14px">
+            {growth.densityNote}{" "}
+            <a href="https://en.wikipedia.org/wiki/Plovdiv" target="_blank" rel="noreferrer">Wikipedia — Plovdiv</a>
+          </p>
+        </div>
+      </div>
+
       <div class="section-head" style="margin-top:34px">
         <div>
           <h2 style="font-size:clamp(1.3rem,2.4vw,1.7rem)">{growth.nbTitle}</h2>
@@ -853,6 +968,16 @@ const nbByEra = nbOrder
             </div>
           </div>
         ))}
+      </div>
+
+      <div class="section-head" style="margin-top:34px">
+        <div>
+          <h2 style="font-size:clamp(1.3rem,2.4vw,1.7rem)">{growth.mapTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:76ch">{growth.mapLead}</p>
+        </div>
+      </div>
+      <div class="card map-card" style="padding:0;overflow:hidden">
+        <div id="nb-map" class="nb-map"></div>
       </div>
     </div>
   </section>
@@ -1941,6 +2066,48 @@ const nbByEra = nbOrder
     }
 
     scheduleHistoryMapInit();
+  </script>
+
+  <script type="application/json" id="nb-map-config" set:html={JSON.stringify(nbMapConfig)}></script>
+  <script>
+    import L from "leaflet";
+    import "leaflet/dist/leaflet.css";
+    const nbCfg = JSON.parse(document.getElementById("nb-map-config")?.textContent ?? "{}");
+    const nbEl = document.getElementById("nb-map");
+    const nbMarkers = (nbCfg.markers ?? []) as Array<{
+      lat: number;
+      lng: number;
+      name: string;
+      period: string;
+      summary: string;
+      era: string;
+      color: string;
+    }>;
+    const nbEsc = (v: string) =>
+      String(v).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+    if (nbEl && nbMarkers.length) {
+      const map = L.map(nbEl, { scrollWheelZoom: false }).setView([42.14, 24.75], 12);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+      const pts: [number, number][] = [];
+      for (const m of nbMarkers) {
+        L.circleMarker([m.lat, m.lng], {
+          radius: 9,
+          color: m.color,
+          weight: 2,
+          fillColor: m.color,
+          fillOpacity: 0.5
+        })
+          .addTo(map)
+          .bindPopup(
+            `<strong>${nbEsc(m.name)}</strong><br><span class="meta">${nbEsc(m.era)} · ${nbEsc(m.period)}</span><br>${nbEsc(m.summary)}<br><span class="meta">${nbEsc(nbCfg.approxNote)}</span>`
+          );
+        pts.push([m.lat, m.lng]);
+      }
+      if (pts.length > 1) map.fitBounds(pts, { padding: [40, 40] });
+    }
   </script>
 </Layout>
 
