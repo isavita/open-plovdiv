@@ -6,6 +6,8 @@ import projectsJson from "../../../../data/curated/projects.json";
 import sourcesJson from "../../../../data/curated/sources.json";
 import historyJson from "../../../../data/curated/plovdiv-history.json";
 import landmarksJson from "../../../../data/curated/plovdiv-landmarks.json";
+import populationJson from "../../../../data/curated/plovdiv-population.json";
+import neighbourhoodsJson from "../../../../data/curated/plovdiv-neighbourhoods.json";
 import historyKnowledgeIndexJson from "../../../../data/generated/history-knowledge/index.json";
 import historyKnowledgeEventsJson from "../../../../data/generated/history-knowledge/events.json";
 import historyKnowledgePeopleJson from "../../../../data/generated/history-knowledge/people.json";
@@ -795,6 +797,33 @@ export const budgetItems = budgetItemsJson as BudgetItem[];
 export const cityArchive = cityArchiveJson as CityArchiveRecord[];
 export const plovdivHistory = historyJson as HistoryEntry[];
 export const plovdivLandmarks = landmarksJson as Landmark[];
+
+export type PopulationPoint = {
+  id: string;
+  year: number;
+  population: number;
+  note_bg?: string;
+  note_en?: string;
+  source: Source;
+};
+
+export type NeighbourhoodEra = "ottoman" | "revival" | "modern" | "socialist";
+
+export type Neighbourhood = {
+  id: string;
+  name_bg: string;
+  name_en: string;
+  era_key: NeighbourhoodEra;
+  year: number;
+  period_bg: string;
+  period_en: string;
+  summary_bg: string;
+  summary_en: string;
+  source: Source;
+};
+
+export const plovdivPopulation = populationJson as PopulationPoint[];
+export const plovdivNeighbourhoods = neighbourhoodsJson as Neighbourhood[];
 export const sourceRegistry = sourcesJson as SourceRegistryItem[];
 export const historyKnowledgeIndex = historyKnowledgeIndexJson as HistoryKnowledgeIndex;
 export const historyKnowledgeEvents = historyKnowledgeEventsJson as KnowledgeEvent[];

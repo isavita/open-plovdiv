@@ -52,6 +52,18 @@ const datasets = [
     minRecords: 1
   },
   {
+    label: "population",
+    dataPath: "data/curated/plovdiv-population.json",
+    schemaPath: "data/schemas/plovdiv-population.schema.json",
+    minRecords: 1
+  },
+  {
+    label: "neighbourhoods",
+    dataPath: "data/curated/plovdiv-neighbourhoods.json",
+    schemaPath: "data/schemas/plovdiv-neighbourhood.schema.json",
+    minRecords: 1
+  },
+  {
     label: "historical archive items",
     dataPath: "data/curated/historical-archive-items.json",
     schemaPath: "data/schemas/historical-archive-item.schema.json",

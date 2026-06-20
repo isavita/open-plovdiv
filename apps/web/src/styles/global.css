@@ -4253,3 +4253,97 @@ code {
   color: var(--brand);
   line-height: 1;
 }
+
+/* ---- City growth: population chart + neighbourhood eras ----------------- */
+.pop-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.pop-grid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.pop-axis-label {
+  fill: var(--muted);
+  font-size: 16px;
+  font-family: var(--font-ui);
+}
+.pop-area {
+  fill: var(--accent);
+  opacity: 0.14;
+}
+.pop-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+.pop-dot {
+  fill: var(--accent);
+}
+.pop-dot-peak {
+  fill: var(--brand);
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+.pop-peak-label {
+  fill: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
+  font-family: var(--font-display);
+}
+
+.nb-eras {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.nb-era-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--era-color, var(--accent));
+}
+.nb-era-head h3 {
+  margin: 0;
+}
+.nb-era-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--era-color, var(--accent));
+  flex-shrink: 0;
+}
+.nb-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
+  gap: 14px;
+}
+.nb-card {
+  border-left: 3px solid var(--era-color, var(--accent));
+}
+.nb-period {
+  color: var(--era-color, var(--accent));
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin: 0 0 2px;
+}
+.nb-card h4 {
+  margin: 0 0 7px;
+}
+.nb-ottoman {
+  --era-color: #2f7d6b;
+}
+.nb-revival {
+  --era-color: #b4632a;
+}
+.nb-modern {
+  --era-color: #15657f;
+}
+.nb-socialist {
+  --era-color: #8a6d3b;
+}

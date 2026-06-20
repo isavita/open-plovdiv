@@ -13,8 +13,11 @@ import {
   historyKnowledgeSources,
   historicalArchiveItems,
   thenNowPairs,
+  plovdivPopulation,
+  plovdivNeighbourhoods,
   type HistoryEra,
-  type KnowledgeEvent
+  type KnowledgeEvent,
+  type NeighbourhoodEra
 } from "@lib/data";
 
 type Props = { lang: Lang };
@@ -637,6 +640,59 @@ const archiveItemsForView = [...historicalArchiveItems].sort(
 const thenNowPairsForView = [...thenNowPairs].sort((a, b) =>
   localized(a, "title").localeCompare(localized(b, "title"), lang === "bg" ? "bg-BG" : "en-GB")
 );
+
+// --- City growth: population chart + neighbourhood timeline ---
+const growth =
+  lang === "bg"
+    ? {
+        title: "Как растеше градът",
+        popTitle: "Население на Пловдив през годините",
+        popLead:
+          "Преброявания от Освобождението до днес. След бурния ръст през XX век населението достига връх през 1985 г., а след това намалява.",
+        nbTitle: "Кога са се появили кварталите",
+        nbLead:
+          "Подбрани квартали и райони на Пловдив, подредени по времето на възникване — всеки с публичен източник.",
+        source: "Източник"
+      }
+    : {
+        title: "How the city grew",
+        popTitle: "Population of Plovdiv over time",
+        popLead:
+          "Censuses from the Liberation to today. After rapid 20th-century growth the population peaked in 1985, then declined.",
+        nbTitle: "When the neighbourhoods appeared",
+        nbLead:
+          "Selected Plovdiv neighbourhoods and districts, ordered by when they emerged — each with a public source.",
+        source: "Source"
+      };
+const nbEraLabels: Record<NeighbourhoodEra, string> =
+  lang === "bg"
+    ? { ottoman: "Османски период", revival: "Възраждане", modern: "Ново време (XX в.)", socialist: "Социалистически период" }
+    : { ottoman: "Ottoman period", revival: "National Revival", modern: "Modern era (20th c.)", socialist: "Socialist period" };
+
+const numberFmt = new Intl.NumberFormat(lang === "bg" ? "bg-BG" : "en-GB");
+
+const pop = [...plovdivPopulation].sort((a, b) => a.year - b.year);
+const PW = 1000, PH = 340, popL = 56, popR = 16, popT = 30, popB = 46;
+const minYear = pop[0].year;
+const maxYear = pop[pop.length - 1].year;
+const maxPop = Math.max(...pop.map((p) => p.population));
+const niceMax = Math.ceil(maxPop / 100000) * 100000;
+const popX = (year: number) => popL + ((year - minYear) / (maxYear - minYear)) * (PW - popL - popR);
+const popY = (value: number) => PH - popB - (value / niceMax) * (PH - popT - popB);
+const popPts = pop.map((p) => `${popX(p.year).toFixed(1)},${popY(p.population).toFixed(1)}`);
+const popLine = `M ${popPts.join(" L ")}`;
+const popArea = `M ${popX(minYear).toFixed(1)} ${(PH - popB).toFixed(1)} L ${popPts.join(" L ")} L ${popX(maxYear).toFixed(1)} ${(PH - popB).toFixed(1)} Z`;
+const popYTicks = [0, 100000, 200000, 300000].concat(niceMax > 300000 ? [niceMax] : []);
+const popXTicks = [1880, 1900, 1920, 1946, 1965, 1985, 2001, 2021].filter((y) => y >= minYear && y <= maxYear);
+const peakPoint = pop.reduce((a, b) => (b.population > a.population ? b : a));
+
+const nbOrder: NeighbourhoodEra[] = ["ottoman", "revival", "modern", "socialist"];
+const nbByEra = nbOrder
+  .map((era) => ({
+    era,
+    items: plovdivNeighbourhoods.filter((n) => n.era_key === era).sort((a, b) => a.year - b.year)
+  }))
+  .filter((g) => g.items.length > 0);
 ---
 
 <Layout lang={lang} path="/history" title={t.history.title} description={t.history.lead}>
@@ -778,6 +834,80 @@ const thenNowPairsForView = [...thenNowPairs].sort((a, b) =>
 
       <ol class="timeline history-deep-list" id="history-event-list" aria-live="polite"></ol>
       <p id="history-empty" class="empty" hidden>{labels.noResults}</p>
+    </div>
+  </section>
+
+  <section class="section" id="city-growth">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>{growth.title}</h2></div>
+      </div>
+
+      <div class="card chart-card">
+        <h3>{growth.popTitle}</h3>
+        <p class="meta" style="max-width:76ch;margin:6px 0 18px">{growth.popLead}</p>
+        <svg class="pop-chart" viewBox={`0 0 ${PW} ${PH}`} role="img" aria-label={growth.popTitle}>
+          {popYTicks.map((v) => (
+            <g>
+              <line class="pop-grid" x1={popL} y1={popY(v)} x2={PW - popR} y2={popY(v)} />
+              <text class="pop-axis-label" x={popL - 8} y={popY(v) + 5} text-anchor="end">
+                {v === 0 ? "0" : `${v / 1000}k`}
+              </text>
+            </g>
+          ))}
+          {popXTicks.map((y) => (
+            <text class="pop-axis-label" x={popX(y)} y={PH - popB + 24} text-anchor="middle">{y}</text>
+          ))}
+          <path class="pop-area" d={popArea} />
+          <path class="pop-line" d={popLine} />
+          {pop.map((p) => (
+            <circle
+              class={p.year === peakPoint.year ? "pop-dot pop-dot-peak" : "pop-dot"}
+              cx={popX(p.year)}
+              cy={popY(p.population)}
+              r={p.year === peakPoint.year ? 6 : 3.5}
+            >
+              <title>{`${p.year}: ${numberFmt.format(p.population)}`}</title>
+            </circle>
+          ))}
+          <text class="pop-peak-label" x={popX(peakPoint.year)} y={popY(peakPoint.population) - 14} text-anchor="middle">
+            {`${numberFmt.format(peakPoint.population)} · ${peakPoint.year}`}
+          </text>
+        </svg>
+        <p class="meta" style="margin-top:8px">
+          {growth.source}:{" "}
+          <a href="https://en.wikipedia.org/wiki/Plovdiv" target="_blank" rel="noreferrer">Wikipedia — Plovdiv</a>
+        </p>
+      </div>
+
+      <div class="section-head" style="margin-top:34px">
+        <div>
+          <h2 style="font-size:clamp(1.3rem,2.4vw,1.7rem)">{growth.nbTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:76ch">{growth.nbLead}</p>
+        </div>
+      </div>
+      <div class="nb-eras">
+        {nbByEra.map((group) => (
+          <div class={`nb-era nb-${group.era}`}>
+            <div class="nb-era-head">
+              <span class="nb-era-dot" aria-hidden="true"></span>
+              <h3>{nbEraLabels[group.era]}</h3>
+            </div>
+            <div class="nb-list">
+              {group.items.map((n) => (
+                <article class="card nb-card">
+                  <p class="nb-period">{localized(n, "period")}</p>
+                  <h4>{localized(n, "name")}</h4>
+                  <p>{localized(n, "summary")}</p>
+                  <a class="src-link" href={n.source.url} target="_blank" rel="noreferrer">
+                    {`${growth.source}: ${n.source.title} ↗`}
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
