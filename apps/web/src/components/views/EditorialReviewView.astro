@@ -164,8 +164,39 @@ const blockerLabels: Record<string, { bg: string; en: string }> = {
   }
 };
 
+const roleLabels: Record<string, { bg: string; en: string }> = {
+  primary_entity: {
+    bg: "основен запис",
+    en: "primary record"
+  },
+  relationship_entity: {
+    bg: "връзка между записи",
+    en: "relationship record"
+  },
+  supporting_archive: {
+    bg: "архивен материал",
+    en: "supporting archive item"
+  },
+  primary_document: {
+    bg: "първичен документ",
+    en: "primary document"
+  },
+  editorial_feature: {
+    bg: "редакционен материал",
+    en: "editorial feature"
+  },
+  education_material: {
+    bg: "образователен материал",
+    en: "education material"
+  }
+};
+
 function blockerLabel(id: string) {
   return blockerLabels[id]?.[lang] ?? id.replaceAll("_", " ");
+}
+
+function roleLabel(id: string) {
+  return roleLabels[id]?.[lang] ?? id.replaceAll("_", " ");
 }
 
 function collectionLabel(id: string) {
@@ -186,7 +217,7 @@ const collectionRows = Object.entries(historyEditorialReview.collections).map(([
   return {
     id,
     label: collectionLabel(id),
-    role: collection.role,
+    role: roleLabel(collection.role),
     total: collection.total_records,
     signedOff: collection.signed_off_records,
     needsReview: collection.records_needing_review,
@@ -199,7 +230,7 @@ const collectionRows = Object.entries(historyEditorialReview.collections).map(([
 const sourceCoverageRows = Object.entries(historySourceCoverage.collections).map(([id, collection]) => ({
   id,
   label: collectionLabel(id),
-  role: collection.role,
+  role: roleLabel(collection.role),
   total: collection.total_records,
   withSources: collection.records_with_sources,
   missingSources: collection.records_without_sources,
@@ -210,6 +241,13 @@ const sourceCoverageRows = Object.entries(historySourceCoverage.collections).map
 
 const blockerOptions = [...new Set(historyEditorialReview.records.flatMap((record) => record.blockers))].sort();
 const statusOptions = [...new Set(historyEditorialReview.records.map((record) => record.editorial_status))].sort();
+const roleOptions = [
+  ...new Set([
+    ...historyEditorialReview.records.map((record) => record.role),
+    ...Object.values(historyEditorialReview.collections).map((collection) => collection.role),
+    ...Object.values(historySourceCoverage.collections).map((collection) => collection.role)
+  ])
+].sort();
 const generatedLabel = new Intl.DateTimeFormat(lang === "bg" ? "bg-BG" : "en-GB", {
   dateStyle: "medium"
 }).format(new Date(historyEditorialReview.generated_at));
@@ -237,6 +275,7 @@ const reviewConfig = {
   },
   collectionLabels: Object.fromEntries(collectionRows.map((row) => [row.id, row.label])),
   statusLabels: Object.fromEntries(statusOptions.map((status) => [status, statusLabel(status)])),
+  roleLabels: Object.fromEntries(roleOptions.map((role) => [role, roleLabel(role)])),
   blockerLabels: Object.fromEntries(blockerOptions.map((blocker) => [blocker, blockerLabel(blocker)]))
 };
 ---
@@ -513,6 +552,7 @@ const reviewConfig = {
         localizedTitle(record),
         labelFrom(config.collectionLabels, record.collection),
         labelFrom(config.statusLabels, record.editorial_status),
+        labelFrom(config.roleLabels, record.role),
         record.review_url_bg,
         record.review_url_en,
         record.api_url,
@@ -589,7 +629,7 @@ const reviewConfig = {
             : "";
           return `
             <tr>
-              <td><strong>${escapeHtml(labelFrom(config.collectionLabels, record.collection))}</strong><span class="meta">${escapeHtml(record.role)}</span></td>
+              <td><strong>${escapeHtml(labelFrom(config.collectionLabels, record.collection))}</strong><span class="meta">${escapeHtml(labelFrom(config.roleLabels, record.role))}</span></td>
               <td>${recordTitle}<span class="meta">${escapeHtml(record.id)}${apiUrl ? ` · ${apiUrl}` : ""}</span></td>
               <td><span class="badge status-unverified">${escapeHtml(labelFrom(config.statusLabels, record.editorial_status))}</span></td>
               <td>

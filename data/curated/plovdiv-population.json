@@ -160,5 +160,53 @@
       "url": "https://en.wikipedia.org/wiki/Plovdiv",
       "accessed_at": "2026-06-19"
     }
+  },
+  {
+    "id": "population-2022",
+    "year": 2022,
+    "population": 321824,
+    "note_bg": "Годишна оценка на НСИ към 31.12.2022 г. за град Пловдив.",
+    "note_en": "NSI annual estimate as of 31.12.2022 for the city of Plovdiv.",
+    "source": {
+      "title": "NSI — Population by towns and sex (dynamic XLSX)",
+      "url": "https://www.nsi.bg/sites/default/files/files/data/timeseries/Pop_6.1.4_Pop_DR.xlsx",
+      "accessed_at": "2026-06-20"
+    }
+  },
+  {
+    "id": "population-2023",
+    "year": 2023,
+    "population": 325485,
+    "note_bg": "Годишна оценка на НСИ към 31.12.2023 г. за град Пловдив.",
+    "note_en": "NSI annual estimate as of 31.12.2023 for the city of Plovdiv.",
+    "source": {
+      "title": "NSI — Population by towns and sex (dynamic XLSX)",
+      "url": "https://www.nsi.bg/sites/default/files/files/data/timeseries/Pop_6.1.4_Pop_DR.xlsx",
+      "accessed_at": "2026-06-20"
+    }
+  },
+  {
+    "id": "population-2024",
+    "year": 2024,
+    "population": 329489,
+    "note_bg": "Годишна оценка на НСИ към 31.12.2024 г. за град Пловдив.",
+    "note_en": "NSI annual estimate as of 31.12.2024 for the city of Plovdiv.",
+    "source": {
+      "title": "NSI — Population by towns and sex (dynamic XLSX)",
+      "url": "https://www.nsi.bg/sites/default/files/files/data/timeseries/Pop_6.1.4_Pop_DR.xlsx",
+      "accessed_at": "2026-06-20"
+    }
+  },
+  {
+    "id": "population-2025",
+    "year": 2025,
+    "population": 333994,
+    "note_bg": "Годишна оценка на НСИ към 31.12.2025 г. за град Пловдив.",
+    "note_en": "NSI annual estimate as of 31.12.2025 for the city of Plovdiv.",
+    "source": {
+      "title": "NSI — Population by towns and sex (dynamic XLSX)",
+      "url": "https://www.nsi.bg/sites/default/files/files/data/timeseries/Pop_6.1.4_Pop_DR.xlsx",
+      "accessed_at": "2026-06-20"
+    }
   }
 ]

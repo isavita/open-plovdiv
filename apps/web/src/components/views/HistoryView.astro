@@ -596,14 +596,15 @@ const growth =
         title: "Как растеше градът",
         popTitle: "Население на Пловдив през годините",
         popLead:
-          "Преброявания от Освобождението до днес. След бурния ръст през XX век населението достига връх през 1985 г., а след това намалява.",
-        rateTitle: "Темп на растеж между преброяванията",
+          "Историческите точки до 2021 г. са по преброявания и публикувани исторически серии; 2022-2025 са годишни оценки на НСИ към 31.12.",
+        rateTitle: "Темп на изменение на населението",
         rateLead:
-          "Среден годишен темп на изменение на населението за всеки период между две преброявания.",
-        perYear: "%/год.",
+          "Средногодишна промяна за всеки период между съседни отчетни точки.",
+        perYear: "% годишно",
+        rateUnitNote: "Стойностите са средногодишна промяна, % годишно.",
         densityTitle: "Гъстота на населението",
         areaLabel: "Площ на града",
-        densityNow: "Гъстота (2021)",
+        densityNow: "Гъстота",
         densityPeak: "Гъстота при върха (1985)",
         perKm: "д./км²",
         densityNote:
@@ -620,14 +621,15 @@ const growth =
         title: "How the city grew",
         popTitle: "Population of Plovdiv over time",
         popLead:
-          "Censuses from the Liberation to today. After rapid 20th-century growth the population peaked in 1985, then declined.",
-        rateTitle: "Growth rate between censuses",
+          "Historical points through 2021 use census and published historical series; 2022-2025 are NSI annual estimates as of 31 December.",
+        rateTitle: "Population change rate",
         rateLead:
-          "Average annual rate of population change for each period between two censuses.",
-        perYear: "%/yr",
+          "Average annual change for each period between adjacent reporting points.",
+        perYear: "% per year",
+        rateUnitNote: "Values are average annual change, % per year.",
         densityTitle: "Population density",
         areaLabel: "City area",
-        densityNow: "Density (2021)",
+        densityNow: "Density",
         densityPeak: "Density at peak (1985)",
         perKm: "res./km²",
         densityNote:
@@ -671,6 +673,8 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
 const numberFmt = new Intl.NumberFormat(lang === "bg" ? "bg-BG" : "en-GB");
 
 const pop = [...plovdivPopulation].sort((a, b) => a.year - b.year);
+const latestPopulationPoint = pop[pop.length - 1];
+const populationSources = [...new Map(pop.map((point) => [point.source.url, point.source])).values()];
 const PW = 1000, PH = 340, popL = 56, popR = 16, popT = 30, popB = 46;
 const minYear = pop[0].year;
 const maxYear = pop[pop.length - 1].year;
@@ -682,14 +686,23 @@ const popPts = pop.map((p) => `${popX(p.year).toFixed(1)},${popY(p.population).t
 const popLine = `M ${popPts.join(" L ")}`;
 const popArea = `M ${popX(minYear).toFixed(1)} ${(PH - popB).toFixed(1)} L ${popPts.join(" L ")} L ${popX(maxYear).toFixed(1)} ${(PH - popB).toFixed(1)} Z`;
 const popYTicks = [0, 100000, 200000, 300000].concat(niceMax > 300000 ? [niceMax] : []);
-const popXTicks = [1880, 1900, 1920, 1946, 1965, 1985, 2001, 2021].filter((y) => y >= minYear && y <= maxYear);
+const popXTicks = [...new Set([1880, 1900, 1920, 1946, 1965, 1985, 2001, latestPopulationPoint.year])].filter(
+  (y) => y >= minYear && y <= maxYear
+);
 const peakPoint = pop.reduce((a, b) => (b.population > a.population ? b : a));
 
-// growth rate between consecutive censuses (annualised %/yr)
+const cleanRate = (rate: number) => (Math.abs(rate) < 0.05 ? 0 : rate);
+const formatRate = (rate: number) => {
+  const value = cleanRate(rate);
+  return `${value > 0 ? "+" : ""}${value.toFixed(1)}`;
+};
+
+// growth rate between consecutive reporting points (annualised percent)
 const growthRates = pop.slice(1).map((p, i) => {
   const prev = pop[i];
   const years = p.year - prev.year;
-  return { from: prev.year, to: p.year, rate: (Math.pow(p.population / prev.population, 1 / years) - 1) * 100 };
+  const rate = (Math.pow(p.population / prev.population, 1 / years) - 1) * 100;
+  return { from: prev.year, to: p.year, rate: cleanRate(rate), label: formatRate(rate) };
 });
 const maxAbsRate = Math.max(...growthRates.map((g) => Math.abs(g.rate)), 1);
 const RW = 1000, RH = 250, rL = 28, rR = 14, rT = 24, rB = 40;
@@ -766,7 +779,7 @@ const nbByEra = nbOrder
     </div>
   </section>
 
-  <section class="section" style="padding-top:0" id="coverage">
+  <section class="section" style="padding-top:0" id="coverage" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>
@@ -790,7 +803,7 @@ const nbByEra = nbOrder
     </div>
   </section>
 
-  <section class="section section-tint" id="timeline">
+  <section class="section section-tint" id="timeline" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>
@@ -878,7 +891,7 @@ const nbByEra = nbOrder
     </div>
   </section>
 
-  <section class="section" id="city-growth">
+  <section class="section" id="city-growth" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div><h2>{growth.title}</h2></div>
@@ -887,65 +900,74 @@ const nbByEra = nbOrder
       <div class="card chart-card">
         <h3>{growth.popTitle}</h3>
         <p class="meta" style="max-width:76ch;margin:6px 0 18px">{growth.popLead}</p>
-        <svg class="pop-chart" viewBox={`0 0 ${PW} ${PH}`} role="img" aria-label={growth.popTitle}>
-          {popYTicks.map((v) => (
-            <g>
-              <line class="pop-grid" x1={popL} y1={popY(v)} x2={PW - popR} y2={popY(v)} />
-              <text class="pop-axis-label" x={popL - 8} y={popY(v) + 5} text-anchor="end">
-                {v === 0 ? "0" : `${v / 1000}k`}
-              </text>
-            </g>
-          ))}
-          {popXTicks.map((y) => (
-            <text class="pop-axis-label" x={popX(y)} y={PH - popB + 24} text-anchor="middle">{y}</text>
-          ))}
-          <path class="pop-area" d={popArea} />
-          <path class="pop-line" d={popLine} />
-          {pop.map((p) => (
-            <circle
-              class={p.year === peakPoint.year ? "pop-dot pop-dot-peak" : "pop-dot"}
-              cx={popX(p.year)}
-              cy={popY(p.population)}
-              r={p.year === peakPoint.year ? 6 : 3.5}
-            >
-              <title>{`${p.year}: ${numberFmt.format(p.population)}`}</title>
-            </circle>
-          ))}
-          <text class="pop-peak-label" x={popX(peakPoint.year)} y={popY(peakPoint.population) - 14} text-anchor="middle">
-            {`${numberFmt.format(peakPoint.population)} · ${peakPoint.year}`}
-          </text>
-        </svg>
+        <div class="chart-scroll">
+          <svg class="pop-chart" viewBox={`0 0 ${PW} ${PH}`} role="img" aria-label={growth.popTitle}>
+            {popYTicks.map((v) => (
+              <g>
+                <line class="pop-grid" x1={popL} y1={popY(v)} x2={PW - popR} y2={popY(v)} />
+                <text class="pop-axis-label" x={popL - 8} y={popY(v) + 5} text-anchor="end">
+                  {v === 0 ? "0" : `${v / 1000}k`}
+                </text>
+              </g>
+            ))}
+            {popXTicks.map((y) => (
+              <text class="pop-axis-label" x={popX(y)} y={PH - popB + 24} text-anchor="middle">{y}</text>
+            ))}
+            <path class="pop-area" d={popArea} />
+            <path class="pop-line" d={popLine} />
+            {pop.map((p) => (
+              <circle
+                class={p.year === peakPoint.year ? "pop-dot pop-dot-peak" : "pop-dot"}
+                cx={popX(p.year)}
+                cy={popY(p.population)}
+                r={p.year === peakPoint.year ? 6 : 3.5}
+              >
+                <title>{`${p.year}: ${numberFmt.format(p.population)}`}</title>
+              </circle>
+            ))}
+            <text class="pop-peak-label" x={popX(peakPoint.year)} y={popY(peakPoint.population) - 14} text-anchor="middle">
+              {`${numberFmt.format(peakPoint.population)} · ${peakPoint.year}`}
+            </text>
+          </svg>
+        </div>
         <p class="meta" style="margin-top:8px">
           {growth.source}:{" "}
-          <a href="https://en.wikipedia.org/wiki/Plovdiv" target="_blank" rel="noreferrer">Wikipedia — Plovdiv</a>
+          {populationSources.map((source, index) => (
+            <>
+              {index > 0 ? " · " : ""}
+              <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
+            </>
+          ))}
         </p>
       </div>
 
-      <div class="grid grid-2" style="margin-top:18px">
-        <div class="card chart-card">
+      <div class="grid grid-2 city-growth-metrics" style="margin-top:18px">
+        <div class="card chart-card rate-card">
           <h3 style="font-size:clamp(1.05rem,2vw,1.3rem)">{growth.rateTitle}</h3>
           <p class="meta" style="margin:6px 0 14px">{growth.rateLead}</p>
-          <svg class="rate-chart" viewBox={`0 0 ${RW} ${RH}`} role="img" aria-label={growth.rateTitle}>
-            <line class="pop-grid" x1={rL} y1={rZero} x2={RW - rR} y2={rZero} />
-            {growthRates.map((g, i) => {
-              const h = Math.max(1, rateBarH(g.rate));
-              const x = rL + i * rStep + (rStep - rBarW) / 2;
-              const y = g.rate >= 0 ? rZero - h : rZero;
-              return (
-                <g>
-                  <rect class={g.rate >= 0 ? "rate-bar rate-pos" : "rate-bar rate-neg"} x={x} y={y} width={rBarW} height={h} rx="1.5">
-                    <title>{`${g.from}–${g.to}: ${g.rate >= 0 ? "+" : ""}${g.rate.toFixed(1)} ${growth.perYear}`}</title>
-                  </rect>
-                  <text class="rate-val" x={x + rBarW / 2} y={g.rate >= 0 ? y - 5 : y + h + 15} text-anchor="middle">{g.rate.toFixed(1)}</text>
-                  <text class="pop-axis-label" x={x + rBarW / 2} y={RH - rB + 22} text-anchor="middle">{g.to}</text>
-                </g>
-              );
-            })}
-          </svg>
-          <p class="meta" style="margin-top:6px">{`${growth.perYear}`}</p>
+          <div class="chart-scroll">
+            <svg class="rate-chart" viewBox={`0 0 ${RW} ${RH}`} role="img" aria-label={growth.rateTitle}>
+              <line class="pop-grid" x1={rL} y1={rZero} x2={RW - rR} y2={rZero} />
+              {growthRates.map((g, i) => {
+                const h = Math.max(1, rateBarH(g.rate));
+                const x = rL + i * rStep + (rStep - rBarW) / 2;
+                const y = g.rate >= 0 ? rZero - h : rZero;
+                return (
+                  <g>
+                    <rect class={g.rate >= 0 ? "rate-bar rate-pos" : "rate-bar rate-neg"} x={x} y={y} width={rBarW} height={h} rx="1.5">
+                      <title>{`${g.from}-${g.to}: ${g.label} ${growth.perYear}`}</title>
+                    </rect>
+                    <text class="rate-val" x={x + rBarW / 2} y={g.rate >= 0 ? y - 5 : y + h + 15} text-anchor="middle">{g.label}</text>
+                    <text class="pop-axis-label" x={x + rBarW / 2} y={RH - rB + 22} text-anchor="middle">{g.to}</text>
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+          <p class="meta" style="margin-top:6px">{growth.rateUnitNote}</p>
         </div>
 
-        <div class="card">
+        <div class="card density-card">
           <h3 style="font-size:clamp(1.05rem,2vw,1.3rem)">{growth.densityTitle}</h3>
           <dl class="stats-grid" style="margin-top:14px">
             <div class="stat-card">
@@ -953,7 +975,7 @@ const nbByEra = nbOrder
               <dd>{numberFmt.format(cityAreaKm2)}</dd>
             </div>
             <div class="stat-card">
-              <dt>{`${growth.densityNow} · ${growth.perKm}`}</dt>
+              <dt>{`${growth.densityNow} (${latestPopulationPoint.year}) · ${growth.perKm}`}</dt>
               <dd>{numberFmt.format(densityNowVal)}</dd>
             </div>
             <div class="stat-card">
@@ -963,7 +985,13 @@ const nbByEra = nbOrder
           </dl>
           <p class="meta" style="margin-top:14px">
             {growth.densityNote}{" "}
-            <a href="https://en.wikipedia.org/wiki/Plovdiv" target="_blank" rel="noreferrer">Wikipedia — Plovdiv</a>
+            {growth.source}:{" "}
+            {populationSources.map((source, index) => (
+              <>
+                {index > 0 ? " · " : ""}
+                <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
+              </>
+            ))}
           </p>
         </div>
       </div>
@@ -1009,7 +1037,7 @@ const nbByEra = nbOrder
     </div>
   </section>
 
-  <section class="section" id="landmarks">
+  <section class="section" id="landmarks" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>
@@ -1109,7 +1137,7 @@ const nbByEra = nbOrder
     </div>
   </section>
 
-  <section class="section section-tint" id="archive-layer">
+  <section class="section section-tint" id="archive-layer" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>
@@ -1223,7 +1251,7 @@ const nbByEra = nbOrder
     </div>
   </section>
 
-  <section class="section section-tint" id="people">
+  <section class="section section-tint" id="people" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>
@@ -1278,7 +1306,7 @@ const nbByEra = nbOrder
     </div>
   </section>
 
-  <section class="section" id="data">
+  <section class="section" id="data" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>
@@ -1337,6 +1365,7 @@ const nbByEra = nbOrder
     const empty = document.querySelector<HTMLElement>("#history-empty")!;
     const list = document.querySelector<HTMLElement>("#history-event-list")!;
     let items: any[] = [];
+    let timelineItemsPromise: Promise<any[]> | null = null;
     let exactDateItems: any[] = [];
     const eraButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-era-button]")];
     const onThisDayDate = document.querySelector<HTMLInputElement>("#history-on-this-day-date")!;
@@ -1388,74 +1417,82 @@ const nbByEra = nbOrder
 
     async function loadTimelineItems() {
       if (items.length > 0) return items;
-      const api = timelineConfig.api ?? {};
-      const [eventPayload, sourcePayload, peoplePayload, placePayload, organizationPayload] = await Promise.all([
-        fetchHistoryJson(api.events),
-        fetchHistoryJson(api.sources),
-        fetchHistoryJson(api.people),
-        fetchHistoryJson(api.places),
-        fetchHistoryJson(api.organizations)
-      ]);
-      const events = collectionFromPayload(eventPayload, "events").sort(
-        (a: any, b: any) =>
-          a.date.year - b.date.year ||
-          (a.date.year_end ?? a.date.year) - (b.date.year_end ?? b.date.year) ||
-          a.id.localeCompare(b.id)
-      );
-      const sourcesById = new Map(collectionFromPayload(sourcePayload, "sources").map((source: any) => [source.id, source]));
-      const peopleById = new Map(collectionFromPayload(peoplePayload, "people").map((person: any) => [person.id, person]));
-      const placesById = new Map(collectionFromPayload(placePayload, "places").map((place: any) => [place.id, place]));
-      const organizationsById = new Map(
-        collectionFromPayload(organizationPayload, "organizations").map((organization: any) => [organization.id, organization])
-      );
-      items = events.map((event: any) => {
-        const linkedNames = [
-          ...event.person_ids.map((id: string) => localizedApi(peopleById.get(id) as any, "name")),
-          ...event.place_ids.map((id: string) => localizedApi(placesById.get(id) as any, "name")),
-          ...event.organization_ids.map((id: string) => localizedApi(organizationsById.get(id) as any, "name"))
-        ].filter(Boolean);
-        const eventSources = event.source_ids
-          .map((id: string) => sourcesById.get(id) as any)
-          .filter(Boolean)
-          .map((source: any) => ({
-            url: source.url ?? "",
-            title: localizedApi(source, "title")
-          }));
-        return {
-          id: event.id,
-          era: event.era,
-          category: event.category,
-          categoryLabel: labelApiCategory(event.category),
-          themeTags: event.theme_tags,
-          personIds: event.person_ids,
-          placeIds: event.place_ids,
-          organizationIds: event.organization_ids,
-          peopleCount: event.person_ids.length,
-          placesCount: event.place_ids.length,
-          organizationCount: event.organization_ids.length,
-          search: [
-            localizedApi(event, "title"),
-            localizedApi(event, "summary"),
-            localizedApi(event, "conflict_notes"),
-            dateApiLabel(event),
-            labelApiCategory(event.category),
-            ...(event.theme_tags ?? []).map(labelApiTheme),
-            ...linkedNames
-          ].join(" ").toLocaleLowerCase(timelineConfig.lang === "bg" ? "bg-BG" : "en-GB"),
-          date: dateApiLabel(event),
-          title: localizedApi(event, "title"),
-          summary: localizedApi(event, "summary"),
-          conflictNote: localizedApi(event, "conflict_notes"),
-          themes: (event.theme_tags ?? []).map(labelApiTheme).slice(0, 4),
-          linkedNames: linkedNames.slice(0, 5),
-          sources: eventSources,
-          year: event.date.year,
-          month: event.date.month,
-          day: event.date.day,
-          sourceUrl: eventSources[0]?.url ?? ""
-        };
-      });
-      return items;
+      if (timelineItemsPromise) return timelineItemsPromise;
+      timelineItemsPromise = (async () => {
+        const api = timelineConfig.api ?? {};
+        const [eventPayload, sourcePayload, peoplePayload, placePayload, organizationPayload] = await Promise.all([
+          fetchHistoryJson(api.events),
+          fetchHistoryJson(api.sources),
+          fetchHistoryJson(api.people),
+          fetchHistoryJson(api.places),
+          fetchHistoryJson(api.organizations)
+        ]);
+        const events = collectionFromPayload(eventPayload, "events").sort(
+          (a: any, b: any) =>
+            a.date.year - b.date.year ||
+            (a.date.year_end ?? a.date.year) - (b.date.year_end ?? b.date.year) ||
+            a.id.localeCompare(b.id)
+        );
+        const sourcesById = new Map(collectionFromPayload(sourcePayload, "sources").map((source: any) => [source.id, source]));
+        const peopleById = new Map(collectionFromPayload(peoplePayload, "people").map((person: any) => [person.id, person]));
+        const placesById = new Map(collectionFromPayload(placePayload, "places").map((place: any) => [place.id, place]));
+        const organizationsById = new Map(
+          collectionFromPayload(organizationPayload, "organizations").map((organization: any) => [organization.id, organization])
+        );
+        items = events.map((event: any) => {
+          const linkedNames = [
+            ...event.person_ids.map((id: string) => localizedApi(peopleById.get(id) as any, "name")),
+            ...event.place_ids.map((id: string) => localizedApi(placesById.get(id) as any, "name")),
+            ...event.organization_ids.map((id: string) => localizedApi(organizationsById.get(id) as any, "name"))
+          ].filter(Boolean);
+          const eventSources = event.source_ids
+            .map((id: string) => sourcesById.get(id) as any)
+            .filter(Boolean)
+            .map((source: any) => ({
+              url: source.url ?? "",
+              title: localizedApi(source, "title")
+            }));
+          return {
+            id: event.id,
+            era: event.era,
+            category: event.category,
+            categoryLabel: labelApiCategory(event.category),
+            themeTags: event.theme_tags,
+            personIds: event.person_ids,
+            placeIds: event.place_ids,
+            organizationIds: event.organization_ids,
+            peopleCount: event.person_ids.length,
+            placesCount: event.place_ids.length,
+            organizationCount: event.organization_ids.length,
+            search: [
+              localizedApi(event, "title"),
+              localizedApi(event, "summary"),
+              localizedApi(event, "conflict_notes"),
+              dateApiLabel(event),
+              labelApiCategory(event.category),
+              ...(event.theme_tags ?? []).map(labelApiTheme),
+              ...linkedNames
+            ].join(" ").toLocaleLowerCase(timelineConfig.lang === "bg" ? "bg-BG" : "en-GB"),
+            date: dateApiLabel(event),
+            title: localizedApi(event, "title"),
+            summary: localizedApi(event, "summary"),
+            conflictNote: localizedApi(event, "conflict_notes"),
+            themes: (event.theme_tags ?? []).map(labelApiTheme).slice(0, 4),
+            linkedNames: linkedNames.slice(0, 5),
+            sources: eventSources,
+            year: event.date.year,
+            month: event.date.month,
+            day: event.date.day,
+            sourceUrl: eventSources[0]?.url ?? ""
+          };
+        });
+        return items;
+      })();
+      try {
+        return await timelineItemsPromise;
+      } finally {
+        timelineItemsPromise = null;
+      }
     }
 
     async function loadExactDateItems() {
@@ -1572,6 +1609,70 @@ const nbByEra = nbOrder
         });
     }
 
+    const stableTimelineJumpTargets = new Set(["city-growth", "landmarks", "archive-layer", "people", "data"]);
+    let pendingStableJumpTarget: string | null = null;
+
+    function alignHistorySection(id: string) {
+      const target = document.getElementById(id);
+      if (!target) return;
+      const root = document.documentElement;
+      const previousScrollBehavior = root.style.scrollBehavior;
+      const offset = Number.parseFloat(window.getComputedStyle(target).scrollMarginTop) || 124;
+      root.style.scrollBehavior = "auto";
+      window.scrollTo({ top: Math.max(0, target.getBoundingClientRect().top + window.scrollY - offset), behavior: "auto" });
+      root.style.scrollBehavior = previousScrollBehavior;
+    }
+
+    async function waitForStableHistoryLayout(id: string) {
+      const target = document.getElementById(id);
+      if (!target) return;
+      const startedAt = performance.now();
+      let stableSamples = 0;
+      let previousHeight = -1;
+      let previousTargetTop = -1;
+      for (let sample = 0; sample < 10; sample += 1) {
+        await new Promise<void>((resolve) => {
+          window.setTimeout(() => requestAnimationFrame(() => resolve()), 80);
+        });
+        if (pendingStableJumpTarget !== id && window.location.hash.slice(1) !== id) return;
+        const height = document.documentElement.scrollHeight;
+        const targetTop = Math.round(target.getBoundingClientRect().top + window.scrollY);
+        if (Math.abs(height - previousHeight) <= 2 && Math.abs(targetTop - previousTargetTop) <= 2) {
+          stableSamples += 1;
+          if (stableSamples >= 2 && performance.now() - startedAt >= 480) return;
+        } else {
+          stableSamples = 0;
+        }
+        previousHeight = height;
+        previousTargetTop = targetTop;
+      }
+    }
+
+    function scrollToHistorySection(id: string) {
+      const alignIfCurrent = () => {
+        if (pendingStableJumpTarget !== id && window.location.hash.slice(1) !== id) return;
+        alignHistorySection(id);
+      };
+      requestAnimationFrame(() => requestAnimationFrame(alignIfCurrent));
+      [240, 600].forEach((delay) => {
+        window.setTimeout(() => requestAnimationFrame(alignIfCurrent), delay);
+      });
+    }
+
+    async function prepareAndJumpToHistorySection(id: string, updateHash = true) {
+      pendingStableJumpTarget = id;
+      if (updateHash) history.pushState(null, "", `#${id}`);
+      try {
+        await loadTimelineItems();
+        applyHistoryFilters();
+        await renderOnThisDay();
+        await waitForStableHistoryLayout(id);
+        if (pendingStableJumpTarget === id) scrollToHistorySection(id);
+      } catch {
+        scrollToHistorySection(id);
+      }
+    }
+
     function scheduleInitialTimelineRender() {
       const timelineSection = document.getElementById("timeline");
       if (timelineSection && "IntersectionObserver" in window) {
@@ -1614,6 +1715,20 @@ const nbByEra = nbOrder
         document.getElementById("timeline")?.scrollIntoView({ block: "start" });
       });
     });
+
+    document.querySelectorAll<HTMLAnchorElement>("[data-subnav-link]").forEach((link) => {
+      const id = link.getAttribute("data-subnav-link") ?? "";
+      if (!stableTimelineJumpTargets.has(id)) return;
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        void prepareAndJumpToHistorySection(id);
+      });
+    });
+
+    const initialHashTarget = window.location.hash.slice(1);
+    if (stableTimelineJumpTargets.has(initialHashTarget)) {
+      void prepareAndJumpToHistorySection(initialHashTarget, false);
+    }
 
     function dateInputValue(date: Date) {
       const year = date.getFullYear();
@@ -2096,7 +2211,7 @@ const nbByEra = nbOrder
         window.setTimeout(start, 500);
       }
 
-      const intentEvents = ["scroll", "wheel", "touchstart", "keydown"] as const;
+      const intentEvents = ["wheel", "touchstart", "pointerdown", "keydown"] as const;
       removeIntentFallback = () => {
         intentEvents.forEach((eventName) => window.removeEventListener(eventName, start));
       };
@@ -2178,7 +2293,7 @@ const nbByEra = nbOrder
       } else {
         window.setTimeout(start, 1000);
       }
-      const intentEvents = ["scroll", "wheel", "touchstart", "keydown"] as const;
+      const intentEvents = ["wheel", "touchstart", "pointerdown", "keydown"] as const;
       removeIntentFallback = () => {
         intentEvents.forEach((eventName) => window.removeEventListener(eventName, start));
       };
