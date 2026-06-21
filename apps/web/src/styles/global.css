@@ -2876,6 +2876,19 @@ code {
   align-items: flex-start;
   flex-wrap: wrap;
 }
+.mayor-portrait-wrap {
+  display: flex;
+  flex: 0 0 128px;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+.mayor-portrait-wrap figcaption {
+  max-width: 128px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
 .mayor-portrait-lg {
   width: 128px;
   height: 128px;

@@ -135,6 +135,16 @@ export type CityArchiveRecord = {
   bio_bg?: string;
   bio_en?: string;
   more_url?: string;
+  official_profile?: Source & {
+    title_en?: string;
+    url_en?: string;
+  };
+  reference_links?: Array<
+    Source & {
+      title_en?: string;
+      url_en?: string;
+    }
+  >;
   image?: string;
   image_credit?: string;
   fate?: "killed" | "executed" | "assassinated" | "died_in_office";

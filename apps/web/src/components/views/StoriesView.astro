@@ -102,7 +102,6 @@ const archiveLinkCount = storyLongreads.reduce(
         <p class="lead">{labels.lead}</p>
         <div class="hero-actions">
           <a class="button" href="#stories">{labels.read}</a>
-          <a class="button secondary" href="/api/history/story-longreads.json">{labels.openApi}</a>
         </div>
       </div>
       <dl class="stats-grid stories-stats" aria-label={labels.title}>
@@ -127,7 +126,6 @@ const archiveLinkCount = storyLongreads.reduce(
       <div class="stories-toolbar">
         <p class="meta">{labels.editorialNote}</p>
         <div class="data-actions">
-          <a class="src-link" href="/api/history/story-longreads.json">{labels.openApi}</a>
           <a class="src-link" href="/data/history/story-longreads.json" download>{labels.jsonData}</a>
           <a class="src-link" href="/data/history/csv/story-longreads.csv" download>{labels.csvData}</a>
         </div>

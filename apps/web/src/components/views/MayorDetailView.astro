@@ -32,6 +32,32 @@ const wikiSearch = `https://${lang === "bg" ? "bg" : "en"}.wikipedia.org/w/index
   field(mayor, "actor", "bg")
 )}`;
 const bio = mayor.bio_bg ? field(mayor, "bio", lang) : null;
+const isWikipediaMoreUrl = mayor.more_url
+  ? (() => {
+      try {
+        return new URL(mayor.more_url).hostname.endsWith("wikipedia.org");
+      } catch {
+        return false;
+      }
+    })()
+  : false;
+const officialProfile = mayor.official_profile;
+const officialProfileUrl = officialProfile
+  ? lang === "en" && officialProfile.url_en
+    ? officialProfile.url_en
+    : officialProfile.url
+  : null;
+const officialProfileTitle = officialProfile
+  ? lang === "en" && officialProfile.title_en
+    ? officialProfile.title_en
+    : officialProfile.title
+  : null;
+const referenceLinks =
+  mayor.reference_links?.map((link) => ({
+    title: lang === "en" && link.title_en ? link.title_en : link.title,
+    url: lang === "en" && link.url_en ? link.url_en : link.url,
+    accessed_at: link.accessed_at
+  })) ?? [];
 const mono = name
   .replace(/^(д-р|Д-р|инж\.|Mayor:)\s*/u, "")
   .trim()
@@ -53,18 +79,23 @@ const mono = name
         <span aria-current="page">{name}</span>
       </nav>
       <div class="mayor-detail-head">
-        {mayor.image ? (
-          <img
-            class="mayor-portrait-lg"
-            src={mayor.image}
-            alt={t.mayors.portraitAlt(name)}
-            width="128"
-            height="128"
-            loading="lazy"
-          />
-        ) : (
-          <span class="mayor-portrait-lg mayor-portrait-fallback" aria-hidden="true">{mono}</span>
-        )}
+        <figure class="mayor-portrait-wrap">
+          {mayor.image ? (
+            <img
+              class="mayor-portrait-lg"
+              src={mayor.image}
+              alt={t.mayors.portraitAlt(name)}
+              width="128"
+              height="128"
+              loading="lazy"
+            />
+          ) : (
+            <span class="mayor-portrait-lg mayor-portrait-fallback" aria-hidden="true">{mono}</span>
+          )}
+          {mayor.image && mayor.image_credit && (
+            <figcaption>{t.mayors.imageCredit}: {mayor.image_credit}</figcaption>
+          )}
+        </figure>
         <div class="mayor-detail-headtext">
           <p class="eyebrow">{t.mayors.termNumber} {index + 1} · {t.mayors.centuryLabel(century)}</p>
           <h1>{name}</h1>
@@ -123,9 +154,27 @@ const mono = name
             </a>
             <span class="meta"> · {mayor.source_document.accessed_at}</span>
           </li>
+          {officialProfile && officialProfileUrl && officialProfileTitle && (
+            <li>
+              <a href={officialProfileUrl} target="_blank" rel="noreferrer">
+                {t.mayors.officialProfile}: {officialProfileTitle}
+              </a>
+              <span class="meta"> · {officialProfile.accessed_at}</span>
+            </li>
+          )}
+          {referenceLinks.map((link) => (
+            <li>
+              <a href={link.url} target="_blank" rel="noreferrer">
+                {t.mayors.referenceSource}: {link.title}
+              </a>
+              <span class="meta"> · {link.accessed_at}</span>
+            </li>
+          ))}
           {mayor.more_url ? (
             <li>
-              <a href={mayor.more_url} target="_blank" rel="noreferrer">{t.mayors.wikipediaArticle}: {name}</a>
+              <a href={mayor.more_url} target="_blank" rel="noreferrer">
+                {isWikipediaMoreUrl ? t.mayors.wikipediaArticle : t.mayors.moreInfoLink}: {name}
+              </a>
             </li>
           ) : (
             <li>
