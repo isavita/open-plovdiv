@@ -16,6 +16,7 @@ import {
   thenNowPairs,
   plovdivPopulation,
   plovdivNeighbourhoods,
+  plovdivClimate,
   type HistoryEra,
   type KnowledgeEvent,
   type NeighbourhoodEra
@@ -588,6 +589,13 @@ const archiveItemsForView = [...historicalArchiveItems].sort(
 const thenNowPairsForView = [...thenNowPairs].sort((a, b) =>
   localized(a, "title").localeCompare(localized(b, "title"), lang === "bg" ? "bg-BG" : "en-GB")
 );
+// date of the historical ("then") photo, taken from its linked archive item
+const archiveById = new Map(historicalArchiveItems.map((it) => [it.id, it]));
+function thenPhotoDate(pair: { historical_archive_item_id?: string }): string {
+  const item = pair.historical_archive_item_id ? archiveById.get(pair.historical_archive_item_id) : null;
+  if (!item) return "";
+  return localized(item, "date_display") || (item.date_year != null ? String(item.date_year) : "");
+}
 
 // --- City growth: population chart + neighbourhood timeline ---
 const growth =
@@ -652,6 +660,7 @@ const sectionNav =
   lang === "bg"
     ? [
         { id: "coverage", label: "Обхват" },
+        { id: "geography", label: "Геогр./климат" },
         { id: "timeline", label: "Хронология" },
         { id: "city-growth", label: "Растеж" },
         { id: "landmarks", label: "Места" },
@@ -661,6 +670,7 @@ const sectionNav =
       ]
     : [
         { id: "coverage", label: "Coverage" },
+        { id: "geography", label: "Geography" },
         { id: "timeline", label: "Timeline" },
         { id: "city-growth", label: "Growth" },
         { id: "landmarks", label: "Landmarks" },
@@ -745,6 +755,77 @@ const nbByEra = nbOrder
     items: plovdivNeighbourhoods.filter((n) => n.era_key === era).sort((a, b) => a.year - b.year)
   }))
   .filter((g) => g.items.length > 0);
+
+// --- Geography & climate ---
+const geo =
+  lang === "bg"
+    ? {
+        title: "География и климат",
+        lead:
+          "Пловдив е разположен върху сиенитни хълмове в Горнотракийската низина, на двата бряга на река Марица.",
+        geographyTitle: "География",
+        climateTitle: "Климат",
+        chartTitle: "Средни месечни температури и валежи",
+        legendTemp: "Макс. / мин. температура",
+        legendPrecip: "Валежи",
+        months: ["Я", "Ф", "М", "А", "М", "Ю", "Ю", "А", "С", "О", "Н", "Д"],
+        facts: [
+          { label: "Координати", value: "42°09′ с.ш., 24°45′ и.д." },
+          { label: "Надморска височина", value: "164 м" },
+          { label: "Река", value: "Марица" },
+          { label: "Равнина", value: "Горнотракийска низина" },
+          { label: "Хълмове", value: "6 сиенитни тепета (исторически 7)" },
+          { label: "Площ", value: "101,98 км²" }
+        ],
+        stats: [
+          { label: "Климатичен тип", value: "Влажен субтропичен (Cfa)" },
+          { label: "Средни макс./мин.", value: "18,9 / 7,3 °C" },
+          { label: "Абсолютни рекорди", value: "45,0 / −31,5 °C" },
+          { label: "Годишни валежи", value: "502 мм" }
+        ],
+        source: "Източник"
+      }
+    : {
+        title: "Geography & climate",
+        lead:
+          "Plovdiv sits on syenite hills in the Upper Thracian Plain, on both banks of the Maritsa river.",
+        geographyTitle: "Geography",
+        climateTitle: "Climate",
+        chartTitle: "Average monthly temperatures and precipitation",
+        legendTemp: "Max / min temperature",
+        legendPrecip: "Precipitation",
+        months: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+        facts: [
+          { label: "Coordinates", value: "42°09′N, 24°45′E" },
+          { label: "Elevation", value: "164 m" },
+          { label: "River", value: "Maritsa" },
+          { label: "Plain", value: "Upper Thracian Plain" },
+          { label: "Hills", value: "6 syenite hills (7 historically)" },
+          { label: "Area", value: "101.98 km²" }
+        ],
+        stats: [
+          { label: "Köppen climate", value: "Humid subtropical (Cfa)" },
+          { label: "Annual avg high/low", value: "18.9 / 7.3 °C" },
+          { label: "Record high/low", value: "45.0 / −31.5 °C" },
+          { label: "Annual precipitation", value: "502 mm" }
+        ],
+        source: "Source"
+      };
+
+const climate = [...plovdivClimate].sort((a, b) => a.month - b.month);
+const CW = 1000, CH = 360, cL = 44, cR = 44, cT = 24, cB = 44;
+const cPlotH = CH - cT - cB;
+const tMin = -5, tMax = 35;
+const pMax = 90;
+const cStep = (CW - cL - cR) / 12;
+const cCenter = (i: number) => cL + cStep * (i + 0.5);
+const tY = (t: number) => cT + ((tMax - t) / (tMax - tMin)) * cPlotH;
+const pY = (p: number) => CH - cB - (p / pMax) * cPlotH;
+const cBarW = cStep * 0.34;
+const precipPts = climate.map((m, i) => `${cCenter(i).toFixed(1)},${pY(m.precip).toFixed(1)}`).join(" ");
+const tTicks = [-5, 0, 10, 20, 30];
+const pTicks = [0, 30, 60, 90];
+const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wiki/Plovdiv";
 ---
 
 <Layout lang={lang} path="/history" title={t.history.title} description={t.history.lead}>
@@ -799,6 +880,88 @@ const nbByEra = nbOrder
             <strong>{coverage.pctLabel}</strong>
           </article>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="geography" data-subnav-target>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{geo.title}</h2>
+          <p class="meta" style="margin-top:8px;max-width:76ch">{geo.lead}</p>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="align-items:start">
+        <div class="card">
+          <h3>{geo.geographyTitle}</h3>
+          <dl class="geo-facts">
+            {geo.facts.map((f) => (
+              <div><dt>{f.label}</dt><dd>{f.value}</dd></div>
+            ))}
+          </dl>
+        </div>
+        <div class="card">
+          <h3>{geo.climateTitle}</h3>
+          <dl class="geo-facts">
+            {geo.stats.map((f) => (
+              <div><dt>{f.label}</dt><dd>{f.value}</dd></div>
+            ))}
+          </dl>
+        </div>
+      </div>
+
+      <div class="card chart-card" style="margin-top:18px">
+        <h3>{geo.chartTitle}</h3>
+        <div class="climate-legend">
+          <span class="lg lg-temp">{geo.legendTemp}</span>
+          <span class="lg lg-precip">{geo.legendPrecip}</span>
+        </div>
+        <svg class="climate-chart" viewBox={`0 0 ${CW} ${CH}`} role="img" aria-label={geo.chartTitle}>
+          <defs>
+            <linearGradient id="cl-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#c0392b" />
+              <stop offset="1" stop-color="#2c6e9c" />
+            </linearGradient>
+          </defs>
+          {tTicks.map((t) => (
+            <g>
+              <line class="cl-grid" x1={cL} y1={tY(t)} x2={CW - cR} y2={tY(t)} />
+              <text class="cl-axis" x={cL - 8} y={tY(t) + 5} text-anchor="end">{`${t}°`}</text>
+            </g>
+          ))}
+          {pTicks.map((p) => (
+            <text class="cl-axis cl-axis-precip" x={CW - cR + 8} y={pY(p) + 5} text-anchor="start">{p}</text>
+          ))}
+          {climate.map((m, i) => (
+            <g>
+              <rect
+                class="cl-bar"
+                x={cCenter(i) - cBarW / 2}
+                y={tY(m.high)}
+                width={cBarW}
+                height={Math.max(2, tY(m.low) - tY(m.high))}
+                rx="4"
+              >
+                <title>{`${geo.months[i]}: ${m.high}° / ${m.low}° · ${m.precip} mm`}</title>
+              </rect>
+              <text class="cl-val" x={cCenter(i)} y={tY(m.high) - 6} text-anchor="middle">{Math.round(m.high)}</text>
+              <text class="cl-val cl-val-low" x={cCenter(i)} y={tY(m.low) + 17} text-anchor="middle">{Math.round(m.low)}</text>
+            </g>
+          ))}
+          <polyline class="cl-precip-line" points={precipPts} fill="none" />
+          {climate.map((m, i) => (
+            <circle class="cl-precip-dot" cx={cCenter(i)} cy={pY(m.precip)} r="3.5" />
+          ))}
+          {geo.months.map((mo, i) => (
+            <text class="cl-month" x={cCenter(i)} y={CH - cB + 24} text-anchor="middle">{mo}</text>
+          ))}
+        </svg>
+        <p class="meta" style="margin-top:8px">
+          {geo.source}:{" "}
+          <a href={climateSourceUrl} target="_blank" rel="noreferrer">Wikipedia — Plovdiv</a>
+        </p>
       </div>
     </div>
   </section>
@@ -1226,7 +1389,9 @@ const nbByEra = nbOrder
                   referrerpolicy="no-referrer"
                 />
               </div>
-              <span class="compare-label compare-label-then">{labels.thenLabel}</span>
+              <span class="compare-label compare-label-then">
+                {thenPhotoDate(pair) ? `${labels.thenLabel} · ${thenPhotoDate(pair)}` : labels.thenLabel}
+              </span>
               <span class="compare-label compare-label-now">{labels.nowLabel}</span>
               <input
                 class="compare-range"
@@ -1241,7 +1406,7 @@ const nbByEra = nbOrder
             <h3>{localized(pair, "title")}</h3>
             <p>{localized(pair, "caption")}</p>
             <p class="meta">
-              {`${labels.thenLabel}: ${pair.then_media.credit} · ${pair.then_media.license}`}
+              {`${labels.thenLabel}${thenPhotoDate(pair) ? ` (${thenPhotoDate(pair)})` : ""}: ${pair.then_media.credit} · ${pair.then_media.license}`}
               <br />
               {`${labels.nowLabel}: ${pair.now_media.credit} · ${pair.now_media.license}`}
             </p>

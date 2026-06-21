@@ -4524,3 +4524,84 @@ code {
 [data-subnav-target] {
   scroll-margin-top: 124px;
 }
+
+/* ---- Geography facts + climate chart (History page) -------------------- */
+.geo-facts {
+  margin: 12px 0 0;
+}
+.geo-facts > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+}
+.geo-facts > div:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.geo-facts dt {
+  color: var(--muted);
+  margin: 0;
+  font-size: 0.92rem;
+}
+.geo-facts dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+.climate-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.cl-grid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.cl-axis {
+  fill: var(--muted);
+  font-size: 15px;
+  font-family: var(--font-ui);
+}
+.cl-axis-precip {
+  fill: var(--brand);
+}
+.cl-bar {
+  fill: url(#cl-grad);
+}
+.cl-val {
+  fill: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-ui);
+}
+.cl-val-low {
+  fill: var(--muted);
+}
+.cl-precip-line {
+  stroke: var(--brand);
+  stroke-width: 2.5;
+  opacity: 0.75;
+}
+.cl-precip-dot {
+  fill: var(--brand);
+}
+.cl-month {
+  fill: var(--ink-2);
+  font-size: 15px;
+  font-family: var(--font-ui);
+}
+.climate-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 6px 0 14px;
+}
+.lg-temp::before {
+  background: #c0392b;
+}
+.lg-precip::before {
+  background: var(--brand);
+}

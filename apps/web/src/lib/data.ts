@@ -8,6 +8,7 @@ import historyJson from "../../../../data/curated/plovdiv-history.json";
 import landmarksJson from "../../../../data/curated/plovdiv-landmarks.json";
 import populationJson from "../../../../data/curated/plovdiv-population.json";
 import neighbourhoodsJson from "../../../../data/curated/plovdiv-neighbourhoods.json";
+import climateJson from "../../../../data/curated/plovdiv-climate.json";
 import historyKnowledgeIndexJson from "../../../../data/generated/history-knowledge/index.json";
 import historyKnowledgeEventsJson from "../../../../data/generated/history-knowledge/events.json";
 import historyKnowledgePeopleJson from "../../../../data/generated/history-knowledge/people.json";
@@ -827,6 +828,17 @@ export type Neighbourhood = {
 
 export const plovdivPopulation = populationJson as PopulationPoint[];
 export const plovdivNeighbourhoods = neighbourhoodsJson as Neighbourhood[];
+
+export type ClimateMonth = {
+  id: string;
+  month: number;
+  high: number;
+  low: number;
+  precip: number;
+  source: Source;
+};
+
+export const plovdivClimate = climateJson as ClimateMonth[];
 export const sourceRegistry = sourcesJson as SourceRegistryItem[];
 export const historyKnowledgeIndex = historyKnowledgeIndexJson as HistoryKnowledgeIndex;
 export const historyKnowledgeEvents = historyKnowledgeEventsJson as KnowledgeEvent[];

@@ -64,6 +64,12 @@ const datasets = [
     minRecords: 1
   },
   {
+    label: "climate",
+    dataPath: "data/curated/plovdiv-climate.json",
+    schemaPath: "data/schemas/plovdiv-climate.schema.json",
+    minRecords: 12
+  },
+  {
     label: "historical archive items",
     dataPath: "data/curated/historical-archive-items.json",
     schemaPath: "data/schemas/historical-archive-item.schema.json",
