@@ -18,18 +18,16 @@ const labels =
   lang === "bg"
     ? {
         title: "Хората на Пловдив",
-        eyebrow: "Просопография и връзки",
+        eyebrow: "Личности и връзки",
         lead:
-          "Граф и каталог на нормализираните личности в Open Plovdiv: всички кметове и стартовата просопография от забележителни пловдивчани, свързани със събития, роли и източници.",
+          "Каталог на нормализираните личности в Open Plovdiv: всички кметове и стартова база от забележителни пловдивчани, свързани със събития, роли и източници.",
         people: "хора",
         roles: "роли",
         links: "връзки",
         events: "събития",
-        graphTitle: "Граф по време и роля",
-        graphLead:
-          "Всеки кръг е човек. Позицията по хоризонтала следва година на раждане или първи мандат; вертикалните групи показват водеща роля. Линиите са само проверените връзки човек-към-човек в базата.",
-        successionLinks: "последователност на кметове",
-        familyLinks: "роднински и семейни връзки",
+        connectionsTitle: "Връзки между личности",
+        connectionsLead:
+          "Проверими връзки от базата: наследяване между кметове, семейни връзки и публичният източник към всеки запис.",
         catalogTitle: "Каталог",
         search: "Търсене",
         searchPlaceholder: "име, роля, описание…",
@@ -39,8 +37,8 @@ const labels =
         allCenturies: "Всички векове",
         relationship: "Връзки",
         allRelationships: "Всички",
-        withRelationships: "с person-to-person връзки",
-        withoutRelationships: "без person-to-person връзки",
+        withRelationships: "с връзки към други личности",
+        withoutRelationships: "без връзки към други личности",
         visible: "Видими",
         of: "от",
         reset: "Изчисти филтрите",
@@ -50,10 +48,10 @@ const labels =
         linkedEvents: "свързани събития",
         relationshipCount: "връзки",
         relationshipSources: "Източникови връзки",
-        ledgerTitle: "Регистър на връзките",
+        ledgerTitle: "Източникови връзки",
         ledgerLead:
-          "Проверима разбивка на линиите в графа: всяка връзка показва участниците, типа, свързаното събитие при кметска последователност и публичния източник.",
-        ledgerRows: "реда с връзки",
+          "Всяка връзка показва участниците, типа, свързаното събитие при кметска последователност и публичния източник.",
+        ledgerRows: "връзки",
         from: "От",
         to: "Към",
         type: "Тип",
@@ -66,18 +64,16 @@ const labels =
       }
     : {
         title: "People of Plovdiv",
-        eyebrow: "Prosopography and connections",
+        eyebrow: "People and connections",
         lead:
-          "A graph and catalogue of normalized people in Open Plovdiv: all mayors and the starter prosopography of notable Plovdivians, linked to events, roles and sources.",
+          "A catalogue of normalized people in Open Plovdiv: all mayors and a starter set of notable Plovdivians, linked to events, roles and sources.",
         people: "people",
         roles: "roles",
         links: "links",
         events: "events",
-        graphTitle: "Graph by Time and Role",
-        graphLead:
-          "Each circle is a person. The horizontal position follows birth year or first mayoral term; vertical groups show primary role. Lines are only the verified person-to-person links currently in the base.",
-        successionLinks: "mayoral succession",
-        familyLinks: "family and kinship links",
+        connectionsTitle: "Person Connections",
+        connectionsLead:
+          "Source-backed links in the data: mayoral succession, family relationships and the public source behind each row.",
         catalogTitle: "Catalogue",
         search: "Search",
         searchPlaceholder: "name, role, description...",
@@ -87,8 +83,8 @@ const labels =
         allCenturies: "All centuries",
         relationship: "Links",
         allRelationships: "All",
-        withRelationships: "with person-to-person links",
-        withoutRelationships: "without person-to-person links",
+        withRelationships: "with links to other people",
+        withoutRelationships: "without links to other people",
         visible: "Visible",
         of: "of",
         reset: "Clear filters",
@@ -98,10 +94,10 @@ const labels =
         linkedEvents: "linked events",
         relationshipCount: "links",
         relationshipSources: "Source-backed links",
-        ledgerTitle: "Relationship Ledger",
+        ledgerTitle: "Source-backed Links",
         ledgerLead:
-          "A verifiable breakdown of the graph lines: each relationship shows the people, type, linked event for mayoral succession, and public source.",
-        ledgerRows: "relationship rows",
+          "Each relationship shows the people, type, linked event for mayoral succession and public source.",
+        ledgerRows: "links",
         from: "From",
         to: "To",
         type: "Type",
@@ -309,13 +305,6 @@ const roleGroups: Record<string, keyof typeof groupLabels> = {
 
 const groupOrder = ["governance", "culture", "science", "faith", "sport", "civic"] as const;
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
-const eventByPerson = new Map<string, typeof historyKnowledgeEvents>();
-for (const event of historyKnowledgeEvents) {
-  for (const personId of event.person_ids) {
-    if (!eventByPerson.has(personId)) eventByPerson.set(personId, []);
-    eventByPerson.get(personId)!.push(event);
-  }
-}
 
 function localized(record: Record<string, any>, base: string): string {
   return String(record[`${base}_${lang}`] ?? record[`${base}_bg`] ?? "");
@@ -333,11 +322,7 @@ function relationshipCategory(type: string): "succession" | "family" {
   return type === "succeeds" || type === "succeeded_by" ? "succession" : "family";
 }
 
-function primaryGroup(person: KnowledgePerson): keyof typeof groupLabels {
-  return roleGroups[person.roles[0]] ?? "civic";
-}
-
-function graphYear(person: KnowledgePerson): number {
+function personReferenceYear(person: KnowledgePerson): number {
   if (person.birth_year) return person.birth_year;
   const termYears = person.term_events
     .map((id) => historyKnowledgeEvents.find((event) => event.id === id)?.date.year)
@@ -355,12 +340,6 @@ function lifeLabel(person: KnowledgePerson): string {
   return "n/a";
 }
 
-function hash(input: string): number {
-  let value = 0;
-  for (const char of input) value = (value * 31 + char.charCodeAt(0)) % 9973;
-  return value;
-}
-
 const people = [...historyKnowledgePeople].sort((a, b) =>
   localized(a, "name").localeCompare(localized(b, "name"), lang === "bg" ? "bg-BG" : "en-GB")
 );
@@ -369,43 +348,11 @@ const uniqueRoles = new Set(people.flatMap((person) => person.roles));
 const relationCount = people.reduce((sum, person) => sum + person.relationships.length, 0);
 const peopleEventCount = historyKnowledgeEvents.filter((event) => event.person_ids.length > 0).length;
 
-const minYear = Math.min(...people.map(graphYear));
-const maxYear = Math.max(...people.map(graphYear));
-const graph = {
-  width: 1100,
-  height: 520,
-  padX: 56,
-  padY: 42
-};
-const span = Math.max(1, maxYear - minYear);
-const xFor = (year: number) => graph.padX + ((year - minYear) / span) * (graph.width - graph.padX * 2);
-const yForGroup = (group: keyof typeof groupLabels) =>
-  graph.padY + groupOrder.indexOf(group) * ((graph.height - graph.padY * 2) / (groupOrder.length - 1));
-
-const nodes = people.map((person) => {
-  const year = graphYear(person);
-  const group = primaryGroup(person);
-  const y = yForGroup(group) + ((hash(person.id) % 13) - 6) * 4.5;
-  return {
-    person,
-    id: person.id,
-    year,
-    century: centuryFor(year),
-    group,
-    x: xFor(year),
-    y,
-    hasRelationships: person.relationships.length > 0,
-    eventCount: eventByPerson.get(person.id)?.length ?? 0,
-    search: [
-      localized(person, "name"),
-      localized(person, "summary"),
-      lifeLabel(person),
-      ...person.roles.map(roleLabel),
-      groupLabels[group]
-    ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB")
-  };
-});
-const nodeById = new Map(nodes.map((node) => [node.id, node]));
+const personIndex = people.map((person) => ({
+  id: person.id,
+  year: personReferenceYear(person),
+  century: centuryFor(personReferenceYear(person))
+}));
 const edgeByKey = new Map<
   string,
   {
@@ -426,7 +373,7 @@ const edgeByKey = new Map<
 >();
 for (const person of people) {
   for (const relationship of person.relationships) {
-    if (!nodeById.has(person.id) || !nodeById.has(relationship.person_id)) continue;
+    if (!personById.has(relationship.person_id)) continue;
     if (relationship.type === "succeeds") continue;
 
     const category = relationshipCategory(relationship.type);
@@ -484,7 +431,7 @@ const relationshipRows = relationEdges
       sourceIds,
       eventIds,
       evidenceProperties,
-      year: eventYears[0] ?? Math.min(graphYear(from!), graphYear(to!)),
+      year: eventYears[0] ?? Math.min(personReferenceYear(from!), personReferenceYear(to!)),
       search: [
         from ? localized(from, "name") : edge.from,
         to ? localized(to, "name") : edge.to,
@@ -498,7 +445,7 @@ const relationshipRows = relationEdges
   .filter((row) => row.from && row.to)
   .sort((a, b) => a.year - b.year || localized(a.from!, "name").localeCompare(localized(b.from!, "name"), lang === "bg" ? "bg-BG" : "en-GB"));
 
-const centuries = [...new Set(nodes.map((node) => node.century))].sort((a, b) => a - b);
+const centuries = [...new Set(personIndex.map((person) => person.century))].sort((a, b) => a - b);
 const clientRoleLabels = Object.fromEntries([...uniqueRoles].map((role) => [role, roleLabel(role)]));
 const clientRelationshipLabels = Object.fromEntries(
   Object.keys(relationshipTypeLabels).map((type) => [type, relationshipLabel(type)])
@@ -533,7 +480,7 @@ const nodeConfig = {
     linkedEvent: labels.linkedEvent,
     sources: labels.sources
   },
-  total: nodes.length
+  total: personIndex.length
 };
 ---
 
@@ -569,17 +516,17 @@ const nodeConfig = {
 
   <SectionNav
     items={lang === "bg"
-      ? [{ id: "people-graph", label: "Граф" }, { id: "people-catalog", label: "Каталог" }]
-      : [{ id: "people-graph", label: "Graph" }, { id: "people-catalog", label: "Catalog" }]}
+      ? [{ id: "people-connections", label: "Връзки" }, { id: "people-catalog", label: "Каталог" }]
+      : [{ id: "people-connections", label: "Connections" }, { id: "people-catalog", label: "Catalog" }]}
     label={lang === "bg" ? "Раздели на страницата" : "Page sections"}
   />
 
-  <section class="section" id="people-graph" data-subnav-target>
+  <section class="section people-connections" id="people-connections" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>{labels.graphTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:78ch">{labels.graphLead}</p>
+          <h2>{labels.connectionsTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:78ch">{labels.connectionsLead}</p>
         </div>
       </div>
 
@@ -615,71 +562,8 @@ const nodeConfig = {
       </div>
 
       <div class="results-bar">
-        <p id="people-count" class="meta">{nodes.length} {labels.of} {nodes.length} {labels.people}</p>
+        <p id="people-count" class="meta">{personIndex.length} {labels.of} {personIndex.length} {labels.people}</p>
         <button type="button" id="people-reset" class="link-button" hidden>{labels.reset}</button>
-      </div>
-
-      <div class="people-graph-wrap">
-        <ul class="people-graph-legend" aria-label={labels.graphTitle}>
-          <li><span class="legend-line legend-line-succession" aria-hidden="true"></span>{labels.successionLinks}</li>
-          <li><span class="legend-line legend-line-family" aria-hidden="true"></span>{labels.familyLinks}</li>
-        </ul>
-        <svg
-          class="people-graph"
-          viewBox={`0 0 ${graph.width} ${graph.height}`}
-          role="img"
-          aria-label={labels.graphTitle}
-          preserveAspectRatio="xMidYMid meet"
-        >
-          {groupOrder.map((group) => (
-            <>
-              <line class="people-graph-band" x1={graph.padX} x2={graph.width - graph.padX} y1={yForGroup(group)} y2={yForGroup(group)} />
-              <text class="people-graph-label" x={12} y={yForGroup(group) + 5}>{groupLabels[group]}</text>
-            </>
-          ))}
-          {centuries.map((century) => {
-            const year = (century - 1) * 100 + 1;
-            if (year < minYear || year > maxYear) return null;
-            return (
-              <>
-                <line class="people-graph-year" x1={xFor(year)} x2={xFor(year)} y1={28} y2={graph.height - 24} />
-                <text class="people-graph-year-label" x={xFor(year)} y={graph.height - 6} text-anchor="middle">{century}</text>
-              </>
-            );
-          })}
-          {relationEdges.map((edge) => {
-            const from = nodeById.get(edge.from)!;
-            const to = nodeById.get(edge.to)!;
-            const midY = Math.min(from.y, to.y) - Math.min(36, Math.abs(to.x - from.x) * 0.06 + 10);
-            return (
-              <path
-                class={`person-link person-link-${edge.category}`}
-                data-person-edge
-                data-edge-from={edge.from}
-                data-edge-to={edge.to}
-                data-edge-type={edge.category}
-                d={`M ${from.x.toFixed(1)} ${from.y.toFixed(1)} C ${from.x.toFixed(1)} ${midY.toFixed(1)}, ${to.x.toFixed(1)} ${midY.toFixed(1)}, ${to.x.toFixed(1)} ${to.y.toFixed(1)}`}
-              >
-                <title>{edge.labels.join(" · ")}</title>
-              </path>
-            );
-          })}
-          {nodes.map((node) => (
-            <circle
-              class={`person-node people-group-${node.group}`}
-              data-person-node={node.id}
-              data-search={node.search}
-              data-group={node.group}
-              data-century={node.century}
-              data-relationships={node.hasRelationships ? "with" : "without"}
-              cx={node.x}
-              cy={node.y}
-              r={node.hasRelationships ? 5.8 : 4.4}
-            >
-              <title>{`${localized(node.person, "name")} · ${lifeLabel(node.person)} · ${node.person.roles.map(roleLabel).join(", ")}`}</title>
-            </circle>
-          ))}
-        </svg>
       </div>
 
       <section class="relationship-ledger" aria-labelledby="relationship-ledger-title">
@@ -724,8 +608,6 @@ const nodeConfig = {
     const relationshipList = document.querySelector<HTMLElement>("#people-relationship-list")!;
     const relationshipCount = document.querySelector<HTMLElement>("#people-relationship-count");
     let cards: any[] = [];
-    const nodes = [...document.querySelectorAll<SVGElement>("[data-person-node]")];
-    const edges = [...document.querySelectorAll<SVGElement>("[data-person-edge]")];
     let relationshipRows = [...document.querySelectorAll<HTMLElement>("[data-relationship-row]")];
 
     function escapePeopleHtml(value: unknown): string {
@@ -766,7 +648,7 @@ const nodeConfig = {
       return config.roleGroups?.[person.roles?.[0]] ?? "civic";
     }
 
-    function graphYear(person: any) {
+    function personReferenceYear(person: any) {
       if (person.birth_year) return person.birth_year;
       return 1900;
     }
@@ -833,7 +715,7 @@ const nodeConfig = {
             ].join(" ").toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB"),
             group,
             groupLabel: config.groupLabels?.[group] ?? group,
-            century: centuryFor(graphYear(person)),
+            century: centuryFor(personReferenceYear(person)),
             relationshipsMode: (person.relationships ?? []).length > 0 ? "with" : "without",
             name: localizedPerson(person, "name"),
             life: lifeLabel(person),
@@ -1024,18 +906,6 @@ const nodeConfig = {
       const visibleCards = cards.filter(matches);
       const visibleIds = new Set<string>(visibleCards.map((card: any) => card.id));
       list.innerHTML = visibleCards.map(renderPersonCard).join("");
-
-      for (const node of nodes) {
-        const id = node.dataset.personNode ?? "";
-        node.style.display = visibleIds.has(id) ? "" : "none";
-      }
-
-      for (const edge of edges) {
-        const show =
-          visibleIds.has(edge.dataset.edgeFrom ?? "") &&
-          visibleIds.has(edge.dataset.edgeTo ?? "");
-        edge.style.display = show ? "" : "none";
-      }
 
       let visibleRelationshipRows = 0;
       for (const row of relationshipRows) {
