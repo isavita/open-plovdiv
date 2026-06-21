@@ -2451,6 +2451,19 @@ code {
     grid-template-columns: 1fr;
   }
 
+  .history-map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .history-map-canvas {
+    min-height: 320px;
+  }
+
+  .history-map-layout .detail-panel {
+    min-height: auto;
+    padding: 16px;
+  }
+
   .map-count-stack {
     text-align: start;
   }
@@ -2979,6 +2992,23 @@ code {
   color: var(--muted);
   font-size: 0.86rem;
   text-align: right;
+}
+
+@media (max-width: 760px) {
+  .arc-card {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .detail-panel .place-facts {
+    gap: 2px 0;
+    grid-template-columns: 1fr;
+  }
+
+  .detail-panel .place-facts dd {
+    text-align: left;
+  }
 }
 
 .education-hero .hero-grid {
