@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import HeroBackdrop from "@components/HeroBackdrop.astro";
 import SectionNav from "@components/SectionNav.astro";
+import { createHash } from "node:crypto";
 import { ui, type Lang } from "@i18n/ui";
 import { localizePath } from "@i18n/utils";
 import {
@@ -42,6 +43,18 @@ const entries = [...historyKnowledgeEvents].sort(
     (a.date.year_end ?? a.date.year) - (b.date.year_end ?? b.date.year) ||
     a.id.localeCompare(b.id)
 );
+const historyDataVersion = createHash("sha1")
+  .update(
+    JSON.stringify({
+      events: historyKnowledgeEvents,
+      organizations: historyKnowledgeOrganizations,
+      people: historyKnowledgePeople,
+      places: historyKnowledgePlaces,
+      sources: historyKnowledgeSources
+    })
+  )
+  .digest("hex")
+  .slice(0, 12);
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
 const mayorEvents = entries.filter((event) => event.category === "mayor_term");
 
@@ -85,10 +98,9 @@ const labels =
         noResults: "Няма записи за тези филтри.",
         onThisDayTitle: "На този ден",
         onThisDayLead:
-          "Събития с точна дата от нормализираната хронология. Записите без проверен ден/месец остават извън този изглед.",
+          "Изберете дата, за да видите свързани събития от историята на Пловдив.",
         today: "Днес",
-        noOnThisDay: "Засега няма запис с точна дата за този ден.",
-        exactDateCount: "Записи с точна дата",
+        noOnThisDay: "Няма събитие за избраната дата.",
         source: "Източник",
         sourcePlural: "Източници",
         conflictNote: "Бележка за конфликт",
@@ -186,10 +198,9 @@ const labels =
         noResults: "No records match these filters.",
         onThisDayTitle: "On this day",
         onThisDayLead:
-          "Events with an exact date from the normalized timeline. Records without a verified day/month stay out of this view.",
+          "Choose a date to see related moments from Plovdiv's history.",
         today: "Today",
-        noOnThisDay: "No exact-date record for this day yet.",
-        exactDateCount: "Exact-date records",
+        noOnThisDay: "No event for the selected date.",
         source: "Source",
         sourcePlural: "Sources",
         conflictNote: "Conflict note",
@@ -331,6 +342,91 @@ const categoryLabels: Record<string, { bg: string; en: string }> = {
   archive_source: { bg: "Архивен източник", en: "Archive source" }
 };
 
+const themeLabels: Record<string, { bg: string; en: string }> = {
+  people: { bg: "Личности", en: "People" },
+  birth: { bg: "Раждане", en: "Birth" },
+  academic: { bg: "академик", en: "academic" },
+  actor: { bg: "актьор", en: "actor" },
+  art_historian: { bg: "изкуствовед", en: "art historian" },
+  artist: { bg: "художник", en: "artist" },
+  athlete: { bg: "спортист", en: "athlete" },
+  basketball_player: { bg: "баскетболист", en: "basketball player" },
+  boxer: { bg: "боксьор", en: "boxer" },
+  canoeist: { bg: "кануист", en: "canoeist" },
+  chef: { bg: "готвач", en: "chef" },
+  chess_player: { bg: "шахматист", en: "chess player" },
+  choreographer: { bg: "хореограф", en: "choreographer" },
+  clergy: { bg: "духовник", en: "clergy" },
+  composer: { bg: "композитор", en: "composer" },
+  conductor: { bg: "диригент", en: "conductor" },
+  cultural_manager: { bg: "културен мениджър", en: "cultural manager" },
+  designer: { bg: "дизайнер", en: "designer" },
+  diplomat: { bg: "дипломат", en: "diplomat" },
+  economist: { bg: "икономист", en: "economist" },
+  educator: { bg: "педагог", en: "educator" },
+  electrical_engineer: { bg: "електроинженер", en: "electrical engineer" },
+  engineer: { bg: "инженер", en: "engineer" },
+  equestrian: { bg: "състезател по конен спорт", en: "equestrian" },
+  fencer: { bg: "фехтовач", en: "fencer" },
+  film_director: { bg: "филмов режисьор", en: "film director" },
+  first_lady: { bg: "първа дама", en: "first lady" },
+  football_referee: { bg: "футболен съдия", en: "football referee" },
+  footballer: { bg: "футболист", en: "footballer" },
+  general: { bg: "генерал", en: "general" },
+  geographer: { bg: "географ", en: "geographer" },
+  gymnast: { bg: "гимнастик", en: "gymnast" },
+  high_jumper: { bg: "скачач на височина", en: "high jumper" },
+  illustrator: { bg: "илюстратор", en: "illustrator" },
+  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower" },
+  journalist: { bg: "журналист", en: "journalist" },
+  jurist: { bg: "юрист", en: "jurist" },
+  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist" },
+  mathematician: { bg: "математик", en: "mathematician" },
+  mayor: { bg: "кмет", en: "mayor" },
+  merchant: { bg: "търговец", en: "merchant" },
+  military_officer: { bg: "офицер", en: "military officer" },
+  mineralogist: { bg: "минералог", en: "mineralogist" },
+  missionary: { bg: "мисионер", en: "missionary" },
+  model: { bg: "модел", en: "model" },
+  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete" },
+  musician: { bg: "музикант", en: "musician" },
+  opera_singer: { bg: "оперен певец", en: "opera singer" },
+  painter: { bg: "живописец", en: "painter" },
+  paleontologist: { bg: "палеонтолог", en: "paleontologist" },
+  patriarch: { bg: "патриарх", en: "patriarch" },
+  philosopher: { bg: "философ", en: "philosopher" },
+  physicist: { bg: "физик", en: "physicist" },
+  pianist: { bg: "пианист", en: "pianist" },
+  poet: { bg: "поет", en: "poet" },
+  politician: { bg: "политик", en: "politician" },
+  priest: { bg: "свещеник", en: "priest" },
+  printmaker: { bg: "график", en: "printmaker" },
+  producer: { bg: "продуцент", en: "producer" },
+  public_figure: { bg: "обществена фигура", en: "public figure" },
+  racing_driver: { bg: "автомобилен състезател", en: "racing driver" },
+  revolutionary: { bg: "революционер", en: "revolutionary" },
+  rower: { bg: "гребец", en: "rower" },
+  saint: { bg: "светец", en: "saint" },
+  scholar: { bg: "учен", en: "scholar" },
+  scientist: { bg: "учен", en: "scientist" },
+  screenwriter: { bg: "сценарист", en: "screenwriter" },
+  sculptor: { bg: "скулптор", en: "sculptor" },
+  singer: { bg: "певец", en: "singer" },
+  sports_shooter: { bg: "спортен стрелец", en: "sport shooter" },
+  swimmer: { bg: "плувец", en: "swimmer" },
+  tennis_player: { bg: "тенисист", en: "tennis player" },
+  theatre_director: { bg: "театрален режисьор", en: "theatre director" },
+  violinist: { bg: "цигулар", en: "violinist" },
+  visual_artist: { bg: "визуален художник", en: "visual artist" },
+  volleyball_player: { bg: "волейболист", en: "volleyball player" },
+  weightlifter: { bg: "щангист", en: "weightlifter" },
+  wrestler: { bg: "борец", en: "wrestler" },
+  writer: { bg: "писател", en: "writer" },
+  zoologist: { bg: "зоолог", en: "zoologist" }
+};
+
+const hiddenThemeTags = new Set(["people", "birth"]);
+
 function labelCategory(category: string) {
   const known = categoryLabels[category];
   if (known) return known[lang];
@@ -339,7 +435,12 @@ function labelCategory(category: string) {
 
 function labelTheme(theme: string) {
   if (theme in t.history.eraLabels) return t.history.eraLabels[theme as HistoryEra];
+  if (theme in themeLabels) return themeLabels[theme][lang];
   return labelCategory(theme).replaceAll("_", " ");
+}
+
+function shouldShowThemeTag(theme: string) {
+  return !hiddenThemeTags.has(theme);
 }
 
 function localized(record: Record<string, any>, base: string): string {
@@ -365,9 +466,9 @@ function placeFacts(place: Record<string, any>) {
 const categories = [...new Set(entries.map((event) => event.category))].sort((a, b) =>
   labelCategory(a).localeCompare(labelCategory(b), lang === "bg" ? "bg-BG" : "en-GB")
 );
-const themeTags = [...new Set(entries.flatMap((event) => event.theme_tags))].sort((a, b) =>
-  labelTheme(a).localeCompare(labelTheme(b), lang === "bg" ? "bg-BG" : "en-GB")
-);
+const themeTags = [...new Set(entries.flatMap((event) => event.theme_tags))]
+  .filter(shouldShowThemeTag)
+  .sort((a, b) => labelTheme(a).localeCompare(labelTheme(b), lang === "bg" ? "bg-BG" : "en-GB"));
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 const peopleById = new Map(historyKnowledgePeople.map((person) => [person.id, person]));
 const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
@@ -482,6 +583,7 @@ const repeatArcs = repeatedPeople.flatMap((person) => {
 
 const historyMapConfig = {
   lang,
+  dataVersion: historyDataVersion,
   api: {
     archiveItems: historyKnowledgeIndex.endpoints.archive_items,
     places: historyKnowledgeIndex.endpoints.places,
@@ -508,6 +610,7 @@ const historyMapConfig = {
 
 const timelineConfig = {
   lang,
+  dataVersion: historyDataVersion,
   api: {
     events: historyKnowledgeIndex.endpoints.events,
     organizations: historyKnowledgeIndex.endpoints.organizations,
@@ -517,13 +620,13 @@ const timelineConfig = {
   },
   categoryLabels: clientCategoryLabels,
   themeLabels: clientThemeLabels,
+  hiddenThemeTags: [...hiddenThemeTags],
   labels: {
     visible: labels.visible,
     of: labels.of,
     noResults: labels.noResults,
     today: labels.today,
     noOnThisDay: labels.noOnThisDay,
-    exactDateCount: labels.exactDateCount,
     source: labels.source,
     sourcePlural: labels.sourcePlural,
     conflictNote: labels.conflictNote,
@@ -721,11 +824,11 @@ const geo =
           { label: "Надморска височина", value: "164 м" },
           { label: "Река", value: "Марица" },
           { label: "Равнина", value: "Горнотракийска низина" },
-          { label: "Хълмове", value: "6 сиенитни тепета (исторически 7)" },
+          { label: "Хълмове", value: "6 запазени тепета (исторически 7)" },
           { label: "Площ", value: "101,98 км²" }
         ],
         stats: [
-          { label: "Климатичен тип", value: "Влажен субтропичен (Cfa)" },
+          { label: "Климатичен тип", value: "Влажен субтропичен" },
           { label: "Средни макс./мин.", value: "18,9 / 7,3 °C" },
           { label: "Абсолютни рекорди", value: "45,0 / −31,5 °C" },
           { label: "Годишни валежи", value: "502 мм" }
@@ -747,11 +850,11 @@ const geo =
           { label: "Elevation", value: "164 m" },
           { label: "River", value: "Maritsa" },
           { label: "Plain", value: "Upper Thracian Plain" },
-          { label: "Hills", value: "6 syenite hills (7 historically)" },
+          { label: "Hills", value: "6 surviving hills (7 historically)" },
           { label: "Area", value: "101.98 km²" }
         ],
         stats: [
-          { label: "Köppen climate", value: "Humid subtropical (Cfa)" },
+          { label: "Climate type", value: "Humid subtropical" },
           { label: "Annual avg high/low", value: "18.9 / 7.3 °C" },
           { label: "Record high/low", value: "45.0 / −31.5 °C" },
           { label: "Annual precipitation", value: "502 mm" }
@@ -1474,8 +1577,14 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       return (value ?? "").split(" ").filter(Boolean);
     }
 
+    function versionedHistoryUrl(url: string) {
+      if (!timelineConfig.dataVersion || /^(https?:)?\/\//.test(url)) return url;
+      const separator = url.includes("?") ? "&" : "?";
+      return `${url}${separator}v=${encodeURIComponent(timelineConfig.dataVersion)}`;
+    }
+
     async function fetchHistoryJson(url: string) {
-      const response = await fetch(url);
+      const response = await fetch(versionedHistoryUrl(url));
       if (!response.ok) throw new Error(`Unable to load ${url}`);
       return await response.json();
     }
@@ -1501,6 +1610,10 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
     function labelApiTheme(theme: string) {
       return timelineConfig.themeLabels?.[theme] ?? labelApiCategory(theme);
+    }
+
+    function shouldShowApiTheme(theme: string) {
+      return !(timelineConfig.hiddenThemeTags ?? []).includes(theme);
     }
 
     async function loadTimelineItems() {
@@ -1565,7 +1678,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
             title: localizedApi(event, "title"),
             summary: localizedApi(event, "summary"),
             conflictNote: localizedApi(event, "conflict_notes"),
-            themes: (event.theme_tags ?? []).map(labelApiTheme).slice(0, 4),
+            themes: (event.theme_tags ?? []).filter(shouldShowApiTheme).map(labelApiTheme).slice(0, 4),
             linkedNames: linkedNames.slice(0, 5),
             sources: eventSources,
             year: event.date.year,
@@ -1594,7 +1707,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       return values.length
         ? `<div class="pill-row">${values
             .map((value) => `<span class="badge no-dot">${escapeTimelineHtml(value)}</span>`)
-            .join("")}</div>`
+            .join(" ")}</div>`
         : "";
     }
 
@@ -1700,15 +1813,19 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     const stableTimelineJumpTargets = new Set(["city-growth", "landmarks", "archive-layer", "people", "data"]);
     let pendingStableJumpTarget: string | null = null;
 
-    function alignHistorySection(id: string) {
-      const target = document.getElementById(id);
-      if (!target) return;
+    function alignHistoryElement(target: HTMLElement) {
       const root = document.documentElement;
       const previousScrollBehavior = root.style.scrollBehavior;
       const offset = Number.parseFloat(window.getComputedStyle(target).scrollMarginTop) || 124;
       root.style.scrollBehavior = "auto";
       window.scrollTo({ top: Math.max(0, target.getBoundingClientRect().top + window.scrollY - offset), behavior: "auto" });
       root.style.scrollBehavior = previousScrollBehavior;
+    }
+
+    function alignHistorySection(id: string) {
+      const target = document.getElementById(id);
+      if (!target) return;
+      alignHistoryElement(target);
     }
 
     async function waitForStableHistoryLayout(id: string) {
@@ -1761,6 +1878,27 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       }
     }
 
+    async function selectTimelineEra(eraKey: string, updateHash = true) {
+      const knownEra = eraButtons.some((button) => button.dataset.eraButton === eraKey);
+      if (!knownEra) return;
+      era.value = eraKey;
+      if (updateHash) history.pushState(null, "", `#era-${eraKey}`);
+      try {
+        await loadTimelineItems();
+        applyHistoryFilters();
+        await renderOnThisDay();
+        await new Promise<void>((resolve) => {
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+        });
+        const firstEraItem =
+          [...list.querySelectorAll<HTMLElement>("[data-history-event]")].find((item) => item.dataset.era === eraKey) ?? list;
+        alignHistoryElement(firstEraItem);
+      } catch {
+        refreshHistoryTimeline();
+        alignHistorySection("timeline");
+      }
+    }
+
     function scheduleInitialTimelineRender() {
       const timelineSection = document.getElementById("timeline");
       if (timelineSection && "IntersectionObserver" in window) {
@@ -1798,9 +1936,8 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     });
     eraButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        era.value = button.dataset.eraButton ?? "all";
-        refreshHistoryTimeline();
-        document.getElementById("timeline")?.scrollIntoView({ block: "start" });
+        const eraKey = button.dataset.eraButton ?? "";
+        void selectTimelineEra(eraKey);
       });
     });
 
@@ -1812,11 +1949,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         void prepareAndJumpToHistorySection(id);
       });
     });
-
-    const initialHashTarget = window.location.hash.slice(1);
-    if (stableTimelineJumpTargets.has(initialHashTarget)) {
-      void prepareAndJumpToHistorySection(initialHashTarget, false);
-    }
 
     function dateInputValue(date: Date) {
       const year = date.getFullYear();
@@ -1842,9 +1974,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           return `<li><strong>${escapeTimelineHtml(item.date)}</strong><span>${escapeTimelineHtml(item.title)}</span><p>${escapeTimelineHtml(item.summary)}</p>${conflictNote}${source}</li>`;
         })
         .join("");
-      onThisDayEmpty.textContent = matches.length
-        ? `${timelineConfig.labels.exactDateCount}: ${datedItems.length}`
-        : `${timelineConfig.labels.noOnThisDay} ${timelineConfig.labels.exactDateCount}: ${datedItems.length}`;
+      onThisDayEmpty.textContent = matches.length ? "" : timelineConfig.labels.noOnThisDay;
     }
 
     onThisDayDate.value = dateInputValue(new Date());
@@ -1853,8 +1983,21 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       onThisDayDate.value = dateInputValue(new Date());
       void renderOnThisDay();
     });
+    void renderOnThisDay();
     syncEraButtons();
     scheduleInitialTimelineRender();
+
+    function syncHistoryHashTarget() {
+      const target = window.location.hash.slice(1);
+      if (target.startsWith("era-")) {
+        void selectTimelineEra(target.replace(/^era-/, ""), false);
+      } else if (stableTimelineJumpTargets.has(target)) {
+        void prepareAndJumpToHistorySection(target, false);
+      }
+    }
+
+    syncHistoryHashTarget();
+    window.addEventListener("hashchange", syncHistoryHashTarget);
   </script>
 
   <script>
@@ -1921,8 +2064,14 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         .replaceAll("'", "&#039;");
     }
 
+    function versionedMapUrl(url: string) {
+      if (!config.dataVersion || /^(https?:)?\/\//.test(url)) return url;
+      const separator = url.includes("?") ? "&" : "?";
+      return `${url}${separator}v=${encodeURIComponent(config.dataVersion)}`;
+    }
+
     async function fetchMapJson(url: string) {
-      const response = await fetch(url);
+      const response = await fetch(versionedMapUrl(url));
       if (!response.ok) throw new Error(`Unable to load ${url}`);
       return await response.json();
     }

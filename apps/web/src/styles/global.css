@@ -2175,6 +2175,11 @@ code {
   border-color: var(--brand);
   color: var(--brand-strong);
 }
+.era-pill[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
 
 /* timeline */
 .history-timeline {
