@@ -6,7 +6,6 @@ import {
   educationResources,
   historicalArchiveItems,
   historyKnowledgeEvents,
-  historyKnowledgeIndex,
   historyKnowledgePlaces,
   historyKnowledgeSources,
   thenNowPairs,
@@ -28,7 +27,7 @@ const labels = {
       "Пет двуезични урока за историята на Пловдив, свързани с нормализираните събития, места, архивни изображения и публични източници в Open Plovdiv.",
     lessons: "урока",
     quiz: "въпроса в тестове",
-    audio: "аудио сценария",
+    audio: "аудио маршрута",
     sources: "източника",
     minutes: "мин",
     lessonPlan: "План на урока",
@@ -57,11 +56,8 @@ const labels = {
     stops: "спирки",
     openLesson: "Отвори урока",
     sourcesTitle: "Източници",
-    openApi: "API",
-    jsonData: "JSON",
-    csvData: "CSV",
     editorialNote:
-      "Материалите са готови като източниково проследими чернови. Преди официално училищно използване остават педагогически и независим редакторски преглед."
+      "Материалите са подредени за работа в клас, разходки и самостоятелно четене, с ясни връзки към събития, места и източници."
   },
   en: {
     title: "Education Hub",
@@ -70,7 +66,7 @@ const labels = {
       "Five bilingual lessons on Plovdiv's history, linked to the normalized events, places, archive images and public sources in Open Plovdiv.",
     lessons: "lessons",
     quiz: "quiz questions",
-    audio: "audio scripts",
+    audio: "audio routes",
     sources: "sources",
     minutes: "min",
     lessonPlan: "Lesson Plan",
@@ -99,11 +95,8 @@ const labels = {
     stops: "stops",
     openLesson: "Open lesson",
     sourcesTitle: "Sources",
-    openApi: "API",
-    jsonData: "JSON",
-    csvData: "CSV",
     editorialNote:
-      "The materials are source-traceable drafts. Pedagogical review and independent editorial sign-off are still required before formal classroom use."
+      "The materials are structured for classroom work, walking routes and self-guided reading, with clear links to events, places and sources."
   }
 }[lang];
 
@@ -174,7 +167,7 @@ function evidenceNames(resource: EducationResource, type: "events" | "places" | 
         <dl class="stats-grid education-stats" aria-label={labels.title}>
           <div class="stat-card">
             <dt>{labels.lessons}</dt>
-            <dd>{educationResources.length}/{historyKnowledgeIndex.targets.lesson_plans}</dd>
+            <dd>{educationResources.length}</dd>
           </div>
           <div class="stat-card">
             <dt>{labels.quiz}</dt>
@@ -196,10 +189,6 @@ function evidenceNames(resource: EducationResource, type: "events" | "places" | 
       <div class="container">
         <div class="education-toolbar">
           <p class="meta">{labels.editorialNote}</p>
-          <div class="data-actions">
-            <a class="src-link" href="/data/history/education-resources.json" download>{labels.jsonData}</a>
-            <a class="src-link" href="/data/history/csv/education-resources.csv" download>{labels.csvData}</a>
-          </div>
         </div>
 
         <section class="audio-route-overview" aria-labelledby="audio-routes-title">

@@ -4,7 +4,6 @@ import { localizePath, ui, type Lang } from "@i18n/utils";
 import { sourceTitle } from "@lib/format";
 import {
   historicalArchiveItems,
-  historyKnowledgeIndex,
   historyKnowledgeSources,
   historyKnowledgePlaces,
   storyLongreads,
@@ -26,17 +25,13 @@ const labels = {
     lead:
       "Двуезични разкази за Пловдив, изградени върху нормализираните събития, места, архивни изображения и публични източници в Open Plovdiv.",
     stories: "разказа",
-    target: "цел",
     sources: "източника",
-    archive: "архивни връзки",
+    archive: "архивни образа",
     minutes: "мин четене",
     read: "Чети",
     evidence: "Свързани записи",
-    openApi: "API",
-    jsonData: "JSON",
-    csvData: "CSV",
     editorialNote:
-      "Разказите са източниково проследими редакционни чернови. Преди да се броят като завършени, изискват независим редакторски преглед."
+      "Всеки разказ събира проверени места, събития, изображения и източници в четим маршрут през историята на града."
   },
   en: {
     title: "Historical Stories",
@@ -44,17 +39,13 @@ const labels = {
     lead:
       "Bilingual stories on Plovdiv, built from normalized events, places, archive images and public sources in Open Plovdiv.",
     stories: "stories",
-    target: "target",
     sources: "sources",
-    archive: "archive links",
+    archive: "archive visuals",
     minutes: "min read",
     read: "Read",
     evidence: "Linked records",
-    openApi: "API",
-    jsonData: "JSON",
-    csvData: "CSV",
     editorialNote:
-      "These stories are source-traceable editorial drafts. Independent editorial review is required before they count as complete."
+      "Each story connects verified places, events, images and sources into a readable route through the city’s history."
   }
 }[lang];
 
@@ -104,7 +95,7 @@ const archiveLinkCount = storyLongreads.reduce(
       <dl class="stats-grid stories-stats" aria-label={labels.title}>
         <div class="stat-card">
           <dt>{labels.stories}</dt>
-          <dd>{storyLongreads.length}/{historyKnowledgeIndex.targets.longreads}</dd>
+          <dd>{storyLongreads.length}</dd>
         </div>
         <div class="stat-card">
           <dt>{labels.sources}</dt>
@@ -122,10 +113,6 @@ const archiveLinkCount = storyLongreads.reduce(
     <div class="container">
       <div class="stories-toolbar">
         <p class="meta">{labels.editorialNote}</p>
-        <div class="data-actions">
-          <a class="src-link" href="/data/history/story-longreads.json" download>{labels.jsonData}</a>
-          <a class="src-link" href="/data/history/csv/story-longreads.csv" download>{labels.csvData}</a>
-        </div>
       </div>
 
       <div class="story-grid">

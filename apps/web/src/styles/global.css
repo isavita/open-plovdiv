@@ -4309,33 +4309,47 @@ code {
 /* Stat-card grid (People / Places / Stories / Education / Editorial views) */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: clamp(12px, 2vw, 18px);
+  grid-template-columns: repeat(auto-fit, minmax(132px, 190px));
+  gap: clamp(10px, 1.6vw, 14px);
+  justify-content: start;
   margin: 0;
   padding: 0;
 }
 .stat-card {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 5px;
+  align-content: start;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--r);
-  padding: 18px 20px;
+  border-radius: var(--r-sm);
   box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 8px;
+  min-height: 0;
+  padding: 14px 16px;
 }
 .stat-card dt {
   margin: 0;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.74rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 .stat-card dd {
   margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.7rem, 3vw, 2.3rem);
-  font-weight: 600;
+  font-family: var(--font-ui);
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 850;
   color: var(--brand);
   line-height: 1;
+}
+
+@media (max-width: 520px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---- City growth: population chart + neighbourhood eras ----------------- */
