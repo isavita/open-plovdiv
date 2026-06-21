@@ -269,15 +269,6 @@ img {
   color: var(--ink);
 }
 
-.brand-mark {
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
-  box-shadow: var(--shadow-sm);
-  display: block;
-  flex-shrink: 0;
-}
-
 .nav-right {
   display: flex;
   align-items: center;
@@ -376,13 +367,6 @@ img {
   .brand {
     gap: 8px;
     font-size: 1rem;
-  }
-
-  .brand-mark {
-    border-radius: 9px;
-    font-size: 0.78rem;
-    height: 34px;
-    width: 34px;
   }
 
   .nav-right {
@@ -605,18 +589,10 @@ p:last-child {
   .grid-4 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .coverage-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 520px) {
   .grid-4 {
-    grid-template-columns: 1fr;
-  }
-
-  .coverage-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -2285,31 +2261,6 @@ code {
 }
 .timeline-card p {
   margin: 0 0 8px;
-}
-
-.coverage-grid {
-  display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-}
-
-.coverage-card {
-  display: grid;
-  gap: 12px;
-  align-content: start;
-}
-
-.coverage-card h3 {
-  font-family: var(--font-ui);
-  font-size: 0.96rem;
-  margin: 0 0 2px;
-}
-
-.coverage-card strong {
-  color: var(--brand);
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  line-height: 1;
 }
 
 .history-deep-list {
@@ -4440,7 +4391,6 @@ code {
   background: var(--accent);
   color: #fff;
 }
-#coverage,
 #timeline,
 #city-growth,
 #landmarks,

@@ -5,7 +5,6 @@ import SectionNav from "@components/SectionNav.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { localizePath } from "@i18n/utils";
 import {
-  historyEditorialReview,
   historyKnowledgeEvents,
   historyKnowledgeIndex,
   historyKnowledgeOrganizations,
@@ -45,8 +44,6 @@ const entries = [...historyKnowledgeEvents].sort(
 );
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
 const mayorEvents = entries.filter((event) => event.category === "mayor_term");
-const signedOffCount = historyEditorialReview.summary.signed_off_records;
-const totalEditorialRecords = historyEditorialReview.summary.total_tracked_records;
 
 const stats = [
   { value: t.home.statYearsValue, label: t.history.statYears },
@@ -58,16 +55,9 @@ const stats = [
 const labels =
   lang === "bg"
     ? {
-        coverageTitle: "Покритие на историческата база",
-        coverageLead:
-          "Нормализираната база вече свързва събития, хора, места, организации и източници. Броят по-долу показва докъде е стигнало съдържанието спрямо редакторските цели.",
-        events: "Събития",
         people: "Хора",
         places: "Места",
-        placeImages: "Места със снимки",
-        sources: "Източници",
         contribute: "Изпрати снимка или спомен",
-        editorial: "Редакторско одобрение",
         records: "записа",
         of: "от",
         timelineTitle: "Дълбока хронология",
@@ -166,16 +156,9 @@ const labels =
         reviewDashboard: "Опашка за редакторски преглед"
       }
     : {
-        coverageTitle: "Historical Knowledge Coverage",
-        coverageLead:
-          "The normalized base now connects events, people, places, organizations and sources. The counts below show current content against the editorial targets.",
-        events: "Events",
         people: "People",
         places: "Places",
-        placeImages: "Places with images",
-        sources: "Sources",
         contribute: "Submit a photo or memory",
-        editorial: "Editorial sign-off",
         records: "records",
         of: "of",
         timelineTitle: "Deep Timeline",
@@ -470,40 +453,6 @@ const timelinePlaces = [...new Set(entries.flatMap((event) => event.place_ids))]
 const clientCategoryLabels = Object.fromEntries(categories.map((category) => [category, labelCategory(category)]));
 const clientThemeLabels = Object.fromEntries(themeTags.map((theme) => [theme, labelTheme(theme)]));
 
-const coverageRows = [
-  { label: labels.events, count: historyKnowledgeIndex.counts.events, target: historyKnowledgeIndex.targets.events },
-  {
-    label: labels.exactDateCount,
-    count: historyKnowledgeIndex.counts.exact_date_events ?? 0,
-    target: historyKnowledgeIndex.targets.exact_date_events ?? 60
-  },
-  { label: labels.people, count: historyKnowledgeIndex.counts.people, target: historyKnowledgeIndex.targets.people },
-  { label: labels.places, count: historyKnowledgeIndex.counts.places, target: historyKnowledgeIndex.targets.places },
-  {
-    label: labels.placeImages,
-    count: historyKnowledgeIndex.counts.places_with_media ?? 0,
-    target: historyKnowledgeIndex.targets.places_with_media ?? historyKnowledgeIndex.targets.places
-  },
-  {
-    label: labels.georeferencedItems,
-    count: historyKnowledgeIndex.counts.georeferenced_archive_items ?? historicalArchiveItems.length,
-    target: historyKnowledgeIndex.targets.georeferenced_archive_items
-  },
-  {
-    label: labels.thenNowPairs,
-    count: historyKnowledgeIndex.counts.then_now_pairs ?? thenNowPairs.length,
-    target: historyKnowledgeIndex.targets.then_now_pairs
-  },
-  { label: labels.sources, count: historyKnowledgeIndex.counts.sources, target: historyKnowledgeIndex.counts.sources },
-  { label: labels.editorial, count: signedOffCount, target: totalEditorialRecords }
-].map((row) => ({
-  ...row,
-  pct: row.target ? Math.min(100, Math.round((row.count / row.target) * 100)) : 100,
-  pctLabel: `${row.target ? Math.min(100, Math.round((row.count / row.target) * 100)) : 100}%`,
-  barStyle: `width:${row.target ? Math.min(100, Math.round((row.count / row.target) * 100)) : 100}%`,
-  meta: `${row.count} ${labels.of} ${row.target} ${labels.records}`
-}));
-
 const repeatedPeople = historyKnowledgePeople.filter((person) => person.term_events.length > 1);
 const successionCount = historyKnowledgePeople.reduce(
   (sum, person) => sum + person.relationships.filter((relationship) => relationship.type === "succeeded_by").length,
@@ -659,7 +608,6 @@ const nbEraLabels: Record<NeighbourhoodEra, string> =
 const sectionNav =
   lang === "bg"
     ? [
-        { id: "coverage", label: "Обхват" },
         { id: "geography", label: "Геогр./климат" },
         { id: "timeline", label: "Хронология" },
         { id: "city-growth", label: "Растеж" },
@@ -669,7 +617,6 @@ const sectionNav =
         { id: "data", label: "Данни" }
       ]
     : [
-        { id: "coverage", label: "Coverage" },
         { id: "geography", label: "Geography" },
         { id: "timeline", label: "Timeline" },
         { id: "city-growth", label: "Growth" },
@@ -857,30 +804,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           </button>
         ))}
       </nav>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0" id="coverage" data-subnav-target>
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>{labels.coverageTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.coverageLead}</p>
-        </div>
-      </div>
-
-      <div class="coverage-grid">
-        {coverageRows.map((coverage) => (
-          <article class="card coverage-card">
-            <div>
-              <h3>{coverage.label}</h3>
-              <p class="meta">{coverage.meta}</p>
-            </div>
-            <div class="bar-track" aria-hidden="true"><div class="bar-fill" style={coverage.barStyle}></div></div>
-            <strong>{coverage.pctLabel}</strong>
-          </article>
-        ))}
-      </div>
     </div>
   </section>
 
