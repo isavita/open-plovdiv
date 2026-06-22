@@ -2812,6 +2812,56 @@ code {
   font-weight: 600;
   font-size: 1.05rem;
 }
+
+/* Homepage "mayors" portrait strip — a visual way into the full catalogue. */
+.home-mayors-lead {
+  margin: 6px 0 0;
+  max-width: 70ch;
+}
+.mayor-strip {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 2px 0 10px;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+.mayor-strip > li {
+  flex: 0 0 auto;
+  width: 116px;
+  scroll-snap-align: start;
+}
+.mayor-strip a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 7px;
+  text-decoration: none;
+  color: inherit;
+}
+.mayor-portrait-strip {
+  width: 104px;
+  height: 128px;
+  border-radius: 12px;
+}
+.mayor-strip strong {
+  font-size: 0.92rem;
+  line-height: 1.22;
+  font-weight: 600;
+}
+.mayor-strip span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.mayor-strip a:hover strong {
+  color: var(--accent);
+}
+.mayor-strip a:hover .mayor-portrait-strip {
+  border-color: var(--accent);
+}
 .mayor-card-head {
   display: flex;
   gap: 14px;

@@ -44,6 +44,25 @@ const teaserLandmarks = teaserLandmarkIds
   .map((id) => plovdivLandmarks.find((l) => l.id === id))
   .filter((l): l is NonNullable<typeof l> => Boolean(l));
 
+/** Build a Wikimedia Commons thumbnail URL to avoid loading full-size originals. */
+function commonsThumb(url: string, width: number): string {
+  const marker = "/wikipedia/commons/";
+  if (!url.includes(marker) || url.includes("/wikipedia/commons/thumb/")) return url;
+  const commonsPath = url.split(marker)[1];
+  const file = commonsPath?.split("/").pop();
+  if (!file) return url;
+  return `https://upload.wikimedia.org/wikipedia/commons/thumb/${commonsPath}/${width}px-${file}`;
+}
+
+// A small, chronological set of mayors with portraits — a visual way into the
+// full 1878→today catalogue (not a "most important" claim).
+const mayorsWithPortraits = cityArchive
+  .filter((r) => r.kind === "mayor_term" && r.image)
+  .sort((a, b) => a.year_start - b.year_start);
+const featuredMayors = [
+  ...new Set([0, 0.25, 0.5, 0.72, 1].map((f) => Math.round(f * (mayorsWithPortraits.length - 1))))
+].map((i) => mayorsWithPortraits[i]);
+
 const civicCards = [
   { href: localizePath("/budget", lang), eyebrow: t.home.cardBudgetEyebrow, title: t.home.cardBudgetTitle, text: t.home.cardBudgetText },
   { href: localizePath("/projects", lang), eyebrow: t.home.cardProjectsEyebrow, title: t.home.cardProjectsTitle, text: t.home.cardProjectsText },
@@ -111,41 +130,72 @@ const civicCards = [
   </section>
 
   <section class="section">
-    <div class="container grid grid-2">
-      <div>
-        <div class="section-head">
-          <h2>{t.history.landmarksTitle}</h2>
-          <a href={`${localizePath("/history", lang)}#landmarks`}>{t.home.viewAll} →</a>
-        </div>
-        <div class="list">
-          {teaserLandmarks.map((lm) => (
-            <article class="card">
+    <div class="container">
+      <div class="section-head">
+        <h2>{t.history.landmarksTitle}</h2>
+        <a href={`${localizePath("/history", lang)}#landmarks`}>{t.home.viewAll} →</a>
+      </div>
+      <div class="grid grid-3">
+        {teaserLandmarks.map((lm) => {
+          const img = lm.media?.[0];
+          return (
+            <a class="card card-link landmark-card" href={`${localizePath("/history", lang)}#landmarks`}>
+              {img && (
+                <figure class="landmark-media">
+                  <img
+                    src={commonsThumb(img.url, 500)}
+                    alt={field(lm, "name", lang)}
+                    loading="lazy"
+                    decoding="async"
+                    crossorigin="anonymous"
+                    referrerpolicy="no-referrer"
+                    width="500"
+                    height="313"
+                  />
+                  <figcaption>{`${img.credit} · ${img.license}`}</figcaption>
+                </figure>
+              )}
               <p class="eyebrow">{field(lm, "era", lang)}</p>
               <h3>{field(lm, "name", lang)}</h3>
               <p>{field(lm, "summary", lang)}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-      <div>
-        <div class="section-head">
-          <h2>{t.history.mayorsTitle}</h2>
-          <a href={localizePath("/mayors", lang)}>{t.home.viewAll} →</a>
-        </div>
-        <article class="card cta-card cta-card-stack">
-          <div>
-            <p class="eyebrow">{`1878 – ${new Date().getFullYear()}`}</p>
-            <p>{t.history.mayorsLead}</p>
-          </div>
-          <a class="button secondary" href={localizePath("/mayors", lang)}>
-            {t.history.mayorsCta}<span class="arrow" aria-hidden="true">→</span>
-          </a>
-        </article>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          );
+        })}
       </div>
     </div>
   </section>
 
   <section class="section section-tint">
+    <div class="container">
+      <div class="section-head">
+        <h2>{t.history.mayorsTitle}</h2>
+        <a href={localizePath("/mayors", lang)}>{t.home.viewAll} →</a>
+      </div>
+      <p class="meta home-mayors-lead">{t.history.mayorsLead}</p>
+      <ul class="mayor-strip" role="list">
+        {featuredMayors.map((m) => (
+          <li>
+            <a href={localizePath("/mayors", lang)}>
+              <img
+                class="mayor-portrait mayor-portrait-strip"
+                src={m.image}
+                alt={t.mayors.portraitAlt(field(m, "actor", lang))}
+                loading="lazy"
+                decoding="async"
+                width="104"
+                height="128"
+              />
+              <strong>{field(m, "actor", lang)}</strong>
+              <span>{!m.year_end ? `${m.year_start}–` : m.year_end === m.year_start ? `${m.year_start}` : `${m.year_start}–${m.year_end}`}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <div class="section-head">
         <div>

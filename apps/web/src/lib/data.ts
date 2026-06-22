@@ -266,6 +266,15 @@ export type Landmark = {
   builder_en?: string;
   source: Source;
   data_quality: string;
+  media?: Array<{
+    type: string;
+    title?: string;
+    url: string;
+    page_url?: string;
+    credit: string;
+    license: string;
+    license_url?: string;
+  }>;
 };
 
 export type KnowledgeEditorialStatus = "needs_editorial_signoff" | "signed_off";
