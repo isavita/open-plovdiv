@@ -375,14 +375,6 @@ const sourceRecords = [...sourceIds]
               <dd>{roleList}</dd>
               <dt>{labels.life}</dt>
               <dd>{lifeLabel(person)}</dd>
-              <dt>{labels.editorial}</dt>
-              <dd>{editorialStatusLabel(person.editorial.status)}</dd>
-              {person.wikidata_id && (
-                <>
-                  <dt>{labels.wikidata}</dt>
-                  <dd><a href={wikidataHref} target="_blank" rel="noreferrer">{person.wikidata_id}</a></dd>
-                </>
-              )}
             </dl>
           </section>
 

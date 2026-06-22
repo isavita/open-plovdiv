@@ -75,7 +75,7 @@ const labels =
         of: "от",
         timelineTitle: "Дълбока хронология",
         timelineLead:
-          "Датирани записи от праисторията до днес, включително 66 кметски мандата и градски архивни събития. Всеки запис има източник и машинно проверени връзки.",
+          "Датирани записи от праисторията до днес, включително 66 кметски мандата и градски архивни събития. Всеки запис посочва своя източник.",
         search: "Търсене",
         searchPlaceholder: "име, място, събитие…",
         era: "Епоха",
@@ -175,7 +175,7 @@ const labels =
         of: "of",
         timelineTitle: "Deep Timeline",
         timelineLead:
-          "Dated records from prehistory to today, including 66 mayoral terms and city-archive events. Every record has a source and machine-checked links.",
+          "Dated records from prehistory to today, including 66 mayoral terms and city-archive events. Every record cites its source.",
         search: "Search",
         searchPlaceholder: "name, place, event...",
         era: "Era",
@@ -1070,7 +1070,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
       <div class="results-bar">
         <p id="history-count" class="meta" aria-live="polite">
-          {entries.length} {labels.of} {entries.length} {labels.records}
+          {entries.length} {labels.records}
         </p>
         <button type="button" id="history-reset" class="link-button" hidden>{labels.reset}</button>
       </div>
@@ -1503,11 +1503,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         <div>
           <h2>{labels.dataTitle}</h2>
           <p class="meta" style="margin-top:8px;max-width:74ch">{labels.dataLead}</p>
-          <div class="button-row" style="margin-top:14px">
-            <a class="button secondary" href={localizePath("/history/editorial-review", lang)}>
-              {labels.reviewDashboard}
-            </a>
-          </div>
         </div>
       </div>
 
