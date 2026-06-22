@@ -4,10 +4,10 @@
   "acceptance_requirement": "Independent editorial sign-off must be logged for 100% of published content before the history platform is complete.",
   "status": "incomplete",
   "summary": {
-    "total_tracked_records": 991,
+    "total_tracked_records": 999,
     "signed_off_records": 0,
-    "records_needing_review": 991,
-    "records_with_blockers": 991,
+    "records_needing_review": 999,
+    "records_with_blockers": 999,
     "signed_off_percent": 0,
     "tracking_gap_collections": 0
   },
@@ -16,10 +16,10 @@
       "label_bg": "Събития",
       "label_en": "Events",
       "role": "primary_entity",
-      "total_records": 352,
+      "total_records": 360,
       "signed_off_records": 0,
-      "records_needing_review": 352,
-      "records_with_blockers": 352
+      "records_needing_review": 360,
+      "records_with_blockers": 360
     },
     "people": {
       "label_bg": "Хора",
@@ -2569,6 +2569,54 @@
       ]
     },
     {
+      "id": "event-liberation-san-stefano",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Санстефанският договор",
+      "title_en": "The Treaty of San Stefano",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-liberation-san-stefano",
+      "review_url_en": "/en/history#event-liberation-san-stefano",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-plovdiv",
+          "title_bg": "Wikipedia — Plovdiv",
+          "title_en": "Wikipedia — Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "accessed_at": "2026-06-18",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Санстефанският договор\".",
+          "claim_en": "Dating and summary for timeline record \"The Treaty of San Stefano\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-mayor-01-atanas-samokovliev",
       "collection": "events",
       "role": "primary_entity",
@@ -3193,6 +3241,54 @@
       ]
     },
     {
+      "id": "event-liberation-september-1885",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Тайният комитет и 6 септември",
+      "title_en": "The Secret Committee and 6 September",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-liberation-september-1885",
+      "review_url_en": "/en/history#event-liberation-september-1885",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-plovdiv",
+          "title_bg": "Wikipedia — Plovdiv",
+          "title_en": "Wikipedia — Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "accessed_at": "2026-06-18",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Тайният комитет и 6 септември\".",
+          "claim_en": "Dating and summary for timeline record \"The Secret Committee and 6 September\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-unification-1885",
       "collection": "events",
       "role": "primary_entity",
@@ -3297,6 +3393,54 @@
       ],
       "license_statuses": [
         "public_reference_terms_unverified"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-modern-railways",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Идването на железницата",
+      "title_en": "The railways arrive",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-modern-railways",
+      "review_url_en": "/en/history#event-modern-railways",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-plovdiv",
+          "title_bg": "Wikipedia — Plovdiv",
+          "title_en": "Wikipedia — Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "accessed_at": "2026-06-18",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Идването на железницата\".",
+          "claim_en": "Dating and summary for timeline record \"The railways arrive\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
       ],
       "source_count": 1,
       "has_license_or_reuse_status": true,
@@ -6392,6 +6536,54 @@
       ]
     },
     {
+      "id": "event-modern-electrification",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Електрификация и индустрия",
+      "title_en": "Electrification and industry",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-modern-electrification",
+      "review_url_en": "/en/history#event-modern-electrification",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-plovdiv",
+          "title_bg": "Wikipedia — Plovdiv",
+          "title_en": "Wikipedia — Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "accessed_at": "2026-06-18",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Електрификация и индустрия\".",
+          "claim_en": "Dating and summary for timeline record \"Electrification and industry\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-mayor-40-d-r-panayot-kostov",
       "collection": "events",
       "role": "primary_entity",
@@ -8294,6 +8486,54 @@
       ]
     },
     {
+      "id": "event-modern-wwii-bombing",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Втората световна война",
+      "title_en": "The Second World War",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-modern-wwii-bombing",
+      "review_url_en": "/en/history#event-modern-wwii-bombing",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-plovdiv",
+          "title_bg": "Wikipedia — Plovdiv",
+          "title_en": "Wikipedia — Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "accessed_at": "2026-06-18",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Втората световна война\".",
+          "claim_en": "Dating and summary for timeline record \"The Second World War\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-mayor-48-d-r-asen-kozhuharov",
       "collection": "events",
       "role": "primary_entity",
@@ -9915,6 +10155,54 @@
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Solomon_Passy"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-modern-trolleybus",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Първият тролейбус и строителният бум",
+      "title_en": "Trolleybuses and the building boom",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-modern-trolleybus",
+      "review_url_en": "/en/history#event-modern-trolleybus",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-plovdiv",
+          "title_bg": "Wikipedia — Plovdiv",
+          "title_en": "Wikipedia — Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "accessed_at": "2026-06-18",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Първият тролейбус и строителният бум\".",
+          "claim_en": "Dating and summary for timeline record \"Trolleybuses and the building boom\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
       ],
       "license_statuses": [
         "open_license"
@@ -14054,6 +14342,54 @@
       ]
     },
     {
+      "id": "event-modern-world-expo",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Световни изложения (Експо)",
+      "title_en": "World's Fair exhibitions",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-modern-world-expo",
+      "review_url_en": "/en/history#event-modern-world-expo",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-plovdiv",
+          "title_bg": "Wikipedia — Plovdiv",
+          "title_en": "Wikipedia — Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "accessed_at": "2026-06-18",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Световни изложения (Експо)\".",
+          "claim_en": "Dating and summary for timeline record \"World's Fair exhibitions\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-birth-delyana-dacheva-q5254970",
       "collection": "events",
       "role": "primary_entity",
@@ -14715,6 +15051,54 @@
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Tsvetelina_Yaneva"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-modern-democratic-reform",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Люлка на демократичната промяна",
+      "title_en": "A cradle of democratic reform",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-modern-democratic-reform",
+      "review_url_en": "/en/history#event-modern-democratic-reform",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-plovdiv",
+          "title_bg": "Wikipedia — Plovdiv",
+          "title_en": "Wikipedia — Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "accessed_at": "2026-06-18",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Люлка на демократичната промяна\".",
+          "claim_en": "Dating and summary for timeline record \"A cradle of democratic reform\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
       ],
       "license_statuses": [
         "open_license"

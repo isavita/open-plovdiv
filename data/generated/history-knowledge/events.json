@@ -2528,6 +2528,56 @@
     }
   },
   {
+    "id": "event-liberation-san-stefano",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "liberation",
+    "date": {
+      "year": 1878,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "3 март 1878 г.",
+      "display_en": "3 March 1878"
+    },
+    "title_bg": "Санстефанският договор",
+    "title_en": "The Treaty of San Stefano",
+    "summary_bg": "Със Санстефанския мирен договор (3 март 1878 г.) Пловдив — тогава най-големият и оживен български град — е определен за столица на възстановената държава и седалище на Временното руско управление, преди Берлинският конгрес да преначертае картата.",
+    "summary_en": "By the Treaty of San Stefano (3 March 1878) Plovdiv — then the largest and most vibrant Bulgarian city — was chosen as the capital of the restored country and the seat of the Temporary Russian Government, before the Congress of Berlin redrew the map.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "liberation"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Санстефанският договор\".",
+        "claim_en": "Dating and summary for timeline record \"The Treaty of San Stefano\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-mayor-01-atanas-samokovliev",
     "type": "event",
     "category": "mayor_term",
@@ -3228,6 +3278,56 @@
     }
   },
   {
+    "id": "event-liberation-september-1885",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "liberation",
+    "date": {
+      "year": 1885,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "5–6 септември 1885 г.",
+      "display_en": "5–6 September 1885"
+    },
+    "title_bg": "Тайният комитет и 6 септември",
+    "title_en": "The Secret Committee and 6 September",
+    "summary_bg": "През пролетта на 1885 г. Захари Стоянов основава в Пловдив Българския таен централен революционен комитет. В нощта на 5 срещу 6 септември въстаници, водени от Данаил Николаев, превземат града и свалят генерал-губернатора Гаврил Кръстевич; временно правителство начело с Георги Странски обявява съединението. И днес 6 септември се чества като Ден на Пловдив.",
+    "summary_en": "In spring 1885 Zahari Stoyanov founded the Secret Bulgarian Central Revolutionary Committee in Plovdiv. On the night of 5–6 September rebels led by Danail Nikolaev took the city and deposed Governor-General Gavril Krastevich; a provisional government under Georgi Stranski proclaimed the union. 6 September is still marked as the Day of Plovdiv.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "liberation"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Тайният комитет и 6 септември\".",
+        "claim_en": "Dating and summary for timeline record \"The Secret Committee and 6 September\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-unification-1885",
     "type": "event",
     "category": "historical_timeline",
@@ -3332,6 +3432,56 @@
         "url": "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/",
         "accessed_at": "2026-06-17",
         "license_status": "public_reference_terms_unverified"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-modern-railways",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "modern",
+    "date": {
+      "year": 1888,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1874–1888 г.",
+      "display_en": "1874–1888"
+    },
+    "title_bg": "Идването на железницата",
+    "title_en": "The railways arrive",
+    "summary_bg": "Пловдив навлиза рано в железопътната епоха: линия достига града през 1874 г. и го свързва с Цариград, а през 1888 г. е свързан и със София — затвърждавайки ролята му на търговски и транспортен възел.",
+    "summary_en": "Plovdiv joined the rail age early: a line reached the city in 1874, linking it to Constantinople, and in 1888 it was connected to Sofia — cementing its role as a trade and transport hub.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "modern"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Идването на железницата\".",
+        "claim_en": "Dating and summary for timeline record \"The railways arrive\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
       }
     ],
     "editorial": {
@@ -6795,6 +6945,56 @@
     }
   },
   {
+    "id": "event-modern-electrification",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "modern",
+    "date": {
+      "year": 1927,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1927 г.",
+      "display_en": "1927"
+    },
+    "title_bg": "Електрификация и индустрия",
+    "title_en": "Electrification and industry",
+    "summary_bg": "Електрификацията на Пловдив започва през 1927 г., докато германски, френски и белгийски капитали навлизат в модерната търговия, банковото дело и индустрията. Към 1939 г. в града работят около 16 000 занаятчии и 17 000 фабрични работници, основно в хранителната и тютюневата промишленост.",
+    "summary_en": "The electrification of Plovdiv began in 1927, as German, French and Belgian capital flowed into modern trade, banking and industry. By 1939 the city counted some 16,000 craftsmen and 17,000 factory workers, mainly in food and tobacco.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "modern"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Електрификация и индустрия\".",
+        "claim_en": "Dating and summary for timeline record \"Electrification and industry\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-mayor-40-d-r-panayot-kostov",
     "type": "event",
     "category": "mayor_term",
@@ -8881,6 +9081,56 @@
     }
   },
   {
+    "id": "event-modern-wwii-bombing",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "modern",
+    "date": {
+      "year": 1944,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1944 г.",
+      "display_en": "1944"
+    },
+    "title_bg": "Втората световна война",
+    "title_en": "The Second World War",
+    "summary_bg": "През Втората световна война тютюневата търговия и износът на плодове и зеленчуци от Пловдив нарастват, но през 1944 г. градът е бомбардиран от британско-американската коалиция.",
+    "summary_en": "During the Second World War Plovdiv's tobacco trade and produce exports grew, but in 1944 the city was bombed by the British–American coalition.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "modern"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Втората световна война\".",
+        "claim_en": "Dating and summary for timeline record \"The Second World War\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-mayor-48-d-r-asen-kozhuharov",
     "type": "event",
     "category": "mayor_term",
@@ -10671,6 +10921,58 @@
         "claim_en": "Birth year and birthplace for Solomon Passy.",
         "url": "https://en.wikipedia.org/wiki/Solomon_Passy",
         "accessed_at": "2026-06-19",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-modern-trolleybus",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "modern",
+    "date": {
+      "year": 1956,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1956 г.",
+      "display_en": "1956"
+    },
+    "title_bg": "Първият тролейбус и строителният бум",
+    "title_en": "Trolleybuses and the building boom",
+    "summary_bg": "Следвоенният Пловдив бързо се модернизира: първата тролейбусна линия е открита на 6 април 1956 г., а хотел „Тримонциум“ е построен през 50-те години. През 60-те и 70-те години строителен бум оформя голяма част от днешните квартали.",
+    "summary_en": "Post-war Plovdiv modernised quickly: the first trolleybus line opened on 6 April 1956 and the Trimontsium Hotel rose in the 1950s. A construction boom through the 1960s and 1970s shaped much of today's city.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "modern"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [
+      "org-regional-history-museum-plovdiv"
+    ],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Първият тролейбус и строителният бум\".",
+        "claim_en": "Dating and summary for timeline record \"Trolleybuses and the building boom\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
         "license_status": "open_license"
       }
     ],
@@ -15232,6 +15534,59 @@
     }
   },
   {
+    "id": "event-modern-world-expo",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "modern",
+    "date": {
+      "year": 1981,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1981–1991 г.",
+      "display_en": "1981–1991"
+    },
+    "title_bg": "Световни изложения (Експо)",
+    "title_en": "World's Fair exhibitions",
+    "summary_bg": "Пловдив е домакин на специализирани изложения на Световното изложение (Експо) през 1981, 1985 и 1991 г. През 70-те и 80-те години античните останки са разкрити, а Старият град е напълно реставриран.",
+    "summary_en": "Plovdiv hosted specialized exhibitions of the World's Fair (Expo) in 1981, 1985 and 1991. Through the 1970s and 1980s its ancient remains were excavated and the Old Town was fully restored.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "modern"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-old-town",
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [
+      "org-international-fair-plovdiv"
+    ],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Световни изложения (Експо)\".",
+        "claim_en": "Dating and summary for timeline record \"World's Fair exhibitions\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-birth-delyana-dacheva-q5254970",
     "type": "event",
     "category": "notable_person_birth",
@@ -15961,6 +16316,56 @@
         "claim_en": "Birth year and birthplace for Tsvetelina Yaneva.",
         "url": "https://en.wikipedia.org/wiki/Tsvetelina_Yaneva",
         "accessed_at": "2026-06-19",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-modern-democratic-reform",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "modern",
+    "date": {
+      "year": 1989,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1989 г.",
+      "display_en": "1989"
+    },
+    "title_bg": "Люлка на демократичната промяна",
+    "title_en": "A cradle of democratic reform",
+    "summary_bg": "В края на 80-те години Пловдив става люлка на българското движение за демократична реформа, което до 1989 г. събира достатъчно подкрепа, за да влезе в управлението с края на комунистическото управление.",
+    "summary_en": "In the late 1980s Plovdiv became a cradle of Bulgaria's movement for democratic reform, which by 1989 had gathered enough support to enter government as communist rule ended.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "modern"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Люлка на демократичната промяна\".",
+        "claim_en": "Dating and summary for timeline record \"A cradle of democratic reform\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
         "license_status": "open_license"
       }
     ],

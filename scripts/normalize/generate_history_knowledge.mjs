@@ -844,14 +844,33 @@ const notablePersonRecords = notablePeople
     const years = lifespan(person);
     const roleSummaryBg = roleList(person.roles, "bg");
     const roleSummaryEn = roleList(person.roles, "en");
+    // Clean one-line bio: "Name (years) — description", falling back to the role
+    // list when there is no Wikidata description. Replaces the old formulaic
+    // "notable person born in Plovdiv / Primary roles:" boilerplate (the "born in
+    // Plovdiv" claim was not true for every record, e.g. mayors born elsewhere).
+    // drop a trailing parenthetical that just repeats the life years, e.g.
+    // "(1849-1924)", "(born 1966)", "(c. 1843 – 1928)".
+    const tidyDesc = (d) =>
+      (d ?? "")
+        .trim()
+        .replace(/\s*\([^()]*\d{3,4}[^()]*\)\s*$/u, "")
+        .replace(/[.\s]+$/u, "")
+        .trim();
+    const descBg = tidyDesc(person.description_bg);
+    const descEn = tidyDesc(person.description_en);
+    // BG keeps source case (nationality adjectives stay lowercase); EN gets a
+    // capitalised first letter for the appositive.
+    const tailBg = descBg || roleSummaryBg;
+    const tailEnRaw = descEn || roleSummaryEn;
+    const tailEn = tailEnRaw ? tailEnRaw.charAt(0).toLocaleUpperCase("en-US") + tailEnRaw.slice(1) : "";
     return {
       id: `person-${slug(person.name_en)}-${person.wikidata_id.toLocaleLowerCase("en-US")}`,
       type: "person",
       wikidata_id: person.wikidata_id,
       name_bg: person.name_bg,
       name_en: person.name_en,
-      summary_bg: `${person.name_bg}${years ? ` (${years})` : ""} — забележителна личност, родена в Пловдив. Основни роли: ${roleSummaryBg}. ${person.description_bg}.`,
-      summary_en: `${person.name_en}${years ? ` (${years.replace("р. ", "b. ")})` : ""} is a notable person born in Plovdiv. Primary roles: ${roleSummaryEn}. ${person.description_en}.`,
+      summary_bg: `${person.name_bg}${years ? ` (${years})` : ""}${tailBg ? ` — ${tailBg}` : ""}.`,
+      summary_en: `${person.name_en}${years ? ` (${years.replace("р. ", "b. ")})` : ""}${tailEn ? ` — ${tailEn}` : ""}.`,
       roles: person.roles,
       birth_year: person.birth_year,
       death_year: person.death_year,
