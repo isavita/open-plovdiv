@@ -31,19 +31,14 @@ const labels =
         wikidata: "Wikidata",
         linkedEvents: "Свързани събития",
         relationships: "Връзки с други личности",
-        noRelationships: "В базата още няма отделни person-to-person връзки за този запис.",
-        evidence: "Източници и произход",
+        noRelationships: "Все още няма записани преки връзки с други личности.",
+        evidence: "Източници",
         source: "Източник",
         accessed: "Достъп",
         license: "Лиценз",
-        editorial: "Редакторски статус",
-        statusPending: "Очаква независим редакторски преглед",
-        statusSignedOff: "Редакционно потвърден",
-        provenance: "Произход на твърденията",
         relationshipSource: "Източник за връзката",
         linkedEvent: "Свързано събитие",
-        imageCredit: "Кредит за изображение",
-        pending: "Записът е валидиран и източниково проследим, но очаква независим редакторски преглед."
+        imageCredit: "Кредит за изображение"
       }
     : {
         back: "All people",
@@ -55,19 +50,14 @@ const labels =
         wikidata: "Wikidata",
         linkedEvents: "Linked events",
         relationships: "Connections to other people",
-        noRelationships: "No separate person-to-person links are in the base for this record yet.",
-        evidence: "Sources and provenance",
+        noRelationships: "No direct connections to other people are recorded yet.",
+        evidence: "Sources",
         source: "Source",
         accessed: "Accessed",
         license: "License",
-        editorial: "Editorial status",
-        statusPending: "Awaiting independent editorial review",
-        statusSignedOff: "Editorially signed off",
-        provenance: "Claim provenance",
         relationshipSource: "Relationship source",
         linkedEvent: "Linked event",
-        imageCredit: "Image credit",
-        pending: "The record is validated and source-traceable, but still awaits independent editorial review."
+        imageCredit: "Image credit"
       };
 
 const roleLabels: Record<string, { bg: string; en: string }> = {
@@ -262,12 +252,6 @@ function relationshipLabel(type: string): string {
   return relationshipLabels[type]?.[lang] ?? type.replaceAll("_", " ");
 }
 
-function editorialStatusLabel(status: string): string {
-  if (status === "needs_editorial_signoff") return labels.statusPending;
-  if (status === "signed_off") return labels.statusSignedOff;
-  return status.replaceAll("_", " ");
-}
-
 function primaryGroup(item: KnowledgePerson): RoleGroup {
   return roleGroups[item.roles[0]] ?? "civic";
 }
@@ -429,18 +413,6 @@ const sourceRecords = [...sourceIds]
                   <a href={source.url} target="_blank" rel="noreferrer">{localized(source, "title")}</a>
                   <span>{labels.accessed}: {source.accessed_at}</span>
                   <span>{labels.license}: {source.license.label}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section>
-            <h2>{labels.provenance}</h2>
-            <ul class="profile-provenance-list">
-              {person.provenance.map((item) => (
-                <li>
-                  <p>{localized(item, "claim")}</p>
-                  <a href={item.url} target="_blank" rel="noreferrer">{labels.source}: {item.source_id}</a>
                 </li>
               ))}
             </ul>

@@ -104,7 +104,6 @@ const labels =
         source: "Източник",
         sourcePlural: "Източници",
         conflictNote: "Бележка за конфликт",
-        needsReview: "чака редакторски преглед",
         mapTitle: "Историческа карта",
         mapLead:
           "Първите места са поставени на картата с приблизителни координати и отделен източник за контекст.",
@@ -160,12 +159,11 @@ const labels =
         openMayors: "Цялата мрежа от хора",
         dataTitle: "Отворени данни и API",
         dataLead:
-          "Петте типа исторически обекти се публикуват като JSON и CSV, а статичните API маршрути връщат същите валидирани записи.",
+          "Петте типа исторически обекти се публикуват като JSON и CSV, а статичните API маршрути връщат същите записи.",
         endpoint: "Маршрут",
         download: "Сваляне",
         jsonData: "JSON данни",
-        csvData: "CSV таблици",
-        reviewDashboard: "Опашка за редакторски преглед"
+        csvData: "CSV таблици"
       }
     : {
         people: "People",
@@ -204,7 +202,6 @@ const labels =
         source: "Source",
         sourcePlural: "Sources",
         conflictNote: "Conflict note",
-        needsReview: "awaiting editorial review",
         mapTitle: "Historical Map",
         mapLead:
           "The first places are placed on the map with approximate coordinates and a separate source for context.",
@@ -260,12 +257,11 @@ const labels =
         openMayors: "The full people network",
         dataTitle: "Open Data and API",
         dataLead:
-          "The five historical object types are published as JSON and CSV, and static API routes return the same validated records.",
+          "The five historical object types are published as JSON and CSV, and static API routes return the same records.",
         endpoint: "Endpoint",
         download: "Download",
         jsonData: "JSON data",
-        csvData: "CSV tables",
-        reviewDashboard: "Editorial review queue"
+        csvData: "CSV tables"
       };
 
 const dataResourceLabels: Record<string, string> =
@@ -311,13 +307,17 @@ function fileNameFromHref(href: string) {
   return href.split("/").filter(Boolean).at(-1) ?? href;
 }
 
-const endpointRows = Object.entries(historyKnowledgeIndex.endpoints).map(([key, href]) => ({
-  key,
-  href,
-  label: dataResourceLabel(key)
-}));
+// Internal editorial-pipeline resources are kept out of the public Open Data list.
+const isEditorialResource = (key: string) => /^editorial(_|$)/.test(key) || key.startsWith("source_coverage");
+const endpointRows = Object.entries(historyKnowledgeIndex.endpoints)
+  .filter(([key]) => !isEditorialResource(key))
+  .map(([key, href]) => ({
+    key,
+    href,
+    label: dataResourceLabel(key)
+  }));
 const downloadRows = Object.entries(historyKnowledgeIndex.downloads)
-  .filter(([key]) => key.endsWith("_json") || key.endsWith("_csv"))
+  .filter(([key]) => (key.endsWith("_json") || key.endsWith("_csv")) && !isEditorialResource(key))
   .map(([key, href]) => {
     const format = key.endsWith("_csv") ? "CSV" : "JSON";
     const resourceKey = key.replace(/_(json|csv)$/u, "");
@@ -629,8 +629,7 @@ const timelineConfig = {
     noOnThisDay: labels.noOnThisDay,
     source: labels.source,
     sourcePlural: labels.sourcePlural,
-    conflictNote: labels.conflictNote,
-    needsReview: labels.needsReview
+    conflictNote: labels.conflictNote
   },
   total: entries.length,
 };

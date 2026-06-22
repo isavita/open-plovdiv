@@ -33,7 +33,7 @@ const labels =
         builder: "Строител",
         creator: "Архитект/строител",
         source: "Източник",
-        sources: "Източници и произход",
+        sources: "Източници",
         mediaLicense: "Лиценз на изображение",
         mediaFile: "Медиен файл",
         mediaCredit: "Кредит",
@@ -45,10 +45,7 @@ const labels =
         eventsTitle: "Свързани събития",
         storiesTitle: "Свързани разкази",
         noArchive:
-          "Все още няма отделен архивен или тогава/сега запис за това място. Основното изображение, координатите и източниците остават публикувани.",
-        editorial: "Записът е валидиран и източниково проследим, но очаква независим редакторски преглед.",
-        panorama:
-          "Панорамно или 360° съдържание не е маркирано в отворените данни за това място; няма добавено непроверено медийно твърдение."
+          "Все още няма отделен архивен или тогава/сега запис за това място. Основното изображение, координатите и източниците остават публикувани."
       }
     : {
         back: "All places",
@@ -62,7 +59,7 @@ const labels =
         builder: "Builder",
         creator: "Architect/builder",
         source: "Source",
-        sources: "Sources and provenance",
+        sources: "Sources",
         mediaLicense: "Image license",
         mediaFile: "Media file",
         mediaCredit: "Credit",
@@ -74,10 +71,7 @@ const labels =
         eventsTitle: "Linked events",
         storiesTitle: "Linked stories",
         noArchive:
-          "No separate archive or then/now record is available for this place yet. The main image, coordinates and sources remain published.",
-        editorial: "The record is validated and source-traceable, but still awaits independent editorial review.",
-        panorama:
-          "Panorama or 360-degree content is not marked in the open data for this place; no unverified media claim has been added."
+          "No separate archive or then/now record is available for this place yet. The main image, coordinates and sources remain published."
       };
 
 function localized(record: Record<string, any>, base: string): string {
@@ -179,7 +173,6 @@ const mapHref = place.coordinates
               ))}
             </dl>
             {mapHref && <a class="button secondary" href={mapHref} target="_blank" rel="noreferrer">{labels.openMap}</a>}
-            <p class="meta" style="margin-top:14px">{labels.panorama}</p>
           </section>
 
           {pairs.length > 0 && (
