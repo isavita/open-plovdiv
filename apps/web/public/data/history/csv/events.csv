@@ -1,27 +1,47 @@
 id,title_bg,title_en,year,year_end,era,category,source_count,conflict_notes_bg,conflict_notes_en,person_ids,place_ids,organization_ids,source_ids
 event-prehistory-settlement,Едно от най-старите селища в света,One of the world's oldest settlements,-6000,,prehistory,historical_timeline,2,,,,place-old-town|place-plovdiv-city|place-seven-hills,,source-wikipedia-plovdiv|source-visit-plovdiv-the-antique-plovdiv
+event-prehistory-nebet-tepe,Постоянно селище на Небет тепе,A lasting settlement on Nebet Tepe,-4000,,prehistory,historical_timeline,2,,,,place-nebet-tepe|place-seven-hills,,source-wikipedia-plovdiv|source-wikipedia-nebet-tepe
+event-prehistory-bronze-age,Бронзовата епоха и ранните некрополи,The Bronze Age and early necropolises,-2500,,prehistory,historical_timeline,1,,,,place-plovdiv-city|place-seven-hills,,source-wikipedia-plovdiv
+event-thracian-town-bessi,Тракийският град и племето беси,The Thracian town and the Bessi,-1200,,thracian,historical_timeline,1,,,,place-nebet-tepe|place-seven-hills,,source-wikipedia-plovdiv
+event-thracian-persian-rule,Под персийска власт,Under Persian overlordship,-516,,thracian,historical_timeline,1,,,,,,source-wikipedia-plovdiv
 event-thracian-eumolpias,Тракийският град Евмолпия,The Thracian town of Eumolpias,-500,,thracian,historical_timeline,2,,,,place-nebet-tepe|place-seven-hills,,source-wikipedia-plovdiv|source-visit-plovdiv-the-antique-plovdiv
 event-philip-philippopolis,Филип II и Филипопол,Philip II and Philippopolis,-342,,thracian,historical_timeline,2,,,,,,source-wikipedia-plovdiv|source-visit-plovdiv-the-antique-plovdiv
+event-thracian-seuthes-iii,Севт III възстановява Одриското царство,Seuthes III revives the Odrysian kingdom,-331,,thracian,historical_timeline,1,,,,,,source-wikipedia-plovdiv
+event-thracian-celts,Разрушен от келтите,Destroyed by the Celts,-270,,thracian,historical_timeline,1,,,,place-seven-hills,,source-wikipedia-plovdiv
+event-thracian-philip-v,Филип V Македонски превзема града,Philip V of Macedon takes the city,-183,,thracian,historical_timeline,1,,,,place-seven-hills,,source-wikipedia-plovdiv
+event-thracian-lucullus,Първият римски досег: Марк Лукул,Rome's first reach: Marcus Lucullus,-72,,thracian,historical_timeline,1,,,,,org-regional-history-museum-plovdiv,source-wikipedia-plovdiv
 event-roman-trimontium,Тримонциум — част от Римската империя,Trimontium joins the Roman Empire,46,,roman,historical_timeline,1,,,,place-seven-hills,org-regional-history-museum-plovdiv,source-wikipedia-plovdiv
+event-roman-forum,Римският форум,The Roman Forum,75,,roman,historical_timeline,1,,,,place-forum-philippopolis,org-regional-history-museum-plovdiv,source-wikipedia-plovdiv
 event-roman-theatre,Изграждане на Античния театър,The Roman theatre is built,95,,roman,historical_timeline,2,,,,place-ancient-theatre,org-regional-history-museum-plovdiv,source-wikipedia-plovdiv|source-visit-plovdiv-ancient-theatre
 event-roman-stadium,Изграждане на Античния стадион,The Roman stadium is built,130,,roman,historical_timeline,2,,,,place-ancient-stadium,,source-wikipedia-plovdiv|source-ancient-stadium-of-philippopolis-site-history
+event-roman-odeon,Античният одеон,The Roman Odeon,150,,roman,historical_timeline,1,,,,place-ancient-theatre,org-plovdiv-municipal-council,source-wikipedia-plovdiv
 event-goths-250,Опожаряване от готите,Sacked by the Goths,250,,roman,historical_timeline,1,,,,,,source-wikipedia-plovdiv
 event-huns-441,Разрушение от хуните,Destroyed by the Huns,441,,roman,historical_timeline,1,,,,,,source-wikipedia-plovdiv
+event-medieval-byzantine-fortress,Византийска гранична крепост,A Byzantine border fortress,681,,medieval,historical_timeline,1,,,,,,source-wikipedia-plovdiv
 event-krum-812,Хан Крум превзема града,Khan Krum takes the city,812,,medieval,historical_timeline,1,,,,,,source-wikipedia-plovdiv
 event-malamir-834,В пределите на България,Into the Bulgarian Empire,834,,medieval,historical_timeline,1,,,,,,source-wikipedia-plovdiv
 event-barbarossa-1189,Третият кръстоносен поход,The Third Crusade,1189,,medieval,historical_timeline,1,,,,,,source-wikipedia-plovdiv
+event-medieval-latin-empire,Латинската империя и Пловдивското херцогство,The Latin Empire and the Duchy of Philippopolis,1204,,medieval,historical_timeline,1,,,,place-plovdiv-city,,source-wikipedia-plovdiv
 event-ivan-asen-1230,Иван Асен II си връща града,Ivan Asen II reclaims the city,1230,,medieval,historical_timeline,1,,,,,,source-wikipedia-plovdiv
 event-bulgaria-1323,Окончателно българско владение,Definitive Bulgarian rule,1323,,medieval,historical_timeline,1,,,,,,source-wikipedia-plovdiv
 event-ottoman-1364,Османско завладяване — Филибе,Ottoman conquest — Filibe,1364,,ottoman,historical_timeline,1,,,,place-plovdiv-city,,source-wikipedia-plovdiv
+event-ottoman-maritsa,Битката при Марица,The Battle of Maritsa,1371,,ottoman,historical_timeline,1,,,,place-plovdiv-city,,source-wikipedia-plovdiv
+event-ottoman-musa-celebi,Османското междуцарствие,The Ottoman Interregnum,1410,,ottoman,historical_timeline,1,,,,,,source-wikipedia-plovdiv
+event-ottoman-rumelia-centre,Център на Румелия,Centre of Rumelia,1443,,ottoman,historical_timeline,1,,,,place-plovdiv-city,,source-wikipedia-plovdiv
+event-ottoman-trade-centre,Едно от стопанските средища на Балканите,A leading Balkan trading centre,1500,,ottoman,historical_timeline,1,,,,place-old-town|place-plovdiv-city,,source-wikipedia-plovdiv
 event-birth-haf-z-ahmed-pasha-q367949,Раждане на Хафъз Ахмед паша,Birth of Hafız Ahmed Pasha,1564,,ottoman,notable_person_birth,1,,,person-haf-z-ahmed-pasha-q367949,place-plovdiv-city,,source-wikipedia-haf-z-ahmed-pasha
 event-birth-eugenius-ii-of-constantinople-q1884172,Раждане на Евгений II Константинополски,Birth of Eugenius II of Constantinople,1780,,revival,notable_person_birth,1,,,person-eugenius-ii-of-constantinople-q1884172,place-plovdiv-city,,source-wikipedia-eugenius-ii-of-constantinople
 event-birth-georgios-kleovoulos-q18912873,Раждане на Георгиос Клеовулос,Birth of Georgios Kleovoulos,1785,,revival,notable_person_birth,1,,,person-georgios-kleovoulos-q18912873,place-plovdiv-city,,source-wikipedia-georgios-kleovoulos
 event-first-school-1836,Първото българско училище,The first Bulgarian school,1836,,revival,historical_timeline,1,,,,,,source-wikipedia-plovdiv
 event-birth-ivan-evstratiev-geshov-q523393,Раждане на Иван Евстратиев Гешов,Birth of Ivan Evstratiev Geshov,1849,,revival,notable_person_birth,1,,,person-ivan-evstratiev-geshov-q523393,place-plovdiv-city,,source-wikipedia-ivan-evstratiev-geshov
+event-revival-secular-school,Светско образование — „Св. св. Кирил и Методий“,Secular education — the St Cyril and Methodius school,1850,,revival,historical_timeline,1,,,,,,source-wikipedia-plovdiv
 event-birth-konstantin-stoilov-q523488,Раждане на Константин Стоилов,Birth of Konstantin Stoilov,1853,,revival,notable_person_birth,1,,,person-konstantin-stoilov-q523488,place-plovdiv-city,,source-wikipedia-konstantin-stoilov
 event-bulgarian-liturgy-1858,Литургия на български език,Liturgy in Bulgarian,1858,,revival,historical_timeline,1,,,,,,source-wikipedia-plovdiv
+event-revival-cyril-methodius-day,Първият празник на Кирил и Методий,The first Cyril and Methodius celebration,1858,,revival,historical_timeline,1,,,,,,source-wikipedia-plovdiv
 event-birth-sehbenderzade-ahmed-hilmi-q4695337,Раждане на Ахмед Хилми от Пловдив,Birth of Şehbenderzade Ahmed Hilmi,1865,,revival,notable_person_birth,1,,,person-sehbenderzade-ahmed-hilmi-q4695337,place-plovdiv-city,,source-wikipedia-ahmed-hilmi-of-filibe
+event-revival-grammar-school,Първата гимназия,The first grammar school,1868,,revival,historical_timeline,1,,,,,,source-wikipedia-plovdiv
 event-birth-mary-m-haskell-q27881208,Раждане на Мери Хаскел,Birth of Mary M. Haskell,1869,,revival,notable_person_birth,1,,,person-mary-m-haskell-q27881208,place-plovdiv-city,,source-wikipedia-mary-m-haskell
+event-revival-bulgarian-church,Възстановяване на Българската църква,The Bulgarian Church is restored,1870,,revival,historical_timeline,1,,,,place-plovdiv-city,,source-wikipedia-plovdiv
 event-birth-panayot-pipkov-q2048895,Раждане на Панайот Пипков,Birth of Panayot Pipkov,1871,,revival,notable_person_birth,1,,,person-panayot-pipkov-q2048895,place-plovdiv-city,,source-wikipedia-panayot-pipkov
 event-birth-maria-toromanova-hmelik-q19902875,Раждане на Мария Тороманова-Хмелик,Birth of Maria Toromanova-Hmelik,1876,,revival,notable_person_birth,1,,,person-maria-toromanova-hmelik-q19902875,place-plovdiv-city,,source-wikipedia-maria-toromanova-hmelik
 event-birth-christos-tsigiridis-q5113595,Раждане на Христос Цигиридис,Birth of Christos Tsigiridis,1877,,revival,notable_person_birth,1,,,person-christos-tsigiridis-q5113595,place-plovdiv-city,,source-wikipedia-christos-tsigiridis

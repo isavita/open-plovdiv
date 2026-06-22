@@ -9,6 +9,7 @@ import landmarksJson from "../../../../data/curated/plovdiv-landmarks.json";
 import populationJson from "../../../../data/curated/plovdiv-population.json";
 import neighbourhoodsJson from "../../../../data/curated/plovdiv-neighbourhoods.json";
 import climateJson from "../../../../data/curated/plovdiv-climate.json";
+import mayorEnrichmentJson from "../../../../data/curated/mayor-wikidata-enrichment.json";
 import historyKnowledgeIndexJson from "../../../../data/generated/history-knowledge/index.json";
 import historyKnowledgeEventsJson from "../../../../data/generated/history-knowledge/events.json";
 import historyKnowledgePeopleJson from "../../../../data/generated/history-knowledge/people.json";
@@ -817,6 +818,30 @@ export const budgetItems = budgetItemsJson as BudgetItem[];
 export const cityArchive = cityArchiveJson as CityArchiveRecord[];
 export const plovdivHistory = historyJson as HistoryEntry[];
 export const plovdivLandmarks = landmarksJson as Landmark[];
+
+/** Sourced Wikidata facts for mayors, keyed by the mayor's Bulgarian name (actor_bg). */
+export type MayorEnrichmentLink = {
+  wikidata: string;
+  name_bg: string | null;
+  name_en: string | null;
+  wikipedia_bg: string | null;
+  wikipedia_en: string | null;
+};
+export type MayorEnrichment = {
+  person_wikidata: string;
+  person_wikipedia_bg: string | null;
+  person_wikipedia_en: string | null;
+  official_website: string | null;
+  birthplace_wikidata: string | null;
+  birthplace_name_bg: string | null;
+  birthplace_name_en: string | null;
+  birthplace_wikipedia_bg: string | null;
+  birthplace_wikipedia_en: string | null;
+  education: MayorEnrichmentLink[];
+  occupations: MayorEnrichmentLink[];
+  positions: MayorEnrichmentLink[];
+};
+export const mayorWikidataEnrichment = mayorEnrichmentJson as Record<string, MayorEnrichment>;
 
 export type PopulationPoint = {
   id: string;

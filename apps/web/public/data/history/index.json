@@ -3,7 +3,7 @@
   "generated_at": "2026-06-19T00:00:00.000Z",
   "license_note": "Open Plovdiv normalizes public-source metadata. Each source record carries its own license or reuse-status field; image/media reuse must be verified per item before publication.",
   "counts": {
-    "events": 332,
+    "events": 352,
     "exact_date_events": 75,
     "people": 261,
     "person_relationships": 138,
@@ -18,12 +18,12 @@
     "story_longreads": 11,
     "lesson_plans": 5,
     "audio_tour_scripts": 5,
-    "editorial_tracked_records": 971,
+    "editorial_tracked_records": 991,
     "editorial_signed_off_records": 0,
     "editorial_signoff_logs": 0,
-    "editorial_records_needing_review": 971,
-    "editorial_records_with_blockers": 971,
-    "source_coverage_records": 971
+    "editorial_records_needing_review": 991,
+    "editorial_records_with_blockers": 991,
+    "source_coverage_records": 991
   },
   "targets": {
     "events": 300,
@@ -86,23 +86,23 @@
     "source_coverage_csv": "/data/history/csv/source-coverage.csv"
   },
   "editorial_review": {
-    "total_tracked_records": 971,
+    "total_tracked_records": 991,
     "signed_off_records": 0,
-    "records_needing_review": 971,
-    "records_with_blockers": 971,
+    "records_needing_review": 991,
+    "records_with_blockers": 991,
     "signed_off_percent": 0,
     "tracking_gap_collections": 0
   },
   "source_coverage": {
-    "total_records": 971,
-    "records_with_sources": 971,
+    "total_records": 991,
+    "records_with_sources": 991,
     "records_without_sources": 0,
-    "records_with_license_or_reuse_status": 971,
+    "records_with_license_or_reuse_status": 991,
     "records_missing_license_or_reuse_status": 0,
-    "single_source_records": 697,
-    "multi_source_records": 274,
-    "needs_multi_source_review_records": 697,
-    "open_license_records": 709,
+    "single_source_records": 716,
+    "multi_source_records": 275,
+    "needs_multi_source_review_records": 716,
+    "open_license_records": 729,
     "public_reference_terms_records": 331
   }
 }

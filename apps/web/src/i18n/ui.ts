@@ -336,6 +336,10 @@ const bg = {
     moreInfoLink: "Повече информация",
     wikipediaArticle: "Статия в Уикипедия",
     wikipediaSearch: "Търсене в Уикипедия",
+    birthplaceLabel: "Месторождение",
+    educationLabel: "Образование",
+    rolesLabel: "Други длъжности",
+    profileLinks: "Профил и връзки",
     connectionsTitle: "Връзки между кметовете",
     connectionsLead:
       "Кои кметове са управлявали по няколко пъти и кои са свързани роднински — подредени по години.",
@@ -1033,6 +1037,10 @@ const en: typeof bg = {
     moreInfoLink: "More information",
     wikipediaArticle: "Wikipedia article",
     wikipediaSearch: "Search Wikipedia",
+    birthplaceLabel: "Birthplace",
+    educationLabel: "Education",
+    rolesLabel: "Other roles held",
+    profileLinks: "Profile and links",
     connectionsTitle: "Connections between the mayors",
     connectionsLead:
       "Which mayors served more than once and which are related — arranged by year.",

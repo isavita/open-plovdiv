@@ -5,15 +5,15 @@
   "source_traceability_status": "complete",
   "multi_source_review_status": "needs_review",
   "summary": {
-    "total_records": 971,
-    "records_with_sources": 971,
+    "total_records": 991,
+    "records_with_sources": 991,
     "records_without_sources": 0,
-    "records_with_license_or_reuse_status": 971,
+    "records_with_license_or_reuse_status": 991,
     "records_missing_license_or_reuse_status": 0,
-    "single_source_records": 697,
-    "multi_source_records": 274,
-    "needs_multi_source_review_records": 697,
-    "open_license_records": 709,
+    "single_source_records": 716,
+    "multi_source_records": 275,
+    "needs_multi_source_review_records": 716,
+    "open_license_records": 729,
     "public_reference_terms_records": 331
   },
   "collections": {
@@ -21,15 +21,15 @@
       "label_bg": "Събития",
       "label_en": "Events",
       "role": "primary_entity",
-      "total_records": 332,
-      "records_with_sources": 332,
+      "total_records": 352,
+      "records_with_sources": 352,
       "records_without_sources": 0,
-      "records_with_license_or_reuse_status": 332,
+      "records_with_license_or_reuse_status": 352,
       "records_missing_license_or_reuse_status": 0,
-      "single_source_records": 321,
-      "multi_source_records": 11,
-      "needs_multi_source_review_records": 321,
-      "open_license_records": 219,
+      "single_source_records": 340,
+      "multi_source_records": 12,
+      "needs_multi_source_review_records": 340,
+      "open_license_records": 239,
       "public_reference_terms_records": 120
     },
     "people": {
@@ -169,7 +169,7 @@
     }
   },
   "license_statuses": {
-    "open_license": 709,
+    "open_license": 729,
     "public_reference_terms_unverified": 331
   },
   "records": [
@@ -199,6 +199,120 @@
       "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-prehistory-nebet-tepe",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Постоянно селище на Небет тепе",
+      "title_en": "A lasting settlement on Nebet Tepe",
+      "review_url_bg": "/history#event-prehistory-nebet-tepe",
+      "review_url_en": "/en/history#event-prehistory-nebet-tepe",
+      "api_url": "/api/history/events.json",
+      "source_count": 2,
+      "source_ids": [
+        "source-wikipedia-plovdiv",
+        "source-wikipedia-nebet-tepe"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://en.wikipedia.org/wiki/Nebet_Tepe"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": false,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-prehistory-bronze-age",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Бронзовата епоха и ранните некрополи",
+      "title_en": "The Bronze Age and early necropolises",
+      "review_url_bg": "/history#event-prehistory-bronze-age",
+      "review_url_en": "/en/history#event-prehistory-bronze-age",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-thracian-town-bessi",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Тракийският град и племето беси",
+      "title_en": "The Thracian town and the Bessi",
+      "review_url_bg": "/history#event-thracian-town-bessi",
+      "review_url_en": "/en/history#event-thracian-town-bessi",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-thracian-persian-rule",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Под персийска власт",
+      "title_en": "Under Persian overlordship",
+      "review_url_bg": "/history#event-thracian-persian-rule",
+      "review_url_en": "/en/history#event-thracian-persian-rule",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
@@ -267,6 +381,118 @@
       ]
     },
     {
+      "id": "event-thracian-seuthes-iii",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Севт III възстановява Одриското царство",
+      "title_en": "Seuthes III revives the Odrysian kingdom",
+      "review_url_bg": "/history#event-thracian-seuthes-iii",
+      "review_url_en": "/en/history#event-thracian-seuthes-iii",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-thracian-celts",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Разрушен от келтите",
+      "title_en": "Destroyed by the Celts",
+      "review_url_bg": "/history#event-thracian-celts",
+      "review_url_en": "/en/history#event-thracian-celts",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-thracian-philip-v",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Филип V Македонски превзема града",
+      "title_en": "Philip V of Macedon takes the city",
+      "review_url_bg": "/history#event-thracian-philip-v",
+      "review_url_en": "/en/history#event-thracian-philip-v",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-thracian-lucullus",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Първият римски досег: Марк Лукул",
+      "title_en": "Rome's first reach: Marcus Lucullus",
+      "review_url_bg": "/history#event-thracian-lucullus",
+      "review_url_en": "/en/history#event-thracian-lucullus",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-roman-trimontium",
       "collection": "events",
       "role": "primary_entity",
@@ -274,6 +500,34 @@
       "title_en": "Trimontium joins the Roman Empire",
       "review_url_bg": "/history#event-roman-trimontium",
       "review_url_en": "/en/history#event-roman-trimontium",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-roman-forum",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Римският форум",
+      "title_en": "The Roman Forum",
+      "review_url_bg": "/history#event-roman-forum",
+      "review_url_en": "/en/history#event-roman-forum",
       "api_url": "/api/history/events.json",
       "source_count": 1,
       "source_ids": [
@@ -357,6 +611,34 @@
       ]
     },
     {
+      "id": "event-roman-odeon",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Античният одеон",
+      "title_en": "The Roman Odeon",
+      "review_url_bg": "/history#event-roman-odeon",
+      "review_url_en": "/en/history#event-roman-odeon",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-goths-250",
       "collection": "events",
       "role": "primary_entity",
@@ -392,6 +674,34 @@
       "title_en": "Destroyed by the Huns",
       "review_url_bg": "/history#event-huns-441",
       "review_url_en": "/en/history#event-huns-441",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-medieval-byzantine-fortress",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Византийска гранична крепост",
+      "title_en": "A Byzantine border fortress",
+      "review_url_bg": "/history#event-medieval-byzantine-fortress",
+      "review_url_en": "/en/history#event-medieval-byzantine-fortress",
       "api_url": "/api/history/events.json",
       "source_count": 1,
       "source_ids": [
@@ -497,6 +807,34 @@
       ]
     },
     {
+      "id": "event-medieval-latin-empire",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Латинската империя и Пловдивското херцогство",
+      "title_en": "The Latin Empire and the Duchy of Philippopolis",
+      "review_url_bg": "/history#event-medieval-latin-empire",
+      "review_url_en": "/en/history#event-medieval-latin-empire",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-ivan-asen-1230",
       "collection": "events",
       "role": "primary_entity",
@@ -560,6 +898,118 @@
       "title_en": "Ottoman conquest — Filibe",
       "review_url_bg": "/history#event-ottoman-1364",
       "review_url_en": "/en/history#event-ottoman-1364",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-ottoman-maritsa",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Битката при Марица",
+      "title_en": "The Battle of Maritsa",
+      "review_url_bg": "/history#event-ottoman-maritsa",
+      "review_url_en": "/en/history#event-ottoman-maritsa",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-ottoman-musa-celebi",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Османското междуцарствие",
+      "title_en": "The Ottoman Interregnum",
+      "review_url_bg": "/history#event-ottoman-musa-celebi",
+      "review_url_en": "/en/history#event-ottoman-musa-celebi",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-ottoman-rumelia-centre",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Център на Румелия",
+      "title_en": "Centre of Rumelia",
+      "review_url_bg": "/history#event-ottoman-rumelia-centre",
+      "review_url_en": "/en/history#event-ottoman-rumelia-centre",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-ottoman-trade-centre",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Едно от стопанските средища на Балканите",
+      "title_en": "A leading Balkan trading centre",
+      "review_url_bg": "/history#event-ottoman-trade-centre",
+      "review_url_en": "/en/history#event-ottoman-trade-centre",
       "api_url": "/api/history/events.json",
       "source_count": 1,
       "source_ids": [
@@ -721,6 +1171,34 @@
       ]
     },
     {
+      "id": "event-revival-secular-school",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Светско образование — „Св. св. Кирил и Методий“",
+      "title_en": "Secular education — the St Cyril and Methodius school",
+      "review_url_bg": "/history#event-revival-secular-school",
+      "review_url_en": "/en/history#event-revival-secular-school",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-birth-konstantin-stoilov-q523488",
       "collection": "events",
       "role": "primary_entity",
@@ -777,6 +1255,34 @@
       ]
     },
     {
+      "id": "event-revival-cyril-methodius-day",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Първият празник на Кирил и Методий",
+      "title_en": "The first Cyril and Methodius celebration",
+      "review_url_bg": "/history#event-revival-cyril-methodius-day",
+      "review_url_en": "/en/history#event-revival-cyril-methodius-day",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-birth-sehbenderzade-ahmed-hilmi-q4695337",
       "collection": "events",
       "role": "primary_entity",
@@ -805,6 +1311,34 @@
       ]
     },
     {
+      "id": "event-revival-grammar-school",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Първата гимназия",
+      "title_en": "The first grammar school",
+      "review_url_bg": "/history#event-revival-grammar-school",
+      "review_url_en": "/en/history#event-revival-grammar-school",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-birth-mary-m-haskell-q27881208",
       "collection": "events",
       "role": "primary_entity",
@@ -819,6 +1353,34 @@
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Mary_M._Haskell"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-revival-bulgarian-church",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Възстановяване на Българската църква",
+      "title_en": "The Bulgarian Church is restored",
+      "review_url_bg": "/history#event-revival-bulgarian-church",
+      "review_url_en": "/en/history#event-revival-bulgarian-church",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv"
       ],
       "license_statuses": [
         "open_license"

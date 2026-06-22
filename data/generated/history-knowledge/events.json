@@ -62,6 +62,217 @@
     }
   },
   {
+    "id": "event-prehistory-nebet-tepe",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "prehistory",
+    "date": {
+      "year": -4000,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "края на IV хилядолетие пр.н.е.",
+      "display_en": "late 4th millennium BC"
+    },
+    "title_bg": "Постоянно селище на Небет тепе",
+    "title_en": "A lasting settlement on Nebet Tepe",
+    "summary_bg": "На Небет тепе са открити фина халколитна керамика и предмети от бита, които показват, че към края на IV хилядолетие пр.н.е. на хълма вече има установено селище — обитавано без прекъсване оттогава.",
+    "summary_en": "Fine Chalcolithic pottery and everyday objects found on Nebet Tepe show that by the end of the 4th millennium BC there was already an established settlement on the hill — continuously inhabited ever since.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "prehistory"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-nebet-tepe",
+      "place-seven-hills"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv",
+      "source-wikipedia-nebet-tepe"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Постоянно селище на Небет тепе\".",
+        "claim_en": "Dating and summary for timeline record \"A lasting settlement on Nebet Tepe\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      },
+      {
+        "source_id": "source-wikipedia-nebet-tepe",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Постоянно селище на Небет тепе\".",
+        "claim_en": "Dating and summary for timeline record \"A lasting settlement on Nebet Tepe\".",
+        "url": "https://en.wikipedia.org/wiki/Nebet_Tepe",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-prehistory-bronze-age",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "prehistory",
+    "date": {
+      "year": -2500,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "III–II хилядолетие пр.н.е. (бронзова епоха)",
+      "display_en": "3rd–2nd millennium BC (Bronze Age)"
+    },
+    "title_bg": "Бронзовата епоха и ранните некрополи",
+    "title_en": "The Bronze Age and early necropolises",
+    "summary_bg": "През бронзовата епоха селището на хълмовете продължава да съществува, а в околността се появяват погребения. Некрополи край Пловдив са датирани към II–III хилядолетие пр.н.е., бележейки дългия преход към по-късния тракийски град.",
+    "summary_en": "Through the Bronze Age the hilltop settlement endured and burials appeared around it. Necropolises near Plovdiv have been dated to the 2nd–3rd millennium BC, marking the long transition toward the later Thracian town.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "prehistory"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city",
+      "place-seven-hills"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Бронзовата епоха и ранните некрополи\".",
+        "claim_en": "Dating and summary for timeline record \"The Bronze Age and early necropolises\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-thracian-town-bessi",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "thracian",
+    "date": {
+      "year": -1200,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "II–I хилядолетие пр.н.е.",
+      "display_en": "2nd–1st millennium BC"
+    },
+    "title_bg": "Тракийският град и племето беси",
+    "title_en": "The Thracian town and the Bessi",
+    "summary_bg": "Тракийският град върху трите хълма се оформя между II и I хилядолетие пр.н.е. Той е крепост на бесите — независимо местно тракийско племе, с укрепено ядро на Небет тепе.",
+    "summary_en": "The Thracian town on the three hills took shape between the 2nd and 1st millennium BC. It was a stronghold of the Bessi, an independent local Thracian tribe, with a fortified core on Nebet Tepe.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "thracian"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-nebet-tepe",
+      "place-seven-hills"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Тракийският град и племето беси\".",
+        "claim_en": "Dating and summary for timeline record \"The Thracian town and the Bessi\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-thracian-persian-rule",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "thracian",
+    "date": {
+      "year": -516,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "516–479 г. пр.н.е.",
+      "display_en": "516–479 BC"
+    },
+    "title_bg": "Под персийска власт",
+    "title_en": "Under Persian overlordship",
+    "summary_bg": "През 516 г. пр.н.е., при управлението на Дарий I, Тракия е включена в Персийската империя. Пълководецът Мардоний отново подчинява областта през 492 г. пр.н.е. и тя остава номинален васал на Персия до 479 г. пр.н.е.",
+    "summary_en": "In 516 BC, during the rule of Darius the Great, Thrace was drawn into the Persian Empire. The general Mardonius subjugated the region again in 492 BC, and it remained a nominal Persian vassal until 479 BC.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "thracian"
+    ],
+    "person_ids": [],
+    "place_ids": [],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Под персийска власт\".",
+        "claim_en": "Dating and summary for timeline record \"Under Persian overlordship\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-thracian-eumolpias",
     "type": "event",
     "category": "historical_timeline",
@@ -181,6 +392,204 @@
     }
   },
   {
+    "id": "event-thracian-seuthes-iii",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "thracian",
+    "date": {
+      "year": -331,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "ок. 331 г. пр.н.е.",
+      "display_en": "c. 331 BC"
+    },
+    "title_bg": "Севт III възстановява Одриското царство",
+    "title_en": "Seuthes III revives the Odrysian kingdom",
+    "summary_bg": "Около десетилетие след македонското завоевание одриският владетел Севт III възстановява тракийското царство под македонска зависимост, след успешно въстание срещу властта на Александър Велики.",
+    "summary_en": "About a decade after the Macedonian conquest, the Odrysian ruler Seuthes III re-established the Thracian kingdom under Macedonian suzerainty, following a successful revolt against the rule of Alexander the Great.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "thracian"
+    ],
+    "person_ids": [],
+    "place_ids": [],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Севт III възстановява Одриското царство\".",
+        "claim_en": "Dating and summary for timeline record \"Seuthes III revives the Odrysian kingdom\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-thracian-celts",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "thracian",
+    "date": {
+      "year": -270,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "ок. 270-те г. пр.н.е.",
+      "display_en": "c. 270s BC"
+    },
+    "title_bg": "Разрушен от келтите",
+    "title_en": "Destroyed by the Celts",
+    "summary_bg": "По време на келтското заселване в Източна Европа градът е разрушен, най-вероятно през 270-те г. пр.н.е., преди животът на хълмовете отново да се възстанови.",
+    "summary_en": "During the Celtic settlement of Eastern Europe the city was destroyed, most likely in the 270s BC, before life on the hills recovered once more.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "thracian"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-seven-hills"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Разрушен от келтите\".",
+        "claim_en": "Dating and summary for timeline record \"Destroyed by the Celts\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-thracian-philip-v",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "thracian",
+    "date": {
+      "year": -183,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "183 г. пр.н.е.",
+      "display_en": "183 BC"
+    },
+    "title_bg": "Филип V Македонски превзема града",
+    "title_en": "Philip V of Macedon takes the city",
+    "summary_bg": "През 183 г. пр.н.е. Филип V Македонски превзема града, но скоро след това траките си го връщат — един от няколкото пъти, в които градът на хълмовете сменя владетелите си през този период.",
+    "summary_en": "In 183 BC Philip V of Macedon captured the city, but the Thracians re-conquered it shortly afterwards — one of several times the hill town changed hands in this period.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "thracian"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-seven-hills"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Филип V Македонски превзема града\".",
+        "claim_en": "Dating and summary for timeline record \"Philip V of Macedon takes the city\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-thracian-lucullus",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "thracian",
+    "date": {
+      "year": -72,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "72 г. пр.н.е.",
+      "display_en": "72 BC"
+    },
+    "title_bg": "Първият римски досег: Марк Лукул",
+    "title_en": "Rome's first reach: Marcus Lucullus",
+    "summary_bg": "През 72 г. пр.н.е. римският пълководец Марк Лукул завзема града, но той скоро е върнат под тракийска власт — предвестие на окончателното му включване в Римската империя през 46 г.",
+    "summary_en": "In 72 BC the Roman general Marcus Lucullus seized the city, but it was soon restored to Thracian control — a prelude to its final incorporation into the Roman Empire in 46 AD.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "thracian"
+    ],
+    "person_ids": [],
+    "place_ids": [],
+    "organization_ids": [
+      "org-regional-history-museum-plovdiv"
+    ],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Първият римски досег: Марк Лукул\".",
+        "claim_en": "Dating and summary for timeline record \"Rome's first reach: Marcus Lucullus\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-roman-trimontium",
     "type": "event",
     "category": "historical_timeline",
@@ -219,6 +628,58 @@
         "evidence_type": "public_source",
         "claim_bg": "Датиране и обобщение за хронологичния запис \"Тримонциум — част от Римската империя\".",
         "claim_en": "Dating and summary for timeline record \"Trimontium joins the Roman Empire\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-roman-forum",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "roman",
+    "date": {
+      "year": 75,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "I–II в.",
+      "display_en": "1st–2nd century AD"
+    },
+    "title_bg": "Римският форум",
+    "title_en": "The Roman Forum",
+    "summary_bg": "Форумът на Тримонциум е започнат при император Веспасиан през I в. и завършен през II в. С площ около 11 хектара и заобиколен от магазини и обществени сгради, той е средоточието на уличната мрежа на античния град.",
+    "summary_en": "Begun under Emperor Vespasian in the 1st century and finished in the 2nd, the forum of Trimontium covered about 11 hectares. Ringed by shops and public buildings, it was the focal point of the ancient city's streets.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "roman"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-forum-philippopolis"
+    ],
+    "organization_ids": [
+      "org-regional-history-museum-plovdiv"
+    ],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Римският форум\".",
+        "claim_en": "Dating and summary for timeline record \"The Roman Forum\".",
         "url": "https://en.wikipedia.org/wiki/Plovdiv",
         "accessed_at": "2026-06-18",
         "license_status": "open_license"
@@ -355,6 +816,58 @@
     }
   },
   {
+    "id": "event-roman-odeon",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "roman",
+    "date": {
+      "year": 150,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "II–V в.",
+      "display_en": "2nd–5th century AD"
+    },
+    "title_bg": "Античният одеон",
+    "title_en": "The Roman Odeon",
+    "summary_bg": "Малкият античен театър — одеонът — е изграден първоначално като булевтерион (сграда на градския съвет) с около 350 места, а по-късно е преустроен в театър. Той е вторият античен театър на Филипопол.",
+    "summary_en": "The small antique theatre — the Odeon — was first built as a bouleuterion (the city-council house) with about 350 seats, and later rebuilt as a theatre. It is the second antique theatre of Philippopolis.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "roman"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-ancient-theatre"
+    ],
+    "organization_ids": [
+      "org-plovdiv-municipal-council"
+    ],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Античният одеон\".",
+        "claim_en": "Dating and summary for timeline record \"The Roman Odeon\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-goths-250",
     "type": "event",
     "category": "historical_timeline",
@@ -437,6 +950,54 @@
         "evidence_type": "public_source",
         "claim_bg": "Датиране и обобщение за хронологичния запис \"Разрушение от хуните\".",
         "claim_en": "Dating and summary for timeline record \"Destroyed by the Huns\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-medieval-byzantine-fortress",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "medieval",
+    "date": {
+      "year": 681,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "681 г.",
+      "display_en": "681 AD"
+    },
+    "title_bg": "Византийска гранична крепост",
+    "title_en": "A Byzantine border fortress",
+    "summary_bg": "Славяните се заселват в района до средата на VI в. След създаването на българската държава през 681 г. Филипопол става важна гранична крепост на Византийската империя.",
+    "summary_en": "The Slavs had settled across the area by the mid-6th century. After the founding of the Bulgarian state in 681, Philippopolis became an important border fortress of the Byzantine Empire.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "medieval"
+    ],
+    "person_ids": [],
+    "place_ids": [],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Византийска гранична крепост\".",
+        "claim_en": "Dating and summary for timeline record \"A Byzantine border fortress\".",
         "url": "https://en.wikipedia.org/wiki/Plovdiv",
         "accessed_at": "2026-06-18",
         "license_status": "open_license"
@@ -595,6 +1156,56 @@
     }
   },
   {
+    "id": "event-medieval-latin-empire",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "medieval",
+    "date": {
+      "year": 1204,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1204 г.",
+      "display_en": "1204 AD"
+    },
+    "title_bg": "Латинската империя и Пловдивското херцогство",
+    "title_en": "The Latin Empire and the Duchy of Philippopolis",
+    "summary_bg": "През 1204 г. Латинската империя завладява Филипопол, който става столица на Пловдивското херцогство. През следващите десетилетия градът неколкократно сменя владетелите си между латинци, българи и Византия.",
+    "summary_en": "In 1204 the Latin Empire took Philippopolis, which became the capital of the Duchy of Philippopolis. Over the following decades the city changed hands repeatedly between the Latins, Bulgaria and Byzantium.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "medieval"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Латинската империя и Пловдивското херцогство\".",
+        "claim_en": "Dating and summary for timeline record \"The Latin Empire and the Duchy of Philippopolis\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-ivan-asen-1230",
     "type": "event",
     "category": "historical_timeline",
@@ -727,6 +1338,205 @@
         "evidence_type": "public_source",
         "claim_bg": "Датиране и обобщение за хронологичния запис \"Османско завладяване — Филибе\".",
         "claim_en": "Dating and summary for timeline record \"Ottoman conquest — Filibe\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-ottoman-maritsa",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "ottoman",
+    "date": {
+      "year": 1371,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1371 г.",
+      "display_en": "1371"
+    },
+    "title_bg": "Битката при Марица",
+    "title_en": "The Battle of Maritsa",
+    "summary_bg": "Според част от изворите Пловдив попада окончателно под османска власт след битката при Марица през 1371 г., когато жителите и българската войска напускат града без съпротива, а бежанци се заселват в Станимака (днешния Асеновград).",
+    "summary_en": "By some accounts Plovdiv passed firmly under Ottoman control only after the Battle of Maritsa in 1371, when the townspeople and the Bulgarian army left without resistance and refugees settled in Stanimaka (today's Asenovgrad).",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "ottoman"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Битката при Марица\".",
+        "claim_en": "Dating and summary for timeline record \"The Battle of Maritsa\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-ottoman-musa-celebi",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "ottoman",
+    "date": {
+      "year": 1410,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1410 г.",
+      "display_en": "1410"
+    },
+    "title_bg": "Османското междуцарствие",
+    "title_en": "The Ottoman Interregnum",
+    "summary_bg": "По време на османското междуцарствие през 1410 г. Муса Челеби завладява града, при което избива и разселва част от жителите му.",
+    "summary_en": "During the Ottoman Interregnum of 1410, Musa Çelebi seized the city, killing and displacing some of its inhabitants.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "ottoman"
+    ],
+    "person_ids": [],
+    "place_ids": [],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Османското междуцарствие\".",
+        "claim_en": "Dating and summary for timeline record \"The Ottoman Interregnum\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-ottoman-rumelia-centre",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "ottoman",
+    "date": {
+      "year": 1443,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1364–1443 г.",
+      "display_en": "1364–1443"
+    },
+    "title_bg": "Център на Румелия",
+    "title_en": "Centre of Rumelia",
+    "summary_bg": "От 1364 г. Филибе е център на Румелийския еялет, докато през 1443 г. столицата на Румелия е преместена в София. Градът остава важно административно средище и през следващите векове.",
+    "summary_en": "From 1364 Filibe was the centre of the Rumelia Eyalet, until in 1443 the capital of Rumelia moved to Sofia. The city remained an important administrative seat in the centuries that followed.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "ottoman"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Център на Румелия\".",
+        "claim_en": "Dating and summary for timeline record \"Centre of Rumelia\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-ottoman-trade-centre",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "ottoman",
+    "date": {
+      "year": 1500,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "XV–XVII в.",
+      "display_en": "15th–17th century"
+    },
+    "title_bg": "Едно от стопанските средища на Балканите",
+    "title_en": "A leading Balkan trading centre",
+    "summary_bg": "През този период Филибе е едно от най-големите стопански средища на Балканите, наред с Истанбул, Одрин, Солун и София. По-заможните граждани издигат богати къщи, много от които и днес се пазят в архитектурния резерват Стария Пловдив.",
+    "summary_en": "Through this period Filibe was one of the largest economic centres in the Balkans, alongside Istanbul, Edirne, Thessaloniki and Sofia. Wealthier citizens built fine houses, many still preserved today in the Old Plovdiv architectural reserve.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "ottoman"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-old-town",
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Едно от стопанските средища на Балканите\".",
+        "claim_en": "Dating and summary for timeline record \"A leading Balkan trading centre\".",
         "url": "https://en.wikipedia.org/wiki/Plovdiv",
         "accessed_at": "2026-06-18",
         "license_status": "open_license"
@@ -1000,6 +1810,54 @@
     }
   },
   {
+    "id": "event-revival-secular-school",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "revival",
+    "date": {
+      "year": 1850,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1850 г.",
+      "display_en": "1850"
+    },
+    "title_bg": "Светско образование — „Св. св. Кирил и Методий“",
+    "title_en": "Secular education — the St Cyril and Methodius school",
+    "summary_bg": "През 1850 г. в града започва модерното светско образование с откриването на училището „Св. св. Кирил и Методий“.",
+    "summary_en": "In 1850 modern secular education began in the city with the opening of the St Cyril and Methodius school.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "revival"
+    ],
+    "person_ids": [],
+    "place_ids": [],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Светско образование — „Св. св. Кирил и Методий“\".",
+        "claim_en": "Dating and summary for timeline record \"Secular education — the St Cyril and Methodius school\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-birth-konstantin-stoilov-q523488",
     "type": "event",
     "category": "notable_person_birth",
@@ -1100,6 +1958,54 @@
     }
   },
   {
+    "id": "event-revival-cyril-methodius-day",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "revival",
+    "date": {
+      "year": 1858,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "11 май 1858 г.",
+      "display_en": "11 May 1858"
+    },
+    "title_bg": "Първият празник на Кирил и Методий",
+    "title_en": "The first Cyril and Methodius celebration",
+    "summary_bg": "На 11 май 1858 г. за първи път е честван денят на светите братя Кирил и Методий. По-късно той става национален празник, който се чества и днес (на 24 май след преминаването към григорианския календар).",
+    "summary_en": "On 11 May 1858 the day of Saints Cyril and Methodius was celebrated for the first time. It later became a national holiday, still marked today (on 24 May after the switch to the Gregorian calendar).",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "revival"
+    ],
+    "person_ids": [],
+    "place_ids": [],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Първият празник на Кирил и Методий\".",
+        "claim_en": "Dating and summary for timeline record \"The first Cyril and Methodius celebration\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-birth-sehbenderzade-ahmed-hilmi-q4695337",
     "type": "event",
     "category": "notable_person_birth",
@@ -1153,6 +2059,54 @@
     }
   },
   {
+    "id": "event-revival-grammar-school",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "revival",
+    "date": {
+      "year": 1868,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1868 г.",
+      "display_en": "1868"
+    },
+    "title_bg": "Първата гимназия",
+    "title_en": "The first grammar school",
+    "summary_bg": "През 1868 г. училището прераства в първата българска гимназия. През нея преминават мнозина бъдещи интелектуалци, политици и духовни водачи на нацията.",
+    "summary_en": "In 1868 the school grew into the first Bulgarian grammar school. Many future intellectuals, politicians and spiritual leaders of the nation passed through it.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "revival"
+    ],
+    "person_ids": [],
+    "place_ids": [],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Първата гимназия\".",
+        "claim_en": "Dating and summary for timeline record \"The first grammar school\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-birth-mary-m-haskell-q27881208",
     "type": "event",
     "category": "notable_person_birth",
@@ -1193,6 +2147,56 @@
         "claim_en": "Birth year and birthplace for Mary M. Haskell.",
         "url": "https://en.wikipedia.org/wiki/Mary_M._Haskell",
         "accessed_at": "2026-06-19",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-revival-bulgarian-church",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "revival",
+    "date": {
+      "year": 1870,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "display_period",
+      "display_bg": "1870 г.",
+      "display_en": "1870"
+    },
+    "title_bg": "Възстановяване на Българската църква",
+    "title_en": "The Bulgarian Church is restored",
+    "summary_bg": "Възстановяването на Българската църква (Екзархията) през 1870 г. е белег за национално самосъзнание. Филибе е средище на борбата за църковна независимост с водачи като Найден Геров и Йоаким Груев.",
+    "summary_en": "The re-establishment of the Bulgarian Church (the Exarchate) in 1870 was a mark of national consciousness. Filibe was a centre of the struggle for church independence, with leaders such as Nayden Gerov and Joakim Gruev.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "revival"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-plovdiv"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Възстановяване на Българската църква\".",
+        "claim_en": "Dating and summary for timeline record \"The Bulgarian Church is restored\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
         "license_status": "open_license"
       }
     ],

@@ -202,6 +202,7 @@
     "summary_bg": "Нормализиран организационен запис, използван за връзки в историческата база: Общински съвет — Пловдив.",
     "summary_en": "Normalized organization record used for links in the historical knowledge base: Plovdiv Municipal Council.",
     "event_ids": [
+      "event-roman-odeon",
       "event-governance-1934-municipal-reform",
       "event-programme-1947-fair-revival",
       "event-programme-1969-old-plovdiv-restoration",
@@ -220,6 +221,7 @@
     ],
     "person_ids": [],
     "place_ids": [
+      "place-ancient-theatre",
       "place-ancient-stadium",
       "place-old-town",
       "place-plovdiv-city"
@@ -255,7 +257,9 @@
     "summary_bg": "Нормализиран организационен запис, използван за връзки в историческата база: Регионален исторически музей — Пловдив.",
     "summary_en": "Normalized organization record used for links in the historical knowledge base: Regional History Museum — Plovdiv.",
     "event_ids": [
+      "event-thracian-lucullus",
       "event-roman-trimontium",
+      "event-roman-forum",
       "event-roman-theatre",
       "event-finance-1897-bnb-refinance-loan",
       "event-finance-1898-actual-revenue",
@@ -281,7 +285,8 @@
       "place-ancient-theatre",
       "place-old-town",
       "place-seven-hills",
-      "place-plovdiv-city"
+      "place-plovdiv-city",
+      "place-forum-philippopolis"
     ],
     "source_ids": [
       "source-rim-plovdiv-municipality-1886-1944"

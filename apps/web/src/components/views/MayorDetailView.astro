@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
-import { cityArchive, type CityArchiveRecord } from "@lib/data";
+import { cityArchive, mayorWikidataEnrichment, type CityArchiveRecord } from "@lib/data";
 import { sourceTitle } from "@lib/format";
 
 type Props = { lang: Lang; mayor: CityArchiveRecord };
@@ -66,6 +66,27 @@ const mono = name
   .map((w) => w[0] ?? "")
   .join("")
   .toLocaleUpperCase(lang === "bg" ? "bg-BG" : "en-GB");
+
+// Sourced Wikidata enrichment (education, birthplace links, other roles, the
+// person's own Wikipedia article). Keyed by the Bulgarian name.
+const enrich = mayorWikidataEnrichment[field(mayor, "actor", "bg")] ?? null;
+const pick = (bg: string | null, en: string | null) => (lang === "en" ? en || bg : bg || en) ?? null;
+const enrichLink = (item: { name_bg: string | null; name_en: string | null; wikipedia_bg: string | null; wikipedia_en: string | null }) => ({
+  name: pick(item.name_bg, item.name_en),
+  url: pick(item.wikipedia_bg, item.wikipedia_en)
+});
+const education = (enrich?.education ?? []).map(enrichLink).filter((x) => x.name);
+const roles = (enrich?.positions ?? []).map(enrichLink).filter((x) => x.name);
+const birthplaceName = enrich ? pick(enrich.birthplace_name_bg, enrich.birthplace_name_en) : field(mayor, "birthplace", lang) || null;
+const birthplaceUrl = enrich ? pick(enrich.birthplace_wikipedia_bg, enrich.birthplace_wikipedia_en) : null;
+const personWiki = enrich ? pick(enrich.person_wikipedia_bg, enrich.person_wikipedia_en) : null;
+// Avoid showing the same Wikipedia article twice (it may already be a reference link).
+const existingUrls = new Set(
+  [mayor.source_document?.url, officialProfileUrl, mayor.more_url, ...referenceLinks.map((l) => l.url)].filter(
+    Boolean
+  )
+);
+const showPersonWiki = Boolean(personWiki && !existingUrls.has(personWiki));
 ---
 
 <Layout lang={lang} path={`/mayors/${mayor.id}`} title={name} description={field(mayor, "summary", lang)}>
@@ -134,6 +155,48 @@ const mono = name
           <div><span>{t.mayors.duration}</span><strong>{t.mayors.yearsApprox(duration)}</strong></div>
           <div><span>{t.mayors.century}</span><strong>{t.mayors.centuryLabel(century)}</strong></div>
         </div>
+        {(birthplaceName || education.length > 0 || roles.length > 0) && (
+          <dl class="mayor-profile-facts">
+            {birthplaceName && (
+              <div>
+                <dt>{t.mayors.birthplaceLabel}</dt>
+                <dd>
+                  {birthplaceUrl ? (
+                    <a href={birthplaceUrl} target="_blank" rel="noreferrer">{birthplaceName}</a>
+                  ) : (
+                    birthplaceName
+                  )}
+                </dd>
+              </div>
+            )}
+            {education.length > 0 && (
+              <div>
+                <dt>{t.mayors.educationLabel}</dt>
+                <dd>
+                  {education.map((ed, i) => (
+                    <>
+                      {i > 0 ? ", " : ""}
+                      {ed.url ? <a href={ed.url} target="_blank" rel="noreferrer">{ed.name}</a> : ed.name}
+                    </>
+                  ))}
+                </dd>
+              </div>
+            )}
+            {roles.length > 0 && (
+              <div>
+                <dt>{t.mayors.rolesLabel}</dt>
+                <dd>
+                  {roles.map((r, i) => (
+                    <>
+                      {i > 0 ? ", " : ""}
+                      {r.url ? <a href={r.url} target="_blank" rel="noreferrer">{r.name}</a> : r.name}
+                    </>
+                  ))}
+                </dd>
+              </div>
+            )}
+          </dl>
+        )}
         {bio ? (
           <>
             <h3 style="margin-top:18px;margin-bottom:6px">{t.mayors.biography}</h3>
@@ -170,15 +233,26 @@ const mono = name
               <span class="meta"> · {link.accessed_at}</span>
             </li>
           ))}
-          {mayor.more_url ? (
+          {showPersonWiki && (
             <li>
-              <a href={mayor.more_url} target="_blank" rel="noreferrer">
-                {isWikipediaMoreUrl ? t.mayors.wikipediaArticle : t.mayors.moreInfoLink}: {name}
-              </a>
+              <a href={personWiki} target="_blank" rel="noreferrer">{t.mayors.wikipediaArticle}: {name}</a>
             </li>
-          ) : (
+          )}
+          {!personWiki &&
+            (mayor.more_url ? (
+              <li>
+                <a href={mayor.more_url} target="_blank" rel="noreferrer">
+                  {isWikipediaMoreUrl ? t.mayors.wikipediaArticle : t.mayors.moreInfoLink}: {name}
+                </a>
+              </li>
+            ) : (
+              <li>
+                <a href={wikiSearch} target="_blank" rel="noreferrer">{t.mayors.wikipediaSearch}: {name}</a>
+              </li>
+            ))}
+          {enrich?.official_website && (
             <li>
-              <a href={wikiSearch} target="_blank" rel="noreferrer">{t.mayors.wikipediaSearch}: {name}</a>
+              <a href={enrich.official_website} target="_blank" rel="noreferrer">{t.mayors.officialProfile}</a>
             </li>
           )}
         </ul>

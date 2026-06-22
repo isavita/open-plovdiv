@@ -838,7 +838,7 @@ const nodeConfig = {
     function renderPersonCard(card: any) {
       const profileHref = `${config.lang === "en" ? "/en" : ""}/people/${encodeURIComponent(card.id)}/`;
       const avatar = card.avatar
-        ? `<img class="person-avatar" src="${escapePeopleHtml(card.avatar)}" alt="${escapePeopleHtml(card.name)}" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" />`
+        ? `<img class="person-avatar" src="${escapePeopleHtml(card.avatar)}" alt="${escapePeopleHtml(card.name)}" loading="lazy" decoding="async" />`
         : `<span class="person-avatar person-avatar-fallback" aria-hidden="true">${escapePeopleHtml(card.initials)}</span>`;
       const roles = Array.isArray(card.roles)
         ? `<div class="tag-row">${card.roles.map((role: string) => `<span>${escapePeopleHtml(role)}</span>`).join("")}</div>`

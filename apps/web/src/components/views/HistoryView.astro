@@ -1744,7 +1744,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
             ${renderPills(Array.isArray(item.linkedNames) ? item.linkedNames : [])}
             <div class="history-source-row">
               ${sourceLinks}
-              <span class="meta">${escapeTimelineHtml(timelineConfig.labels.needsReview ?? "")}</span>
             </div>
           </article>
         </li>`;

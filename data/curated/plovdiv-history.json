@@ -20,6 +20,65 @@
     "data_quality": "public_source"
   },
   {
+    "id": "history-prehistory-nebet-tepe",
+    "era": "prehistory",
+    "year": -4000,
+    "period_bg": "края на IV хилядолетие пр.н.е.",
+    "period_en": "late 4th millennium BC",
+    "title_bg": "Постоянно селище на Небет тепе",
+    "title_en": "A lasting settlement on Nebet Tepe",
+    "summary_bg": "На Небет тепе са открити фина халколитна керамика и предмети от бита, които показват, че към края на IV хилядолетие пр.н.е. на хълма вече има установено селище — обитавано без прекъсване оттогава.",
+    "summary_en": "Fine Chalcolithic pottery and everyday objects found on Nebet Tepe show that by the end of the 4th millennium BC there was already an established settlement on the hill — continuously inhabited ever since.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "secondary_sources": [
+      {
+        "title": "Wikipedia — Nebet Tepe",
+        "url": "https://en.wikipedia.org/wiki/Nebet_Tepe",
+        "accessed_at": "2026-06-22"
+      }
+    ],
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-prehistory-bronze-age",
+    "era": "prehistory",
+    "year": -2500,
+    "period_bg": "III–II хилядолетие пр.н.е. (бронзова епоха)",
+    "period_en": "3rd–2nd millennium BC (Bronze Age)",
+    "title_bg": "Бронзовата епоха и ранните некрополи",
+    "title_en": "The Bronze Age and early necropolises",
+    "summary_bg": "През бронзовата епоха селището на хълмовете продължава да съществува, а в околността се появяват погребения. Некрополи край Пловдив са датирани към II–III хилядолетие пр.н.е., бележейки дългия преход към по-късния тракийски град.",
+    "summary_en": "Through the Bronze Age the hilltop settlement endured and burials appeared around it. Necropolises near Plovdiv have been dated to the 2nd–3rd millennium BC, marking the long transition toward the later Thracian town.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-thracian-town-bessi",
+    "era": "thracian",
+    "year": -1200,
+    "period_bg": "II–I хилядолетие пр.н.е.",
+    "period_en": "2nd–1st millennium BC",
+    "title_bg": "Тракийският град и племето беси",
+    "title_en": "The Thracian town and the Bessi",
+    "summary_bg": "Тракийският град върху трите хълма се оформя между II и I хилядолетие пр.н.е. Той е крепост на бесите — независимо местно тракийско племе, с укрепено ядро на Небет тепе.",
+    "summary_en": "The Thracian town on the three hills took shape between the 2nd and 1st millennium BC. It was a stronghold of the Bessi, an independent local Thracian tribe, with a fortified core on Nebet Tepe.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-thracian-persian-rule",
+    "era": "thracian",
+    "year": -516,
+    "period_bg": "516–479 г. пр.н.е.",
+    "period_en": "516–479 BC",
+    "title_bg": "Под персийска власт",
+    "title_en": "Under Persian overlordship",
+    "summary_bg": "През 516 г. пр.н.е., при управлението на Дарий I, Тракия е включена в Персийската империя. Пълководецът Мардоний отново подчинява областта през 492 г. пр.н.е. и тя остава номинален васал на Персия до 479 г. пр.н.е.",
+    "summary_en": "In 516 BC, during the rule of Darius the Great, Thrace was drawn into the Persian Empire. The general Mardonius subjugated the region again in 492 BC, and it remained a nominal Persian vassal until 479 BC.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
     "id": "history-thracian-eumolpias",
     "era": "thracian",
     "year": -500,
@@ -57,6 +116,58 @@
         "accessed_at": "2026-06-19"
       }
     ],
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-thracian-seuthes-iii",
+    "era": "thracian",
+    "year": -331,
+    "period_bg": "ок. 331 г. пр.н.е.",
+    "period_en": "c. 331 BC",
+    "title_bg": "Севт III възстановява Одриското царство",
+    "title_en": "Seuthes III revives the Odrysian kingdom",
+    "summary_bg": "Около десетилетие след македонското завоевание одриският владетел Севт III възстановява тракийското царство под македонска зависимост, след успешно въстание срещу властта на Александър Велики.",
+    "summary_en": "About a decade after the Macedonian conquest, the Odrysian ruler Seuthes III re-established the Thracian kingdom under Macedonian suzerainty, following a successful revolt against the rule of Alexander the Great.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-thracian-celts",
+    "era": "thracian",
+    "year": -270,
+    "period_bg": "ок. 270-те г. пр.н.е.",
+    "period_en": "c. 270s BC",
+    "title_bg": "Разрушен от келтите",
+    "title_en": "Destroyed by the Celts",
+    "summary_bg": "По време на келтското заселване в Източна Европа градът е разрушен, най-вероятно през 270-те г. пр.н.е., преди животът на хълмовете отново да се възстанови.",
+    "summary_en": "During the Celtic settlement of Eastern Europe the city was destroyed, most likely in the 270s BC, before life on the hills recovered once more.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-thracian-philip-v",
+    "era": "thracian",
+    "year": -183,
+    "period_bg": "183 г. пр.н.е.",
+    "period_en": "183 BC",
+    "title_bg": "Филип V Македонски превзема града",
+    "title_en": "Philip V of Macedon takes the city",
+    "summary_bg": "През 183 г. пр.н.е. Филип V Македонски превзема града, но скоро след това траките си го връщат — един от няколкото пъти, в които градът на хълмовете сменя владетелите си през този период.",
+    "summary_en": "In 183 BC Philip V of Macedon captured the city, but the Thracians re-conquered it shortly afterwards — one of several times the hill town changed hands in this period.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-thracian-lucullus",
+    "era": "thracian",
+    "year": -72,
+    "period_bg": "72 г. пр.н.е.",
+    "period_en": "72 BC",
+    "title_bg": "Първият римски досег: Марк Лукул",
+    "title_en": "Rome's first reach: Marcus Lucullus",
+    "summary_bg": "През 72 г. пр.н.е. римският пълководец Марк Лукул завзема града, но той скоро е върнат под тракийска власт — предвестие на окончателното му включване в Римската империя през 46 г.",
+    "summary_en": "In 72 BC the Roman general Marcus Lucullus seized the city, but it was soon restored to Thracian control — a prelude to its final incorporation into the Roman Empire in 46 AD.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
     "data_quality": "public_source"
   },
   {
@@ -403,6 +514,162 @@
         "accessed_at": "2026-06-19"
       }
     ],
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-roman-forum",
+    "era": "roman",
+    "year": 75,
+    "period_bg": "I–II в.",
+    "period_en": "1st–2nd century AD",
+    "title_bg": "Римският форум",
+    "title_en": "The Roman Forum",
+    "summary_bg": "Форумът на Тримонциум е започнат при император Веспасиан през I в. и завършен през II в. С площ около 11 хектара и заобиколен от магазини и обществени сгради, той е средоточието на уличната мрежа на античния град.",
+    "summary_en": "Begun under Emperor Vespasian in the 1st century and finished in the 2nd, the forum of Trimontium covered about 11 hectares. Ringed by shops and public buildings, it was the focal point of the ancient city's streets.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-roman-odeon",
+    "era": "roman",
+    "year": 150,
+    "period_bg": "II–V в.",
+    "period_en": "2nd–5th century AD",
+    "title_bg": "Античният одеон",
+    "title_en": "The Roman Odeon",
+    "summary_bg": "Малкият античен театър — одеонът — е изграден първоначално като булевтерион (сграда на градския съвет) с около 350 места, а по-късно е преустроен в театър. Той е вторият античен театър на Филипопол.",
+    "summary_en": "The small antique theatre — the Odeon — was first built as a bouleuterion (the city-council house) with about 350 seats, and later rebuilt as a theatre. It is the second antique theatre of Philippopolis.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-medieval-byzantine-fortress",
+    "era": "medieval",
+    "year": 681,
+    "period_bg": "681 г.",
+    "period_en": "681 AD",
+    "title_bg": "Византийска гранична крепост",
+    "title_en": "A Byzantine border fortress",
+    "summary_bg": "Славяните се заселват в района до средата на VI в. След създаването на българската държава през 681 г. Филипопол става важна гранична крепост на Византийската империя.",
+    "summary_en": "The Slavs had settled across the area by the mid-6th century. After the founding of the Bulgarian state in 681, Philippopolis became an important border fortress of the Byzantine Empire.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-medieval-latin-empire",
+    "era": "medieval",
+    "year": 1204,
+    "period_bg": "1204 г.",
+    "period_en": "1204 AD",
+    "title_bg": "Латинската империя и Пловдивското херцогство",
+    "title_en": "The Latin Empire and the Duchy of Philippopolis",
+    "summary_bg": "През 1204 г. Латинската империя завладява Филипопол, който става столица на Пловдивското херцогство. През следващите десетилетия градът неколкократно сменя владетелите си между латинци, българи и Византия.",
+    "summary_en": "In 1204 the Latin Empire took Philippopolis, which became the capital of the Duchy of Philippopolis. Over the following decades the city changed hands repeatedly between the Latins, Bulgaria and Byzantium.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-ottoman-maritsa",
+    "era": "ottoman",
+    "year": 1371,
+    "period_bg": "1371 г.",
+    "period_en": "1371",
+    "title_bg": "Битката при Марица",
+    "title_en": "The Battle of Maritsa",
+    "summary_bg": "Според част от изворите Пловдив попада окончателно под османска власт след битката при Марица през 1371 г., когато жителите и българската войска напускат града без съпротива, а бежанци се заселват в Станимака (днешния Асеновград).",
+    "summary_en": "By some accounts Plovdiv passed firmly under Ottoman control only after the Battle of Maritsa in 1371, when the townspeople and the Bulgarian army left without resistance and refugees settled in Stanimaka (today's Asenovgrad).",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-ottoman-musa-celebi",
+    "era": "ottoman",
+    "year": 1410,
+    "period_bg": "1410 г.",
+    "period_en": "1410",
+    "title_bg": "Османското междуцарствие",
+    "title_en": "The Ottoman Interregnum",
+    "summary_bg": "По време на османското междуцарствие през 1410 г. Муса Челеби завладява града, при което избива и разселва част от жителите му.",
+    "summary_en": "During the Ottoman Interregnum of 1410, Musa Çelebi seized the city, killing and displacing some of its inhabitants.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-ottoman-rumelia-centre",
+    "era": "ottoman",
+    "year": 1443,
+    "period_bg": "1364–1443 г.",
+    "period_en": "1364–1443",
+    "title_bg": "Център на Румелия",
+    "title_en": "Centre of Rumelia",
+    "summary_bg": "От 1364 г. Филибе е център на Румелийския еялет, докато през 1443 г. столицата на Румелия е преместена в София. Градът остава важно административно средище и през следващите векове.",
+    "summary_en": "From 1364 Filibe was the centre of the Rumelia Eyalet, until in 1443 the capital of Rumelia moved to Sofia. The city remained an important administrative seat in the centuries that followed.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-ottoman-trade-centre",
+    "era": "ottoman",
+    "year": 1500,
+    "period_bg": "XV–XVII в.",
+    "period_en": "15th–17th century",
+    "title_bg": "Едно от стопанските средища на Балканите",
+    "title_en": "A leading Balkan trading centre",
+    "summary_bg": "През този период Филибе е едно от най-големите стопански средища на Балканите, наред с Истанбул, Одрин, Солун и София. По-заможните граждани издигат богати къщи, много от които и днес се пазят в архитектурния резерват Стария Пловдив.",
+    "summary_en": "Through this period Filibe was one of the largest economic centres in the Balkans, alongside Istanbul, Edirne, Thessaloniki and Sofia. Wealthier citizens built fine houses, many still preserved today in the Old Plovdiv architectural reserve.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-revival-secular-school",
+    "era": "revival",
+    "year": 1850,
+    "period_bg": "1850 г.",
+    "period_en": "1850",
+    "title_bg": "Светско образование — „Св. св. Кирил и Методий“",
+    "title_en": "Secular education — the St Cyril and Methodius school",
+    "summary_bg": "През 1850 г. в града започва модерното светско образование с откриването на училището „Св. св. Кирил и Методий“.",
+    "summary_en": "In 1850 modern secular education began in the city with the opening of the St Cyril and Methodius school.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-revival-cyril-methodius-day",
+    "era": "revival",
+    "year": 1858,
+    "period_bg": "11 май 1858 г.",
+    "period_en": "11 May 1858",
+    "title_bg": "Първият празник на Кирил и Методий",
+    "title_en": "The first Cyril and Methodius celebration",
+    "summary_bg": "На 11 май 1858 г. за първи път е честван денят на светите братя Кирил и Методий. По-късно той става национален празник, който се чества и днес (на 24 май след преминаването към григорианския календар).",
+    "summary_en": "On 11 May 1858 the day of Saints Cyril and Methodius was celebrated for the first time. It later became a national holiday, still marked today (on 24 May after the switch to the Gregorian calendar).",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-revival-grammar-school",
+    "era": "revival",
+    "year": 1868,
+    "period_bg": "1868 г.",
+    "period_en": "1868",
+    "title_bg": "Първата гимназия",
+    "title_en": "The first grammar school",
+    "summary_bg": "През 1868 г. училището прераства в първата българска гимназия. През нея преминават мнозина бъдещи интелектуалци, политици и духовни водачи на нацията.",
+    "summary_en": "In 1868 the school grew into the first Bulgarian grammar school. Many future intellectuals, politicians and spiritual leaders of the nation passed through it.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
+    "data_quality": "public_source"
+  },
+  {
+    "id": "history-revival-bulgarian-church",
+    "era": "revival",
+    "year": 1870,
+    "period_bg": "1870 г.",
+    "period_en": "1870",
+    "title_bg": "Възстановяване на Българската църква",
+    "title_en": "The Bulgarian Church is restored",
+    "summary_bg": "Възстановяването на Българската църква (Екзархията) през 1870 г. е белег за национално самосъзнание. Филибе е средище на борбата за църковна независимост с водачи като Найден Геров и Йоаким Груев.",
+    "summary_en": "The re-establishment of the Bulgarian Church (the Exarchate) in 1870 was a mark of national consciousness. Filibe was a centre of the struggle for church independence, with leaders such as Nayden Gerov and Joakim Gruev.",
+    "source": { "title": "Wikipedia — Plovdiv", "url": "https://en.wikipedia.org/wiki/Plovdiv", "accessed_at": "2026-06-22" },
     "data_quality": "public_source"
   }
 ]
