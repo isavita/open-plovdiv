@@ -22,12 +22,12 @@ const t = ui[lang];
 const labels = {
   bg: {
     title: "Образователен хъб",
-    eyebrow: "Уроци, работни листове и аудио маршрути",
+    eyebrow: "Уроци, работни листове и маршрути за разходка",
     lead:
       "Пет двуезични урока за историята на Пловдив, свързани със събитията, местата, архивните изображения и публичните източници в Open Plovdiv.",
     lessons: "урока",
     quiz: "въпроса в тестове",
-    audio: "аудио маршрута",
+    audio: "маршрута за разходка",
     sources: "източника",
     minutes: "мин",
     lessonPlan: "План на урока",
@@ -41,18 +41,9 @@ const labels = {
     quizTitle: "Кратък тест",
     answer: "Отговор",
     handout: "Работен лист",
-    audioTour: "Аудио маршрут",
-    scriptReady: "сценарий готов",
-    audioRoutesTitle: "Аудио маршрути за разходка",
+    audioRoutesTitle: "Маршрути за разходка",
     audioRoutesLead:
-      "Всеки маршрут използва проверените сценарии от урока и може да се слуша в браузъра или да се следва като текст за водене на група.",
-    playAudio: "Пусни",
-    pauseAudio: "Пауза",
-    stopAudio: "Стоп",
-    audioReady: "Готово за слушане",
-    audioPlaying: "Звучи",
-    audioPaused: "На пауза",
-    audioUnavailable: "Браузърът не поддържа автоматичен глас; използвайте текста на маршрута.",
+      "Всеки маршрут следва проверения сценарий от урока и може да се ползва като текстов водач за самостоятелна разходка или за работа с група.",
     stops: "спирки",
     openLesson: "Отвори урока",
     sourcesTitle: "Източници",
@@ -61,12 +52,12 @@ const labels = {
   },
   en: {
     title: "Education Hub",
-    eyebrow: "Lessons, worksheets and audio routes",
+    eyebrow: "Lessons, worksheets and walking routes",
     lead:
       "Five bilingual lessons on Plovdiv's history, linked to the events, places, archive images and public sources in Open Plovdiv.",
     lessons: "lessons",
     quiz: "quiz questions",
-    audio: "audio routes",
+    audio: "walking routes",
     sources: "sources",
     minutes: "min",
     lessonPlan: "Lesson Plan",
@@ -80,18 +71,9 @@ const labels = {
     quizTitle: "Short Quiz",
     answer: "Answer",
     handout: "Worksheet",
-    audioTour: "Audio Route",
-    scriptReady: "script ready",
-    audioRoutesTitle: "Audio Walking Routes",
+    audioRoutesTitle: "Walking Routes",
     audioRoutesLead:
-      "Each route uses the reviewed lesson script and can be played in the browser or followed as a text guide for a group walk.",
-    playAudio: "Play",
-    pauseAudio: "Pause",
-    stopAudio: "Stop",
-    audioReady: "Ready to listen",
-    audioPlaying: "Playing",
-    audioPaused: "Paused",
-    audioUnavailable: "This browser does not support automatic voice playback; use the route text instead.",
+      "Each route follows the reviewed lesson script and works as a text guide for a self-guided walk or a group.",
     stops: "stops",
     openLesson: "Open lesson",
     sourcesTitle: "Sources",
@@ -122,7 +104,6 @@ const pairById = new Map(thenNowPairs.map((pair) => [pair.id, pair]));
 const quizCount = educationResources.reduce((sum, resource) => sum + resource.quiz.length, 0);
 const audioCount = educationResources.filter((resource) => resource.audio_tour.production_status === "script_ready").length;
 const sourceCount = new Set(educationResources.flatMap((resource) => resource.source_ids)).size;
-const speechLang = lang === "bg" ? "bg-BG" : "en-US";
 const audioRouteSummaries = educationResources.map((resource) => ({
   id: resource.id,
   title: localized(resource.audio_tour, "title"),
@@ -288,36 +269,11 @@ function evidenceNames(resource: EducationResource, type: "events" | "places" | 
                   </ol>
                 </section>
 
-                <section
-                  class="audio-tour"
-                  data-audio-tour
-                  data-audio-lang={speechLang}
-                  data-audio-ready={labels.audioReady}
-                  data-audio-playing={labels.audioPlaying}
-                  data-audio-paused={labels.audioPaused}
-                  data-audio-unavailable={labels.audioUnavailable}
-                >
-                  <div class="section-head compact">
-                    <div>
-                      <h3>{localized(resource.audio_tour, "title")}</h3>
-                      <p class="meta">{labels.scriptReady}</p>
-                    </div>
-                    <div class="audio-controls" role="group" aria-label={localized(resource.audio_tour, "title")}>
-                      <button class="icon-btn" type="button" data-audio-action="play" aria-label={labels.playAudio} title={labels.playAudio}>
-                        <span aria-hidden="true">▶</span>
-                      </button>
-                      <button class="icon-btn" type="button" data-audio-action="pause" aria-label={labels.pauseAudio} title={labels.pauseAudio}>
-                        <span aria-hidden="true">Ⅱ</span>
-                      </button>
-                      <button class="icon-btn" type="button" data-audio-action="stop" aria-label={labels.stopAudio} title={labels.stopAudio}>
-                        <span aria-hidden="true">■</span>
-                      </button>
-                    </div>
-                  </div>
-                  <p class="audio-status meta" data-audio-status>{labels.audioReady}</p>
+                <section class="audio-tour">
+                  <h3>{localized(resource.audio_tour, "title")}</h3>
                   <ol>
                     {resource.audio_tour.stops.map((stop) => (
-                      <li data-audio-stop data-audio-text={localized(stop, "narration")}>
+                      <li>
                         <strong>{localized(stop, "title")}</strong>
                         <span>{localized(stop, "narration")}</span>
                       </li>
@@ -345,98 +301,4 @@ function evidenceNames(resource: EducationResource, type: "events" | "places" | 
       </div>
     </section>
   </div>
-
-  <script>
-    const audioTours = [...document.querySelectorAll("[data-audio-tour]")];
-    const speechApi = window.speechSynthesis;
-    let activeTour = null;
-    let activeUtterance = null;
-    let activeStopIndex = 0;
-
-    function setTourStatus(tour, status) {
-      const statusNode = tour.querySelector("[data-audio-status]");
-      if (statusNode) statusNode.textContent = status;
-    }
-
-    function clearActiveStops(tour) {
-      tour.querySelectorAll("[data-audio-stop]").forEach((stop) => stop.classList.remove("is-speaking"));
-    }
-
-    function stopAudio() {
-      if (speechApi) speechApi.cancel();
-      if (activeTour) {
-        clearActiveStops(activeTour);
-        setTourStatus(activeTour, activeTour.dataset.audioReady ?? "");
-      }
-      activeTour = null;
-      activeUtterance = null;
-      activeStopIndex = 0;
-    }
-
-    function speakStop(tour, index) {
-      const stops = [...tour.querySelectorAll("[data-audio-stop]")];
-      if (!speechApi || index >= stops.length) {
-        clearActiveStops(tour);
-        setTourStatus(tour, tour.dataset.audioReady ?? "");
-        activeTour = null;
-        activeUtterance = null;
-        activeStopIndex = 0;
-        return;
-      }
-
-      activeTour = tour;
-      activeStopIndex = index;
-      clearActiveStops(tour);
-      const stop = stops[index];
-      stop.classList.add("is-speaking");
-      setTourStatus(tour, `${tour.dataset.audioPlaying ?? ""}: ${stop.querySelector("strong")?.textContent ?? ""}`);
-
-      const utterance = new SpeechSynthesisUtterance(stop.dataset.audioText ?? stop.textContent ?? "");
-      utterance.lang = tour.dataset.audioLang ?? document.documentElement.lang;
-      utterance.rate = 0.92;
-      utterance.onend = () => {
-        if (activeTour === tour) speakStop(tour, index + 1);
-      };
-      utterance.onerror = () => {
-        if (activeTour === tour) {
-          clearActiveStops(tour);
-          setTourStatus(tour, tour.dataset.audioUnavailable ?? "");
-        }
-      };
-      activeUtterance = utterance;
-      speechApi.speak(utterance);
-    }
-
-    audioTours.forEach((tour) => {
-      if (!speechApi) {
-        setTourStatus(tour, tour.dataset.audioUnavailable ?? "");
-      }
-
-      tour.querySelector("[data-audio-action='play']")?.addEventListener("click", () => {
-        if (!speechApi) {
-          setTourStatus(tour, tour.dataset.audioUnavailable ?? "");
-          return;
-        }
-        if (activeTour === tour && speechApi.paused) {
-          speechApi.resume();
-          setTourStatus(tour, tour.dataset.audioPlaying ?? "");
-          return;
-        }
-        stopAudio();
-        speakStop(tour, 0);
-      });
-
-      tour.querySelector("[data-audio-action='pause']")?.addEventListener("click", () => {
-        if (activeTour !== tour || !speechApi?.speaking) return;
-        speechApi.pause();
-        setTourStatus(tour, tour.dataset.audioPaused ?? "");
-      });
-
-      tour.querySelector("[data-audio-action='stop']")?.addEventListener("click", () => {
-        if (activeTour === tour || activeUtterance) stopAudio();
-      });
-    });
-
-    window.addEventListener("beforeunload", stopAudio);
-  </script>
 </Layout>

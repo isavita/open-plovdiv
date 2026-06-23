@@ -4,8 +4,15 @@
     "audience_bg": "5-7 клас",
     "audience_en": "Grades 5-7",
     "duration_minutes": 45,
-    "era_tags": ["prehistory", "thracian"],
-    "subject_tags": ["history", "geography", "local_history"],
+    "era_tags": [
+      "prehistory",
+      "thracian"
+    ],
+    "subject_tags": [
+      "history",
+      "geography",
+      "local_history"
+    ],
     "title_bg": "Седемте тепета и дългото време на Пловдив",
     "title_en": "The Seven Hills and Plovdiv's Deep Time",
     "summary_bg": "Урок за ранното заселване върху тепетата, тракийската Евмолпия и начина, по който релефът помага да разберем защо градът остава обитаван толкова дълго.",
@@ -58,8 +65,16 @@
       {
         "question_bg": "Кой обект е най-подходящ за разговор за най-ранните пластове на града?",
         "question_en": "Which site best opens a discussion of the city's earliest layers?",
-        "answers_bg": ["Небет тепе", "Централна гара", "Международен панаир"],
-        "answers_en": ["Nebet Tepe", "Central railway station", "International Fair"],
+        "answers_bg": [
+          "Небет тепе",
+          "Централна гара",
+          "Международен панаир"
+        ],
+        "answers_en": [
+          "Nebet Tepe",
+          "Central railway station",
+          "International Fair"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Небет тепе е пряко свързано с най-ранните градски пластове и с тракийския контекст.",
         "explanation_en": "Nebet Tepe is directly linked to the earliest urban layers and the Thracian context."
@@ -67,8 +82,16 @@
       {
         "question_bg": "Защо в урока се използва карта?",
         "question_en": "Why does the lesson use a map?",
-        "answers_bg": ["За да се види връзката между релеф и заселване", "За да се замени източникът", "За да се избегне хронологията"],
-        "answers_en": ["To see the link between terrain and settlement", "To replace the source", "To avoid chronology"],
+        "answers_bg": [
+          "За да се види връзката между релеф и заселване",
+          "За да се замени източникът",
+          "За да се избегне хронологията"
+        ],
+        "answers_en": [
+          "To see the link between terrain and settlement",
+          "To replace the source",
+          "To avoid chronology"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Картата помага да се мисли пространствено, но не заменя източниците.",
         "explanation_en": "The map supports spatial reasoning, but it does not replace sources."
@@ -76,8 +99,16 @@
       {
         "question_bg": "Какво трябва да направи ученикът, ако две описания звучат различно?",
         "question_en": "What should a student do when two descriptions differ?",
-        "answers_bg": ["Да провери източниците и да отбележи несигурността", "Да избере по-краткото", "Да премахне датите"],
-        "answers_en": ["Check the sources and note uncertainty", "Choose the shorter one", "Remove the dates"],
+        "answers_bg": [
+          "Да провери източниците и да отбележи несигурността",
+          "Да избере по-краткото",
+          "Да премахне датите"
+        ],
+        "answers_en": [
+          "Check the sources and note uncertainty",
+          "Choose the shorter one",
+          "Remove the dates"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Платформата изисква проследимост и ясно отбелязване на несигурни твърдения.",
         "explanation_en": "The platform requires traceability and clear marking of uncertain claims."
@@ -98,8 +129,8 @@
       ]
     },
     "audio_tour": {
-      "title_bg": "Кратък аудио маршрут: Небет тепе и Старият град",
-      "title_en": "Short audio route: Nebet Tepe and the Old Town",
+      "title_bg": "Кратък маршрут за разходка: Небет тепе и Старият град",
+      "title_en": "Short walking route: Nebet Tepe and the Old Town",
       "production_status": "script_ready",
       "stops": [
         {
@@ -125,10 +156,23 @@
         }
       ]
     },
-    "linked_event_ids": ["event-prehistory-settlement", "event-thracian-eumolpias", "event-philip-philippopolis"],
-    "linked_place_ids": ["place-nebet-tepe", "place-old-town", "place-seven-hills", "place-plovdiv-city"],
-    "linked_archive_item_ids": ["archive-photo-dzhambaztepe-1892"],
-    "linked_then_now_pair_ids": ["then-now-dzhambaztepe-1892"],
+    "linked_event_ids": [
+      "event-prehistory-settlement",
+      "event-thracian-eumolpias",
+      "event-philip-philippopolis"
+    ],
+    "linked_place_ids": [
+      "place-nebet-tepe",
+      "place-old-town",
+      "place-seven-hills",
+      "place-plovdiv-city"
+    ],
+    "linked_archive_item_ids": [
+      "archive-photo-dzhambaztepe-1892"
+    ],
+    "linked_then_now_pair_ids": [
+      "then-now-dzhambaztepe-1892"
+    ],
     "source_ids": [
       "source-wikipedia-plovdiv",
       "source-wikipedia-nebet-tepe",
@@ -149,8 +193,14 @@
     "audience_bg": "6-8 клас",
     "audience_en": "Grades 6-8",
     "duration_minutes": 50,
-    "era_tags": ["roman"],
-    "subject_tags": ["history", "urbanism", "archaeology"],
+    "era_tags": [
+      "roman"
+    ],
+    "subject_tags": [
+      "history",
+      "urbanism",
+      "archaeology"
+    ],
     "title_bg": "Римският град: театър, стадион и форум",
     "title_en": "The Roman City: Theatre, Stadium and Forum",
     "summary_bg": "Урок за Филипопол/Тримонциум като римски град, в който обществените пространства показват власт, забавление, търговия и градско планиране.",
@@ -203,8 +253,16 @@
       {
         "question_bg": "Кой обект е свързан с публични представления?",
         "question_en": "Which site is connected with public performances?",
-        "answers_bg": ["Античният театър", "Небет тепе", "Централна гара"],
-        "answers_en": ["Ancient Theatre", "Nebet Tepe", "Central railway station"],
+        "answers_bg": [
+          "Античният театър",
+          "Небет тепе",
+          "Централна гара"
+        ],
+        "answers_en": [
+          "Ancient Theatre",
+          "Nebet Tepe",
+          "Central railway station"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Античният театър е римски обществен обект, свързан с представления.",
         "explanation_en": "The Ancient Theatre is a Roman public site connected with performances."
@@ -212,8 +270,16 @@
       {
         "question_bg": "Кой източник е най-подходящ за координати на обект?",
         "question_en": "Which source is best suited for a site's coordinates?",
-        "answers_bg": ["Запис за координати в Wikidata", "Устен спомен без дата", "Непроверена публикация"],
-        "answers_en": ["A Wikidata coordinate record", "An undated oral memory", "An unchecked post"],
+        "answers_bg": [
+          "Запис за координати в Wikidata",
+          "Устен спомен без дата",
+          "Непроверена публикация"
+        ],
+        "answers_en": [
+          "A Wikidata coordinate record",
+          "An undated oral memory",
+          "An unchecked post"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "В базата координатите се свързват с отделен източник, когато е наличен.",
         "explanation_en": "The knowledge base links coordinates to a separate source when available."
@@ -221,8 +287,16 @@
       {
         "question_bg": "Защо тогава/сега сравнението не е достатъчно само по себе си?",
         "question_en": "Why is a then/now comparison not enough by itself?",
-        "answers_bg": ["Трябва да се знаят дата, място и лиценз", "Защото снимките нямат значение", "Защото картата е достатъчна"],
-        "answers_en": ["Date, place and license must be known", "Because photos do not matter", "Because the map is enough"],
+        "answers_bg": [
+          "Трябва да се знаят дата, място и лиценз",
+          "Защото снимките нямат значение",
+          "Защото картата е достатъчна"
+        ],
+        "answers_en": [
+          "Date, place and license must be known",
+          "Because photos do not matter",
+          "Because the map is enough"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Изображението става доказателство само когато е проследимо и правилно описано.",
         "explanation_en": "An image becomes evidence only when it is traceable and properly described."
@@ -243,8 +317,8 @@
       ]
     },
     "audio_tour": {
-      "title_bg": "Аудио маршрут: римски Филипопол",
-      "title_en": "Audio route: Roman Philippopolis",
+      "title_bg": "Маршрут за разходка: римски Филипопол",
+      "title_en": "Walking route: Roman Philippopolis",
       "production_status": "script_ready",
       "stops": [
         {
@@ -270,10 +344,25 @@
         }
       ]
     },
-    "linked_event_ids": ["event-roman-trimontium", "event-roman-theatre", "event-roman-stadium"],
-    "linked_place_ids": ["place-ancient-theatre", "place-ancient-stadium", "place-forum-philippopolis", "place-philippopolis-q27047924"],
-    "linked_archive_item_ids": ["archive-photo-ancient-theatre-uncovered-1", "archive-photo-ancient-stadium-uncovered-1"],
-    "linked_then_now_pair_ids": ["then-now-ancient-theatre-uncovered-1", "then-now-ancient-stadium-uncovered-1"],
+    "linked_event_ids": [
+      "event-roman-trimontium",
+      "event-roman-theatre",
+      "event-roman-stadium"
+    ],
+    "linked_place_ids": [
+      "place-ancient-theatre",
+      "place-ancient-stadium",
+      "place-forum-philippopolis",
+      "place-philippopolis-q27047924"
+    ],
+    "linked_archive_item_ids": [
+      "archive-photo-ancient-theatre-uncovered-1",
+      "archive-photo-ancient-stadium-uncovered-1"
+    ],
+    "linked_then_now_pair_ids": [
+      "then-now-ancient-theatre-uncovered-1",
+      "then-now-ancient-stadium-uncovered-1"
+    ],
     "source_ids": [
       "source-wikipedia-plovdiv",
       "source-wikipedia-roman-forum-of-philippopolis",
@@ -295,8 +384,15 @@
     "audience_bg": "7-9 клас",
     "audience_en": "Grades 7-9",
     "duration_minutes": 45,
-    "era_tags": ["revival", "ottoman"],
-    "subject_tags": ["history", "architecture", "civic_culture"],
+    "era_tags": [
+      "revival",
+      "ottoman"
+    ],
+    "subject_tags": [
+      "history",
+      "architecture",
+      "civic_culture"
+    ],
     "title_bg": "Възрожденският град: къщи, училища и общности",
     "title_en": "The Revival City: Houses, Schools and Communities",
     "summary_bg": "Урок за Стария град като място, в което възрожденската архитектура, училищата, църквите и градските общности разказват историята на модернизацията.",
@@ -349,8 +445,16 @@
       {
         "question_bg": "Кой тип обект може да покаже образователна история?",
         "question_en": "Which type of site can show educational history?",
-        "answers_bg": ["Училищна сграда", "Само река", "Само съвременен път"],
-        "answers_en": ["A school building", "Only a river", "Only a modern road"],
+        "answers_bg": [
+          "Училищна сграда",
+          "Само река",
+          "Само съвременен път"
+        ],
+        "answers_en": [
+          "A school building",
+          "Only a river",
+          "Only a modern road"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Училищните сгради имат функция, която може да се свърже с образователната история на града.",
         "explanation_en": "School buildings have a function that can be linked to the city's educational history."
@@ -358,8 +462,16 @@
       {
         "question_bg": "Какво трябва да съдържа снимката, за да се използва в урок?",
         "question_en": "What must an image include to be used in a lesson?",
-        "answers_bg": ["Кредит и лиценз", "Само красиво заглавие", "Само филтър"],
-        "answers_en": ["Credit and license", "Only a nice title", "Only a filter"],
+        "answers_bg": [
+          "Кредит и лиценз",
+          "Само красиво заглавие",
+          "Само филтър"
+        ],
+        "answers_en": [
+          "Credit and license",
+          "Only a nice title",
+          "Only a filter"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Open Plovdiv използва изображения с проследим произход и ясни условия за повторна употреба.",
         "explanation_en": "Open Plovdiv uses images with traceable origin and clear reuse terms."
@@ -367,8 +479,16 @@
       {
         "question_bg": "Защо Старият град се разглежда като повече от архитектурен ансамбъл?",
         "question_en": "Why is the Old Town treated as more than an architectural ensemble?",
-        "answers_bg": ["Защото включва общности, институции и по-стари пластове", "Защото няма източници", "Защото е само туристически маршрут"],
-        "answers_en": ["Because it includes communities, institutions and older layers", "Because it has no sources", "Because it is only a tourist route"],
+        "answers_bg": [
+          "Защото включва общности, институции и по-стари пластове",
+          "Защото няма източници",
+          "Защото е само туристически маршрут"
+        ],
+        "answers_en": [
+          "Because it includes communities, institutions and older layers",
+          "Because it has no sources",
+          "Because it is only a tourist route"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Историческото тълкуване свързва архитектурата с хора, институции и по-ранни градски пластове.",
         "explanation_en": "Historical interpretation connects architecture with people, institutions and earlier urban layers."
@@ -389,8 +509,8 @@
       ]
     },
     "audio_tour": {
-      "title_bg": "Аудио маршрут: къщи и училища в Стария град",
-      "title_en": "Audio route: houses and schools in the Old Town",
+      "title_bg": "Маршрут за разходка: къщи и училища в Стария град",
+      "title_en": "Walking route: houses and schools in the Old Town",
       "production_status": "script_ready",
       "stops": [
         {
@@ -416,15 +536,23 @@
         }
       ]
     },
-    "linked_event_ids": ["event-first-school-1836"],
+    "linked_event_ids": [
+      "event-first-school-1836"
+    ],
     "linked_place_ids": [
       "place-old-town",
       "place-humanitarian-high-school-saints-cyril-and-methodius-plovdiv-q12290859",
       "place-holy-mother-of-god",
       "place-lamartine-house"
     ],
-    "linked_archive_item_ids": ["archive-postcard-greek-high-school", "archive-photo-lamartine-house-restoration-1972"],
-    "linked_then_now_pair_ids": ["then-now-greek-high-school", "then-now-lamartine-house-restoration-1972"],
+    "linked_archive_item_ids": [
+      "archive-postcard-greek-high-school",
+      "archive-photo-lamartine-house-restoration-1972"
+    ],
+    "linked_then_now_pair_ids": [
+      "then-now-greek-high-school",
+      "then-now-lamartine-house-restoration-1972"
+    ],
     "source_ids": [
       "source-wikipedia-plovdiv",
       "source-wikipedia-old-town-plovdiv",
@@ -445,8 +573,15 @@
     "audience_bg": "7-10 клас",
     "audience_en": "Grades 7-10",
     "duration_minutes": 50,
-    "era_tags": ["liberation", "modern"],
-    "subject_tags": ["history", "civics", "source_criticism"],
+    "era_tags": [
+      "liberation",
+      "modern"
+    ],
+    "subject_tags": [
+      "history",
+      "civics",
+      "source_criticism"
+    ],
     "title_bg": "Съединението и градът на гражданските решения",
     "title_en": "The Unification and the City of Civic Decisions",
     "summary_bg": "Урок за Пловдив като град на Съединението, ранното общинско управление и начина, по който официални списъци, площади и паметници оформят публичната памет.",
@@ -499,8 +634,16 @@
       {
         "question_bg": "Кое събитие е централно за образа на Пловдив като град на Съединението?",
         "question_en": "Which event is central to Plovdiv's image as the city of the Unification?",
-        "answers_bg": ["Съединението от 1885 г.", "Откриването на панаира през 1939 г.", "Европейската столица на културата 2019"],
-        "answers_en": ["The Unification of 1885", "The opening of the fair in 1939", "European Capital of Culture 2019"],
+        "answers_bg": [
+          "Съединението от 1885 г.",
+          "Откриването на панаира през 1939 г.",
+          "Европейската столица на културата 2019"
+        ],
+        "answers_en": [
+          "The Unification of 1885",
+          "The opening of the fair in 1939",
+          "European Capital of Culture 2019"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Съединението от 1885 г. е ключово събитие в градската и националната памет.",
         "explanation_en": "The Unification of 1885 is a key event in civic and national memory."
@@ -508,8 +651,16 @@
       {
         "question_bg": "Какво доказва официалният списък на кметовете?",
         "question_en": "What does the official mayor list prove?",
-        "answers_bg": ["Ред на мандати и имена", "Всички лични мотиви", "Всички семейни връзки"],
-        "answers_en": ["Order of terms and names", "All personal motives", "All family relationships"],
+        "answers_bg": [
+          "Ред на мандати и имена",
+          "Всички лични мотиви",
+          "Всички семейни връзки"
+        ],
+        "answers_en": [
+          "Order of terms and names",
+          "All personal motives",
+          "All family relationships"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Официалният списък е силен за институционална хронология, но не е пълна биография.",
         "explanation_en": "The official list is strong for institutional chronology, but it is not a full biography."
@@ -517,8 +668,16 @@
       {
         "question_bg": "Защо паметниците и площадите са източници за гражданска памет?",
         "question_en": "Why are monuments and squares sources for civic memory?",
-        "answers_bg": ["Показват как градът избира да помни", "Заменят архивите", "Нямат историческа стойност"],
-        "answers_en": ["They show how the city chooses to remember", "They replace archives", "They have no historical value"],
+        "answers_bg": [
+          "Показват как градът избира да помни",
+          "Заменят архивите",
+          "Нямат историческа стойност"
+        ],
+        "answers_en": [
+          "They show how the city chooses to remember",
+          "They replace archives",
+          "They have no historical value"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Публичните места показват как дадено общество подрежда паметта си в пространството.",
         "explanation_en": "Public places show how a community arranges memory in space."
@@ -539,8 +698,8 @@
       ]
     },
     "audio_tour": {
-      "title_bg": "Аудио маршрут: Съединение и гражданска памет",
-      "title_en": "Audio route: Unification and civic memory",
+      "title_bg": "Маршрут за разходка: Съединение и гражданска памет",
+      "title_en": "Walking route: Unification and civic memory",
       "production_status": "script_ready",
       "stops": [
         {
@@ -566,10 +725,22 @@
         }
       ]
     },
-    "linked_event_ids": ["event-unification-1885", "event-mayor-01-atanas-samokovliev", "event-mayor-02-kostaki-peev"],
-    "linked_place_ids": ["place-unification-square-plovdiv-q58885892", "place-plovdiv-city", "place-old-town"],
-    "linked_archive_item_ids": ["archive-photo-philippopolis-street-1878"],
-    "linked_then_now_pair_ids": ["then-now-philippopolis-street-1878"],
+    "linked_event_ids": [
+      "event-unification-1885",
+      "event-mayor-01-atanas-samokovliev",
+      "event-mayor-02-kostaki-peev"
+    ],
+    "linked_place_ids": [
+      "place-unification-square-plovdiv-q58885892",
+      "place-plovdiv-city",
+      "place-old-town"
+    ],
+    "linked_archive_item_ids": [
+      "archive-photo-philippopolis-street-1878"
+    ],
+    "linked_then_now_pair_ids": [
+      "then-now-philippopolis-street-1878"
+    ],
     "source_ids": [
       "source-wikipedia-plovdiv",
       "source-plovdiv-mayor-archive",
@@ -590,8 +761,14 @@
     "audience_bg": "8-11 клас",
     "audience_en": "Grades 8-11",
     "duration_minutes": 55,
-    "era_tags": ["modern"],
-    "subject_tags": ["history", "media_literacy", "cultural_policy"],
+    "era_tags": [
+      "modern"
+    ],
+    "subject_tags": [
+      "history",
+      "media_literacy",
+      "cultural_policy"
+    ],
     "title_bg": "Разрушение, възстановяване и културна столица",
     "title_en": "Destruction, Recovery and Cultural Capital",
     "summary_bg": "Урок за модерния Пловдив през визуални архиви: щетите от земетресението от 1928 г., културната програма от 1999 г. и Европейската столица на културата през 2019 г.",
@@ -644,8 +821,16 @@
       {
         "question_bg": "Какво първо се проверява при историческа снимка?",
         "question_en": "What should be checked first for a historical photograph?",
-        "answers_bg": ["Дата, място, кредит и лиценз", "Само дали е драматична", "Само цветовете"],
-        "answers_en": ["Date, place, credit and license", "Only whether it is dramatic", "Only the colours"],
+        "answers_bg": [
+          "Дата, място, кредит и лиценз",
+          "Само дали е драматична",
+          "Само цветовете"
+        ],
+        "answers_en": [
+          "Date, place, credit and license",
+          "Only whether it is dramatic",
+          "Only the colours"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Изображението трябва да има проследими метаданни, за да се използва като доказателство.",
         "explanation_en": "An image needs traceable metadata to be used as evidence."
@@ -653,8 +838,16 @@
       {
         "question_bg": "Кое твърдение за 1999 г. трябва да се пази като контекст, а не като бюджетен ред?",
         "question_en": "Which 1999 claim should remain context, not a budget line?",
-        "answers_bg": ["Мащабът на културната програма", "Официален годишен бюджет", "Данък върху имотите"],
-        "answers_en": ["The scale of the cultural programme", "An official annual budget", "Property tax"],
+        "answers_bg": [
+          "Мащабът на културната програма",
+          "Официален годишен бюджет",
+          "Данък върху имотите"
+        ],
+        "answers_en": [
+          "The scale of the cultural programme",
+          "An official annual budget",
+          "Property tax"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Архивният запис за 1999 г. е програмен контекст, не общински бюджет.",
         "explanation_en": "The 1999 archive record is programme context, not a municipal budget."
@@ -662,8 +855,16 @@
       {
         "question_bg": "Кой източник потвърждава европейския контекст на 2019 г.?",
         "question_en": "Which source confirms the European context of 2019?",
-        "answers_bg": ["Европейската комисия", "Случаен форум", "Неподписан плакат"],
-        "answers_en": ["The European Commission", "A random forum", "An unsigned poster"],
+        "answers_bg": [
+          "Европейската комисия",
+          "Случаен форум",
+          "Неподписан плакат"
+        ],
+        "answers_en": [
+          "The European Commission",
+          "A random forum",
+          "An unsigned poster"
+        ],
         "correct_answer_index": 0,
         "explanation_bg": "Записът за 2019 г. използва източник на Европейската комисия за титлата Европейска столица на културата.",
         "explanation_en": "The 2019 record uses a European Commission source for the European Capital of Culture title."
@@ -684,8 +885,8 @@
       ]
     },
     "audio_tour": {
-      "title_bg": "Аудио маршрут: модерна памет",
-      "title_en": "Audio route: modern memory",
+      "title_bg": "Маршрут за разходка: модерна памет",
+      "title_en": "Walking route: modern memory",
       "production_status": "script_ready",
       "stops": [
         {
@@ -716,7 +917,11 @@
       "event-event-1999-month-of-culture-scale",
       "event-event-2019-european-capital-of-culture"
     ],
-    "linked_place_ids": ["place-ivan-vazov-national-library-q630839", "place-ancient-theatre", "place-plovdiv-city"],
+    "linked_place_ids": [
+      "place-ivan-vazov-national-library-q630839",
+      "place-ancient-theatre",
+      "place-plovdiv-city"
+    ],
     "linked_archive_item_ids": [
       "archive-photo-ivan-vazov-library-earthquake-1928",
       "archive-photo-chirpan-earthquake-st-josif-1928"
