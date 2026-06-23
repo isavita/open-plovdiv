@@ -4323,10 +4323,39 @@ code {
 .chart-scroll {
   overflow-x: auto;
   padding-bottom: 2px;
+  /* Scroll-shadow affordance: a soft shadow shows on whichever edge still hides
+     part of the chart, and fades once you scroll to that end — signalling that
+     the chart pans sideways on narrow screens. */
+  background:
+    linear-gradient(to right, var(--surface) 30%, transparent),
+    linear-gradient(to left, var(--surface) 30%, transparent) 100% 0,
+    radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--ink) 16%, transparent), transparent),
+    radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--ink) 16%, transparent), transparent) 100% 0;
+  background-repeat: no-repeat;
+  background-color: var(--surface);
+  background-size: 40px 100%, 40px 100%, 16px 100%, 16px 100%;
+  background-attachment: local, local, scroll, scroll;
+  scrollbar-width: thin;
 }
 
 .chart-scroll > svg {
   min-width: 720px;
+}
+
+/* A touch more legibility for chart labels on phones. Scoped to .chart-scroll so
+   these win over the base label rules defined later in the file. */
+@media (max-width: 600px) {
+  .chart-scroll .pop-axis-label,
+  .chart-scroll .pop-peak-label,
+  .chart-scroll .cl-axis,
+  .chart-scroll .cl-month {
+    font-size: 18px;
+  }
+  .chart-scroll .cl-val,
+  .chart-scroll .cl-val-low,
+  .chart-scroll .rate-val {
+    font-size: 16px;
+  }
 }
 
 .pop-chart {

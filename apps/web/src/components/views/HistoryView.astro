@@ -943,6 +943,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           <span class="lg lg-temp">{geo.legendTemp}</span>
           <span class="lg lg-precip">{geo.legendPrecip}</span>
         </div>
+        <div class="chart-scroll">
         <svg class="climate-chart" viewBox={`0 0 ${CW} ${CH}`} role="img" aria-label={geo.chartTitle}>
           <defs>
             <linearGradient id="cl-grad" x1="0" y1="0" x2="0" y2="1">
@@ -983,6 +984,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
             <text class="cl-month" x={cCenter(i)} y={CH - cB + 24} text-anchor="middle">{mo}</text>
           ))}
         </svg>
+        </div>
         <p class="meta" style="margin-top:8px">
           {geo.source}:{" "}
           <a href={climateSourceUrl} target="_blank" rel="noreferrer">Wikipedia — Plovdiv</a>
