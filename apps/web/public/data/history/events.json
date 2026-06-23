@@ -17290,19 +17290,17 @@
     "era": "modern",
     "date": {
       "year": 1999,
-      "year_end": 2007,
+      "year_end": 2003,
       "month": 11,
       "day": 1,
-      "precision": "date_range_or_year_range",
-      "display_bg": "1 ноември 1999 – 28 октомври 2007 г.",
-      "display_en": "1 November 1999 – 28 October 2007",
-      "month_end": 10,
-      "day_end": 28
+      "precision": "day",
+      "display_bg": "1 ноември 1999 – 2003 г.",
+      "display_en": "1 November 1999 – 2003"
     },
     "title_bg": "Кмет: Д-р Иван Чомаков",
     "title_en": "Mayor: Dr. Ivan Chomakov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 1 ноември 1999 – 28 октомври 2007 г..",
-    "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 1 November 1999 – 28 October 2007.",
+    "summary_bg": "Първи от два последователни мандата като кмет на Пловдив (1999–2003).",
+    "summary_en": "First of two consecutive terms as mayor of Plovdiv (1999–2003).",
     "theme_tags": [
       "mayor_term",
       "modern"
@@ -17892,6 +17890,59 @@
         "claim_bg": "Градски архивен запис \"Събрани собствени приходи през 2007 г.\".",
         "claim_en": "City archive record \"Collected own revenue in 2007\".",
         "url": "https://www.strategy.bg/files/publications/%D0%94%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%20%D0%B7%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%20%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D0%B5%D0%BD%20%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D0%B2%20%D0%9E%D0%B1%D1%89%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2.pdf",
+        "accessed_at": "2026-06-17",
+        "license_status": "public_reference_terms_unverified"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-mayor-62-d-r-ivan-chomakov-2",
+    "type": "event",
+    "category": "mayor_term",
+    "era": "modern",
+    "date": {
+      "year": 2007,
+      "year_end": 2007,
+      "month": 10,
+      "day": 28,
+      "precision": "day",
+      "display_bg": "2003 – 28 октомври 2007 г.",
+      "display_en": "2003 – 28 October 2007"
+    },
+    "title_bg": "Кмет: Д-р Иван Чомаков",
+    "title_en": "Mayor: Dr. Ivan Chomakov",
+    "summary_bg": "Втори от два последователни мандата като кмет на Пловдив (2003–2007).",
+    "summary_en": "Second of two consecutive terms as mayor of Plovdiv (2003–2007).",
+    "theme_tags": [
+      "mayor_term",
+      "modern"
+    ],
+    "person_ids": [
+      "person-d-r-ivan-chomakov"
+    ],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [
+      "org-plovdiv-municipality"
+    ],
+    "source_ids": [
+      "source-plovdiv-mayor-archive"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-plovdiv-mayor-archive",
+        "evidence_type": "public_source",
+        "claim_bg": "Градски архивен запис \"Кмет: Д-р Иван Чомаков\".",
+        "claim_en": "City archive record \"Mayor: Dr. Ivan Chomakov\".",
+        "url": "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/",
         "accessed_at": "2026-06-17",
         "license_status": "public_reference_terms_unverified"
       }
@@ -18585,19 +18636,17 @@
     "era": "modern",
     "date": {
       "year": 2011,
-      "year_end": 2019,
+      "year_end": 2015,
       "month": 10,
       "day": 30,
-      "precision": "date_range_or_year_range",
-      "display_bg": "30 октомври 2011 – 8 ноември 2019",
-      "display_en": "30 October 2011 – 8 November 2019",
-      "month_end": 11,
-      "day_end": 8
+      "precision": "day",
+      "display_bg": "30 октомври 2011 – 2015 г.",
+      "display_en": "30 October 2011 – 2015"
     },
     "title_bg": "Кмет: инж. Иван Тотев",
     "title_en": "Mayor: Eng. Ivan Totev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 30 октомври 2011 – 8 ноември 2019.",
-    "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 30 October 2011 – 8 November 2019.",
+    "summary_bg": "Първи от два последователни мандата като кмет на Пловдив (2011–2015).",
+    "summary_en": "First of two consecutive terms as mayor of Plovdiv (2011–2015).",
     "theme_tags": [
       "mayor_term",
       "modern"
@@ -18941,6 +18990,59 @@
         "claim_bg": "Градски архивен запис \"Пловдив - Европейска столица на културата\".",
         "claim_en": "City archive record \"Plovdiv - European Capital of Culture\".",
         "url": "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera",
+        "accessed_at": "2026-06-17",
+        "license_status": "public_reference_terms_unverified"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-mayor-64-inzh-ivan-totev-2",
+    "type": "event",
+    "category": "mayor_term",
+    "era": "modern",
+    "date": {
+      "year": 2019,
+      "year_end": 2019,
+      "month": 11,
+      "day": 8,
+      "precision": "day",
+      "display_bg": "2015 – 8 ноември 2019 г.",
+      "display_en": "2015 – 8 November 2019"
+    },
+    "title_bg": "Кмет: инж. Иван Тотев",
+    "title_en": "Mayor: Eng. Ivan Totev",
+    "summary_bg": "Втори от два последователни мандата като кмет на Пловдив (2015–2019).",
+    "summary_en": "Second of two consecutive terms as mayor of Plovdiv (2015–2019).",
+    "theme_tags": [
+      "mayor_term",
+      "modern"
+    ],
+    "person_ids": [
+      "person-inzh-ivan-totev"
+    ],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [
+      "org-plovdiv-municipality"
+    ],
+    "source_ids": [
+      "source-plovdiv-mayor-archive"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-plovdiv-mayor-archive",
+        "evidence_type": "public_source",
+        "claim_bg": "Градски архивен запис \"Кмет: инж. Иван Тотев\".",
+        "claim_en": "City archive record \"Mayor: Eng. Ivan Totev\".",
+        "url": "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/",
         "accessed_at": "2026-06-17",
         "license_status": "public_reference_terms_unverified"
       }

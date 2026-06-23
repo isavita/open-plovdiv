@@ -51,7 +51,7 @@
 
   --font-ui: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, sans-serif;
-  --font-display: Georgia, "Times New Roman", serif;
+  --font-display: "Playfair Display Variable", Georgia, "Times New Roman", serif;
 
   color-scheme: light;
 }
@@ -259,8 +259,9 @@ img {
   gap: 11px;
   color: var(--ink);
   text-decoration: none;
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.06rem;
+  font-size: 1.2rem;
   letter-spacing: 0;
   white-space: nowrap;
 }
@@ -366,7 +367,7 @@ img {
 
   .brand {
     gap: 8px;
-    font-size: 1rem;
+    font-size: 1.12rem;
   }
 
   .nav-right {
@@ -3072,8 +3073,11 @@ code {
 }
 
 @media (max-width: 760px) {
+  /* The arc timeline used to be hidden on phones; instead it now pans sideways in
+     its .chart-scroll (with the scroll-shadow cue), consistent with the other
+     charts. The multi-term and family lists below restate the same links as text. */
   .arc-card {
-    display: none;
+    padding-bottom: 14px;
   }
 }
 

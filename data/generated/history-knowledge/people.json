@@ -3444,10 +3444,12 @@
     "image": null,
     "image_credit": null,
     "term_events": [
-      "event-mayor-62-d-r-ivan-chomakov"
+      "event-mayor-62-d-r-ivan-chomakov",
+      "event-mayor-62-d-r-ivan-chomakov-2"
     ],
     "event_ids": [
-      "event-mayor-62-d-r-ivan-chomakov"
+      "event-mayor-62-d-r-ivan-chomakov",
+      "event-mayor-62-d-r-ivan-chomakov-2"
     ],
     "place_ids": [
       "place-plovdiv-city"
@@ -3469,7 +3471,7 @@
       {
         "type": "succeeded_by",
         "person_id": "person-slavcho-atanasov",
-        "event_id": "event-mayor-62-d-r-ivan-chomakov",
+        "event_id": "event-mayor-62-d-r-ivan-chomakov-2",
         "source_id": "source-plovdiv-mayor-archive"
       }
     ],
@@ -6332,10 +6334,12 @@
     "image": "/mayors/ivan-totev.jpg",
     "image_credit": "Wikimedia Commons · CC BY-SA 3.0",
     "term_events": [
-      "event-mayor-64-inzh-ivan-totev"
+      "event-mayor-64-inzh-ivan-totev",
+      "event-mayor-64-inzh-ivan-totev-2"
     ],
     "event_ids": [
-      "event-mayor-64-inzh-ivan-totev"
+      "event-mayor-64-inzh-ivan-totev",
+      "event-mayor-64-inzh-ivan-totev-2"
     ],
     "place_ids": [
       "place-plovdiv-city"
@@ -6357,7 +6361,7 @@
       {
         "type": "succeeded_by",
         "person_id": "person-zdravko-dimitrov",
-        "event_id": "event-mayor-64-inzh-ivan-totev",
+        "event_id": "event-mayor-64-inzh-ivan-totev-2",
         "source_id": "source-plovdiv-mayor-archive"
       }
     ],

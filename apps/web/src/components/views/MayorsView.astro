@@ -191,6 +191,7 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
       </div>
 
       <div class="card arc-card">
+        <div class="chart-scroll">
         <svg
           class="mayor-arc"
           viewBox="0 0 1000 200"
@@ -224,6 +225,7 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
             );
           })}
         </svg>
+        </div>
         <div class="arc-legend">
           <span class="lg lg-repeat">{t.mayors.legendSame}</span>
           <span class="lg lg-family">{t.mayors.legendFamily}</span>
@@ -241,7 +243,13 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
                 <a href={localizePath(`/mayors/${g[0].id}`, lang)}>{field(g[0], "actor", lang)}</a>
                 <span class="connect-years">
                   {g
-                    .map((tm) => `${tm.year_start}${tm.year_end ? `–${tm.year_end}` : `–${currentYear}`}`)
+                    .map((tm) =>
+                      tm.year_end == null
+                        ? `${tm.year_start}–${currentYear}`
+                        : tm.year_end === tm.year_start
+                          ? `${tm.year_start}`
+                          : `${tm.year_start}–${tm.year_end}`
+                    )
                     .join(" · ")}
                 </span>
               </li>

@@ -525,13 +525,13 @@
     }
   },
   {
-    "id": "person-rel-d-r-ivan-chomakov-succeeded-by-slavcho-atanasov-mayor-62-d-r-ivan-chomakov",
+    "id": "person-rel-d-r-ivan-chomakov-succeeded-by-slavcho-atanasov-mayor-62-d-r-ivan-chomakov-2",
     "type": "person_relationship",
     "relationship_type": "succeeded_by",
     "direction": "directed",
     "from_person_id": "person-d-r-ivan-chomakov",
     "to_person_id": "person-slavcho-atanasov",
-    "event_id": "event-mayor-62-d-r-ivan-chomakov",
+    "event_id": "event-mayor-62-d-r-ivan-chomakov-2",
     "evidence_property": null,
     "title_bg": "Д-р Иван Чомаков — наследен/а от — Славчо Атанасов",
     "title_en": "Dr. Ivan Chomakov — succeeded by — Slavcho Atanasov",
@@ -2170,13 +2170,13 @@
     }
   },
   {
-    "id": "person-rel-inzh-ivan-totev-succeeded-by-zdravko-dimitrov-mayor-64-inzh-ivan-totev",
+    "id": "person-rel-inzh-ivan-totev-succeeded-by-zdravko-dimitrov-mayor-64-inzh-ivan-totev-2",
     "type": "person_relationship",
     "relationship_type": "succeeded_by",
     "direction": "directed",
     "from_person_id": "person-inzh-ivan-totev",
     "to_person_id": "person-zdravko-dimitrov",
-    "event_id": "event-mayor-64-inzh-ivan-totev",
+    "event_id": "event-mayor-64-inzh-ivan-totev-2",
     "evidence_property": null,
     "title_bg": "инж. Иван Тотев — наследен/а от — Здравко Димитров",
     "title_en": "Eng. Ivan Totev — succeeded by — Zdravko Dimitrov",

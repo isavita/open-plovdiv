@@ -4,10 +4,10 @@
   "acceptance_requirement": "Independent editorial sign-off must be logged for 100% of published content before the history platform is complete.",
   "status": "incomplete",
   "summary": {
-    "total_tracked_records": 999,
+    "total_tracked_records": 1001,
     "signed_off_records": 0,
-    "records_needing_review": 999,
-    "records_with_blockers": 999,
+    "records_needing_review": 1001,
+    "records_with_blockers": 1001,
     "signed_off_percent": 0,
     "tracking_gap_collections": 0
   },
@@ -16,10 +16,10 @@
       "label_bg": "Събития",
       "label_en": "Events",
       "role": "primary_entity",
-      "total_records": 360,
+      "total_records": 362,
       "signed_off_records": 0,
-      "records_needing_review": 360,
-      "records_with_blockers": 360
+      "records_needing_review": 362,
+      "records_with_blockers": 362
     },
     "people": {
       "label_bg": "Хора",
@@ -16502,6 +16502,54 @@
       ]
     },
     {
+      "id": "event-mayor-62-d-r-ivan-chomakov-2",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Кмет: Д-р Иван Чомаков",
+      "title_en": "Mayor: Dr. Ivan Chomakov",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-mayor-62-d-r-ivan-chomakov-2",
+      "review_url_en": "/en/history#event-mayor-62-d-r-ivan-chomakov-2",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-plovdiv-mayor-archive",
+          "title_bg": "Община Пловдив — Кметове на Пловдив",
+          "title_en": "Plovdiv Municipality — Mayors of Plovdiv",
+          "url": "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/",
+          "accessed_at": "2026-06-17",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/",
+          "evidence_type": "public_source",
+          "claim_bg": "Градски архивен запис \"Кмет: Д-р Иван Чомаков\".",
+          "claim_en": "City archive record \"Mayor: Dr. Ivan Chomakov\"."
+        }
+      ],
+      "source_ids": [
+        "source-plovdiv-mayor-archive"
+      ],
+      "source_urls": [
+        "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/"
+      ],
+      "license_statuses": [
+        "public_reference_terms_unverified"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-programme-2007-state-infrastructure-credits",
       "collection": "events",
       "role": "primary_entity",
@@ -17466,6 +17514,54 @@
       ],
       "source_urls": [
         "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera"
+      ],
+      "license_statuses": [
+        "public_reference_terms_unverified"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-mayor-64-inzh-ivan-totev-2",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Кмет: инж. Иван Тотев",
+      "title_en": "Mayor: Eng. Ivan Totev",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-mayor-64-inzh-ivan-totev-2",
+      "review_url_en": "/en/history#event-mayor-64-inzh-ivan-totev-2",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-plovdiv-mayor-archive",
+          "title_bg": "Община Пловдив — Кметове на Пловдив",
+          "title_en": "Plovdiv Municipality — Mayors of Plovdiv",
+          "url": "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/",
+          "accessed_at": "2026-06-17",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/",
+          "evidence_type": "public_source",
+          "claim_bg": "Градски архивен запис \"Кмет: инж. Иван Тотев\".",
+          "claim_en": "City archive record \"Mayor: Eng. Ivan Totev\"."
+        }
+      ],
+      "source_ids": [
+        "source-plovdiv-mayor-archive"
+      ],
+      "source_urls": [
+        "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/"
       ],
       "license_statuses": [
         "public_reference_terms_unverified"
@@ -31882,7 +31978,7 @@
       ]
     },
     {
-      "id": "person-rel-d-r-ivan-chomakov-succeeded-by-slavcho-atanasov-mayor-62-d-r-ivan-chomakov",
+      "id": "person-rel-d-r-ivan-chomakov-succeeded-by-slavcho-atanasov-mayor-62-d-r-ivan-chomakov-2",
       "collection": "person_relationships",
       "role": "relationship_entity",
       "title_bg": "Д-р Иван Чомаков — наследен/а от — Славчо Атанасов",
@@ -34138,7 +34234,7 @@
       ]
     },
     {
-      "id": "person-rel-inzh-ivan-totev-succeeded-by-zdravko-dimitrov-mayor-64-inzh-ivan-totev",
+      "id": "person-rel-inzh-ivan-totev-succeeded-by-zdravko-dimitrov-mayor-64-inzh-ivan-totev-2",
       "collection": "person_relationships",
       "role": "relationship_entity",
       "title_bg": "инж. Иван Тотев — наследен/а от — Здравко Димитров",

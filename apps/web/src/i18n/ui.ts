@@ -169,7 +169,7 @@ const bg = {
       "Паметници, които разказват историята на града — от тракийската крепост до възрожденския Стар град.",
     mayorsTitle: "Кметовете на Пловдив",
     mayorsLead:
-      "66 мандата от Освобождението до днес — подробна хронология с биографии и публични източници.",
+      "68 мандата от Освобождението до днес — подробна хронология с биографии и публични източници.",
     mayorsCta: "Виж всички кметове",
     sourceNote:
       "Историческите данни са обобщени от публични източници (Уикипедия и официални страници). Сверявайте с първоизточника, преди да цитирате конкретен факт.",
@@ -865,7 +865,7 @@ const en: typeof bg = {
       "Monuments that tell the city's story — from the Thracian citadel to the Revival-era Old Town.",
     mayorsTitle: "The mayors of Plovdiv",
     mayorsLead:
-      "66 terms from the Liberation to today — a detailed chronology with biographies and public sources.",
+      "68 terms from the Liberation to today — a detailed chronology with biographies and public sources.",
     mayorsCta: "See all mayors",
     sourceNote:
       "The historical data is summarised from public sources (Wikipedia and official pages). Check the original source before quoting a specific fact.",

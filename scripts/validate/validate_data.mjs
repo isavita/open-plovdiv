@@ -294,13 +294,17 @@ function assertMayorArchiveCompleteness(cityArchive) {
     (record) => record.actor_bg === "Костадин Димитров" && record.year_start === 2023 && record.year_end == null
   );
 
-  if (officialHistoricalTerms.length !== 65) {
+  // 67 = the 65 entries on the official Община Пловдив list, plus the two
+  // democratic-era mayors (Chomakov 1999–2007, Totev 2011–2019) whose two
+  // consecutive 4-year mandates the list collapses into one span and which we
+  // store as separate terms so the "multi-term mayors" views reflect them.
+  if (officialHistoricalTerms.length !== 67) {
     throw new Error(
-      `city archive: expected 65 official historical mayor terms, got ${officialHistoricalTerms.length}`
+      `city archive: expected 67 official historical mayor terms, got ${officialHistoricalTerms.length}`
     );
   }
-  if (mayors.length !== 66) {
-    throw new Error(`city archive: expected 66 mayor terms including incumbent, got ${mayors.length}`);
+  if (mayors.length !== 68) {
+    throw new Error(`city archive: expected 68 mayor terms including incumbent, got ${mayors.length}`);
   }
   if (mayors[0]?.actor_bg !== "Атанас Самоковлиев" || mayors[0]?.year_start !== 1878) {
     throw new Error("city archive: first mayor term must be Атанас Самоковлиев in 1878");
