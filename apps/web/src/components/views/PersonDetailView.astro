@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { roleLabels as sharedRoleLabels } from "@i18n/ui";
-import { localizePath, type Lang } from "@i18n/utils";
+import { localeForLang, localizePath, type Lang } from "@i18n/utils";
 import {
   historyKnowledgeEvents,
   historyKnowledgePeople,
@@ -19,6 +19,7 @@ type Props = {
 type RoleGroup = "governance" | "culture" | "science" | "faith" | "sport" | "civic";
 
 const { lang, person } = Astro.props;
+const locale = localeForLang(lang);
 
 const labels =
   lang === "bg"
@@ -351,7 +352,7 @@ const connections = [...outgoingConnections, ...incomingConnections]
     event: connection.relationship.event_id ? eventById.get(connection.relationship.event_id) : null,
     source: sourceById.get(connection.relationship.source_id)
   }))
-  .sort((a, b) => localized(a.from, "name").localeCompare(localized(b.from, "name"), lang === "bg" ? "bg-BG" : "en-GB"));
+  .sort((a, b) => localized(a.from, "name").localeCompare(localized(b.from, "name"), locale));
 
 const sourceIds = new Set<string>([
   ...person.source_ids,
@@ -361,7 +362,7 @@ const sourceIds = new Set<string>([
 const sourceRecords = [...sourceIds]
   .map((id) => sourceById.get(id))
   .filter((source): source is KnowledgeSource => Boolean(source))
-  .sort((a, b) => localized(a, "title").localeCompare(localized(b, "title"), lang === "bg" ? "bg-BG" : "en-GB"));
+  .sort((a, b) => localized(a, "title").localeCompare(localized(b, "title"), locale));
 ---
 
 <Layout lang={lang} path={`/people/${person.id}`} title={localized(person, "name")} description={localized(person, "summary")}>

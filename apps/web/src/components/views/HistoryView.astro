@@ -4,7 +4,7 @@ import HeroBackdrop from "@components/HeroBackdrop.astro";
 import SectionNav from "@components/SectionNav.astro";
 import { createHash } from "node:crypto";
 import { roleLabels, ui, type Lang } from "@i18n/ui";
-import { localizePath } from "@i18n/utils";
+import { localeForLang, localizePath } from "@i18n/utils";
 import { knownHistoryLabel } from "@lib/format";
 import {
   historyKnowledgeEvents,
@@ -26,6 +26,7 @@ import {
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const locale = localeForLang(lang);
 
 const eraOrder: HistoryEra[] = [
   "prehistory",
@@ -506,11 +507,11 @@ function placeFacts(place: Record<string, any>) {
 }
 
 const categories = [...new Set(entries.map((event) => event.category))].sort((a, b) =>
-  labelCategory(a).localeCompare(labelCategory(b), lang === "bg" ? "bg-BG" : "en-GB")
+  labelCategory(a).localeCompare(labelCategory(b), locale)
 );
 const themeTags = [...new Set(entries.flatMap((event) => event.theme_tags))]
   .filter(shouldShowThemeTag)
-  .sort((a, b) => labelTheme(a).localeCompare(labelTheme(b), lang === "bg" ? "bg-BG" : "en-GB"));
+  .sort((a, b) => labelTheme(a).localeCompare(labelTheme(b), locale));
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 const peopleById = new Map(historyKnowledgePeople.map((person) => [person.id, person]));
 const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
@@ -572,7 +573,7 @@ const timelinePeople = [...new Set(entries.flatMap((event) => event.person_ids))
   .sort((a, b) =>
     localized(a as Record<string, any>, "name").localeCompare(
       localized(b as Record<string, any>, "name"),
-      lang === "bg" ? "bg-BG" : "en-GB"
+      locale
     )
   )
   .map((person) => ({
@@ -585,7 +586,7 @@ const timelinePlaces = [...new Set(entries.flatMap((event) => event.place_ids))]
   .sort((a, b) =>
     localized(a as Record<string, any>, "name").localeCompare(
       localized(b as Record<string, any>, "name"),
-      lang === "bg" ? "bg-BG" : "en-GB"
+      locale
     )
   )
   .map((place) => ({
@@ -647,6 +648,7 @@ const historyMapConfig = {
 
 const timelineConfig = {
   lang,
+  locale,
   dataVersion: historyDataVersion,
   api: {
     events: historyKnowledgeIndex.endpoints.events,
@@ -675,7 +677,7 @@ const archiveItemsForView = [...historicalArchiveItems].sort(
   (a, b) => a.date_year - b.date_year || a.id.localeCompare(b.id)
 );
 const thenNowPairsForView = [...thenNowPairs].sort((a, b) =>
-  localized(a, "title").localeCompare(localized(b, "title"), lang === "bg" ? "bg-BG" : "en-GB")
+  localized(a, "title").localeCompare(localized(b, "title"), locale)
 );
 // date of the historical ("then") photo, taken from its linked archive item
 const archiveById = new Map(historicalArchiveItems.map((it) => [it.id, it]));
@@ -816,9 +818,7 @@ const sectionNav = ({
     } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
 const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte" } satisfies Record<Lang, string>)[lang];
 
-const numberFmt = new Intl.NumberFormat(
-  ({ bg: "bg-BG", en: "en-GB", de: "de-DE" } satisfies Record<Lang, string>)[lang]
-);
+const numberFmt = new Intl.NumberFormat(locale);
 
 const pop = [...plovdivPopulation].sort((a, b) => a.year - b.year);
 const latestPopulationPoint = pop[pop.length - 1];
@@ -1782,7 +1782,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
               labelApiCategory(event.category),
               ...(event.theme_tags ?? []).map(labelApiTheme),
               ...linkedNames
-            ].join(" ").toLocaleLowerCase(timelineConfig.lang === "bg" ? "bg-BG" : "en-GB"),
+            ].join(" ").toLocaleLowerCase(timelineConfig.locale),
             date: dateApiLabel(event),
             title: localizedApi(event, "title"),
             summary: localizedApi(event, "summary"),
@@ -1864,7 +1864,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     }
 
     function matchesHistoryItem(item: any) {
-      const q = search.value.trim().toLocaleLowerCase(timelineConfig.lang === "bg" ? "bg-BG" : "en-GB");
+      const q = search.value.trim().toLocaleLowerCase(timelineConfig.locale);
       const linkMode = linked.value;
       const themeTags = Array.isArray(item.themeTags) ? item.themeTags : splitDataset(item.themeTags);
       const personIds = Array.isArray(item.personIds) ? item.personIds : splitDataset(item.personIds);

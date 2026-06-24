@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import SectionNav from "@components/SectionNav.astro";
 import { roleLabels, ui, type Lang } from "@i18n/ui";
+import { localeForLang } from "@i18n/utils";
 import {
   historyKnowledgeEvents,
   historyKnowledgeIndex,
@@ -13,6 +14,7 @@ import {
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const locale = localeForLang(lang);
 
 const labels = ({
   bg: {
@@ -314,7 +316,7 @@ function lifeLabel(person: KnowledgePerson): string {
 }
 
 const people = [...historyKnowledgePeople].sort((a, b) =>
-  localized(a, "name").localeCompare(localized(b, "name"), lang === "bg" ? "bg-BG" : "en-GB")
+  localized(a, "name").localeCompare(localized(b, "name"), locale)
 );
 const personById = new Map(people.map((person) => [person.id, person]));
 const uniqueRoles = new Set(people.flatMap((person) => person.roles));
@@ -412,11 +414,11 @@ const relationshipRows = relationEdges
         ...sourceIds.map((id) => localized(sourceById.get(id) ?? {}, "title")),
         ...eventIds.map((id) => localized(historyKnowledgeEvents.find((event) => event.id === id) ?? {}, "title")),
         ...evidenceProperties
-      ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB")
+      ].join(" ").toLocaleLowerCase(locale)
     };
   })
   .filter((row) => row.from && row.to)
-  .sort((a, b) => a.year - b.year || localized(a.from!, "name").localeCompare(localized(b.from!, "name"), lang === "bg" ? "bg-BG" : "en-GB"));
+  .sort((a, b) => a.year - b.year || localized(a.from!, "name").localeCompare(localized(b.from!, "name"), locale));
 
 const centuries = [...new Set(personIndex.map((person) => person.century))].sort((a, b) => a - b);
 const clientRoleLabels = Object.fromEntries([...uniqueRoles].map((role) => [role, roleLabel(role)]));
@@ -425,6 +427,7 @@ const clientRelationshipLabels = Object.fromEntries(
 );
 const nodeConfig = {
   lang,
+  locale,
   api: {
     events: historyKnowledgeIndex.endpoints.events,
     people: historyKnowledgeIndex.endpoints.people,
@@ -490,7 +493,9 @@ const nodeConfig = {
     <SectionNav
     items={lang === "bg"
       ? [{ id: "people-connections", label: "Връзки" }, { id: "people-catalog", label: "Каталог" }]
-      : [{ id: "people-connections", label: "Connections" }, { id: "people-catalog", label: "Catalog" }]}
+      : lang === "de"
+        ? [{ id: "people-connections", label: "Verbindungen" }, { id: "people-catalog", label: "Katalog" }]
+        : [{ id: "people-connections", label: "Connections" }, { id: "people-catalog", label: "Catalog" }]}
     label={lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : "Page sections"}
   />
 
@@ -661,7 +666,7 @@ const nodeConfig = {
       }
       cards = people
         .sort((a: any, b: any) =>
-          localizedPerson(a, "name").localeCompare(localizedPerson(b, "name"), config.lang === "bg" ? "bg-BG" : "en-GB")
+          localizedPerson(a, "name").localeCompare(localizedPerson(b, "name"), config.locale)
         )
         .map((person: any) => {
           const group = primaryGroup(person);
@@ -687,7 +692,7 @@ const nodeConfig = {
               lifeLabel(person),
               ...(person.roles ?? []).map(roleLabel),
               config.groupLabels?.[group] ?? group
-            ].join(" ").toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB"),
+            ].join(" ").toLocaleLowerCase(config.locale),
             group,
             groupLabel: config.groupLabels?.[group] ?? group,
             century: centuryFor(personReferenceYear(person)),
@@ -802,7 +807,7 @@ const nodeConfig = {
             localizedPerson(event, "title"),
             ...sources.map((source: any) => source.title),
             relationship.evidence_property
-          ].join(" ").toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB")
+          ].join(" ").toLocaleLowerCase(config.locale)
         };
       });
       relationshipList.innerHTML = rows.map(renderRelationshipRow).join("");

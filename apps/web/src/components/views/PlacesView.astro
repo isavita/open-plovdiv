@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { localizePath, ui, type Lang } from "@i18n/utils";
+import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { sourceTitle } from "@lib/format";
 import {
   historicalArchiveItems,
@@ -15,6 +15,7 @@ import {
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const locale = localeForLang(lang);
 
 const labels =
   lang === "bg"
@@ -156,7 +157,7 @@ function placeFacts(place: KnowledgePlace, options: { includeCreatorFallback?: b
 }
 
 const places = [...historyKnowledgePlaces].sort((a, b) =>
-  localized(a, "name").localeCompare(localized(b, "name"), lang === "bg" ? "bg-BG" : "en-GB")
+  localized(a, "name").localeCompare(localized(b, "name"), locale)
 );
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 const archiveCountByPlace = new Map<string, number>();
@@ -179,7 +180,7 @@ function commonsThumb(url: string, width: number): string {
 
 const eras = [...new Set(places.map((place) => place.era))].sort();
 const categories = [...new Set(places.map((place) => place.category))].sort((a, b) =>
-  categoryLabel(a).localeCompare(categoryLabel(b), lang === "bg" ? "bg-BG" : "en-GB")
+  categoryLabel(a).localeCompare(categoryLabel(b), locale)
 );
 const placeholderImage = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
 const initialPlaceCount = 24;
@@ -196,7 +197,7 @@ const placeCards = places.map((place) => {
     localized(place, "era"),
     categoryLabel(place.category),
     ...facts.map((fact) => fact.value)
-  ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+  ].join(" ").toLocaleLowerCase(locale);
 
   return {
     id: place.id,

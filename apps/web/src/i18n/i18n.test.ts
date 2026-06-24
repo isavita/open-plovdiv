@@ -13,7 +13,7 @@ import {
   ui,
   type Lang
 } from "./ui";
-import { delocalizePath, field, getLangFromUrl, localizePath } from "./utils";
+import { delocalizePath, field, getLangFromUrl, localizePath, localeForLang } from "./utils";
 
 const locales = Object.keys(languages) as Lang[];
 const CYRILLIC = /[Ѐ-ӿ]/;
@@ -171,6 +171,14 @@ describe("localised routing", () => {
     expect(field(record, "summary", "de")).toBe("English");
     expect(field({ summary_de: "Deutsch", ...record }, "summary", "de")).toBe("Deutsch");
     expect(field({ summary_bg: "само BG" }, "summary", "de")).toBe("само BG");
+    expect(field({ summary: "legacy BG" }, "summary", "de")).toBe("legacy BG");
+    expect(field(undefined, "summary", "de")).toBe("");
     expect(field(record, "summary", "bg")).toBe("Български");
+  });
+
+  it("maps every supported language to an Intl locale", () => {
+    expect(localeForLang("bg")).toBe("bg-BG");
+    expect(localeForLang("en")).toBe("en-GB");
+    expect(localeForLang("de")).toBe("de-DE");
   });
 });

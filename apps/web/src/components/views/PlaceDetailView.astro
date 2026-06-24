@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { localizePath, ui, type Lang } from "@i18n/utils";
+import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import {
   historicalArchiveItems,
@@ -18,6 +18,7 @@ type Props = {
 
 const { lang, place } = Astro.props;
 const t = ui[lang];
+const locale = localeForLang(lang);
 
 const labels =
   lang === "bg"
@@ -146,7 +147,7 @@ const archiveItems = historicalArchiveItems
   .sort((a, b) => a.date_year - b.date_year || a.id.localeCompare(b.id));
 const pairs = thenNowPairs
   .filter((pair) => pair.place_id === place.id)
-  .sort((a, b) => localized(a, "title").localeCompare(localized(b, "title"), lang === "bg" ? "bg-BG" : "en-GB"));
+  .sort((a, b) => localized(a, "title").localeCompare(localized(b, "title"), locale));
 const relatedEvents = historyKnowledgeEvents
   .filter((event) => event.place_ids.includes(place.id))
   .sort((a, b) => a.date.year - b.date.year || a.id.localeCompare(b.id));

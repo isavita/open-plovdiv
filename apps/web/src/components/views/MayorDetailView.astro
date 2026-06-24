@@ -1,13 +1,14 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
-import { field, localizePath } from "@i18n/utils";
+import { field, localeForLang, localizePath } from "@i18n/utils";
 import { cityArchive, mayorWikidataEnrichment, type CityArchiveRecord } from "@lib/data";
 import { sourceTitle } from "@lib/format";
 
 type Props = { lang: Lang; mayor: CityArchiveRecord };
 const { lang, mayor } = Astro.props;
 const t = ui[lang];
+const locale = localeForLang(lang);
 const currentYear = new Date().getFullYear();
 
 const terms = cityArchive
@@ -22,15 +23,16 @@ const next = index < terms.length - 1 ? terms[index + 1] : null;
 const name = field(mayor, "actor", lang);
 const period = field(mayor, "period", lang);
 const isCurrent = mayor.year_end == null;
-const isActing = period.toLocaleLowerCase("bg-BG").includes("и.д.");
+const isActing =
+  field(mayor, "period", "bg").toLocaleLowerCase("bg-BG").includes("и.д.") ||
+  field(mayor, "period", "en").toLocaleLowerCase("en-GB").includes("acting") ||
+  period.toLocaleLowerCase(locale).includes("amtierend");
 const yearLabel = `${mayor.year_start}${mayor.year_end ? `-${mayor.year_end}` : `-${currentYear}`}`;
 const century = Math.floor((mayor.year_start - 1) / 100) + 1;
 const duration = Math.max(1, (mayor.year_end ?? currentYear) - mayor.year_start + 1);
 
 const otherTerms = terms.filter((r) => r.id !== mayor.id && field(r, "actor", lang) === name);
-const wikiSearch = `https://${lang}.wikipedia.org/w/index.php?search=${encodeURIComponent(
-  field(mayor, "actor", "bg")
-)}`;
+const wikiSearch = `https://${lang}.wikipedia.org/w/index.php?search=${encodeURIComponent(name)}`;
 const bio = mayor.bio_bg ? field(mayor, "bio", lang) : null;
 const isWikipediaMoreUrl = mayor.more_url
   ? (() => {
@@ -65,7 +67,7 @@ const mono = name
   .slice(0, 2)
   .map((w) => w[0] ?? "")
   .join("")
-  .toLocaleUpperCase(lang === "bg" ? "bg-BG" : "en-GB");
+  .toLocaleUpperCase(locale);
 
 // Sourced Wikidata enrichment (education, birthplace links, other roles, the
 // person's own Wikipedia article). Keyed by the Bulgarian name.

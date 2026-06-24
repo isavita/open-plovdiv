@@ -7,7 +7,7 @@ import {
   ui,
   type Lang
 } from "@i18n/ui";
-import { field, localizePath } from "@i18n/utils";
+import { field, localeForLang, localizePath } from "@i18n/utils";
 import { communityInitiatives, projects } from "@lib/data";
 
 type Props = { lang: Lang };
@@ -28,6 +28,7 @@ const projectLinks = Object.fromEntries(
 
 const config = {
   lang,
+  locale: localeForLang(lang),
   endpoint: "/api/community-initiatives/public",
   initial: communityInitiatives,
   categoryLabels: categoryLabels[lang],
@@ -177,8 +178,12 @@ const config = {
       if (!record) return "";
       const localized = record[`${base}_${config.lang}`];
       if (typeof localized === "string" && localized.length > 0) return localized;
+      const english = record[`${base}_en`];
+      if (typeof english === "string" && english.length > 0) return english;
       const fallback = record[`${base}_bg`];
-      return typeof fallback === "string" ? fallback : "";
+      if (typeof fallback === "string" && fallback.length > 0) return fallback;
+      const legacy = record[base];
+      return typeof legacy === "string" ? legacy : "";
     }
 
     function label(map: Record<string, string>, value: string): string {
@@ -198,7 +203,7 @@ const config = {
         item.tags?.join(" ") ?? ""
       ]
         .join(" ")
-        .toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB");
+        .toLocaleLowerCase(config.locale);
     }
 
     function sourceList(sources: Source[]): string {
@@ -299,7 +304,7 @@ const config = {
     const donationsOnly = document.querySelector<HTMLInputElement>("#community-donations")!;
 
     function applyFilters() {
-      const query = search.value.trim().toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB");
+      const query = search.value.trim().toLocaleLowerCase(config.locale);
       let visible = 0;
 
       document.querySelectorAll<HTMLElement>("[data-community-card]").forEach((item) => {

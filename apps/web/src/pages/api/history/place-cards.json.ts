@@ -9,7 +9,7 @@ import {
   thenNowPairs,
   type KnowledgePlace
 } from "@lib/data";
-import type { Lang } from "@i18n/utils";
+import { localeForLang, type Lang } from "@i18n/utils";
 
 export const prerender = true;
 
@@ -86,8 +86,9 @@ for (const event of historyKnowledgeEvents) {
 }
 
 function placeCards(lang: Lang) {
+  const locale = localeForLang(lang);
   return [...historyKnowledgePlaces]
-    .sort((a, b) => localized(a, "name", lang).localeCompare(localized(b, "name", lang), lang === "bg" ? "bg-BG" : "en-GB"))
+    .sort((a, b) => localized(a, "name", lang).localeCompare(localized(b, "name", lang), locale))
     .map((place) => {
       const source = sourceById.get(place.source_ids[0]);
       const facts = placeFacts(place, lang);
@@ -101,7 +102,7 @@ function placeCards(lang: Lang) {
         localized(place, "era", lang),
         categoryLabel(place.category, lang),
         ...facts.map((fact) => fact.value)
-      ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+      ].join(" ").toLocaleLowerCase(locale);
 
       return {
         id: place.id,

@@ -2,13 +2,14 @@
 import StatusBadge from "@components/StatusBadge.astro";
 import Layout from "@layouts/Layout.astro";
 import { categoryColors, projectStatusLabels, ui, type Lang } from "@i18n/ui";
-import { field, localizePath } from "@i18n/utils";
+import { field, localeForLang, localizePath } from "@i18n/utils";
 import { projects } from "@lib/data";
 import { categoryLabel, formatMoney, projectStatusLabel } from "@lib/format";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const locale = localeForLang(lang);
 
 const categories = Array.from(new Set(projects.map((p) => p.category))).sort();
 const statuses = Object.keys(projectStatusLabels[lang]);
@@ -24,7 +25,7 @@ const config = {
 function searchable(p: (typeof projects)[number]): string {
   return [field(p, "title", lang), field(p, "summary", lang), field(p.location, "address", lang)]
     .join(" ")
-    .toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+    .toLocaleLowerCase(locale);
 }
 ---
 

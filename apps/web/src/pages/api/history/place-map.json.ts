@@ -6,7 +6,7 @@ import {
   historyKnowledgePlaces,
   thenNowPairs
 } from "@lib/data";
-import type { Lang } from "@i18n/utils";
+import { localeForLang, type Lang } from "@i18n/utils";
 
 export const prerender = true;
 
@@ -53,6 +53,7 @@ function categoryLabel(category: string, lang: Lang): string {
 }
 
 function placeMapItems(lang: Lang) {
+  const locale = localeForLang(lang);
   return [...historyKnowledgePlaces]
     .filter((place) => place.coordinates)
     .map((place) => ({
@@ -74,7 +75,7 @@ function placeMapItems(lang: Lang) {
         categoryLabel(place.category, lang)
       ]
         .join(" ")
-        .toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB")
+        .toLocaleLowerCase(locale)
     }));
 }
 

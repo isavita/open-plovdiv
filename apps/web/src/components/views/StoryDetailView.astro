@@ -65,8 +65,8 @@ function localized(record: Record<string, unknown>, field: string): string {
   );
 }
 
-function sourceLabel(source: { title_bg: string; title_en: string }): string {
-  return sourceTitle(lang === "bg" ? source.title_bg : source.title_en, lang);
+function sourceLabel(source: Record<string, unknown>): string {
+  return sourceTitle(localized(source, "title"), lang);
 }
 
 function heroMedia(item: StoryLongread) {

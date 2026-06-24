@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { localizePath, ui, type Lang } from "@i18n/utils";
+import { localeForLang, ui, type Lang } from "@i18n/utils";
 import {
   historyEditorialReview,
   historyKnowledgeIndex,
@@ -275,7 +275,7 @@ function roleLabel(id: string) {
 
 function collectionLabel(id: string) {
   const collection = historyEditorialReview.collections[id];
-  return collection?.[`label_${lang}`] ?? collection?.label_bg ?? id.replaceAll("_", " ");
+  return collection?.[`label_${lang}`] ?? collection?.label_en ?? collection?.label_bg ?? id.replaceAll("_", " ");
 }
 
 function statusLabel(status: EditorialReviewRecord["editorial_status"]) {
@@ -322,15 +322,13 @@ const roleOptions = [
     ...Object.values(historySourceCoverage.collections).map((collection) => collection.role)
   ])
 ].sort();
-const generatedLabel = new Intl.DateTimeFormat(
-  ({ bg: "bg-BG", en: "en-GB", de: "de-DE" } satisfies Record<Lang, string>)[lang],
-  {
+const generatedLabel = new Intl.DateTimeFormat(localeForLang(lang), {
   dateStyle: "medium"
-  }
-).format(new Date(historyEditorialReview.generated_at));
+}).format(new Date(historyEditorialReview.generated_at));
 
 const reviewConfig = {
   lang,
+  locale: localeForLang(lang),
   api: {
     editorialReview: historyKnowledgeIndex.endpoints.editorial_review,
     sourceCoverage: historyKnowledgeIndex.endpoints.source_coverage,
@@ -617,9 +615,7 @@ const reviewConfig = {
     }
 
     function localizedTitle(record) {
-      return config.lang === "bg"
-        ? record.title_bg || record.title_en || record.id
-        : record.title_en || record.title_bg || record.id;
+      return record[`title_${config.lang}`] || record.title_en || record.title_bg || record.id;
     }
 
     function recordSearchText(record) {
@@ -638,11 +634,11 @@ const reviewConfig = {
         ...(record.blockers ?? []).map((item) => labelFrom(config.blockerLabels, item))
       ]
         .join(" ")
-        .toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB");
+        .toLocaleLowerCase(config.locale);
     }
 
     function filteredRecords() {
-      const query = search.value.trim().toLocaleLowerCase(config.lang === "bg" ? "bg-BG" : "en-GB");
+      const query = search.value.trim().toLocaleLowerCase(config.locale);
       return records.filter((record) => {
         return (
           (!query || recordSearchText(record).includes(query)) &&
@@ -695,9 +691,7 @@ const reviewConfig = {
           const sourceLinks = sources
             .slice(0, 2)
             .map((source) => {
-              const title = config.lang === "bg"
-                ? source.title_bg || source.title_en || source.source_id || source.url
-                : source.title_en || source.title_bg || source.source_id || source.url;
+              const title = source[`title_${config.lang}`] || source.title_en || source.title_bg || source.source_id || source.url;
               return `<a class="src-link review-source-link" href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(title)}</a>`;
             })
             .join("");

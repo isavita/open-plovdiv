@@ -6,7 +6,7 @@ import {
   ui,
   type Lang
 } from "@i18n/ui";
-import { field } from "@i18n/utils";
+import { field, localeForLang } from "@i18n/utils";
 import { projects } from "@lib/data";
 
 type Props = { lang: Lang };
@@ -26,6 +26,7 @@ const organizerTypes = [
 
 const config = {
   lang,
+  locale: localeForLang(lang),
   apiBase: "/api/admin/community-initiatives",
   discoverUrl: "/api/admin/community-initiatives/discover",
   categoryLabels: categoryLabels[lang],
@@ -281,8 +282,12 @@ const config = {
       if (!record) return "";
       const localized = record[`${base}_${config.lang}`];
       if (typeof localized === "string" && localized.length > 0) return localized;
+      const english = record[`${base}_en`];
+      if (typeof english === "string" && english.length > 0) return english;
       const fallback = record[`${base}_bg`];
-      return typeof fallback === "string" ? fallback : "";
+      if (typeof fallback === "string" && fallback.length > 0) return fallback;
+      const legacy = record[base];
+      return typeof legacy === "string" ? legacy : "";
     }
 
     async function adminFetch(path: string, init: RequestInit = {}) {

@@ -9,6 +9,17 @@ export const localeCodes = Object.keys(languages) as Lang[];
 /** Locales served under a URL prefix (everything except the root default). */
 export const prefixedLocales = localeCodes.filter((code) => code !== defaultLang);
 
+const intlLocaleByLang: Record<Lang, string> = {
+  bg: "bg-BG",
+  en: "en-GB",
+  de: "de-DE"
+};
+
+/** Browser/Intl locale for sorting, case folding and number/date formatting. */
+export function localeForLang(lang: Lang): string {
+  return intlLocaleByLang[lang];
+}
+
 /** Detect the active locale from a real pathname / URL. */
 export function getLangFromUrl(url: URL | string): Lang {
   const pathname = typeof url === "string" ? url : url.pathname;
@@ -44,18 +55,21 @@ export function delocalizePath(pathname: string): string {
 /**
  * Read a localized field from a data record, e.g. field(project, "summary", lang)
  * returns summary_<lang> when present. Non-default locales without their own
- * translation fall back to English, then to the Bulgarian source value, so a
- * German page never shows an empty label and prefers EN over BG when both exist.
+ * translation fall back to English, then to the Bulgarian source value or older
+ * unsuffixed source fields, so a German page prefers EN over BG when both exist.
  */
 export function field(
-  record: Record<string, unknown>,
+  record: Record<string, unknown> | null | undefined,
   base: string,
   lang: Lang
 ): string {
+  if (!record) return "";
   const localized = record[`${base}_${lang}`];
   if (typeof localized === "string" && localized.length > 0) return localized;
   const english = record[`${base}_en`];
   if (typeof english === "string" && english.length > 0) return english;
   const fallback = record[`${base}_bg`];
-  return typeof fallback === "string" ? fallback : "";
+  if (typeof fallback === "string" && fallback.length > 0) return fallback;
+  const legacy = record[base];
+  return typeof legacy === "string" ? legacy : "";
 }

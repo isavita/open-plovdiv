@@ -87,6 +87,7 @@ function compactBgn(amount: number): string {
   const millions = Math.round(amount / 1e6);
   return lang === "bg" ? `${millions} млн лв` : lang === "de" ? `${millions} Mio. BGN` : `BGN ${millions}M`;
 }
+const bgnShortLabel = lang === "bg" ? "лв." : "BGN";
 
 // ---- Donut helper ----------------------------------------------------------
 const R = 68;
@@ -222,7 +223,7 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
                   />
                 ))}
               </svg>
-              <div class="donut-center"><strong>2025</strong><span>лв.</span></div>
+              <div class="donut-center"><strong>2025</strong><span>{bgnShortLabel}</span></div>
             </div>
             <ul class="chart-legend">
               {sectorSegs.map((s) => (

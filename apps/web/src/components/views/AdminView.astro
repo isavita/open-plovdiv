@@ -115,7 +115,7 @@ const config = {
     }
 
     function loc(record: any, base: string): string {
-      return record[`${base}_${config.lang}`] ?? record[`${base}_bg`] ?? "";
+      return record[`${base}_${config.lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? record[base] ?? "";
     }
 
     function authHeaders(): Record<string, string> {

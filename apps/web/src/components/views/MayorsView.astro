@@ -2,13 +2,14 @@
 import Layout from "@layouts/Layout.astro";
 import SectionNav from "@components/SectionNav.astro";
 import { ui, type Lang } from "@i18n/ui";
-import { field, localizePath } from "@i18n/utils";
+import { field, localeForLang, localizePath } from "@i18n/utils";
 import { cityArchive } from "@lib/data";
 import { sourceTitle } from "@lib/format";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const locale = localeForLang(lang);
 
 const currentYear = new Date().getFullYear();
 
@@ -25,7 +26,15 @@ function normalizeName(name: string): string {
     .replace(/^(д-р|Д-р|инж\.)\s+/u, "")
     .replace(/^Mayor:\s+/u, "")
     .trim()
-    .toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+    .toLocaleLowerCase(locale);
+}
+
+function isActingTerm(term: (typeof mayorTerms)[number], period = field(term, "period", lang)): boolean {
+  return (
+    field(term, "period", "bg").toLocaleLowerCase("bg-BG").includes("и.д.") ||
+    field(term, "period", "en").toLocaleLowerCase("en-GB").includes("acting") ||
+    period.toLocaleLowerCase(locale).includes("amtierend")
+  );
 }
 
 function durationYears(start: number, end?: number): number {
@@ -62,7 +71,7 @@ function initials(name: string): string {
     .slice(0, 2)
     .map((w) => w[0] ?? "")
     .join("")
-    .toLocaleUpperCase(lang === "bg" ? "bg-BG" : "en-GB");
+    .toLocaleUpperCase(locale);
 }
 
 // --- relationship graph: connections between mayors ---
@@ -78,7 +87,7 @@ const multiTerm = [...groups.values()]
 
 // sourced family ties between mayors (kept only when both members exist as terms)
 const familyPairs = [
-  { a: "Христо Г. Данов", b: "Милош Данов", label_bg: "баща и син", label_en: "father & son" }
+  { a: "Христо Г. Данов", b: "Милош Данов", label_bg: "баща и син", label_en: "father & son", label_de: "Vater und Sohn" }
 ];
 const familyTies = familyPairs.filter(
   (pair) =>
@@ -201,7 +210,7 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
               {familyTies.map((pair) => (
                 <li>
                   <span>{`${pair.a} — ${pair.b}`}</span>
-                  <span class="connect-years">{lang === "bg" ? pair.label_bg : pair.label_en}</span>
+                  <span class="connect-years">{pair[`label_${lang}`] ?? pair.label_en ?? pair.label_bg}</span>
                 </li>
               ))}
             </ul>
@@ -264,14 +273,14 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
       <div class="mayor-timeline" aria-label={t.mayors.timelineTitle}>
         {mayorTerms.map((term, index) => {
           const isCurrent = term.year_end == null;
-          const isActing = field(term, "period", lang).toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB").includes("и.д.");
+          const isActing = isActingTerm(term);
           const search = [
             field(term, "actor", lang),
             field(term, "period", lang),
             term.year_start,
             term.year_end ?? currentYear,
             field(term, "summary", lang)
-          ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+          ].join(" ").toLocaleLowerCase(locale);
           return (
             <a
               class="mayor-chip"
@@ -365,14 +374,14 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
                     const index = mayorTerms.findIndex((item) => item.id === term.id) + 1;
                     const isCurrent = term.year_end == null;
                     const period = field(term, "period", lang);
-                    const isActing = period.toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB").includes("и.д.");
+                    const isActing = isActingTerm(term, period);
                     const search = [
                       field(term, "actor", lang),
                       period,
                       term.year_start,
                       term.year_end ?? currentYear,
                       field(term, "summary", lang)
-                    ].join(" ").toLocaleLowerCase(lang === "bg" ? "bg-BG" : "en-GB");
+                    ].join(" ").toLocaleLowerCase(locale);
                     return (
                       <article
                         class="card mayor-card"
