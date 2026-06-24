@@ -23,6 +23,16 @@
   --accent: #b4632a;
   --accent-soft: #f0e1cb;
 
+  /* Data-category palette — one colour per entity type, used across every
+     chart, bar, stat and map marker so the visual language stays consistent.
+     people · places · events · sources · growth · geography */
+  --data-people: #15657f;
+  --data-places: #3f7d54;
+  --data-events: #b4632a;
+  --data-sources: #7c6f9b;
+  --data-growth: #c08a2d;
+  --data-geo: #2c6e9c;
+
   /* Status palette */
   --badge-neutral-bg: #eceae1;
   --badge-neutral-fg: #585f54;
@@ -75,6 +85,13 @@
   --accent: #e0935a;
   --accent-soft: #2e2114;
 
+  --data-people: #57aecb;
+  --data-places: #73b387;
+  --data-events: #e0935a;
+  --data-sources: #b3a6d4;
+  --data-growth: #e0b25e;
+  --data-geo: #6fa8d0;
+
   --badge-neutral-bg: #232c2e;
   --badge-neutral-fg: #b7c0bd;
   --badge-ok-bg: #14352a;
@@ -112,6 +129,12 @@
     --brand-soft: #15303a;
     --accent: #e0935a;
     --accent-soft: #2e2114;
+    --data-people: #57aecb;
+    --data-places: #73b387;
+    --data-events: #e0935a;
+    --data-sources: #b3a6d4;
+    --data-growth: #e0b25e;
+    --data-geo: #6fa8d0;
     --badge-neutral-bg: #232c2e;
     --badge-neutral-fg: #b7c0bd;
     --badge-ok-bg: #14352a;
@@ -683,9 +706,26 @@ p:last-child {
   margin-bottom: 3px;
 }
 
+/* A stat can be tinted to its entity colour (growth, places, …) for the
+   site-wide data palette; people share the brand teal so they need no override. */
+.stat[data-cat] strong {
+  color: var(--cat, var(--brand));
+}
+
 .stat span {
   color: var(--muted);
   font-size: 0.86rem;
+}
+
+/* Large monetary figures (e.g. "139 597 929 лв.") would clip inside a 2-up
+   stat card on narrow phones — ease the display size so they read in full. */
+@media (max-width: 430px) {
+  .stat strong {
+    font-size: 1.3rem;
+  }
+  .stat {
+    padding: 14px 15px;
+  }
 }
 
 .budget-summary-stats {
@@ -1184,6 +1224,10 @@ p:last-child {
   font: inherit !important;
   outline-offset: 1px;
   position: relative;
+  /* Trap Leaflet's internal z-index (controls use 1000) in its own stacking
+     context so zoom buttons/popups never float over the sticky header (40) or
+     section subnav (30) when the map scrolls underneath them. */
+  isolation: isolate;
 }
 
 .leaflet-pane,
@@ -1322,6 +1366,74 @@ p:last-child {
 
 .chart-card h3 {
   margin: 0 0 16px;
+}
+
+/* ---- Standard chart figure ---------------------------------------------
+   Every chart shares one structure: an optional question eyebrow, a title,
+   an optional unit caption, the graphic, a short legend, and a source note.
+   Use as: <figure class="chart-figure"> <figcaption class="chart-head">
+   <span class="chart-q">…?</span> <h3 class="chart-title">…</h3>
+   <span class="chart-unit">unit</span></figcaption> … <p class="chart-source">…</p> */
+.chart-figure {
+  margin: 0;
+}
+.chart-head {
+  margin: 0 0 14px;
+}
+.chart-q {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 5px;
+}
+.chart-title {
+  margin: 0;
+}
+.chart-unit {
+  display: block;
+  margin: 4px 0 0;
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+.chart-source {
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.chart-source a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.chart-source a:hover {
+  color: var(--ink-2);
+}
+
+/* Category colour mapping — set data-cat on any element to expose --cat, so
+   counts, swatches, bars and dots share one colour per entity type site-wide. */
+[data-cat="people"] {
+  --cat: var(--data-people);
+}
+[data-cat="places"] {
+  --cat: var(--data-places);
+}
+[data-cat="events"] {
+  --cat: var(--data-events);
+}
+[data-cat="sources"] {
+  --cat: var(--data-sources);
+}
+[data-cat="growth"] {
+  --cat: var(--data-growth);
+}
+[data-cat="geo"] {
+  --cat: var(--data-geo);
 }
 
 .donut-wrap {
@@ -2968,54 +3080,7 @@ code {
   color: #e98c7c;
 }
 
-.arc-card {
-  overflow: hidden;
-}
-.mayor-arc {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.arc-axis {
-  stroke: var(--line-strong);
-  stroke-width: 1.5;
-}
-.arc-tick-label {
-  fill: var(--muted);
-  font-size: 13px;
-  font-family: var(--font-ui);
-}
-.arc-repeat {
-  stroke: var(--brand);
-  stroke-width: 1.6;
-  opacity: 0.5;
-}
-.arc-family {
-  stroke: #b4632a;
-  stroke-width: 2;
-  stroke-dasharray: 5 3;
-  opacity: 0.85;
-}
-.dot {
-  fill: var(--muted);
-}
-.dot-repeat {
-  fill: var(--brand);
-}
-.dot-current {
-  fill: #c8962a;
-}
-.dot-killed {
-  fill: #c0392b;
-  stroke: var(--surface);
-  stroke-width: 1.5;
-}
-.arc-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px 18px;
-  margin-top: 12px;
-}
+/* Small inline legend swatch — shared by the climate chart legend. */
 .lg {
   display: inline-flex;
   align-items: center;
@@ -3029,21 +3094,6 @@ code {
   height: 12px;
   border-radius: 50%;
   flex-shrink: 0;
-}
-.lg-repeat::before {
-  background: var(--brand);
-}
-.lg-current::before {
-  background: #c8962a;
-}
-.lg-killed::before {
-  background: #c0392b;
-}
-.lg-family::before {
-  border-radius: 0;
-  height: 0;
-  width: 18px;
-  border-top: 2px dashed #b4632a;
 }
 
 .connect-list {
@@ -3066,19 +3116,26 @@ code {
   border-bottom: none;
   padding-bottom: 0;
 }
+.connect-name {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+.connect-count {
+  flex: none;
+  font-size: 0.74rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--cat, var(--brand));
+  background: color-mix(in srgb, var(--cat, var(--brand)) 14%, transparent);
+  padding: 1px 7px;
+  border-radius: var(--r-pill);
+}
 .connect-years {
   color: var(--muted);
   font-size: 0.86rem;
   text-align: right;
-}
-
-@media (max-width: 760px) {
-  /* The arc timeline used to be hidden on phones; instead it now pans sideways in
-     its .chart-scroll (with the scroll-shadow cue), consistent with the other
-     charts. The multi-term and family lists below restate the same links as text. */
-  .arc-card {
-    padding-bottom: 14px;
-  }
 }
 
 @media (max-width: 520px) {
@@ -4221,7 +4278,7 @@ code {
 .birth-bar-fill {
   display: block;
   height: 100%;
-  background: var(--accent);
+  background: var(--data-geo);
   border-radius: 999px;
 }
 .birth-count {
@@ -4291,9 +4348,17 @@ code {
   line-height: 1;
 }
 
+/* Anchor a stat grid to its entity colour (e.g. Places → green) so each
+   destination page reads in its category colour from the site-wide palette. */
+.stats-grid[data-cat] .stat-card dd {
+  color: var(--cat, var(--brand));
+}
+
 @media (max-width: 520px) {
+  /* Two-up keeps the key counts compact so the first screen reaches the page's
+     real content (search / catalogue) sooner, instead of four full-width cards. */
   .stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -4352,17 +4417,17 @@ code {
   font-family: var(--font-ui);
 }
 .pop-area {
-  fill: var(--accent);
-  opacity: 0.14;
+  fill: var(--data-growth);
+  opacity: 0.16;
 }
 .pop-line {
   fill: none;
-  stroke: var(--accent);
+  stroke: var(--data-growth);
   stroke-width: 2.5;
   stroke-linejoin: round;
 }
 .pop-dot {
-  fill: var(--accent);
+  fill: var(--data-growth);
 }
 .pop-dot-peak {
   fill: var(--brand);
@@ -4437,10 +4502,10 @@ code {
   overflow: visible;
 }
 .rate-bar {
-  fill: var(--brand);
+  fill: var(--data-growth);
 }
 .rate-pos {
-  fill: var(--brand);
+  fill: var(--data-growth);
 }
 .rate-neg {
   fill: #b23c2d;
@@ -4482,23 +4547,41 @@ code {
 }
 .page-subnav-inner {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   overflow-x: auto;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 9px;
+  padding-bottom: 9px;
   scrollbar-width: none;
+  /* Edge fade signals the row scrolls sideways when tabs overflow the screen. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 14px,
+    #000 calc(100% - 14px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 14px,
+    #000 calc(100% - 14px),
+    transparent 100%
+  );
 }
 .page-subnav-inner::-webkit-scrollbar {
   display: none;
 }
 .page-subnav a {
   flex: 0 0 auto;
-  padding: 7px 14px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 16px;
   border-radius: var(--r-pill);
   color: var(--ink-2);
   text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 550;
   white-space: nowrap;
   transition: background 0.15s, color 0.15s;
 }
@@ -4509,6 +4592,8 @@ code {
 .page-subnav a[aria-current="true"] {
   background: var(--accent);
   color: #fff;
+  font-weight: 650;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 40%, transparent);
 }
 #timeline,
 #city-growth,
@@ -4517,7 +4602,9 @@ code {
 #people,
 #data,
 [data-subnav-target] {
-  scroll-margin-top: 124px;
+  /* Clears the 66px header + ~60px section subnav (taller now that the tabs
+     have full 40px touch targets) with a small breathing gap. */
+  scroll-margin-top: 134px;
 }
 
 /* ---- Geography facts + climate chart (History page) -------------------- */

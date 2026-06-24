@@ -74,43 +74,16 @@ for (const term of mayorTerms) {
 }
 const multiTerm = [...groups.values()]
   .filter((g) => g.length > 1)
-  .sort((a, b) => a[0].year_start - b[0].year_start);
-const repeatTermIds = new Set(multiTerm.flat().map((tm) => tm.id));
+  .sort((a, b) => b.length - a.length || a[0].year_start - b[0].year_start);
 
-// sourced family ties between mayors
+// sourced family ties between mayors (kept only when both members exist as terms)
 const familyPairs = [
   { a: "Христо Г. Данов", b: "Милош Данов", label_bg: "баща и син", label_en: "father & son" }
 ];
-
-const W = 1000;
-const AX = 168;
-const PAD = 28;
-const span = Math.max(1, currentYear - firstYear);
-const xFor = (year: number) => PAD + ((year - firstYear) / span) * (W - 2 * PAD);
-const arcPath = (x1: number, x2: number, lift: number) =>
-  `M ${x1.toFixed(1)} ${AX} C ${x1.toFixed(1)} ${(AX - lift).toFixed(1)}, ${x2.toFixed(1)} ${(AX - lift).toFixed(1)}, ${x2.toFixed(1)} ${AX}`;
-
-const repeatArcs = multiTerm.flatMap((g) =>
-  g.slice(1).map((term, i) => {
-    const x1 = xFor(g[i].year_start);
-    const x2 = xFor(term.year_start);
-    return arcPath(x1, x2, Math.min(118, 24 + Math.abs(x2 - x1) * 0.42));
-  })
+const familyTies = familyPairs.filter(
+  (pair) =>
+    mayorTerms.some((m) => m.actor_bg === pair.a) && mayorTerms.some((m) => m.actor_bg === pair.b)
 );
-
-const familyArcs = familyPairs
-  .map((pair) => {
-    const ta = mayorTerms.find((m) => m.actor_bg === pair.a);
-    const tb = mayorTerms.find((m) => m.actor_bg === pair.b);
-    if (!ta || !tb) return null;
-    const x1 = xFor(ta.year_start);
-    const x2 = xFor(tb.year_start);
-    return { d: arcPath(x1, x2, Math.min(150, 54 + Math.abs(x2 - x1) * 0.5)), pair };
-  })
-  .filter((x): x is NonNullable<typeof x> => x !== null);
-
-const axisTicks: number[] = [];
-for (let y = Math.ceil(firstYear / 20) * 20; y <= currentYear; y += 20) axisTicks.push(y);
 
 // --- birthplaces of mayors (from Wikidata: place of birth + coordinates) ---
 const birthPersons = new Map<string, (typeof mayorTerms)[number]>();
@@ -190,57 +163,16 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
         </div>
       </div>
 
-      <div class="card arc-card">
-        <div class="chart-scroll">
-        <svg
-          class="mayor-arc"
-          viewBox="0 0 1000 200"
-          role="img"
-          aria-label={t.mayors.connectionsTitle}
-          preserveAspectRatio="xMidYMid meet"
-        >
-          {repeatArcs.map((d) => <path class="arc-repeat" d={d} fill="none" />)}
-          {familyArcs.map((fa) => <path class="arc-family" d={fa.d} fill="none" />)}
-          <line class="arc-axis" x1={PAD} y1={AX} x2={W - PAD} y2={AX} />
-          {axisTicks.map((y) => (
-            <text class="arc-tick-label" x={xFor(y)} y={AX + 20} text-anchor="middle">{y}</text>
-          ))}
-          {mayorTerms.map((term) => {
-            const cx = xFor(term.year_start);
-            const cls =
-              term.fate === "killed"
-                ? "dot dot-killed"
-                : term.year_end == null
-                  ? "dot dot-current"
-                  : repeatTermIds.has(term.id)
-                    ? "dot dot-repeat"
-                    : "dot";
-            const big = term.fate === "killed" || term.year_end == null;
-            return (
-              <circle class={cls} cx={cx} cy={AX} r={big ? 6 : 4}>
-                <title>
-                  {`${field(term, "actor", lang)} · ${term.year_start}${term.year_end ? `–${term.year_end}` : `–${currentYear}`}`}
-                </title>
-              </circle>
-            );
-          })}
-        </svg>
-        </div>
-        <div class="arc-legend">
-          <span class="lg lg-repeat">{t.mayors.legendSame}</span>
-          <span class="lg lg-family">{t.mayors.legendFamily}</span>
-          <span class="lg lg-killed">{t.mayors.legendKilled}</span>
-          <span class="lg lg-current">{t.mayors.legendCurrent}</span>
-        </div>
-      </div>
-
-      <div class="grid grid-2" style="margin-top:18px">
+      <div class="grid grid-2" style="margin-top:4px;align-items:start">
         <div class="card">
           <h3>{t.mayors.multiTermTitle}</h3>
           <ul class="connect-list">
             {multiTerm.map((g) => (
               <li>
-                <a href={localizePath(`/mayors/${g[0].id}`, lang)}>{field(g[0], "actor", lang)}</a>
+                <span class="connect-name">
+                  <a href={localizePath(`/mayors/${g[0].id}`, lang)}>{field(g[0], "actor", lang)}</a>
+                  <span class="connect-count" data-cat="people">{`${g.length}×`}</span>
+                </span>
                 <span class="connect-years">
                   {g
                     .map((tm) =>
@@ -256,14 +188,14 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
             ))}
           </ul>
         </div>
-        {familyArcs.length > 0 && (
+        {familyTies.length > 0 && (
           <div class="card">
             <h3>{t.mayors.familyTitle}</h3>
             <ul class="connect-list">
-              {familyArcs.map((fa) => (
+              {familyTies.map((pair) => (
                 <li>
-                  <span>{`${fa.pair.a} — ${fa.pair.b}`}</span>
-                  <span class="connect-years">{lang === "bg" ? fa.pair.label_bg : fa.pair.label_en}</span>
+                  <span>{`${pair.a} — ${pair.b}`}</span>
+                  <span class="connect-years">{lang === "bg" ? pair.label_bg : pair.label_en}</span>
                 </li>
               ))}
             </ul>
@@ -598,9 +530,9 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
         const names = m.people.map((n) => `<li>${esc(n)}</li>`).join("");
         L.circleMarker([m.lat, m.lng], {
           radius,
-          color: "#b4632a",
+          color: "#2c6e9c",
           weight: 2,
-          fillColor: "#b4632a",
+          fillColor: "#2c6e9c",
           fillOpacity: 0.45
         })
           .addTo(map)

@@ -559,28 +559,6 @@ const successionCount = historyKnowledgePeople.reduce(
   (sum, person) => sum + person.relationships.filter((relationship) => relationship.type === "succeeded_by").length,
   0
 );
-const firstYear = mayorEvents[0]?.date.year ?? 1878;
-const lastYear = mayorEvents.at(-1)?.date.year_end ?? new Date().getFullYear();
-const graphWidth = 1000;
-const graphAxis = 146;
-const graphPad = 28;
-const graphSpan = Math.max(1, lastYear - firstYear);
-const graphX = (year: number) => graphPad + ((year - firstYear) / graphSpan) * (graphWidth - graphPad * 2);
-const repeatArcs = repeatedPeople.flatMap((person) => {
-  const termEvents = person.term_events
-    .map((id) => entries.find((event) => event.id === id))
-    .filter(Boolean) as KnowledgeEvent[];
-  termEvents
-    .sort((a, b) => a.date.year - b.date.year);
-  return termEvents.slice(1).map((event, index) => {
-    const previous = termEvents[index];
-    const x1 = graphX(previous.date.year);
-    const x2 = graphX(event.date.year);
-    const lift = Math.min(110, 24 + Math.abs(x2 - x1) * 0.42);
-    return `M ${x1.toFixed(1)} ${graphAxis} C ${x1.toFixed(1)} ${(graphAxis - lift).toFixed(1)}, ${x2.toFixed(1)} ${(graphAxis - lift).toFixed(1)}, ${x2.toFixed(1)} ${graphAxis}`;
-  });
-});
-
 const historyMapConfig = {
   lang,
   dataVersion: historyDataVersion,
@@ -653,9 +631,14 @@ const growth =
   lang === "bg"
     ? {
         title: "Как растеше градът",
+        popQ: "Как се е променяло населението?",
+        rateQ: "Кога градът е растял най-бързо?",
         popTitle: "Население на Пловдив през годините",
         popLead:
           "Историческите точки до 2021 г. са по преброявания и публикувани исторически серии; 2022-2025 са годишни оценки на НСИ към 31.12.",
+        peakWord: "Връх",
+        latestWord: "Последна оценка",
+        growthWord: "Ръст спрямо",
         rateTitle: "Темп на изменение на населението",
         rateLead:
           "Средногодишна промяна за всеки период между съседни отчетни точки.",
@@ -678,9 +661,14 @@ const growth =
       }
     : {
         title: "How the city grew",
+        popQ: "How has the population changed?",
+        rateQ: "When did the city grow fastest?",
         popTitle: "Population of Plovdiv over time",
         popLead:
           "Historical points through 2021 use census and published historical series; 2022-2025 are NSI annual estimates as of 31 December.",
+        peakWord: "Peak",
+        latestWord: "Latest estimate",
+        growthWord: "Growth since",
         rateTitle: "Population change rate",
         rateLead:
           "Average annual change for each period between adjacent reporting points.",
@@ -814,6 +802,7 @@ const geo =
           "Пловдив е разположен върху сиенитни хълмове в Горнотракийската низина, на двата бряга на река Марица.",
         geographyTitle: "География",
         climateTitle: "Климат",
+        chartQ: "Какво е времето през годината?",
         chartTitle: "Средни месечни температури и валежи",
         legendTemp: "Макс. / мин. температура",
         legendPrecip: "Валежи",
@@ -840,6 +829,7 @@ const geo =
           "Plovdiv sits on syenite hills in the Upper Thracian Plain, on both banks of the Maritsa river.",
         geographyTitle: "Geography",
         climateTitle: "Climate",
+        chartQ: "What is the weather through the year?",
         chartTitle: "Average monthly temperatures and precipitation",
         legendTemp: "Max / min temperature",
         legendPrecip: "Precipitation",
@@ -938,6 +928,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       </div>
 
       <div class="card chart-card" style="margin-top:18px">
+        <span class="chart-q">{geo.chartQ}</span>
         <h3>{geo.chartTitle}</h3>
         <div class="climate-legend">
           <span class="lg lg-temp">{geo.legendTemp}</span>
@@ -1088,8 +1079,23 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       </div>
 
       <div class="card chart-card">
+        <span class="chart-q">{growth.popQ}</span>
         <h3>{growth.popTitle}</h3>
-        <p class="meta" style="max-width:76ch;margin:6px 0 18px">{growth.popLead}</p>
+        <p class="meta" style="max-width:76ch;margin:6px 0 16px">{growth.popLead}</p>
+        <div class="stat-row" style="margin:0 0 18px">
+          <div class="stat" data-cat="growth">
+            <strong>{numberFmt.format(peakPoint.population)}</strong>
+            <span>{`${growth.peakWord} · ${peakPoint.year}`}</span>
+          </div>
+          <div class="stat" data-cat="growth">
+            <strong>{numberFmt.format(latestPopulationPoint.population)}</strong>
+            <span>{`${growth.latestWord} · ${latestPopulationPoint.year}`}</span>
+          </div>
+          <div class="stat" data-cat="growth">
+            <strong>{`×${(latestPopulationPoint.population / pop[0].population).toFixed(1)}`}</strong>
+            <span>{`${growth.growthWord} ${minYear}`}</span>
+          </div>
+        </div>
         <div class="chart-scroll">
           <svg class="pop-chart" viewBox={`0 0 ${PW} ${PH}`} role="img" aria-label={growth.popTitle}>
             {popYTicks.map((v) => (
@@ -1133,6 +1139,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
       <div class="grid grid-2 city-growth-metrics" style="margin-top:18px">
         <div class="card chart-card rate-card">
+          <span class="chart-q">{growth.rateQ}</span>
           <h3 style="font-size:clamp(1.05rem,2vw,1.3rem)">{growth.rateTitle}</h3>
           <p class="meta" style="margin:6px 0 14px">{growth.rateLead}</p>
           <div class="chart-scroll">
@@ -1453,48 +1460,26 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         <a href={localizePath("/people", lang)}>{labels.openMayors} →</a>
       </div>
 
-      <div class="grid grid-2">
-        <article class="card arc-card">
-          <svg
-            class="mayor-arc"
-            viewBox="0 0 1000 190"
-            role="img"
-            aria-label={labels.peopleTitle}
-            preserveAspectRatio="xMidYMid meet"
-          >
-            {repeatArcs.map((d) => <path class="arc-repeat" d={d} fill="none" />)}
-            <line class="arc-axis" x1={graphPad} y1={graphAxis} x2={graphWidth - graphPad} y2={graphAxis} />
-            {mayorEvents.map((event) => {
-              const cx = graphX(event.date.year);
-              return (
-                <circle class="dot" cx={cx} cy={graphAxis} r={event.date.year_end ? 4 : 6}>
-                  <title>{`${localized(event, "title")} · ${dateLabel(event)}`}</title>
-                </circle>
-              );
-            })}
-          </svg>
-          <div class="arc-legend">
-            <span class="lg lg-repeat">{labels.repeatTerms}</span>
-            <span class="lg lg-current">{t.mayors.legendCurrent}</span>
-          </div>
-        </article>
-        <article class="card">
-          <div class="stat-row budget-summary-stats" style="margin-top:0">
-            <div class="stat"><strong>{historyKnowledgePeople.length}</strong><span>{labels.people}</span></div>
-            <div class="stat"><strong>{mayorEvents.length}</strong><span>{t.mayors.statTerms}</span></div>
-            <div class="stat"><strong>{repeatedPeople.length}</strong><span>{labels.repeatTerms}</span></div>
-            <div class="stat"><strong>{successionCount}</strong><span>{labels.successionLinks}</span></div>
-          </div>
-          <ul class="connect-list" style="margin-top:18px">
-            {repeatedPeople.slice(0, 8).map((person) => (
-              <li>
-                <span>{localized(person, "name")}</span>
-                <span class="connect-years">{person.term_events.length} {t.mayors.statTerms}</span>
-              </li>
-            ))}
-          </ul>
-        </article>
+      <div class="stat-row budget-summary-stats" style="margin-top:0">
+        <div class="stat"><strong>{historyKnowledgePeople.length}</strong><span>{labels.people}</span></div>
+        <div class="stat"><strong>{mayorEvents.length}</strong><span>{t.mayors.statTerms}</span></div>
+        <div class="stat"><strong>{repeatedPeople.length}</strong><span>{labels.repeatTerms}</span></div>
+        <div class="stat"><strong>{successionCount}</strong><span>{labels.successionLinks}</span></div>
       </div>
+      <article class="card" style="margin-top:18px">
+        <h3 style="margin:0 0 4px">{labels.repeatTerms}</h3>
+        <ul class="connect-list">
+          {repeatedPeople.slice(0, 8).map((person) => (
+            <li>
+              <span class="connect-name">
+                <span>{localized(person, "name")}</span>
+                <span class="connect-count" data-cat="people">{`${person.term_events.length}×`}</span>
+              </span>
+              <span class="connect-years">{`${person.term_events.length} ${t.mayors.statTerms}`}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
     </div>
   </section>
 

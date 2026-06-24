@@ -176,6 +176,9 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
               ))}
             </ul>
           </div>
+          <p class="chart-source">
+            {t.overview.unitProjects} · <a href={localizePath("/projects", lang)}>{t.overview.viewProjects} →</a>
+          </p>
         </div>
 
         <!-- Projects by category (bars) -->
@@ -195,6 +198,9 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
               </div>
             ))}
           </div>
+          <p class="chart-source">
+            {t.overview.unitProjects} · <a href={localizePath("/projects", lang)}>{t.overview.viewProjects} →</a>
+          </p>
         </div>
 
         <!-- 2025 capital by sector (donut) -->
@@ -228,6 +234,10 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
               ))}
             </ul>
           </div>
+          <p class="chart-source">
+            {t.overview.unitSharePercent}
+            {budget2025Source && <> · <a href={budget2025Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a></>}
+          </p>
         </div>
 
         <!-- 2026 funding (bars) -->
@@ -244,8 +254,9 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
               </div>
             ))}
           </div>
-          <p class="meta" style="margin-top:12px">
-            {budget2026Source && <a href={budget2026Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a>}
+          <p class="chart-source">
+            {t.overview.unitEur}
+            {budget2026Source && <> · <a href={budget2026Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a></>}
           </p>
         </div>
       </div>
