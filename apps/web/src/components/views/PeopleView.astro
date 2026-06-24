@@ -463,6 +463,7 @@ const nodeConfig = {
   labels: {
     visible: labels.visible,
     of: labels.of,
+    people: labels.people,
     noResults: labels.noResults,
     born: labels.born,
     ledgerRows: labels.ledgerRows,
@@ -913,9 +914,15 @@ const nodeConfig = {
         if (show) visibleRelationshipRows += 1;
       }
 
-      count.textContent = `${config.labels.visible}: ${visibleCards.length} ${config.labels.of} ${cards.length}`;
+      count.textContent =
+        visibleCards.length === cards.length
+          ? `${cards.length} ${config.labels.people}`
+          : `${config.labels.visible}: ${visibleCards.length} ${config.labels.of} ${cards.length}`;
       if (relationshipCount) {
-        relationshipCount.textContent = `${config.labels.visible}: ${visibleRelationshipRows} ${config.labels.of} ${relationshipRows.length} ${config.labels.ledgerRows}`;
+        relationshipCount.textContent =
+          visibleRelationshipRows === relationshipRows.length
+            ? `${relationshipRows.length} ${config.labels.ledgerRows}`
+            : `${config.labels.visible}: ${visibleRelationshipRows} ${config.labels.of} ${relationshipRows.length} ${config.labels.ledgerRows}`;
       }
       empty.hidden = visibleCards.length !== 0;
       reset.hidden = !(
