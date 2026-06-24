@@ -864,6 +864,19 @@ p:last-child {
   transform: translateX(3px);
 }
 
+/* "Load more" sits on its own row under the card grid — centre it and give it
+   presence instead of leaving it orphaned in the bottom-left corner. */
+.places-load-more {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  min-width: 220px;
+  margin: 32px auto 4px;
+}
+.places-load-more[hidden] {
+  display: none;
+}
+
 /* ---- Badges -------------------------------------------------------------- */
 
 .badge {
