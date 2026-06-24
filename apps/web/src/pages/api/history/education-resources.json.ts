@@ -1,4 +1,4 @@
-import educationResources from "../../../../../../data/generated/history-knowledge/education-resources.json";
+import { educationResources } from "@lib/data";
 
 export function GET() {
   return new Response(

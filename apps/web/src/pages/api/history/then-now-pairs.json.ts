@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import thenNowPairs from "../../../../../../data/generated/history-knowledge/then-now-pairs.json";
+import { thenNowPairs } from "@lib/data";
 import { json } from "@lib/server/http";
 
 export const prerender = true;

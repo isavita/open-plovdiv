@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import primaryDocuments from "../../../../../../data/generated/history-knowledge/primary-documents.json";
+import { primaryDocuments } from "@lib/data";
 import { json } from "@lib/server/http";
 
 export const prerender = true;

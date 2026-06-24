@@ -122,7 +122,14 @@ const config = {
   <script type="application/json" id="community-config" set:html={JSON.stringify(config)}></script>
 
   <script>
-    type Source = { title: string; url: string; accessed_at: string };
+    type Source = {
+      title: string;
+      title_de?: string;
+      title_en?: string;
+      title_bg?: string;
+      url: string;
+      accessed_at: string;
+    };
     type Link = { label_bg: string; label_en?: string; url: string; type: string };
     type Initiative = {
       id: string;
@@ -216,7 +223,7 @@ const config = {
               .map(
                 (source) => `
                   <li>
-                    <a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.title)}</a>
+                    <a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(field(source, "title"))}</a>
                     <span class="meta"> · ${escapeHtml(config.labels.accessed)} ${escapeHtml(source.accessed_at)}</span>
                   </li>
                 `

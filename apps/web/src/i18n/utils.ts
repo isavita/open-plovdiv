@@ -1,4 +1,5 @@
 import { defaultLang, languages, ui, type Lang } from "./ui";
+import { translateEnToDe } from "./deTranslations";
 
 export { ui, languages, defaultLang };
 export type { Lang };
@@ -14,6 +15,7 @@ const intlLocaleByLang: Record<Lang, string> = {
   en: "en-GB",
   de: "de-DE"
 };
+const untranslatedFieldBases = new Set(["actor", "architect", "birthplace", "builder", "name"]);
 
 /** Browser/Intl locale for sorting, case folding and number/date formatting. */
 export function localeForLang(lang: Lang): string {
@@ -67,7 +69,11 @@ export function field(
   const localized = record[`${base}_${lang}`];
   if (typeof localized === "string" && localized.length > 0) return localized;
   const english = record[`${base}_en`];
-  if (typeof english === "string" && english.length > 0) return english;
+  if (typeof english === "string" && english.length > 0) {
+    return lang === "de" && !untranslatedFieldBases.has(base)
+      ? translateEnToDe(english) ?? english
+      : english;
+  }
   const fallback = record[`${base}_bg`];
   if (typeof fallback === "string" && fallback.length > 0) return fallback;
   const legacy = record[base];

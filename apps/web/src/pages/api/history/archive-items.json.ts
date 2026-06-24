@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import archiveItems from "../../../../../../data/generated/history-knowledge/archive-items.json";
+import { historicalArchiveItems } from "@lib/data";
 import { json } from "@lib/server/http";
 
 export const prerender = true;
@@ -7,8 +7,8 @@ export const prerender = true;
 export const GET: APIRoute = () =>
   json(
     {
-      count: archiveItems.length,
-      archive_items: archiveItems
+      count: historicalArchiveItems.length,
+      archive_items: historicalArchiveItems
     },
     200,
     { "Cache-Control": "public, max-age=300" }

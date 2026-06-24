@@ -30,7 +30,8 @@
       "multi_source_records": 12,
       "needs_multi_source_review_records": 350,
       "open_license_records": 247,
-      "public_reference_terms_records": 122
+      "public_reference_terms_records": 122,
+      "label_de": "Veranstaltungen"
     },
     "people": {
       "label_bg": "Хора",
@@ -45,7 +46,8 @@
       "multi_source_records": 67,
       "needs_multi_source_review_records": 194,
       "open_license_records": 258,
-      "public_reference_terms_records": 59
+      "public_reference_terms_records": 59,
+      "label_de": "Menschen"
     },
     "person_relationships": {
       "label_bg": "Връзки между личности",
@@ -60,7 +62,8 @@
       "multi_source_records": 0,
       "needs_multi_source_review_records": 138,
       "open_license_records": 8,
-      "public_reference_terms_records": 130
+      "public_reference_terms_records": 130,
+      "label_de": "Personenbeziehungen"
     },
     "places": {
       "label_bg": "Места",
@@ -75,7 +78,8 @@
       "multi_source_records": 150,
       "needs_multi_source_review_records": 0,
       "open_license_records": 150,
-      "public_reference_terms_records": 0
+      "public_reference_terms_records": 0,
+      "label_de": "Orte"
     },
     "organizations": {
       "label_bg": "Организации",
@@ -90,7 +94,8 @@
       "multi_source_records": 0,
       "needs_multi_source_review_records": 12,
       "open_license_records": 0,
-      "public_reference_terms_records": 12
+      "public_reference_terms_records": 12,
+      "label_de": "Organisationen"
     },
     "archive_items": {
       "label_bg": "Архивни обекти",
@@ -105,7 +110,8 @@
       "multi_source_records": 0,
       "needs_multi_source_review_records": 30,
       "open_license_records": 30,
-      "public_reference_terms_records": 0
+      "public_reference_terms_records": 0,
+      "label_de": "Archivelemente"
     },
     "then_now_pairs": {
       "label_bg": "Двойки тогава/сега",
@@ -120,7 +126,8 @@
       "multi_source_records": 27,
       "needs_multi_source_review_records": 2,
       "open_license_records": 29,
-      "public_reference_terms_records": 0
+      "public_reference_terms_records": 0,
+      "label_de": "Damals/heute-Paare"
     },
     "primary_documents": {
       "label_bg": "Първични документи",
@@ -135,7 +142,8 @@
       "multi_source_records": 3,
       "needs_multi_source_review_records": 0,
       "open_license_records": 0,
-      "public_reference_terms_records": 3
+      "public_reference_terms_records": 3,
+      "label_de": "Primärdokumente"
     },
     "story_longreads": {
       "label_bg": "Дълги разкази",
@@ -150,7 +158,8 @@
       "multi_source_records": 11,
       "needs_multi_source_review_records": 0,
       "open_license_records": 10,
-      "public_reference_terms_records": 5
+      "public_reference_terms_records": 5,
+      "label_de": "Story-Longreads"
     },
     "education_resources": {
       "label_bg": "Образователни ресурси",
@@ -165,7 +174,8 @@
       "multi_source_records": 5,
       "needs_multi_source_review_records": 0,
       "open_license_records": 5,
-      "public_reference_terms_records": 2
+      "public_reference_terms_records": 2,
+      "label_de": "Bildungsressourcen"
     }
   },
   "license_statuses": {
@@ -202,7 +212,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eine der ältesten Siedlungen der Welt"
     },
     {
       "id": "event-prehistory-nebet-tepe",
@@ -232,7 +243,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eine dauerhafte Siedlung auf Nebet Tepe"
     },
     {
       "id": "event-prehistory-bronze-age",
@@ -260,7 +272,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Bronzezeit und frühe Nekropolen"
     },
     {
       "id": "event-thracian-town-bessi",
@@ -288,7 +301,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die thrakische Stadt und die Bessi"
     },
     {
       "id": "event-thracian-persian-rule",
@@ -316,7 +330,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Unter persischer Oberherrschaft"
     },
     {
       "id": "event-thracian-eumolpias",
@@ -347,7 +362,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die thrakische Stadt Eumolpias"
     },
     {
       "id": "event-philip-philippopolis",
@@ -378,7 +394,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Philipp II. und Philippopolis"
     },
     {
       "id": "event-thracian-seuthes-iii",
@@ -406,7 +423,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Seuthes III. belebt das odrysische Königreich wieder"
     },
     {
       "id": "event-thracian-celts",
@@ -434,7 +452,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Von den Kelten zerstört"
     },
     {
       "id": "event-thracian-philip-v",
@@ -462,7 +481,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Philipp V. von Mazedonien erobert die Stadt"
     },
     {
       "id": "event-thracian-lucullus",
@@ -490,7 +510,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Roms erster Anlaufpunkt: Marcus Lucullus"
     },
     {
       "id": "event-roman-trimontium",
@@ -518,7 +539,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Trimontium schließt sich dem Römischen Reich an"
     },
     {
       "id": "event-roman-forum",
@@ -546,7 +568,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Das Forum Romanum"
     },
     {
       "id": "event-roman-theatre",
@@ -577,7 +600,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Das römische Theater wird gebaut"
     },
     {
       "id": "event-roman-stadium",
@@ -608,7 +632,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "The Roman stadium is built"
     },
     {
       "id": "event-roman-odeon",
@@ -636,7 +661,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Das römische Odeon"
     },
     {
       "id": "event-goths-250",
@@ -664,7 +690,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Von den Goten geplündert"
     },
     {
       "id": "event-huns-441",
@@ -692,7 +719,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Von den Hunnen zerstört"
     },
     {
       "id": "event-medieval-byzantine-fortress",
@@ -720,7 +748,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eine byzantinische Grenzfestung"
     },
     {
       "id": "event-krum-812",
@@ -748,7 +777,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Khan Krum erobert die Stadt"
     },
     {
       "id": "event-malamir-834",
@@ -776,7 +806,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "In das Bulgarische Reich"
     },
     {
       "id": "event-barbarossa-1189",
@@ -804,7 +835,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Der Dritte Kreuzzug"
     },
     {
       "id": "event-medieval-latin-empire",
@@ -832,7 +864,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Das Lateinische Reich und das Herzogtum Philippopolis"
     },
     {
       "id": "event-ivan-asen-1230",
@@ -860,7 +893,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Asen II. erobert die Stadt zurück"
     },
     {
       "id": "event-bulgaria-1323",
@@ -888,7 +922,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Endgültige bulgarische Herrschaft"
     },
     {
       "id": "event-ottoman-1364",
@@ -916,7 +951,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Osmanische Eroberung – Filibe"
     },
     {
       "id": "event-ottoman-maritsa",
@@ -944,7 +980,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Schlacht von Maritsa"
     },
     {
       "id": "event-ottoman-musa-celebi",
@@ -972,7 +1009,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Das osmanische Interregnum"
     },
     {
       "id": "event-ottoman-rumelia-centre",
@@ -1000,7 +1038,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Zentrum von Rumelien"
     },
     {
       "id": "event-ottoman-trade-centre",
@@ -1028,7 +1067,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ein führendes Handelszentrum auf dem Balkan"
     },
     {
       "id": "event-birth-haf-z-ahmed-pasha-q367949",
@@ -1056,7 +1096,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Hafız Ahmed Pasha"
     },
     {
       "id": "event-birth-eugenius-ii-of-constantinople-q1884172",
@@ -1084,7 +1125,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Eugenius II of Constantinople"
     },
     {
       "id": "event-birth-georgios-kleovoulos-q18912873",
@@ -1112,7 +1154,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Georgios Kleovoulos"
     },
     {
       "id": "event-first-school-1836",
@@ -1140,7 +1183,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die erste bulgarische Schule"
     },
     {
       "id": "event-birth-ivan-evstratiev-geshov-q523393",
@@ -1168,7 +1212,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Ivan Evstratiev Geschov"
     },
     {
       "id": "event-revival-secular-school",
@@ -1196,7 +1241,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Weltliche Bildung – die St.-Cyrill-und-Method-Schule"
     },
     {
       "id": "event-birth-konstantin-stoilov-q523488",
@@ -1224,7 +1270,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Konstantin Stoilov"
     },
     {
       "id": "event-bulgarian-liturgy-1858",
@@ -1252,7 +1299,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Liturgie auf Bulgarisch"
     },
     {
       "id": "event-revival-cyril-methodius-day",
@@ -1280,7 +1328,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die erste Cyrill- und Methodius-Feier"
     },
     {
       "id": "event-birth-sehbenderzade-ahmed-hilmi-q4695337",
@@ -1308,7 +1357,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Şehbenderzade Ahmed Hilmi"
     },
     {
       "id": "event-revival-grammar-school",
@@ -1336,7 +1386,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Das erste Gymnasium"
     },
     {
       "id": "event-birth-mary-m-haskell-q27881208",
@@ -1364,7 +1415,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Mary M. Haskell"
     },
     {
       "id": "event-revival-bulgarian-church",
@@ -1392,7 +1444,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die bulgarische Kirche wird restauriert"
     },
     {
       "id": "event-birth-panayot-pipkov-q2048895",
@@ -1420,7 +1473,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Panayot Pipkov"
     },
     {
       "id": "event-birth-maria-toromanova-hmelik-q19902875",
@@ -1448,7 +1502,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Maria Toromanova-Hmelik"
     },
     {
       "id": "event-birth-christos-tsigiridis-q5113595",
@@ -1476,7 +1531,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Christos Tsigiridis"
     },
     {
       "id": "event-birth-mihail-gerdzhikov-q439762",
@@ -1504,7 +1560,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Mihail Gerdzhikov"
     },
     {
       "id": "event-birth-bigal-mehmet-cavus-q40091527",
@@ -1532,7 +1589,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Bigalı Mehmet Çavuş"
     },
     {
       "id": "event-liberation-1878",
@@ -1563,7 +1621,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Befreiung"
     },
     {
       "id": "event-liberation-san-stefano",
@@ -1591,7 +1650,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Der Vertrag von San Stefano"
     },
     {
       "id": "event-mayor-01-atanas-samokovliev",
@@ -1619,7 +1679,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Atanas Samokovliev"
     },
     {
       "id": "event-mayor-02-kostaki-peev",
@@ -1647,7 +1708,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Kostaki Peev"
     },
     {
       "id": "event-eastern-rumelia-1878",
@@ -1675,7 +1737,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Capital of Eastern Rumelia"
     },
     {
       "id": "event-birth-enis-akaygen-q6067938",
@@ -1703,7 +1766,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Enis Akaygen"
     },
     {
       "id": "event-mayor-03-ivan-stefanov-geshov",
@@ -1731,7 +1795,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Ivan Stefanov Geshov"
     },
     {
       "id": "event-birth-ali-r-za-artunkal-q6086393",
@@ -1759,7 +1824,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Ali Rıza Artunkal"
     },
     {
       "id": "event-birth-elisaveta-konsulova-vazova-q12279745",
@@ -1787,7 +1853,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Elisaveta Konsulova-Vazova"
     },
     {
       "id": "event-birth-georgi-atanasov-q5547103",
@@ -1815,7 +1882,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Georgi Atanasov"
     },
     {
       "id": "event-mayor-04-d-r-sotir-antoniadi",
@@ -1843,7 +1911,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dr. Sotir Antoniadi"
     },
     {
       "id": "event-mayor-05-petko-karavelov",
@@ -1871,7 +1940,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Petko Karavelov"
     },
     {
       "id": "event-birth-josaphat-chichkov-q6279177",
@@ -1899,7 +1969,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Josaphat Chichkov"
     },
     {
       "id": "event-mayor-06-hafuz-ahmed-efendi",
@@ -1927,7 +1998,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Hafuz Ahmed Efendi"
     },
     {
       "id": "event-mayor-07-kostaki-peev",
@@ -1955,7 +2027,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Kostaki Peev"
     },
     {
       "id": "event-liberation-september-1885",
@@ -1983,7 +2056,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Das Geheimkomitee und der 6. September"
     },
     {
       "id": "event-unification-1885",
@@ -2014,7 +2088,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Vereinigung Bulgariens"
     },
     {
       "id": "event-mayor-08-hristo-dyukmedzhiev",
@@ -2042,7 +2117,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Hristo Dyukmedzhiev"
     },
     {
       "id": "event-modern-railways",
@@ -2070,7 +2146,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Eisenbahnen kommen"
     },
     {
       "id": "event-birth-aleksandra-monedzhikova-q28324141",
@@ -2098,7 +2175,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Aleksandra Monedzhikova"
     },
     {
       "id": "event-birth-boris-grezhov-q12273675",
@@ -2126,7 +2204,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Boris Grezhov"
     },
     {
       "id": "event-birth-pavel-patev-q12289650",
@@ -2154,7 +2233,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Pawel Patew"
     },
     {
       "id": "event-birth-stoyan-zagorchinov-q3492916",
@@ -2182,7 +2262,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Stoyan Zagorchinov"
     },
     {
       "id": "event-birth-konstantin-lukash-q4268731",
@@ -2210,7 +2291,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Konstantin Lukash"
     },
     {
       "id": "event-mayor-09-dimitr-sveshtarov",
@@ -2238,7 +2320,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dimitar Sveshtarov"
     },
     {
       "id": "event-birth-kemal-yas-nk-l-c-q19611675",
@@ -2266,7 +2349,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Kemal Yaşınkılıç"
     },
     {
       "id": "event-event-1892-first-exposition",
@@ -2294,7 +2378,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Erste bulgarische Landwirtschafts- und Industrieausstellung"
     },
     {
       "id": "event-fair-1892",
@@ -2324,7 +2409,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die erste internationale Messe"
     },
     {
       "id": "event-mayor-10-stefan-kalchev",
@@ -2352,7 +2438,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Stefan Kalchev"
     },
     {
       "id": "event-mayor-11-angel-semerdzhiev",
@@ -2380,7 +2467,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Angel Semerdzhiev"
     },
     {
       "id": "event-mayor-12-konstantin-hadzhikalchov",
@@ -2408,7 +2496,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Konstantin Hadzhikalchov"
     },
     {
       "id": "event-mayor-13-mancho-manev",
@@ -2436,7 +2525,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Mancho Manev"
     },
     {
       "id": "event-birth-armand-tokatyan-q4792706",
@@ -2464,7 +2554,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Armand Tokatyan"
     },
     {
       "id": "event-mayor-14-nikola-chalkov",
@@ -2492,7 +2583,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Nikola Chalakov"
     },
     {
       "id": "event-mayor-15-mihail-madzharov",
@@ -2520,7 +2612,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Mayor: Mihail Madzharov"
     },
     {
       "id": "event-mayor-16-danail-yurukov",
@@ -2548,7 +2641,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Danail Yurukov"
     },
     {
       "id": "event-birth-apostolos-nikolaidis-q331223",
@@ -2576,7 +2670,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Apostolos Nikolaidis"
     },
     {
       "id": "event-birth-tsanko-lavrenov-q7849377",
@@ -2604,7 +2699,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Tsanko Lavrenov"
     },
     {
       "id": "event-mayor-17-hristo-g-danov",
@@ -2632,7 +2728,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Hristo G. Danov"
     },
     {
       "id": "event-finance-1897-bnb-refinance-loan",
@@ -2660,7 +2757,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Genehmigtes, aber nicht realisiertes BNB-Refinanzierungsdarlehen für kommunale Schulden"
     },
     {
       "id": "event-finance-1898-actual-revenue",
@@ -2688,7 +2786,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Tatsächlicher Umsatz im Jahr 1898"
     },
     {
       "id": "event-finance-1898-planned-budget",
@@ -2716,7 +2815,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Plovdiv-Haushalt für 1898"
     },
     {
       "id": "event-finance-1899-actual-revenue",
@@ -2744,7 +2844,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Zu wenig Einnahmen im Jahr 1899"
     },
     {
       "id": "event-mayor-18-nikola-chalkov",
@@ -2772,7 +2873,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Nikola Chalakov"
     },
     {
       "id": "event-mayor-19-dragan-manchov",
@@ -2800,7 +2902,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dragan Manchov"
     },
     {
       "id": "event-mayor-20-d-r-hristo-tanchev",
@@ -2828,7 +2931,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dr. Hristo Tanchev"
     },
     {
       "id": "event-mayor-21-georgi-dzhevizov",
@@ -2856,7 +2960,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Georgi Dzhevizov"
     },
     {
       "id": "event-mayor-22-hristo-milev",
@@ -2884,7 +2989,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Hristo Milev"
     },
     {
       "id": "event-birth-georgi-karaslavov-q3622160",
@@ -2912,7 +3018,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Georgi Karaslavov"
     },
     {
       "id": "event-mayor-23-nikola-chalkov",
@@ -2940,7 +3047,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Nikola Chalakov"
     },
     {
       "id": "event-birth-edward-haskell-q5343358",
@@ -2968,7 +3076,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Edward Haskell"
     },
     {
       "id": "event-mayor-24-vlko-shopov",
@@ -2996,7 +3105,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Valko Shopov"
     },
     {
       "id": "event-birth-boyan-petkanchin-q12273874",
@@ -3024,7 +3134,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Boyan Petkanchin"
     },
     {
       "id": "event-mayor-25-d-r-ivan-kesyakov",
@@ -3052,7 +3163,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dr. Ivan Kesyakov"
     },
     {
       "id": "event-birth-henri-calef-q3130778",
@@ -3080,7 +3192,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Henri Calef"
     },
     {
       "id": "event-birth-keraca-visulceva-q3397196",
@@ -3108,7 +3221,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Keraca Visulceva"
     },
     {
       "id": "event-birth-mara-maleeva-zhivkova-q11767290",
@@ -3136,7 +3250,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Mara Maleeva-Zhivkova"
     },
     {
       "id": "event-mayor-26-georgi-dzhevizov",
@@ -3164,7 +3279,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Georgi Dzhevizov"
     },
     {
       "id": "event-mayor-27-nikola-kozarev",
@@ -3192,7 +3308,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Nikola Kozarev"
     },
     {
       "id": "event-birth-bogdan-stefanov-dobranov-q4937469",
@@ -3220,7 +3337,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Bogdan Stefanov Dobranov"
     },
     {
       "id": "event-birth-boris-christoff-q362106",
@@ -3248,7 +3366,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Boris Christoff"
     },
     {
       "id": "event-birth-ivan-kostov-nikolov-q6096688",
@@ -3276,7 +3395,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Ivan Kostov Nikolov"
     },
     {
       "id": "event-mayor-28-deno-manev",
@@ -3304,7 +3424,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Denyo Manev"
     },
     {
       "id": "event-birth-dimitar-sagaev-q5277445",
@@ -3332,7 +3453,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Dimitar Sagaev"
     },
     {
       "id": "event-programme-1916-charity-committee",
@@ -3360,7 +3482,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Oberstes Wohltätigkeitskomitee während des Ersten Weltkriegs"
     },
     {
       "id": "event-mayor-29-milosh-danov",
@@ -3388,7 +3511,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Milosh Danov"
     },
     {
       "id": "event-birth-pavel-djidjov-q7155590",
@@ -3416,7 +3540,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Pavel Djidjov"
     },
     {
       "id": "event-mayor-30-stefan-gevgalov",
@@ -3444,7 +3569,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Stefan Gevgalov"
     },
     {
       "id": "event-mayor-31-hristo-pavlov",
@@ -3472,7 +3598,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Hristo Pavlov"
     },
     {
       "id": "event-mayor-32-hariton-kuev",
@@ -3500,7 +3627,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Hariton Kuev"
     },
     {
       "id": "event-mayor-33-nikola-glbov",
@@ -3528,7 +3656,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Nikola Galabov"
     },
     {
       "id": "event-birth-genko-rashkov-q91343087",
@@ -3556,7 +3685,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Genko Rashkov"
     },
     {
       "id": "event-mayor-34-panayot-mutafchiev",
@@ -3584,7 +3714,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Panayot Mutafchiev"
     },
     {
       "id": "event-mayor-35-petr-shilev",
@@ -3612,7 +3743,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Petar Shilev"
     },
     {
       "id": "event-mayor-36-d-r-ivan-kesyakov",
@@ -3640,7 +3772,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dr. Ivan Kesyakov"
     },
     {
       "id": "event-birth-angel-wagenstein-q531900",
@@ -3668,7 +3801,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Angel Wagenstein"
     },
     {
       "id": "event-mayor-37-petr-yankov",
@@ -3696,7 +3830,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Petar Yankov"
     },
     {
       "id": "event-birth-vaklush-tolev-q17409993",
@@ -3724,7 +3859,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Vaklush Tolev"
     },
     {
       "id": "event-mayor-38-ivan-stanchev",
@@ -3752,7 +3888,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Ivan Stanchev"
     },
     {
       "id": "event-mayor-39-petr-drenski",
@@ -3780,7 +3917,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Petar Drenski"
     },
     {
       "id": "event-birth-nanka-serkedzhieva-q25478652",
@@ -3808,7 +3946,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nanka Serkedzhieva"
     },
     {
       "id": "event-birth-christo-christov-q5111619",
@@ -3836,7 +3975,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Christo Christov"
     },
     {
       "id": "event-birth-vasil-mirchev-q1448586",
@@ -3864,7 +4004,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Vasil Mirchev"
     },
     {
       "id": "event-modern-electrification",
@@ -3892,7 +4033,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Elektrifizierung und Industrie"
     },
     {
       "id": "event-mayor-40-d-r-panayot-kostov",
@@ -3920,7 +4062,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dr. Panayot Kostov"
     },
     {
       "id": "event-1928-earthquake",
@@ -3950,7 +4093,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Tschirpan-Plovdiv-Erdbeben"
     },
     {
       "id": "event-birth-isaac-passy-q2901020",
@@ -3978,7 +4122,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Isaac Passy"
     },
     {
       "id": "event-mayor-41-milosh-danov",
@@ -4006,7 +4151,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Milosh Danov"
     },
     {
       "id": "event-birth-mihail-simeonov-q6845163",
@@ -4034,7 +4180,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Mihail Simeonov"
     },
     {
       "id": "event-mayor-42-enyu-manolov",
@@ -4062,7 +4209,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Enyu Manolov"
     },
     {
       "id": "event-birth-milko-bobotsov-q1347292",
@@ -4090,7 +4238,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Milko Bobotsov"
     },
     {
       "id": "event-birth-stancho-stanchev-q7598031",
@@ -4118,7 +4267,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Stancho Stanchev"
     },
     {
       "id": "event-programme-1932-school-building-gap",
@@ -4146,7 +4296,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Mangel an Schulgebäuden"
     },
     {
       "id": "event-mayor-43-bozhidar-zdravkov",
@@ -4174,7 +4325,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Bozhidar Zdravkov"
     },
     {
       "id": "event-programme-1932-childcare-and-social-care",
@@ -4202,7 +4354,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kindergarten, öffentliche Küchen und Altenheim unter Bozhidar Zdravkov"
     },
     {
       "id": "event-birth-martsel-koen-q16574455",
@@ -4230,7 +4383,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Martsel Koen"
     },
     {
       "id": "event-birth-nikola-padevsky-q427768",
@@ -4258,7 +4412,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nikola Padevsky"
     },
     {
       "id": "event-birth-ivan-andonov-q1675895",
@@ -4286,7 +4441,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Ivan Andonov"
     },
     {
       "id": "event-birth-krikor-azaryan-q1902725",
@@ -4314,7 +4470,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Krikor Azaryan"
     },
     {
       "id": "event-birth-yoan-leviev-q12282012",
@@ -4342,7 +4499,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Yoan Leviev"
     },
     {
       "id": "event-governance-1934-municipal-reform",
@@ -4370,7 +4528,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Regierungswechsel nach dem Putsch vom 19. Mai 1934"
     },
     {
       "id": "event-birth-emanuel-zisman-q949226",
@@ -4398,7 +4557,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Emanuel Zisman"
     },
     {
       "id": "event-mayor-44-georgi-todorov",
@@ -4426,7 +4586,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Georgi Todorov"
     },
     {
       "id": "event-birth-asen-kisimov-q4804159",
@@ -4454,7 +4615,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Asen Kisimov"
     },
     {
       "id": "event-birth-rumen-gasharov-q3656624",
@@ -4482,7 +4644,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Rumen Gasharov"
     },
     {
       "id": "event-mayor-45-bozhidar-zdravkov",
@@ -4510,7 +4673,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Bozhidar Zdravkov"
     },
     {
       "id": "event-birth-georgi-tringov-q961715",
@@ -4538,7 +4702,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Georgi Tringov"
     },
     {
       "id": "event-birth-milcho-leviev-q358753",
@@ -4566,7 +4731,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Milcho Leviev"
     },
     {
       "id": "event-birth-dimitar-galinchev-q62629029",
@@ -4594,7 +4760,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Dimitar Galinchev"
     },
     {
       "id": "event-birth-george-ganchev-q12280185",
@@ -4622,7 +4789,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von George Ganchev"
     },
     {
       "id": "event-mayor-46-petr-malchev",
@@ -4650,7 +4818,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Petar Malchev"
     },
     {
       "id": "event-birth-peicho-peev-q3657487",
@@ -4678,7 +4847,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Peicho Peev"
     },
     {
       "id": "event-finance-1940-regular-budget",
@@ -4706,7 +4876,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Regulärer Haushalt 1940"
     },
     {
       "id": "event-programme-1940-war-budget-priorities",
@@ -4734,7 +4905,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Haushaltsprioritäten während des Krieges"
     },
     {
       "id": "event-birth-dinko-dermendzhiev-q2444179",
@@ -4762,7 +4934,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Dinko Dermendzhiev"
     },
     {
       "id": "event-birth-kostadin-tilev-q62011159",
@@ -4790,7 +4963,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Kostadin Tilev"
     },
     {
       "id": "event-birth-stephane-tchalgadjieff-q3502097",
@@ -4818,7 +4992,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Stéphane Tchalgadjieff"
     },
     {
       "id": "event-jews-1943",
@@ -4848,7 +5023,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Rettung der Plovdiver Juden"
     },
     {
       "id": "event-mayor-47-dimitr-kostov",
@@ -4876,7 +5052,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dimitar Kostov"
     },
     {
       "id": "event-birth-georgi-popov-q2472095",
@@ -4904,7 +5081,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Georgi Popov"
     },
     {
       "id": "event-birth-tzvetana-maneva-q7862005",
@@ -4932,7 +5110,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Tzvetana Maneva"
     },
     {
       "id": "event-finance-1944-war-damage-relief",
@@ -4960,7 +5139,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Mittel zur Sanierung von Luftangriffsschäden"
     },
     {
       "id": "event-governance-1944-front-transition",
@@ -4988,7 +5168,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kommunale Machtübergabe nach dem 9. September 1944"
     },
     {
       "id": "event-modern-wwii-bombing",
@@ -5016,7 +5197,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Der Zweite Weltkrieg"
     },
     {
       "id": "event-mayor-48-d-r-asen-kozhuharov",
@@ -5044,7 +5226,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dr. Asen Kozhuharov"
     },
     {
       "id": "event-birth-maria-neykova-q12286011",
@@ -5072,7 +5255,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Maria Neykova"
     },
     {
       "id": "event-birth-stoika-milanova-q4293322",
@@ -5100,7 +5284,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Stoĭka Milanova"
     },
     {
       "id": "event-programme-1945-postwar-public-works",
@@ -5128,7 +5313,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Programm für öffentliche Arbeiten der Nachkriegszeit"
     },
     {
       "id": "event-finance-1945-university-establishment",
@@ -5156,7 +5342,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kommunale Finanzierung zur Eröffnung einer Hochschule"
     },
     {
       "id": "event-mayor-49-ivan-perpeliev",
@@ -5184,7 +5371,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Ivan Perpeliev"
     },
     {
       "id": "event-birth-lilyana-tomova-q274862",
@@ -5212,7 +5400,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Lilyana Tomova"
     },
     {
       "id": "event-birth-moni-ovadia-q741709",
@@ -5240,7 +5429,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Moni Ovadia"
     },
     {
       "id": "event-birth-nenko-dobrev-q47456054",
@@ -5268,7 +5458,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nenko Dobrev"
     },
     {
       "id": "event-birth-pando-pandov-q3893146",
@@ -5296,7 +5487,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Pando Pandov"
     },
     {
       "id": "event-birth-petar-stoychev-q14946295",
@@ -5324,7 +5516,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Petar Stoychev"
     },
     {
       "id": "event-finance-1946-horemag-enterprise",
@@ -5352,7 +5545,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kommunalunternehmen Horemag"
     },
     {
       "id": "event-birth-evdokiya-pandezova-q43783582",
@@ -5380,7 +5574,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Evdokiya Pandezova"
     },
     {
       "id": "event-birth-hristo-bonev-q706715",
@@ -5408,7 +5603,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Hristo Bonev"
     },
     {
       "id": "event-birth-rosica-petkova-q7368859",
@@ -5436,7 +5632,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Rosica Petkova"
     },
     {
       "id": "event-programme-1947-fair-revival",
@@ -5464,7 +5661,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Wiederbelebung der Plovdiv-Messe"
     },
     {
       "id": "event-birth-biser-boyadzhiev-q56224072",
@@ -5492,7 +5690,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Biser Boyadzhiev"
     },
     {
       "id": "event-birth-bozhidar-pampoulov-q12273506",
@@ -5520,7 +5719,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Bozhidar Pampoulov"
     },
     {
       "id": "event-birth-matei-pampoulov-q12286298",
@@ -5548,7 +5748,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Matei Pampoulov"
     },
     {
       "id": "event-mayor-50-nikola-balkandzhiev",
@@ -5576,7 +5777,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Nikola Balkandzhiev"
     },
     {
       "id": "event-birth-mariya-petkova-q258505",
@@ -5604,7 +5806,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Maria Petkowa"
     },
     {
       "id": "event-birth-kuncho-kunchev-q60685867",
@@ -5632,7 +5835,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Kuncho Kunchev"
     },
     {
       "id": "event-birth-boris-komitov-q21077775",
@@ -5660,7 +5864,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Boris Komitov"
     },
     {
       "id": "event-birth-petar-stoyanov-q81215",
@@ -5688,7 +5893,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Petar Stoyanov"
     },
     {
       "id": "event-birth-assia-zlatkowa-q4808843",
@@ -5716,7 +5922,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Assia Zlatkowa"
     },
     {
       "id": "event-birth-ivanka-vancheva-q11714525",
@@ -5744,7 +5951,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Ivanka Vancheva"
     },
     {
       "id": "event-birth-slavik-tabakov-q23762783",
@@ -5772,7 +5980,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Slavik Tabakov"
     },
     {
       "id": "event-birth-bozhidar-milenkov-q4952838",
@@ -5800,7 +6009,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Bozhidar Milenkov"
     },
     {
       "id": "event-birth-hristo-smolenov-q47007832",
@@ -5828,7 +6038,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Hristo Smolenov"
     },
     {
       "id": "event-birth-nonka-matova-q3878246",
@@ -5856,7 +6067,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nonka Matova"
     },
     {
       "id": "event-birth-georgi-dermendzhiev-q12276391",
@@ -5884,7 +6096,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Georgi Dermendzhiev"
     },
     {
       "id": "event-birth-plamen-dimov-q11888350",
@@ -5912,7 +6125,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Plamen Dimov"
     },
     {
       "id": "event-birth-dimitar-radev-q25431484",
@@ -5940,7 +6154,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Dimitar Radev"
     },
     {
       "id": "event-birth-solomon-passy-q1371792",
@@ -5968,7 +6183,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Solomon Passy"
     },
     {
       "id": "event-modern-trolleybus",
@@ -5996,7 +6212,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Trolleybusse und der Bauboom"
     },
     {
       "id": "event-birth-emma-tahmizian-q433159",
@@ -6024,7 +6241,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Emma Tahmizian"
     },
     {
       "id": "event-birth-lyubomir-lyubenov-q3305536",
@@ -6052,7 +6270,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Lyubomir Lyubenov"
     },
     {
       "id": "event-birth-nikolay-marincheshki-q3876974",
@@ -6080,7 +6299,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nikolay Marincheshki"
     },
     {
       "id": "event-birth-peter-lazarov-q2776677",
@@ -6108,7 +6328,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Peter Lazarov"
     },
     {
       "id": "event-birth-emil-stoyanov-q1336888",
@@ -6136,7 +6357,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Emil Stoyanov"
     },
     {
       "id": "event-birth-mariana-serbezova-q6762066",
@@ -6164,7 +6386,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Mariana Serbezova"
     },
     {
       "id": "event-birth-petar-zapryanov-q20966432",
@@ -6192,7 +6415,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Petar Zapryanov"
     },
     {
       "id": "event-birth-zhan-videnov-q511954",
@@ -6220,7 +6444,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Zhan Videnov"
     },
     {
       "id": "event-mayor-51-atanas-kostov",
@@ -6248,7 +6473,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Atanas Kostov"
     },
     {
       "id": "event-birth-angelina-mikhaylova-q2493179",
@@ -6276,7 +6502,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Angelina Mikhaylova"
     },
     {
       "id": "event-birth-atanas-mladenov-q4812753",
@@ -6304,7 +6531,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Atanas Mladenov"
     },
     {
       "id": "event-birth-luba-lukova-q23882767",
@@ -6332,7 +6560,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Luba Lukova"
     },
     {
       "id": "event-birth-atanas-hranov-q27230293",
@@ -6360,7 +6589,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Atanas Hranov"
     },
     {
       "id": "event-birth-ayan-sadakov-q1986376",
@@ -6388,7 +6618,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Ayan Sadakov"
     },
     {
       "id": "event-birth-iliya-zhelev-q1658519",
@@ -6416,7 +6647,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Iliya Zhelev"
     },
     {
       "id": "event-birth-jeanette-spassova-q15212955",
@@ -6444,7 +6676,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Jeanette Spassova"
     },
     {
       "id": "event-birth-yuri-sterk-q12299588",
@@ -6472,7 +6705,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Yuri Sterk"
     },
     {
       "id": "event-birth-blagovest-belev-q110881376",
@@ -6500,7 +6734,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Blagovest Belev"
     },
     {
       "id": "event-birth-georgi-georgiev-q2616489",
@@ -6528,7 +6763,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Georgi Georgiev"
     },
     {
       "id": "event-birth-georgi-yordanov-q2628915",
@@ -6556,7 +6792,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Georgi Yordanov"
     },
     {
       "id": "event-birth-nina-khadzhiyankova-q3877064",
@@ -6584,7 +6821,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nina Khadzhiyankova"
     },
     {
       "id": "event-mayor-52-ivan-dimitrov",
@@ -6612,7 +6850,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Ivan Dimitrov"
     },
     {
       "id": "event-birth-aleksandar-khristov-q620406",
@@ -6640,7 +6879,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Aleksandar Christov"
     },
     {
       "id": "event-birth-alexander-sekulov-q30170062",
@@ -6668,7 +6908,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Alexander Sekulov"
     },
     {
       "id": "event-birth-hristo-kolev-q1985420",
@@ -6696,7 +6937,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Hristo Kolev"
     },
     {
       "id": "event-birth-konstantin-mitev-q61638808",
@@ -6724,7 +6966,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Konstantin Mitev"
     },
     {
       "id": "event-birth-milko-popcev-q4372927",
@@ -6752,7 +6995,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Milko Popčev"
     },
     {
       "id": "event-birth-lalka-berberova-q6480436",
@@ -6780,7 +7024,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Lalka Berberova"
     },
     {
       "id": "event-mayor-53-ivan-panev",
@@ -6808,7 +7053,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Ivan Panev"
     },
     {
       "id": "event-birth-diana-paliiska-q3079920",
@@ -6836,7 +7082,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Diana Paliiska"
     },
     {
       "id": "event-birth-dimitar-kamburski-q47455173",
@@ -6864,7 +7111,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Dimitar Kamburski"
     },
     {
       "id": "event-birth-hristo-stoichkov-q187125",
@@ -6892,7 +7140,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Christo Stoitschkow"
     },
     {
       "id": "event-birth-ilian-djevelekov-q5997999",
@@ -6920,7 +7169,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Ilian Djevelekov"
     },
     {
       "id": "event-birth-samuel-finzi-q106781",
@@ -6948,7 +7198,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Samuel Finzi"
     },
     {
       "id": "event-birth-sotir-tsatsarov-q12294204",
@@ -6976,7 +7227,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Sotir Tsatsarov"
     },
     {
       "id": "event-birth-vladimir-angelov-q124670137",
@@ -7004,7 +7256,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Vladimir Angelov"
     },
     {
       "id": "event-birth-madelaine-bohme-q21264297",
@@ -7032,7 +7285,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Madelaine Böhme"
     },
     {
       "id": "event-birth-nikolay-bukhalov-q1385212",
@@ -7060,7 +7314,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nikolai Buchalow"
     },
     {
       "id": "event-birth-nuran-pelikjan-q20030085",
@@ -7088,7 +7343,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nuran Pelikjan"
     },
     {
       "id": "event-birth-silvena-rowe-q3544793",
@@ -7116,7 +7372,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Silvena Rowe"
     },
     {
       "id": "event-birth-antoaneta-strumenlieva-q29054643",
@@ -7144,7 +7401,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Antoaneta Strumenlieva"
     },
     {
       "id": "event-birth-dimitre-dinev-q87994",
@@ -7172,7 +7430,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Dimitré Dinev"
     },
     {
       "id": "event-mayor-54-kosta-kumanov",
@@ -7200,7 +7459,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Kosta Kumanov"
     },
     {
       "id": "event-birth-christo-grozev-q104420787",
@@ -7228,7 +7488,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Christo Grozev"
     },
     {
       "id": "event-birth-dimitar-lukanov-q5277432",
@@ -7256,7 +7517,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Dimitar Lukanov"
     },
     {
       "id": "event-birth-hristo-koilov-q5923786",
@@ -7284,7 +7546,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Hristo Koilov"
     },
     {
       "id": "event-birth-kalofer-khristozov-q12282435",
@@ -7312,7 +7575,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Kalofer Khristozov"
     },
     {
       "id": "event-birth-mariya-kartalova-q16207828",
@@ -7340,7 +7604,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Mariya Kartalova"
     },
     {
       "id": "event-birth-poli-karastoyanova-q24501700",
@@ -7368,7 +7633,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Poli Karastoyanova"
     },
     {
       "id": "event-programme-1969-old-plovdiv-restoration",
@@ -7396,7 +7662,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Spezialisierte Verwaltung der Altstadt von Plovdiv"
     },
     {
       "id": "event-birth-bonka-pindzheva-q4942123",
@@ -7424,7 +7691,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Bonka Pindzheva"
     },
     {
       "id": "event-birth-orlin-ninov-q47491501",
@@ -7452,7 +7720,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Orlin Ninov"
     },
     {
       "id": "event-birth-petar-genov-q2607838",
@@ -7480,7 +7749,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Petar Genov"
     },
     {
       "id": "event-programme-1970-five-year-city-plan",
@@ -7508,7 +7778,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Fünfjähriges Stadtprogramm für Wohnen und Infrastruktur"
     },
     {
       "id": "event-birth-albena-branzova-q2830854",
@@ -7536,7 +7807,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Albena Branzova"
     },
     {
       "id": "event-birth-anna-angelova-q4766820",
@@ -7564,7 +7836,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Anna Angelova"
     },
     {
       "id": "event-birth-grigor-palikarov-q50987576",
@@ -7592,7 +7865,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Grigor Palikarov"
     },
     {
       "id": "event-mayor-55-diran-parikyan",
@@ -7620,7 +7894,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Diran Parikyan"
     },
     {
       "id": "event-birth-iva-prandzheva-q263942",
@@ -7648,7 +7923,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Iva Prandzheva"
     },
     {
       "id": "event-birth-julian-radulski-q492717",
@@ -7676,7 +7952,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Julian Radulski"
     },
     {
       "id": "event-birth-juliya-baytsheva-q11345804",
@@ -7704,7 +7981,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Juliya Baytsheva"
     },
     {
       "id": "event-birth-krasimir-dounev-q3199606",
@@ -7732,7 +8010,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Krasimir Dounev"
     },
     {
       "id": "event-birth-nikolay-barekov-q12288663",
@@ -7760,7 +8039,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nikolay Barekov"
     },
     {
       "id": "event-birth-tanya-stefanova-q7684048",
@@ -7788,7 +8068,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Tanya Stefanova"
     },
     {
       "id": "event-birth-nikolai-kolev-q47491494",
@@ -7816,7 +8097,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nikolai Kolev"
     },
     {
       "id": "event-birth-yordan-yovchev-q887271",
@@ -7844,7 +8126,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Yordan Yovchev"
     },
     {
       "id": "event-birth-nayden-todorov-q1963895",
@@ -7872,7 +8155,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nayden Todorov"
     },
     {
       "id": "event-birth-aneta-germanova-q2849228",
@@ -7900,7 +8184,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Aneta Germanova"
     },
     {
       "id": "event-birth-ivan-demerdzhiev-q109467177",
@@ -7928,7 +8213,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Ivan Demerdzhiev"
     },
     {
       "id": "event-birth-maria-petrova-q2629523",
@@ -7956,7 +8242,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Maria Petrova"
     },
     {
       "id": "event-birth-georgi-ivanov-q593740",
@@ -7984,7 +8271,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Georgi Ivanov"
     },
     {
       "id": "event-birth-petar-merkov-q3656013",
@@ -8012,7 +8300,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Petar Merkov"
     },
     {
       "id": "event-birth-antoaneta-pandjerova-q12272133",
@@ -8040,7 +8329,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Antoaneta Pandjerova"
     },
     {
       "id": "event-birth-bojidara-kouzmanova-q891182",
@@ -8068,7 +8358,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Bojidara Kouzmanova"
     },
     {
       "id": "event-birth-ina-deltcheva-q4944554",
@@ -8096,7 +8387,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Ina Deltschewa"
     },
     {
       "id": "event-birth-magdalina-valchanova-q3656840",
@@ -8124,7 +8416,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Magdalina Valchanova"
     },
     {
       "id": "event-birth-petia-stavreva-q11815936",
@@ -8152,7 +8445,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Petia Stavreva"
     },
     {
       "id": "event-birth-iliya-dzhivondov-q1658512",
@@ -8180,7 +8474,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Iliya Dzhivondov"
     },
     {
       "id": "event-birth-nadezhda-kehayova-q6957607",
@@ -8208,7 +8503,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nadezhda Kehayova"
     },
     {
       "id": "event-birth-donka-angatscheva-q43900827",
@@ -8236,7 +8532,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Donka Angatscheva"
     },
     {
       "id": "event-mayor-56-hristo-mishev",
@@ -8264,7 +8561,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Hristo Mishev"
     },
     {
       "id": "event-birth-dobrinka-tabakova-q4449195",
@@ -8292,7 +8590,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Dobrinka Tabakova"
     },
     {
       "id": "event-birth-kiril-petkov-q106928258",
@@ -8320,7 +8619,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Kiril Petkov"
     },
     {
       "id": "event-birth-milen-dobrev-q939012",
@@ -8348,7 +8648,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Milen Dobrev"
     },
     {
       "id": "event-birth-alexander-pulev-q113383770",
@@ -8376,7 +8677,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Alexander Pulev"
     },
     {
       "id": "event-birth-sonya-yoncheva-q3490781",
@@ -8404,7 +8706,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Sonya Yoncheva"
     },
     {
       "id": "event-modern-world-expo",
@@ -8432,7 +8735,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ausstellungen zur Weltausstellung"
     },
     {
       "id": "event-birth-delyana-dacheva-q5254970",
@@ -8460,7 +8764,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Delyana Dacheva"
     },
     {
       "id": "event-birth-petar-valchanov-q27535477",
@@ -8488,7 +8793,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Petar Valchanov"
     },
     {
       "id": "event-birth-irmena-chichikova-q22957946",
@@ -8516,7 +8822,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Irmena Chichikova"
     },
     {
       "id": "event-birth-vladimir-arabadzhiev-q188383",
@@ -8544,7 +8851,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Vladimir Arabadzhiev"
     },
     {
       "id": "event-birth-georgi-hristov-q1399131",
@@ -8572,7 +8880,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Georgi Hristov"
     },
     {
       "id": "event-birth-ivan-stoitsov-q12281221",
@@ -8600,7 +8909,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Ivan Stoitsov"
     },
     {
       "id": "event-birth-miro-q2833189",
@@ -8628,7 +8938,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Miro"
     },
     {
       "id": "event-birth-georgi-kabakov-q21063886",
@@ -8656,7 +8967,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Georgi Kabakov"
     },
     {
       "id": "event-mayor-57-dimitr-bakalov",
@@ -8684,7 +8996,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dimitar Bakalov"
     },
     {
       "id": "event-birth-taner-kabilov-q126683791",
@@ -8712,7 +9025,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Taner Kabilov"
     },
     {
       "id": "event-birth-marin-yonchev-q6763764",
@@ -8740,7 +9054,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Marin Yonchev"
     },
     {
       "id": "event-birth-vladimir-zombori-q28740172",
@@ -8768,7 +9083,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Vladimir Zombori"
     },
     {
       "id": "event-mayor-58-todor-petkov",
@@ -8796,7 +9112,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Todor Petkov"
     },
     {
       "id": "event-birth-tsvetelina-yaneva-q3171491",
@@ -8824,7 +9141,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Tsvetelina Yaneva"
     },
     {
       "id": "event-modern-democratic-reform",
@@ -8852,7 +9170,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eine Wiege demokratischer Reformen"
     },
     {
       "id": "event-birth-alexandar-komanov-q4718098",
@@ -8880,7 +9199,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Alexandar Komanov"
     },
     {
       "id": "event-birth-nina-rangelova-q7038090",
@@ -8908,7 +9228,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nina Rangelova"
     },
     {
       "id": "event-birth-rada-laykova-q127599333",
@@ -8936,7 +9257,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Rada Laykova"
     },
     {
       "id": "event-mayor-59-nikolay-somlev",
@@ -8964,7 +9286,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Nikolay Somlev"
     },
     {
       "id": "event-birth-kristian-vasilev-q26254381",
@@ -8992,7 +9315,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Kristian Vasilev"
     },
     {
       "id": "event-birth-martina-gledacheva-q6777030",
@@ -9020,7 +9344,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Martina Gledacheva"
     },
     {
       "id": "event-mayor-60-d-r-garabed-tomasyan",
@@ -9048,7 +9373,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dr. Garabed Tomasyan"
     },
     {
       "id": "event-birth-aleksandrina-naydenova-q4715613",
@@ -9076,7 +9402,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Aleksandrina Naydenova"
     },
     {
       "id": "event-birth-nikolay-penchev-q1688332",
@@ -9104,7 +9431,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nikolay Penchev"
     },
     {
       "id": "event-birth-stoyu-stoev-q110928862",
@@ -9132,7 +9460,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Stoyu Stoev"
     },
     {
       "id": "event-birth-boyanka-kostova-q2922996",
@@ -9160,7 +9489,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Boyanka Kostova"
     },
     {
       "id": "event-birth-dimitar-kuzmanov-q12061061",
@@ -9188,7 +9518,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Dimitar Kuzmanov"
     },
     {
       "id": "event-birth-dimitar-krastanov-q26790006",
@@ -9216,7 +9547,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Dimitar Krastanov"
     },
     {
       "id": "event-mayor-61-spas-grnevski",
@@ -9244,7 +9576,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Spas Garnevski"
     },
     {
       "id": "event-birth-angel-kodinov-q26218345",
@@ -9272,7 +9605,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Angel Kodinov"
     },
     {
       "id": "event-event-1999-month-of-culture",
@@ -9300,7 +9634,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Plovdiv ist Gastgeber des Monats der Kultur"
     },
     {
       "id": "event-event-1999-month-of-culture-scale",
@@ -9328,7 +9663,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Maßstab des Europäischen Kulturmonats"
     },
     {
       "id": "event-mayor-62-d-r-ivan-chomakov",
@@ -9356,7 +9692,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dr. Ivan Chomakov"
     },
     {
       "id": "event-birth-diana-petkova-q100251384",
@@ -9384,7 +9721,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Diana Petkova"
     },
     {
       "id": "event-birth-gergana-topalova-q61644154",
@@ -9412,7 +9750,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Gergana Topalova"
     },
     {
       "id": "event-birth-aleksandra-nacheva-q55569450",
@@ -9440,7 +9779,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Aleksandra Nacheva"
     },
     {
       "id": "event-governance-2001-development-plans",
@@ -9468,7 +9808,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Städtische strategische Entwicklungspläne"
     },
     {
       "id": "event-programme-2002-hospital-waste-incinerator",
@@ -9496,7 +9837,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Verbrennungsanlage für Krankenhausabfälle"
     },
     {
       "id": "event-birth-josif-miladinov-q106978619",
@@ -9524,7 +9866,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Josif Miladinov"
     },
     {
       "id": "event-birth-nako-baev-q122904734",
@@ -9552,7 +9895,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Nako Baev"
     },
     {
       "id": "event-birth-suzanita-q42348994",
@@ -9580,7 +9924,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Geburt von Suzanita"
     },
     {
       "id": "event-finance-2005-own-revenue",
@@ -9608,7 +9953,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eigene Einnahmen im Jahr 2005 erzielt"
     },
     {
       "id": "event-finance-2006-own-revenue",
@@ -9636,7 +9982,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eigene Einnahmen im Jahr 2006 erzielt"
     },
     {
       "id": "event-finance-2007-own-revenue",
@@ -9664,7 +10011,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eigene Einnahmen im Jahr 2007 erzielt"
     },
     {
       "id": "event-mayor-62-d-r-ivan-chomakov-2",
@@ -9692,7 +10040,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Dr. Ivan Chomakov"
     },
     {
       "id": "event-programme-2007-state-infrastructure-credits",
@@ -9720,7 +10069,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Zusätzliche staatliche Kredite für Infrastruktur"
     },
     {
       "id": "event-mayor-63-slavcho-atanasov",
@@ -9748,7 +10098,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Slavcho Atanasov"
     },
     {
       "id": "event-programme-2007-2013-capital-investment",
@@ -9776,7 +10127,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kapitalinvestitionsprogramm im Rahmen des Gemeindeentwicklungsplans"
     },
     {
       "id": "event-programme-2007-2013-eu-operational-projects",
@@ -9804,7 +10156,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Projekte im Rahmen operationeller Programme der EU"
     },
     {
       "id": "event-programme-2008-draft-budget-capital-priorities",
@@ -9832,7 +10185,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Haushaltsentwurf und Kapitalprioritäten für 2008"
     },
     {
       "id": "event-finance-2009-adopted-budget",
@@ -9860,7 +10214,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Verabschiedeter Haushaltsplan 2009"
     },
     {
       "id": "event-programme-2009-state-beautification-subsidy",
@@ -9888,7 +10243,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Zusätzliche gezielte Förderung öffentlicher Arbeiten"
     },
     {
       "id": "event-programme-2009-waste-linked-infrastructure",
@@ -9916,7 +10272,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Infrastrukturarbeiten im Zusammenhang mit der Annahme von Ballenabfällen"
     },
     {
       "id": "event-governance-2010-property-management-programme",
@@ -9944,7 +10301,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Jährliches Programm zur Verwaltung kommunaler Liegenschaften"
     },
     {
       "id": "event-programme-2010-culture-house-reallocation",
@@ -9972,7 +10330,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Umwidmung in das Kulturhaus der Stadt"
     },
     {
       "id": "event-programme-2010-draft-budget-infrastructure-priorities",
@@ -10000,7 +10359,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Infrastrukturprioritäten im Haushaltsentwurf 2010"
     },
     {
       "id": "event-programme-2010-waste-infrastructure-extra-credits",
@@ -10028,7 +10388,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Zusätzliche Mittel aus dem Infrastrukturhaushalt im Zusammenhang mit dem Abfallfall in Sofia"
     },
     {
       "id": "event-programme-2010-gifted-children-support",
@@ -10056,7 +10417,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Finanzielle Unterstützung für hochbegabte Kinder"
     },
     {
       "id": "event-mayor-64-inzh-ivan-totev",
@@ -10084,7 +10446,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Eng. Ivan Totev"
     },
     {
       "id": "event-programme-2012-waste-infrastructure-final-transfer",
@@ -10112,7 +10475,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Endgültiger Infrastrukturtransfer im Zusammenhang mit dem Abfallfall in Sofia"
     },
     {
       "id": "event-programme-2012-waste-infrastructure-object-list",
@@ -10140,7 +10504,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Projektliste für den endgültigen Sofia-Abfalltransfer"
     },
     {
       "id": "event-event-2014-ecoc-candidacy-budget",
@@ -10168,7 +10533,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Zweckgebundene Finanzierung für die Kandidatur zur Kulturhauptstadt Europas"
     },
     {
       "id": "event-event-2018-ecoc-implementation-budget",
@@ -10196,7 +10562,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Finanzierung für die Umsetzung von Plovdiv 2019"
     },
     {
       "id": "event-capital-of-culture-2019",
@@ -10226,7 +10593,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eröffnung der Kulturhauptstadt Europas"
     },
     {
       "id": "event-event-2019-european-capital-of-culture",
@@ -10254,7 +10622,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Plovdiv – Kulturhauptstadt Europas"
     },
     {
       "id": "event-mayor-64-inzh-ivan-totev-2",
@@ -10282,7 +10651,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Eng. Ivan Totev"
     },
     {
       "id": "event-mayor-65-zdravko-dimitrov",
@@ -10310,7 +10680,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Zdravko Dimitrov"
     },
     {
       "id": "event-mayor-68-kostadin-dimitrov",
@@ -10338,7 +10709,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bürgermeister: Kostadin Dimitrov"
     },
     {
       "id": "person-albena-branzova-q2830854",
@@ -17864,7 +18236,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Angel Semerdzhiev – Nachfolger: Konstantin Hadzhikalchov"
     },
     {
       "id": "person-rel-angel-semerdzhiev-succeeds-stefan-kalchev-mayor-11-angel-semerdzhiev",
@@ -17892,7 +18265,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Angel Semerdzhiev – tritt die Nachfolge von Stefan Kalchev an"
     },
     {
       "id": "person-rel-atanas-kostov-succeeded-by-ivan-dimitrov-mayor-51-atanas-kostov",
@@ -17920,7 +18294,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Atanas Kostov – Nachfolger von – Ivan Dimitrov"
     },
     {
       "id": "person-rel-atanas-kostov-succeeds-nikola-balkandzhiev-mayor-51-atanas-kostov",
@@ -17948,7 +18323,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Atanas Kostov – folgt auf Nikola Balkandzhiev"
     },
     {
       "id": "person-rel-atanas-samokovliev-succeeded-by-kostaki-peev-mayor-01-atanas-samokovliev",
@@ -17976,7 +18352,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Atanas Samokovliev – Nachfolger von – Kostaki Peev"
     },
     {
       "id": "person-rel-bozhidar-zdravkov-succeeded-by-georgi-todorov-mayor-43-bozhidar-zdravkov",
@@ -18004,7 +18381,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bozhidar Zdravkov – Nachfolger wurde Georgi Todorov"
     },
     {
       "id": "person-rel-bozhidar-zdravkov-succeeded-by-petar-malchev-mayor-45-bozhidar-zdravkov",
@@ -18032,7 +18410,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bozhidar Zdravkov – Nachfolger von – Petar Malchev"
     },
     {
       "id": "person-rel-bozhidar-zdravkov-succeeds-enyu-manolov-mayor-43-bozhidar-zdravkov",
@@ -18060,7 +18439,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bozhidar Zdravkov – tritt die Nachfolge von Enyu Manolov an"
     },
     {
       "id": "person-rel-bozhidar-zdravkov-succeeds-georgi-todorov-mayor-45-bozhidar-zdravkov",
@@ -18088,7 +18468,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bozhidar Zdravkov – folgt auf Georgi Todorov"
     },
     {
       "id": "person-rel-d-r-asen-kozhuharov-succeeded-by-ivan-perpeliev-mayor-48-d-r-asen-kozhuharov",
@@ -18116,7 +18497,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Asen Kozhuharov – Nachfolger von – Ivan Perpeliev"
     },
     {
       "id": "person-rel-d-r-asen-kozhuharov-succeeds-dimitar-kostov-mayor-48-d-r-asen-kozhuharov",
@@ -18144,7 +18526,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Asen Kozhuharov – tritt die Nachfolge von Dimitar Kostov an"
     },
     {
       "id": "person-rel-d-r-garabed-tomasyan-succeeded-by-spas-garnevski-mayor-60-d-r-garabed-tomasyan",
@@ -18172,7 +18555,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Garabed Tomasyan – Nachfolger: Spas Garnevski"
     },
     {
       "id": "person-rel-d-r-garabed-tomasyan-succeeds-nikolay-somlev-mayor-60-d-r-garabed-tomasyan",
@@ -18200,7 +18584,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Garabed Tomasyan – tritt die Nachfolge von Nikolay Somlev an"
     },
     {
       "id": "person-rel-d-r-hristo-tanchev-succeeded-by-georgi-dzhevizov-mayor-20-d-r-hristo-tanchev",
@@ -18228,7 +18613,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Hristo Tanchev – Nachfolger: Georgi Dzhevizov"
     },
     {
       "id": "person-rel-d-r-hristo-tanchev-succeeds-dragan-manchov-mayor-20-d-r-hristo-tanchev",
@@ -18256,7 +18642,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Hristo Tanchev – tritt die Nachfolge von Dragan Manchov an"
     },
     {
       "id": "person-rel-d-r-ivan-chomakov-succeeded-by-slavcho-atanasov-mayor-62-d-r-ivan-chomakov-2",
@@ -18284,7 +18671,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Ivan Chomakov – Nachfolger von – Slavcho Atanasov"
     },
     {
       "id": "person-rel-d-r-ivan-chomakov-succeeds-spas-garnevski-mayor-62-d-r-ivan-chomakov",
@@ -18312,7 +18700,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Ivan Chomakov – tritt die Nachfolge an – Spas Garnevski"
     },
     {
       "id": "person-rel-d-r-ivan-kesyakov-succeeded-by-georgi-dzhevizov-mayor-25-d-r-ivan-kesyakov",
@@ -18340,7 +18729,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Ivan Kesyakov – Nachfolger: Georgi Dzhevizov"
     },
     {
       "id": "person-rel-d-r-ivan-kesyakov-succeeded-by-petar-yanakov-mayor-36-d-r-ivan-kesyakov",
@@ -18368,7 +18758,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Ivan Kesyakov – Nachfolger von – Petar Yankov"
     },
     {
       "id": "person-rel-d-r-ivan-kesyakov-succeeds-petar-shilev-mayor-36-d-r-ivan-kesyakov",
@@ -18396,7 +18787,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Ivan Kesyakov – tritt die Nachfolge von Petar Shilev an"
     },
     {
       "id": "person-rel-d-r-ivan-kesyakov-succeeds-valko-shopov-mayor-25-d-r-ivan-kesyakov",
@@ -18424,7 +18816,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Ivan Kesyakov – tritt die Nachfolge von Valko Shopov an"
     },
     {
       "id": "person-rel-d-r-panayot-kostov-succeeded-by-milosh-danov-mayor-40-d-r-panayot-kostov",
@@ -18452,7 +18845,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Panayot Kostov – Nachfolger: Milosh Danov"
     },
     {
       "id": "person-rel-d-r-panayot-kostov-succeeds-petar-drenski-mayor-40-d-r-panayot-kostov",
@@ -18480,7 +18874,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Panayot Kostov – tritt die Nachfolge von Petar Drenski an"
     },
     {
       "id": "person-rel-d-r-sotir-antoniadi-succeeded-by-petko-karavelov-mayor-04-d-r-sotir-antoniadi",
@@ -18508,7 +18903,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Sotir Antoniadi – Nachfolger von – Petko Karavelov"
     },
     {
       "id": "person-rel-d-r-sotir-antoniadi-succeeds-ivan-stefanov-geshov-mayor-04-d-r-sotir-antoniadi",
@@ -18536,7 +18932,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dr. Sotir Antoniadi – tritt die Nachfolge von Ivan Stefanov Geshov an"
     },
     {
       "id": "person-rel-danail-yurukov-succeeded-by-hristo-g-danov-mayor-16-danail-yurukov",
@@ -18564,7 +18961,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Danail Yurukov – Nachfolger von – Hristo G. Danov"
     },
     {
       "id": "person-rel-danail-yurukov-succeeds-mihail-madzharov-mayor-16-danail-yurukov",
@@ -18592,7 +18990,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Danail Yurukov – folgt auf Mihail Madzharov"
     },
     {
       "id": "person-rel-deno-manev-succeeded-by-milosh-danov-mayor-28-deno-manev",
@@ -18620,7 +19019,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Denyo Manev – Nachfolger von – Milosh Danov"
     },
     {
       "id": "person-rel-deno-manev-succeeds-nikola-kozarev-mayor-28-deno-manev",
@@ -18648,7 +19048,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Denyo Manev – tritt die Nachfolge von Nikola Kozarev an"
     },
     {
       "id": "person-rel-dimitar-bakalov-succeeded-by-todor-petkov-mayor-57-dimitr-bakalov",
@@ -18676,7 +19077,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dimitar Bakalov – Nachfolger von – Todor Petkov"
     },
     {
       "id": "person-rel-dimitar-bakalov-succeeds-hristo-mishev-mayor-57-dimitr-bakalov",
@@ -18704,7 +19106,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dimitar Bakalov – folgt auf Hristo Mishev"
     },
     {
       "id": "person-rel-dimitar-kostov-succeeded-by-d-r-asen-kozhuharov-mayor-47-dimitr-kostov",
@@ -18732,7 +19135,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dimitar Kostov – Nachfolger: Dr. Asen Kozhuharov"
     },
     {
       "id": "person-rel-dimitar-kostov-succeeds-petar-malchev-mayor-47-dimitr-kostov",
@@ -18760,7 +19164,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dimitar Kostov – folgt auf Petar Malchev"
     },
     {
       "id": "person-rel-dimitar-sveshtarov-succeeded-by-stefan-kalchev-mayor-09-dimitr-sveshtarov",
@@ -18788,7 +19193,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dimitar Sveshtarov – Nachfolger: Stefan Kalchev"
     },
     {
       "id": "person-rel-dimitar-sveshtarov-succeeds-hristo-dyukmedzhiev-mayor-09-dimitr-sveshtarov",
@@ -18816,7 +19222,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dimitar Sveshtarov – folgt auf Hristo Dyukmedzhiev"
     },
     {
       "id": "person-rel-diran-parikyan-succeeded-by-hristo-mishev-mayor-55-diran-parikyan",
@@ -18844,7 +19251,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Diran Parikyan – Nachfolger von – Hristo Mishev"
     },
     {
       "id": "person-rel-diran-parikyan-succeeds-kosta-kumanov-mayor-55-diran-parikyan",
@@ -18872,7 +19280,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Diran Parikyan – folgt auf Kosta Kumanov"
     },
     {
       "id": "person-rel-dragan-manchov-succeeded-by-d-r-hristo-tanchev-mayor-19-dragan-manchov",
@@ -18900,7 +19309,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dragan Manchov – Nachfolger von – Dr. Hristo Tanchev"
     },
     {
       "id": "person-rel-dragan-manchov-succeeds-nikola-chalakov-mayor-19-dragan-manchov",
@@ -18928,7 +19338,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dragan Manchov – folgt auf Nikola Chalakov"
     },
     {
       "id": "person-rel-emil-stoyanov-q1336888-sibling-petar-stoyanov-q81215-p3373",
@@ -18956,7 +19367,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Emil Stoyanov – Geschwister – Petar Stoyanov"
     },
     {
       "id": "person-rel-enyu-manolov-succeeded-by-bozhidar-zdravkov-mayor-42-enyu-manolov",
@@ -18984,7 +19396,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Enyu Manolov – Nachfolger von – Bozhidar Zdravkov"
     },
     {
       "id": "person-rel-enyu-manolov-succeeds-milosh-danov-mayor-42-enyu-manolov",
@@ -19012,7 +19425,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Enyu Manolov – tritt die Nachfolge an – Milosh Danov"
     },
     {
       "id": "person-rel-georgi-dzhevizov-succeeded-by-hristo-milev-mayor-21-georgi-dzhevizov",
@@ -19040,7 +19454,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Georgi Dzhevizov – Nachfolger von – Hristo Milev"
     },
     {
       "id": "person-rel-georgi-dzhevizov-succeeded-by-nikola-kozarev-mayor-26-georgi-dzhevizov",
@@ -19068,7 +19483,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Georgi Dzhevizov – Nachfolger: Nikola Kozarev"
     },
     {
       "id": "person-rel-georgi-dzhevizov-succeeds-d-r-hristo-tanchev-mayor-21-georgi-dzhevizov",
@@ -19096,7 +19512,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Georgi Dzhevizov – tritt die Nachfolge von Dr. Hristo Tanchev an"
     },
     {
       "id": "person-rel-georgi-dzhevizov-succeeds-d-r-ivan-kesyakov-mayor-26-georgi-dzhevizov",
@@ -19124,7 +19541,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Georgi Dzhevizov – tritt die Nachfolge von Dr. Ivan Kesyakov an"
     },
     {
       "id": "person-rel-georgi-todorov-succeeded-by-bozhidar-zdravkov-mayor-44-georgi-todorov",
@@ -19152,7 +19570,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Georgi Todorov – Nachfolger: Bozhidar Zdravkov"
     },
     {
       "id": "person-rel-georgi-todorov-succeeds-bozhidar-zdravkov-mayor-44-georgi-todorov",
@@ -19180,7 +19599,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Georgi Todorov – folgt auf Bozhidar Zdravkov"
     },
     {
       "id": "person-rel-hafuz-ahmed-efendi-succeeded-by-kostaki-peev-mayor-06-hafuz-ahmed-efendi",
@@ -19208,7 +19628,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hafuz Ahmed Efendi – Nachfolger von – Kostaki Peev"
     },
     {
       "id": "person-rel-hafuz-ahmed-efendi-succeeds-petko-karavelov-mayor-06-hafuz-ahmed-efendi",
@@ -19236,7 +19657,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hafuz Ahmed Efendi – folgt auf Petko Karavelov"
     },
     {
       "id": "person-rel-hariton-kuev-succeeded-by-nikola-galabov-mayor-32-hariton-kuev",
@@ -19264,7 +19686,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hariton Kuev – Nachfolger von – Nikola Galabov"
     },
     {
       "id": "person-rel-hariton-kuev-succeeds-hristo-pavlov-mayor-32-hariton-kuev",
@@ -19292,7 +19715,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hariton Kuev – folgt auf Hristo Pavlov"
     },
     {
       "id": "person-rel-hristo-dyukmedzhiev-succeeded-by-dimitar-sveshtarov-mayor-08-hristo-dyukmedzhiev",
@@ -19320,7 +19744,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hristo Dyukmedzhiev – Nachfolger von – Dimitar Sveshtarov"
     },
     {
       "id": "person-rel-hristo-dyukmedzhiev-succeeds-kostaki-peev-mayor-08-hristo-dyukmedzhiev",
@@ -19348,7 +19773,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hristo Dyukmedzhiev – folgt auf Kostaki Peev"
     },
     {
       "id": "person-rel-hristo-g-danov-succeeded-by-nikola-chalakov-mayor-17-hristo-g-danov",
@@ -19376,7 +19802,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hristo G. Danov – Nachfolger von – Nikola Chalakov"
     },
     {
       "id": "person-rel-hristo-g-danov-succeeds-danail-yurukov-mayor-17-hristo-g-danov",
@@ -19404,7 +19831,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hristo G. Danov – tritt die Nachfolge von Danail Yurukov an"
     },
     {
       "id": "person-rel-hristo-milev-succeeded-by-nikola-chalakov-mayor-22-hristo-milev",
@@ -19432,7 +19860,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hristo Milev – Nachfolger von – Nikola Chalakov"
     },
     {
       "id": "person-rel-hristo-milev-succeeds-georgi-dzhevizov-mayor-22-hristo-milev",
@@ -19460,7 +19889,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hristo Milev – folgt auf Georgi Dzhevizov"
     },
     {
       "id": "person-rel-hristo-mishev-succeeded-by-dimitar-bakalov-mayor-56-hristo-mishev",
@@ -19488,7 +19918,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hristo Mishev – Nachfolger von – Dimitar Bakalov"
     },
     {
       "id": "person-rel-hristo-mishev-succeeds-diran-parikyan-mayor-56-hristo-mishev",
@@ -19516,7 +19947,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hristo Mishev – folgt auf Diran Parikyan"
     },
     {
       "id": "person-rel-hristo-pavlov-succeeded-by-hariton-kuev-mayor-31-hristo-pavlov",
@@ -19544,7 +19976,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hristo Pavlov – Nachfolger von – Hariton Kuev"
     },
     {
       "id": "person-rel-hristo-pavlov-succeeds-stefan-gevgalov-mayor-31-hristo-pavlov",
@@ -19572,7 +20005,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Hristo Pavlov – tritt die Nachfolge von Stefan Gevgalov an"
     },
     {
       "id": "person-rel-inzh-ivan-totev-succeeded-by-zdravko-dimitrov-mayor-64-inzh-ivan-totev-2",
@@ -19600,7 +20034,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eng. Ivan Totev – Nachfolger von – Zdravko Dimitrov"
     },
     {
       "id": "person-rel-inzh-ivan-totev-succeeds-slavcho-atanasov-mayor-64-inzh-ivan-totev",
@@ -19628,7 +20063,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eng. Ivan Totev – tritt die Nachfolge an – Slavcho Atanasov"
     },
     {
       "id": "person-rel-isaac-passy-q2901020-child-solomon-passy-q1371792-p40",
@@ -19656,7 +20092,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Isaac Passy – Kind – Solomon Passy"
     },
     {
       "id": "person-rel-ivan-dimitrov-succeeded-by-ivan-panev-mayor-52-ivan-dimitrov",
@@ -19684,7 +20121,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Dimitrov – Nachfolger von – Ivan Panev"
     },
     {
       "id": "person-rel-ivan-dimitrov-succeeds-atanas-kostov-mayor-52-ivan-dimitrov",
@@ -19712,7 +20150,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Dimitrov – folgt auf Atanas Kostov"
     },
     {
       "id": "person-rel-ivan-panev-succeeded-by-kosta-kumanov-mayor-53-ivan-panev",
@@ -19740,7 +20179,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Panev — succeeded by — Kosta Kumanov"
     },
     {
       "id": "person-rel-ivan-panev-succeeds-ivan-dimitrov-mayor-53-ivan-panev",
@@ -19768,7 +20208,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Panev – tritt die Nachfolge von Ivan Dimitrov an"
     },
     {
       "id": "person-rel-ivan-perpeliev-succeeded-by-nikola-balkandzhiev-mayor-49-ivan-perpeliev",
@@ -19796,7 +20237,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Perpeliev – Nachfolger von – Nikola Balkandzhiev"
     },
     {
       "id": "person-rel-ivan-perpeliev-succeeds-d-r-asen-kozhuharov-mayor-49-ivan-perpeliev",
@@ -19824,7 +20266,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Perpeliev – tritt die Nachfolge von Dr. Asen Kozhuharov an"
     },
     {
       "id": "person-rel-ivan-stanchev-succeeded-by-petar-drenski-mayor-38-ivan-stanchev",
@@ -19852,7 +20295,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Stanchev – Nachfolger von – Petar Drenski"
     },
     {
       "id": "person-rel-ivan-stanchev-succeeds-petar-yanakov-mayor-38-ivan-stanchev",
@@ -19880,7 +20324,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Stanchev – tritt die Nachfolge von Petar Yankov an"
     },
     {
       "id": "person-rel-ivan-stefanov-geshov-succeeded-by-d-r-sotir-antoniadi-mayor-03-ivan-stefanov-geshov",
@@ -19908,7 +20353,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Stefanov Geshov – Nachfolger: Dr. Sotir Antoniadi"
     },
     {
       "id": "person-rel-ivan-stefanov-geshov-succeeds-kostaki-peev-mayor-03-ivan-stefanov-geshov",
@@ -19936,7 +20382,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Stefanov Geshov – folgt auf Kostaki Peev"
     },
     {
       "id": "person-rel-konstantin-hadzhikalchov-succeeded-by-mancho-manev-mayor-12-konstantin-hadzhikalchov",
@@ -19964,7 +20411,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Konstantin Hadzhikalchov – Nachfolger: Mancho Manev"
     },
     {
       "id": "person-rel-konstantin-hadzhikalchov-succeeds-angel-semerdzhiev-mayor-12-konstantin-hadzhikalchov",
@@ -19992,7 +20440,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Konstantin Hadzhikalchov – folgt auf Angel Semerdzhiev"
     },
     {
       "id": "person-rel-kosta-kumanov-succeeded-by-diran-parikyan-mayor-54-kosta-kumanov",
@@ -20020,7 +20469,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kosta Kumanov – Nachfolger: Diran Parikyan"
     },
     {
       "id": "person-rel-kosta-kumanov-succeeds-ivan-panev-mayor-54-kosta-kumanov",
@@ -20048,7 +20498,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kosta Kumanov – folgt auf Ivan Panev"
     },
     {
       "id": "person-rel-kostadin-dimitrov-succeeds-zdravko-dimitrov-mayor-68-kostadin-dimitrov",
@@ -20076,7 +20527,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kostadin Dimitrov – tritt die Nachfolge an – Zdravko Dimitrov"
     },
     {
       "id": "person-rel-kostaki-peev-succeeded-by-hristo-dyukmedzhiev-mayor-07-kostaki-peev",
@@ -20104,7 +20556,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kostaki Peev – Nachfolger von – Hristo Dyukmedzhiev"
     },
     {
       "id": "person-rel-kostaki-peev-succeeded-by-ivan-stefanov-geshov-mayor-02-kostaki-peev",
@@ -20132,7 +20585,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kostaki Peev – Nachfolger von – Ivan Stefanov Geshov"
     },
     {
       "id": "person-rel-kostaki-peev-succeeds-atanas-samokovliev-mayor-02-kostaki-peev",
@@ -20160,7 +20614,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kostaki Peev – folgt auf Atanas Samokovliev"
     },
     {
       "id": "person-rel-kostaki-peev-succeeds-hafuz-ahmed-efendi-mayor-07-kostaki-peev",
@@ -20188,7 +20643,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kostaki Peev – folgt auf Hafuz Ahmed Efendi"
     },
     {
       "id": "person-rel-lalka-berberova-q6480436-spouse-nenko-dobrev-q47456054-p26",
@@ -20216,7 +20672,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Lalka Berberova – Ehefrau – Nenko Dobrev"
     },
     {
       "id": "person-rel-mancho-manev-succeeded-by-nikola-chalakov-mayor-13-mancho-manev",
@@ -20244,7 +20701,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Mancho Manev – Nachfolger von – Nikola Chalakov"
     },
     {
       "id": "person-rel-mancho-manev-succeeds-konstantin-hadzhikalchov-mayor-13-mancho-manev",
@@ -20272,7 +20730,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Mancho Manev – tritt die Nachfolge von Konstantin Hadzhikalchov an"
     },
     {
       "id": "person-rel-mihail-madzharov-succeeded-by-danail-yurukov-mayor-15-mihail-madzharov",
@@ -20300,7 +20759,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Mihail Madzharov – Nachfolger von – Danail Yurukov"
     },
     {
       "id": "person-rel-mihail-madzharov-succeeds-nikola-chalakov-mayor-15-mihail-madzharov",
@@ -20328,7 +20788,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Mihail Madzharov – tritt die Nachfolge von Nikola Chalakov an"
     },
     {
       "id": "person-rel-milcho-leviev-q358753-sibling-yoan-leviev-q12282012-p3373",
@@ -20356,7 +20817,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Milcho Leviev – Geschwister – Yoan Leviev"
     },
     {
       "id": "person-rel-milosh-danov-succeeded-by-enyu-manolov-mayor-41-milosh-danov",
@@ -20384,7 +20846,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Milosh Danov – Nachfolger von – Enyu Manolov"
     },
     {
       "id": "person-rel-milosh-danov-succeeded-by-stefan-gevgalov-mayor-29-milosh-danov",
@@ -20412,7 +20875,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Milosh Danov – Nachfolger von – Stefan Gevgalov"
     },
     {
       "id": "person-rel-milosh-danov-succeeds-d-r-panayot-kostov-mayor-41-milosh-danov",
@@ -20440,7 +20904,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Milosh Danov – tritt die Nachfolge von Dr. Panayot Kostov an"
     },
     {
       "id": "person-rel-milosh-danov-succeeds-deno-manev-mayor-29-milosh-danov",
@@ -20468,7 +20933,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Milosh Danov – folgt auf Denyo Manev"
     },
     {
       "id": "person-rel-nenko-dobrev-q47456054-spouse-lalka-berberova-q6480436-p26",
@@ -20496,7 +20962,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nenko Dobrev – Ehefrau – Lalka Berberova"
     },
     {
       "id": "person-rel-nikola-balkandzhiev-succeeded-by-atanas-kostov-mayor-50-nikola-balkandzhiev",
@@ -20524,7 +20991,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Balkandzhiev – Nachfolger von – Atanas Kostov"
     },
     {
       "id": "person-rel-nikola-balkandzhiev-succeeds-ivan-perpeliev-mayor-50-nikola-balkandzhiev",
@@ -20552,7 +21020,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Balkandzhiev – tritt die Nachfolge von Ivan Perpeliev an"
     },
     {
       "id": "person-rel-nikola-chalakov-succeeded-by-dragan-manchov-mayor-18-nikola-chalkov",
@@ -20580,7 +21049,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Chalakov – Nachfolger von – Dragan Manchov"
     },
     {
       "id": "person-rel-nikola-chalakov-succeeded-by-mihail-madzharov-mayor-14-nikola-chalkov",
@@ -20608,7 +21078,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Chalakov – Nachfolger von – Mihail Madzharov"
     },
     {
       "id": "person-rel-nikola-chalakov-succeeded-by-valko-shopov-mayor-23-nikola-chalkov",
@@ -20636,7 +21107,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Chalakov – Nachfolger von – Valko Shopov"
     },
     {
       "id": "person-rel-nikola-chalakov-succeeds-hristo-g-danov-mayor-18-nikola-chalkov",
@@ -20664,7 +21136,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Chalakov – folgt auf Hristo G. Danov"
     },
     {
       "id": "person-rel-nikola-chalakov-succeeds-hristo-milev-mayor-23-nikola-chalkov",
@@ -20692,7 +21165,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Chalakov – folgt auf Hristo Milev"
     },
     {
       "id": "person-rel-nikola-chalakov-succeeds-mancho-manev-mayor-14-nikola-chalkov",
@@ -20720,7 +21194,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Chalakov – folgt auf Mancho Manev"
     },
     {
       "id": "person-rel-nikola-galabov-succeeded-by-panayot-mutafchiev-mayor-33-nikola-glbov",
@@ -20748,7 +21223,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Galabov – Nachfolger: Panayot Mutafchiev"
     },
     {
       "id": "person-rel-nikola-galabov-succeeds-hariton-kuev-mayor-33-nikola-glbov",
@@ -20776,7 +21252,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Galabov – tritt die Nachfolge an – Hariton Kuev"
     },
     {
       "id": "person-rel-nikola-kozarev-succeeded-by-deno-manev-mayor-27-nikola-kozarev",
@@ -20804,7 +21281,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Kozarev – Nachfolger von – Denyo Manev"
     },
     {
       "id": "person-rel-nikola-kozarev-succeeds-georgi-dzhevizov-mayor-27-nikola-kozarev",
@@ -20832,7 +21310,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikola Kozarev – tritt die Nachfolge von Georgi Dzhevizov an"
     },
     {
       "id": "person-rel-nikolay-somlev-succeeded-by-d-r-garabed-tomasyan-mayor-59-nikolay-somlev",
@@ -20860,7 +21339,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikolay Somlev – Nachfolger: Dr. Garabed Tomasyan"
     },
     {
       "id": "person-rel-nikolay-somlev-succeeds-todor-petkov-mayor-59-nikolay-somlev",
@@ -20888,7 +21368,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Nikolay Somlev – tritt die Nachfolge von Todor Petkov an"
     },
     {
       "id": "person-rel-panayot-mutafchiev-succeeded-by-petar-shilev-mayor-34-panayot-mutafchiev",
@@ -20916,7 +21397,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Panayot Mutafchiev – Nachfolger von – Petar Shilev"
     },
     {
       "id": "person-rel-panayot-mutafchiev-succeeds-nikola-galabov-mayor-34-panayot-mutafchiev",
@@ -20944,7 +21426,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Panayot Mutafchiev – tritt die Nachfolge von Nikola Galabov an"
     },
     {
       "id": "person-rel-petar-drenski-succeeded-by-d-r-panayot-kostov-mayor-39-petr-drenski",
@@ -20972,7 +21455,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Petar Drenski – Nachfolger: Dr. Panayot Kostov"
     },
     {
       "id": "person-rel-petar-drenski-succeeds-ivan-stanchev-mayor-39-petr-drenski",
@@ -21000,7 +21484,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Petar Drenski – tritt die Nachfolge von Ivan Stanchev an"
     },
     {
       "id": "person-rel-petar-malchev-succeeded-by-dimitar-kostov-mayor-46-petr-malchev",
@@ -21028,7 +21513,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Petar Malchev – Nachfolger von – Dimitar Kostov"
     },
     {
       "id": "person-rel-petar-malchev-succeeds-bozhidar-zdravkov-mayor-46-petr-malchev",
@@ -21056,7 +21542,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Petar Malchev – folgt auf Bozhidar Zdravkov"
     },
     {
       "id": "person-rel-petar-shilev-succeeded-by-d-r-ivan-kesyakov-mayor-35-petr-shilev",
@@ -21084,7 +21571,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Petar Shilev – Nachfolger: Dr. Ivan Kesyakov"
     },
     {
       "id": "person-rel-petar-shilev-succeeds-panayot-mutafchiev-mayor-35-petr-shilev",
@@ -21112,7 +21600,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Petar Shilev – tritt die Nachfolge von Panayot Mutafchiev an"
     },
     {
       "id": "person-rel-petar-stoyanov-q81215-sibling-emil-stoyanov-q1336888-p3373",
@@ -21140,7 +21629,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Petar Stoyanov – Geschwister – Emil Stoyanov"
     },
     {
       "id": "person-rel-petar-yanakov-succeeded-by-ivan-stanchev-mayor-37-petr-yankov",
@@ -21168,7 +21658,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Petar Yankov – Nachfolger von – Ivan Stanchev"
     },
     {
       "id": "person-rel-petar-yanakov-succeeds-d-r-ivan-kesyakov-mayor-37-petr-yankov",
@@ -21196,7 +21687,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Petar Yankov – tritt die Nachfolge von Dr. Ivan Kesyakov an"
     },
     {
       "id": "person-rel-petko-karavelov-succeeded-by-hafuz-ahmed-efendi-mayor-05-petko-karavelov",
@@ -21224,7 +21716,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Petko Karavelov – Nachfolger: Hafuz Ahmed Efendi"
     },
     {
       "id": "person-rel-petko-karavelov-succeeds-d-r-sotir-antoniadi-mayor-05-petko-karavelov",
@@ -21252,7 +21745,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Petko Karavelov – tritt die Nachfolge von Dr. Sotir Antoniadi an"
     },
     {
       "id": "person-rel-slavcho-atanasov-succeeded-by-inzh-ivan-totev-mayor-63-slavcho-atanasov",
@@ -21280,7 +21774,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Slavcho Atanasov – Nachfolger von – Eng. Ivan Totev"
     },
     {
       "id": "person-rel-slavcho-atanasov-succeeds-d-r-ivan-chomakov-mayor-63-slavcho-atanasov",
@@ -21308,7 +21803,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Slavcho Atanasov – tritt die Nachfolge von Dr. Ivan Chomakov an"
     },
     {
       "id": "person-rel-solomon-passy-q1371792-father-isaac-passy-q2901020-p22",
@@ -21336,7 +21832,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Solomon Passy – Vater – Isaac Passy"
     },
     {
       "id": "person-rel-spas-garnevski-succeeded-by-d-r-ivan-chomakov-mayor-61-spas-grnevski",
@@ -21364,7 +21861,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Spas Garnevski – Nachfolger von – Dr. Ivan Chomakov"
     },
     {
       "id": "person-rel-spas-garnevski-succeeds-d-r-garabed-tomasyan-mayor-61-spas-grnevski",
@@ -21392,7 +21890,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Spas Garnevski – tritt die Nachfolge von Dr. Garabed Tomasyan an"
     },
     {
       "id": "person-rel-stefan-gevgalov-succeeded-by-hristo-pavlov-mayor-30-stefan-gevgalov",
@@ -21420,7 +21919,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Stefan Gevgalov – Nachfolger von – Hristo Pavlov"
     },
     {
       "id": "person-rel-stefan-gevgalov-succeeds-milosh-danov-mayor-30-stefan-gevgalov",
@@ -21448,7 +21948,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Stefan Gevgalov – tritt die Nachfolge an – Milosh Danov"
     },
     {
       "id": "person-rel-stefan-kalchev-succeeded-by-angel-semerdzhiev-mayor-10-stefan-kalchev",
@@ -21476,7 +21977,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Stefan Kalchev – Nachfolger von – Angel Semerdzhiev"
     },
     {
       "id": "person-rel-stefan-kalchev-succeeds-dimitar-sveshtarov-mayor-10-stefan-kalchev",
@@ -21504,7 +22006,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Stefan Kalchev – folgt auf Dimitar Sveshtarov"
     },
     {
       "id": "person-rel-todor-petkov-succeeded-by-nikolay-somlev-mayor-58-todor-petkov",
@@ -21532,7 +22035,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Todor Petkov – Nachfolger von – Nikolay Somlev"
     },
     {
       "id": "person-rel-todor-petkov-succeeds-dimitar-bakalov-mayor-58-todor-petkov",
@@ -21560,7 +22064,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Todor Petkov – folgt auf Dimitar Bakalov"
     },
     {
       "id": "person-rel-valko-shopov-succeeded-by-d-r-ivan-kesyakov-mayor-24-vlko-shopov",
@@ -21588,7 +22093,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Valko Shopov – Nachfolger: Dr. Ivan Kesyakov"
     },
     {
       "id": "person-rel-valko-shopov-succeeds-nikola-chalakov-mayor-24-vlko-shopov",
@@ -21616,7 +22122,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Valko Shopov – tritt die Nachfolge von Nikola Chalakov an"
     },
     {
       "id": "person-rel-yoan-leviev-q12282012-sibling-milcho-leviev-q358753-p3373",
@@ -21644,7 +22151,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Yoan Leviev – Geschwister – Milcho Leviev"
     },
     {
       "id": "person-rel-zdravko-dimitrov-succeeded-by-kostadin-dimitrov-mayor-65-zdravko-dimitrov",
@@ -21672,7 +22180,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Zdravko Dimitrov – Nachfolger von – Kostadin Dimitrov"
     },
     {
       "id": "person-rel-zdravko-dimitrov-succeeds-inzh-ivan-totev-mayor-65-zdravko-dimitrov",
@@ -21700,7 +22209,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Zdravko Dimitrov – tritt die Nachfolge an – Eng. Ivan Totev"
     },
     {
       "id": "place-nebet-tepe",
@@ -24792,7 +25302,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Хълм на освободителите"
     },
     {
       "id": "place-djakov-house-plovdiv-q44412888",
@@ -25002,7 +25513,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Света Петка Стара"
     },
     {
       "id": "place-georgi-bojilov-house-museum-q20497770",
@@ -25452,7 +25964,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Православна духовна академия „Св. св. Кирил и Методий“"
     },
     {
       "id": "place-tzar-simeon-garden-q12298697",
@@ -25602,7 +26115,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Панаир хан"
     },
     {
       "id": "place-orta-mezar-q37813975",
@@ -26292,7 +26806,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Gekauft"
     },
     {
       "id": "org-plovdiv-municipality",
@@ -26654,7 +27169,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Karte der Eisenbahnlinie Plovdiv - Stanimaka"
     },
     {
       "id": "archive-photo-philippopolis-street-1878",
@@ -26680,7 +27196,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Straße in Philippopolis, Januar 1878"
     },
     {
       "id": "archive-photo-plovdiv-station-around-1880",
@@ -26706,7 +27223,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bahnhof Plovdiv um 1880"
     },
     {
       "id": "archive-postcard-bahnhof-von-plowdiw",
@@ -26732,7 +27250,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Postkarte: Bahnhof von Plovdiv"
     },
     {
       "id": "archive-photo-plovdiv-karastoyanov-c1908",
@@ -26758,7 +27277,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Plovdiv fotografiert von Ivan Karastoyanov"
     },
     {
       "id": "archive-photo-dzhambaztepe-1892",
@@ -26784,7 +27304,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dzhambaz Tepe im Jahr 1892"
     },
     {
       "id": "archive-photo-ottoman-clock-tower-1936",
@@ -26810,7 +27331,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Osmanischer Glockenturm auf Sahat Tepe"
     },
     {
       "id": "archive-postcard-ottoman-clock-tower",
@@ -26836,7 +27358,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Postkarte des Glockenturms"
     },
     {
       "id": "archive-postcard-sahat-hill-1",
@@ -26862,7 +27385,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Sahat Hill auf einer alten Postkarte"
     },
     {
       "id": "archive-postcard-dzhumaya-square-1",
@@ -26888,7 +27412,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dzhumaya square auf einer alten Postkarte"
     },
     {
       "id": "archive-postcard-dzhumaya-square-2",
@@ -26914,7 +27439,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dzhumaya square - Postkarte 2"
     },
     {
       "id": "archive-postcard-dzhumaya-square-3",
@@ -26940,7 +27466,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dzhumaya square - Postkarte 3"
     },
     {
       "id": "archive-postcard-gerdjica-1931",
@@ -26966,7 +27493,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Gerdschika im Jahr 1931"
     },
     {
       "id": "archive-postcard-old-bridge-gerdjika-1930s",
@@ -26992,7 +27520,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Alte Brücke und Gerdzhika Bridge in den 1930er Jahren"
     },
     {
       "id": "archive-postcard-greek-high-school",
@@ -27018,7 +27547,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Griechisches Gymnasium in Plovdiv"
     },
     {
       "id": "archive-postcard-german-school-1928",
@@ -27044,7 +27574,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die deutsche Schule in Plovdiv, 1928"
     },
     {
       "id": "archive-postcard-tsar-simeon-garden-1915",
@@ -27070,7 +27601,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Tzar Simeon Garden im Jahr 1915"
     },
     {
       "id": "archive-photo-princes-garden-plovdiv",
@@ -27096,7 +27628,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Fürstengarten in Plovdiv"
     },
     {
       "id": "archive-photo-opening-1939-plovdiv-fair",
@@ -27122,7 +27655,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eröffnung der Plovdiver Messe 1939"
     },
     {
       "id": "archive-photo-international-fair-1892-1",
@@ -27148,7 +27682,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Erste Plovdiver Ausstellung, 1892 – Bild 1"
     },
     {
       "id": "archive-photo-international-fair-1892-10",
@@ -27174,7 +27709,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Erste Plovdiver Ausstellung, 1892 – Bild 10"
     },
     {
       "id": "archive-photo-ancient-theatre-uncovered-1",
@@ -27200,7 +27736,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Aufdeckung des antiken Theaters – Bild 1"
     },
     {
       "id": "archive-photo-ancient-theatre-uncovered-2",
@@ -27226,7 +27763,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Aufdeckung des antiken Theaters – Bild 2"
     },
     {
       "id": "archive-photo-ancient-stadium-uncovered-1",
@@ -27252,7 +27790,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Freilegung des antiken Stadions – Bild 1"
     },
     {
       "id": "archive-photo-ancient-stadium-uncovered-2",
@@ -27278,7 +27817,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Freilegung des antiken Stadions – Bild 2"
     },
     {
       "id": "archive-photo-chirpan-earthquake-st-josif-1928",
@@ -27304,7 +27844,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Tschirpan-Erdbebenschaden in der Nähe von St. Josif"
     },
     {
       "id": "archive-photo-ivan-vazov-library-earthquake-1928",
@@ -27330,7 +27871,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Ivan Vazov Nationalbibliothek nach dem Erdbeben"
     },
     {
       "id": "archive-photo-balkan-cinema-plovdiv",
@@ -27356,7 +27898,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Balkankino in Plovdiv"
     },
     {
       "id": "archive-photo-trimontium-view-1958",
@@ -27382,7 +27925,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Blick vom Trimontium Hotel, 1958"
     },
     {
       "id": "archive-photo-lamartine-house-restoration-1972",
@@ -27408,7 +27952,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Restaurierungsarchiv des Lamartine House, 1972"
     },
     {
       "id": "then-now-philippopolis-street-1878",
@@ -27438,7 +27983,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Straße in Philippopolis, Januar 1878 – damals/heute"
     },
     {
       "id": "then-now-plovdiv-station-around-1880",
@@ -27468,7 +28014,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Bahnhof Plovdiv um 1880 – damals/heute"
     },
     {
       "id": "then-now-bahnhof-von-plowdiw",
@@ -27498,7 +28045,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Postkarte: Bahnhof von Plovdiv – damals/heute"
     },
     {
       "id": "then-now-plovdiv-karastoyanov-c1908",
@@ -27528,7 +28076,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Plovdiv fotografiert von Ivan Karastoyanov – damals/heute"
     },
     {
       "id": "then-now-dzhambaztepe-1892",
@@ -27556,7 +28105,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dzhambaz Tepe im Jahr 1892 – damals/heute"
     },
     {
       "id": "then-now-ottoman-clock-tower-1936",
@@ -27586,7 +28136,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Osmanischer Glockenturm auf Sahat Tepe – damals/heute"
     },
     {
       "id": "then-now-ottoman-clock-tower",
@@ -27616,7 +28167,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Postkarte des Glockenturms – damals/heute"
     },
     {
       "id": "then-now-sahat-hill-1",
@@ -27646,7 +28198,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Sahat Hill auf einer alten Postkarte – damals/heute"
     },
     {
       "id": "then-now-dzhumaya-square-1",
@@ -27676,7 +28229,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dzhumaya square auf einer alten Postkarte – damals/heute"
     },
     {
       "id": "then-now-dzhumaya-square-2",
@@ -27706,7 +28260,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dschumaja-Platz – Postkarte 2 – damals/heute"
     },
     {
       "id": "then-now-dzhumaya-square-3",
@@ -27736,7 +28291,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dschumaja-Platz – Postkarte 3 – damals/heute"
     },
     {
       "id": "then-now-gerdjica-1931",
@@ -27766,7 +28322,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Gerdschika im Jahr 1931 – damals/heute"
     },
     {
       "id": "then-now-old-bridge-gerdjika-1930s",
@@ -27796,7 +28353,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Alte Brücke und Gerdschika-Brücke in den 1930er Jahren – damals/heute"
     },
     {
       "id": "then-now-greek-high-school",
@@ -27826,7 +28384,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Griechisches Gymnasium in Plovdiv – damals/heute"
     },
     {
       "id": "then-now-german-school-1928",
@@ -27854,7 +28413,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die deutsche Schule in Plovdiv, 1928 – damals/heute"
     },
     {
       "id": "then-now-tsar-simeon-garden-1915",
@@ -27884,7 +28444,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Tzar Simeon Garden im Jahr 1915 – damals/heute"
     },
     {
       "id": "then-now-princes-garden-plovdiv",
@@ -27914,7 +28475,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Fürstengarten in Plovdiv – damals/heute"
     },
     {
       "id": "then-now-opening-1939-plovdiv-fair",
@@ -27944,7 +28506,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Eröffnung der Plovdiver Messe 1939 – damals/heute"
     },
     {
       "id": "then-now-international-fair-1892-1",
@@ -27974,7 +28537,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Erste Plovdiv-Ausstellung, 1892 – Bild 1 – damals/heute"
     },
     {
       "id": "then-now-international-fair-1892-10",
@@ -28004,7 +28568,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Erste Plovdiv-Ausstellung, 1892 – Bild 10 – damals/heute"
     },
     {
       "id": "then-now-ancient-theatre-uncovered-1",
@@ -28034,7 +28599,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Aufdeckung des antiken Theaters – Bild 1 – damals/heute"
     },
     {
       "id": "then-now-ancient-theatre-uncovered-2",
@@ -28064,7 +28630,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Aufdeckung des antiken Theaters – Bild 2 – damals/heute"
     },
     {
       "id": "then-now-ancient-stadium-uncovered-1",
@@ -28094,7 +28661,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Entdeckung des antiken Stadions – Bild 1 – damals/heute"
     },
     {
       "id": "then-now-ancient-stadium-uncovered-2",
@@ -28124,7 +28692,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Entdeckung des antiken Stadions – Bild 2 – damals/heute"
     },
     {
       "id": "then-now-chirpan-earthquake-st-josif-1928",
@@ -28154,7 +28723,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Tschirpan-Erdbebenschäden in der Nähe von St. Josif – damals/heute"
     },
     {
       "id": "then-now-ivan-vazov-library-earthquake-1928",
@@ -28184,7 +28754,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Nationalbibliothek „Iwan Wasow“ nach dem Erdbeben – damals/heute"
     },
     {
       "id": "then-now-balkan-cinema-plovdiv",
@@ -28214,7 +28785,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Balkankino in Plovdiv – damals/heute"
     },
     {
       "id": "then-now-trimontium-view-1958",
@@ -28244,7 +28816,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Blick vom Trimontium Hotel, 1958 – damals/heute"
     },
     {
       "id": "then-now-lamartine-house-restoration-1972",
@@ -28274,7 +28847,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Restaurierungsarchiv des Lamartine House, 1972 – damals/heute"
     },
     {
       "id": "primary-doc-plovdiv-gifted-children-rule-2010",
@@ -28302,7 +28876,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Regel zur Förderung außergewöhnlich begabter Kinder"
     },
     {
       "id": "primary-doc-state-gazette-pms-138-2010",
@@ -28330,7 +28905,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Dekret Nr. 138 vom 15. Juli 2010"
     },
     {
       "id": "primary-doc-plovdiv-council-decision-58-2011",
@@ -28358,7 +28934,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Beschluss Nr. 58 des Gemeinderats von Plovdiv"
     },
     {
       "id": "story-1928-earthquake",
@@ -28390,7 +28967,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "1928: Das Erdbeben, Schaden und visuelle Erinnerung"
     },
     {
       "id": "story-deep-time-seven-hills",
@@ -28426,7 +29004,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Plovdiv vor der Stadt: Die Hügel als tiefe Zeiterinnerung"
     },
     {
       "id": "story-european-capital-culture",
@@ -28462,7 +29041,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Vom Europäischen Kulturmonat zur Kulturhauptstadt Europas"
     },
     {
       "id": "story-international-fair-modernity",
@@ -28497,7 +29077,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Messestadt: Ausstellung, Industrie und Moderne"
     },
     {
       "id": "story-medieval-crossroads",
@@ -28529,7 +29110,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Der mittelalterliche Scheideweg: Von Khan Krum zum osmanischen Filibe"
     },
     {
       "id": "story-old-plovdiv-restoration",
@@ -28564,7 +29146,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Das alte Plovdiv als Projekt: Restaurierung, Verwaltung und Erinnerung"
     },
     {
       "id": "story-ottoman-filibe-city",
@@ -28600,7 +29183,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Osmanisches Filibe: Plätze, heilige Orte und städtisches Handwerk"
     },
     {
       "id": "story-revival-houses-schools",
@@ -28636,7 +29220,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Revival Plovdiv: Häuser, Schulen und städtische Gemeinschaften"
     },
     {
       "id": "story-roman-philippopolis",
@@ -28672,7 +29257,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Römisches Philippopolis: Eine Stadt der Bühnen, Spiele und Foren"
     },
     {
       "id": "story-socialist-infrastructure",
@@ -28703,7 +29289,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Nachkriegsstadt: Infrastruktur, Wohnen und kommunale Programme"
     },
     {
       "id": "story-unification-civic-memory",
@@ -28738,7 +29325,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Stadt der Vereinigung: Ereignis, Institution, Platz"
     },
     {
       "id": "education-earthquake-culture-memory",
@@ -28775,7 +29363,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Zerstörung, Wiederherstellung und Kulturkapital"
     },
     {
       "id": "education-revival-houses-schools",
@@ -28809,7 +29398,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Revival City: Häuser, Schulen und Gemeinden"
     },
     {
       "id": "education-roman-philippopolis",
@@ -28845,7 +29435,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die römische Stadt: Theater, Stadion und Forum"
     },
     {
       "id": "education-seven-hills-deep-time",
@@ -28879,7 +29470,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die sieben Hügel und Plovdivs tiefe Zeit"
     },
     {
       "id": "education-unification-civic-city",
@@ -28914,7 +29506,8 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Vereinigung und die Stadt der bürgerlichen Entscheidungen"
     }
   ]
 }

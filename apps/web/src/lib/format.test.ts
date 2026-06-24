@@ -23,7 +23,7 @@ describe("format utilities", () => {
 
   it("localizes generated history labels for German pages", () => {
     expect(knownHistoryLabel("wikidata_coordinate", "de")).toBe("Wikidata-Koordinaten");
-    expect(knownHistoryLabel("Modern period, 1984", "de")).toBe("Moderne, 1984");
+    expect(knownHistoryLabel("Modern period, 1984", "de")).toBe("Moderne Zeit, 1984");
     expect(knownHistoryLabel("not identified in the current public source", "de")).toContain("öffentlichen Quelle");
   });
 });

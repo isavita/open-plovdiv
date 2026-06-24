@@ -5,7 +5,7 @@ import SectionNav from "@components/SectionNav.astro";
 import { createHash } from "node:crypto";
 import { roleLabels, ui, type Lang } from "@i18n/ui";
 import { localeForLang, localizePath } from "@i18n/utils";
-import { knownHistoryLabel } from "@lib/format";
+import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import {
   historyKnowledgeEvents,
   historyKnowledgeIndex,
@@ -1259,7 +1259,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           {populationSources.map((source, index) => (
             <>
               {index > 0 ? " · " : ""}
-              <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
+              <a href={source.url} target="_blank" rel="noreferrer">{sourceTitle(source.title, lang)}</a>
             </>
           ))}
         </p>
@@ -1314,7 +1314,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
             {populationSources.map((source, index) => (
               <>
                 {index > 0 ? " · " : ""}
-                <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
+                <a href={source.url} target="_blank" rel="noreferrer">{sourceTitle(source.title, lang)}</a>
               </>
             ))}
           </p>
@@ -1341,7 +1341,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                   <h4>{localized(n, "name")}</h4>
                   <p>{localized(n, "summary")}</p>
                   <a class="src-link" href={n.source.url} target="_blank" rel="noreferrer">
-                    {`${growth.source}: ${n.source.title} ↗`}
+                    {`${growth.source}: ${sourceTitle(n.source.title, lang)} ↗`}
                   </a>
                 </article>
               ))}
@@ -1514,7 +1514,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                 <dd>{item.media.license}</dd>
               </dl>
               <a class="src-link" href={item.source.url} target="_blank" rel="noreferrer">
-                {`${labels.source}: ${item.source.title} ↗`}
+                {`${labels.source}: ${sourceTitle(item.source.title, lang)} ↗`}
               </a>
             </article>
           );
@@ -2285,8 +2285,8 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
             media: item.media,
             source: {
               url: item.source.url,
-              title: item.source.title,
-              license: item.source.license.label
+              title: localizedMap(item.source, "title"),
+              license: localizedMap(item.source.license, "label")
             }
           };
         });

@@ -20,7 +20,8 @@
       "lng": 24.7494,
       "address_bg": "автобусни спирки в различни райони на Пловдив",
       "address_en": "bus stops across Plovdiv",
-      "approximate": true
+      "approximate": true,
+      "address_de": "Bushaltestellen in ganz Plovdiv"
     },
     "related_project_ids": [],
     "tags": [
@@ -34,14 +35,16 @@
         "label_bg": "Facebook страница",
         "label_en": "Facebook page",
         "type": "facebook",
-        "url": "https://www.facebook.com/61582769521595/"
+        "url": "https://www.facebook.com/61582769521595/",
+        "label_de": "Facebook-Seite"
       }
     ],
     "sources": [
       {
         "title": "Plovdiv24 — доброволци се заемат с реновирането на спирки",
         "url": "https://www.plovdiv24.bg/novini/plovdiv/Dobrovolci-se-zaemat-s-renoviraneto-na-spirki-v-Plovdiv-2933559",
-        "accessed_at": "2026-06-14"
+        "accessed_at": "2026-06-14",
+        "title_de": "Plovdiv24 – Wir freuen uns über die Renovierung von Spirki"
       },
       {
         "title": "NOVA — доброволци реновират автобусни спирки",
@@ -54,10 +57,14 @@
       "query_bg": "Пловдив доброволци почистване автобусни спирки Докажи че можеш",
       "query_en": "Plovdiv volunteers bus stop cleaning Dokazhi che mozhesh",
       "discovered_at": "2026-06-14",
-      "last_checked_at": "2026-06-14"
+      "last_checked_at": "2026-06-14",
+      "query_de": "Freiwillige Bushaltestelle in Plovdiv reinigen Dokazhi che mozhesh"
     },
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "title_de": "Dokazhi, che mozhesh – Beleben Sie eine Bushaltestelle wieder",
+    "summary_de": "Freiwilligeninitiative für Reinigung, Neuanstrich, kleine Reparaturen und Verbesserung von Bushaltestellen in Plovdiv.",
+    "call_to_action_de": "Kontaktieren Sie die Organisatoren auf Facebook, wenn Sie als Freiwilliger mitmachen möchten."
   },
   {
     "id": "community-plovdiv-bg-be-active-green-mile",
@@ -82,7 +89,8 @@
       "lng": 24.738,
       "address_bg": "бреговете на река Марица, Пловдив",
       "address_en": "Maritsa riverbanks, Plovdiv",
-      "approximate": true
+      "approximate": true,
+      "address_de": "Maritsa-Flussufer, Plovdiv"
     },
     "related_project_ids": [
       "plovdiv-road-maritsa-sever"
@@ -98,20 +106,23 @@
         "label_bg": "Сайт",
         "label_en": "Website",
         "type": "website",
-        "url": "https://bgbeactive.org/"
+        "url": "https://bgbeactive.org/",
+        "label_de": "Website"
       },
       {
         "label_bg": "Facebook страница",
         "label_en": "Facebook page",
         "type": "facebook",
-        "url": "https://www.facebook.com/bgbeactive/"
+        "url": "https://www.facebook.com/bgbeactive/",
+        "label_de": "Facebook-Seite"
       }
     ],
     "sources": [
       {
         "title": "Plovdiv24 — търсят се доброволци за почистване на 11 км от река Марица",
         "url": "https://www.plovdiv24.bg/novini/plovdiv/Tursyat-se-dobrovolci-za-pochistvane-na-11-km-ot-reka-Marica-1429893",
-        "accessed_at": "2026-06-14"
+        "accessed_at": "2026-06-14",
+        "title_de": "Plovdiv24 – Diese Unterkunft befindet sich 11 km von Mariza entfernt"
       },
       {
         "title": "BG Be Active — контакт",
@@ -124,10 +135,14 @@
       "query_bg": "Пловдив доброволци почистване Марица BG Бъди активен",
       "query_en": "Plovdiv volunteers Maritsa cleanup BG Be Active",
       "discovered_at": "2026-06-14",
-      "last_checked_at": "2026-06-14"
+      "last_checked_at": "2026-06-14",
+      "query_de": "Plovdiv-Freiwillige räumen Maritsa auf BG Be Active"
     },
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "title_de": "Green Mile – Säuberung des Maritsa-Flusses",
+    "summary_de": "BG Be Active-Kampagne für organisierte Aufräumarbeiten entlang der Maritsa-Flussufer mit Freiwilligen, NGOs und lokalen Partnern.",
+    "call_to_action_de": "Folgen Sie der Website oder Facebook-Seite von BG Be Active für bevorstehende Freiwilligenaktionen."
   },
   {
     "id": "community-plovdiv-krasiv-plovdiv-cleanups",
@@ -152,7 +167,8 @@
       "lng": 24.75,
       "address_bg": "различни паркове и квартали в Пловдив",
       "address_en": "parks and neighbourhoods across Plovdiv",
-      "approximate": true
+      "approximate": true,
+      "address_de": "Parks und Viertel in ganz Plovdiv"
     },
     "related_project_ids": [],
     "tags": [
@@ -166,20 +182,23 @@
         "label_bg": "Сайт",
         "label_en": "Website",
         "type": "website",
-        "url": "https://krasivplovdiv.bg/"
+        "url": "https://krasivplovdiv.bg/",
+        "label_de": "Website"
       },
       {
         "label_bg": "Facebook страница",
         "label_en": "Facebook page",
         "type": "facebook",
-        "url": "https://www.facebook.com/krasiv.plovdiv/"
+        "url": "https://www.facebook.com/krasiv.plovdiv/",
+        "label_de": "Facebook-Seite"
       }
     ],
     "sources": [
       {
         "title": "Красив Пловдив — будни граждани с кауза",
         "url": "https://krasivplovdiv.bg/News/Home/Details/1",
-        "accessed_at": "2026-06-14"
+        "accessed_at": "2026-06-14",
+        "title_de": "Красив Пловдив – будни граждани с кауза"
       },
       {
         "title": "Красив Пловдив — начало",
@@ -192,10 +211,14 @@
       "query_bg": "Красив Пловдив доброволци почистване паркове",
       "query_en": "Krasiv Plovdiv volunteer cleanups parks",
       "discovered_at": "2026-06-14",
-      "last_checked_at": "2026-06-14"
+      "last_checked_at": "2026-06-14",
+      "query_de": "Krasiv Plovdiv räumt ehrenamtlich Parks auf"
     },
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "title_de": "Krasiv Plovdiv – freiwillige Aufräumarbeiten",
+    "summary_de": "Eine Gruppe aktiver Bürger organisiert Aufräumarbeiten und Verbesserungen von Parks, Grünflächen und Räumen zwischen Wohnblöcken in Plovdiv.",
+    "call_to_action_de": "Folgen Sie der Website oder Facebook-Seite von Krasiv Plovdiv für bevorstehende Freiwilligenaktionen."
   },
   {
     "id": "community-plovdiv-mission-lauta",
@@ -218,7 +241,8 @@
       "lng": 24.789,
       "address_bg": "парк „Лаута“, район „Тракия“, Пловдив",
       "address_en": "Lauta Park, Trakiya district, Plovdiv",
-      "approximate": true
+      "approximate": true,
+      "address_de": "Lauta Park, Trakiya district, Plovdiv"
     },
     "related_project_ids": [
       "plovdiv-stadium-lokomotiv"
@@ -234,14 +258,16 @@
         "label_bg": "Facebook събитие",
         "label_en": "Facebook event",
         "type": "event",
-        "url": "https://www.facebook.com/events/909805020621975/"
+        "url": "https://www.facebook.com/events/909805020621975/",
+        "label_de": "Facebook-Event"
       }
     ],
     "sources": [
       {
         "title": "Община Пловдив — „Мисия Лаута 5“",
         "url": "https://www.plovdiv.bg/20241105-2/",
-        "accessed_at": "2026-06-14"
+        "accessed_at": "2026-06-14",
+        "title_de": "Община Пловдив – „Мисия Лаута 5“"
       },
       {
         "title": "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5",
@@ -254,10 +280,14 @@
       "query_bg": "Мисия Лаута доброволци Пловдив",
       "query_en": "Mission Lauta volunteers Plovdiv",
       "discovered_at": "2026-06-14",
-      "last_checked_at": "2026-06-14"
+      "last_checked_at": "2026-06-14",
+      "query_de": "Freiwillige der Mission Lauta in Plovdiv"
     },
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "title_de": "Mission Lauta",
+    "summary_de": "Bürgerinitiative zur groß angelegten Sanierung und Instandhaltung des Lauta-Parks, an der Hunderte von Freiwilligen beteiligt sind.",
+    "call_to_action_de": "Verfolgen Sie die Ankündigungen und Facebook-Veranstaltungen des Distrikts Trakiya für die nächsten Ausgaben."
   },
   {
     "id": "community-plovdiv-stolipinovo-cleanup",
@@ -279,7 +309,8 @@
       "lng": 24.79,
       "address_bg": "ул. „Ландос“, квартал „Столипиново“, Пловдив",
       "address_en": "Landos Street, Stolipinovo neighbourhood, Plovdiv",
-      "approximate": true
+      "approximate": true,
+      "address_de": "Landos-Straße, Stadtteil Stolipinovo, Plovdiv"
     },
     "related_project_ids": [],
     "tags": [
@@ -293,14 +324,16 @@
         "label_bg": "Източник",
         "label_en": "Source",
         "type": "source",
-        "url": "https://bnt.bg/news/pochistvat-kvartal-stolipinovo-iniciativata-obedinyava-dobrovolci-i-mestni-zhiteli-v413436-348167news.html"
+        "url": "https://bnt.bg/news/pochistvat-kvartal-stolipinovo-iniciativata-obedinyava-dobrovolci-i-mestni-zhiteli-v413436-348167news.html",
+        "label_de": "Quelle"
       }
     ],
     "sources": [
       {
         "title": "БНТ — почистват квартал „Столипиново“",
         "url": "https://bnt.bg/news/pochistvat-kvartal-stolipinovo-iniciativata-obedinyava-dobrovolci-i-mestni-zhiteli-v413436-348167news.html",
-        "accessed_at": "2026-06-14"
+        "accessed_at": "2026-06-14",
+        "title_de": "БНТ — почистват кvartal „Столипиново“"
       },
       {
         "title": "Радио Пловдив — доброволци чистят и облагородяват Столипиново",
@@ -313,10 +346,14 @@
       "query_bg": "Столипиново доброволци почистване Фондация Рома-Пловдив",
       "query_en": "Stolipinovo volunteer cleanup Roma-Plovdiv Foundation",
       "discovered_at": "2026-06-14",
-      "last_checked_at": "2026-06-14"
+      "last_checked_at": "2026-06-14",
+      "query_de": "Stolipinovo, freiwillige Aufräumaktion der Roma-Plovdiv-Stiftung"
     },
     "data_quality": "public_source",
-    "updated_at": "2026-06-14"
+    "updated_at": "2026-06-14",
+    "title_de": "Lasst uns unsere Nachbarschaft säubern – Stolipinovo",
+    "summary_de": "Bürgerkampagne für Aufräumarbeiten und Verbesserungen in Stolipinovo, die Anwohner, Freiwillige und Vertreter verschiedener Gemeinden zusammenbringt.",
+    "call_to_action_de": "Überprüfen Sie die Quellen und lokalen Veranstalterkanäle auf bevorstehende Aktionen in der Nachbarschaft."
   },
   {
     "id": "community-plovdiv-zeleni-balkani",
@@ -341,7 +378,8 @@
       "lng": 24.7556,
       "address_bg": "бул. „Шести септември“, Пловдив",
       "address_en": "6 September Blvd, Plovdiv",
-      "approximate": true
+      "approximate": true,
+      "address_de": "6. September Boulevard, Plovdiv"
     },
     "related_project_ids": [],
     "tags": [
@@ -355,20 +393,23 @@
         "label_bg": "Сайт",
         "label_en": "Website",
         "type": "website",
-        "url": "https://greenbalkans.org/"
+        "url": "https://greenbalkans.org/",
+        "label_de": "Website"
       },
       {
         "label_bg": "Facebook страница",
         "label_en": "Facebook page",
         "type": "facebook",
-        "url": "https://www.facebook.com/GreenBalkans"
+        "url": "https://www.facebook.com/GreenBalkans",
+        "label_de": "Facebook-Seite"
       }
     ],
     "sources": [
       {
         "title": "Зелени Балкани — официален сайт",
         "url": "https://greenbalkans.org/en/",
-        "accessed_at": "2026-06-17"
+        "accessed_at": "2026-06-17",
+        "title_de": "Зелени Балкани – Offizielle Seite"
       },
       {
         "title": "НПО портал — Зелени Балкани, Пловдив",
@@ -381,10 +422,14 @@
       "query_bg": "Зелени Балкани Пловдив природозащитна организация доброволци",
       "query_en": "Green Balkans Plovdiv environmental NGO volunteers",
       "discovered_at": "2026-06-17",
-      "last_checked_at": "2026-06-17"
+      "last_checked_at": "2026-06-17",
+      "query_de": "Freiwillige Umwelt-NGOs von Green Balkans Plovdiv"
     },
     "data_quality": "public_source",
-    "updated_at": "2026-06-17"
+    "updated_at": "2026-06-17",
+    "title_de": "Grüner Balkan",
+    "summary_de": "Bulgariens älteste Umwelt-NGO (seit 1988) mit Sitz in Plovdiv – Arten- und Lebensraumschutz, Freiwilligenprogramme und Kampagnen.",
+    "call_to_action_de": "Entdecken Sie die Website von Green Balkans für Freiwilligenprogramme und Naturschutzkampagnen."
   },
   {
     "id": "community-plovdiv-cyclists",
@@ -407,7 +452,8 @@
       "lng": 24.7499,
       "address_bg": "Пловдив (градска велосипедна общност)",
       "address_en": "Plovdiv (city-wide cycling community)",
-      "approximate": true
+      "approximate": true,
+      "address_de": "Plovdiv (stadtweite Fahrradgemeinschaft)"
     },
     "related_project_ids": [],
     "tags": [
@@ -420,14 +466,16 @@
         "label_bg": "Facebook общност",
         "label_en": "Facebook community",
         "type": "facebook",
-        "url": "https://www.facebook.com/p/%D0%9A%D0%BE%D0%BB%D0%BE%D0%B5%D0%B7%D0%B4%D0%B0%D1%87%D0%B8-%D0%B2%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%81%D1%82%D0%B8-%D0%B2-%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2-100070168143097/"
+        "url": "https://www.facebook.com/p/%D0%9A%D0%BE%D0%BB%D0%BE%D0%B5%D0%B7%D0%B4%D0%B0%D1%87%D0%B8-%D0%B2%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%81%D1%82%D0%B8-%D0%B2-%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2-100070168143097/",
+        "label_de": "Facebook-Community"
       }
     ],
     "sources": [
       {
         "title": "Facebook — Колоездачи / велосипедисти в Пловдив",
         "url": "https://www.facebook.com/p/%D0%9A%D0%BE%D0%BB%D0%BE%D0%B5%D0%B7%D0%B4%D0%B0%D1%87%D0%B8-%D0%B2%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%81%D1%82%D0%B8-%D0%B2-%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2-100070168143097/",
-        "accessed_at": "2026-06-17"
+        "accessed_at": "2026-06-17",
+        "title_de": "Facebook – Freunde / Fahrradfahrer in Plündern"
       },
       {
         "title": "Под тепето — колоездачи поставят теми за градска мобилност",
@@ -440,9 +488,13 @@
       "query_bg": "Пловдив велосипеден клуб критична маса колоездачи общност",
       "query_en": "Plovdiv cyclists community critical mass",
       "discovered_at": "2026-06-17",
-      "last_checked_at": "2026-06-17"
+      "last_checked_at": "2026-06-17",
+      "query_de": "Kritische Masse der Radfahrergemeinschaft in Plovdiv"
     },
     "data_quality": "public_source",
-    "updated_at": "2026-06-17"
+    "updated_at": "2026-06-17",
+    "title_de": "Radfahrergemeinschaft Plovdiv",
+    "summary_de": "Eine offene Gemeinschaft von Radfahrern in Plovdiv, die das Radfahren fördert, Routen und Fahrten teilt und Themen zu sichererer städtischer Mobilität anspricht.",
+    "call_to_action_de": "Folgen Sie der Community auf Facebook, um an Fahrten und Initiativen teilzunehmen."
   }
 ]

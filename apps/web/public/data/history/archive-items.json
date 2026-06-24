@@ -20,7 +20,8 @@
       "method": "map_extent_approximated_to_city",
       "confidence": "city_context",
       "notes_bg": "Картата е геореферирана към централния запис за Пловдив; точен растерен контролен слой предстои.",
-      "notes_en": "The map is georeferenced to the central Plovdiv record; exact raster control points are still pending."
+      "notes_en": "The map is georeferenced to the central Plovdiv record; exact raster control points are still pending.",
+      "notes_de": "Die Karte ist auf den zentralen Plovdiv-Datensatz georeferenziert; genaue Rasterkontrollpunkte stehen noch aus."
     },
     "overlay_bounds": {
       "south": 42.005,
@@ -29,7 +30,8 @@
       "east": 24.94,
       "method": "approximate_extent",
       "notes_bg": "Приблизителен правоъгълен обхват за визуално наслагване на картата върху съвременната основа; не е контролно-точково ректифициране.",
-      "notes_en": "Approximate rectangular extent for visually overlaying the map on the modern basemap; this is not control-point rectification."
+      "notes_en": "Approximate rectangular extent for visually overlaying the map on the modern basemap; this is not control-point rectification.",
+      "notes_de": "Ungefähre rechteckige Ausdehnung zur visuellen Überlagerung der Karte mit der modernen Grundkarte; Dies ist keine Kontrollpunktberichtigung."
     },
     "media": {
       "type": "image",
@@ -39,7 +41,8 @@
       "credit": "Unknown author",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "BASA-3K-7-334-14-Karte von Plovdiv – Stanimaka-Eisenbahn.jpeg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-3K-7-334-14-Map of Plovdiv - Stanimaka railway.jpeg",
@@ -49,7 +52,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – BASA-3K-7-334-14-Karte von Plovdiv – Stanimaka-Eisenbahn.jpeg"
     },
     "commons_categories": [
       "1928 in Bulgaria",
@@ -71,8 +75,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Karte der Eisenbahnlinie Plovdiv - Stanimaka",
+    "description_de": "Archivkarte aus der Sammlung des Bulgarischen Archivs, die als georeferenzierte kartografische Ausgangsebene für Plovdiv verwendet wird."
   },
   {
     "id": "archive-photo-philippopolis-street-1878",
@@ -95,7 +102,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Старият град (Старинен Пловдив).",
-      "notes_en": "The image is linked to the coordinates of the existing place record: The Old Town (Old Plovdiv)."
+      "notes_en": "The image is linked to the coordinates of the existing place record: The Old Town (Old Plovdiv).",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Die Altstadt (Old Plovdiv)."
     },
     "media": {
       "type": "image",
@@ -105,7 +113,8 @@
       "credit": "Unknown author",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "0530 Вид на одну из улиц Filippopoly (Polen), Januar 1878.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — 0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg",
@@ -115,7 +124,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – 0530 Veröffentlicht am 17. September 1878 in der Filippopol-Straße (Polen), Januar 1878.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -132,8 +142,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Straße in Philippopolis, Januar 1878",
+    "description_de": "Frühes Foto einer Straße in Philippopolis/Plovdiv, georeferenziert auf die Altstadt als ungefähren städtischen Kontext.",
+    "date_display_de": "Januar 1878"
   },
   {
     "id": "archive-photo-plovdiv-station-around-1880",
@@ -156,7 +170,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Централна гара Пловдив.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Plovdiv Central railway station."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Plovdiv Central railway station.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Plovdiv Central railway station."
     },
     "media": {
       "type": "image",
@@ -166,7 +181,8 @@
       "credit": "Dimitar Kavra",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Bahnhof Plovdiv um 1880.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Plovdiv Train Station Around 1880.jpg",
@@ -176,7 +192,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Bahnhof Plovdiv um 1880.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -191,8 +208,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Bahnhof Plovdiv um 1880",
+    "description_de": "Historisches Foto des Bahnhofs, verknüpft mit den Koordinaten des modernen Hauptbahnhofs.",
+    "date_display_de": "c. 1880"
   },
   {
     "id": "archive-postcard-bahnhof-von-plowdiw",
@@ -215,7 +236,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Централна гара Пловдив.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Plovdiv Central railway station."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Plovdiv Central railway station.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Plovdiv Central railway station."
     },
     "media": {
       "type": "image",
@@ -225,7 +247,8 @@
       "credit": "Unknown author",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Bahnhof von Plovdiv.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Bahnhof von Plowdiw.jpg",
@@ -235,7 +258,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Bahnhof von Plovdiv.jpg"
     },
     "commons_categories": [
       "1916 postcards",
@@ -251,8 +275,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Postkarte: Bahnhof von Plovdiv",
+    "description_de": "Alte Postkarte des Bahnhofs Plovdiv, verwendet für einen damaligen/heute-Vergleich mit dem heutigen Hauptbahnhof.",
+    "date_display_de": "Anfang des 20. Jahrhunderts."
   },
   {
     "id": "archive-photo-plovdiv-karastoyanov-c1908",
@@ -275,7 +303,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "city_context",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Пловдив.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Plovdiv."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Plovdiv.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Plovdiv."
     },
     "media": {
       "type": "image",
@@ -285,7 +314,8 @@
       "credit": "Ivan Karastoyanov",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Plovdiv Ivan Karastoyanov.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg",
@@ -295,7 +325,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Plovdiv Ivan Karastoyanov.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -310,8 +341,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Plovdiv fotografiert von Ivan Karastoyanov",
+    "description_de": "Panoramafoto des Stadtarchivs, georeferenziert auf das Zentrum von Plovdiv für eine umfassende historische Orientierung.",
+    "date_display_de": "c. 1908"
   },
   {
     "id": "archive-photo-dzhambaztepe-1892",
@@ -334,7 +369,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Джамбаз тепе.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Dzhambaz hill in Plovdiv."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Dzhambaz hill in Plovdiv.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Dzhambaz hill in Plovdiv."
     },
     "media": {
       "type": "image",
@@ -344,7 +380,8 @@
       "credit": "Ivan Karastoyanov",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Dzhambaztepe 1892.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhambaztepe 1892.jpg",
@@ -354,7 +391,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Dzhambaztepe 1892.jpg"
     },
     "commons_categories": [
       "Author died more than 70 years ago public domain images",
@@ -370,8 +408,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Dzhambaz Tepe im Jahr 1892",
+    "description_de": "Historische Ansicht eines der drei Hügel, verbunden mit der modernen Ortsaufzeichnung Dzhambaz Tepe."
   },
   {
     "id": "archive-photo-ottoman-clock-tower-1936",
@@ -394,7 +435,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Сахат тепе.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Sahat hill in Plovdiv."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Sahat hill in Plovdiv.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Sahat hill in Plovdiv."
     },
     "media": {
       "type": "image",
@@ -404,7 +446,8 @@
       "credit": "Unknown photographer",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Osmanischer Glockenturm in Plovdiv auf altem Foto.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Ottoman clock tower in Plovdiv on old photo.jpg",
@@ -414,7 +457,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Osmanischer Glockenturm in Plovdiv auf altem Foto.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -430,8 +474,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Osmanischer Glockenturm auf Sahat Tepe",
+    "description_de": "Altes Foto des Glockenturms, georeferenziert auf Sahat Tepe.",
+    "date_display_de": "17. April 1936"
   },
   {
     "id": "archive-postcard-ottoman-clock-tower",
@@ -454,7 +502,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Сахат тепе.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Sahat hill in Plovdiv."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Sahat hill in Plovdiv.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Sahat hill in Plovdiv."
     },
     "media": {
       "type": "image",
@@ -464,7 +513,8 @@
       "credit": "VladislavNedelev",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Osmanischer Glockenturm in Plovdiv auf alter Postkarte.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Ottoman clock tower in Plovdiv on old postcard.jpg",
@@ -474,7 +524,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Osmanischer Glockenturm in Plovdiv auf alter Postkarte.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -491,8 +542,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Postkarte des Glockenturms",
+    "description_de": "Historische Postkarte von Sahat Tepe und seinem Glockenturm, verknüpft mit den Hügelkoordinaten.",
+    "date_display_de": "Anfang des 20. Jahrhunderts."
   },
   {
     "id": "archive-postcard-sahat-hill-1",
@@ -515,7 +570,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Сахат тепе.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Sahat hill in Plovdiv."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Sahat hill in Plovdiv.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Sahat hill in Plovdiv."
     },
     "media": {
       "type": "image",
@@ -525,7 +581,8 @@
       "credit": "VladislavNedelev",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Sahat hill in Plovdiv auf alter Postkarte 1.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Sahat Hill in Plovdiv on old postcard 1.jpg",
@@ -535,7 +592,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Sahat hill in Plovdiv auf alter Postkarte 1.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -552,8 +610,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Sahat Hill auf einer alten Postkarte",
+    "description_de": "Postkartenansicht von Sahat Hill, enthalten in der georeferenzierten Archivebene.",
+    "date_display_de": "Anfang des 20. Jahrhunderts."
   },
   {
     "id": "archive-postcard-dzhumaya-square-1",
@@ -576,7 +638,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Римски стадион.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Dzhumaya square."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Dzhumaya square.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Dzhumaya square."
     },
     "media": {
       "type": "image",
@@ -586,7 +649,8 @@
       "credit": "VladislavNedelev",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Dzhumaya square auf alter Postkarte.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhumaya square on old postcard.jpg",
@@ -596,7 +660,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Dzhumaya square auf alter Postkarte.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -612,8 +677,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Dzhumaya square auf einer alten Postkarte",
+    "description_de": "Alte Postkarte des Dzhumaya squarees, verknüpft mit den Koordinaten des Platzes und des römischen Stadions.",
+    "date_display_de": "Anfang des 20. Jahrhunderts."
   },
   {
     "id": "archive-postcard-dzhumaya-square-2",
@@ -636,7 +705,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Римски стадион.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Dzhumaya square."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Dzhumaya square.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Dzhumaya square."
     },
     "media": {
       "type": "image",
@@ -646,7 +716,8 @@
       "credit": "Unknown photographer",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Dzhumaya square auf alter Postkarte 2.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhumaya square on old postcard 2.jpg",
@@ -656,7 +727,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Dzhumaya square auf alter Postkarte 2.jpg"
     },
     "commons_categories": [
       "1914 in Bulgaria",
@@ -673,8 +745,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Dzhumaya square - Postkarte 2",
+    "description_de": "Zweite alte Postkarte in der Dzhumaya square-Serie, die für den städtischen Vergleich zwischen damals und heute verwendet wird.",
+    "date_display_de": "Anfang des 20. Jahrhunderts."
   },
   {
     "id": "archive-postcard-dzhumaya-square-3",
@@ -697,7 +773,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Римски стадион.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Dzhumaya square."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Dzhumaya square.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Dzhumaya square."
     },
     "media": {
       "type": "image",
@@ -707,7 +784,8 @@
       "credit": "VladislavNedelev",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Dzhumaya square auf alter Postkarte 3.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhumaya square on old postcard 3.jpg",
@@ -717,7 +795,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Dzhumaya square auf alter Postkarte 3.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -733,8 +812,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Dzhumaya square - Postkarte 3",
+    "description_de": "Dritte alte Postkarte aus dem öffentlichen Commons-Archiv für den Dzhumaya square.",
+    "date_display_de": "Anfang des 20. Jahrhunderts."
   },
   {
     "id": "archive-postcard-gerdjica-1931",
@@ -757,7 +840,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Герджика.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Gerdzhika Bridge."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Gerdzhika Bridge.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Gerdzhika Bridge."
     },
     "media": {
       "type": "image",
@@ -767,7 +851,8 @@
       "credit": "Realsteel007",
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Gerdjica 1931.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Gerdjica 1931.jpg",
@@ -777,7 +862,8 @@
         "status": "open_license",
         "label": "CC BY 4.0",
         "url": "https://creativecommons.org/licenses/by/4.0"
-      }
+      },
+      "title_de": "Wikimedia Commons – Gerdjica 1931.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -791,8 +877,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Gerdschika im Jahr 1931",
+    "description_de": "Alte Postkarte/Foto von Gerdzhika, georeferenziert auf die moderne Brücke."
   },
   {
     "id": "archive-postcard-old-bridge-gerdjika-1930s",
@@ -815,7 +904,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Герджика.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Gerdzhika Bridge."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Gerdzhika Bridge.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Gerdzhika Bridge."
     },
     "media": {
       "type": "image",
@@ -825,7 +915,8 @@
       "credit": "Unknown photographer",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Plovdiv, Alte Brücke und Gerdjika-Brücke, 1930er Jahre.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Plovdiv, Old Bridge and Gerdjika Bridge, 1930s.jpg",
@@ -835,7 +926,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Plovdiv, Alte Brücke und Gerdjika-Brücke, 1930er Jahre.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -854,8 +946,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Alte Brücke und Gerdzhika Bridge in den 1930er Jahren",
+    "description_de": "Historische Ansicht der Brücken bei Gerdzhika, verknüpft mit der modernen Brückenaufzeichnung.",
+    "date_display_de": "1930er Jahre"
   },
   {
     "id": "archive-postcard-greek-high-school",
@@ -878,7 +974,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Основно училище „Гео Милев“.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Geo Milev Primary School."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Geo Milev Primary School.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Geo Milev Primary School."
     },
     "media": {
       "type": "image",
@@ -888,7 +985,8 @@
       "credit": "Unknown author",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Griechisches Gymnasium in Plovdiv.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Greek High School in Plovdiv.jpg",
@@ -898,7 +996,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Griechisches Gymnasium in Plovdiv.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -917,8 +1016,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Griechisches Gymnasium in Plovdiv",
+    "description_de": "Alte Postkarte eines zentralen Schulgebäudes, verknüpft mit der modernen Schulakte von Geo Milev.",
+    "date_display_de": "Anfang des 20. Jahrhunderts."
   },
   {
     "id": "archive-postcard-german-school-1928",
@@ -941,7 +1044,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Немско училище.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: German school in Plovdiv."
+      "notes_en": "The image is linked to the coordinates of the existing place record: German school in Plovdiv.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: German school in Plovdiv."
     },
     "media": {
       "type": "image",
@@ -951,7 +1055,8 @@
       "credit": "S.Nasimov/С. Насимов",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Die Deutsche Schule, Plovdiv, 1928.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — The German school, Plovdiv, 1928.jpg",
@@ -961,7 +1066,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Die Deutsche Schule, Plovdiv, 1928.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -979,8 +1085,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Die deutsche Schule in Plovdiv, 1928",
+    "description_de": "Postkarte/Foto der Deutschen Schule, verlinkt mit der georeferenzierten Bauakte."
   },
   {
     "id": "archive-postcard-tsar-simeon-garden-1915",
@@ -1003,7 +1112,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Цар Симеонова градина.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Tzar Simeon Garden."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Tzar Simeon Garden.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Tzar Simeon Garden."
     },
     "media": {
       "type": "image",
@@ -1013,7 +1123,8 @@
       "credit": "Unknown author",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgarien, 1915.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgaria, 1915.jpg",
@@ -1023,7 +1134,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgarien, 1915.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -1042,8 +1154,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Tzar Simeon Garden im Jahr 1915",
+    "description_de": "Postkarte der Staatsagentur des Bulgarischen Archivs mit dem Tzar Simeon Garden."
   },
   {
     "id": "archive-photo-princes-garden-plovdiv",
@@ -1066,7 +1181,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Цар Симеонова градина.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Tzar Simeon Garden."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Tzar Simeon Garden.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Tzar Simeon Garden."
     },
     "media": {
       "type": "image",
@@ -1076,7 +1192,8 @@
       "credit": "Unknown author",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Fürstengarten Plovdiv.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Prince's Garden Plovdiv.jpg",
@@ -1086,7 +1203,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Fürstengarten Plovdiv.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -1103,8 +1221,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Fürstengarten in Plovdiv",
+    "description_de": "Blick auf den historischen Garten, verbunden mit dem modernen Tsar-Simeon-Gartenpark.",
+    "date_display_de": "Anfang des 20. Jahrhunderts."
   },
   {
     "id": "archive-photo-opening-1939-plovdiv-fair",
@@ -1127,7 +1249,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Международен панаир Пловдив.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: International Fair Plovdiv."
+      "notes_en": "The image is linked to the coordinates of the existing place record: International Fair Plovdiv.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: International Fair Plovdiv."
     },
     "media": {
       "type": "image",
@@ -1137,7 +1260,8 @@
       "credit": "Unknown author",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "BASA 1318K-1-5896-2 Eröffnung der Plovdiver Messe 1939.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA 1318K-1-5896-2 Opening of 1939 Plovdiv fair.jpg",
@@ -1147,7 +1271,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – BASA 1318K-1-5896-2 Eröffnung der Plovdiver Messe 1939.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -1167,8 +1292,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Eröffnung der Plovdiver Messe 1939",
+    "description_de": "Archivfoto von der Eröffnung der Plovdiv-Messe 1939, verbunden mit dem modernen Messekomplex."
   },
   {
     "id": "archive-photo-international-fair-1892-1",
@@ -1191,7 +1319,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Международен панаир Пловдив.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: International Fair Plovdiv."
+      "notes_en": "The image is linked to the coordinates of the existing place record: International Fair Plovdiv.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: International Fair Plovdiv."
     },
     "media": {
       "type": "image",
@@ -1201,7 +1330,8 @@
       "credit": "Ivan Karastoyanov",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg",
@@ -1211,7 +1341,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -1230,8 +1361,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Erste Plovdiver Ausstellung, 1892 – Bild 1",
+    "description_de": "Foto von der Internationalen Ausstellung in Plovdiv 1892, aus der Sammlung der Staatsagentur des Bulgarischen Archivs."
   },
   {
     "id": "archive-photo-international-fair-1892-10",
@@ -1254,7 +1388,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Международен панаир Пловдив.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: International Fair Plovdiv."
+      "notes_en": "The image is linked to the coordinates of the existing place record: International Fair Plovdiv.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: International Fair Plovdiv."
     },
     "media": {
       "type": "image",
@@ -1264,7 +1399,8 @@
       "credit": "Ivan Karastoyanov",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg",
@@ -1274,7 +1410,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -1293,8 +1430,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Erste Plovdiver Ausstellung, 1892 – Bild 10",
+    "description_de": "Zweites ausgewähltes Bild aus der Ausstellungsfotoserie von 1892."
   },
   {
     "id": "archive-photo-ancient-theatre-uncovered-1",
@@ -1317,7 +1457,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Античен театър.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Ancient Theatre."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Ancient Theatre.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Ancient Theatre."
     },
     "media": {
       "type": "image",
@@ -1327,7 +1468,8 @@
       "credit": "Realsteel007",
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Razkrivane antichen teatur.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane antichen teatur.jpg",
@@ -1337,7 +1479,8 @@
         "status": "open_license",
         "label": "CC BY 4.0",
         "url": "https://creativecommons.org/licenses/by/4.0"
-      }
+      },
+      "title_de": "Wikimedia Commons – Razkrivane antichen teatur.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -1350,8 +1493,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Aufdeckung des antiken Theaters – Bild 1",
+    "description_de": "Fotoarchivmaterial von der Freilegung des antiken Theaters.",
+    "date_display_de": "Ausgrabungszeit, 20. Jh."
   },
   {
     "id": "archive-photo-ancient-theatre-uncovered-2",
@@ -1374,7 +1521,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Античен театър.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Ancient Theatre."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Ancient Theatre.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Ancient Theatre."
     },
     "media": {
       "type": "image",
@@ -1384,7 +1532,8 @@
       "credit": "Realsteel007",
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Razkrivane antichen teatur1.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane antichen teatur1.jpg",
@@ -1394,7 +1543,8 @@
         "status": "open_license",
         "label": "CC BY 4.0",
         "url": "https://creativecommons.org/licenses/by/4.0"
-      }
+      },
+      "title_de": "Wikimedia Commons – Razkrivane antichen teatur1.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -1407,8 +1557,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Aufdeckung des antiken Theaters – Bild 2",
+    "description_de": "Zweites Archivbild von der Freilegung des antiken Theaters.",
+    "date_display_de": "Ausgrabungszeit, 20. Jh."
   },
   {
     "id": "archive-photo-ancient-stadium-uncovered-1",
@@ -1431,7 +1585,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Античен стадион.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Ancient Stadium."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Ancient Stadium.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Ancient Stadium."
     },
     "media": {
       "type": "image",
@@ -1441,7 +1596,8 @@
       "credit": "Realsteel007",
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Razkrivane stadion.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane stadion.jpg",
@@ -1451,7 +1607,8 @@
         "status": "open_license",
         "label": "CC BY 4.0",
         "url": "https://creativecommons.org/licenses/by/4.0"
-      }
+      },
+      "title_de": "Wikimedia Commons – Razkrivane stadion.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -1464,8 +1621,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Freilegung des antiken Stadions – Bild 1",
+    "description_de": "Fotoarchivmaterial von der Freilegung des Antiken Stadions.",
+    "date_display_de": "Ausgrabungszeit, 20. Jh."
   },
   {
     "id": "archive-photo-ancient-stadium-uncovered-2",
@@ -1488,7 +1649,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Античен стадион.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Ancient Stadium."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Ancient Stadium.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Ancient Stadium."
     },
     "media": {
       "type": "image",
@@ -1498,7 +1660,8 @@
       "credit": "Realsteel007",
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Razkrivane stadion2.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane stadion2.jpg",
@@ -1508,7 +1671,8 @@
         "status": "open_license",
         "label": "CC BY 4.0",
         "url": "https://creativecommons.org/licenses/by/4.0"
-      }
+      },
+      "title_de": "Wikimedia Commons – Razkrivane stadion2.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -1521,8 +1685,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Freilegung des antiken Stadions – Bild 2",
+    "description_de": "Zweites Archivbild von der Freilegung des antiken Stadions.",
+    "date_display_de": "Ausgrabungszeit, 20. Jh."
   },
   {
     "id": "archive-photo-chirpan-earthquake-st-josif-1928",
@@ -1545,7 +1713,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Свети Йосиф.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Hospital St Josif, Plovdiv."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Hospital St Josif, Plovdiv.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Hospital St Josif, Plovdiv."
     },
     "media": {
       "type": "image",
@@ -1555,7 +1724,8 @@
       "credit": "Unknown author",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "Tschirpan-Erdbeben - Plovdiv.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Chirpan Earthquake - Plovdiv.jpg",
@@ -1565,7 +1735,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – Tschirpan-Erdbeben – Plovdiv.jpg"
     },
     "commons_categories": [
       "Chirpan earthquake in Plovdiv",
@@ -1579,8 +1750,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Tschirpan-Erdbebenschaden in der Nähe von St. Josif",
+    "description_de": "Foto der Schäden nach dem Erdbeben von 1928 im Zusammenhang mit dem St. Josif-Krankenhaus."
   },
   {
     "id": "archive-photo-ivan-vazov-library-earthquake-1928",
@@ -1603,7 +1777,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Народна библиотека „Иван Вазов“.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Ivan Vazov National Library."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Ivan Vazov National Library.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Ivan Vazov National Library."
     },
     "media": {
       "type": "image",
@@ -1613,7 +1788,8 @@
       "credit": "Unknown author",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "BASA-741K-2-124-2-Ivan Vazov Nationalbibliothek, Plovdiv.JPG"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-741K-2-124-2-Ivan Vazov National Library, Plovdiv.JPG",
@@ -1623,7 +1799,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – BASA-741K-2-124-2-Ivan Vazov National Library, Plovdiv.JPG"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -1641,8 +1818,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Ivan Vazov Nationalbibliothek nach dem Erdbeben",
+    "description_de": "Archivfoto der Bibliothek im Kontext des Erdbebens von 1928."
   },
   {
     "id": "archive-photo-balkan-cinema-plovdiv",
@@ -1665,7 +1845,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Балкан.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Kino Balkan."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Kino Balkan.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Kino Balkan."
     },
     "media": {
       "type": "image",
@@ -1675,7 +1856,8 @@
       "credit": "Unknown author",
       "license": "Public domain",
       "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "BASA-1625K-1-22-5-Balkan-Kino, Plovdiv, Bulgarien.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-1625K-1-22-5-Balkan cinema, Plovdiv, Bulgaria.jpg",
@@ -1685,7 +1867,8 @@
         "status": "open_license",
         "label": "Public domain",
         "url": "https://commons.wikimedia.org/wiki/Commons:Licensing"
-      }
+      },
+      "title_de": "Wikimedia Commons – BASA-1625K-1-22-5-Balkan-Kino, Plovdiv, Bulgarien.jpg"
     },
     "commons_categories": [
       "1942 in Bulgaria",
@@ -1709,8 +1892,12 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Balkankino in Plovdiv",
+    "description_de": "Archivfoto des Balkankinos, verknüpft mit der modernen Baugeschichte.",
+    "date_display_de": "20. Jh."
   },
   {
     "id": "archive-photo-trimontium-view-1958",
@@ -1733,7 +1920,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Тримонциум.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Trimontsium Hotel in Plovdiv."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Trimontsium Hotel in Plovdiv.",
+      "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Trimontsium Hotel in Plovdiv."
     },
     "media": {
       "type": "image",
@@ -1743,7 +1931,8 @@
       "credit": "Peter H. Feist",
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
@@ -1753,7 +1942,8 @@
         "status": "open_license",
         "label": "CC BY-SA 4.0",
         "url": "https://creativecommons.org/licenses/by-sa/4.0"
-      }
+      },
+      "title_de": "Wikimedia Commons – PLOVDIV, Blick vom Zimmer im Trimontium – 58 – 046.44.jpg"
     },
     "commons_categories": [
       "1958 in Bulgaria",
@@ -1767,8 +1957,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Blick vom Trimontium Hotel, 1958",
+    "description_de": "Foto aus einem Zimmer im Trimontium Hotel, georeferenziert auf das Hotel als Aussichtspunkt."
   },
   {
     "id": "archive-photo-lamartine-house-restoration-1972",
@@ -1791,7 +1984,8 @@
       "method": "matched_to_existing_place_record",
       "confidence": "place_level",
       "notes_bg": "Кадърът е свързан с координатите на съществуващия запис за място: Ламартинова къща.",
-      "notes_en": "The image is linked to the coordinates of the existing place record: Lamartine House."
+      "notes_en": "The image is linked to the coordinates of the existing place record: Lamartine House.",
+      "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Lamartine House."
     },
     "media": {
       "type": "image",
@@ -1801,7 +1995,8 @@
       "credit": "PeterDix = Peter Dikidjiev, architect and town planner, NYCity =",
       "license": "CC BY-SA 3.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-      "accessed_at": "2026-06-19"
+      "accessed_at": "2026-06-19",
+      "title_de": "1972Februar 150* Lamartine FFloor.jpeg"
     },
     "source": {
       "title": "Wikimedia Commons — 1972Feb 150* Lamartine FFloor.jpeg",
@@ -1811,7 +2006,8 @@
         "status": "open_license",
         "label": "CC BY-SA 3.0",
         "url": "https://creativecommons.org/licenses/by-sa/3.0"
-      }
+      },
+      "title_de": "Wikimedia Commons – 1972. Februar 150* Lamartine FFloor.jpeg"
     },
     "commons_categories": [
       "Black and white photographs",
@@ -1826,7 +2022,11 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Автоматично подготвен архивен запис от Wikimedia Commons; изисква независима редакторска проверка и по-точно георефериране преди финално публикуване.",
-      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication."
-    }
+      "notes_en": "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.",
+      "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung."
+    },
+    "title_de": "Restaurierungsarchiv des Lamartine House, 1972",
+    "description_de": "Foto aus einer Archivserie für Lamartine House im Jahr 1972.",
+    "date_display_de": "Februar 1972"
   }
 ]

@@ -1,4 +1,4 @@
-import storyLongreads from "../../../../../../data/generated/history-knowledge/story-longreads.json";
+import { storyLongreads } from "@lib/data";
 
 export function GET() {
   return new Response(

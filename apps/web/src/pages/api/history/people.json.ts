@@ -1,8 +1,12 @@
 import type { APIRoute } from "astro";
-import people from "../../../../../../data/generated/history-knowledge/people.json";
+import { historyKnowledgePeople } from "@lib/data";
 import { json } from "@lib/server/http";
 
 export const prerender = true;
 
 export const GET: APIRoute = () =>
-  json({ count: people.length, people }, 200, { "Cache-Control": "public, max-age=300" });
+  json(
+    { count: historyKnowledgePeople.length, people: historyKnowledgePeople },
+    200,
+    { "Cache-Control": "public, max-age=300" }
+  );

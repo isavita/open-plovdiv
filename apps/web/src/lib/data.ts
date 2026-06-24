@@ -13,6 +13,7 @@ import mayorEnrichmentJson from "../../../../data/curated/mayor-wikidata-enrichm
 import historyKnowledgeIndexJson from "../../../../data/generated/history-knowledge/index.json";
 import historyKnowledgeEventsJson from "../../../../data/generated/history-knowledge/events.json";
 import historyKnowledgePeopleJson from "../../../../data/generated/history-knowledge/people.json";
+import historyKnowledgePersonRelationshipsJson from "../../../../data/generated/history-knowledge/person-relationships.json";
 import historyKnowledgePlacesJson from "../../../../data/generated/history-knowledge/places.json";
 import historyKnowledgeOrganizationsJson from "../../../../data/generated/history-knowledge/organizations.json";
 import historyKnowledgeSourcesJson from "../../../../data/generated/history-knowledge/sources.json";
@@ -24,6 +25,7 @@ import storyLongreadsJson from "../../../../data/generated/history-knowledge/sto
 import historyEditorialSignoffsJson from "../../../../data/generated/history-knowledge/editorial-signoffs.json";
 import historyEditorialReviewJson from "../../../../data/generated/history-knowledge/editorial-review.json";
 import historySourceCoverageJson from "../../../../data/generated/history-knowledge/source-coverage.json";
+import { withGermanFields } from "../i18n/deTranslations";
 
 export type Source = {
   title: string;
@@ -811,13 +813,13 @@ export type HistorySourceCoverage = {
   records: SourceCoverageRecord[];
 };
 
-export const projects = projectsJson as Project[];
-export const communityInitiatives = communityInitiativesJson as CommunityInitiative[];
-export const fixReports = fixReportsJson as FixReport[];
-export const budgetItems = budgetItemsJson as BudgetItem[];
-export const cityArchive = cityArchiveJson as CityArchiveRecord[];
-export const plovdivHistory = historyJson as HistoryEntry[];
-export const plovdivLandmarks = landmarksJson as Landmark[];
+export const projects = withGermanFields(projectsJson) as Project[];
+export const communityInitiatives = withGermanFields(communityInitiativesJson) as CommunityInitiative[];
+export const fixReports = withGermanFields(fixReportsJson) as FixReport[];
+export const budgetItems = withGermanFields(budgetItemsJson) as BudgetItem[];
+export const cityArchive = withGermanFields(cityArchiveJson) as CityArchiveRecord[];
+export const plovdivHistory = withGermanFields(historyJson) as HistoryEntry[];
+export const plovdivLandmarks = withGermanFields(landmarksJson) as Landmark[];
 
 /** Sourced Wikidata facts for mayors, keyed by the mayor's Bulgarian name (actor_bg). */
 export type MayorEnrichmentLink = {
@@ -841,7 +843,7 @@ export type MayorEnrichment = {
   occupations: MayorEnrichmentLink[];
   positions: MayorEnrichmentLink[];
 };
-export const mayorWikidataEnrichment = mayorEnrichmentJson as Record<string, MayorEnrichment>;
+export const mayorWikidataEnrichment = withGermanFields(mayorEnrichmentJson) as Record<string, MayorEnrichment>;
 
 export type PopulationPoint = {
   id: string;
@@ -870,8 +872,8 @@ export type Neighbourhood = {
   source: Source;
 };
 
-export const plovdivPopulation = populationJson as PopulationPoint[];
-export const plovdivNeighbourhoods = neighbourhoodsJson as Neighbourhood[];
+export const plovdivPopulation = withGermanFields(populationJson) as PopulationPoint[];
+export const plovdivNeighbourhoods = withGermanFields(neighbourhoodsJson) as Neighbourhood[];
 
 export type ClimateMonth = {
   id: string;
@@ -882,19 +884,22 @@ export type ClimateMonth = {
   source: Source;
 };
 
-export const plovdivClimate = climateJson as ClimateMonth[];
-export const sourceRegistry = sourcesJson as SourceRegistryItem[];
-export const historyKnowledgeIndex = historyKnowledgeIndexJson as HistoryKnowledgeIndex;
-export const historyKnowledgeEvents = historyKnowledgeEventsJson as KnowledgeEvent[];
-export const historyKnowledgePeople = historyKnowledgePeopleJson as KnowledgePerson[];
-export const historyKnowledgePlaces = historyKnowledgePlacesJson as KnowledgePlace[];
-export const historyKnowledgeOrganizations = historyKnowledgeOrganizationsJson as KnowledgeOrganization[];
-export const historyKnowledgeSources = historyKnowledgeSourcesJson as KnowledgeSource[];
-export const historicalArchiveItems = historicalArchiveItemsJson as HistoricalArchiveItem[];
-export const thenNowPairs = thenNowPairsJson as ThenNowPair[];
-export const primaryDocuments = primaryDocumentsJson as PrimaryDocument[];
-export const educationResources = educationResourcesJson as EducationResource[];
-export const storyLongreads = storyLongreadsJson as StoryLongread[];
-export const historyEditorialSignoffs = historyEditorialSignoffsJson as EditorialSignoff[];
-export const historyEditorialReview = historyEditorialReviewJson as HistoryEditorialReview;
-export const historySourceCoverage = historySourceCoverageJson as HistorySourceCoverage;
+export const plovdivClimate = withGermanFields(climateJson) as ClimateMonth[];
+export const sourceRegistry = withGermanFields(sourcesJson) as SourceRegistryItem[];
+export const historyKnowledgeIndex = withGermanFields(historyKnowledgeIndexJson) as HistoryKnowledgeIndex;
+export const historyKnowledgeEvents = withGermanFields(historyKnowledgeEventsJson) as KnowledgeEvent[];
+export const historyKnowledgePeople = withGermanFields(historyKnowledgePeopleJson) as KnowledgePerson[];
+export const historyKnowledgePersonRelationships = withGermanFields(historyKnowledgePersonRelationshipsJson) as Array<
+  Record<string, unknown>
+>;
+export const historyKnowledgePlaces = withGermanFields(historyKnowledgePlacesJson) as KnowledgePlace[];
+export const historyKnowledgeOrganizations = withGermanFields(historyKnowledgeOrganizationsJson) as KnowledgeOrganization[];
+export const historyKnowledgeSources = withGermanFields(historyKnowledgeSourcesJson) as KnowledgeSource[];
+export const historicalArchiveItems = withGermanFields(historicalArchiveItemsJson) as HistoricalArchiveItem[];
+export const thenNowPairs = withGermanFields(thenNowPairsJson) as ThenNowPair[];
+export const primaryDocuments = withGermanFields(primaryDocumentsJson) as PrimaryDocument[];
+export const educationResources = withGermanFields(educationResourcesJson) as EducationResource[];
+export const storyLongreads = withGermanFields(storyLongreadsJson) as StoryLongread[];
+export const historyEditorialSignoffs = withGermanFields(historyEditorialSignoffsJson) as EditorialSignoff[];
+export const historyEditorialReview = withGermanFields(historyEditorialReviewJson) as HistoryEditorialReview;
+export const historySourceCoverage = withGermanFields(historySourceCoverageJson) as HistorySourceCoverage;

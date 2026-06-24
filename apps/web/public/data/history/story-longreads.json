@@ -18,7 +18,8 @@
       "kind": "then_now_pair",
       "ref_id": "then-now-ivan-vazov-library-earthquake-1928",
       "caption_bg": "Народната библиотека Иван Вазов след земетресението е визуален източник за щетите и възстановяването.",
-      "caption_en": "Ivan Vazov National Library after the earthquake is visual evidence for damage and recovery."
+      "caption_en": "Ivan Vazov National Library after the earthquake is visual evidence for damage and recovery.",
+      "caption_de": "Die Nationalbibliothek Ivan Vazov nach dem Erdbeben ist ein visueller Beweis für Schäden und Erholung."
     },
     "sections": [
       {
@@ -33,7 +34,9 @@
         "linked_event_ids": [],
         "linked_place_ids": [
           "place-ivan-vazov-national-library-q630839"
-        ]
+        ],
+        "heading_de": "Bild vor der Interpretation",
+        "body_de": "Bei Katastrophen kann ein Archivfoto selbsterklärend aussehen, muss aber sorgfältig gelesen werden. Zu den Beweismitteln gehören Datum, Ort, Kredit, Lizenz und Dateilink. Deshalb bewahrt die Archivschicht Medienmetadaten auf, nicht nur ein dramatisches Bild."
       },
       {
         "heading_bg": "Щети в градската тъкан",
@@ -48,7 +51,9 @@
         "linked_place_ids": [
           "place-ivan-vazov-national-library-q630839",
           "place-hospital-st-josif-plovdiv-q27048499"
-        ]
+        ],
+        "heading_de": "Schäden im Stadtgefüge",
+        "body_de": "Bilder rund um die Nationalbibliothek und das St. Josif-Krankenhaus zeigen, wie das Erdbeben an bestimmten Orten gesehen wird, nicht nur anhand aggregierter Statistiken. Damals/heute-Paare sind nützlich, weil sie den Schaden in einen modernen Referenzrahmen einordnen, aber ungefähr bleiben, bis der Standpunkt manuell überprüft wird."
       },
       {
         "heading_bg": "Възстановяването като непълен архив",
@@ -62,7 +67,9 @@
         "linked_event_ids": [],
         "linked_place_ids": [
           "place-plovdiv-city"
-        ]
+        ],
+        "heading_de": "Wiederherstellung als unvollständiges Archiv",
+        "body_de": "Diese Geschichte erfindet bewusst kein Wiederherstellungsbudget oder vollständiges Programm, wenn in der aktuellen Basis keines vorhanden ist. Stattdessen markiert es, was die Bilder beweisen und wo weitere Primärdokumente benötigt werden: Entscheidungen, Protokolle, Berichte und Zeitpresse."
       }
     ],
     "linked_event_ids": [],
@@ -90,7 +97,8 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
-      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung."
     },
     "provenance": [
       {
@@ -100,7 +108,8 @@
         "claim_en": "Sources and editorial claims for story longread \"1928: The Earthquake, Damage and Visual Memory\".",
         "url": "https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „1928: The Earthquake, Damage and Visual Memory“."
       },
       {
         "source_id": "source-wikimedia-commons-bulgarian-archives-state-agency",
@@ -109,7 +118,8 @@
         "claim_en": "Sources and editorial claims for story longread \"1928: The Earthquake, Damage and Visual Memory\".",
         "url": "https://commons.wikimedia.org/wiki/Commons:Bulgarian_Archives_State_Agency",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „1928: The Earthquake, Damage and Visual Memory“."
       },
       {
         "source_id": "source-wikidata-ivan-vazov-national-library-coordinates",
@@ -118,9 +128,12 @@
         "claim_en": "Sources and editorial claims for story longread \"1928: The Earthquake, Damage and Visual Memory\".",
         "url": "https://www.wikidata.org/wiki/Q630839",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „1928: The Earthquake, Damage and Visual Memory“."
       }
-    ]
+    ],
+    "title_de": "1928: Das Erdbeben, Schaden und visuelle Erinnerung",
+    "dek_de": "Archivbilder vom Tschirpan-Erdbeben und den Schäden in Plovdiv zeigen, wie die Katastrophe zum Beweis für die Verwundbarkeit und den Wiederaufbau der Stadt wird."
   },
   {
     "id": "story-deep-time-seven-hills",
@@ -142,7 +155,8 @@
       "kind": "archive_item",
       "ref_id": "archive-photo-dzhambaztepe-1892",
       "caption_bg": "Архивен изглед към Джамбаз тепе от 1892 г., използван като визуален вход към разказа за тепетата.",
-      "caption_en": "An 1892 archive view of Dzhambaz Tepe, used as a visual entry into the story of the hills."
+      "caption_en": "An 1892 archive view of Dzhambaz Tepe, used as a visual entry into the story of the hills.",
+      "caption_de": "Eine Archivansicht von Dzhambaz Tepe aus dem Jahr 1892, die als visueller Einstieg in die Geschichte der Hügel dient."
     },
     "sections": [
       {
@@ -159,7 +173,9 @@
         "linked_place_ids": [
           "place-old-town",
           "place-seven-hills"
-        ]
+        ],
+        "heading_de": "Gelände als erstes Archiv",
+        "body_de": "Die früheste Geschichte von Plovdiv beginnt nicht mit einer Verwaltungsgrenze, sondern mit einem Ort. Aufzeichnungen über die prähistorische Siedlung, die Altstadt und die Sieben Hügel zeigen, warum die Hügel mehr als nur Landschaft sind: Sie sind Orientierung, Verteidigung und Erinnerung. Diese Geschichte behandelt Gelände als historischen Beweis, verknüpft es jedoch eher mit Quellen als mit romantischen Legenden."
       },
       {
         "heading_bg": "Евмолпия и градското ядро",
@@ -176,7 +192,9 @@
         ],
         "linked_place_ids": [
           "place-nebet-tepe"
-        ]
+        ],
+        "heading_de": "Eumolpias und der städtische Kern",
+        "body_de": "Das thrakische Eumolpias ist eine der frühen Stadtschichten, durch die Nebet Tepe in die historische Karte eingeht. Wenn eine Plattform Ort, Datierung und Quelle zusammen zeigt, können Leser sehen, wie archäologische und textliche Erzählungen sich gegenseitig unterstützen, ohne in unbegründete Behauptungen zu verfallen."
       },
       {
         "heading_bg": "Филипопол като име и преход",
@@ -192,7 +210,9 @@
         ],
         "linked_place_ids": [
           "place-philippopolis-q27047924"
-        ]
+        ],
+        "heading_de": "Philippopolis als Name und Übergang",
+        "body_de": "Die Aufzeichnungen über Philipp II. und Philippopolis zeigen, wie der Name der Stadt zu einem historischen Marker wird. Lang gesagt ist der Name keine Dekoration: Er spiegelt politische Veränderungen, kulturelle Schichten und spätere Erinnerungen wider. Deshalb wird Geschichte hier gleichzeitig anhand von Ereignissen, Orten und nachweisbaren Quellen gelesen."
       }
     ],
     "linked_event_ids": [
@@ -225,7 +245,8 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
-      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung."
     },
     "provenance": [
       {
@@ -235,7 +256,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Plovdiv Before the City: The Hills as Deep-Time Memory\".",
         "url": "https://en.wikipedia.org/wiki/Plovdiv",
         "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Plovdiv Before the City: The Hills as Deep-Time Memory“."
       },
       {
         "source_id": "source-wikipedia-nebet-tepe",
@@ -244,7 +266,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Plovdiv Before the City: The Hills as Deep-Time Memory\".",
         "url": "https://en.wikipedia.org/wiki/Nebet_Tepe",
         "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Plovdiv Before the City: The Hills as Deep-Time Memory“."
       },
       {
         "source_id": "source-wikipedia-philippopolis",
@@ -253,7 +276,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Plovdiv Before the City: The Hills as Deep-Time Memory\".",
         "url": "https://en.wikipedia.org/wiki/Philippopolis_(Thrace)",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Plovdiv Before the City: The Hills as Deep-Time Memory“."
       },
       {
         "source_id": "source-wikidata-nebet-tepe-coordinates",
@@ -262,7 +286,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Plovdiv Before the City: The Hills as Deep-Time Memory\".",
         "url": "https://www.wikidata.org/wiki/Q12288006",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Plovdiv Before the City: The Hills as Deep-Time Memory“."
       },
       {
         "source_id": "source-wikimedia-commons-dzhambaztepe-1892-jpg",
@@ -271,9 +296,12 @@
         "claim_en": "Sources and editorial claims for story longread \"Plovdiv Before the City: The Hills as Deep-Time Memory\".",
         "url": "https://commons.wikimedia.org/wiki/File:Dzhambaztepe_1892.jpg",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Plovdiv Before the City: The Hills as Deep-Time Memory“."
       }
-    ]
+    ],
+    "title_de": "Plovdiv vor der Stadt: Die Hügel als tiefe Zeiterinnerung",
+    "dek_de": "Eine Geschichte über die frühesten Schichten Plovdivs, in der Gelände, Nebet Tepe und die Namen Eumolpias/Philippopolis dabei helfen, den Wandel von der Siedlung zur Stadt nachzuzeichnen."
   },
   {
     "id": "story-european-capital-culture",
@@ -294,7 +322,8 @@
       "kind": "place_media",
       "ref_id": "place-drama-theatre-n-o-masalitinov-q12279120",
       "caption_bg": "Сцените и културните институции са ключови за разказа за европейските културни програми на Пловдив.",
-      "caption_en": "Venues and cultural institutions are central to the story of Plovdiv's European cultural programmes."
+      "caption_en": "Venues and cultural institutions are central to the story of Plovdiv's European cultural programmes.",
+      "caption_de": "Veranstaltungsorte und kulturelle Institutionen spielen eine zentrale Rolle in der Geschichte der europäischen Kulturprogramme von Plovdiv."
     },
     "sections": [
       {
@@ -313,7 +342,9 @@
         "linked_place_ids": [
           "place-ancient-theatre",
           "place-plovdiv-city"
-        ]
+        ],
+        "heading_de": "1999 als Programm Scale",
+        "body_de": "Die Bilanz des Europäischen Kulturmonats 1999 ist wichtig, muss aber genau gelesen werden: Sie zeigt Programmumfang, Teilnehmer, Veranstaltungen und Veranstaltungsortkontext, nicht den gesamten Gemeindehaushalt. Diese Unterscheidung sorgt dafür, dass die Geschichte ehrlich und brauchbar bleibt."
       },
       {
         "heading_bg": "Кандидатура, бюджет, подготовка",
@@ -330,7 +361,9 @@
         ],
         "linked_place_ids": [
           "place-plovdiv-city"
-        ]
+        ],
+        "heading_de": "Kandidatur, Budget, Vorbereitung",
+        "body_de": "Die Aufzeichnungen von 2014 und 2018 zeigen, wie sich der Kulturtitel durch die Kandidatur und Umsetzung entwickelt hat. Kommunale Entscheidungen sind ein anderer Quellentyp als mediale Rückblicke oder eine europäische Ankündigung. Durch die Trennung dieser Typen können die Leser den Prozess und nicht nur das feierliche Ergebnis sehen."
       },
       {
         "heading_bg": "2019 г. и европейската рамка",
@@ -348,7 +381,9 @@
         ],
         "linked_place_ids": [
           "place-plovdiv-city"
-        ]
+        ],
+        "heading_de": "2019 und der europäische Rahmen",
+        "body_de": "Die Europäische Kommission bestätigt Plovdiv und Matera als Kulturhauptstädte Europas im Jahr 2019. In der Geschichte der Stadt ist dies nicht nur ein Titel, sondern eine Verbindung zwischen lokaler Erinnerung, öffentlicher Finanzierung, Veranstaltungsorten und internationaler Sichtbarkeit. Die Geschichte hält jede dieser Ebenen an Quellen gebunden."
       }
     ],
     "linked_event_ids": [
@@ -383,7 +418,8 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
-      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung."
     },
     "provenance": [
       {
@@ -393,7 +429,8 @@
         "claim_en": "Sources and editorial claims for story longread \"From European Month of Culture to European Capital of Culture\".",
         "url": "https://plovdiv2019.eu/en",
         "accessed_at": "2026-06-17",
-        "license_status": "public_reference_terms_unverified"
+        "license_status": "public_reference_terms_unverified",
+        "claim_de": "Quellen und redaktionelle Angaben zur Story-Longread „Vom europäischen Kulturmonat zur europäischen Kulturhauptstadt“."
       },
       {
         "source_id": "source-podtepeto-plovdiv-1999-month-culture-archive",
@@ -402,7 +439,8 @@
         "claim_en": "Sources and editorial claims for story longread \"From European Month of Culture to European Capital of Culture\".",
         "url": "https://podtepeto.com/aktualno/arhivite-razkazvat-plovdiv-99-evropejski-mesec-na-kulturata/",
         "accessed_at": "2026-06-17",
-        "license_status": "public_reference_terms_unverified"
+        "license_status": "public_reference_terms_unverified",
+        "claim_de": "Quellen und redaktionelle Angaben zur Story-Longread „Vom europäischen Kulturmonat zur europäischen Kulturhauptstadt“."
       },
       {
         "source_id": "source-european-commission-ecoc-2019",
@@ -411,7 +449,8 @@
         "claim_en": "Sources and editorial claims for story longread \"From European Month of Culture to European Capital of Culture\".",
         "url": "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera",
         "accessed_at": "2026-06-17",
-        "license_status": "public_reference_terms_unverified"
+        "license_status": "public_reference_terms_unverified",
+        "claim_de": "Quellen und redaktionelle Angaben zur Story-Longread „Vom europäischen Kulturmonat zur europäischen Kulturhauptstadt“."
       },
       {
         "source_id": "source-obshtinski-savet-plovdiv-reshenie-o4-za-byudzhet-2014",
@@ -420,7 +459,8 @@
         "claim_en": "Sources and editorial claims for story longread \"From European Month of Culture to European Capital of Culture\".",
         "url": "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-4-3/",
         "accessed_at": "2026-06-17",
-        "license_status": "public_reference_terms_unverified"
+        "license_status": "public_reference_terms_unverified",
+        "claim_de": "Quellen und redaktionelle Angaben zur Story-Longread „Vom europäischen Kulturmonat zur europäischen Kulturhauptstadt“."
       },
       {
         "source_id": "source-obshtinski-savet-plovdiv-reshenie-33-za-byudzhet-2018",
@@ -429,9 +469,12 @@
         "claim_en": "Sources and editorial claims for story longread \"From European Month of Culture to European Capital of Culture\".",
         "url": "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-33-7/",
         "accessed_at": "2026-06-17",
-        "license_status": "public_reference_terms_unverified"
+        "license_status": "public_reference_terms_unverified",
+        "claim_de": "Quellen und redaktionelle Angaben zur Story-Longread „Vom europäischen Kulturmonat zur europäischen Kulturhauptstadt“."
       }
-    ]
+    ],
+    "title_de": "Vom Europäischen Kulturmonat zur Kulturhauptstadt Europas",
+    "dek_de": "Die Jahre 1999 und 2019 zeigen, wie Plovdiv kulturelle Programme, Veranstaltungsorte und europäische Rahmenbedingungen nutzte, um seine Geschichte einer breiteren Öffentlichkeit zu erzählen."
   },
   {
     "id": "story-international-fair-modernity",
@@ -452,7 +495,8 @@
       "kind": "then_now_pair",
       "ref_id": "then-now-international-fair-1892-1",
       "caption_bg": "Първото изложение от 1892 г. свързва икономическата модерност с визуална архивна памет.",
-      "caption_en": "The first 1892 exhibition links economic modernity with visual archive memory."
+      "caption_en": "The first 1892 exhibition links economic modernity with visual archive memory.",
+      "caption_de": "Die erste Ausstellung von 1892 verknüpft wirtschaftliche Moderne mit visueller Archiverinnerung."
     },
     "sections": [
       {
@@ -471,7 +515,9 @@
         ],
         "linked_place_ids": [
           "place-international-fair-plovdiv-q1667383"
-        ]
+        ],
+        "heading_de": "1892 als öffentlicher Beginn",
+        "body_de": "Die Aufzeichnungen der ersten Landwirtschafts- und Industrieausstellung und der ersten internationalen Messe zeigen, dass sich Plovdiv als Ort des Austauschs präsentiert. Archivbilder dienen nicht nur der Veranschaulichung: Sie zeigen das Ausmaß des Ereignisses und zeigen, wie die Wirtschaft zum öffentlichen Spektakel wurde."
       },
       {
         "heading_bg": "Институция и градски образ",
@@ -488,7 +534,9 @@
         ],
         "linked_place_ids": [
           "place-international-fair-plovdiv-q1667383"
-        ]
+        ],
+        "heading_de": "Institution und Stadtbild",
+        "body_de": "Die Internationale Messe ist eine Institution, aber auch ein urbanes Erscheinungsbild. Es verbindet Infrastruktur, Besucher, Unternehmen und öffentliche Räume. Wenn in den Aufzeichnungen Quelle, Koordinaten und Medien zusammen aufgeführt sind, kann der Leser erkennen, warum die Messe mehr als eine jährliche Veranstaltung ist."
       },
       {
         "heading_bg": "Следвоенно възстановяване",
@@ -504,7 +552,9 @@
         "linked_place_ids": [
           "place-plovdiv-city",
           "place-international-fair-plovdiv-q1667383"
-        ]
+        ],
+        "heading_de": "Wiederbelebung der Nachkriegszeit",
+        "body_de": "Die Nachkriegsbilanz der Wiederbelebung der Messe zeigt, wie städtische Wirtschaft und Kommunalpolitik miteinander verflochten sind. Die Quelle ist eine historische Studie über Infrastruktur und Gemeinde, daher bleibt die Geschichte vorsichtig: Sie nutzt die Messe als Kontext für die moderne Stadt, nicht als eigenständige Haushaltstabelle."
       }
     ],
     "linked_event_ids": [
@@ -536,7 +586,8 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
-      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung."
     },
     "provenance": [
       {
@@ -546,7 +597,8 @@
         "claim_en": "Sources and editorial claims for story longread \"The Fair City: Exhibition, Industry and Modernity\".",
         "url": "https://www.fair.bg/uploads/event/form/file/5d15dd4f521c7017390091.pdf",
         "accessed_at": "2026-06-17",
-        "license_status": "public_reference_terms_unverified"
+        "license_status": "public_reference_terms_unverified",
+        "claim_de": "Quellen und redaktionelle Angaben zur Story Longread „The Fair City: Exhibition, Industry and Modernity“."
       },
       {
         "source_id": "source-wikipedia-international-fair-plovdiv",
@@ -555,7 +607,8 @@
         "claim_en": "Sources and editorial claims for story longread \"The Fair City: Exhibition, Industry and Modernity\".",
         "url": "https://en.wikipedia.org/wiki/International_Fair_Plovdiv",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zur Story Longread „The Fair City: Exhibition, Industry and Modernity“."
       },
       {
         "source_id": "source-rim-plovdiv-infrastructure-1944-1990",
@@ -564,7 +617,8 @@
         "claim_en": "Sources and editorial claims for story longread \"The Fair City: Exhibition, Industry and Modernity\".",
         "url": "https://rimplovdiv.com/wp-content/uploads/2025/12/infrastruktura.pdf",
         "accessed_at": "2026-06-17",
-        "license_status": "public_reference_terms_unverified"
+        "license_status": "public_reference_terms_unverified",
+        "claim_de": "Quellen und redaktionelle Angaben zur Story Longread „The Fair City: Exhibition, Industry and Modernity“."
       },
       {
         "source_id": "source-wikimedia-commons-basa-3k-7-327-27-international-fair-plovdiv-1892-jpg",
@@ -573,9 +627,12 @@
         "claim_en": "Sources and editorial claims for story longread \"The Fair City: Exhibition, Industry and Modernity\".",
         "url": "https://commons.wikimedia.org/wiki/File:BASA-3K-7-327-27-International_Fair_Plovdiv%2C_1892.jpg",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zur Story Longread „The Fair City: Exhibition, Industry and Modernity“."
       }
-    ]
+    ],
+    "title_de": "Die Messestadt: Ausstellung, Industrie und Moderne",
+    "dek_de": "Von der ersten Landwirtschafts- und Industrieausstellung im Jahr 1892 bis zur Wiederbelebung der Messe nach dem Krieg baute Plovdiv in der Öffentlichkeit ein Image als Stadt des Austauschs und der Wirtschaft auf."
   },
   {
     "id": "story-medieval-crossroads",
@@ -597,7 +654,8 @@
       "kind": "place_media",
       "ref_id": "place-seven-hills",
       "caption_bg": "Седемте тепета остават пространствена рамка за разказа за средновековния град и неговите граници.",
-      "caption_en": "The Seven Hills remain the spatial frame for the story of the medieval city and its borders."
+      "caption_en": "The Seven Hills remain the spatial frame for the story of the medieval city and its borders.",
+      "caption_de": "Die Sieben Hügel bleiben der räumliche Rahmen für die Geschichte der mittelalterlichen Stadt und ihrer Grenzen."
     },
     "sections": [
       {
@@ -615,7 +673,9 @@
         "linked_place_ids": [
           "place-plovdiv-city",
           "place-seven-hills"
-        ]
+        ],
+        "heading_de": "Eine Stadt zwischen Mächten",
+        "body_de": "Die chronologischen Aufzeichnungen über Khan Krum und Ivan Assen II. präsentieren Plovdiv als eine Stadt innerhalb der Regionalpolitik. Diese Geschichte verwandelt kurze Ereignisse nicht in eine vollständige Chronik; Es nutzt sie als Ankerpunkte und zeigt, wie sich die Kontrolle über die Stadt veränderte und warum ihre Lage weiterhin wichtig war."
       },
       {
         "heading_bg": "Граници, имена и памет",
@@ -631,7 +691,9 @@
         ],
         "linked_place_ids": [
           "place-plovdiv-city"
-        ]
+        ],
+        "heading_de": "Grenzen, Namen und Erinnerung",
+        "body_de": "Mittelalterliche Schichten sind oft schwieriger zu visualisieren als römische Denkmäler oder Renaissancehäuser. Die Plattform präsentiert sie daher durch sequenzierte Ereignisse und klar gekennzeichnete Quellen. Wenn umfassende lokale Abbildungen fehlen, handelt es sich ebenfalls um einen Datenpunkt und nicht um einen Grund, Gewissheit zu erfinden."
       },
       {
         "heading_bg": "Османското завоевание като нов пласт",
@@ -648,7 +710,9 @@
         "linked_place_ids": [
           "place-dzhumaya-mosque",
           "place-plovdiv-city"
-        ]
+        ],
+        "heading_de": "Die osmanische Eroberung als neue Schicht",
+        "body_de": "Das Ereignis von 1364 markiert den Übergang zur osmanischen Schicht und zum Namen Filibe. Dieser Übergang löscht die frühere Stadt nicht aus; Es fügt Institutionen, religiöse Räume und städtische Erinnerungen hinzu, die an späteren Orten wie der Dzhumaya Mosque und osmanischen Spuren im Zentrum sichtbar sind."
       }
     ],
     "linked_event_ids": [
@@ -678,7 +742,8 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
-      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung."
     },
     "provenance": [
       {
@@ -688,7 +753,8 @@
         "claim_en": "Sources and editorial claims for story longread \"The Medieval Crossroads: From Khan Krum to Ottoman Filibe\".",
         "url": "https://en.wikipedia.org/wiki/Plovdiv",
         "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „The Medieval Crossroads: From Khan Krum to Ottoman Filibe“."
       },
       {
         "source_id": "source-wikipedia-dzhumaya-mosque",
@@ -697,7 +763,8 @@
         "claim_en": "Sources and editorial claims for story longread \"The Medieval Crossroads: From Khan Krum to Ottoman Filibe\".",
         "url": "https://en.wikipedia.org/wiki/Dzhumaya_Mosque",
         "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „The Medieval Crossroads: From Khan Krum to Ottoman Filibe“."
       },
       {
         "source_id": "source-wikimedia-commons-plovdiv-hills-jpg",
@@ -706,9 +773,12 @@
         "claim_en": "Sources and editorial claims for story longread \"The Medieval Crossroads: From Khan Krum to Ottoman Filibe\".",
         "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_Hills.jpg",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „The Medieval Crossroads: From Khan Krum to Ottoman Filibe“."
       }
-    ]
+    ],
+    "title_de": "Der mittelalterliche Scheideweg: Von Khan Krum zum osmanischen Filibe",
+    "dek_de": "Die mittelalterliche Geschichte von Plovdiv ist eine Geschichte sich verändernder Herrschaft, Namen und Grenzen. Diese Geschichte macht die Unsicherheit sichtbar und basiert auf vorhandenen chronologischen Aufzeichnungen."
   },
   {
     "id": "story-old-plovdiv-restoration",
@@ -730,7 +800,8 @@
       "kind": "then_now_pair",
       "ref_id": "then-now-lamartine-house-restoration-1972",
       "caption_bg": "Реставрационен архив от Ламартиновата къща показва Старинен Пловдив като дългосрочен градски проект.",
-      "caption_en": "A restoration archive from Lamartine House shows Old Plovdiv as a long-term urban project."
+      "caption_en": "A restoration archive from Lamartine House shows Old Plovdiv as a long-term urban project.",
+      "caption_de": "Ein Restaurierungsarchiv des Lamartine House zeigt Old Plovdiv als langfristiges Stadtprojekt."
     },
     "sections": [
       {
@@ -747,7 +818,9 @@
         "linked_place_ids": [
           "place-old-town",
           "place-plovdiv-city"
-        ]
+        ],
+        "heading_de": "Das Quartier als institutionelle Aufgabe",
+        "body_de": "Die Aufzeichnungen über die spezialisierte Alt-Plovdiver Verwaltung zeigen, dass das Erbe nicht allein durch Bewunderung bewahrt wird. Es braucht Institutionen, Budgetentscheidungen, Fachwissen und öffentliche Nutzung. Die Geschichte der Altstadt braucht daher auch die Verwaltungsgeschichte der Erhaltung."
       },
       {
         "heading_bg": "Ламартиновата къща и видимата реставрация",
@@ -763,7 +836,9 @@
         ],
         "linked_place_ids": [
           "place-lamartine-house"
-        ]
+        ],
+        "heading_de": "Lamartine House und sichtbare Restaurierung",
+        "body_de": "Das Lamartine House ist ein nützliches Beispiel für das Erbe, das an einem bestimmten Ort sichtbar ist. Das Bild des Restaurierungsarchivs bietet dem Leser nicht nur eine attraktive Ansicht, sondern auch eine Spur des Prozesses: Arbeit an einem Gebäude, Veränderung der materiellen Umgebung und spätere öffentliche Erinnerung."
       },
       {
         "heading_bg": "От къщи към мрежа",
@@ -779,7 +854,9 @@
           "place-old-town",
           "place-holy-mother-of-god",
           "place-lamartine-house"
-        ]
+        ],
+        "heading_de": "Von Häusern zu Netzwerken",
+        "body_de": "Das alte Plovdiv ist kein einzelnes Haus, sondern ein Netzwerk aus Straßen, Innenhöfen, religiösen Stätten, Schulen und Museen. Auf der Plattform bedeutet das, dass jede Geschichte auf einzelne Orte und Quellen verweisen sollte. Das Viertel wird nicht als Landschaft gelesen, sondern als System nachgewiesener urbaner Schichten."
       }
     ],
     "linked_event_ids": [
@@ -811,7 +888,8 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
-      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung."
     },
     "provenance": [
       {
@@ -821,7 +899,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Old Plovdiv as Project: Restoration, Administration and Memory\".",
         "url": "https://rimplovdiv.com/wp-content/uploads/2025/12/infrastruktura.pdf",
         "accessed_at": "2026-06-17",
-        "license_status": "public_reference_terms_unverified"
+        "license_status": "public_reference_terms_unverified",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Old Plovdiv as Project: Restaurierung, Verwaltung und Erinnerung“."
       },
       {
         "source_id": "source-wikipedia-old-town-plovdiv",
@@ -830,7 +909,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Old Plovdiv as Project: Restoration, Administration and Memory\".",
         "url": "https://en.wikipedia.org/wiki/Old_Town_(Plovdiv)",
         "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Old Plovdiv as Project: Restaurierung, Verwaltung und Erinnerung“."
       },
       {
         "source_id": "source-wikidata-lamartine-house-q12284656",
@@ -839,7 +919,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Old Plovdiv as Project: Restoration, Administration and Memory\".",
         "url": "https://www.wikidata.org/wiki/Q12284656",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Old Plovdiv as Project: Restaurierung, Verwaltung und Erinnerung“."
       },
       {
         "source_id": "source-wikimedia-commons-historical-images-plovdiv",
@@ -848,9 +929,12 @@
         "claim_en": "Sources and editorial claims for story longread \"Old Plovdiv as Project: Restoration, Administration and Memory\".",
         "url": "https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Old Plovdiv as Project: Restaurierung, Verwaltung und Erinnerung“."
       }
-    ]
+    ],
+    "title_de": "Das alte Plovdiv als Projekt: Restaurierung, Verwaltung und Erinnerung",
+    "dek_de": "Eine Geschichte über die spezialisierte Verwaltung des alten Plovdiv, das Lamartine House und wie die Restaurierung das Viertel in eine öffentliche historische Bühne verwandelte."
   },
   {
     "id": "story-ottoman-filibe-city",
@@ -872,7 +956,8 @@
       "kind": "then_now_pair",
       "ref_id": "then-now-ottoman-clock-tower-1936",
       "caption_bg": "Архивен кадър на часовниковата кула върху Сахат тепе показва как османският пласт се чете през места и изображения.",
-      "caption_en": "An archive image of the clock tower on Sahat Tepe shows how the Ottoman layer is read through places and images."
+      "caption_en": "An archive image of the clock tower on Sahat Tepe shows how the Ottoman layer is read through places and images.",
+      "caption_de": "Ein Archivbild des Uhrturms auf Sahat Tepe zeigt, wie die osmanische Schicht anhand von Orten und Bildern gelesen wird."
     },
     "sections": [
       {
@@ -888,7 +973,9 @@
         ],
         "linked_place_ids": [
           "place-plovdiv-city"
-        ]
+        ],
+        "heading_de": "Filibe als Name einer urbanen Schicht",
+        "body_de": "Nach der osmanischen Eroberung trat Plovdiv in eine neue politische und städtische Ordnung ein. Der Name Filibe ist nicht nur eine Übersetzung eines älteren Namens, sondern ein Zeichen institutionellen und kulturellen Wandels. Diese Geschichte verknüpft die chronologische Aufzeichnung mit sichtbaren Orten, die dem Leser helfen, Schichten zu unterscheiden, ohne sie in Opposition zu zwingen."
       },
       {
         "heading_bg": "Джумая и центърът",
@@ -904,7 +991,9 @@
         "linked_place_ids": [
           "place-dzhumaya-mosque",
           "place-dzhumaya-square-q59368698"
-        ]
+        ],
+        "heading_de": "Dzhumaya und das Zentrum",
+        "body_de": "Die Dzhumaya Mosque und der sie umgebende Platz zeigen, wie die osmanische Schicht im Zentrum der modernen Stadt verbleibt. Archivpostkarten von Dzhumaya sind nicht dekorativ; Sie liefern visuelles Material zum städtischen Wandel, das zusammen mit Metadaten, Lizenz und Ort gelesen werden muss."
       },
       {
         "heading_bg": "Религиозни и обществени пространства",
@@ -921,7 +1010,9 @@
           "place-chifte-hamam",
           "place-mevlevi-hane",
           "place-sahat-hill-in-plovdiv-q12293012"
-        ]
+        ],
+        "heading_de": "Religiöse und öffentliche Räume",
+        "body_de": "Chifte Hamam, Mevlevi Hane und Sahat Tepe erweitern die Geschichte über ein einzelnes Denkmal hinaus. Sie zeigen eine Stadt religiöser, sozialer und öffentlicher Räume, deren Spuren in verschiedenen Stadtteilen und Zeitschichten liegen. Deshalb ist die Karte wichtig: Sie zeigt das Netzwerk und nicht nur den isolierten Standort."
       }
     ],
     "linked_event_ids": [
@@ -955,7 +1046,8 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
-      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung."
     },
     "provenance": [
       {
@@ -965,7 +1057,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Ottoman Filibe: Squares, Sacred Places and Urban Crafts\".",
         "url": "https://en.wikipedia.org/wiki/Plovdiv",
         "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Ottoman Filibe: Squares, Sacred Places and Urban Crafts“."
       },
       {
         "source_id": "source-wikipedia-dzhumaya-mosque",
@@ -974,7 +1067,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Ottoman Filibe: Squares, Sacred Places and Urban Crafts\".",
         "url": "https://en.wikipedia.org/wiki/Dzhumaya_Mosque",
         "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Ottoman Filibe: Squares, Sacred Places and Urban Crafts“."
       },
       {
         "source_id": "source-wikidata-chifte-hamam-q60169037",
@@ -983,7 +1077,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Ottoman Filibe: Squares, Sacred Places and Urban Crafts\".",
         "url": "https://www.wikidata.org/wiki/Q60169037",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Ottoman Filibe: Squares, Sacred Places and Urban Crafts“."
       },
       {
         "source_id": "source-wikidata-dervish-monastery-plovdiv-q37813757",
@@ -992,7 +1087,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Ottoman Filibe: Squares, Sacred Places and Urban Crafts\".",
         "url": "https://www.wikidata.org/wiki/Q37813757",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Ottoman Filibe: Squares, Sacred Places and Urban Crafts“."
       },
       {
         "source_id": "source-wikimedia-commons-historical-images-plovdiv",
@@ -1001,9 +1097,12 @@
         "claim_en": "Sources and editorial claims for story longread \"Ottoman Filibe: Squares, Sacred Places and Urban Crafts\".",
         "url": "https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Ottoman Filibe: Squares, Sacred Places and Urban Crafts“."
       }
-    ]
+    ],
+    "title_de": "Osmanisches Filibe: Plätze, heilige Orte und städtisches Handwerk",
+    "dek_de": "Die Dzhumaya Mosque, Bäder, Derwischräume und Spuren eines Uhrturms zeigen, dass die osmanische Schicht weiterhin Teil der städtischen Topographie von Plovdiv ist."
   },
   {
     "id": "story-revival-houses-schools",
@@ -1025,7 +1124,8 @@
       "kind": "then_now_pair",
       "ref_id": "then-now-greek-high-school",
       "caption_bg": "Гръцката гимназия в архивен и съвременен контекст свързва архитектурата с образователната история.",
-      "caption_en": "The Greek High School in archival and contemporary context links architecture with educational history."
+      "caption_en": "The Greek High School in archival and contemporary context links architecture with educational history.",
+      "caption_de": "Das griechische Gymnasium im archivarischen und zeitgenössischen Kontext verknüpft Architektur mit Bildungsgeschichte."
     },
     "sections": [
       {
@@ -1041,7 +1141,9 @@
         ],
         "linked_place_ids": [
           "place-plovdiv-city"
-        ]
+        ],
+        "heading_de": "Die erste Schule als Wendepunkt",
+        "body_de": "Die Aufzeichnungen über die erste bulgarische Schule im Jahr 1836 stellen die Bildung in den Mittelpunkt der Stadtgeschichte. Es zeigt, wie ein Ereignis mit umfassenderen Veränderungen verbunden sein kann: Sprache, Gemeinschaften, Institutionen und spätere Gebäude. Der Schlüssel liegt darin, die Behauptung an eine Quelle zu binden."
       },
       {
         "heading_bg": "Сградата като исторически документ",
@@ -1057,7 +1159,9 @@
         "linked_place_ids": [
           "place-old-town",
           "place-humanitarian-high-school-saints-cyril-and-methodius-plovdiv-q12290859"
-        ]
+        ],
+        "heading_de": "Das Gebäude als historisches Dokument",
+        "body_de": "Wiederbelebungshäuser und Schulen sind nicht nur attraktive Fassaden. Sie liefern Belege für soziale Bindungen, Bildungspraktiken und staatsbürgerliches Selbstvertrauen. Aus diesem Grund werden in den Aufzeichnungen für die Altstadt, Schulgebäude und Kirchen Koordinaten, Medienlizenzen und Quellen gespeichert, nicht nur beschreibende Texte."
       },
       {
         "heading_bg": "Общностите зад фасадите",
@@ -1074,7 +1178,9 @@
           "place-holy-mother-of-god",
           "place-lamartine-house",
           "place-geo-milev-school"
-        ]
+        ],
+        "heading_de": "Die Gemeinschaften hinter den Fassaden",
+        "body_de": "Kirchen, Schulen und Häuser bilden ein Netzwerk von Gemeinschaften. Die Aufzeichnungen der Heiligen Mutter Gottes, des Lamartine Housees und der Schule zeigen, dass sich das städtische Gedächtnis nicht auf einen einzigen Stil beschränkt. Es ist das Ergebnis von Sprache, Glauben, Bildung, Familien und Institutionen, die alle präsentiert werden müssen, ohne dass die Datenherkunft verloren geht."
       }
     ],
     "linked_event_ids": [
@@ -1108,7 +1214,8 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
-      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung."
     },
     "provenance": [
       {
@@ -1118,7 +1225,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Revival Plovdiv: Houses, Schools and Urban Communities\".",
         "url": "https://en.wikipedia.org/wiki/Plovdiv",
         "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Revival Plovdiv: Houses, Schools and Urban Communities“."
       },
       {
         "source_id": "source-wikipedia-old-town-plovdiv",
@@ -1127,7 +1235,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Revival Plovdiv: Houses, Schools and Urban Communities\".",
         "url": "https://en.wikipedia.org/wiki/Old_Town_(Plovdiv)",
         "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Revival Plovdiv: Houses, Schools and Urban Communities“."
       },
       {
         "source_id": "source-wikipedia-humanitarian-high-school-saints-cyril-and-methodius-plovdiv",
@@ -1136,7 +1245,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Revival Plovdiv: Houses, Schools and Urban Communities\".",
         "url": "https://en.wikipedia.org/wiki/Sts._Cyril_and_Methodius_High_School_of_Humanities,_Plovdiv",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Revival Plovdiv: Houses, Schools and Urban Communities“."
       },
       {
         "source_id": "source-wikidata-lamartine-house-q12284656",
@@ -1145,7 +1255,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Revival Plovdiv: Houses, Schools and Urban Communities\".",
         "url": "https://www.wikidata.org/wiki/Q12284656",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Revival Plovdiv: Houses, Schools and Urban Communities“."
       },
       {
         "source_id": "source-wikimedia-commons-historical-images-plovdiv",
@@ -1154,9 +1265,12 @@
         "claim_en": "Sources and editorial claims for story longread \"Revival Plovdiv: Houses, Schools and Urban Communities\".",
         "url": "https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Revival Plovdiv: Houses, Schools and Urban Communities“."
       }
-    ]
+    ],
+    "title_de": "Revival Plovdiv: Häuser, Schulen und städtische Gemeinschaften",
+    "dek_de": "Die Altstadt, Schulgebäude und Kirchen zeigen, wie Renaissance-Architektur und Bildung das städtische Gedächtnis veränderten."
   },
   {
     "id": "story-roman-philippopolis",
@@ -1177,7 +1291,8 @@
       "kind": "then_now_pair",
       "ref_id": "then-now-ancient-theatre-uncovered-1",
       "caption_bg": "Разкриването на Античния театър показва как римският град отново става видим в съвременния Пловдив.",
-      "caption_en": "The uncovering of the Ancient Theatre shows how the Roman city becomes visible again in modern Plovdiv."
+      "caption_en": "The uncovering of the Ancient Theatre shows how the Roman city becomes visible again in modern Plovdiv.",
+      "caption_de": "Die Freilegung des antiken Theaters zeigt, wie die römische Stadt im modernen Plovdiv wieder sichtbar wird."
     },
     "sections": [
       {
@@ -1193,7 +1308,9 @@
         ],
         "linked_place_ids": [
           "place-philippopolis-q27047924"
-        ]
+        ],
+        "heading_de": "Trimontium im Kaiserlichen Orden",
+        "body_de": "Die Aufzeichnungen über den Beitritt Trimontiums zum Römischen Reich stellen Philippopolis in einen größeren politischen Rahmen. Die Geschichte beruht nicht nur auf einem Namen: Sie verbindet Datierung, Stadtraum und spätere archäologische Spuren, die die antike Stadt heute für Besucher und Studenten lesbar machen."
       },
       {
         "heading_bg": "Театърът като публична сцена",
@@ -1210,7 +1327,9 @@
         ],
         "linked_place_ids": [
           "place-ancient-theatre"
-        ]
+        ],
+        "heading_de": "Das Theater als öffentliche Bühne",
+        "body_de": "Das antike Theater ist ein nützlicher Einstiegspunkt in die römische Stadt, da es Ort, Architektur und soziale Funktion zugleich ist. In Open Plovdiv ist es mit Datum, Koordinaten, Bild und Quellen verknüpft, sodass die Geschichte die öffentliche Aufführung als Teil des städtischen Gefüges und nicht als isolierte Touristenikone zeigen kann."
       },
       {
         "heading_bg": "Стадион, форум и градска система",
@@ -1228,7 +1347,9 @@
         "linked_place_ids": [
           "place-ancient-stadium",
           "place-forum-philippopolis"
-        ]
+        ],
+        "heading_de": "Stadion, Forum und Stadtsystem",
+        "body_de": "Das Stadion und das Forum tragen dazu bei, Philippopolis als ein System der Bewegung, Versammlung und Autorität zu offenbaren. Bilder von damals/heute sind besonders nützlich: Sie beweisen nicht alles allein, sondern zeigen, wie archäologische Stätten das moderne Zentrum neu gestalten und wie das öffentliche Gedächtnis in die städtische Umgebung eingebettet ist."
       }
     ],
     "linked_event_ids": [
@@ -1263,7 +1384,8 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
-      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung."
     },
     "provenance": [
       {
@@ -1273,7 +1395,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Roman Philippopolis: A City of Stages, Games and Forums\".",
         "url": "https://en.wikipedia.org/wiki/Plovdiv",
         "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Roman Philippopolis: A City of Stages, Games and Forums“."
       },
       {
         "source_id": "source-wikipedia-roman-forum-of-philippopolis",
@@ -1282,7 +1405,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Roman Philippopolis: A City of Stages, Games and Forums\".",
         "url": "https://en.wikipedia.org/wiki/Roman_forum_of_Philippopolis",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Roman Philippopolis: A City of Stages, Games and Forums“."
       },
       {
         "source_id": "source-wikidata-ancient-theatre-coordinates",
@@ -1291,7 +1415,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Roman Philippopolis: A City of Stages, Games and Forums\".",
         "url": "https://www.wikidata.org/wiki/Q1363208",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Roman Philippopolis: A City of Stages, Games and Forums“."
       },
       {
         "source_id": "source-wikidata-ancient-stadium-coordinates",
@@ -1300,7 +1425,8 @@
         "claim_en": "Sources and editorial claims for story longread \"Roman Philippopolis: A City of Stages, Games and Forums\".",
         "url": "https://www.wikidata.org/wiki/Q7205170",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Roman Philippopolis: A City of Stages, Games and Forums“."
       },
       {
         "source_id": "source-wikimedia-commons-antique-theater-plovdiv-jpg",
@@ -1309,9 +1435,12 @@
         "claim_en": "Sources and editorial claims for story longread \"Roman Philippopolis: A City of Stages, Games and Forums\".",
         "url": "https://commons.wikimedia.org/wiki/File:Antique-theater-plovdiv.jpg",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Roman Philippopolis: A City of Stages, Games and Forums“."
       }
-    ]
+    ],
+    "title_de": "Römisches Philippopolis: Eine Stadt der Bühnen, Spiele und Foren",
+    "dek_de": "Das antike Theater, das Stadion und das Forum zeigen, wie Philippopolis/Trimontium als römische Stadt mit öffentlichen Räumen, Spektakel und städtischer Infrastruktur funktionierte."
   },
   {
     "id": "story-socialist-infrastructure",
@@ -1332,7 +1461,8 @@
       "kind": "then_now_pair",
       "ref_id": "then-now-trimontium-view-1958",
       "caption_bg": "Поглед от хотел Тримонциум през 1958 г. въвежда следвоенния град като видима промяна на средата.",
-      "caption_en": "A 1958 view from Hotel Trimontium introduces the postwar city as visible environmental change."
+      "caption_en": "A 1958 view from Hotel Trimontium introduces the postwar city as visible environmental change.",
+      "caption_de": "Ein Blick vom Hotel Trimontium aus dem Jahr 1958 stellt die Nachkriegsstadt als sichtbare Umweltveränderung vor."
     },
     "sections": [
       {
@@ -1349,7 +1479,9 @@
         ],
         "linked_place_ids": [
           "place-plovdiv-city"
-        ]
+        ],
+        "heading_de": "Energieübertragungs- und Stadtprogramm",
+        "body_de": "Die Aufzeichnungen vom 9. September 1944 und das darauffolgende öffentliche Bauprogramm der Nachkriegszeit zeigen, dass politische Veränderungen in der Stadtverwaltung Einzug hielten. Dies ist nicht nur eine Liste mit Daten; Es umrahmt öffentliche Arbeiten, kommunale Planung und neue institutionelle Prioritäten."
       },
       {
         "heading_bg": "Образование, панаир, инфраструктура",
@@ -1366,7 +1498,9 @@
         "linked_place_ids": [
           "place-plovdiv-city",
           "place-international-fair-plovdiv-q1667383"
-        ]
+        ],
+        "heading_de": "Bildung, Messe, Infrastruktur",
+        "body_de": "Die kommunale Finanzierung der Hochschulbildung und die Wiederbelebung der Messe zeigen, dass die Nachkriegsstadt gleichzeitig über Bildung, Wirtschaft und städtische Sichtbarkeit nachdenkt. Die Quelle gibt einen historischen Kontext an, die Zahlen sind jedoch nominell und sollten nicht direkt mit modernen Budgets verglichen werden."
       },
       {
         "heading_bg": "Петгодишен план и видимият град",
@@ -1383,7 +1517,9 @@
         "linked_place_ids": [
           "place-plovdiv-city",
           "place-trimontsium-hotel-in-plovdiv-q60318638"
-        ]
+        ],
+        "heading_de": "Fünfjahresplan und die sichtbare Stadt",
+        "body_de": "Das fünfjährige Stadtprogramm für Wohnen und Infrastruktur zeigt, dass kommunale Planung ein langer Prozess ist. Die Archivansicht von Trimontium beweist nicht das Programm allein, sondern hilft uns darüber nachzudenken, wie Planung Skyline, Straßen und Panorama verändert."
       }
     ],
     "linked_event_ids": [
@@ -1416,7 +1552,8 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
-      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung."
     },
     "provenance": [
       {
@@ -1426,7 +1563,8 @@
         "claim_en": "Sources and editorial claims for story longread \"The Postwar City: Infrastructure, Housing and Municipal Programmes\".",
         "url": "https://rimplovdiv.com/wp-content/uploads/2025/12/infrastruktura.pdf",
         "accessed_at": "2026-06-17",
-        "license_status": "public_reference_terms_unverified"
+        "license_status": "public_reference_terms_unverified",
+        "claim_de": "Quellen und redaktionelle Ansprüche für die lange Geschichte „The Postwar City: Infrastructure, Housing and Municipal Programmes“."
       },
       {
         "source_id": "source-wikimedia-commons-historical-images-plovdiv",
@@ -1435,9 +1573,12 @@
         "claim_en": "Sources and editorial claims for story longread \"The Postwar City: Infrastructure, Housing and Municipal Programmes\".",
         "url": "https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Ansprüche für die lange Geschichte „The Postwar City: Infrastructure, Housing and Municipal Programmes“."
       }
-    ]
+    ],
+    "title_de": "Die Nachkriegsstadt: Infrastruktur, Wohnen und kommunale Programme",
+    "dek_de": "Nach 1944 wird Plovdiv durch öffentliche Arbeiten, höhere Bildung, die Messe und Fünfjahrespläne der Stadt beschrieben, ältere Lew-Zahlen müssen jedoch sorgfältig gelesen werden."
   },
   {
     "id": "story-unification-civic-memory",
@@ -1459,7 +1600,8 @@
       "kind": "place_media",
       "ref_id": "place-unification-square-plovdiv-q58885892",
       "caption_bg": "Площад Съединение превежда историческото събитие в градско пространство и публична памет.",
-      "caption_en": "Unification Square translates the historical event into urban space and public memory."
+      "caption_en": "Unification Square translates the historical event into urban space and public memory.",
+      "caption_de": "Der Vereinigungsplatz übersetzt das historische Ereignis in den städtischen Raum und in die öffentliche Erinnerung."
     },
     "sections": [
       {
@@ -1476,7 +1618,9 @@
         "linked_place_ids": [
           "place-plovdiv-city",
           "place-unification-square-plovdiv-q58885892"
-        ]
+        ],
+        "heading_de": "1885 als Bürgeranker",
+        "body_de": "Die Vereinigung ist ein nationales Ereignis, aber für Plovdiv ist sie auch eine bürgerliche Erinnerung. Die Zeitleistenaufzeichnung verknüpft das Datum mit der Stadt, während öffentliche Orte diese Verbindung sichtbar halten. Geschichte kann daher sowohl als politischer Akt als auch als räumliches Gedächtnis gelesen werden."
       },
       {
         "heading_bg": "Институциите след освобождението",
@@ -1492,7 +1636,9 @@
         ],
         "linked_place_ids": [
           "place-plovdiv-city"
-        ]
+        ],
+        "heading_de": "Institutionen nach der Befreiung",
+        "body_de": "Frühe Amtszeiten als Bürgermeister zeigen, wie die Stadt in den ersten Jahren nach der Befreiung regiert wurde. Die offizielle Bürgermeisterliste ist ein starker Beweis für die Namen und die Reihenfolge der Begriffe, sie ist jedoch keine vollständige Biographie. Diese Grenze macht die Rückverfolgbarkeit wichtig: Wir müssen wissen, was die Quelle beweist und was nicht."
       },
       {
         "heading_bg": "Площадът като памет",
@@ -1508,7 +1654,9 @@
         ],
         "linked_place_ids": [
           "place-unification-square-plovdiv-q58885892"
-        ]
+        ],
+        "heading_de": "Das Quadrat als Erinnerung",
+        "body_de": "Der Platz der Vereinigung und sein Denkmal ersetzen nicht die Archive, aber sie zeigen, wie die Stadt sich erinnert. In einer offenen Geschichtsplattform wird der Platz mit Daten, Bildern und Quellen verknüpft, sodass Erinnerung nicht zu einem Slogan ohne nachweisbare Grundlage wird."
       }
     ],
     "linked_event_ids": [
@@ -1539,7 +1687,8 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
-      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung."
     },
     "provenance": [
       {
@@ -1549,7 +1698,8 @@
         "claim_en": "Sources and editorial claims for story longread \"The City of the Unification: Event, Institution, Square\".",
         "url": "https://en.wikipedia.org/wiki/Plovdiv",
         "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Die Stadt der Vereinigung: Ereignis, Institution, Platz“."
       },
       {
         "source_id": "source-plovdiv-mayor-archive",
@@ -1558,7 +1708,8 @@
         "claim_en": "Sources and editorial claims for story longread \"The City of the Unification: Event, Institution, Square\".",
         "url": "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/",
         "accessed_at": "2026-06-17",
-        "license_status": "public_reference_terms_unverified"
+        "license_status": "public_reference_terms_unverified",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Die Stadt der Vereinigung: Ereignis, Institution, Platz“."
       },
       {
         "source_id": "source-wikidata-unification-square-plovdiv",
@@ -1567,7 +1718,8 @@
         "claim_en": "Sources and editorial claims for story longread \"The City of the Unification: Event, Institution, Square\".",
         "url": "https://www.wikidata.org/wiki/Q58885892",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Die Stadt der Vereinigung: Ereignis, Institution, Platz“."
       },
       {
         "source_id": "source-wikimedia-commons-monument-of-the-unification-jpg",
@@ -1576,8 +1728,11 @@
         "claim_en": "Sources and editorial claims for story longread \"The City of the Unification: Event, Institution, Square\".",
         "url": "https://commons.wikimedia.org/wiki/File:Monument-of-the-Unification.jpg",
         "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "license_status": "open_license",
+        "claim_de": "Quellen und redaktionelle Angaben zum Story-Longread „Die Stadt der Vereinigung: Ereignis, Institution, Platz“."
       }
-    ]
+    ],
+    "title_de": "Die Stadt der Vereinigung: Ereignis, Institution, Platz",
+    "dek_de": "Die Wiedervereinigung von 1885, die ersten Amtszeiten des Bürgermeisters und der Vereinigungsplatz zeigen, wie ein politisches Ereignis Teil der bürgerlichen Identität wird."
   }
 ]

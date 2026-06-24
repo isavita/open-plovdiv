@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { roleLabels as sharedRoleLabels } from "@i18n/ui";
 import { localeForLang, localizePath, type Lang } from "@i18n/utils";
+import { knownHistoryLabel } from "@lib/format";
 import {
   historyKnowledgeEvents,
   historyKnowledgePeople,
@@ -450,7 +451,7 @@ const sourceRecords = [...sourceIds]
                 <li>
                   <a href={source.url} target="_blank" rel="noreferrer">{localized(source, "title")}</a>
                   <span>{labels.accessed}: {source.accessed_at}</span>
-                  <span>{labels.license}: {source.license.label}</span>
+                  <span>{labels.license}: {knownHistoryLabel(source.license.label, lang)}</span>
                 </li>
               ))}
             </ul>

@@ -284,7 +284,7 @@ const mapHref = place.coordinates
                     <h3>{localized(item, "title")}</h3>
                     <p>{localized(item, "description")}</p>
                     <a class="src-link" href={item.source.url} target="_blank" rel="noreferrer">
-                      {labels.source}: {item.source.title} ↗
+                      {labels.source}: {sourceTitle(item.source.title, lang)} ↗
                     </a>
                   </article>
                 ))}
