@@ -18,6 +18,7 @@ import { categoryLabel, fixStatusLabel } from "@lib/format";
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const localeByLang: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE" };
 
 const fixCategories = [...FIX_CATEGORIES];
 const fixStatuses = Object.keys(fixStatusLabels[lang]);
@@ -37,7 +38,7 @@ const helpGroups = communityInitiatives.map((g) => ({
 
 const config = {
   lang,
-  locale: lang === "bg" ? "bg-BG" : "en-GB",
+  locale: localeByLang[lang],
   projectBase: localizePath("/projects", lang),
   publicUrl: "/api/reports/public",
   streamUrl: "/api/reports/stream",

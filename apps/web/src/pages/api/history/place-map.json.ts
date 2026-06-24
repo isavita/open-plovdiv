@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { knownHistoryLabel } from "@lib/format";
 import { json } from "@lib/server/http";
 import {
   historicalArchiveItems,
@@ -9,16 +10,16 @@ import type { Lang } from "@i18n/utils";
 
 export const prerender = true;
 
-const categoryLabels: Record<string, { bg: string; en: string }> = {
-  civic: { bg: "Градска среда", en: "Civic" },
-  hill: { bg: "Хълм", en: "Hill" },
-  medieval: { bg: "Средновековие", en: "Medieval" },
-  monument: { bg: "Паметник", en: "Monument" },
-  ottoman: { bg: "Османски пласт", en: "Ottoman" },
-  religious: { bg: "Религиозен обект", en: "Religious" },
-  revival: { bg: "Възраждане", en: "Revival" },
-  roman: { bg: "Римски пласт", en: "Roman" },
-  thracian: { bg: "Тракийски пласт", en: "Thracian" }
+const categoryLabels: Record<string, Record<Lang, string>> = {
+  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum" },
+  hill: { bg: "Хълм", en: "Hill", de: "Hügel" },
+  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich" },
+  monument: { bg: "Паметник", en: "Monument", de: "Denkmal" },
+  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch" },
+  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort" },
+  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit" },
+  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch" },
+  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch" }
 };
 
 const placeColors: Record<string, string> = {
@@ -44,7 +45,7 @@ for (const pair of thenNowPairs) {
 }
 
 function localized(record: Record<string, any>, base: string, lang: Lang): string {
-  return String(record[`${base}_${lang}`] ?? record[`${base}_bg`] ?? "");
+  return knownHistoryLabel(String(record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""), lang);
 }
 
 function categoryLabel(category: string, lang: Lang): string {
@@ -61,7 +62,7 @@ function placeMapItems(lang: Lang) {
       category: place.category,
       era: place.era,
       catLabel: categoryLabel(place.category, lang),
-      href: lang === "bg" ? `/places/${place.id}` : `/en/places/${place.id}`,
+      href: lang === "bg" ? `/places/${place.id}` : `/${lang}/places/${place.id}`,
       color: placeColors[place.category] ?? "#6b7280",
       archive: (archiveCountByPlace.get(place.id) ?? 0) > 0,
       thenNow: (pairCountByPlace.get(place.id) ?? 0) > 0,
@@ -79,7 +80,8 @@ function placeMapItems(lang: Lang) {
 
 const places = {
   bg: placeMapItems("bg"),
-  en: placeMapItems("en")
+  en: placeMapItems("en"),
+  de: placeMapItems("de")
 };
 
 export const GET: APIRoute = () =>

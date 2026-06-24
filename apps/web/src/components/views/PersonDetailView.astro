@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { roleLabels as sharedRoleLabels } from "@i18n/ui";
 import { localizePath, type Lang } from "@i18n/utils";
 import {
   historyKnowledgeEvents,
@@ -40,7 +41,27 @@ const labels =
         linkedEvent: "Свързано събитие",
         imageCredit: "Кредит за изображение"
       }
-    : {
+    : lang === "de"
+      ? {
+        back: "Alle Personen",
+        profile: "Profil",
+        facts: "Daten",
+        roles: "Rollen",
+        life: "Lebensdaten",
+        born: "Geboren",
+        wikidata: "Wikidata",
+        linkedEvents: "Verknüpfte Ereignisse",
+        relationships: "Verbindungen zu anderen Personen",
+        noRelationships: "Es sind noch keine direkten Verbindungen zu anderen Personen erfasst.",
+        evidence: "Quellen",
+        source: "Quelle",
+        accessed: "Zugriff",
+        license: "Lizenz",
+        relationshipSource: "Quelle für die Verbindung",
+        linkedEvent: "Verknüpftes Ereignis",
+        imageCredit: "Bildnachweis"
+      }
+      : {
         back: "All people",
         profile: "Profile",
         facts: "Facts",
@@ -155,6 +176,21 @@ const relationshipLabels: Record<string, { bg: string; en: string }> = {
   influenced_by: { bg: "повлиян/а от", en: "influenced by" }
 };
 
+const relationshipLabelsDe: Record<string, string> = {
+  succeeds: "folgt auf",
+  succeeded_by: "abgelöst von",
+  spouse: "Ehepartner",
+  father: "Vater",
+  mother: "Mutter",
+  parent: "Elternteil",
+  child: "Kind",
+  sibling: "Geschwister",
+  mentor: "Mentor",
+  student: "Schüler",
+  partner: "Partner",
+  influenced_by: "beeinflusst von"
+};
+
 const roleGroups: Record<string, RoleGroup> = {
   mayor: "governance",
   politician: "governance",
@@ -241,14 +277,15 @@ roleGroups.revolutionary = "civic";
 
 function localized(record: Record<string, any> | undefined, base: string): string {
   if (!record) return "";
-  return String(record[`${base}_${lang}`] ?? record[`${base}_bg`] ?? "");
+  return String(record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? "");
 }
 
 function roleLabel(role: string): string {
-  return roleLabels[role]?.[lang] ?? role.replaceAll("_", " ");
+  return sharedRoleLabels[role]?.[lang] ?? role.replaceAll("_", " ");
 }
 
 function relationshipLabel(type: string): string {
+  if (lang === "de") return relationshipLabelsDe[type] ?? type.replaceAll("_", " ");
   return relationshipLabels[type]?.[lang] ?? type.replaceAll("_", " ");
 }
 

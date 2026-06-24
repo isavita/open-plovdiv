@@ -75,7 +75,69 @@ const labels =
         tableLimit: "Показани са първите",
         tableLimitSuffix: "записа от текущия филтър. Пълният списък е в CSV файла."
       }
-    : {
+    : lang === "de"
+      ? {
+        title: "Redaktionelle Prüfung",
+        eyebrow: "Prüfung der historischen Datenbasis",
+        lead:
+          "Eine Übersicht der Datensätze, die noch auf menschliche redaktionelle Prüfung warten. Die Daten sind technisch validiert; diese Seite zeigt, wo stärkere Quellen, Lizenzangaben oder redaktionelle Bestätigung fehlen.",
+        status: "Status",
+        total: "erfasste Datensätze",
+        signedOff: "freigegeben",
+        needsReview: "warten auf Prüfung",
+        blockers: "mit Problemen",
+        trackingGaps: "Nachverfolgungslücken",
+        sourceCoverageTitle: "Quellenabdeckung",
+        sourceCoverageLead:
+          "Eine separate Prüfung derselben Datensätze: ob jede Zeile eine öffentliche Quelle, Lizenz-/Nutzungsmetadaten hat und ob Ein-Quellen-Zeilen für stärkere Prüfung markiert sind.",
+        traceability: "Nachvollziehbarkeit",
+        multiSourceReview: "Prüfung mit stärkeren Quellen",
+        complete: "vollständig",
+        incomplete: "unvollständig",
+        needsSourceReview: "Prüfung nötig",
+        recordsWithSources: "mit Quellen",
+        missingSources: "ohne Quelle",
+        licenseReady: "Lizenz/Nutzungsbedingungen vorhanden",
+        missingLicenses: "Lizenz/Nutzungsbedingungen fehlen",
+        singleSource: "eine Quelle",
+        multiSource: "2+ Quellen",
+        openLicenseRows: "Zeilen mit offener Lizenz",
+        publicTermsRows: "Zeilen mit öffentlichen Nutzungsbedingungen",
+        sourceCoverageApi: "Quellen JSON",
+        sourceCoverageCsv: "Quellen CSV",
+        requirement: "Kriterium",
+        collections: "Sammlungen",
+        collection: "Sammlung",
+        records: "Datensätze",
+        reviewer: "Redaktionelle Prüfung",
+        sources: "Quellen",
+        sourceLicense: "Quellen und Lizenz",
+        blockersLabel: "Probleme",
+        search: "Suche",
+        searchPlaceholder: "Datensatz, Sammlung, Problem...",
+        allCollections: "Alle Sammlungen",
+        allStatuses: "Alle Status",
+        allBlockers: "Alle Probleme",
+        record: "Datensatz",
+        visible: "Sichtbar",
+        of: "von",
+        empty: "Keine Datensätze entsprechen diesen Filtern.",
+        loading: "Redaktionswarteschlange wird geladen...",
+        api: "JSON-Daten",
+        csv: "CSV-Daten",
+        openRecord: "Datensatz öffnen",
+        openApi: "Daten",
+        signedOffStatus: "freigegeben",
+        needsStatus: "wartet auf Prüfung",
+        missingStatus: "Status fehlt",
+        unsigned: "nicht geprüft",
+        hasLicense: "Lizenz/Nutzungsbedingungen vorhanden",
+        missingLicense: "Lizenz/Nutzungsbedingungen fehlen",
+        reset: "Filter zurücksetzen",
+        tableLimit: "Angezeigt werden die ersten",
+        tableLimitSuffix: "Datensätze für den aktuellen Filter. Die vollständige Liste ist in der CSV-Datei."
+      }
+      : {
         title: "Editorial Review",
         eyebrow: "Historical data review",
         lead:
@@ -137,57 +199,69 @@ const labels =
         tableLimitSuffix: "records for the current filter. The full list is available in the CSV file."
       };
 
-const blockerLabels: Record<string, { bg: string; en: string }> = {
+const blockerLabels: Record<string, Record<Lang, string>> = {
   needs_independent_editorial_signoff: {
     bg: "нужен независим редакторски подпис",
-    en: "needs independent editorial sign-off"
+    en: "needs independent editorial sign-off",
+    de: "unabhängige redaktionelle Freigabe nötig"
   },
   missing_independent_editorial_signoff_log: {
     bg: "липсва име или дата на редактора",
-    en: "missing reviewer name or date"
+    en: "missing reviewer name or date",
+    de: "Name oder Datum der prüfenden Person fehlt"
   },
   missing_source_reference: {
     bg: "липсва източникова връзка",
-    en: "missing source reference"
+    en: "missing source reference",
+    de: "Quellenverweis fehlt"
   },
   missing_license_or_reuse_status: {
     bg: "липсва лиценз или статус за повторна употреба",
-    en: "missing license or reuse status"
+    en: "missing license or reuse status",
+    de: "Lizenz oder Nachnutzungsstatus fehlt"
   },
   missing_external_editorial_signoff_record: {
     bg: "липсва външен редакторски запис",
-    en: "missing external editorial review record"
+    en: "missing external editorial review record",
+    de: "externer redaktioneller Prüfvermerk fehlt"
   },
   editorial_signoff_log_mismatch: {
     bg: "несъответствие в редакторския запис",
-    en: "editorial review record mismatch"
+    en: "editorial review record mismatch",
+    de: "Widerspruch im redaktionellen Prüfvermerk"
   }
 };
 
-const roleLabels: Record<string, { bg: string; en: string }> = {
+const roleLabels: Record<string, Record<Lang, string>> = {
   primary_entity: {
     bg: "основен запис",
-    en: "primary record"
+    en: "primary record",
+    de: "Haupteintrag"
   },
   relationship_entity: {
     bg: "връзка между записи",
-    en: "relationship record"
+    en: "relationship record",
+    de: "Beziehungseintrag"
   },
   supporting_archive: {
     bg: "архивен материал",
-    en: "supporting archive item"
+    en: "supporting archive item",
+    de: "unterstützendes Archivmaterial"
   },
   primary_document: {
     bg: "първичен документ",
-    en: "primary document"
+    en: "primary document",
+    de: "Primärdokument"
   },
   editorial_feature: {
     bg: "редакционен материал",
-    en: "editorial feature"
+    en: "editorial feature",
+    de: "redaktioneller Beitrag"
   },
   education_material: {
     bg: "образователен материал",
-    en: "education material"
+    en: "education material",
+    de: "Bildungsmaterial"
   }
 };
 
@@ -248,9 +322,12 @@ const roleOptions = [
     ...Object.values(historySourceCoverage.collections).map((collection) => collection.role)
   ])
 ].sort();
-const generatedLabel = new Intl.DateTimeFormat(lang === "bg" ? "bg-BG" : "en-GB", {
+const generatedLabel = new Intl.DateTimeFormat(
+  ({ bg: "bg-BG", en: "en-GB", de: "de-DE" } satisfies Record<Lang, string>)[lang],
+  {
   dateStyle: "medium"
-}).format(new Date(historyEditorialReview.generated_at));
+  }
+).format(new Date(historyEditorialReview.generated_at));
 
 const reviewConfig = {
   lang,

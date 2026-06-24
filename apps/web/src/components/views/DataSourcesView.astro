@@ -8,9 +8,9 @@ const { lang } = Astro.props;
 const t = ui[lang];
 
 const usedFor = (s: (typeof sourceRegistry)[number]) =>
-  lang === "en" ? s.used_for_en ?? s.used_for : s.used_for;
+  lang === "bg" ? s.used_for : s.used_for_en ?? s.used_for;
 const limits = (s: (typeof sourceRegistry)[number]) =>
-  lang === "en" ? s.limitations_en ?? s.limitations_bg : s.limitations_bg;
+  lang === "bg" ? s.limitations_bg : s.limitations_en ?? s.limitations_bg;
 ---
 
 <Layout lang={lang} path="/data-sources" title={t.sources.title} description={t.sources.lead}>

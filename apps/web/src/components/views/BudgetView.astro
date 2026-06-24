@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import { categoryColors, ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
 import { budgetItems, cityArchive } from "@lib/data";
-import { categoryLabel, formatMoney } from "@lib/format";
+import { categoryLabel, formatMoney, fundingSourceLabel } from "@lib/format";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -148,7 +148,7 @@ function compactBgn(amount: number): string {
           <div class="bar-row">
             <span class="bar-label">
               <span class="cat-dot" style={`--dot:${fundingColors[f.funding_key ?? ""] ?? "var(--muted)"}`}></span>
-              {field(f, "title", lang)}
+              {f.funding_key ? fundingSourceLabel(f.funding_key, lang) : field(f, "title", lang)}
             </span>
             <div class="bar-track" aria-hidden="true">
               <div class="bar-fill" style={`width:${Math.max(3, ((f.amount_eur ?? 0) / maxFund) * 100)}%`}></div>

@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
-import { sourceTitle } from "@lib/format";
+import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import {
   historicalArchiveItems,
   historyKnowledgeEvents,
@@ -47,7 +47,34 @@ const labels =
         noArchive:
           "Все още няма отделен архивен или тогава/сега запис за това място. Основното изображение, координатите и източниците остават публикувани."
       }
-    : {
+    : lang === "de"
+      ? {
+        back: "Alle Orte",
+        facts: "Daten",
+        currentStatus: "Aktueller Status",
+        visit: "Besuch und Orientierung",
+        coordinates: "Koordinaten",
+        openMap: "Karte öffnen",
+        built: "Bauzeit/Datum",
+        architect: "Architekt",
+        builder: "Bauherr",
+        creator: "Architekt/Bauherr",
+        source: "Quelle",
+        sources: "Quellen",
+        mediaLicense: "Bildlizenz",
+        mediaFile: "Mediendatei",
+        mediaCredit: "Bildnachweis",
+        matchQuality: "Übereinstimmung",
+        archiveTitle: "Archiv zu diesem Ort",
+        thenNowTitle: "Damals/heute",
+        thenLabel: "Damals",
+        nowLabel: "Heute",
+        eventsTitle: "Verknüpfte Ereignisse",
+        storiesTitle: "Verknüpfte Geschichten",
+        noArchive:
+          "Für diesen Ort gibt es noch keinen eigenen Archiv- oder Damals/heute-Datensatz. Das Hauptbild, die Koordinaten und die Quellen bleiben veröffentlicht."
+      }
+      : {
         back: "All places",
         facts: "Facts",
         currentStatus: "Current status",
@@ -75,7 +102,7 @@ const labels =
       };
 
 function localized(record: Record<string, any>, base: string): string {
-  return String(record[`${base}_${lang}`] ?? record[`${base}_bg`] ?? "");
+  return knownHistoryLabel(String(record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""), lang);
 }
 
 const matchQualityLabels: Record<string, string> =
@@ -85,7 +112,13 @@ const matchQualityLabels: Record<string, string> =
         same_place_close_viewpoint: "същото място, близка гледна точка",
         city_context: "градски контекст"
       }
-    : {
+    : lang === "de"
+      ? {
+        same_place_approximate_viewpoint: "gleicher Ort, ungefährer Blickwinkel",
+        same_place_close_viewpoint: "gleicher Ort, ähnlicher Blickwinkel",
+        city_context: "Stadtkontext"
+      }
+      : {
         same_place_approximate_viewpoint: "same place, approximate viewpoint",
         same_place_close_viewpoint: "same place, close viewpoint",
         city_context: "city context"
@@ -162,7 +195,7 @@ const mapHref = place.coordinates
               {place.coordinates && (
                 <>
                   <dt>{labels.coordinates}</dt>
-                  <dd>{place.coordinates.lat.toFixed(5)}, {place.coordinates.lng.toFixed(5)} · {place.coordinates.accuracy}</dd>
+                  <dd>{place.coordinates.lat.toFixed(5)}, {place.coordinates.lng.toFixed(5)} · {knownHistoryLabel(place.coordinates.accuracy, lang)}</dd>
                 </>
               )}
               {facts.map((fact) => (
@@ -303,7 +336,7 @@ const mapHref = place.coordinates
             <section>
               <h2>{labels.coordinates}</h2>
               <p class="meta">{place.coordinates.lat.toFixed(5)}, {place.coordinates.lng.toFixed(5)}</p>
-              <p class="meta">{place.coordinates.accuracy}</p>
+              <p class="meta">{knownHistoryLabel(place.coordinates.accuracy, lang)}</p>
               {sourceById.get(place.coordinates.source_id) && (
                 <a class="src-link" href={sourceById.get(place.coordinates.source_id)!.url} target="_blank" rel="noreferrer">
                   {labels.source}: {sourceTitle(localized(sourceById.get(place.coordinates.source_id)!, "title"), lang)} ↗

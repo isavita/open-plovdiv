@@ -11,6 +11,30 @@ import {
 
 const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE" };
 
+const knownHistoryText: Record<Lang, Record<string, string>> = {
+  bg: {},
+  en: {},
+  de: {
+    "wikidata_coordinate": "Wikidata-Koordinaten",
+    "approximate_site": "ungefährer Standort",
+    "district_centroid": "Mittelpunkt des Stadtteils",
+    "citywide_reference": "stadtweiter Bezugspunkt",
+    "Modern period": "Moderne",
+    "Bulgarian Revival": "Bulgarische Wiedergeburtszeit",
+    "Thracian era – Antiquity": "Thrakische Zeit - Antike",
+    "Roman period": "Römische Zeit",
+    "Ottoman period": "Osmanische Zeit",
+    "not identified in the current public source": "in der aktuellen öffentlichen Quelle nicht identifiziert",
+    "not applicable for a natural hill or terrain feature": "nicht zutreffend für einen natürlichen Hügel oder ein Gelände",
+    "Publicly documented historic site; detailed visiting status still needs verification.":
+      "Öffentlich dokumentierter historischer Ort; der genaue Besuchsstatus muss noch geprüft werden.",
+    "Publicly documented institution, building, or urban site in Plovdiv.":
+      "Öffentlich dokumentierte Institution, Gebäude oder städtischer Ort in Plovdiv.",
+    "Building or urban site from Plovdiv's Revival and early modern heritage.":
+      "Gebäude oder städtischer Ort aus Plovdivs Wiedergeburtszeit und frühem modernem Erbe."
+  }
+};
+
 export function formatMoney(
   amount: number,
   lang: Lang = "bg",
@@ -72,6 +96,20 @@ export function districtLabel(value: string | null, lang: Lang = "bg"): string {
 
 export function sourceTitle(title: string, lang: Lang = "bg"): string {
   return sourceTitleLabels[lang]?.[title] ?? title;
+}
+
+export function knownHistoryLabel(value: string | null | undefined, lang: Lang = "bg"): string {
+  if (!value) return "";
+  const direct = knownHistoryText[lang]?.[value];
+  if (direct) return direct;
+  if (lang !== "de") return value;
+
+  return value
+    .replace(/^Modern period(,|$)/, "Moderne$1")
+    .replace(/^Bulgarian Revival(,|$)/, "Bulgarische Wiedergeburtszeit$1")
+    .replace(/^Roman period(,|$)/, "Römische Zeit$1")
+    .replace(/^Ottoman period(,|$)/, "Osmanische Zeit$1")
+    .replace(/^Thracian era(,|$)/, "Thrakische Zeit$1");
 }
 
 export function distanceKm(

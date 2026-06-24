@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import { categoryColors, ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
 import { budgetItems, projects } from "@lib/data";
-import { categoryLabel, formatMoney, projectStatusLabel } from "@lib/format";
+import { categoryLabel, formatMoney, fundingSourceLabel, projectStatusLabel } from "@lib/format";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -246,7 +246,7 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
           <div class="chart">
             {funding2026.map((f) => (
               <div class="bar-row">
-                <span class="bar-label">{field(f, "title", lang)}</span>
+                <span class="bar-label">{f.funding_key ? fundingSourceLabel(f.funding_key, lang) : field(f, "title", lang)}</span>
                 <div class="bar-track" aria-hidden="true">
                   <div class="bar-fill" style={`width:${Math.max(6, ((f.amount_eur ?? 0) / maxFunding) * 100)}%`}></div>
                 </div>

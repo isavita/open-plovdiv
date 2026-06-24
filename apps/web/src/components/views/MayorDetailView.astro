@@ -43,19 +43,19 @@ const isWikipediaMoreUrl = mayor.more_url
   : false;
 const officialProfile = mayor.official_profile;
 const officialProfileUrl = officialProfile
-  ? lang === "en" && officialProfile.url_en
+  ? lang !== "bg" && officialProfile.url_en
     ? officialProfile.url_en
     : officialProfile.url
   : null;
 const officialProfileTitle = officialProfile
-  ? lang === "en" && officialProfile.title_en
+  ? lang !== "bg" && officialProfile.title_en
     ? officialProfile.title_en
     : officialProfile.title
   : null;
 const referenceLinks =
   mayor.reference_links?.map((link) => ({
-    title: lang === "en" && link.title_en ? link.title_en : link.title,
-    url: lang === "en" && link.url_en ? link.url_en : link.url,
+    title: lang !== "bg" && link.title_en ? link.title_en : link.title,
+    url: lang !== "bg" && link.url_en ? link.url_en : link.url,
     accessed_at: link.accessed_at
   })) ?? [];
 const mono = name
@@ -70,7 +70,7 @@ const mono = name
 // Sourced Wikidata enrichment (education, birthplace links, other roles, the
 // person's own Wikipedia article). Keyed by the Bulgarian name.
 const enrich = mayorWikidataEnrichment[field(mayor, "actor", "bg")] ?? null;
-const pick = (bg: string | null, en: string | null) => (lang === "en" ? en || bg : bg || en) ?? null;
+const pick = (bg: string | null, en: string | null) => (lang === "bg" ? bg || en : en || bg) ?? null;
 const enrichLink = (item: { name_bg: string | null; name_en: string | null; wikipedia_bg: string | null; wikipedia_en: string | null }) => ({
   name: pick(item.name_bg, item.name_en),
   url: pick(item.wikipedia_bg, item.wikipedia_en)

@@ -1,6 +1,8 @@
 // Pure domain logic for citizen reports: statuses, validation, IDs, sanitizing.
 // No Redis / framework imports here so it can be unit-tested in isolation.
 
+import type { Lang } from "@i18n/ui";
+
 export type ModerationStatus =
   | "submitted"
   | "needs_review"
@@ -87,7 +89,7 @@ export type CommunityReport = {
   source: "citizen_submission";
   source_url?: string;
   source_note?: string;
-  lang: "bg" | "en";
+  lang: Lang;
   created_at: string;
   updated_at: string;
   rejection_reason?: string;
@@ -121,7 +123,7 @@ export type CleanSubmission = {
   source_note?: string;
   lat: number;
   lng: number;
-  lang: "bg" | "en";
+  lang: Lang;
 };
 
 export type ReportUpdateInput = {
@@ -216,7 +218,7 @@ export function validateSubmission(input: SubmissionInput): ValidationResult {
     return { ok: false, error: "invalid_location" };
   }
 
-  const lang = input.lang === "en" ? "en" : "bg";
+  const lang: Lang = input.lang === "en" || input.lang === "de" ? input.lang : "bg";
 
   if (!isBool(input.no_personal_data) || !isBool(input.public_interest)) {
     return { ok: false, error: "missing_confirmation" };
@@ -320,7 +322,7 @@ export function buildReport(value: CleanSubmission, id: string): CommunityReport
   };
   // Mirror the submitted text into the matching language field so the report
   // displays in the language it was written in (we do not auto-translate).
-  if (value.lang === "en") {
+  if (value.lang !== "bg") {
     report.title_en = value.title;
     report.description_en = value.description;
   }

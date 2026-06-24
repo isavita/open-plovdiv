@@ -57,7 +57,55 @@ const labels =
           default: "Приносът не можа да бъде изпратен. Опитайте отново."
         }
       }
-    : {
+    : lang === "de"
+      ? {
+        eyebrow: "Bürgerarchiv",
+        title: "Foto, Erinnerung oder Quelle einreichen",
+        lead:
+          "Historische Beiträge gehen in dieselbe Moderationswarteschlange wie Bürgermeldungen. Nichts wird automatisch veröffentlicht: Eine Redaktion prüft persönliche Daten, Bildrechte und Quellenkontext, bevor ein Eintrag öffentlich wird.",
+        notice:
+          "Senden Sie keine persönlichen Daten, genauen privaten Adressen oder Fotos mit Gesichtern ohne Veröffentlichungsrechte. Ergänzen Sie eine Quelle, einen Archivlink oder Herkunftskontext, wenn vorhanden.",
+        category: "Art des Beitrags",
+        titleLabel: "Kurzer Titel",
+        titlePlaceholder: "z. B. altes Foto der Dzhumaya",
+        description: "Beschreibung / Erinnerung",
+        descriptionPlaceholder: "Beschreiben Sie, was zu sehen ist, ungefähr wann, woher es stammt und was geprüft werden soll.",
+        sourceUrl: "Quelle oder Archivlink",
+        sourceUrlPlaceholder: "https://...",
+        sourceNote: "Herkunftshinweis",
+        sourceNotePlaceholder: "z. B. Familienfoto, gescannte Postkarte, Archivbeitrag...",
+        photos: "Fotos",
+        photoHint:
+          "Optional, bis zu 3 Fotos, maximal 5 MB pro Datei. EXIF/GPS-Daten werden entfernt und Fotos vor der Prüfung konvertiert.",
+        location: "Ort",
+        locationHint: "Klicken Sie auf die Karte, wenn der Beitrag mit einem konkreten Ort verbunden ist.",
+        noLocation: "Noch kein Punkt ausgewählt",
+        confirmNoPersonal: "Ich bestätige, dass der Beitrag keine persönlichen Daten enthält.",
+        confirmPublicInterest: "Ich bestätige, dass der Beitrag prüfbar und von öffentlichem Interesse ist.",
+        submit: "Zur Prüfung einreichen",
+        submitting: "Wird gesendet...",
+        successTitle: "Erhalten",
+        successText: "Der Beitrag liegt in der Moderationswarteschlange. Referenznummer:",
+        submitAnother: "Weiteren Beitrag einreichen",
+        backToHistory: "Zur Geschichte",
+        selected: "Ausgewählter Punkt",
+        errors: {
+          rate_limited: "Zu viele Einsendungen in kurzer Zeit. Bitte später erneut versuchen.",
+          invalid_category: "Wählen Sie eine gültige Beitragsart.",
+          invalid_title: "Der Titel muss zwischen 3 und 120 Zeichen lang sein.",
+          invalid_description: "Die Beschreibung muss zwischen 10 und 1000 Zeichen lang sein.",
+          invalid_source: "Die Quelle muss ein gültiger http/https-Link oder eine kurze Notiz sein.",
+          contains_personal_data: "Der Text enthält etwas, das wie persönliche Daten aussieht.",
+          invalid_location: "Wählen Sie einen Punkt innerhalb von Plovdiv.",
+          missing_confirmation: "Bitte beide Bestätigungen ankreuzen.",
+          too_many_photos: "Laden Sie höchstens 3 Fotos hoch.",
+          photo_too_large: "Jedes Foto darf höchstens 5 MB groß sein.",
+          invalid_photo_type: "Nur JPEG-, PNG- oder WebP-Fotos sind erlaubt.",
+          invalid_photo: "Das Foto konnte nicht verarbeitet werden.",
+          default: "Der Beitrag konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+        }
+      }
+      : {
         eyebrow: "Community archive",
         title: "Submit a photo, memory or source",
         lead:

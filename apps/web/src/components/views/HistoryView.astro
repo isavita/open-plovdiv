@@ -5,6 +5,7 @@ import SectionNav from "@components/SectionNav.astro";
 import { createHash } from "node:crypto";
 import { roleLabels, ui, type Lang } from "@i18n/ui";
 import { localizePath } from "@i18n/utils";
+import { knownHistoryLabel } from "@lib/format";
 import {
   historyKnowledgeEvents,
   historyKnowledgeIndex,
@@ -485,7 +486,7 @@ function shouldShowThemeTag(theme: string) {
 }
 
 function localized(record: Record<string, any>, base: string): string {
-  return String(record[`${base}_${lang}`] ?? record[`${base}_bg`] ?? "");
+  return knownHistoryLabel(String(record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""), lang);
 }
 
 function dateLabel(event: KnowledgeEvent) {
@@ -600,9 +601,26 @@ const successionCount = historyKnowledgePeople.reduce(
   (sum, person) => sum + person.relationships.filter((relationship) => relationship.type === "succeeded_by").length,
   0
 );
+const knownHistoryKeys = [
+  "wikidata_coordinate",
+  "approximate_site",
+  "district_centroid",
+  "citywide_reference",
+  "Modern period",
+  "Bulgarian Revival",
+  "Thracian era – Antiquity",
+  "Roman period",
+  "Ottoman period",
+  "not identified in the current public source",
+  "not applicable for a natural hill or terrain feature",
+  "Publicly documented historic site; detailed visiting status still needs verification.",
+  "Publicly documented institution, building, or urban site in Plovdiv.",
+  "Building or urban site from Plovdiv's Revival and early modern heritage."
+];
 const historyMapConfig = {
   lang,
   dataVersion: historyDataVersion,
+  knownHistoryLabels: Object.fromEntries(knownHistoryKeys.map((key) => [key, knownHistoryLabel(key, lang)])),
   api: {
     archiveItems: historyKnowledgeIndex.endpoints.archive_items,
     places: historyKnowledgeIndex.endpoints.places,
@@ -763,7 +781,7 @@ const growth = ({
 const nbEraLabels: Record<NeighbourhoodEra, string> = ({
       bg: { ottoman: "Османски период", revival: "Възраждане", modern: "Ново време (XX в.)", socialist: "Социалистически период" },
       en: { ottoman: "Ottoman period", revival: "National Revival", modern: "Modern era (20th c.)", socialist: "Socialist period" },
-      de: { ottoman: "Osmanische Zeit", revival: "Wiedergeburt", modern: "Neuzeit (20. Jh.)", socialist: "Sozialistische Zeit" }
+      de: { ottoman: "Osmanische Zeit", revival: "Wiedergeburtszeit", modern: "Neuzeit (20. Jh.)", socialist: "Sozialistische Zeit" }
     } satisfies Record<Lang, Record<NeighbourhoodEra, string>>)[lang];
 
 // sticky in-page section navigation
@@ -1688,7 +1706,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
     function localizedApi(record: Record<string, any> | undefined, base: string) {
       if (!record) return "";
-      return String(record[`${base}_${timelineConfig.lang}`] ?? record[`${base}_bg`] ?? "");
+      return String(record[`${base}_${timelineConfig.lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? "");
     }
 
     function dateApiLabel(event: any) {
@@ -2172,9 +2190,22 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       return [];
     }
 
+    function knownMapLabel(value: string) {
+      const text = String(value ?? "");
+      const direct = config.knownHistoryLabels?.[text];
+      if (direct) return direct;
+      if (config.lang !== "de") return text;
+      return text
+        .replace(/^Modern period(,|$)/, "Moderne$1")
+        .replace(/^Bulgarian Revival(,|$)/, "Bulgarische Wiedergeburtszeit$1")
+        .replace(/^Roman period(,|$)/, "Römische Zeit$1")
+        .replace(/^Ottoman period(,|$)/, "Osmanische Zeit$1")
+        .replace(/^Thracian era(,|$)/, "Thrakische Zeit$1");
+    }
+
     function localizedMap(record: Record<string, any> | undefined, base: string) {
       if (!record) return "";
-      return String(record[`${base}_${config.lang}`] ?? record[`${base}_bg`] ?? "");
+      return knownMapLabel(String(record[`${base}_${config.lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""));
     }
 
     function mapPlaceFacts(place: any) {

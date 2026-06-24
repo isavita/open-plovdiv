@@ -52,7 +52,42 @@ const labels =
         open: "Отвори",
         loadMore: "Покажи още"
       }
-    : {
+    : lang === "de"
+      ? {
+        title: "Orte und Sehenswürdigkeiten",
+        eyebrow: "Koordinaten, Bilder und Quellen",
+        lead:
+          "Ein Katalog historischer Orte in Plovdiv: Sehenswürdigkeiten, Plätze, Hügel, öffentliche Gebäude und Kulturorte mit Fotos, Koordinaten und öffentlichen Quellen.",
+        places: "Orte",
+        coordinates: "Koordinaten",
+        images: "Bilder",
+        events: "Ereignisse",
+        thenNow: "damals/heute",
+        archive: "Archiv",
+        search: "Suche",
+        searchPlaceholder: "Ort, Epoche, Architekt...",
+        era: "Epoche",
+        category: "Kategorie",
+        evidence: "Archiv",
+        allEras: "Alle Epochen",
+        allCategories: "Alle Kategorien",
+        allEvidence: "Alle Datensätze",
+        withThenNow: "mit damals/heute",
+        withArchive: "mit Archiv",
+        visible: "Sichtbar",
+        of: "von",
+        reset: "Filter zurücksetzen",
+        noResults: "Keine Orte entsprechen diesen Filtern.",
+        source: "Quelle",
+        status: "Status",
+        built: "Bauzeit/Datum",
+        architect: "Architekt",
+        builder: "Bauherr",
+        creator: "Architekt/Bauherr",
+        open: "Öffnen",
+        loadMore: "Mehr anzeigen"
+      }
+      : {
         title: "Places and Landmarks",
         eyebrow: "Coordinates, images and sources",
         lead:
@@ -87,20 +122,20 @@ const labels =
         loadMore: "Load more"
       };
 
-const categoryLabels: Record<string, { bg: string; en: string }> = {
-  civic: { bg: "Градска среда", en: "Civic" },
-  hill: { bg: "Хълм", en: "Hill" },
-  medieval: { bg: "Средновековие", en: "Medieval" },
-  monument: { bg: "Паметник", en: "Monument" },
-  ottoman: { bg: "Османски пласт", en: "Ottoman" },
-  religious: { bg: "Религиозен обект", en: "Religious" },
-  revival: { bg: "Възраждане", en: "Revival" },
-  roman: { bg: "Римски пласт", en: "Roman" },
-  thracian: { bg: "Тракийски пласт", en: "Thracian" }
+const categoryLabels: Record<string, Record<Lang, string>> = {
+  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum" },
+  hill: { bg: "Хълм", en: "Hill", de: "Hügel" },
+  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich" },
+  monument: { bg: "Паметник", en: "Monument", de: "Denkmal" },
+  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch" },
+  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort" },
+  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit" },
+  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch" },
+  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch" }
 };
 
 function localized(record: Record<string, any>, base: string): string {
-  return String(record[`${base}_${lang}`] ?? record[`${base}_bg`] ?? "");
+  return String(record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? "");
 }
 
 function categoryLabel(category: string): string {
@@ -220,7 +255,12 @@ const mapL =
         title: "Карта на местата",
         lead: "Всички документирани места с координати, оцветени по категория. Филтрите по-долу важат и за картата."
       }
-    : {
+    : lang === "de"
+      ? {
+        title: "Karte der Orte",
+        lead: "Alle dokumentierten Orte mit Koordinaten, nach Kategorie eingefärbt. Die Filter unten steuern auch die Karte."
+      }
+      : {
         title: "Map of the places",
         lead: "All documented places with coordinates, coloured by category. The filters below also drive the map."
       };

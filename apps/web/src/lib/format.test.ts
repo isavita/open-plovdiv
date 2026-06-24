@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { categoryLabel, distanceKm, formatMoneyBGN, projectStatusLabel } from "./format";
+import { categoryLabel, distanceKm, formatMoneyBGN, knownHistoryLabel, projectStatusLabel } from "./format";
 
 describe("format utilities", () => {
   it("formats BGN without cents", () => {
@@ -19,5 +19,11 @@ describe("format utilities", () => {
     );
     expect(distance).toBeGreaterThan(0.1);
     expect(distance).toBeLessThan(0.3);
+  });
+
+  it("localizes generated history labels for German pages", () => {
+    expect(knownHistoryLabel("wikidata_coordinate", "de")).toBe("Wikidata-Koordinaten");
+    expect(knownHistoryLabel("Modern period, 1984", "de")).toBe("Moderne, 1984");
+    expect(knownHistoryLabel("not identified in the current public source", "de")).toContain("öffentlichen Quelle");
   });
 });

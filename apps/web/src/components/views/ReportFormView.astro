@@ -14,6 +14,7 @@ const config = {
   apiUrl: "/api/reports",
   submit: t.reportForm.submit,
   submitting: t.reportForm.submitting,
+  selected: t.reportForm.selected,
   successText: t.reportForm.successText,
   errors: {
     rate_limited: t.reportForm.errRateLimited,
@@ -157,7 +158,7 @@ const config = {
       const { lat, lng } = e.latlng;
       latInput.value = lat.toFixed(6);
       lngInput.value = lng.toFixed(6);
-      coords.textContent = `${config.lang === "bg" ? "Избрана точка" : "Selected point"}: ${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+      coords.textContent = `${config.selected}: ${lat.toFixed(5)}, ${lng.toFixed(5)}`;
       if (marker) marker.setLatLng(e.latlng);
       else marker = L.marker(e.latlng, { icon }).addTo(map);
     });

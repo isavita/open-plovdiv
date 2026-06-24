@@ -487,11 +487,11 @@ const nodeConfig = {
     </div>
   </section>
 
-  <SectionNav
+    <SectionNav
     items={lang === "bg"
       ? [{ id: "people-connections", label: "Връзки" }, { id: "people-catalog", label: "Каталог" }]
       : [{ id: "people-connections", label: "Connections" }, { id: "people-catalog", label: "Catalog" }]}
-    label={lang === "bg" ? "Раздели на страницата" : "Page sections"}
+    label={lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : "Page sections"}
   />
 
   <section class="section people-connections" id="people-connections" data-subnav-target>
@@ -814,7 +814,8 @@ const nodeConfig = {
     }
 
     function renderPersonCard(card: any) {
-      const profileHref = `${config.lang === "en" ? "/en" : ""}/people/${encodeURIComponent(card.id)}/`;
+      const prefix = config.lang === "bg" ? "" : `/${config.lang}`;
+      const profileHref = `${prefix}/people/${encodeURIComponent(card.id)}/`;
       const avatar = card.avatar
         ? `<img class="person-avatar" src="${escapePeopleHtml(card.avatar)}" alt="${escapePeopleHtml(card.name)}" loading="lazy" decoding="async" />`
         : `<span class="person-avatar person-avatar-fallback" aria-hidden="true">${escapePeopleHtml(card.initials)}</span>`;
