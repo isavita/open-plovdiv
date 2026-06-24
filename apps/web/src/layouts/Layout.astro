@@ -2,7 +2,7 @@
 import "@fontsource-variable/playfair-display/index.css";
 import "../styles/global.css";
 import PlovdivSkyline from "@components/PlovdivSkyline.astro";
-import { localizePath, ui, type Lang } from "@i18n/utils";
+import { languages, localeCodes, localizePath, ui, type Lang } from "@i18n/utils";
 
 type Props = {
   lang: Lang;
@@ -18,7 +18,8 @@ const t = ui[lang];
 const pageTitle = title ? `${title} · ${t.site.name}` : t.site.name;
 const pageDescription = description ?? t.site.tagline;
 
-const otherLang: Lang = lang === "bg" ? "en" : "bg";
+const ogLocales: Record<Lang, string> = { bg: "bg_BG", en: "en_GB", de: "de_DE" };
+const ogLocale = ogLocales[lang];
 
 // History-first primary nav (kept tight for usability); civic + reference
 // links live in the footer and the homepage "civic data" section.
@@ -38,9 +39,12 @@ function isActive(base: string): boolean {
 
 const site = Astro.site ?? new URL("https://openplovdiv.example");
 const canonical = new URL(localizePath(path, lang), site).href;
-const bgHref = new URL(localizePath(path, "bg"), site).href;
-const enHref = new URL(localizePath(path, "en"), site).href;
-const switchHref = localizePath(path, otherLang);
+// hreflang alternates for every supported locale (+ x-default → Bulgarian root).
+const altLinks = localeCodes.map((code) => ({
+  code,
+  href: new URL(localizePath(path, code), site).href
+}));
+const xDefaultHref = new URL(localizePath(path, "bg"), site).href;
 
 const footerHistory = [
   { href: localizePath("/history", lang), label: t.nav.history },
@@ -73,9 +77,10 @@ const footerAbout = [
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="bg" href={bgHref} />
-    <link rel="alternate" hreflang="en" href={enHref} />
-    <link rel="alternate" hreflang="x-default" href={bgHref} />
+    {altLinks.map((alt) => (
+      <link rel="alternate" hreflang={alt.code} href={alt.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#f2ead8" media="(prefers-color-scheme: light)" />
@@ -86,7 +91,7 @@ const footerAbout = [
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:locale" content={lang === "bg" ? "bg_BG" : "en_GB"} />
+    <meta property="og:locale" content={ogLocale} />
     <meta name="twitter:card" content="summary" />
 
     <script is:inline>
@@ -119,9 +124,27 @@ const footerAbout = [
           </div>
 
           <div class="nav-right">
-            <a class="icon-btn lang-switch" href={switchHref} aria-label={t.site.langSwitch} title={t.site.langName} hreflang={otherLang}>
-              <span class="flag" aria-hidden="true">{otherLang.toUpperCase()}</span>
-            </a>
+            <details class="lang-menu" id="lang-menu">
+              <summary class="icon-btn lang-switch" aria-label={t.site.langSwitch} title={t.site.langSwitch}>
+                <span class="flag" aria-hidden="true">{lang.toUpperCase()}</span>
+                <span class="lang-caret" aria-hidden="true">▾</span>
+              </summary>
+              <ul class="lang-options">
+                {localeCodes.map((code) => (
+                  <li>
+                    <a
+                      href={localizePath(path, code)}
+                      hreflang={code}
+                      lang={code}
+                      aria-current={code === lang ? "true" : undefined}
+                    >
+                      <span class="lang-code" aria-hidden="true">{code.toUpperCase()}</span>
+                      <span>{languages[code]}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
             <button
               type="button"
               class="icon-btn theme-toggle"
@@ -198,6 +221,16 @@ const footerAbout = [
         var header = document.getElementById("site-header");
         var navToggle = document.getElementById("nav-toggle");
         var themeToggle = document.getElementById("theme-toggle");
+        var langMenu = document.getElementById("lang-menu");
+
+        // Close the language dropdown when clicking outside it.
+        if (langMenu) {
+          document.addEventListener("click", function (e) {
+            if (langMenu.open && !langMenu.contains(e.target)) {
+              langMenu.open = false;
+            }
+          });
+        }
 
         if (navToggle && header) {
           navToggle.addEventListener("click", function () {
@@ -208,9 +241,12 @@ const footerAbout = [
         }
 
         document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape" && header && header.getAttribute("data-open") === "true") {
-            header.setAttribute("data-open", "false");
-            if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+          if (e.key === "Escape") {
+            if (header && header.getAttribute("data-open") === "true") {
+              header.setAttribute("data-open", "false");
+              if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+            }
+            if (langMenu && langMenu.open) langMenu.open = false;
           }
         });
 

@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import HeroBackdrop from "@components/HeroBackdrop.astro";
 import SectionNav from "@components/SectionNav.astro";
 import { createHash } from "node:crypto";
-import { ui, type Lang } from "@i18n/ui";
+import { roleLabels, ui, type Lang } from "@i18n/ui";
 import { localizePath } from "@i18n/utils";
 import {
   historyKnowledgeEvents,
@@ -58,16 +58,18 @@ const historyDataVersion = createHash("sha1")
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
 const mayorEvents = entries.filter((event) => event.category === "mayor_term");
 
+const tr = (bg: string, en: string, de: string): string =>
+  ({ bg, en, de } satisfies Record<Lang, string>)[lang];
+
 const stats = [
   { value: t.home.statYearsValue, label: t.history.statYears },
-  { value: String(historyKnowledgeEvents.length), label: lang === "bg" ? "събития" : "events" },
-  { value: String(historyKnowledgePeople.length), label: lang === "bg" ? "хора" : "people" },
-  { value: String(historyKnowledgeSources.length), label: lang === "bg" ? "източника" : "sources" }
+  { value: String(historyKnowledgeEvents.length), label: tr("събития", "events", "Ereignisse") },
+  { value: String(historyKnowledgePeople.length), label: tr("хора", "people", "Personen") },
+  { value: String(historyKnowledgeSources.length), label: tr("източника", "sources", "Quellen") }
 ];
 
-const labels =
-  lang === "bg"
-    ? {
+const labels = ({
+      bg: {
         people: "Хора",
         places: "Места",
         contribute: "Изпрати снимка или спомен",
@@ -164,8 +166,8 @@ const labels =
         download: "Сваляне",
         jsonData: "JSON данни",
         csvData: "CSV таблици"
-      }
-    : {
+      },
+      en: {
         people: "People",
         places: "Places",
         contribute: "Submit a photo or memory",
@@ -262,11 +264,109 @@ const labels =
         download: "Download",
         jsonData: "JSON data",
         csvData: "CSV tables"
-      };
+      },
+      de: {
+        people: "Personen",
+        places: "Orte",
+        contribute: "Foto oder Erinnerung einsenden",
+        records: "Einträge",
+        of: "von",
+        timelineTitle: "Ausführliche Zeitleiste",
+        timelineLead:
+          "Datierte Einträge von der Vorgeschichte bis heute, einschließlich 68 Bürgermeister-Amtszeiten und Stadtarchiv-Ereignissen. Jeder Eintrag nennt seine Quelle.",
+        search: "Suche",
+        searchPlaceholder: "Name, Ort, Ereignis…",
+        era: "Epoche",
+        category: "Typ",
+        theme: "Thema",
+        person: "Person",
+        place: "Ort",
+        linked: "Verknüpfungen",
+        allEras: "Alle Epochen",
+        allCategories: "Alle Typen",
+        allThemes: "Alle Themen",
+        allPeople: "Alle Personen",
+        allPlaces: "Alle Orte",
+        allLinks: "Alle Einträge",
+        withPeople: "mit Personen",
+        withPlaces: "mit Orten",
+        withOrganizations: "mit Organisationen",
+        visible: "Sichtbar",
+        reset: "Filter zurücksetzen",
+        noResults: "Keine Einträge entsprechen diesen Filtern.",
+        onThisDayTitle: "An diesem Tag",
+        onThisDayLead:
+          "Wählen Sie ein Datum, um zugehörige Momente aus der Geschichte Plovdivs zu sehen.",
+        today: "Heute",
+        noOnThisDay: "Kein Ereignis für das gewählte Datum.",
+        source: "Quelle",
+        sourcePlural: "Quellen",
+        conflictNote: "Konflikthinweis",
+        mapTitle: "Historische Karte",
+        mapLead:
+          "Die ersten Orte sind mit ungefähren Koordinaten und einer separaten Quelle zur Einordnung auf der Karte verzeichnet.",
+        mapLayer: "Epochen-Ebene",
+        allMapEras: "Alle Epochen",
+        mapRoutes: "Thematische Spazierrouten",
+        noRoute: "Keine Route",
+        visiblePlaces: "Sichtbare Orte",
+        mapArchiveLayer: "Archiv-Ebene",
+        noArchiveOverlay: "Kein Archiv",
+        archiveOverlayMaps: "Alte Karten",
+        archiveOverlayAll: "Alle Archivmedien",
+        archiveOverlayPhotos: "Fotos und Postkarten",
+        archiveOverlayDocuments: "Dokumente",
+        visibleArchiveItems: "Archivmarkierungen",
+        archiveOverlayNote: "Die Ebene legt alte Karten und Fotos über die moderne Karte. Die Ausrichtung ist ungefähr.",
+        routeStops: "Stationen",
+        routeAncientTitle: "Antikes Philippopolis",
+        routeAncientLead:
+          "Eine kurze Route durch römische und spätantike Stätten rund um die Drei Hügel.",
+        routeRevivalTitle: "Altstadt der Wiedergeburt",
+        routeRevivalLead:
+          "Ein Spazierweg durch Häuser, Kirchen und Schulstätten aus der Nationalen Wiedergeburt.",
+        routeHillsTitle: "Die Hügel",
+        routeHillsLead:
+          "Eine geografische Route durch die Hügel, die frühe Geschichte und städtische Erinnerung bewahren.",
+        openPlaces: "Alle Orte",
+        selectPlace: "Ausgewählter Ort",
+        coordinates: "Koordinaten",
+        built: "Datum/Bau",
+        architect: "Architekt",
+        builder: "Erbauer",
+        creator: "Architekt/Erbauer",
+        archiveTitle: "Georeferenziertes Archiv und Damals/heute",
+        archiveLead:
+          "Die Archiv-Ebene verknüpft historische Karten, Fotos und Postkarten mit Orten in der Stadt. Jedes Element behält seine Quelle und Lizenz von Wikimedia Commons.",
+        georeferencedItems: "georeferenzierte Archivobjekte",
+        thenNowPairs: "Damals/heute-Paare",
+        archiveDate: "Datum",
+        archivePlace: "Ort",
+        georeference: "Georeferenzierung",
+        license: "Lizenz",
+        thenNowTitle: "Damals/heute-Vergleiche",
+        thenNowLead:
+          "Die Schieberegler vergleichen ein Archivbild mit einem modernen, frei lizenzierten Foto desselben Ortes oder des nächsten überprüfbaren städtischen Kontexts.",
+        thenLabel: "Damals",
+        nowLabel: "Heute",
+        peopleTitle: "Verbindungen zwischen Personen",
+        peopleLead:
+          "Das Netzwerk umfasst alle Personen, während die Bürgermeister-Nachfolge eine eigene Ebene darin ist.",
+        repeatTerms: "wiederholte Amtszeiten",
+        successionLinks: "Nachfolge-Verbindungen",
+        openMayors: "Das gesamte Personennetzwerk",
+        dataTitle: "Offene Daten und API",
+        dataLead:
+          "Die fünf historischen Objekttypen werden als JSON und CSV veröffentlicht, und statische API-Routen liefern dieselben Einträge.",
+        endpoint: "Endpunkt",
+        download: "Download",
+        jsonData: "JSON-Daten",
+        csvData: "CSV-Tabellen"
+      }
+    } satisfies Record<Lang, Record<string, string>>)[lang];
 
-const dataResourceLabels: Record<string, string> =
-  lang === "bg"
-    ? {
+const dataResourceLabels: Record<string, string> = ({
+      bg: {
         index: "Индекс",
         events: "Събития",
         people: "Хора",
@@ -281,8 +381,8 @@ const dataResourceLabels: Record<string, string> =
         education_resources: "Образователни ресурси",
         editorial_signoffs: "Редакторски подписи",
         editorial_review: "Редакторски преглед"
-      }
-    : {
+      },
+      en: {
         index: "Index",
         events: "Events",
         people: "People",
@@ -297,7 +397,24 @@ const dataResourceLabels: Record<string, string> =
         education_resources: "Education resources",
         editorial_signoffs: "Editorial sign-offs",
         editorial_review: "Editorial review"
-      };
+      },
+      de: {
+        index: "Index",
+        events: "Ereignisse",
+        people: "Personen",
+        person_relationships: "Personenbeziehungen",
+        places: "Orte",
+        organizations: "Organisationen",
+        sources: "Quellen",
+        archive_items: "Archivobjekte",
+        then_now_pairs: "Damals/heute-Paare",
+        primary_documents: "Primärdokumente",
+        story_longreads: "Lange Geschichten",
+        education_resources: "Bildungsressourcen",
+        editorial_signoffs: "Redaktionelle Freigaben",
+        editorial_review: "Redaktionelle Prüfung"
+      }
+    } satisfies Record<Lang, Record<string, string>>)[lang];
 
 function dataResourceLabel(key: string) {
   return dataResourceLabels[key] ?? key.replaceAll("_", " ");
@@ -330,112 +447,36 @@ const downloadRows = Object.entries(historyKnowledgeIndex.downloads)
     };
   });
 
-const categoryLabels: Record<string, { bg: string; en: string }> = {
-  historical_timeline: { bg: "Хронология", en: "Timeline" },
-  mayor_term: { bg: "Кметски мандат", en: "Mayoral term" },
-  historical_event: { bg: "Историческо събитие", en: "Historical event" },
-  cultural_programme: { bg: "Културна програма", en: "Cultural programme" },
-  historical_finance: { bg: "Исторически финанси", en: "Historical finance" },
-  municipal_programme: { bg: "Общинска програма", en: "Municipal programme" },
-  governance_change: { bg: "Управленска промяна", en: "Governance change" },
-  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth" },
-  archive_source: { bg: "Архивен източник", en: "Archive source" }
+const categoryLabels: Record<string, Record<Lang, string>> = {
+  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste" },
+  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit" },
+  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis" },
+  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm" },
+  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen" },
+  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm" },
+  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel" },
+  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit" },
+  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle" }
 };
 
-const themeLabels: Record<string, { bg: string; en: string }> = {
-  people: { bg: "Личности", en: "People" },
-  birth: { bg: "Раждане", en: "Birth" },
-  academic: { bg: "академик", en: "academic" },
-  actor: { bg: "актьор", en: "actor" },
-  art_historian: { bg: "изкуствовед", en: "art historian" },
-  artist: { bg: "художник", en: "artist" },
-  athlete: { bg: "спортист", en: "athlete" },
-  basketball_player: { bg: "баскетболист", en: "basketball player" },
-  boxer: { bg: "боксьор", en: "boxer" },
-  canoeist: { bg: "кануист", en: "canoeist" },
-  chef: { bg: "готвач", en: "chef" },
-  chess_player: { bg: "шахматист", en: "chess player" },
-  choreographer: { bg: "хореограф", en: "choreographer" },
-  clergy: { bg: "духовник", en: "clergy" },
-  composer: { bg: "композитор", en: "composer" },
-  conductor: { bg: "диригент", en: "conductor" },
-  cultural_manager: { bg: "културен мениджър", en: "cultural manager" },
-  designer: { bg: "дизайнер", en: "designer" },
-  diplomat: { bg: "дипломат", en: "diplomat" },
-  economist: { bg: "икономист", en: "economist" },
-  educator: { bg: "педагог", en: "educator" },
-  electrical_engineer: { bg: "електроинженер", en: "electrical engineer" },
-  engineer: { bg: "инженер", en: "engineer" },
-  equestrian: { bg: "състезател по конен спорт", en: "equestrian" },
-  fencer: { bg: "фехтовач", en: "fencer" },
-  film_director: { bg: "филмов режисьор", en: "film director" },
-  first_lady: { bg: "първа дама", en: "first lady" },
-  football_referee: { bg: "футболен съдия", en: "football referee" },
-  footballer: { bg: "футболист", en: "footballer" },
-  general: { bg: "генерал", en: "general" },
-  geographer: { bg: "географ", en: "geographer" },
-  gymnast: { bg: "гимнастик", en: "gymnast" },
-  high_jumper: { bg: "скачач на височина", en: "high jumper" },
-  illustrator: { bg: "илюстратор", en: "illustrator" },
-  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower" },
-  journalist: { bg: "журналист", en: "journalist" },
-  jurist: { bg: "юрист", en: "jurist" },
-  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist" },
-  mathematician: { bg: "математик", en: "mathematician" },
-  mayor: { bg: "кмет", en: "mayor" },
-  merchant: { bg: "търговец", en: "merchant" },
-  military_officer: { bg: "офицер", en: "military officer" },
-  mineralogist: { bg: "минералог", en: "mineralogist" },
-  missionary: { bg: "мисионер", en: "missionary" },
-  model: { bg: "модел", en: "model" },
-  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete" },
-  musician: { bg: "музикант", en: "musician" },
-  opera_singer: { bg: "оперен певец", en: "opera singer" },
-  painter: { bg: "живописец", en: "painter" },
-  paleontologist: { bg: "палеонтолог", en: "paleontologist" },
-  patriarch: { bg: "патриарх", en: "patriarch" },
-  philosopher: { bg: "философ", en: "philosopher" },
-  physicist: { bg: "физик", en: "physicist" },
-  pianist: { bg: "пианист", en: "pianist" },
-  poet: { bg: "поет", en: "poet" },
-  politician: { bg: "политик", en: "politician" },
-  priest: { bg: "свещеник", en: "priest" },
-  printmaker: { bg: "график", en: "printmaker" },
-  producer: { bg: "продуцент", en: "producer" },
-  public_figure: { bg: "обществена фигура", en: "public figure" },
-  racing_driver: { bg: "автомобилен състезател", en: "racing driver" },
-  revolutionary: { bg: "революционер", en: "revolutionary" },
-  rower: { bg: "гребец", en: "rower" },
-  saint: { bg: "светец", en: "saint" },
-  scholar: { bg: "учен", en: "scholar" },
-  scientist: { bg: "учен", en: "scientist" },
-  screenwriter: { bg: "сценарист", en: "screenwriter" },
-  sculptor: { bg: "скулптор", en: "sculptor" },
-  singer: { bg: "певец", en: "singer" },
-  sports_shooter: { bg: "спортен стрелец", en: "sport shooter" },
-  swimmer: { bg: "плувец", en: "swimmer" },
-  tennis_player: { bg: "тенисист", en: "tennis player" },
-  theatre_director: { bg: "театрален режисьор", en: "theatre director" },
-  violinist: { bg: "цигулар", en: "violinist" },
-  visual_artist: { bg: "визуален художник", en: "visual artist" },
-  volleyball_player: { bg: "волейболист", en: "volleyball player" },
-  weightlifter: { bg: "щангист", en: "weightlifter" },
-  wrestler: { bg: "борец", en: "wrestler" },
-  writer: { bg: "писател", en: "writer" },
-  zoologist: { bg: "зоолог", en: "zoologist" }
+// Timeline theme tags = the shared person-role labels plus two history-only tags.
+const themeLabels: Record<string, Record<Lang, string>> = {
+  ...roleLabels,
+  people: { bg: "Личности", en: "People", de: "Personen" },
+  birth: { bg: "Раждане", en: "Birth", de: "Geburt" }
 };
 
 const hiddenThemeTags = new Set(["people", "birth"]);
 
 function labelCategory(category: string) {
   const known = categoryLabels[category];
-  if (known) return known[lang];
+  if (known) return known[lang] ?? known.en;
   return category.replaceAll("_", " ");
 }
 
 function labelTheme(theme: string) {
   if (theme in t.history.eraLabels) return t.history.eraLabels[theme as HistoryEra];
-  if (theme in themeLabels) return themeLabels[theme][lang];
+  if (theme in themeLabels) return themeLabels[theme][lang] ?? themeLabels[theme].en;
   return labelCategory(theme).replaceAll("_", " ");
 }
 
@@ -627,9 +668,8 @@ function thenPhotoDate(pair: { historical_archive_item_id?: string }): string {
 }
 
 // --- City growth: population chart + neighbourhood timeline ---
-const growth =
-  lang === "bg"
-    ? {
+const growth = ({
+      bg: {
         title: "Как растеше градът",
         popQ: "Как се е променяло населението?",
         rateQ: "Кога градът е растял най-бързо?",
@@ -658,8 +698,8 @@ const growth =
         mapLead: "Приблизително разположение на кварталите, оцветени по епоха на възникване.",
         approxNote: "Приблизително местоположение",
         source: "Източник"
-      }
-    : {
+      },
+      en: {
         title: "How the city grew",
         popQ: "How has the population changed?",
         rateQ: "When did the city grow fastest?",
@@ -688,16 +728,47 @@ const growth =
         mapLead: "Approximate location of the neighbourhoods, coloured by the era they emerged.",
         approxNote: "Approximate location",
         source: "Source"
-      };
-const nbEraLabels: Record<NeighbourhoodEra, string> =
-  lang === "bg"
-    ? { ottoman: "Османски период", revival: "Възраждане", modern: "Ново време (XX в.)", socialist: "Социалистически период" }
-    : { ottoman: "Ottoman period", revival: "National Revival", modern: "Modern era (20th c.)", socialist: "Socialist period" };
+      },
+      de: {
+        title: "Wie die Stadt wuchs",
+        popQ: "Wie hat sich die Bevölkerung verändert?",
+        rateQ: "Wann wuchs die Stadt am schnellsten?",
+        popTitle: "Bevölkerung von Plovdiv im Lauf der Zeit",
+        popLead:
+          "Die historischen Punkte bis 2021 beruhen auf Volkszählungen und veröffentlichten historischen Reihen; 2022-2025 sind NSI-Jahresschätzungen zum 31.12.",
+        peakWord: "Höchststand",
+        latestWord: "Letzte Schätzung",
+        growthWord: "Wachstum seit",
+        rateTitle: "Bevölkerungsveränderungsrate",
+        rateLead:
+          "Durchschnittliche jährliche Veränderung für jeden Zeitraum zwischen benachbarten Messpunkten.",
+        perYear: "% pro Jahr",
+        rateUnitNote: "Die Werte sind die durchschnittliche jährliche Veränderung, % pro Jahr.",
+        densityTitle: "Bevölkerungsdichte",
+        areaLabel: "Stadtfläche",
+        densityNow: "Dichte",
+        densityPeak: "Dichte beim Höchststand (1985)",
+        perKm: "Ew./km²",
+        densityNote:
+          "Die Dichte ist auf die heutige Stadtfläche (101,98 km²) berechnet. Plovdiv ist die am dichtesten besiedelte Stadt Bulgariens.",
+        nbTitle: "Wann die Stadtviertel entstanden",
+        nbLead:
+          "Ausgewählte Stadtviertel und Bezirke Plovdivs, geordnet nach ihrer Entstehungszeit — jeweils mit öffentlicher Quelle.",
+        mapTitle: "Die Stadtviertel auf der Karte",
+        mapLead: "Ungefähre Lage der Stadtviertel, eingefärbt nach Entstehungsepoche.",
+        approxNote: "Ungefährer Standort",
+        source: "Quelle"
+      }
+    } satisfies Record<Lang, Record<string, string>>)[lang];
+const nbEraLabels: Record<NeighbourhoodEra, string> = ({
+      bg: { ottoman: "Османски период", revival: "Възраждане", modern: "Ново време (XX в.)", socialist: "Социалистически период" },
+      en: { ottoman: "Ottoman period", revival: "National Revival", modern: "Modern era (20th c.)", socialist: "Socialist period" },
+      de: { ottoman: "Osmanische Zeit", revival: "Wiedergeburt", modern: "Neuzeit (20. Jh.)", socialist: "Sozialistische Zeit" }
+    } satisfies Record<Lang, Record<NeighbourhoodEra, string>>)[lang];
 
 // sticky in-page section navigation
-const sectionNav =
-  lang === "bg"
-    ? [
+const sectionNav = ({
+      bg: [
         { id: "geography", label: "Геогр./климат" },
         { id: "timeline", label: "Хронология" },
         { id: "city-growth", label: "Растеж" },
@@ -705,8 +776,8 @@ const sectionNav =
         { id: "archive-layer", label: "Архив" },
         { id: "people", label: "Хора" },
         { id: "data", label: "Данни" }
-      ]
-    : [
+      ],
+      en: [
         { id: "geography", label: "Geography" },
         { id: "timeline", label: "Timeline" },
         { id: "city-growth", label: "Growth" },
@@ -714,10 +785,22 @@ const sectionNav =
         { id: "archive-layer", label: "Archive" },
         { id: "people", label: "People" },
         { id: "data", label: "Data" }
-      ];
-const sectionNavLabel = lang === "bg" ? "Раздели на страницата" : "Page sections";
+      ],
+      de: [
+        { id: "geography", label: "Geogr./Klima" },
+        { id: "timeline", label: "Zeitleiste" },
+        { id: "city-growth", label: "Wachstum" },
+        { id: "landmarks", label: "Orte" },
+        { id: "archive-layer", label: "Archiv" },
+        { id: "people", label: "Personen" },
+        { id: "data", label: "Daten" }
+      ]
+    } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
+const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte" } satisfies Record<Lang, string>)[lang];
 
-const numberFmt = new Intl.NumberFormat(lang === "bg" ? "bg-BG" : "en-GB");
+const numberFmt = new Intl.NumberFormat(
+  ({ bg: "bg-BG", en: "en-GB", de: "de-DE" } satisfies Record<Lang, string>)[lang]
+);
 
 const pop = [...plovdivPopulation].sort((a, b) => a.year - b.year);
 const latestPopulationPoint = pop[pop.length - 1];
@@ -794,9 +877,8 @@ const nbByEra = nbOrder
   .filter((g) => g.items.length > 0);
 
 // --- Geography & climate ---
-const geo =
-  lang === "bg"
-    ? {
+const geo = ({
+      bg: {
         title: "География и климат",
         lead:
           "Пловдив е разположен върху сиенитни хълмове в Горнотракийската низина, на двата бряга на река Марица.",
@@ -822,8 +904,8 @@ const geo =
           { label: "Годишни валежи", value: "502 мм" }
         ],
         source: "Източник"
-      }
-    : {
+      },
+      en: {
         title: "Geography & climate",
         lead:
           "Plovdiv sits on syenite hills in the Upper Thracian Plain, on both banks of the Maritsa river.",
@@ -849,7 +931,35 @@ const geo =
           { label: "Annual precipitation", value: "502 mm" }
         ],
         source: "Source"
-      };
+      },
+      de: {
+        title: "Geografie & Klima",
+        lead:
+          "Plovdiv liegt auf Syenithügeln in der Oberthrakischen Tiefebene, an beiden Ufern des Flusses Mariza.",
+        geographyTitle: "Geografie",
+        climateTitle: "Klima",
+        chartQ: "Wie ist das Wetter im Jahresverlauf?",
+        chartTitle: "Durchschnittliche monatliche Temperaturen und Niederschläge",
+        legendTemp: "Max./Min.-Temperatur",
+        legendPrecip: "Niederschlag",
+        months: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+        facts: [
+          { label: "Koordinaten", value: "42°09′N, 24°45′O" },
+          { label: "Höhe", value: "164 m" },
+          { label: "Fluss", value: "Mariza" },
+          { label: "Tiefebene", value: "Oberthrakische Tiefebene" },
+          { label: "Hügel", value: "6 erhaltene Hügel (historisch 7)" },
+          { label: "Fläche", value: "101,98 km²" }
+        ],
+        stats: [
+          { label: "Klimatyp", value: "Feucht-subtropisch" },
+          { label: "Jahresmittel Max./Min.", value: "18,9 / 7,3 °C" },
+          { label: "Rekord Max./Min.", value: "45,0 / −31,5 °C" },
+          { label: "Jahresniederschlag", value: "502 mm" }
+        ],
+        source: "Quelle"
+      }
+    })[lang];
 
 const climate = [...plovdivClimate].sort((a, b) => a.month - b.month);
 const CW = 1000, CH = 360, cL = 44, cR = 44, cT = 24, cB = 44;

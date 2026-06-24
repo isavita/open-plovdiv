@@ -75,7 +75,9 @@ const mayorSource = currentMayor?.source_document.url ?? mayorTerms[0]?.source_d
 
 function compactBgn(amount: number): string {
   const millions = Math.round(amount / 1e6);
-  return lang === "bg" ? `${millions} млн лв` : `BGN ${millions}M`;
+  if (lang === "bg") return `${millions} млн лв`;
+  if (lang === "de") return `${millions} Mio. BGN`;
+  return `BGN ${millions}M`;
 }
 ---
 

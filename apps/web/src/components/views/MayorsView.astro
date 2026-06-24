@@ -50,7 +50,7 @@ const sourceUrls = [...new Map(mayorTerms.map((term) => [term.source_document.ur
 
 const config = {
   countAll: t.mayors.count(mayorTerms.length),
-  countFiltered: "{visible} " + (lang === "bg" ? "от" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : "terms"),
+  countFiltered: "{visible} " + (lang === "bg" ? "от" : lang === "de" ? "von" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : lang === "de" ? "Mandaten" : "terms"),
   empty: t.mayors.empty
 };
 
@@ -114,21 +114,27 @@ const maxBirthCount = Math.max(1, ...birthTowns.map((tw) => tw.people.length));
 const birthCountries = new Set(birthTowns.map((tw) => tw.country).filter(Boolean));
 const birthConfig = { markers: birthTowns, mayorsLabel: t.mayors.birthPopupMayors };
 
-const sectionNav =
-  lang === "bg"
-    ? [
+const sectionNav = ({
+      bg: [
         { id: "connections", label: "Връзки" },
         { id: "birthplaces", label: "Родни места" },
         { id: "timeline", label: "Хронология" },
         { id: "all-mayors", label: "Всички" }
-      ]
-    : [
+      ],
+      en: [
         { id: "connections", label: "Connections" },
         { id: "birthplaces", label: "Birthplaces" },
         { id: "timeline", label: "Timeline" },
         { id: "all-mayors", label: "All mayors" }
-      ];
-const sectionNavLabel = lang === "bg" ? "Раздели на страницата" : "Page sections";
+      ],
+      de: [
+        { id: "connections", label: "Verbindungen" },
+        { id: "birthplaces", label: "Geburtsorte" },
+        { id: "timeline", label: "Zeitleiste" },
+        { id: "all-mayors", label: "Alle" }
+      ]
+    } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
+const sectionNavLabel = lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : "Page sections";
 ---
 
 <Layout lang={lang} path="/mayors" title={t.mayors.title} description={t.mayors.lead}>

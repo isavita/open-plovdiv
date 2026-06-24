@@ -49,9 +49,9 @@ const config = {
     contact: t.community.contact,
     donate: t.community.donate,
     acceptsDonations: t.community.acceptsDonations,
-    of: lang === "bg" ? "от" : "of",
-    one: lang === "bg" ? "инициатива" : "initiative",
-    many: lang === "bg" ? "инициативи" : "initiatives"
+    of: lang === "bg" ? "от" : lang === "de" ? "von" : "of",
+    one: lang === "bg" ? "инициатива" : lang === "de" ? "Initiative" : "initiative",
+    many: lang === "bg" ? "инициативи" : lang === "de" ? "Initiativen" : "initiatives"
   }
 };
 ---

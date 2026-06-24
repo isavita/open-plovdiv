@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import SectionNav from "@components/SectionNav.astro";
-import { ui, type Lang } from "@i18n/ui";
+import { roleLabels, ui, type Lang } from "@i18n/ui";
 import {
   historyKnowledgeEvents,
   historyKnowledgeIndex,
@@ -14,180 +14,145 @@ type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
 
-const labels =
-  lang === "bg"
-    ? {
-        title: "Хората на Пловдив",
-        eyebrow: "Личности и връзки",
-        lead:
-          "Каталог на личностите в Open Plovdiv: всички кметове и подбрани забележителни пловдивчани, свързани със събития, роли и източници.",
-        people: "хора",
-        roles: "роли",
-        links: "връзки",
-        events: "събития",
-        connectionsTitle: "Връзки между личности",
-        connectionsLead:
-          "Връзки между личностите: приемственост между кметовете, семейни връзки и публичен източник към всяка от тях.",
-        catalogTitle: "Каталог",
-        search: "Търсене",
-        searchPlaceholder: "име, роля, описание…",
-        group: "Група",
-        allGroups: "Всички групи",
-        century: "Век",
-        allCenturies: "Всички векове",
-        relationship: "Връзки",
-        allRelationships: "Всички",
-        withRelationships: "с връзки към други личности",
-        withoutRelationships: "без връзки към други личности",
-        visible: "Видими",
-        of: "от",
-        reset: "Изчисти филтрите",
-        noResults: "Няма хора за тези филтри.",
-        born: "Роден/а",
-        life: "Години",
-        linkedEvents: "свързани събития",
-        relationshipCount: "връзки",
-        relationshipSources: "Връзки",
-        ledgerTitle: "Връзки и източници",
-        ledgerLead:
-          "Всяка връзка показва участниците, типа, свързаното събитие при кметска последователност и публичния източник.",
-        ledgerRows: "връзки",
-        from: "От",
-        to: "Към",
-        type: "Тип",
-        evidence: "Доказателство",
-        linkedEvent: "Събитие",
-        sources: "Източници",
-        source: "Източник",
-        profile: "Профил"
-      }
-    : {
-        title: "People of Plovdiv",
-        eyebrow: "People and connections",
-        lead:
-          "A catalogue of people in Open Plovdiv: all mayors and a selection of notable Plovdivians, linked to events, roles and sources.",
-        people: "people",
-        roles: "roles",
-        links: "links",
-        events: "events",
-        connectionsTitle: "Person Connections",
-        connectionsLead:
-          "Links between people: mayoral succession, family relationships and the public source behind each one.",
-        catalogTitle: "Catalogue",
-        search: "Search",
-        searchPlaceholder: "name, role, description...",
-        group: "Group",
-        allGroups: "All groups",
-        century: "Century",
-        allCenturies: "All centuries",
-        relationship: "Links",
-        allRelationships: "All",
-        withRelationships: "with links to other people",
-        withoutRelationships: "without links to other people",
-        visible: "Visible",
-        of: "of",
-        reset: "Clear filters",
-        noResults: "No people match these filters.",
-        born: "Born",
-        life: "Years",
-        linkedEvents: "linked events",
-        relationshipCount: "links",
-        relationshipSources: "Connections",
-        ledgerTitle: "Connections and sources",
-        ledgerLead:
-          "Each relationship shows the people, type, linked event for mayoral succession and public source.",
-        ledgerRows: "links",
-        from: "From",
-        to: "To",
-        type: "Type",
-        evidence: "Evidence",
-        linkedEvent: "Event",
-        sources: "Sources",
-        source: "Source",
-        profile: "Profile"
-      };
+const labels = ({
+  bg: {
+    title: "Хората на Пловдив",
+    eyebrow: "Личности и връзки",
+    lead:
+      "Каталог на личностите в Open Plovdiv: всички кметове и подбрани забележителни пловдивчани, свързани със събития, роли и източници.",
+    people: "хора",
+    roles: "роли",
+    links: "връзки",
+    events: "събития",
+    connectionsTitle: "Връзки между личности",
+    connectionsLead:
+      "Връзки между личностите: приемственост между кметовете, семейни връзки и публичен източник към всяка от тях.",
+    catalogTitle: "Каталог",
+    search: "Търсене",
+    searchPlaceholder: "име, роля, описание…",
+    group: "Група",
+    allGroups: "Всички групи",
+    century: "Век",
+    allCenturies: "Всички векове",
+    relationship: "Връзки",
+    allRelationships: "Всички",
+    withRelationships: "с връзки към други личности",
+    withoutRelationships: "без връзки към други личности",
+    visible: "Видими",
+    of: "от",
+    reset: "Изчисти филтрите",
+    noResults: "Няма хора за тези филтри.",
+    born: "Роден/а",
+    life: "Години",
+    linkedEvents: "свързани събития",
+    relationshipCount: "връзки",
+    relationshipSources: "Връзки",
+    ledgerTitle: "Връзки и източници",
+    ledgerLead:
+      "Всяка връзка показва участниците, типа, свързаното събитие при кметска последователност и публичния източник.",
+    ledgerRows: "връзки",
+    from: "От",
+    to: "Към",
+    type: "Тип",
+    evidence: "Доказателство",
+    linkedEvent: "Събитие",
+    sources: "Източници",
+    source: "Източник",
+    profile: "Профил"
+  },
+  en: {
+    title: "People of Plovdiv",
+    eyebrow: "People and connections",
+    lead:
+      "A catalogue of people in Open Plovdiv: all mayors and a selection of notable Plovdivians, linked to events, roles and sources.",
+    people: "people",
+    roles: "roles",
+    links: "links",
+    events: "events",
+    connectionsTitle: "Person Connections",
+    connectionsLead:
+      "Links between people: mayoral succession, family relationships and the public source behind each one.",
+    catalogTitle: "Catalogue",
+    search: "Search",
+    searchPlaceholder: "name, role, description...",
+    group: "Group",
+    allGroups: "All groups",
+    century: "Century",
+    allCenturies: "All centuries",
+    relationship: "Links",
+    allRelationships: "All",
+    withRelationships: "with links to other people",
+    withoutRelationships: "without links to other people",
+    visible: "Visible",
+    of: "of",
+    reset: "Clear filters",
+    noResults: "No people match these filters.",
+    born: "Born",
+    life: "Years",
+    linkedEvents: "linked events",
+    relationshipCount: "links",
+    relationshipSources: "Connections",
+    ledgerTitle: "Connections and sources",
+    ledgerLead:
+      "Each relationship shows the people, type, linked event for mayoral succession and public source.",
+    ledgerRows: "links",
+    from: "From",
+    to: "To",
+    type: "Type",
+    evidence: "Evidence",
+    linkedEvent: "Event",
+    sources: "Sources",
+    source: "Source",
+    profile: "Profile"
+  },
+  de: {
+    title: "Persönlichkeiten von Plovdiv",
+    eyebrow: "Personen und Verbindungen",
+    lead:
+      "Ein Katalog der Personen in Open Plovdiv: alle Bürgermeister und eine Auswahl bemerkenswerter Plovdiver, verknüpft mit Ereignissen, Rollen und Quellen.",
+    people: "Personen",
+    roles: "Rollen",
+    links: "Verbindungen",
+    events: "Ereignisse",
+    connectionsTitle: "Verbindungen zwischen Personen",
+    connectionsLead:
+      "Verbindungen zwischen Personen: Bürgermeister-Nachfolge, Familienbeziehungen und die öffentliche Quelle dahinter.",
+    catalogTitle: "Katalog",
+    search: "Suche",
+    searchPlaceholder: "Name, Rolle, Beschreibung…",
+    group: "Gruppe",
+    allGroups: "Alle Gruppen",
+    century: "Jahrhundert",
+    allCenturies: "Alle Jahrhunderte",
+    relationship: "Verbindungen",
+    allRelationships: "Alle",
+    withRelationships: "mit Verbindungen zu anderen Personen",
+    withoutRelationships: "ohne Verbindungen zu anderen Personen",
+    visible: "Sichtbar",
+    of: "von",
+    reset: "Filter zurücksetzen",
+    noResults: "Keine Personen entsprechen diesen Filtern.",
+    born: "Geboren",
+    life: "Jahre",
+    linkedEvents: "verknüpfte Ereignisse",
+    relationshipCount: "Verbindungen",
+    relationshipSources: "Verbindungen",
+    ledgerTitle: "Verbindungen und Quellen",
+    ledgerLead:
+      "Jede Beziehung zeigt die Personen, den Typ, das verknüpfte Ereignis bei Bürgermeister-Nachfolge und die öffentliche Quelle.",
+    ledgerRows: "Verbindungen",
+    from: "Von",
+    to: "Zu",
+    type: "Typ",
+    evidence: "Beleg",
+    linkedEvent: "Ereignis",
+    sources: "Quellen",
+    source: "Quelle",
+    profile: "Profil"
+  }
+} satisfies Record<Lang, Record<string, string>>)[lang];
 
-const roleLabels: Record<string, { bg: string; en: string }> = {
-  academic: { bg: "академик", en: "academic" },
-  actor: { bg: "актьор", en: "actor" },
-  art_historian: { bg: "изкуствовед", en: "art historian" },
-  artist: { bg: "художник", en: "artist" },
-  athlete: { bg: "спортист", en: "athlete" },
-  basketball_player: { bg: "баскетболист", en: "basketball player" },
-  boxer: { bg: "боксьор", en: "boxer" },
-  canoeist: { bg: "кануист", en: "canoeist" },
-  chef: { bg: "готвач", en: "chef" },
-  chess_player: { bg: "шахматист", en: "chess player" },
-  choreographer: { bg: "хореограф", en: "choreographer" },
-  clergy: { bg: "духовник", en: "clergy" },
-  composer: { bg: "композитор", en: "composer" },
-  conductor: { bg: "диригент", en: "conductor" },
-  cultural_manager: { bg: "културен мениджър", en: "cultural manager" },
-  designer: { bg: "дизайнер", en: "designer" },
-  diplomat: { bg: "дипломат", en: "diplomat" },
-  economist: { bg: "икономист", en: "economist" },
-  educator: { bg: "педагог", en: "educator" },
-  electrical_engineer: { bg: "електроинженер", en: "electrical engineer" },
-  equestrian: { bg: "състезател по конен спорт", en: "equestrian" },
-  fencer: { bg: "фехтовач", en: "fencer" },
-  film_director: { bg: "филмов режисьор", en: "film director" },
-  first_lady: { bg: "първа дама", en: "first lady" },
-  football_referee: { bg: "футболен съдия", en: "football referee" },
-  footballer: { bg: "футболист", en: "footballer" },
-  general: { bg: "генерал", en: "general" },
-  geographer: { bg: "географ", en: "geographer" },
-  gymnast: { bg: "гимнастик", en: "gymnast" },
-  high_jumper: { bg: "скачач на височина", en: "high jumper" },
-  illustrator: { bg: "илюстратор", en: "illustrator" },
-  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower" },
-  journalist: { bg: "журналист", en: "journalist" },
-  jurist: { bg: "юрист", en: "jurist" },
-  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist" },
-  mathematician: { bg: "математик", en: "mathematician" },
-  mayor: { bg: "кмет", en: "mayor" },
-  merchant: { bg: "търговец", en: "merchant" },
-  military_officer: { bg: "офицер", en: "military officer" },
-  mineralogist: { bg: "минералог", en: "mineralogist" },
-  missionary: { bg: "мисионер", en: "missionary" },
-  model: { bg: "модел", en: "model" },
-  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete" },
-  musician: { bg: "музикант", en: "musician" },
-  opera_singer: { bg: "оперен певец", en: "opera singer" },
-  painter: { bg: "живописец", en: "painter" },
-  paleontologist: { bg: "палеонтолог", en: "paleontologist" },
-  patriarch: { bg: "патриарх", en: "patriarch" },
-  philosopher: { bg: "философ", en: "philosopher" },
-  physicist: { bg: "физик", en: "physicist" },
-  pianist: { bg: "пианист", en: "pianist" },
-  poet: { bg: "поет", en: "poet" },
-  politician: { bg: "политик", en: "politician" },
-  priest: { bg: "свещеник", en: "priest" },
-  printmaker: { bg: "график", en: "printmaker" },
-  producer: { bg: "продуцент", en: "producer" },
-  public_figure: { bg: "обществена фигура", en: "public figure" },
-  racing_driver: { bg: "автомобилен състезател", en: "racing driver" },
-  revolutionary: { bg: "революционер", en: "revolutionary" },
-  rower: { bg: "гребец", en: "rower" },
-  saint: { bg: "светец", en: "saint" },
-  scholar: { bg: "учен", en: "scholar" },
-  scientist: { bg: "учен", en: "scientist" },
-  screenwriter: { bg: "сценарист", en: "screenwriter" },
-  sculptor: { bg: "скулптор", en: "sculptor" },
-  singer: { bg: "певец", en: "singer" },
-  sports_shooter: { bg: "спортен стрелец", en: "sport shooter" },
-  swimmer: { bg: "плувец", en: "swimmer" },
-  tennis_player: { bg: "тенисист", en: "tennis player" },
-  theatre_director: { bg: "театрален режисьор", en: "theatre director" },
-  violinist: { bg: "цигулар", en: "violinist" },
-  visual_artist: { bg: "визуален художник", en: "visual artist" },
-  volleyball_player: { bg: "волейболист", en: "volleyball player" },
-  weightlifter: { bg: "щангист", en: "weightlifter" },
-  wrestler: { bg: "борец", en: "wrestler" },
-  writer: { bg: "писател", en: "writer" },
-  zoologist: { bg: "зоолог", en: "zoologist" }
-};
-
-const groupLabels = {
+const groupLabels = ({
   bg: {
     governance: "Управление",
     culture: "Култура",
@@ -203,22 +168,30 @@ const groupLabels = {
     faith: "Faith",
     sport: "Sport",
     civic: "Civic"
+  },
+  de: {
+    governance: "Verwaltung",
+    culture: "Kultur",
+    science: "Wissenschaft",
+    faith: "Glaube",
+    sport: "Sport",
+    civic: "Gesellschaft"
   }
-}[lang];
+} satisfies Record<Lang, Record<string, string>>)[lang];
 
-const relationshipTypeLabels: Record<string, { bg: string; en: string }> = {
-  succeeds: { bg: "наследява", en: "succeeds" },
-  succeeded_by: { bg: "наследен/а от", en: "succeeded by" },
-  spouse: { bg: "съпруг/съпруга", en: "spouse" },
-  father: { bg: "баща", en: "father" },
-  mother: { bg: "майка", en: "mother" },
-  parent: { bg: "родител", en: "parent" },
-  child: { bg: "дете", en: "child" },
-  sibling: { bg: "брат/сестра", en: "sibling" },
-  mentor: { bg: "ментор", en: "mentor" },
-  student: { bg: "ученик/студент", en: "student" },
-  partner: { bg: "партньор", en: "partner" },
-  influenced_by: { bg: "повлиян/а от", en: "influenced by" }
+const relationshipTypeLabels: Record<string, Record<Lang, string>> = {
+  succeeds: { bg: "наследява", en: "succeeds", de: "folgt auf" },
+  succeeded_by: { bg: "наследен/а от", en: "succeeded by", de: "abgelöst von" },
+  spouse: { bg: "съпруг/съпруга", en: "spouse", de: "Ehepartner" },
+  father: { bg: "баща", en: "father", de: "Vater" },
+  mother: { bg: "майка", en: "mother", de: "Mutter" },
+  parent: { bg: "родител", en: "parent", de: "Elternteil" },
+  child: { bg: "дете", en: "child", de: "Kind" },
+  sibling: { bg: "брат/сестра", en: "sibling", de: "Geschwister" },
+  mentor: { bg: "ментор", en: "mentor", de: "Mentor" },
+  student: { bg: "ученик/студент", en: "student", de: "Schüler" },
+  partner: { bg: "партньор", en: "partner", de: "Partner" },
+  influenced_by: { bg: "повлиян/а от", en: "influenced by", de: "beeinflusst von" }
 };
 
 const roleGroups: Record<string, keyof typeof groupLabels> = {
@@ -305,15 +278,17 @@ const groupOrder = ["governance", "culture", "science", "faith", "sport", "civic
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 
 function localized(record: Record<string, any>, base: string): string {
-  return String(record[`${base}_${lang}`] ?? record[`${base}_bg`] ?? "");
+  return String(
+    record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""
+  );
 }
 
 function roleLabel(role: string): string {
-  return roleLabels[role]?.[lang] ?? role.replaceAll("_", " ");
+  return roleLabels[role]?.[lang] ?? roleLabels[role]?.en ?? role.replaceAll("_", " ");
 }
 
 function relationshipLabel(type: string): string {
-  return relationshipTypeLabels[type]?.[lang] ?? type.replaceAll("_", " ");
+  return relationshipTypeLabels[type]?.[lang] ?? relationshipTypeLabels[type]?.en ?? type.replaceAll("_", " ");
 }
 
 function relationshipCategory(type: string): "succession" | "family" {
@@ -631,7 +606,9 @@ const nodeConfig = {
 
     function localizedPerson(record: Record<string, any> | undefined, base: string) {
       if (!record) return "";
-      return String(record[`${base}_${config.lang}`] ?? record[`${base}_bg`] ?? "");
+      return String(
+        record[`${base}_${config.lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""
+      );
     }
 
     function roleLabel(role: string) {

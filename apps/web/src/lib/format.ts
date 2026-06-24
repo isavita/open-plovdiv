@@ -9,7 +9,7 @@ import {
   type Lang
 } from "../i18n/ui";
 
-const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB" };
+const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE" };
 
 export function formatMoney(
   amount: number,
@@ -66,7 +66,8 @@ export function fundingSourceLabel(value: string, lang: Lang = "bg"): string {
 
 export function districtLabel(value: string | null, lang: Lang = "bg"): string {
   if (!value) return "";
-  return lang === "en" ? districtLabels[value] ?? value : value;
+  // Non-Bulgarian locales show the romanised district name when one exists.
+  return lang === "bg" ? value : districtLabels[value] ?? value;
 }
 
 export function sourceTitle(title: string, lang: Lang = "bg"): string {

@@ -28,7 +28,7 @@ const century = Math.floor((mayor.year_start - 1) / 100) + 1;
 const duration = Math.max(1, (mayor.year_end ?? currentYear) - mayor.year_start + 1);
 
 const otherTerms = terms.filter((r) => r.id !== mayor.id && field(r, "actor", lang) === name);
-const wikiSearch = `https://${lang === "bg" ? "bg" : "en"}.wikipedia.org/w/index.php?search=${encodeURIComponent(
+const wikiSearch = `https://${lang}.wikipedia.org/w/index.php?search=${encodeURIComponent(
   field(mayor, "actor", "bg")
 )}`;
 const bio = mayor.bio_bg ? field(mayor, "bio", lang) : null;

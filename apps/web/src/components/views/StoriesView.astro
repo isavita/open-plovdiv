@@ -18,7 +18,7 @@ type Props = {
 const { lang } = Astro.props;
 const t = ui[lang];
 
-const labels = {
+const labels = ({
   bg: {
     title: "Исторически разкази",
     eyebrow: "Илюстрирани дълги четива",
@@ -46,8 +46,22 @@ const labels = {
     evidence: "Linked records",
     editorialNote:
       "Each story connects verified places, events, images and sources into a readable route through the city’s history."
+  },
+  de: {
+    title: "Historische Geschichten",
+    eyebrow: "Illustrierte Langtexte",
+    lead:
+      "Zweisprachige Geschichten über Plovdiv, aufgebaut aus den Ereignissen, Orten, Archivbildern und öffentlichen Quellen in Open Plovdiv.",
+    stories: "Geschichten",
+    sources: "Quellen",
+    archive: "Archivbilder",
+    minutes: "Min. Lesezeit",
+    read: "Lesen",
+    evidence: "Verknüpfte Datensätze",
+    editorialNote:
+      "Jede Geschichte verbindet geprüfte Orte, Ereignisse, Bilder und Quellen zu einem lesbaren Weg durch die Geschichte der Stadt."
   }
-}[lang];
+} satisfies Record<Lang, Record<string, string>>)[lang];
 
 const archiveById = new Map(historicalArchiveItems.map((item) => [item.id, item]));
 const pairById = new Map(thenNowPairs.map((pair) => [pair.id, pair]));
@@ -55,7 +69,9 @@ const placeById = new Map(historyKnowledgePlaces.map((place) => [place.id, place
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 
 function localized(record: Record<string, unknown>, field: string): string {
-  return String(record[`${field}_${lang}`] ?? record[`${field}_bg`] ?? "");
+  return String(
+    record[`${field}_${lang}`] ?? record[`${field}_en`] ?? record[`${field}_bg`] ?? ""
+  );
 }
 
 function sourceLabel(source: { title_bg: string; title_en: string }): string {

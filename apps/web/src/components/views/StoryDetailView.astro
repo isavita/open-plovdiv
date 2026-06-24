@@ -20,7 +20,7 @@ type Props = {
 const { lang, story } = Astro.props;
 const t = ui[lang];
 
-const labels = {
+const labels = ({
   bg: {
     back: "Всички разкази",
     minutes: "мин четене",
@@ -40,8 +40,18 @@ const labels = {
     places: "Places",
     archive: "Archive",
     thenNow: "Then/Now"
+  },
+  de: {
+    back: "Alle Geschichten",
+    minutes: "Min. Lesezeit",
+    sources: "Quellen",
+    linkedEvidence: "Verknüpfte Datensätze",
+    events: "Ereignisse",
+    places: "Orte",
+    archive: "Archiv",
+    thenNow: "Damals/heute"
   }
-}[lang];
+} satisfies Record<Lang, Record<string, string>>)[lang];
 
 const eventById = new Map(historyKnowledgeEvents.map((event) => [event.id, event]));
 const placeById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
@@ -50,7 +60,9 @@ const archiveById = new Map(historicalArchiveItems.map((item) => [item.id, item]
 const pairById = new Map(thenNowPairs.map((pair) => [pair.id, pair]));
 
 function localized(record: Record<string, unknown>, field: string): string {
-  return String(record[`${field}_${lang}`] ?? record[`${field}_bg`] ?? "");
+  return String(
+    record[`${field}_${lang}`] ?? record[`${field}_en`] ?? record[`${field}_bg`] ?? ""
+  );
 }
 
 function sourceLabel(source: { title_bg: string; title_en: string }): string {

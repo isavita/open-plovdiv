@@ -19,7 +19,7 @@ type Props = {
 const { lang } = Astro.props;
 const t = ui[lang];
 
-const labels = {
+const labels = ({
   bg: {
     title: "Образователен хъб",
     eyebrow: "Уроци, работни листове и маршрути за разходка",
@@ -79,15 +79,48 @@ const labels = {
     sourcesTitle: "Sources",
     editorialNote:
       "The materials are structured for classroom work, walking routes and self-guided reading, with clear links to events, places and sources."
+  },
+  de: {
+    title: "Bildungs-Hub",
+    eyebrow: "Unterrichtseinheiten, Arbeitsblätter und Spazierrouten",
+    lead:
+      "Fünf zweisprachige Unterrichtseinheiten zur Geschichte Plovdivs, verknüpft mit den Ereignissen, Orten, Archivbildern und öffentlichen Quellen in Open Plovdiv.",
+    lessons: "Einheiten",
+    quiz: "Quizfragen",
+    audio: "Spazierrouten",
+    sources: "Quellen",
+    minutes: "Min.",
+    lessonPlan: "Unterrichtsplan",
+    objectives: "Lernziele",
+    preparation: "Vorbereitung",
+    evidence: "Verknüpfte Datensätze",
+    events: "Ereignisse",
+    places: "Orte",
+    archive: "Archiv",
+    thenNow: "Damals/heute",
+    quizTitle: "Kurzes Quiz",
+    answer: "Antwort",
+    handout: "Arbeitsblatt",
+    audioRoutesTitle: "Spazierrouten",
+    audioRoutesLead:
+      "Jede Route folgt dem geprüften Skript der Unterrichtseinheit und dient als Textführer für einen selbstgeführten Spaziergang oder für die Gruppenarbeit.",
+    stops: "Stationen",
+    openLesson: "Einheit öffnen",
+    sourcesTitle: "Quellen",
+    editorialNote:
+      "Die Materialien sind für die Arbeit im Unterricht, Spaziergänge und selbstständiges Lesen aufbereitet, mit klaren Verknüpfungen zu Ereignissen, Orten und Quellen."
   }
-}[lang];
+} satisfies Record<Lang, Record<string, string>>)[lang];
 
 function localized(record: Record<string, unknown>, field: string): string {
-  return String(record[`${field}_${lang}`] ?? record[`${field}_bg`] ?? "");
+  return String(
+    record[`${field}_${lang}`] ?? record[`${field}_en`] ?? record[`${field}_bg`] ?? ""
+  );
 }
 
 function localizedList(record: Record<string, unknown>, field: string): string[] {
-  const value = record[`${field}_${lang}`] ?? record[`${field}_bg`] ?? [];
+  const value =
+    record[`${field}_${lang}`] ?? record[`${field}_en`] ?? record[`${field}_bg`] ?? [];
   return Array.isArray(value) ? value.map(String) : [];
 }
 

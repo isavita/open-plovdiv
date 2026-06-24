@@ -358,6 +358,76 @@ img {
   letter-spacing: 0.03em;
 }
 
+/* ---- Language dropdown (multi-locale switcher) -------------------------- */
+.lang-menu {
+  position: relative;
+}
+.lang-menu > summary {
+  list-style: none;
+  cursor: pointer;
+  gap: 4px;
+}
+.lang-menu > summary::-webkit-details-marker {
+  display: none;
+}
+.lang-menu > summary::marker {
+  content: "";
+}
+.lang-caret {
+  font-size: 0.66rem;
+  line-height: 1;
+  transition: transform 0.15s ease;
+}
+.lang-menu[open] .lang-caret {
+  transform: rotate(180deg);
+}
+.lang-options {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  min-width: 170px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow);
+  z-index: 50;
+  display: grid;
+  gap: 2px;
+}
+.lang-options a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--r-xs);
+  color: var(--ink-2);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 550;
+  white-space: nowrap;
+}
+.lang-options a:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.lang-options a[aria-current="true"] {
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+.lang-code {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  min-width: 22px;
+}
+.lang-options a[aria-current="true"] .lang-code {
+  color: var(--brand);
+}
+
 .theme-toggle .moon {
   display: none;
 }
