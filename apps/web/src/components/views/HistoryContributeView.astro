@@ -153,6 +153,54 @@ const labels =
           default: "La contribution n'a pas pu être envoyée. Veuillez réessayer."
         }
       }
+      : lang === "it"
+      ? {
+        eyebrow: "Archivio dei cittadini",
+        title: "Invia una foto, un ricordo o una fonte",
+        lead:
+          "I contributi storici entrano nella stessa coda di moderazione delle segnalazioni dei cittadini. Nulla viene pubblicato automaticamente: un redattore verifica i dati personali, i diritti d'immagine e il contesto della fonte prima che una scheda diventi pubblica.",
+        notice:
+          "Non inviare dati personali, indirizzi privati esatti o foto con volti senza averne i diritti di pubblicazione. Aggiungi una fonte, un link d'archivio o una nota di provenienza se ne hai una.",
+        category: "Tipo di contributo",
+        titleLabel: "Titolo breve",
+        titlePlaceholder: "es. vecchia foto della Djumaya",
+        description: "Descrizione / ricordo",
+        descriptionPlaceholder: "Descrivi cosa è raffigurato, la data approssimativa, l'origine e cosa va verificato.",
+        sourceUrl: "Fonte o link d'archivio",
+        sourceUrlPlaceholder: "https://...",
+        sourceNote: "Nota di provenienza",
+        sourceNotePlaceholder: "es. foto di famiglia, cartolina digitalizzata, post d'archivio...",
+        photos: "Foto",
+        photoHint:
+          "Facoltativo, fino a 3 foto, massimo 5 MB ciascuna. I metadati EXIF/GPS sono rimossi e le foto convertite prima dell'esame.",
+        location: "Luogo",
+        locationHint: "Clicca sulla mappa se il contributo è legato a un luogo preciso.",
+        noLocation: "Nessun punto ancora selezionato",
+        confirmNoPersonal: "Confermo che questo contributo non contiene dati personali.",
+        confirmPublicInterest: "Confermo che questo contributo può essere verificato ed è di interesse pubblico.",
+        submit: "Invia per l'esame",
+        submitting: "Invio...",
+        successTitle: "Ricevuto",
+        successText: "Il contributo è nella coda di moderazione. Numero di riferimento:",
+        submitAnother: "Invia un altro contributo",
+        backToHistory: "Torna alla storia",
+        selected: "Punto selezionato",
+        errors: {
+          rate_limited: "Troppi invii in poco tempo. Riprova più tardi.",
+          invalid_category: "Scegli un tipo di contributo valido.",
+          invalid_title: "Il titolo deve avere tra 3 e 120 caratteri.",
+          invalid_description: "La descrizione deve avere tra 10 e 1000 caratteri.",
+          invalid_source: "La fonte deve essere un link http/https valido o una breve nota.",
+          contains_personal_data: "Il testo contiene qualcosa che sembra un dato personale.",
+          invalid_location: "Scegli un punto all'interno di Plovdiv.",
+          missing_confirmation: "Spunta entrambe le conferme.",
+          too_many_photos: "Carica al massimo 3 foto.",
+          photo_too_large: "Ogni foto deve essere di 5 MB o meno.",
+          invalid_photo_type: "Sono ammesse solo foto JPEG, PNG o WebP.",
+          invalid_photo: "Impossibile elaborare la foto.",
+          default: "Impossibile inviare il contributo. Riprova."
+        }
+      }
       : {
         eyebrow: "Community archive",
         title: "Submit a photo, memory or source",

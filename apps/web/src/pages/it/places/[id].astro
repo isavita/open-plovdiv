@@ -1,0 +1,15 @@
+---
+import PlaceDetailView from "@components/views/PlaceDetailView.astro";
+import { historyKnowledgePlaces } from "@lib/data";
+
+export function getStaticPaths() {
+  return historyKnowledgePlaces.map((place) => ({
+    params: { id: place.id },
+    props: { place }
+  }));
+}
+
+const { place } = Astro.props;
+---
+
+<PlaceDetailView lang="it" place={place} />

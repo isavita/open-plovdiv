@@ -1,0 +1,15 @@
+---
+import StoryDetailView from "@components/views/StoryDetailView.astro";
+import { storyLongreads } from "@lib/data";
+
+export function getStaticPaths() {
+  return storyLongreads.map((story) => ({
+    params: { id: story.id },
+    props: { story }
+  }));
+}
+
+const { story } = Astro.props;
+---
+
+<StoryDetailView lang="it" story={story} />

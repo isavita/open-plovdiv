@@ -196,6 +196,51 @@ const labels = ({
     sources: "Sources",
     source: "Source",
     profile: "Profil"
+  },
+  it: {
+    title: "Personalità di Plovdiv",
+    eyebrow: "Personalità e legami",
+    lead:
+      "Un catalogo delle personalità di Open Plovdiv: tutti i sindaci e una selezione di figure di rilievo di Plovdiv, collegate a eventi, cariche e fonti.",
+    people: "personalità",
+    roles: "cariche",
+    links: "legami",
+    events: "eventi",
+    connectionsTitle: "Legami tra le personalità",
+    connectionsLead:
+      "Legami tra persone: successione dei sindaci, relazioni familiari e la fonte pubblica di ciascuno.",
+    catalogTitle: "Catalogo",
+    search: "Cerca",
+    searchPlaceholder: "nome, carica, descrizione...",
+    group: "Gruppo",
+    allGroups: "Tutti i gruppi",
+    century: "Secolo",
+    allCenturies: "Tutti i secoli",
+    relationship: "Legami",
+    allRelationships: "Tutti",
+    withRelationships: "con legami ad altre persone",
+    withoutRelationships: "senza legami ad altre persone",
+    visible: "Visibili",
+    of: "di",
+    reset: "Cancella i filtri",
+    noResults: "Nessuna persona corrisponde a questi filtri.",
+    born: "Nato/a",
+    life: "Anni",
+    linkedEvents: "eventi collegati",
+    relationshipCount: "legami",
+    relationshipSources: "Legami",
+    ledgerTitle: "Legami e fonti",
+    ledgerLead:
+      "Ogni relazione indica le persone, il tipo, l'evento collegato per la successione dei sindaci e la fonte pubblica.",
+    ledgerRows: "legami",
+    from: "Da",
+    to: "A",
+    type: "Tipo",
+    evidence: "Riscontro",
+    linkedEvent: "Evento",
+    sources: "Fonti",
+    source: "Fonte",
+    profile: "Profilo"
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -231,22 +276,30 @@ const groupLabels = ({
     faith: "Spiritualité",
     sport: "Sport",
     civic: "Société"
+  },
+  it: {
+    governance: "Governo",
+    culture: "Cultura",
+    science: "Scienza",
+    faith: "Spiritualità",
+    sport: "Sport",
+    civic: "Società"
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
 const relationshipTypeLabels: Record<string, Record<Lang, string>> = {
-  succeeds: { bg: "наследява", en: "succeeds", de: "folgt auf", fr: "succède à" },
-  succeeded_by: { bg: "наследен/а от", en: "succeeded by", de: "abgelöst von", fr: "remplacé(e) par" },
-  spouse: { bg: "съпруг/съпруга", en: "spouse", de: "Ehepartner", fr: "conjoint(e)" },
-  father: { bg: "баща", en: "father", de: "Vater", fr: "père" },
-  mother: { bg: "майка", en: "mother", de: "Mutter", fr: "mère" },
-  parent: { bg: "родител", en: "parent", de: "Elternteil", fr: "parent" },
-  child: { bg: "дете", en: "child", de: "Kind", fr: "enfant" },
-  sibling: { bg: "брат/сестра", en: "sibling", de: "Geschwister", fr: "frère/sœur" },
-  mentor: { bg: "ментор", en: "mentor", de: "Mentor", fr: "mentor" },
-  student: { bg: "ученик/студент", en: "student", de: "Schüler", fr: "élève" },
-  partner: { bg: "партньор", en: "partner", de: "Partner", fr: "partenaire" },
-  influenced_by: { bg: "повлиян/а от", en: "influenced by", de: "beeinflusst von", fr: "influencé(e) par" }
+  succeeds: { bg: "наследява", en: "succeeds", de: "folgt auf", fr: "succède à", it: "succede a" },
+  succeeded_by: { bg: "наследен/а от", en: "succeeded by", de: "abgelöst von", fr: "remplacé(e) par", it: "sostituito/a da" },
+  spouse: { bg: "съпруг/съпруга", en: "spouse", de: "Ehepartner", fr: "conjoint(e)", it: "coniuge" },
+  father: { bg: "баща", en: "father", de: "Vater", fr: "père", it: "padre" },
+  mother: { bg: "майка", en: "mother", de: "Mutter", fr: "mère", it: "madre" },
+  parent: { bg: "родител", en: "parent", de: "Elternteil", fr: "parent", it: "genitore" },
+  child: { bg: "дете", en: "child", de: "Kind", fr: "enfant", it: "figlio/a" },
+  sibling: { bg: "брат/сестра", en: "sibling", de: "Geschwister", fr: "frère/sœur", it: "fratello/sorella" },
+  mentor: { bg: "ментор", en: "mentor", de: "Mentor", fr: "mentor", it: "mentore" },
+  student: { bg: "ученик/студент", en: "student", de: "Schüler", fr: "élève", it: "allievo/a" },
+  partner: { bg: "партньор", en: "partner", de: "Partner", fr: "partenaire", it: "partner" },
+  influenced_by: { bg: "повлиян/а от", en: "influenced by", de: "beeinflusst von", fr: "influencé(e) par", it: "influenzato/a da" }
 };
 
 const roleGroups: Record<string, keyof typeof groupLabels> = {
@@ -550,8 +603,10 @@ const nodeConfig = {
         ? [{ id: "people-connections", label: "Verbindungen" }, { id: "people-catalog", label: "Katalog" }]
         : lang === "fr"
         ? [{ id: "people-connections", label: "Liens" }, { id: "people-catalog", label: "Catalogue" }]
+        : lang === "it"
+        ? [{ id: "people-connections", label: "Legami" }, { id: "people-catalog", label: "Catalogo" }]
         : [{ id: "people-connections", label: "Connections" }, { id: "people-catalog", label: "Catalog" }]}
-    label={lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : "Page sections"}
+    label={lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : "Page sections"}
   />
 
   <section class="section people-connections" id="people-connections" data-subnav-target>

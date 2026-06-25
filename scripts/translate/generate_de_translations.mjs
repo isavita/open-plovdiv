@@ -4,7 +4,7 @@ import process from "node:process";
 
 const root = process.cwd();
 const targetLang = process.argv[2] ?? "de";
-const supportedTargetLangs = new Set(["de", "fr"]);
+const supportedTargetLangs = new Set(["de", "fr", "it"]);
 if (!supportedTargetLangs.has(targetLang)) {
   throw new Error(`Unsupported target language "${targetLang}". Expected one of: ${[...supportedTargetLangs].join(", ")}`);
 }
@@ -37,6 +37,16 @@ const manualTranslationsByLang = {
       "Licence de fichier Wikimedia Commons ; vérifier chaque fichier",
     "Creative Commons Attribution-ShareAlike 4.0 International":
       "Creative Commons Attribution - Partage dans les mêmes conditions 4.0 International",
+    "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
+    "Open Database License 1.0": "Open Database License 1.0"
+  },
+  it: {
+    "Public web reference; reuse terms not verified":
+      "Riferimento web pubblico; condizioni di riutilizzo non verificate",
+    "Wikimedia Commons file license, verify per file":
+      "Licenza del file Wikimedia Commons; verificare per ciascun file",
+    "Creative Commons Attribution-ShareAlike 4.0 International":
+      "Creative Commons Attribuzione - Condividi allo stesso modo 4.0 Internazionale",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
     "Open Database License 1.0": "Open Database License 1.0"
   }
@@ -188,33 +198,68 @@ async function buildProtectedNameFixups(protectedNames, existing) {
 }
 
 function stripNamePrefix(value) {
-  return value
-    .replace(/^l['’]/i, "")
-    .replace(/^le /i, "")
-    .replace(/^la /i, "")
-    .replace(/^les /i, "")
-    .trim();
+  // French inserts grammatical articles before the name in some templates; Italian
+  // keeps the name (incl. title prefixes like "Dott."/"Ing.") intact in the capture.
+  if (targetLang === "fr") {
+    return value
+      .replace(/^l['’]/i, "")
+      .replace(/^le /i, "")
+      .replace(/^la /i, "")
+      .replace(/^les /i, "")
+      .trim();
+  }
+  return value.trim();
 }
 
-function translatedNameFromPattern(source, target, name) {
-  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const directPatterns = [
-    [`Biographical reference: ${escapedName}`, /^Référence biographique\s*:\s*(.+)$/],
-    [`Birth of ${escapedName}`, /^Naissance (?:d['’]|de |du |des )(.+)$/],
-    [
-      `Birth year and birthplace for ${escapedName}.`,
-      /^Année et lieu de naissance (?:d['’]|de |du |des )(.+)\.$/
+// Per-language inference of how a protected person name was rendered inside a
+// translated sentence, so it can be mapped back to the original spelling.
+const namePatternsByLang = {
+  fr: {
+    direct: (escapedName) => [
+      [`Biographical reference: ${escapedName}`, /^Référence biographique\s*:\s*(.+)$/],
+      [`Birth of ${escapedName}`, /^Naissance (?:d['’]|de |du |des )(.+)$/],
+      [
+        `Birth year and birthplace for ${escapedName}.`,
+        /^Année et lieu de naissance (?:d['’]|de |du |des )(.+)\.$/
+      ],
+      [
+        `Biographical data and Plovdiv birthplace link for ${escapedName}.`,
+        /^Données biographiques et lien vers le lieu de naissance de Plovdiv pour (.+)\.$/
+      ],
+      [`Mayor: ${escapedName}`, /^Maire\s*:\s*(.+)$/],
+      [`Mayoral term\\(s\\) for ${escapedName}.`, /^.+ pour (?:l['’]|le |la |les )?(.+)\.$/],
+      [`Wikipedia [—-] ${escapedName}`, /^Wikipédia [—-]\s*(.+)$/]
     ],
-    [
-      `Biographical data and Plovdiv birthplace link for ${escapedName}.`,
-      /^Données biographiques et lien vers le lieu de naissance de Plovdiv pour (.+)\.$/
+    archive: /Maire\s*:\s*([^"»]+)["»]\.?$/,
+    relationshipPrefix: /^Relation personnelle\s*:\s*/
+  },
+  it: {
+    direct: (escapedName) => [
+      [`Biographical reference: ${escapedName}`, /^Riferimento biografico\s*:\s*(.+)$/],
+      [`Birth of ${escapedName}`, /^Nascita di (.+)$/],
+      [
+        `Birth year and birthplace for ${escapedName}.`,
+        /^Anno di nascita e luogo di nascita di (.+)\.$/
+      ],
+      [
+        `Biographical data and Plovdiv birthplace link for ${escapedName}.`,
+        /^Dati biografici e collegamento al luogo di nascita di Plovdiv per (.+)\.$/
+      ],
+      [`Mayor: ${escapedName}`, /^Sindaco\s*:\s*(.+)$/],
+      [`Mayoral term\\(s\\) for ${escapedName}.`, /^Termine sindaco per (.+)\.$/],
+      [`Wikipedia [—–-] ${escapedName}`, /^Wikipedia [—–-]\s*(.+)$/]
     ],
-    [`Mayor: ${escapedName}`, /^Maire\s*:\s*(.+)$/],
-    [`Mayoral term\\(s\\) for ${escapedName}.`, /^.+ pour (?:l['’]|le |la |les )?(.+)\.$/],
-    [`Wikipedia [—-] ${escapedName}`, /^Wikipédia [—-]\s*(.+)$/]
-  ];
+    archive: /Sindaco\s*:\s*([^"»]+)["»]\.?$/,
+    relationshipPrefix: /^Rapporto personale\s*:\s*/
+  }
+};
 
-  for (const [sourcePattern, targetPattern] of directPatterns) {
+function translatedNameFromPattern(source, target, name) {
+  const langPatterns = namePatternsByLang[targetLang];
+  if (!langPatterns) return null;
+  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  for (const [sourcePattern, targetPattern] of langPatterns.direct(escapedName)) {
     if (!new RegExp(`^${sourcePattern}$`).test(source)) continue;
     const match = target.match(targetPattern);
     return match ? stripNamePrefix(match[1]) : null;
@@ -222,7 +267,7 @@ function translatedNameFromPattern(source, target, name) {
 
   const archiveMatch = source.match(new RegExp(`^City archive record "Mayor: ${escapedName}"\\.$`));
   if (archiveMatch) {
-    const targetMatch = target.match(/Maire\s*:\s*([^"»]+)["»]\.?$/);
+    const targetMatch = target.match(langPatterns.archive);
     return targetMatch ? stripNamePrefix(targetMatch[1]) : null;
   }
 
@@ -231,8 +276,9 @@ function translatedNameFromPattern(source, target, name) {
     .replace(/\.$/, "")
     .match(/^(.+) — (succeeded by|succeeds) — (.+)$/);
   if (relationshipSource) {
-    const targetBody = target.replace(/^Relation personnelle\s*:\s*/, "").replace(/\.$/, "");
-    const targetParts = targetBody.split(/\s*—\s*/);
+    const targetBody = target.replace(langPatterns.relationshipPrefix, "").replace(/\.$/, "");
+    // Google emits either an em-dash or en-dash as the relation separator.
+    const targetParts = targetBody.split(/\s+[—–]\s+/);
     if (targetParts.length === 3 && relationshipSource[1] === name) return stripNamePrefix(targetParts[0]);
     if (targetParts.length === 3 && relationshipSource[3] === name) return stripNamePrefix(targetParts[2]);
   }
@@ -255,6 +301,65 @@ function inferProtectedNameFixups(translations, protectedNames) {
 function normalizeAllTranslations(translations) {
   for (const [source, translated] of Object.entries(translations)) {
     translations[source] = normalizeTranslation(translated);
+  }
+}
+
+// Italian translates honorific prefixes that are part of a protected name
+// ("Dr. X" -> "il dottor X"/"Dott. X", "Eng. X" -> "Ing. X") even mid-sentence.
+// Map every machine rendering of such a prefixed name back to its original form.
+function buildTitlePrefixFixups(protectedNames) {
+  if (targetLang !== "it") return [];
+  const variantPrefixes = {
+    "Dr.": ["Il dottor", "il dottor", "Dottor", "dottor", "Dott.", "Dott.ssa", "Il Dott.", "il Dott."],
+    "Dr": ["Il dottor", "il dottor", "Dottor", "dottor", "Dott.", "Dott.ssa"],
+    "Eng.": ["Ing.", "ing.", "L'ingegnere", "l'ingegnere"],
+    "Prof.": ["Prof.", "Il professor", "il professor"]
+  };
+  const fixups = [];
+  for (const name of protectedNames) {
+    for (const [prefix, variants] of Object.entries(variantPrefixes)) {
+      if (!name.startsWith(`${prefix} `)) continue;
+      const rest = name.slice(prefix.length + 1);
+      for (const variant of variants) fixups.push([`${variant} ${rest}`, name]);
+    }
+  }
+  return fixups;
+}
+
+// Italian machine translation renders the modern city "Plovdiv" as the historical
+// exonym "Filippopoli". Keep "Plovdiv" for the modern city while still allowing
+// "Filippopoli" where the English source explicitly used the ancient "Philippopolis".
+function applyExonymFixups(translations) {
+  if (targetLang !== "it") return;
+  for (const [source, translated] of Object.entries(translations)) {
+    if (typeof translated !== "string" || !translated.includes("Filippopoli")) continue;
+    if (source.includes("Plovdiv") && !source.includes("Philippopolis")) {
+      translations[source] = translated.replaceAll("Filippopoli", "Plovdiv");
+    }
+  }
+}
+
+// The source convention writes honorifics as "Dr."/"Eng." before a name. Italian
+// machine translation expands these ("il dottor"/"Dott."/"Ing.") even for full
+// names not in the protected set; restore the source form wherever the English
+// source actually used the honorific, so names read identically across locales.
+function applyHonorificFixups(translations) {
+  if (targetLang !== "it") return;
+  for (const [source, translated] of Object.entries(translations)) {
+    if (typeof translated !== "string") continue;
+    let out = translated;
+    // Match the source honorific with or without a trailing period ("Dr." or "Dr").
+    if (/\bDr\.?\s/.test(source)) {
+      out = out
+        .replace(/\b[Ii]l dottor /g, "Dr. ")
+        .replace(/\bDott\.ssa /g, "Dr. ")
+        .replace(/\bDott\. /g, "Dr. ")
+        .replace(/\bDottor /g, "Dr. ");
+    }
+    if (/\bEng\.?\s/.test(source)) {
+      out = out.replace(/\b[Ll]'ingegnere /g, "Eng. ").replace(/\bIng\. /g, "Eng. ");
+    }
+    translations[source] = out;
   }
 }
 
@@ -294,8 +399,13 @@ for (let i = 0; i < batches.length; i += 1) {
 }
 
 const inferredNameFixups = inferProtectedNameFixups(translations, protectedNames);
-protectedNameFixups = [...protectedNameFixups, ...inferredNameFixups].sort((a, b) => b[0].length - a[0].length);
+const titlePrefixFixups = buildTitlePrefixFixups(protectedNames);
+protectedNameFixups = [...protectedNameFixups, ...inferredNameFixups, ...titlePrefixFixups].sort(
+  (a, b) => b[0].length - a[0].length
+);
 normalizeAllTranslations(translations);
+applyExonymFixups(translations);
+applyHonorificFixups(translations);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, `${JSON.stringify(Object.fromEntries(Object.entries(translations).sort()), null, 2)}\n`);

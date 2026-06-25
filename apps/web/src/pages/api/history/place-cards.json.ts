@@ -14,15 +14,15 @@ import { localeForLang, type Lang } from "@i18n/utils";
 export const prerender = true;
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain" },
-  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline" },
-  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval" },
-  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument" },
-  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman" },
-  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux" },
-  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale" },
-  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain" },
-  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace" }
+  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain", it: "Spazio urbano" },
+  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline", it: "Colle" },
+  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval", it: "Medievale" },
+  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument", it: "Monumento" },
+  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman", it: "Ottomano" },
+  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux", it: "Sito religioso" },
+  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale" },
+  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano" },
+  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio" }
 };
 
 const labels: Record<Lang, Record<string, string>> = {
@@ -49,6 +49,12 @@ const labels: Record<Lang, Record<string, string>> = {
     architect: "Architecte",
     builder: "Constructeur",
     creator: "Architecte/constructeur"
+  },
+  it: {
+    built: "Costruzione/data",
+    architect: "Architetto",
+    builder: "Costruttore",
+    creator: "Architetto/costruttore"
   }
 };
 
@@ -146,7 +152,8 @@ const cards = {
   bg: placeCards("bg"),
   en: placeCards("en"),
   de: placeCards("de"),
-  fr: placeCards("fr")
+  fr: placeCards("fr"),
+  it: placeCards("it")
 };
 
 export const GET: APIRoute = () =>

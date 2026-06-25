@@ -199,6 +199,68 @@ const labels =
         tableLimit: "Affichage des premières",
         tableLimitSuffix: "fiches pour le filtre actuel. La liste complète est disponible dans le fichier CSV."
       }
+      : lang === "it"
+      ? {
+        title: "Revisione editoriale",
+        eyebrow: "Revisione della base dati storica",
+        lead:
+          "Un esame delle schede ancora in attesa di verifica editoriale umana. I dati sono tecnicamente validati; questa pagina mostra dove servono ancora fonti più solide, informazioni sulla licenza o conferma editoriale.",
+        status: "Stato",
+        total: "schede monitorate",
+        signedOff: "approvate",
+        needsReview: "in attesa di revisione",
+        blockers: "con problemi",
+        trackingGaps: "lacune di monitoraggio",
+        sourceCoverageTitle: "Copertura delle fonti",
+        sourceCoverageLead:
+          "Un audit separato delle stesse schede: se ogni riga dispone di una fonte pubblica, di metadati di licenza/riutilizzo e se le righe a fonte unica sono segnalate per una verifica più solida.",
+        traceability: "tracciabilità",
+        multiSourceReview: "revisione con fonti rafforzate",
+        complete: "completa",
+        incomplete: "incompleta",
+        needsSourceReview: "da rivedere",
+        recordsWithSources: "con fonti",
+        missingSources: "senza fonte",
+        licenseReady: "licenza/condizioni presenti",
+        missingLicenses: "licenza/condizioni mancanti",
+        singleSource: "fonte unica",
+        multiSource: "2+ fonti",
+        openLicenseRows: "righe a licenza aperta",
+        publicTermsRows: "righe a riferimento pubblico",
+        sourceCoverageApi: "Fonti JSON",
+        sourceCoverageCsv: "Fonti CSV",
+        requirement: "Criterio",
+        collections: "Collezioni",
+        collection: "Collezione",
+        records: "Schede",
+        reviewer: "Revisione editoriale",
+        sources: "Fonti",
+        sourceLicense: "Fonti e licenza",
+        blockersLabel: "Problemi",
+        search: "Cerca",
+        searchPlaceholder: "scheda, collezione, problema...",
+        allCollections: "Tutte le collezioni",
+        allStatuses: "Tutti gli stati",
+        allBlockers: "Tutti i problemi",
+        record: "Scheda",
+        visible: "Visibili",
+        of: "di",
+        empty: "Nessuna scheda corrisponde a questi filtri.",
+        loading: "Caricamento della coda editoriale...",
+        api: "Dati JSON",
+        csv: "Dati CSV",
+        openRecord: "Apri la scheda",
+        openApi: "Dati",
+        signedOffStatus: "approvata",
+        needsStatus: "in attesa di revisione",
+        missingStatus: "stato mancante",
+        unsigned: "non rivista",
+        hasLicense: "licenza/condizioni presenti",
+        missingLicense: "licenza/condizioni mancanti",
+        reset: "Cancella i filtri",
+        tableLimit: "Visualizzazione delle prime",
+        tableLimitSuffix: "schede per il filtro attuale. L'elenco completo è disponibile nel file CSV."
+      }
       : {
         title: "Editorial Review",
         eyebrow: "Historical data review",
@@ -266,37 +328,43 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     bg: "нужен независим редакторски подпис",
     en: "needs independent editorial sign-off",
     de: "unabhängige redaktionelle Freigabe nötig",
-    fr: "validation éditoriale indépendante requise"
+    fr: "validation éditoriale indépendante requise",
+    it: "verifica editoriale indipendente richiesta"
   },
   missing_independent_editorial_signoff_log: {
     bg: "липсва име или дата на редактора",
     en: "missing reviewer name or date",
     de: "Name oder Datum der prüfenden Person fehlt",
-    fr: "nom ou date du relecteur manquant"
+    fr: "nom ou date du relecteur manquant",
+    it: "nome o data del revisore mancante"
   },
   missing_source_reference: {
     bg: "липсва източникова връзка",
     en: "missing source reference",
     de: "Quellenverweis fehlt",
-    fr: "référence de source manquante"
+    fr: "référence de source manquante",
+    it: "riferimento alla fonte mancante"
   },
   missing_license_or_reuse_status: {
     bg: "липсва лиценз или статус за повторна употреба",
     en: "missing license or reuse status",
     de: "Lizenz oder Nachnutzungsstatus fehlt",
-    fr: "licence ou statut de réutilisation manquant"
+    fr: "licence ou statut de réutilisation manquant",
+    it: "licenza o stato di riutilizzo mancante"
   },
   missing_external_editorial_signoff_record: {
     bg: "липсва външен редакторски запис",
     en: "missing external editorial review record",
     de: "externer redaktioneller Prüfvermerk fehlt",
-    fr: "trace de revue éditoriale externe manquante"
+    fr: "trace de revue éditoriale externe manquante",
+    it: "traccia di revisione editoriale esterna mancante"
   },
   editorial_signoff_log_mismatch: {
     bg: "несъответствие в редакторския запис",
     en: "editorial review record mismatch",
     de: "Widerspruch im redaktionellen Prüfvermerk",
-    fr: "incohérence dans la trace de revue éditoriale"
+    fr: "incohérence dans la trace de revue éditoriale",
+    it: "incoerenza nella traccia di revisione editoriale"
   }
 };
 
@@ -305,37 +373,43 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     bg: "основен запис",
     en: "primary record",
     de: "Haupteintrag",
-    fr: "fiche principale"
+    fr: "fiche principale",
+    it: "scheda principale"
   },
   relationship_entity: {
     bg: "връзка между записи",
     en: "relationship record",
     de: "Beziehungseintrag",
-    fr: "fiche de relation"
+    fr: "fiche de relation",
+    it: "scheda di relazione"
   },
   supporting_archive: {
     bg: "архивен материал",
     en: "supporting archive item",
     de: "unterstützendes Archivmaterial",
-    fr: "élément d'archives complémentaire"
+    fr: "élément d'archives complémentaire",
+    it: "elemento d'archivio complementare"
   },
   primary_document: {
     bg: "първичен документ",
     en: "primary document",
     de: "Primärdokument",
-    fr: "document primaire"
+    fr: "document primaire",
+    it: "documento primario"
   },
   editorial_feature: {
     bg: "редакционен материал",
     en: "editorial feature",
     de: "redaktioneller Beitrag",
-    fr: "article éditorial"
+    fr: "article éditorial",
+    it: "articolo editoriale"
   },
   education_material: {
     bg: "образователен материал",
     en: "education material",
     de: "Bildungsmaterial",
-    fr: "ressource pédagogique"
+    fr: "ressource pédagogique",
+    it: "risorsa didattica"
   }
 };
 
@@ -364,9 +438,27 @@ const collectionLabelsFr: Record<string, string> = {
   editorial_review: "Revue éditoriale"
 };
 
+// Italian collection labels (the generated dataset only carries label_bg/label_en).
+const collectionLabelsIt: Record<string, string> = {
+  events: "Eventi",
+  people: "Personalità",
+  person_relationships: "Legami tra persone",
+  places: "Luoghi",
+  organizations: "Organizzazioni",
+  sources: "Fonti",
+  archive_items: "Oggetti d'archivio",
+  then_now_pairs: "Coppie prima/dopo",
+  primary_documents: "Documenti primari",
+  story_longreads: "Racconti lunghi",
+  education_resources: "Risorse didattiche",
+  editorial_signoffs: "Validazioni editoriali",
+  editorial_review: "Revisione editoriale"
+};
+
 function collectionLabel(id: string) {
   const collection = historyEditorialReview.collections[id];
   if (lang === "fr" && collectionLabelsFr[id]) return collectionLabelsFr[id];
+  if (lang === "it" && collectionLabelsIt[id]) return collectionLabelsIt[id];
   return collection?.[`label_${lang}`] ?? collection?.label_en ?? collection?.label_bg ?? id.replaceAll("_", " ");
 }
 

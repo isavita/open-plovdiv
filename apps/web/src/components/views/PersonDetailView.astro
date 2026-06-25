@@ -83,6 +83,26 @@ const labels =
         linkedEvent: "Événement lié",
         imageCredit: "Crédit photo"
       }
+      : lang === "it"
+      ? {
+        back: "Tutte le persone",
+        profile: "Profilo",
+        facts: "Dati",
+        roles: "Cariche",
+        life: "Date di vita",
+        born: "Nato/a",
+        wikidata: "Wikidata",
+        linkedEvents: "Eventi collegati",
+        relationships: "Legami con altre persone",
+        noRelationships: "Nessun legame diretto con altre persone è ancora registrato.",
+        evidence: "Fonti",
+        source: "Fonte",
+        accessed: "Consultato",
+        license: "Licenza",
+        relationshipSource: "Fonte del legame",
+        linkedEvent: "Evento collegato",
+        imageCredit: "Crediti foto"
+      }
       : {
         back: "All people",
         profile: "Profile",
@@ -228,6 +248,21 @@ const relationshipLabelsFr: Record<string, string> = {
   influenced_by: "influencé(e) par"
 };
 
+const relationshipLabelsIt: Record<string, string> = {
+  succeeds: "succede a",
+  succeeded_by: "sostituito/a da",
+  spouse: "coniuge",
+  father: "padre",
+  mother: "madre",
+  parent: "genitore",
+  child: "figlio/a",
+  sibling: "fratello/sorella",
+  mentor: "mentore",
+  student: "allievo/a",
+  partner: "partner",
+  influenced_by: "influenzato/a da"
+};
+
 const roleGroups: Record<string, RoleGroup> = {
   mayor: "governance",
   politician: "governance",
@@ -324,6 +359,7 @@ function roleLabel(role: string): string {
 function relationshipLabel(type: string): string {
   if (lang === "de") return relationshipLabelsDe[type] ?? type.replaceAll("_", " ");
   if (lang === "fr") return relationshipLabelsFr[type] ?? type.replaceAll("_", " ");
+  if (lang === "it") return relationshipLabelsIt[type] ?? type.replaceAll("_", " ");
   return relationshipLabels[type]?.[lang] ?? type.replaceAll("_", " ");
 }
 
