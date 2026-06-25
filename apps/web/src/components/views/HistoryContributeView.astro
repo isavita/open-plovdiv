@@ -201,6 +201,54 @@ const labels =
           default: "Impossibile inviare il contributo. Riprova."
         }
       }
+      : lang === "tr"
+      ? {
+        eyebrow: "Yurttaş arşivi",
+        title: "Bir fotoğraf, anı veya kaynak gönder",
+        lead:
+          "Tarihsel katkılar, yurttaş bildirimleriyle aynı moderasyon kuyruğuna girer. Hiçbir şey otomatik olarak yayımlanmaz: bir kayıt herkese açık olmadan önce bir editör kişisel verileri, görsel haklarını ve kaynak bağlamını doğrular.",
+        notice:
+          "Yayımlama hakkına sahip olmadığınız kişisel veri, kesin özel adres veya yüz içeren fotoğraflar göndermeyin. Varsa bir kaynak, arşiv bağlantısı veya köken notu ekleyin.",
+        category: "Katkı türü",
+        titleLabel: "Kısa başlık",
+        titlePlaceholder: "örn. Cuma Camii'nin eski fotoğrafı",
+        description: "Açıklama / anı",
+        descriptionPlaceholder: "Neyin gösterildiğini, yaklaşık tarihi, kökeni ve neyin doğrulanması gerektiğini açıklayın.",
+        sourceUrl: "Kaynak veya arşiv bağlantısı",
+        sourceUrlPlaceholder: "https://...",
+        sourceNote: "Köken notu",
+        sourceNotePlaceholder: "örn. aile fotoğrafı, taranmış kartpostal, arşiv gönderisi...",
+        photos: "Fotoğraflar",
+        photoHint:
+          "İsteğe bağlı, en fazla 3 fotoğraf, her biri en çok 5 MB. EXIF/GPS meta verileri kaldırılır ve fotoğraflar incelemeden önce dönüştürülür.",
+        location: "Yer",
+        locationHint: "Katkı belirli bir yere bağlıysa haritaya tıklayın.",
+        noLocation: "Henüz nokta seçilmedi",
+        confirmNoPersonal: "Bu katkının kişisel veri içermediğini onaylıyorum.",
+        confirmPublicInterest: "Bu katkının doğrulanabilir ve kamu yararına olduğunu onaylıyorum.",
+        submit: "İnceleme için gönder",
+        submitting: "Gönderiliyor...",
+        successTitle: "Alındı",
+        successText: "Katkı moderasyon kuyruğunda. Referans numarası:",
+        submitAnother: "Başka bir katkı gönder",
+        backToHistory: "Tarihe dön",
+        selected: "Seçili nokta",
+        errors: {
+          rate_limited: "Kısa sürede çok fazla gönderim. Lütfen daha sonra deneyin.",
+          invalid_category: "Geçerli bir katkı türü seçin.",
+          invalid_title: "Başlık 3 ile 120 karakter arasında olmalıdır.",
+          invalid_description: "Açıklama 10 ile 1000 karakter arasında olmalıdır.",
+          invalid_source: "Kaynak geçerli bir http/https bağlantısı veya kısa bir not olmalıdır.",
+          contains_personal_data: "Metin kişisel veriye benzeyen bir şey içeriyor.",
+          invalid_location: "Plovdiv içinde bir nokta seçin.",
+          missing_confirmation: "Lütfen her iki onayı da işaretleyin.",
+          too_many_photos: "En fazla 3 fotoğraf yükleyin.",
+          photo_too_large: "Her fotoğraf 5 MB veya daha küçük olmalıdır.",
+          invalid_photo_type: "Yalnızca JPEG, PNG veya WebP fotoğraflara izin verilir.",
+          invalid_photo: "Fotoğraf işlenemedi.",
+          default: "Katkı gönderilemedi. Lütfen tekrar deneyin."
+        }
+      }
       : {
         eyebrow: "Community archive",
         title: "Submit a photo, memory or source",

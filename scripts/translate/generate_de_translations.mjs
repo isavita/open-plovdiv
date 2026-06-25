@@ -4,7 +4,7 @@ import process from "node:process";
 
 const root = process.cwd();
 const targetLang = process.argv[2] ?? "de";
-const supportedTargetLangs = new Set(["de", "fr", "it"]);
+const supportedTargetLangs = new Set(["de", "fr", "it", "tr"]);
 if (!supportedTargetLangs.has(targetLang)) {
   throw new Error(`Unsupported target language "${targetLang}". Expected one of: ${[...supportedTargetLangs].join(", ")}`);
 }
@@ -49,7 +49,33 @@ const manualTranslationsByLang = {
       "Creative Commons Attribuzione - Condividi allo stesso modo 4.0 Internazionale",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
     "Open Database License 1.0": "Open Database License 1.0"
+  },
+  tr: {
+    "Public web reference; reuse terms not verified":
+      "Herkese açık web kaynağı; yeniden kullanım koşulları doğrulanmadı",
+    "Wikimedia Commons file license, verify per file":
+      "Wikimedia Commons dosya lisansı; her dosya için doğrulayın",
+    "Creative Commons Attribution-ShareAlike 4.0 International":
+      "Creative Commons Atıf-AynıLisanslaPaylaş 4.0 Uluslararası",
+    "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
+    "Open Database License 1.0": "Open Database License 1.0",
+    // Machine reordering separates the "Eng." honorific from the surname here;
+    // pin a clean translation that keeps the recorded name intact.
+    "Mayoral term(s) for Eng. Ivan Totev.":
+      "Eng. Ivan Totev için belediye başkanlığı dönemleri."
   }
+};
+
+// Extra [machineForm, originalName] fixups for protected names that the generic
+// inference cannot recover (non-templated transliterations inside longer strings).
+const protectedNameOverridesByLang = {
+  tr: [["Bojidar Zdravkov", "Bozhidar Zdravkov"]]
+};
+
+// Landmark names the machine sometimes leaves in English inside longer captions;
+// normalise them to their natural target-language form for consistency.
+const landmarkFixupsByLang = {
+  tr: [["Lamartine House", "Lamartine Evi"]]
 };
 const manualTranslations = manualTranslationsByLang[targetLang];
 
@@ -251,6 +277,24 @@ const namePatternsByLang = {
     ],
     archive: /Sindaco\s*:\s*([^"»]+)["»]\.?$/,
     relationshipPrefix: /^Rapporto personale\s*:\s*/
+  },
+  tr: {
+    // Turkish renders the name first with a genitive suffix after an apostrophe
+    // (e.g. "Emma Tahmiziyan'ın doğumu"); capture the name before the apostrophe.
+    direct: (escapedName) => [
+      [`Biographical reference: ${escapedName}`, /^Biyografik referans\s*:\s*(.+)$/],
+      [`Birth of ${escapedName}`, /^(.+?)['’]\S*\s+[Dd]oğ\w*$/],
+      [`Birth year and birthplace for ${escapedName}.`, /^(.+?)['’]\S*\s+doğum yılı ve doğum yeri\.$/],
+      [
+        `Biographical data and Plovdiv birthplace link for ${escapedName}.`,
+        /^(.+?)['’]\S*\s+biyografik verileri.*$/
+      ],
+      [`Mayor: ${escapedName}`, /^Belediye Başkanı\s*:\s*(.+)$/],
+      [`Mayoral term\\(s\\) for ${escapedName}.`, /^(.+?)['’]\S*\s+belediye başkanlığı dönem.*$/],
+      [`Wikipedia [—–-] ${escapedName}`, /^Vikipedi [—–-]\s*(.+)$/]
+    ],
+    archive: /Belediye Başkanı\s*:\s*([^"»]+)["»]\.?$/,
+    relationshipPrefix: /^Kişi ilişkisi\s*:\s*/
   }
 };
 
@@ -277,8 +321,8 @@ function translatedNameFromPattern(source, target, name) {
     .match(/^(.+) — (succeeded by|succeeds) — (.+)$/);
   if (relationshipSource) {
     const targetBody = target.replace(langPatterns.relationshipPrefix, "").replace(/\.$/, "");
-    // Google emits either an em-dash or en-dash as the relation separator.
-    const targetParts = targetBody.split(/\s+[—–]\s+/);
+    // Google emits an em-dash, en-dash or (Turkish) a hyphen as the relation separator.
+    const targetParts = targetBody.split(/\s+[—–-]\s+/);
     if (targetParts.length === 3 && relationshipSource[1] === name) return stripNamePrefix(targetParts[0]);
     if (targetParts.length === 3 && relationshipSource[3] === name) return stripNamePrefix(targetParts[2]);
   }
@@ -329,12 +373,17 @@ function buildTitlePrefixFixups(protectedNames) {
 // Italian machine translation renders the modern city "Plovdiv" as the historical
 // exonym "Filippopoli". Keep "Plovdiv" for the modern city while still allowing
 // "Filippopoli" where the English source explicitly used the ancient "Philippopolis".
+const exonymByLang = { it: "Filippopoli", tr: "Filibe" };
 function applyExonymFixups(translations) {
-  if (targetLang !== "it") return;
+  const exonym = exonymByLang[targetLang];
+  if (!exonym) return;
   for (const [source, translated] of Object.entries(translations)) {
-    if (typeof translated !== "string" || !translated.includes("Filippopoli")) continue;
-    if (source.includes("Plovdiv") && !source.includes("Philippopolis")) {
-      translations[source] = translated.replaceAll("Filippopoli", "Plovdiv");
+    if (typeof translated !== "string" || !translated.includes(exonym)) continue;
+    // Keep "Plovdiv" for the modern city (replacing only the stem preserves any
+    // Turkish case suffix, e.g. "Filibe'deki" -> "Plovdiv'deki"); still allow the
+    // exonym where the English source used the ancient/Ottoman name.
+    if (source.includes("Plovdiv") && !source.includes("Philippopolis") && !source.includes("Filibe")) {
+      translations[source] = translated.replaceAll(exonym, "Plovdiv");
     }
   }
 }
@@ -344,21 +393,40 @@ function applyExonymFixups(translations) {
 // names not in the protected set; restore the source form wherever the English
 // source actually used the honorific, so names read identically across locales.
 function applyHonorificFixups(translations) {
-  if (targetLang !== "it") return;
+  if (targetLang !== "it" && targetLang !== "tr") return;
   for (const [source, translated] of Object.entries(translations)) {
     if (typeof translated !== "string") continue;
     let out = translated;
-    // Match the source honorific with or without a trailing period ("Dr." or "Dr").
-    if (/\bDr\.?\s/.test(source)) {
-      out = out
-        .replace(/\b[Ii]l dottor /g, "Dr. ")
-        .replace(/\bDott\.ssa /g, "Dr. ")
-        .replace(/\bDott\. /g, "Dr. ")
-        .replace(/\bDottor /g, "Dr. ");
+    if (targetLang === "it") {
+      // Match the source honorific with or without a trailing period ("Dr." or "Dr").
+      if (/\bDr\.?\s/.test(source)) {
+        out = out
+          .replace(/\b[Ii]l dottor /g, "Dr. ")
+          .replace(/\bDott\.ssa /g, "Dr. ")
+          .replace(/\bDott\. /g, "Dr. ")
+          .replace(/\bDottor /g, "Dr. ");
+      }
+      if (/\bEng\.?\s/.test(source)) {
+        out = out.replace(/\b[Ll]'ingegnere /g, "Eng. ").replace(/\bIng\. /g, "Eng. ");
+      }
+    } else if (targetLang === "tr") {
+      // Turkish keeps "Dr." but renders "Eng." as "Müh." (Mühendis); restore the
+      // source convention so the honorific reads identically across locales.
+      if (/\bEng\.?\s/.test(source)) {
+        out = out.replace(/\bMüh\. /g, "Eng. ").replace(/\bMühendis /g, "Eng. ");
+      }
     }
-    if (/\bEng\.?\s/.test(source)) {
-      out = out.replace(/\b[Ll]'ingegnere /g, "Eng. ").replace(/\bIng\. /g, "Eng. ");
-    }
+    translations[source] = out;
+  }
+}
+
+function applyLandmarkFixups(translations) {
+  const fixups = landmarkFixupsByLang[targetLang];
+  if (!fixups) return;
+  for (const [source, translated] of Object.entries(translations)) {
+    if (typeof translated !== "string") continue;
+    let out = translated;
+    for (const [en, local] of fixups) out = out.replaceAll(en, local);
     translations[source] = out;
   }
 }
@@ -378,6 +446,7 @@ protectedNameFixups = await buildProtectedNameFixups(protectedNames, existing);
 
 const translations = { ...manualTranslations };
 for (const text of allStrings) {
+  if (manualTranslations[text]) continue; // manual translations are authoritative
   if (existing[text]) translations[text] = normalizeTranslation(existing[text]);
 }
 const pending = [...allStrings]
@@ -400,12 +469,17 @@ for (let i = 0; i < batches.length; i += 1) {
 
 const inferredNameFixups = inferProtectedNameFixups(translations, protectedNames);
 const titlePrefixFixups = buildTitlePrefixFixups(protectedNames);
-protectedNameFixups = [...protectedNameFixups, ...inferredNameFixups, ...titlePrefixFixups].sort(
-  (a, b) => b[0].length - a[0].length
-);
+const overrideFixups = protectedNameOverridesByLang[targetLang] ?? [];
+protectedNameFixups = [
+  ...protectedNameFixups,
+  ...inferredNameFixups,
+  ...titlePrefixFixups,
+  ...overrideFixups
+].sort((a, b) => b[0].length - a[0].length);
 normalizeAllTranslations(translations);
 applyExonymFixups(translations);
 applyHonorificFixups(translations);
+applyLandmarkFixups(translations);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, `${JSON.stringify(Object.fromEntries(Object.entries(translations).sort()), null, 2)}\n`);

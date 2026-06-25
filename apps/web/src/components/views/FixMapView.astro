@@ -75,7 +75,7 @@ const config = {
     noFilterResults: t.fixMap.noFilterResults,
     updated: t.fixMap.lastUpdated,
     justNow: t.fixMap.justNow,
-    of: lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : "of",
+    of: lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : "of",
     km: lang === "bg" ? "км" : "km",
     errorTitle: t.fixMap.loadErrorTitle,
     errorText: t.fixMap.loadErrorText,
@@ -511,7 +511,7 @@ const config = {
         renderMarkers();
       }, 30000);
     } catch {
-      countField.value = config.lang === "bg" ? "Грешка" : config.lang === "de" ? "Fehler" : config.lang === "fr" ? "Erreur" : config.lang === "it" ? "Errore" : "Error";
+      countField.value = config.lang === "bg" ? "Грешка" : config.lang === "de" ? "Fehler" : config.lang === "fr" ? "Erreur" : config.lang === "it" ? "Errore" : config.lang === "tr" ? "Hata" : "Error";
       detail.innerHTML = `<h2>${escapeHtml(LB.errorTitle)}</h2><p class="error">${escapeHtml(LB.errorText)}</p>`;
     }
   </script>

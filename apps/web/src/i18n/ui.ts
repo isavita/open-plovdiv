@@ -7,7 +7,8 @@ export const languages = {
   en: "English",
   de: "Deutsch",
   fr: "Français",
-  it: "Italiano"
+  it: "Italiano",
+  tr: "Türkçe"
 } as const;
 
 export type Lang = keyof typeof languages;
@@ -3498,7 +3499,702 @@ const it: typeof bg = {
   }
 };
 
-export const ui = { bg, en, de, fr, it } as const;
+const tr: typeof bg = {
+  site: {
+    name: "Open Plovdiv",
+    short: "OP",
+    tagline:
+      "Kamu projeleri, kamu parası, kamu sorunları — açıkça sunuldu.",
+    skip: "İçeriğe geç",
+    menu: "Menü",
+    close: "Kapat",
+    theme: "Açık / koyu tema",
+    langName: "Dil",
+    langSwitch: "Dil seç"
+  },
+  nav: {
+    home: "Ana sayfa",
+    history: "Tarih",
+    mayors: "Belediye başkanları",
+    people: "Kişiler",
+    places: "Yerler",
+    stories: "Anlatılar",
+    education: "Eğitim",
+    overview: "Genel bakış",
+    fixMap: "Harita",
+    budget: "Bütçe",
+    projects: "Projeler",
+    community: "Gönüllüler",
+    archive: "Arşiv",
+    sources: "Kaynaklar"
+  },
+  overview: {
+    eyebrow: "Görsel genel bakış",
+    title: "Grafiklerle genel bakış",
+    lead:
+      "Plovdiv için izlenen projelere ve kamu parasına genel bir bakış — duruma, kategoriye ve yıla göre, kaynaklarıyla birlikte.",
+    asOf: "Veriler Haziran 2026 itibarıyla",
+    statProjects: "izlenen proje",
+    statPostponed: "ertelenen proje",
+    statCapital2025: "2025 yatırım programı",
+    statCapital2026: "2026 yatırım programı (geçici)",
+    unitProjects: "İzlenen proje sayısı",
+    unitSharePercent: "Yatırım programındaki pay (%)",
+    unitEur: "Avro cinsinden tutarlar (€)",
+    byStatusTitle: "Duruma göre projeler",
+    byCategoryTitle: "Kategoriye göre projeler",
+    byYearTitle: "Bütçe yılına göre projeler",
+    sector2025Title: "Sektöre göre 2025 yatırım programı",
+    funding2026Title: "2026 yatırım programının finansmanı",
+    capitalTrendTitle: "Yıla göre yatırım programı",
+    capitalTrendNote:
+      "Yıla göre yatırım programı (BGN cinsinden). 2013-2018 rakamları Belediye Meclisi kararlarından gelir; daha yeni yıllar resmî sayfaları ve kamuya açık yayınları kullanır. 2026 geçicidir ve yaklaşık 87 milyon avrodan 1,95583 kuruyla dönüştürülmüştür.",
+    totalTrendTitle: "Yıla göre Plovdiv toplam bütçesi",
+    totalTrendNote:
+      "Plovdiv Belediyesi'nin toplam yıllık bütçesi (BGN cinsinden). Arşiv 2010 yılının gerçekleşmesini ve 2011-2018 için kabul edilen bütçeleri içerir; 2020, 2022 ve 2024 değerleri yaklaşık/yuvarlanmış kalır. Her yıl kamuya açık bir kaynağa bağlanır.",
+    historyNote:
+      "Rakamlar kamuya açık kaynaklardan gelir (belediye bütçeleri ve medya yayınları). Belirli bir değeri alıntılamadan önce orijinal belgelerle doğrulayın.",
+    year2025: "2025",
+    year2026: "2026 (geçici)",
+    sourcesNote: "Tüm değerlerin kamuya açık kaynakları vardır.",
+    viewBudget: "Bütçeye git",
+    viewProjects: "Projelere git"
+  },
+  footer: {
+    blurb:
+      "Plovdiv için kâr amacı gütmeyen bir kamu verisi projesi. Hesap yok, yorum yok, veri tabanı yok.",
+    explore: "Keşfet",
+    civic: "Yurttaş verileri",
+    about: "Hakkında",
+    privacy: "Gizlilik",
+    moderation: "Moderasyon",
+    community: "Gönüllüler",
+    methodology: "Yöntem",
+    sources: "Kaynaklar",
+    note: "Open Plovdiv · Plovdiv için kamu verileri",
+    dataNote: "Kamuya açık kaynaklardan veriler · Haziran 2026'da güncellendi.",
+    rights: "Kamu verileri"
+  },
+  common: {
+    all: "Tümü",
+    accessed: "erişildi",
+    source: "Kaynak",
+    loading: "Yükleniyor…",
+    error: "Bir hata oluştu.",
+    backHome: "Ana sayfaya dön",
+    noSource: "Kamuya açık kaynak yok."
+  },
+  home: {
+    eyebrow: "Dünyanın en eski şehirlerinden biri",
+    lead:
+      "Plovdiv 8.000 yılı aşkın süredir yaşıyor. Trak Eumolpias'ı, Makedonyalı II. Filip'in Philippopolis'i, Roma Trimontium'u, Osmanlı Filibe'si — ve Birleşme'nin şehri.",
+    ctaHistory: "Zaman çizelgesini keşfet",
+    ctaMayors: "Plovdiv'in belediye başkanları",
+    statYearsValue: "8000+",
+    statYears: "yıllık tarih",
+    statEras: "dönem",
+    statMayors: "belediye başkanı",
+    statLandmarks: "anıt",
+    featuredTitle: "Tarihten anlar",
+    civicTitle: "Bugünün şehrine dair yurttaş verileri",
+    civicLead:
+      "Tarihin yanı sıra Open Plovdiv modern şehre dair kamu verilerini de tutar — bütçe, projeler, yurttaş bildirimleri ve gönüllüler, her biri kamuya açık bir kaynakla.",
+    ctaMap: "Sorun haritasını aç",
+    ctaBudget: "Yerel vergiler nereye gidiyor?",
+    statsLabel: "İzlenen veriler",
+    statProjects: "izlenen proje",
+    statReportsValue: "Canlı",
+    statReports: "moderasyondan geçmiş bildirim",
+    statCommunity: "gönüllü girişimi",
+    statBudget: "bütçe sektörü",
+    statTotal: "2025 yatırım programı",
+    exploreTitle: "Nereden başlamalı",
+    cardMapEyebrow: "Harita",
+    cardMapTitle: "Sorun haritası",
+    cardMapText:
+      "Yayımlanan yurttaş bildirimlerini kategoriye ve duruma göre, yakındaki kamu projeleriyle birlikte görün.",
+    cardBudgetEyebrow: "Bütçe",
+    cardBudgetTitle: "Yerel vergiler",
+    cardBudgetText:
+      "2025 bütçesi ve geçici 2026 yatırım programı — tutarlar, paylar ve kamuya açık kaynaklar.",
+    cardProjectsEyebrow: "Projeler",
+    cardProjectsTitle: "Kamu projeleri",
+    cardProjectsText:
+      "Bütçe, durum ve kaynaklarla proje kayıtlarını arayın ve filtreleyin.",
+    cardCommunityEyebrow: "Gönüllüler",
+    cardCommunityTitle: "Yurttaş girişimleri",
+    cardCommunityText:
+      "Temizlik, durak bakımı, parklar ve mahalle çalışmaları düzenleyen gruplar ve kampanyalar.",
+    cardArchiveEyebrow: "Arşiv",
+    cardArchiveTitle: "Belediye başkanları ve tarihsel veriler",
+    cardArchiveText:
+      "Belediye başkanlığı görev sürelerinin, eski mali kayıtların ve şehir programlarının eksiksiz bir iç zaman çizelgesi.",
+    cardMayorsEyebrow: "Belediye başkanları",
+    cardMayorsTitle: "Plovdiv'in tüm belediye başkanları",
+    cardMayorsText:
+      "1878'den günümüzdeki göreve kadar ayrıntılı kronoloji; arama, yüzyıllar ve kaynaklarla.",
+    latestProjects: "Yakın zamanda güncellenen projeler",
+    latestReports: "Yakın zamanda eklenen bildirimler",
+    liveReportsTitle: "Moderasyon sonrası gerçek bildirimler",
+    liveReportsText:
+      "Harita artık yalnızca form aracılığıyla gönderilen ve bir moderatör tarafından onaylanan yurttaş bildirimlerini gösterir.",
+    viewAll: "Tümünü gör",
+    noticeTitle: "Veriler ve kaynaklar",
+    notice:
+      "Veriler Haziran 2026 itibarıyla günceldir. 2025 bütçesi kabul edilmiştir, 2026 yatırım programı ise geçicidir. Her kayıt kamuya açık bir kaynağa bağlanır.",
+    noticeSources: "Kaynaklara bakın",
+    noticeMethodology: "yöntem"
+  },
+  history: {
+    eyebrow: "Şehrin zaman çizelgesi",
+    title: "Plovdiv'in tarihi",
+    lead:
+      "Yedi tepe üzerinde sekiz binyılı aşkın bir süre — Trak Eumolpias'ı ve Roma Trimontium'undan, Osmanlı Filibe'si ve Ulusal Uyanış'tan geçerek Birleşme'ye ve günümüze kadar.",
+    timelineTitle: "Zaman çizelgesi",
+    timelineLead:
+      "Şehrin tarihindeki kilit anlar, döneme göre düzenlenmiştir. Her kayıt kamuya açık bir kaynağa bağlanır.",
+    erasTitle: "Plovdiv'in dönemleri",
+    erasNav: "Dönemler",
+    landmarksTitle: "Anıtlar",
+    landmarksLead:
+      "Şehrin hikâyesini anlatan anıtlar — Trak kalesinden Uyanış dönemi Eski Şehir'e kadar.",
+    mayorsTitle: "Plovdiv'in belediye başkanları",
+    mayorsLead:
+      "Kurtuluş'tan bugüne 68 görev süresi — biyografiler ve kamuya açık kaynaklarla ayrıntılı bir kronoloji.",
+    mayorsCta: "Tüm belediye başkanlarını gör",
+    sourceNote:
+      "Tarihsel veriler kamuya açık kaynaklardan (Wikipedia ve resmî sayfalar) derlenmiştir. Belirli bir olguyu alıntılamadan önce orijinal kaynağı doğrulayın.",
+    statYears: "yıllık tarih",
+    statEras: "dönem",
+    statLandmarks: "anıt",
+    eraLabels: {
+      prehistory: "Tarih öncesi",
+      thracian: "Trak dönemi",
+      roman: "Roma dönemi",
+      medieval: "Orta Çağ",
+      ottoman: "Osmanlı dönemi",
+      revival: "Ulusal Uyanış",
+      liberation: "Kurtuluş ve Birleşme",
+      modern: "Modern dönem"
+    },
+    eraBlurbs: {
+      prehistory: "Tepelerde daha MÖ 6. binyıldan itibaren yerleşimler.",
+      thracian: "Trak Eumolpias'ı ve Makedonyalı II. Filip'in Philippopolis'i.",
+      roman: "Trimontium — tiyatrosu ve stadyumuyla görkemli bir Roma şehri.",
+      medieval: "Bulgaristan ile Bizans arasında dönüşümlü yüzyıllarca süren egemenlik.",
+      ottoman: "Filibe adıyla beş yüzyıl — Balkanların bir kavşağı.",
+      revival: "Bulgar eğitim ve kilise uyanışı.",
+      liberation: "Kurtuluş, Doğu Rumeli'nin başkenti ve Birleşme.",
+      modern: "Fuarlar şehri ve bir Avrupa Kültür Başkenti."
+    }
+  },
+  budget: {
+    eyebrow: "Yerel vergiler nereye gidiyor?",
+    title: "Bütçe ve yatırım programı",
+    lead:
+      "2025 bütçesi, geçici 2026 yatırım programı ve şehir yönetiminin tarihsel arşivi — tutarlar, paylar ve kamuya açık kaynaklar açıkça gösterilmiştir.",
+    totalLabel: "Toplam 2025 bütçesi",
+    capitalLabel: "2025 yatırım programı",
+    sectorTitle: "Sektöre göre 2025 yatırım programı",
+    approxNote:
+      "Sektör değerleri yaklaşıktır — yatırım programının yayımlanan paylarından türetilmiştir.",
+    shareOfTotal: "yatırım programındaki pay",
+    provTitle: "2026 yatırım programı (geçici)",
+    provText:
+      "2026, Plovdiv'in avro cinsinden ilk bütçesidir. Geçici yatırım programı yaklaşık 87 milyon avrodur. Rakamlar geçicidir ve devlet bütçesi kabul edildiğinde değişebilir.",
+    fundingTitle: "2026 finansman kaynakları",
+    fundEu: "AB fonları",
+    fundOwn: "Öz gelirler ve devir",
+    fundOpco: "Program eş finansmanı",
+    fundState: "Devletin amaca yönelik desteği",
+    fundOther: "Diğer (bağışlar, krediler)",
+    historyTitle: "Tarihsel bütçe arşivi",
+    historyLead:
+      "Arşiv artık 2002 kabul bütçesini, 2005-2007 için gerçekleşen yatırım harcamalarını, 2010 gerçekleşmesini, 2011'den itibaren kabul edilen bütçe toplamlarını ve kararların ayrı yayımladığı durumlarda eski yatırım programı rakamlarını içerir.",
+    totalHistoryTitle: "Toplam bütçe ve gerçekleşme",
+    capitalHistoryTitle: "Yatırım programı",
+    historyNote:
+      "2008, ikincil bir kaynaktan gelen bir bütçe taslağı değeridir ve geçici/taslak olarak işaretlenmiştir. 2005-2007 yatırım grafiği değerleri ve 2010 toplam grafiği değeri gerçekleşen rakamlardır, başlangıçta kabul edilen ödenekler değildir. Daha eski kararlar bazen taranmış belgelerdir ve devredilen, yerel ve yatırım harcamalarını farklı şekilde ayırır. Grafikleri gezilebilir bir arşiv olarak değerlendirin ve kesin rakamları orijinal belgeden alıntılayın.",
+    executedShort: "gerçek.",
+    provisionalShort: "taslak",
+    mayorsTitle: "Şehri kim yönetti",
+    mayorsLead:
+      "Arşiv 1878'den itibaren resmen yayımlanan belediye başkanlığı görev sürelerini ve Bulgar İdari Sicili'nde doğrulanan mevcut belediye başkanını içerir.",
+    mayorTermCount: "arşivdeki belediye başkanlığı görev süresi",
+    currentMayorLabel: "görevdeki belediye başkanı",
+    recentMayorsTitle: "Son görev süreleri",
+    earlyMayorsTitle: "Kurtuluş'tan sonraki ilk kayıtlar",
+    fullMayorArchive: "Belediye başkanlarının tam arşivi",
+    eventsTitle: "Etkinlikler ve programlar",
+    eventsLead:
+      "Bütçe yıllarını kamu programlarına ve kültürel etkinliklere bağlamaya yardımcı olan, dikkate değer belediye girişimlerinin kısa bir arşivi.",
+    sourceLabel: "Kaynak"
+  },
+  archive: {
+    eyebrow: "Tarihsel arşiv",
+    title: "Belediye başkanları, bütçeler ve şehir programları",
+    lead:
+      "Plovdiv yönetiminin iç arşivi: belediye başkanlığı görev süreleri, tarihsel mali kayıtlar, kültürel ve sosyal programlar; görünür kaynaklarla.",
+    statMayors: "belediye başkanlığı görev süresi",
+    statFinance: "tarihsel mali kayıt",
+    statProgrammes: "program ve etkinlik",
+    statDocuments: "birincil belge",
+    currentMayor: "Görevdeki belediye başkanı",
+    financeTitle: "Mali arşiv anlık görüntüleri",
+    financeLead:
+      "Tarihsel kaynaklardan nominal değerler. Eski leva tutarları modern BGN ile doğrudan karşılaştırılamaz ve arşiv işaretleri olarak gösterilir.",
+    programmesTitle: "Belediyenin düzenledikleri",
+    programmesLead:
+      "Şehir yöneticilerini gerçek kamu programlarına bağlayan sosyal, kültürel ve yönetimsel eylem kayıtlarından bir seçki.",
+    documentsTitle: "Birincil belgeler",
+    documentsLead:
+      "Belediye kararlarından ve Resmî Gazete'den çevriyazısı yapılmış kısa alıntılardan oluşan ilk katman. Her alıntı tam kamuya açık belgeye ve bağlantılı kayıtlara yönlendirir.",
+    transcriptLabel: "Çevriyazısı yapılmış alıntı",
+    linkedRecords: "Bağlantılı kayıtlar",
+    documentTypes: {
+      municipal_decision: "belediye kararı",
+      state_gazette_decree: "devlet kararnamesi",
+      municipal_rule: "belediye yönetmeliği",
+      council_minutes: "tutanak",
+      period_press: "dönem basını",
+      other: "belge"
+    },
+    transcriptionTypes: {
+      excerpt: "alıntı",
+      full: "tam metin",
+      diplomatic_excerpt: "diplomatik alıntı"
+    },
+    mayorsTitle: "Belediye başkanlarının tam kronolojisi",
+    mayorsLead:
+      "Bu, Plovdiv Belediyesi'nin resmî arşivinin bir iç kopyasıdır; İdari Sicil'den alınan mevcut görev süresiyle tamamlanmıştır.",
+    amountLabel: "Tutar",
+    yearLabel: "Yıl",
+    sourceLabel: "Kaynak",
+    noAmount: "tutar yayımlanmadı",
+    viewBudget: "Bütçe grafiklerini aç"
+  },
+  mayors: {
+    eyebrow: "Şehir yönetimi",
+    title: "Plovdiv'in tüm belediye başkanları",
+    lead:
+      "Belediye başkanlığı görev sürelerinin eksiksiz bir kronolojisi; 1878'de Kurtuluş'tan sonraki ilk başkandan 2026'daki görevdeki başkana kadar.",
+    sourceNote:
+      "Temel, Plovdiv Belediyesi'nin resmî « Plovdiv Belediye Başkanları » sayfasıdır. Belediyenin tarihsel listesi hâlâ 2019-2023 görev süresinde durduğundan, mevcut görev süresi Bulgaristan İdari Sicili'nden eklenmiştir.",
+    statTerms: "belediye başkanlığı görev süresi",
+    statPeople: "farklı kişi",
+    statYears: "kapsanan yıl",
+    statCurrent: "görevdeki belediye başkanı",
+    search: "Ara",
+    searchPlaceholder: "Ad, yıl veya dönem",
+    century: "Yüzyıl",
+    status: "Durum",
+    allCenturies: "Tüm yüzyıllar",
+    allStatuses: "Tümü",
+    currentOnly: "Yalnızca görevdeki başkan",
+    actingOnly: "Yalnızca vekil başkanlar",
+    reset: "Filtreleri temizle",
+    count: (n: number) => `${n} ${plural(n, "görev süresi", "görev süresi")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${total} ${plural(total, "görev süresi", "görev süresi")} içinden ${visible}`,
+    empty: "Seçili filtrelere uyan görev süresi yok.",
+    timelineTitle: "Kaydırılabilir zaman çizelgesi",
+    timelineLead:
+      "Her görev süresi arasında ilerlemek için yatay olarak kaydırın. Aşağıdaki ayrıntılı liste filtrelenebilir kalır.",
+    detailsTitle: "Ayrıntılı liste",
+    sourcesTitle: "Kapsam denetimi",
+    sourcesText:
+      "Yerel arşiv, resmî belediye listesindeki 65 görev süresinin tümünü ve Kostadin Dimitrov'un mevcut görev süresini içerir.",
+    termNumber: "Görev süresi",
+    years: "Yıllar",
+    duration: "Yakl. süre",
+    source: "Kaynak / daha fazla bilgi",
+    currentBadge: "Görevde",
+    actingBadge: "Vekil belediye başkanı",
+    officialArchive: "Resmî liste",
+    currentRegistry: "İdari Sicil",
+    yearsApprox: (n: number) => `${n} ${plural(n, "yıl", "yıl")}`,
+    centuryLabel: (century: number) => `${century}. yüzyıl`,
+    centuryRange: (start: number, end: number) => `${start}–${end}`,
+    openSource: "Kaynağı aç",
+    profile: "Profil",
+    backToAll: "Tüm belediye başkanlarına dön",
+    otherTerms: "Aynı kişinin diğer görev süreleri",
+    moreInfo: "Daha fazla bilgi",
+    biography: "Biyografi",
+    imageCredit: "Görsel kaynağı",
+    officialProfile: "Resmî kaynak",
+    referenceSource: "Ek kaynak",
+    moreInfoLink: "Daha fazla bilgi",
+    wikipediaArticle: "Wikipedia makalesi",
+    wikipediaSearch: "Wikipedia'da ara",
+    birthplaceLabel: "Doğum yeri",
+    educationLabel: "Eğitim",
+    rolesLabel: "Üstlenilen diğer görevler",
+    profileLinks: "Profil ve bağlantılar",
+    connectionsTitle: "Belediye başkanları arasındaki bağlar",
+    connectionsLead:
+      "Hangi başkanlar birden çok kez görev yaptı ve hangileri aileyle bağlı.",
+    multiTermTitle: "Birden çok görev süreli başkanlar",
+    familyTitle: "Aileler ve hanedanlar",
+    legendSame: "Aynı başkan (tekrarlanan görev süresi)",
+    legendFamily: "Aile bağı",
+    legendKilled: "Öldürüldü",
+    legendCurrent: "Görevde",
+    fateHeading: "Akıbet",
+    fateLabels: {
+      killed: "Öldürüldü",
+      executed: "İdam edildi",
+      assassinated: "Suikaste uğradı",
+      died_in_office: "Görevde öldü"
+    },
+    portraitNote: "Tarihsel portreler kamu malıdır.",
+    portraitAlt: (name: string) => `${name} portresi`,
+    birthTitle: "Belediye başkanları nerede doğdu",
+    birthLead:
+      "Belgelenmiş belediye başkanlarının doğum yerleri, haritada. Adları görmek için bir noktaya tıklayın.",
+    birthByTown: "Belediye başkanı sayısına göre doğum yerleri",
+    birthStatTowns: "doğum şehri",
+    birthStatCountries: "ülke",
+    birthPopupMayors: "Belediye başkanları",
+    prevTerm: "Önceki",
+    nextTerm: "Sonraki"
+  },
+  projects: {
+    eyebrow: "Kamu projeleri",
+    title: "Projeler",
+    lead:
+      "Başlığa göre arayın; kategoriye, duruma ve yıla göre filtreleyin. Her projenin kendi sayfası vardır.",
+    dataNotice:
+      "2025'te tamamlanan projelerin tek bir resmî kamu listesi yoktur. Bu nedenle projeler yalnızca mevcut kaynağa göre etiketlenir: 2026'da başlatılan/beklenen finansman, 2026 için yeni veya 2025-2026 için 0 BGN ile ertelenmiş.",
+    search: "Ara",
+    searchPlaceholder: "örn. kaldırım, park, durak",
+    category: "Kategori",
+    status: "Durum",
+    year: "Yıl",
+    reset: "Filtreleri temizle",
+    count: (n: number) => `${n} ${plural(n, "proje", "proje")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${total} ${plural(total, "proje", "proje")} içinden ${visible}`,
+    empty: "Seçili filtrelere uyan proje yok."
+  },
+  community: {
+    eyebrow: "Yurttaş katılımı",
+    title: "Gönüllü girişimleri",
+    lead:
+      "Kamusal alanların temizliği, yenilenmesi ve bakımı için gönüllüleri harekete geçiren gerçek Plovdiv grupları ve kampanyaları.",
+    dataNotice:
+      "Kayıtlar kamuya açık kaynakların yapay zekâ aramasıyla bulunur veya bir yönetici tarafından eklenir. Her girişim, kaynaksız bir resmî belediye projesiyle karıştırılmaması için bir gruba, web sitesine veya kamuya açık bir gönderiye görünür bağlantılar tutmalıdır.",
+    search: "Ara",
+    searchPlaceholder: "örn. duraklar, Maritsa, Lauta",
+    category: "Kategori",
+    status: "Durum",
+    organizer: "Düzenleyen",
+    links: "Bağlantılar",
+    sources: "Kaynaklar",
+    relatedProjects: "İlgili kamu projeleri",
+    noRelatedProjects: "İlgili kamu projesi yok.",
+    discovered: "Bulan",
+    lastChecked: "Son kontrol",
+    viewSource: "Kaynak",
+    contact: "İletişim / grup",
+    reset: "Filtreleri temizle",
+    count: (n: number) => `${n} ${plural(n, "girişim", "girişim")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${total} ${plural(total, "girişim", "girişim")} içinden ${visible}`,
+    empty: "Seçili filtrelere uyan girişim yok.",
+    adminCta: "Yönetici: girişim ekle veya doğrula",
+    seeProblems: "Yardım edebileceğin sorunları gör",
+    donate: "Kuruluşa bağış yap",
+    acceptsDonations: "Bağış kabul ediyor",
+    donationsFilter: "Yalnızca bağış kabul edenler",
+    donationDisclaimer: "Open Plovdiv bağış kabul etmez veya işlemez. « Bağış yap » bağlantıları doğrudan kuruluşların kendi sayfalarına yönlendirir."
+  },
+  project: {
+    breadcrumb: "Projeler",
+    keyFacts: "Temel bilgiler",
+    budget: "Bütçe",
+    year: "Yıl",
+    funding: "Finansman",
+    status: "Durum",
+    district: "İlçe",
+    location: "Konum",
+    notSpecified: "Belirtilmemiş",
+    sources: "Kaynaklar",
+    sourcesNote:
+      "Proje verileri kamuya açık kaynaklardan toplanır. Resmî ayrıntılar için orijinal kaynağa bakın.",
+    noteLabel: "Not",
+    noAmount: "Tutar yayımlanmadı.",
+    approxLocation: "Yaklaşık konum (ilçeye göre).",
+    provisional: "Geçici veriler",
+    relatedBudget: "İlgili bütçe kalemi",
+    noRelatedBudget: "İlgili bütçe kalemi yok.",
+    communityInitiatives: "Gönüllü girişimleri",
+    communityInitiativesText:
+      "Bu alana veya konuya bağlı yurttaş grupları veya kampanyaları. Bu, resmî bir proje durumu değildir.",
+    noCommunityInitiatives: "İlgili gönüllü girişimi yok.",
+    nearbyReports: "Yakındaki bildirimler",
+    noNearby: "1 km içinde yayımlanmış bildirim yok.",
+    nearbyReportsText:
+      "Kamuya açık harita yalnızca moderasyondan geçmiş yurttaş bildirimlerini gösterir. Bu alanın çevresinde şu anda yayımlanan bildirimleri görmek için haritayı açın.",
+    timeline: "Zaman çizelgesi",
+    noTimeline: "Zaman çizelgesi eklenmedi.",
+    updated: "Güncellendi",
+    mapLabel: "Proje haritası"
+  },
+  fixMap: {
+    eyebrow: "Sorun haritası",
+    title: "Şehir sorun haritası",
+    lead:
+      "Kişisel veri içermeyen yayımlanmış yurttaş bildirimleri. Kategoriye ve duruma göre filtreleyin, ayrıntıları ve yakındaki kamu projelerini görün.",
+    notice:
+      "Harita yalnızca form aracılığıyla gönderilen ve bir moderatör tarafından onaylanan bildirimleri gösterir. Durum, bir kaydın doğrulanmış, gönderilmiş, sürmekte veya kapalı olduğunu gösterir.",
+    category: "Kategori",
+    allCategories: "Tüm kategoriler",
+    status: "Durum",
+    allStatuses: "Tüm durumlar",
+    radius: "Yakındaki projeler",
+    radius500: "500 m içinde",
+    radius1: "1 km içinde",
+    radius2: "2 km içinde",
+    visible: "Görünür kayıtlar",
+    selectTitle: "Bir bildirim seçin",
+    selectHint:
+      "Ayrıntıları, durumu ve yakındaki projeleri görmek için bir işaretçiye tıklayın.",
+    emptyTitle: "Henüz yayımlanmış bildirim yok",
+    emptyText:
+      "Gönderilen bildirimler bir moderatörün incelemesi ve onayından sonra burada görünür.",
+    noFilterResults: "Bu filtrelere uyan bildirim yok",
+    legend: "Açıklama",
+    statusesTitle: "Durumların anlamı",
+    officialTitle: "Resmî bildirim",
+    officialText:
+      "Gerçek sorunlar için belediyenin veya ilçe yönetiminin resmî kanallarını kullanın. Open Plovdiv, yayımlanmadan önce incelenen yurttaş bildirimlerini kabul eder, ancak resmî bildirimin yerini tutmaz.",
+    officialLink: "Plovdiv Belediyesi",
+    statusLabel: "Durum",
+    nearbyProjects: "Yakındaki projeler",
+    noNearbyRadius: "Seçili yarıçap içinde proje yok.",
+    loadErrorTitle: "Veriler yüklenemedi",
+    loadErrorText:
+      "Kamuya açık JSON dosyalarının make data ile oluşturulduğunu kontrol edin.",
+    reportCta: "Bir sorun bildir",
+    communityBadge: "Yurttaş bildirimi",
+    lastUpdated: "Güncellendi",
+    justNow: "az önce",
+    liveNote: "Harita her 30 saniyede bir otomatik olarak yenilenir.",
+    newReports: "Yeni bildirimler: {count}",
+    downloadCommunityData: "Yurttaş bildirimi verilerini indir"
+  },
+  civic: {
+    title: "Nasıl yardım edebilirsin",
+    lead:
+      "Farklı sorunlar farklı eylemler gerektirir. Bazıları belediyenin sorumluluğundadır; bazıları ise yurttaşlar ve gönüllüler tarafından da iyileştirilebilir.",
+    trackOfficial: "Resmî müdahale gerektirir",
+    trackOfficialText:
+      "Tehlikeli yollar, aydınlatma, drenaj ve altyapı onarımları belediye veya sorumlu kurum tarafından ele alınmalıdır.",
+    trackCivic: "Yurttaş katılımına açık",
+    trackCivicText:
+      "Çöp temizliği, küçük yeşil iyileştirmeler, erişilebilirlik engellerinin haritalanması ve belgeleme yurttaşlar ve gruplarca düzenlenebilir.",
+    trackBoth: "Paylaşılan sorumluluk",
+    whatYouCanDo: "Neler yapabilirsin",
+    actReportOfficial: "Belediyeye bildir",
+    actJoinGroup: "Bir yurttaş grubuna katıl",
+    actAddReport: "Sorunu haritada işaretle",
+    actDocument: "Fotoğraflarla belgelemeye yardım et",
+    actFollow: "Gelişmeleri takip et",
+    groupsTitle: "Yardımcı olabilecek gruplar",
+    noGroups: "Bu kategori için henüz bir grup listelenmedi.",
+    seeAllGroups: "Tüm gönüllü gruplarını gör"
+  },
+  sources: {
+    eyebrow: "Doğrulanabilirlik",
+    title: "Veri kaynakları",
+    lead:
+      "Sitedeki her kayıt kamuya açık bir kaynağa bağlanır. Aşağıda kullanılan başlıca kaynaklar ve ne için kullanıldıkları yer alır.",
+    colSource: "Kaynak",
+    colUsedFor: "Kullanım amacı",
+    colLimits: "Sınırlamalar",
+    colAccessed: "Erişildi"
+  },
+  methodology: {
+    eyebrow: "Nasıl çalışır",
+    title: "Yöntem",
+    lead:
+      "Yapay zekâ kamuya açık kaynakları arar, proje ve bütçe kayıtlarını çıkarır ve yayımlamadan önce bunları şemalara, URL'lere, tutarlara ve koordinatlara göre doğrular. Yapay zekâ yine de yanılabileceği için kaynaklar görünür kalır.",
+    collectTitle: "Yapay zekâ araması",
+    collectText:
+      "Yapay zekâ kamuya açık kaynakları — Plovdiv Belediyesi'nin bütçesini ve kararlarını, yatırım programını ve yerel medyayı — bulur ve karşılaştırır; her kayıt kullanılan kaynağa bir bağlantı içerir.",
+    verifyTitle: "Yapay zekâ doğrulaması",
+    verifyText:
+      "Yapay zekâ alanları, durumları, URL'leri, tutarları, yılları, koordinatları ve bildirimlerde kişisel veri bulunmadığını çıkarır ve doğrular. Ardından JSON şemaları yapıyı yapımdan önce doğrular.",
+    aiTitle: "Yapay zekâ",
+    aiText:
+      "Arama, özetleme ve doğrulama yapay zekâ tarafından gerçekleştirilir. Bir kaynak bir tutarı, durumu veya tamamlanma kaydını yayımlamadığında, site bunu uydurmak yerine eksik veya geçici veri olarak göstermelidir.",
+    correctTitle: "Düzeltmeler",
+    correctText:
+      "Bir düzeltme, kamuya açık bir kaynak eklemeli veya değiştirmeli, düzenlenmiş JSON'u güncellemeli ve otomatik doğrulamayı ve yapımı geçmelidir."
+  },
+  privacy: {
+    eyebrow: "Kişisel veri yok",
+    title: "Gizlilik",
+    lead:
+      "İlk sürüm kullanıcı hesapları, yorumlar, oylamalar veya kişisel verilerin kamuya açık toplanması olmadan çalışır.",
+    notCollectTitle: "Toplamadıklarımız",
+    notCollectText:
+      "Bildirimlerde ad, e-posta, telefon numarası, hesap veya kesin özel adres yok.",
+    beforeTitle: "Yurttaş bildirimleri",
+    beforeText:
+      "Bildirimler bir kategori, kısa bir metin, haritada yaklaşık bir nokta ve isteğe bağlı fotoğraflar toplar. IP adresleri yalnızca hız sınırlaması için geçici bir karma olarak kullanılır ve hiçbir zaman açık metin olarak saklanmaz."
+  },
+  moderation: {
+    eyebrow: "İncelenen yurttaş bildirimleri",
+    title: "Moderasyon",
+    lead:
+      "Yurttaşlar şehir sorunları hakkında bildirim gönderebilir. Her bildirim bir editör tarafından incelenir ve yalnızca güvenliyse ve kamu yararınaysa yayımlanır.",
+    notice:
+      "Moderasyon ihtiyatlıdır: doğrulanabilir ve kişisel veri içermeyen şehir sorunları yayımlanır — hakaretler, suçlamalar veya siyasi kampanyalar değil. Fotoğraflar yalnızca incelemeden sonra yayımlanır ve gizlenebilir."
+  },
+  notFound: {
+    eyebrow: "Hata 404",
+    title: "Sayfa bulunamadı",
+    text: "Bağlantı eski veya yanlış yazılmış olabilir. Ana sayfaya dönün ya da bir bölüm seçin."
+  },
+  reportForm: {
+    eyebrow: "Yurttaş bildirimi",
+    title: "Bir bildirim gönder",
+    lead:
+      "Bir kamusal şehir sorununu açıklayın ve konumunu haritada işaretleyin. Bir editör, haritada görünmeden önce her bildirimi inceler.",
+    notice:
+      "Kişisel veri girmeyin — adlar, telefon numaraları, e-postalar veya kesin özel adresler. Fotoğraflar elle incelenir ve onaylanmadan önce yayımlanmaz.",
+    category: "Kategori",
+    titleLabel: "Kısa başlık",
+    titlePlaceholder: "örn. bir durağın yakınında bozuk kaldırım",
+    description: "Açıklama",
+    descriptionPlaceholder: "Sorunu kısaca ve nesnel olarak açıklayın.",
+    photos: "Fotoğraflar",
+    photoHint:
+      "İsteğe bağlı, en fazla 3 fotoğraf, her biri en çok 5 MB. EXIF/GPS meta verileri kaldırılır ve fotoğraflar incelemeden önce dönüştürülür.",
+    location: "Konum",
+    locationHint: "Konumu işaretlemek için haritaya tıklayın.",
+    selected: "Seçili nokta",
+    noLocation: "Henüz nokta seçilmedi",
+    confirmNoPersonal: "Bu bildirimin kişisel veri içermediğini onaylıyorum.",
+    confirmPublicInterest: "Bunun kamu yararına bir konu olduğunu onaylıyorum.",
+    submit: "Bildirimi gönder",
+    submitting: "Gönderiliyor…",
+    successTitle: "Teşekkürler!",
+    successText:
+      "Bildiriminiz alındı ve yayımlanmadan önce incelenecek. Referans numarası:",
+    submitAnother: "Başka bir bildirim gönder",
+    backToMap: "Haritaya dön",
+    errorGeneric: "Bildirim gönderilemedi. Lütfen tekrar deneyin.",
+    errRateLimited: "Kısa sürede çok fazla bildirim. Lütfen daha sonra deneyin.",
+    errCategory: "Geçerli bir kategori seçin.",
+    errTitle: "Başlık 3 ile 120 karakter arasında olmalıdır.",
+    errDescription: "Açıklama 10 ile 1000 karakter arasında olmalıdır.",
+    errPersonalData: "Metin kişisel veriye benzeyen bir şey içeriyor.",
+    errLocation: "Plovdiv içinde bir nokta seçin.",
+    errConfirmation: "Lütfen her iki onayı da işaretleyin.",
+    errTooManyPhotos: "En fazla 3 fotoğraf yükleyin.",
+    errPhotoLarge: "Her fotoğraf 5 MB veya daha küçük olmalıdır.",
+    errPhotoType: "Yalnızca JPEG, PNG veya WebP fotoğraflara izin verilir.",
+    errPhotoInvalid: "Fotoğraf işlenemedi."
+  },
+  admin: {
+    title: "Bildirim moderasyonu",
+    lead: "Yurttaş bildirimlerini yayımlamadan önce inceleyin. Erişim korumalıdır.",
+    tokenLabel: "Yönetici belirteci",
+    tokenPlaceholder: "Belirteci girin",
+    signIn: "Giriş yap",
+    signOut: "Çıkış yap",
+    authError: "Geçersiz belirteç.",
+    refresh: "Yenile",
+    pendingTitle: "İnceleme bekliyor",
+    noPending: "Bekleyen bildirim yok.",
+    publicStatus: "Genel durum",
+    rejectReason: "Reddetme nedeni (isteğe bağlı)",
+    approve: "Onayla ve yayımla",
+    reject: "Reddet",
+    publishedTitle: "Yayımlanan bildirimler",
+    noPublished: "Yayımlanmış yurttaş bildirimi yok.",
+    saveStatus: "Durumu kaydet",
+    editDetails: "Bildirim ayrıntıları",
+    kind: "Kayıt türü",
+    kindFix: "Sorun bildirimi",
+    kindHistory: "Tarihsel katkı",
+    saveDetails: "Ayrıntıları kaydet",
+    titleBg: "Başlık (BG)",
+    titleEn: "Başlık (EN, isteğe bağlı)",
+    descriptionBg: "Açıklama (BG)",
+    descriptionEn: "Açıklama (EN, isteğe bağlı)",
+    category: "Kategori",
+    latitude: "Enlem",
+    longitude: "Boylam",
+    addressBg: "Adres/yer imi (BG, isteğe bağlı)",
+    addressEn: "Adres/yer imi (EN, isteğe bağlı)",
+    photos: "Fotoğraflar",
+    hidePhoto: "Fotoğrafı gizle",
+    hiddenPhoto: "Gizlenmiş fotoğraf",
+    moderationWarning:
+      "Fotoğrafları yalnızca yüz, çocuk, plaka, belge, özel iç mekân veya kişisel bilgi içermiyorsa yayımlayın.",
+    submitted: "Gönderildi",
+    loading: "Yükleniyor…",
+    actionError: "Eylem başarısız oldu."
+  },
+  adminCommunity: {
+    title: "Gönüllü girişimleri",
+    lead:
+      "Kamuya açık bağlantılarla gerçek yurttaş gruplarını ve gönüllü kampanyalarını ekleyin ve güncelleyin.",
+    tokenLabel: "Yönetici belirteci",
+    tokenPlaceholder: "Belirteci girin",
+    signIn: "Giriş yap",
+    signOut: "Çıkış yap",
+    authError: "Geçersiz belirteç.",
+    refresh: "Yenile",
+    discoveryTitle: "Yapay zekâ/çevrim içi arama",
+    discoveryLead:
+      "Kamuya açık sayfaları ve gönderileri arayın. Sonuçlar yalnızca kaynak önerir; bir yönetici neyi kaydedeceğini seçer.",
+    queryLabel: "Ara",
+    queryPlaceholder: "örn. Plovdiv gönüllüler otobüs durağı temizliği",
+    find: "Çevrim içi ara",
+    sourceUrl: "Kaynak URL'si",
+    inspectUrl: "URL'yi incele",
+    noCandidates: "Sonuç bulunamadı.",
+    useCandidate: "Kaynak olarak kullan",
+    formTitle: "Girişim ekle veya güncelle",
+    id: "Kimlik (isteğe bağlı)",
+    titleBg: "Başlık (BG)",
+    titleEn: "Başlık (EN)",
+    summaryBg: "Özet (BG)",
+    summaryEn: "Özet (EN, isteğe bağlı)",
+    category: "Kategori",
+    status: "Durum",
+    organizerBg: "Düzenleyen (BG)",
+    organizerEn: "Düzenleyen (EN, isteğe bağlı)",
+    organizerType: "Düzenleyen türü",
+    website: "Web sitesi",
+    facebook: "Facebook",
+    donationUrl: "Bağış bağlantısı (isteğe bağlı)",
+    callToActionBg: "Eylem çağrısı (BG, isteğe bağlı)",
+    callToActionEn: "Eylem çağrısı (EN, isteğe bağlı)",
+    addressBg: "Adres/bölge (BG)",
+    addressEn: "Adres/bölge (EN, isteğe bağlı)",
+    latitude: "Enlem",
+    longitude: "Boylam",
+    relatedProjects: "İlgili proje kimlikleri (virgülle ayrılmış)",
+    tags: "Etiketler (virgülle ayrılmış)",
+    sourceTitle: "Kaynak başlığı",
+    sourceUrlLabel: "Kaynak bağlantısı",
+    save: "Girişimi kaydet",
+    saved: "Girişim kaydedildi.",
+    existingTitle: "Kaydedilen girişimler",
+    noExisting: "Kaydedilmiş girişim yok.",
+    edit: "Düzenle",
+    loading: "Yükleniyor…",
+    actionError: "Eylem başarısız oldu."
+  }
+};
+
+export const ui = { bg, en, de, fr, it, tr } as const;
 
 export type CategoryKey =
   | "roads"
@@ -3622,6 +4318,27 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     source_tip: "Fonte/traccia d'archivio",
     history_correction: "Correzione storica",
     other: "Altro"
+  },
+  tr: {
+    roads: "Yollar",
+    pavement: "Kaldırımlar",
+    street_lighting: "Aydınlatma",
+    parks: "Parklar",
+    waste: "Temizlik",
+    public_transport: "Ulaşım",
+    accessibility: "Erişilebilirlik",
+    drainage: "Drenaj",
+    culture: "Kültür",
+    education: "Eğitim",
+    civic: "Yurttaş girişimleri",
+    environment: "Çevre",
+    social: "Sosyal hizmet",
+    sport: "Spor",
+    historic_photo: "Tarihsel fotoğraf",
+    oral_memory: "Sözlü anı",
+    source_tip: "Kaynak/arşiv ipucu",
+    history_correction: "Tarihsel düzeltme",
+    other: "Diğer"
   }
 };
 
@@ -3729,6 +4446,16 @@ export const projectStatusLabels: Record<Lang, Record<string, string>> = {
     delayed: "In ritardo",
     postponed: "Rinviato",
     unknown: "Sconosciuto"
+  },
+  tr: {
+    planned: "Planlandı",
+    funded: "Finanse edildi",
+    contracted: "Sözleşmeye bağlandı",
+    in_progress: "Sürüyor",
+    completed: "Tamamlandı",
+    delayed: "Gecikti",
+    postponed: "Ertelendi",
+    unknown: "Bilinmiyor"
   }
 };
 
@@ -3767,6 +4494,13 @@ export const communityStatusLabels: Record<Lang, Record<string, string>> = {
     completed: "Completata",
     planned: "Pianificata",
     unknown: "Stato sconosciuto"
+  },
+  tr: {
+    active: "Etkin",
+    recurring: "Yinelenen",
+    completed: "Tamamlandı",
+    planned: "Planlandı",
+    unknown: "Bilinmeyen durum"
   }
 };
 
@@ -3810,6 +4544,14 @@ export const fixStatusLabels: Record<Lang, Record<string, string>> = {
     in_progress: "In corso",
     fixed: "Risolto",
     closed: "Chiuso"
+  },
+  tr: {
+    unverified: "Doğrulanmadı",
+    verified: "Doğrulandı",
+    sent_to_municipality: "Gönderildi",
+    in_progress: "Sürüyor",
+    fixed: "Giderildi",
+    closed: "Kapatıldı"
   }
 };
 
@@ -3853,6 +4595,14 @@ export const fixStatusDescriptions: Record<Lang, Record<string, string>> = {
     in_progress: "È annotata una riparazione o una verifica in corso.",
     fixed: "Contrassegnata come risolta.",
     closed: "Chiusa senza un passo successivo attivo."
+  },
+  tr: {
+    unverified: "Bildirim yayımlandı ancak henüz bağımsız olarak doğrulanmadı.",
+    verified: "Bir editör veya kamuya açık bir kaynak tarafından doğrulandı.",
+    sent_to_municipality: "Bir kuruma gönderilmiş olarak işaretlendi.",
+    in_progress: "Sürmekte olan bir onarım veya kontrol kaydedildi.",
+    fixed: "Giderilmiş olarak işaretlendi.",
+    closed: "Etkin bir sonraki adım olmadan kapatıldı."
   }
 };
 
@@ -3896,6 +4646,12 @@ export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
     municipal_capital: "Programma d'investimenti comunale",
     state_subsidy: "Sovvenzione mirata dello Stato",
     eu_program: "Programma dell'UE"
+  },
+  tr: {
+    municipal_budget: "Belediye bütçesi",
+    municipal_capital: "Belediye yatırım programı",
+    state_subsidy: "Devletin amaca yönelik desteği",
+    eu_program: "AB programı"
   }
 };
 
@@ -3974,88 +4730,106 @@ export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
     "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5": "TrafficNews — numero record di volontari alla « Missione Lauta » 5",
     "БНТ — почистват квартал „Столипиново“": "BNT — pulizia del quartiere Stolipinovo",
     "Радио Пловдив — доброволци чистят и облагородяват Столипиново": "Radio Plovdiv — volontari puliscono e abbelliscono Stolipinovo"
+  },
+  tr: {
+    "Община Пловдив — представяне на Бюджет 2025": "Plovdiv Belediyesi — 2025 bütçesinin sunumu",
+    "TrafficNews — бюджет на Пловдив за 2025 г.": "TrafficNews — Plovdiv'in 2025 bütçesi",
+    "TrafficNews — проектобюджет 2026 и замразени проекти": "TrafficNews — 2026 bütçe taslağı ve dondurulan projeler",
+    "Под тепето — капиталова програма за 2026 г.": "Pod tepeto — 2026 yatırım programı",
+    "Община Пловдив - Кметове на Пловдив": "Plovdiv Belediyesi — Plovdiv Belediye Başkanları",
+    "Административен регистър - кмет на Община Пловдив": "İdari Sicil — Plovdiv Belediyesi Belediye Başkanı",
+    "Plovdiv24 — доброволци се заемат с реновирането на спирки": "Plovdiv24 — gönüllüler durakların yenilenmesine başlıyor",
+    "NOVA — доброволци реновират автобусни спирки": "NOVA — gönüllüler otobüs duraklarını yeniliyor",
+    "Plovdiv24 — търсят се доброволци за почистване на 11 км от река Марица": "Plovdiv24 — Maritsa nehrinin 11 km'sini temizlemek için gönüllü aranıyor",
+    "BG Be Active — контакт": "BG Be Active — iletişim",
+    "Красив Пловдив — будни граждани с кауза": "Krasiv Plovdiv — bir davası olan duyarlı yurttaşlar",
+    "Красив Пловдив — начало": "Krasiv Plovdiv — ana sayfa",
+    "Община Пловдив — „Мисия Лаута 5“": "Plovdiv Belediyesi — « Görev Lauta 5 »",
+    "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5": "TrafficNews — « Görev Lauta » 5'te rekor sayıda gönüllü",
+    "БНТ — почистват квартал „Столипиново“": "BNT — Stolipinovo mahallesinin temizliği",
+    "Радио Пловдив — доброволци чистят и облагородяват Столипиново": "Radyo Plovdiv — gönüllüler Stolipinovo'yu temizliyor ve güzelleştiriyor"
   }
 };
 
 // Shared person-role tags (objective: one source of truth for People + History).
 // Adding a locale to `Lang` forces a translation here via the Record<Lang> type.
 export const roleLabels: Record<string, Record<Lang, string>> = {
-  academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien", it: "accademico" },
-  actor: { bg: "актьор", en: "actor", de: "Schauspieler", fr: "acteur", it: "attore" },
-  art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker", fr: "historien de l'art", it: "storico dell'arte" },
-  artist: { bg: "художник", en: "artist", de: "Künstler", fr: "artiste", it: "artista" },
-  athlete: { bg: "спортист", en: "athlete", de: "Sportler", fr: "athlète", it: "atleta" },
-  basketball_player: { bg: "баскетболист", en: "basketball player", de: "Basketballspieler", fr: "basketteur", it: "cestista" },
-  boxer: { bg: "боксьор", en: "boxer", de: "Boxer", fr: "boxeur", it: "pugile" },
-  canoeist: { bg: "кануист", en: "canoeist", de: "Kanute", fr: "canoéiste", it: "canoista" },
-  chef: { bg: "готвач", en: "chef", de: "Koch", fr: "chef cuisinier", it: "chef" },
-  chess_player: { bg: "шахматист", en: "chess player", de: "Schachspieler", fr: "joueur d'échecs", it: "scacchista" },
-  choreographer: { bg: "хореограф", en: "choreographer", de: "Choreograf", fr: "chorégraphe", it: "coreografo" },
-  clergy: { bg: "духовник", en: "clergy", de: "Geistlicher", fr: "ecclésiastique", it: "religioso" },
-  composer: { bg: "композитор", en: "composer", de: "Komponist", fr: "compositeur", it: "compositore" },
-  conductor: { bg: "диригент", en: "conductor", de: "Dirigent", fr: "chef d'orchestre", it: "direttore d'orchestra" },
-  cultural_manager: { bg: "културен мениджър", en: "cultural manager", de: "Kulturmanager", fr: "gestionnaire culturel", it: "manager culturale" },
-  designer: { bg: "дизайнер", en: "designer", de: "Designer", fr: "designer", it: "designer" },
-  diplomat: { bg: "дипломат", en: "diplomat", de: "Diplomat", fr: "diplomate", it: "diplomatico" },
-  economist: { bg: "икономист", en: "economist", de: "Ökonom", fr: "économiste", it: "economista" },
-  educator: { bg: "педагог", en: "educator", de: "Pädagoge", fr: "pédagogue", it: "pedagogo" },
-  electrical_engineer: { bg: "електроинженер", en: "electrical engineer", de: "Elektroingenieur", fr: "ingénieur électricien", it: "ingegnere elettrico" },
-  engineer: { bg: "инженер", en: "engineer", de: "Ingenieur", fr: "ingénieur", it: "ingegnere" },
-  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler", fr: "cavalier", it: "cavaliere" },
-  fencer: { bg: "фехтовач", en: "fencer", de: "Fechter", fr: "escrimeur", it: "schermidore" },
-  film_director: { bg: "филмов режисьор", en: "film director", de: "Filmregisseur", fr: "réalisateur", it: "regista cinematografico" },
-  first_lady: { bg: "първа дама", en: "first lady", de: "First Lady", fr: "première dame", it: "first lady" },
-  football_referee: { bg: "футболен съдия", en: "football referee", de: "Fußballschiedsrichter", fr: "arbitre de football", it: "arbitro di calcio" },
-  footballer: { bg: "футболист", en: "footballer", de: "Fußballspieler", fr: "footballeur", it: "calciatore" },
-  general: { bg: "генерал", en: "general", de: "General", fr: "général", it: "generale" },
-  geographer: { bg: "географ", en: "geographer", de: "Geograf", fr: "géographe", it: "geografo" },
-  gymnast: { bg: "гимнастик", en: "gymnast", de: "Turner", fr: "gymnaste", it: "ginnasta" },
-  high_jumper: { bg: "скачач на височина", en: "high jumper", de: "Hochspringer", fr: "sauteur en hauteur", it: "saltatore in alto" },
-  illustrator: { bg: "илюстратор", en: "illustrator", de: "Illustrator", fr: "illustrateur", it: "illustratore" },
-  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower", de: "Speerwerfer", fr: "lanceur de javelot", it: "lanciatore di giavellotto" },
-  journalist: { bg: "журналист", en: "journalist", de: "Journalist", fr: "journaliste", it: "giornalista" },
-  jurist: { bg: "юрист", en: "jurist", de: "Jurist", fr: "juriste", it: "giurista" },
-  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist", de: "Kampfsportler", fr: "artiste martial", it: "artista marziale" },
-  mathematician: { bg: "математик", en: "mathematician", de: "Mathematiker", fr: "mathématicien", it: "matematico" },
-  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister", fr: "maire", it: "sindaco" },
-  merchant: { bg: "търговец", en: "merchant", de: "Kaufmann", fr: "marchand", it: "mercante" },
-  military_officer: { bg: "офицер", en: "military officer", de: "Offizier", fr: "officier", it: "ufficiale" },
-  mineralogist: { bg: "минералог", en: "mineralogist", de: "Mineraloge", fr: "minéralogiste", it: "mineralogista" },
-  missionary: { bg: "мисионер", en: "missionary", de: "Missionar", fr: "missionnaire", it: "missionario" },
-  model: { bg: "модел", en: "model", de: "Model", fr: "mannequin", it: "modella" },
-  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete", de: "Moderner Fünfkämpfer", fr: "pentathlonien moderne", it: "pentatleta moderno" },
-  musician: { bg: "музикант", en: "musician", de: "Musiker", fr: "musicien", it: "musicista" },
-  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger", fr: "chanteur d'opéra", it: "cantante lirico" },
-  painter: { bg: "живописец", en: "painter", de: "Maler", fr: "peintre", it: "pittore" },
-  paleontologist: { bg: "палеонтолог", en: "paleontologist", de: "Paläontologe", fr: "paléontologue", it: "paleontologo" },
-  patriarch: { bg: "патриарх", en: "patriarch", de: "Patriarch", fr: "patriarche", it: "patriarca" },
-  philosopher: { bg: "философ", en: "philosopher", de: "Philosoph", fr: "philosophe", it: "filosofo" },
-  physicist: { bg: "физик", en: "physicist", de: "Physiker", fr: "physicien", it: "fisico" },
-  pianist: { bg: "пианист", en: "pianist", de: "Pianist", fr: "pianiste", it: "pianista" },
-  poet: { bg: "поет", en: "poet", de: "Dichter", fr: "poète", it: "poeta" },
-  politician: { bg: "политик", en: "politician", de: "Politiker", fr: "politicien", it: "politico" },
-  priest: { bg: "свещеник", en: "priest", de: "Priester", fr: "prêtre", it: "sacerdote" },
-  printmaker: { bg: "график", en: "printmaker", de: "Grafiker", fr: "graveur", it: "incisore" },
-  producer: { bg: "продуцент", en: "producer", de: "Produzent", fr: "producteur", it: "produttore" },
-  public_figure: { bg: "обществена фигура", en: "public figure", de: "Person des öffentlichen Lebens", fr: "personnalité publique", it: "personaggio pubblico" },
-  racing_driver: { bg: "автомобилен състезател", en: "racing driver", de: "Rennfahrer", fr: "pilote automobile", it: "pilota automobilistico" },
-  revolutionary: { bg: "революционер", en: "revolutionary", de: "Revolutionär", fr: "révolutionnaire", it: "rivoluzionario" },
-  rower: { bg: "гребец", en: "rower", de: "Ruderer", fr: "rameur", it: "canottiere" },
-  saint: { bg: "светец", en: "saint", de: "Heiliger", fr: "saint", it: "santo" },
-  scholar: { bg: "учен", en: "scholar", de: "Gelehrter", fr: "érudit", it: "studioso" },
-  scientist: { bg: "учен", en: "scientist", de: "Wissenschaftler", fr: "scientifique", it: "scienziato" },
-  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor", fr: "scénariste", it: "sceneggiatore" },
-  sculptor: { bg: "скулптор", en: "sculptor", de: "Bildhauer", fr: "sculpteur", it: "scultore" },
-  singer: { bg: "певец", en: "singer", de: "Sänger", fr: "chanteur", it: "cantante" },
-  sports_shooter: { bg: "спортен стрелец", en: "sport shooter", de: "Sportschütze", fr: "tireur sportif", it: "tiratore sportivo" },
-  swimmer: { bg: "плувец", en: "swimmer", de: "Schwimmer", fr: "nageur", it: "nuotatore" },
-  tennis_player: { bg: "тенисист", en: "tennis player", de: "Tennisspieler", fr: "joueur de tennis", it: "tennista" },
-  theatre_director: { bg: "театрален режисьор", en: "theatre director", de: "Theaterregisseur", fr: "metteur en scène", it: "regista teatrale" },
-  violinist: { bg: "цигулар", en: "violinist", de: "Geiger", fr: "violoniste", it: "violinista" },
-  visual_artist: { bg: "визуален художник", en: "visual artist", de: "Bildender Künstler", fr: "artiste visuel", it: "artista visivo" },
-  volleyball_player: { bg: "волейболист", en: "volleyball player", de: "Volleyballspieler", fr: "volleyeur", it: "pallavolista" },
-  weightlifter: { bg: "щангист", en: "weightlifter", de: "Gewichtheber", fr: "haltérophile", it: "sollevatore di pesi" },
-  wrestler: { bg: "борец", en: "wrestler", de: "Ringer", fr: "lutteur", it: "lottatore" },
-  writer: { bg: "писател", en: "writer", de: "Schriftsteller", fr: "écrivain", it: "scrittore" },
-  zoologist: { bg: "зоолог", en: "zoologist", de: "Zoologe", fr: "zoologiste", it: "zoologo" }
+  academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien", it: "accademico", tr: "akademisyen" },
+  actor: { bg: "актьор", en: "actor", de: "Schauspieler", fr: "acteur", it: "attore", tr: "aktör" },
+  art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker", fr: "historien de l'art", it: "storico dell'arte", tr: "sanat tarihçisi" },
+  artist: { bg: "художник", en: "artist", de: "Künstler", fr: "artiste", it: "artista", tr: "sanatçı" },
+  athlete: { bg: "спортист", en: "athlete", de: "Sportler", fr: "athlète", it: "atleta", tr: "atlet" },
+  basketball_player: { bg: "баскетболист", en: "basketball player", de: "Basketballspieler", fr: "basketteur", it: "cestista", tr: "basketbolcu" },
+  boxer: { bg: "боксьор", en: "boxer", de: "Boxer", fr: "boxeur", it: "pugile", tr: "boksör" },
+  canoeist: { bg: "кануист", en: "canoeist", de: "Kanute", fr: "canoéiste", it: "canoista", tr: "kanocu" },
+  chef: { bg: "готвач", en: "chef", de: "Koch", fr: "chef cuisinier", it: "chef", tr: "aşçı" },
+  chess_player: { bg: "шахматист", en: "chess player", de: "Schachspieler", fr: "joueur d'échecs", it: "scacchista", tr: "satranç oyuncusu" },
+  choreographer: { bg: "хореограф", en: "choreographer", de: "Choreograf", fr: "chorégraphe", it: "coreografo", tr: "koreograf" },
+  clergy: { bg: "духовник", en: "clergy", de: "Geistlicher", fr: "ecclésiastique", it: "religioso", tr: "din adamı" },
+  composer: { bg: "композитор", en: "composer", de: "Komponist", fr: "compositeur", it: "compositore", tr: "besteci" },
+  conductor: { bg: "диригент", en: "conductor", de: "Dirigent", fr: "chef d'orchestre", it: "direttore d'orchestra", tr: "orkestra şefi" },
+  cultural_manager: { bg: "културен мениджър", en: "cultural manager", de: "Kulturmanager", fr: "gestionnaire culturel", it: "manager culturale", tr: "kültür yöneticisi" },
+  designer: { bg: "дизайнер", en: "designer", de: "Designer", fr: "designer", it: "designer", tr: "tasarımcı" },
+  diplomat: { bg: "дипломат", en: "diplomat", de: "Diplomat", fr: "diplomate", it: "diplomatico", tr: "diplomat" },
+  economist: { bg: "икономист", en: "economist", de: "Ökonom", fr: "économiste", it: "economista", tr: "iktisatçı" },
+  educator: { bg: "педагог", en: "educator", de: "Pädagoge", fr: "pédagogue", it: "pedagogo", tr: "eğitimci" },
+  electrical_engineer: { bg: "електроинженер", en: "electrical engineer", de: "Elektroingenieur", fr: "ingénieur électricien", it: "ingegnere elettrico", tr: "elektrik mühendisi" },
+  engineer: { bg: "инженер", en: "engineer", de: "Ingenieur", fr: "ingénieur", it: "ingegnere", tr: "mühendis" },
+  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler", fr: "cavalier", it: "cavaliere", tr: "binici" },
+  fencer: { bg: "фехтовач", en: "fencer", de: "Fechter", fr: "escrimeur", it: "schermidore", tr: "eskrimci" },
+  film_director: { bg: "филмов режисьор", en: "film director", de: "Filmregisseur", fr: "réalisateur", it: "regista cinematografico", tr: "film yönetmeni" },
+  first_lady: { bg: "първа дама", en: "first lady", de: "First Lady", fr: "première dame", it: "first lady", tr: "first lady" },
+  football_referee: { bg: "футболен съдия", en: "football referee", de: "Fußballschiedsrichter", fr: "arbitre de football", it: "arbitro di calcio", tr: "futbol hakemi" },
+  footballer: { bg: "футболист", en: "footballer", de: "Fußballspieler", fr: "footballeur", it: "calciatore", tr: "futbolcu" },
+  general: { bg: "генерал", en: "general", de: "General", fr: "général", it: "generale", tr: "general" },
+  geographer: { bg: "географ", en: "geographer", de: "Geograf", fr: "géographe", it: "geografo", tr: "coğrafyacı" },
+  gymnast: { bg: "гимнастик", en: "gymnast", de: "Turner", fr: "gymnaste", it: "ginnasta", tr: "jimnastikçi" },
+  high_jumper: { bg: "скачач на височина", en: "high jumper", de: "Hochspringer", fr: "sauteur en hauteur", it: "saltatore in alto", tr: "yüksek atlamacı" },
+  illustrator: { bg: "илюстратор", en: "illustrator", de: "Illustrator", fr: "illustrateur", it: "illustratore", tr: "illüstratör" },
+  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower", de: "Speerwerfer", fr: "lanceur de javelot", it: "lanciatore di giavellotto", tr: "cirit atıcısı" },
+  journalist: { bg: "журналист", en: "journalist", de: "Journalist", fr: "journaliste", it: "giornalista", tr: "gazeteci" },
+  jurist: { bg: "юрист", en: "jurist", de: "Jurist", fr: "juriste", it: "giurista", tr: "hukukçu" },
+  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist", de: "Kampfsportler", fr: "artiste martial", it: "artista marziale", tr: "dövüş sanatçısı" },
+  mathematician: { bg: "математик", en: "mathematician", de: "Mathematiker", fr: "mathématicien", it: "matematico", tr: "matematikçi" },
+  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister", fr: "maire", it: "sindaco", tr: "belediye başkanı" },
+  merchant: { bg: "търговец", en: "merchant", de: "Kaufmann", fr: "marchand", it: "mercante", tr: "tüccar" },
+  military_officer: { bg: "офицер", en: "military officer", de: "Offizier", fr: "officier", it: "ufficiale", tr: "subay" },
+  mineralogist: { bg: "минералог", en: "mineralogist", de: "Mineraloge", fr: "minéralogiste", it: "mineralogista", tr: "mineralog" },
+  missionary: { bg: "мисионер", en: "missionary", de: "Missionar", fr: "missionnaire", it: "missionario", tr: "misyoner" },
+  model: { bg: "модел", en: "model", de: "Model", fr: "mannequin", it: "modella", tr: "manken" },
+  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete", de: "Moderner Fünfkämpfer", fr: "pentathlonien moderne", it: "pentatleta moderno", tr: "modern pentatlet" },
+  musician: { bg: "музикант", en: "musician", de: "Musiker", fr: "musicien", it: "musicista", tr: "müzisyen" },
+  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger", fr: "chanteur d'opéra", it: "cantante lirico", tr: "opera sanatçısı" },
+  painter: { bg: "живописец", en: "painter", de: "Maler", fr: "peintre", it: "pittore", tr: "ressam" },
+  paleontologist: { bg: "палеонтолог", en: "paleontologist", de: "Paläontologe", fr: "paléontologue", it: "paleontologo", tr: "paleontolog" },
+  patriarch: { bg: "патриарх", en: "patriarch", de: "Patriarch", fr: "patriarche", it: "patriarca", tr: "patrik" },
+  philosopher: { bg: "философ", en: "philosopher", de: "Philosoph", fr: "philosophe", it: "filosofo", tr: "filozof" },
+  physicist: { bg: "физик", en: "physicist", de: "Physiker", fr: "physicien", it: "fisico", tr: "fizikçi" },
+  pianist: { bg: "пианист", en: "pianist", de: "Pianist", fr: "pianiste", it: "pianista", tr: "piyanist" },
+  poet: { bg: "поет", en: "poet", de: "Dichter", fr: "poète", it: "poeta", tr: "şair" },
+  politician: { bg: "политик", en: "politician", de: "Politiker", fr: "politicien", it: "politico", tr: "siyasetçi" },
+  priest: { bg: "свещеник", en: "priest", de: "Priester", fr: "prêtre", it: "sacerdote", tr: "rahip" },
+  printmaker: { bg: "график", en: "printmaker", de: "Grafiker", fr: "graveur", it: "incisore", tr: "gravürcü" },
+  producer: { bg: "продуцент", en: "producer", de: "Produzent", fr: "producteur", it: "produttore", tr: "yapımcı" },
+  public_figure: { bg: "обществена фигура", en: "public figure", de: "Person des öffentlichen Lebens", fr: "personnalité publique", it: "personaggio pubblico", tr: "kamusal figür" },
+  racing_driver: { bg: "автомобилен състезател", en: "racing driver", de: "Rennfahrer", fr: "pilote automobile", it: "pilota automobilistico", tr: "yarış pilotu" },
+  revolutionary: { bg: "революционер", en: "revolutionary", de: "Revolutionär", fr: "révolutionnaire", it: "rivoluzionario", tr: "devrimci" },
+  rower: { bg: "гребец", en: "rower", de: "Ruderer", fr: "rameur", it: "canottiere", tr: "kürekçi" },
+  saint: { bg: "светец", en: "saint", de: "Heiliger", fr: "saint", it: "santo", tr: "aziz" },
+  scholar: { bg: "учен", en: "scholar", de: "Gelehrter", fr: "érudit", it: "studioso", tr: "âlim" },
+  scientist: { bg: "учен", en: "scientist", de: "Wissenschaftler", fr: "scientifique", it: "scienziato", tr: "bilim insanı" },
+  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor", fr: "scénariste", it: "sceneggiatore", tr: "senarist" },
+  sculptor: { bg: "скулптор", en: "sculptor", de: "Bildhauer", fr: "sculpteur", it: "scultore", tr: "heykeltıraş" },
+  singer: { bg: "певец", en: "singer", de: "Sänger", fr: "chanteur", it: "cantante", tr: "şarkıcı" },
+  sports_shooter: { bg: "спортен стрелец", en: "sport shooter", de: "Sportschütze", fr: "tireur sportif", it: "tiratore sportivo", tr: "atıcı" },
+  swimmer: { bg: "плувец", en: "swimmer", de: "Schwimmer", fr: "nageur", it: "nuotatore", tr: "yüzücü" },
+  tennis_player: { bg: "тенисист", en: "tennis player", de: "Tennisspieler", fr: "joueur de tennis", it: "tennista", tr: "tenisçi" },
+  theatre_director: { bg: "театрален режисьор", en: "theatre director", de: "Theaterregisseur", fr: "metteur en scène", it: "regista teatrale", tr: "tiyatro yönetmeni" },
+  violinist: { bg: "цигулар", en: "violinist", de: "Geiger", fr: "violoniste", it: "violinista", tr: "kemancı" },
+  visual_artist: { bg: "визуален художник", en: "visual artist", de: "Bildender Künstler", fr: "artiste visuel", it: "artista visivo", tr: "görsel sanatçı" },
+  volleyball_player: { bg: "волейболист", en: "volleyball player", de: "Volleyballspieler", fr: "volleyeur", it: "pallavolista", tr: "voleybolcu" },
+  weightlifter: { bg: "щангист", en: "weightlifter", de: "Gewichtheber", fr: "haltérophile", it: "sollevatore di pesi", tr: "halterci" },
+  wrestler: { bg: "борец", en: "wrestler", de: "Ringer", fr: "lutteur", it: "lottatore", tr: "güreşçi" },
+  writer: { bg: "писател", en: "writer", de: "Schriftsteller", fr: "écrivain", it: "scrittore", tr: "yazar" },
+  zoologist: { bg: "зоолог", en: "zoologist", de: "Zoologe", fr: "zoologiste", it: "zoologo", tr: "zoolog" }
 };

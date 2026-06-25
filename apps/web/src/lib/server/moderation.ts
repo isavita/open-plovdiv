@@ -219,7 +219,11 @@ export function validateSubmission(input: SubmissionInput): ValidationResult {
   }
 
   const lang: Lang =
-    input.lang === "en" || input.lang === "de" || input.lang === "fr" || input.lang === "it"
+    input.lang === "en" ||
+    input.lang === "de" ||
+    input.lang === "fr" ||
+    input.lang === "it" ||
+    input.lang === "tr"
       ? input.lang
       : "bg";
 

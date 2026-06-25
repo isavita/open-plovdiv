@@ -129,6 +129,33 @@ const labels =
         noArchive:
           "Per questo luogo non è ancora disponibile una scheda d'archivio o prima/dopo distinta. L'immagine principale, le coordinate e le fonti restano pubblicate."
       }
+      : lang === "tr"
+      ? {
+        back: "Tüm yerler",
+        facts: "Bilgiler",
+        currentStatus: "Mevcut durum",
+        visit: "Ziyaret ve yönlenme",
+        coordinates: "Koordinatlar",
+        openMap: "Haritayı aç",
+        built: "Yapım/tarih",
+        architect: "Mimar",
+        builder: "Yapımcı",
+        creator: "Mimar/yapımcı",
+        source: "Kaynak",
+        sources: "Kaynaklar",
+        mediaLicense: "Görsel lisansı",
+        mediaFile: "Medya dosyası",
+        mediaCredit: "Kaynak",
+        matchQuality: "Eşleşme",
+        archiveTitle: "Bu yerin arşivi",
+        thenNowTitle: "Önce/sonra",
+        thenLabel: "Önce",
+        nowLabel: "Sonra",
+        eventsTitle: "Bağlantılı etkinlikler",
+        storiesTitle: "Bağlantılı anlatılar",
+        noArchive:
+          "Bu yer için henüz ayrı bir arşiv veya önce/sonra kaydı yok. Ana görsel, koordinatlar ve kaynaklar yayımlı kalır."
+      }
       : {
         back: "All places",
         facts: "Facts",
@@ -184,6 +211,12 @@ const matchQualityLabels: Record<string, string> =
         same_place_approximate_viewpoint: "stesso luogo, punto di vista approssimativo",
         same_place_close_viewpoint: "stesso luogo, punto di vista ravvicinato",
         city_context: "contesto urbano"
+      }
+      : lang === "tr"
+      ? {
+        same_place_approximate_viewpoint: "aynı yer, yaklaşık bakış açısı",
+        same_place_close_viewpoint: "aynı yer, yakın bakış açısı",
+        city_context: "şehir bağlamı"
       }
       : {
         same_place_approximate_viewpoint: "same place, approximate viewpoint",

@@ -1,0 +1,15 @@
+---
+import ProjectDetailView from "@components/views/ProjectDetailView.astro";
+import { projects } from "@lib/data";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<ProjectDetailView lang="tr" project={project} />

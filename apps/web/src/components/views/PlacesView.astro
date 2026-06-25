@@ -158,6 +158,41 @@ const labels =
         open: "Apri",
         loadMore: "Mostra altri"
       }
+      : lang === "tr"
+      ? {
+        title: "Yerler ve anıtlar",
+        eyebrow: "Koordinatlar, görseller ve kaynaklar",
+        lead:
+          "Plovdiv tarihindeki yerlerin bir kataloğu: anıtlar, meydanlar, tepeler, kamu binaları ve kültürel alanlar; fotoğraflar, koordinatlar ve kamuya açık kaynaklarla.",
+        places: "yer",
+        coordinates: "koordinat",
+        images: "görsel",
+        events: "etkinlik",
+        thenNow: "önce/sonra",
+        archive: "arşiv",
+        search: "Ara",
+        searchPlaceholder: "yer, dönem, mimar...",
+        era: "Dönem",
+        category: "Kategori",
+        evidence: "Arşiv",
+        allEras: "Tüm dönemler",
+        allCategories: "Tüm kategoriler",
+        allEvidence: "Tüm kayıtlar",
+        withThenNow: "önce/sonra ile",
+        withArchive: "arşiv ile",
+        visible: "Görünür",
+        of: "/",
+        reset: "Filtreleri temizle",
+        noResults: "Bu filtrelere uyan yer yok.",
+        source: "Kaynak",
+        status: "Durum",
+        built: "Yapım/tarih",
+        architect: "Mimar",
+        builder: "Yapımcı",
+        creator: "Mimar/yapımcı",
+        open: "Aç",
+        loadMore: "Daha fazla göster"
+      }
       : {
         title: "Places and Landmarks",
         eyebrow: "Coordinates, images and sources",
@@ -194,15 +229,15 @@ const labels =
       };
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain", it: "Spazio urbano" },
-  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline", it: "Colle" },
-  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval", it: "Medievale" },
-  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument", it: "Monumento" },
-  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman", it: "Ottomano" },
-  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux", it: "Sito religioso" },
-  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale" },
-  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano" },
-  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio" }
+  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain", it: "Spazio urbano", tr: "Kentsel alan" },
+  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline", it: "Colle", tr: "Tepe" },
+  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval", it: "Medievale", tr: "Orta Çağ" },
+  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument", it: "Monumento", tr: "Anıt" },
+  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman", it: "Ottomano", tr: "Osmanlı" },
+  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux", it: "Sito religioso", tr: "Dinî yapı" },
+  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale", tr: "Ulusal Uyanış" },
+  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano", tr: "Roma" },
+  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio", tr: "Trak" }
 };
 
 function localized(record: Record<string, any>, base: string): string {
@@ -340,6 +375,11 @@ const mapL =
       ? {
         title: "Mappa dei luoghi",
         lead: "Tutti i luoghi documentati con coordinate, colorati per categoria. Anche i filtri qui sotto si applicano alla mappa."
+      }
+      : lang === "tr"
+      ? {
+        title: "Yerlerin haritası",
+        lead: "Koordinatlarıyla belgelenmiş tüm yerler, kategoriye göre renklendirilmiştir. Aşağıdaki filtreler haritaya da uygulanır."
       }
       : {
         title: "Map of the places",

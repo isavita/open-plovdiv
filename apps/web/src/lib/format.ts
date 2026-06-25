@@ -10,7 +10,7 @@ import {
 } from "../i18n/ui";
 import { translateEn } from "../i18n/deTranslations";
 
-const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT" };
+const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR" };
 
 const knownHistoryText: Record<Lang, Record<string, string>> = {
   bg: {},
@@ -71,6 +71,25 @@ const knownHistoryText: Record<Lang, Record<string, string>> = {
       "Istituzione, edificio o sito urbano di Plovdiv documentato pubblicamente.",
     "Building or urban site from Plovdiv's Revival and early modern heritage.":
       "Edificio o sito urbano del patrimonio della Rinascita e della prima epoca moderna di Plovdiv."
+  },
+  tr: {
+    "wikidata_coordinate": "Wikidata koordinatları",
+    "approximate_site": "yaklaşık konum",
+    "district_centroid": "ilçe merkezi",
+    "citywide_reference": "şehir genelinde referans noktası",
+    "Modern period": "Modern dönem",
+    "Bulgarian Revival": "Bulgar Ulusal Uyanışı",
+    "Thracian era – Antiquity": "Trak dönemi – Antik Çağ",
+    "Roman period": "Roma dönemi",
+    "Ottoman period": "Osmanlı dönemi",
+    "not identified in the current public source": "mevcut kamuya açık kaynakta belirlenmedi",
+    "not applicable for a natural hill or terrain feature": "doğal bir tepe veya arazi öğesi için geçerli değil",
+    "Publicly documented historic site; detailed visiting status still needs verification.":
+      "Kamuya açık biçimde belgelenmiş tarihî alan; ayrıntılı ziyaret durumu hâlâ doğrulanmalı.",
+    "Publicly documented institution, building, or urban site in Plovdiv.":
+      "Plovdiv'de kamuya açık biçimde belgelenmiş kurum, bina veya kentsel alan.",
+    "Building or urban site from Plovdiv's Revival and early modern heritage.":
+      "Plovdiv'in Uyanış ve erken modern mirasından bir bina veya kentsel alan."
   }
 };
 

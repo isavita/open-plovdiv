@@ -6,7 +6,7 @@ import { execFileSync } from "node:child_process";
 const root = process.cwd();
 const publicDir = path.join(root, "apps/web/public/data");
 const historyPublicDir = path.join(publicDir, "history");
-const translationLangs = ["de", "fr", "it"];
+const translationLangs = ["de", "fr", "it", "tr"];
 const translationsByLang = Object.fromEntries(
   translationLangs.map((lang) => {
     const translationsPath = path.join(root, `data/translations/${lang}.json`);

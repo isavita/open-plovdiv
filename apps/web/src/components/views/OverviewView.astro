@@ -85,7 +85,7 @@ const totalsByYear = budgetItems
 const totalsMax = Math.max(...totalsByYear.map((b) => b.amount_bgn ?? 0), 1);
 function compactBgn(amount: number): string {
   const millions = Math.round(amount / 1e6);
-  return lang === "bg" ? `${millions} млн лв` : lang === "de" ? `${millions} Mio. BGN` : lang === "fr" ? `${millions} M BGN` : lang === "it" ? `${millions} mln BGN` : `BGN ${millions}M`;
+  return lang === "bg" ? `${millions} млн лв` : lang === "de" ? `${millions} Mio. BGN` : lang === "fr" ? `${millions} M BGN` : lang === "it" ? `${millions} mln BGN` : lang === "tr" ? `${millions} milyon BGN` : `BGN ${millions}M`;
 }
 const bgnShortLabel = lang === "bg" ? "лв." : "BGN";
 
