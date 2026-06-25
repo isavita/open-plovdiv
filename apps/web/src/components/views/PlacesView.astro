@@ -88,6 +88,41 @@ const labels =
         open: "Öffnen",
         loadMore: "Mehr anzeigen"
       }
+      : lang === "fr"
+      ? {
+        title: "Lieux et monuments",
+        eyebrow: "Coordonnées, images et sources",
+        lead:
+          "Un catalogue des lieux de l'histoire de Plovdiv : monuments, places, collines, bâtiments publics et sites culturels, avec photos, coordonnées et sources publiques.",
+        places: "lieux",
+        coordinates: "coordonnées",
+        images: "images",
+        events: "événements",
+        thenNow: "avant/après",
+        archive: "archives",
+        search: "Rechercher",
+        searchPlaceholder: "lieu, époque, architecte...",
+        era: "Époque",
+        category: "Catégorie",
+        evidence: "Archives",
+        allEras: "Toutes les époques",
+        allCategories: "Toutes les catégories",
+        allEvidence: "Toutes les fiches",
+        withThenNow: "avec avant/après",
+        withArchive: "avec archives",
+        visible: "Visibles",
+        of: "sur",
+        reset: "Effacer les filtres",
+        noResults: "Aucun lieu ne correspond à ces filtres.",
+        source: "Source",
+        status: "Statut",
+        built: "Construction/date",
+        architect: "Architecte",
+        builder: "Constructeur",
+        creator: "Architecte/constructeur",
+        open: "Ouvrir",
+        loadMore: "Afficher plus"
+      }
       : {
         title: "Places and Landmarks",
         eyebrow: "Coordinates, images and sources",
@@ -124,15 +159,15 @@ const labels =
       };
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum" },
-  hill: { bg: "Хълм", en: "Hill", de: "Hügel" },
-  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich" },
-  monument: { bg: "Паметник", en: "Monument", de: "Denkmal" },
-  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch" },
-  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort" },
-  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit" },
-  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch" },
-  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch" }
+  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain" },
+  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline" },
+  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval" },
+  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument" },
+  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman" },
+  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux" },
+  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale" },
+  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain" },
+  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace" }
 };
 
 function localized(record: Record<string, any>, base: string): string {
@@ -260,6 +295,11 @@ const mapL =
       ? {
         title: "Karte der Orte",
         lead: "Alle dokumentierten Orte mit Koordinaten, nach Kategorie eingefärbt. Die Filter unten steuern auch die Karte."
+      }
+      : lang === "fr"
+      ? {
+        title: "Carte des lieux",
+        lead: "Tous les lieux documentés avec coordonnées, colorés par catégorie. Les filtres ci-dessous s'appliquent aussi à la carte."
       }
       : {
         title: "Map of the places",

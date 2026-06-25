@@ -218,7 +218,8 @@ export function validateSubmission(input: SubmissionInput): ValidationResult {
     return { ok: false, error: "invalid_location" };
   }
 
-  const lang: Lang = input.lang === "en" || input.lang === "de" ? input.lang : "bg";
+  const lang: Lang =
+    input.lang === "en" || input.lang === "de" || input.lang === "fr" ? input.lang : "bg";
 
   if (!isBool(input.no_personal_data) || !isBool(input.public_interest)) {
     return { ok: false, error: "missing_confirmation" };

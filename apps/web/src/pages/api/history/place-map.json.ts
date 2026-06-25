@@ -11,15 +11,15 @@ import { localeForLang, type Lang } from "@i18n/utils";
 export const prerender = true;
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum" },
-  hill: { bg: "Хълм", en: "Hill", de: "Hügel" },
-  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich" },
-  monument: { bg: "Паметник", en: "Monument", de: "Denkmal" },
-  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch" },
-  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort" },
-  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit" },
-  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch" },
-  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch" }
+  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain" },
+  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline" },
+  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval" },
+  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument" },
+  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman" },
+  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux" },
+  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale" },
+  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain" },
+  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace" }
 };
 
 const placeColors: Record<string, string> = {
@@ -82,7 +82,8 @@ function placeMapItems(lang: Lang) {
 const places = {
   bg: placeMapItems("bg"),
   en: placeMapItems("en"),
-  de: placeMapItems("de")
+  de: placeMapItems("de"),
+  fr: placeMapItems("fr")
 };
 
 export const GET: APIRoute = () =>

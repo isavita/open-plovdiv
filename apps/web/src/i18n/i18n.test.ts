@@ -19,7 +19,7 @@ const locales = Object.keys(languages) as Lang[];
 const CYRILLIC = /[Ѐ-ӿ]/;
 // Locales whose UI must read in their own script — i.e. no Bulgarian Cyrillic
 // may leak through. (Greek would be added here with a Greek-range allowance.)
-const LATIN_LOCALES: Lang[] = ["en", "de"];
+const LATIN_LOCALES: Lang[] = ["en", "de", "fr"];
 
 /** Collect [dottedPath, value] for every *string* leaf; skip functions. */
 function collectStrings(
@@ -137,7 +137,9 @@ describe("data-label maps", () => {
     // bg intentionally keeps the original titles (empty map); en/de translate them.
     const enKeys = Object.keys(sourceTitleLabels.en).sort();
     const deKeys = Object.keys(sourceTitleLabels.de).sort();
+    const frKeys = Object.keys(sourceTitleLabels.fr).sort();
     expect(deKeys, "de source titles drift from en").toEqual(enKeys);
+    expect(frKeys, "fr source titles drift from en").toEqual(enKeys);
     for (const loc of LATIN_LOCALES) {
       for (const [key, value] of Object.entries(sourceTitleLabels[loc])) {
         expect(value.trim().length, `sourceTitleLabels.${loc}.${key} empty`).toBeGreaterThan(0);
@@ -159,6 +161,7 @@ describe("localised routing", () => {
 
   it("detects the locale from a URL and round-trips back to the logical path", () => {
     expect(getLangFromUrl("/de/budget")).toBe("de");
+    expect(getLangFromUrl("/fr/history")).toBe("fr");
     expect(getLangFromUrl("/en/history")).toBe("en");
     expect(getLangFromUrl("/budget")).toBe("bg");
     expect(delocalizePath("/de/budget")).toBe("/budget");
@@ -180,5 +183,6 @@ describe("localised routing", () => {
     expect(localeForLang("bg")).toBe("bg-BG");
     expect(localeForLang("en")).toBe("en-GB");
     expect(localeForLang("de")).toBe("de-DE");
+    expect(localeForLang("fr")).toBe("fr-FR");
   });
 });

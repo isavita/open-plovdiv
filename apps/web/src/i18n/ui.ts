@@ -6,7 +6,8 @@
 export const languages = {
   bg: "Български",
   en: "English",
-  de: "Deutsch"
+  de: "Deutsch",
+  fr: "Français"
 } as const;
 
 export type Lang = keyof typeof languages;
@@ -2107,7 +2108,702 @@ const de: typeof bg = {
   }
 };
 
-export const ui = { bg, en, de } as const;
+const fr: typeof bg = {
+  site: {
+    name: "Open Plovdiv",
+    short: "OP",
+    tagline:
+      "Projets publics, argent public, problèmes publics — présentés clairement.",
+    skip: "Aller au contenu",
+    menu: "Menu",
+    close: "Fermer",
+    theme: "Thème clair / sombre",
+    langName: "Langue",
+    langSwitch: "Choisir la langue"
+  },
+  nav: {
+    home: "Accueil",
+    history: "Histoire",
+    mayors: "Maires",
+    people: "Personnalités",
+    places: "Lieux",
+    stories: "Récits",
+    education: "Éducation",
+    overview: "Aperçu",
+    fixMap: "Carte",
+    budget: "Budget",
+    projects: "Projets",
+    community: "Bénévoles",
+    archive: "Archives",
+    sources: "Sources"
+  },
+  overview: {
+    eyebrow: "Aperçu visuel",
+    title: "Aperçu en graphiques",
+    lead:
+      "Une vue d'ensemble des projets suivis et de l'argent public de Plovdiv — par statut, catégorie et année, avec sources.",
+    asOf: "Données à jour en juin 2026",
+    statProjects: "projets suivis",
+    statPostponed: "projets reportés",
+    statCapital2025: "programme d'investissement 2025",
+    statCapital2026: "programme d'investissement 2026 (provisoire)",
+    unitProjects: "Nombre de projets suivis",
+    unitSharePercent: "Part du programme d'investissement (%)",
+    unitEur: "Montants en euros (€)",
+    byStatusTitle: "Projets par statut",
+    byCategoryTitle: "Projets par catégorie",
+    byYearTitle: "Projets par année budgétaire",
+    sector2025Title: "Programme d'investissement 2025 par secteur",
+    funding2026Title: "Financement du programme d'investissement 2026",
+    capitalTrendTitle: "Programme d'investissement par année",
+    capitalTrendNote:
+      "Programme d'investissement par année (en BGN). Les chiffres 2013-2018 proviennent de décisions du Conseil municipal ; les années plus récentes utilisent des pages officielles et des publications publiques. 2026 est provisoire et convertie depuis environ 87 M€ au taux de 1,95583.",
+    totalTrendTitle: "Budget total de Plovdiv par année",
+    totalTrendNote:
+      "Budget annuel total de la municipalité de Plovdiv (en BGN). Les archives incluent l'exécution de 2010 et les budgets adoptés pour 2011-2018 ; les valeurs de 2020, 2022 et 2024 restent approximatives/arrondies. Chaque année renvoie à une source publique.",
+    historyNote:
+      "Les chiffres proviennent de sources publiques (budgets municipaux et publications médiatiques). Vérifiez auprès des documents originaux avant de citer une valeur précise.",
+    year2025: "2025",
+    year2026: "2026 (provisoire)",
+    sourcesNote: "Toutes les valeurs ont des sources publiques.",
+    viewBudget: "Voir le budget",
+    viewProjects: "Voir les projets"
+  },
+  footer: {
+    blurb:
+      "Un projet de données publiques à but non lucratif pour Plovdiv. Sans comptes, sans commentaires, sans base de données.",
+    explore: "Explorer",
+    civic: "Données citoyennes",
+    about: "À propos",
+    privacy: "Confidentialité",
+    moderation: "Modération",
+    community: "Bénévoles",
+    methodology: "Méthodologie",
+    sources: "Sources",
+    note: "Open Plovdiv · données publiques pour Plovdiv",
+    dataNote: "Données issues de sources publiques · mises à jour en juin 2026.",
+    rights: "Données publiques"
+  },
+  common: {
+    all: "Tous",
+    accessed: "consulté",
+    source: "Source",
+    loading: "Chargement…",
+    error: "Une erreur est survenue.",
+    backHome: "Retour à l'accueil",
+    noSource: "Aucune source publique."
+  },
+  home: {
+    eyebrow: "L'une des plus anciennes villes du monde",
+    lead:
+      "Plovdiv est vivante depuis plus de 8 000 ans. Eumolpias thrace, Philippopolis de Philippe II de Macédoine, Trimontium romaine, Filibe ottomane — et la ville de l'Unification.",
+    ctaHistory: "Explorer la chronologie",
+    ctaMayors: "Les maires de Plovdiv",
+    statYearsValue: "8000+",
+    statYears: "ans d'histoire",
+    statEras: "époques",
+    statMayors: "maires",
+    statLandmarks: "monuments",
+    featuredTitle: "Moments d'histoire",
+    civicTitle: "Données citoyennes sur la ville d'aujourd'hui",
+    civicLead:
+      "Au-delà de l'histoire, Open Plovdiv tient aussi des données publiques sur la ville moderne — budget, projets, signalements citoyens et bénévoles, chacun avec une source publique.",
+    ctaMap: "Ouvrir la carte des problèmes",
+    ctaBudget: "Où vont les impôts locaux ?",
+    statsLabel: "Données suivies",
+    statProjects: "projets suivis",
+    statReportsValue: "En direct",
+    statReports: "signalements modérés",
+    statCommunity: "initiatives bénévoles",
+    statBudget: "secteurs budgétaires",
+    statTotal: "programme d'investissement 2025",
+    exploreTitle: "Par où commencer",
+    cardMapEyebrow: "Carte",
+    cardMapTitle: "Carte des problèmes",
+    cardMapText:
+      "Consultez les signalements citoyens publiés par catégorie et statut, avec les projets publics à proximité.",
+    cardBudgetEyebrow: "Budget",
+    cardBudgetTitle: "Impôts locaux",
+    cardBudgetText:
+      "Budget 2025 et programme d'investissement provisoire 2026 — montants, parts et sources publiques.",
+    cardProjectsEyebrow: "Projets",
+    cardProjectsTitle: "Projets publics",
+    cardProjectsText:
+      "Recherchez et filtrez les fiches de projet avec budget, statut et sources.",
+    cardCommunityEyebrow: "Bénévoles",
+    cardCommunityTitle: "Initiatives citoyennes",
+    cardCommunityText:
+      "Groupes et campagnes organisant nettoyages, entretien des arrêts, parcs et travaux de quartier.",
+    cardArchiveEyebrow: "Archives",
+    cardArchiveTitle: "Maires et données historiques",
+    cardArchiveText:
+      "Une chronologie interne complète des mandats de maire, anciens états financiers et programmes municipaux.",
+    cardMayorsEyebrow: "Maires",
+    cardMayorsTitle: "Tous les maires de Plovdiv",
+    cardMayorsText:
+      "Chronologie détaillée de 1878 au mandat en cours, avec recherche, siècles et sources.",
+    latestProjects: "Projets récemment mis à jour",
+    latestReports: "Signalements récemment ajoutés",
+    liveReportsTitle: "De vrais signalements après modération",
+    liveReportsText:
+      "La carte n'affiche désormais que les signalements citoyens soumis via le formulaire et approuvés par un modérateur.",
+    viewAll: "Tout voir",
+    noticeTitle: "Données et sources",
+    notice:
+      "Les données sont à jour en juin 2026. Le budget 2025 est adopté, tandis que le programme d'investissement 2026 est provisoire. Chaque fiche renvoie à une source publique.",
+    noticeSources: "Voir les sources",
+    noticeMethodology: "la méthodologie"
+  },
+  history: {
+    eyebrow: "La chronologie de la ville",
+    title: "L'histoire de Plovdiv",
+    lead:
+      "Plus de huit millénaires sur sept collines — de l'Eumolpias thrace et de la Trimontium romaine, en passant par la Filibe ottomane et la Renaissance nationale, jusqu'à l'Unification et nos jours.",
+    timelineTitle: "Chronologie",
+    timelineLead:
+      "Les moments clés de l'histoire de la ville, classés par époque. Chaque entrée renvoie à une source publique.",
+    erasTitle: "Les époques de Plovdiv",
+    erasNav: "Époques",
+    landmarksTitle: "Monuments",
+    landmarksLead:
+      "Des monuments qui racontent l'histoire de la ville — de la citadelle thrace à la vieille ville de la Renaissance.",
+    mayorsTitle: "Les maires de Plovdiv",
+    mayorsLead:
+      "68 mandats de la Libération à aujourd'hui — une chronologie détaillée avec biographies et sources publiques.",
+    mayorsCta: "Voir tous les maires",
+    sourceNote:
+      "Les données historiques sont synthétisées à partir de sources publiques (Wikipédia et pages officielles). Vérifiez la source originale avant de citer un fait précis.",
+    statYears: "ans d'histoire",
+    statEras: "époques",
+    statLandmarks: "monuments",
+    eraLabels: {
+      prehistory: "Préhistoire",
+      thracian: "Époque thrace",
+      roman: "Époque romaine",
+      medieval: "Moyen Âge",
+      ottoman: "Époque ottomane",
+      revival: "Renaissance nationale",
+      liberation: "Libération et Unification",
+      modern: "Époque moderne"
+    },
+    eraBlurbs: {
+      prehistory: "Des établissements sur les collines dès le 6e millénaire av. J.-C.",
+      thracian: "L'Eumolpias thrace et la Philippopolis de Philippe II de Macédoine.",
+      roman: "Trimontium — une brillante cité romaine avec théâtre et stade.",
+      medieval: "Des siècles de contrôle alternant entre la Bulgarie et Byzance.",
+      ottoman: "Cinq siècles sous le nom de Filibe — un carrefour des Balkans.",
+      revival: "L'éveil éducatif et ecclésiastique bulgare.",
+      liberation: "La Libération, la capitale de la Roumélie orientale et l'Unification.",
+      modern: "La ville des foires et une capitale européenne de la culture."
+    }
+  },
+  budget: {
+    eyebrow: "Où vont les impôts locaux ?",
+    title: "Budget et programme d'investissement",
+    lead:
+      "Le budget 2025, le programme d'investissement provisoire 2026 et les archives historiques de la gouvernance municipale — avec montants, parts et sources publiques clairement indiqués.",
+    totalLabel: "Budget total 2025",
+    capitalLabel: "Programme d'investissement 2025",
+    sectorTitle: "Programme d'investissement 2025 par secteur",
+    approxNote:
+      "Les valeurs par secteur sont approximatives — dérivées des parts publiées du programme d'investissement.",
+    shareOfTotal: "part du programme d'investissement",
+    provTitle: "Programme d'investissement 2026 (provisoire)",
+    provText:
+      "2026 est le premier budget de Plovdiv en euros. Le programme d'investissement provisoire s'élève à environ 87 millions d'euros. Les chiffres sont provisoires et peuvent évoluer une fois le budget de l'État adopté.",
+    fundingTitle: "Sources de financement 2026",
+    fundEu: "Fonds européens",
+    fundOwn: "Recettes propres et report",
+    fundOpco: "Cofinancement de programmes",
+    fundState: "Subvention ciblée de l'État",
+    fundOther: "Autres (dons, emprunts)",
+    historyTitle: "Archives budgétaires historiques",
+    historyLead:
+      "Les archives incluent désormais le budget adopté de 2002, les dépenses d'investissement exécutées pour 2005-2007, l'exécution de 2010, les totaux des budgets adoptés depuis 2011 et d'anciens chiffres de programmes d'investissement lorsque les décisions les publient séparément.",
+    totalHistoryTitle: "Budget total et exécution",
+    capitalHistoryTitle: "Programme d'investissement",
+    historyNote:
+      "2008 est une valeur de projet de budget issue d'une source secondaire et marquée comme provisoire/projet. Les valeurs du graphique d'investissement 2005-2007 et la valeur du graphique du total 2010 sont des chiffres exécutés, et non des enveloppes initialement adoptées. Les décisions plus anciennes sont parfois des documents numérisés qui ventilent différemment les dépenses déléguées, locales et d'investissement. Considérez les graphiques comme des archives consultables et citez les chiffres exacts depuis le document original.",
+    executedShort: "exéc.",
+    provisionalShort: "projet",
+    mayorsTitle: "Qui a gouverné la ville",
+    mayorsLead:
+      "Les archives incluent les mandats de maire officiellement publiés depuis 1878 et le maire actuel vérifié dans le Registre administratif bulgare.",
+    mayorTermCount: "mandats de maire dans les archives",
+    currentMayorLabel: "maire en exercice",
+    recentMayorsTitle: "Mandats récents",
+    earlyMayorsTitle: "Premières fiches après la Libération",
+    fullMayorArchive: "Archives complètes des maires",
+    eventsTitle: "Événements et programmes",
+    eventsLead:
+      "Une courte archive d'initiatives municipales notables qui aide à relier les années budgétaires aux programmes publics et événements culturels.",
+    sourceLabel: "Source"
+  },
+  archive: {
+    eyebrow: "Archives historiques",
+    title: "Maires, budgets et programmes municipaux",
+    lead:
+      "Une archive interne de la gouvernance de Plovdiv : mandats de maire, états financiers historiques, programmes culturels et sociaux, avec sources visibles.",
+    statMayors: "mandats de maire",
+    statFinance: "états financiers historiques",
+    statProgrammes: "programmes et événements",
+    statDocuments: "documents primaires",
+    currentMayor: "Maire en exercice",
+    financeTitle: "Instantanés des archives financières",
+    financeLead:
+      "Valeurs nominales issues de sources historiques. Les anciens montants en levs ne sont pas directement comparables au BGN moderne et sont présentés comme repères d'archives.",
+    programmesTitle: "Ce que la municipalité a organisé",
+    programmesLead:
+      "Une sélection de fiches d'actions sociales, culturelles et de gouvernance reliant les dirigeants de la ville à de vrais programmes publics.",
+    documentsTitle: "Documents primaires",
+    documentsLead:
+      "Une première couche de courts extraits transcrits d'actes municipaux et du Journal officiel. Chaque extrait renvoie au document public complet et aux fiches liées.",
+    transcriptLabel: "Extrait transcrit",
+    linkedRecords: "Fiches liées",
+    documentTypes: {
+      municipal_decision: "décision municipale",
+      state_gazette_decree: "décret d'État",
+      municipal_rule: "règlement municipal",
+      council_minutes: "procès-verbal",
+      period_press: "presse d'époque",
+      other: "document"
+    },
+    transcriptionTypes: {
+      excerpt: "extrait",
+      full: "texte intégral",
+      diplomatic_excerpt: "extrait diplomatique"
+    },
+    mayorsTitle: "Chronologie complète des maires",
+    mayorsLead:
+      "Il s'agit d'une copie interne des archives officielles de la municipalité de Plovdiv, complétée par le mandat en cours issu du Registre administratif.",
+    amountLabel: "Montant",
+    yearLabel: "Année",
+    sourceLabel: "Source",
+    noAmount: "montant non publié",
+    viewBudget: "Ouvrir les graphiques du budget"
+  },
+  mayors: {
+    eyebrow: "Gouvernance municipale",
+    title: "Tous les maires de Plovdiv",
+    lead:
+      "Une chronologie complète des mandats de maire, du premier maire après la Libération en 1878 jusqu'au maire en exercice en 2026.",
+    sourceNote:
+      "La base est la page officielle « Maires de Plovdiv » de la municipalité de Plovdiv. Le mandat en cours est ajouté depuis le Registre administratif de Bulgarie, car la liste historique municipale s'arrête encore au mandat 2019-2023.",
+    statTerms: "mandats de maire",
+    statPeople: "personnes différentes",
+    statYears: "années couvertes",
+    statCurrent: "maire en exercice",
+    search: "Rechercher",
+    searchPlaceholder: "Nom, année ou période",
+    century: "Siècle",
+    status: "Statut",
+    allCenturies: "Tous les siècles",
+    allStatuses: "Tous",
+    currentOnly: "Maire en exercice seulement",
+    actingOnly: "Maires par intérim seulement",
+    reset: "Effacer les filtres",
+    count: (n: number) => `${n} ${plural(n, "mandat", "mandats")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} sur ${total} ${plural(total, "mandat", "mandats")}`,
+    empty: "Aucun mandat ne correspond aux filtres sélectionnés.",
+    timelineTitle: "Chronologie défilante",
+    timelineLead:
+      "Faites défiler horizontalement pour parcourir chaque mandat. La liste détaillée ci-dessous reste filtrable.",
+    detailsTitle: "Liste détaillée",
+    sourcesTitle: "Vérification de la couverture",
+    sourcesText:
+      "Les archives locales contiennent les 65 mandats de la liste municipale officielle, plus le mandat en cours de Kostadin Dimitrov.",
+    termNumber: "Mandat",
+    years: "Années",
+    duration: "Durée approx.",
+    source: "Source / plus d'informations",
+    currentBadge: "En exercice",
+    actingBadge: "Maire par intérim",
+    officialArchive: "Liste officielle",
+    currentRegistry: "Registre administratif",
+    yearsApprox: (n: number) => `${n} ${plural(n, "an", "ans")}`,
+    centuryLabel: (century: number) => `${century}e siècle`,
+    centuryRange: (start: number, end: number) => `${start}–${end}`,
+    openSource: "Ouvrir la source",
+    profile: "Profil",
+    backToAll: "Retour à tous les maires",
+    otherTerms: "Autres mandats de la même personne",
+    moreInfo: "Plus d'informations",
+    biography: "Biographie",
+    imageCredit: "Crédit photo",
+    officialProfile: "Source officielle",
+    referenceSource: "Source complémentaire",
+    moreInfoLink: "Plus d'informations",
+    wikipediaArticle: "Article Wikipédia",
+    wikipediaSearch: "Rechercher sur Wikipédia",
+    birthplaceLabel: "Lieu de naissance",
+    educationLabel: "Formation",
+    rolesLabel: "Autres fonctions exercées",
+    profileLinks: "Profil et liens",
+    connectionsTitle: "Liens entre les maires",
+    connectionsLead:
+      "Quels maires ont servi plusieurs fois et lesquels sont liés par la famille.",
+    multiTermTitle: "Maires à mandats multiples",
+    familyTitle: "Familles et dynasties",
+    legendSame: "Même maire (mandat répété)",
+    legendFamily: "Lien familial",
+    legendKilled: "Tué",
+    legendCurrent: "En exercice",
+    fateHeading: "Destin",
+    fateLabels: {
+      killed: "Tué",
+      executed: "Exécuté",
+      assassinated: "Assassiné",
+      died_in_office: "Décédé en fonction"
+    },
+    portraitNote: "Les portraits historiques sont dans le domaine public.",
+    portraitAlt: (name: string) => `Portrait de ${name}`,
+    birthTitle: "Où sont nés les maires",
+    birthLead:
+      "Les lieux de naissance des maires documentés, sur la carte. Cliquez sur un point pour voir les noms.",
+    birthByTown: "Lieux de naissance par nombre de maires",
+    birthStatTowns: "villes de naissance",
+    birthStatCountries: "pays",
+    birthPopupMayors: "Maires",
+    prevTerm: "Précédent",
+    nextTerm: "Suivant"
+  },
+  projects: {
+    eyebrow: "Projets publics",
+    title: "Projets",
+    lead:
+      "Recherchez par titre et filtrez par catégorie, statut et année. Chaque projet a sa propre page.",
+    dataNotice:
+      "Il n'existe pas de liste publique officielle unique des projets achevés en 2025. Les projets sont donc étiquetés uniquement selon la source disponible : financement démarré/attendu en 2026, nouveau pour 2026, ou reporté avec 0 BGN pour 2025-2026.",
+    search: "Rechercher",
+    searchPlaceholder: "ex. trottoir, parc, arrêt",
+    category: "Catégorie",
+    status: "Statut",
+    year: "Année",
+    reset: "Effacer les filtres",
+    count: (n: number) => `${n} ${plural(n, "projet", "projets")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} sur ${total} ${plural(total, "projet", "projets")}`,
+    empty: "Aucun projet ne correspond aux filtres sélectionnés."
+  },
+  community: {
+    eyebrow: "Participation citoyenne",
+    title: "Initiatives bénévoles",
+    lead:
+      "De vrais groupes et campagnes de Plovdiv qui mobilisent des bénévoles pour le nettoyage, la rénovation et l'entretien des lieux publics.",
+    dataNotice:
+      "Les fiches sont découvertes par recherche IA dans des sources publiques ou ajoutées par un administrateur. Chaque initiative doit conserver des liens visibles vers un groupe, un site web ou une publication publique afin de ne pas être confondue avec un projet municipal officiel sans source.",
+    search: "Rechercher",
+    searchPlaceholder: "ex. arrêts, Maritsa, Lauta",
+    category: "Catégorie",
+    status: "Statut",
+    organizer: "Organisateur",
+    links: "Liens",
+    sources: "Sources",
+    relatedProjects: "Projets publics liés",
+    noRelatedProjects: "Aucun projet public lié.",
+    discovered: "Découvert par",
+    lastChecked: "Dernière vérification",
+    viewSource: "Source",
+    contact: "Contact / groupe",
+    reset: "Effacer les filtres",
+    count: (n: number) => `${n} ${plural(n, "initiative", "initiatives")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} sur ${total} ${plural(total, "initiative", "initiatives")}`,
+    empty: "Aucune initiative ne correspond aux filtres sélectionnés.",
+    adminCta: "Admin : ajouter ou vérifier une initiative",
+    seeProblems: "Voir les problèmes où vous pouvez aider",
+    donate: "Faire un don à l'organisation",
+    acceptsDonations: "Accepte les dons",
+    donationsFilter: "Seulement celles acceptant des dons",
+    donationDisclaimer: "Open Plovdiv n'accepte ni ne traite aucun don. Les liens « Faire un don » mènent directement aux pages propres aux organisations."
+  },
+  project: {
+    breadcrumb: "Projets",
+    keyFacts: "Faits clés",
+    budget: "Budget",
+    year: "Année",
+    funding: "Financement",
+    status: "Statut",
+    district: "Arrondissement",
+    location: "Emplacement",
+    notSpecified: "Non précisé",
+    sources: "Sources",
+    sourcesNote:
+      "Les données du projet sont collectées à partir de sources publiques. Pour les détails officiels, consultez la source originale.",
+    noteLabel: "Remarque",
+    noAmount: "Montant non publié.",
+    approxLocation: "Emplacement approximatif (par arrondissement).",
+    provisional: "Données provisoires",
+    relatedBudget: "Ligne budgétaire liée",
+    noRelatedBudget: "Aucune ligne budgétaire liée.",
+    communityInitiatives: "Initiatives bénévoles",
+    communityInitiativesText:
+      "Groupes ou campagnes citoyennes liés à ce secteur ou à ce thème. Ce n'est pas un statut officiel de projet.",
+    noCommunityInitiatives: "Aucune initiative bénévole liée.",
+    nearbyReports: "Signalements à proximité",
+    noNearby: "Aucun signalement publié dans un rayon de 1 km.",
+    nearbyReportsText:
+      "La carte publique n'affiche que les signalements citoyens modérés. Ouvrez la carte pour voir les signalements actuellement publiés autour de cette zone.",
+    timeline: "Chronologie",
+    noTimeline: "Aucune chronologie ajoutée.",
+    updated: "Mis à jour",
+    mapLabel: "Carte du projet"
+  },
+  fixMap: {
+    eyebrow: "Carte des problèmes",
+    title: "Carte des problèmes de la ville",
+    lead:
+      "Signalements citoyens publiés sans données personnelles. Filtrez par catégorie et statut, consultez les détails et les projets publics à proximité.",
+    notice:
+      "La carte n'affiche que les signalements soumis via le formulaire et approuvés par un modérateur. Le statut indique si une fiche est vérifiée, envoyée, en cours ou close.",
+    category: "Catégorie",
+    allCategories: "Toutes les catégories",
+    status: "Statut",
+    allStatuses: "Tous les statuts",
+    radius: "Projets à proximité",
+    radius500: "dans un rayon de 500 m",
+    radius1: "dans un rayon de 1 km",
+    radius2: "dans un rayon de 2 km",
+    visible: "Fiches visibles",
+    selectTitle: "Sélectionnez un signalement",
+    selectHint:
+      "Cliquez sur un marqueur pour voir les détails, le statut et les projets à proximité.",
+    emptyTitle: "Aucun signalement publié pour l'instant",
+    emptyText:
+      "Les signalements soumis apparaissent ici après examen et approbation par un modérateur.",
+    noFilterResults: "Aucun signalement ne correspond à ces filtres",
+    legend: "Légende",
+    statusesTitle: "Ce que signifient les statuts",
+    officialTitle: "Signalement officiel",
+    officialText:
+      "Pour les vrais problèmes, utilisez les canaux officiels de la municipalité ou de l'administration d'arrondissement. Open Plovdiv accepte les signalements citoyens examinés avant publication, mais ne remplace pas le signalement officiel.",
+    officialLink: "Municipalité de Plovdiv",
+    statusLabel: "Statut",
+    nearbyProjects: "Projets à proximité",
+    noNearbyRadius: "Aucun projet dans le rayon sélectionné.",
+    loadErrorTitle: "Échec du chargement des données",
+    loadErrorText:
+      "Vérifiez que les fichiers JSON publics ont été générés avec make data.",
+    reportCta: "Signaler un problème",
+    communityBadge: "Signalement citoyen",
+    lastUpdated: "Mis à jour",
+    justNow: "à l'instant",
+    liveNote: "La carte se rafraîchit automatiquement toutes les 30 secondes.",
+    newReports: "Nouveaux signalements : {count}",
+    downloadCommunityData: "Télécharger les données des signalements citoyens"
+  },
+  civic: {
+    title: "Comment vous pouvez aider",
+    lead:
+      "Des problèmes différents appellent des actions différentes. Certains relèvent de la municipalité ; d'autres peuvent aussi être améliorés par les citoyens et les bénévoles.",
+    trackOfficial: "Nécessite une action officielle",
+    trackOfficialText:
+      "Les routes dangereuses, l'éclairage, le drainage et les réparations d'infrastructure doivent être pris en charge par la municipalité ou l'institution responsable.",
+    trackCivic: "Ouvert à la participation citoyenne",
+    trackCivicText:
+      "Les nettoyages de déchets, les petites améliorations vertes, le repérage des obstacles à l'accessibilité et la documentation peuvent être organisés par les citoyens et les groupes.",
+    trackBoth: "Responsabilité partagée",
+    whatYouCanDo: "Ce que vous pouvez faire",
+    actReportOfficial: "Le signaler à la municipalité",
+    actJoinGroup: "Rejoindre un groupe citoyen",
+    actAddReport: "Marquer le problème sur la carte",
+    actDocument: "Aider à le documenter avec des photos",
+    actFollow: "Suivre les progrès",
+    groupsTitle: "Groupes qui peuvent aider",
+    noGroups: "Aucun groupe n'est encore répertorié pour cette catégorie.",
+    seeAllGroups: "Voir tous les groupes de bénévoles"
+  },
+  sources: {
+    eyebrow: "Vérifiabilité",
+    title: "Sources des données",
+    lead:
+      "Chaque fiche du site renvoie à une source publique. Voici les principales sources utilisées et à quoi elles servent.",
+    colSource: "Source",
+    colUsedFor: "Utilisée pour",
+    colLimits: "Limites",
+    colAccessed: "Consultée"
+  },
+  methodology: {
+    eyebrow: "Comment ça marche",
+    title: "Méthodologie",
+    lead:
+      "L'IA recherche des sources publiques, extrait des fiches de projet et de budget, et les vérifie au regard des schémas, URL, montants et coordonnées avant publication. Les sources restent visibles, car l'IA peut toujours se tromper.",
+    collectTitle: "Recherche par IA",
+    collectText:
+      "L'IA trouve et compare des sources publiques — le budget et les décisions de la municipalité de Plovdiv, le programme d'investissement et les médias locaux — et chaque fiche inclut un lien vers la source utilisée.",
+    verifyTitle: "Vérification par IA",
+    verifyText:
+      "L'IA extrait et vérifie les champs, statuts, URL, montants, années, coordonnées et l'absence de données personnelles dans les signalements. Les schémas JSON valident ensuite la structure avant la construction.",
+    aiTitle: "IA",
+    aiText:
+      "La recherche, la synthèse et la vérification sont effectuées par l'IA. Lorsqu'une source ne publie pas de montant, de statut ou de fiche d'achèvement, le site doit l'indiquer comme donnée manquante ou provisoire au lieu de l'inventer.",
+    correctTitle: "Corrections",
+    correctText:
+      "Une correction doit ajouter ou modifier une source publique, mettre à jour le JSON organisé et réussir la validation automatisée et la construction."
+  },
+  privacy: {
+    eyebrow: "Aucune donnée personnelle",
+    title: "Confidentialité",
+    lead:
+      "La première version fonctionne sans comptes d'utilisateur, sans commentaires, sans votes ni collecte publique de données personnelles.",
+    notCollectTitle: "Ce que nous ne collectons pas",
+    notCollectText:
+      "Aucun nom, e-mail, numéro de téléphone, compte ni adresse privée exacte dans les signalements.",
+    beforeTitle: "Signalements citoyens",
+    beforeText:
+      "Les signalements collectent une catégorie, un court texte, un point approximatif sur la carte et des photos facultatives. Les adresses IP ne servent qu'à un hachage temporaire pour limiter le débit et ne sont jamais stockées en clair."
+  },
+  moderation: {
+    eyebrow: "Signalements citoyens examinés",
+    title: "Modération",
+    lead:
+      "Les citoyens peuvent soumettre des signalements sur des problèmes de la ville. Chaque signalement est examiné par un éditeur et publié uniquement s'il est sûr et d'intérêt public.",
+    notice:
+      "La modération est prudente : les problèmes urbains vérifiables et sans données personnelles sont publiés — pas les insultes, accusations ou campagnes politiques. Les photos ne sont publiées qu'après examen et peuvent être masquées."
+  },
+  notFound: {
+    eyebrow: "Erreur 404",
+    title: "Page introuvable",
+    text: "Le lien est peut-être obsolète ou mal saisi. Revenez à l'accueil ou choisissez une section."
+  },
+  reportForm: {
+    eyebrow: "Signalement citoyen",
+    title: "Soumettre un signalement",
+    lead:
+      "Décrivez un problème public de la ville et marquez son emplacement sur la carte. Un éditeur examine chaque signalement avant qu'il n'apparaisse sur la carte.",
+    notice:
+      "N'inscrivez aucune donnée personnelle — noms, numéros de téléphone, e-mails ou adresses privées exactes. Les photos sont examinées manuellement et ne sont pas publiées avant approbation.",
+    category: "Catégorie",
+    titleLabel: "Titre court",
+    titlePlaceholder: "ex. trottoir inégal près d'un arrêt",
+    description: "Description",
+    descriptionPlaceholder: "Décrivez le problème brièvement et objectivement.",
+    photos: "Photos",
+    photoHint:
+      "Facultatif, jusqu'à 3 photos, 5 Mo maximum chacune. Les métadonnées EXIF/GPS sont supprimées et les photos converties avant examen.",
+    location: "Emplacement",
+    locationHint: "Cliquez sur la carte pour marquer l'emplacement.",
+    selected: "Point sélectionné",
+    noLocation: "Aucun point sélectionné pour l'instant",
+    confirmNoPersonal: "Je confirme que ce signalement ne contient aucune donnée personnelle.",
+    confirmPublicInterest: "Je confirme qu'il s'agit d'une question d'intérêt public.",
+    submit: "Soumettre le signalement",
+    submitting: "Envoi…",
+    successTitle: "Merci !",
+    successText:
+      "Votre signalement a été reçu et sera examiné avant publication. Numéro de référence :",
+    submitAnother: "Soumettre un autre signalement",
+    backToMap: "Retour à la carte",
+    errorGeneric: "Le signalement n'a pas pu être envoyé. Veuillez réessayer.",
+    errRateLimited: "Trop de signalements en peu de temps. Veuillez réessayer plus tard.",
+    errCategory: "Choisissez une catégorie valide.",
+    errTitle: "Le titre doit comporter entre 3 et 120 caractères.",
+    errDescription: "La description doit comporter entre 10 et 1000 caractères.",
+    errPersonalData: "Le texte contient quelque chose qui ressemble à une donnée personnelle.",
+    errLocation: "Choisissez un point situé dans Plovdiv.",
+    errConfirmation: "Veuillez cocher les deux confirmations.",
+    errTooManyPhotos: "Téléversez au maximum 3 photos.",
+    errPhotoLarge: "Chaque photo doit faire 5 Mo ou moins.",
+    errPhotoType: "Seules les photos JPEG, PNG ou WebP sont autorisées.",
+    errPhotoInvalid: "La photo n'a pas pu être traitée."
+  },
+  admin: {
+    title: "Modération des signalements",
+    lead: "Examinez les signalements citoyens avant publication. L'accès est protégé.",
+    tokenLabel: "Jeton administrateur",
+    tokenPlaceholder: "Saisir le jeton",
+    signIn: "Se connecter",
+    signOut: "Se déconnecter",
+    authError: "Jeton invalide.",
+    refresh: "Actualiser",
+    pendingTitle: "En attente d'examen",
+    noPending: "Aucun signalement en attente.",
+    publicStatus: "Statut public",
+    rejectReason: "Motif de rejet (facultatif)",
+    approve: "Approuver et publier",
+    reject: "Rejeter",
+    publishedTitle: "Signalements publiés",
+    noPublished: "Aucun signalement citoyen publié.",
+    saveStatus: "Enregistrer le statut",
+    editDetails: "Détails du signalement",
+    kind: "Type de fiche",
+    kindFix: "Signalement de problème",
+    kindHistory: "Contribution historique",
+    saveDetails: "Enregistrer les détails",
+    titleBg: "Titre (BG)",
+    titleEn: "Titre (EN, facultatif)",
+    descriptionBg: "Description (BG)",
+    descriptionEn: "Description (EN, facultatif)",
+    category: "Catégorie",
+    latitude: "Latitude",
+    longitude: "Longitude",
+    addressBg: "Adresse/repère (BG, facultatif)",
+    addressEn: "Adresse/repère (EN, facultatif)",
+    photos: "Photos",
+    hidePhoto: "Masquer la photo",
+    hiddenPhoto: "Photo masquée",
+    moderationWarning:
+      "Ne publiez les photos que si elles ne contiennent ni visages, ni enfants, ni plaques d'immatriculation, ni documents, ni intérieurs privés, ni informations personnelles.",
+    submitted: "Soumis",
+    loading: "Chargement…",
+    actionError: "L'action a échoué."
+  },
+  adminCommunity: {
+    title: "Initiatives bénévoles",
+    lead:
+      "Ajoutez et mettez à jour de vrais groupes citoyens et campagnes de bénévoles avec des liens publics.",
+    tokenLabel: "Jeton administrateur",
+    tokenPlaceholder: "Saisir le jeton",
+    signIn: "Se connecter",
+    signOut: "Se déconnecter",
+    authError: "Jeton invalide.",
+    refresh: "Actualiser",
+    discoveryTitle: "Recherche IA/en ligne",
+    discoveryLead:
+      "Recherchez des pages et publications publiques. Les résultats ne font que suggérer des sources ; un administrateur choisit ce qu'il enregistre.",
+    queryLabel: "Rechercher",
+    queryPlaceholder: "ex. bénévoles Plovdiv nettoyage arrêts de bus",
+    find: "Rechercher en ligne",
+    sourceUrl: "URL de la source",
+    inspectUrl: "Inspecter l'URL",
+    noCandidates: "Aucun résultat trouvé.",
+    useCandidate: "Utiliser comme source",
+    formTitle: "Ajouter ou mettre à jour une initiative",
+    id: "ID (facultatif)",
+    titleBg: "Titre (BG)",
+    titleEn: "Titre (EN)",
+    summaryBg: "Résumé (BG)",
+    summaryEn: "Résumé (EN, facultatif)",
+    category: "Catégorie",
+    status: "Statut",
+    organizerBg: "Organisateur (BG)",
+    organizerEn: "Organisateur (EN, facultatif)",
+    organizerType: "Type d'organisateur",
+    website: "Site web",
+    facebook: "Facebook",
+    donationUrl: "Lien de don (facultatif)",
+    callToActionBg: "Appel à l'action (BG, facultatif)",
+    callToActionEn: "Appel à l'action (EN, facultatif)",
+    addressBg: "Adresse/zone (BG)",
+    addressEn: "Adresse/zone (EN, facultatif)",
+    latitude: "Latitude",
+    longitude: "Longitude",
+    relatedProjects: "ID de projets liés (séparés par des virgules)",
+    tags: "Étiquettes (séparées par des virgules)",
+    sourceTitle: "Titre de la source",
+    sourceUrlLabel: "Lien de la source",
+    save: "Enregistrer l'initiative",
+    saved: "Initiative enregistrée.",
+    existingTitle: "Initiatives enregistrées",
+    noExisting: "Aucune initiative enregistrée.",
+    edit: "Modifier",
+    loading: "Chargement…",
+    actionError: "L'action a échoué."
+  }
+};
+
+export const ui = { bg, en, de, fr } as const;
 
 export type CategoryKey =
   | "roads"
@@ -2189,6 +2885,27 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     source_tip: "Quelle/Archivhinweis",
     history_correction: "Historische Korrektur",
     other: "Sonstiges"
+  },
+  fr: {
+    roads: "Voirie",
+    pavement: "Trottoirs",
+    street_lighting: "Éclairage",
+    parks: "Parcs",
+    waste: "Propreté",
+    public_transport: "Transports",
+    accessibility: "Accessibilité",
+    drainage: "Drainage",
+    culture: "Culture",
+    education: "Éducation",
+    civic: "Initiatives citoyennes",
+    environment: "Environnement",
+    social: "Action sociale",
+    sport: "Sport",
+    historic_photo: "Photo historique",
+    oral_memory: "Témoignage oral",
+    source_tip: "Source/piste d'archives",
+    history_correction: "Correction historique",
+    other: "Autre"
   }
 };
 
@@ -2276,6 +2993,16 @@ export const projectStatusLabels: Record<Lang, Record<string, string>> = {
     delayed: "Verzögert",
     postponed: "Verschoben",
     unknown: "Unbekannt"
+  },
+  fr: {
+    planned: "Planifié",
+    funded: "Financé",
+    contracted: "Sous contrat",
+    in_progress: "En cours",
+    completed: "Achevé",
+    delayed: "Retardé",
+    postponed: "Reporté",
+    unknown: "Inconnu"
   }
 };
 
@@ -2300,6 +3027,13 @@ export const communityStatusLabels: Record<Lang, Record<string, string>> = {
     completed: "Abgeschlossen",
     planned: "Geplant",
     unknown: "Unbekannter Status"
+  },
+  fr: {
+    active: "Active",
+    recurring: "Récurrente",
+    completed: "Achevée",
+    planned: "Planifiée",
+    unknown: "Statut inconnu"
   }
 };
 
@@ -2327,6 +3061,14 @@ export const fixStatusLabels: Record<Lang, Record<string, string>> = {
     in_progress: "In Bearbeitung",
     fixed: "Behoben",
     closed: "Geschlossen"
+  },
+  fr: {
+    unverified: "Non vérifié",
+    verified: "Vérifié",
+    sent_to_municipality: "Envoyé",
+    in_progress: "En cours",
+    fixed: "Résolu",
+    closed: "Clôturé"
   }
 };
 
@@ -2354,6 +3096,14 @@ export const fixStatusDescriptions: Record<Lang, Record<string, string>> = {
     in_progress: "Eine laufende Reparatur oder Prüfung ist vermerkt.",
     fixed: "Als behoben markiert.",
     closed: "Ohne aktiven nächsten Schritt geschlossen."
+  },
+  fr: {
+    unverified: "Le signalement est publié mais pas encore vérifié de manière indépendante.",
+    verified: "Vérifié par un éditeur ou une source publique.",
+    sent_to_municipality: "Marqué comme envoyé à une institution.",
+    in_progress: "Une réparation ou une vérification en cours est notée.",
+    fixed: "Marqué comme résolu.",
+    closed: "Clôturé sans étape suivante active."
   }
 };
 
@@ -2385,6 +3135,12 @@ export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
     municipal_capital: "Investitionsprogramm (kommunal)",
     state_subsidy: "Zweckgebundene staatliche Zuweisung",
     eu_program: "EU-Programm"
+  },
+  fr: {
+    municipal_budget: "Budget municipal",
+    municipal_capital: "Programme d'investissement municipal",
+    state_subsidy: "Subvention ciblée de l'État",
+    eu_program: "Programme de l'UE"
   }
 };
 
@@ -2427,88 +3183,106 @@ export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
     "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5": "TrafficNews — Rekordzahl an Freiwilligen bei „Mission Lauta“ 5",
     "БНТ — почистват квартал „Столипиново“": "BNT — Reinigung im Viertel Stolipinovo",
     "Радио Пловдив — доброволци чистят и облагородяват Столипиново": "Radio Plovdiv — Freiwillige reinigen und verschönern Stolipinovo"
+  },
+  fr: {
+    "Община Пловдив — представяне на Бюджет 2025": "Municipalité de Plovdiv — présentation du budget 2025",
+    "TrafficNews — бюджет на Пловдив за 2025 г.": "TrafficNews — budget de Plovdiv pour 2025",
+    "TrafficNews — проектобюджет 2026 и замразени проекти": "TrafficNews — projet de budget 2026 et projets gelés",
+    "Под тепето — капиталова програма за 2026 г.": "Pod tepeto — programme d'investissement 2026",
+    "Община Пловдив - Кметове на Пловдив": "Municipalité de Plovdiv — Maires de Plovdiv",
+    "Административен регистър - кмет на Община Пловдив": "Registre administratif — Maire de la municipalité de Plovdiv",
+    "Plovdiv24 — доброволци се заемат с реновирането на спирки": "Plovdiv24 — des bénévoles entreprennent la rénovation des arrêts",
+    "NOVA — доброволци реновират автобусни спирки": "NOVA — des bénévoles rénovent les arrêts de bus",
+    "Plovdiv24 — търсят се доброволци за почистване на 11 км от река Марица": "Plovdiv24 — recherche de bénévoles pour nettoyer 11 km de la rivière Maritsa",
+    "BG Be Active — контакт": "BG Be Active — contact",
+    "Красив Пловдив — будни граждани с кауза": "Krasiv Plovdiv — des citoyens engagés avec une cause",
+    "Красив Пловдив — начало": "Krasiv Plovdiv — accueil",
+    "Община Пловдив — „Мисия Лаута 5“": "Municipalité de Plovdiv — « Mission Lauta 5 »",
+    "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5": "TrafficNews — un nombre record de bénévoles à « Mission Lauta » 5",
+    "БНТ — почистват квартал „Столипиново“": "BNT — nettoyage du quartier Stolipinovo",
+    "Радио Пловдив — доброволци чистят и облагородяват Столипиново": "Radio Plovdiv — des bénévoles nettoient et embellissent Stolipinovo"
   }
 };
 
 // Shared person-role tags (objective: one source of truth for People + History).
 // Adding a locale to `Lang` forces a translation here via the Record<Lang> type.
 export const roleLabels: Record<string, Record<Lang, string>> = {
-  academic: { bg: "академик", en: "academic", de: "Akademiker" },
-  actor: { bg: "актьор", en: "actor", de: "Schauspieler" },
-  art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker" },
-  artist: { bg: "художник", en: "artist", de: "Künstler" },
-  athlete: { bg: "спортист", en: "athlete", de: "Sportler" },
-  basketball_player: { bg: "баскетболист", en: "basketball player", de: "Basketballspieler" },
-  boxer: { bg: "боксьор", en: "boxer", de: "Boxer" },
-  canoeist: { bg: "кануист", en: "canoeist", de: "Kanute" },
-  chef: { bg: "готвач", en: "chef", de: "Koch" },
-  chess_player: { bg: "шахматист", en: "chess player", de: "Schachspieler" },
-  choreographer: { bg: "хореограф", en: "choreographer", de: "Choreograf" },
-  clergy: { bg: "духовник", en: "clergy", de: "Geistlicher" },
-  composer: { bg: "композитор", en: "composer", de: "Komponist" },
-  conductor: { bg: "диригент", en: "conductor", de: "Dirigent" },
-  cultural_manager: { bg: "културен мениджър", en: "cultural manager", de: "Kulturmanager" },
-  designer: { bg: "дизайнер", en: "designer", de: "Designer" },
-  diplomat: { bg: "дипломат", en: "diplomat", de: "Diplomat" },
-  economist: { bg: "икономист", en: "economist", de: "Ökonom" },
-  educator: { bg: "педагог", en: "educator", de: "Pädagoge" },
-  electrical_engineer: { bg: "електроинженер", en: "electrical engineer", de: "Elektroingenieur" },
-  engineer: { bg: "инженер", en: "engineer", de: "Ingenieur" },
-  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler" },
-  fencer: { bg: "фехтовач", en: "fencer", de: "Fechter" },
-  film_director: { bg: "филмов режисьор", en: "film director", de: "Filmregisseur" },
-  first_lady: { bg: "първа дама", en: "first lady", de: "First Lady" },
-  football_referee: { bg: "футболен съдия", en: "football referee", de: "Fußballschiedsrichter" },
-  footballer: { bg: "футболист", en: "footballer", de: "Fußballspieler" },
-  general: { bg: "генерал", en: "general", de: "General" },
-  geographer: { bg: "географ", en: "geographer", de: "Geograf" },
-  gymnast: { bg: "гимнастик", en: "gymnast", de: "Turner" },
-  high_jumper: { bg: "скачач на височина", en: "high jumper", de: "Hochspringer" },
-  illustrator: { bg: "илюстратор", en: "illustrator", de: "Illustrator" },
-  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower", de: "Speerwerfer" },
-  journalist: { bg: "журналист", en: "journalist", de: "Journalist" },
-  jurist: { bg: "юрист", en: "jurist", de: "Jurist" },
-  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist", de: "Kampfsportler" },
-  mathematician: { bg: "математик", en: "mathematician", de: "Mathematiker" },
-  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister" },
-  merchant: { bg: "търговец", en: "merchant", de: "Kaufmann" },
-  military_officer: { bg: "офицер", en: "military officer", de: "Offizier" },
-  mineralogist: { bg: "минералог", en: "mineralogist", de: "Mineraloge" },
-  missionary: { bg: "мисионер", en: "missionary", de: "Missionar" },
-  model: { bg: "модел", en: "model", de: "Model" },
-  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete", de: "Moderner Fünfkämpfer" },
-  musician: { bg: "музикант", en: "musician", de: "Musiker" },
-  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger" },
-  painter: { bg: "живописец", en: "painter", de: "Maler" },
-  paleontologist: { bg: "палеонтолог", en: "paleontologist", de: "Paläontologe" },
-  patriarch: { bg: "патриарх", en: "patriarch", de: "Patriarch" },
-  philosopher: { bg: "философ", en: "philosopher", de: "Philosoph" },
-  physicist: { bg: "физик", en: "physicist", de: "Physiker" },
-  pianist: { bg: "пианист", en: "pianist", de: "Pianist" },
-  poet: { bg: "поет", en: "poet", de: "Dichter" },
-  politician: { bg: "политик", en: "politician", de: "Politiker" },
-  priest: { bg: "свещеник", en: "priest", de: "Priester" },
-  printmaker: { bg: "график", en: "printmaker", de: "Grafiker" },
-  producer: { bg: "продуцент", en: "producer", de: "Produzent" },
-  public_figure: { bg: "обществена фигура", en: "public figure", de: "Person des öffentlichen Lebens" },
-  racing_driver: { bg: "автомобилен състезател", en: "racing driver", de: "Rennfahrer" },
-  revolutionary: { bg: "революционер", en: "revolutionary", de: "Revolutionär" },
-  rower: { bg: "гребец", en: "rower", de: "Ruderer" },
-  saint: { bg: "светец", en: "saint", de: "Heiliger" },
-  scholar: { bg: "учен", en: "scholar", de: "Gelehrter" },
-  scientist: { bg: "учен", en: "scientist", de: "Wissenschaftler" },
-  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor" },
-  sculptor: { bg: "скулптор", en: "sculptor", de: "Bildhauer" },
-  singer: { bg: "певец", en: "singer", de: "Sänger" },
-  sports_shooter: { bg: "спортен стрелец", en: "sport shooter", de: "Sportschütze" },
-  swimmer: { bg: "плувец", en: "swimmer", de: "Schwimmer" },
-  tennis_player: { bg: "тенисист", en: "tennis player", de: "Tennisspieler" },
-  theatre_director: { bg: "театрален режисьор", en: "theatre director", de: "Theaterregisseur" },
-  violinist: { bg: "цигулар", en: "violinist", de: "Geiger" },
-  visual_artist: { bg: "визуален художник", en: "visual artist", de: "Bildender Künstler" },
-  volleyball_player: { bg: "волейболист", en: "volleyball player", de: "Volleyballspieler" },
-  weightlifter: { bg: "щангист", en: "weightlifter", de: "Gewichtheber" },
-  wrestler: { bg: "борец", en: "wrestler", de: "Ringer" },
-  writer: { bg: "писател", en: "writer", de: "Schriftsteller" },
-  zoologist: { bg: "зоолог", en: "zoologist", de: "Zoologe" }
+  academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien" },
+  actor: { bg: "актьор", en: "actor", de: "Schauspieler", fr: "acteur" },
+  art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker", fr: "historien de l'art" },
+  artist: { bg: "художник", en: "artist", de: "Künstler", fr: "artiste" },
+  athlete: { bg: "спортист", en: "athlete", de: "Sportler", fr: "athlète" },
+  basketball_player: { bg: "баскетболист", en: "basketball player", de: "Basketballspieler", fr: "basketteur" },
+  boxer: { bg: "боксьор", en: "boxer", de: "Boxer", fr: "boxeur" },
+  canoeist: { bg: "кануист", en: "canoeist", de: "Kanute", fr: "canoéiste" },
+  chef: { bg: "готвач", en: "chef", de: "Koch", fr: "chef cuisinier" },
+  chess_player: { bg: "шахматист", en: "chess player", de: "Schachspieler", fr: "joueur d'échecs" },
+  choreographer: { bg: "хореограф", en: "choreographer", de: "Choreograf", fr: "chorégraphe" },
+  clergy: { bg: "духовник", en: "clergy", de: "Geistlicher", fr: "ecclésiastique" },
+  composer: { bg: "композитор", en: "composer", de: "Komponist", fr: "compositeur" },
+  conductor: { bg: "диригент", en: "conductor", de: "Dirigent", fr: "chef d'orchestre" },
+  cultural_manager: { bg: "културен мениджър", en: "cultural manager", de: "Kulturmanager", fr: "gestionnaire culturel" },
+  designer: { bg: "дизайнер", en: "designer", de: "Designer", fr: "designer" },
+  diplomat: { bg: "дипломат", en: "diplomat", de: "Diplomat", fr: "diplomate" },
+  economist: { bg: "икономист", en: "economist", de: "Ökonom", fr: "économiste" },
+  educator: { bg: "педагог", en: "educator", de: "Pädagoge", fr: "pédagogue" },
+  electrical_engineer: { bg: "електроинженер", en: "electrical engineer", de: "Elektroingenieur", fr: "ingénieur électricien" },
+  engineer: { bg: "инженер", en: "engineer", de: "Ingenieur", fr: "ingénieur" },
+  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler", fr: "cavalier" },
+  fencer: { bg: "фехтовач", en: "fencer", de: "Fechter", fr: "escrimeur" },
+  film_director: { bg: "филмов режисьор", en: "film director", de: "Filmregisseur", fr: "réalisateur" },
+  first_lady: { bg: "първа дама", en: "first lady", de: "First Lady", fr: "première dame" },
+  football_referee: { bg: "футболен съдия", en: "football referee", de: "Fußballschiedsrichter", fr: "arbitre de football" },
+  footballer: { bg: "футболист", en: "footballer", de: "Fußballspieler", fr: "footballeur" },
+  general: { bg: "генерал", en: "general", de: "General", fr: "général" },
+  geographer: { bg: "географ", en: "geographer", de: "Geograf", fr: "géographe" },
+  gymnast: { bg: "гимнастик", en: "gymnast", de: "Turner", fr: "gymnaste" },
+  high_jumper: { bg: "скачач на височина", en: "high jumper", de: "Hochspringer", fr: "sauteur en hauteur" },
+  illustrator: { bg: "илюстратор", en: "illustrator", de: "Illustrator", fr: "illustrateur" },
+  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower", de: "Speerwerfer", fr: "lanceur de javelot" },
+  journalist: { bg: "журналист", en: "journalist", de: "Journalist", fr: "journaliste" },
+  jurist: { bg: "юрист", en: "jurist", de: "Jurist", fr: "juriste" },
+  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist", de: "Kampfsportler", fr: "artiste martial" },
+  mathematician: { bg: "математик", en: "mathematician", de: "Mathematiker", fr: "mathématicien" },
+  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister", fr: "maire" },
+  merchant: { bg: "търговец", en: "merchant", de: "Kaufmann", fr: "marchand" },
+  military_officer: { bg: "офицер", en: "military officer", de: "Offizier", fr: "officier" },
+  mineralogist: { bg: "минералог", en: "mineralogist", de: "Mineraloge", fr: "minéralogiste" },
+  missionary: { bg: "мисионер", en: "missionary", de: "Missionar", fr: "missionnaire" },
+  model: { bg: "модел", en: "model", de: "Model", fr: "mannequin" },
+  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete", de: "Moderner Fünfkämpfer", fr: "pentathlonien moderne" },
+  musician: { bg: "музикант", en: "musician", de: "Musiker", fr: "musicien" },
+  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger", fr: "chanteur d'opéra" },
+  painter: { bg: "живописец", en: "painter", de: "Maler", fr: "peintre" },
+  paleontologist: { bg: "палеонтолог", en: "paleontologist", de: "Paläontologe", fr: "paléontologue" },
+  patriarch: { bg: "патриарх", en: "patriarch", de: "Patriarch", fr: "patriarche" },
+  philosopher: { bg: "философ", en: "philosopher", de: "Philosoph", fr: "philosophe" },
+  physicist: { bg: "физик", en: "physicist", de: "Physiker", fr: "physicien" },
+  pianist: { bg: "пианист", en: "pianist", de: "Pianist", fr: "pianiste" },
+  poet: { bg: "поет", en: "poet", de: "Dichter", fr: "poète" },
+  politician: { bg: "политик", en: "politician", de: "Politiker", fr: "politicien" },
+  priest: { bg: "свещеник", en: "priest", de: "Priester", fr: "prêtre" },
+  printmaker: { bg: "график", en: "printmaker", de: "Grafiker", fr: "graveur" },
+  producer: { bg: "продуцент", en: "producer", de: "Produzent", fr: "producteur" },
+  public_figure: { bg: "обществена фигура", en: "public figure", de: "Person des öffentlichen Lebens", fr: "personnalité publique" },
+  racing_driver: { bg: "автомобилен състезател", en: "racing driver", de: "Rennfahrer", fr: "pilote automobile" },
+  revolutionary: { bg: "революционер", en: "revolutionary", de: "Revolutionär", fr: "révolutionnaire" },
+  rower: { bg: "гребец", en: "rower", de: "Ruderer", fr: "rameur" },
+  saint: { bg: "светец", en: "saint", de: "Heiliger", fr: "saint" },
+  scholar: { bg: "учен", en: "scholar", de: "Gelehrter", fr: "érudit" },
+  scientist: { bg: "учен", en: "scientist", de: "Wissenschaftler", fr: "scientifique" },
+  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor", fr: "scénariste" },
+  sculptor: { bg: "скулптор", en: "sculptor", de: "Bildhauer", fr: "sculpteur" },
+  singer: { bg: "певец", en: "singer", de: "Sänger", fr: "chanteur" },
+  sports_shooter: { bg: "спортен стрелец", en: "sport shooter", de: "Sportschütze", fr: "tireur sportif" },
+  swimmer: { bg: "плувец", en: "swimmer", de: "Schwimmer", fr: "nageur" },
+  tennis_player: { bg: "тенисист", en: "tennis player", de: "Tennisspieler", fr: "joueur de tennis" },
+  theatre_director: { bg: "театрален режисьор", en: "theatre director", de: "Theaterregisseur", fr: "metteur en scène" },
+  violinist: { bg: "цигулар", en: "violinist", de: "Geiger", fr: "violoniste" },
+  visual_artist: { bg: "визуален художник", en: "visual artist", de: "Bildender Künstler", fr: "artiste visuel" },
+  volleyball_player: { bg: "волейболист", en: "volleyball player", de: "Volleyballspieler", fr: "volleyeur" },
+  weightlifter: { bg: "щангист", en: "weightlifter", de: "Gewichtheber", fr: "haltérophile" },
+  wrestler: { bg: "борец", en: "wrestler", de: "Ringer", fr: "lutteur" },
+  writer: { bg: "писател", en: "writer", de: "Schriftsteller", fr: "écrivain" },
+  zoologist: { bg: "зоолог", en: "zoologist", de: "Zoologe", fr: "zoologiste" }
 };

@@ -16,9 +16,9 @@ const statuses = Object.keys(projectStatusLabels[lang]);
 const years = Array.from(new Set(projects.map((p) => p.budget.year))).sort((a, b) => b - a);
 
 const config = {
-  of: lang === "bg" ? "от" : lang === "de" ? "von" : "of",
-  one: lang === "bg" ? "проект" : lang === "de" ? "Projekt" : "project",
-  many: lang === "bg" ? "проекта" : lang === "de" ? "Projekte" : "projects",
+  of: lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : "of",
+  one: lang === "bg" ? "проект" : lang === "de" ? "Projekt" : lang === "fr" ? "projet" : "project",
+  many: lang === "bg" ? "проекта" : lang === "de" ? "Projekte" : lang === "fr" ? "projets" : "projects",
   empty: t.projects.empty
 };
 

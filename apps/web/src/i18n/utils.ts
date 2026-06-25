@@ -13,7 +13,8 @@ export const prefixedLocales = localeCodes.filter((code) => code !== defaultLang
 const intlLocaleByLang: Record<Lang, string> = {
   bg: "bg-BG",
   en: "en-GB",
-  de: "de-DE"
+  de: "de-DE",
+  fr: "fr-FR"
 };
 const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builder"]);
 

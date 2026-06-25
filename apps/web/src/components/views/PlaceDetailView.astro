@@ -75,6 +75,33 @@ const labels =
         noArchive:
           "Für diesen Ort gibt es noch keinen eigenen Archiv- oder Damals/heute-Datensatz. Das Hauptbild, die Koordinaten und die Quellen bleiben veröffentlicht."
       }
+      : lang === "fr"
+      ? {
+        back: "Tous les lieux",
+        facts: "Données",
+        currentStatus: "Statut actuel",
+        visit: "Visite et orientation",
+        coordinates: "Coordonnées",
+        openMap: "Ouvrir la carte",
+        built: "Construction/date",
+        architect: "Architecte",
+        builder: "Constructeur",
+        creator: "Architecte/constructeur",
+        source: "Source",
+        sources: "Sources",
+        mediaLicense: "Licence de l'image",
+        mediaFile: "Fichier média",
+        mediaCredit: "Crédit",
+        matchQuality: "Correspondance",
+        archiveTitle: "Archives de ce lieu",
+        thenNowTitle: "Avant/après",
+        thenLabel: "Avant",
+        nowLabel: "Après",
+        eventsTitle: "Événements liés",
+        storiesTitle: "Récits liés",
+        noArchive:
+          "Aucune fiche d'archives ou avant/après distincte n'est encore disponible pour ce lieu. L'image principale, les coordonnées et les sources restent publiées."
+      }
       : {
         back: "All places",
         facts: "Facts",
@@ -118,6 +145,12 @@ const matchQualityLabels: Record<string, string> =
         same_place_approximate_viewpoint: "gleicher Ort, ungefährer Blickwinkel",
         same_place_close_viewpoint: "gleicher Ort, ähnlicher Blickwinkel",
         city_context: "Stadtkontext"
+      }
+      : lang === "fr"
+      ? {
+        same_place_approximate_viewpoint: "même lieu, point de vue approximatif",
+        same_place_close_viewpoint: "même lieu, point de vue proche",
+        city_context: "contexte urbain"
       }
       : {
         same_place_approximate_viewpoint: "same place, approximate viewpoint",

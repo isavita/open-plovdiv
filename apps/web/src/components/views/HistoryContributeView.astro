@@ -105,6 +105,54 @@ const labels =
           default: "Der Beitrag konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
         }
       }
+      : lang === "fr"
+      ? {
+        eyebrow: "Archives citoyennes",
+        title: "Soumettre une photo, un souvenir ou une source",
+        lead:
+          "Les contributions historiques entrent dans la même file de modération que les signalements citoyens. Rien n'est publié automatiquement : un éditeur vérifie les données personnelles, les droits d'image et le contexte de la source avant qu'une fiche ne devienne publique.",
+        notice:
+          "Ne soumettez pas de données personnelles, d'adresses privées exactes ou de photos avec des visages sans en détenir les droits de publication. Ajoutez une source, un lien d'archives ou une note de provenance lorsque vous en avez une.",
+        category: "Type de contribution",
+        titleLabel: "Titre court",
+        titlePlaceholder: "ex. ancienne photo de la Djumaya",
+        description: "Description / souvenir",
+        descriptionPlaceholder: "Décrivez ce qui est représenté, la date approximative, l'origine et ce qui doit être vérifié.",
+        sourceUrl: "Source ou lien d'archives",
+        sourceUrlPlaceholder: "https://...",
+        sourceNote: "Note de provenance",
+        sourceNotePlaceholder: "ex. photo de famille, carte postale numérisée, publication d'archives...",
+        photos: "Photos",
+        photoHint:
+          "Facultatif, jusqu'à 3 photos, 5 Mo maximum chacune. Les métadonnées EXIF/GPS sont supprimées et les photos converties avant examen.",
+        location: "Lieu",
+        locationHint: "Cliquez sur la carte si la contribution est liée à un lieu précis.",
+        noLocation: "Aucun point sélectionné pour l'instant",
+        confirmNoPersonal: "Je confirme que cette contribution ne contient aucune donnée personnelle.",
+        confirmPublicInterest: "Je confirme que cette contribution peut être vérifiée et est d'intérêt public.",
+        submit: "Soumettre pour examen",
+        submitting: "Envoi...",
+        successTitle: "Reçu",
+        successText: "La contribution est dans la file de modération. Numéro de référence :",
+        submitAnother: "Soumettre une autre contribution",
+        backToHistory: "Retour à l'histoire",
+        selected: "Point sélectionné",
+        errors: {
+          rate_limited: "Trop d'envois en peu de temps. Veuillez réessayer plus tard.",
+          invalid_category: "Choisissez un type de contribution valide.",
+          invalid_title: "Le titre doit comporter entre 3 et 120 caractères.",
+          invalid_description: "La description doit comporter entre 10 et 1000 caractères.",
+          invalid_source: "La source doit être un lien http/https valide ou une courte note.",
+          contains_personal_data: "Le texte contient quelque chose qui ressemble à une donnée personnelle.",
+          invalid_location: "Choisissez un point situé dans Plovdiv.",
+          missing_confirmation: "Veuillez cocher les deux confirmations.",
+          too_many_photos: "Téléversez au maximum 3 photos.",
+          photo_too_large: "Chaque photo doit faire 5 Mo ou moins.",
+          invalid_photo_type: "Seules les photos JPEG, PNG ou WebP sont autorisées.",
+          invalid_photo: "La photo n'a pas pu être traitée.",
+          default: "La contribution n'a pas pu être envoyée. Veuillez réessayer."
+        }
+      }
       : {
         eyebrow: "Community archive",
         title: "Submit a photo, memory or source",
