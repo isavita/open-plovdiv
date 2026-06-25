@@ -11,7 +11,7 @@ const skipKey = /(^|_)url_en$|wikipedia_en$|review_url_en$/;
 const cyrillic = /[Ѐ-ӿ]/u;
 const latin = /[A-Za-z]/u;
 const numericOnly = /^[-+]?\d+(?:[.,]\d+)?$/;
-const untranslatedFieldBases = new Set(["actor", "architect", "birthplace", "builder", "name"]);
+const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builder"]);
 let protectedNameFixups = [];
 
 const manualTranslations = {
@@ -38,13 +38,30 @@ function* jsonFiles(dir) {
   }
 }
 
-function collect(value, key = "", out = new Set()) {
+function isPersonLikeRecord(record) {
+  return (
+    record.type === "person" ||
+    String(record.id ?? "").startsWith("person-") ||
+    String(record.id ?? "").startsWith("notable-person-") ||
+    Array.isArray(record.roles) ||
+    "birth_year" in record ||
+    "death_year" in record
+  );
+}
+
+function shouldTranslateField(record, base) {
+  if (protectedFieldBases.has(base)) return false;
+  if (base === "name" && isPersonLikeRecord(record)) return false;
+  return true;
+}
+
+function collect(value, key = "", out = new Set(), parentRecord = null) {
   if (Array.isArray(value)) {
-    for (const item of value) collect(item, key, out);
+    for (const item of value) collect(item, key, out, parentRecord);
     return out;
   }
   if (value && typeof value === "object") {
-    for (const [childKey, childValue] of Object.entries(value)) collect(childValue, childKey, out);
+    for (const [childKey, childValue] of Object.entries(value)) collect(childValue, childKey, out, value);
     return out;
   }
   if (typeof value !== "string") return out;
@@ -53,25 +70,29 @@ function collect(value, key = "", out = new Set()) {
   if (numericOnly.test(text)) return out;
   if (key.endsWith("_en") && !skipKey.test(key)) {
     const base = key.slice(0, -3);
-    if (!untranslatedFieldBases.has(base)) out.add(text);
+    if (shouldTranslateField(parentRecord ?? {}, base)) out.add(text);
   }
   if (key === "title" && latin.test(text) && !cyrillic.test(text)) out.add(text);
   return out;
 }
 
-function collectProtectedNames(value, key = "", out = new Set()) {
+function collectProtectedNames(value, out = new Set()) {
   if (Array.isArray(value)) {
-    for (const item of value) collectProtectedNames(item, key, out);
+    for (const item of value) collectProtectedNames(item, out);
     return out;
   }
   if (value && typeof value === "object") {
-    for (const [childKey, childValue] of Object.entries(value)) collectProtectedNames(childValue, childKey, out);
+    if (isPersonLikeRecord(value) && typeof value.name_en === "string") {
+      const name = value.name_en.trim();
+      if (name && !cyrillic.test(name)) out.add(name);
+    }
+    for (const base of protectedFieldBases) {
+      const text = value[`${base}_en`];
+      if (typeof text === "string" && text.trim() && !cyrillic.test(text)) out.add(text.trim());
+    }
+    for (const childValue of Object.values(value)) collectProtectedNames(childValue, out);
     return out;
   }
-  if (typeof value !== "string") return out;
-  const text = value.trim();
-  if (!text || cyrillic.test(text)) return out;
-  if (key.endsWith("_en") && untranslatedFieldBases.has(key.slice(0, -3))) out.add(text);
   return out;
 }
 
@@ -135,7 +156,7 @@ const protectedNames = new Set();
 for (const dir of sourceDirs) {
   for (const file of jsonFiles(path.join(root, dir))) {
     const json = readJson(file);
-    collectProtectedNames(json, "", protectedNames);
+    collectProtectedNames(json, protectedNames);
     collect(json, "", allStrings);
   }
 }

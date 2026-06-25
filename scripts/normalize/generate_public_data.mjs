@@ -10,7 +10,7 @@ const translationsPath = path.join(root, "data/translations/de.json");
 const deTranslations = fs.existsSync(translationsPath)
   ? JSON.parse(fs.readFileSync(translationsPath, "utf8"))
   : {};
-const untranslatedFieldBases = new Set(["actor", "architect", "birthplace", "builder", "name"]);
+const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builder"]);
 
 const files = [
   "projects.json",
@@ -39,6 +39,23 @@ function translateEnToDe(value) {
   return deTranslations[String(value).trim()] ?? null;
 }
 
+function isPersonLikeRecord(record) {
+  return (
+    record.type === "person" ||
+    String(record.id ?? "").startsWith("person-") ||
+    String(record.id ?? "").startsWith("notable-person-") ||
+    Array.isArray(record.roles) ||
+    "birth_year" in record ||
+    "death_year" in record
+  );
+}
+
+function shouldTranslateField(record, base) {
+  if (protectedFieldBases.has(base)) return false;
+  if (base === "name" && isPersonLikeRecord(record)) return false;
+  return true;
+}
+
 function withGermanFields(value) {
   if (Array.isArray(value)) return value.map((item) => withGermanFields(item));
   if (!value || typeof value !== "object") return value;
@@ -48,7 +65,7 @@ function withGermanFields(value) {
   for (const [key, child] of Object.entries(value)) {
     if (!key.endsWith("_en") || typeof child !== "string") continue;
     const base = key.slice(0, -3);
-    if (untranslatedFieldBases.has(base)) continue;
+    if (!shouldTranslateField(value, base)) continue;
     const deKey = `${base}_de`;
     if (typeof out[deKey] === "string" && out[deKey].trim()) continue;
     const translated = translateEnToDe(child);

@@ -15,7 +15,24 @@ const intlLocaleByLang: Record<Lang, string> = {
   en: "en-GB",
   de: "de-DE"
 };
-const untranslatedFieldBases = new Set(["actor", "architect", "birthplace", "builder", "name"]);
+const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builder"]);
+
+function isPersonLikeRecord(record: Record<string, unknown>): boolean {
+  return (
+    record.type === "person" ||
+    String(record.id ?? "").startsWith("person-") ||
+    String(record.id ?? "").startsWith("notable-person-") ||
+    Array.isArray(record.roles) ||
+    "birth_year" in record ||
+    "death_year" in record
+  );
+}
+
+function shouldTranslateField(record: Record<string, unknown>, base: string): boolean {
+  if (protectedFieldBases.has(base)) return false;
+  if (base === "name" && isPersonLikeRecord(record)) return false;
+  return true;
+}
 
 /** Browser/Intl locale for sorting, case folding and number/date formatting. */
 export function localeForLang(lang: Lang): string {
@@ -70,7 +87,7 @@ export function field(
   if (typeof localized === "string" && localized.length > 0) return localized;
   const english = record[`${base}_en`];
   if (typeof english === "string" && english.length > 0) {
-    return lang === "de" && !untranslatedFieldBases.has(base)
+    return lang === "de" && shouldTranslateField(record, base)
       ? translateEnToDe(english) ?? english
       : english;
   }
