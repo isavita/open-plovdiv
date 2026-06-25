@@ -8,7 +8,7 @@ import {
   sourceTitleLabels,
   type Lang
 } from "../i18n/ui";
-import { translateEnToDe } from "../i18n/deTranslations";
+import { translateEn } from "../i18n/deTranslations";
 
 const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR" };
 
@@ -115,16 +115,17 @@ export function districtLabel(value: string | null, lang: Lang = "bg"): string {
 }
 
 export function sourceTitle(title: string, lang: Lang = "bg"): string {
-  return sourceTitleLabels[lang]?.[title] ?? (lang === "de" ? translateEnToDe(title) ?? title : title);
+  return sourceTitleLabels[lang]?.[title] ?? translateEn(title, lang) ?? title;
 }
 
 export function knownHistoryLabel(value: string | null | undefined, lang: Lang = "bg"): string {
   if (!value) return "";
   const direct = knownHistoryText[lang]?.[value];
   if (direct) return direct;
-  if (lang !== "de") return value;
-  const translated = translateEnToDe(value);
+  const translated = translateEn(value, lang);
   if (translated) return translated;
+
+  if (lang !== "de") return value;
 
   return value
     .replace(/^Modern period(,|$)/, "Moderne$1")

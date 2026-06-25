@@ -1,5 +1,5 @@
 import { defaultLang, languages, ui, type Lang } from "./ui";
-import { translateEnToDe } from "./deTranslations";
+import { translateEn } from "./deTranslations";
 
 export { ui, languages, defaultLang };
 export type { Lang };
@@ -88,9 +88,7 @@ export function field(
   if (typeof localized === "string" && localized.length > 0) return localized;
   const english = record[`${base}_en`];
   if (typeof english === "string" && english.length > 0) {
-    return lang === "de" && shouldTranslateField(record, base)
-      ? translateEnToDe(english) ?? english
-      : english;
+    return shouldTranslateField(record, base) ? translateEn(english, lang) ?? english : english;
   }
   const fallback = record[`${base}_bg`];
   if (typeof fallback === "string" && fallback.length > 0) return fallback;

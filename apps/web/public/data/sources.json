@@ -10,8 +10,11 @@
     "limitations_bg": "Официална публикация на общината при представянето на бюджета; при нужда се сверява с приетите бюджетни приложения.",
     "limitations_en": "Official municipal post from the budget presentation; should be cross-checked against the adopted budget appendices when needed.",
     "title_de": "Gemeinde Plovdiv – Präsentation des Haushalts 2025",
+    "title_fr": "Municipalité de Plovdiv — Présentation du budget 2025",
     "used_for_de": "Gesamtbudget 2025, Kapitalprogramm und Sektoranteile.",
-    "limitations_de": "Offizieller Kommunalposten aus der Haushaltsvorlage; sollten bei Bedarf mit den verabschiedeten Haushaltsanhängen abgeglichen werden."
+    "used_for_fr": "Budget total 2025, programme d’investissement et parts sectorielles.",
+    "limitations_de": "Offizieller Kommunalposten aus der Haushaltsvorlage; sollten bei Bedarf mit den verabschiedeten Haushaltsanhängen abgeglichen werden.",
+    "limitations_fr": "Poste municipal officiel dès la présentation du budget ; devraient être recoupés avec les annexes budgétaires adoptées si nécessaire."
   },
   {
     "id": "plovdiv-current-projects",
@@ -24,8 +27,11 @@
     "limitations_bg": "Страницата не публикува единен статус „завършен/в ход“ за всеки проект.",
     "limitations_en": "The page does not publish a single completed/ongoing status per project.",
     "title_de": "Gemeinde Plovdiv – aktuelle Projekte",
+    "title_fr": "Municipalité de Plovdiv — projets en cours",
     "used_for_de": "Liste der aktuellen Projekte der Gemeinde, darunter auch EU-Programme.",
-    "limitations_de": "Die Seite veröffentlicht keinen einzigen abgeschlossenen/laufenden Status pro Projekt."
+    "used_for_fr": "Liste des projets en cours de la municipalité, y compris les programmes européens.",
+    "limitations_de": "Die Seite veröffentlicht keinen einzigen abgeschlossenen/laufenden Status pro Projekt.",
+    "limitations_fr": "La page ne publie pas un seul statut terminé/en cours par projet."
   },
   {
     "id": "plovdiv-obs",
@@ -38,8 +44,11 @@
     "limitations_bg": "Решенията са официални, но са обемни PDF документи.",
     "limitations_en": "Decisions are official but are lengthy PDF documents.",
     "title_de": "Plovdiv Municipal Council (Beschlüsse)",
+    "title_fr": "Conseil municipal de Plovdiv (décisions)",
     "used_for_de": "Budget- und Kapitalprogrammentscheidungen, einschließlich der vorläufigen Schätzung 2026.",
-    "limitations_de": "Entscheidungen sind offiziell, aber lange PDF-Dokumente."
+    "used_for_fr": "Décisions budgétaires et de programmes d’investissement, y compris l’estimation provisoire pour 2026.",
+    "limitations_de": "Entscheidungen sind offiziell, aber lange PDF-Dokumente.",
+    "limitations_fr": "Les décisions sont officielles mais constituent de longs documents PDF."
   },
   {
     "id": "trafficnews-budget-2025",
@@ -52,8 +61,11 @@
     "limitations_bg": "Медийна публикация, базирана на проектобюджета на общината.",
     "limitations_en": "Media report based on the municipality's draft budget.",
     "title_de": "TrafficNews – Budget Plovdiv 2025",
+    "title_fr": "TrafficNews — Budget 2025 de Plovdiv",
     "used_for_de": "Insgesamt 715.154.301 BGN, das Kapitalprogramm und die Projekte beginnen im Jahr 2025.",
-    "limitations_de": "Medienbericht auf Basis des Haushaltsentwurfs der Gemeinde."
+    "used_for_fr": "Total de 715 154 301 BGN, le programme d'investissement et les projets commençant en 2025.",
+    "limitations_de": "Medienbericht auf Basis des Haushaltsentwurfs der Gemeinde.",
+    "limitations_fr": "Reportage médiatique basé sur le projet de budget de la commune."
   },
   {
     "id": "podtepeto-capital-2026",
@@ -66,8 +78,11 @@
     "limitations_bg": "Прогнозен разчет — стойностите подлежат на промяна с приемането на държавния бюджет.",
     "limitations_en": "Provisional estimate — figures may change once the state budget is adopted.",
     "title_de": "Pod tepeto – Kapitalprogramm 2026",
+    "title_fr": "Pod tepeto — Programme d'investissement 2026",
     "used_for_de": "Vorläufiges Kapitalprogramm 2026, Finanzierungsquellen und die beiden staatlichen Förderprojekte.",
-    "limitations_de": "Vorläufige Schätzung – Zahlen können sich ändern, sobald der Staatshaushalt verabschiedet ist."
+    "used_for_fr": "Programme d'investissement provisoire 2026, sources de financement et deux projets subventionnés par l'État.",
+    "limitations_de": "Vorläufige Schätzung – Zahlen können sich ändern, sobald der Staatshaushalt verabschiedet ist.",
+    "limitations_fr": "Estimation provisoire — les chiffres peuvent changer une fois le budget de l'État adopté."
   },
   {
     "id": "darik-euro-budget-2026",
@@ -80,8 +95,11 @@
     "limitations_bg": "Медийна публикация от етапа на гласуване на бюджета.",
     "limitations_en": "Media report from the budget-voting stage.",
     "title_de": "Darik – Plovdivs erster Haushalt in Euro",
+    "title_fr": "Darik — Le premier budget de Plovdiv en euros",
     "used_for_de": "Kontext für den Haushalt 2026 – der erste, der in Euro erstellt wurde.",
-    "limitations_de": "Medienbericht aus der Phase der Haushaltsabstimmung."
+    "used_for_fr": "Contexte du budget 2026 — le premier préparé en euros.",
+    "limitations_de": "Medienbericht aus der Phase der Haushaltsabstimmung.",
+    "limitations_fr": "Reportage des médias sur la phase du vote du budget."
   },
   {
     "id": "public-procurement-register",
@@ -94,8 +112,11 @@
     "limitations_bg": "Изисква търсене по конкретен възложител или предмет на поръчка.",
     "limitations_en": "Requires searching by a specific contracting authority or subject.",
     "title_de": "Register für öffentliches Beschaffungswesen (AOP)",
+    "title_fr": "Registre des marchés publics (AOP)",
     "used_for_de": "Überprüfung öffentlicher Ausschreibungen und Verträge für konkrete Projekte.",
-    "limitations_de": "Erfordert die Suche nach einem bestimmten öffentlichen Auftraggeber oder Subjekt."
+    "used_for_fr": "Vérification des appels d'offres publics et des contrats pour des projets spécifiques.",
+    "limitations_de": "Erfordert die Suche nach einem bestimmten öffentlichen Auftraggeber oder Subjekt.",
+    "limitations_fr": "Nécessite une recherche par un pouvoir adjudicateur ou un sujet spécifique."
   },
   {
     "id": "openstreetmap",
@@ -108,8 +129,11 @@
     "limitations_bg": "Картовите данни се поддържат от общност и може да имат непълноти.",
     "limitations_en": "Map data is community-maintained and may be incomplete.",
     "title_de": "OpenStreetMap",
+    "title_fr": "OuvrirStreetMap",
     "used_for_de": "Kartenbasisebene und räumlicher Kontext.",
-    "limitations_de": "Die Kartendaten werden von der Community gepflegt und sind möglicherweise unvollständig."
+    "used_for_fr": "Couche de base de la carte et contexte spatial.",
+    "limitations_de": "Die Kartendaten werden von der Community gepflegt und sind möglicherweise unvollständig.",
+    "limitations_fr": "Les données cartographiques sont gérées par la communauté et peuvent être incomplètes."
   },
   {
     "id": "trafficnews-frozen-2026",
@@ -122,8 +146,11 @@
     "limitations_bg": "Медийна публикация по проектобюджета/Приложение 3; не е официален регистър на статуса на всеки проект.",
     "limitations_en": "Media report based on the draft budget/Appendix 3; not an official project-by-project status register.",
     "title_de": "TrafficNews – Haushaltsentwurf 2026 und eingefrorene Projekte",
+    "title_fr": "TrafficNews — Projet de budget 2026 et projets gelés",
     "used_for_de": "Projekte, die voraussichtlich im Jahr 2026 gefördert werden, neue Projekte, deren Start im Jahr 2026 erwartet wird, und Projekte mit einer voraussichtlichen Finanzierung von 0 BGN für 2025–2026.",
-    "limitations_de": "Medienbericht auf Basis des Haushaltsentwurfs/Anlage 3; kein offizielles Projekt-für-Projekt-Statusregister."
+    "used_for_fr": "Les projets devraient recevoir un financement en 2026, les nouveaux projets devraient démarrer en 2026 et les projets avec un financement prévu de 0 BGN pour 2025-2026.",
+    "limitations_de": "Medienbericht auf Basis des Haushaltsentwurfs/Anlage 3; kein offizielles Projekt-für-Projekt-Statusregister.",
+    "limitations_fr": "Reportage médiatique basé sur le projet de budget/Annexe 3 ; il ne s’agit pas d’un registre officiel de statut projet par projet."
   },
   {
     "id": "bnr-budget-2019",
@@ -136,8 +163,11 @@
     "limitations_bg": "Медийна публикация от приемането на бюджета.",
     "limitations_en": "Media report from the budget adoption.",
     "title_de": "BNR – verabschiedete den Haushaltsplan für Plovdiv für 2019",
+    "title_fr": "BNR — a adopté le budget de Plovdiv 2019",
     "used_for_de": "Plovdivs Gesamthaushalt 2019 (341.959.020 BGN, angenommen) für den mehrjährigen Trend.",
-    "limitations_de": "Medienbericht von der Haushaltsverabschiedung."
+    "used_for_fr": "Le budget total de Plovdiv pour 2019 (341 959 020 BGN, adopté) pour la tendance pluriannuelle.",
+    "limitations_de": "Medienbericht von der Haushaltsverabschiedung.",
+    "limitations_fr": "Reportage médiatique sur l'adoption du budget."
   },
   {
     "id": "plovdiv24-budget-2009-adopted",
@@ -150,8 +180,11 @@
     "limitations_bg": "Съвременна медийна публикация от гласуването на бюджета; официалното решение/приложения за 2009 г. не са намерени в публичния бюджетен архив към 17.06.2026 г.",
     "limitations_en": "Contemporary media report from the budget vote; the official 2009 decision/appendices were not found in the public budget archive as of 17 June 2026.",
     "title_de": "Plovdiv24.bg – Rekordbudget von 260.702.383 BGN",
+    "title_fr": "Plovdiv24.bg — budget record de 260 702 383 BGN",
     "used_for_de": "Verabschiedetes Gesamtbudget 2009 und Investitionsausgaben 2009 im jährlichen Budgettrend.",
-    "limitations_de": "Zeitgenössischer Medienbericht von der Haushaltsabstimmung; Der offizielle Beschluss bzw. die Anhänge von 2009 waren mit Stand vom 17. Juni 2026 nicht im öffentlichen Haushaltsarchiv zu finden."
+    "used_for_fr": "Adopté le budget total 2009 et les dépenses en capital 2009 dans la tendance budgétaire annuelle.",
+    "limitations_de": "Zeitgenössischer Medienbericht von der Haushaltsabstimmung; Der offizielle Beschluss bzw. die Anhänge von 2009 waren mit Stand vom 17. Juni 2026 nicht im öffentlichen Haushaltsarchiv zu finden.",
+    "limitations_fr": "Reportage des médias contemporains sur le vote du budget ; la décision officielle de 2009 et ses annexes n'étaient pas trouvées dans les archives du budget public au 17 juin 2026."
   },
   {
     "id": "plovdiv-budget-2020",
@@ -164,8 +197,11 @@
     "limitations_bg": "Официална страница; стойността е закръглена (186 млн. държавни + 157 млн. собствени).",
     "limitations_en": "Official page; the figure is rounded (BGN 186M state + BGN 157M local).",
     "title_de": "Gemeinde Plovdiv – Haushalt 2020",
+    "title_fr": "Municipalité de Plovdiv — Budget 2020",
     "used_for_de": "Plovdivs Gesamtbudget 2020 (ca. 343 Mio. BGN) für den mehrjährigen Trend.",
-    "limitations_de": "Offizielle Seite; Die Zahl ist gerundet (186 Mio. BGN staatlich + 157 Mio. BGN lokal)."
+    "used_for_fr": "Le budget total de Plovdiv pour 2020 (environ 343 millions de BGN) pour la tendance pluriannuelle.",
+    "limitations_de": "Offizielle Seite; Die Zahl ist gerundet (186 Mio. BGN staatlich + 157 Mio. BGN lokal).",
+    "limitations_fr": "Page officielle ; le chiffre est arrondi (BGN 186M état + BGN 157M local)."
   },
   {
     "id": "marica-budget-2021",
@@ -178,8 +214,11 @@
     "limitations_bg": "Медийна публикация; първоначално приетата сума по-късно е актуализирана.",
     "limitations_en": "Media report; the initially adopted amount was later updated.",
     "title_de": "Marica – Plovdiv Budget 2021",
+    "title_fr": "Marica — Plovdiv Budget 2021",
     "used_for_de": "Plovdivs Gesamthaushalt 2021 (345.631.629 BGN, wie ursprünglich angenommen) für den mehrjährigen Trend.",
-    "limitations_de": "Medienbericht; Der ursprünglich angenommene Betrag wurde später aktualisiert."
+    "used_for_fr": "Le budget total de Plovdiv pour 2021 (345 631 629 BGN, tel qu'adopté initialement) pour la tendance pluriannuelle.",
+    "limitations_de": "Medienbericht; Der ursprünglich angenommene Betrag wurde später aktualisiert.",
+    "limitations_fr": "Reportage médiatique ; le montant initialement adopté a ensuite été mis à jour."
   },
   {
     "id": "newsbg-budget-2022",
@@ -192,8 +231,11 @@
     "limitations_bg": "Медийна публикация; приетата сума може да се различава след актуализации.",
     "limitations_en": "Media report; the adopted amount may differ after updates.",
     "title_de": "news.bg – verabschiedete den Haushaltsplan für Plovdiv 2022",
+    "title_fr": "news.bg — a adopté le budget de Plovdiv 2022",
     "used_for_de": "Plovdivs Gesamtbudget 2022 (ca. 526 Mio. BGN) für den mehrjährigen Trend.",
-    "limitations_de": "Medienbericht; Der übernommene Betrag kann nach Aktualisierungen abweichen."
+    "used_for_fr": "Le budget total de Plovdiv pour 2022 (environ 526 millions de BGN) pour la tendance pluriannuelle.",
+    "limitations_de": "Medienbericht; Der übernommene Betrag kann nach Aktualisierungen abweichen.",
+    "limitations_fr": "Reportage médiatique ; le montant adopté peut différer après les mises à jour."
   },
   {
     "id": "focus-budget-2023",
@@ -206,8 +248,11 @@
     "limitations_bg": "Медийна публикация по проектобюджета за 2023 г.",
     "limitations_en": "Media report based on the 2023 draft budget.",
     "title_de": "Focus News – Plovdiv-Haushalt 2023",
+    "title_fr": "Focus Actualités — Plovdiv Budget 2023",
     "used_for_de": "Plovdivs Gesamtbudget 2023 (655.255.005 BGN) für den mehrjährigen Trend.",
-    "limitations_de": "Medienbericht auf Basis des Haushaltsentwurfs 2023."
+    "used_for_fr": "Le budget total de Plovdiv pour 2023 (655 255 005 BGN) pour la tendance pluriannuelle.",
+    "limitations_de": "Medienbericht auf Basis des Haushaltsentwurfs 2023.",
+    "limitations_fr": "Reportage médiatique basé sur le projet de budget 2023."
   },
   {
     "id": "marica-budget-2024",
@@ -220,8 +265,11 @@
     "limitations_bg": "Медийна публикация; стойността е приблизителна.",
     "limitations_en": "Media report; the figure is approximate.",
     "title_de": "Marica – Plovdiv Budget 2024",
+    "title_fr": "Marica — Plovdiv Budget 2024",
     "used_for_de": "Plovdivs Gesamtbudget für 2024 (ca. 684 Mio. BGN; ~29 Mio. BGN mehr als 2023).",
-    "limitations_de": "Medienbericht; die Zahl ist ungefähr."
+    "used_for_fr": "Budget total de Plovdiv pour 2024 (environ 684 millions de BGN ; ~ 29 millions de BGN en hausse par rapport à 2023).",
+    "limitations_de": "Medienbericht; die Zahl ist ungefähr.",
+    "limitations_fr": "Reportage médiatique ; le chiffre est approximatif."
   },
   {
     "id": "marica-capital-2024",
@@ -234,8 +282,11 @@
     "limitations_bg": "Медийна публикация по представянето на бюджета от кмета.",
     "limitations_en": "Media report based on the mayor's budget presentation.",
     "title_de": "Marica – Kapitalprogramm Plovdiv 2024",
+    "title_fr": "Marica — Programme d'investissement Plovdiv 2024",
     "used_for_de": "Plovdivs Kapitalprogramm 2024 (123.375.273 BGN) für den Jahrestrend.",
-    "limitations_de": "Medienbericht auf Basis der Haushaltsvorlage des Bürgermeisters."
+    "used_for_fr": "Programme d'investissement de Plovdiv pour 2024 (123 375 273 BGN) pour la tendance annuelle.",
+    "limitations_de": "Medienbericht auf Basis der Haushaltsvorlage des Bürgermeisters.",
+    "limitations_fr": "Reportage médiatique basé sur la présentation du budget du maire."
   },
   {
     "id": "plovdiv-official-budget-archive",
@@ -248,8 +299,11 @@
     "limitations_bg": "Страницата препраща към отделни документи; по-старите решения често са сканирани PDF файлове.",
     "limitations_en": "The page links to separate documents; older decisions are often scanned PDFs.",
     "title_de": "Gemeinde Plovdiv – Gemeindehaushaltsarchiv",
+    "title_fr": "Municipalité de Plovdiv — archives du budget municipal",
     "used_for_de": "Offizieller Index der Haushaltsdokumente und -beschlüsse für 2014-2025.",
-    "limitations_de": "Die Seite verlinkt auf separate Dokumente; Bei älteren Entscheidungen handelt es sich oft um eingescannte PDFs."
+    "used_for_fr": "Index officiel des documents et décisions budgétaires pour 2014-2025.",
+    "limitations_de": "Die Seite verlinkt auf separate Dokumente; Bei älteren Entscheidungen handelt es sich oft um eingescannte PDFs.",
+    "limitations_fr": "La page renvoie à des documents séparés ; les décisions plus anciennes sont souvent des fichiers PDF numérisés."
   },
   {
     "id": "plovdiv-council-budget-decisions-2011-2018",
@@ -262,8 +316,11 @@
     "limitations_bg": "Точните URL адреси са записани във всеки бюджетен ред; част от документите изискват визуална проверка заради сканиран текст.",
     "limitations_en": "Exact URLs are stored on each budget item; some documents require visual checking because they are scans.",
     "title_de": "Haushaltsentscheidungen des Gemeinderats von Plovdiv, 2011–2018",
+    "title_fr": "Décisions budgétaires du conseil municipal de Plovdiv, 2011-2018",
     "used_for_de": "Verabschiedete Gesamtbudgets für 2011–2018 und Kapitalprogramme, sofern gesondert angegeben.",
-    "limitations_de": "Für jeden Budgetposten werden genaue URLs gespeichert; Einige Dokumente erfordern eine visuelle Prüfung, da es sich um Scans handelt."
+    "used_for_fr": "Les budgets totaux adoptés pour 2011-2018 et les programmes d'investissement sont indiqués séparément.",
+    "limitations_de": "Für jeden Budgetposten werden genaue URLs gespeichert; Einige Dokumente erfordern eine visuelle Prüfung, da es sich um Scans handelt.",
+    "limitations_fr": "Les URL exactes sont stockées sur chaque élément budgétaire ; certains documents nécessitent une vérification visuelle car ce sont des scans."
   },
   {
     "id": "plovdiv-mayor-archive",
@@ -276,8 +333,11 @@
     "limitations_bg": "Имената и периодите са публикувани като архивен списък; не съдържа биографични или политически метаданни.",
     "limitations_en": "Names and periods are published as an archive list; it does not include biographical or political metadata.",
     "title_de": "Gemeinde Plovdiv – Bürgermeister von Plovdiv",
+    "title_fr": "Municipalité de Plovdiv — Maires de Plovdiv",
     "used_for_de": "Offizielle Liste der Amtszeiten des Bürgermeisters von 1878 bis 2023.",
-    "limitations_de": "Namen und Zeiträume werden als Archivliste veröffentlicht; es enthält keine biografischen oder politischen Metadaten."
+    "used_for_fr": "Liste officielle des mandats de maire de 1878 à 2023.",
+    "limitations_de": "Namen und Zeiträume werden als Archivliste veröffentlicht; es enthält keine biografischen oder politischen Metadaten.",
+    "limitations_fr": "Les noms et les périodes sont publiés sous forme de liste d'archives ; il n'inclut pas de métadonnées biographiques ou politiques."
   },
   {
     "id": "administrative-register-plovdiv-mayor",
@@ -290,8 +350,11 @@
     "limitations_bg": "Текущ административен регистър; записът може да се промени при бъдещ мандат.",
     "limitations_en": "Current administrative register; the record may change in a future term.",
     "title_de": "Bulgarisches Verwaltungsregister – Bürgermeister der Gemeinde Plovdiv",
+    "title_fr": "Registre administratif bulgare — maire de la municipalité de Plovdiv",
     "used_for_de": "Überprüfung des amtierenden Bürgermeisters und seines Amtsantritts per 17. Juni 2026.",
-    "limitations_de": "Aktuelles Verwaltungsregister; Der Datensatz kann sich in einer zukünftigen Amtszeit ändern."
+    "used_for_fr": "Vérification du maire sortant et date d'entrée en fonction au 17 juin 2026.",
+    "limitations_de": "Aktuelles Verwaltungsregister; Der Datensatz kann sich in einer zukünftigen Amtszeit ändern.",
+    "limitations_fr": "Registre administratif actuel ; le dossier peut changer dans un mandat futur."
   },
   {
     "id": "international-fair-plovdiv-1892",
@@ -304,8 +367,11 @@
     "limitations_bg": "Кратък исторически PDF; не е бюджетен документ.",
     "limitations_en": "Short historical PDF; not a budget document.",
     "title_de": "International Fair Plovdiv – 1892, der Anfang",
+    "title_fr": "Foire internationale de Plovdiv — 1892, le début",
     "used_for_de": "Historischer Rekord für die erste bulgarische Landwirtschafts- und Industrieausstellung in Plovdiv.",
-    "limitations_de": "Kurzes historisches PDF; kein Haushaltsdokument."
+    "used_for_fr": "Record historique de la première exposition agricole et industrielle bulgare à Plovdiv.",
+    "limitations_de": "Kurzes historisches PDF; kein Haushaltsdokument.",
+    "limitations_fr": "Court PDF historique ; pas un document budgétaire."
   },
   {
     "id": "plovdiv-2019-official",
@@ -318,8 +384,11 @@
     "limitations_bg": "Програмна страница, не общински бюджетен регистър.",
     "limitations_en": "Programme website, not a municipal budget register.",
     "title_de": "Plovdiv 2019 – Kulturhauptstadt Europas",
+    "title_fr": "Plovdiv 2019 — Capitale européenne de la culture",
     "used_for_de": "Kontext für den Kulturmonat 1999 und Plovdiv als erste bulgarische Kulturhauptstadt Europas.",
-    "limitations_de": "Programm-Website, kein kommunales Haushaltsregister."
+    "used_for_fr": "Contexte du Mois de la culture 1999 et Plovdiv comme première capitale européenne bulgare de la culture.",
+    "limitations_de": "Programm-Website, kein kommunales Haushaltsregister.",
+    "limitations_fr": "Site Web du programme, pas un registre budgétaire municipal."
   },
   {
     "id": "podtepeto-plovdiv-1999-month-culture-archive",
@@ -332,8 +401,11 @@
     "limitations_bg": "Медийна архивна публикация, която цитира тогавашна публикация на в. „Култура“; не съдържа общински бюджет или разходен отчет.",
     "limitations_en": "Media archive article citing a contemporary Kultura newspaper report; it does not include a municipal budget or expenditure statement.",
     "title_de": "Pod tepeto-Archiv zum Europäischen Kulturmonat Plovdiv 1999",
+    "title_fr": "Archives de Pod tepeto sur le Mois européen de la culture de Plovdiv 1999",
     "used_for_de": "Umfang und Programm des Europäischen Kulturmonats 1999: Teilnehmer, Länder, Veranstaltungen und damit verbundene Veranstaltungsortreparaturen.",
-    "limitations_de": "Medienarchivartikel, der einen zeitgenössischen Kultura-Zeitungsbericht zitiert; es enthält weder einen Gemeindehaushalt noch eine Ausgabenerklärung."
+    "used_for_fr": "Ampleur et programme du Mois européen de la culture 1999 : participants, pays, événements et réparations des lieux y afférents.",
+    "limitations_de": "Medienarchivartikel, der einen zeitgenössischen Kultura-Zeitungsbericht zitiert; es enthält weder einen Gemeindehaushalt noch eine Ausgabenerklärung.",
+    "limitations_fr": "Article d'archives médiatiques citant un article du journal contemporain Kultura ; il ne comprend pas de budget municipal ni de relevé de dépenses."
   },
   {
     "id": "european-commission-ecoc-2019",
@@ -346,8 +418,11 @@
     "limitations_bg": "Публикация за културна програма, без местни бюджетни разбивки.",
     "limitations_en": "Cultural-programme notice without local budget breakdowns.",
     "title_de": "Europäische Kommission – Kulturhauptstädte Europas 2019",
+    "title_fr": "Commission européenne — Capitales européennes de la culture 2019",
     "used_for_de": "Externe Bestätigung, dass Plovdiv und Matera 2019 Kulturhauptstädte Europas waren.",
-    "limitations_de": "Bekanntmachung des Kulturprogramms ohne Aufschlüsselung des örtlichen Budgets."
+    "used_for_fr": "Vérification externe que Plovdiv et Matera étaient capitales européennes de la culture en 2019.",
+    "limitations_de": "Bekanntmachung des Kulturprogramms ohne Aufschlüsselung des örtlichen Budgets.",
+    "limitations_fr": "Avis de programmation culturelle sans ventilation du budget local."
   },
   {
     "id": "plovdiv-council-2010-budget-execution",
@@ -360,8 +435,11 @@
     "limitations_bg": "Това е отчетено изпълнение към 31.12.2010 г., а не първоначално приет бюджет; в графиките е означено отделно.",
     "limitations_en": "This is execution as of 31.12.2010, not the initially adopted budget; it is labelled separately in charts.",
     "title_de": "Beschluss 58 des Gemeinderats von Plovdiv über die Ausführung des Haushaltsplans 2010",
+    "title_fr": "Décision 58 du conseil municipal de Plovdiv sur l'exécution du budget 2010",
     "used_for_de": "Berichtete Ausführung des konsolidierten Haushaltsplans 2010 und Haushaltsberichtskontext.",
-    "limitations_de": "Hierbei handelt es sich um den Ausführungsstand vom 31.12.2010, nicht um den ursprünglich verabschiedeten Haushaltsplan; es wird in Diagrammen gesondert gekennzeichnet."
+    "used_for_fr": "Exécution rapportée du budget consolidé 2010 et contexte du rapport budgétaire.",
+    "limitations_de": "Hierbei handelt es sich um den Ausführungsstand vom 31.12.2010, nicht um den ursprünglich verabschiedeten Haushaltsplan; es wird in Diagrammen gesondert gekennzeichnet.",
+    "limitations_fr": "Il s'agit de l'exécution au 31.12.2010 et non du budget initialement adopté ; il est étiqueté séparément dans les graphiques."
   },
   {
     "id": "bulnao-plovdiv-2002-audit",
@@ -374,8 +452,11 @@
     "limitations_bg": "Документът е стар Word файл и одитира изпълнението само за 01.01-30.09.2002 г.; графиките използват цитираните приети годишни бюджетни стойности, а не частичното деветмесечно изпълнение.",
     "limitations_en": "The document is an old Word file and audits execution only for 01.01-30.09.2002; charts use the cited adopted annual budget values, not the partial nine-month execution.",
     "title_de": "Finanzielle Prüfung des bulgarischen Rechnungshofs für den Haushalt der Gemeinde Plovdiv zum 30. September 2002",
+    "title_fr": "Audit financier du Bureau national de contrôle bulgare du budget de la municipalité de Plovdiv au 30 septembre 2002",
     "used_for_de": "Verabschiedeter Haushaltsplan 2002, Investitionsausgaben 2002 und Prüfungsvorbehalte für die Ausführung zum 30.09.2002.",
-    "limitations_de": "Das Dokument ist eine alte Word-Datei und prüft die Ausführung nur für den Zeitraum 01.01.-30.09.2002; In den Diagrammen werden die genannten angenommenen jährlichen Budgetwerte verwendet, nicht die teilweise neunmonatige Ausführung."
+    "used_for_fr": "Budget 2002 adopté, dépenses d'investissement 2002 et réserves d'audit pour l'exécution au 30.09.2002.",
+    "limitations_de": "Das Dokument ist eine alte Word-Datei und prüft die Ausführung nur für den Zeitraum 01.01.-30.09.2002; In den Diagrammen werden die genannten angenommenen jährlichen Budgetwerte verwendet, nicht die teilweise neunmonatige Ausführung.",
+    "limitations_fr": "Le document est un ancien fichier Word et audite l'exécution uniquement pour la période du 01.01 au 30.09.2002 ; les graphiques utilisent les valeurs budgétaires annuelles adoptées citées, et non l’exécution partielle sur neuf mois."
   },
   {
     "id": "bulnao-plovdiv-property-audit-1998-2005",
@@ -388,8 +469,11 @@
     "limitations_bg": "Документът е одит на управление на имоти, не бюджетен отчет; използва се за управленски контекст и програми, не за бюджетни тотали.",
     "limitations_en": "The document is a property-management audit, not a budget statement; it is used for governance and programme context, not budget totals.",
     "title_de": "Prüfung der kommunalen Immobilienverwaltung und -entsorgung durch den Bulgarischen Rechnungshof, 1998-2005",
+    "title_fr": "Audit du Bureau national d'audit bulgare sur la gestion et la cession des biens municipaux, 1998-2005",
     "used_for_de": "Strategische Pläne für 2001–2006 und 2005–2013 sowie Kontext zur kommunalen Immobilienverwaltung.",
-    "limitations_de": "Bei dem Dokument handelt es sich um eine Prüfung der Immobilienverwaltung, nicht um eine Haushaltsaufstellung. Es wird für Governance- und Programmkontexte verwendet, nicht für Budgetsummen."
+    "used_for_fr": "Plans stratégiques pour 2001-2006 et 2005-2013, plus contexte sur la gestion des propriétés municipales.",
+    "limitations_de": "Bei dem Dokument handelt es sich um eine Prüfung der Immobilienverwaltung, nicht um eine Haushaltsaufstellung. Es wird für Governance- und Programmkontexte verwendet, nicht für Budgetsummen.",
+    "limitations_fr": "Le document est un audit de gestion immobilière et non un état budgétaire ; il est utilisé pour la gouvernance et le contexte du programme, et non pour les totaux budgétaires."
   },
   {
     "id": "bulnao-plovdiv-financial-management-followup-2006-2008",
@@ -402,8 +486,11 @@
     "limitations_bg": "Документът проверява изпълнение на препоръки, а не публикува бюджетни стойности; част от мерките са отчетени като частично или неизпълнени.",
     "limitations_en": "The document checks implementation of recommendations, not budget amounts; some measures are reported as partial or not implemented.",
     "title_de": "Follow-up des bulgarischen Rechnungshofs zur Prüfung des Finanzmanagements der Gemeinde Plovdiv, 2006–2008",
+    "title_fr": "Suivi de l'audit de la gestion financière de la municipalité de Plovdiv par le Bureau national d'audit bulgare, 2006-2008",
     "used_for_de": "Folgemaßnahmen in den Jahren 2009–2010, darunter das jährliche Programm zur kommunalen Liegenschaftsverwaltung 2010.",
-    "limitations_de": "Das Dokument prüft die Umsetzung der Empfehlungen, nicht die Budgetbeträge; Einige Maßnahmen werden als teilweise oder nicht umgesetzt gemeldet."
+    "used_for_fr": "Mesures de suivi en 2009-2010, y compris le programme annuel de gestion des propriétés municipales de 2010.",
+    "limitations_de": "Das Dokument prüft die Umsetzung der Empfehlungen, nicht die Budgetbeträge; Einige Maßnahmen werden als teilweise oder nicht umgesetzt gemeldet.",
+    "limitations_fr": "Le document vérifie la mise en œuvre des recommandations, et non les montants du budget ; certaines mesures sont signalées comme partielles ou non mises en œuvre."
   },
   {
     "id": "strategy-bg-plovdiv-functional-analysis-2009",
@@ -416,8 +503,11 @@
     "limitations_bg": "Функционален анализ, не първичен бюджетен отчет; използваните стойности са конкретни финансови индикатори, а не пълни годишни бюджетни рамки.",
     "limitations_en": "Functional analysis, not a primary budget statement; the values used are specific financial indicators, not full annual budget envelopes.",
     "title_de": "Funktionsanalysebericht für die Stadtverwaltung von Plovdiv, Januar 2009",
+    "title_fr": "Rapport d'analyse fonctionnelle pour l'administration municipale de Plovdiv, janvier 2009",
     "used_for_de": "Für 2005-2007 wurden Kapitalausgaben getätigt und eigene Einnahmen erzielt; Kontext für die Jahresplanung 2009-2010.",
-    "limitations_de": "Funktionsanalyse, keine primäre Haushaltserklärung; Bei den verwendeten Werten handelt es sich um spezifische Finanzindikatoren und nicht um vollständige Jahresbudgetrahmen."
+    "used_for_fr": "Dépenses d'investissement exécutées et recettes propres collectées pour 2005-2007 ; contexte de la planification annuelle en 2009-2010.",
+    "limitations_de": "Funktionsanalyse, keine primäre Haushaltserklärung; Bei den verwendeten Werten handelt es sich um spezifische Finanzindikatoren und nicht um vollständige Jahresbudgetrahmen.",
+    "limitations_fr": "Analyse fonctionnelle, et non un état budgétaire primaire ; les valeurs utilisées sont des indicateurs financiers spécifiques et non des enveloppes budgétaires annuelles complètes."
   },
   {
     "id": "plovdiv-opr-subsequent-evaluation-2007-2013",
@@ -430,8 +520,11 @@
     "limitations_bg": "Сканиран доклад с OCR проверка и визуална проверка на страниците; използван е само за ясно четимите агрегирани стойности, не за извличане на отделни редове от плътните таблици.",
     "limitations_en": "Scanned report checked with OCR and visual page review; used only for clearly readable aggregate values, not to extract individual rows from dense tables.",
     "title_de": "Nachträgliche Bewertung des Gemeindeentwicklungsplans 2007–2013 durch die Plovdiv Municipality",
+    "title_fr": "Évaluation ultérieure par la municipalité de Plovdiv du plan de développement municipal 2007-2013",
     "used_for_de": "Gesamtinvestitionsprogramm 2007-2013, Ausgabenstruktur und Bewertung der Umsetzung des Gemeindeentwicklungsplans.",
-    "limitations_de": "Gescannter Bericht mit OCR und visueller Seitenüberprüfung überprüft; Wird nur für klar lesbare Aggregatwerte verwendet, nicht zum Extrahieren einzelner Zeilen aus dichten Tabellen."
+    "used_for_fr": "Programme global d'investissement en capital 2007-2013, structure des dépenses et évaluation de la mise en œuvre du plan de développement municipal.",
+    "limitations_de": "Gescannter Bericht mit OCR und visueller Seitenüberprüfung überprüft; Wird nur für klar lesbare Aggregatwerte verwendet, nicht zum Extrahieren einzelner Zeilen aus dichten Tabellen.",
+    "limitations_fr": "Rapport numérisé vérifié avec OCR et examen visuel des pages ; utilisé uniquement pour des valeurs globales clairement lisibles, et non pour extraire des lignes individuelles de tableaux denses."
   },
   {
     "id": "plovdiv-eu-operational-programmes-2007-2013",
@@ -444,8 +537,11 @@
     "limitations_bg": "Публикацията смесва подадени, одобрени и получени към момента стойности; данните са програмни/проектни одобрения, не годишни общински бюджети.",
     "limitations_en": "The post mixes submitted, approved and received-to-date values; the figures are programme/project approvals, not annual municipal budgets.",
     "title_de": "Umsetzung von EU-Operationsprogrammprojekten durch die Gemeinde Plovdiv, 2007-2013",
+    "title_fr": "Mise en œuvre par la municipalité de Plovdiv des projets du programme opérationnel de l'UE, 2007-2013",
     "used_for_de": "Genehmigte Projekte des operationellen EU-Programms der Gemeinde Plovdiv für 2007–2013, jährliche genehmigte Projektwerte, Zuschüsse und kommunale Kofinanzierung.",
-    "limitations_de": "Der Beitrag mischt übermittelte, genehmigte und bisher empfangene Werte; Bei den Zahlen handelt es sich um Programm-/Projektgenehmigungen, nicht um jährliche Gemeindehaushalte."
+    "used_for_fr": "Projets approuvés du programme opérationnel de l'UE de la municipalité de Plovdiv pour 2007-2013, valeurs annuelles des projets approuvés, subventions et cofinancement municipal.",
+    "limitations_de": "Der Beitrag mischt übermittelte, genehmigte und bisher empfangene Werte; Bei den Zahlen handelt es sich um Programm-/Projektgenehmigungen, nicht um jährliche Gemeindehaushalte.",
+    "limitations_fr": "Les valeurs des mix post soumis, approuvés et reçus à ce jour ; les chiffres sont des approbations de programmes/projets, et non des budgets municipaux annuels."
   },
   {
     "id": "gradat-plovdiv-2008-draft-budget",
@@ -458,8 +554,11 @@
     "limitations_bg": "Това е вторичен медиен източник за проектобюджет, не официално решение за приет или отчетен бюджет; записът е архивен контекст и не се използва като годишен бюджетен тотал.",
     "limitations_en": "This is a secondary media source on a draft budget, not an official adopted or executed budget decision; the record is archive context and is not used as an annual budget total.",
     "title_de": "Gradat – Gemeinde Plovdiv mit einem Haushaltsentwurf von 218,3 Mio. BGN",
+    "title_fr": "Gradat — Municipalité de Plovdiv avec un projet de budget de 218,3 millions de BGN",
     "used_for_de": "Aktueller Bericht über den Haushaltsentwurf 2008, geplante Investitionsausgaben und spezifische Infrastrukturprioritäten.",
-    "limitations_de": "Hierbei handelt es sich um eine sekundäre Medienquelle zu einem Haushaltsentwurf, nicht um einen offiziell angenommenen oder ausgeführten Haushaltsbeschluss; Der Datensatz steht im Archivkontext und wird nicht als Jahresbudgetsumme verwendet."
+    "used_for_fr": "Rapport contemporain sur le projet de budget 2008, les dépenses d'investissement prévues et les priorités spécifiques en matière d'infrastructures.",
+    "limitations_de": "Hierbei handelt es sich um eine sekundäre Medienquelle zu einem Haushaltsentwurf, nicht um einen offiziell angenommenen oder ausgeführten Haushaltsbeschluss; Der Datensatz steht im Archivkontext und wird nicht als Jahresbudgetsumme verwendet.",
+    "limitations_fr": "Il s’agit d’une source médiatique secondaire sur un projet de budget, et non d’une décision budgétaire officielle adoptée ou exécutée ; l'enregistrement est un contexte d'archive et n'est pas utilisé comme total budgétaire annuel."
   },
   {
     "id": "gradat-plovdiv-2010-draft-budget-infrastructure",
@@ -472,8 +571,11 @@
     "limitations_bg": "Вторичен медиен източник за проектобюджет и планови стойности; не се използва като официално приет или отчетен годишен бюджет.",
     "limitations_en": "Secondary media source on a draft budget and planned amounts; not used as an official adopted or executed annual budget.",
     "title_de": "Gradat – Infrastruktur als Schwerpunkt im Haushaltsentwurf 2010 von Plovdiv",
+    "title_fr": "Gradat : les infrastructures au centre du projet de budget 2010 de Plovdiv",
     "used_for_de": "Kontext für den Haushaltsentwurf 2010, geplante Infrastrukturausgaben und Vergleich mit der gemeldeten Ausführung 2009.",
-    "limitations_de": "Sekundäre Medienquelle zu einem Haushaltsentwurf und geplanten Beträgen; nicht als offiziell verabschiedeter oder ausgeführter Jahreshaushalt verwendet."
+    "used_for_fr": "Contexte du projet de budget 2010, dépenses d'infrastructure prévues et comparaison avec l'exécution rapportée en 2009.",
+    "limitations_de": "Sekundäre Medienquelle zu einem Haushaltsentwurf und geplanten Beträgen; nicht als offiziell verabschiedeter oder ausgeführter Jahreshaushalt verwendet.",
+    "limitations_fr": "Source médiatique secondaire sur un projet de budget et les montants prévus ; pas utilisé comme budget annuel officiel adopté ou exécuté."
   },
   {
     "id": "bulnao-plovdiv-2010-audit",
@@ -486,8 +588,11 @@
     "limitations_bg": "Документът е стар Word файл и описва одитни констатации; конкретните бюджетни редове са взети от решението на Общинския съвет.",
     "limitations_en": "The document is an old Word file and describes audit findings; concrete budget rows are taken from the Municipal Council decision.",
     "title_de": "Prüfungsbericht des bulgarischen Rechnungshofs zum Jahresfinanzbericht 2010 der Gemeinde Plovdiv",
+    "title_fr": "Rapport d'audit du Bureau national d'audit bulgare sur le rapport financier annuel 2010 de la municipalité de Plovdiv",
     "used_for_de": "Überprüfung, dass der Haushaltsvollzugsbericht 2010 geprüft und zertifiziert wurde und keine wesentlichen Fehler aufweist.",
-    "limitations_de": "Das Dokument ist eine alte Word-Datei und beschreibt Prüfungsergebnisse; Konkrete Haushaltszeilen werden dem Gemeinderatsbeschluss entnommen."
+    "used_for_fr": "Vérification que le rapport d'exécution budgétaire 2010 a été audité et certifié sans erreurs matérielles.",
+    "limitations_de": "Das Dokument ist eine alte Word-Datei und beschreibt Prüfungsergebnisse; Konkrete Haushaltszeilen werden dem Gemeinderatsbeschluss entnommen.",
+    "limitations_fr": "Le document est un ancien fichier Word et décrit les conclusions de l'audit ; des lignes budgétaires concrètes sont tirées de la décision du conseil municipal."
   },
   {
     "id": "rim-plovdiv-municipality-1886-1944",
@@ -500,8 +605,11 @@
     "limitations_bg": "Научно историческо изследване, а не първичен бюджетен регистър; старите левови стойности са номинални и не са сравними директно със съвременния BGN.",
     "limitations_en": "Scholarly historical study, not a primary budget register; old lev amounts are nominal and not directly comparable with modern BGN.",
     "title_de": "Plovdiv Regional History Museum – Die Rolle der Gemeinde Plovdiv bei der Stadtentwicklung, 1886-1944",
+    "title_fr": "Musée d'histoire régionale de Plovdiv — Le rôle de la municipalité de Plovdiv dans le développement de la ville, 1886-1944",
     "used_for_de": "Historische Finanz-, Governance- und Programmaufzeichnungen für 1878-1944.",
-    "limitations_de": "Wissenschaftlich-historische Studie, kein primäres Haushaltsregister; Alte Lev-Beträge sind nominal und nicht direkt mit modernen BGN vergleichbar."
+    "used_for_fr": "Documents historiques sur la finance, la gouvernance et les programmes pour 1878-1944.",
+    "limitations_de": "Wissenschaftlich-historische Studie, kein primäres Haushaltsregister; Alte Lev-Beträge sind nominal und nicht direkt mit modernen BGN vergleichbar.",
+    "limitations_fr": "Étude historique scientifique, et non un registre budgétaire primaire ; les anciens montants en lev sont nominaux et ne sont pas directement comparables au BGN moderne."
   },
   {
     "id": "rim-plovdiv-infrastructure-1944-1990",
@@ -514,8 +622,11 @@
     "limitations_bg": "Научно историческо изследване, а не първичен бюджетен регистър; левовите стойности от социалистическия период са номинални и не са директно сравними със съвременния BGN.",
     "limitations_en": "Scholarly historical study, not a primary budget register; socialist-period lev amounts are nominal and not directly comparable with modern BGN.",
     "title_de": "Plovdiv Regional History Museum – Gemeinde Plovdiv und der Aufbau der Stadt- und Tourismusinfrastruktur, 1944-1990",
+    "title_fr": "Musée d'histoire régionale de Plovdiv — La municipalité de Plovdiv et la construction des infrastructures urbaines et touristiques, 1944-1990",
     "used_for_de": "Nachkriegsfinanz-, Governance- und Programmaufzeichnungen für 1944-1990.",
-    "limitations_de": "Wissenschaftlich-historische Studie, kein primäres Haushaltsregister; Die Lev-Beträge aus der sozialistischen Zeit sind nominal und nicht direkt mit dem modernen BGN vergleichbar."
+    "used_for_fr": "Dossiers sur les finances, la gouvernance et les programmes d'après-guerre pour 1944-1990.",
+    "limitations_de": "Wissenschaftlich-historische Studie, kein primäres Haushaltsregister; Die Lev-Beträge aus der sozialistischen Zeit sind nominal und nicht direkt mit dem modernen BGN vergleichbar.",
+    "limitations_fr": "Étude historique scientifique, et non un registre budgétaire primaire ; Les montants du lev de la période socialiste sont nominaux et ne sont pas directement comparables au BGN moderne."
   },
   {
     "id": "plovdiv-council-2011-waste-infrastructure",
@@ -528,8 +639,11 @@
     "limitations_bg": "Решението е изменение на по-ранни решения и описва целево финансирани обекти, не пълен общински бюджет.",
     "limitations_en": "The decision amends earlier decisions and describes targeted funded works, not the full municipal budget.",
     "title_de": "Beschluss 32 des Gemeinderats von Plovdiv vom 28. Januar 2011",
+    "title_fr": "Décision du conseil municipal de Plovdiv 32 du 28 janvier 2011",
     "used_for_de": "Gezielte Infrastrukturarbeiten im Zusammenhang mit den Entscheidungen von 2009 zur Annahme von Ballenabfällen aus der Gemeinde Sofia.",
-    "limitations_de": "Die Entscheidung ändert frühere Entscheidungen und beschreibt gezielt finanzierte Arbeiten, nicht den gesamten Gemeindehaushalt."
+    "used_for_fr": "Travaux d'infrastructure ciblés liés aux décisions de 2009 d'accepter les déchets en balles de la municipalité de Sofia.",
+    "limitations_de": "Die Entscheidung ändert frühere Entscheidungen und beschreibt gezielt finanzierte Arbeiten, nicht den gesamten Gemeindehaushalt.",
+    "limitations_fr": "La décision modifie des décisions antérieures et décrit des travaux financés ciblés, et non l'intégralité du budget municipal."
   },
   {
     "id": "ciela-dv-pms-149-plovdiv-infrastructure-2007",
@@ -542,8 +656,11 @@
     "limitations_bg": "Публичен правно-информационен препис на обнародвания акт в Държавен вестник; постановлението е целеви трансфер, не пълен общински бюджет.",
     "limitations_en": "Public legal-information copy of the State Gazette act; the decree is a targeted transfer, not a full municipal budget.",
     "title_de": "Staatsanzeiger – Ministerratsdekret 149 vom 29. Juni 2007",
+    "title_fr": "Journal officiel — Décret du Conseil des ministres 149 du 29 juin 2007",
     "used_for_de": "Zusätzliche Haushaltsmittel 2007 für zwei Infrastrukturarbeiten der Gemeinde Plovdiv.",
-    "limitations_de": "Öffentliche Kopie des Gesetzes über den Staatsanzeiger; Bei dem Erlass handelt es sich um eine gezielte Übertragung, nicht um einen vollständigen Gemeindehaushalt."
+    "used_for_fr": "Crédits budgétaires supplémentaires 2007 pour deux travaux d'infrastructure de la municipalité de Plovdiv.",
+    "limitations_de": "Öffentliche Kopie des Gesetzes über den Staatsanzeiger; Bei dem Erlass handelt es sich um eine gezielte Übertragung, nicht um einen vollständigen Gemeindehaushalt.",
+    "limitations_fr": "Copie d'information juridique publique de la loi sur le Journal officiel ; le décret est un transfert ciblé et non un budget municipal complet."
   },
   {
     "id": "dv-pms-72-plovdiv-beautification-2009",
@@ -556,8 +673,11 @@
     "limitations_bg": "Голям HTML препис на Държавен вестник; конкретният ред за Пловдив е проверен спрямо табличния препис в правно-информационна система. Това е целева субсидия, не общински бюджет.",
     "limitations_en": "Large State Gazette HTML copy; the specific Plovdiv row was checked against the tabular legal-information copy. This is a targeted subsidy, not a municipal budget.",
     "title_de": "Staatsanzeiger – Ministerratsdekret 72 vom 30. März 2009",
+    "title_fr": "Journal officiel — Décret du Conseil des ministres 72 du 30 mars 2009",
     "used_for_de": "Zusätzlicher gezielter Investitionszuschuss im Jahr 2009; Die Linie der Gemeinde Plovdiv beträgt 2 Mio. BGN für Verschönerungsarbeiten/öffentliche Arbeiten.",
-    "limitations_de": "Große HTML-Kopie des Staatsanzeigers; Die spezifische Plovdiv-Zeile wurde mit der tabellarischen Kopie der rechtlichen Informationen verglichen. Dabei handelt es sich um eine gezielte Förderung, nicht um einen kommunalen Haushalt."
+    "used_for_fr": "Subvention supplémentaire ciblée pour les dépenses en capital en 2009 ; la ligne de la municipalité de Plovdiv est de 2 millions de BGN pour l'embellissement/les travaux publics.",
+    "limitations_de": "Große HTML-Kopie des Staatsanzeigers; Die spezifische Plovdiv-Zeile wurde mit der tabellarischen Kopie der rechtlichen Informationen verglichen. Dabei handelt es sich um eine gezielte Förderung, nicht um einen kommunalen Haushalt.",
+    "limitations_fr": "Copie HTML du Grand Journal officiel ; la ligne spécifique de Plovdiv a été vérifiée par rapport à la copie tabulaire des informations juridiques. Il s'agit d'une subvention ciblée, pas d'un budget municipal."
   },
   {
     "id": "dv-pms-138-plovdiv-waste-infrastructure-2010",
@@ -570,8 +690,11 @@
     "limitations_bg": "Постановлението е целеви трансфер за конкретни обекти, не годишен общински бюджет; един от обектите е изменен с ПМС №289 през декември 2010 г.",
     "limitations_en": "The decree is a targeted transfer for specific works, not an annual municipal budget; one project line was amended by Decree 289 in December 2010.",
     "title_de": "Staatsanzeiger – Ministerratsdekret 138 vom 15. Juli 2010",
+    "title_fr": "Journal officiel — Décret du Conseil des ministres 138 du 15 juillet 2010",
     "used_for_de": "Zusätzliche Haushaltsmittel 2010 für Infrastrukturarbeiten der Gemeinde Plovdiv im Zusammenhang mit der Annahme von Ballenabfällen.",
-    "limitations_de": "Bei dem Dekret handelt es sich um eine gezielte Übertragung für bestimmte Arbeiten, nicht um einen jährlichen Gemeindehaushalt; Eine Projektlinie wurde im Dezember 2010 durch Dekret 289 geändert."
+    "used_for_fr": "Crédits budgétaires supplémentaires 2010 pour les travaux d'infrastructure de la municipalité de Plovdiv liés à l'acceptation des déchets en balles.",
+    "limitations_de": "Bei dem Dekret handelt es sich um eine gezielte Übertragung für bestimmte Arbeiten, nicht um einen jährlichen Gemeindehaushalt; Eine Projektlinie wurde im Dezember 2010 durch Dekret 289 geändert.",
+    "limitations_fr": "Le décret est un transfert ciblé pour des travaux spécifiques, et non un budget municipal annuel ; une ligne de projet a été modifiée par le décret 289 en décembre 2010."
   },
   {
     "id": "dv-pms-289-plovdiv-culture-house-reallocation-2010",
@@ -584,8 +707,11 @@
     "limitations_bg": "Изменението засяга конкретна позиция от целевия трансфер по ПМС №138; не е самостоятелна годишна бюджетна рамка.",
     "limitations_en": "The amendment affects one line in the targeted transfer under Decree 138; it is not a standalone annual budget framework.",
     "title_de": "Staatsanzeiger – Ministerratsdekret 289 vom 7. Dezember 2010",
+    "title_fr": "Journal officiel — Décret du Conseil des ministres 289 du 7 décembre 2010",
     "used_for_de": "Änderung des Dekrets 138 zur Umverteilung von 2 Mio. BGN für größere Reparaturen, Rekonstruktionen und Umbauten des Kulturhauses der Stadt Plovdiv.",
-    "limitations_de": "Die Änderung betrifft eine Zeile der gezielten Übertragung gemäß Dekret 138; Es handelt sich nicht um einen eigenständigen jährlichen Haushaltsrahmen."
+    "used_for_fr": "Modification du décret 138 redirigeant 2 millions de BGN vers des réparations majeures, la reconstruction et la conversion de la Maison de la culture de la ville de Plovdiv.",
+    "limitations_de": "Die Änderung betrifft eine Zeile der gezielten Übertragung gemäß Dekret 138; Es handelt sich nicht um einen eigenständigen jährlichen Haushaltsrahmen.",
+    "limitations_fr": "La modification concerne une ligne du transfert ciblé en vertu du décret 138 ; il ne s’agit pas d’un cadre budgétaire annuel autonome."
   },
   {
     "id": "plovdiv-waste-infrastructure-final-transfer-2012",
@@ -598,8 +724,11 @@
     "limitations_bg": "Кратка общинска публикация; използва се за размера на трансфера и общата отпусната сума, не за детайлен списък на обектите.",
     "limitations_en": "Short municipal post; used for the transfer amount and aggregate granted amount, not for a detailed project list.",
     "title_de": "Gemeinde Plovdiv – 8,4 Mio. BGN vom Ministerrat für Infrastruktur",
+    "title_fr": "Municipalité de Plovdiv — 8,4 millions de BGN du Conseil des ministres pour les infrastructures",
     "used_for_de": "Endgültige Übertragung von 8.488.887 BGN und insgesamt 26,5 Mio. BGN für 2009–2012 im Zusammenhang mit Sofias Ballenabfällen gewährt.",
-    "limitations_de": "Kurze kommunale Stelle; Wird für den Überweisungsbetrag und den gewährten Gesamtbetrag verwendet, nicht für eine detaillierte Projektliste."
+    "used_for_fr": "Transfert final de 8 488 887 BGN et total de 26,5 millions de BGN accordés pour 2009-2012 en relation avec les déchets mis en balles de Sofia.",
+    "limitations_de": "Kurze kommunale Stelle; Wird für den Überweisungsbetrag und den gewährten Gesamtbetrag verwendet, nicht für eine detaillierte Projektliste.",
+    "limitations_fr": "Poste municipal court ; utilisé pour le montant du transfert et le montant total accordé, et non pour une liste détaillée des projets."
   },
   {
     "id": "ciela-dv-pms-307-plovdiv-waste-infrastructure-2012",
@@ -612,8 +741,11 @@
     "limitations_bg": "Публичен правно-информационен препис на обнародвания акт в Държавен вестник; сумата е целеви трансфер, не пълен бюджет.",
     "limitations_en": "Public legal-information copy of the State Gazette act; the amount is a targeted transfer, not a full budget.",
     "title_de": "Staatsanzeiger – Ministerratsdekret 307 vom 30. November 2012",
+    "title_fr": "Journal officiel — Décret du Conseil des ministres 307 du 30 novembre 2012",
     "used_for_de": "Rechtsgrundlage und Liste der Infrastrukturarbeiten im Zusammenhang mit der endgültigen Übertragung von 8.488.887 BGN im Jahr 2012.",
-    "limitations_de": "Öffentliche Kopie des Gesetzes über den Staatsanzeiger; Bei dem Betrag handelt es sich um eine gezielte Überweisung, nicht um ein Gesamtbudget."
+    "used_for_fr": "Base juridique et liste des travaux d'infrastructure attachés au transfert final de 8 488 887 BGN en 2012.",
+    "limitations_de": "Öffentliche Kopie des Gesetzes über den Staatsanzeiger; Bei dem Betrag handelt es sich um eine gezielte Überweisung, nicht um ein Gesamtbudget.",
+    "limitations_fr": "Copie d'information juridique publique de la loi sur le Journal officiel ; le montant est un transfert ciblé et non un budget complet."
   },
   {
     "id": "plovdiv-council-2010-gifted-children",
@@ -626,8 +758,11 @@
     "limitations_bg": "Правилникът определя индивидуални размери и процедура, но не публикува годишен общ бюджет на програмата.",
     "limitations_en": "The rule defines individual grants and procedure, but does not publish the programme's annual total budget.",
     "title_de": "Beschluss des Gemeinderats von Plovdiv zur Förderung hochbegabter Kinder",
+    "title_fr": "Règlement du conseil municipal de Plovdiv concernant le soutien aux enfants surdoués",
     "used_for_de": "Kommunales Programm zur einmaligen finanziellen Förderung begabter Schüler, verabschiedet im Jahr 2010.",
-    "limitations_de": "Die Regel definiert die einzelnen Zuschüsse und das Verfahren, veröffentlicht jedoch nicht das jährliche Gesamtbudget des Programms."
+    "used_for_fr": "Programme municipal de soutien financier ponctuel aux écoliers surdoués, adopté en 2010.",
+    "limitations_de": "Die Regel definiert die einzelnen Zuschüsse und das Verfahren, veröffentlicht jedoch nicht das jährliche Gesamtbudget des Programms.",
+    "limitations_fr": "La règle définit les subventions individuelles et la procédure, mais ne publie pas le budget total annuel du programme."
   },
   {
     "id": "wikidata",
@@ -640,8 +775,11 @@
     "limitations_bg": "Използва се като структуриран публичен източник за начални връзки; всяка връзка очаква независим редакторски преглед.",
     "limitations_en": "Used as a structured public source for starter relationship links; each relationship still awaits independent editorial review.",
     "title_de": "Wikidata",
+    "title_fr": "Wikidonnées",
     "used_for_de": "Wikidata-IDs und erste Angaben zu familiären/verwandtschaftlichen Beziehungen zwischen Personen, die bereits in der Prosopographie enthalten sind.",
-    "limitations_de": "Wird als strukturierte öffentliche Quelle für Starter-Beziehungslinks verwendet; Jede Beziehung wartet noch auf eine unabhängige redaktionelle Überprüfung."
+    "used_for_fr": "Identifiants Wikidata et premières déclarations de relations familiales/parentées entre des personnes déjà présentes dans la prosopographie.",
+    "limitations_de": "Wird als strukturierte öffentliche Quelle für Starter-Beziehungslinks verwendet; Jede Beziehung wartet noch auf eine unabhängige redaktionelle Überprüfung.",
+    "limitations_fr": "Utilisé comme source publique structurée pour les liens de démarrage ; chaque relation attend toujours un examen éditorial indépendant."
   },
   {
     "id": "wikimedia-commons-historical-images-plovdiv",
@@ -654,8 +792,11 @@
     "limitations_bg": "Категорията е входна точка; условията за повторна употреба се проверяват на ниво конкретен Commons файл и са записани в архивните JSON записи.",
     "limitations_en": "The category is an entry point; reuse terms are checked at individual Commons file level and stored on the archive JSON records.",
     "title_de": "Wikimedia Commons – Historische Bilder von Plovdiv",
+    "title_fr": "Wikimedia Commons — Images historiques de Plovdiv",
     "used_for_de": "Historische Fotografien, Postkarten, Aktenseiten und Lizenzmetadaten für die georeferenzierte Archivschicht und damals/heute-Paare.",
-    "limitations_de": "Die Kategorie ist ein Einstiegspunkt; Wiederverwendungsbedingungen werden auf der Ebene einzelner Commons-Dateien überprüft und in den JSON-Datensätzen des Archivs gespeichert."
+    "used_for_fr": "Photographies historiques, cartes postales, pages de fichiers et métadonnées de licence pour la couche d'archives géoréférencées et les paires hier/maintenant.",
+    "limitations_de": "Die Kategorie ist ein Einstiegspunkt; Wiederverwendungsbedingungen werden auf der Ebene einzelner Commons-Dateien überprüft und in den JSON-Datensätzen des Archivs gespeichert.",
+    "limitations_fr": "La catégorie est un point d’entrée ; les termes de réutilisation sont vérifiés au niveau du fichier Commons individuel et stockés dans les enregistrements JSON d'archive."
   },
   {
     "id": "wikimedia-commons-bulgarian-archives-state-agency",
@@ -668,7 +809,10 @@
     "limitations_bg": "Страницата описва партньорството и общия архивен източник; конкретните права и кредити се пазят на ниво Commons файл.",
     "limitations_en": "The page describes the cooperation and general archival source; specific rights and credits are preserved at Commons file level.",
     "title_de": "Wikimedia Commons – Akten zur Zusammenarbeit der staatlichen Agentur des Bulgarischen Archivs",
+    "title_fr": "Wikimedia Commons — Dossiers de coopération de l'Agence d'État des Archives bulgares",
     "used_for_de": "Public-Domain-Archivfotos und Karten aus Uploads der bulgarischen Archiv-Staatsagentur, die in der Archivebene verwendet werden.",
-    "limitations_de": "Die Seite beschreibt die Zusammenarbeit und die allgemeine Archivquelle; Bestimmte Rechte und Credits bleiben auf Commons-Dateiebene erhalten."
+    "used_for_fr": "Photographies et cartes d'archives du domaine public provenant des téléchargements de l'Agence d'État des archives bulgares utilisées dans la couche d'archives.",
+    "limitations_de": "Die Seite beschreibt die Zusammenarbeit und die allgemeine Archivquelle; Bestimmte Rechte und Credits bleiben auf Commons-Dateiebene erhalten.",
+    "limitations_fr": "La page décrit la coopération et la source d'archives générale ; les droits et crédits spécifiques sont préservés au niveau du fichier Commons."
   }
 ]

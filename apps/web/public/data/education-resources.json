@@ -39,7 +39,9 @@
         "activity_bg": "Учениците намират Небет тепе и Стария град на картата и записват кои източници стоят зад координатите и кратките описания.",
         "activity_en": "Students find Nebet Tepe and the Old Town on the map and note which sources support the coordinates and short descriptions.",
         "phase_de": "Orientierung",
-        "activity_de": "Die Schüler finden Nebet Tepe und die Altstadt auf der Karte und notieren, welche Quellen die Koordinaten und Kurzbeschreibungen unterstützen."
+        "phase_fr": "Orientation",
+        "activity_de": "Die Schüler finden Nebet Tepe und die Altstadt auf der Karte und notieren, welche Quellen die Koordinaten und Kurzbeschreibungen unterstützen.",
+        "activity_fr": "Les élèves trouvent Nebet Tepe et la vieille ville sur la carte et notent quelles sources soutiennent les coordonnées et les brèves descriptions."
       },
       {
         "minutes": 15,
@@ -48,7 +50,9 @@
         "activity_bg": "Групите поставят праисторическото селище, Евмолпия и основаването на Филипопол върху обща линия на времето.",
         "activity_en": "Groups place the prehistoric settlement, Eumolpias and the founding of Philippopolis on a shared timeline.",
         "phase_de": "Timeline-Arbeit",
-        "activity_de": "Gruppen stellen die prähistorische Siedlung Eumolpias und die Gründung von Philippopolis auf eine gemeinsame Zeitachse."
+        "phase_fr": "Travail sur la chronologie",
+        "activity_de": "Gruppen stellen die prähistorische Siedlung Eumolpias und die Gründung von Philippopolis auf eine gemeinsame Zeitachse.",
+        "activity_fr": "Les groupes placent la colonie préhistorique, Eumolpias et la fondation de Philippopolis sur une chronologie commune."
       },
       {
         "minutes": 12,
@@ -57,7 +61,9 @@
         "activity_bg": "Всяка група формулира едно кратко твърдение защо тепетата са важни, като посочва поне един източник.",
         "activity_en": "Each group writes one short claim about why the hills matter, naming at least one source.",
         "phase_de": "Karte und Argument",
-        "activity_de": "Jede Gruppe schreibt eine kurze Behauptung darüber, warum die Hügel wichtig sind, und nennt dabei mindestens eine Quelle."
+        "phase_fr": "Carte et argumentation",
+        "activity_de": "Jede Gruppe schreibt eine kurze Behauptung darüber, warum die Hügel wichtig sind, und nennt dabei mindestens eine Quelle.",
+        "activity_fr": "Chaque groupe rédige une brève déclaration expliquant pourquoi les collines sont importantes, en citant au moins une source."
       },
       {
         "minutes": 10,
@@ -66,7 +72,9 @@
         "activity_bg": "Класът сравнява кои твърдения са подкрепени от източници и кои се нуждаят от допълнителна проверка.",
         "activity_en": "The class compares which claims are source-supported and which still need verification.",
         "phase_de": "Überprüfen",
-        "activity_de": "Die Klasse vergleicht, welche Behauptungen quellengestützt sind und welche noch einer Überprüfung bedürfen."
+        "phase_fr": "Vérifier",
+        "activity_de": "Die Klasse vergleicht, welche Behauptungen quellengestützt sind und welche noch einer Überprüfung bedürfen.",
+        "activity_fr": "La classe compare les affirmations qui sont prises en charge par la source et celles qui nécessitent encore une vérification."
       }
     ],
     "quiz": [
@@ -87,7 +95,9 @@
         "explanation_bg": "Небет тепе е пряко свързано с най-ранните градски пластове и с тракийския контекст.",
         "explanation_en": "Nebet Tepe is directly linked to the earliest urban layers and the Thracian context.",
         "question_de": "Welche Seite eröffnet am besten eine Diskussion über die frühesten Schichten der Stadt?",
-        "explanation_de": "Nebet Tepe ist direkt mit den frühesten städtischen Schichten und dem thrakischen Kontext verbunden."
+        "question_fr": "Quel site ouvre le mieux une discussion sur les premières couches de la ville ?",
+        "explanation_de": "Nebet Tepe ist direkt mit den frühesten städtischen Schichten und dem thrakischen Kontext verbunden.",
+        "explanation_fr": "Nebet Tepe est directement lié aux premières couches urbaines et au contexte thrace."
       },
       {
         "question_bg": "Защо в урока се използва карта?",
@@ -106,7 +116,9 @@
         "explanation_bg": "Картата помага да се мисли пространствено, но не заменя източниците.",
         "explanation_en": "The map supports spatial reasoning, but it does not replace sources.",
         "question_de": "Warum wird in der Lektion eine Karte verwendet?",
-        "explanation_de": "Die Karte unterstützt das räumliche Denken, ersetzt jedoch keine Quellen."
+        "question_fr": "Pourquoi la leçon utilise-t-elle une carte ?",
+        "explanation_de": "Die Karte unterstützt das räumliche Denken, ersetzt jedoch keine Quellen.",
+        "explanation_fr": "La carte supporte le raisonnement spatial, mais elle ne remplace pas les sources."
       },
       {
         "question_bg": "Какво трябва да направи ученикът, ако две описания звучат различно?",
@@ -125,7 +137,9 @@
         "explanation_bg": "Платформата изисква проследимост и ясно отбелязване на несигурни твърдения.",
         "explanation_en": "The platform requires traceability and clear marking of uncertain claims.",
         "question_de": "Was sollte ein Schüler tun, wenn zwei Beschreibungen unterschiedlich sind?",
-        "explanation_de": "Die Plattform erfordert Rückverfolgbarkeit und eindeutige Kennzeichnung ungewisser Ansprüche."
+        "question_fr": "Que doit faire un élève lorsque deux descriptions diffèrent ?",
+        "explanation_de": "Die Plattform erfordert Rückverfolgbarkeit und eindeutige Kennzeichnung ungewisser Ansprüche.",
+        "explanation_fr": "La plateforme exige une traçabilité et un marquage clair des réclamations incertaines."
       }
     ],
     "printable_handout": {
@@ -141,7 +155,8 @@
         "Connect each era with one place and one source.",
         "Write a two-sentence claim about the role of the hills."
       ],
-      "title_de": "Arbeitsblatt: Hügel, Quellen, Zeit"
+      "title_de": "Arbeitsblatt: Hügel, Quellen, Zeit",
+      "title_fr": "Feuille de travail : collines, sources, heure"
     },
     "audio_tour": {
       "title_bg": "Кратък маршрут за разходка: Небет тепе и Старият град",
@@ -155,7 +170,9 @@
           "narration_bg": "Погледнете към хълма като към архив на открито. Тук ранните пластове на Пловдив се четат през мястото, релефа и археологическите следи.",
           "narration_en": "Look at the hill as an open-air archive. Here Plovdiv's early layers are read through place, terrain and archaeological traces.",
           "title_de": "Nebet Tepe",
-          "narration_de": "Betrachten Sie den Hügel als ein Open-Air-Archiv. Hier werden Plovdivs frühe Schichten anhand von Ort, Gelände und archäologischen Spuren gelesen."
+          "title_fr": "Nebet Tepé",
+          "narration_de": "Betrachten Sie den Hügel als ein Open-Air-Archiv. Hier werden Plovdivs frühe Schichten anhand von Ort, Gelände und archäologischen Spuren gelesen.",
+          "narration_fr": "Considérez la colline comme une archive à ciel ouvert. Ici, les premières couches de Plovdiv sont lues à travers le lieu, le terrain et les traces archéologiques."
         },
         {
           "place_id": "place-old-town",
@@ -164,7 +181,9 @@
           "narration_bg": "Старият град не е само възрожденски квартал. Той стои върху по-стари пластове и позволява да се говори за приемственост.",
           "narration_en": "The Old Town is not only a National Revival quarter. It stands over older layers and lets us talk about continuity.",
           "title_de": "Altes Plovdiv",
-          "narration_de": "Die Altstadt ist nicht nur ein National-Revival-Viertel. Es steht über älteren Schichten und lässt uns über Kontinuität sprechen."
+          "title_fr": "Vieux Plovdiv",
+          "narration_de": "Die Altstadt ist nicht nur ein National-Revival-Viertel. Es steht über älteren Schichten und lässt uns über Kontinuität sprechen.",
+          "narration_fr": "La vieille ville n’est pas seulement un quartier de la Renaissance nationale. Il se situe au-dessus des couches plus anciennes et nous permet de parler de continuité."
         },
         {
           "place_id": "place-seven-hills",
@@ -173,10 +192,13 @@
           "narration_bg": "Тепетата са естествени ориентири. В урока те служат като връзка между география, история и градска памет.",
           "narration_en": "The hills are natural landmarks. In this lesson they connect geography, history and urban memory.",
           "title_de": "Die sieben Hügel",
-          "narration_de": "Die Hügel sind Naturdenkmäler. In dieser Lektion verbinden sie Geographie, Geschichte und städtisches Gedächtnis."
+          "title_fr": "Les sept collines",
+          "narration_de": "Die Hügel sind Naturdenkmäler. In dieser Lektion verbinden sie Geographie, Geschichte und städtisches Gedächtnis.",
+          "narration_fr": "Les collines sont des repères naturels. Dans cette leçon, ils relient géographie, histoire et mémoire urbaine."
         }
       ],
-      "title_de": "Kurzer Wanderweg: Nebet Tepe und die Altstadt"
+      "title_de": "Kurzer Wanderweg: Nebet Tepe und die Altstadt",
+      "title_fr": "Petit itinéraire à pied : Nebet Tepe et la vieille ville"
     },
     "linked_event_ids": [
       "event-prehistory-settlement",
@@ -208,13 +230,19 @@
       "reviewed_at": null,
       "notes_bg": "Образователният ресурс е съставен от публични записи в базата и изисква педагогически и редакторски преглед преди официална употреба.",
       "notes_en": "The education resource is assembled from public knowledge-base records and requires pedagogical and editorial review before formal use.",
-      "notes_de": "Die Bildungsressource wird aus Aufzeichnungen öffentlicher Wissensdatenbanken zusammengestellt und bedarf vor der formellen Nutzung einer pädagogischen und redaktionellen Prüfung."
+      "notes_de": "Die Bildungsressource wird aus Aufzeichnungen öffentlicher Wissensdatenbanken zusammengestellt und bedarf vor der formellen Nutzung einer pädagogischen und redaktionellen Prüfung.",
+      "notes_fr": "La ressource éducative est assemblée à partir de documents de base de connaissances publiques et nécessite une révision pédagogique et éditoriale avant son utilisation formelle."
     },
     "audience_de": "Klassen 5-7",
+    "audience_fr": "5e à 7e années",
     "title_de": "Die sieben Hügel und Plovdivs tiefe Zeit",
+    "title_fr": "Les Sept Collines et les Temps Profonds de Plovdiv",
     "summary_de": "Eine Lektion über die frühe Besiedlung der Hügel, das thrakische Eumolpias und wie das Gelände der Stadt erklärt, warum Plovdiv so lange bewohnt blieb.",
+    "summary_fr": "Une leçon sur les premiers peuplements sur les collines, les Eumolpias thraces et comment le relief de la ville contribue à expliquer pourquoi Plovdiv est restée habitée pendant si longtemps.",
     "driving_question_de": "Wie kann Gelände einen Ort in eine Stadt mit jahrtausendelanger Erinnerung verwandeln?",
-    "preparation_de": "Öffnen Sie die Zeitleiste und die Wahrzeichenkarte von Open Plovdiv. Drucken Sie die Paararbeitsaufgaben aus."
+    "driving_question_fr": "Comment le terrain peut-il transformer un lieu en une ville avec des millénaires de mémoire ?",
+    "preparation_de": "Öffnen Sie die Zeitleiste und die Wahrzeichenkarte von Open Plovdiv. Drucken Sie die Paararbeitsaufgaben aus.",
+    "preparation_fr": "Ouvrez la chronologie et la carte des monuments d'Open Plovdiv. Imprimez les tâches de travail en binôme."
   },
   {
     "id": "education-roman-philippopolis",
@@ -255,7 +283,9 @@
         "activity_bg": "Класът изброява какви обществени пространства има в един съвременен град и търси римските им аналози.",
         "activity_en": "The class lists public spaces in a modern city and looks for Roman analogues.",
         "phase_de": "Eröffnungsfrage",
-        "activity_de": "Die Klasse listet öffentliche Räume in einer modernen Stadt auf und sucht nach römischen Analogien."
+        "phase_fr": "Question d'ouverture",
+        "activity_de": "Die Klasse listet öffentliche Räume in einer modernen Stadt auf und sucht nach römischen Analogien.",
+        "activity_fr": "La classe répertorie les espaces publics d’une ville moderne et recherche des analogues romains."
       },
       {
         "minutes": 15,
@@ -264,7 +294,9 @@
         "activity_bg": "Групите получават по един обект: театър, стадион или форум. Всяка група извлича функция, дата и източник.",
         "activity_en": "Groups receive one site: theatre, stadium or forum. Each group extracts function, date and source.",
         "phase_de": "Arbeit vor Ort",
-        "activity_de": "Gruppen erhalten einen Standort: Theater, Stadion oder Forum. Jede Gruppe extrahiert Funktion, Datum und Quelle."
+        "phase_fr": "Travaux de chantier",
+        "activity_de": "Gruppen erhalten einen Standort: Theater, Stadion oder Forum. Jede Gruppe extrahiert Funktion, Datum und Quelle.",
+        "activity_fr": "Les groupes bénéficient d'un emplacement : théâtre, stade ou forum. Chaque groupe extrait la fonction, la date et la source."
       },
       {
         "minutes": 15,
@@ -273,7 +305,9 @@
         "activity_bg": "Учениците използват тогава/сега изображенията, за да обсъдят как разкопките и реставрацията променят видимостта на античния град.",
         "activity_en": "Students use then/now images to discuss how excavation and restoration change the visibility of the ancient city.",
         "phase_de": "Visueller Beweis",
-        "activity_de": "Die Schüler diskutieren anhand von Bildern von damals und heute, wie Ausgrabungen und Restaurierungen die Sichtbarkeit der antiken Stadt verändern."
+        "phase_fr": "Preuve visuelle",
+        "activity_de": "Die Schüler diskutieren anhand von Bildern von damals und heute, wie Ausgrabungen und Restaurierungen die Sichtbarkeit der antiken Stadt verändern.",
+        "activity_fr": "Les élèves utilisent des images d’hier et d’aujourd’hui pour discuter de la manière dont les fouilles et la restauration modifient la visibilité de la ville antique."
       },
       {
         "minutes": 10,
@@ -282,7 +316,9 @@
         "activity_bg": "Всяка група представя едно доказателство и една несигурност, която би проверила допълнително.",
         "activity_en": "Each group presents one piece of evidence and one uncertainty it would check further.",
         "phase_de": "Synthese",
-        "activity_de": "Jede Gruppe legt einen Beweis und eine Unsicherheit vor, die sie weiter prüfen würde."
+        "phase_fr": "Synthèse",
+        "activity_de": "Jede Gruppe legt einen Beweis und eine Unsicherheit vor, die sie weiter prüfen würde.",
+        "activity_fr": "Chaque groupe présente un élément de preuve et une incertitude qu’il vérifierait davantage."
       }
     ],
     "quiz": [
@@ -303,7 +339,9 @@
         "explanation_bg": "Античният театър е римски обществен обект, свързан с представления.",
         "explanation_en": "The Ancient Theatre is a Roman public site connected with performances.",
         "question_de": "Welche Seite ist mit öffentlichen Aufführungen verbunden?",
-        "explanation_de": "Das Antike Theater ist eine römische öffentliche Stätte, die mit Aufführungen verbunden ist."
+        "question_fr": "Quel site est lié aux représentations publiques ?",
+        "explanation_de": "Das Antike Theater ist eine römische öffentliche Stätte, die mit Aufführungen verbunden ist.",
+        "explanation_fr": "Le Théâtre Antique est un lieu public romain lié aux spectacles."
       },
       {
         "question_bg": "Кой източник е най-подходящ за координати на обект?",
@@ -322,7 +360,9 @@
         "explanation_bg": "В базата координатите се свързват с отделен източник, когато е наличен.",
         "explanation_en": "The knowledge base links coordinates to a separate source when available.",
         "question_de": "Welche Quelle eignet sich am besten für die Koordinaten eines Standorts?",
-        "explanation_de": "Die Wissensdatenbank verknüpft Koordinaten mit einer separaten Quelle, sofern verfügbar."
+        "question_fr": "Quelle source est la mieux adaptée pour les coordonnées d'un site ?",
+        "explanation_de": "Die Wissensdatenbank verknüpft Koordinaten mit einer separaten Quelle, sofern verfügbar.",
+        "explanation_fr": "La base de connaissances relie les coordonnées à une source distincte lorsqu'elle est disponible."
       },
       {
         "question_bg": "Защо тогава/сега сравнението не е достатъчно само по себе си?",
@@ -341,7 +381,9 @@
         "explanation_bg": "Изображението става доказателство само когато е проследимо и правилно описано.",
         "explanation_en": "An image becomes evidence only when it is traceable and properly described.",
         "question_de": "Warum reicht ein Damals-Heute-Vergleich allein nicht aus?",
-        "explanation_de": "Ein Bild wird erst dann zum Beweis, wenn es nachvollziehbar und richtig beschrieben ist."
+        "question_fr": "Pourquoi une comparaison hier/aujourd’hui ne suffit-elle pas à elle seule ?",
+        "explanation_de": "Ein Bild wird erst dann zum Beweis, wenn es nachvollziehbar und richtig beschrieben ist.",
+        "explanation_fr": "Une image ne devient une preuve que lorsqu’elle est traçable et correctement décrite."
       }
     ],
     "printable_handout": {
@@ -357,7 +399,8 @@
         "Draw a simple map linking the theatre, stadium and forum.",
         "Write a short museum-label caption that includes a source."
       ],
-      "title_de": "Arbeitsblatt: Römische öffentliche Räume"
+      "title_de": "Arbeitsblatt: Römische öffentliche Räume",
+      "title_fr": "Feuille de travail : Espaces publics romains"
     },
     "audio_tour": {
       "title_bg": "Маршрут за разходка: римски Филипопол",
@@ -371,7 +414,9 @@
           "narration_bg": "Пред вас е един от най-разпознаваемите антични обекти на Пловдив. Мислете за него като за сцена, но и като за градски документ.",
           "narration_en": "Before you is one of Plovdiv's most recognizable ancient sites. Think of it as a stage, but also as an urban document.",
           "title_de": "Antikes Theater",
-          "narration_de": "Vor Ihnen liegt eine der bekanntesten antiken Stätten Plovdivs. Betrachten Sie es als Bühne, aber auch als urbanes Dokument."
+          "title_fr": "Théâtre antique",
+          "narration_de": "Vor Ihnen liegt eine der bekanntesten antiken Stätten Plovdivs. Betrachten Sie es als Bühne, aber auch als urbanes Dokument.",
+          "narration_fr": "Devant vous se trouve l'un des sites antiques les plus reconnaissables de Plovdiv. Pensez-y comme une scène, mais aussi comme un document urbain."
         },
         {
           "place_id": "place-ancient-stadium",
@@ -380,7 +425,9 @@
           "narration_bg": "Стадионът показва мащаба на римския град. Днес част от него е видима в центъра, а останалото трябва да си представим чрез планове и източници.",
           "narration_en": "The stadium shows the scale of the Roman city. Today part of it is visible downtown, while the rest must be imagined through plans and sources.",
           "title_de": "Antikes Stadion",
-          "narration_de": "Das Stadion zeigt die Ausmaße der römischen Stadt. Heute ist ein Teil davon in der Innenstadt sichtbar, während der Rest anhand von Plänen und Quellen erahnt werden muss."
+          "title_fr": "Stade antique",
+          "narration_de": "Das Stadion zeigt die Ausmaße der römischen Stadt. Heute ist ein Teil davon in der Innenstadt sichtbar, während der Rest anhand von Plänen und Quellen erahnt werden muss.",
+          "narration_fr": "Le stade montre l'échelle de la ville romaine. Aujourd'hui, une partie est visible en ville, tandis que le reste doit être imaginé à travers des plans et des sources."
         },
         {
           "place_id": "place-forum-philippopolis",
@@ -389,10 +436,13 @@
           "narration_bg": "Форумът насочва разговора към управление, търговия и ежедневие. Той помага да видим града като система, не само като отделни паметници.",
           "narration_en": "The forum turns the conversation to governance, trade and daily life. It helps us see the city as a system, not just separate monuments.",
           "title_de": "Forum von Philippopolis",
-          "narration_de": "Das Forum lenkt das Gespräch auf Governance, Handel und das tägliche Leben. Es hilft uns, die Stadt als ein System zu sehen, nicht nur als einzelne Denkmäler."
+          "title_fr": "Forum de Philippopolis",
+          "narration_de": "Das Forum lenkt das Gespräch auf Governance, Handel und das tägliche Leben. Es hilft uns, die Stadt als ein System zu sehen, nicht nur als einzelne Denkmäler.",
+          "narration_fr": "Le forum tourne la conversation vers la gouvernance, le commerce et la vie quotidienne. Cela nous aide à voir la ville comme un système, et non comme de simples monuments séparés."
         }
       ],
-      "title_de": "Wanderroute: Römisches Philippopolis"
+      "title_de": "Wanderroute: Römisches Philippopolis",
+      "title_fr": "Itinéraire pédestre : Philippopolis romaine"
     },
     "linked_event_ids": [
       "event-roman-trimontium",
@@ -427,13 +477,19 @@
       "reviewed_at": null,
       "notes_bg": "Образователният ресурс е съставен от публични записи в базата и изисква педагогически и редакторски преглед преди официална употреба.",
       "notes_en": "The education resource is assembled from public knowledge-base records and requires pedagogical and editorial review before formal use.",
-      "notes_de": "Die Bildungsressource wird aus Aufzeichnungen öffentlicher Wissensdatenbanken zusammengestellt und bedarf vor der formellen Nutzung einer pädagogischen und redaktionellen Prüfung."
+      "notes_de": "Die Bildungsressource wird aus Aufzeichnungen öffentlicher Wissensdatenbanken zusammengestellt und bedarf vor der formellen Nutzung einer pädagogischen und redaktionellen Prüfung.",
+      "notes_fr": "La ressource éducative est assemblée à partir de documents de base de connaissances publiques et nécessite une révision pédagogique et éditoriale avant son utilisation formelle."
     },
     "audience_de": "Klassen 6-8",
+    "audience_fr": "6e à 8e années",
     "title_de": "Die römische Stadt: Theater, Stadion und Forum",
+    "title_fr": "La ville romaine : théâtre, stade et forum",
     "summary_de": "Eine Lektion über Philippopolis/Trimontium als römische Stadt, deren öffentliche Räume Macht, Unterhaltung, Handel und Stadtplanung offenbaren.",
+    "summary_fr": "Une leçon sur Philippopolis/Trimontium en tant que ville romaine dont les espaces publics révèlent pouvoir, divertissement, commerce et urbanisme.",
     "driving_question_de": "Wie helfen uns archäologische Stätten, das Leben in einer römischen Stadt zu rekonstruieren?",
-    "preparation_de": "Bereiten Sie eine Karte der antiken Stätten vor und öffnen Sie die Vergleiche für das antike Theater und das antike Stadion."
+    "driving_question_fr": "Comment les sites archéologiques nous aident-ils à reconstituer la vie dans une ville romaine ?",
+    "preparation_de": "Bereiten Sie eine Karte der antiken Stätten vor und öffnen Sie die Vergleiche für das antike Theater und das antike Stadion.",
+    "preparation_fr": "Préparez une carte des sites antiques et ouvrez les comparaisons pour le théâtre antique et le stade antique."
   },
   {
     "id": "education-revival-houses-schools",
@@ -475,7 +531,9 @@
         "activity_bg": "Учениците описват видими белези на възрожденска къща, без да правят неподкрепени изводи.",
         "activity_en": "Students describe visible features of a Revival house without making unsupported conclusions.",
         "phase_de": "Beobachtung",
-        "activity_de": "Die Schüler beschreiben sichtbare Merkmale eines Revival-Hauses, ohne unbegründete Schlussfolgerungen zu ziehen."
+        "phase_fr": "Observations",
+        "activity_de": "Die Schüler beschreiben sichtbare Merkmale eines Revival-Hauses, ohne unbegründete Schlussfolgerungen zu ziehen.",
+        "activity_fr": "Les élèves décrivent les caractéristiques visibles d’une maison Revival sans tirer de conclusions sans fondement."
       },
       {
         "minutes": 12,
@@ -484,7 +542,9 @@
         "activity_bg": "Групите проверяват как източникът описва функцията на избрана сграда или училище.",
         "activity_en": "Groups check how the source describes the function of a chosen building or school.",
         "phase_de": "Quelle und Funktion",
-        "activity_de": "Die Gruppen prüfen, wie die Quelle die Funktion eines ausgewählten Gebäudes oder einer ausgewählten Schule beschreibt."
+        "phase_fr": "Origine et fonction",
+        "activity_de": "Die Gruppen prüfen, wie die Quelle die Funktion eines ausgewählten Gebäudes oder einer ausgewählten Schule beschreibt.",
+        "activity_fr": "Les groupes vérifient comment la source décrit la fonction d'un bâtiment ou d'une école choisi."
       },
       {
         "minutes": 13,
@@ -493,7 +553,9 @@
         "activity_bg": "Класът обсъжда как училища, храмове и къщи създават градска мрежа от общности.",
         "activity_en": "The class discusses how schools, churches and houses form an urban network of communities.",
         "phase_de": "Gemeinschaft",
-        "activity_de": "Die Klasse diskutiert, wie Schulen, Kirchen und Häuser ein städtisches Netzwerk von Gemeinschaften bilden."
+        "phase_fr": "Communauté",
+        "activity_de": "Die Klasse diskutiert, wie Schulen, Kirchen und Häuser ein städtisches Netzwerk von Gemeinschaften bilden.",
+        "activity_fr": "La classe discute de la manière dont les écoles, les églises et les maisons forment un réseau urbain de communautés."
       },
       {
         "minutes": 10,
@@ -502,7 +564,9 @@
         "activity_bg": "Всеки ученик пише едно доказано твърдение и един въпрос, който изисква допълнителен източник.",
         "activity_en": "Each student writes one evidenced claim and one question requiring another source.",
         "phase_de": "Ausfahrtsticket",
-        "activity_de": "Jeder Schüler schreibt eine bewiesene Behauptung und eine Frage, die eine andere Quelle erfordert."
+        "phase_fr": "Billet de sortie",
+        "activity_de": "Jeder Schüler schreibt eine bewiesene Behauptung und eine Frage, die eine andere Quelle erfordert.",
+        "activity_fr": "Chaque élève rédige une affirmation prouvée et une question nécessitant une autre source."
       }
     ],
     "quiz": [
@@ -523,7 +587,9 @@
         "explanation_bg": "Училищните сгради имат функция, която може да се свърже с образователната история на града.",
         "explanation_en": "School buildings have a function that can be linked to the city's educational history.",
         "question_de": "Welche Art von Website kann den Bildungsverlauf anzeigen?",
-        "explanation_de": "Schulgebäude haben eine Funktion, die mit der Bildungsgeschichte der Stadt verknüpft werden kann."
+        "question_fr": "Quel type de site peut montrer l’histoire de l’éducation ?",
+        "explanation_de": "Schulgebäude haben eine Funktion, die mit der Bildungsgeschichte der Stadt verknüpft werden kann.",
+        "explanation_fr": "Les bâtiments scolaires ont une fonction qui peut être liée à l'histoire éducative de la ville."
       },
       {
         "question_bg": "Какво трябва да съдържа снимката, за да се използва в урок?",
@@ -542,7 +608,9 @@
         "explanation_bg": "Open Plovdiv използва изображения с проследим произход и ясни условия за повторна употреба.",
         "explanation_en": "Open Plovdiv uses images with traceable origin and clear reuse terms.",
         "question_de": "Was muss ein Bild enthalten, um in einer Lektion verwendet zu werden?",
-        "explanation_de": "Open Plovdiv verwendet Bilder mit nachvollziehbarer Herkunft und klaren Wiederverwendungsbedingungen."
+        "question_fr": "Que doit contenir une image pour être utilisée dans une leçon ?",
+        "explanation_de": "Open Plovdiv verwendet Bilder mit nachvollziehbarer Herkunft und klaren Wiederverwendungsbedingungen.",
+        "explanation_fr": "Open Plovdiv utilise des images dont l'origine est traçable et des conditions de réutilisation claires."
       },
       {
         "question_bg": "Защо Старият град се разглежда като повече от архитектурен ансамбъл?",
@@ -561,7 +629,9 @@
         "explanation_bg": "Историческото тълкуване свързва архитектурата с хора, институции и по-ранни градски пластове.",
         "explanation_en": "Historical interpretation connects architecture with people, institutions and earlier urban layers.",
         "question_de": "Warum wird die Altstadt als mehr als nur ein architektonisches Ensemble betrachtet?",
-        "explanation_de": "Die historische Interpretation verbindet Architektur mit Menschen, Institutionen und früheren städtischen Schichten."
+        "question_fr": "Pourquoi la Vieille Ville est-elle traitée comme plus qu’un ensemble architectural ?",
+        "explanation_de": "Die historische Interpretation verbindet Architektur mit Menschen, Institutionen und früheren städtischen Schichten.",
+        "explanation_fr": "L’interprétation historique relie l’architecture aux personnes, aux institutions et aux couches urbaines antérieures."
       }
     ],
     "printable_handout": {
@@ -577,7 +647,8 @@
         "Write what the source claims about function and dating.",
         "Mark which claim remains unverified."
       ],
-      "title_de": "Arbeitsblatt: Ein Gebäude als Quelle"
+      "title_de": "Arbeitsblatt: Ein Gebäude als Quelle",
+      "title_fr": "Feuille de travail : un bâtiment comme source"
     },
     "audio_tour": {
       "title_bg": "Маршрут за разходка: къщи и училища в Стария град",
@@ -591,7 +662,9 @@
           "narration_bg": "В Стария град фасадите са само началото. Зад тях стоят семейства, училища, църковни общности и градски решения.",
           "narration_en": "In the Old Town, facades are only the beginning. Behind them stand families, schools, church communities and civic decisions.",
           "title_de": "Altes Plovdiv",
-          "narration_de": "In der Altstadt sind Fassaden nur der Anfang. Dahinter stehen Familien, Schulen, Kirchengemeinden und bürgerschaftliche Entscheidungen."
+          "title_fr": "Vieux Plovdiv",
+          "narration_de": "In der Altstadt sind Fassaden nur der Anfang. Dahinter stehen Familien, Schulen, Kirchengemeinden und bürgerschaftliche Entscheidungen.",
+          "narration_fr": "Dans la Vieille Ville, les façades ne sont qu’un début. Derrière eux se trouvent les familles, les écoles, les communautés ecclésiales et les décisions civiques."
         },
         {
           "place_id": "place-humanitarian-high-school-saints-cyril-and-methodius-plovdiv-q12290859",
@@ -600,7 +673,9 @@
           "narration_bg": "Училищната история на Пловдив може да се чете през сгради, архиви и спомени. Винаги отделяйте доказаното от предположението.",
           "narration_en": "Plovdiv's educational history can be read through buildings, archives and memories. Always separate evidence from assumption.",
           "title_de": "St. Cyril und Methodius High School of Humanities",
-          "narration_de": "Die Bildungsgeschichte Plovdivs lässt sich anhand von Gebäuden, Archiven und Erinnerungen nachlesen. Trennen Sie immer Beweise von Annahmen."
+          "title_fr": "Lycée des Sciences Humaines Saints Cyrille et Méthode",
+          "narration_de": "Die Bildungsgeschichte Plovdivs lässt sich anhand von Gebäuden, Archiven und Erinnerungen nachlesen. Trennen Sie immer Beweise von Annahmen.",
+          "narration_fr": "L'histoire éducative de Plovdiv peut être lue à travers les bâtiments, les archives et les souvenirs. Séparez toujours les preuves des hypothèses."
         },
         {
           "place_id": "place-holy-mother-of-god",
@@ -609,10 +684,13 @@
           "narration_bg": "Храмовете са част от историята на градските общности. Те свързват вяра, език, училища и обществен живот.",
           "narration_en": "Churches are part of the history of urban communities. They connect faith, language, schools and public life.",
           "title_de": "Heilige Mutter Gottes",
-          "narration_de": "Kirchen sind Teil der Geschichte städtischer Gemeinschaften. Sie verbinden Glauben, Sprache, Schule und öffentliches Leben."
+          "title_fr": "Sainte Mère de Dieu",
+          "narration_de": "Kirchen sind Teil der Geschichte städtischer Gemeinschaften. Sie verbinden Glauben, Sprache, Schule und öffentliches Leben.",
+          "narration_fr": "Les églises font partie de l’histoire des communautés urbaines. Ils relient la foi, la langue, les écoles et la vie publique."
         }
       ],
-      "title_de": "Wanderroute: Häuser und Schulen in der Altstadt"
+      "title_de": "Wanderroute: Häuser und Schulen in der Altstadt",
+      "title_fr": "Itinéraire pédestre : maisons et écoles de la vieille ville"
     },
     "linked_event_ids": [
       "event-first-school-1836"
@@ -644,13 +722,19 @@
       "reviewed_at": null,
       "notes_bg": "Образователният ресурс е съставен от публични записи в базата и изисква педагогически и редакторски преглед преди официална употреба.",
       "notes_en": "The education resource is assembled from public knowledge-base records and requires pedagogical and editorial review before formal use.",
-      "notes_de": "Die Bildungsressource wird aus Aufzeichnungen öffentlicher Wissensdatenbanken zusammengestellt und bedarf vor der formellen Nutzung einer pädagogischen und redaktionellen Prüfung."
+      "notes_de": "Die Bildungsressource wird aus Aufzeichnungen öffentlicher Wissensdatenbanken zusammengestellt und bedarf vor der formellen Nutzung einer pädagogischen und redaktionellen Prüfung.",
+      "notes_fr": "La ressource éducative est assemblée à partir de documents de base de connaissances publiques et nécessite une révision pédagogique et éditoriale avant son utilisation formelle."
     },
     "audience_de": "Klassen 7-9",
+    "audience_fr": "7e à 9e années",
     "title_de": "Die Revival City: Häuser, Schulen und Gemeinden",
+    "title_fr": "La ville du renouveau : maisons, écoles et communautés",
     "summary_de": "Eine Lektion über die Altstadt als einen Ort, an dem Renaissance-Architektur, Schulen, Kirchen und städtische Gemeinden die Geschichte der Modernisierung erzählen.",
+    "summary_fr": "Une leçon sur la vieille ville en tant que lieu où l'architecture néo-renaissance, les écoles, les églises et les communautés urbaines racontent l'histoire de la modernisation.",
     "driving_question_de": "Wie spiegeln Gebäude den sozialen und pädagogischen Wandel in der Stadt wider?",
-    "preparation_de": "Wählen Sie drei Altstadtstandorte und einen Schulstandort. Bereiten Sie lizenzierte Bilder und kurze Quellenhinweise vor."
+    "driving_question_fr": "Comment les bâtiments révèlent-ils les changements sociaux et éducatifs dans la ville ?",
+    "preparation_de": "Wählen Sie drei Altstadtstandorte und einen Schulstandort. Bereiten Sie lizenzierte Bilder und kurze Quellenhinweise vor.",
+    "preparation_fr": "Choisissez trois sites de la vieille ville et un site scolaire. Préparez des images sous licence et de courtes notes sur les sources."
   },
   {
     "id": "education-unification-civic-city",
@@ -692,7 +776,9 @@
         "activity_bg": "Учениците описват какво очакват да намерят на площад, посветен на историческо събитие.",
         "activity_en": "Students describe what they expect to find in a square dedicated to a historical event.",
         "phase_de": "Erinnerung und Ort",
-        "activity_de": "Die Schüler beschreiben, was sie auf einem Platz erwarten, der einem historischen Ereignis gewidmet ist."
+        "phase_fr": "Mémoire et lieu",
+        "activity_de": "Die Schüler beschreiben, was sie auf einem Platz erwarten, der einem historischen Ereignis gewidmet ist.",
+        "activity_fr": "Les élèves décrivent ce qu'ils s'attendent à trouver sur une place dédiée à un événement historique."
       },
       {
         "minutes": 15,
@@ -701,7 +787,9 @@
         "activity_bg": "Групите проверяват ранните кметски мандати и обсъждат защо официалният списък е важен, но не отговаря на всички биографични въпроси.",
         "activity_en": "Groups check early mayoral terms and discuss why an official list is important but does not answer every biographical question.",
         "phase_de": "Offizielle Quelle",
-        "activity_de": "Die Gruppen überprüfen frühe Amtszeiten des Bürgermeisters und diskutieren, warum eine offizielle Liste wichtig ist, aber nicht jede biografische Frage beantwortet."
+        "phase_fr": "Source officielle",
+        "activity_de": "Die Gruppen überprüfen frühe Amtszeiten des Bürgermeisters und diskutieren, warum eine offizielle Liste wichtig ist, aber nicht jede biografische Frage beantwortet.",
+        "activity_fr": "Les groupes vérifient les premiers mandats des maires et discutent de l'importance d'une liste officielle, mais ne répond pas à toutes les questions biographiques."
       },
       {
         "minutes": 17,
@@ -710,7 +798,9 @@
         "activity_bg": "Учениците пишат кратък аргумент как Съединението се превръща в част от идентичността на Пловдив.",
         "activity_en": "Students write a short argument on how the Unification becomes part of Plovdiv's identity.",
         "phase_de": "Identitätsargument",
-        "activity_de": "Die Schüler schreiben eine kurze Argumentation darüber, wie die Vereinigung Teil der Identität Plovdivs wird."
+        "phase_fr": "Argument d'identité",
+        "activity_de": "Die Schüler schreiben eine kurze Argumentation darüber, wie die Vereinigung Teil der Identität Plovdivs wird.",
+        "activity_fr": "Les étudiants rédigent un court argument sur la façon dont l'Unification devient partie intégrante de l'identité de Plovdiv."
       },
       {
         "minutes": 10,
@@ -719,7 +809,9 @@
         "activity_bg": "Класът отбелязва кои твърдения са подкрепени от официален източник и кои изискват допълнителна литература.",
         "activity_en": "The class marks which claims are supported by an official source and which require further literature.",
         "phase_de": "Reflexion",
-        "activity_de": "Die Klasse kennzeichnet, welche Behauptungen durch eine offizielle Quelle gestützt werden und für welche weitere Literatur erforderlich ist."
+        "phase_fr": "Réflexion",
+        "activity_de": "Die Klasse kennzeichnet, welche Behauptungen durch eine offizielle Quelle gestützt werden und für welche weitere Literatur erforderlich ist.",
+        "activity_fr": "Les notes de classe dont les affirmations sont étayées par une source officielle et qui nécessitent une documentation supplémentaire."
       }
     ],
     "quiz": [
@@ -740,7 +832,9 @@
         "explanation_bg": "Съединението от 1885 г. е ключово събитие в градската и националната памет.",
         "explanation_en": "The Unification of 1885 is a key event in civic and national memory.",
         "question_de": "Welches Ereignis ist für Plovdivs Image als Stadt der Vereinigung von zentraler Bedeutung?",
-        "explanation_de": "Die Vereinigung von 1885 ist ein Schlüsselereignis im bürgerlichen und nationalen Gedächtnis."
+        "question_fr": "Quel événement est au cœur de l’image de Plovdiv en tant que ville de l’Unification ?",
+        "explanation_de": "Die Vereinigung von 1885 ist ein Schlüsselereignis im bürgerlichen und nationalen Gedächtnis.",
+        "explanation_fr": "L'Unification de 1885 est un événement clé dans la mémoire civique et nationale."
       },
       {
         "question_bg": "Какво доказва официалният списък на кметовете?",
@@ -759,7 +853,9 @@
         "explanation_bg": "Официалният списък е силен за институционална хронология, но не е пълна биография.",
         "explanation_en": "The official list is strong for institutional chronology, but it is not a full biography.",
         "question_de": "Was beweist die offizielle Bürgermeisterliste?",
-        "explanation_de": "Die offizielle Liste ist aussagekräftig für die institutionelle Chronologie, es handelt sich jedoch nicht um eine vollständige Biografie."
+        "question_fr": "Que prouve la liste officielle des maires ?",
+        "explanation_de": "Die offizielle Liste ist aussagekräftig für die institutionelle Chronologie, es handelt sich jedoch nicht um eine vollständige Biografie.",
+        "explanation_fr": "La liste officielle est solide en termes de chronologie institutionnelle, mais elle ne constitue pas une biographie complète."
       },
       {
         "question_bg": "Защо паметниците и площадите са източници за гражданска памет?",
@@ -778,7 +874,9 @@
         "explanation_bg": "Публичните места показват как дадено общество подрежда паметта си в пространството.",
         "explanation_en": "Public places show how a community arranges memory in space.",
         "question_de": "Warum sind Denkmäler und Plätze Quellen des bürgerlichen Gedächtnisses?",
-        "explanation_de": "Öffentliche Orte zeigen, wie eine Gemeinschaft Erinnerung im Raum arrangiert."
+        "question_fr": "Pourquoi les monuments et les places sont-ils des sources de mémoire civique ?",
+        "explanation_de": "Öffentliche Orte zeigen, wie eine Gemeinschaft Erinnerung im Raum arrangiert.",
+        "explanation_fr": "Les lieux publics montrent comment une communauté agence la mémoire dans l’espace."
       }
     ],
     "printable_handout": {
@@ -794,7 +892,8 @@
         "Choose one early mayoral term and note what the source proves.",
         "Write three sentences on how the city preserves memory."
       ],
-      "title_de": "Arbeitsblatt: Ereignis, Institution, Erinnerung"
+      "title_de": "Arbeitsblatt: Ereignis, Institution, Erinnerung",
+      "title_fr": "Feuille de travail : événement, institution, mémoire"
     },
     "audio_tour": {
       "title_bg": "Маршрут за разходка: Съединение и гражданска памет",
@@ -808,7 +907,9 @@
           "narration_bg": "Тук градското пространство се превръща в урок по памет. Името и паметникът насочват към 1885 г. и към ролята на Пловдив.",
           "narration_en": "Here urban space becomes a lesson in memory. The name and monument point to 1885 and to Plovdiv's role.",
           "title_de": "Platz der Vereinigung",
-          "narration_de": "Hier wird der Stadtraum zur Erinnerungslektion. Der Name und das Denkmal weisen auf das Jahr 1885 und die Rolle Plovdivs hin."
+          "title_fr": "Place de l'Unification",
+          "narration_de": "Hier wird der Stadtraum zur Erinnerungslektion. Der Name und das Denkmal weisen auf das Jahr 1885 und die Rolle Plovdivs hin.",
+          "narration_fr": "L'espace urbain devient ici une leçon de mémoire. Le nom et le monument évoquent l'année 1885 et le rôle de Plovdiv."
         },
         {
           "place_id": "place-plovdiv-city",
@@ -817,7 +918,9 @@
           "narration_bg": "Историята на гражданските решения се проследява и през институциите. Официалният списък на кметовете дава реда на мандатите.",
           "narration_en": "The history of civic decisions is also traced through institutions. The official mayor list gives the order of terms.",
           "title_de": "Gemeinde und Bürgermeister",
-          "narration_de": "Die Geschichte bürgerschaftlicher Entscheidungen wird auch anhand von Institutionen nachgezeichnet. Die offizielle Bürgermeisterliste gibt die Reihenfolge der Amtszeiten an."
+          "title_fr": "Municipalité et maires",
+          "narration_de": "Die Geschichte bürgerschaftlicher Entscheidungen wird auch anhand von Institutionen nachgezeichnet. Die offizielle Bürgermeisterliste gibt die Reihenfolge der Amtszeiten an.",
+          "narration_fr": "L’histoire des décisions civiques est également retracée à travers les institutions. La liste officielle des maires donne l'ordre des mandats."
         },
         {
           "place_id": "place-old-town",
@@ -826,10 +929,13 @@
           "narration_bg": "Паметта не стои само в архивите. Тя се вижда в имена, маршрути, музеи и годишнини.",
           "narration_en": "Memory is not kept only in archives. It appears in names, routes, museums and anniversaries.",
           "title_de": "Städtisches Gedächtnis",
-          "narration_de": "Erinnerung wird nicht nur in Archiven aufbewahrt. Es erscheint in Namen, Routen, Museen und Jubiläen."
+          "title_fr": "Mémoire urbaine",
+          "narration_de": "Erinnerung wird nicht nur in Archiven aufbewahrt. Es erscheint in Namen, Routen, Museen und Jubiläen.",
+          "narration_fr": "La mémoire n'est pas conservée uniquement dans les archives. Il apparaît dans les noms, les itinéraires, les musées et les anniversaires."
         }
       ],
-      "title_de": "Wanderroute: Vereinigung und bürgerliches Gedächtnis"
+      "title_de": "Wanderroute: Vereinigung und bürgerliches Gedächtnis",
+      "title_fr": "Itinéraire pédestre : Unification et mémoire civique"
     },
     "linked_event_ids": [
       "event-unification-1885",
@@ -860,13 +966,19 @@
       "reviewed_at": null,
       "notes_bg": "Образователният ресурс е съставен от публични записи в базата и изисква педагогически и редакторски преглед преди официална употреба.",
       "notes_en": "The education resource is assembled from public knowledge-base records and requires pedagogical and editorial review before formal use.",
-      "notes_de": "Die Bildungsressource wird aus Aufzeichnungen öffentlicher Wissensdatenbanken zusammengestellt und bedarf vor der formellen Nutzung einer pädagogischen und redaktionellen Prüfung."
+      "notes_de": "Die Bildungsressource wird aus Aufzeichnungen öffentlicher Wissensdatenbanken zusammengestellt und bedarf vor der formellen Nutzung einer pädagogischen und redaktionellen Prüfung.",
+      "notes_fr": "La ressource éducative est assemblée à partir de documents de base de connaissances publiques et nécessite une révision pédagogique et éditoriale avant son utilisation formelle."
     },
     "audience_de": "Klassen 7-10",
+    "audience_fr": "7e à 10e année",
     "title_de": "Die Vereinigung und die Stadt der bürgerlichen Entscheidungen",
+    "title_fr": "L'unification et la ville des décisions civiques",
     "summary_de": "Eine Lektion über Plovdiv als Stadt der Vereinigung, die frühe kommunale Verwaltung und wie offizielle Listen, Plätze und Denkmäler das öffentliche Gedächtnis prägen.",
+    "summary_fr": "Une leçon sur Plovdiv en tant que ville de l'Unification, les débuts de la gouvernance municipale et la manière dont les listes officielles, les places et les monuments façonnent la mémoire publique.",
     "driving_question_de": "Wie wird ein historisches Ereignis Teil der Identität einer Stadt?",
-    "preparation_de": "Öffnen Sie die Ereignisse von 1885, die Bürgermeisterseite und die Aufzeichnung für den Unification Square."
+    "driving_question_fr": "Comment un événement historique s’inscrit-il dans l’identité d’une ville ?",
+    "preparation_de": "Öffnen Sie die Ereignisse von 1885, die Bürgermeisterseite und die Aufzeichnung für den Unification Square.",
+    "preparation_fr": "Ouvrez les événements de 1885, la page des maires et le dossier de la Place de l'Unification."
   },
   {
     "id": "education-earthquake-culture-memory",
@@ -907,7 +1019,9 @@
         "activity_bg": "Учениците описват архивна снимка от земетресението само чрез видими детайли, преди да прочетат метаданните.",
         "activity_en": "Students describe an earthquake archive image only through visible details before reading metadata.",
         "phase_de": "Visuelles Lesen",
-        "activity_de": "Die Schüler beschreiben ein Erdbebenarchivbild nur durch sichtbare Details, bevor sie Metadaten lesen."
+        "phase_fr": "Lecture visuelle",
+        "activity_de": "Die Schüler beschreiben ein Erdbebenarchivbild nur durch sichtbare Details, bevor sie Metadaten lesen.",
+        "activity_fr": "Les élèves décrivent une image d'archive de tremblement de terre uniquement à travers les détails visibles avant de lire les métadonnées."
       },
       {
         "minutes": 13,
@@ -916,7 +1030,9 @@
         "activity_bg": "Класът проверява дата, място, кредит, лиценз и източник на изображението.",
         "activity_en": "The class checks date, place, credit, license and source for the image.",
         "phase_de": "Metadaten",
-        "activity_de": "Die Klasse prüft Datum, Ort, Quellenangabe, Lizenz und Quelle des Bildes."
+        "phase_fr": "Métadonnées",
+        "activity_de": "Die Klasse prüft Datum, Ort, Quellenangabe, Lizenz und Quelle des Bildes.",
+        "activity_fr": "La classe vérifie la date, le lieu, le crédit, la licence et la source de l'image."
       },
       {
         "minutes": 15,
@@ -925,7 +1041,9 @@
         "activity_bg": "Групите сравняват твърденията за 1999 и 2019 г. и отбелязват кои числа идват от кой източник.",
         "activity_en": "Groups compare claims about 1999 and 2019 and mark which figures come from which source.",
         "phase_de": "Kulturprogramm",
-        "activity_de": "Gruppen vergleichen Angaben zu 1999 und 2019 und markieren, welche Zahlen aus welcher Quelle stammen."
+        "phase_fr": "Programme culturel",
+        "activity_de": "Gruppen vergleichen Angaben zu 1999 und 2019 und markieren, welche Zahlen aus welcher Quelle stammen.",
+        "activity_fr": "Les groupes comparent les affirmations concernant 1999 et 2019 et notent quels chiffres proviennent de quelle source."
       },
       {
         "minutes": 15,
@@ -934,7 +1052,9 @@
         "activity_bg": "Учениците пишат кратък параграф за възстановяване и културна памет с поне две цитирани опори.",
         "activity_en": "Students write a short paragraph on recovery and cultural memory with at least two cited supports.",
         "phase_de": "Historischer Text",
-        "activity_de": "Die Studierenden schreiben einen kurzen Absatz über Genesung und kulturelles Gedächtnis mit mindestens zwei zitierten Belegen."
+        "phase_fr": "Texte historique",
+        "activity_de": "Die Studierenden schreiben einen kurzen Absatz über Genesung und kulturelles Gedächtnis mit mindestens zwei zitierten Belegen.",
+        "activity_fr": "Les élèves rédigent un court paragraphe sur le rétablissement et la mémoire culturelle avec au moins deux supports cités."
       }
     ],
     "quiz": [
@@ -955,7 +1075,9 @@
         "explanation_bg": "Изображението трябва да има проследими метаданни, за да се използва като доказателство.",
         "explanation_en": "An image needs traceable metadata to be used as evidence.",
         "question_de": "Was sollte bei einem historischen Foto zuerst überprüft werden?",
-        "explanation_de": "Ein Bild benötigt nachvollziehbare Metadaten, um als Beweismittel verwendet zu werden."
+        "question_fr": "Que faut-il vérifier en premier pour une photographie historique ?",
+        "explanation_de": "Ein Bild benötigt nachvollziehbare Metadaten, um als Beweismittel verwendet zu werden.",
+        "explanation_fr": "Une image a besoin de métadonnées traçables pour être utilisée comme preuve."
       },
       {
         "question_bg": "Кое твърдение за 1999 г. трябва да се пази като контекст, а не като бюджетен ред?",
@@ -974,7 +1096,9 @@
         "explanation_bg": "Архивният запис за 1999 г. е програмен контекст, не общински бюджет.",
         "explanation_en": "The 1999 archive record is programme context, not a municipal budget.",
         "question_de": "Welche Forderung von 1999 sollte im Kontext bleiben und nicht als Haushaltslinie gelten?",
-        "explanation_de": "Bei den Archivaufzeichnungen von 1999 handelt es sich um einen Programmkontext, nicht um einen Gemeindehaushalt."
+        "question_fr": "Quelle demande de 1999 doit rester un contexte et non une ligne budgétaire ?",
+        "explanation_de": "Bei den Archivaufzeichnungen von 1999 handelt es sich um einen Programmkontext, nicht um einen Gemeindehaushalt.",
+        "explanation_fr": "Les archives de 1999 relèvent du contexte d'un programme et non d'un budget municipal."
       },
       {
         "question_bg": "Кой източник потвърждава европейския контекст на 2019 г.?",
@@ -993,7 +1117,9 @@
         "explanation_bg": "Записът за 2019 г. използва източник на Европейската комисия за титлата Европейска столица на културата.",
         "explanation_en": "The 2019 record uses a European Commission source for the European Capital of Culture title.",
         "question_de": "Welche Quelle bestätigt den europäischen Kontext von 2019?",
-        "explanation_de": "Die Aufzeichnung für 2019 nutzt eine Quelle der Europäischen Kommission für den Titel „Kulturhauptstadt Europas“."
+        "question_fr": "Quelle source confirme le contexte européen de 2019 ?",
+        "explanation_de": "Die Aufzeichnung für 2019 nutzt eine Quelle der Europäischen Kommission für den Titel „Kulturhauptstadt Europas“.",
+        "explanation_fr": "Le record 2019 utilise une source de la Commission européenne pour le titre de Capitale européenne de la culture."
       }
     ],
     "printable_handout": {
@@ -1009,7 +1135,8 @@
         "Add metadata: date, place, source, license.",
         "Compare one claim about 1999 and one about 2019."
       ],
-      "title_de": "Arbeitsblatt: Bild, Programm, Erinnerung"
+      "title_de": "Arbeitsblatt: Bild, Programm, Erinnerung",
+      "title_fr": "Feuille de travail : image, programme, mémoire"
     },
     "audio_tour": {
       "title_bg": "Маршрут за разходка: модерна памет",
@@ -1023,7 +1150,9 @@
           "narration_bg": "Архивната снимка от 1928 г. напомня, че модерният град пази следи от бедствия и възстановяване.",
           "narration_en": "The 1928 archive image reminds us that the modern city preserves traces of disaster and recovery.",
           "title_de": "Nationalbibliothek „Iwan Wasow“.",
-          "narration_de": "Das Archivbild von 1928 erinnert uns daran, dass die moderne Stadt Spuren von Katastrophe und Wiederaufbau bewahrt."
+          "title_fr": "Bibliothèque nationale Ivan Vazov",
+          "narration_de": "Das Archivbild von 1928 erinnert uns daran, dass die moderne Stadt Spuren von Katastrophe und Wiederaufbau bewahrt.",
+          "narration_fr": "L'image d'archive de 1928 nous rappelle que la ville moderne conserve des traces de catastrophes et de reconstruction."
         },
         {
           "place_id": "place-ancient-theatre",
@@ -1032,7 +1161,9 @@
           "narration_bg": "През 1999 г. културната програма използва емблематични сцени. За историята е важно да различаваме мащаб на програма от бюджетни числа.",
           "narration_en": "In 1999 the cultural programme used emblematic venues. For history, it matters to distinguish programme scale from budget figures.",
           "title_de": "Antikes Theater",
-          "narration_de": "Im Jahr 1999 nutzte das Kulturprogramm symbolträchtige Veranstaltungsorte. Für die Geschichte ist es wichtig, den Programmumfang von den Haushaltszahlen zu unterscheiden."
+          "title_fr": "Théâtre antique",
+          "narration_de": "Im Jahr 1999 nutzte das Kulturprogramm symbolträchtige Veranstaltungsorte. Für die Geschichte ist es wichtig, den Programmumfang von den Haushaltszahlen zu unterscheiden.",
+          "narration_fr": "En 1999, la programmation culturelle a utilisé des lieux emblématiques. Pour l’histoire, il est important de distinguer l’échelle du programme des chiffres budgétaires."
         },
         {
           "place_id": "place-plovdiv-city",
@@ -1041,10 +1172,13 @@
           "narration_bg": "Европейската столица на културата поставя града в европейска мрежа от културни политики и публична памет.",
           "narration_en": "The European Capital of Culture places the city in a European network of cultural policy and public memory.",
           "title_de": "Plovdiv 2019",
-          "narration_de": "Die Kulturhauptstadt Europas stellt die Stadt in ein europäisches Netzwerk der Kulturpolitik und des öffentlichen Gedächtnisses."
+          "title_fr": "Plovdiv 2019",
+          "narration_de": "Die Kulturhauptstadt Europas stellt die Stadt in ein europäisches Netzwerk der Kulturpolitik und des öffentlichen Gedächtnisses.",
+          "narration_fr": "La Capitale européenne de la culture place la ville dans un réseau européen de politique culturelle et de mémoire publique."
         }
       ],
-      "title_de": "Wanderroute: moderne Erinnerung"
+      "title_de": "Wanderroute: moderne Erinnerung",
+      "title_fr": "Itinéraire pédestre : mémoire moderne"
     },
     "linked_event_ids": [
       "event-event-1999-month-of-culture",
@@ -1078,12 +1212,18 @@
       "reviewed_at": null,
       "notes_bg": "Образователният ресурс е съставен от публични записи в базата и изисква педагогически и редакторски преглед преди официална употреба.",
       "notes_en": "The education resource is assembled from public knowledge-base records and requires pedagogical and editorial review before formal use.",
-      "notes_de": "Die Bildungsressource wird aus Aufzeichnungen öffentlicher Wissensdatenbanken zusammengestellt und bedarf vor der formellen Nutzung einer pädagogischen und redaktionellen Prüfung."
+      "notes_de": "Die Bildungsressource wird aus Aufzeichnungen öffentlicher Wissensdatenbanken zusammengestellt und bedarf vor der formellen Nutzung einer pädagogischen und redaktionellen Prüfung.",
+      "notes_fr": "La ressource éducative est assemblée à partir de documents de base de connaissances publiques et nécessite une révision pédagogique et éditoriale avant son utilisation formelle."
     },
     "audience_de": "Klassen 8-11",
+    "audience_fr": "8e à 11e années",
     "title_de": "Zerstörung, Wiederherstellung und Kulturkapital",
+    "title_fr": "Destruction, récupération et capital culturel",
     "summary_de": "Eine Lektion über das moderne Plovdiv anhand visueller Archive: Schäden durch das Erdbeben von 1928, das Kulturprogramm von 1999 und die Kulturhauptstadt Europas 2019.",
+    "summary_fr": "Une leçon sur la Plovdiv moderne à travers des archives visuelles : les dégâts du tremblement de terre de 1928, le programme culturel de 1999 et la Capitale européenne de la culture 2019.",
     "driving_question_de": "Wie verwandelt eine Stadt Krisen- und Kulturprogramme in öffentliches Gedächtnis?",
-    "preparation_de": "Öffnen Sie die Erdbebenarchivbilder von 1928, die Aufzeichnung von 1999 und das Ereignis von 2019."
+    "driving_question_fr": "Comment une ville transforme-t-elle la crise et la programmation culturelle en mémoire publique ?",
+    "preparation_de": "Öffnen Sie die Erdbebenarchivbilder von 1928, die Aufzeichnung von 1999 und das Ereignis von 2019.",
+    "preparation_fr": "Ouvrez les images d'archives du tremblement de terre de 1928, le record de 1999 et l'événement de 2019."
   }
 ]

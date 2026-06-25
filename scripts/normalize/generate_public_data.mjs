@@ -6,10 +6,16 @@ import { execFileSync } from "node:child_process";
 const root = process.cwd();
 const publicDir = path.join(root, "apps/web/public/data");
 const historyPublicDir = path.join(publicDir, "history");
-const translationsPath = path.join(root, "data/translations/de.json");
-const deTranslations = fs.existsSync(translationsPath)
-  ? JSON.parse(fs.readFileSync(translationsPath, "utf8"))
-  : {};
+const translationLangs = ["de", "fr"];
+const translationsByLang = Object.fromEntries(
+  translationLangs.map((lang) => {
+    const translationsPath = path.join(root, `data/translations/${lang}.json`);
+    return [
+      lang,
+      fs.existsSync(translationsPath) ? JSON.parse(fs.readFileSync(translationsPath, "utf8")) : {}
+    ];
+  })
+);
 const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builder"]);
 
 const files = [
@@ -35,8 +41,8 @@ execFileSync(process.execPath, ["scripts/validate/validate_data.mjs"], {
   stdio: "inherit"
 });
 
-function translateEnToDe(value) {
-  return deTranslations[String(value).trim()] ?? null;
+function translateEn(value, lang) {
+  return translationsByLang[lang]?.[String(value).trim()] ?? null;
 }
 
 function isPersonLikeRecord(record) {
@@ -56,35 +62,39 @@ function shouldTranslateField(record, base) {
   return true;
 }
 
-function withGermanFields(value) {
-  if (Array.isArray(value)) return value.map((item) => withGermanFields(item));
+function withTranslatedFields(value) {
+  if (Array.isArray(value)) return value.map((item) => withTranslatedFields(item));
   if (!value || typeof value !== "object") return value;
 
   const out = {};
-  for (const [key, child] of Object.entries(value)) out[key] = withGermanFields(child);
+  for (const [key, child] of Object.entries(value)) out[key] = withTranslatedFields(child);
   for (const [key, child] of Object.entries(value)) {
     if (!key.endsWith("_en") || typeof child !== "string") continue;
     const base = key.slice(0, -3);
     if (!shouldTranslateField(value, base)) continue;
-    const deKey = `${base}_de`;
-    if (typeof out[deKey] === "string" && out[deKey].trim()) continue;
-    const translated = translateEnToDe(child);
-    if (translated) out[deKey] = translated;
+    for (const lang of translationLangs) {
+      const translatedKey = `${base}_${lang}`;
+      if (typeof out[translatedKey] === "string" && out[translatedKey].trim()) continue;
+      const translated = translateEn(child, lang);
+      if (translated) out[translatedKey] = translated;
+    }
   }
   for (const key of ["title", "label"]) {
     const child = value[key];
-    const deKey = `${key}_de`;
     if (typeof child !== "string") continue;
-    if (typeof out[deKey] === "string" && out[deKey].trim()) continue;
-    const translated = translateEnToDe(child);
-    if (translated) out[deKey] = translated;
+    for (const lang of translationLangs) {
+      const translatedKey = `${key}_${lang}`;
+      if (typeof out[translatedKey] === "string" && out[translatedKey].trim()) continue;
+      const translated = translateEn(child, lang);
+      if (translated) out[translatedKey] = translated;
+    }
   }
   return out;
 }
 
 function writeJson(target, value) {
   fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.writeFileSync(target, `${JSON.stringify(withGermanFields(value), null, 2)}\n`);
+  fs.writeFileSync(target, `${JSON.stringify(withTranslatedFields(value), null, 2)}\n`);
 }
 
 fs.mkdirSync(publicDir, { recursive: true });

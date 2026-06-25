@@ -3,7 +3,12 @@ import path from "node:path";
 import process from "node:process";
 
 const root = process.cwd();
-const outputPath = path.join(root, "data/translations/de.json");
+const targetLang = process.argv[2] ?? "de";
+const supportedTargetLangs = new Set(["de", "fr"]);
+if (!supportedTargetLangs.has(targetLang)) {
+  throw new Error(`Unsupported target language "${targetLang}". Expected one of: ${[...supportedTargetLangs].join(", ")}`);
+}
+const outputPath = path.join(root, `data/translations/${targetLang}.json`);
 const sourceDirs = ["data/curated", "data/generated/history-knowledge"];
 const splitToken = "\n<<<OP_TRANSLATION_SPLIT>>>\n";
 const maxBatchChars = 4200;
@@ -14,16 +19,29 @@ const numericOnly = /^[-+]?\d+(?:[.,]\d+)?$/;
 const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builder"]);
 let protectedNameFixups = [];
 
-const manualTranslations = {
-  "Public web reference; reuse terms not verified":
-    "Öffentliche Webreferenz; Wiederverwendungsbedingungen nicht geprüft",
-  "Wikimedia Commons file license, verify per file":
-    "Wikimedia-Commons-Dateilizenz; pro Datei prüfen",
-  "Creative Commons Attribution-ShareAlike 4.0 International":
-    "Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International",
-  "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
-  "Open Database License 1.0": "Open Database License 1.0"
+const manualTranslationsByLang = {
+  de: {
+    "Public web reference; reuse terms not verified":
+      "Öffentliche Webreferenz; Wiederverwendungsbedingungen nicht geprüft",
+    "Wikimedia Commons file license, verify per file":
+      "Wikimedia-Commons-Dateilizenz; pro Datei prüfen",
+    "Creative Commons Attribution-ShareAlike 4.0 International":
+      "Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International",
+    "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
+    "Open Database License 1.0": "Open Database License 1.0"
+  },
+  fr: {
+    "Public web reference; reuse terms not verified":
+      "Référence web publique ; conditions de réutilisation non vérifiées",
+    "Wikimedia Commons file license, verify per file":
+      "Licence de fichier Wikimedia Commons ; vérifier chaque fichier",
+    "Creative Commons Attribution-ShareAlike 4.0 International":
+      "Creative Commons Attribution - Partage dans les mêmes conditions 4.0 International",
+    "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
+    "Open Database License 1.0": "Open Database License 1.0"
+  }
 };
+const manualTranslations = manualTranslationsByLang[targetLang];
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -118,7 +136,7 @@ async function translateBatch(batch) {
   const url = new URL("https://translate.googleapis.com/translate_a/single");
   url.searchParams.set("client", "gtx");
   url.searchParams.set("sl", "en");
-  url.searchParams.set("tl", "de");
+  url.searchParams.set("tl", targetLang);
   url.searchParams.set("dt", "t");
   url.searchParams.set("q", batch.join(splitToken));
 
@@ -150,6 +168,96 @@ function normalizeTranslation(text) {
   return normalized;
 }
 
+async function buildProtectedNameFixups(protectedNames, existing) {
+  const existingFixups = [...protectedNames]
+    .map((name) => [existing[name], name])
+    .filter(([translatedName, name]) => translatedName && translatedName !== name);
+
+  const pendingNames = [...protectedNames].filter((name) => !existing[name]);
+  const translatedFixups = [];
+  for (const batch of makeBatches(pendingNames)) {
+    const translated = await translateBatch(batch);
+    for (let i = 0; i < batch.length; i += 1) {
+      const originalName = batch[i];
+      const translatedName = translated[i]?.trim();
+      if (translatedName && translatedName !== originalName) translatedFixups.push([translatedName, originalName]);
+    }
+  }
+
+  return [...existingFixups, ...translatedFixups].sort((a, b) => b[0].length - a[0].length);
+}
+
+function stripNamePrefix(value) {
+  return value
+    .replace(/^l['’]/i, "")
+    .replace(/^le /i, "")
+    .replace(/^la /i, "")
+    .replace(/^les /i, "")
+    .trim();
+}
+
+function translatedNameFromPattern(source, target, name) {
+  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const directPatterns = [
+    [`Biographical reference: ${escapedName}`, /^Référence biographique\s*:\s*(.+)$/],
+    [`Birth of ${escapedName}`, /^Naissance (?:d['’]|de |du |des )(.+)$/],
+    [
+      `Birth year and birthplace for ${escapedName}.`,
+      /^Année et lieu de naissance (?:d['’]|de |du |des )(.+)\.$/
+    ],
+    [
+      `Biographical data and Plovdiv birthplace link for ${escapedName}.`,
+      /^Données biographiques et lien vers le lieu de naissance de Plovdiv pour (.+)\.$/
+    ],
+    [`Mayor: ${escapedName}`, /^Maire\s*:\s*(.+)$/],
+    [`Mayoral term\\(s\\) for ${escapedName}.`, /^.+ pour (?:l['’]|le |la |les )?(.+)\.$/],
+    [`Wikipedia [—-] ${escapedName}`, /^Wikipédia [—-]\s*(.+)$/]
+  ];
+
+  for (const [sourcePattern, targetPattern] of directPatterns) {
+    if (!new RegExp(`^${sourcePattern}$`).test(source)) continue;
+    const match = target.match(targetPattern);
+    return match ? stripNamePrefix(match[1]) : null;
+  }
+
+  const archiveMatch = source.match(new RegExp(`^City archive record "Mayor: ${escapedName}"\\.$`));
+  if (archiveMatch) {
+    const targetMatch = target.match(/Maire\s*:\s*([^"»]+)["»]\.?$/);
+    return targetMatch ? stripNamePrefix(targetMatch[1]) : null;
+  }
+
+  const relationshipSource = source
+    .replace(/^Person relationship: /, "")
+    .replace(/\.$/, "")
+    .match(/^(.+) — (succeeded by|succeeds) — (.+)$/);
+  if (relationshipSource) {
+    const targetBody = target.replace(/^Relation personnelle\s*:\s*/, "").replace(/\.$/, "");
+    const targetParts = targetBody.split(/\s*—\s*/);
+    if (targetParts.length === 3 && relationshipSource[1] === name) return stripNamePrefix(targetParts[0]);
+    if (targetParts.length === 3 && relationshipSource[3] === name) return stripNamePrefix(targetParts[2]);
+  }
+
+  return null;
+}
+
+function inferProtectedNameFixups(translations, protectedNames) {
+  const inferred = [];
+  for (const [source, target] of Object.entries(translations)) {
+    for (const name of protectedNames) {
+      if (!source.includes(name) || target.includes(name)) continue;
+      const translatedName = translatedNameFromPattern(source, target, name);
+      if (translatedName && translatedName !== name) inferred.push([translatedName, name]);
+    }
+  }
+  return inferred;
+}
+
+function normalizeAllTranslations(translations) {
+  for (const [source, translated] of Object.entries(translations)) {
+    translations[source] = normalizeTranslation(translated);
+  }
+}
+
 const existing = fs.existsSync(outputPath) ? readJson(outputPath) : {};
 const allStrings = new Set(Object.keys(manualTranslations));
 const protectedNames = new Set();
@@ -161,10 +269,7 @@ for (const dir of sourceDirs) {
   }
 }
 for (const name of protectedNames) allStrings.delete(name);
-protectedNameFixups = [...protectedNames]
-  .map((name) => [existing[name], name])
-  .filter(([translatedName, name]) => translatedName && translatedName !== name)
-  .sort((a, b) => b[0].length - a[0].length);
+protectedNameFixups = await buildProtectedNameFixups(protectedNames, existing);
 
 const translations = { ...manualTranslations };
 for (const text of allStrings) {
@@ -174,7 +279,7 @@ const pending = [...allStrings]
   .filter((text) => !translations[text])
   .sort((a, b) => a.length - b.length || a.localeCompare(b));
 
-console.log(`German translations: ${Object.keys(translations).length} cached, ${pending.length} pending`);
+console.log(`${targetLang} translations: ${Object.keys(translations).length} cached, ${pending.length} pending`);
 
 const batches = makeBatches(pending);
 for (let i = 0; i < batches.length; i += 1) {
@@ -187,6 +292,10 @@ for (let i = 0; i < batches.length; i += 1) {
     console.log(`translated ${i + 1}/${batches.length} batches`);
   }
 }
+
+const inferredNameFixups = inferProtectedNameFixups(translations, protectedNames);
+protectedNameFixups = [...protectedNameFixups, ...inferredNameFixups].sort((a, b) => b[0].length - a[0].length);
+normalizeAllTranslations(translations);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, `${JSON.stringify(Object.fromEntries(Object.entries(translations).sort()), null, 2)}\n`);

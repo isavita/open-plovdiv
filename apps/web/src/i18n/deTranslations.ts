@@ -1,7 +1,14 @@
-import translationsJson from "../../../../data/translations/de.json";
+import deTranslationsJson from "../../../../data/translations/de.json";
+import frTranslationsJson from "../../../../data/translations/fr.json";
 import type { Lang } from "./ui";
 
-const translations = translationsJson as Record<string, string>;
+type TranslationLang = Extract<Lang, "de" | "fr">;
+
+const translationsByLang: Record<TranslationLang, Record<string, string>> = {
+  de: deTranslationsJson as Record<string, string>,
+  fr: frTranslationsJson as Record<string, string>
+};
+const translatedFieldLangs = Object.keys(translationsByLang) as TranslationLang[];
 const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builder"]);
 
 function isPersonLikeRecord(record: Record<string, unknown>): boolean {
@@ -22,42 +29,52 @@ function shouldTranslateField(record: Record<string, unknown>, base: string): bo
 }
 
 export function translateEnToDe(value: string | null | undefined): string | null {
+  return translateEn(value, "de");
+}
+
+export function translateEn(value: string | null | undefined, lang: Lang): string | null {
   if (!value) return null;
-  return translations[value.trim()] ?? null;
+  if (!(lang in translationsByLang)) return null;
+  return translationsByLang[lang as TranslationLang][value.trim()] ?? null;
 }
 
 export function translateText(value: string, lang: Lang): string {
-  if (lang !== "de") return value;
-  return translateEnToDe(value) ?? value;
+  return translateEn(value, lang) ?? value;
 }
 
-export function withGermanFields<T>(value: T): T {
-  if (Array.isArray(value)) return value.map((item) => withGermanFields(item)) as T;
+export function withTranslatedFields<T>(value: T): T {
+  if (Array.isArray(value)) return value.map((item) => withTranslatedFields(item)) as T;
   if (!value || typeof value !== "object") return value;
 
   const record = value as Record<string, unknown>;
   const out: Record<string, unknown> = {};
 
-  for (const [key, child] of Object.entries(record)) out[key] = withGermanFields(child);
+  for (const [key, child] of Object.entries(record)) out[key] = withTranslatedFields(child);
 
   for (const [key, child] of Object.entries(record)) {
     if (!key.endsWith("_en") || typeof child !== "string") continue;
     const base = key.slice(0, -3);
     if (!shouldTranslateField(record, base)) continue;
-    const deKey = `${base}_de`;
-    if (typeof out[deKey] === "string" && String(out[deKey]).trim()) continue;
-    const translated = translateEnToDe(child);
-    if (translated) out[deKey] = translated;
+    for (const lang of translatedFieldLangs) {
+      const translatedKey = `${base}_${lang}`;
+      if (typeof out[translatedKey] === "string" && String(out[translatedKey]).trim()) continue;
+      const translated = translateEn(child, lang);
+      if (translated) out[translatedKey] = translated;
+    }
   }
 
   for (const key of ["title", "label"]) {
     const child = record[key];
-    const deKey = `${key}_de`;
     if (typeof child !== "string") continue;
-    if (typeof out[deKey] === "string" && String(out[deKey]).trim()) continue;
-    const translated = translateEnToDe(child);
-    if (translated) out[deKey] = translated;
+    for (const lang of translatedFieldLangs) {
+      const translatedKey = `${key}_${lang}`;
+      if (typeof out[translatedKey] === "string" && String(out[translatedKey]).trim()) continue;
+      const translated = translateEn(child, lang);
+      if (translated) out[translatedKey] = translated;
+    }
   }
 
   return out as T;
 }
+
+export const withGermanFields = withTranslatedFields;

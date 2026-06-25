@@ -1,7 +1,6 @@
-// Central multilingual string dictionary for Open Plovdiv (BG / EN / DE; Greek
-// is the next planned locale). `bg` is the source of truth for the shape; every
-// other locale is typed against it (`typeof bg`) so the locales can never drift
-// out of sync — adding a key to `bg` forces it in `en` and `de` too.
+// Central multilingual string dictionary for Open Plovdiv. `bg` is the source
+// of truth for the shape; every other locale is typed against it (`typeof bg`)
+// so the locales can never drift out of sync.
 
 export const languages = {
   bg: "Български",
