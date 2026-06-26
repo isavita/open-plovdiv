@@ -1,0 +1,15 @@
+---
+import PersonDetailView from "@components/views/PersonDetailView.astro";
+import { historyKnowledgePeople } from "@lib/data";
+
+export function getStaticPaths() {
+  return historyKnowledgePeople.map((person) => ({
+    params: { id: person.id },
+    props: { person }
+  }));
+}
+
+const { person } = Astro.props;
+---
+
+<PersonDetailView lang="ja" person={person} />

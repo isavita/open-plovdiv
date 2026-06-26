@@ -345,6 +345,54 @@ const labels =
           default: "Η συνεισφορά δεν μπόρεσε να σταλεί. Δοκιμάστε ξανά."
         }
       }
+      : lang === "ja"
+      ? {
+        eyebrow: "市民アーカイブ",
+        title: "写真、記憶、出典を投稿",
+        lead:
+          "歴史に関する投稿は、市民レポートと同じモデレーション待ち行列に入ります。自動公開はされません。公開前に編集者が個人情報、画像の権利、出典の文脈を確認します。",
+        notice:
+          "個人情報、正確な私的住所、公開権限のない顔写真は送信しないでください。出典、アーカイブリンク、由来のメモがある場合は添えてください。",
+        category: "投稿の種類",
+        titleLabel: "短いタイトル",
+        titlePlaceholder: "例: Dzhumayaの古い写真",
+        description: "説明・記憶",
+        descriptionPlaceholder: "写っている内容、おおよその時期、由来、確認すべき点を説明してください。",
+        sourceUrl: "出典またはアーカイブリンク",
+        sourceUrlPlaceholder: "https://...",
+        sourceNote: "由来のメモ",
+        sourceNotePlaceholder: "例: 家族写真、スキャンした絵はがき、アーカイブ投稿...",
+        photos: "写真",
+        photoHint:
+          "任意で最大3枚、各5 MBまで。EXIF/GPSメタデータは削除され、レビュー前に写真は変換されます。",
+        location: "場所",
+        locationHint: "投稿が特定の場所に関係する場合は地図をクリックしてください。",
+        noLocation: "まだ地点が選択されていません",
+        confirmNoPersonal: "この投稿に個人情報が含まれていないことを確認します。",
+        confirmPublicInterest: "この投稿が確認可能で公共の利益にかなうことを確認します。",
+        submit: "レビューに送信",
+        submitting: "送信中...",
+        successTitle: "受け付けました",
+        successText: "投稿はモデレーション待ち行列に入りました。参照番号:",
+        submitAnother: "別の投稿を送信",
+        backToHistory: "歴史ページへ戻る",
+        selected: "選択した地点",
+        errors: {
+          rate_limited: "短時間に送信が多すぎます。後でもう一度お試しください。",
+          invalid_category: "有効な投稿の種類を選択してください。",
+          invalid_title: "タイトルは3文字以上120文字以内にしてください。",
+          invalid_description: "説明は10文字以上1000文字以内にしてください。",
+          invalid_source: "出典は有効なhttp/httpsリンクまたは短いメモにしてください。",
+          contains_personal_data: "テキストに個人情報と思われる内容が含まれています。",
+          invalid_location: "Plovdiv市内の地点を選択してください。",
+          missing_confirmation: "2つの確認項目にチェックしてください。",
+          too_many_photos: "写真は最大3枚までアップロードできます。",
+          photo_too_large: "各写真は5 MB以下にしてください。",
+          invalid_photo_type: "JPEG、PNG、WebP写真のみ使用できます。",
+          invalid_photo: "写真を処理できませんでした。",
+          default: "投稿を送信できませんでした。もう一度お試しください。"
+        }
+      }
       : {
         eyebrow: "Community archive",
         title: "Submit a photo, memory or source",

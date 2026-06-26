@@ -16,9 +16,9 @@ const statuses = Object.keys(projectStatusLabels[lang]);
 const years = Array.from(new Set(projects.map((p) => p.budget.year))).sort((a, b) => b - a);
 
 const config = {
-  of: lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : "of",
-  one: lang === "bg" ? "проект" : lang === "de" ? "Projekt" : lang === "fr" ? "projet" : lang === "it" ? "progetto" : lang === "tr" ? "proje" : lang === "es" ? "proyecto" : lang === "el" ? "έργο" : "project",
-  many: lang === "bg" ? "проекта" : lang === "de" ? "Projekte" : lang === "fr" ? "projets" : lang === "it" ? "progetti" : lang === "tr" ? "proje" : lang === "es" ? "proyectos" : lang === "el" ? "έργα" : "projects",
+  of: lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : lang === "ja" ? "/" : "of",
+  one: lang === "bg" ? "проект" : lang === "de" ? "Projekt" : lang === "fr" ? "projet" : lang === "it" ? "progetto" : lang === "tr" ? "proje" : lang === "es" ? "proyecto" : lang === "el" ? "έργο" : lang === "ja" ? "プロジェクト" : "project",
+  many: lang === "bg" ? "проекта" : lang === "de" ? "Projekte" : lang === "fr" ? "projets" : lang === "it" ? "progetti" : lang === "tr" ? "proje" : lang === "es" ? "proyectos" : lang === "el" ? "έργα" : lang === "ja" ? "プロジェクト" : "projects",
   empty: t.projects.empty
 };
 

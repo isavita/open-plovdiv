@@ -4,7 +4,7 @@ import process from "node:process";
 
 const root = process.cwd();
 const targetLang = process.argv[2] ?? "de";
-const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el"]);
+const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el", "ja"]);
 if (!supportedTargetLangs.has(targetLang)) {
   throw new Error(`Unsupported target language "${targetLang}". Expected one of: ${[...supportedTargetLangs].join(", ")}`);
 }
@@ -89,13 +89,29 @@ const manualTranslationsByLang = {
       "Ο Hristo Pavlov Shkodrov ήταν σοσιαλδημοκράτης, δημοσιογράφος και εξέχων συνδικαλιστής, διορισμένος πρόεδρος της τριμελούς δημοτικής επιτροπής του Plovdiv στις 26 Σεπτεμβρίου 1919. Η θητεία του ανήκει στην ασταθή μεταπολεμική δημοτική διοίκηση: μελέτη του Περιφερειακού Ιστορικού Μουσείου Plovdiv για την πολιτική ζωή του Μεσοπολέμου περιγράφει πώς, μετά την παραίτηση του Stefan Gevgalov το 1919, αρκετοί προσωρινοί πρόεδροι επιτροπών διαδέχθηκαν ο ένας τον άλλον για μόλις έναν ή δύο μήνες, μεταξύ τους και ο Pavlov, που αντικαταστάθηκε στις 11 Νοεμβρίου από τον Hariton Kuev. Το 2014 το Pod Tepeto ανέφερε ότι ο Dimitar Raychev παρείχε στην ερευνήτρια Katerina Chobanova αρχειακό φωτογραφικό υλικό του Pavlov, συμπληρώνοντας το κενό στη συλλογή της με πορτρέτα δημάρχων του Plovdiv. Άλλη μελέτη του Περιφερειακού Ιστορικού Μουσείου Plovdiv σημειώνει ότι μετά τον θάνατό του ο δήμος αποφάσισε να ταφεί με δημοτική δαπάνη.",
     "Sotir Antoniadi (1843-1928) was a physician and politician of Greek origin, born in Stanimaka, today Asenovgrad. He first studied at the central Greek school in Plovdiv, then at a high school in Athens, and later medicine in Vienna before working for two years in Paris. Antoniadi was a deputy in the Regional Assembly of Eastern Rumelia and in 1885 in the National Assembly of the Principality of Bulgaria. Between 26 January and 21 April 1883 he briefly served as acting mayor of Plovdiv. In 1915 he moved to Greece; his house and the pharmacy built in 1872 are part of the Old Plovdiv architectural and historical reserve.":
       "Ο Sotir Antoniadi (1843-1928) ήταν γιατρός και πολιτικός ελληνικής καταγωγής, γεννημένος στη Στανιμάκα, σήμερα Asenovgrad. Αρχικά σπούδασε στο κεντρικό ελληνικό σχολείο του Plovdiv, στη συνέχεια σε γυμνάσιο της Αθήνας και αργότερα ιατρική στη Βιέννη, πριν εργαστεί για δύο χρόνια στο Παρίσι. Ο Antoniadi ήταν βουλευτής στην Περιφερειακή Συνέλευση της Ανατολικής Ρωμυλίας και το 1885 στην Εθνοσυνέλευση του Πριγκιπάτου της Βουλγαρίας. Από τις 26 Ιανουαρίου έως τις 21 Απριλίου 1883 υπηρέτησε σύντομα ως αναπληρωτής δήμαρχος του Plovdiv. Το 1915 μετακόμισε στην Ελλάδα· το σπίτι του και το φαρμακείο που χτίστηκε το 1872 αποτελούν μέρος του αρχιτεκτονικού και ιστορικού αποθέματος του Παλαιού Plovdiv."
+  },
+  ja: {
+    "Public web reference; reuse terms not verified":
+      "公開ウェブ参照。再利用条件は未確認",
+    "Wikimedia Commons file license, verify per file":
+      "Wikimedia Commons のファイルライセンス。各ファイルごとに確認",
+    "Creative Commons Attribution-ShareAlike 4.0 International":
+      "Creative Commons Attribution-ShareAlike 4.0 International",
+    "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
+    "Open Database License 1.0": "Open Database License 1.0"
   }
 };
 
 // Extra [machineForm, originalName] fixups for protected names that the generic
 // inference cannot recover (non-templated transliterations inside longer strings).
 const protectedNameOverridesByLang = {
-  tr: [["Bojidar Zdravkov", "Bozhidar Zdravkov"]]
+  tr: [["Bojidar Zdravkov", "Bozhidar Zdravkov"]],
+  ja: [
+    ["フリスト G. ダノフ", "Hristo G. Danov"],
+    ["フリスト・G・ダノフ", "Hristo G. Danov"],
+    ["フリスト・グルエフ・ダノフ", "Hristo Gruev Danov"],
+    ["Christos Tsiiridis", "Christos Tsigiridis"]
+  ]
 };
 
 // Landmark names the machine sometimes leaves in English inside longer captions;
@@ -129,6 +145,17 @@ const landmarkFixupsByLang = {
     ["The Seven Hills (tepeta)", "Επτά Λόφοι (τεπέτα)"],
     ["The Seven Hills", "Επτά Λόφοι"],
     ["Old Plovdiv", "Παλαιό Plovdiv"]
+  ],
+  ja: [
+    ["Lamartine House", "Lamartine House"],
+    ["Prince's Garden in Plovdiv", "Plovdiv の Prince's Garden"],
+    ["Sahat Hill", "Sahat Tepe"],
+    ["Sahat hill", "Sahat Tepe"],
+    ["The Old Town (Old Plovdiv)", "旧市街（Old Plovdiv）"],
+    ["The Old Town", "旧市街"],
+    ["Old Plovdiv", "Old Plovdiv"],
+    ["The Seven Hills (tepeta)", "七つの丘（tepeta）"],
+    ["The Seven Hills", "七つの丘"]
   ]
 };
 const manualTranslations = manualTranslationsByLang[targetLang];
@@ -251,11 +278,33 @@ function normalizeTranslation(text) {
     .replaceAll("Wiki-Daten", "Wikidata")
     .replaceAll("Wikipedien", "Wikipedia")
     .replaceAll("Wikipedia", "Wikipedia")
+    .replaceAll("ウィキデータ", "Wikidata")
+    .replaceAll("ウィキペディア", "Wikipedia")
+    .replaceAll("ウィキメディア・コモンズ", "Wikimedia Commons")
+    .replaceAll("ウィキメディア コモンズ", "Wikimedia Commons")
     .trim();
   for (const [translatedName, originalName] of protectedNameFixups) {
     normalized = normalized.replaceAll(translatedName, originalName);
   }
   return normalized;
+}
+
+function expandJapaneseNameFixups(fixups) {
+  if (targetLang !== "ja") return fixups;
+  const expanded = new Map();
+  for (const [translatedName, originalName] of fixups) {
+    const variants = new Set([
+      translatedName,
+      translatedName.replaceAll("・", " "),
+      translatedName.replaceAll(" ", "・"),
+      translatedName.replaceAll("・", "")
+    ]);
+    for (const variant of variants) {
+      const normalizedVariant = variant.trim();
+      if (normalizedVariant && normalizedVariant !== originalName) expanded.set(normalizedVariant, originalName);
+    }
+  }
+  return [...expanded.entries()].sort((a, b) => b[0].length - a[0].length);
 }
 
 async function buildProtectedNameFixups(protectedNames, existing) {
@@ -388,6 +437,22 @@ const namePatternsByLang = {
     ],
     archive: /Δήμαρχος\s*:\s*([^"»]+)["»]\.?$/,
     relationshipPrefix: /^Προσωπική σχέση\s*:\s*/
+  },
+  ja: {
+    direct: (escapedName) => [
+      [`Biographical reference: ${escapedName}`, /^伝記(?:上の)?参照\s*[:：]\s*(.+)$/],
+      [`Birth of ${escapedName}`, /^(.+?)の誕生$/],
+      [`Birth year and birthplace for ${escapedName}.`, /^(.+?)の生年と出生地。?$/],
+      [
+        `Biographical data and Plovdiv birthplace link for ${escapedName}.`,
+        /^(.+?)の伝記データ.*$/
+      ],
+      [`Mayor: ${escapedName}`, /^市長\s*[:：]\s*(.+)$/],
+      [`Mayoral term\\(s\\) for ${escapedName}.`, /^(.+?)の市長任期。?$/],
+      [`Wikipedia [—–-] ${escapedName}`, /^Wikipedia\s*[—–:-]\s*(.+)$/]
+    ],
+    archive: /市長\s*[:：]\s*([^"」]+)["」]\.?$/,
+    relationshipPrefix: /^人物関係\s*[:：]\s*/
   }
 };
 
@@ -477,6 +542,12 @@ const exonymByLang = {
     { form: "Φιλιππούπολη", guarded: true },
     // Plain transliteration of the modern brand name; never the ancient city.
     { form: "Πλόβντιβ", guarded: false }
+  ],
+  ja: [
+    { form: "プロヴディフ", guarded: true },
+    { form: "プロブディフ", guarded: true },
+    { form: "フィリッポポリス", guarded: true },
+    { form: "フィリベ", guarded: true }
   ]
 };
 function applyExonymFixups(translations) {
@@ -500,7 +571,7 @@ function applyExonymFixups(translations) {
 // names not in the protected set; restore the source form wherever the English
 // source actually used the honorific, so names read identically across locales.
 function applyHonorificFixups(translations) {
-  if (!["it", "tr", "es", "el"].includes(targetLang)) return;
+  if (!["it", "tr", "es", "el", "ja"].includes(targetLang)) return;
   for (const [source, translated] of Object.entries(translations)) {
     if (typeof translated !== "string") continue;
     let out = translated;
@@ -538,6 +609,14 @@ function applyHonorificFixups(translations) {
       // source convention so the honorific reads identically across locales.
       if (/\bEng\.?\s/.test(source)) {
         out = out.replace(/\bMüh\. /g, "Eng. ").replace(/\bMühendis /g, "Eng. ");
+      }
+    } else if (targetLang === "ja") {
+      // Keep recorded honorific prefixes as part of the protected source name.
+      if (/\bDr\.?\s/.test(source)) {
+        out = out.replace(/博士\s*/g, "Dr. ");
+      }
+      if (/\bEng\.?\s/.test(source)) {
+        out = out.replace(/(?:エンジニア|技師)\s*/g, "Eng. ");
       }
     }
     translations[source] = out;
@@ -629,6 +708,161 @@ function applyGreekTemplateFixups(translations) {
   }
 }
 
+function applyJapaneseTemplateFixups(translations) {
+  if (targetLang !== "ja") return;
+  const relationJa = (relation) => (relation === "succeeds" ? "前任者" : "後任者");
+  const officialSourcePrefixes = [
+    "Administrative Register",
+    "National Assembly",
+    "Plovdiv Municipality",
+    "Pod Tepeto",
+    "Regional History Museum Plovdiv"
+  ];
+  for (const source of Object.keys(translations)) {
+    const bioLead = source.match(/^([A-ZÀ-ž][^()\n]{2,120}) \((?:b\.|born|c\.|active|fl\.|\d{3,4})/);
+    if (bioLead) {
+      translations[source] = translations[source].replace(/^.+?(?=\s*[（(])/, bioLead[1]);
+    }
+
+    for (const prefix of officialSourcePrefixes) {
+      if (source === prefix || source.startsWith(`${prefix} - `) || source.startsWith(`${prefix} — `)) {
+        translations[source] = translations[source].replace(/^.+?(?=\s*[-—])/, prefix);
+        if (!translations[source].startsWith(prefix)) translations[source] = prefix;
+        break;
+      }
+    }
+    if (source.includes("Plovdiv Municipality") && !translations[source].includes("Plovdiv Municipality")) {
+      translations[source] = translations[source]
+        .replaceAll("Plovdiv自治体", "Plovdiv Municipality")
+        .replaceAll("Plovdiv市", "Plovdiv Municipality");
+    }
+    if (source.includes("Administrative Register") && !translations[source].includes("Administrative Register")) {
+      translations[source] = translations[source]
+        .replaceAll("ブルガリア行政登録簿", "Administrative Register")
+        .replaceAll("行政登録簿", "Administrative Register");
+    }
+
+    let match = source.match(/^(.+) — (succeeds|succeeded by) — (.+)$/);
+    if (match) {
+      const [, left, relation, right] = match;
+      translations[source] = `${left} — ${relationJa(relation)} — ${right}`;
+      continue;
+    }
+
+    match = source.match(/^Person relationship: (.+) — (succeeds|succeeded by) — (.+)\.$/);
+    if (match) {
+      const [, left, relation, right] = match;
+      translations[source] = `人物関係: ${left} — ${relationJa(relation)} — ${right}.`;
+      continue;
+    }
+
+    match = source.match(/^The mayoral chronology links (.+) with (.+) through the relationship "(succeeds|succeeded by)"\.$/);
+    if (match) {
+      const [, left, right, relation] = match;
+      translations[source] = `市長年表では、関係「${relationJa(relation)}」を通じて ${left} と ${right} を結び付けています。`;
+      continue;
+    }
+
+    match = source.match(/^A biographical source documents the relationship "(.+)" between (.+) and (.+)\.$/);
+    if (match) {
+      const [, relation, left, right] = match;
+      translations[source] = `伝記資料は、${left} と ${right} の関係「${relation}」を記録しています。`;
+      continue;
+    }
+
+    match = source.match(/^Mayoral term\(s\) for (.+)\.$/);
+    if (match) {
+      translations[source] = `${match[1]} の市長任期。`;
+      continue;
+    }
+
+    match = source.match(/^Wikipedia [—-] (.+)$/);
+    if (match) {
+      translations[source] = `Wikipedia — ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Biographical reference: (.+)$/);
+    if (match) {
+      translations[source] = `伝記参照: ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Birth of (.+)$/);
+    if (match) {
+      translations[source] = `${match[1]} の誕生`;
+      continue;
+    }
+
+    match = source.match(/^Birth year and birthplace for (.+)\.$/);
+    if (match) {
+      translations[source] = `${match[1]} の生年と出生地。`;
+      continue;
+    }
+
+    match = source.match(/^Biographical data and Plovdiv birthplace link for (.+)\.$/);
+    if (match) {
+      translations[source] = `${match[1]} の伝記データと Plovdiv の出生地リンク。`;
+      continue;
+    }
+
+    match = source.match(/^(.+)'s birthplace is Plovdiv; the recorded birth year is (.+)\.$/);
+    if (match) {
+      translations[source] = `${match[1]} の出生地は Plovdiv、記録された出生年は ${match[2]} 年です。`;
+      continue;
+    }
+
+    match = source.match(/^City archive record "Mayor: (.+)"\.$/);
+    if (match) {
+      translations[source] = `市アーカイブ記録「市長: ${match[1]}」。`;
+      continue;
+    }
+
+    match = source.match(/^Historical image for then\/now pair: (.+)$/);
+    if (match) {
+      translations[source] = `今昔比較ペアの歴史画像: ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Current comparison image for then\/now pair: (.+)$/);
+    if (match) {
+      translations[source] = `今昔比較ペアの現在画像: ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Historical image, license and source page for then\/now pair "(.+)"\.$/);
+    if (match) {
+      translations[source] = `今昔比較ペア「${match[1]}」の歴史画像、ライセンス、出典ページ。`;
+      continue;
+    }
+
+    match = source.match(/^Current comparison image, license and source page for then\/now pair "(.+)"\.$/);
+    if (match) {
+      translations[source] = `今昔比較ペア「${match[1]}」の現在画像、ライセンス、出典ページ。`;
+    }
+  }
+
+  const cleanupReplacements = [
+    [/then\/now/g, "今昔比較"],
+    [/Source Coverage/g, "出典網羅性"],
+    [/Editorial Review/g, "編集レビュー"],
+    [/Kostaki Peev・ゲオルギエフ/g, "Kostaki Peev Georgiev"],
+    [/Kostadin Dimitrov・ディミトロフ/g, "Kostadin Dimitrov Dimitrov"],
+    [/アルメニア系のDr\. でした/g, "アルメニア系の医師でした"],
+    [/Dr\. として働き/g, "医師として働き"],
+    [
+      /地元の訃報は彼の任期を主要自治体の賠償の始まりと結び付けている。規制、ツァラピツァ埋立地の廃棄物処理技術、そして初の市営犬保護施設。/g,
+      "地元の訃報では、彼の任期は財産返還の開始、主要な自治体規則、Tsalapitsa埋立地の廃棄物処理技術、初の市営犬保護施設と結び付けられています。"
+    ]
+  ];
+  for (const [source, translated] of Object.entries(translations)) {
+    if (typeof translated !== "string") continue;
+    let out = translated;
+    for (const [from, to] of cleanupReplacements) out = out.replace(from, to);
+    translations[source] = out;
+  }
+}
+
 const existing = fs.existsSync(outputPath) ? readJson(outputPath) : {};
 const allStrings = new Set(Object.keys(manualTranslations));
 const protectedNames = new Set();
@@ -674,11 +908,13 @@ protectedNameFixups = [
   ...titlePrefixFixups,
   ...overrideFixups
 ].sort((a, b) => b[0].length - a[0].length);
+protectedNameFixups = expandJapaneseNameFixups(protectedNameFixups);
 normalizeAllTranslations(translations);
 applyExonymFixups(translations);
 applyHonorificFixups(translations);
 applyLandmarkFixups(translations);
 applyGreekTemplateFixups(translations);
+applyJapaneseTemplateFixups(translations);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, `${JSON.stringify(Object.fromEntries(Object.entries(translations).sort()), null, 2)}\n`);

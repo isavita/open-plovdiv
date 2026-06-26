@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 // Relative imports: vitest does not resolve the tsconfig path aliases.
 import {
@@ -16,12 +19,14 @@ import {
 import { delocalizePath, field, getLangFromUrl, localizePath, localeForLang } from "./utils";
 
 const locales = Object.keys(languages) as Lang[];
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../..");
 const CYRILLIC = /[Ѐ-ӿ]/;
 const GREEK = /[Ͱ-Ͽἀ-῿]/;
+const JAPANESE = /[\u3040-\u30ff\u3400-\u9fff]/;
 // Non-Bulgarian locales whose UI must not leak Bulgarian Cyrillic. Greek (`el`) is
 // included: it uses its own (Greek) script, which the CYRILLIC range does not match,
 // so the same no-Cyrillic-leak assertion is Greek-aware (allows Greek, catches Cyrillic).
-const NON_BG_SCRIPT_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "el"];
+const NON_BG_SCRIPT_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "el", "ja"];
 // Locales written in the Latin script (used for assertions that are Latin-only).
 const LATIN_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es"];
 
@@ -44,7 +49,7 @@ function collectStrings(
 
 describe("i18n locales", () => {
   it("registers every shipped locale", () => {
-    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el"]);
+    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja"]);
   });
 
   it("every locale exposes a non-empty display name", () => {
@@ -89,6 +94,31 @@ describe("ui dictionary parity", () => {
     // facebook, the BG/EN admin field labels). Most strings must contain Greek.
     const greekStrings = collectStrings(ui.el).filter(([, value]) => GREEK.test(value));
     expect(greekStrings.length).toBeGreaterThan(200);
+  });
+
+  it("Japanese UI is actually translated into Japanese script (not left in English)", () => {
+    const japaneseStrings = collectStrings(ui.ja).filter(([, value]) => JAPANESE.test(value));
+    expect(japaneseStrings.length).toBeGreaterThan(200);
+  });
+});
+
+describe("generated translation JSON", () => {
+  it("Japanese translations have exact key parity with the other generated locales and no blanks", () => {
+    const langs = ["de", "fr", "it", "tr", "es", "el", "ja"];
+    const translations = Object.fromEntries(
+      langs.map((lang) => [
+        lang,
+        JSON.parse(fs.readFileSync(path.join(repoRoot, `data/translations/${lang}.json`), "utf8")) as Record<string, string>
+      ])
+    );
+    const jaKeys = Object.keys(translations.ja).sort();
+    expect(jaKeys.length).toBeGreaterThan(0);
+    for (const lang of langs.filter((item) => item !== "ja")) {
+      expect(Object.keys(translations[lang]).sort(), `data/translations/${lang}.json`).toEqual(jaKeys);
+    }
+    for (const [key, value] of Object.entries(translations.ja)) {
+      expect(value.trim().length, `data/translations/ja.json:${key}`).toBeGreaterThan(0);
+    }
   });
 });
 
@@ -144,8 +174,8 @@ describe("data-label maps", () => {
     }
   });
 
-  it("source-title translations keep matching keys across Latin locales", () => {
-    // bg intentionally keeps the original titles (empty map); Latin locales translate them.
+  it("source-title translations keep matching keys across translated locales", () => {
+    // bg intentionally keeps the original titles (empty map); translated locales localize them.
     const enKeys = Object.keys(sourceTitleLabels.en).sort();
     const deKeys = Object.keys(sourceTitleLabels.de).sort();
     const frKeys = Object.keys(sourceTitleLabels.fr).sort();
@@ -153,17 +183,36 @@ describe("data-label maps", () => {
     const trKeys = Object.keys(sourceTitleLabels.tr).sort();
     const esKeys = Object.keys(sourceTitleLabels.es).sort();
     const elKeys = Object.keys(sourceTitleLabels.el).sort();
+    const jaKeys = Object.keys(sourceTitleLabels.ja).sort();
     expect(deKeys, "de source titles drift from en").toEqual(enKeys);
     expect(frKeys, "fr source titles drift from en").toEqual(enKeys);
     expect(itKeys, "it source titles drift from en").toEqual(enKeys);
     expect(trKeys, "tr source titles drift from en").toEqual(enKeys);
     expect(esKeys, "es source titles drift from en").toEqual(enKeys);
     expect(elKeys, "el source titles drift from en").toEqual(enKeys);
+    expect(jaKeys, "ja source titles drift from en").toEqual(enKeys);
     for (const loc of NON_BG_SCRIPT_LOCALES) {
       for (const [key, value] of Object.entries(sourceTitleLabels[loc])) {
         expect(value.trim().length, `sourceTitleLabels.${loc}.${key} empty`).toBeGreaterThan(0);
       }
     }
+  });
+});
+
+describe("route parity", () => {
+  function routeFiles(locale: "en" | "ja") {
+    const base = path.join(repoRoot, "apps/web/src/pages", locale);
+    const walk = (dir: string): string[] =>
+      fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) return walk(full);
+        return entry.isFile() ? [path.relative(base, full)] : [];
+      });
+    return walk(base).sort();
+  }
+
+  it("/ja has exact source route parity with /en", () => {
+    expect(routeFiles("ja")).toEqual(routeFiles("en"));
   });
 });
 
@@ -185,8 +234,10 @@ describe("localised routing", () => {
     expect(getLangFromUrl("/tr/places")).toBe("tr");
     expect(getLangFromUrl("/es/budget")).toBe("es");
     expect(getLangFromUrl("/el/history")).toBe("el");
+    expect(getLangFromUrl("/ja/history")).toBe("ja");
     expect(getLangFromUrl("/en/history")).toBe("en");
     expect(getLangFromUrl("/budget")).toBe("bg");
+    expect(delocalizePath("/ja/budget")).toBe("/budget");
     expect(delocalizePath("/el/budget")).toBe("/budget");
     expect(delocalizePath("/de/budget")).toBe("/budget");
     expect(delocalizePath("/de")).toBe("/");
@@ -201,6 +252,8 @@ describe("localised routing", () => {
     expect(field({ summary: "legacy BG" }, "summary", "de")).toBe("legacy BG");
     expect(field(undefined, "summary", "de")).toBe("");
     expect(field(record, "summary", "bg")).toBe("Български");
+    expect(field(record, "summary", "ja")).toBe("English");
+    expect(field({ summary_ja: "日本語", ...record }, "summary", "ja")).toBe("日本語");
   });
 
   it("maps every supported language to an Intl locale", () => {
@@ -212,5 +265,6 @@ describe("localised routing", () => {
     expect(localeForLang("tr")).toBe("tr-TR");
     expect(localeForLang("es")).toBe("es-ES");
     expect(localeForLang("el")).toBe("el-GR");
+    expect(localeForLang("ja")).toBe("ja-JP");
   });
 });

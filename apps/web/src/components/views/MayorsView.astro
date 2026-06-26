@@ -59,7 +59,7 @@ const sourceUrls = [...new Map(mayorTerms.map((term) => [term.source_document.ur
 
 const config = {
   countAll: t.mayors.count(mayorTerms.length),
-  countFiltered: "{visible} " + (lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : lang === "de" ? "Mandaten" : lang === "fr" ? "mandats" : lang === "it" ? "mandati" : lang === "tr" ? "görev süresi" : lang === "es" ? "mandatos" : lang === "el" ? "θητείες" : "terms"),
+  countFiltered: "{visible} " + (lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : lang === "ja" ? "/" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : lang === "de" ? "Mandaten" : lang === "fr" ? "mandats" : lang === "it" ? "mandati" : lang === "tr" ? "görev süresi" : lang === "es" ? "mandatos" : lang === "el" ? "θητείες" : lang === "ja" ? "任期" : "terms"),
   empty: t.mayors.empty
 };
 
@@ -87,7 +87,7 @@ const multiTerm = [...groups.values()]
 
 // sourced family ties between mayors (kept only when both members exist as terms)
 const familyPairs = [
-  { a: "Христо Г. Данов", b: "Милош Данов", label_bg: "баща и син", label_en: "father & son", label_de: "Vater und Sohn", label_fr: "père et fils", label_it: "padre e figlio", label_tr: "baba ve oğul", label_es: "padre e hijo", label_el: "πατέρας και γιος" }
+  { a: "Христо Г. Данов", b: "Милош Данов", label_bg: "баща и син", label_en: "father & son", label_de: "Vater und Sohn", label_fr: "père et fils", label_it: "padre e figlio", label_tr: "baba ve oğul", label_es: "padre e hijo", label_el: "πατέρας και γιος", label_ja: "父と息子" }
 ];
 const familyTies = familyPairs.filter(
   (pair) =>
@@ -171,9 +171,15 @@ const sectionNav = ({
         { id: "birthplaces", label: "Τόποι γέννησης" },
         { id: "timeline", label: "Χρονολόγιο" },
         { id: "all-mayors", label: "Όλοι" }
+      ],
+      ja: [
+        { id: "connections", label: "つながり" },
+        { id: "birthplaces", label: "出生地" },
+        { id: "timeline", label: "年表" },
+        { id: "all-mayors", label: "すべて" }
       ]
     } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
-const sectionNavLabel = lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : "Page sections";
+const sectionNavLabel = lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : "Page sections";
 ---
 
 <Layout lang={lang} path="/mayors" title={t.mayors.title} description={t.mayors.lead}>

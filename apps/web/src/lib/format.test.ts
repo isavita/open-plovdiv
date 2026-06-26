@@ -26,4 +26,10 @@ describe("format utilities", () => {
     expect(knownHistoryLabel("Modern period, 1984", "de")).toBe("Moderne Zeit, 1984");
     expect(knownHistoryLabel("not identified in the current public source", "de")).toContain("öffentlichen Quelle");
   });
+
+  it("localizes generated history labels for Japanese pages", () => {
+    expect(knownHistoryLabel("wikidata_coordinate", "ja")).toBe("Wikidata座標");
+    expect(knownHistoryLabel("Modern period, 1984", "ja")).toBe("現代、1984");
+    expect(knownHistoryLabel("not identified in the current public source", "ja")).toContain("現在の公開情報源");
+  });
 });

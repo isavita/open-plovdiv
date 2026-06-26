@@ -210,6 +210,33 @@ const labels =
         noArchive:
           "Δεν υπάρχει ακόμη χωριστή καρτέλα αρχείου ή πριν/μετά για αυτήν την τοποθεσία. Η κύρια εικόνα, οι συντεταγμένες και οι πηγές παραμένουν δημοσιευμένες."
       }
+      : lang === "ja"
+      ? {
+        back: "すべての場所",
+        facts: "基本情報",
+        currentStatus: "現在の状態",
+        visit: "訪問と位置情報",
+        coordinates: "座標",
+        openMap: "地図を開く",
+        built: "建設・年代",
+        architect: "建築家",
+        builder: "施工者",
+        creator: "建築家・施工者",
+        source: "出典",
+        sources: "出典",
+        mediaLicense: "画像ライセンス",
+        mediaFile: "メディアファイル",
+        mediaCredit: "クレジット",
+        matchQuality: "一致度",
+        archiveTitle: "この場所のアーカイブ",
+        thenNowTitle: "今昔比較",
+        thenLabel: "昔",
+        nowLabel: "今",
+        eventsTitle: "関連する出来事",
+        storiesTitle: "関連ストーリー",
+        noArchive:
+          "この場所には、独立したアーカイブまたは今昔比較の記録がまだありません。主要画像、座標、出典は引き続き公開されています。"
+      }
       : {
         back: "All places",
         facts: "Facts",
@@ -283,6 +310,12 @@ const matchQualityLabels: Record<string, string> =
         same_place_approximate_viewpoint: "ίδιο σημείο, κατά προσέγγιση οπτική γωνία",
         same_place_close_viewpoint: "ίδιο σημείο, κοντινή οπτική γωνία",
         city_context: "αστικό πλαίσιο"
+      }
+      : lang === "ja"
+      ? {
+        same_place_approximate_viewpoint: "同じ場所、おおよその視点",
+        same_place_close_viewpoint: "同じ場所、近い視点",
+        city_context: "都市文脈"
       }
       : {
         same_place_approximate_viewpoint: "same place, approximate viewpoint",

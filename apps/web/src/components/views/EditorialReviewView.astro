@@ -447,6 +447,68 @@ const labels =
         tableLimit: "Εμφάνιση των πρώτων",
         tableLimitSuffix: "καρτελών για το τρέχον φίλτρο. Ο πλήρης κατάλογος είναι διαθέσιμος στο αρχείο CSV."
       }
+      : lang === "ja"
+      ? {
+        title: "編集レビュー",
+        eyebrow: "歴史データベースの確認",
+        lead:
+          "人間の編集確認を待つ記録の一覧です。データは技術的に検証済みですが、この画面ではより強い出典、ライセンス情報、編集承認が必要な箇所を示します。",
+        status: "状態",
+        total: "追跡中の記録",
+        signedOff: "承認済み",
+        needsReview: "レビュー待ち",
+        blockers: "問題あり",
+        trackingGaps: "追跡の不足",
+        sourceCoverageTitle: "出典カバレッジ",
+        sourceCoverageLead:
+          "同じ記録を対象に、各行に公開出典、ライセンスまたは再利用条件があるか、単一出典の行が追加確認対象として示されているかを確認します。",
+        traceability: "追跡可能性",
+        multiSourceReview: "複数出典レビュー",
+        complete: "完了",
+        incomplete: "未完了",
+        needsSourceReview: "レビュー必要",
+        recordsWithSources: "出典あり",
+        missingSources: "出典なし",
+        licenseReady: "ライセンス・条件あり",
+        missingLicenses: "ライセンス・条件なし",
+        singleSource: "単一出典",
+        multiSource: "2件以上の出典",
+        openLicenseRows: "オープンライセンス",
+        publicTermsRows: "公開条件",
+        sourceCoverageApi: "出典JSON",
+        sourceCoverageCsv: "出典CSV",
+        requirement: "基準",
+        collections: "コレクション",
+        collection: "コレクション",
+        records: "記録",
+        reviewer: "編集レビュー",
+        sources: "出典",
+        sourceLicense: "出典とライセンス",
+        blockersLabel: "問題",
+        search: "検索",
+        searchPlaceholder: "記録、コレクション、問題...",
+        allCollections: "すべてのコレクション",
+        allStatuses: "すべての状態",
+        allBlockers: "すべての問題",
+        record: "記録",
+        visible: "表示中",
+        of: "/",
+        empty: "この条件に一致する記録はありません。",
+        loading: "編集キューを読み込み中...",
+        api: "JSONデータ",
+        csv: "CSVデータ",
+        openRecord: "記録を開く",
+        openApi: "データ",
+        signedOffStatus: "承認済み",
+        needsStatus: "レビュー待ち",
+        missingStatus: "状態なし",
+        unsigned: "未レビュー",
+        hasLicense: "ライセンス・条件あり",
+        missingLicense: "ライセンス・条件なし",
+        reset: "フィルターをクリア",
+        tableLimit: "最初の",
+        tableLimitSuffix: "件を表示しています。完全な一覧はCSVファイルにあります。"
+      }
       : {
         title: "Editorial Review",
         eyebrow: "Historical data review",
@@ -518,7 +580,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     it: "verifica editoriale indipendente richiesta",
     tr: "bağımsız editöryal onay gerekli",
     es: "se requiere aprobación editorial independiente",
-    el: "απαιτείται ανεξάρτητη συντακτική έγκριση"
+    el: "απαιτείται ανεξάρτητη συντακτική έγκριση",
+    ja: "独立した編集承認が必要"
   },
   missing_independent_editorial_signoff_log: {
     bg: "липсва име или дата на редактора",
@@ -528,7 +591,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     it: "nome o data del revisore mancante",
     tr: "inceleyenin adı veya tarihi eksik",
     es: "falta el nombre o la fecha del revisor",
-    el: "λείπει το όνομα ή η ημερομηνία του ελεγκτή"
+    el: "λείπει το όνομα ή η ημερομηνία του ελεγκτή",
+    ja: "レビュー担当者名または日付が不足"
   },
   missing_source_reference: {
     bg: "липсва източникова връзка",
@@ -538,7 +602,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     it: "riferimento alla fonte mancante",
     tr: "kaynak referansı eksik",
     es: "falta la referencia de la fuente",
-    el: "λείπει η αναφορά πηγής"
+    el: "λείπει η αναφορά πηγής",
+    ja: "出典参照が不足"
   },
   missing_license_or_reuse_status: {
     bg: "липсва лиценз или статус за повторна употреба",
@@ -548,7 +613,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     it: "licenza o stato di riutilizzo mancante",
     tr: "lisans veya yeniden kullanım durumu eksik",
     es: "falta la licencia o el estado de reutilización",
-    el: "λείπει η άδεια ή το καθεστώς επαναχρησιμοποίησης"
+    el: "λείπει η άδεια ή το καθεστώς επαναχρησιμοποίησης",
+    ja: "ライセンスまたは再利用状態が不足"
   },
   missing_external_editorial_signoff_record: {
     bg: "липсва външен редакторски запис",
@@ -558,7 +624,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     it: "traccia di revisione editoriale esterna mancante",
     tr: "dış editöryal inceleme kaydı eksik",
     es: "falta el registro de revisión editorial externa",
-    el: "λείπει η εγγραφή εξωτερικού συντακτικού ελέγχου"
+    el: "λείπει η εγγραφή εξωτερικού συντακτικού ελέγχου",
+    ja: "外部編集レビュー記録が不足"
   },
   editorial_signoff_log_mismatch: {
     bg: "несъответствие в редакторския запис",
@@ -568,7 +635,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     it: "incoerenza nella traccia di revisione editoriale",
     tr: "editöryal inceleme kaydında tutarsızlık",
     es: "incoherencia en el registro de revisión editorial",
-    el: "ασυμφωνία στην εγγραφή συντακτικού ελέγχου"
+    el: "ασυμφωνία στην εγγραφή συντακτικού ελέγχου",
+    ja: "編集レビュー記録に不一致"
   }
 };
 
@@ -581,7 +649,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     it: "scheda principale",
     tr: "birincil kayıt",
     es: "ficha principal",
-    el: "κύρια καρτέλα"
+    el: "κύρια καρτέλα",
+    ja: "主要記録"
   },
   relationship_entity: {
     bg: "връзка между записи",
@@ -591,7 +660,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     it: "scheda di relazione",
     tr: "ilişki kaydı",
     es: "ficha de relación",
-    el: "καρτέλα σχέσης"
+    el: "καρτέλα σχέσης",
+    ja: "関係記録"
   },
   supporting_archive: {
     bg: "архивен материал",
@@ -601,7 +671,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     it: "elemento d'archivio complementare",
     tr: "tamamlayıcı arşiv ögesi",
     es: "elemento de archivo complementario",
-    el: "συμπληρωματικό αρχειακό στοιχείο"
+    el: "συμπληρωματικό αρχειακό στοιχείο",
+    ja: "補助アーカイブ項目"
   },
   primary_document: {
     bg: "първичен документ",
@@ -611,7 +682,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     it: "documento primario",
     tr: "birincil belge",
     es: "documento primario",
-    el: "πρωτογενές έγγραφο"
+    el: "πρωτογενές έγγραφο",
+    ja: "一次資料"
   },
   editorial_feature: {
     bg: "редакционен материал",
@@ -621,7 +693,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     it: "articolo editoriale",
     tr: "editöryal içerik",
     es: "artículo editorial",
-    el: "συντακτικό άρθρο"
+    el: "συντακτικό άρθρο",
+    ja: "編集記事"
   },
   education_material: {
     bg: "образователен материал",
@@ -631,7 +704,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     it: "risorsa didattica",
     tr: "eğitim materyali",
     es: "recurso educativo",
-    el: "εκπαιδευτικό υλικό"
+    el: "εκπαιδευτικό υλικό",
+    ja: "教育資料"
   }
 };
 
@@ -728,6 +802,23 @@ const collectionLabelsEl: Record<string, string> = {
   editorial_review: "Συντακτικός έλεγχος"
 };
 
+// Japanese collection labels (the generated dataset only carries label_bg/label_en).
+const collectionLabelsJa: Record<string, string> = {
+  events: "出来事",
+  people: "人物",
+  person_relationships: "人物関係",
+  places: "場所",
+  organizations: "組織",
+  sources: "出典",
+  archive_items: "アーカイブ項目",
+  then_now_pairs: "今昔比較ペア",
+  primary_documents: "一次資料",
+  story_longreads: "長編記事",
+  education_resources: "教育リソース",
+  editorial_signoffs: "編集承認",
+  editorial_review: "編集レビュー"
+};
+
 function collectionLabel(id: string) {
   const collection = historyEditorialReview.collections[id];
   if (lang === "fr" && collectionLabelsFr[id]) return collectionLabelsFr[id];
@@ -735,6 +826,7 @@ function collectionLabel(id: string) {
   if (lang === "tr" && collectionLabelsTr[id]) return collectionLabelsTr[id];
   if (lang === "es" && collectionLabelsEs[id]) return collectionLabelsEs[id];
   if (lang === "el" && collectionLabelsEl[id]) return collectionLabelsEl[id];
+  if (lang === "ja" && collectionLabelsJa[id]) return collectionLabelsJa[id];
   return collection?.[`label_${lang}`] ?? collection?.label_en ?? collection?.label_bg ?? id.replaceAll("_", " ");
 }
 
@@ -785,6 +877,7 @@ const roleOptions = [
 const generatedLabel = new Intl.DateTimeFormat(localeForLang(lang), {
   dateStyle: "medium"
 }).format(new Date(historyEditorialReview.generated_at));
+const htmlSafeLookupKey = (key: string) => (lang === "ja" ? key.replaceAll("_", "-") : key);
 
 const reviewConfig = {
   lang,
@@ -810,8 +903,8 @@ const reviewConfig = {
   },
   collectionLabels: Object.fromEntries(collectionRows.map((row) => [row.id, row.label])),
   statusLabels: Object.fromEntries(statusOptions.map((status) => [status, statusLabel(status)])),
-  roleLabels: Object.fromEntries(roleOptions.map((role) => [role, roleLabel(role)])),
-  blockerLabels: Object.fromEntries(blockerOptions.map((blocker) => [blocker, blockerLabel(blocker)]))
+  roleLabels: Object.fromEntries(roleOptions.map((role) => [htmlSafeLookupKey(role), roleLabel(role)])),
+  blockerLabels: Object.fromEntries(blockerOptions.map((blocker) => [htmlSafeLookupKey(blocker), blockerLabel(blocker)]))
 };
 ---
 
@@ -1020,7 +1113,7 @@ const reviewConfig = {
             <label for="editorial-review-blocker">{labels.blockersLabel}</label>
             <select id="editorial-review-blocker">
               <option value="all">{labels.allBlockers}</option>
-              {blockerOptions.map((blocker) => <option value={blocker}>{blockerLabel(blocker)}</option>)}
+              {blockerOptions.map((blocker) => <option value={htmlSafeLookupKey(blocker)}>{blockerLabel(blocker)}</option>)}
             </select>
           </div>
         </div>
@@ -1071,7 +1164,13 @@ const reviewConfig = {
     }
 
     function labelFrom(map, key) {
-      return map?.[key] ?? String(key ?? "").replaceAll("_", " ");
+      return map?.[key] ?? map?.[String(key ?? "").replaceAll("_", "-")] ?? String(key ?? "").replaceAll("_", " ");
+    }
+
+    function optionMatches(raw, option) {
+      if (option === "all") return true;
+      const value = String(raw ?? "");
+      return value === option || value.replaceAll("_", "-") === option;
     }
 
     function localizedTitle(record) {
@@ -1103,8 +1202,8 @@ const reviewConfig = {
         return (
           (!query || recordSearchText(record).includes(query)) &&
           (collection.value === "all" || record.collection === collection.value) &&
-          (status.value === "all" || record.editorial_status === status.value) &&
-          (blocker.value === "all" || (record.blockers ?? []).includes(blocker.value))
+          optionMatches(record.editorial_status, status.value) &&
+          (blocker.value === "all" || (record.blockers ?? []).some((item) => optionMatches(item, blocker.value)))
         );
       });
     }

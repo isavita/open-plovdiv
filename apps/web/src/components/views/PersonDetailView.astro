@@ -163,6 +163,26 @@ const labels =
         linkedEvent: "Συνδεδεμένο γεγονός",
         imageCredit: "Πηγή εικόνας"
       }
+      : lang === "ja"
+      ? {
+        back: "すべての人物",
+        profile: "プロフィール",
+        facts: "基本情報",
+        roles: "役割",
+        life: "生没年",
+        born: "生年",
+        wikidata: "Wikidata",
+        linkedEvents: "関連する出来事",
+        relationships: "他の人物との関係",
+        noRelationships: "他の人物との直接の関係はまだ記録されていません。",
+        evidence: "出典",
+        source: "出典",
+        accessed: "アクセス日",
+        license: "ライセンス",
+        relationshipSource: "関係の出典",
+        linkedEvent: "関連する出来事",
+        imageCredit: "画像クレジット"
+      }
       : {
         back: "All people",
         profile: "Profile",
@@ -368,6 +388,21 @@ const relationshipLabelsEl: Record<string, string> = {
   influenced_by: "επηρεάστηκε από"
 };
 
+const relationshipLabelsJa: Record<string, string> = {
+  succeeds: "前任者",
+  succeeded_by: "後任者",
+  spouse: "配偶者",
+  father: "父",
+  mother: "母",
+  parent: "親",
+  child: "子",
+  sibling: "きょうだい",
+  mentor: "師",
+  student: "弟子・学生",
+  partner: "協力者",
+  influenced_by: "影響を受けた相手"
+};
+
 const roleGroups: Record<string, RoleGroup> = {
   mayor: "governance",
   politician: "governance",
@@ -467,6 +502,8 @@ function relationshipLabel(type: string): string {
   if (lang === "it") return relationshipLabelsIt[type] ?? type.replaceAll("_", " ");
   if (lang === "tr") return relationshipLabelsTr[type] ?? type.replaceAll("_", " ");
   if (lang === "es") return relationshipLabelsEs[type] ?? type.replaceAll("_", " ");
+  if (lang === "el") return relationshipLabelsEl[type] ?? type.replaceAll("_", " ");
+  if (lang === "ja") return relationshipLabelsJa[type] ?? type.replaceAll("_", " ");
   return relationshipLabels[type]?.[lang] ?? type.replaceAll("_", " ");
 }
 
@@ -477,7 +514,7 @@ function primaryGroup(item: KnowledgePerson): RoleGroup {
 function lifeLabel(item: KnowledgePerson): string {
   if (item.birth_year && item.death_year) return `${item.birth_year}-${item.death_year}`;
   if (item.birth_year) return `${labels.born} ${item.birth_year}`;
-  return "n/a";
+  return lang === "ja" ? "不明" : "n/a";
 }
 
 function eventDateLabel(event: KnowledgeEvent): string {

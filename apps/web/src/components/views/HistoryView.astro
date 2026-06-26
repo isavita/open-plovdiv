@@ -60,14 +60,14 @@ const historyDataVersion = createHash("sha1")
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
 const mayorEvents = entries.filter((event) => event.category === "mayor_term");
 
-const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string, ell: string): string =>
-  ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell } satisfies Record<Lang, string>)[lang];
+const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string, ell: string, ja: string): string =>
+  ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell, ja } satisfies Record<Lang, string>)[lang];
 
 const stats = [
   { value: t.home.statYearsValue, label: t.history.statYears },
-  { value: String(historyKnowledgeEvents.length), label: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα") },
-  { value: String(historyKnowledgePeople.length), label: tr("хора", "people", "Personen", "personnalités", "personalità", "kişi", "personas", "πρόσωπα") },
-  { value: String(historyKnowledgeSources.length), label: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές") }
+  { value: String(historyKnowledgeEvents.length), label: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα", "出来事") },
+  { value: String(historyKnowledgePeople.length), label: tr("хора", "people", "Personen", "personnalités", "personalità", "kişi", "personas", "πρόσωπα", "人物") },
+  { value: String(historyKnowledgeSources.length), label: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "出典") }
 ];
 
 const labels = ({
@@ -854,6 +854,104 @@ const labels = ({
         download: "Λήψη",
         jsonData: "Δεδομένα JSON",
         csvData: "Πίνακες CSV"
+      },
+      ja: {
+        people: "人物",
+        places: "場所",
+        contribute: "写真や記憶を投稿",
+        records: "件の記録",
+        of: "/",
+        timelineTitle: "詳細年表",
+        timelineLead:
+          "先史時代から現在までの日付付き記録です。68件の市長任期と市アーカイブの出来事を含み、すべての記録に出典を示しています。",
+        search: "検索",
+        searchPlaceholder: "名前、場所、出来事...",
+        era: "時代",
+        category: "種類",
+        theme: "テーマ",
+        person: "人物",
+        place: "場所",
+        linked: "関連",
+        allEras: "すべての時代",
+        allCategories: "すべての種類",
+        allThemes: "すべてのテーマ",
+        allPeople: "すべての人物",
+        allPlaces: "すべての場所",
+        allLinks: "すべての記録",
+        withPeople: "人物あり",
+        withPlaces: "場所あり",
+        withOrganizations: "組織あり",
+        visible: "表示中",
+        reset: "フィルターをクリア",
+        noResults: "この条件に一致する記録はありません。",
+        onThisDayTitle: "この日の出来事",
+        onThisDayLead:
+          "日付を選ぶと、Plovdivの歴史に関わる出来事を表示します。",
+        today: "今日",
+        noOnThisDay: "選択した日付の出来事はありません。",
+        source: "出典",
+        sourcePlural: "出典",
+        conflictNote: "矛盾に関する注記",
+        mapTitle: "歴史地図",
+        mapLead:
+          "最初の場所は、おおよその座標と文脈を示す別出典とともに地図へ配置されています。",
+        mapLayer: "時代レイヤー",
+        allMapEras: "すべての時代",
+        mapRoutes: "テーマ別散策ルート",
+        noRoute: "ルートなし",
+        visiblePlaces: "表示中の場所",
+        mapArchiveLayer: "アーカイブレイヤー",
+        noArchiveOverlay: "アーカイブなし",
+        archiveOverlayMaps: "古地図",
+        archiveOverlayAll: "すべてのアーカイブ資料",
+        archiveOverlayPhotos: "写真と絵はがき",
+        archiveOverlayDocuments: "文書",
+        visibleArchiveItems: "アーカイブマーカー",
+        archiveOverlayNote: "このレイヤーは古地図や写真を現代の地図に重ねます。位置合わせは概算です。",
+        routeStops: "地点",
+        routeAncientTitle: "古代Philippopolis",
+        routeAncientLead:
+          "Three Hills周辺のローマ時代と後期古代の遺構をたどる短いルートです。",
+        routeRevivalTitle: "民族復興期の旧市街",
+        routeRevivalLead:
+          "民族復興期の家屋、教会、学校ゆかりの場所を歩いてつなぐルートです。",
+        routeHillsTitle: "丘陵",
+        routeHillsLead:
+          "初期の歴史と都市の記憶を伝える丘をたどる地理的なルートです。",
+        openPlaces: "すべての場所",
+        selectPlace: "選択した場所",
+        coordinates: "座標",
+        built: "建設・年代",
+        architect: "建築家",
+        builder: "施工者",
+        creator: "建築家・施工者",
+        archiveTitle: "位置参照済みアーカイブと今昔比較",
+        archiveLead:
+          "アーカイブレイヤーは、歴史地図、写真、絵はがきを市内の場所に結びます。各項目にはWikimedia Commonsの出典とライセンスを保持しています。",
+        georeferencedItems: "位置参照済みアーカイブ項目",
+        thenNowPairs: "今昔比較ペア",
+        archiveDate: "日付",
+        archivePlace: "場所",
+        georeference: "位置参照",
+        license: "ライセンス",
+        thenNowTitle: "今昔比較",
+        thenNowLead:
+          "スライダーで、アーカイブ画像と同じ場所または確認可能な最寄りの都市文脈を示す現代のオープンライセンス写真を比較します。",
+        thenLabel: "昔",
+        nowLabel: "今",
+        peopleTitle: "人物のつながり",
+        peopleLead:
+          "ネットワークにはすべての人物を含め、市長の継承関係はその中の別レイヤーとして示します。",
+        repeatTerms: "複数任期",
+        successionLinks: "継承リンク",
+        openMayors: "人物ネットワーク全体",
+        dataTitle: "オープンデータとAPI",
+        dataLead:
+          "5種類の歴史オブジェクトをJSONとCSVで公開し、静的APIルートも同じ記録を返します。",
+        endpoint: "エンドポイント",
+        download: "ダウンロード",
+        jsonData: "JSONデータ",
+        csvData: "CSV表"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -985,6 +1083,22 @@ const dataResourceLabels: Record<string, string> = ({
         education_resources: "Εκπαιδευτικοί πόροι",
         editorial_signoffs: "Συντακτικές εγκρίσεις",
         editorial_review: "Συντακτικός έλεγχος"
+      },
+      ja: {
+        index: "索引",
+        events: "出来事",
+        people: "人物",
+        person_relationships: "人物関係",
+        places: "場所",
+        organizations: "組織",
+        sources: "出典",
+        archive_items: "アーカイブ項目",
+        then_now_pairs: "今昔比較ペア",
+        primary_documents: "一次資料",
+        story_longreads: "長編記事",
+        education_resources: "教育リソース",
+        editorial_signoffs: "編集承認",
+        editorial_review: "編集レビュー"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -1020,22 +1134,22 @@ const downloadRows = Object.entries(historyKnowledgeIndex.downloads)
   });
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi", es: "Cronología" },
-  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi", es: "Mandato de alcalde" },
-  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik", es: "Evento histórico" },
-  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı", es: "Programa cultural" },
-  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans", es: "Finanzas históricas" },
-  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı", es: "Programa municipal" },
-  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği", es: "Cambio de gobierno" },
-  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu", es: "Nacimiento de una personalidad" },
-  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı", es: "Fuente de archivo" }
+  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi", es: "Cronología", ja: "年表" },
+  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi", es: "Mandato de alcalde", ja: "市長任期" },
+  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik", es: "Evento histórico", ja: "歴史的出来事" },
+  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı", es: "Programa cultural", ja: "文化プログラム" },
+  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans", es: "Finanzas históricas", ja: "歴史的財政" },
+  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı", es: "Programa municipal", ja: "自治体プログラム" },
+  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği", es: "Cambio de gobierno", ja: "行政上の変更" },
+  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu", es: "Nacimiento de una personalidad", ja: "著名人物の誕生" },
+  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı", es: "Fuente de archivo", ja: "アーカイブ出典" }
 };
 
 // Timeline theme tags = the shared person-role labels plus two history-only tags.
 const themeLabels: Record<string, Record<Lang, string>> = {
   ...roleLabels,
-  people: { bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler", es: "Personas" },
-  birth: { bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum", es: "Nacimiento" }
+  people: { bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler", es: "Personas", ja: "人物" },
+  birth: { bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum", es: "Nacimiento", ja: "誕生" }
 };
 
 const hiddenThemeTags = new Set(["people", "birth"]);
@@ -1188,10 +1302,11 @@ const knownHistoryKeys = [
   "Publicly documented institution, building, or urban site in Plovdiv.",
   "Building or urban site from Plovdiv's Revival and early modern heritage."
 ];
+const htmlSafeLookupKey = (key: string) => (lang === "ja" ? key.replaceAll("_", "-") : key);
 const historyMapConfig = {
   lang,
   dataVersion: historyDataVersion,
-  knownHistoryLabels: Object.fromEntries(knownHistoryKeys.map((key) => [key, knownHistoryLabel(key, lang)])),
+  knownHistoryLabels: Object.fromEntries(knownHistoryKeys.map((key) => [htmlSafeLookupKey(key), knownHistoryLabel(key, lang)])),
   api: {
     archiveItems: historyKnowledgeIndex.endpoints.archive_items,
     places: historyKnowledgeIndex.endpoints.places,
@@ -1498,6 +1613,36 @@ const growth = ({
         mapLead: "Κατά προσέγγιση θέση των συνοικιών, χρωματισμένων ανάλογα με την εποχή που εμφανίστηκαν.",
         approxNote: "Κατά προσέγγιση θέση",
         source: "Πηγή"
+      },
+      ja: {
+        title: "都市の成長",
+        popQ: "人口はどう変化したか",
+        rateQ: "都市が最も速く成長した時期",
+        popTitle: "Plovdivの人口推移",
+        popLead:
+          "2021年までの歴史的な点は国勢調査と公開された歴史系列にもとづき、2022-2025年は12月31日時点の国家統計機関による年次推計です。",
+        peakWord: "ピーク",
+        latestWord: "最新推計",
+        growthWord: "以降の増加",
+        rateTitle: "人口変化率",
+        rateLead:
+          "隣り合う測定点の間の各期間について、平均年率の変化を示します。",
+        perYear: "年率%",
+        rateUnitNote: "値は平均年率の変化を%で示しています。",
+        densityTitle: "人口密度",
+        areaLabel: "市域面積",
+        densityNow: "密度",
+        densityPeak: "ピーク時の密度（1985年）",
+        perKm: "人/km²",
+        densityNote:
+          "密度は現在の市域面積（101.98 km²）にもとづいて計算しています。Plovdivはブルガリアで最も人口密度の高い都市です。",
+        nbTitle: "地区が現れた時期",
+        nbLead:
+          "Plovdivの主な地区と地域を、成立時期順に並べています。各項目に公開出典があります。",
+        mapTitle: "地図上の地区",
+        mapLead: "地区のおおよその位置を、成立した時代ごとに色分けしています。",
+        approxNote: "おおよその位置",
+        source: "出典"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 const nbEraLabels: Record<NeighbourhoodEra, string> = ({
@@ -1508,7 +1653,8 @@ const nbEraLabels: Record<NeighbourhoodEra, string> = ({
       it: { ottoman: "Epoca ottomana", revival: "Rinascita nazionale", modern: "Epoca moderna (XX sec.)", socialist: "Epoca socialista" },
       tr: { ottoman: "Osmanlı dönemi", revival: "Ulusal Uyanış", modern: "Modern dönem (XX. yy.)", socialist: "Sosyalist dönem" },
       es: { ottoman: "Época otomana", revival: "Renacimiento Nacional", modern: "Época moderna (s. XX)", socialist: "Época socialista" },
-      el: { ottoman: "Οθωμανική περίοδος", revival: "Εθνική Αναγέννηση", modern: "Σύγχρονη εποχή (20ός αι.)", socialist: "Σοσιαλιστική περίοδος" }
+      el: { ottoman: "Οθωμανική περίοδος", revival: "Εθνική Αναγέννηση", modern: "Σύγχρονη εποχή (20ός αι.)", socialist: "Σοσιαλιστική περίοδος" },
+      ja: { ottoman: "オスマン時代", revival: "民族復興期", modern: "近現代（20世紀）", socialist: "社会主義時代" }
     } satisfies Record<Lang, Record<NeighbourhoodEra, string>>)[lang];
 
 // sticky in-page section navigation
@@ -1584,9 +1730,18 @@ const sectionNav = ({
         { id: "archive-layer", label: "Αρχείο" },
         { id: "people", label: "Πρόσωπα" },
         { id: "data", label: "Δεδομένα" }
+      ],
+      ja: [
+        { id: "geography", label: "地理・気候" },
+        { id: "timeline", label: "年表" },
+        { id: "city-growth", label: "成長" },
+        { id: "landmarks", label: "場所" },
+        { id: "archive-layer", label: "アーカイブ" },
+        { id: "people", label: "人物" },
+        { id: "data", label: "データ" }
       ]
     } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
-const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página", el: "Ενότητες σελίδας" } satisfies Record<Lang, string>)[lang];
+const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página", el: "Ενότητες σελίδας", ja: "ページ内セクション" } satisfies Record<Lang, string>)[lang];
 
 const numberFmt = new Intl.NumberFormat(locale);
 
@@ -1881,6 +2036,33 @@ const geo = ({
           { label: "Ετήσια βροχόπτωση", value: "502 mm" }
         ],
         source: "Πηγή"
+      },
+      ja: {
+        title: "地理と気候",
+        lead:
+          "PlovdivはUpper Thracian Plainの閃長岩の丘陵上に位置し、Maritsa川の両岸に広がっています。",
+        geographyTitle: "地理",
+        climateTitle: "気候",
+        chartQ: "年間の気候はどう変化するか",
+        chartTitle: "月別平均気温と降水量",
+        legendTemp: "最高・最低気温",
+        legendPrecip: "降水量",
+        months: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        facts: [
+          { label: "座標", value: "42°09′N, 24°45′E" },
+          { label: "標高", value: "164 m" },
+          { label: "川", value: "Maritsa" },
+          { label: "平野", value: "Upper Thracian Plain" },
+          { label: "丘", value: "現存する6つの丘（歴史的には7つ）" },
+          { label: "面積", value: "101.98 km²" }
+        ],
+        stats: [
+          { label: "気候区分", value: "温暖湿潤気候" },
+          { label: "年平均最高・最低", value: "18.9 / 7.3 °C" },
+          { label: "最高・最低記録", value: "45.0 / −31.5 °C" },
+          { label: "年間降水量", value: "502 mm" }
+        ],
+        source: "出典"
       }
     })[lang];
 
@@ -3099,6 +3281,8 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       const text = String(value ?? "");
       const direct = config.knownHistoryLabels?.[text];
       if (direct) return direct;
+      const normalizedDirect = config.knownHistoryLabels?.[text.replaceAll("_", "-")];
+      if (normalizedDirect) return normalizedDirect;
       if (config.lang === "de") {
         return text
           .replace(/^Modern period(,|$)/, "Moderne$1")
@@ -3146,6 +3330,14 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           .replace(/^Roman period(,|$)/, "Ρωμαϊκή περίοδος$1")
           .replace(/^Ottoman period(,|$)/, "Οθωμανική περίοδος$1")
           .replace(/^Thracian era(,|$)/, "Θρακική εποχή$1");
+      }
+      if (config.lang === "ja") {
+        return text
+          .replace(/^Modern period(,|$)/, "近現代$1")
+          .replace(/^Bulgarian Revival(,|$)/, "ブルガリア民族復興期$1")
+          .replace(/^Roman period(,|$)/, "ローマ時代$1")
+          .replace(/^Ottoman period(,|$)/, "オスマン時代$1")
+          .replace(/^Thracian era(,|$)/, "トラキア時代$1");
       }
       return text;
     }
