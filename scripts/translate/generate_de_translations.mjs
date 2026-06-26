@@ -82,7 +82,13 @@ const manualTranslationsByLang = {
     "Creative Commons Attribution-ShareAlike 4.0 International":
       "Creative Commons Attribution-ShareAlike 4.0 International",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
-    "Open Database License 1.0": "Open Database License 1.0"
+    "Open Database License 1.0": "Open Database License 1.0",
+    "Engineer Ivan Borisov Totev (born 28 October 1975 in Plovdiv) is a Bulgarian engineer and GERB politician who served two consecutive terms as mayor of Plovdiv from 2011 to 2019. He graduated from the Gotse Delchev Transport Technical School in Plovdiv, from the Technical University in Sofia as a master engineer in computer systems and technologies, and in public administration from Plovdiv University. Before becoming mayor he was mayor of Iztochen District (2007-2009), briefly an MP in 2009, and regional governor of Plovdiv (2009-2011). During his administration the city prepared and delivered the European Capital of Culture 2019 title, and after his mayoral term Totev was again elected to the 45th, 46th and 47th National Assemblies.":
+      "Ο Ivan Borisov Totev (γεννημένος στις 28 Οκτωβρίου 1975 στο Plovdiv) είναι Βούλγαρος μηχανικός και πολιτικός του GERB που υπηρέτησε δύο συνεχόμενες θητείες ως δήμαρχος του Plovdiv από το 2011 έως το 2019. Αποφοίτησε από την Τεχνική Σχολή Μεταφορών Gotse Delchev στο Plovdiv, από το Τεχνικό Πανεπιστήμιο της Σόφιας ως διπλωματούχος μηχανικός συστημάτων και τεχνολογιών υπολογιστών, και από το Πανεπιστήμιο του Plovdiv στη δημόσια διοίκηση. Πριν γίνει δήμαρχος ήταν δήμαρχος της περιφέρειας Iztochen (2007-2009), για σύντομο διάστημα βουλευτής το 2009, και περιφερειακός κυβερνήτης του Plovdiv (2009-2011). Κατά τη διάρκεια της διοίκησής του η πόλη προετοίμασε και υλοποίησε τον τίτλο Πολιτιστική Πρωτεύουσα της Ευρώπης 2019, ενώ μετά τη δημαρχιακή του θητεία ο Totev εξελέγη ξανά στην 45η, 46η και 47η Εθνοσυνέλευση.",
+    "Hristo Pavlov Shkodrov was a Social Democrat, journalist and prominent trade unionist appointed chair of Plovdiv's three-member municipal commission on 26 September 1919. His term belongs to the unstable postwar municipal administration: a Regional History Museum Plovdiv study of interwar political life describes how, after Stefan Gevgalov's resignation in 1919, several temporary commission chairs followed one another for only a month or two, including Pavlov, who was replaced on 11 November by Hariton Kuev. In 2014 Pod Tepeto reported that Dimitar Raychev supplied researcher Katerina Chobanova with archival photographic material of Pavlov, filling the blank in her collection of Plovdiv mayor portraits. Another Regional History Museum Plovdiv study notes that after his death the municipality decided he should be buried at municipal expense.":
+      "Ο Hristo Pavlov Shkodrov ήταν σοσιαλδημοκράτης, δημοσιογράφος και εξέχων συνδικαλιστής, διορισμένος πρόεδρος της τριμελούς δημοτικής επιτροπής του Plovdiv στις 26 Σεπτεμβρίου 1919. Η θητεία του ανήκει στην ασταθή μεταπολεμική δημοτική διοίκηση: μελέτη του Περιφερειακού Ιστορικού Μουσείου Plovdiv για την πολιτική ζωή του Μεσοπολέμου περιγράφει πώς, μετά την παραίτηση του Stefan Gevgalov το 1919, αρκετοί προσωρινοί πρόεδροι επιτροπών διαδέχθηκαν ο ένας τον άλλον για μόλις έναν ή δύο μήνες, μεταξύ τους και ο Pavlov, που αντικαταστάθηκε στις 11 Νοεμβρίου από τον Hariton Kuev. Το 2014 το Pod Tepeto ανέφερε ότι ο Dimitar Raychev παρείχε στην ερευνήτρια Katerina Chobanova αρχειακό φωτογραφικό υλικό του Pavlov, συμπληρώνοντας το κενό στη συλλογή της με πορτρέτα δημάρχων του Plovdiv. Άλλη μελέτη του Περιφερειακού Ιστορικού Μουσείου Plovdiv σημειώνει ότι μετά τον θάνατό του ο δήμος αποφάσισε να ταφεί με δημοτική δαπάνη.",
+    "Sotir Antoniadi (1843-1928) was a physician and politician of Greek origin, born in Stanimaka, today Asenovgrad. He first studied at the central Greek school in Plovdiv, then at a high school in Athens, and later medicine in Vienna before working for two years in Paris. Antoniadi was a deputy in the Regional Assembly of Eastern Rumelia and in 1885 in the National Assembly of the Principality of Bulgaria. Between 26 January and 21 April 1883 he briefly served as acting mayor of Plovdiv. In 1915 he moved to Greece; his house and the pharmacy built in 1872 are part of the Old Plovdiv architectural and historical reserve.":
+      "Ο Sotir Antoniadi (1843-1928) ήταν γιατρός και πολιτικός ελληνικής καταγωγής, γεννημένος στη Στανιμάκα, σήμερα Asenovgrad. Αρχικά σπούδασε στο κεντρικό ελληνικό σχολείο του Plovdiv, στη συνέχεια σε γυμνάσιο της Αθήνας και αργότερα ιατρική στη Βιέννη, πριν εργαστεί για δύο χρόνια στο Παρίσι. Ο Antoniadi ήταν βουλευτής στην Περιφερειακή Συνέλευση της Ανατολικής Ρωμυλίας και το 1885 στην Εθνοσυνέλευση του Πριγκιπάτου της Βουλγαρίας. Από τις 26 Ιανουαρίου έως τις 21 Απριλίου 1883 υπηρέτησε σύντομα ως αναπληρωτής δήμαρχος του Plovdiv. Το 1915 μετακόμισε στην Ελλάδα· το σπίτι του και το φαρμακείο που χτίστηκε το 1872 αποτελούν μέρος του αρχιτεκτονικού και ιστορικού αποθέματος του Παλαιού Plovdiv."
   }
 };
 
@@ -113,8 +119,16 @@ const landmarkFixupsByLang = {
   // Greek wrongly pluralises the surname ("Σπίτι Λαμαρτίνων" = house of the Lamartines);
   // pin the natural genitive-singular form.
   el: [
+    ["Lamartine House", "Σπίτι Λαμαρτίνου"],
     ["Σπίτι Λαμαρτίνων", "Σπίτι Λαμαρτίνου"],
-    ["Σπίτι των Λαμαρτίνων", "Σπίτι Λαμαρτίνου"]
+    ["Σπίτι των Λαμαρτίνων", "Σπίτι Λαμαρτίνου"],
+    ["Geo Milev Primary School", "Δημοτικό Σχολείο Geo Milev"],
+    ["Prince's Garden in Plovdiv", "Κήπος του Πρίγκιπα στο Plovdiv"],
+    ["Sahat Hill", "Sahat Tepe"],
+    ["Sahat hill", "Sahat Tepe"],
+    ["The Seven Hills (tepeta)", "Επτά Λόφοι (τεπέτα)"],
+    ["The Seven Hills", "Επτά Λόφοι"],
+    ["Old Plovdiv", "Παλαιό Plovdiv"]
   ]
 };
 const manualTranslations = manualTranslationsByLang[targetLang];
@@ -541,6 +555,80 @@ function applyLandmarkFixups(translations) {
   }
 }
 
+function applyGreekTemplateFixups(translations) {
+  if (targetLang !== "el") return;
+  for (const source of Object.keys(translations)) {
+    let match = source.match(/^(.+) — (succeeds|succeeded by) — (.+)$/);
+    if (match) {
+      const [, left, relation, right] = match;
+      translations[source] =
+        relation === "succeeds"
+          ? `${left} — διαδέχεται — ${right}`
+          : `${left} — ακολουθείται από — ${right}`;
+      continue;
+    }
+
+    match = source.match(/^Person relationship: (.+) — (succeeds|succeeded by) — (.+)\.$/);
+    if (match) {
+      const [, left, relation, right] = match;
+      translations[source] =
+        relation === "succeeds"
+          ? `Προσωπική σχέση: ${left} — διαδέχεται — ${right}.`
+          : `Προσωπική σχέση: ${left} — ακολουθείται από — ${right}.`;
+      continue;
+    }
+
+    match = source.match(/^The mayoral chronology links (.+) with (.+) through the relationship "(succeeds|succeeded by)"\.$/);
+    if (match) {
+      const [, left, right, relation] = match;
+      const label = relation === "succeeds" ? "διαδέχεται" : "ακολουθείται από";
+      translations[source] = `Το δημαρχιακό χρονολόγιο συνδέει ${left} με ${right} μέσω της σχέσης «${label}».`;
+      continue;
+    }
+
+    match = source.match(/^Mayoral term\(s\) for (.+)\.$/);
+    if (match) {
+      translations[source] = `Δημαρχιακή θητεία για ${match[1]}.`;
+      continue;
+    }
+
+    match = source.match(/^Wikipedia [—-] (.+)$/);
+    if (match) {
+      translations[source] = `Wikipedia — ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Biographical reference: (.+)$/);
+    if (match) {
+      translations[source] = `Βιογραφική αναφορά: ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Birth of (.+)$/);
+    if (match) {
+      translations[source] = `Γέννηση: ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Birth year and birthplace for (.+)\.$/);
+    if (match) {
+      translations[source] = `Έτος γέννησης και γενέτειρα: ${match[1]}.`;
+      continue;
+    }
+
+    match = source.match(/^Biographical data and Plovdiv birthplace link for (.+)\.$/);
+    if (match) {
+      translations[source] = `Βιογραφικά στοιχεία και σύνδεση τόπου γέννησης στο Plovdiv: ${match[1]}.`;
+      continue;
+    }
+
+    match = source.match(/^City archive record "Mayor: (.+)"\.$/);
+    if (match) {
+      translations[source] = `Εγγραφή αρχείου πόλης «Δήμαρχος: ${match[1]}».`;
+    }
+  }
+}
+
 const existing = fs.existsSync(outputPath) ? readJson(outputPath) : {};
 const allStrings = new Set(Object.keys(manualTranslations));
 const protectedNames = new Set();
@@ -590,6 +678,7 @@ normalizeAllTranslations(translations);
 applyExonymFixups(translations);
 applyHonorificFixups(translations);
 applyLandmarkFixups(translations);
+applyGreekTemplateFixups(translations);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, `${JSON.stringify(Object.fromEntries(Object.entries(translations).sort()), null, 2)}\n`);
