@@ -98,7 +98,9 @@ const manualTranslationsByLang = {
     "Creative Commons Attribution-ShareAlike 4.0 International":
       "Creative Commons Attribution-ShareAlike 4.0 International",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
-    "Open Database License 1.0": "Open Database License 1.0"
+    "Open Database License 1.0": "Open Database License 1.0",
+    "A large prefab housing complex designed by architect Ivan Popov (1968); construction began in 1973 and it became a separate district in 1983.":
+      "建築家Ivan Popovが1968年に設計した大規模なプレハブ住宅団地。1973年に建設が始まり、1983年に独立した地区になりました。"
   }
 };
 
@@ -147,14 +149,17 @@ const landmarkFixupsByLang = {
     ["Old Plovdiv", "Παλαιό Plovdiv"]
   ],
   ja: [
-    ["Lamartine House", "Lamartine House"],
-    ["Prince's Garden in Plovdiv", "Plovdiv の Prince's Garden"],
-    ["Sahat Hill", "Sahat Tepe"],
-    ["Sahat hill", "Sahat Tepe"],
-    ["The Old Town (Old Plovdiv)", "旧市街（Old Plovdiv）"],
+    ["Lamartine House", "ラマルティーヌ邸"],
+    ["Prince's Garden in Plovdiv", "Plovdivの王子の庭"],
+    ["Prince’s Garden in Plovdiv", "Plovdivの王子の庭"],
+    ["Sahat Hill", "サハト・テペ"],
+    ["Sahat hill", "サハト・テペ"],
+    ["Sahat Tepe", "サハト・テペ"],
+    ["Geo Milev Primary School", "ゲオ・ミレフ小学校"],
+    ["The Old Town (Old Plovdiv)", "旧市街（旧Plovdiv）"],
     ["The Old Town", "旧市街"],
-    ["Old Plovdiv", "Old Plovdiv"],
-    ["The Seven Hills (tepeta)", "七つの丘（tepeta）"],
+    ["Old Plovdiv", "旧Plovdiv"],
+    ["The Seven Hills (tepeta)", "七つの丘（テペ）"],
     ["The Seven Hills", "七つの丘"]
   ]
 };
@@ -708,6 +713,62 @@ function applyGreekTemplateFixups(translations) {
   }
 }
 
+const japaneseThenNowTitleFixups = new Map([
+  ["Street in Philippopolis, January 1878 — then/now", "1878年1月のフィリッポポリスの通り — 今昔比較"],
+  ["Plovdiv railway station around 1880 — then/now", "1880年頃のPlovdiv駅 — 今昔比較"],
+  ["Postcard: Bahnhof von Plowdiw — then/now", "絵葉書: Bahnhof von Plowdiw — 今昔比較"],
+  ["Plovdiv photographed by Ivan Karastoyanov — then/now", "Ivan Karastoyanovが撮影したPlovdiv — 今昔比較"],
+  ["Dzhambaz Tepe in 1892 — then/now", "1892年のDzhambaz Tepe — 今昔比較"],
+  ["Ottoman clock tower on Sahat Tepe — then/now", "サハト・テペのオスマン時計塔 — 今昔比較"],
+  ["Postcard of the clock tower — then/now", "時計塔の絵葉書 — 今昔比較"],
+  ["Sahat Hill on an old postcard — then/now", "古い絵葉書のサハト・テペ — 今昔比較"],
+  ["Dzhumaya Square on an old postcard — then/now", "古い絵葉書のDzhumaya広場 — 今昔比較"],
+  ["Dzhumaya Square - postcard 2 — then/now", "Dzhumaya広場 - 絵葉書2 — 今昔比較"],
+  ["Dzhumaya Square - postcard 3 — then/now", "Dzhumaya広場 - 絵葉書3 — 今昔比較"],
+  ["Gerdzhika in 1931 — then/now", "1931年のGerdzhika — 今昔比較"],
+  ["Old Bridge and Gerdzhika Bridge in the 1930s — then/now", "1930年代の旧橋とGerdzhika橋 — 今昔比較"],
+  ["Greek High School in Plovdiv — then/now", "Plovdivのギリシャ高校 — 今昔比較"],
+  ["The German school in Plovdiv, 1928 — then/now", "1928年のPlovdivドイツ学校 — 今昔比較"],
+  ["Tsar Simeon Garden in 1915 — then/now", "1915年のTsar Simeon Garden — 今昔比較"],
+  ["Prince's Garden in Plovdiv — then/now", "Plovdivの王子の庭 — 今昔比較"],
+  ["Prince’s Garden in Plovdiv — then/now", "Plovdivの王子の庭 — 今昔比較"],
+  ["Opening of the 1939 Plovdiv Fair — then/now", "1939年Plovdiv見本市の開幕 — 今昔比較"],
+  ["First Plovdiv Exhibition, 1892 - image 1 — then/now", "1892年の第1回Plovdiv博覧会 - 画像1 — 今昔比較"],
+  ["First Plovdiv Exhibition, 1892 - image 10 — then/now", "1892年の第1回Plovdiv博覧会 - 画像10 — 今昔比較"],
+  ["Uncovering the Ancient Theatre - image 1 — then/now", "古代劇場発掘 - 画像1 — 今昔比較"],
+  ["Uncovering the Ancient Theatre - image 2 — then/now", "古代劇場発掘 - 画像2 — 今昔比較"],
+  ["Uncovering the Ancient Stadium - image 1 — then/now", "古代競技場発掘 - 画像1 — 今昔比較"],
+  ["Uncovering the Ancient Stadium - image 2 — then/now", "古代競技場発掘 - 画像2 — 今昔比較"],
+  ["Chirpan earthquake damage near St Josif — then/now", "St Josif付近のChirpan地震被害 — 今昔比較"],
+  ["Ivan Vazov National Library after the earthquake — then/now", "地震後のIvan Vazov国立図書館 — 今昔比較"],
+  ["Balkan cinema in Plovdiv — then/now", "Plovdivのバルカン映画館 — 今昔比較"],
+  ["View from the Trimontium Hotel, 1958 — then/now", "1958年、Trimontium Hotelからの眺め — 今昔比較"],
+  ["Lamartine House restoration archive, 1972 — then/now", "1972年のラマルティーヌ邸修復アーカイブ — 今昔比較"]
+]);
+
+const japaneseRelationshipLabels = {
+  child: "子",
+  father: "父",
+  mother: "母",
+  parent: "親",
+  sibling: "きょうだい",
+  spouse: "配偶者",
+  succeeds: "前任者",
+  succeeded_by: "後任者",
+  mentor: "師",
+  student: "弟子・学生",
+  partner: "協力者",
+  influenced_by: "影響を受けた相手"
+};
+
+function localizeJapaneseThenNowTitle(text) {
+  let out = japaneseThenNowTitleFixups.get(text) ?? text.replaceAll("then/now", "今昔比較");
+  for (const [englishTitle, japaneseTitle] of japaneseThenNowTitleFixups) {
+    out = out.replaceAll(englishTitle, japaneseTitle);
+  }
+  return out;
+}
+
 function applyJapaneseTemplateFixups(translations) {
   if (targetLang !== "ja") return;
   const relationJa = (relation) => (relation === "succeeds" ? "前任者" : "後任者");
@@ -719,6 +780,11 @@ function applyJapaneseTemplateFixups(translations) {
     "Regional History Museum Plovdiv"
   ];
   for (const source of Object.keys(translations)) {
+    if (japaneseThenNowTitleFixups.has(source)) {
+      translations[source] = japaneseThenNowTitleFixups.get(source);
+      continue;
+    }
+
     const bioLead = source.match(/^([A-ZÀ-ž][^()\n]{2,120}) \((?:b\.|born|c\.|active|fl\.|\d{3,4})/);
     if (bioLead) {
       translations[source] = translations[source].replace(/^.+?(?=\s*[（(])/, bioLead[1]);
@@ -766,7 +832,7 @@ function applyJapaneseTemplateFixups(translations) {
     match = source.match(/^A biographical source documents the relationship "(.+)" between (.+) and (.+)\.$/);
     if (match) {
       const [, relation, left, right] = match;
-      translations[source] = `伝記資料は、${left} と ${right} の関係「${relation}」を記録しています。`;
+      translations[source] = `伝記資料は、${left} と ${right} の関係「${japaneseRelationshipLabels[relation] ?? relation}」を記録しています。`;
       continue;
     }
 
@@ -820,32 +886,47 @@ function applyJapaneseTemplateFixups(translations) {
 
     match = source.match(/^Historical image for then\/now pair: (.+)$/);
     if (match) {
-      translations[source] = `今昔比較ペアの歴史画像: ${match[1]}`;
+      translations[source] = `今昔比較ペアの歴史画像: ${localizeJapaneseThenNowTitle(match[1])}`;
       continue;
     }
 
     match = source.match(/^Current comparison image for then\/now pair: (.+)$/);
     if (match) {
-      translations[source] = `今昔比較ペアの現在画像: ${match[1]}`;
+      translations[source] = `今昔比較ペアの現在画像: ${localizeJapaneseThenNowTitle(match[1])}`;
       continue;
     }
 
     match = source.match(/^Historical image, license and source page for then\/now pair "(.+)"\.$/);
     if (match) {
-      translations[source] = `今昔比較ペア「${match[1]}」の歴史画像、ライセンス、出典ページ。`;
+      translations[source] = `今昔比較ペア「${localizeJapaneseThenNowTitle(match[1])}」の歴史画像、ライセンス、出典ページ。`;
       continue;
     }
 
     match = source.match(/^Current comparison image, license and source page for then\/now pair "(.+)"\.$/);
     if (match) {
-      translations[source] = `今昔比較ペア「${match[1]}」の現在画像、ライセンス、出典ページ。`;
+      translations[source] = `今昔比較ペア「${localizeJapaneseThenNowTitle(match[1])}」の現在画像、ライセンス、出典ページ。`;
     }
   }
 
   const cleanupReplacements = [
     [/then\/now/g, "今昔比較"],
+    [/当時\/現在/g, "今昔比較"],
+    [/当時と現在/g, "今昔比較"],
+    [/当時と今/g, "今昔比較"],
     [/Source Coverage/g, "出典網羅性"],
     [/Editorial Review/g, "編集レビュー"],
+    [/ジオ・ミレフ小学校/g, "ゲオ・ミレフ小学校"],
+    [/ラマルティーヌ ハウス/g, "ラマルティーヌ邸"],
+    [/ラマルティーヌの家/g, "ラマルティーヌ邸"],
+    [/サハト テペ/g, "サハト・テペ"],
+    [/サハット ヒル/g, "サハト・テペ"],
+    [/サハト・ヒル/g, "サハト・テペ"],
+    [/古いポストカード/g, "古い絵葉書"],
+    [/ポストカード/g, "絵葉書"],
+    [/バルカン半島映画/g, "バルカン映画館"],
+    [/ゲオ・ミレフ小学校\s+([のはをにでとが])/g, "ゲオ・ミレフ小学校$1"],
+    [/ラマルティーヌ邸\s+([のはをにでとが])/g, "ラマルティーヌ邸$1"],
+    [/旧Plovdiv\s+([のはをにでとが])/g, "旧Plovdiv$1"],
     [/Kostaki Peev・ゲオルギエフ/g, "Kostaki Peev Georgiev"],
     [/Kostadin Dimitrov・ディミトロフ/g, "Kostadin Dimitrov Dimitrov"],
     [/アルメニア系のDr\. でした/g, "アルメニア系の医師でした"],
@@ -857,7 +938,7 @@ function applyJapaneseTemplateFixups(translations) {
   ];
   for (const [source, translated] of Object.entries(translations)) {
     if (typeof translated !== "string") continue;
-    let out = translated;
+    let out = localizeJapaneseThenNowTitle(translated);
     for (const [from, to] of cleanupReplacements) out = out.replace(from, to);
     translations[source] = out;
   }
