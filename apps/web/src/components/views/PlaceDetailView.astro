@@ -183,6 +183,33 @@ const labels =
         noArchive:
           "Para este lugar aún no hay una ficha de archivo o antes/después distinta. La imagen principal, las coordenadas y las fuentes siguen publicadas."
       }
+      : lang === "el"
+      ? {
+        back: "Όλες οι τοποθεσίες",
+        facts: "Στοιχεία",
+        currentStatus: "Τρέχουσα κατάσταση",
+        visit: "Επίσκεψη και προσανατολισμός",
+        coordinates: "Συντεταγμένες",
+        openMap: "Άνοιγμα χάρτη",
+        built: "Κατασκευή/ημερομηνία",
+        architect: "Αρχιτέκτονας",
+        builder: "Κατασκευαστής",
+        creator: "Αρχιτέκτονας/κατασκευαστής",
+        source: "Πηγή",
+        sources: "Πηγές",
+        mediaLicense: "Άδεια εικόνας",
+        mediaFile: "Αρχείο πολυμέσων",
+        mediaCredit: "Πηγή",
+        matchQuality: "Αντιστοίχιση",
+        archiveTitle: "Αρχείο αυτής της τοποθεσίας",
+        thenNowTitle: "Πριν/μετά",
+        thenLabel: "Πριν",
+        nowLabel: "Μετά",
+        eventsTitle: "Συνδεδεμένα γεγονότα",
+        storiesTitle: "Συνδεδεμένες αφηγήσεις",
+        noArchive:
+          "Δεν υπάρχει ακόμη χωριστή καρτέλα αρχείου ή πριν/μετά για αυτήν την τοποθεσία. Η κύρια εικόνα, οι συντεταγμένες και οι πηγές παραμένουν δημοσιευμένες."
+      }
       : {
         back: "All places",
         facts: "Facts",
@@ -250,6 +277,12 @@ const matchQualityLabels: Record<string, string> =
         same_place_approximate_viewpoint: "mismo lugar, punto de vista aproximado",
         same_place_close_viewpoint: "mismo lugar, punto de vista cercano",
         city_context: "contexto urbano"
+      }
+      : lang === "el"
+      ? {
+        same_place_approximate_viewpoint: "ίδιο σημείο, κατά προσέγγιση οπτική γωνία",
+        same_place_close_viewpoint: "ίδιο σημείο, κοντινή οπτική γωνία",
+        city_context: "αστικό πλαίσιο"
       }
       : {
         same_place_approximate_viewpoint: "same place, approximate viewpoint",

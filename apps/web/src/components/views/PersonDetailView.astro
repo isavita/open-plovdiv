@@ -143,6 +143,26 @@ const labels =
         linkedEvent: "Evento vinculado",
         imageCredit: "Crédito de la imagen"
       }
+      : lang === "el"
+      ? {
+        back: "Όλα τα πρόσωπα",
+        profile: "Προφίλ",
+        facts: "Στοιχεία",
+        roles: "Αξιώματα",
+        life: "Χρονολογίες ζωής",
+        born: "Γέννηση",
+        wikidata: "Wikidata",
+        linkedEvents: "Συνδεδεμένα γεγονότα",
+        relationships: "Δεσμοί με άλλα πρόσωπα",
+        noRelationships: "Δεν έχει καταγραφεί ακόμη κανένας άμεσος δεσμός με άλλα πρόσωπα.",
+        evidence: "Πηγές",
+        source: "Πηγή",
+        accessed: "Προσπελάστηκε",
+        license: "Άδεια",
+        relationshipSource: "Πηγή του δεσμού",
+        linkedEvent: "Συνδεδεμένο γεγονός",
+        imageCredit: "Πηγή εικόνας"
+      }
       : {
         back: "All people",
         profile: "Profile",
@@ -331,6 +351,21 @@ const relationshipLabelsEs: Record<string, string> = {
   student: "alumno/a",
   partner: "pareja",
   influenced_by: "influido/a por"
+};
+
+const relationshipLabelsEl: Record<string, string> = {
+  succeeds: "διαδέχεται τον/την",
+  succeeded_by: "διαδέχθηκε από",
+  spouse: "σύζυγος",
+  father: "πατέρας",
+  mother: "μητέρα",
+  parent: "γονέας",
+  child: "παιδί",
+  sibling: "αδελφός/ή",
+  mentor: "μέντορας",
+  student: "μαθητής/τρια",
+  partner: "σύντροφος",
+  influenced_by: "επηρεάστηκε από"
 };
 
 const roleGroups: Record<string, RoleGroup> = {

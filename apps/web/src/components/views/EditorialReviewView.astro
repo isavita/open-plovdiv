@@ -385,6 +385,68 @@ const labels =
         tableLimit: "Mostrando las primeras",
         tableLimitSuffix: "fichas para el filtro actual. La lista completa está disponible en el archivo CSV."
       }
+      : lang === "el"
+      ? {
+        title: "Συντακτικός έλεγχος",
+        eyebrow: "Έλεγχος ιστορικών δεδομένων",
+        lead:
+          "Ένας έλεγχος των καρτελών που εκκρεμούν για ανθρώπινους συντακτικούς ελέγχους. Τα δεδομένα είναι τεχνικά επικυρωμένα· η σελίδα αυτή δείχνει πού χρειάζεται ακόμη ισχυρότερη τεκμηρίωση, στοιχεία άδειας ή συντακτική επιβεβαίωση.",
+        status: "Κατάσταση",
+        total: "παρακολουθούμενες καρτέλες",
+        signedOff: "εγκεκριμένες",
+        needsReview: "σε αναμονή ελέγχου",
+        blockers: "με προβλήματα",
+        trackingGaps: "κενά παρακολούθησης",
+        sourceCoverageTitle: "Κάλυψη πηγών",
+        sourceCoverageLead:
+          "Ένας ξεχωριστός έλεγχος των ίδιων καρτελών: αν κάθε γραμμή έχει δημόσια πηγή, μεταδεδομένα άδειας/επαναχρησιμοποίησης, και αν οι γραμμές μίας πηγής επισημαίνονται για ισχυρότερο έλεγχο τεκμηρίωσης.",
+        traceability: "ιχνηλασιμότητα",
+        multiSourceReview: "έλεγχος με ισχυρότερες πηγές",
+        complete: "πλήρης",
+        incomplete: "ελλιπής",
+        needsSourceReview: "προς έλεγχο",
+        recordsWithSources: "με πηγές",
+        missingSources: "χωρίς πηγή",
+        licenseReady: "άδεια/όροι παρόντες",
+        missingLicenses: "άδεια/όροι ελλιπείς",
+        singleSource: "μία πηγή",
+        multiSource: "2+ πηγές",
+        openLicenseRows: "γραμμές με ανοιχτή άδεια",
+        publicTermsRows: "γραμμές με δημόσια αναφορά",
+        sourceCoverageApi: "Πηγές JSON",
+        sourceCoverageCsv: "Πηγές CSV",
+        requirement: "Κριτήριο",
+        collections: "Συλλογές",
+        collection: "Συλλογή",
+        records: "Καρτέλες",
+        reviewer: "Συντακτικός έλεγχος",
+        sources: "Πηγές",
+        sourceLicense: "Πηγές και άδεια",
+        blockersLabel: "Προβλήματα",
+        search: "Αναζήτηση",
+        searchPlaceholder: "καρτέλα, συλλογή, πρόβλημα...",
+        allCollections: "Όλες οι συλλογές",
+        allStatuses: "Όλες οι καταστάσεις",
+        allBlockers: "Όλα τα προβλήματα",
+        record: "Καρτέλα",
+        visible: "Ορατές",
+        of: "από",
+        empty: "Καμία καρτέλα δεν ταιριάζει με αυτά τα φίλτρα.",
+        loading: "Φόρτωση της συντακτικής ουράς...",
+        api: "Δεδομένα JSON",
+        csv: "Δεδομένα CSV",
+        openRecord: "Άνοιγμα καρτέλας",
+        openApi: "Δεδομένα",
+        signedOffStatus: "εγκεκριμένη",
+        needsStatus: "σε αναμονή ελέγχου",
+        missingStatus: "ελλιπής κατάσταση",
+        unsigned: "μη ελεγμένη",
+        hasLicense: "άδεια/όροι παρόντες",
+        missingLicense: "άδεια/όροι ελλιπείς",
+        reset: "Καθαρισμός φίλτρων",
+        tableLimit: "Εμφάνιση των πρώτων",
+        tableLimitSuffix: "καρτελών για το τρέχον φίλτρο. Ο πλήρης κατάλογος είναι διαθέσιμος στο αρχείο CSV."
+      }
       : {
         title: "Editorial Review",
         eyebrow: "Historical data review",
@@ -455,7 +517,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     fr: "validation éditoriale indépendante requise",
     it: "verifica editoriale indipendente richiesta",
     tr: "bağımsız editöryal onay gerekli",
-    es: "se requiere aprobación editorial independiente"
+    es: "se requiere aprobación editorial independiente",
+    el: "απαιτείται ανεξάρτητη συντακτική έγκριση"
   },
   missing_independent_editorial_signoff_log: {
     bg: "липсва име или дата на редактора",
@@ -464,7 +527,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     fr: "nom ou date du relecteur manquant",
     it: "nome o data del revisore mancante",
     tr: "inceleyenin adı veya tarihi eksik",
-    es: "falta el nombre o la fecha del revisor"
+    es: "falta el nombre o la fecha del revisor",
+    el: "λείπει το όνομα ή η ημερομηνία του ελεγκτή"
   },
   missing_source_reference: {
     bg: "липсва източникова връзка",
@@ -473,7 +537,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     fr: "référence de source manquante",
     it: "riferimento alla fonte mancante",
     tr: "kaynak referansı eksik",
-    es: "falta la referencia de la fuente"
+    es: "falta la referencia de la fuente",
+    el: "λείπει η αναφορά πηγής"
   },
   missing_license_or_reuse_status: {
     bg: "липсва лиценз или статус за повторна употреба",
@@ -482,7 +547,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     fr: "licence ou statut de réutilisation manquant",
     it: "licenza o stato di riutilizzo mancante",
     tr: "lisans veya yeniden kullanım durumu eksik",
-    es: "falta la licencia o el estado de reutilización"
+    es: "falta la licencia o el estado de reutilización",
+    el: "λείπει η άδεια ή το καθεστώς επαναχρησιμοποίησης"
   },
   missing_external_editorial_signoff_record: {
     bg: "липсва външен редакторски запис",
@@ -491,7 +557,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     fr: "trace de revue éditoriale externe manquante",
     it: "traccia di revisione editoriale esterna mancante",
     tr: "dış editöryal inceleme kaydı eksik",
-    es: "falta el registro de revisión editorial externa"
+    es: "falta el registro de revisión editorial externa",
+    el: "λείπει η εγγραφή εξωτερικού συντακτικού ελέγχου"
   },
   editorial_signoff_log_mismatch: {
     bg: "несъответствие в редакторския запис",
@@ -500,7 +567,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     fr: "incohérence dans la trace de revue éditoriale",
     it: "incoerenza nella traccia di revisione editoriale",
     tr: "editöryal inceleme kaydında tutarsızlık",
-    es: "incoherencia en el registro de revisión editorial"
+    es: "incoherencia en el registro de revisión editorial",
+    el: "ασυμφωνία στην εγγραφή συντακτικού ελέγχου"
   }
 };
 
@@ -512,7 +580,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     fr: "fiche principale",
     it: "scheda principale",
     tr: "birincil kayıt",
-    es: "ficha principal"
+    es: "ficha principal",
+    el: "κύρια καρτέλα"
   },
   relationship_entity: {
     bg: "връзка между записи",
@@ -521,7 +590,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     fr: "fiche de relation",
     it: "scheda di relazione",
     tr: "ilişki kaydı",
-    es: "ficha de relación"
+    es: "ficha de relación",
+    el: "καρτέλα σχέσης"
   },
   supporting_archive: {
     bg: "архивен материал",
@@ -530,7 +600,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     fr: "élément d'archives complémentaire",
     it: "elemento d'archivio complementare",
     tr: "tamamlayıcı arşiv ögesi",
-    es: "elemento de archivo complementario"
+    es: "elemento de archivo complementario",
+    el: "συμπληρωματικό αρχειακό στοιχείο"
   },
   primary_document: {
     bg: "първичен документ",
@@ -539,7 +610,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     fr: "document primaire",
     it: "documento primario",
     tr: "birincil belge",
-    es: "documento primario"
+    es: "documento primario",
+    el: "πρωτογενές έγγραφο"
   },
   editorial_feature: {
     bg: "редакционен материал",
@@ -548,7 +620,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     fr: "article éditorial",
     it: "articolo editoriale",
     tr: "editöryal içerik",
-    es: "artículo editorial"
+    es: "artículo editorial",
+    el: "συντακτικό άρθρο"
   },
   education_material: {
     bg: "образователен материал",
@@ -557,7 +630,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     fr: "ressource pédagogique",
     it: "risorsa didattica",
     tr: "eğitim materyali",
-    es: "recurso educativo"
+    es: "recurso educativo",
+    el: "εκπαιδευτικό υλικό"
   }
 };
 
@@ -637,12 +711,30 @@ const collectionLabelsEs: Record<string, string> = {
   editorial_review: "Revisión editorial"
 };
 
+// Greek collection labels (the generated dataset only carries label_bg/label_en).
+const collectionLabelsEl: Record<string, string> = {
+  events: "Γεγονότα",
+  people: "Πρόσωπα",
+  person_relationships: "Δεσμοί μεταξύ προσώπων",
+  places: "Τοποθεσίες",
+  organizations: "Οργανισμοί",
+  sources: "Πηγές",
+  archive_items: "Στοιχεία αρχείου",
+  then_now_pairs: "Ζεύγη πριν/μετά",
+  primary_documents: "Πρωτογενή έγγραφα",
+  story_longreads: "Εκτενείς αφηγήσεις",
+  education_resources: "Εκπαιδευτικοί πόροι",
+  editorial_signoffs: "Συντακτικές εγκρίσεις",
+  editorial_review: "Συντακτικός έλεγχος"
+};
+
 function collectionLabel(id: string) {
   const collection = historyEditorialReview.collections[id];
   if (lang === "fr" && collectionLabelsFr[id]) return collectionLabelsFr[id];
   if (lang === "it" && collectionLabelsIt[id]) return collectionLabelsIt[id];
   if (lang === "tr" && collectionLabelsTr[id]) return collectionLabelsTr[id];
   if (lang === "es" && collectionLabelsEs[id]) return collectionLabelsEs[id];
+  if (lang === "el" && collectionLabelsEl[id]) return collectionLabelsEl[id];
   return collection?.[`label_${lang}`] ?? collection?.label_en ?? collection?.label_bg ?? id.replaceAll("_", " ");
 }
 

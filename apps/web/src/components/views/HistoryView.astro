@@ -60,14 +60,14 @@ const historyDataVersion = createHash("sha1")
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
 const mayorEvents = entries.filter((event) => event.category === "mayor_term");
 
-const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string): string =>
-  ({ bg, en, de, fr, it, tr: trk, es: esp } satisfies Record<Lang, string>)[lang];
+const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string, ell: string): string =>
+  ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell } satisfies Record<Lang, string>)[lang];
 
 const stats = [
   { value: t.home.statYearsValue, label: t.history.statYears },
-  { value: String(historyKnowledgeEvents.length), label: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos") },
-  { value: String(historyKnowledgePeople.length), label: tr("хора", "people", "Personen", "personnalités", "personalità", "kişi", "personas") },
-  { value: String(historyKnowledgeSources.length), label: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes") }
+  { value: String(historyKnowledgeEvents.length), label: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα") },
+  { value: String(historyKnowledgePeople.length), label: tr("хора", "people", "Personen", "personnalités", "personalità", "kişi", "personas", "πρόσωπα") },
+  { value: String(historyKnowledgeSources.length), label: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές") }
 ];
 
 const labels = ({
@@ -756,6 +756,104 @@ const labels = ({
         download: "Descargar",
         jsonData: "Datos JSON",
         csvData: "Tablas CSV"
+      },
+      el: {
+        people: "Πρόσωπα",
+        places: "Τοποθεσίες",
+        contribute: "Υποβολή φωτογραφίας ή ανάμνησης",
+        records: "καρτέλες",
+        of: "από",
+        timelineTitle: "Λεπτομερές χρονολόγιο",
+        timelineLead:
+          "Χρονολογημένες καρτέλες από την προϊστορία έως σήμερα, μαζί με 68 δημαρχιακές θητείες και γεγονότα από το δημοτικό αρχείο. Κάθε καρτέλα παραθέτει την πηγή της.",
+        search: "Αναζήτηση",
+        searchPlaceholder: "όνομα, τόπος, γεγονός...",
+        era: "Εποχή",
+        category: "Τύπος",
+        theme: "Θέμα",
+        person: "Πρόσωπο",
+        place: "Τοποθεσία",
+        linked: "Δεσμοί",
+        allEras: "Όλες οι εποχές",
+        allCategories: "Όλοι οι τύποι",
+        allThemes: "Όλα τα θέματα",
+        allPeople: "Όλα τα πρόσωπα",
+        allPlaces: "Όλες οι τοποθεσίες",
+        allLinks: "Όλες οι καρτέλες",
+        withPeople: "με πρόσωπα",
+        withPlaces: "με τοποθεσίες",
+        withOrganizations: "με οργανισμούς",
+        visible: "Ορατές",
+        reset: "Καθαρισμός φίλτρων",
+        noResults: "Καμία καρτέλα δεν ταιριάζει με αυτά τα φίλτρα.",
+        onThisDayTitle: "Σαν σήμερα",
+        onThisDayLead:
+          "Επιλέξτε μια ημερομηνία για να δείτε σχετικές στιγμές της ιστορίας του Plovdiv.",
+        today: "Σήμερα",
+        noOnThisDay: "Κανένα γεγονός για την επιλεγμένη ημερομηνία.",
+        source: "Πηγή",
+        sourcePlural: "Πηγές",
+        conflictNote: "Σημείωση αντίφασης",
+        mapTitle: "Ιστορικός χάρτης",
+        mapLead:
+          "Οι πρώτες τοποθεσίες τοποθετούνται στον χάρτη με κατά προσέγγιση συντεταγμένες και ξεχωριστή πηγή για το πλαίσιο.",
+        mapLayer: "Στρώμα ανά εποχή",
+        allMapEras: "Όλες οι εποχές",
+        mapRoutes: "Θεματικές διαδρομές περιπάτου",
+        noRoute: "Χωρίς διαδρομή",
+        visiblePlaces: "Ορατές τοποθεσίες",
+        mapArchiveLayer: "Στρώμα αρχείου",
+        noArchiveOverlay: "Χωρίς αρχείο",
+        archiveOverlayMaps: "Παλιοί χάρτες",
+        archiveOverlayAll: "Όλο το αρχειακό υλικό",
+        archiveOverlayPhotos: "Φωτογραφίες και καρτ ποστάλ",
+        archiveOverlayDocuments: "Έγγραφα",
+        visibleArchiveItems: "δείκτες αρχείου",
+        archiveOverlayNote: "Το στρώμα τοποθετεί παλιούς χάρτες και φωτογραφίες πάνω στον σύγχρονο χάρτη. Η ευθυγράμμιση είναι κατά προσέγγιση.",
+        routeStops: "στάσεις",
+        routeAncientTitle: "Αρχαία Φιλιππούπολη",
+        routeAncientLead:
+          "Μια σύντομη διαδρομή στους ρωμαϊκούς και υστερορωμαϊκούς χώρους γύρω από τους Τρεις Λόφους.",
+        routeRevivalTitle: "Παλιά Πόλη της Αναγέννησης",
+        routeRevivalLead:
+          "Ένα νήμα περιπάτου ανάμεσα σε σπίτια, εκκλησίες και σχολικούς χώρους της Εθνικής Αναγέννησης.",
+        routeHillsTitle: "Οι λόφοι",
+        routeHillsLead:
+          "Μια γεωγραφική διαδρομή στους λόφους που διατηρούν την αρχαία ιστορία και την αστική μνήμη.",
+        openPlaces: "Όλες οι τοποθεσίες",
+        selectPlace: "Επιλεγμένη τοποθεσία",
+        coordinates: "Συντεταγμένες",
+        built: "Κατασκευή/ημερομηνία",
+        architect: "Αρχιτέκτονας",
+        builder: "Κατασκευαστής",
+        creator: "Αρχιτέκτονας/κατασκευαστής",
+        archiveTitle: "Γεωαναφερμένο αρχείο και πριν/μετά",
+        archiveLead:
+          "Το στρώμα αρχείου συνδέει ιστορικούς χάρτες, φωτογραφίες και καρτ ποστάλ με τις τοποθεσίες της πόλης. Κάθε στοιχείο διατηρεί την πηγή του και την άδεια Wikimedia Commons.",
+        georeferencedItems: "γεωαναφερμένα στοιχεία αρχείου",
+        thenNowPairs: "ζεύγη πριν/μετά",
+        archiveDate: "Ημερομηνία",
+        archivePlace: "Τοποθεσία",
+        georeference: "Γεωαναφορά",
+        license: "Άδεια",
+        thenNowTitle: "Συγκρίσεις πριν/μετά",
+        thenNowLead:
+          "Οι ολισθητήρες συγκρίνουν μια εικόνα αρχείου με μια σύγχρονη φωτογραφία ανοιχτής άδειας του ίδιου σημείου ή του πλησιέστερου επαληθεύσιμου αστικού πλαισίου.",
+        thenLabel: "Πριν",
+        nowLabel: "Μετά",
+        peopleTitle: "Συνδέσεις μεταξύ των προσώπων",
+        peopleLead:
+          "Το δίκτυο περιλαμβάνει όλα τα πρόσωπα, με τη διαδοχή των δημάρχων ως ξεχωριστό στρώμα μέσα του.",
+        repeatTerms: "επαναλαμβανόμενες θητείες",
+        successionLinks: "δεσμοί διαδοχής",
+        openMayors: "Το πλήρες δίκτυο προσώπων",
+        dataTitle: "Ανοιχτά δεδομένα και API",
+        dataLead:
+          "Οι πέντε τύποι ιστορικών αντικειμένων δημοσιεύονται σε JSON και CSV, και οι στατικές διαδρομές API επιστρέφουν τις ίδιες καρτέλες.",
+        endpoint: "Σημείο πρόσβασης",
+        download: "Λήψη",
+        jsonData: "Δεδομένα JSON",
+        csvData: "Πίνακες CSV"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -871,6 +969,22 @@ const dataResourceLabels: Record<string, string> = ({
         education_resources: "Recursos educativos",
         editorial_signoffs: "Aprobaciones editoriales",
         editorial_review: "Revisión editorial"
+      },
+      el: {
+        index: "Ευρετήριο",
+        events: "Γεγονότα",
+        people: "Πρόσωπα",
+        person_relationships: "Δεσμοί μεταξύ προσώπων",
+        places: "Τοποθεσίες",
+        organizations: "Οργανισμοί",
+        sources: "Πηγές",
+        archive_items: "Στοιχεία αρχείου",
+        then_now_pairs: "Ζεύγη πριν/μετά",
+        primary_documents: "Πρωτογενή έγγραφα",
+        story_longreads: "Εκτενείς αφηγήσεις",
+        education_resources: "Εκπαιδευτικοί πόροι",
+        editorial_signoffs: "Συντακτικές εγκρίσεις",
+        editorial_review: "Συντακτικός έλεγχος"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -1354,6 +1468,36 @@ const growth = ({
         mapLead: "Ubicación aproximada de los barrios, coloreados según la época en que surgieron.",
         approxNote: "Ubicación aproximada",
         source: "Fuente"
+      },
+      el: {
+        title: "Πώς μεγάλωσε η πόλη",
+        popQ: "Πώς άλλαξε ο πληθυσμός;",
+        rateQ: "Πότε μεγάλωσε πιο γρήγορα η πόλη;",
+        popTitle: "Ο πληθυσμός του Plovdiv στον χρόνο",
+        popLead:
+          "Τα ιστορικά σημεία έως το 2021 βασίζονται σε απογραφές και δημοσιευμένες ιστορικές σειρές· τα 2022-2025 είναι ετήσιες εκτιμήσεις της εθνικής στατιστικής υπηρεσίας στις 31 Δεκεμβρίου.",
+        peakWord: "Μέγιστο",
+        latestWord: "Τελευταία εκτίμηση",
+        growthWord: "Αύξηση από το",
+        rateTitle: "Ρυθμός μεταβολής του πληθυσμού",
+        rateLead:
+          "Μέση ετήσια μεταβολή κάθε περιόδου μεταξύ δύο διαδοχικών σημείων μέτρησης.",
+        perYear: "% ετησίως",
+        rateUnitNote: "Οι τιμές αντιστοιχούν στη μέση ετήσια μεταβολή, σε % ετησίως.",
+        densityTitle: "Πυκνότητα πληθυσμού",
+        areaLabel: "Έκταση της πόλης",
+        densityNow: "Πυκνότητα",
+        densityPeak: "Πυκνότητα στο μέγιστο (1985)",
+        perKm: "κάτ./km²",
+        densityNote:
+          "Η πυκνότητα υπολογίζεται ως προς την τρέχουσα έκταση της πόλης (101,98 km²). Το Plovdiv είναι η πιο πυκνοκατοικημένη πόλη της Βουλγαρίας.",
+        nbTitle: "Πότε εμφανίστηκαν οι συνοικίες",
+        nbLead:
+          "Μια επιλογή συνοικιών και περιοχών του Plovdiv, ταξινομημένων κατά ημερομηνία εμφάνισης — η καθεμία με δημόσια πηγή.",
+        mapTitle: "Οι συνοικίες στον χάρτη",
+        mapLead: "Κατά προσέγγιση θέση των συνοικιών, χρωματισμένων ανάλογα με την εποχή που εμφανίστηκαν.",
+        approxNote: "Κατά προσέγγιση θέση",
+        source: "Πηγή"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 const nbEraLabels: Record<NeighbourhoodEra, string> = ({
@@ -1363,7 +1507,8 @@ const nbEraLabels: Record<NeighbourhoodEra, string> = ({
       fr: { ottoman: "Époque ottomane", revival: "Renaissance nationale", modern: "Époque moderne (XXe s.)", socialist: "Époque socialiste" },
       it: { ottoman: "Epoca ottomana", revival: "Rinascita nazionale", modern: "Epoca moderna (XX sec.)", socialist: "Epoca socialista" },
       tr: { ottoman: "Osmanlı dönemi", revival: "Ulusal Uyanış", modern: "Modern dönem (XX. yy.)", socialist: "Sosyalist dönem" },
-      es: { ottoman: "Época otomana", revival: "Renacimiento Nacional", modern: "Época moderna (s. XX)", socialist: "Época socialista" }
+      es: { ottoman: "Época otomana", revival: "Renacimiento Nacional", modern: "Época moderna (s. XX)", socialist: "Época socialista" },
+      el: { ottoman: "Οθωμανική περίοδος", revival: "Εθνική Αναγέννηση", modern: "Σύγχρονη εποχή (20ός αι.)", socialist: "Σοσιαλιστική περίοδος" }
     } satisfies Record<Lang, Record<NeighbourhoodEra, string>>)[lang];
 
 // sticky in-page section navigation
@@ -1430,9 +1575,18 @@ const sectionNav = ({
         { id: "archive-layer", label: "Archivo" },
         { id: "people", label: "Personas" },
         { id: "data", label: "Datos" }
+      ],
+      el: [
+        { id: "geography", label: "Γεωγρ./κλίμα" },
+        { id: "timeline", label: "Χρονολόγιο" },
+        { id: "city-growth", label: "Ανάπτυξη" },
+        { id: "landmarks", label: "Τοποθεσίες" },
+        { id: "archive-layer", label: "Αρχείο" },
+        { id: "people", label: "Πρόσωπα" },
+        { id: "data", label: "Δεδομένα" }
       ]
     } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
-const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página" } satisfies Record<Lang, string>)[lang];
+const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página", el: "Ενότητες σελίδας" } satisfies Record<Lang, string>)[lang];
 
 const numberFmt = new Intl.NumberFormat(locale);
 
@@ -1700,6 +1854,33 @@ const geo = ({
           { label: "Precipitación anual", value: "502 mm" }
         ],
         source: "Fuente"
+      },
+      el: {
+        title: "Γεωγραφία και κλίμα",
+        lead:
+          "Το Plovdiv απλώνεται σε λόφους από συηνίτη στην Άνω Θρακική Πεδιάδα, στις δύο όχθες του ποταμού Maritsa.",
+        geographyTitle: "Γεωγραφία",
+        climateTitle: "Κλίμα",
+        chartQ: "Τι καιρό κάνει μέσα στον χρόνο;",
+        chartTitle: "Μέσες μηνιαίες θερμοκρασίες και βροχοπτώσεις",
+        legendTemp: "Μέγ. / ελάχ. θερμοκρασία",
+        legendPrecip: "Βροχόπτωση",
+        months: ["Ι", "Φ", "Μ", "Α", "Μ", "Ι", "Ι", "Α", "Σ", "Ο", "Ν", "Δ"],
+        facts: [
+          { label: "Συντεταγμένες", value: "42°09′Β, 24°45′Α" },
+          { label: "Υψόμετρο", value: "164 m" },
+          { label: "Ποταμός", value: "Maritsa" },
+          { label: "Πεδιάδα", value: "Άνω Θρακική Πεδιάδα" },
+          { label: "Λόφοι", value: "6 σωζόμενοι λόφοι (7 ιστορικά)" },
+          { label: "Έκταση", value: "101,98 km²" }
+        ],
+        stats: [
+          { label: "Τύπος κλίματος", value: "Υγρό υποτροπικό" },
+          { label: "Ετήσια μέση μέγ./ελάχ.", value: "18,9 / 7,3 °C" },
+          { label: "Ρεκόρ μέγ./ελάχ.", value: "45,0 / −31,5 °C" },
+          { label: "Ετήσια βροχόπτωση", value: "502 mm" }
+        ],
+        source: "Πηγή"
       }
     })[lang];
 
@@ -2957,6 +3138,14 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           .replace(/^Roman period(,|$)/, "Época romana$1")
           .replace(/^Ottoman period(,|$)/, "Época otomana$1")
           .replace(/^Thracian era(,|$)/, "Época tracia$1");
+      }
+      if (config.lang === "el") {
+        return text
+          .replace(/^Modern period(,|$)/, "Σύγχρονη περίοδος$1")
+          .replace(/^Bulgarian Revival(,|$)/, "Βουλγαρική Εθνική Αναγέννηση$1")
+          .replace(/^Roman period(,|$)/, "Ρωμαϊκή περίοδος$1")
+          .replace(/^Ottoman period(,|$)/, "Οθωμανική περίοδος$1")
+          .replace(/^Thracian era(,|$)/, "Θρακική εποχή$1");
       }
       return text;
     }

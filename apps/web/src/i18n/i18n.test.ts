@@ -17,8 +17,12 @@ import { delocalizePath, field, getLangFromUrl, localizePath, localeForLang } fr
 
 const locales = Object.keys(languages) as Lang[];
 const CYRILLIC = /[Ѐ-ӿ]/;
-// Locales whose UI must read in their own script — i.e. no Bulgarian Cyrillic
-// may leak through. (Greek would be added here with a Greek-range allowance.)
+const GREEK = /[Ͱ-Ͽἀ-῿]/;
+// Non-Bulgarian locales whose UI must not leak Bulgarian Cyrillic. Greek (`el`) is
+// included: it uses its own (Greek) script, which the CYRILLIC range does not match,
+// so the same no-Cyrillic-leak assertion is Greek-aware (allows Greek, catches Cyrillic).
+const NON_BG_SCRIPT_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "el"];
+// Locales written in the Latin script (used for assertions that are Latin-only).
 const LATIN_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es"];
 
 /** Collect [dottedPath, value] for every *string* leaf; skip functions. */
@@ -40,7 +44,7 @@ function collectStrings(
 
 describe("i18n locales", () => {
   it("registers every shipped locale", () => {
-    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es"]);
+    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el"]);
   });
 
   it("every locale exposes a non-empty display name", () => {
@@ -72,12 +76,19 @@ describe("ui dictionary parity", () => {
     }
   });
 
-  it("Latin-locale UI never leaks untranslated Bulgarian (Cyrillic)", () => {
-    for (const loc of LATIN_LOCALES) {
+  it("non-Bulgarian-script UI never leaks untranslated Bulgarian (Cyrillic)", () => {
+    for (const loc of NON_BG_SCRIPT_LOCALES) {
       for (const [path, value] of collectStrings(ui[loc])) {
         expect(CYRILLIC.test(value), `${loc}.${path} contains Cyrillic: "${value}"`).toBe(false);
       }
     }
+  });
+
+  it("Greek UI is actually translated into Greek script (not left in English)", () => {
+    // A handful of brand/loanword strings legitimately stay Latin (site.name,
+    // facebook, the BG/EN admin field labels). Most strings must contain Greek.
+    const greekStrings = collectStrings(ui.el).filter(([, value]) => GREEK.test(value));
+    expect(greekStrings.length).toBeGreaterThan(200);
   });
 });
 
@@ -107,9 +118,9 @@ describe("data-label maps", () => {
     }
   });
 
-  it("Latin-locale data labels contain no leaked Cyrillic", () => {
+  it("non-Bulgarian-script data labels contain no leaked Cyrillic", () => {
     for (const [name, map] of symmetricMaps) {
-      for (const loc of LATIN_LOCALES) {
+      for (const loc of NON_BG_SCRIPT_LOCALES) {
         for (const [key, value] of Object.entries(map[loc])) {
           expect(CYRILLIC.test(value), `${name}.${loc}.${key}: "${value}"`).toBe(false);
         }
@@ -125,7 +136,7 @@ describe("data-label maps", () => {
           true
         );
       }
-      for (const loc of LATIN_LOCALES) {
+      for (const loc of NON_BG_SCRIPT_LOCALES) {
         expect(CYRILLIC.test(byLocale[loc]), `roleLabels.${role}.${loc}: "${byLocale[loc]}"`).toBe(
           false
         );
@@ -141,12 +152,14 @@ describe("data-label maps", () => {
     const itKeys = Object.keys(sourceTitleLabels.it).sort();
     const trKeys = Object.keys(sourceTitleLabels.tr).sort();
     const esKeys = Object.keys(sourceTitleLabels.es).sort();
+    const elKeys = Object.keys(sourceTitleLabels.el).sort();
     expect(deKeys, "de source titles drift from en").toEqual(enKeys);
     expect(frKeys, "fr source titles drift from en").toEqual(enKeys);
     expect(itKeys, "it source titles drift from en").toEqual(enKeys);
     expect(trKeys, "tr source titles drift from en").toEqual(enKeys);
     expect(esKeys, "es source titles drift from en").toEqual(enKeys);
-    for (const loc of LATIN_LOCALES) {
+    expect(elKeys, "el source titles drift from en").toEqual(enKeys);
+    for (const loc of NON_BG_SCRIPT_LOCALES) {
       for (const [key, value] of Object.entries(sourceTitleLabels[loc])) {
         expect(value.trim().length, `sourceTitleLabels.${loc}.${key} empty`).toBeGreaterThan(0);
       }
@@ -171,8 +184,10 @@ describe("localised routing", () => {
     expect(getLangFromUrl("/it/mayors")).toBe("it");
     expect(getLangFromUrl("/tr/places")).toBe("tr");
     expect(getLangFromUrl("/es/budget")).toBe("es");
+    expect(getLangFromUrl("/el/history")).toBe("el");
     expect(getLangFromUrl("/en/history")).toBe("en");
     expect(getLangFromUrl("/budget")).toBe("bg");
+    expect(delocalizePath("/el/budget")).toBe("/budget");
     expect(delocalizePath("/de/budget")).toBe("/budget");
     expect(delocalizePath("/de")).toBe("/");
     expect(delocalizePath("/projects")).toBe("/projects");
@@ -196,5 +211,6 @@ describe("localised routing", () => {
     expect(localeForLang("it")).toBe("it-IT");
     expect(localeForLang("tr")).toBe("tr-TR");
     expect(localeForLang("es")).toBe("es-ES");
+    expect(localeForLang("el")).toBe("el-GR");
   });
 });

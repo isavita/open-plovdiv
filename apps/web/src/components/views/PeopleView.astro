@@ -331,6 +331,51 @@ const labels = ({
     sources: "Fuentes",
     source: "Fuente",
     profile: "Perfil"
+  },
+  el: {
+    title: "Τα πρόσωπα του Plovdiv",
+    eyebrow: "Πρόσωπα και συνδέσεις",
+    lead:
+      "Ένας κατάλογος των προσώπων του Open Plovdiv: όλοι οι δήμαρχοι και μια επιλογή αξιόλογων προσωπικοτήτων του Plovdiv, συνδεδεμένων με γεγονότα, αξιώματα και πηγές.",
+    people: "πρόσωπα",
+    roles: "αξιώματα",
+    links: "δεσμοί",
+    events: "γεγονότα",
+    connectionsTitle: "Συνδέσεις μεταξύ των προσώπων",
+    connectionsLead:
+      "Δεσμοί μεταξύ προσώπων: διαδοχή δημάρχων, οικογενειακές σχέσεις και η δημόσια πηγή του καθενός.",
+    catalogTitle: "Κατάλογος",
+    search: "Αναζήτηση",
+    searchPlaceholder: "όνομα, αξίωμα, περιγραφή...",
+    group: "Ομάδα",
+    allGroups: "Όλες οι ομάδες",
+    century: "Αιώνας",
+    allCenturies: "Όλοι οι αιώνες",
+    relationship: "Δεσμοί",
+    allRelationships: "Όλοι",
+    withRelationships: "με δεσμούς με άλλα πρόσωπα",
+    withoutRelationships: "χωρίς δεσμούς με άλλα πρόσωπα",
+    visible: "Ορατά",
+    of: "από",
+    reset: "Καθαρισμός φίλτρων",
+    noResults: "Κανένα πρόσωπο δεν ταιριάζει με αυτά τα φίλτρα.",
+    born: "Γέννηση",
+    life: "Έτη",
+    linkedEvents: "συνδεδεμένα γεγονότα",
+    relationshipCount: "δεσμοί",
+    relationshipSources: "Δεσμοί",
+    ledgerTitle: "Δεσμοί και πηγές",
+    ledgerLead:
+      "Κάθε σχέση αναφέρει τα πρόσωπα, τον τύπο, το συνδεδεμένο γεγονός για τη διαδοχή δημάρχων και τη δημόσια πηγή.",
+    ledgerRows: "δεσμοί",
+    from: "Από",
+    to: "Προς",
+    type: "Τύπος",
+    evidence: "Τεκμήριο",
+    linkedEvent: "Γεγονός",
+    sources: "Πηγές",
+    source: "Πηγή",
+    profile: "Προφίλ"
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -390,22 +435,30 @@ const groupLabels = ({
     faith: "Espiritualidad",
     sport: "Deporte",
     civic: "Sociedad"
+  },
+  el: {
+    governance: "Διακυβέρνηση",
+    culture: "Πολιτισμός",
+    science: "Επιστήμη",
+    faith: "Πνευματικότητα",
+    sport: "Αθλητισμός",
+    civic: "Κοινωνία"
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
 const relationshipTypeLabels: Record<string, Record<Lang, string>> = {
-  succeeds: { bg: "наследява", en: "succeeds", de: "folgt auf", fr: "succède à", it: "succede a", tr: "yerine geçer", es: "sucede a" },
-  succeeded_by: { bg: "наследен/а от", en: "succeeded by", de: "abgelöst von", fr: "remplacé(e) par", it: "sostituito/a da", tr: "yerine geçilir", es: "sucedido/a por" },
-  spouse: { bg: "съпруг/съпруга", en: "spouse", de: "Ehepartner", fr: "conjoint(e)", it: "coniuge", tr: "eş", es: "cónyuge" },
-  father: { bg: "баща", en: "father", de: "Vater", fr: "père", it: "padre", tr: "baba", es: "padre" },
-  mother: { bg: "майка", en: "mother", de: "Mutter", fr: "mère", it: "madre", tr: "anne", es: "madre" },
-  parent: { bg: "родител", en: "parent", de: "Elternteil", fr: "parent", it: "genitore", tr: "ebeveyn", es: "progenitor" },
-  child: { bg: "дете", en: "child", de: "Kind", fr: "enfant", it: "figlio/a", tr: "çocuk", es: "hijo/a" },
-  sibling: { bg: "брат/сестра", en: "sibling", de: "Geschwister", fr: "frère/sœur", it: "fratello/sorella", tr: "kardeş", es: "hermano/a" },
-  mentor: { bg: "ментор", en: "mentor", de: "Mentor", fr: "mentor", it: "mentore", tr: "akıl hocası", es: "mentor" },
-  student: { bg: "ученик/студент", en: "student", de: "Schüler", fr: "élève", it: "allievo/a", tr: "öğrenci", es: "alumno/a" },
-  partner: { bg: "партньор", en: "partner", de: "Partner", fr: "partenaire", it: "partner", tr: "ortak", es: "pareja" },
-  influenced_by: { bg: "повлиян/а от", en: "influenced by", de: "beeinflusst von", fr: "influencé(e) par", it: "influenzato/a da", tr: "etkilendiği", es: "influido/a por" }
+  succeeds: { bg: "наследява", en: "succeeds", de: "folgt auf", fr: "succède à", it: "succede a", tr: "yerine geçer", es: "sucede a", el: "διαδέχεται τον/την" },
+  succeeded_by: { bg: "наследен/а от", en: "succeeded by", de: "abgelöst von", fr: "remplacé(e) par", it: "sostituito/a da", tr: "yerine geçilir", es: "sucedido/a por", el: "διαδέχθηκε από" },
+  spouse: { bg: "съпруг/съпруга", en: "spouse", de: "Ehepartner", fr: "conjoint(e)", it: "coniuge", tr: "eş", es: "cónyuge", el: "σύζυγος" },
+  father: { bg: "баща", en: "father", de: "Vater", fr: "père", it: "padre", tr: "baba", es: "padre", el: "πατέρας" },
+  mother: { bg: "майка", en: "mother", de: "Mutter", fr: "mère", it: "madre", tr: "anne", es: "madre", el: "μητέρα" },
+  parent: { bg: "родител", en: "parent", de: "Elternteil", fr: "parent", it: "genitore", tr: "ebeveyn", es: "progenitor", el: "γονέας" },
+  child: { bg: "дете", en: "child", de: "Kind", fr: "enfant", it: "figlio/a", tr: "çocuk", es: "hijo/a", el: "παιδί" },
+  sibling: { bg: "брат/сестра", en: "sibling", de: "Geschwister", fr: "frère/sœur", it: "fratello/sorella", tr: "kardeş", es: "hermano/a", el: "αδελφός/ή" },
+  mentor: { bg: "ментор", en: "mentor", de: "Mentor", fr: "mentor", it: "mentore", tr: "akıl hocası", es: "mentor", el: "μέντορας" },
+  student: { bg: "ученик/студент", en: "student", de: "Schüler", fr: "élève", it: "allievo/a", tr: "öğrenci", es: "alumno/a", el: "μαθητής/τρια" },
+  partner: { bg: "партньор", en: "partner", de: "Partner", fr: "partenaire", it: "partner", tr: "ortak", es: "pareja", el: "σύντροφος" },
+  influenced_by: { bg: "повлиян/а от", en: "influenced by", de: "beeinflusst von", fr: "influencé(e) par", it: "influenzato/a da", tr: "etkilendiği", es: "influido/a por", el: "επηρεάστηκε από" }
 };
 
 const roleGroups: Record<string, keyof typeof groupLabels> = {
@@ -715,8 +768,10 @@ const nodeConfig = {
         ? [{ id: "people-connections", label: "Bağlar" }, { id: "people-catalog", label: "Katalog" }]
         : lang === "es"
         ? [{ id: "people-connections", label: "Conexiones" }, { id: "people-catalog", label: "Catálogo" }]
+        : lang === "el"
+        ? [{ id: "people-connections", label: "Συνδέσεις" }, { id: "people-catalog", label: "Κατάλογος" }]
         : [{ id: "people-connections", label: "Connections" }, { id: "people-catalog", label: "Catalog" }]}
-    label={lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : "Page sections"}
+    label={lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : "Page sections"}
   />
 
   <section class="section people-connections" id="people-connections" data-subnav-target>

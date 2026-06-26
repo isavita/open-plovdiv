@@ -3,16 +3,18 @@ import frTranslationsJson from "../../../../data/translations/fr.json";
 import itTranslationsJson from "../../../../data/translations/it.json";
 import trTranslationsJson from "../../../../data/translations/tr.json";
 import esTranslationsJson from "../../../../data/translations/es.json";
+import elTranslationsJson from "../../../../data/translations/el.json";
 import type { Lang } from "./ui";
 
-type TranslationLang = Extract<Lang, "de" | "fr" | "it" | "tr" | "es">;
+type TranslationLang = Extract<Lang, "de" | "fr" | "it" | "tr" | "es" | "el">;
 
 const translationsByLang: Record<TranslationLang, Record<string, string>> = {
   de: deTranslationsJson as Record<string, string>,
   fr: frTranslationsJson as Record<string, string>,
   it: itTranslationsJson as Record<string, string>,
   tr: trTranslationsJson as Record<string, string>,
-  es: esTranslationsJson as Record<string, string>
+  es: esTranslationsJson as Record<string, string>,
+  el: elTranslationsJson as Record<string, string>
 };
 const translatedFieldLangs = Object.keys(translationsByLang) as TranslationLang[];
 const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builder"]);

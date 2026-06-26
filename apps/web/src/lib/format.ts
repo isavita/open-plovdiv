@@ -10,7 +10,7 @@ import {
 } from "../i18n/ui";
 import { translateEn } from "../i18n/deTranslations";
 
-const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES" };
+const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR" };
 
 const knownHistoryText: Record<Lang, Record<string, string>> = {
   bg: {},
@@ -109,6 +109,25 @@ const knownHistoryText: Record<Lang, Record<string, string>> = {
       "Institución, edificio o sitio urbano de Plovdiv documentado públicamente.",
     "Building or urban site from Plovdiv's Revival and early modern heritage.":
       "Edificio o sitio urbano del patrimonio del Renacimiento y la primera época moderna de Plovdiv."
+  },
+  el: {
+    "wikidata_coordinate": "Συντεταγμένες Wikidata",
+    "approximate_site": "κατά προσέγγιση τοποθεσία",
+    "district_centroid": "κέντρο του διαμερίσματος",
+    "citywide_reference": "σημείο αναφοράς σε επίπεδο πόλης",
+    "Modern period": "Σύγχρονη περίοδος",
+    "Bulgarian Revival": "Βουλγαρική Εθνική Αναγέννηση",
+    "Thracian era – Antiquity": "Θρακική εποχή – Αρχαιότητα",
+    "Roman period": "Ρωμαϊκή περίοδος",
+    "Ottoman period": "Οθωμανική περίοδος",
+    "not identified in the current public source": "δεν προσδιορίστηκε στην τρέχουσα δημόσια πηγή",
+    "not applicable for a natural hill or terrain feature": "δεν ισχύει για φυσικό λόφο ή γεωμορφή",
+    "Publicly documented historic site; detailed visiting status still needs verification.":
+      "Δημόσια τεκμηριωμένος ιστορικός χώρος· η λεπτομερής κατάσταση επίσκεψης χρειάζεται ακόμη επαλήθευση.",
+    "Publicly documented institution, building, or urban site in Plovdiv.":
+      "Δημόσια τεκμηριωμένο ίδρυμα, κτίριο ή αστικός χώρος στο Plovdiv.",
+    "Building or urban site from Plovdiv's Revival and early modern heritage.":
+      "Κτίριο ή αστικός χώρος από την κληρονομιά της Αναγέννησης και της πρώιμης νεότερης εποχής του Plovdiv."
   }
 };
 

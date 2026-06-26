@@ -4,7 +4,7 @@ import process from "node:process";
 
 const root = process.cwd();
 const targetLang = process.argv[2] ?? "de";
-const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es"]);
+const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el"]);
 if (!supportedTargetLangs.has(targetLang)) {
   throw new Error(`Unsupported target language "${targetLang}". Expected one of: ${[...supportedTargetLangs].join(", ")}`);
 }
@@ -73,6 +73,16 @@ const manualTranslationsByLang = {
       "Creative Commons Atribución-CompartirIgual 4.0 Internacional",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
     "Open Database License 1.0": "Open Database License 1.0"
+  },
+  el: {
+    "Public web reference; reuse terms not verified":
+      "Δημόσια διαδικτυακή αναφορά· οι όροι επαναχρησιμοποίησης δεν επαληθεύτηκαν",
+    "Wikimedia Commons file license, verify per file":
+      "Άδεια αρχείου Wikimedia Commons· επαληθεύστε ανά αρχείο",
+    "Creative Commons Attribution-ShareAlike 4.0 International":
+      "Creative Commons Attribution-ShareAlike 4.0 International",
+    "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
+    "Open Database License 1.0": "Open Database License 1.0"
   }
 };
 
@@ -99,6 +109,12 @@ const landmarkFixupsByLang = {
     ["Old Plovdiv", "Viejo Plovdiv"],
     ["The Seven Hills (tepeta)", "las Siete Colinas (tepeta)"],
     ["The Seven Hills", "las Siete Colinas"]
+  ],
+  // Greek wrongly pluralises the surname ("Σπίτι Λαμαρτίνων" = house of the Lamartines);
+  // pin the natural genitive-singular form.
+  el: [
+    ["Σπίτι Λαμαρτίνων", "Σπίτι Λαμαρτίνου"],
+    ["Σπίτι των Λαμαρτίνων", "Σπίτι Λαμαρτίνου"]
   ]
 };
 const manualTranslations = manualTranslationsByLang[targetLang];
@@ -337,6 +353,27 @@ const namePatternsByLang = {
     ],
     archive: /Belediye Başkanı\s*:\s*([^"»]+)["»]\.?$/,
     relationshipPrefix: /^Kişi ilişkisi\s*:\s*/
+  },
+  el: {
+    // Greek often inserts a definite article (της/του/τον/την) before the name and
+    // transliterates it into Greek script; capture what follows the article.
+    direct: (escapedName) => [
+      [`Biographical reference: ${escapedName}`, /^Βιογραφική αναφορά\s*:\s*(.+)$/],
+      [`Birth of ${escapedName}`, /^Γέννηση τ(?:ης|ου|ων|ο)\s+(.+)$/],
+      [
+        `Birth year and birthplace for ${escapedName}.`,
+        /^Έτος γέννησης και γενέτειρα για τ(?:ην|ον|ο|η)\s+(.+)\.$/
+      ],
+      [
+        `Biographical data and Plovdiv birthplace link for ${escapedName}.`,
+        /^Βιογραφικά στοιχεία.* για τ(?:ην|ον|ο|η)\s+(.+)\.$/
+      ],
+      [`Mayor: ${escapedName}`, /^Δήμαρχος\s*:\s*(.+)$/],
+      [`Mayoral term\\(s\\) for ${escapedName}.`, /^Δήμαρχος.* για τ(?:ον|ην|ο|η)\s+(.+)\.$/],
+      [`Wikipedia [—–-] ${escapedName}`, /^Wikipedia\s*[—–:-]\s*(.+)$/]
+    ],
+    archive: /Δήμαρχος\s*:\s*([^"»]+)["»]\.?$/,
+    relationshipPrefix: /^Προσωπική σχέση\s*:\s*/
   }
 };
 
@@ -412,21 +449,35 @@ function buildTitlePrefixFixups(protectedNames) {
   return fixups;
 }
 
-// Italian machine translation renders the modern city "Plovdiv" as the historical
-// exonym "Filippopoli". Keep "Plovdiv" for the modern city while still allowing
-// "Filippopoli" where the English source explicitly used the ancient "Philippopolis".
-const exonymByLang = { it: "Filippopoli", tr: "Filibe" };
+// Machine translation renders the modern city "Plovdiv" as a historical exonym
+// (Italian "Filippopoli", Turkish "Filibe", Greek "Φιλιππούπολη") or transliterates
+// it (Greek "Πλόβντιβ"). Keep "Plovdiv" for the modern city while still allowing the
+// exonym where the English source explicitly used the ancient "Philippopolis".
+// `guarded` forms only map back when the source used "Plovdiv" (not "Philippopolis").
+const exonymByLang = {
+  it: [{ form: "Filippopoli", guarded: true }],
+  tr: [{ form: "Filibe", guarded: true }],
+  el: [
+    // Longest first so the Greek genitive "Φιλιππούπολης" is handled before "Φιλιππούπολη".
+    { form: "Φιλιππούπολης", guarded: true },
+    { form: "Φιλιππούπολη", guarded: true },
+    // Plain transliteration of the modern brand name; never the ancient city.
+    { form: "Πλόβντιβ", guarded: false }
+  ]
+};
 function applyExonymFixups(translations) {
-  const exonym = exonymByLang[targetLang];
-  if (!exonym) return;
+  const exonyms = exonymByLang[targetLang];
+  if (!exonyms) return;
   for (const [source, translated] of Object.entries(translations)) {
-    if (typeof translated !== "string" || !translated.includes(exonym)) continue;
-    // Keep "Plovdiv" for the modern city (replacing only the stem preserves any
-    // Turkish case suffix, e.g. "Filibe'deki" -> "Plovdiv'deki"); still allow the
-    // exonym where the English source used the ancient/Ottoman name.
-    if (source.includes("Plovdiv") && !source.includes("Philippopolis") && !source.includes("Filibe")) {
-      translations[source] = translated.replaceAll(exonym, "Plovdiv");
+    if (typeof translated !== "string") continue;
+    const guardOk =
+      source.includes("Plovdiv") && !source.includes("Philippopolis") && !source.includes("Filibe");
+    let out = translated;
+    for (const { form, guarded } of exonyms) {
+      if (!out.includes(form) || (guarded && !guardOk)) continue;
+      out = out.replaceAll(form, "Plovdiv");
     }
+    translations[source] = out;
   }
 }
 
@@ -435,11 +486,20 @@ function applyExonymFixups(translations) {
 // names not in the protected set; restore the source form wherever the English
 // source actually used the honorific, so names read identically across locales.
 function applyHonorificFixups(translations) {
-  if (targetLang !== "it" && targetLang !== "tr" && targetLang !== "es") return;
+  if (!["it", "tr", "es", "el"].includes(targetLang)) return;
   for (const [source, translated] of Object.entries(translations)) {
     if (typeof translated !== "string") continue;
     let out = translated;
-    if (targetLang === "it") {
+    if (targetLang === "el") {
+      // Greek renders "Dr." as "Δρ"/"Δρ."; restore the source honorific so the
+      // recorded name reads identically across locales.
+      if (/\bDr\.?\s/.test(source)) {
+        out = out.replace(/\bΔρ\.? /g, "Dr. ");
+      }
+      if (/\bEng\.?\s/.test(source)) {
+        out = out.replace(/\bΜηχ\.? /g, "Eng. ").replace(/\bΜηχανικός /g, "Eng. ");
+      }
+    } else if (targetLang === "it") {
       // Match the source honorific with or without a trailing period ("Dr." or "Dr").
       if (/\bDr\.?\s/.test(source)) {
         out = out
