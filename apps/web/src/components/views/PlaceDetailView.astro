@@ -156,6 +156,33 @@ const labels =
         noArchive:
           "Bu yer için henüz ayrı bir arşiv veya önce/sonra kaydı yok. Ana görsel, koordinatlar ve kaynaklar yayımlı kalır."
       }
+      : lang === "es"
+      ? {
+        back: "Todos los lugares",
+        facts: "Datos",
+        currentStatus: "Estado actual",
+        visit: "Visita y orientación",
+        coordinates: "Coordenadas",
+        openMap: "Abrir el mapa",
+        built: "Construcción/fecha",
+        architect: "Arquitecto",
+        builder: "Constructor",
+        creator: "Arquitecto/constructor",
+        source: "Fuente",
+        sources: "Fuentes",
+        mediaLicense: "Licencia de la imagen",
+        mediaFile: "Archivo multimedia",
+        mediaCredit: "Crédito",
+        matchQuality: "Coincidencia",
+        archiveTitle: "Archivo de este lugar",
+        thenNowTitle: "Antes/después",
+        thenLabel: "Antes",
+        nowLabel: "Después",
+        eventsTitle: "Eventos vinculados",
+        storiesTitle: "Relatos vinculados",
+        noArchive:
+          "Para este lugar aún no hay una ficha de archivo o antes/después distinta. La imagen principal, las coordenadas y las fuentes siguen publicadas."
+      }
       : {
         back: "All places",
         facts: "Facts",
@@ -217,6 +244,12 @@ const matchQualityLabels: Record<string, string> =
         same_place_approximate_viewpoint: "aynı yer, yaklaşık bakış açısı",
         same_place_close_viewpoint: "aynı yer, yakın bakış açısı",
         city_context: "şehir bağlamı"
+      }
+      : lang === "es"
+      ? {
+        same_place_approximate_viewpoint: "mismo lugar, punto de vista aproximado",
+        same_place_close_viewpoint: "mismo lugar, punto de vista cercano",
+        city_context: "contexto urbano"
       }
       : {
         same_place_approximate_viewpoint: "same place, approximate viewpoint",

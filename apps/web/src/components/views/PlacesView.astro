@@ -193,6 +193,41 @@ const labels =
         open: "Aç",
         loadMore: "Daha fazla göster"
       }
+      : lang === "es"
+      ? {
+        title: "Lugares y monumentos",
+        eyebrow: "Coordenadas, imágenes y fuentes",
+        lead:
+          "Un catálogo de los lugares de la historia de Plovdiv: monumentos, plazas, colinas, edificios públicos y sitios culturales, con fotos, coordenadas y fuentes públicas.",
+        places: "lugares",
+        coordinates: "coordenadas",
+        images: "imágenes",
+        events: "eventos",
+        thenNow: "antes/después",
+        archive: "archivo",
+        search: "Buscar",
+        searchPlaceholder: "lugar, época, arquitecto...",
+        era: "Época",
+        category: "Categoría",
+        evidence: "Archivo",
+        allEras: "Todas las épocas",
+        allCategories: "Todas las categorías",
+        allEvidence: "Todos los registros",
+        withThenNow: "con antes/después",
+        withArchive: "con archivo",
+        visible: "Visibles",
+        of: "de",
+        reset: "Borrar filtros",
+        noResults: "Ningún lugar coincide con estos filtros.",
+        source: "Fuente",
+        status: "Estado",
+        built: "Construcción/fecha",
+        architect: "Arquitecto",
+        builder: "Constructor",
+        creator: "Arquitecto/constructor",
+        open: "Abrir",
+        loadMore: "Mostrar más"
+      }
       : {
         title: "Places and Landmarks",
         eyebrow: "Coordinates, images and sources",
@@ -229,15 +264,15 @@ const labels =
       };
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain", it: "Spazio urbano", tr: "Kentsel alan" },
-  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline", it: "Colle", tr: "Tepe" },
-  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval", it: "Medievale", tr: "Orta Çağ" },
-  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument", it: "Monumento", tr: "Anıt" },
-  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman", it: "Ottomano", tr: "Osmanlı" },
-  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux", it: "Sito religioso", tr: "Dinî yapı" },
-  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale", tr: "Ulusal Uyanış" },
-  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano", tr: "Roma" },
-  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio", tr: "Trak" }
+  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain", it: "Spazio urbano", tr: "Kentsel alan", es: "Espacio urbano" },
+  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline", it: "Colle", tr: "Tepe", es: "Colina" },
+  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval", it: "Medievale", tr: "Orta Çağ", es: "Medieval" },
+  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument", it: "Monumento", tr: "Anıt", es: "Monumento" },
+  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman", it: "Ottomano", tr: "Osmanlı", es: "Otomano" },
+  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux", it: "Sito religioso", tr: "Dinî yapı", es: "Sitio religioso" },
+  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale", tr: "Ulusal Uyanış", es: "Renacimiento Nacional" },
+  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano", tr: "Roma", es: "Romano" },
+  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio", tr: "Trak", es: "Tracio" }
 };
 
 function localized(record: Record<string, any>, base: string): string {
@@ -380,6 +415,11 @@ const mapL =
       ? {
         title: "Yerlerin haritası",
         lead: "Koordinatlarıyla belgelenmiş tüm yerler, kategoriye göre renklendirilmiştir. Aşağıdaki filtreler haritaya da uygulanır."
+      }
+      : lang === "es"
+      ? {
+        title: "Mapa de los lugares",
+        lead: "Todos los lugares documentados con coordenadas, coloreados por categoría. Los filtros de abajo también afectan al mapa."
       }
       : {
         title: "Map of the places",

@@ -323,6 +323,68 @@ const labels =
         tableLimit: "İlk gösterilenler",
         tableLimitSuffix: "kayıt mevcut filtre için. Tam liste CSV dosyasında mevcuttur."
       }
+      : lang === "es"
+      ? {
+        title: "Revisión editorial",
+        eyebrow: "Revisión de la base de datos histórica",
+        lead:
+          "Una revisión de las fichas que aún esperan controles editoriales humanos. Los datos están validados técnicamente; esta página muestra dónde aún se necesitan fuentes más sólidas, información de licencia o confirmación editorial.",
+        status: "Estado",
+        total: "fichas seguidas",
+        signedOff: "aprobadas",
+        needsReview: "a la espera de revisión",
+        blockers: "con problemas",
+        trackingGaps: "lagunas de seguimiento",
+        sourceCoverageTitle: "Cobertura de fuentes",
+        sourceCoverageLead:
+          "Una auditoría aparte de las mismas fichas: si cada fila tiene una fuente pública, metadatos de licencia/reutilización, y si las filas de fuente única están marcadas para una verificación más sólida.",
+        traceability: "trazabilidad",
+        multiSourceReview: "revisión con fuentes reforzadas",
+        complete: "completa",
+        incomplete: "incompleta",
+        needsSourceReview: "a revisar",
+        recordsWithSources: "con fuentes",
+        missingSources: "sin fuente",
+        licenseReady: "licencia/condiciones presentes",
+        missingLicenses: "licencia/condiciones faltantes",
+        singleSource: "fuente única",
+        multiSource: "2+ fuentes",
+        openLicenseRows: "filas con licencia abierta",
+        publicTermsRows: "filas con referencia pública",
+        sourceCoverageApi: "Fuentes JSON",
+        sourceCoverageCsv: "Fuentes CSV",
+        requirement: "Criterio",
+        collections: "Colecciones",
+        collection: "Colección",
+        records: "Fichas",
+        reviewer: "Revisión editorial",
+        sources: "Fuentes",
+        sourceLicense: "Fuentes y licencia",
+        blockersLabel: "Problemas",
+        search: "Buscar",
+        searchPlaceholder: "ficha, colección, problema...",
+        allCollections: "Todas las colecciones",
+        allStatuses: "Todos los estados",
+        allBlockers: "Todos los problemas",
+        record: "Ficha",
+        visible: "Visibles",
+        of: "de",
+        empty: "Ninguna ficha coincide con estos filtros.",
+        loading: "Cargando la cola editorial...",
+        api: "Datos JSON",
+        csv: "Datos CSV",
+        openRecord: "Abrir la ficha",
+        openApi: "Datos",
+        signedOffStatus: "aprobada",
+        needsStatus: "a la espera de revisión",
+        missingStatus: "estado faltante",
+        unsigned: "sin revisar",
+        hasLicense: "licencia/condiciones presentes",
+        missingLicense: "licencia/condiciones faltantes",
+        reset: "Borrar filtros",
+        tableLimit: "Mostrando las primeras",
+        tableLimitSuffix: "fichas para el filtro actual. La lista completa está disponible en el archivo CSV."
+      }
       : {
         title: "Editorial Review",
         eyebrow: "Historical data review",
@@ -392,7 +454,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     de: "unabhängige redaktionelle Freigabe nötig",
     fr: "validation éditoriale indépendante requise",
     it: "verifica editoriale indipendente richiesta",
-    tr: "bağımsız editöryal onay gerekli"
+    tr: "bağımsız editöryal onay gerekli",
+    es: "se requiere aprobación editorial independiente"
   },
   missing_independent_editorial_signoff_log: {
     bg: "липсва име или дата на редактора",
@@ -400,7 +463,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     de: "Name oder Datum der prüfenden Person fehlt",
     fr: "nom ou date du relecteur manquant",
     it: "nome o data del revisore mancante",
-    tr: "inceleyenin adı veya tarihi eksik"
+    tr: "inceleyenin adı veya tarihi eksik",
+    es: "falta el nombre o la fecha del revisor"
   },
   missing_source_reference: {
     bg: "липсва източникова връзка",
@@ -408,7 +472,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     de: "Quellenverweis fehlt",
     fr: "référence de source manquante",
     it: "riferimento alla fonte mancante",
-    tr: "kaynak referansı eksik"
+    tr: "kaynak referansı eksik",
+    es: "falta la referencia de la fuente"
   },
   missing_license_or_reuse_status: {
     bg: "липсва лиценз или статус за повторна употреба",
@@ -416,7 +481,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     de: "Lizenz oder Nachnutzungsstatus fehlt",
     fr: "licence ou statut de réutilisation manquant",
     it: "licenza o stato di riutilizzo mancante",
-    tr: "lisans veya yeniden kullanım durumu eksik"
+    tr: "lisans veya yeniden kullanım durumu eksik",
+    es: "falta la licencia o el estado de reutilización"
   },
   missing_external_editorial_signoff_record: {
     bg: "липсва външен редакторски запис",
@@ -424,7 +490,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     de: "externer redaktioneller Prüfvermerk fehlt",
     fr: "trace de revue éditoriale externe manquante",
     it: "traccia di revisione editoriale esterna mancante",
-    tr: "dış editöryal inceleme kaydı eksik"
+    tr: "dış editöryal inceleme kaydı eksik",
+    es: "falta el registro de revisión editorial externa"
   },
   editorial_signoff_log_mismatch: {
     bg: "несъответствие в редакторския запис",
@@ -432,7 +499,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     de: "Widerspruch im redaktionellen Prüfvermerk",
     fr: "incohérence dans la trace de revue éditoriale",
     it: "incoerenza nella traccia di revisione editoriale",
-    tr: "editöryal inceleme kaydında tutarsızlık"
+    tr: "editöryal inceleme kaydında tutarsızlık",
+    es: "incoherencia en el registro de revisión editorial"
   }
 };
 
@@ -443,7 +511,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     de: "Haupteintrag",
     fr: "fiche principale",
     it: "scheda principale",
-    tr: "birincil kayıt"
+    tr: "birincil kayıt",
+    es: "ficha principal"
   },
   relationship_entity: {
     bg: "връзка между записи",
@@ -451,7 +520,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     de: "Beziehungseintrag",
     fr: "fiche de relation",
     it: "scheda di relazione",
-    tr: "ilişki kaydı"
+    tr: "ilişki kaydı",
+    es: "ficha de relación"
   },
   supporting_archive: {
     bg: "архивен материал",
@@ -459,7 +529,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     de: "unterstützendes Archivmaterial",
     fr: "élément d'archives complémentaire",
     it: "elemento d'archivio complementare",
-    tr: "tamamlayıcı arşiv ögesi"
+    tr: "tamamlayıcı arşiv ögesi",
+    es: "elemento de archivo complementario"
   },
   primary_document: {
     bg: "първичен документ",
@@ -467,7 +538,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     de: "Primärdokument",
     fr: "document primaire",
     it: "documento primario",
-    tr: "birincil belge"
+    tr: "birincil belge",
+    es: "documento primario"
   },
   editorial_feature: {
     bg: "редакционен материал",
@@ -475,7 +547,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     de: "redaktioneller Beitrag",
     fr: "article éditorial",
     it: "articolo editoriale",
-    tr: "editöryal içerik"
+    tr: "editöryal içerik",
+    es: "artículo editorial"
   },
   education_material: {
     bg: "образователен материал",
@@ -483,7 +556,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     de: "Bildungsmaterial",
     fr: "ressource pédagogique",
     it: "risorsa didattica",
-    tr: "eğitim materyali"
+    tr: "eğitim materyali",
+    es: "recurso educativo"
   }
 };
 
@@ -546,11 +620,29 @@ const collectionLabelsTr: Record<string, string> = {
   editorial_review: "Editöryal inceleme"
 };
 
+// Spanish collection labels (the generated dataset only carries label_bg/label_en).
+const collectionLabelsEs: Record<string, string> = {
+  events: "Eventos",
+  people: "Personas",
+  person_relationships: "Vínculos entre personas",
+  places: "Lugares",
+  organizations: "Organizaciones",
+  sources: "Fuentes",
+  archive_items: "Elementos de archivo",
+  then_now_pairs: "Pares antes/después",
+  primary_documents: "Documentos primarios",
+  story_longreads: "Relatos largos",
+  education_resources: "Recursos educativos",
+  editorial_signoffs: "Aprobaciones editoriales",
+  editorial_review: "Revisión editorial"
+};
+
 function collectionLabel(id: string) {
   const collection = historyEditorialReview.collections[id];
   if (lang === "fr" && collectionLabelsFr[id]) return collectionLabelsFr[id];
   if (lang === "it" && collectionLabelsIt[id]) return collectionLabelsIt[id];
   if (lang === "tr" && collectionLabelsTr[id]) return collectionLabelsTr[id];
+  if (lang === "es" && collectionLabelsEs[id]) return collectionLabelsEs[id];
   return collection?.[`label_${lang}`] ?? collection?.label_en ?? collection?.label_bg ?? id.replaceAll("_", " ");
 }
 

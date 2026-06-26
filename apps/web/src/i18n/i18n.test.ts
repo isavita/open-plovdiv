@@ -19,7 +19,7 @@ const locales = Object.keys(languages) as Lang[];
 const CYRILLIC = /[Ѐ-ӿ]/;
 // Locales whose UI must read in their own script — i.e. no Bulgarian Cyrillic
 // may leak through. (Greek would be added here with a Greek-range allowance.)
-const LATIN_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr"];
+const LATIN_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es"];
 
 /** Collect [dottedPath, value] for every *string* leaf; skip functions. */
 function collectStrings(
@@ -39,8 +39,8 @@ function collectStrings(
 }
 
 describe("i18n locales", () => {
-  it("registers Bulgarian, English and German (Greek is the next planned add)", () => {
-    expect(locales).toEqual(expect.arrayContaining(["bg", "en", "de"]));
+  it("registers every shipped locale", () => {
+    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es"]);
   });
 
   it("every locale exposes a non-empty display name", () => {
@@ -72,7 +72,7 @@ describe("ui dictionary parity", () => {
     }
   });
 
-  it("English and German UI never leak untranslated Bulgarian (Cyrillic)", () => {
+  it("Latin-locale UI never leaks untranslated Bulgarian (Cyrillic)", () => {
     for (const loc of LATIN_LOCALES) {
       for (const [path, value] of collectStrings(ui[loc])) {
         expect(CYRILLIC.test(value), `${loc}.${path} contains Cyrillic: "${value}"`).toBe(false);
@@ -134,16 +134,18 @@ describe("data-label maps", () => {
   });
 
   it("source-title translations keep matching keys across Latin locales", () => {
-    // bg intentionally keeps the original titles (empty map); en/de translate them.
+    // bg intentionally keeps the original titles (empty map); Latin locales translate them.
     const enKeys = Object.keys(sourceTitleLabels.en).sort();
     const deKeys = Object.keys(sourceTitleLabels.de).sort();
     const frKeys = Object.keys(sourceTitleLabels.fr).sort();
     const itKeys = Object.keys(sourceTitleLabels.it).sort();
     const trKeys = Object.keys(sourceTitleLabels.tr).sort();
+    const esKeys = Object.keys(sourceTitleLabels.es).sort();
     expect(deKeys, "de source titles drift from en").toEqual(enKeys);
     expect(frKeys, "fr source titles drift from en").toEqual(enKeys);
     expect(itKeys, "it source titles drift from en").toEqual(enKeys);
     expect(trKeys, "tr source titles drift from en").toEqual(enKeys);
+    expect(esKeys, "es source titles drift from en").toEqual(enKeys);
     for (const loc of LATIN_LOCALES) {
       for (const [key, value] of Object.entries(sourceTitleLabels[loc])) {
         expect(value.trim().length, `sourceTitleLabels.${loc}.${key} empty`).toBeGreaterThan(0);
@@ -168,6 +170,7 @@ describe("localised routing", () => {
     expect(getLangFromUrl("/fr/history")).toBe("fr");
     expect(getLangFromUrl("/it/mayors")).toBe("it");
     expect(getLangFromUrl("/tr/places")).toBe("tr");
+    expect(getLangFromUrl("/es/budget")).toBe("es");
     expect(getLangFromUrl("/en/history")).toBe("en");
     expect(getLangFromUrl("/budget")).toBe("bg");
     expect(delocalizePath("/de/budget")).toBe("/budget");
@@ -192,5 +195,6 @@ describe("localised routing", () => {
     expect(localeForLang("fr")).toBe("fr-FR");
     expect(localeForLang("it")).toBe("it-IT");
     expect(localeForLang("tr")).toBe("tr-TR");
+    expect(localeForLang("es")).toBe("es-ES");
   });
 });

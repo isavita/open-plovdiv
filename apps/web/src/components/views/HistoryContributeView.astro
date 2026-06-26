@@ -249,6 +249,54 @@ const labels =
           default: "Katkı gönderilemedi. Lütfen tekrar deneyin."
         }
       }
+      : lang === "es"
+      ? {
+        eyebrow: "Archivo ciudadano",
+        title: "Enviar una foto, un recuerdo o una fuente",
+        lead:
+          "Las contribuciones históricas entran en la misma cola de moderación que los avisos ciudadanos. Nada se publica automáticamente: un editor verifica los datos personales, los derechos de imagen y el contexto de la fuente antes de que una ficha se haga pública.",
+        notice:
+          "No envíe datos personales, direcciones privadas exactas ni fotos con caras sin tener los derechos de publicación. Añada una fuente, un enlace de archivo o una nota de procedencia si dispone de ella.",
+        category: "Tipo de contribución",
+        titleLabel: "Título breve",
+        titlePlaceholder: "p. ej. foto antigua de la mezquita Djumaya",
+        description: "Descripción / recuerdo",
+        descriptionPlaceholder: "Describa qué se muestra, la fecha aproximada, el origen y qué debe verificarse.",
+        sourceUrl: "Fuente o enlace de archivo",
+        sourceUrlPlaceholder: "https://...",
+        sourceNote: "Nota de procedencia",
+        sourceNotePlaceholder: "p. ej. foto de familia, postal escaneada, publicación de archivo...",
+        photos: "Fotos",
+        photoHint:
+          "Opcional, hasta 3 fotos, máximo 5 MB cada una. Los metadatos EXIF/GPS se eliminan y las fotos se convierten antes de la revisión.",
+        location: "Lugar",
+        locationHint: "Haga clic en el mapa si la contribución está ligada a un lugar concreto.",
+        noLocation: "Aún no hay ningún punto seleccionado",
+        confirmNoPersonal: "Confirmo que esta contribución no contiene datos personales.",
+        confirmPublicInterest: "Confirmo que esta contribución puede verificarse y es de interés público.",
+        submit: "Enviar para revisión",
+        submitting: "Enviando...",
+        successTitle: "Recibido",
+        successText: "La contribución está en la cola de moderación. Número de referencia:",
+        submitAnother: "Enviar otra contribución",
+        backToHistory: "Volver a la historia",
+        selected: "Punto seleccionado",
+        errors: {
+          rate_limited: "Demasiados envíos en poco tiempo. Inténtelo más tarde.",
+          invalid_category: "Elija un tipo de contribución válido.",
+          invalid_title: "El título debe tener entre 3 y 120 caracteres.",
+          invalid_description: "La descripción debe tener entre 10 y 1000 caracteres.",
+          invalid_source: "La fuente debe ser un enlace http/https válido o una nota breve.",
+          contains_personal_data: "El texto contiene algo que parece un dato personal.",
+          invalid_location: "Elija un punto dentro de Plovdiv.",
+          missing_confirmation: "Marque ambas confirmaciones.",
+          too_many_photos: "Suba como máximo 3 fotos.",
+          photo_too_large: "Cada foto debe ser de 5 MB o menos.",
+          invalid_photo_type: "Solo se permiten fotos JPEG, PNG o WebP.",
+          invalid_photo: "No se pudo procesar la foto.",
+          default: "No se pudo enviar la contribución. Inténtelo de nuevo."
+        }
+      }
       : {
         eyebrow: "Community archive",
         title: "Submit a photo, memory or source",

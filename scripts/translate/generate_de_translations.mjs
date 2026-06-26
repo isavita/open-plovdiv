@@ -4,7 +4,7 @@ import process from "node:process";
 
 const root = process.cwd();
 const targetLang = process.argv[2] ?? "de";
-const supportedTargetLangs = new Set(["de", "fr", "it", "tr"]);
+const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es"]);
 if (!supportedTargetLangs.has(targetLang)) {
   throw new Error(`Unsupported target language "${targetLang}". Expected one of: ${[...supportedTargetLangs].join(", ")}`);
 }
@@ -63,6 +63,16 @@ const manualTranslationsByLang = {
     // pin a clean translation that keeps the recorded name intact.
     "Mayoral term(s) for Eng. Ivan Totev.":
       "Eng. Ivan Totev için belediye başkanlığı dönemleri."
+  },
+  es: {
+    "Public web reference; reuse terms not verified":
+      "Referencia web pública; condiciones de reutilización no verificadas",
+    "Wikimedia Commons file license, verify per file":
+      "Licencia de archivo de Wikimedia Commons; verificar en cada archivo",
+    "Creative Commons Attribution-ShareAlike 4.0 International":
+      "Creative Commons Atribución-CompartirIgual 4.0 Internacional",
+    "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
+    "Open Database License 1.0": "Open Database License 1.0"
   }
 };
 
@@ -75,7 +85,21 @@ const protectedNameOverridesByLang = {
 // Landmark names the machine sometimes leaves in English inside longer captions;
 // normalise them to their natural target-language form for consistency.
 const landmarkFixupsByLang = {
-  tr: [["Lamartine House", "Lamartine Evi"]]
+  tr: [["Lamartine House", "Lamartine Evi"]],
+  // Spanish renders "House" -> "Casa" but wrongly feminises the surname ("Lamartina");
+  // pin the natural form keeping the recorded surname intact.
+  es: [
+    ["Casa Lamartina", "Casa Lamartine"],
+    ["Lamartine House", "Casa Lamartine"],
+    ["Prince's Garden in Plovdiv", "Jardín del Príncipe en Plovdiv"],
+    ["Sahat Hill", "Sahat Tepe"],
+    ["Sahat hill", "colina Sahat"],
+    ["The Old Town (Old Plovdiv)", "el casco antiguo (Viejo Plovdiv)"],
+    ["The Old Town", "el casco antiguo"],
+    ["Old Plovdiv", "Viejo Plovdiv"],
+    ["The Seven Hills (tepeta)", "las Siete Colinas (tepeta)"],
+    ["The Seven Hills", "las Siete Colinas"]
+  ]
 };
 const manualTranslations = manualTranslationsByLang[targetLang];
 
@@ -278,6 +302,24 @@ const namePatternsByLang = {
     archive: /Sindaco\s*:\s*([^"»]+)["»]\.?$/,
     relationshipPrefix: /^Rapporto personale\s*:\s*/
   },
+  es: {
+    direct: (escapedName) => [
+      [`Biographical reference: ${escapedName}`, /^Referencia biográfica\s*:\s*(.+)$/],
+      // Spanish may insert an article ("Nacimiento del ángel ..." for "Angel").
+      [`Birth of ${escapedName}`, /^Nacimiento de(?:l| la| los| las)? (.+)$/],
+      [`Birth year and birthplace for ${escapedName}.`, /^Año de nacimiento y lugar de nacimiento de (.+)\.$/],
+      [
+        `Biographical data and Plovdiv birthplace link for ${escapedName}.`,
+        /^Datos biográficos y enlace del lugar de nacimiento de Plovdiv de (.+)\.$/
+      ],
+      [`Mayor: ${escapedName}`, /^Alcalde\s*:\s*(.+)$/],
+      [`Mayoral term\\(s\\) for ${escapedName}.`, /^Mandato.* para (.+)\.$/],
+      // Spanish sometimes renders the "Wikipedia —" separator as a colon.
+      [`Wikipedia [—–-] ${escapedName}`, /^Wikipedia\s*[—–:-]\s*(.+)$/]
+    ],
+    archive: /Alcalde\s*:\s*([^"»]+)["»]\.?$/,
+    relationshipPrefix: /^Relación personal\s*:\s*/
+  },
   tr: {
     // Turkish renders the name first with a genitive suffix after an apostrophe
     // (e.g. "Emma Tahmiziyan'ın doğumu"); capture the name before the apostrophe.
@@ -393,7 +435,7 @@ function applyExonymFixups(translations) {
 // names not in the protected set; restore the source form wherever the English
 // source actually used the honorific, so names read identically across locales.
 function applyHonorificFixups(translations) {
-  if (targetLang !== "it" && targetLang !== "tr") return;
+  if (targetLang !== "it" && targetLang !== "tr" && targetLang !== "es") return;
   for (const [source, translated] of Object.entries(translations)) {
     if (typeof translated !== "string") continue;
     let out = translated;
@@ -408,6 +450,14 @@ function applyHonorificFixups(translations) {
       }
       if (/\bEng\.?\s/.test(source)) {
         out = out.replace(/\b[Ll]'ingegnere /g, "Eng. ").replace(/\bIng\. /g, "Eng. ");
+      }
+    } else if (targetLang === "es") {
+      // Spanish keeps "Dr." but renders "Eng." as "Ing.", "el inglés" or "el ingeniero".
+      if (/\bEng\.?\s/.test(source)) {
+        out = out
+          .replace(/\b[Ee]l inglés\. /g, "Eng. ")
+          .replace(/\b[Ee]l ingeniero /g, "Eng. ")
+          .replace(/\bIng\. /g, "Eng. ");
       }
     } else if (targetLang === "tr") {
       // Turkish keeps "Dr." but renders "Eng." as "Müh." (Mühendis); restore the

@@ -24,7 +24,8 @@
       "notes_de": "Die Karte ist auf den zentralen Plovdiv-Datensatz georeferenziert; genaue Rasterkontrollpunkte stehen noch aus.",
       "notes_fr": "La carte est géoréférencée par rapport au dossier central de Plovdiv ; les points de contrôle raster exacts sont toujours en attente.",
       "notes_it": "La mappa è georeferenziata al record centrale di Plovdiv; i punti di controllo raster esatti sono ancora in sospeso.",
-      "notes_tr": "Haritanın coğrafi referansı merkezi Plovdiv kaydına göre yapılmıştır; kesin raster kontrol noktaları hala beklemededir."
+      "notes_tr": "Haritanın coğrafi referansı merkezi Plovdiv kaydına göre yapılmıştır; kesin raster kontrol noktaları hala beklemededir.",
+      "notes_es": "El mapa está georreferenciado al registro central de Plovdiv; Los puntos exactos de control ráster aún están pendientes."
     },
     "overlay_bounds": {
       "south": 42.005,
@@ -37,7 +38,8 @@
       "notes_de": "Ungefähre rechteckige Ausdehnung zur visuellen Überlagerung der Karte mit der modernen Grundkarte; Dies ist keine Kontrollpunktberichtigung.",
       "notes_fr": "Étendue rectangulaire approximative pour superposer visuellement la carte sur le fond de carte moderne ; il ne s’agit pas d’une rectification au point de contrôle.",
       "notes_it": "Estensione rettangolare approssimativa per sovrapporre visivamente la mappa sulla mappa di base moderna; questa non è una rettifica del punto di controllo.",
-      "notes_tr": "Haritanın modern temel harita üzerine görsel olarak yerleştirilmesi için yaklaşık dikdörtgen boyut; bu kontrol noktası düzeltmesi değil."
+      "notes_tr": "Haritanın modern temel harita üzerine görsel olarak yerleştirilmesi için yaklaşık dikdörtgen boyut; bu kontrol noktası düzeltmesi değil.",
+      "notes_es": "Extensión rectangular aproximada para superponer visualmente el mapa en el mapa base moderno; Esto no es una rectificación de puntos de control."
     },
     "media": {
       "type": "image",
@@ -51,7 +53,8 @@
       "title_de": "BASA-3K-7-334-14-Karte von Plovdiv – Stanimaka-Eisenbahn.jpeg",
       "title_fr": "BASA-3K-7-334-14-Carte de Plovdiv - Chemin de fer Stanimaka.jpeg",
       "title_it": "BASA-3K-7-334-14-Mappa della ferrovia Plovdiv - Stanimaka.jpeg",
-      "title_tr": "BASA-3K-7-334-14-Plovdiv Haritası - Stanimaka demiryolu.jpeg"
+      "title_tr": "BASA-3K-7-334-14-Plovdiv Haritası - Stanimaka demiryolu.jpeg",
+      "title_es": "BASA-3K-7-334-14-Mapa de Plovdiv - Ferrocarril Stanimaka.jpeg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-3K-7-334-14-Map of Plovdiv - Stanimaka railway.jpeg",
@@ -65,7 +68,8 @@
       "title_de": "Wikimedia Commons – BASA-3K-7-334-14-Karte von Plovdiv – Stanimaka-Eisenbahn.jpeg",
       "title_fr": "Wikimedia Commons — BASA-3K-7-334-14-Carte de Plovdiv - Chemin de fer Stanimaka.jpeg",
       "title_it": "Wikimedia Commons — BASA-3K-7-334-14-Mappa di Plovdiv - Ferrovia Stanimaka.jpeg",
-      "title_tr": "Wikimedia Commons — BASA-3K-7-334-14-Plovdiv Haritası - Stanimaka demiryolu.jpeg"
+      "title_tr": "Wikimedia Commons — BASA-3K-7-334-14-Plovdiv Haritası - Stanimaka demiryolu.jpeg",
+      "title_es": "Wikimedia Commons — BASA-3K-7-334-14-Mapa de Plovdiv - Ferrocarril Stanimaka.jpeg"
     },
     "commons_categories": [
       "1928 in Bulgaria",
@@ -91,16 +95,19 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Karte der Eisenbahnlinie Plovdiv - Stanimaka",
     "title_fr": "Carte du chemin de fer Plovdiv - Stanimaka",
     "title_it": "Mappa della ferrovia Plovdiv - Stanimaka",
     "title_tr": "Plovdiv - Stanimaka demiryolu haritası",
+    "title_es": "Mapa del ferrocarril Plovdiv - Stanimaka",
     "description_de": "Archivkarte aus der Sammlung des Bulgarischen Archivs, die als georeferenzierte kartografische Ausgangsebene für Plovdiv verwendet wird.",
     "description_fr": "Carte d'archives de la collection de l'Agence d'État des Archives bulgares, utilisée comme couche cartographique géoréférencée de départ pour Plovdiv.",
     "description_it": "Mappa dell'archivio dalla collezione dell'Agenzia di Stato degli Archivi bulgari, utilizzata come livello cartografico georeferenziato di partenza per Plovdiv.",
-    "description_tr": "Plovdiv için başlangıç coğrafi referanslı kartografik katman olarak kullanılan Bulgar Arşivleri Devlet Ajansı koleksiyonundan arşiv haritası."
+    "description_tr": "Plovdiv için başlangıç coğrafi referanslı kartografik katman olarak kullanılan Bulgar Arşivleri Devlet Ajansı koleksiyonundan arşiv haritası.",
+    "description_es": "Mapa de archivo de la colección de la Agencia Estatal de Archivos de Bulgaria, utilizado como capa cartográfica georreferenciada inicial para Plovdiv."
   },
   {
     "id": "archive-photo-philippopolis-street-1878",
@@ -127,7 +134,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Die Altstadt (Old Plovdiv).",
       "notes_fr": "L'image est liée aux coordonnées de l'enregistrement de lieu existant : La Vieille Ville (Vieux Plovdiv).",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: La Città Vecchia (Vecchia Plovdiv).",
-      "notes_tr": "Resim mevcut yer kaydının koordinatlarıyla bağlantılıdır: Eski Şehir (Eski Plovdiv)."
+      "notes_tr": "Resim mevcut yer kaydının koordinatlarıyla bağlantılıdır: Eski Şehir (Eski Plovdiv).",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: La Ciudad Vieja (Viejo Plovdiv)."
     },
     "media": {
       "type": "image",
@@ -141,7 +149,8 @@
       "title_de": "0530 Вид на одну из улиц Filippopoly (Polen), Januar 1878.jpg",
       "title_fr": "0530 Vidéo de l'aéroport de Filippopolja (Plovdiv), janvier 1878.jpg",
       "title_it": "0530 Vista sull'isola di Filippopoli (Пловдива), gennaio 1878.jpg",
-      "title_tr": "0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg"
+      "title_tr": "0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg",
+      "title_es": "0530 Вид на одну из улиц Филипополя (Пловдива), январь 1878.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — 0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg",
@@ -155,7 +164,8 @@
       "title_de": "Wikimedia Commons – 0530 Veröffentlicht am 17. September 1878 in der Filippopol-Straße (Polen), Januar 1878.jpg",
       "title_fr": "Wikimedia Commons — 0530 Vide à l'heure de l'avenue Philippopol (Plovdiv), janvier 1878.jpg",
       "title_it": "Wikimedia Commons — 0530 Vista sull'isola di Filippo (Пловдива), gennaio 1878.jpg",
-      "title_tr": "Wikimedia Commons — 0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg"
+      "title_tr": "Wikimedia Commons — 0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg",
+      "title_es": "Wikimedia Commons — 0530 Вид на одну из улиц Филипополя (Пловдива), январь 1878.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -176,20 +186,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Straße in Philippopolis, Januar 1878",
     "title_fr": "Rue de Philippopolis, janvier 1878",
     "title_it": "Via a Filippopoli, gennaio 1878",
     "title_tr": "Filippopolis'te Bir Sokak, Ocak 1878",
+    "title_es": "Calle de Filipopolis, enero de 1878",
     "description_de": "Frühes Foto einer Straße in Philippopolis/Plovdiv, georeferenziert auf die Altstadt als ungefähren städtischen Kontext.",
     "description_fr": "Première photographie d'une rue de Philippopolis/Plovdiv, géoréférencée à la vieille ville comme contexte urbain approximatif.",
     "description_it": "Prima fotografia di una strada a Philippopolis/Plovdiv, georeferenziata alla Città Vecchia come contesto urbano approssimativo.",
     "description_tr": "Philippopolis/Plovdiv'deki bir caddenin ilk fotoğrafı, yaklaşık kentsel bağlam olarak coğrafi olarak Eski Kent'e referans verilmiştir.",
+    "description_es": "Fotografía antigua de una calle de Philippopolis/Plovdiv, georreferenciada al casco antiguo como contexto urbano aproximado.",
     "date_display_de": "Januar 1878",
     "date_display_fr": "janvier 1878",
     "date_display_it": "Gennaio 1878",
-    "date_display_tr": "Ocak 1878"
+    "date_display_tr": "Ocak 1878",
+    "date_display_es": "enero de 1878"
   },
   {
     "id": "archive-photo-plovdiv-station-around-1880",
@@ -216,7 +230,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Plovdiv Central railway station.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Gare centrale de Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: Stazione ferroviaria centrale di Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv Merkez tren istasyonu."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv Merkez tren istasyonu.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Estación central de trenes de Plovdiv."
     },
     "media": {
       "type": "image",
@@ -230,7 +245,8 @@
       "title_de": "Bahnhof Plovdiv um 1880.jpg",
       "title_fr": "Gare de Plovdiv vers 1880.jpg",
       "title_it": "Stazione ferroviaria di Plovdiv intorno al 1880.jpg",
-      "title_tr": "Plovdiv Tren İstasyonu 1880 civarı.jpg"
+      "title_tr": "Plovdiv Tren İstasyonu 1880 civarı.jpg",
+      "title_es": "Estación de tren de Plovdiv alrededor de 1880.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Plovdiv Train Station Around 1880.jpg",
@@ -244,7 +260,8 @@
       "title_de": "Wikimedia Commons – Bahnhof Plovdiv um 1880.jpg",
       "title_fr": "Wikimedia Commons — Gare de Plovdiv vers 1880.jpg",
       "title_it": "Wikimedia Commons - Stazione ferroviaria di Plovdiv intorno al 1880.jpg",
-      "title_tr": "Wikimedia Commons — Plovdiv Tren İstasyonu 1880 civarında.jpg"
+      "title_tr": "Wikimedia Commons — Plovdiv Tren İstasyonu 1880 civarında.jpg",
+      "title_es": "Wikimedia Commons - Estación de tren de Plovdiv alrededor de 1880.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -263,20 +280,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Bahnhof Plovdiv um 1880",
     "title_fr": "Gare de Plovdiv vers 1880",
     "title_it": "Stazione ferroviaria di Plovdiv intorno al 1880",
     "title_tr": "Plovdiv tren istasyonu 1880 civarında",
+    "title_es": "Estación de tren de Plovdiv alrededor de 1880",
     "description_de": "Historisches Foto des Bahnhofs, verknüpft mit den Koordinaten des modernen Hauptbahnhofs.",
     "description_fr": "Photographie historique de la gare, liée aux coordonnées de la gare centrale moderne.",
     "description_it": "Fotografia storica della stazione ferroviaria, collegata alle coordinate della moderna Stazione Centrale.",
     "description_tr": "Modern Merkez tren istasyonu koordinatlarıyla bağlantılı tren istasyonunun tarihi fotoğrafı.",
+    "description_es": "Fotografía histórica de la estación de ferrocarril, vinculada a las coordenadas de la moderna Estación Central de Ferrocarriles.",
     "date_display_de": "c. 1880",
     "date_display_fr": "c. 1880",
     "date_display_it": "c. 1880",
-    "date_display_tr": "c. 1880"
+    "date_display_tr": "c. 1880",
+    "date_display_es": "c. 1880"
   },
   {
     "id": "archive-postcard-bahnhof-von-plowdiw",
@@ -303,7 +324,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Plovdiv Central railway station.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Gare centrale de Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: Stazione ferroviaria centrale di Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv Merkez tren istasyonu."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv Merkez tren istasyonu.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Estación central de trenes de Plovdiv."
     },
     "media": {
       "type": "image",
@@ -317,7 +339,8 @@
       "title_de": "Bahnhof von Plovdiv.jpg",
       "title_fr": "Gare de Ploughdiw.jpg",
       "title_it": "Stazione di Plowdiw.jpg",
-      "title_tr": "Bahnhof von Ploughdiw.jpg"
+      "title_tr": "Bahnhof von Ploughdiw.jpg",
+      "title_es": "Bahnhof von Plowdiw.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Bahnhof von Plowdiw.jpg",
@@ -331,7 +354,8 @@
       "title_de": "Wikimedia Commons – Bahnhof von Plovdiv.jpg",
       "title_fr": "Wikimedia Commons — Gare de Ploughdiw.jpg",
       "title_it": "Wikimedia Commons — Stazione di Plowdiw.jpg",
-      "title_tr": "Wikimedia Commons — Bahnhof von Ploughdiw.jpg"
+      "title_tr": "Wikimedia Commons — Bahnhof von Ploughdiw.jpg",
+      "title_es": "Wikimedia Commons — Bahnhof von Plowdiw.jpg"
     },
     "commons_categories": [
       "1916 postcards",
@@ -351,20 +375,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Postkarte: Bahnhof von Plovdiv",
     "title_fr": "Carte postale : Bahnhof von Ploughdiw",
     "title_it": "Cartolina: Stazione di Plowdiw",
     "title_tr": "Kartpostal: Bahnhof von Ploughdiw",
+    "title_es": "Postal: Bahnhof von Plowdiw",
     "description_de": "Alte Postkarte des Bahnhofs Plovdiv, verwendet für einen damaligen/heute-Vergleich mit dem heutigen Hauptbahnhof.",
     "description_fr": "Carte postale ancienne de la gare de Plovdiv, utilisée pour une comparaison d'hier/aujourd'hui avec la gare centrale actuelle.",
     "description_it": "Vecchia cartolina della stazione di Plovdiv, utilizzata per un confronto allora/oggi con l'attuale stazione Centrale.",
     "description_tr": "Plovdiv istasyonunun eski kartpostalı, mevcut Merkez istasyonla o zaman/şimdi karşılaştırması için kullanıldı.",
+    "description_es": "Postal antigua de la estación de Plovdiv, utilizada para una comparación de entonces y ahora con la estación central actual.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
-    "date_display_tr": "20. yüzyılın başı."
+    "date_display_tr": "20. yüzyılın başı.",
+    "date_display_es": "principios del siglo XX."
   },
   {
     "id": "archive-photo-plovdiv-karastoyanov-c1908",
@@ -391,7 +419,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Plovdiv.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Plovdiv."
     },
     "media": {
       "type": "image",
@@ -405,7 +434,8 @@
       "title_de": "Plovdiv Ivan Karastoyanov.jpg",
       "title_fr": "Plovdiv Ivan Karastoyanov.jpg",
       "title_it": "Plovdiv Ivan Karastoyanov.jpg",
-      "title_tr": "Plovdiv Ivan Karastoyanov.jpg"
+      "title_tr": "Plovdiv Ivan Karastoyanov.jpg",
+      "title_es": "Plovdiv Ivan Karastoyanov.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg",
@@ -419,7 +449,8 @@
       "title_de": "Wikimedia Commons – Plovdiv Ivan Karastoyanov.jpg",
       "title_fr": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg",
       "title_it": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg",
-      "title_tr": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg"
+      "title_tr": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg",
+      "title_es": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -438,20 +469,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Plovdiv fotografiert von Ivan Karastoyanov",
     "title_fr": "Plovdiv photographié par Ivan Karastoyanov",
     "title_it": "Plovdiv fotografata da Ivan Karastoyanov",
     "title_tr": "Plovdiv'nin fotoğrafı Ivan Karastoyanov tarafından çekildi",
+    "title_es": "Plovdiv fotografiada por Ivan Karastoyanov",
     "description_de": "Panoramafoto des Stadtarchivs, georeferenziert auf das Zentrum von Plovdiv für eine umfassende historische Orientierung.",
     "description_fr": "Photographie panoramique d'archives urbaines, géoréférencée au centre de Plovdiv pour une orientation historique générale.",
     "description_it": "Fotografia panoramica d'archivio urbano, georeferenziata al centro di Plovdiv per un ampio orientamento storico.",
     "description_tr": "Geniş tarihsel yönelim için coğrafi olarak Plovdiv'nin merkezine referanslı panoramik kentsel arşiv fotoğrafı.",
+    "description_es": "Fotografía panorámica de archivo urbano, georreferenciada al centro de Plovdiv para una orientación histórica amplia.",
     "date_display_de": "c. 1908",
     "date_display_fr": "c. 1908",
     "date_display_it": "c. 1908",
-    "date_display_tr": "c. 1908"
+    "date_display_tr": "c. 1908",
+    "date_display_es": "c. 1908"
   },
   {
     "id": "archive-photo-dzhambaztepe-1892",
@@ -478,7 +513,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Dzhambaz hill in Plovdiv.",
       "notes_fr": "L'image est liée aux coordonnées de l'enregistrement de lieu existant : colline Dzhambaz à Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record di località esistente: collina Dzhambaz a Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Dzhambaz tepesi."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Dzhambaz tepesi.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la colina Dzhambaz en Plovdiv."
     },
     "media": {
       "type": "image",
@@ -492,7 +528,8 @@
       "title_de": "Dzhambaztepe 1892.jpg",
       "title_fr": "Dzhambaztepe 1892.jpg",
       "title_it": "Dzhambaztepe 1892.jpg",
-      "title_tr": "Cambaztepe 1892.jpg"
+      "title_tr": "Cambaztepe 1892.jpg",
+      "title_es": "Dzhambaztepe 1892.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhambaztepe 1892.jpg",
@@ -506,7 +543,8 @@
       "title_de": "Wikimedia Commons – Dzhambaztepe 1892.jpg",
       "title_fr": "Wikimedia Commons — Dzhambaztepe 1892.jpg",
       "title_it": "Wikimedia Commons — Dzhambaztepe 1892.jpg",
-      "title_tr": "Wikimedia Commons — Dzhambaztepe 1892.jpg"
+      "title_tr": "Wikimedia Commons — Dzhambaztepe 1892.jpg",
+      "title_es": "Wikimedia Commons — Dzhambaztepe 1892.jpg"
     },
     "commons_categories": [
       "Author died more than 70 years ago public domain images",
@@ -526,16 +564,19 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Dzhambaz Tepe im Jahr 1892",
     "title_fr": "Dzhambaz Tepe en 1892",
     "title_it": "Dzhambaz Tepe nel 1892",
     "title_tr": "1892'de Jambaz Tepe",
+    "title_es": "Dzhambaz Tepe en 1892",
     "description_de": "Historische Ansicht eines der drei Hügel, verbunden mit der modernen Ortsaufzeichnung Dzhambaz Tepe.",
     "description_fr": "Vue historique de l'une des Trois Collines, liée au registre moderne du lieu de Dzhambaz Tepe.",
     "description_it": "Veduta storica di una delle Tre Colline, legata al moderno record del luogo di Dzhambaz Tepe.",
-    "description_tr": "Modern Dzhambaz Tepe yer kaydıyla bağlantılı Üç Tepeden birinin tarihi görünümü."
+    "description_tr": "Modern Dzhambaz Tepe yer kaydıyla bağlantılı Üç Tepeden birinin tarihi görünümü.",
+    "description_es": "Vista histórica de una de las Tres Colinas, vinculada al registro del lugar moderno de Dzhambaz Tepe."
   },
   {
     "id": "archive-photo-ottoman-clock-tower-1936",
@@ -562,7 +603,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Sahat hill in Plovdiv.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : colline Sahat à Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record di località esistente: collina Sahat a Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Sahat tepesi."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Sahat tepesi.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la colina Sahat en Plovdiv."
     },
     "media": {
       "type": "image",
@@ -576,7 +618,8 @@
       "title_de": "Osmanischer Glockenturm in Plovdiv auf altem Foto.jpg",
       "title_fr": "Tour de l'horloge ottomane à Plovdiv sur une vieille photo.jpg",
       "title_it": "Torre dell'orologio ottomana a Plovdiv sulla vecchia foto.jpg",
-      "title_tr": "Plovdiv'deki Osmanlı saat kulesi eski photo.jpg"
+      "title_tr": "Plovdiv'deki Osmanlı saat kulesi eski photo.jpg",
+      "title_es": "Torre del reloj otomana en Plovdiv en foto antigua.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Ottoman clock tower in Plovdiv on old photo.jpg",
@@ -590,7 +633,8 @@
       "title_de": "Wikimedia Commons – Osmanischer Glockenturm in Plovdiv auf altem Foto.jpg",
       "title_fr": "Wikimedia Commons — Tour de l'horloge ottomane à Plovdiv sur une vieille photo.jpg",
       "title_it": "Wikimedia Commons - Torre dell'orologio ottomana a Plovdiv sulla vecchia foto.jpg",
-      "title_tr": "Wikimedia Commons — Eski photo.jpg üzerinde Plovdiv'deki Osmanlı saat kulesi"
+      "title_tr": "Wikimedia Commons — Eski photo.jpg üzerinde Plovdiv'deki Osmanlı saat kulesi",
+      "title_es": "Wikimedia Commons — Torre del reloj otomana en Plovdiv en foto antigua.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -610,20 +654,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Osmanischer Glockenturm auf Sahat Tepe",
     "title_fr": "Tour de l'horloge ottomane sur Sahat Tepe",
     "title_it": "Torre dell'orologio ottomana a Sahat Tepe",
     "title_tr": "Sahat Tepe'deki Osmanlı Saat Kulesi",
+    "title_es": "Torre del reloj otomana en Sahat Tepe",
     "description_de": "Altes Foto des Glockenturms, georeferenziert auf Sahat Tepe.",
     "description_fr": "Ancienne photographie de la tour de l'horloge, géoréférencée à Sahat Tepe.",
     "description_it": "Vecchia fotografia della torre dell'orologio, georeferenziata a Sahat Tepe.",
     "description_tr": "Saat kulesinin coğrafi olarak Sahat Tepe'ye referanslı eski fotoğrafı.",
+    "description_es": "Fotografía antigua de la torre del reloj, georeferenciada a Sahat Tepe.",
     "date_display_de": "17. April 1936",
     "date_display_fr": "17 avril 1936",
     "date_display_it": "17 aprile 1936",
-    "date_display_tr": "17 Nisan 1936"
+    "date_display_tr": "17 Nisan 1936",
+    "date_display_es": "17 de abril de 1936"
   },
   {
     "id": "archive-postcard-ottoman-clock-tower",
@@ -650,7 +698,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Sahat hill in Plovdiv.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : colline Sahat à Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record di località esistente: collina Sahat a Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Sahat tepesi."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Sahat tepesi.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la colina Sahat en Plovdiv."
     },
     "media": {
       "type": "image",
@@ -664,7 +713,8 @@
       "title_de": "Osmanischer Glockenturm in Plovdiv auf alter Postkarte.jpg",
       "title_fr": "Tour de l'horloge ottomane à Plovdiv sur une vieille carte postale.jpg",
       "title_it": "Torre dell'orologio ottomana a Plovdiv sulla vecchia cartolina.jpg",
-      "title_tr": "Plovdiv'deki Osmanlı saat kulesi eski kartpostalda.jpg"
+      "title_tr": "Plovdiv'deki Osmanlı saat kulesi eski kartpostalda.jpg",
+      "title_es": "Torre del reloj otomana en Plovdiv en postal antigua.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Ottoman clock tower in Plovdiv on old postcard.jpg",
@@ -678,7 +728,8 @@
       "title_de": "Wikimedia Commons – Osmanischer Glockenturm in Plovdiv auf alter Postkarte.jpg",
       "title_fr": "Wikimedia Commons — Tour de l'horloge ottomane à Plovdiv sur une vieille carte postale.jpg",
       "title_it": "Wikimedia Commons - Torre dell'orologio ottomana a Plovdiv sulla vecchia cartolina.jpg",
-      "title_tr": "Wikimedia Commons — Plovdiv'deki eski kartpostaldaki Osmanlı saat kulesi.jpg"
+      "title_tr": "Wikimedia Commons — Plovdiv'deki eski kartpostaldaki Osmanlı saat kulesi.jpg",
+      "title_es": "Wikimedia Commons — Torre del reloj otomana en Plovdiv en una postal antigua.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -699,20 +750,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Postkarte des Glockenturms",
     "title_fr": "Carte postale de la tour de l'horloge",
     "title_it": "Cartolina della Torre dell'Orologio",
     "title_tr": "Saat kulesinin kartpostalı",
+    "title_es": "Postal de la torre del reloj.",
     "description_de": "Historische Postkarte von Sahat Tepe und seinem Glockenturm, verknüpft mit den Hügelkoordinaten.",
     "description_fr": "Carte postale historique de Sahat Tepe et de sa tour de l'horloge, liée aux coordonnées de la colline.",
     "description_it": "Cartolina storica di Sahat Tepe e della sua torre dell'orologio, collegata alle coordinate della collina.",
     "description_tr": "Sahat Tepe ve saat kulesinin tepe koordinatlarıyla bağlantılı tarihi kartpostalı.",
+    "description_es": "Postal histórica de Sahat Tepe y su torre del reloj, vinculada a las coordenadas del cerro.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
-    "date_display_tr": "20. yüzyılın başı."
+    "date_display_tr": "20. yüzyılın başı.",
+    "date_display_es": "principios del siglo XX."
   },
   {
     "id": "archive-postcard-sahat-hill-1",
@@ -739,7 +794,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Sahat hill in Plovdiv.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : colline Sahat à Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record di località esistente: collina Sahat a Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Sahat tepesi."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Sahat tepesi.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la colina Sahat en Plovdiv."
     },
     "media": {
       "type": "image",
@@ -753,7 +809,8 @@
       "title_de": "Sahat hill in Plovdiv auf alter Postkarte 1.jpg",
       "title_fr": "Colline Sahat à Plovdiv sur carte postale ancienne 1.jpg",
       "title_it": "Collina Sahat a Plovdiv su vecchia cartolina 1.jpg",
-      "title_tr": "Eski kartpostal 1.jpg üzerinde Plovdiv'deki Sahat Tepesi"
+      "title_tr": "Eski kartpostal 1.jpg üzerinde Plovdiv'deki Sahat Tepesi",
+      "title_es": "Colina Sahat en Plovdiv en una postal antigua 1.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Sahat Hill in Plovdiv on old postcard 1.jpg",
@@ -767,7 +824,8 @@
       "title_de": "Wikimedia Commons – Sahat hill in Plovdiv auf alter Postkarte 1.jpg",
       "title_fr": "Wikimedia Commons — Colline Sahat à Plovdiv sur carte postale ancienne 1.jpg",
       "title_it": "Wikimedia Commons — Collina Sahat a Plovdiv su una vecchia cartolina 1.jpg",
-      "title_tr": "Wikimedia Commons — Eski kartpostal 1.jpg üzerinde Plovdiv'deki Sahat Tepesi"
+      "title_tr": "Wikimedia Commons — Eski kartpostal 1.jpg üzerinde Plovdiv'deki Sahat Tepesi",
+      "title_es": "Wikimedia Commons — Sahat Tepe en Plovdiv en una postal antigua 1.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -788,20 +846,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Sahat Hill auf einer alten Postkarte",
     "title_fr": "Sahat Hill sur une vieille carte postale",
     "title_it": "Collina Sahat su una vecchia cartolina",
     "title_tr": "Eski bir kartpostalda Sahat Tepesi",
+    "title_es": "Sahat Tepe en una postal antigua",
     "description_de": "Postkartenansicht von Sahat Hill, enthalten in der georeferenzierten Archivebene.",
     "description_fr": "Vue de carte postale de Sahat Hill incluse dans la couche d'archives géoréférencées.",
     "description_it": "Veduta da cartolina della collina Sahat inclusa nel livello di archivio georeferenziato.",
     "description_tr": "Coğrafi referanslı arşiv katmanında yer alan Sahat Tepesi'nin kartpostal görünümü.",
+    "description_es": "Vista de postal de Sahat Tepe incluida en la capa de archivo georeferenciado.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
-    "date_display_tr": "20. yüzyılın başı."
+    "date_display_tr": "20. yüzyılın başı.",
+    "date_display_es": "principios del siglo XX."
   },
   {
     "id": "archive-postcard-dzhumaya-square-1",
@@ -828,7 +890,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Dzhumaya square.",
       "notes_fr": "L'image est liée aux coordonnées de l'enregistrement de lieu existant : place Dzhumaya.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: piazza Dzhumaya.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Dzhumaya meydanı."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Dzhumaya meydanı.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la plaza Dzhumaya."
     },
     "media": {
       "type": "image",
@@ -842,7 +905,8 @@
       "title_de": "Dzhumaya square auf alter Postkarte.jpg",
       "title_fr": "Place Dzhumaya sur une vieille carte postale.jpg",
       "title_it": "Piazza Dzhumaya sulla vecchia cartolina.jpg",
-      "title_tr": "Eski postcard.jpg üzerinde Dzhumaya meydanı"
+      "title_tr": "Eski postcard.jpg üzerinde Dzhumaya meydanı",
+      "title_es": "Plaza Dzhumaya en postal antigua.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhumaya square on old postcard.jpg",
@@ -856,7 +920,8 @@
       "title_de": "Wikimedia Commons – Dzhumaya square auf alter Postkarte.jpg",
       "title_fr": "Wikimedia Commons — Place Dzhumaya sur une vieille carte postale.jpg",
       "title_it": "Wikimedia Commons - Piazza Dzhumaya sulla vecchia cartolina.jpg",
-      "title_tr": "Wikimedia Commons — Eski kartpostaldaki Dzhumaya meydanı.jpg"
+      "title_tr": "Wikimedia Commons — Eski kartpostaldaki Dzhumaya meydanı.jpg",
+      "title_es": "Wikimedia Commons — Plaza Dzhumaya en una postal antigua.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -876,20 +941,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Dzhumaya square auf einer alten Postkarte",
     "title_fr": "Place Dzhumaya sur une vieille carte postale",
     "title_it": "Piazza Dzhumaya su una vecchia cartolina",
     "title_tr": "Eski bir kartpostalda Dzhumaya Meydanı",
+    "title_es": "Plaza Dzhumaya en una postal antigua",
     "description_de": "Alte Postkarte des Dzhumaya squarees, verknüpft mit den Koordinaten des Platzes und des römischen Stadions.",
     "description_fr": "Carte postale ancienne de la place Dzhumaya, liée aux coordonnées de la place et du stade romain.",
     "description_it": "Vecchia cartolina di Piazza Dzhumaya, con link alle coordinate della piazza e dello stadio romano.",
     "description_tr": "Meydan ve Roma stadyumu koordinatlarıyla bağlantılı Dzhumaya Meydanı'nın eski kartpostalı.",
+    "description_es": "Postal antigua de la plaza Dzhumaya, vinculada a las coordenadas de la plaza y del estadio romano.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
-    "date_display_tr": "20. yüzyılın başı."
+    "date_display_tr": "20. yüzyılın başı.",
+    "date_display_es": "principios del siglo XX."
   },
   {
     "id": "archive-postcard-dzhumaya-square-2",
@@ -916,7 +985,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Dzhumaya square.",
       "notes_fr": "L'image est liée aux coordonnées de l'enregistrement de lieu existant : place Dzhumaya.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: piazza Dzhumaya.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Dzhumaya meydanı."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Dzhumaya meydanı.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la plaza Dzhumaya."
     },
     "media": {
       "type": "image",
@@ -930,7 +1000,8 @@
       "title_de": "Dzhumaya square auf alter Postkarte 2.jpg",
       "title_fr": "Place Dzhumaya sur carte postale ancienne 2.jpg",
       "title_it": "Piazza Dzhumaya su una vecchia cartolina 2.jpg",
-      "title_tr": "Eski kartpostal 2.jpg üzerinde Dzhumaya meydanı"
+      "title_tr": "Eski kartpostal 2.jpg üzerinde Dzhumaya meydanı",
+      "title_es": "Plaza Dzhumaya en postal antigua 2.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhumaya square on old postcard 2.jpg",
@@ -944,7 +1015,8 @@
       "title_de": "Wikimedia Commons – Dzhumaya square auf alter Postkarte 2.jpg",
       "title_fr": "Wikimedia Commons — Place Dzhumaya sur carte postale ancienne 2.jpg",
       "title_it": "Wikimedia Commons — Piazza Dzhumaya su una vecchia cartolina 2.jpg",
-      "title_tr": "Wikimedia Commons — Eski kartpostaldaki Dzhumaya meydanı 2.jpg"
+      "title_tr": "Wikimedia Commons — Eski kartpostaldaki Dzhumaya meydanı 2.jpg",
+      "title_es": "Wikimedia Commons — Plaza Dzhumaya en una postal antigua 2.jpg"
     },
     "commons_categories": [
       "1914 in Bulgaria",
@@ -965,20 +1037,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Dzhumaya square - Postkarte 2",
     "title_fr": "Place Dzhumaya - carte postale 2",
     "title_it": "Piazza Dzhumaya - cartolina 2",
     "title_tr": "Dzhumaya Meydanı - kartpostal 2",
+    "title_es": "Plaza Dzhumaya - postal 2",
     "description_de": "Zweite alte Postkarte in der Dzhumaya square-Serie, die für den städtischen Vergleich zwischen damals und heute verwendet wird.",
     "description_fr": "Deuxième carte postale ancienne de la série Place Dzhumaya, utilisée pour la comparaison urbaine d'hier et d'aujourd'hui.",
     "description_it": "Seconda vecchia cartolina della serie Piazza Dzhumaya, utilizzata per il confronto urbano di allora/oggi.",
     "description_tr": "Dzhumaya Meydanı serisindeki ikinci eski kartpostal, kentsel o zaman/şimdi karşılaştırması için kullanıldı.",
+    "description_es": "Segunda postal antigua de la serie de la Plaza Dzhumaya, utilizada para comparar las zonas urbanas de entonces y ahora.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
-    "date_display_tr": "20. yüzyılın başı."
+    "date_display_tr": "20. yüzyılın başı.",
+    "date_display_es": "principios del siglo XX."
   },
   {
     "id": "archive-postcard-dzhumaya-square-3",
@@ -1005,7 +1081,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Dzhumaya square.",
       "notes_fr": "L'image est liée aux coordonnées de l'enregistrement de lieu existant : place Dzhumaya.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: piazza Dzhumaya.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Dzhumaya meydanı."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Dzhumaya meydanı.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la plaza Dzhumaya."
     },
     "media": {
       "type": "image",
@@ -1019,7 +1096,8 @@
       "title_de": "Dzhumaya square auf alter Postkarte 3.jpg",
       "title_fr": "Place Dzhumaya sur carte postale ancienne 3.jpg",
       "title_it": "Piazza Dzhumaya su una vecchia cartolina 3.jpg",
-      "title_tr": "Eski kartpostaldaki Dzhumaya meydanı 3.jpg"
+      "title_tr": "Eski kartpostaldaki Dzhumaya meydanı 3.jpg",
+      "title_es": "Plaza Dzhumaya en postal antigua 3.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhumaya square on old postcard 3.jpg",
@@ -1033,7 +1111,8 @@
       "title_de": "Wikimedia Commons – Dzhumaya square auf alter Postkarte 3.jpg",
       "title_fr": "Wikimedia Commons — Place Dzhumaya sur carte postale ancienne 3.jpg",
       "title_it": "Wikimedia Commons — Piazza Dzhumaya su una vecchia cartolina 3.jpg",
-      "title_tr": "Wikimedia Commons — Eski kartpostaldaki Dzhumaya meydanı 3.jpg"
+      "title_tr": "Wikimedia Commons — Eski kartpostaldaki Dzhumaya meydanı 3.jpg",
+      "title_es": "Wikimedia Commons — Plaza Dzhumaya en una postal antigua 3.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -1053,20 +1132,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Dzhumaya square - Postkarte 3",
     "title_fr": "Place Dzhumaya - carte postale 3",
     "title_it": "Piazza Dzhumaya - cartolina 3",
     "title_tr": "Dzhumaya Meydanı - kartpostal 3",
+    "title_es": "Plaza Dzhumaya - postal 3",
     "description_de": "Dritte alte Postkarte aus dem öffentlichen Commons-Archiv für den Dzhumaya square.",
     "description_fr": "Troisième carte postale ancienne des archives publiques des Communes pour la place Dzhumaya.",
     "description_it": "Terza vecchia cartolina dall'archivio pubblico dei Comuni per Piazza Dzhumaya.",
     "description_tr": "Dzhumaya Meydanı için halka açık Commons arşivinden üçüncü eski kartpostal.",
+    "description_es": "Tercera postal antigua del archivo público de los Comunes de la plaza Dzhumaya.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
-    "date_display_tr": "20. yüzyılın başı."
+    "date_display_tr": "20. yüzyılın başı.",
+    "date_display_es": "principios del siglo XX."
   },
   {
     "id": "archive-postcard-gerdjica-1931",
@@ -1093,7 +1176,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Gerdzhika Bridge.",
       "notes_fr": "L'image est liée aux coordonnées de l'enregistrement de lieu existant : le pont Gerdzhika.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: Ponte Gerdzhika.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Gerdzhika Köprüsü."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Gerdzhika Köprüsü.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Puente Gerdzhika."
     },
     "media": {
       "type": "image",
@@ -1107,7 +1191,8 @@
       "title_de": "Gerdjica 1931.jpg",
       "title_fr": "Gerdjica 1931.jpg",
       "title_it": "Gerdjica 1931.jpg",
-      "title_tr": "Gerdjica 1931.jpg"
+      "title_tr": "Gerdjica 1931.jpg",
+      "title_es": "Gerdjica 1931.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Gerdjica 1931.jpg",
@@ -1121,7 +1206,8 @@
       "title_de": "Wikimedia Commons – Gerdjica 1931.jpg",
       "title_fr": "Wikimedia Commons — Gerdjica 1931.jpg",
       "title_it": "Wikimedia Commons — Gerdjica 1931.jpg",
-      "title_tr": "Wikimedia Commons — Gerdjica 1931.jpg"
+      "title_tr": "Wikimedia Commons — Gerdjica 1931.jpg",
+      "title_es": "Wikimedia Commons — Gerdjica 1931.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -1139,16 +1225,19 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Gerdschika im Jahr 1931",
     "title_fr": "Gerdjika en 1931",
     "title_it": "Gerdzhika nel 1931",
     "title_tr": "1931'de Gerdzhika",
+    "title_es": "Gerdzhika en 1931",
     "description_de": "Alte Postkarte/Foto von Gerdzhika, georeferenziert auf die moderne Brücke.",
     "description_fr": "Carte postale/photo ancienne de Gerdzhika, géoréférencée au pont moderne.",
     "description_it": "Vecchia cartolina/foto di Gerdzhika, georeferenziata al ponte moderno.",
-    "description_tr": "Gerdzhika'nın eski kartpostalı/fotoğrafı, modern köprüye coğrafi referanslı."
+    "description_tr": "Gerdzhika'nın eski kartpostalı/fotoğrafı, modern köprüye coğrafi referanslı.",
+    "description_es": "Postal/foto antigua de Gerdzhika, georreferenciada al puente moderno."
   },
   {
     "id": "archive-postcard-old-bridge-gerdjika-1930s",
@@ -1175,7 +1264,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Gerdzhika Bridge.",
       "notes_fr": "L'image est liée aux coordonnées de l'enregistrement de lieu existant : le pont Gerdzhika.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: Ponte Gerdzhika.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Gerdzhika Köprüsü."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Gerdzhika Köprüsü.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Puente Gerdzhika."
     },
     "media": {
       "type": "image",
@@ -1189,7 +1279,8 @@
       "title_de": "Plovdiv, Alte Brücke und Gerdjika-Brücke, 1930er Jahre.jpg",
       "title_fr": "Plovdiv, vieux pont et pont Gerdjika, années 1930.jpg",
       "title_it": "Plovdiv, Ponte Vecchio e Ponte Gerdjika, anni '30.jpg",
-      "title_tr": "Plovdiv, Eski Köprü ve Gerdjika Köprüsü, 1930s.jpg"
+      "title_tr": "Plovdiv, Eski Köprü ve Gerdjika Köprüsü, 1930s.jpg",
+      "title_es": "Plovdiv, Puente Viejo y Puente Gerdjika, años 30.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Plovdiv, Old Bridge and Gerdjika Bridge, 1930s.jpg",
@@ -1203,7 +1294,8 @@
       "title_de": "Wikimedia Commons – Plovdiv, Alte Brücke und Gerdjika-Brücke, 1930er Jahre.jpg",
       "title_fr": "Wikimedia Commons — Plovdiv, vieux pont et pont Gerdjika, années 1930.jpg",
       "title_it": "Wikimedia Commons - Plovdiv, Ponte Vecchio e Ponte Gerdjika, anni '30.jpg",
-      "title_tr": "Wikimedia Commons — Plovdiv, Eski Köprü ve Gerdjika Köprüsü, 1930s.jpg"
+      "title_tr": "Wikimedia Commons — Plovdiv, Eski Köprü ve Gerdjika Köprüsü, 1930s.jpg",
+      "title_es": "Wikimedia Commons: Plovdiv, Puente Viejo y Puente Gerdjika, años 30.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -1226,20 +1318,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Alte Brücke und Gerdzhika Bridge in den 1930er Jahren",
     "title_fr": "Vieux pont et pont Gerdzhika dans les années 1930",
     "title_it": "Ponte Vecchio e Ponte Gerdzhika negli anni '30",
     "title_tr": "1930'larda Eski Köprü ve Gerdzhika Köprüsü",
+    "title_es": "Puente Viejo y Puente Gerdzhika en los años 1930",
     "description_de": "Historische Ansicht der Brücken bei Gerdzhika, verknüpft mit der modernen Brückenaufzeichnung.",
     "description_fr": "Vue historique des ponts près de Gerdzhika, liée au registre des ponts modernes.",
     "description_it": "Veduta storica dei ponti vicino a Gerdzhika, collegata alla documentazione del ponte moderno.",
     "description_tr": "Gerdzhika yakınlarındaki köprülerin modern köprü kayıtlarıyla bağlantılı tarihi görünümü.",
+    "description_es": "Vista histórica de los puentes cerca de Gerdzhika, vinculada al registro de puentes modernos.",
     "date_display_de": "1930er Jahre",
     "date_display_fr": "années 1930",
     "date_display_it": "1930",
-    "date_display_tr": "1930'lar"
+    "date_display_tr": "1930'lar",
+    "date_display_es": "década de 1930"
   },
   {
     "id": "archive-postcard-greek-high-school",
@@ -1266,7 +1362,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Geo Milev Primary School.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Geo Milev Primary School.",
       "notes_it": "L'immagine è collegata alle coordinate della scheda del luogo esistente: scuola elementare Geo Milev.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Geo Milev İlköğretim Okulu."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Geo Milev İlköğretim Okulu.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Escuela primaria Geo Milev."
     },
     "media": {
       "type": "image",
@@ -1280,7 +1377,8 @@
       "title_de": "Griechisches Gymnasium in Plovdiv.jpg",
       "title_fr": "Lycée grec de Plovdiv.jpg",
       "title_it": "Liceo greco di Plovdiv.jpg",
-      "title_tr": "Plovdiv'deki Yunan Lisesi.jpg"
+      "title_tr": "Plovdiv'deki Yunan Lisesi.jpg",
+      "title_es": "Escuela secundaria griega en Plovdiv.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Greek High School in Plovdiv.jpg",
@@ -1294,7 +1392,8 @@
       "title_de": "Wikimedia Commons – Griechisches Gymnasium in Plovdiv.jpg",
       "title_fr": "Wikimedia Commons — Lycée grec de Plovdiv.jpg",
       "title_it": "Wikimedia Commons - Liceo greco a Plovdiv.jpg",
-      "title_tr": "Wikimedia Commons — Plovdiv'deki Yunan Lisesi.jpg"
+      "title_tr": "Wikimedia Commons — Plovdiv'deki Yunan Lisesi.jpg",
+      "title_es": "Wikimedia Commons — Escuela secundaria griega en Plovdiv.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -1317,20 +1416,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Griechisches Gymnasium in Plovdiv",
     "title_fr": "Lycée grec de Plovdiv",
     "title_it": "Liceo greco a Plovdiv",
     "title_tr": "Plovdiv'deki Rum Lisesi",
+    "title_es": "Escuela secundaria griega en Plovdiv",
     "description_de": "Alte Postkarte eines zentralen Schulgebäudes, verknüpft mit der modernen Schulakte von Geo Milev.",
     "description_fr": "Carte postale ancienne d'un bâtiment scolaire central, liée au dossier scolaire moderne Geo Milev.",
     "description_it": "Vecchia cartolina dell'edificio scolastico centrale, collegata al moderno registro della scuola Geo Milev.",
     "description_tr": "Modern Geo Milev okul kayıtlarıyla bağlantılı, merkezi bir okul binasının eski kartpostalı.",
+    "description_es": "Postal antigua de un edificio escolar central, vinculada al registro escolar moderno de Geo Milev.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
-    "date_display_tr": "20. yüzyılın başı."
+    "date_display_tr": "20. yüzyılın başı.",
+    "date_display_es": "principios del siglo XX."
   },
   {
     "id": "archive-postcard-german-school-1928",
@@ -1357,7 +1460,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: German school in Plovdiv.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : école allemande de Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del registro dei luoghi esistente: scuola tedesca a Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Alman okulu."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Alman okulu.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Escuela alemana en Plovdiv."
     },
     "media": {
       "type": "image",
@@ -1371,7 +1475,8 @@
       "title_de": "Die Deutsche Schule, Plovdiv, 1928.jpg",
       "title_fr": "L'école allemande, Plovdiv, 1928.jpg",
       "title_it": "La scuola tedesca, Plovdiv, 1928.jpg",
-      "title_tr": "Alman okulu, Plovdiv, 1928.jpg"
+      "title_tr": "Alman okulu, Plovdiv, 1928.jpg",
+      "title_es": "La escuela alemana, Plovdiv, 1928.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — The German school, Plovdiv, 1928.jpg",
@@ -1385,7 +1490,8 @@
       "title_de": "Wikimedia Commons – Die Deutsche Schule, Plovdiv, 1928.jpg",
       "title_fr": "Wikimedia Commons — L'école allemande, Plovdiv, 1928.jpg",
       "title_it": "Wikimedia Commons - La scuola tedesca, Plovdiv, 1928.jpg",
-      "title_tr": "Wikimedia Commons — Alman okulu, Plovdiv, 1928.jpg"
+      "title_tr": "Wikimedia Commons — Alman okulu, Plovdiv, 1928.jpg",
+      "title_es": "Wikimedia Commons — La escuela alemana, Plovdiv, 1928.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -1407,16 +1513,19 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Die deutsche Schule in Plovdiv, 1928",
     "title_fr": "L'école allemande de Plovdiv, 1928",
     "title_it": "La scuola tedesca a Plovdiv, 1928",
     "title_tr": "Plovdiv'deki Alman okulu, 1928",
+    "title_es": "La escuela alemana en Plovdiv, 1928",
     "description_de": "Postkarte/Foto der Deutschen Schule, verlinkt mit der georeferenzierten Bauakte.",
     "description_fr": "Carte postale/photo de l'école allemande, liée au dossier de construction géoréférencé.",
     "description_it": "Cartolina/foto della scuola tedesca, collegata alla scheda dell'edificio georeferenziata.",
-    "description_tr": "Alman okulunun kartpostal/fotoğrafı, coğrafi referanslı bina kaydıyla bağlantılı."
+    "description_tr": "Alman okulunun kartpostal/fotoğrafı, coğrafi referanslı bina kaydıyla bağlantılı.",
+    "description_es": "Postal/foto del colegio alemán, vinculada al registro del edificio georeferenciado."
   },
   {
     "id": "archive-postcard-tsar-simeon-garden-1915",
@@ -1443,7 +1552,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Tzar Simeon Garden.",
       "notes_fr": "L'image est liée aux coordonnées de l'enregistrement de lieu existant : Jardin du Tsar Siméon.",
       "notes_it": "L'immagine è collegata alle coordinate del luogo esistente: Giardino dello Zar Simeone.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Tzar Simeon Bahçesi."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Tzar Simeon Bahçesi.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Jardín del Zar Simeón."
     },
     "media": {
       "type": "image",
@@ -1457,7 +1567,8 @@
       "title_de": "BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgarien, 1915.jpg",
       "title_fr": "BASA-1735K-1-345-24-Jardin du tsar Siméon, Plovdiv, Bulgarie, 1915.jpg",
       "title_it": "BASA-1735K-1-345-24-Giardino dello Zar Simeone, Plovdiv, Bulgaria, 1915.jpg",
-      "title_tr": "BASA-1735K-1-345-24-Çar Simeon Bahçesi, Plovdiv, Bulgaristan, 1915.jpg"
+      "title_tr": "BASA-1735K-1-345-24-Çar Simeon Bahçesi, Plovdiv, Bulgaristan, 1915.jpg",
+      "title_es": "BASA-1735K-1-345-24-Jardín del Zar Simeón, Plovdiv, Bulgaria, 1915.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgaria, 1915.jpg",
@@ -1471,7 +1582,8 @@
       "title_de": "Wikimedia Commons – BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgarien, 1915.jpg",
       "title_fr": "Wikimedia Commons — BASA-1735K-1-345-24-Jardin du tsar Siméon, Plovdiv, Bulgarie, 1915.jpg",
       "title_it": "Wikimedia Commons - BASA-1735K-1-345-24-Giardino dello Zar Simeone, Plovdiv, Bulgaria, 1915.jpg",
-      "title_tr": "Wikimedia Commons — BASA-1735K-1-345-24-Tsar Simeon Bahçesi, Plovdiv, Bulgaristan, 1915.jpg"
+      "title_tr": "Wikimedia Commons — BASA-1735K-1-345-24-Tsar Simeon Bahçesi, Plovdiv, Bulgaristan, 1915.jpg",
+      "title_es": "Wikimedia Commons — BASA-1735K-1-345-24-Jardín del Zar Simeón, Plovdiv, Bulgaria, 1915.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -1494,16 +1606,19 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Tzar Simeon Garden im Jahr 1915",
     "title_fr": "Jardin du tsar Siméon en 1915",
     "title_it": "Il Giardino dello Zar Simeone nel 1915",
     "title_tr": "1915'te Çar Simeon Bahçesi",
+    "title_es": "Jardín del Zar Simeón en 1915",
     "description_de": "Postkarte der Staatsagentur des Bulgarischen Archivs mit dem Tzar Simeon Garden.",
     "description_fr": "Carte postale de l’Agence d’État des Archives bulgares montrant le jardin du tsar Siméon.",
     "description_it": "Cartolina dell'Agenzia di Stato degli Archivi bulgari che mostra il giardino dello zar Simeone.",
-    "description_tr": "Bulgar Arşivleri Devlet Ajansı'nın Çar Simeon Bahçesi'ni gösteren kartpostalı."
+    "description_tr": "Bulgar Arşivleri Devlet Ajansı'nın Çar Simeon Bahçesi'ni gösteren kartpostalı.",
+    "description_es": "Postal de la Agencia Estatal de Archivos de Bulgaria que muestra el Jardín del Zar Simeón."
   },
   {
     "id": "archive-photo-princes-garden-plovdiv",
@@ -1530,7 +1645,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Tzar Simeon Garden.",
       "notes_fr": "L'image est liée aux coordonnées de l'enregistrement de lieu existant : Jardin du Tsar Siméon.",
       "notes_it": "L'immagine è collegata alle coordinate del luogo esistente: Giardino dello Zar Simeone.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Tzar Simeon Bahçesi."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Tzar Simeon Bahçesi.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Jardín del Zar Simeón."
     },
     "media": {
       "type": "image",
@@ -1544,7 +1660,8 @@
       "title_de": "Fürstengarten Plovdiv.jpg",
       "title_fr": "Jardin du Prince Plovdiv.jpg",
       "title_it": "Il giardino del principe Plovdiv.jpg",
-      "title_tr": "Prens'in Bahçesi Plovdiv.jpg"
+      "title_tr": "Prens'in Bahçesi Plovdiv.jpg",
+      "title_es": "Jardín del Príncipe Plovdiv.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Prince's Garden Plovdiv.jpg",
@@ -1558,7 +1675,8 @@
       "title_de": "Wikimedia Commons – Fürstengarten Plovdiv.jpg",
       "title_fr": "Wikimedia Commons — Jardin du Prince Plovdiv.jpg",
       "title_it": "Wikimedia Commons — Il giardino del principe Plovdiv.jpg",
-      "title_tr": "Wikimedia Commons — Prensin Bahçesi Plovdiv.jpg"
+      "title_tr": "Wikimedia Commons — Prensin Bahçesi Plovdiv.jpg",
+      "title_es": "Wikimedia Commons — Jardín del Príncipe Plovdiv.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -1579,20 +1697,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Fürstengarten in Plovdiv",
     "title_fr": "Jardin du Prince à Plovdiv",
     "title_it": "Il Giardino del Principe a Plovdiv",
     "title_tr": "Plovdiv'deki Prens Bahçesi",
+    "title_es": "Jardín del Príncipe en Plovdiv",
     "description_de": "Blick auf den historischen Garten, verbunden mit dem modernen Tsar-Simeon-Gartenpark.",
     "description_fr": "Vue sur le jardin historique lié au record moderne du parc Tsar Simeon Garden.",
     "description_it": "Vista sul giardino storico legato al moderno record del parco Giardino dello Zar Simeone.",
     "description_tr": "Modern Çar Simeon Bahçesi park rekoruyla bağlantılı tarihi bahçe manzarası.",
+    "description_es": "Vista histórica del jardín vinculada al moderno registro del parque Tsar Simeon Garden.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
-    "date_display_tr": "20. yüzyılın başı."
+    "date_display_tr": "20. yüzyılın başı.",
+    "date_display_es": "principios del siglo XX."
   },
   {
     "id": "archive-photo-opening-1939-plovdiv-fair",
@@ -1619,7 +1741,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: International Fair Plovdiv.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Foire Internationale de Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record del luogo esistente: Fiera Internazionale di Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Uluslararası Plovdiv Fuarı."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Uluslararası Plovdiv Fuarı.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Feria Internacional de Plovdiv."
     },
     "media": {
       "type": "image",
@@ -1633,7 +1756,8 @@
       "title_de": "BASA 1318K-1-5896-2 Eröffnung der Plovdiver Messe 1939.jpg",
       "title_fr": "BASA 1318K-1-5896-2 Ouverture de la foire de Plovdiv de 1939.jpg",
       "title_it": "BASA 1318K-1-5896-2 Apertura della fiera di Plovdiv del 1939.jpg",
-      "title_tr": "BASA 1318K-1-5896-2 1939 Plovdiv fuarının açılışı.jpg"
+      "title_tr": "BASA 1318K-1-5896-2 1939 Plovdiv fuarının açılışı.jpg",
+      "title_es": "BASA 1318K-1-5896-2 Inauguración de la feria de Plovdiv de 1939.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA 1318K-1-5896-2 Opening of 1939 Plovdiv fair.jpg",
@@ -1647,7 +1771,8 @@
       "title_de": "Wikimedia Commons – BASA 1318K-1-5896-2 Eröffnung der Plovdiver Messe 1939.jpg",
       "title_fr": "Wikimedia Commons — BASA 1318K-1-5896-2 Ouverture de la foire de Plovdiv de 1939.jpg",
       "title_it": "Wikimedia Commons — BASA 1318K-1-5896-2 Apertura della fiera di Plovdiv del 1939.jpg",
-      "title_tr": "Wikimedia Commons — BASA 1318K-1-5896-2 1939 Plovdiv fuarının açılışı.jpg"
+      "title_tr": "Wikimedia Commons — BASA 1318K-1-5896-2 1939 Plovdiv fuarının açılışı.jpg",
+      "title_es": "Wikimedia Commons — BASA 1318K-1-5896-2 Inauguración de la feria de Plovdiv de 1939.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -1671,16 +1796,19 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Eröffnung der Plovdiver Messe 1939",
     "title_fr": "Ouverture de la Foire de Plovdiv 1939",
     "title_it": "Apertura della Fiera di Plovdiv del 1939",
     "title_tr": "1939 Plovdiv Fuarı'nın Açılışı",
+    "title_es": "Inauguración de la Feria de Plovdiv de 1939",
     "description_de": "Archivfoto von der Eröffnung der Plovdiv-Messe 1939, verbunden mit dem modernen Messekomplex.",
     "description_fr": "Photographie d'archive de l'ouverture de la Foire de Plovdiv de 1939, liée au complexe de foire moderne.",
     "description_it": "Fotografia d'archivio dell'inaugurazione della Fiera di Plovdiv del 1939, collegata al moderno complesso fieristico.",
-    "description_tr": "1939 Plovdiv Fuarı'nın açılışına ait, modern fuar kompleksiyle bağlantılı arşiv fotoğrafı."
+    "description_tr": "1939 Plovdiv Fuarı'nın açılışına ait, modern fuar kompleksiyle bağlantılı arşiv fotoğrafı.",
+    "description_es": "Fotografía de archivo de la inauguración de la Feria de Plovdiv de 1939, vinculada al moderno complejo ferial."
   },
   {
     "id": "archive-photo-international-fair-1892-1",
@@ -1707,7 +1835,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: International Fair Plovdiv.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Foire Internationale de Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record del luogo esistente: Fiera Internazionale di Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Uluslararası Plovdiv Fuarı."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Uluslararası Plovdiv Fuarı.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Feria Internacional de Plovdiv."
     },
     "media": {
       "type": "image",
@@ -1721,7 +1850,8 @@
       "title_de": "BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg",
       "title_fr": "BASA-3K-7-327-1-Foire internationale de Plovdiv, 1892.jpg",
       "title_it": "BASA-3K-7-327-1-Fiera internazionale di Plovdiv, 1892.jpg",
-      "title_tr": "BASA-3K-7-327-1-Uluslararası Plovdiv Fuarı, 1892.jpg"
+      "title_tr": "BASA-3K-7-327-1-Uluslararası Plovdiv Fuarı, 1892.jpg",
+      "title_es": "BASA-3K-7-327-1-Feria Internacional Plovdiv, 1892.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg",
@@ -1735,7 +1865,8 @@
       "title_de": "Wikimedia Commons – BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg",
       "title_fr": "Wikimedia Commons — BASA-3K-7-327-1-Foire internationale de Plovdiv, 1892.jpg",
       "title_it": "Wikimedia Commons — BASA-3K-7-327-1-Fiera internazionale di Plovdiv, 1892.jpg",
-      "title_tr": "Wikimedia Commons — BASA-3K-7-327-1-Uluslararası Plovdiv Fuarı, 1892.jpg"
+      "title_tr": "Wikimedia Commons — BASA-3K-7-327-1-Uluslararası Plovdiv Fuarı, 1892.jpg",
+      "title_es": "Wikimedia Commons — BASA-3K-7-327-1-Feria Internacional de Plovdiv, 1892.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -1758,16 +1889,19 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Erste Plovdiver Ausstellung, 1892 – Bild 1",
     "title_fr": "Première exposition de Plovdiv, 1892 - image 1",
     "title_it": "Prima mostra di Plovdiv, 1892 - immagine 1",
     "title_tr": "İlk Plovdiv Sergisi, 1892 - görsel 1",
+    "title_es": "Primera exposición de Plovdiv, 1892 - imagen 1",
     "description_de": "Foto von der Internationalen Ausstellung in Plovdiv 1892, aus der Sammlung der Staatsagentur des Bulgarischen Archivs.",
     "description_fr": "Photographie de l'Exposition internationale de Plovdiv de 1892, de la collection de l'Agence d'État des Archives bulgares.",
     "description_it": "Fotografia dell'Esposizione Internazionale di Plovdiv del 1892, dalla collezione dell'Agenzia di Stato degli Archivi bulgari.",
-    "description_tr": "1892 Plovdiv Uluslararası Sergisinden fotoğraf, Bulgar Arşivleri Devlet Ajansı koleksiyonundan."
+    "description_tr": "1892 Plovdiv Uluslararası Sergisinden fotoğraf, Bulgar Arşivleri Devlet Ajansı koleksiyonundan.",
+    "description_es": "Fotografía de la Exposición Internacional de Plovdiv de 1892, de la colección de la Agencia Estatal de Archivos de Bulgaria."
   },
   {
     "id": "archive-photo-international-fair-1892-10",
@@ -1794,7 +1928,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: International Fair Plovdiv.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Foire Internationale de Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record del luogo esistente: Fiera Internazionale di Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Uluslararası Plovdiv Fuarı."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Uluslararası Plovdiv Fuarı.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Feria Internacional de Plovdiv."
     },
     "media": {
       "type": "image",
@@ -1808,7 +1943,8 @@
       "title_de": "BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg",
       "title_fr": "BASA-3K-7-327-10-Foire internationale de Plovdiv, 1892.jpg",
       "title_it": "BASA-3K-7-327-10-Fiera internazionale di Plovdiv, 1892.jpg",
-      "title_tr": "BASA-3K-7-327-10-Uluslararası Plovdiv Fuarı, 1892.jpg"
+      "title_tr": "BASA-3K-7-327-10-Uluslararası Plovdiv Fuarı, 1892.jpg",
+      "title_es": "BASA-3K-7-327-10-Feria Internacional Plovdiv, 1892.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg",
@@ -1822,7 +1958,8 @@
       "title_de": "Wikimedia Commons – BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg",
       "title_fr": "Wikimedia Commons — BASA-3K-7-327-10-Foire internationale de Plovdiv, 1892.jpg",
       "title_it": "Wikimedia Commons — BASA-3K-7-327-10-Fiera internazionale di Plovdiv, 1892.jpg",
-      "title_tr": "Wikimedia Commons — BASA-3K-7-327-10-Uluslararası Plovdiv Fuarı, 1892.jpg"
+      "title_tr": "Wikimedia Commons — BASA-3K-7-327-10-Uluslararası Plovdiv Fuarı, 1892.jpg",
+      "title_es": "Wikimedia Commons — BASA-3K-7-327-10-Feria Internacional de Plovdiv, 1892.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -1845,16 +1982,19 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Erste Plovdiver Ausstellung, 1892 – Bild 10",
     "title_fr": "Première exposition de Plovdiv, 1892 - image 10",
     "title_it": "Prima mostra di Plovdiv, 1892 - immagine 10",
     "title_tr": "İlk Plovdiv Sergisi, 1892 - görsel 10",
+    "title_es": "Primera exposición de Plovdiv, 1892 - imagen 10",
     "description_de": "Zweites ausgewähltes Bild aus der Ausstellungsfotoserie von 1892.",
     "description_fr": "Deuxième image sélectionnée de la série de photographies de l’exposition de 1892.",
     "description_it": "Seconda immagine selezionata dalla serie di fotografie della mostra del 1892.",
-    "description_tr": "1892 sergi fotoğraf serisinden seçilen ikinci görüntü."
+    "description_tr": "1892 sergi fotoğraf serisinden seçilen ikinci görüntü.",
+    "description_es": "Segunda imagen seleccionada de la serie de fotografías de la exposición de 1892."
   },
   {
     "id": "archive-photo-ancient-theatre-uncovered-1",
@@ -1881,7 +2021,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Antikes Theater.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Théâtre Antique.",
       "notes_it": "L'immagine è collegata alle coordinate della scheda di luogo esistente: Teatro Antico.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Antik Tiyatro."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Antik Tiyatro.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Teatro Antiguo."
     },
     "media": {
       "type": "image",
@@ -1895,7 +2036,8 @@
       "title_de": "Razkrivane antichen teatur.jpg",
       "title_fr": "Razkrivane antichen teatur.jpg",
       "title_it": "Razkrivane antichen teatur.jpg",
-      "title_tr": "Razkrivane antichen teatur.jpg"
+      "title_tr": "Razkrivane antichen teatur.jpg",
+      "title_es": "Razkrivane antichen teatur.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane antichen teatur.jpg",
@@ -1909,7 +2051,8 @@
       "title_de": "Wikimedia Commons – Razkrivane antichen teatur.jpg",
       "title_fr": "Wikimedia Commons — Razkrivane antichen teatur.jpg",
       "title_it": "Wikimedia Commons — Razkrivane antichen teatur.jpg",
-      "title_tr": "Wikimedia Commons — Razkrivane antichen teatur.jpg"
+      "title_tr": "Wikimedia Commons — Razkrivane antichen teatur.jpg",
+      "title_es": "Wikimedia Commons — Razkrivane antichen teatur.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -1926,20 +2069,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Aufdeckung des antiken Theaters – Bild 1",
     "title_fr": "À la découverte du théâtre antique - image 1",
     "title_it": "Alla scoperta del Teatro Antico - immagine 1",
     "title_tr": "Antik Tiyatronun Ortaya Çıkarılması - görsel 1",
+    "title_es": "Descubriendo el Teatro Antiguo - imagen 1",
     "description_de": "Fotoarchivmaterial von der Freilegung des antiken Theaters.",
     "description_fr": "Documents d'archives photographiques provenant de la découverte du Théâtre Antique.",
     "description_it": "Materiale fotografico d'archivio proveniente dal rinvenimento del Teatro Antico.",
     "description_tr": "Antik Tiyatronun ortaya çıkarılmasından elde edilen fotoğraf arşivi malzemesi.",
+    "description_es": "Material de archivo fotográfico del descubrimiento del Teatro Antiguo.",
     "date_display_de": "Ausgrabungszeit, 20. Jh.",
     "date_display_fr": "période de fouilles, 20e s.",
     "date_display_it": "periodo degli scavi, XX sec.",
-    "date_display_tr": "kazı dönemi, 20. yüzyıl."
+    "date_display_tr": "kazı dönemi, 20. yüzyıl.",
+    "date_display_es": "Periodo de excavación, siglo XX."
   },
   {
     "id": "archive-photo-ancient-theatre-uncovered-2",
@@ -1966,7 +2113,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Antikes Theater.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Théâtre Antique.",
       "notes_it": "L'immagine è collegata alle coordinate della scheda di luogo esistente: Teatro Antico.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Antik Tiyatro."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Antik Tiyatro.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Teatro Antiguo."
     },
     "media": {
       "type": "image",
@@ -1980,7 +2128,8 @@
       "title_de": "Razkrivane antichen teatur1.jpg",
       "title_fr": "Razkrivane antichen teatur1.jpg",
       "title_it": "Razkrivane antichen teatur1.jpg",
-      "title_tr": "Razkrivane antichen teatur1.jpg"
+      "title_tr": "Razkrivane antichen teatur1.jpg",
+      "title_es": "Razkrivane antichen teatur1.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane antichen teatur1.jpg",
@@ -1994,7 +2143,8 @@
       "title_de": "Wikimedia Commons – Razkrivane antichen teatur1.jpg",
       "title_fr": "Wikimedia Commons — Razkrivane antichen teatur1.jpg",
       "title_it": "Wikimedia Commons — Razkrivane antichen teatur1.jpg",
-      "title_tr": "Wikimedia Commons — Razkrivane antichen teatur1.jpg"
+      "title_tr": "Wikimedia Commons — Razkrivane antichen teatur1.jpg",
+      "title_es": "Wikimedia Commons — Razkrivane antichen teatur1.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -2011,20 +2161,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Aufdeckung des antiken Theaters – Bild 2",
     "title_fr": "À la découverte du théâtre antique - image 2",
     "title_it": "Alla scoperta del Teatro Antico - immagine 2",
     "title_tr": "Antik Tiyatronun Ortaya Çıkarılması - Resim 2",
+    "title_es": "Descubriendo el Teatro Antiguo - imagen 2",
     "description_de": "Zweites Archivbild von der Freilegung des antiken Theaters.",
     "description_fr": "Deuxième image d'archive de la découverte du Théâtre Antique.",
     "description_it": "Seconda immagine d'archivio dal ritrovamento del Teatro Antico.",
     "description_tr": "Antik Tiyatronun ortaya çıkarılmasından ikinci arşiv görüntüsü.",
+    "description_es": "Segunda imagen de archivo del descubrimiento del Teatro Antiguo.",
     "date_display_de": "Ausgrabungszeit, 20. Jh.",
     "date_display_fr": "période de fouilles, 20e s.",
     "date_display_it": "periodo degli scavi, XX sec.",
-    "date_display_tr": "kazı dönemi, 20. yüzyıl."
+    "date_display_tr": "kazı dönemi, 20. yüzyıl.",
+    "date_display_es": "Periodo de excavación, siglo XX."
   },
   {
     "id": "archive-photo-ancient-stadium-uncovered-1",
@@ -2051,7 +2205,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Antikes Stadion.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Ancient Stadium.",
       "notes_it": "L'immagine è collegata alle coordinate della scheda di luogo esistente: Stadio Antico.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Antik Stadyum."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Antik Stadyum.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Estadio Antiguo."
     },
     "media": {
       "type": "image",
@@ -2065,7 +2220,8 @@
       "title_de": "Razkrivane stadion.jpg",
       "title_fr": "Stade Razkrivane.jpg",
       "title_it": "Stadio Razkrivane.jpg",
-      "title_tr": "Razkrivane stadion.jpg"
+      "title_tr": "Razkrivane stadion.jpg",
+      "title_es": "Estadio Razkrivane.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane stadion.jpg",
@@ -2079,7 +2235,8 @@
       "title_de": "Wikimedia Commons – Razkrivane stadion.jpg",
       "title_fr": "Wikimedia Commons — Stade Razkrivane.jpg",
       "title_it": "Wikimedia Commons — Razkrivane stadion.jpg",
-      "title_tr": "Wikimedia Commons — Razkrivane stadion.jpg"
+      "title_tr": "Wikimedia Commons — Razkrivane stadion.jpg",
+      "title_es": "Wikimedia Commons — Estadio Razkrivane.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -2096,20 +2253,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Freilegung des antiken Stadions – Bild 1",
     "title_fr": "Découverte de l'ancien stade - image 1",
     "title_it": "Alla scoperta dello Stadio Antico - immagine 1",
     "title_tr": "Antik Stadyumun Ortaya Çıkarılması - görsel 1",
+    "title_es": "Descubriendo el Antiguo Estadio - imagen 1",
     "description_de": "Fotoarchivmaterial von der Freilegung des Antiken Stadions.",
     "description_fr": "Documents d'archives photographiques provenant de la découverte de l'ancien stade.",
     "description_it": "Materiale fotografico d'archivio proveniente dal rinvenimento dello Stadio Antico.",
     "description_tr": "Antik Stadyum'un ortaya çıkarılmasından elde edilen fotoğraf arşivi malzemesi.",
+    "description_es": "Material de archivo fotográfico del descubrimiento del Estadio Antiguo.",
     "date_display_de": "Ausgrabungszeit, 20. Jh.",
     "date_display_fr": "période de fouilles, 20e s.",
     "date_display_it": "periodo degli scavi, XX sec.",
-    "date_display_tr": "kazı dönemi, 20. yüzyıl."
+    "date_display_tr": "kazı dönemi, 20. yüzyıl.",
+    "date_display_es": "Periodo de excavación, siglo XX."
   },
   {
     "id": "archive-photo-ancient-stadium-uncovered-2",
@@ -2136,7 +2297,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Antikes Stadion.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Ancient Stadium.",
       "notes_it": "L'immagine è collegata alle coordinate della scheda di luogo esistente: Stadio Antico.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Antik Stadyum."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Antik Stadyum.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Estadio Antiguo."
     },
     "media": {
       "type": "image",
@@ -2150,7 +2312,8 @@
       "title_de": "Razkrivane stadion2.jpg",
       "title_fr": "Stade Razkrivane2.jpg",
       "title_it": "Razkrivane stadion2.jpg",
-      "title_tr": "Razkrivane stadion2.jpg"
+      "title_tr": "Razkrivane stadion2.jpg",
+      "title_es": "Estadio Razkrivane2.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane stadion2.jpg",
@@ -2164,7 +2327,8 @@
       "title_de": "Wikimedia Commons – Razkrivane stadion2.jpg",
       "title_fr": "Wikimedia Commons — Stade Razkrivane2.jpg",
       "title_it": "Wikimedia Commons — Razkrivane stadion2.jpg",
-      "title_tr": "Wikimedia Commons — Razkrivane stadion2.jpg"
+      "title_tr": "Wikimedia Commons — Razkrivane stadion2.jpg",
+      "title_es": "Wikimedia Commons — Estadio Razkrivane2.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -2181,20 +2345,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Freilegung des antiken Stadions – Bild 2",
     "title_fr": "Découverte de l'ancien stade - image 2",
     "title_it": "Alla scoperta dello Stadio Antico - immagine 2",
     "title_tr": "Antik Stadyumun Ortaya Çıkarılması - görsel 2",
+    "title_es": "Descubriendo el Estadio Antiguo - imagen 2",
     "description_de": "Zweites Archivbild von der Freilegung des antiken Stadions.",
     "description_fr": "Deuxième image d'archive de la découverte de l'Ancien Stade.",
     "description_it": "Seconda immagine d'archivio dal ritrovamento dello Stadio Antico.",
     "description_tr": "Antik Stadyumun ortaya çıkarılmasından ikinci arşiv görüntüsü.",
+    "description_es": "Segunda imagen de archivo del descubrimiento del Estadio Antiguo.",
     "date_display_de": "Ausgrabungszeit, 20. Jh.",
     "date_display_fr": "période de fouilles, 20e s.",
     "date_display_it": "periodo degli scavi, XX sec.",
-    "date_display_tr": "kazı dönemi, 20. yüzyıl."
+    "date_display_tr": "kazı dönemi, 20. yüzyıl.",
+    "date_display_es": "Periodo de excavación, siglo XX."
   },
   {
     "id": "archive-photo-chirpan-earthquake-st-josif-1928",
@@ -2221,7 +2389,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Hospital St Josif, Plovdiv.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Hôpital St Josif, Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: Ospedale St Josif, Plovdiv.",
-      "notes_tr": "Görüntü mevcut yer kaydının koordinatlarıyla bağlantılıdır: St Josif Hastanesi, Plovdiv."
+      "notes_tr": "Görüntü mevcut yer kaydının koordinatlarıyla bağlantılıdır: St Josif Hastanesi, Plovdiv.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Hospital St Josif, Plovdiv."
     },
     "media": {
       "type": "image",
@@ -2235,7 +2404,8 @@
       "title_de": "Tschirpan-Erdbeben - Plovdiv.jpg",
       "title_fr": "Séisme de Chirpan - Plovdiv.jpg",
       "title_it": "Terremoto di Chirpan - Plovdiv.jpg",
-      "title_tr": "Chirpan Depremi - Plovdiv.jpg"
+      "title_tr": "Chirpan Depremi - Plovdiv.jpg",
+      "title_es": "Terremoto de Chirpan - Plovdiv.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Chirpan Earthquake - Plovdiv.jpg",
@@ -2249,7 +2419,8 @@
       "title_de": "Wikimedia Commons – Tschirpan-Erdbeben – Plovdiv.jpg",
       "title_fr": "Wikimedia Commons — Séisme de Chirpan - Plovdiv.jpg",
       "title_it": "Wikimedia Commons — Terremoto di Chirpan - Plovdiv.jpg",
-      "title_tr": "Wikimedia Commons — Chirpan Depremi - Plovdiv.jpg"
+      "title_tr": "Wikimedia Commons — Chirpan Depremi - Plovdiv.jpg",
+      "title_es": "Wikimedia Commons — Terremoto de Chirpan - Plovdiv.jpg"
     },
     "commons_categories": [
       "Chirpan earthquake in Plovdiv",
@@ -2267,16 +2438,19 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Tschirpan-Erdbebenschaden in der Nähe von St. Josif",
     "title_fr": "Dommages causés par le tremblement de terre de Chirpan près de St Josif",
     "title_it": "Danni del terremoto di Chirpan vicino a St Josif",
     "title_tr": "St Josif yakınlarındaki Chirpan depreminin hasarı",
+    "title_es": "Daños del terremoto de Chirpan cerca de St Josif",
     "description_de": "Foto der Schäden nach dem Erdbeben von 1928 im Zusammenhang mit dem St. Josif-Krankenhaus.",
     "description_fr": "Photographie des dégâts après le séisme de 1928, liés à l'hôpital St Josif.",
     "description_it": "Fotografia dei danni dopo il terremoto del 1928, collegata all'ospedale St Josif.",
-    "description_tr": "1928 depreminden sonraki hasarın St Josif hastanesiyle bağlantılı fotoğrafı."
+    "description_tr": "1928 depreminden sonraki hasarın St Josif hastanesiyle bağlantılı fotoğrafı.",
+    "description_es": "Fotografía de los daños tras el terremoto de 1928, vinculados al hospital St Josif."
   },
   {
     "id": "archive-photo-ivan-vazov-library-earthquake-1928",
@@ -2303,7 +2477,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Ivan Vazov National Library.",
       "notes_fr": "L'image est liée aux coordonnées de l'enregistrement de lieu existant : Bibliothèque nationale Ivan Vazov.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: Biblioteca nazionale Ivan Vazov.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Ivan Vazov Ulusal Kütüphanesi."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Ivan Vazov Ulusal Kütüphanesi.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Biblioteca Nacional Ivan Vazov."
     },
     "media": {
       "type": "image",
@@ -2317,7 +2492,8 @@
       "title_de": "BASA-741K-2-124-2-Ivan Vazov Nationalbibliothek, Plovdiv.JPG",
       "title_fr": "BASA-741K-2-124-2-Bibliothèque nationale Ivan Vazov, Plovdiv.JPG",
       "title_it": "BASA-741K-2-124-2-Biblioteca nazionale Ivan Vazov, Plovdiv.JPG",
-      "title_tr": "BASA-741K-2-124-2-Ivan Vazov Milli Kütüphanesi, Plovdiv.JPG"
+      "title_tr": "BASA-741K-2-124-2-Ivan Vazov Milli Kütüphanesi, Plovdiv.JPG",
+      "title_es": "BASA-741K-2-124-2-Biblioteca Nacional Ivan Vazov, Plovdiv.JPG"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-741K-2-124-2-Ivan Vazov National Library, Plovdiv.JPG",
@@ -2331,7 +2507,8 @@
       "title_de": "Wikimedia Commons – BASA-741K-2-124-2-Ivan Vazov National Library, Plovdiv.JPG",
       "title_fr": "Wikimedia Commons — BASA-741K-2-124-2-Bibliothèque nationale Ivan Vazov, Plovdiv.JPG",
       "title_it": "Wikimedia Commons — BASA-741K-2-124-2-Biblioteca nazionale Ivan Vazov, Plovdiv.JPG",
-      "title_tr": "Wikimedia Commons — BASA-741K-2-124-2-Ivan Vazov Ulusal Kütüphanesi, Plovdiv.JPG"
+      "title_tr": "Wikimedia Commons — BASA-741K-2-124-2-Ivan Vazov Ulusal Kütüphanesi, Plovdiv.JPG",
+      "title_es": "Wikimedia Commons — BASA-741K-2-124-2-Biblioteca Nacional Ivan Vazov, Plovdiv.JPG"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -2353,16 +2530,19 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Ivan Vazov Nationalbibliothek nach dem Erdbeben",
     "title_fr": "Bibliothèque nationale Ivan Vazov après le tremblement de terre",
     "title_it": "Biblioteca nazionale Ivan Vazov dopo il terremoto",
     "title_tr": "Ivan Vazov Milli Kütüphanesi depremden sonra",
+    "title_es": "Biblioteca Nacional Ivan Vazov después del terremoto",
     "description_de": "Archivfoto der Bibliothek im Kontext des Erdbebens von 1928.",
     "description_fr": "Photographie d'archive de la bibliothèque dans le contexte du tremblement de terre de 1928.",
     "description_it": "Fotografia d'archivio della biblioteca nel contesto del terremoto del 1928.",
-    "description_tr": "1928 depremi bağlamında kütüphanenin arşiv fotoğrafı."
+    "description_tr": "1928 depremi bağlamında kütüphanenin arşiv fotoğrafı.",
+    "description_es": "Fotografía de archivo de la biblioteca en el contexto del terremoto de 1928."
   },
   {
     "id": "archive-photo-balkan-cinema-plovdiv",
@@ -2389,7 +2569,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Kino Balkan.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Kino Balkan.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: Kino Balkan.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Kino Balkan."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Kino Balkan.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Kino Balkan."
     },
     "media": {
       "type": "image",
@@ -2403,7 +2584,8 @@
       "title_de": "BASA-1625K-1-22-5-Balkan-Kino, Plovdiv, Bulgarien.jpg",
       "title_fr": "BASA-1625K-1-22-5-Cinéma Balkan, Plovdiv, Bulgarie.jpg",
       "title_it": "BASA-1625K-1-22-5-Cinema balcanico, Plovdiv, Bulgaria.jpg",
-      "title_tr": "BASA-1625K-1-22-5-Balkan sineması, Plovdiv, Bulgaria.jpg"
+      "title_tr": "BASA-1625K-1-22-5-Balkan sineması, Plovdiv, Bulgaria.jpg",
+      "title_es": "BASA-1625K-1-22-5-Cine balcánico, Plovdiv, Bulgaria.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-1625K-1-22-5-Balkan cinema, Plovdiv, Bulgaria.jpg",
@@ -2417,7 +2599,8 @@
       "title_de": "Wikimedia Commons – BASA-1625K-1-22-5-Balkan-Kino, Plovdiv, Bulgarien.jpg",
       "title_fr": "Wikimedia Commons — BASA-1625K-1-22-5-Cinéma balkanique, Plovdiv, Bulgarie.jpg",
       "title_it": "Wikimedia Commons - BASA-1625K-1-22-5-Cinema balcanico, Plovdiv, Bulgaria.jpg",
-      "title_tr": "Wikimedia Commons — BASA-1625K-1-22-5-Balkan sineması, Plovdiv, Bulgaristan.jpg"
+      "title_tr": "Wikimedia Commons — BASA-1625K-1-22-5-Balkan sineması, Plovdiv, Bulgaristan.jpg",
+      "title_es": "Wikimedia Commons — BASA-1625K-1-22-5-Cine balcánico, Plovdiv, Bulgaria.jpg"
     },
     "commons_categories": [
       "1942 in Bulgaria",
@@ -2445,20 +2628,24 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Balkankino in Plovdiv",
     "title_fr": "Cinéma balkanique à Plovdiv",
     "title_it": "Cinema balcanico a Plovdiv",
     "title_tr": "Plovdiv'de Balkan sineması",
+    "title_es": "Cine balcánico en Plovdiv",
     "description_de": "Archivfoto des Balkankinos, verknüpft mit der modernen Baugeschichte.",
     "description_fr": "Photographie d'archive du cinéma balkanique, liée à l'histoire de la construction moderne.",
     "description_it": "Fotografia d'archivio del cinema balcanico, legata alla documentazione edilizia moderna.",
     "description_tr": "Balkan sinemasının modern bina kayıtlarıyla bağlantılı arşiv fotoğrafı.",
+    "description_es": "Fotografía de archivo del cine balcánico, vinculada al registro del edificio moderno.",
     "date_display_de": "20. Jh.",
     "date_display_fr": "20e s.",
     "date_display_it": "20° sec.",
-    "date_display_tr": "20. yüzyıl"
+    "date_display_tr": "20. yüzyıl",
+    "date_display_es": "Siglo XX."
   },
   {
     "id": "archive-photo-trimontium-view-1958",
@@ -2485,7 +2672,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des bestehenden Ortsdatensatzes verknüpft: Trimontsium Hotel in Plovdiv.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Hôtel Trimontsium à Plovdiv.",
       "notes_it": "L'immagine è collegata alle coordinate del record di luogo esistente: Trimontsium Hotel a Plovdiv.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Trimontsium Oteli."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Plovdiv'deki Trimontsium Oteli.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Trimontsium Hotel en Plovdiv."
     },
     "media": {
       "type": "image",
@@ -2499,7 +2687,8 @@
       "title_de": "PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
       "title_fr": "PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
       "title_it": "PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
-      "title_tr": "PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg"
+      "title_tr": "PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
+      "title_es": "PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
@@ -2513,7 +2702,8 @@
       "title_de": "Wikimedia Commons – PLOVDIV, Blick vom Zimmer im Trimontium – 58 – 046.44.jpg",
       "title_fr": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
       "title_it": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
-      "title_tr": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg"
+      "title_tr": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
+      "title_es": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg"
     },
     "commons_categories": [
       "1958 in Bulgaria",
@@ -2531,16 +2721,19 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Blick vom Trimontium Hotel, 1958",
     "title_fr": "Vue depuis l'hôtel Trimontium, 1958",
     "title_it": "Vista dal Trimontium Hotel, 1958",
     "title_tr": "Trimontium Oteli'nden görünüm, 1958",
+    "title_es": "Vista desde el hotel Trimontium, 1958",
     "description_de": "Foto aus einem Zimmer im Trimontium Hotel, georeferenziert auf das Hotel als Aussichtspunkt.",
     "description_fr": "Photographie prise depuis une chambre de l'hôtel Trimontium, géoréférencée à l'hôtel comme point de vue.",
     "description_it": "Fotografia di una stanza del Trimontium Hotel, georeferenziata all'hotel come punto di vista.",
-    "description_tr": "Trimontium Oteli'ndeki bir odadan, bakış açısı olarak otele coğrafi referans verilen fotoğraf."
+    "description_tr": "Trimontium Oteli'ndeki bir odadan, bakış açısı olarak otele coğrafi referans verilen fotoğraf.",
+    "description_es": "Fotografía desde una habitación del Hotel Trimontium, georreferenciada al hotel como mirador."
   },
   {
     "id": "archive-photo-lamartine-house-restoration-1972",
@@ -2567,7 +2760,8 @@
       "notes_de": "Das Bild ist mit den Koordinaten des vorhandenen Ortsdatensatzes verknüpft: Lamartine House.",
       "notes_fr": "L'image est liée aux coordonnées de la fiche de lieu existante : Maison Lamartine.",
       "notes_it": "L'immagine è collegata alle coordinate della scheda del luogo esistente: Casa Lamartine.",
-      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Lamartine Evi."
+      "notes_tr": "Görüntü, mevcut yer kaydının koordinatlarıyla bağlantılıdır: Lamartine Evi.",
+      "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Casa Lamartine."
     },
     "media": {
       "type": "image",
@@ -2581,7 +2775,8 @@
       "title_de": "1972Februar 150* Lamartine FFloor.jpeg",
       "title_fr": "1972Fév 150* Lamartine FFloor.jpeg",
       "title_it": "1972febbraio 150* Lamartine FFloor.jpeg",
-      "title_tr": "1972Şubat 150* Lamartine FFloor.jpeg"
+      "title_tr": "1972Şubat 150* Lamartine FFloor.jpeg",
+      "title_es": "1972febrero de 150* Lamartine FFloor.jpeg"
     },
     "source": {
       "title": "Wikimedia Commons — 1972Feb 150* Lamartine FFloor.jpeg",
@@ -2595,7 +2790,8 @@
       "title_de": "Wikimedia Commons – 1972. Februar 150* Lamartine FFloor.jpeg",
       "title_fr": "Wikimedia Commons — 1972 février 150* Lamartine FFloor.jpeg",
       "title_it": "Wikimedia Commons — 1972febbraio 150* Lamartine FFloor.jpeg",
-      "title_tr": "Wikimedia Commons — 1972Şubat 150* Lamartine FFloor.jpeg"
+      "title_tr": "Wikimedia Commons — 1972Şubat 150* Lamartine FFloor.jpeg",
+      "title_es": "Wikimedia Commons - 150 de febrero de 1972 * Lamartine FFloor.jpeg"
     },
     "commons_categories": [
       "Black and white photographs",
@@ -2614,19 +2810,23 @@
       "notes_de": "Automatisch erstellter Archivdatensatz von Wikimedia Commons; erfordert vor der endgültigen Veröffentlichung eine unabhängige redaktionelle Überprüfung und eine genauere Georeferenzierung.",
       "notes_fr": "Enregistrement d'archive préparé automatiquement à partir de Wikimedia Commons ; nécessite une révision éditoriale indépendante et un géoréférencement plus fin avant la publication finale.",
       "notes_it": "Record di archivio preparato automaticamente da Wikimedia Commons; richiede una revisione editoriale indipendente e una georeferenziazione più precisa prima della pubblicazione finale.",
-      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir."
+      "notes_tr": "Wikimedia Commons'tan otomatik olarak hazırlanan arşiv kaydı; nihai yayından önce bağımsız editoryal inceleme ve daha ayrıntılı coğrafi referanslama gerektirir.",
+      "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final."
     },
     "title_de": "Restaurierungsarchiv des Lamartine House, 1972",
     "title_fr": "Archives de restauration de la Maison Lamartine, 1972",
     "title_it": "Archivio del restauro della Casa Lamartine, 1972",
     "title_tr": "Lamartine Evi restorasyon arşivi, 1972",
+    "title_es": "Archivo de restauración de la Casa Lamartine, 1972",
     "description_de": "Foto aus einer Archivserie für Lamartine House im Jahr 1972.",
     "description_fr": "Photographie issue d'une série d'archives pour la Maison Lamartine en 1972.",
     "description_it": "Fotografia da una serie d'archivio sulla Casa Lamartine nel 1972.",
     "description_tr": "1972'de Lamartine Evi için hazırlanan bir arşiv serisinden fotoğraf.",
+    "description_es": "Fotografía de una serie de archivo para Casa Lamartine en 1972.",
     "date_display_de": "Februar 1972",
     "date_display_fr": "Février 1972",
     "date_display_it": "Febbraio 1972",
-    "date_display_tr": "Şubat 1972"
+    "date_display_tr": "Şubat 1972",
+    "date_display_es": "febrero de 1972"
   }
 ]

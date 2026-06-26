@@ -60,14 +60,14 @@ const historyDataVersion = createHash("sha1")
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
 const mayorEvents = entries.filter((event) => event.category === "mayor_term");
 
-const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string): string =>
-  ({ bg, en, de, fr, it, tr: trk } satisfies Record<Lang, string>)[lang];
+const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string): string =>
+  ({ bg, en, de, fr, it, tr: trk, es: esp } satisfies Record<Lang, string>)[lang];
 
 const stats = [
   { value: t.home.statYearsValue, label: t.history.statYears },
-  { value: String(historyKnowledgeEvents.length), label: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik") },
-  { value: String(historyKnowledgePeople.length), label: tr("хора", "people", "Personen", "personnalités", "personalità", "kişi") },
-  { value: String(historyKnowledgeSources.length), label: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak") }
+  { value: String(historyKnowledgeEvents.length), label: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos") },
+  { value: String(historyKnowledgePeople.length), label: tr("хора", "people", "Personen", "personnalités", "personalità", "kişi", "personas") },
+  { value: String(historyKnowledgeSources.length), label: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes") }
 ];
 
 const labels = ({
@@ -658,6 +658,104 @@ const labels = ({
         download: "İndir",
         jsonData: "JSON verileri",
         csvData: "CSV tabloları"
+      },
+      es: {
+        people: "Personas",
+        places: "Lugares",
+        contribute: "Enviar una foto o un recuerdo",
+        records: "fichas",
+        of: "de",
+        timelineTitle: "Cronología detallada",
+        timelineLead:
+          "Fichas fechadas desde la prehistoria hasta hoy, incluidos 68 mandatos de alcalde y eventos del archivo municipal. Cada ficha cita su fuente.",
+        search: "Buscar",
+        searchPlaceholder: "nombre, lugar, evento...",
+        era: "Época",
+        category: "Tipo",
+        theme: "Tema",
+        person: "Persona",
+        place: "Lugar",
+        linked: "Vínculos",
+        allEras: "Todas las épocas",
+        allCategories: "Todos los tipos",
+        allThemes: "Todos los temas",
+        allPeople: "Todas las personas",
+        allPlaces: "Todos los lugares",
+        allLinks: "Todas las fichas",
+        withPeople: "con personas",
+        withPlaces: "con lugares",
+        withOrganizations: "con organizaciones",
+        visible: "Visibles",
+        reset: "Borrar filtros",
+        noResults: "Ninguna ficha coincide con estos filtros.",
+        onThisDayTitle: "Tal día como hoy",
+        onThisDayLead:
+          "Elija una fecha para ver momentos relacionados de la historia de Plovdiv.",
+        today: "Hoy",
+        noOnThisDay: "Ningún evento para la fecha seleccionada.",
+        source: "Fuente",
+        sourcePlural: "Fuentes",
+        conflictNote: "Nota de conflicto",
+        mapTitle: "Mapa histórico",
+        mapLead:
+          "Los primeros lugares se sitúan en el mapa con coordenadas aproximadas y una fuente aparte para el contexto.",
+        mapLayer: "Capa por época",
+        allMapEras: "Todas las épocas",
+        mapRoutes: "Recorridos temáticos a pie",
+        noRoute: "Sin recorrido",
+        visiblePlaces: "Lugares visibles",
+        mapArchiveLayer: "Capa de archivo",
+        noArchiveOverlay: "Sin archivo",
+        archiveOverlayMaps: "Mapas antiguos",
+        archiveOverlayAll: "Todo el material de archivo",
+        archiveOverlayPhotos: "Fotos y postales",
+        archiveOverlayDocuments: "Documentos",
+        visibleArchiveItems: "marcadores de archivo",
+        archiveOverlayNote: "La capa superpone mapas y fotos antiguos al mapa moderno. La alineación es aproximada.",
+        routeStops: "paradas",
+        routeAncientTitle: "Filipópolis antigua",
+        routeAncientLead:
+          "Un breve recorrido por los sitios romanos y de la Antigüedad tardía en torno a las Tres Colinas.",
+        routeRevivalTitle: "Casco antiguo del Renacimiento",
+        routeRevivalLead:
+          "Un hilo de paseo entre casas, iglesias y sitios escolares del Renacimiento Nacional.",
+        routeHillsTitle: "Las colinas",
+        routeHillsLead:
+          "Un recorrido geográfico por las colinas que conservan la historia antigua y la memoria urbana.",
+        openPlaces: "Todos los lugares",
+        selectPlace: "Lugar seleccionado",
+        coordinates: "Coordenadas",
+        built: "Construcción/fecha",
+        architect: "Arquitecto",
+        builder: "Constructor",
+        creator: "Arquitecto/constructor",
+        archiveTitle: "Archivo georreferenciado y antes/después",
+        archiveLead:
+          "La capa de archivo vincula mapas, fotografías y postales históricas a los lugares de la ciudad. Cada elemento conserva su fuente y la licencia de Wikimedia Commons.",
+        georeferencedItems: "elementos de archivo georreferenciados",
+        thenNowPairs: "pares antes/después",
+        archiveDate: "Fecha",
+        archivePlace: "Lugar",
+        georeference: "Georreferencia",
+        license: "Licencia",
+        thenNowTitle: "Comparaciones antes/después",
+        thenNowLead:
+          "Los controles deslizantes comparan una imagen de archivo con una foto moderna de licencia abierta del mismo lugar o del contexto urbano verificable más cercano.",
+        thenLabel: "Antes",
+        nowLabel: "Después",
+        peopleTitle: "Conexiones entre las personas",
+        peopleLead:
+          "La red incluye a todas las personas, con la sucesión de alcaldes como una capa aparte dentro de ella.",
+        repeatTerms: "mandatos repetidos",
+        successionLinks: "vínculos de sucesión",
+        openMayors: "La red completa de personas",
+        dataTitle: "Datos abiertos y API",
+        dataLead:
+          "Los cinco tipos de objetos históricos se publican en JSON y CSV, y las rutas de API estáticas devuelven las mismas fichas.",
+        endpoint: "Punto de acceso",
+        download: "Descargar",
+        jsonData: "Datos JSON",
+        csvData: "Tablas CSV"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -757,6 +855,22 @@ const dataResourceLabels: Record<string, string> = ({
         education_resources: "Eğitim kaynakları",
         editorial_signoffs: "Editöryal onaylar",
         editorial_review: "Editöryal inceleme"
+      },
+      es: {
+        index: "Índice",
+        events: "Eventos",
+        people: "Personas",
+        person_relationships: "Vínculos entre personas",
+        places: "Lugares",
+        organizations: "Organizaciones",
+        sources: "Fuentes",
+        archive_items: "Elementos de archivo",
+        then_now_pairs: "Pares antes/después",
+        primary_documents: "Documentos primarios",
+        story_longreads: "Relatos largos",
+        education_resources: "Recursos educativos",
+        editorial_signoffs: "Aprobaciones editoriales",
+        editorial_review: "Revisión editorial"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -792,22 +906,22 @@ const downloadRows = Object.entries(historyKnowledgeIndex.downloads)
   });
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi" },
-  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi" },
-  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik" },
-  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı" },
-  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans" },
-  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı" },
-  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği" },
-  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu" },
-  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı" }
+  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi", es: "Cronología" },
+  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi", es: "Mandato de alcalde" },
+  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik", es: "Evento histórico" },
+  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı", es: "Programa cultural" },
+  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans", es: "Finanzas históricas" },
+  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı", es: "Programa municipal" },
+  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği", es: "Cambio de gobierno" },
+  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu", es: "Nacimiento de una personalidad" },
+  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı", es: "Fuente de archivo" }
 };
 
 // Timeline theme tags = the shared person-role labels plus two history-only tags.
 const themeLabels: Record<string, Record<Lang, string>> = {
   ...roleLabels,
-  people: { bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler" },
-  birth: { bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum" }
+  people: { bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler", es: "Personas" },
+  birth: { bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum", es: "Nacimiento" }
 };
 
 const hiddenThemeTags = new Set(["people", "birth"]);
@@ -1210,6 +1324,36 @@ const growth = ({
         mapLead: "Mahallelerin yaklaşık konumu, ortaya çıktıkları döneme göre renklendirilmiştir.",
         approxNote: "Yaklaşık konum",
         source: "Kaynak"
+      },
+      es: {
+        title: "Cómo creció la ciudad",
+        popQ: "¿Cómo ha cambiado la población?",
+        rateQ: "¿Cuándo creció más rápido la ciudad?",
+        popTitle: "Población de Plovdiv a lo largo del tiempo",
+        popLead:
+          "Los puntos históricos hasta 2021 se basan en censos y series históricas publicadas; 2022-2025 son estimaciones anuales del instituto nacional de estadística a 31 de diciembre.",
+        peakWord: "Máximo",
+        latestWord: "Última estimación",
+        growthWord: "Crecimiento desde",
+        rateTitle: "Tasa de variación de la población",
+        rateLead:
+          "Variación media anual de cada periodo entre dos puntos de medición contiguos.",
+        perYear: "% anual",
+        rateUnitNote: "Los valores corresponden a la variación media anual, en % anual.",
+        densityTitle: "Densidad de población",
+        areaLabel: "Superficie de la ciudad",
+        densityNow: "Densidad",
+        densityPeak: "Densidad en el máximo (1985)",
+        perKm: "hab./km²",
+        densityNote:
+          "La densidad se calcula respecto a la superficie actual de la ciudad (101,98 km²). Plovdiv es la ciudad más densamente poblada de Bulgaria.",
+        nbTitle: "Cuándo surgieron los barrios",
+        nbLead:
+          "Una selección de barrios y zonas de Plovdiv, ordenados por fecha de aparición — cada uno con una fuente pública.",
+        mapTitle: "Los barrios en el mapa",
+        mapLead: "Ubicación aproximada de los barrios, coloreados según la época en que surgieron.",
+        approxNote: "Ubicación aproximada",
+        source: "Fuente"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 const nbEraLabels: Record<NeighbourhoodEra, string> = ({
@@ -1218,7 +1362,8 @@ const nbEraLabels: Record<NeighbourhoodEra, string> = ({
       de: { ottoman: "Osmanische Zeit", revival: "Wiedergeburtszeit", modern: "Neuzeit (20. Jh.)", socialist: "Sozialistische Zeit" },
       fr: { ottoman: "Époque ottomane", revival: "Renaissance nationale", modern: "Époque moderne (XXe s.)", socialist: "Époque socialiste" },
       it: { ottoman: "Epoca ottomana", revival: "Rinascita nazionale", modern: "Epoca moderna (XX sec.)", socialist: "Epoca socialista" },
-      tr: { ottoman: "Osmanlı dönemi", revival: "Ulusal Uyanış", modern: "Modern dönem (XX. yy.)", socialist: "Sosyalist dönem" }
+      tr: { ottoman: "Osmanlı dönemi", revival: "Ulusal Uyanış", modern: "Modern dönem (XX. yy.)", socialist: "Sosyalist dönem" },
+      es: { ottoman: "Época otomana", revival: "Renacimiento Nacional", modern: "Época moderna (s. XX)", socialist: "Época socialista" }
     } satisfies Record<Lang, Record<NeighbourhoodEra, string>>)[lang];
 
 // sticky in-page section navigation
@@ -1276,9 +1421,18 @@ const sectionNav = ({
         { id: "archive-layer", label: "Arşiv" },
         { id: "people", label: "Kişiler" },
         { id: "data", label: "Veriler" }
+      ],
+      es: [
+        { id: "geography", label: "Geogr./clima" },
+        { id: "timeline", label: "Cronología" },
+        { id: "city-growth", label: "Crecimiento" },
+        { id: "landmarks", label: "Lugares" },
+        { id: "archive-layer", label: "Archivo" },
+        { id: "people", label: "Personas" },
+        { id: "data", label: "Datos" }
       ]
     } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
-const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri" } satisfies Record<Lang, string>)[lang];
+const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página" } satisfies Record<Lang, string>)[lang];
 
 const numberFmt = new Intl.NumberFormat(locale);
 
@@ -1519,6 +1673,33 @@ const geo = ({
           { label: "Yıllık yağış", value: "502 mm" }
         ],
         source: "Kaynak"
+      },
+      es: {
+        title: "Geografía y clima",
+        lead:
+          "Plovdiv se extiende sobre colinas de sienita en la llanura de la Alta Tracia, en ambas orillas del río Maritsa.",
+        geographyTitle: "Geografía",
+        climateTitle: "Clima",
+        chartQ: "¿Qué tiempo hace a lo largo del año?",
+        chartTitle: "Temperaturas y precipitaciones medias mensuales",
+        legendTemp: "Temperatura máx. / mín.",
+        legendPrecip: "Precipitación",
+        months: ["E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+        facts: [
+          { label: "Coordenadas", value: "42°09′N, 24°45′E" },
+          { label: "Altitud", value: "164 m" },
+          { label: "Río", value: "Maritsa" },
+          { label: "Llanura", value: "Llanura de la Alta Tracia" },
+          { label: "Colinas", value: "6 colinas conservadas (7 históricamente)" },
+          { label: "Superficie", value: "101,98 km²" }
+        ],
+        stats: [
+          { label: "Tipo de clima", value: "Subtropical húmedo" },
+          { label: "Media anual máx/mín", value: "18,9 / 7,3 °C" },
+          { label: "Récord máx/mín", value: "45,0 / −31,5 °C" },
+          { label: "Precipitación anual", value: "502 mm" }
+        ],
+        source: "Fuente"
       }
     })[lang];
 
@@ -2768,6 +2949,14 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           .replace(/^Roman period(,|$)/, "Roma dönemi$1")
           .replace(/^Ottoman period(,|$)/, "Osmanlı dönemi$1")
           .replace(/^Thracian era(,|$)/, "Trak dönemi$1");
+      }
+      if (config.lang === "es") {
+        return text
+          .replace(/^Modern period(,|$)/, "Época moderna$1")
+          .replace(/^Bulgarian Revival(,|$)/, "Renacimiento Nacional búlgaro$1")
+          .replace(/^Roman period(,|$)/, "Época romana$1")
+          .replace(/^Ottoman period(,|$)/, "Época otomana$1")
+          .replace(/^Thracian era(,|$)/, "Época tracia$1");
       }
       return text;
     }

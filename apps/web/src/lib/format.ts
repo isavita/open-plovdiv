@@ -10,7 +10,7 @@ import {
 } from "../i18n/ui";
 import { translateEn } from "../i18n/deTranslations";
 
-const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR" };
+const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES" };
 
 const knownHistoryText: Record<Lang, Record<string, string>> = {
   bg: {},
@@ -90,6 +90,25 @@ const knownHistoryText: Record<Lang, Record<string, string>> = {
       "Plovdiv'de kamuya açık biçimde belgelenmiş kurum, bina veya kentsel alan.",
     "Building or urban site from Plovdiv's Revival and early modern heritage.":
       "Plovdiv'in Uyanış ve erken modern mirasından bir bina veya kentsel alan."
+  },
+  es: {
+    "wikidata_coordinate": "Coordenadas de Wikidata",
+    "approximate_site": "ubicación aproximada",
+    "district_centroid": "centro del distrito",
+    "citywide_reference": "punto de referencia a escala de ciudad",
+    "Modern period": "Época moderna",
+    "Bulgarian Revival": "Renacimiento Nacional búlgaro",
+    "Thracian era – Antiquity": "Época tracia – Antigüedad",
+    "Roman period": "Época romana",
+    "Ottoman period": "Época otomana",
+    "not identified in the current public source": "no identificado en la fuente pública actual",
+    "not applicable for a natural hill or terrain feature": "no aplicable a una colina natural o un accidente del terreno",
+    "Publicly documented historic site; detailed visiting status still needs verification.":
+      "Sitio histórico documentado públicamente; el estado de visita detallado aún debe verificarse.",
+    "Publicly documented institution, building, or urban site in Plovdiv.":
+      "Institución, edificio o sitio urbano de Plovdiv documentado públicamente.",
+    "Building or urban site from Plovdiv's Revival and early modern heritage.":
+      "Edificio o sitio urbano del patrimonio del Renacimiento y la primera época moderna de Plovdiv."
   }
 };
 
