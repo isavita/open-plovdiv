@@ -100,7 +100,20 @@ const manualTranslationsByLang = {
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
     "Open Database License 1.0": "Open Database License 1.0",
     "A large prefab housing complex designed by architect Ivan Popov (1968); construction began in 1973 and it became a separate district in 1983.":
-      "建築家Ivan Popovが1968年に設計した大規模なプレハブ住宅団地。1973年に建設が始まり、1983年に独立した地区になりました。"
+      "建築家Ivan Popovが1968年に設計した大規模なプレハブ住宅団地。1973年に建設が始まり、1983年に独立した地区になりました。",
+    // Bulgarian-only municipal source titles (no English form exists upstream, so the
+    // machine left them Cyrillic and corrupted "Решение"->"Реловдие"); pin natural Japanese.
+    "Общински съвет - Пловдив, Решение 33 за бюджет 2018":
+      "Plovdiv市議会 — 2018年度予算に関する決議第33号",
+    "Общински съвет - Пловдив, Решение №4 за бюджет 2014":
+      "Plovdiv市議会 — 2014年度予算に関する決議第4号",
+    "Общински съвет — Пловдив, Правилник за подпомагане на деца с изявени дарби":
+      "Plovdiv市議会 — 才能ある児童の支援に関する規則",
+    "Общински съвет — Пловдив, Решение №58 за отчет на бюджет 2010":
+      "Plovdiv市議会 — 2010年度予算決算に関する決議第58号",
+    // Bulgarian-only Wikimedia image captions that the machine left untranslated.
+    "Природна забележителност в България.": "ブルガリアの自然記念物。",
+    "Баня в Пловдив, България.": "Plovdivの公衆浴場、ブルガリア。"
   }
 };
 
