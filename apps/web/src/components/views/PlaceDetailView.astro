@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
+import { publicThenNowPairs } from "@lib/thenNow";
 import {
   historicalArchiveItems,
   historyKnowledgeEvents,
@@ -343,8 +344,7 @@ const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, s
 const archiveItems = historicalArchiveItems
   .filter((item) => item.place_id === place.id)
   .sort((a, b) => a.date_year - b.date_year || a.id.localeCompare(b.id));
-const pairs = thenNowPairs
-  .filter((pair) => pair.place_id === place.id)
+const pairs = publicThenNowPairs(thenNowPairs.filter((pair) => pair.place_id === place.id))
   .sort((a, b) => localized(a, "title").localeCompare(localized(b, "title"), locale));
 const relatedEvents = historyKnowledgeEvents
   .filter((event) => event.place_ids.includes(place.id))

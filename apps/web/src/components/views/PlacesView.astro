@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { commonsImageUrl } from "@lib/commons";
 import { sourceTitle } from "@lib/format";
+import { publicThenNowPairs, thenNowCountByPlace } from "@lib/thenNow";
 import {
   historicalArchiveItems,
   historyKnowledgeEvents,
@@ -372,10 +373,10 @@ const places = [...historyKnowledgePlaces].sort((a, b) =>
 );
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 const archiveCountByPlace = new Map<string, number>();
-const pairCountByPlace = new Map<string, number>();
+const pairCountByPlace = thenNowCountByPlace(thenNowPairs);
+const publicPairCount = publicThenNowPairs(thenNowPairs).length;
 const eventCountByPlace = new Map<string, number>();
 for (const item of historicalArchiveItems) archiveCountByPlace.set(item.place_id, (archiveCountByPlace.get(item.place_id) ?? 0) + 1);
-for (const pair of thenNowPairs) pairCountByPlace.set(pair.place_id, (pairCountByPlace.get(pair.place_id) ?? 0) + 1);
 for (const event of historyKnowledgeEvents) {
   for (const placeId of event.place_ids) eventCountByPlace.set(placeId, (eventCountByPlace.get(placeId) ?? 0) + 1);
 }
@@ -527,7 +528,7 @@ const placesMapConfig = {
         </div>
         <div class="stat-card">
           <dt>{labels.thenNow}</dt>
-          <dd>{thenNowPairs.length}</dd>
+          <dd>{publicPairCount}</dd>
         </div>
       </dl>
     </div>

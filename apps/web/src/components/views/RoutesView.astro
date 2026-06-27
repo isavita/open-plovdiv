@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import { field, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { commonsImageUrl } from "@lib/commons";
 import { sourceTitle } from "@lib/format";
+import { publicThenNowPairs } from "@lib/thenNow";
 import {
   educationResources,
   historicalArchiveItems,
@@ -326,7 +327,8 @@ const routeViews: RouteView[] = routeSpecs.map((spec) => {
   const educationPairs =
     education?.linked_then_now_pair_ids.map((id) => thenNowById.get(id)).filter(Boolean) as ThenNowPair[] | undefined;
   const archiveItems = unique([...(storyArchiveItems ?? []), ...(educationArchiveItems ?? [])]);
-  const routePairs = unique([...(storyPairs ?? []), ...(educationPairs ?? [])]);
+  const preferredPairIds = new Set([...story.linked_then_now_pair_ids, ...(education?.linked_then_now_pair_ids ?? [])]);
+  const routePairs = publicThenNowPairs(unique([...(storyPairs ?? []), ...(educationPairs ?? [])]), { preferredPairIds });
   const events = unique([
     ...story.linked_event_ids,
     ...(education?.linked_event_ids ?? [])

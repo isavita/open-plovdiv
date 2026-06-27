@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
 import { sourceTitle } from "@lib/format";
+import { publicThenNowPairs } from "@lib/thenNow";
 import {
   historicalArchiveItems,
   historyKnowledgeSources,
@@ -168,18 +169,25 @@ function heroMedia(story: StoryLongread) {
   return placeById.get(story.hero.ref_id)?.media[0];
 }
 
+function storyThenNowPairs(story: StoryLongread) {
+  return publicThenNowPairs(
+    story.linked_then_now_pair_ids.map((id) => pairById.get(id)).filter(Boolean),
+    { preferredPairIds: new Set(story.linked_then_now_pair_ids) }
+  );
+}
+
 function linkCount(story: StoryLongread): number {
   return (
     story.linked_event_ids.length +
     story.linked_place_ids.length +
     story.linked_archive_item_ids.length +
-    story.linked_then_now_pair_ids.length
+    storyThenNowPairs(story).length
   );
 }
 
 const sourceCount = new Set(storyLongreads.flatMap((story) => story.source_ids)).size;
 const archiveLinkCount = storyLongreads.reduce(
-  (sum, story) => sum + story.linked_archive_item_ids.length + story.linked_then_now_pair_ids.length,
+  (sum, story) => sum + story.linked_archive_item_ids.length + storyThenNowPairs(story).length,
   0
 );
 ---

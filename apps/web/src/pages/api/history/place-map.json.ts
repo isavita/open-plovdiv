@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import { knownHistoryLabel } from "@lib/format";
 import { json } from "@lib/server/http";
+import { thenNowCountByPlace } from "@lib/thenNow";
 import {
   historicalArchiveItems,
   historyKnowledgePlaces,
@@ -35,13 +36,10 @@ const placeColors: Record<string, string> = {
 };
 
 const archiveCountByPlace = new Map<string, number>();
-const pairCountByPlace = new Map<string, number>();
+const pairCountByPlace = thenNowCountByPlace(thenNowPairs);
 
 for (const item of historicalArchiveItems) {
   archiveCountByPlace.set(item.place_id, (archiveCountByPlace.get(item.place_id) ?? 0) + 1);
-}
-for (const pair of thenNowPairs) {
-  pairCountByPlace.set(pair.place_id, (pairCountByPlace.get(pair.place_id) ?? 0) + 1);
 }
 
 function localized(record: Record<string, any>, base: string, lang: Lang): string {

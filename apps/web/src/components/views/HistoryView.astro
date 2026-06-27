@@ -5,7 +5,9 @@ import SectionNav from "@components/SectionNav.astro";
 import { createHash } from "node:crypto";
 import { roleLabels, ui, type Lang } from "@i18n/ui";
 import { localeForLang, localizePath } from "@i18n/utils";
+import { publicArchiveItems } from "@lib/archive";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
+import { publicThenNowPairs } from "@lib/thenNow";
 import {
   historyKnowledgeEvents,
   historyKnowledgeIndex,
@@ -1358,10 +1360,10 @@ const timelineConfig = {
   total: entries.length,
 };
 
-const archiveItemsForView = [...historicalArchiveItems].sort(
+const archiveItemsForView = publicArchiveItems(historicalArchiveItems).sort(
   (a, b) => a.date_year - b.date_year || a.id.localeCompare(b.id)
 );
-const thenNowPairsForView = [...thenNowPairs].sort((a, b) =>
+const thenNowPairsForView = publicThenNowPairs(thenNowPairs).sort((a, b) =>
   localized(a, "title").localeCompare(localized(b, "title"), locale)
 );
 // date of the historical ("then") photo, taken from its linked archive item
@@ -2564,7 +2566,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           <span>{labels.georeferencedItems}</span>
         </div>
         <div class="stat">
-          <strong>{thenNowPairs.length}</strong>
+          <strong>{thenNowPairsForView.length}</strong>
           <span>{labels.thenNowPairs}</span>
         </div>
         <div class="stat">

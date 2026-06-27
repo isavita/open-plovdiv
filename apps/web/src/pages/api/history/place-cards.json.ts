@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { commonsImageUrl } from "@lib/commons";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import { json } from "@lib/server/http";
+import { thenNowCountByPlace } from "@lib/thenNow";
 import {
   historicalArchiveItems,
   historyKnowledgeEvents,
@@ -104,11 +105,10 @@ function placeFacts(place: KnowledgePlace, lang: Lang) {
 
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 const archiveCountByPlace = new Map<string, number>();
-const pairCountByPlace = new Map<string, number>();
+const pairCountByPlace = thenNowCountByPlace(thenNowPairs);
 const eventCountByPlace = new Map<string, number>();
 
 for (const item of historicalArchiveItems) archiveCountByPlace.set(item.place_id, (archiveCountByPlace.get(item.place_id) ?? 0) + 1);
-for (const pair of thenNowPairs) pairCountByPlace.set(pair.place_id, (pairCountByPlace.get(pair.place_id) ?? 0) + 1);
 for (const event of historyKnowledgeEvents) {
   for (const placeId of event.place_ids) eventCountByPlace.set(placeId, (eventCountByPlace.get(placeId) ?? 0) + 1);
 }

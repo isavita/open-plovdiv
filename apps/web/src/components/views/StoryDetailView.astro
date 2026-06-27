@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
 import { sourceTitle } from "@lib/format";
+import { publicThenNowPairs } from "@lib/thenNow";
 import {
   historicalArchiveItems,
   historyKnowledgeEvents,
@@ -136,10 +137,16 @@ function heroMedia(item: StoryLongread) {
 }
 
 function titles(ids: string[], map: Map<string, Record<string, unknown>>, field: "title" | "name") {
-  return ids.map((id) => localized((map.get(id) ?? { id }) as Record<string, unknown>, field));
+  return ids
+    .map((id) => localized((map.get(id) ?? { id }) as Record<string, unknown>, field))
+    .filter(Boolean);
 }
 
 const media = heroMedia(story);
+const storyThenNowPairs = publicThenNowPairs(
+  story.linked_then_now_pair_ids.map((id) => pairById.get(id)).filter(Boolean),
+  { preferredPairIds: new Set(story.linked_then_now_pair_ids) }
+);
 const sourceRecords = story.source_ids.map((sourceId) => sourceById.get(sourceId)).filter(Boolean);
 const relatedStories = storyLongreads
   .filter((item) => item.id !== story.id && item.era_tags.some((tag) => story.era_tags.includes(tag)))
@@ -207,7 +214,7 @@ const relatedStories = storyLongreads
             <dt>{labels.archive}</dt>
             <dd>{titles(story.linked_archive_item_ids, archiveById, "title").join(" · ")}</dd>
             <dt>{labels.thenNow}</dt>
-            <dd>{titles(story.linked_then_now_pair_ids, pairById, "title").join(" · ")}</dd>
+            <dd>{storyThenNowPairs.map((pair) => localized(pair, "title")).join(" · ")}</dd>
           </dl>
 
           <h2>{labels.sources}</h2>
