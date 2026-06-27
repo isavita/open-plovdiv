@@ -528,7 +528,6 @@ const firstRoute = routeViews[0];
                         <h3><a href={localizePath(`/places/${place.id}`, lang)}>{name}</a></h3>
                         <p>{stop.narration}</p>
                         <div class="tag-row route-stop-tags">
-                          {place.coordinates && <span>{place.coordinates.lat.toFixed(4)}, {place.coordinates.lng.toFixed(4)}</span>}
                           {stop.pairs.length > 0 && <span>{stop.pairs.length} {labels.thenNow}</span>}
                           {stop.archiveItems.length > 0 && <span>{stop.archiveItems.length} {labels.archive}</span>}
                         </div>
