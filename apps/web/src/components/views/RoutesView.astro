@@ -1,0 +1,887 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { field, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
+import { sourceTitle } from "@lib/format";
+import {
+  educationResources,
+  historicalArchiveItems,
+  historyKnowledgeEvents,
+  historyKnowledgePlaces,
+  historyKnowledgeSources,
+  storyLongreads,
+  thenNowPairs,
+  type EducationResource,
+  type HistoricalArchiveItem,
+  type KnowledgeEvent,
+  type KnowledgePlace,
+  type KnowledgeSource,
+  type StoryLongread,
+  type ThenNowPair
+} from "@lib/data";
+
+type Props = {
+  lang: Lang;
+};
+
+type RouteSpec = {
+  id: string;
+  title: string;
+  shortTitle: string;
+  durationMinutes: number;
+  pace: string;
+  accent: string;
+  storyId: string;
+  educationId?: string;
+  stopIds: string[];
+};
+
+type RouteStop = {
+  place: KnowledgePlace;
+  narration: string;
+  pairs: ThenNowPair[];
+  archiveItems: HistoricalArchiveItem[];
+};
+
+type RouteView = RouteSpec & {
+  story: StoryLongread;
+  education: EducationResource | null;
+  context: string;
+  stops: RouteStop[];
+  events: KnowledgeEvent[];
+  archiveItems: HistoricalArchiveItem[];
+  thenNow: ThenNowPair[];
+  sources: KnowledgeSource[];
+  media: KnowledgePlace["media"][number] | null;
+  evidenceCount: number;
+};
+
+const { lang } = Astro.props;
+const t = ui[lang];
+const locale = localeForLang(lang);
+
+const tr = (
+  bg: string,
+  en: string,
+  de: string,
+  fr: string,
+  it: string,
+  trk: string,
+  es: string,
+  el: string,
+  ja: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja })[lang];
+
+const labels = {
+  title: tr(
+    "Маршрути за разходка в Пловдив",
+    "Walking Routes in Plovdiv",
+    "Spazierwege in Plovdiv",
+    "Parcours à pied à Plovdiv",
+    "Percorsi a piedi a Plovdiv",
+    "Plovdiv yürüyüş rotaları",
+    "Rutas a pie en Plovdiv",
+    "Περιπατητικές διαδρομές στο Plovdiv",
+    "Plovdivの散策ルート"
+  ),
+  eyebrow: tr(
+    "За посетители",
+    "For visitors",
+    "Für Besucher",
+    "Pour les visiteurs",
+    "Per visitatori",
+    "Ziyaretçiler için",
+    "Para visitantes",
+    "Για επισκέπτες",
+    "訪問者向け"
+  ),
+  lead: tr(
+    "Кратки пешеходни маршрути, изградени от вече публикуваните места, разкази, архивни изображения и източници в Open Plovdiv.",
+    "Short walking routes built from the places, stories, archive images and sources already published in Open Plovdiv.",
+    "Kurze Spazierwege aus den bereits veröffentlichten Orten, Geschichten, Archivbildern und Quellen in Open Plovdiv.",
+    "De courts parcours à pied construits à partir des lieux, récits, images d'archives et sources déjà publiés dans Open Plovdiv.",
+    "Brevi percorsi a piedi costruiti dai luoghi, racconti, immagini d'archivio e fonti già pubblicati in Open Plovdiv.",
+    "Open Plovdiv'de yayımlanmış yerler, anlatılar, arşiv görselleri ve kaynaklardan oluşturulan kısa yürüyüş rotaları.",
+    "Rutas cortas a pie creadas a partir de los lugares, relatos, imágenes de archivo y fuentes ya publicados en Open Plovdiv.",
+    "Σύντομες διαδρομές με τα πόδια, βασισμένες στις ήδη δημοσιευμένες τοποθεσίες, αφηγήσεις, εικόνες αρχείου και πηγές του Open Plovdiv.",
+    "Open Plovdivで公開済みの場所、ストーリー、アーカイブ画像、出典から組み立てた短い散策ルートです。"
+  ),
+  routes: tr("маршрута", "routes", "Routen", "parcours", "percorsi", "rota", "rutas", "διαδρομές", "ルート"),
+  stops: tr("спирки", "stops", "Stationen", "étapes", "tappe", "durak", "paradas", "στάσεις", "地点"),
+  sources: tr("източници", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "出典"),
+  source: tr("Източник", "Source", "Quelle", "Source", "Fonte", "Kaynak", "Fuente", "Πηγή", "出典"),
+  thenNow: tr("тогава/сега", "then/now", "damals/heute", "avant/après", "prima/dopo", "önce/sonra", "antes/después", "πριν/μετά", "今昔比較"),
+  archive: tr("архив", "archive", "Archiv", "archives", "archivio", "arşiv", "archivo", "αρχείο", "アーカイブ"),
+  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlikler", "eventos", "γεγονότα", "出来事"),
+  evidence: tr("Записи", "Records", "Datensätze", "Fiches", "Schede", "Kayıtlar", "Registros", "Εγγραφές", "記録"),
+  suggestedDuration: tr("Препоръчано време", "Suggested time", "Empfohlene Zeit", "Durée suggérée", "Tempo suggerito", "Önerilen süre", "Tiempo sugerido", "Προτεινόμενος χρόνος", "目安時間"),
+  minutes: tr("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分"),
+  start: tr("Начало", "Start", "Start", "Départ", "Partenza", "Başlangıç", "Inicio", "Αρχή", "開始"),
+  finish: tr("Край", "Finish", "Ziel", "Arrivée", "Arrivo", "Bitiş", "Final", "Τέλος", "終了"),
+  chooseTitle: tr(
+    "Изберете маршрут",
+    "Choose a route",
+    "Route wählen",
+    "Choisir un parcours",
+    "Scegli un percorso",
+    "Rota seçin",
+    "Elige una ruta",
+    "Επιλέξτε διαδρομή",
+    "ルートを選ぶ"
+  ),
+  chooseLead: tr(
+    "Всеки маршрут показва времето за разходка, спирките, свързан разказ и доказателствените записи, които го поддържат.",
+    "Each route shows the walking time, stops, linked story and evidence records behind it.",
+    "Jede Route zeigt Gehzeit, Stationen, verknüpfte Geschichte und die belegenden Datensätze.",
+    "Chaque parcours indique le temps de marche, les étapes, le récit lié et les fiches qui l'étayent.",
+    "Ogni percorso mostra tempo di cammino, tappe, racconto collegato e schede di prova.",
+    "Her rota yürüyüş süresini, durakları, bağlantılı anlatıyı ve onu destekleyen kayıtları gösterir.",
+    "Cada ruta muestra tiempo de paseo, paradas, relato enlazado y registros de evidencia.",
+    "Κάθε διαδρομή δείχνει χρόνο περιπάτου, στάσεις, συνδεδεμένη αφήγηση και τεκμήρια.",
+    "各ルートは所要時間、地点、関連ストーリー、根拠となる記録を示します。"
+  ),
+  routeStory: tr("Свързан разказ", "Linked story", "Verknüpfte Geschichte", "Récit lié", "Racconto collegato", "Bağlantılı anlatı", "Relato vinculado", "Συνδεδεμένη αφήγηση", "関連ストーリー"),
+  openStory: tr("Отвори разказа", "Open story", "Geschichte öffnen", "Ouvrir le récit", "Apri il racconto", "Anlatıyı aç", "Abrir relato", "Άνοιγμα αφήγησης", "ストーリーを開く"),
+  openPlace: tr("Отвори мястото", "Open place", "Ort öffnen", "Ouvrir le lieu", "Apri il luogo", "Yeri aç", "Abrir lugar", "Άνοιγμα τοποθεσίας", "場所を開く"),
+  firstStop: tr("Първа спирка", "First stop", "Erste Station", "Première étape", "Prima tappa", "İlk durak", "Primera parada", "Πρώτη στάση", "最初の地点"),
+  historyMap: tr("Историческа карта", "History map", "Geschichtskarte", "Carte historique", "Mappa storica", "Tarih haritası", "Mapa histórico", "Ιστορικός χάρτης", "歴史地図"),
+  openMap: tr("Виж на картата", "See on map", "Auf Karte ansehen", "Voir sur la carte", "Vedi sulla mappa", "Haritada gör", "Ver en el mapa", "Δείτε στον χάρτη", "地図で見る"),
+  allPlaces: tr("Всички места", "All places", "Alle Orte", "Tous les lieux", "Tutti i luoghi", "Tüm yerler", "Todos los lugares", "Όλες οι τοποθεσίες", "すべての場所"),
+  compareArchive: tr("Архив и тогава/сега", "Archive and then/now", "Archiv und damals/heute", "Archives et avant/après", "Archivio e prima/dopo", "Arşiv ve önce/sonra", "Archivo y antes/después", "Αρχείο και πριν/μετά", "アーカイブと今昔比較"),
+  routeEvidence: tr("Доказателства по маршрута", "Route evidence", "Routennachweise", "Preuves du parcours", "Evidenze del percorso", "Rota kanıtları", "Evidencia de la ruta", "Τεκμήρια διαδρομής", "ルートの根拠"),
+  linkedEvents: tr("Свързани събития", "Linked events", "Verknüpfte Ereignisse", "Événements liés", "Eventi collegati", "Bağlantılı etkinlikler", "Eventos vinculados", "Συνδεδεμένα γεγονότα", "関連する出来事"),
+  linkedMedia: tr("Архивни и тогава/сега записи", "Archive and then/now records", "Archiv- und damals/heute-Datensätze", "Fiches d'archives et avant/après", "Schede archivio e prima/dopo", "Arşiv ve önce/sonra kayıtları", "Registros de archivo y antes/después", "Αρχεία και εγγραφές πριν/μετά", "アーカイブと今昔比較の記録"),
+  dataBoundary: tr(
+    "Маршрутите използват съществуващи записи; маршрутното време е посетителска ориентация, а историческите твърдения остават в свързаните източници.",
+    "Routes reuse existing records; route time is visitor guidance, while historical claims stay with the linked sources.",
+    "Die Routen verwenden vorhandene Datensätze; die Zeitangabe dient der Orientierung, historische Aussagen bleiben bei den verlinkten Quellen.",
+    "Les parcours réutilisent les fiches existantes; la durée sert d'orientation, tandis que les affirmations historiques restent liées aux sources.",
+    "I percorsi riusano schede esistenti; il tempo è orientativo, mentre le affermazioni storiche restano nelle fonti collegate.",
+    "Rotalar mevcut kayıtları yeniden kullanır; süre ziyaretçi yönlendirmesidir, tarihsel iddialar bağlı kaynaklarda kalır.",
+    "Las rutas reutilizan registros existentes; la duración orienta al visitante y las afirmaciones históricas permanecen en las fuentes enlazadas.",
+    "Οι διαδρομές επαναχρησιμοποιούν υπάρχουσες εγγραφές· ο χρόνος είναι οδηγός επίσκεψης, ενώ οι ιστορικοί ισχυρισμοί παραμένουν στις πηγές.",
+    "ルートは既存の記録を再利用します。所要時間は訪問者向けの目安で、歴史的記述はリンク先の出典に基づきます。"
+  )
+};
+
+const routeSpecs: RouteSpec[] = [
+  {
+    id: "roman-plovdiv-90",
+    title: tr(
+      "Римски Пловдив за 90 минути",
+      "Roman Plovdiv in 90 minutes",
+      "Römisches Plovdiv in 90 Minuten",
+      "Plovdiv romain en 90 minutes",
+      "Plovdiv romana in 90 minuti",
+      "90 dakikada Roma Plovdiv'i",
+      "Plovdiv romano en 90 minutos",
+      "Ρωμαϊκό Plovdiv σε 90 λεπτά",
+      "90分で巡るローマ時代のPlovdiv"
+    ),
+    shortTitle: tr("Римски Пловдив", "Roman Plovdiv", "Römisches Plovdiv", "Plovdiv romain", "Plovdiv romana", "Roma Plovdiv'i", "Plovdiv romano", "Ρωμαϊκό Plovdiv", "ローマ時代のPlovdiv"),
+    durationMinutes: 90,
+    pace: tr("антични сцени, стадион и форум", "ancient stages, stadium and forum", "antike Bühnen, Stadion und Forum", "théâtre antique, stade et forum", "scene antiche, stadio e foro", "antik sahneler, stadyum ve forum", "escenarios antiguos, estadio y foro", "αρχαίες σκηνές, στάδιο και αγορά", "古代劇場、競技場、フォルム"),
+    accent: "#a23b2d",
+    storyId: "story-roman-philippopolis",
+    educationId: "education-roman-philippopolis",
+    stopIds: [
+      "place-nebet-tepe",
+      "place-ancient-theatre",
+      "place-forum-philippopolis",
+      "place-odeon-of-philippopolis-q26046109",
+      "place-ancient-stadium",
+      "place-bishop-s-basilica-of-philippopolis-q20500169"
+    ]
+  },
+  {
+    id: "old-town-revival-houses",
+    title: tr(
+      "Старият град и възрожденските къщи",
+      "Old Town and Revival houses",
+      "Altstadt und Wiedergeburtshäuser",
+      "Vieille ville et maisons de la Renaissance",
+      "Città vecchia e case del Risorgimento",
+      "Eski Şehir ve Uyanış dönemi evleri",
+      "Casco antiguo y casas del Renacimiento",
+      "Παλιά Πόλη και αναγεννησιακά σπίτια",
+      "旧市街と民族復興期の邸宅"
+    ),
+    shortTitle: tr("Стар град", "Old Town", "Altstadt", "Vieille ville", "Città vecchia", "Eski Şehir", "Casco antiguo", "Παλιά Πόλη", "旧市街"),
+    durationMinutes: 75,
+    pace: tr("къщи, училища и общности", "houses, schools and communities", "Häuser, Schulen und Gemeinschaften", "maisons, écoles et communautés", "case, scuole e comunità", "evler, okullar ve topluluklar", "casas, escuelas y comunidades", "σπίτια, σχολεία και κοινότητες", "邸宅、学校、共同体"),
+    accent: "#b4632a",
+    storyId: "story-revival-houses-schools",
+    educationId: "education-revival-houses-schools",
+    stopIds: [
+      "place-old-town",
+      "place-humanitarian-high-school-saints-cyril-and-methodius-plovdiv-q12290859",
+      "place-holy-mother-of-god",
+      "place-lamartine-house",
+      "place-house-of-hristo-g-danov-q29961385",
+      "place-hindliyan-house-q19810343"
+    ]
+  },
+  {
+    id: "filibe-ottoman-layer",
+    title: tr(
+      "Филибе / османският пласт",
+      "Filibe / Ottoman layer",
+      "Filibe / osmanische Schicht",
+      "Filibe / couche ottomane",
+      "Filibe / strato ottomano",
+      "Filibe / Osmanlı katmanı",
+      "Filibe / capa otomana",
+      "Filibe / οθωμανικό στρώμα",
+      "Filibe / オスマン層"
+    ),
+    shortTitle: tr("Филибе", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe"),
+    durationMinutes: 60,
+    pace: tr("джамия, хамам, теке и часовников хълм", "mosque, bath, dervish space and clock hill", "Moschee, Bad, Derwischort und Uhrhügel", "mosquée, bain, espace derviche et colline de l'horloge", "moschea, bagno, spazio derviscio e colle dell'orologio", "cami, hamam, derviş mekânı ve saat tepesi", "mezquita, baño, espacio derviche y colina del reloj", "τζαμί, λουτρό, τεκές και λόφος ρολογιού", "モスク、浴場、デルヴィーシュ空間、時計塔の丘"),
+    accent: "#5f6f52",
+    storyId: "story-ottoman-filibe-city",
+    stopIds: [
+      "place-dzhumaya-mosque",
+      "place-dzhumaya-square-q59368698",
+      "place-chifte-hamam",
+      "place-mevlevi-hane",
+      "place-sahat-hill-in-plovdiv-q12293012"
+    ]
+  },
+  {
+    id: "unification-civic-memory",
+    title: tr(
+      "Съединение и гражданска памет",
+      "Unification and civic memory",
+      "Vereinigung und Bürgergedächtnis",
+      "Unification et mémoire civique",
+      "Unificazione e memoria civica",
+      "Birleşme ve kent hafızası",
+      "Unificación y memoria cívica",
+      "Ένωση και αστική μνήμη",
+      "統一と市民の記憶"
+    ),
+    shortTitle: tr("Съединение", "Unification", "Vereinigung", "Unification", "Unificazione", "Birleşme", "Unificación", "Ένωση", "統一"),
+    durationMinutes: 45,
+    pace: tr("площад, институции и градска памет", "square, institutions and urban memory", "Platz, Institutionen und Stadtgedächtnis", "place, institutions et mémoire urbaine", "piazza, istituzioni e memoria urbana", "meydan, kurumlar ve kentsel hafıza", "plaza, instituciones y memoria urbana", "πλατεία, θεσμοί και αστική μνήμη", "広場、制度、都市の記憶"),
+    accent: "#315f7d",
+    storyId: "story-unification-civic-memory",
+    educationId: "education-unification-civic-city",
+    stopIds: ["place-unification-square-plovdiv-q58885892", "place-plovdiv-city", "place-old-town"]
+  }
+];
+
+const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
+const storiesById = new Map(storyLongreads.map((story) => [story.id, story]));
+const educationById = new Map(educationResources.map((resource) => [resource.id, resource]));
+const eventsById = new Map(historyKnowledgeEvents.map((event) => [event.id, event]));
+const archiveById = new Map(historicalArchiveItems.map((item) => [item.id, item]));
+const thenNowById = new Map(thenNowPairs.map((pair) => [pair.id, pair]));
+const sourcesById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
+
+function localized(record: Record<string, unknown> | null | undefined, base: string): string {
+  return field(record, base, lang);
+}
+
+function localizedAny(record: unknown, base: string): string {
+  return localized(record as Record<string, unknown>, base);
+}
+
+function requireRecord<T>(map: Map<string, T>, id: string, collection: string): T {
+  const record = map.get(id);
+  if (!record) throw new Error(`Missing ${collection} record for walking route: ${id}`);
+  return record;
+}
+
+function unique<T>(items: T[]): T[] {
+  return [...new Set(items)];
+}
+
+function compactText(value: string, maxLength = 300): string {
+  if (value.length <= maxLength) return value;
+  const cut = value.slice(0, maxLength).lastIndexOf(" ");
+  return `${value.slice(0, cut > 80 ? cut : maxLength).trim()}...`;
+}
+
+function commonsThumb(url: string, width: number): string {
+  const marker = "/wikipedia/commons/";
+  if (!url.includes(marker) || url.includes("/wikipedia/commons/thumb/")) return url;
+  const commonsPath = url.split(marker)[1];
+  const file = commonsPath?.split("/").pop();
+  if (!file) return url;
+  return `https://upload.wikimedia.org/wikipedia/commons/thumb/${commonsPath}/${width}px-${file}`;
+}
+
+function routeNarration(place: KnowledgePlace, story: StoryLongread, education: EducationResource | null): string {
+  const audioStop = education?.audio_tour.stops.find((stop) => stop.place_id === place.id);
+  if (audioStop) return localized(audioStop as Record<string, unknown>, "narration");
+
+  const storySection = story.sections.find((section) => section.linked_place_ids.includes(place.id));
+  if (storySection) return compactText(localized(storySection as Record<string, unknown>, "body"), 330);
+
+  return compactText(localizedAny(place, "summary"), 280);
+}
+
+const routeViews: RouteView[] = routeSpecs.map((spec) => {
+  const story = requireRecord(storiesById, spec.storyId, "story");
+  const education = spec.educationId ? requireRecord(educationById, spec.educationId, "education resource") : null;
+  const places = spec.stopIds.map((id) => requireRecord(placesById, id, "place"));
+  const storyArchiveItems = story.linked_archive_item_ids.map((id) => archiveById.get(id)).filter(Boolean) as HistoricalArchiveItem[];
+  const storyPairs = story.linked_then_now_pair_ids.map((id) => thenNowById.get(id)).filter(Boolean) as ThenNowPair[];
+  const educationArchiveItems =
+    education?.linked_archive_item_ids.map((id) => archiveById.get(id)).filter(Boolean) as HistoricalArchiveItem[] | undefined;
+  const educationPairs =
+    education?.linked_then_now_pair_ids.map((id) => thenNowById.get(id)).filter(Boolean) as ThenNowPair[] | undefined;
+  const archiveItems = unique([...(storyArchiveItems ?? []), ...(educationArchiveItems ?? [])]);
+  const routePairs = unique([...(storyPairs ?? []), ...(educationPairs ?? [])]);
+  const events = unique([
+    ...story.linked_event_ids,
+    ...(education?.linked_event_ids ?? [])
+  ])
+    .map((id) => eventsById.get(id))
+    .filter(Boolean) as KnowledgeEvent[];
+  const stopPlaceIds = new Set(places.map((place) => place.id));
+  const stops: RouteStop[] = places.map((place) => ({
+    place,
+    narration: routeNarration(place, story, education),
+    pairs: routePairs.filter((pair) => pair.place_id === place.id),
+    archiveItems: archiveItems.filter((item) => item.place_id === place.id)
+  }));
+  const sourceIds = unique([
+    ...story.source_ids,
+    ...(education?.source_ids ?? []),
+    ...places.flatMap((place) => place.source_ids),
+    ...events.flatMap((event) => event.source_ids),
+    ...routePairs.flatMap((pair) => pair.source_ids),
+    ...archiveItems.map((item) => item.source.source_id).filter(Boolean)
+  ]);
+  const sources = sourceIds.map((id) => sourcesById.get(id)).filter(Boolean) as KnowledgeSource[];
+  const media = places.find((place) => place.media.length > 0)?.media[0] ?? null;
+
+  return {
+    ...spec,
+    story,
+    education,
+    context: localizedAny(story, "dek") || (education ? localizedAny(education, "summary") : ""),
+    stops,
+    events,
+    archiveItems: archiveItems.filter((item) => stopPlaceIds.has(item.place_id)),
+    thenNow: routePairs.filter((pair) => stopPlaceIds.has(pair.place_id)),
+    sources,
+    media,
+    evidenceCount: places.length + events.length + archiveItems.length + routePairs.length + sources.length
+  };
+});
+
+const totalStops = routeViews.reduce((sum, route) => sum + route.stops.length, 0);
+const totalSources = new Set(routeViews.flatMap((route) => route.sources.map((source) => source.id))).size;
+const totalThenNow = new Set(routeViews.flatMap((route) => route.thenNow.map((pair) => pair.id))).size;
+const firstRoute = routeViews[0];
+---
+
+<Layout lang={lang} path="/routes" title={labels.title} description={labels.lead}>
+  <section class="section hero hero-compact routes-hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">{labels.eyebrow}</p>
+        <h1>{labels.title}</h1>
+        <p class="lead">{labels.lead}</p>
+        <div class="route-hero-actions">
+          <a class="button" href={`#route-${firstRoute.id}`}>{firstRoute.title}</a>
+          <a class="button secondary" href={`${localizePath("/history", lang)}#landmarks`}>{labels.openMap}</a>
+        </div>
+      </div>
+      <dl class="stats-grid routes-stats" aria-label={labels.title}>
+        <div class="stat-card">
+          <dt>{labels.routes}</dt>
+          <dd>{routeViews.length}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.stops}</dt>
+          <dd>{totalStops}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.sources}</dt>
+          <dd>{totalSources}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{labels.thenNow}</dt>
+          <dd>{totalThenNow}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section routes-picker" id="routes">
+    <div class="container">
+      <div class="section-head routes-section-head">
+        <div>
+          <h2>{labels.chooseTitle}</h2>
+          <p class="meta">{labels.chooseLead}</p>
+        </div>
+        <a href={localizePath("/places", lang)}>{labels.allPlaces} →</a>
+      </div>
+
+      <div class="route-card-grid">
+        {routeViews.map((route) => (
+          <article class="route-card" style={`--route-accent:${route.accent}`}>
+            {route.media && (
+              <a class="route-card-media" href={`#route-${route.id}`} aria-label={route.title}>
+                <img
+                  src={commonsThumb(route.media.url, 640)}
+                  alt={route.title}
+                  loading="lazy"
+                  decoding="async"
+                  crossorigin="anonymous"
+                  referrerpolicy="no-referrer"
+                />
+              </a>
+            )}
+            <div class="route-card-body">
+              <p class="eyebrow">{route.pace}</p>
+              <h3><a href={`#route-${route.id}`}>{route.title}</a></h3>
+              <p>{route.context}</p>
+              <dl class="route-quick-facts">
+                <div>
+                  <dt>{labels.suggestedDuration}</dt>
+                  <dd>{route.durationMinutes} {labels.minutes}</dd>
+                </div>
+                <div>
+                  <dt>{labels.stops}</dt>
+                  <dd>{route.stops.length}</dd>
+                </div>
+                <div>
+                  <dt>{labels.evidence}</dt>
+                  <dd>{route.evidenceCount}</dd>
+                </div>
+              </dl>
+              <div class="route-card-actions">
+                <a class="text-link" href={`#route-${route.id}`}>{labels.stops}</a>
+                <a class="text-link" href={localizePath(`/stories/${route.story.id}`, lang)}>{labels.openStory}</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p class="notice route-boundary">
+        <span class="notice-icon" aria-hidden="true">i</span>
+        <span>{labels.dataBoundary}</span>
+      </p>
+    </div>
+  </section>
+
+  {routeViews.map((route, routeIndex) => {
+    const startName = localizedAny(route.stops[0].place, "name");
+    const finishName = localizedAny(route.stops[route.stops.length - 1].place, "name");
+    return (
+      <section class={`section route-detail-section ${routeIndex % 2 === 1 ? "section-tint" : ""}`} id={`route-${route.id}`}>
+        <div class="container route-detail" style={`--route-accent:${route.accent}`}>
+          <header class="route-detail-head">
+            <div>
+              <p class="eyebrow">{route.shortTitle} · {route.durationMinutes} {labels.minutes}</p>
+              <h2>{route.title}</h2>
+              <p class="lead compact-lead">{route.context}</p>
+            </div>
+            <div class="route-start-finish" aria-label={route.title}>
+              <dl>
+                <div>
+                  <dt>{labels.start}</dt>
+                  <dd>{startName}</dd>
+                </div>
+                <div>
+                  <dt>{labels.finish}</dt>
+                  <dd>{finishName}</dd>
+                </div>
+              </dl>
+            </div>
+          </header>
+
+        <div class="route-detail-grid">
+          <div class="route-stops">
+            <ol class="route-stop-cards">
+              {route.stops.map((stop, index) => {
+                const place = stop.place;
+                const name = localizedAny(place, "name");
+                const firstSource = place.source_ids.map((id) => sourcesById.get(id)).find(Boolean);
+                return (
+                  <li class="route-stop-card">
+                    <article>
+                      <div class="route-stop-index" aria-hidden="true">{index + 1}</div>
+                      {place.media[0] && (
+                        <a class="route-stop-media" href={localizePath(`/places/${place.id}`, lang)} aria-label={name}>
+                          <img
+                            src={commonsThumb(place.media[0].url, 360)}
+                            alt={name}
+                            loading="lazy"
+                            decoding="async"
+                            crossorigin="anonymous"
+                            referrerpolicy="no-referrer"
+                          />
+                        </a>
+                      )}
+                      <div class="route-stop-body">
+                        <p class="eyebrow">{localizedAny(place, "era")} · {t.history.eraLabels[place.era]}</p>
+                        <h3><a href={localizePath(`/places/${place.id}`, lang)}>{name}</a></h3>
+                        <p>{stop.narration}</p>
+                        <div class="tag-row route-stop-tags">
+                          {place.coordinates && <span>{place.coordinates.lat.toFixed(4)}, {place.coordinates.lng.toFixed(4)}</span>}
+                          {stop.pairs.length > 0 && <span>{stop.pairs.length} {labels.thenNow}</span>}
+                          {stop.archiveItems.length > 0 && <span>{stop.archiveItems.length} {labels.archive}</span>}
+                        </div>
+                        <div class="route-stop-actions">
+                          <a class="text-link" href={localizePath(`/places/${place.id}`, lang)}>{labels.openPlace}</a>
+                          {firstSource && (
+                            <a class="src-link compact-source" href={firstSource.url} target="_blank" rel="noreferrer">
+                              {labels.source}: {sourceTitle(localizedAny(firstSource, "title"), lang)} ↗
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+
+          <aside class="route-evidence-panel">
+            <section>
+              <h3>{labels.routeStory}</h3>
+              <p>{localizedAny(route.story, "title")}</p>
+              <a class="button secondary" href={localizePath(`/stories/${route.story.id}`, lang)}>{labels.openStory}</a>
+            </section>
+
+            <section>
+              <h3>{labels.routeEvidence}</h3>
+              <dl class="route-evidence-counts">
+                <div><dt>{labels.stops}</dt><dd>{route.stops.length}</dd></div>
+                <div><dt>{labels.events}</dt><dd>{route.events.length}</dd></div>
+                <div><dt>{labels.archive}</dt><dd>{route.archiveItems.length}</dd></div>
+                <div><dt>{labels.thenNow}</dt><dd>{route.thenNow.length}</dd></div>
+                <div><dt>{labels.sources}</dt><dd>{route.sources.length}</dd></div>
+              </dl>
+            </section>
+
+            {route.events.length > 0 && (
+              <section>
+                <h3>{labels.linkedEvents}</h3>
+                <ol class="route-evidence-list">
+                  {route.events.map((event) => (
+                    <li>
+                      <span>{localizedAny(event.date, "display")}</span>
+                      <strong>{localizedAny(event, "title")}</strong>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
+
+            {(route.archiveItems.length > 0 || route.thenNow.length > 0) && (
+              <section>
+                <h3>{labels.linkedMedia}</h3>
+                <ul class="source-list compact route-media-list">
+                  {route.thenNow.map((pair) => (
+                    <li>
+                      <a href={localizePath(`/places/${pair.place_id}`, lang)}>
+                        {localizedAny(pair, "title")}
+                      </a>
+                    </li>
+                  ))}
+                  {route.archiveItems.map((item) => (
+                    <li>
+                      <a href={localizePath(`/places/${item.place_id}`, lang)}>
+                        {localizedAny(item, "title")}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <a class="text-link" href={`${localizePath("/history", lang)}#archive-layer`}>{labels.compareArchive}</a>
+              </section>
+            )}
+
+            <section>
+              <h3>{labels.sources}</h3>
+              <ul class="source-list compact">
+                {route.sources.slice(0, 6).map((source) => (
+                  <li>
+                    <a href={source.url} target="_blank" rel="noreferrer">
+                      {sourceTitle(localizedAny(source, "title"), lang)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <div class="route-panel-actions">
+              <a class="button" href={localizePath(`/places/${route.stops[0].place.id}`, lang)}>{labels.firstStop}</a>
+              <a class="button secondary" href={`${localizePath("/history", lang)}#landmarks`}>{labels.historyMap}</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+      </section>
+    );
+  })}
+
+  <style>
+    .route-hero-actions,
+    .route-card-actions,
+    .route-stop-actions,
+    .route-panel-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .route-hero-actions {
+      margin-top: 24px;
+    }
+
+    .routes-section-head .meta {
+      max-width: 74ch;
+      margin-top: 8px;
+    }
+
+    .route-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .route-card,
+    .route-stop-card article,
+    .route-evidence-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .route-card {
+      border-top: 4px solid var(--route-accent);
+    }
+
+    .route-card-media,
+    .route-stop-media {
+      display: block;
+      background: var(--surface-2);
+    }
+
+    .route-card-media img,
+    .route-stop-media img {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .route-card-body,
+    .route-stop-body {
+      padding: 18px;
+    }
+
+    .route-card h3,
+    .route-stop-card h3,
+    .route-evidence-panel h3 {
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .route-card h3 a,
+    .route-stop-card h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .route-card h3 a:hover,
+    .route-card h3 a:focus-visible,
+    .route-stop-card h3 a:hover,
+    .route-stop-card h3 a:focus-visible {
+      color: var(--brand);
+    }
+
+    .route-card p,
+    .route-stop-card p,
+    .route-evidence-panel p {
+      color: var(--muted);
+    }
+
+    .route-quick-facts,
+    .route-start-finish dl,
+    .route-evidence-counts {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .route-quick-facts {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .route-quick-facts div,
+    .route-start-finish div,
+    .route-evidence-counts div {
+      min-width: 0;
+    }
+
+    .route-quick-facts dt,
+    .route-start-finish dt,
+    .route-evidence-counts dt {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .route-quick-facts dd,
+    .route-start-finish dd,
+    .route-evidence-counts dd {
+      margin: 4px 0 0;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .route-boundary {
+      margin-top: 22px;
+    }
+
+    .route-detail {
+      border-top: 4px solid var(--route-accent);
+      padding-top: 28px;
+    }
+
+    .route-detail-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .compact-lead {
+      max-width: 78ch;
+    }
+
+    .route-start-finish {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 16px;
+    }
+
+    .route-detail-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(270px, 340px);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .route-stop-cards {
+      display: grid;
+      gap: 16px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .route-stop-card article {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 220px) minmax(0, 1fr);
+      align-items: stretch;
+      position: relative;
+    }
+
+    .route-stop-index {
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+      background: var(--route-accent);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+
+    .route-stop-media img {
+      height: 100%;
+      min-height: 220px;
+    }
+
+    .route-stop-tags {
+      margin-top: 14px;
+    }
+
+    .compact-source {
+      font-size: 0.9rem;
+    }
+
+    .route-evidence-panel {
+      display: grid;
+      gap: 18px;
+      padding: 18px;
+      position: sticky;
+      top: 96px;
+    }
+
+    .route-evidence-panel section + section {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .route-evidence-counts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .route-evidence-list {
+      display: grid;
+      gap: 10px;
+      margin: 12px 0 0;
+      padding-left: 1.2rem;
+    }
+
+    .route-evidence-list span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+
+    .route-media-list {
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 920px) {
+      .route-detail-head,
+      .route-detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .route-evidence-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .route-quick-facts {
+        grid-template-columns: 1fr;
+      }
+
+      .route-stop-card article {
+        grid-template-columns: 38px minmax(0, 1fr);
+      }
+
+      .route-stop-media {
+        grid-column: 2;
+      }
+
+      .route-stop-media img {
+        height: 180px;
+        min-height: 0;
+      }
+
+      .route-stop-body {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+</Layout>

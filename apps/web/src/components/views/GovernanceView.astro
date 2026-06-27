@@ -1,0 +1,1416 @@
+---
+import SectionNav from "@components/SectionNav.astro";
+import Layout from "@layouts/Layout.astro";
+import { type Lang } from "@i18n/ui";
+import { field, localeForLang, localizePath } from "@i18n/utils";
+import {
+  budgetItems,
+  cityArchive,
+  projects,
+  sourceRegistry,
+  type BudgetItem,
+  type CityArchiveRecord,
+  type Project
+} from "@lib/data";
+import {
+  categoryLabel,
+  formatMoney,
+  formatPlainNumber,
+  projectStatusLabel,
+  sourceTitle
+} from "@lib/format";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const locale = localeForLang(lang);
+const currentYear = new Date().getFullYear();
+
+type Copy = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  lead: string;
+  currentTitle: string;
+  currentMeta: string;
+  sectionNavLabel: string;
+  navWho: string;
+  navArchive: string;
+  navMoney: string;
+  navRoutes: string;
+  statTerms: string;
+  statMayors: string;
+  statArchive: string;
+  statSources: string;
+  whoTitle: string;
+  whoLead: string;
+  currentGroup: string;
+  earlyGroup: string;
+  recentGroup: string;
+  officeTerm: string;
+  linkedArchive: string;
+  noLinkedArchive: string;
+  detail: string;
+  source: string;
+  archiveTitle: string;
+  archiveLead: string;
+  mayorOverlap: string;
+  amountLabel: string;
+  budgetTitle: string;
+  budgetLead: string;
+  latestTotal: string;
+  latestCapital: string;
+  fundingLines: string;
+  projectsTitle: string;
+  projectLead: string;
+  projectYear: string;
+  noAmount: string;
+  deepTitle: string;
+  deepLead: string;
+  ctaMayors: string;
+  ctaMayorsText: string;
+  ctaBudget: string;
+  ctaBudgetText: string;
+  ctaProjects: string;
+  ctaProjectsText: string;
+  ctaArchive: string;
+  ctaArchiveText: string;
+  open: string;
+};
+
+const copy = {
+  bg: {
+    eyebrow: "Политическа история",
+    title: "Управление и политическа история",
+    description: "Кой е управлявал Пловдив и кои архивни, бюджетни и проектни записи стоят около тези мандати.",
+    lead:
+      "Една гражданска повърхност за властта във времето: кметски мандати, архивни промени, бюджетни решения и проектни записи, подредени като доказателства.",
+    currentTitle: "Текущо управление",
+    currentMeta: "изведено от активния кметски запис",
+    sectionNavLabel: "Раздели на страницата",
+    navWho: "Кой управлява",
+    navArchive: "Архивни промени",
+    navMoney: "Бюджет и проекти",
+    navRoutes: "По-дълбоко",
+    statTerms: "кметски мандата в архива",
+    statMayors: "различими кметски имена",
+    statArchive: "архивни записи извън мандатите",
+    statSources: "източника в регистъра",
+    whoTitle: "Кой управлява: ранни, текущи и последни мандати",
+    whoLead:
+      "Тук имената не са декоративни. Всеки кметски запис е свързан с периода си и с архивни събития, които се застъпват с него, когато такива има.",
+    currentGroup: "Текущ кмет",
+    earlyGroup: "Първи общински мандати",
+    recentGroup: "Последни администрации",
+    officeTerm: "мандат",
+    linkedArchive: "застъпващи се архивни записи",
+    noLinkedArchive: "няма застъпващ се архивен запис в избрания набор",
+    detail: "профил",
+    source: "източник",
+    archiveTitle: "Какво се променя: архивен гръбнак на управлението",
+    archiveLead:
+      "Избрани записи от градския архив показват управленски промени, общински програми, финанси и културни решения. Връзката с кметове е само времево застъпване.",
+    mayorOverlap: "застъпване с мандат",
+    amountLabel: "стойност",
+    budgetTitle: "Как управлението се вижда в бюджета и проектите",
+    budgetLead:
+      "Последните бюджетни и проектни записи дават проверим контекст за текущите приоритети, без да заменят подробните бюджетни таблици.",
+    latestTotal: "последен общ бюджет",
+    latestCapital: "последна капиталова програма",
+    fundingLines: "последни капиталови източници",
+    projectsTitle: "Текущи проектни записи",
+    projectLead: "Активни, договорени или финансирани проекти от публичния проектен регистър.",
+    projectYear: "година",
+    noAmount: "няма сума",
+    deepTitle: "Отворете пълните повърхности",
+    deepLead: "Тази страница е навигационен политически слой. Подробните списъци остават в специализираните раздели.",
+    ctaMayors: "Всички кметове",
+    ctaMayorsText: "пълна хронология и профили",
+    ctaBudget: "Бюджет",
+    ctaBudgetText: "исторически и текущи бюджетни записи",
+    ctaProjects: "Проекти",
+    ctaProjectsText: "карти и статуси на проектите",
+    ctaArchive: "Архив",
+    ctaArchiveText: "първични документи и градски записи",
+    open: "отвори"
+  },
+  en: {
+    eyebrow: "Political history",
+    title: "Governance and political history",
+    description: "Who governed Plovdiv and which archive, budget and project records sit around those terms.",
+    lead:
+      "A civic surface for power over time: mayoral terms, archive changes, budget decisions and project records arranged as evidence.",
+    currentTitle: "Current administration",
+    currentMeta: "derived from the active mayoral record",
+    sectionNavLabel: "Page sections",
+    navWho: "Who governed",
+    navArchive: "Archive changes",
+    navMoney: "Budget and projects",
+    navRoutes: "Go deeper",
+    statTerms: "mayoral terms in the archive",
+    statMayors: "distinct mayor names",
+    statArchive: "non-term archive records",
+    statSources: "sources in the registry",
+    whoTitle: "Who governed: early, current and recent terms",
+    whoLead:
+      "The names are not decoration. Each mayoral record stays tied to its period and to overlapping archive events where the curated data supports that link.",
+    currentGroup: "Current mayor",
+    earlyGroup: "First municipal terms",
+    recentGroup: "Recent administrations",
+    officeTerm: "term",
+    linkedArchive: "overlapping archive records",
+    noLinkedArchive: "no overlapping archive record in this selected set",
+    detail: "profile",
+    source: "source",
+    archiveTitle: "What changed: an archive backbone for governance",
+    archiveLead:
+      "Selected city archive records surface governance changes, municipal programmes, finance and cultural decisions. The mayor link is a time overlap only.",
+    mayorOverlap: "term overlap",
+    amountLabel: "amount",
+    budgetTitle: "How governance shows up in budgets and projects",
+    budgetLead:
+      "Recent budget and project records give verifiable context for current priorities without replacing the detailed budget tables.",
+    latestTotal: "latest total budget",
+    latestCapital: "latest capital programme",
+    fundingLines: "latest capital funding lines",
+    projectsTitle: "Current project records",
+    projectLead: "Active, contracted or funded projects from the public project registry.",
+    projectYear: "year",
+    noAmount: "no amount",
+    deepTitle: "Open the full surfaces",
+    deepLead: "This page is a political navigation layer. The complete lists remain in the specialist sections.",
+    ctaMayors: "All mayors",
+    ctaMayorsText: "full chronology and profiles",
+    ctaBudget: "Budget",
+    ctaBudgetText: "historical and current budget records",
+    ctaProjects: "Projects",
+    ctaProjectsText: "project maps and statuses",
+    ctaArchive: "Archive",
+    ctaArchiveText: "primary documents and city records",
+    open: "open"
+  },
+  de: {
+    eyebrow: "Politische Geschichte",
+    title: "Governance und politische Geschichte",
+    description: "Wer Plovdiv regierte und welche Archiv-, Haushalts- und Projektdatensätze diese Amtszeiten rahmen.",
+    lead:
+      "Eine bürgernahe Oberfläche über Macht im Zeitverlauf: Bürgermeistermandate, Archivänderungen, Haushaltsentscheidungen und Projektdatensätze als Belege.",
+    currentTitle: "Aktuelle Verwaltung",
+    currentMeta: "aus dem aktiven Bürgermeisterdatensatz abgeleitet",
+    sectionNavLabel: "Seitenabschnitte",
+    navWho: "Wer regierte",
+    navArchive: "Archivänderungen",
+    navMoney: "Budget und Projekte",
+    navRoutes: "Vertiefen",
+    statTerms: "Bürgermeistermandate im Archiv",
+    statMayors: "unterschiedliche Bürgermeister-Namen",
+    statArchive: "Archivdatensätze außerhalb der Mandate",
+    statSources: "Quellen im Register",
+    whoTitle: "Wer regierte: frühe, aktuelle und jüngste Mandate",
+    whoLead:
+      "Die Namen sind keine Dekoration. Jeder Bürgermeisterdatensatz bleibt mit seinem Zeitraum und, wo belegt, mit überlappenden Archivereignissen verbunden.",
+    currentGroup: "Aktueller Bürgermeister",
+    earlyGroup: "Erste kommunale Mandate",
+    recentGroup: "Jüngste Verwaltungen",
+    officeTerm: "Mandat",
+    linkedArchive: "überlappende Archivdatensätze",
+    noLinkedArchive: "kein überlappender Archivdatensatz in dieser Auswahl",
+    detail: "Profil",
+    source: "Quelle",
+    archiveTitle: "Was sich änderte: Archiv-Rückgrat der Governance",
+    archiveLead:
+      "Ausgewählte Stadtarchivdatensätze zeigen Verwaltungswechsel, kommunale Programme, Finanzen und Kulturentscheidungen. Die Bürgermeisterverknüpfung ist nur eine zeitliche Überlappung.",
+    mayorOverlap: "Mandatsüberlappung",
+    amountLabel: "Betrag",
+    budgetTitle: "Wie Governance in Budgets und Projekten sichtbar wird",
+    budgetLead:
+      "Aktuelle Budget- und Projektdatensätze geben überprüfbaren Kontext zu Prioritäten, ohne die detaillierten Budgettabellen zu ersetzen.",
+    latestTotal: "letztes Gesamtbudget",
+    latestCapital: "letztes Kapitalprogramm",
+    fundingLines: "letzte Kapitalfinanzierungslinien",
+    projectsTitle: "Aktuelle Projektdatensätze",
+    projectLead: "Aktive, vergebene oder finanzierte Projekte aus dem öffentlichen Projektregister.",
+    projectYear: "Jahr",
+    noAmount: "kein Betrag",
+    deepTitle: "Vollständige Oberflächen öffnen",
+    deepLead: "Diese Seite ist eine politische Navigationsschicht. Die vollständigen Listen bleiben in den Fachbereichen.",
+    ctaMayors: "Alle Bürgermeister",
+    ctaMayorsText: "vollständige Chronologie und Profile",
+    ctaBudget: "Budget",
+    ctaBudgetText: "historische und aktuelle Budgetdatensätze",
+    ctaProjects: "Projekte",
+    ctaProjectsText: "Projektkarten und Status",
+    ctaArchive: "Archiv",
+    ctaArchiveText: "Primärdokumente und Stadtdatensätze",
+    open: "öffnen"
+  },
+  fr: {
+    eyebrow: "Histoire politique",
+    title: "Gouvernance et histoire politique",
+    description: "Qui a gouverné Plovdiv et quels dossiers d'archives, de budget et de projets entourent ces mandats.",
+    lead:
+      "Une surface civique sur le pouvoir dans le temps : mandats des maires, changements d'archives, décisions budgétaires et dossiers de projets comme preuves.",
+    currentTitle: "Administration actuelle",
+    currentMeta: "dérivée du dossier actif du maire",
+    sectionNavLabel: "Sections de la page",
+    navWho: "Qui gouvernait",
+    navArchive: "Changements d'archives",
+    navMoney: "Budget et projets",
+    navRoutes: "Approfondir",
+    statTerms: "mandats de maire dans l'archive",
+    statMayors: "noms de maires distincts",
+    statArchive: "dossiers d'archives hors mandats",
+    statSources: "sources dans le registre",
+    whoTitle: "Qui gouvernait : mandats anciens, actuel et récents",
+    whoLead:
+      "Les noms ne sont pas décoratifs. Chaque dossier de maire reste lié à sa période et aux événements d'archives qui la recoupent lorsque les données le permettent.",
+    currentGroup: "Maire actuel",
+    earlyGroup: "Premiers mandats municipaux",
+    recentGroup: "Administrations récentes",
+    officeTerm: "mandat",
+    linkedArchive: "dossiers d'archives qui se recoupent",
+    noLinkedArchive: "aucun dossier d'archives recoupé dans cette sélection",
+    detail: "profil",
+    source: "source",
+    archiveTitle: "Ce qui a changé : colonne vertébrale archivistique de la gouvernance",
+    archiveLead:
+      "Des dossiers choisis des archives urbaines montrent changements de gouvernance, programmes municipaux, finances et décisions culturelles. Le lien avec les maires est seulement temporel.",
+    mayorOverlap: "recoupement de mandat",
+    amountLabel: "montant",
+    budgetTitle: "Comment la gouvernance apparaît dans les budgets et les projets",
+    budgetLead:
+      "Les dossiers budgétaires et de projets récents donnent un contexte vérifiable aux priorités actuelles sans remplacer les tableaux budgétaires détaillés.",
+    latestTotal: "dernier budget total",
+    latestCapital: "dernier programme d'investissement",
+    fundingLines: "dernières lignes de financement",
+    projectsTitle: "Dossiers de projets actuels",
+    projectLead: "Projets actifs, attribués ou financés du registre public des projets.",
+    projectYear: "année",
+    noAmount: "aucun montant",
+    deepTitle: "Ouvrir les surfaces complètes",
+    deepLead: "Cette page est une couche de navigation politique. Les listes complètes restent dans les sections spécialisées.",
+    ctaMayors: "Tous les maires",
+    ctaMayorsText: "chronologie complète et profils",
+    ctaBudget: "Budget",
+    ctaBudgetText: "dossiers budgétaires historiques et actuels",
+    ctaProjects: "Projets",
+    ctaProjectsText: "cartes et statuts des projets",
+    ctaArchive: "Archives",
+    ctaArchiveText: "documents primaires et dossiers urbains",
+    open: "ouvrir"
+  },
+  it: {
+    eyebrow: "Storia politica",
+    title: "Governo e storia politica",
+    description: "Chi ha governato Plovdiv e quali registri di archivio, bilancio e progetto si collocano attorno a quei mandati.",
+    lead:
+      "Una superficie civica sul potere nel tempo: mandati dei sindaci, cambiamenti d'archivio, decisioni di bilancio e registri di progetto come prove.",
+    currentTitle: "Amministrazione attuale",
+    currentMeta: "derivata dal registro attivo del sindaco",
+    sectionNavLabel: "Sezioni della pagina",
+    navWho: "Chi governava",
+    navArchive: "Cambiamenti d'archivio",
+    navMoney: "Bilancio e progetti",
+    navRoutes: "Approfondisci",
+    statTerms: "mandati di sindaco nell'archivio",
+    statMayors: "nomi distinti di sindaci",
+    statArchive: "registri d'archivio fuori mandato",
+    statSources: "fonti nel registro",
+    whoTitle: "Chi governava: mandati iniziali, attuale e recenti",
+    whoLead:
+      "I nomi non sono decorazione. Ogni registro del sindaco resta legato al proprio periodo e agli eventi d'archivio sovrapposti quando i dati curati lo supportano.",
+    currentGroup: "Sindaco attuale",
+    earlyGroup: "Primi mandati municipali",
+    recentGroup: "Amministrazioni recenti",
+    officeTerm: "mandato",
+    linkedArchive: "registri d'archivio sovrapposti",
+    noLinkedArchive: "nessun registro d'archivio sovrapposto in questa selezione",
+    detail: "profilo",
+    source: "fonte",
+    archiveTitle: "Cosa cambiò: una dorsale d'archivio per il governo",
+    archiveLead:
+      "Registri scelti dell'archivio cittadino mostrano cambiamenti di governo, programmi municipali, finanze e decisioni culturali. Il collegamento con i sindaci è solo temporale.",
+    mayorOverlap: "sovrapposizione di mandato",
+    amountLabel: "importo",
+    budgetTitle: "Come il governo appare nei bilanci e nei progetti",
+    budgetLead:
+      "I registri recenti di bilancio e progetto danno contesto verificabile alle priorità attuali senza sostituire le tabelle dettagliate.",
+    latestTotal: "ultimo bilancio totale",
+    latestCapital: "ultimo programma capitale",
+    fundingLines: "ultime linee di finanziamento",
+    projectsTitle: "Registri di progetto attuali",
+    projectLead: "Progetti attivi, contrattati o finanziati dal registro pubblico dei progetti.",
+    projectYear: "anno",
+    noAmount: "nessun importo",
+    deepTitle: "Apri le superfici complete",
+    deepLead: "Questa pagina è uno strato di navigazione politica. Gli elenchi completi restano nelle sezioni specialistiche.",
+    ctaMayors: "Tutti i sindaci",
+    ctaMayorsText: "cronologia completa e profili",
+    ctaBudget: "Bilancio",
+    ctaBudgetText: "registri di bilancio storici e attuali",
+    ctaProjects: "Progetti",
+    ctaProjectsText: "mappe e stati dei progetti",
+    ctaArchive: "Archivio",
+    ctaArchiveText: "documenti primari e registri cittadini",
+    open: "apri"
+  },
+  tr: {
+    eyebrow: "Siyasi tarih",
+    title: "Yönetim ve siyasi tarih",
+    description: "Plovdiv'i kim yönetti ve bu görev dönemlerinin etrafında hangi arşiv, bütçe ve proje kayıtları var.",
+    lead:
+      "Zaman içinde iktidarı gösteren yurttaş odaklı bir yüzey: belediye başkanı dönemleri, arşiv değişiklikleri, bütçe kararları ve proje kayıtları kanıt olarak düzenlenir.",
+    currentTitle: "Mevcut yönetim",
+    currentMeta: "aktif belediye başkanı kaydından türetildi",
+    sectionNavLabel: "Sayfa bölümleri",
+    navWho: "Kim yönetti",
+    navArchive: "Arşiv değişiklikleri",
+    navMoney: "Bütçe ve projeler",
+    navRoutes: "Derinleş",
+    statTerms: "arşivdeki başkanlık dönemleri",
+    statMayors: "ayrı belediye başkanı adları",
+    statArchive: "dönem dışı arşiv kayıtları",
+    statSources: "kayıt defterindeki kaynaklar",
+    whoTitle: "Kim yönetti: erken, mevcut ve yakın dönemler",
+    whoLead:
+      "Adlar dekorasyon değildir. Her belediye başkanı kaydı dönemine ve veriler desteklediğinde çakışan arşiv olaylarına bağlı kalır.",
+    currentGroup: "Mevcut belediye başkanı",
+    earlyGroup: "İlk belediye dönemleri",
+    recentGroup: "Yakın dönem yönetimleri",
+    officeTerm: "dönem",
+    linkedArchive: "çakışan arşiv kayıtları",
+    noLinkedArchive: "bu seçkide çakışan arşiv kaydı yok",
+    detail: "profil",
+    source: "kaynak",
+    archiveTitle: "Ne değişti: yönetim için arşiv omurgası",
+    archiveLead:
+      "Seçilmiş şehir arşivi kayıtları yönetim değişikliklerini, belediye programlarını, finansmanı ve kültürel kararları gösterir. Belediye başkanı bağlantısı yalnızca zamansal çakışmadır.",
+    mayorOverlap: "dönem çakışması",
+    amountLabel: "tutar",
+    budgetTitle: "Yönetim bütçelerde ve projelerde nasıl görünür",
+    budgetLead:
+      "Son bütçe ve proje kayıtları ayrıntılı bütçe tablolarının yerine geçmeden güncel öncelikler için doğrulanabilir bağlam verir.",
+    latestTotal: "son toplam bütçe",
+    latestCapital: "son sermaye programı",
+    fundingLines: "son sermaye finansman satırları",
+    projectsTitle: "Güncel proje kayıtları",
+    projectLead: "Kamu proje kayıtlarından aktif, sözleşmeli veya finanse edilen projeler.",
+    projectYear: "yıl",
+    noAmount: "tutar yok",
+    deepTitle: "Tam yüzeyleri aç",
+    deepLead: "Bu sayfa siyasi bir gezinme katmanıdır. Tam listeler uzman bölümlerde kalır.",
+    ctaMayors: "Tüm belediye başkanları",
+    ctaMayorsText: "tam kronoloji ve profiller",
+    ctaBudget: "Bütçe",
+    ctaBudgetText: "tarihsel ve güncel bütçe kayıtları",
+    ctaProjects: "Projeler",
+    ctaProjectsText: "proje haritaları ve durumları",
+    ctaArchive: "Arşiv",
+    ctaArchiveText: "birincil belgeler ve şehir kayıtları",
+    open: "aç"
+  },
+  es: {
+    eyebrow: "Historia política",
+    title: "Gobernanza e historia política",
+    description: "Quién gobernó Plovdiv y qué registros de archivo, presupuesto y proyectos rodean esos mandatos.",
+    lead:
+      "Una superficie cívica sobre el poder en el tiempo: mandatos de alcaldes, cambios de archivo, decisiones presupuestarias y registros de proyectos como evidencia.",
+    currentTitle: "Administración actual",
+    currentMeta: "derivada del registro activo del alcalde",
+    sectionNavLabel: "Secciones de la página",
+    navWho: "Quién gobernó",
+    navArchive: "Cambios de archivo",
+    navMoney: "Presupuesto y proyectos",
+    navRoutes: "Profundizar",
+    statTerms: "mandatos de alcalde en el archivo",
+    statMayors: "nombres de alcaldes distintos",
+    statArchive: "registros de archivo fuera de mandatos",
+    statSources: "fuentes en el registro",
+    whoTitle: "Quién gobernó: mandatos tempranos, actual y recientes",
+    whoLead:
+      "Los nombres no son decoración. Cada registro de alcalde permanece unido a su periodo y a los eventos de archivo superpuestos cuando los datos lo respaldan.",
+    currentGroup: "Alcalde actual",
+    earlyGroup: "Primeros mandatos municipales",
+    recentGroup: "Administraciones recientes",
+    officeTerm: "mandato",
+    linkedArchive: "registros de archivo superpuestos",
+    noLinkedArchive: "no hay registro de archivo superpuesto en esta selección",
+    detail: "perfil",
+    source: "fuente",
+    archiveTitle: "Qué cambió: una columna de archivo para la gobernanza",
+    archiveLead:
+      "Registros seleccionados del archivo de la ciudad muestran cambios de gobernanza, programas municipales, finanzas y decisiones culturales. El vínculo con alcaldes es solo temporal.",
+    mayorOverlap: "superposición de mandato",
+    amountLabel: "importe",
+    budgetTitle: "Cómo la gobernanza aparece en presupuestos y proyectos",
+    budgetLead:
+      "Los registros recientes de presupuesto y proyectos dan contexto verificable a las prioridades actuales sin reemplazar las tablas presupuestarias detalladas.",
+    latestTotal: "último presupuesto total",
+    latestCapital: "último programa de capital",
+    fundingLines: "últimas líneas de financiación",
+    projectsTitle: "Registros de proyectos actuales",
+    projectLead: "Proyectos activos, contratados o financiados del registro público de proyectos.",
+    projectYear: "año",
+    noAmount: "sin importe",
+    deepTitle: "Abrir las superficies completas",
+    deepLead: "Esta página es una capa de navegación política. Las listas completas permanecen en las secciones especializadas.",
+    ctaMayors: "Todos los alcaldes",
+    ctaMayorsText: "cronología completa y perfiles",
+    ctaBudget: "Presupuesto",
+    ctaBudgetText: "registros presupuestarios históricos y actuales",
+    ctaProjects: "Proyectos",
+    ctaProjectsText: "mapas y estados de proyectos",
+    ctaArchive: "Archivo",
+    ctaArchiveText: "documentos primarios y registros urbanos",
+    open: "abrir"
+  },
+  el: {
+    eyebrow: "Πολιτική ιστορία",
+    title: "Διακυβέρνηση και πολιτική ιστορία",
+    description: "Ποιος κυβέρνησε το Plovdiv και ποια αρχειακά, προϋπολογιστικά και έργα πλαισιώνουν αυτές τις θητείες.",
+    lead:
+      "Μια πολιτειακή επιφάνεια για την εξουσία στον χρόνο: θητείες δημάρχων, αρχειακές αλλαγές, αποφάσεις προϋπολογισμού και εγγραφές έργων ως τεκμήρια.",
+    currentTitle: "Τρέχουσα διοίκηση",
+    currentMeta: "προκύπτει από την ενεργή εγγραφή δημάρχου",
+    sectionNavLabel: "Ενότητες σελίδας",
+    navWho: "Ποιος κυβέρνησε",
+    navArchive: "Αρχειακές αλλαγές",
+    navMoney: "Προϋπολογισμός και έργα",
+    navRoutes: "Περισσότερα",
+    statTerms: "θητείες δημάρχων στο αρχείο",
+    statMayors: "διακριτά ονόματα δημάρχων",
+    statArchive: "αρχειακές εγγραφές εκτός θητειών",
+    statSources: "πηγές στο μητρώο",
+    whoTitle: "Ποιος κυβέρνησε: πρώιμες, τρέχουσα και πρόσφατες θητείες",
+    whoLead:
+      "Τα ονόματα δεν είναι διακόσμηση. Κάθε εγγραφή δημάρχου μένει δεμένη με την περίοδό της και με επικαλυπτόμενα αρχειακά γεγονότα όταν τα δεδομένα το υποστηρίζουν.",
+    currentGroup: "Τρέχων δήμαρχος",
+    earlyGroup: "Πρώτες δημοτικές θητείες",
+    recentGroup: "Πρόσφατες διοικήσεις",
+    officeTerm: "θητεία",
+    linkedArchive: "επικαλυπτόμενες αρχειακές εγγραφές",
+    noLinkedArchive: "καμία επικαλυπτόμενη αρχειακή εγγραφή σε αυτή την επιλογή",
+    detail: "προφίλ",
+    source: "πηγή",
+    archiveTitle: "Τι άλλαξε: αρχειακός κορμός της διακυβέρνησης",
+    archiveLead:
+      "Επιλεγμένες εγγραφές του αρχείου της πόλης δείχνουν αλλαγές διακυβέρνησης, δημοτικά προγράμματα, οικονομικά και πολιτιστικές αποφάσεις. Ο σύνδεσμος με δημάρχους είναι μόνο χρονική επικάλυψη.",
+    mayorOverlap: "επικάλυψη θητείας",
+    amountLabel: "ποσό",
+    budgetTitle: "Πώς φαίνεται η διακυβέρνηση στους προϋπολογισμούς και τα έργα",
+    budgetLead:
+      "Οι πρόσφατες εγγραφές προϋπολογισμού και έργων δίνουν επαληθεύσιμο πλαίσιο για τις τρέχουσες προτεραιότητες χωρίς να αντικαθιστούν τους αναλυτικούς πίνακες.",
+    latestTotal: "τελευταίος συνολικός προϋπολογισμός",
+    latestCapital: "τελευταίο κεφαλαιουχικό πρόγραμμα",
+    fundingLines: "τελευταίες γραμμές χρηματοδότησης",
+    projectsTitle: "Τρέχουσες εγγραφές έργων",
+    projectLead: "Ενεργά, συμβασιοποιημένα ή χρηματοδοτημένα έργα από το δημόσιο μητρώο έργων.",
+    projectYear: "έτος",
+    noAmount: "χωρίς ποσό",
+    deepTitle: "Άνοιγμα πλήρων επιφανειών",
+    deepLead: "Αυτή η σελίδα είναι πολιτικό επίπεδο πλοήγησης. Οι πλήρεις λίστες μένουν στις ειδικές ενότητες.",
+    ctaMayors: "Όλοι οι δήμαρχοι",
+    ctaMayorsText: "πλήρης χρονολογία και προφίλ",
+    ctaBudget: "Προϋπολογισμός",
+    ctaBudgetText: "ιστορικές και τρέχουσες εγγραφές προϋπολογισμού",
+    ctaProjects: "Έργα",
+    ctaProjectsText: "χάρτες και καταστάσεις έργων",
+    ctaArchive: "Αρχείο",
+    ctaArchiveText: "πρωτογενή έγγραφα και εγγραφές πόλης",
+    open: "άνοιγμα"
+  },
+  ja: {
+    eyebrow: "政治史",
+    title: "統治と政治史",
+    description: "Plovdivを誰が統治し、その任期の周辺にどのアーカイブ、予算、プロジェクト記録があるか。",
+    lead:
+      "時間の中の権力を読むための市民向け画面です。市長任期、アーカイブ上の変化、予算決定、プロジェクト記録を根拠として並べます。",
+    currentTitle: "現在の行政",
+    currentMeta: "有効な市長記録から作成",
+    sectionNavLabel: "ページ内セクション",
+    navWho: "誰が統治したか",
+    navArchive: "アーカイブ上の変化",
+    navMoney: "予算とプロジェクト",
+    navRoutes: "さらに見る",
+    statTerms: "アーカイブ内の市長任期",
+    statMayors: "識別できる市長名",
+    statArchive: "任期以外のアーカイブ記録",
+    statSources: "登録された出典",
+    whoTitle: "誰が統治したか: 初期、現在、近年の任期",
+    whoLead:
+      "名前は飾りではありません。各市長記録はその期間に結び付き、データが支える場合は重なるアーカイブ出来事にも結び付きます。",
+    currentGroup: "現在の市長",
+    earlyGroup: "最初期の市政任期",
+    recentGroup: "近年の行政",
+    officeTerm: "任期",
+    linkedArchive: "重なるアーカイブ記録",
+    noLinkedArchive: "この選択内に重なるアーカイブ記録はありません",
+    detail: "プロフィール",
+    source: "出典",
+    archiveTitle: "何が変わったか: 統治を読むアーカイブの骨格",
+    archiveLead:
+      "選択した都市アーカイブ記録は、統治変更、市政プログラム、財政、文化決定を示します。市長との関連は時間上の重なりのみです。",
+    mayorOverlap: "任期との重なり",
+    amountLabel: "金額",
+    budgetTitle: "統治は予算とプロジェクトにどう現れるか",
+    budgetLead:
+      "最近の予算・プロジェクト記録は、詳細な予算表を置き換えるものではなく、現在の優先事項に検証可能な文脈を与えます。",
+    latestTotal: "最新の総予算",
+    latestCapital: "最新の資本プログラム",
+    fundingLines: "最新の資本財源項目",
+    projectsTitle: "現在のプロジェクト記録",
+    projectLead: "公開プロジェクト登録から、進行中、契約済み、または資金確保済みのプロジェクト。",
+    projectYear: "年",
+    noAmount: "金額なし",
+    deepTitle: "完全な画面を開く",
+    deepLead: "このページは政治史のナビゲーション層です。完全な一覧は専門セクションにあります。",
+    ctaMayors: "すべての市長",
+    ctaMayorsText: "完全な年表とプロフィール",
+    ctaBudget: "予算",
+    ctaBudgetText: "過去と現在の予算記録",
+    ctaProjects: "プロジェクト",
+    ctaProjectsText: "プロジェクトの地図と状態",
+    ctaArchive: "アーカイブ",
+    ctaArchiveText: "一次資料と都市記録",
+    open: "開く"
+  }
+} satisfies Record<Lang, Copy>;
+
+const kindLabels = {
+  bg: {
+    mayor_term: "кметски мандат",
+    historical_event: "историческо събитие",
+    cultural_programme: "културна програма",
+    historical_finance: "исторически финанси",
+    municipal_programme: "общинска програма",
+    governance_change: "управленска промяна",
+    archive_source: "архивен източник"
+  },
+  en: {
+    mayor_term: "mayoral term",
+    historical_event: "historical event",
+    cultural_programme: "cultural programme",
+    historical_finance: "historical finance",
+    municipal_programme: "municipal programme",
+    governance_change: "governance change",
+    archive_source: "archive source"
+  },
+  de: {
+    mayor_term: "Bürgermeistermandat",
+    historical_event: "historisches Ereignis",
+    cultural_programme: "Kulturprogramm",
+    historical_finance: "historische Finanzen",
+    municipal_programme: "kommunales Programm",
+    governance_change: "Verwaltungswechsel",
+    archive_source: "Archivquelle"
+  },
+  fr: {
+    mayor_term: "mandat de maire",
+    historical_event: "événement historique",
+    cultural_programme: "programme culturel",
+    historical_finance: "finances historiques",
+    municipal_programme: "programme municipal",
+    governance_change: "changement de gouvernance",
+    archive_source: "source d'archives"
+  },
+  it: {
+    mayor_term: "mandato del sindaco",
+    historical_event: "evento storico",
+    cultural_programme: "programma culturale",
+    historical_finance: "finanza storica",
+    municipal_programme: "programma municipale",
+    governance_change: "cambio di governo",
+    archive_source: "fonte d'archivio"
+  },
+  tr: {
+    mayor_term: "belediye başkanı dönemi",
+    historical_event: "tarihsel olay",
+    cultural_programme: "kültür programı",
+    historical_finance: "tarihsel finans",
+    municipal_programme: "belediye programı",
+    governance_change: "yönetim değişikliği",
+    archive_source: "arşiv kaynağı"
+  },
+  es: {
+    mayor_term: "mandato de alcalde",
+    historical_event: "evento histórico",
+    cultural_programme: "programa cultural",
+    historical_finance: "finanzas históricas",
+    municipal_programme: "programa municipal",
+    governance_change: "cambio de gobernanza",
+    archive_source: "fuente de archivo"
+  },
+  el: {
+    mayor_term: "θητεία δημάρχου",
+    historical_event: "ιστορικό γεγονός",
+    cultural_programme: "πολιτιστικό πρόγραμμα",
+    historical_finance: "ιστορικά οικονομικά",
+    municipal_programme: "δημοτικό πρόγραμμα",
+    governance_change: "αλλαγή διακυβέρνησης",
+    archive_source: "αρχειακή πηγή"
+  },
+  ja: {
+    mayor_term: "市長任期",
+    historical_event: "歴史的出来事",
+    cultural_programme: "文化プログラム",
+    historical_finance: "歴史的財政",
+    municipal_programme: "市政プログラム",
+    governance_change: "統治変更",
+    archive_source: "アーカイブ出典"
+  }
+} satisfies Record<Lang, Record<CityArchiveRecord["kind"], string>>;
+
+const l = copy[lang];
+const sectionNav = [
+  { id: "who-governed", label: l.navWho },
+  { id: "archive-changes", label: l.navArchive },
+  { id: "money-projects", label: l.navMoney },
+  { id: "go-deeper", label: l.navRoutes }
+];
+
+const mayorTerms = cityArchive
+  .filter((record) => record.kind === "mayor_term")
+  .sort((a, b) => a.year_start - b.year_start || (a.year_end ?? currentYear) - (b.year_end ?? currentYear));
+const currentMayor = mayorTerms.find((record) => record.year_end == null) ?? mayorTerms[mayorTerms.length - 1];
+const earlyMayors = mayorTerms.slice(0, 5);
+const recentMayors = [...mayorTerms]
+  .filter((record) => record.id !== currentMayor?.id)
+  .sort((a, b) => b.year_start - a.year_start || (b.year_end ?? currentYear) - (a.year_end ?? currentYear))
+  .slice(0, 6);
+
+function normalizeMayorName(record: CityArchiveRecord): string {
+  return field(record, "actor", lang)
+    .replace(/^(д-р|Д-р|инж\.|Mayor:)\s*/u, "")
+    .trim()
+    .toLocaleLowerCase(locale);
+}
+
+const uniqueMayorCount = new Set(mayorTerms.map((record) => normalizeMayorName(record))).size;
+const nonMayorArchive = cityArchive
+  .filter((record) => record.kind !== "mayor_term")
+  .sort((a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start));
+const governanceChanges = nonMayorArchive.filter((record) => record.kind === "governance_change");
+const programmeAndFinance = nonMayorArchive.filter((record) => record.kind !== "governance_change");
+
+function pickEvenly<T>(items: T[], max: number): T[] {
+  if (items.length <= max) return items;
+  const selected: T[] = [];
+  const used = new Set<number>();
+  for (let i = 0; i < max; i += 1) {
+    const index = Math.round((i * (items.length - 1)) / Math.max(1, max - 1));
+    if (!used.has(index)) {
+      selected.push(items[index]);
+      used.add(index);
+    }
+  }
+  return selected;
+}
+
+const archiveHighlights = [...governanceChanges, ...pickEvenly(programmeAndFinance, 8)].sort(
+  (a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start)
+);
+
+const latestTotalBudget = [...budgetItems]
+  .filter(
+    (item) =>
+      item.kind === "summary" &&
+      item.summary_key === "total_budget" &&
+      item.amount_bgn != null
+  )
+  .sort((a, b) => b.year - a.year)[0];
+const latestCapitalBudget = [...budgetItems]
+  .filter(
+    (item) =>
+      item.kind === "summary" &&
+      item.summary_key === "capital_programme" &&
+      item.amount_bgn != null
+  )
+  .sort((a, b) => b.year - a.year)[0];
+const latestFundingYear = Math.max(
+  ...budgetItems
+    .filter((item) => item.kind === "funding_source" && item.amount_eur != null)
+    .map((item) => item.year),
+  0
+);
+const latestFundingLines = budgetItems.filter(
+  (item) => item.year === latestFundingYear && item.kind === "funding_source" && item.amount_eur != null
+);
+const latestFundingTotal = latestFundingLines.reduce((sum, item) => sum + (item.amount_eur ?? 0), 0);
+
+const budgetPanels = [
+  latestTotalBudget && {
+    label: l.latestTotal,
+    value: formatMoney(latestTotalBudget.amount_bgn ?? 0, lang, "BGN"),
+    meta: `${latestTotalBudget.year} · ${field(latestTotalBudget, "title", lang)}`,
+    source: latestTotalBudget.source_document
+  },
+  latestCapitalBudget && {
+    label: l.latestCapital,
+    value: formatMoney(latestCapitalBudget.amount_bgn ?? 0, lang, "BGN"),
+    meta: `${latestCapitalBudget.year} · ${field(latestCapitalBudget, "title", lang)}`,
+    source: latestCapitalBudget.source_document
+  },
+  latestFundingLines.length > 0 && {
+    label: l.fundingLines,
+    value: formatMoney(latestFundingTotal, lang, "EUR"),
+    meta: `${latestFundingYear} · ${latestFundingLines.map((item) => field(item, "title", lang)).join(" · ")}`,
+    source: latestFundingLines[0].source_document
+  }
+].filter(Boolean) as Array<{
+  label: string;
+  value: string;
+  meta: string;
+  source: BudgetItem["source_document"];
+}>;
+
+const statusRank: Record<string, number> = {
+  in_progress: 0,
+  contracted: 1,
+  funded: 2,
+  planned: 3,
+  postponed: 4
+};
+const currentProjects = [...projects]
+  .filter((project) => ["in_progress", "contracted", "funded"].includes(project.status))
+  .sort(
+    (a, b) =>
+      b.budget.year - a.budget.year ||
+      (statusRank[a.status] ?? 99) - (statusRank[b.status] ?? 99) ||
+      field(a, "title", lang).localeCompare(field(b, "title", lang), locale)
+  )
+  .slice(0, 6);
+
+function termEnd(term: CityArchiveRecord): number {
+  return term.year_end ?? currentYear;
+}
+
+function overlapsTerm(record: CityArchiveRecord, term: CityArchiveRecord): boolean {
+  const recordEnd = record.year_end ?? record.year_start;
+  return record.year_start <= termEnd(term) && recordEnd >= term.year_start;
+}
+
+function linkedArchiveForTerm(term: CityArchiveRecord): CityArchiveRecord[] {
+  return archiveHighlights.filter((record) => overlapsTerm(record, term)).slice(0, 3);
+}
+
+function mayorOverlapLabel(record: CityArchiveRecord): string {
+  const recordEnd = record.year_end ?? record.year_start;
+  const overlaps = mayorTerms.filter(
+    (term) => term.year_start <= recordEnd && termEnd(term) >= record.year_start
+  );
+  if (!overlaps.length) return "";
+  const names = overlaps.slice(0, 2).map((term) => field(term, "actor", lang));
+  return `${names.join(" · ")}${overlaps.length > 2 ? ` +${overlaps.length - 2}` : ""}`;
+}
+
+function amountForArchive(record: CityArchiveRecord): string | null {
+  if (record.amount_bgn != null) return formatMoney(record.amount_bgn, lang, "BGN");
+  if (record.amount_eur != null) return formatMoney(record.amount_eur, lang, "EUR");
+  return null;
+}
+
+function amountForProject(project: Project): string {
+  if (project.budget.amount_eur != null) return formatMoney(project.budget.amount_eur, lang, "EUR");
+  if (project.budget.amount_bgn != null) return formatMoney(project.budget.amount_bgn, lang, "BGN");
+  return l.noAmount;
+}
+
+function sourceLabel(source: { title: string } | null | undefined): string {
+  return source ? sourceTitle(source.title, lang) : l.source;
+}
+
+const mayorGroups = [
+  { title: l.currentGroup, terms: currentMayor ? [currentMayor] : [] },
+  { title: l.earlyGroup, terms: earlyMayors },
+  { title: l.recentGroup, terms: recentMayors }
+];
+
+const ctas = [
+  { href: "/mayors", title: l.ctaMayors, text: l.ctaMayorsText },
+  { href: "/budget", title: l.ctaBudget, text: l.ctaBudgetText },
+  { href: "/projects", title: l.ctaProjects, text: l.ctaProjectsText },
+  { href: "/archive", title: l.ctaArchive, text: l.ctaArchiveText }
+];
+---
+
+<Layout lang={lang} path="/governance" title={l.title} description={l.description}>
+  <section class="page-head governance-hero">
+    <div class="container governance-hero-grid">
+      <div class="governance-intro">
+        <p class="eyebrow">{l.eyebrow}</p>
+        <h1>{l.title}</h1>
+        <p class="lead">{l.lead}</p>
+        <div class="hero-actions">
+          <a class="button" href={localizePath("/mayors", lang)}>{l.ctaMayors}<span class="arrow">→</span></a>
+          <a class="button secondary" href={localizePath("/archive", lang)}>{l.ctaArchive}<span class="arrow">→</span></a>
+        </div>
+      </div>
+      {currentMayor && (
+        <aside class="current-panel" aria-label={l.currentTitle}>
+          {currentMayor.image && (
+            <img src={currentMayor.image} alt={field(currentMayor, "actor", lang)} loading="eager" />
+          )}
+          <div>
+            <p class="eyebrow">{l.currentTitle}</p>
+            <h2>{field(currentMayor, "actor", lang)}</h2>
+            <p class="meta">{field(currentMayor, "period", lang)}</p>
+            <p>{field(currentMayor, "summary", lang)}</p>
+            <a href={localizePath(`/mayors/${currentMayor.id}`, lang)}>{l.detail} →</a>
+          </div>
+        </aside>
+      )}
+    </div>
+  </section>
+
+  <SectionNav items={sectionNav} label={l.sectionNavLabel} />
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="stat-row governance-stats">
+        <div class="stat" data-cat="people" style="--cat:var(--data-people)">
+          <strong>{formatPlainNumber(mayorTerms.length, lang)}</strong>
+          <span>{l.statTerms}</span>
+        </div>
+        <div class="stat" data-cat="people" style="--cat:var(--data-people)">
+          <strong>{formatPlainNumber(uniqueMayorCount, lang)}</strong>
+          <span>{l.statMayors}</span>
+        </div>
+        <div class="stat" data-cat="events" style="--cat:var(--data-events)">
+          <strong>{formatPlainNumber(nonMayorArchive.length, lang)}</strong>
+          <span>{l.statArchive}</span>
+        </div>
+        <div class="stat" data-cat="sources" style="--cat:var(--data-sources)">
+          <strong>{formatPlainNumber(sourceRegistry.length, lang)}</strong>
+          <span>{l.statSources}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="who-governed" data-subnav-target>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{l.whoTitle}</h2>
+          <p class="meta">{l.whoLead}</p>
+        </div>
+      </div>
+
+      <div class="mayor-board">
+        {mayorGroups.map((group) => (
+          <section class="mayor-column" aria-label={group.title}>
+            <h3>{group.title}</h3>
+            <div class="term-list">
+              {group.terms.map((term) => {
+                const linked = linkedArchiveForTerm(term);
+                return (
+                  <article class="term-card">
+                    <header>
+                      <p class="eyebrow">{l.officeTerm}</p>
+                      <h4><a href={localizePath(`/mayors/${term.id}`, lang)}>{field(term, "actor", lang)}</a></h4>
+                      <p class="meta">{field(term, "period", lang)}</p>
+                    </header>
+                    <p>{field(term, "summary", lang)}</p>
+                    <div class="term-evidence">
+                      <p class="eyebrow">{l.linkedArchive}</p>
+                      {linked.length > 0 ? (
+                        <ul>
+                          {linked.map((record) => (
+                            <li>
+                              <span>{record.year_start}</span>
+                              <strong>{field(record, "title", lang)}</strong>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p class="meta">{l.noLinkedArchive}</p>
+                      )}
+                    </div>
+                    <div class="pill-row">
+                      <a class="meta" href={term.source_document.url} target="_blank" rel="noreferrer">
+                        {sourceLabel(term.source_document)}
+                      </a>
+                      <a class="meta" href={localizePath(`/mayors/${term.id}`, lang)}>{l.detail}</a>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="archive-changes" data-subnav-target>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{l.archiveTitle}</h2>
+          <p class="meta">{l.archiveLead}</p>
+        </div>
+        <a href={localizePath("/archive", lang)}>{l.ctaArchive} →</a>
+      </div>
+
+      <div class="archive-spine">
+        {archiveHighlights.map((record) => {
+          const amount = amountForArchive(record);
+          const overlap = mayorOverlapLabel(record);
+          return (
+            <article class="archive-node">
+              <div class="node-year">
+                <strong>{record.year_start}</strong>
+                {record.year_end && record.year_end !== record.year_start && <span>{record.year_end}</span>}
+              </div>
+              <div class="node-body">
+                <p class="eyebrow">{kindLabels[lang][record.kind]}</p>
+                <h3>{field(record, "title", lang)}</h3>
+                <p>{field(record, "summary", lang)}</p>
+                <div class="pill-row">
+                  {overlap && <span class="badge no-dot">{l.mayorOverlap}: {overlap}</span>}
+                  {amount && <span class="badge no-dot">{l.amountLabel}: {amount}</span>}
+                  <a class="meta" href={record.source_document.url} target="_blank" rel="noreferrer">
+                    {sourceLabel(record.source_document)}
+                  </a>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="money-projects" data-subnav-target>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{l.budgetTitle}</h2>
+          <p class="meta">{l.budgetLead}</p>
+        </div>
+        <a href={localizePath("/budget", lang)}>{l.ctaBudget} →</a>
+      </div>
+
+      <div class="budget-panels">
+        {budgetPanels.map((panel) => (
+          <article class="budget-panel">
+            <p class="eyebrow">{panel.label}</p>
+            <strong>{panel.value}</strong>
+            <p>{panel.meta}</p>
+            <a class="meta" href={panel.source.url} target="_blank" rel="noreferrer">
+              {sourceLabel(panel.source)}
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <div class="section-head compact" style="margin-top:34px">
+        <div>
+          <h2>{l.projectsTitle}</h2>
+          <p class="meta">{l.projectLead}</p>
+        </div>
+        <a href={localizePath("/projects", lang)}>{l.ctaProjects} →</a>
+      </div>
+
+      <div class="grid grid-3 governance-projects">
+        {currentProjects.map((project) => (
+          <article class="card project-card">
+            <header>
+              <div>
+                <p class="eyebrow">{l.projectYear} {project.budget.year}</p>
+                <h3><a href={localizePath(`/projects/${project.id}`, lang)}>{field(project, "title", lang)}</a></h3>
+                <p class="meta">{categoryLabel(project.category, lang)}</p>
+              </div>
+              <span class="badge no-dot">{projectStatusLabel(project.status, lang)}</span>
+            </header>
+            <p>{field(project, "summary", lang)}</p>
+            <div class="pill-row">
+              <span class="money">{amountForProject(project)}</span>
+              <a class="meta" href={localizePath(`/projects/${project.id}`, lang)}>{l.detail}</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="go-deeper" data-subnav-target>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{l.deepTitle}</h2>
+          <p class="meta">{l.deepLead}</p>
+        </div>
+      </div>
+      <div class="cta-grid">
+        {ctas.map((cta) => (
+          <a class="governance-cta" href={localizePath(cta.href, lang)}>
+            <span>{cta.title}</span>
+            <strong>{cta.text}</strong>
+            <em>{l.open} →</em>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .governance-hero {
+    padding-bottom: clamp(34px, 6vw, 72px);
+  }
+
+  .governance-hero-grid {
+    align-items: end;
+    display: grid;
+    gap: clamp(24px, 5vw, 58px);
+    grid-template-columns: minmax(0, 1.15fr) minmax(290px, 0.85fr);
+  }
+
+  .governance-intro .lead {
+    max-width: 72ch;
+  }
+
+  .current-panel {
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: 116px minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .current-panel img {
+    aspect-ratio: 1;
+    border-radius: var(--r-sm);
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .current-panel h2,
+  .current-panel p {
+    margin: 0;
+  }
+
+  .current-panel h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.65rem);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .current-panel p:not(.eyebrow):not(.meta) {
+    color: var(--ink-2);
+    font-size: 0.95rem;
+    margin-top: 10px;
+  }
+
+  .current-panel a {
+    display: inline-flex;
+    font-weight: 700;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+
+  .governance-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .mayor-board {
+    display: grid;
+    gap: clamp(18px, 2.5vw, 28px);
+    grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .mayor-column {
+    min-width: 0;
+  }
+
+  .mayor-column h3 {
+    border-bottom: 1px solid var(--line-strong);
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .term-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .term-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--data-people);
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-sm);
+    display: grid;
+    gap: 12px;
+    min-width: 0;
+    padding: 15px;
+  }
+
+  .term-card h4,
+  .term-card p {
+    margin: 0;
+  }
+
+  .term-card h4 {
+    font-size: 1.08rem;
+    line-height: 1.2;
+  }
+
+  .term-card h4 a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .term-card h4 a:hover {
+    color: var(--brand);
+  }
+
+  .term-card > p {
+    color: var(--ink-2);
+    font-size: 0.94rem;
+  }
+
+  .term-evidence {
+    background: var(--surface-2);
+    border-radius: var(--r-xs);
+    padding: 10px;
+  }
+
+  .term-evidence ul {
+    display: grid;
+    gap: 7px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .term-evidence li {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .term-evidence li span {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.82rem;
+  }
+
+  .term-evidence li strong {
+    color: var(--ink-2);
+    font-size: 0.88rem;
+    font-weight: 650;
+    overflow-wrap: anywhere;
+  }
+
+  .archive-spine {
+    display: grid;
+    gap: 14px;
+    position: relative;
+  }
+
+  .archive-spine::before {
+    background: var(--line-strong);
+    content: "";
+    inset: 0 auto 0 54px;
+    position: absolute;
+    width: 2px;
+  }
+
+  .archive-node {
+    align-items: stretch;
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 110px minmax(0, 1fr);
+    position: relative;
+  }
+
+  .node-year {
+    align-self: start;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-sm);
+    color: var(--brand);
+    display: grid;
+    font-variant-numeric: tabular-nums;
+    gap: 0;
+    justify-items: center;
+    line-height: 1.05;
+    padding: 12px 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .node-year strong {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+  }
+
+  .node-year span {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .node-body {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    box-shadow: var(--shadow-sm);
+    display: grid;
+    gap: 10px;
+    min-width: 0;
+    padding: clamp(15px, 2vw, 20px);
+  }
+
+  .node-body h3,
+  .node-body p {
+    margin: 0;
+  }
+
+  .node-body h3 {
+    font-size: clamp(1.08rem, 1.6vw, 1.28rem);
+  }
+
+  .node-body > p:not(.eyebrow) {
+    color: var(--ink-2);
+  }
+
+  .budget-panels {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .budget-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    box-shadow: var(--shadow-sm);
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+    padding: clamp(16px, 2.2vw, 22px);
+  }
+
+  .budget-panel strong {
+    color: var(--data-growth);
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    font-weight: 650;
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+  }
+
+  .budget-panel p {
+    color: var(--ink-2);
+    margin: 0;
+  }
+
+  .governance-projects {
+    align-items: stretch;
+  }
+
+  .governance-projects .project-card {
+    border-top: 4px solid var(--data-places);
+  }
+
+  .cta-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .governance-cta {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    box-shadow: var(--shadow-sm);
+    color: var(--ink);
+    display: grid;
+    gap: 8px;
+    min-height: 150px;
+    padding: 18px;
+    text-decoration: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  }
+
+  .governance-cta:hover,
+  .governance-cta:focus-visible {
+    border-color: var(--brand);
+    box-shadow: var(--shadow);
+    color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  .governance-cta span {
+    color: var(--brand);
+    font-weight: 800;
+  }
+
+  .governance-cta strong {
+    font-family: var(--font-display);
+    font-size: 1.18rem;
+    font-weight: 650;
+    line-height: 1.2;
+  }
+
+  .governance-cta em {
+    align-self: end;
+    color: var(--muted);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  @media (max-width: 980px) {
+    .governance-hero-grid,
+    .mayor-board {
+      grid-template-columns: 1fr;
+    }
+
+    .budget-panels,
+    .cta-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 700px) {
+    .current-panel {
+      grid-template-columns: 82px minmax(0, 1fr);
+    }
+
+    .governance-stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .archive-spine::before {
+      inset-inline-start: 30px;
+    }
+
+    .archive-node {
+      grid-template-columns: 62px minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .node-year {
+      padding: 10px 4px;
+    }
+
+    .node-year strong {
+      font-size: 1rem;
+    }
+
+    .budget-panels,
+    .cta-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

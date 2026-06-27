@@ -2524,7 +2524,7 @@ code {
   background: color-mix(in srgb, var(--warning, #b45309) 10%, var(--surface));
   border-left: 3px solid color-mix(in srgb, var(--warning, #b45309) 70%, var(--line));
   border-radius: 6px;
-  color: var(--text);
+  color: var(--ink);
   margin-top: 10px;
   padding: 9px 11px;
 }

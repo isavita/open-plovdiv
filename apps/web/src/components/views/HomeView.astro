@@ -3,7 +3,7 @@ import HeroBackdrop from "@components/HeroBackdrop.astro";
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
-import { plovdivHistory, plovdivLandmarks, cityArchive, type HistoryEra } from "@lib/data";
+import { plovdivLandmarks, cityArchive, type HistoryEra } from "@lib/data";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -29,31 +29,6 @@ const stats = [
   { value: String(plovdivLandmarks.length), label: t.home.statLandmarks }
 ];
 
-const featuredIds = [
-  "history-philip-philippopolis",
-  "history-roman-theatre",
-  "history-unification-1885",
-  "history-capital-of-culture-2019"
-];
-const featured = featuredIds
-  .map((id) => plovdivHistory.find((e) => e.id === id))
-  .filter((e): e is NonNullable<typeof e> => Boolean(e));
-
-const teaserLandmarkIds = ["landmark-nebet-tepe", "landmark-ancient-theatre", "landmark-old-town"];
-const teaserLandmarks = teaserLandmarkIds
-  .map((id) => plovdivLandmarks.find((l) => l.id === id))
-  .filter((l): l is NonNullable<typeof l> => Boolean(l));
-
-/** Build a Wikimedia Commons thumbnail URL to avoid loading full-size originals. */
-function commonsThumb(url: string, width: number): string {
-  const marker = "/wikipedia/commons/";
-  if (!url.includes(marker) || url.includes("/wikipedia/commons/thumb/")) return url;
-  const commonsPath = url.split(marker)[1];
-  const file = commonsPath?.split("/").pop();
-  if (!file) return url;
-  return `https://upload.wikimedia.org/wikipedia/commons/thumb/${commonsPath}/${width}px-${file}`;
-}
-
 // A small, chronological set of mayors with portraits — a visual way into the
 // full 1878→today catalogue (not a "most important" claim).
 const mayorsWithPortraits = cityArchive
@@ -63,11 +38,107 @@ const featuredMayors = [
   ...new Set([0, 0.25, 0.5, 0.72, 1].map((f) => Math.round(f * (mayorsWithPortraits.length - 1))))
 ].map((i) => mayorsWithPortraits[i]);
 
-const civicCards = [
-  { href: localizePath("/budget", lang), eyebrow: t.home.cardBudgetEyebrow, title: t.home.cardBudgetTitle, text: t.home.cardBudgetText },
-  { href: localizePath("/projects", lang), eyebrow: t.home.cardProjectsEyebrow, title: t.home.cardProjectsTitle, text: t.home.cardProjectsText },
-  { href: localizePath("/fix-map", lang), eyebrow: t.home.cardMapEyebrow, title: t.home.cardMapTitle, text: t.home.cardMapText },
-  { href: localizePath("/community", lang), eyebrow: t.home.cardCommunityEyebrow, title: t.home.cardCommunityTitle, text: t.home.cardCommunityText }
+const tr = (
+  bg: string,
+  en: string,
+  de: string,
+  fr: string,
+  it: string,
+  trk: string,
+  es: string,
+  el: string,
+  ja: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja } satisfies Record<Lang, string>)[lang];
+
+const labels = {
+  pathsTitle: tr("Три начина да започнете", "Three ways to start", "Drei Einstiege", "Trois façons de commencer", "Tre modi per iniziare", "Başlamak için üç yol", "Tres formas de empezar", "Τρεις τρόποι να ξεκινήσετε", "3つの入口"),
+  pathsLead: tr(
+    "Началната страница вече води към три ясни задачи: научете историята, обиколете местата или помогнете на града.",
+    "The homepage now points to three clear jobs: learn the history, walk the places, or help the city.",
+    "Die Startseite führt zu drei klaren Aufgaben: Geschichte verstehen, Orte ablaufen oder der Stadt helfen.",
+    "La page d'accueil mène à trois usages clairs : comprendre l'histoire, parcourir les lieux ou aider la ville.",
+    "La homepage porta a tre azioni chiare: conoscere la storia, percorrere i luoghi o aiutare la città.",
+    "Ana sayfa üç net işe yönlendirir: tarihi öğren, yerleri gez veya şehre yardım et.",
+    "La portada lleva a tres tareas claras: conocer la historia, recorrer los lugares o ayudar a la ciudad.",
+    "Η αρχική σελίδα οδηγεί σε τρεις καθαρές χρήσεις: μάθετε την ιστορία, περπατήστε τα μέρη ή βοηθήστε την πόλη.",
+    "トップページは、歴史を学ぶ、場所を歩く、街を助けるという3つの目的に整理されています。"
+  ),
+  historyPath: tr("Разгледай историята", "Explore history", "Geschichte erkunden", "Explorer l'histoire", "Esplora la storia", "Tarihi keşfet", "Explorar la historia", "Εξερεύνηση ιστορίας", "歴史を探る"),
+  historyPathText: tr(
+    "Хронология, личности, разкази и източници от праисторията до днес.",
+    "Timeline, people, stories and sources from prehistory to today.",
+    "Zeitleiste, Personen, Geschichten und Quellen von der Vorgeschichte bis heute.",
+    "Chronologie, personnes, récits et sources de la préhistoire à aujourd'hui.",
+    "Cronologia, persone, racconti e fonti dalla preistoria a oggi.",
+    "Tarih öncesinden bugüne zaman çizelgesi, kişiler, anlatılar ve kaynaklar.",
+    "Cronología, personas, relatos y fuentes desde la prehistoria hasta hoy.",
+    "Χρονολόγιο, πρόσωπα, αφηγήσεις και πηγές από την προϊστορία έως σήμερα.",
+    "先史時代から現在までの年表、人物、ストーリー、出典。"
+  ),
+  visitPath: tr("Посети местата", "Visit places", "Orte besuchen", "Visiter les lieux", "Visita i luoghi", "Yerleri gez", "Visitar lugares", "Επίσκεψη σε μέρη", "場所を訪ねる"),
+  visitPathText: tr(
+    "Кратки пешеходни маршрути през римския, османския, възрожденския и гражданския пласт на града.",
+    "Short walking routes through the Roman, Ottoman, Revival and civic layers of the city.",
+    "Kurze Spazierwege durch römische, osmanische, Wiedergeburts- und bürgerliche Stadtschichten.",
+    "De courts parcours dans les couches romaine, ottomane, renaissance et civique de la ville.",
+    "Brevi percorsi negli strati romano, ottomano, risorgimentale e civico della città.",
+    "Şehrin Roma, Osmanlı, Uyanış ve yurttaş katmanlarında kısa yürüyüş rotaları.",
+    "Rutas cortas por las capas romana, otomana, renacentista y cívica de la ciudad.",
+    "Σύντομες διαδρομές στα ρωμαϊκά, οθωμανικά, αναγεννησιακά και αστικά στρώματα της πόλης.",
+    "ローマ、オスマン、民族復興、市民記憶の層を歩く短い散策ルート。"
+  ),
+  helpPath: tr("Помогни на града", "Help the city", "Der Stadt helfen", "Aider la ville", "Aiuta la città", "Şehre yardım et", "Ayudar a la ciudad", "Βοηθήστε την πόλη", "街を助ける"),
+  helpPathText: tr(
+    "Граждански сигнали, доброволчески инициативи и начини да се включите без профили и без шум.",
+    "Citizen reports, volunteer initiatives and ways to take part without profiles or noise.",
+    "Bürgermeldungen, Freiwilligeninitiativen und Wege mitzumachen, ohne Profile oder Lärm.",
+    "Signalements citoyens, initiatives bénévoles et façons de participer sans profils ni bruit.",
+    "Segnalazioni civiche, iniziative di volontariato e modi per partecipare senza profili o rumore.",
+    "Yurttaş bildirimleri, gönüllü girişimleri ve profilsiz, gürültüsüz katılım yolları.",
+    "Avisos ciudadanos, iniciativas voluntarias y formas de participar sin perfiles ni ruido.",
+    "Αναφορές πολιτών, εθελοντικές πρωτοβουλίες και τρόποι συμμετοχής χωρίς προφίλ ή θόρυβο.",
+    "市民レポート、ボランティア活動、プロフィール不要で参加できる方法。"
+  ),
+  politicalTitle: tr("Политическата история е ядрото", "Political history is the core", "Politische Geschichte als Kern", "L'histoire politique comme noyau", "La storia politica è il nucleo", "Siyasi tarih çekirdektir", "La historia política es el núcleo", "Η πολιτική ιστορία είναι ο πυρήνας", "政治史が中核です"),
+  politicalLead: tr(
+    "Кметовете, архивните промени, бюджетите и проектите са събрани като въпрос: кой управляваше и какво се промени.",
+    "Mayors, archive changes, budgets and projects are framed as one question: who governed, and what changed.",
+    "Bürgermeister, Archivänderungen, Budgets und Projekte stehen unter einer Frage: Wer regierte, und was änderte sich?",
+    "Maires, changements d'archives, budgets et projets répondent à une question : qui gouvernait, et qu'est-ce qui a changé ?",
+    "Sindaci, cambiamenti d'archivio, bilanci e progetti rispondono a una domanda: chi governava e cosa è cambiato.",
+    "Belediye başkanları, arşiv değişiklikleri, bütçeler ve projeler tek soruda birleşir: kim yönetti, ne değişti?",
+    "Alcaldes, cambios de archivo, presupuestos y proyectos se leen como una pregunta: quién gobernó y qué cambió.",
+    "Δήμαρχοι, αρχειακές αλλαγές, προϋπολογισμοί και έργα απαντούν σε ένα ερώτημα: ποιος κυβέρνησε και τι άλλαξε.",
+    "市長、アーカイブ上の変化、予算、プロジェクトを、誰が統治し何が変わったかという問いで結びます。"
+  ),
+  openRoutes: tr("Маршрутите", "Walking routes", "Routen", "Parcours", "Percorsi", "Rotalar", "Rutas", "Διαδρομές", "散策ルート"),
+  routeCount: tr("4 маршрута", "4 walking routes", "4 Routen", "4 parcours", "4 percorsi", "4 rota", "4 rutas", "4 διαδρομές", "4 散策ルート"),
+  openGovernance: tr("Управление", "Governance", "Governance", "Gouvernance", "Governo", "Yönetim", "Gobernanza", "Διακυβέρνηση", "統治"),
+  evidenceLabel: tr("с източници", "with sources", "mit Quellen", "avec sources", "con fonti", "kaynaklı", "con fuentes", "με πηγές", "出典付き")
+};
+
+const entryPaths = [
+  {
+    href: localizePath("/history", lang),
+    eyebrow: t.nav.history,
+    title: labels.historyPath,
+    text: labels.historyPathText,
+    meta: `${stats[0].value} ${stats[0].label}`
+  },
+  {
+    href: localizePath("/routes", lang),
+    eyebrow: labels.openRoutes,
+    title: labels.visitPath,
+    text: labels.visitPathText,
+    meta: labels.routeCount
+  },
+  {
+    href: localizePath("/community", lang),
+    eyebrow: t.nav.community,
+    title: labels.helpPath,
+    text: labels.helpPathText,
+    meta: `${t.home.statReportsValue} · ${t.home.statReports}`
+  }
 ];
 ---
 
@@ -82,7 +153,7 @@ const civicCards = [
         <a class="button" href={localizePath("/history", lang)}>
           {t.home.ctaHistory}<span class="arrow" aria-hidden="true">→</span>
         </a>
-        <a class="button secondary" href={localizePath("/mayors", lang)}>{t.home.ctaMayors}</a>
+        <a class="button secondary" href={localizePath("/routes", lang)}>{labels.openRoutes}</a>
       </div>
       <div class="stat-row" aria-label={t.history.title}>
         {stats.map((s) => (
@@ -95,73 +166,21 @@ const civicCards = [
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <h2>{t.history.erasTitle}</h2>
-        <a href={localizePath("/history", lang)}>{t.history.timelineTitle} →</a>
-      </div>
-      <div class="grid grid-3 era-grid">
-        {eraOrder.map((era) => (
-          <a class={`card card-link era-tile era-${era}`} href={`${localizePath("/history", lang)}#era-${era}`}>
-            <p class="eyebrow">{t.history.eraLabels[era]}</p>
-            <p>{t.history.eraBlurbs[era]}</p>
-            <span class="arrow" aria-hidden="true">→</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-tint">
-    <div class="container">
-      <div class="section-head">
-        <h2>{t.home.featuredTitle}</h2>
-        <a href={localizePath("/history", lang)}>{t.home.viewAll} →</a>
-      </div>
-      <div class="grid grid-2">
-        {featured.map((e) => (
-          <a class="card card-link featured-moment" href={`${localizePath("/history", lang)}#era-${e.era}`}>
-            <p class="timeline-period">{field(e, "period", lang)}</p>
-            <h3>{field(e, "title", lang)}</h3>
-            <p>{field(e, "summary", lang)}</p>
-            <span class="arrow" aria-hidden="true">→</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>{t.history.landmarksTitle}</h2>
-        <a href={`${localizePath("/history", lang)}#landmarks`}>{t.home.viewAll} →</a>
+        <div>
+          <h2>{labels.pathsTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.pathsLead}</p>
+        </div>
       </div>
       <div class="grid grid-3">
-        {teaserLandmarks.map((lm) => {
-          const img = lm.media?.[0];
-          return (
-            <a class="card card-link landmark-card" href={`${localizePath("/history", lang)}#landmarks`}>
-              {img && (
-                <figure class="landmark-media">
-                  <img
-                    src={commonsThumb(img.url, 500)}
-                    alt={field(lm, "name", lang)}
-                    loading="lazy"
-                    decoding="async"
-                    crossorigin="anonymous"
-                    referrerpolicy="no-referrer"
-                    width="500"
-                    height="313"
-                  />
-                  <figcaption>{`${img.credit} · ${img.license}`}</figcaption>
-                </figure>
-              )}
-              <p class="eyebrow">{field(lm, "era", lang)}</p>
-              <h3>{field(lm, "name", lang)}</h3>
-              <p>{field(lm, "summary", lang)}</p>
-              <span class="arrow" aria-hidden="true">→</span>
-            </a>
-          );
-        })}
+        {entryPaths.map((path) => (
+          <a class="card card-link civic-card" href={path.href}>
+            <p class="eyebrow">{path.eyebrow}</p>
+            <h3>{path.title}</h3>
+            <p>{path.text}</p>
+            <span class="badge no-dot">{path.meta}</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -169,10 +188,28 @@ const civicCards = [
   <section class="section section-tint">
     <div class="container">
       <div class="section-head">
-        <h2>{t.history.mayorsTitle}</h2>
-        <a href={localizePath("/mayors", lang)}>{t.home.viewAll} →</a>
+        <div>
+          <h2>{labels.politicalTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.politicalLead}</p>
+        </div>
+        <a href={localizePath("/governance", lang)}>{labels.openGovernance} →</a>
       </div>
-      <p class="meta home-mayors-lead">{t.history.mayorsLead}</p>
+      <div class="grid grid-2" style="align-items:start;margin-bottom:24px">
+        <a class="card card-link" href={localizePath("/mayors", lang)}>
+          <p class="eyebrow">{t.nav.mayors}</p>
+          <h3>{t.home.cardMayorsTitle}</h3>
+          <p>{t.home.cardMayorsText}</p>
+          <span class="badge no-dot">{mayorCount} {labels.evidenceLabel}</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="card card-link" href={localizePath("/governance", lang)}>
+          <p class="eyebrow">{labels.openGovernance}</p>
+          <h3>{labels.openGovernance}</h3>
+          <p>{labels.politicalLead}</p>
+          <span class="badge no-dot">{t.nav.budget} · {t.nav.projects}</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
       <ul class="mayor-strip" role="list">
         {featuredMayors.map((m) => (
           <li>
@@ -192,28 +229,6 @@ const civicCards = [
           </li>
         ))}
       </ul>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>{t.home.civicTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:74ch">{t.home.civicLead}</p>
-        </div>
-        <a href={localizePath("/overview", lang)}>{t.nav.overview} →</a>
-      </div>
-      <div class="grid grid-4">
-        {civicCards.map((card) => (
-          <a class="card card-link civic-card" href={card.href}>
-            <p class="eyebrow">{card.eyebrow}</p>
-            <h3>{card.title}</h3>
-            <p class="meta">{card.text}</p>
-            <span class="arrow" aria-hidden="true">→</span>
-          </a>
-        ))}
-      </div>
     </div>
   </section>
 </Layout>

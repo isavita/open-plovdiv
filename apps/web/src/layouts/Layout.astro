@@ -2,7 +2,14 @@
 import "@fontsource-variable/playfair-display/index.css";
 import "../styles/global.css";
 import PlovdivSkyline from "@components/PlovdivSkyline.astro";
-import { languages, localeCodes, localizePath, ui, type Lang } from "@i18n/utils";
+import { languages, localeCodes, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
+import {
+  absoluteUrl,
+  buildPageStructuredData,
+  inferOpenGraphType,
+  serializeJsonLd,
+  type JsonLdObject
+} from "@lib/seo";
 
 type Props = {
   lang: Lang;
@@ -10,25 +17,32 @@ type Props = {
   path: string;
   title?: string;
   description?: string;
+  image?: string;
+  imageAlt?: string;
+  robots?: string;
+  structuredData?: JsonLdObject | JsonLdObject[];
 };
 
-const { lang, path, title, description } = Astro.props;
+const { lang, path, title, description, image, imageAlt, robots, structuredData } = Astro.props;
 const t = ui[lang];
 
 const pageTitle = title ? `${title} · ${t.site.name}` : t.site.name;
 const pageDescription = description ?? t.site.tagline;
+const structuredTitle = title ?? t.site.name;
 
 const ogLocales: Record<Lang, string> = { bg: "bg_BG", en: "en_GB", de: "de_DE", fr: "fr_FR", it: "it_IT", tr: "tr_TR", es: "es_ES", el: "el_GR", ja: "ja_JP" };
 const ogLocale = ogLocales[lang];
+const routesLabel = ({ bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート" } satisfies Record<Lang, string>)[lang];
+const governanceLabel = ({ bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治" } satisfies Record<Lang, string>)[lang];
 
-// History-first primary nav (kept tight for usability); civic + reference
-// links live in the footer and the homepage "civic data" section.
+// Primary nav now separates deep history, visitor routes and political context;
+// civic + reference links live in the footer and homepage action paths.
 const navItems = [
   { href: localizePath("/history", lang), base: "/history", label: t.nav.history },
+  { href: localizePath("/routes", lang), base: "/routes", label: routesLabel },
   { href: localizePath("/mayors", lang), base: "/mayors", label: t.nav.mayors },
-  { href: localizePath("/people", lang), base: "/people", label: t.nav.people },
-  { href: localizePath("/places", lang), base: "/places", label: t.nav.places },
-  { href: localizePath("/stories", lang), base: "/stories", label: t.nav.stories }
+  { href: localizePath("/governance", lang), base: "/governance", label: governanceLabel },
+  { href: localizePath("/places", lang), base: "/places", label: t.nav.places }
 ];
 
 function isActive(base: string): boolean {
@@ -38,16 +52,54 @@ function isActive(base: string): boolean {
 
 const site = Astro.site ?? new URL("https://openplovdiv.example");
 const canonical = new URL(localizePath(path, lang), site).href;
+const seoImage = absoluteUrl(image, site);
+const seoImageAlt = imageAlt ?? structuredTitle;
+const ogType = inferOpenGraphType(path);
 // hreflang alternates for every supported locale (+ x-default → Bulgarian root).
 const altLinks = localeCodes.map((code) => ({
   code,
   href: new URL(localizePath(path, code), site).href
 }));
 const xDefaultHref = new URL(localizePath(path, "bg"), site).href;
+const structuredDataJson = serializeJsonLd(
+  buildPageStructuredData({
+    site,
+    lang,
+    locale: localeForLang(lang),
+    siteName: t.site.name,
+    logicalPath: path,
+    canonical,
+    title: structuredTitle,
+    description: pageDescription,
+    image: seoImage,
+    additional: structuredData,
+    breadcrumbLabels: {
+      home: t.nav.home,
+      history: t.nav.history,
+      routes: routesLabel,
+      mayors: t.nav.mayors,
+      governance: governanceLabel,
+      people: t.nav.people,
+      places: t.nav.places,
+      stories: t.nav.stories,
+      archive: t.nav.archive,
+      overview: t.nav.overview,
+      budget: t.nav.budget,
+      projects: t.nav.projects,
+      community: t.nav.community,
+      "fix-map": t.nav.fixMap,
+      "data-sources": t.footer.sources,
+      privacy: t.footer.privacy,
+      moderation: t.footer.moderation
+    }
+  })
+);
 
 const footerHistory = [
   { href: localizePath("/history", lang), label: t.nav.history },
+  { href: localizePath("/routes", lang), label: routesLabel },
   { href: localizePath("/mayors", lang), label: t.nav.mayors },
+  { href: localizePath("/governance", lang), label: governanceLabel },
   { href: localizePath("/people", lang), label: t.nav.people },
   { href: localizePath("/places", lang), label: t.nav.places },
   { href: localizePath("/stories", lang), label: t.nav.stories },
@@ -74,6 +126,7 @@ const footerAbout = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
+    {robots && <meta name="robots" content={robots} />}
     <link rel="canonical" href={canonical} />
     {altLinks.map((alt) => (
       <link rel="alternate" hreflang={alt.code} href={alt.href} />
@@ -84,13 +137,29 @@ const footerAbout = [
     <meta name="theme-color" content="#f2ead8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#16120c" media="(prefers-color-scheme: dark)" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={t.site.name} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={ogLocale} />
-    <meta name="twitter:card" content="summary" />
+    {altLinks.filter((alt) => alt.code !== lang).map((alt) => (
+      <meta property="og:locale:alternate" content={ogLocales[alt.code]} />
+    ))}
+    {seoImage && (
+      <>
+        <meta property="og:image" content={seoImage} />
+        <meta property="og:image:alt" content={seoImageAlt} />
+      </>
+    )}
+    <meta name="twitter:card" content={seoImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:url" content={canonical} />
+    {seoImage && <meta name="twitter:image" content={seoImage} />}
+    {seoImage && <meta name="twitter:image:alt" content={seoImageAlt} />}
+
+    <script type="application/ld+json" set:html={structuredDataJson}></script>
 
     <script is:inline>
       (function () {
