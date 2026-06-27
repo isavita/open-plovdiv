@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
+import { commonsImageUrl } from "@lib/commons";
 import { sourceTitle } from "@lib/format";
 import {
   historicalArchiveItems,
@@ -379,15 +380,6 @@ for (const event of historyKnowledgeEvents) {
   for (const placeId of event.place_ids) eventCountByPlace.set(placeId, (eventCountByPlace.get(placeId) ?? 0) + 1);
 }
 
-function commonsThumb(url: string, width: number): string {
-  const marker = "/wikipedia/commons/";
-  if (!url.includes(marker) || url.includes("/wikipedia/commons/thumb/")) return url;
-  const commonsPath = url.split(marker)[1];
-  const file = commonsPath?.split("/").pop();
-  if (!file) return url;
-  return `https://upload.wikimedia.org/wikipedia/commons/thumb/${commonsPath}/${width}px-${file}`;
-}
-
 const eras = [...new Set(places.map((place) => place.era))].sort();
 const categories = [...new Set(places.map((place) => place.category))].sort((a, b) =>
   categoryLabel(a).localeCompare(categoryLabel(b), locale)
@@ -426,7 +418,7 @@ const placeCards = places.map((place) => {
     pairCount,
     media: place.media?.[0]
       ? {
-          src: commonsThumb(place.media[0].url, 500),
+          src: commonsImageUrl(place.media[0].url, 500),
           credit: `${place.media[0].credit} · ${place.media[0].license}`,
           licenseUrl: place.media[0].license_url
         }

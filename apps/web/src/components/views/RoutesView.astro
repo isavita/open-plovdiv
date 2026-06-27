@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { field, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
+import { commonsImageUrl } from "@lib/commons";
 import { sourceTitle } from "@lib/format";
 import {
   educationResources,
@@ -301,15 +302,6 @@ function compactText(value: string, maxLength = 300): string {
   return `${value.slice(0, cut > 80 ? cut : maxLength).trim()}...`;
 }
 
-function commonsThumb(url: string, width: number): string {
-  const marker = "/wikipedia/commons/";
-  if (!url.includes(marker) || url.includes("/wikipedia/commons/thumb/")) return url;
-  const commonsPath = url.split(marker)[1];
-  const file = commonsPath?.split("/").pop();
-  if (!file) return url;
-  return `https://upload.wikimedia.org/wikipedia/commons/thumb/${commonsPath}/${width}px-${file}`;
-}
-
 function routeNarration(place: KnowledgePlace, story: StoryLongread, education: EducationResource | null): string {
   const audioStop = education?.audio_tour.stops.find((stop) => stop.place_id === place.id);
   if (audioStop) return localized(audioStop as Record<string, unknown>, "narration");
@@ -426,7 +418,7 @@ const firstRoute = routeViews[0];
             {route.media && (
               <a class="route-card-media" href={`#route-${route.id}`} aria-label={route.title}>
                 <img
-                  src={commonsThumb(route.media.url, 640)}
+                  src={commonsImageUrl(route.media.url, 640)}
                   alt={route.title}
                   loading="lazy"
                   decoding="async"
@@ -509,7 +501,7 @@ const firstRoute = routeViews[0];
                       {place.media[0] && (
                         <a class="route-stop-media" href={localizePath(`/places/${place.id}`, lang)} aria-label={name}>
                           <img
-                            src={commonsThumb(place.media[0].url, 360)}
+                            src={commonsImageUrl(place.media[0].url, 360)}
                             alt={name}
                             loading="lazy"
                             decoding="async"

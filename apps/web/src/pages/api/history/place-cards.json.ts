@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { commonsImageUrl } from "@lib/commons";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import { json } from "@lib/server/http";
 import {
@@ -101,15 +102,6 @@ function placeFacts(place: KnowledgePlace, lang: Lang) {
   ].filter(Boolean) as Array<{ label: string; value: string }>;
 }
 
-function commonsThumb(url: string, width: number): string {
-  const marker = "/wikipedia/commons/";
-  if (!url.includes(marker) || url.includes("/wikipedia/commons/thumb/")) return url;
-  const commonsPath = url.split(marker)[1];
-  const file = commonsPath?.split("/").pop();
-  if (!file) return url;
-  return `https://upload.wikimedia.org/wikipedia/commons/thumb/${commonsPath}/${width}px-${file}`;
-}
-
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 const archiveCountByPlace = new Map<string, number>();
 const pairCountByPlace = new Map<string, number>();
@@ -157,7 +149,7 @@ function placeCards(lang: Lang) {
         pairCount,
         media: place.media?.[0]
           ? {
-              src: commonsThumb(place.media[0].url, 500),
+              src: commonsImageUrl(place.media[0].url, 500),
               credit: `${place.media[0].credit} · ${place.media[0].license}`,
               licenseUrl: place.media[0].license_url
             }
