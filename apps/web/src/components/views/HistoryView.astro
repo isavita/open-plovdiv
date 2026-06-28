@@ -3435,7 +3435,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     }
 
     function renderPlace(place: any) {
-      const coords = place.coordinates;
       const image = place.media;
       const factRows = Array.isArray(place.facts)
         ? place.facts
@@ -3455,7 +3454,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         <h2>${escapeHtml(place.name)}</h2>
         ${factRows ? `<dl class="place-facts">${factRows}</dl>` : ""}
         <p>${escapeHtml(place.summary)}</p>
-        <p class="meta">${escapeHtml(config.labels.coordinates)}: ${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)} · ${escapeHtml(coords.accuracy)}</p>
         <p class="meta">${escapeHtml(place.status)}</p>
         ${
           place.source
@@ -3484,15 +3482,12 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     }
 
     function renderArchiveItem(item: any) {
-      const coords = item.coordinates;
       detail.innerHTML = `
         <figure class="landmark-media detail-media"><img src="${escapeHtml(item.media.url)}" alt="${escapeHtml(item.title)}" loading="lazy" decoding="async"><figcaption>${escapeHtml(item.media.credit)} · ${escapeHtml(item.media.license)}</figcaption></figure>
         <p class="eyebrow">${escapeHtml(item.dateDisplay)} · ${escapeHtml(item.kind)}</p>
         <h2>${escapeHtml(item.title)}</h2>
         <p>${escapeHtml(item.description)}</p>
         <dl class="place-facts">
-          <dt>${escapeHtml(config.labels.coordinates)}</dt>
-          <dd>${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)} · ${escapeHtml(coords.accuracy)}</dd>
           <dt>${escapeHtml(config.labels.archivePlace)}</dt>
           <dd>${escapeHtml(item.place)}</dd>
           <dt>${escapeHtml(config.labels.license)}</dt>
