@@ -4615,6 +4615,12 @@ code {
   height: 480px;
   width: 100%;
 }
+
+.places-map-pin {
+  height: 30px;
+  width: 30px;
+}
+
 .places-map-head {
   margin-bottom: 14px;
 }

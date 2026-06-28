@@ -920,12 +920,15 @@ const placesMapConfig = {
       }).addTo(map);
       const layer = L.layerGroup().addTo(map);
       const markers = placeItems.map((it) => {
-        const marker = L.circleMarker([it.lat, it.lng], {
-          radius: 6,
-          color: it.color,
-          weight: 1.5,
-          fillColor: it.color,
-          fillOpacity: 0.62
+        const marker = L.marker([it.lat, it.lng], {
+          title: it.name,
+          icon: L.divIcon({
+            className: "",
+            html: `<span class="marker-pin places-map-pin" style="--pin:${mEsc(it.color)}"><span>${mEsc(it.name.slice(0, 1))}</span></span>`,
+            iconSize: [30, 30],
+            iconAnchor: [15, 30],
+            popupAnchor: [0, -28]
+          })
         });
         marker.bindPopup(
           `<strong>${mEsc(it.name)}</strong><br><span class="meta">${mEsc(it.catLabel)}</span><br><a href="${mEsc(it.href)}">${mEsc(mapCfg.openLabel)} →</a>`
