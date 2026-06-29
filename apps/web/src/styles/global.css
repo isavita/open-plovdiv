@@ -4,17 +4,20 @@
    ========================================================================== */
 
 :root {
-  /* Brand + neutrals (light) */
+  /* Brand + neutrals (light) — warm parchment with aged depth */
   --bg: #f2ead8;
   --bg-tint: #ebe0ca;
+  --bg-deep: #e4d6b8;
   --surface: #fdf8ec;
   --surface-2: #f5edd9;
   --surface-3: #ece1c9;
   --ink: #2a2318;
+  --ink-deep: #1d1810;
   --ink-2: #4a4030;
   --muted: #6a5f48;
   --line: #e3d7bc;
   --line-strong: #cdbd98;
+  --line-gold: #d8c089;
 
   --brand: #15657f;
   --brand-strong: #0f4f64;
@@ -23,9 +26,13 @@
   --accent: #b4632a;
   --accent-soft: #f0e1cb;
 
-  /* Data-category palette — one colour per entity type, used across every
-     chart, bar, stat and map marker so the visual language stays consistent.
-     people · places · events · sources · growth · geography */
+  /* Heritage richness — antique gold + Bulgarian garnet, used as a third
+     accent for ornaments, dividers, hero glows and gilded highlights. */
+  --gold: #b08534;
+  --gold-deep: #8a6322;
+  --gold-soft: #efe2c4;
+  --garnet: #8a2f3b;
+
   --data-people: #15657f;
   --data-places: #3f7d54;
   --data-events: #b4632a;
@@ -49,11 +56,21 @@
   --shadow-sm: 0 1px 2px rgb(74 56 30 / 8%), 0 1px 1px rgb(74 56 30 / 5%);
   --shadow: 0 6px 22px rgb(74 56 30 / 10%);
   --shadow-lg: 0 22px 50px rgb(74 56 30 / 16%);
+  /* Layered, softer modern shadow with a faint warm core + lift. */
+  --shadow-card: 0 1px 2px rgb(74 56 30 / 6%), 0 8px 24px rgb(74 56 30 / 9%);
+  --shadow-card-hover: 0 2px 4px rgb(74 56 30 / 8%), 0 18px 44px rgb(74 56 30 / 16%);
+  /* Gilded glow used behind hero numerals and primary buttons. */
+  --glow-gold: 0 0 0 1px rgb(176 133 52 / 22%), 0 14px 40px rgb(176 133 52 / 18%);
+  --glow-brand: 0 10px 30px rgb(21 101 127 / 28%);
+
+  /* 1px hairline in brand gold for gilded borders / divider rules. */
+  --gold-grad: linear-gradient(90deg, transparent, var(--gold) 18%, var(--gold-deep) 50%, var(--gold) 82%, transparent);
 
   --r-xs: 5px;
   --r-sm: 8px;
   --r: 11px;
   --r-lg: 15px;
+  --r-xl: 22px;
   --r-pill: 999px;
 
   --maxw: 1180px;
@@ -63,20 +80,27 @@
     "Segoe UI", Roboto, sans-serif;
   --font-display: "Playfair Display Variable", Georgia, "Times New Roman", serif;
 
+  /* Faint paper grain layered over surfaces — gives the parchment a tactile,
+     aged feel without hurting readability. Inline SVG turbulence, cached. */
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+
   color-scheme: light;
 }
 
 [data-theme="dark"] {
   --bg: #16120c;
   --bg-tint: #1d1710;
+  --bg-deep: #100c08;
   --surface: #201a12;
   --surface-2: #281f16;
   --surface-3: #31271b;
   --ink: #efe6d4;
+  --ink-deep: #f6ecd8;
   --ink-2: #cabfa6;
   --muted: #9a8e76;
   --line: #342a1e;
   --line-strong: #483c2b;
+  --line-gold: #5a4a28;
 
   --brand: #57aecb;
   --brand-strong: #7cc3da;
@@ -84,6 +108,11 @@
   --brand-soft: #15303a;
   --accent: #e0935a;
   --accent-soft: #2e2114;
+
+  --gold: #d2a85c;
+  --gold-deep: #b08534;
+  --gold-soft: #3a2c14;
+  --garnet: #c46774;
 
   --data-people: #57aecb;
   --data-places: #73b387;
@@ -107,7 +136,10 @@
   --shadow-sm: 0 1px 2px rgb(0 0 0 / 30%);
   --shadow: 0 8px 26px rgb(0 0 0 / 40%);
   --shadow-lg: 0 26px 60px rgb(0 0 0 / 55%);
-
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 28%), 0 10px 28px rgb(0 0 0 / 42%);
+  --shadow-card-hover: 0 2px 4px rgb(0 0 0 / 32%), 0 22px 48px rgb(0 0 0 / 56%);
+  --glow-gold: 0 0 0 1px rgb(210 168 92 / 22%), 0 14px 40px rgb(210 168 92 / 14%);
+  --glow-brand: 0 10px 30px rgb(87 174 203 / 26%);
   color-scheme: dark;
 }
 
@@ -115,20 +147,27 @@
   :root:not([data-theme="light"]) {
     --bg: #16120c;
     --bg-tint: #1d1710;
+    --bg-deep: #100c08;
     --surface: #201a12;
     --surface-2: #281f16;
     --surface-3: #31271b;
     --ink: #efe6d4;
+    --ink-deep: #f6ecd8;
     --ink-2: #cabfa6;
     --muted: #9a8e76;
     --line: #342a1e;
     --line-strong: #483c2b;
+    --line-gold: #5a4a28;
     --brand: #57aecb;
     --brand-strong: #7cc3da;
     --brand-ink: #06181f;
     --brand-soft: #15303a;
     --accent: #e0935a;
     --accent-soft: #2e2114;
+    --gold: #d2a85c;
+    --gold-deep: #b08534;
+    --gold-soft: #3a2c14;
+    --garnet: #c46774;
     --data-people: #57aecb;
     --data-places: #73b387;
     --data-events: #e0935a;
@@ -149,6 +188,10 @@
     --shadow-sm: 0 1px 2px rgb(0 0 0 / 30%);
     --shadow: 0 8px 26px rgb(0 0 0 / 40%);
     --shadow-lg: 0 26px 60px rgb(0 0 0 / 55%);
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 28%), 0 10px 28px rgb(0 0 0 / 42%);
+    --shadow-card-hover: 0 2px 4px rgb(0 0 0 / 32%), 0 22px 48px rgb(0 0 0 / 56%);
+    --glow-gold: 0 0 0 1px rgb(210 168 92 / 22%), 0 14px 40px rgb(210 168 92 / 14%);
+    --glow-brand: 0 10px 30px rgb(87 174 203 / 26%);
     color-scheme: dark;
   }
 }
@@ -176,9 +219,44 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   background:
-    radial-gradient(1100px 460px at 88% -8%, var(--brand-soft), transparent 60%),
+    radial-gradient(900px 520px at 12% -10%, color-mix(in srgb, var(--brand-soft) 70%, transparent), transparent 60%),
+    radial-gradient(820px 460px at 92% 6%, color-mix(in srgb, var(--accent-soft) 60%, transparent), transparent 62%),
+    radial-gradient(1200px 700px at 50% 120%, color-mix(in srgb, var(--gold-soft) 55%, transparent), transparent 65%),
     var(--bg);
   background-attachment: fixed;
+  position: relative;
+}
+
+/* Aged-paper grain laid over the whole page. Kept extremely faint and
+   pointer-events:none so it never interferes with interaction or text. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--paper-grain);
+  background-size: 220px 220px;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+}
+
+[data-theme="dark"] body::before {
+  opacity: 0.05;
+  mix-blend-mode: screen;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body::before {
+    opacity: 0.05;
+    mix-blend-mode: screen;
+  }
+}
+
+/* Keep all real content above the grain layer. */
+.site-shell {
+  position: relative;
+  z-index: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -261,15 +339,31 @@ img {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: color-mix(in srgb, var(--surface) 82%, transparent);
-  backdrop-filter: saturate(1.4) blur(14px);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  backdrop-filter: saturate(1.5) blur(16px);
+  -webkit-backdrop-filter: saturate(1.5) blur(16px);
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 0 rgb(176 133 52 / 14%);
+}
+
+/* Gilded hairline under the header — a thin gold gradient that reads as
+   the embossed rule on a Revival-era letterhead. */
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--gold-grad);
+  opacity: 0.35;
+  pointer-events: none;
 }
 
 .nav {
   width: min(var(--maxw), 100% - calc(var(--gutter) * 2));
   margin-inline: auto;
-  min-height: 66px;
+  min-height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -280,13 +374,30 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 11px;
-  color: var(--ink);
+  color: var(--ink-deep);
   text-decoration: none;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: 0;
+  font-size: 1.24rem;
+  letter-spacing: 0.005em;
   white-space: nowrap;
+  position: relative;
+}
+
+/* Small gilded finial before the wordmark — a capped column reading as the
+   silhouette of a Revival-house pillar or a chess pawn. Purely decorative. */
+.brand::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 22px;
+  background:
+    radial-gradient(circle at 50% 18%, var(--gold) 0 3px, transparent 3.2px),
+    linear-gradient(var(--gold), var(--gold)) center 8px / 2px 12px no-repeat,
+    radial-gradient(circle at 50% 88%, var(--gold) 0 4px, transparent 4.2px);
+  background-repeat: no-repeat;
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .brand:hover {
@@ -308,22 +419,50 @@ img {
 .nav-links a {
   color: var(--ink-2);
   text-decoration: none;
-  padding: 8px 12px;
+  padding: 9px 13px;
   border-radius: var(--r-sm);
   font-size: 0.95rem;
   font-weight: 550;
   line-height: 1;
-  transition: background 0.15s ease, color 0.15s ease;
+  position: relative;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  right: 13px;
+  bottom: 4px;
+  height: 2px;
+  background: var(--gold-grad);
+  background-size: 100% 100%;
+  border-radius: 2px;
+  opacity: 0;
+  transform: scaleX(0.4);
+  transform-origin: left center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .nav-links a:hover {
-  background: var(--surface-2);
-  color: var(--ink);
+  background: color-mix(in srgb, var(--surface-2) 70%, transparent);
+  color: var(--ink-deep);
+}
+
+.nav-links a:hover::after {
+  opacity: 0.7;
+  transform: scaleX(1);
 }
 
 .nav-links a[aria-current="page"] {
   color: var(--brand);
   background: var(--brand-soft);
+}
+
+.nav-links a[aria-current="page"]::after {
+  opacity: 1;
+  transform: scaleX(1);
+  background: linear-gradient(90deg, var(--brand), var(--brand-strong));
 }
 
 .icon-btn {
@@ -335,18 +474,19 @@ img {
   height: 40px;
   padding: 0 10px;
   border: 1px solid var(--line-strong);
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
   color: var(--ink-2);
   border-radius: var(--r-sm);
   cursor: pointer;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
 }
 
 .icon-btn:hover {
-  border-color: var(--brand);
-  color: var(--brand);
+  border-color: var(--gold);
+  color: var(--ink-deep);
+  box-shadow: 0 0 0 1px rgb(176 133 52 / 22%);
 }
 
 .lang-switch {
@@ -574,21 +714,31 @@ p:last-child {
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  color: var(--accent);
+  gap: 9px;
+  color: var(--gold-deep);
   font-weight: 700;
   margin: 0 0 14px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  font-size: 0.74rem;
 }
 
 .eyebrow::before {
   content: "";
-  width: 22px;
+  width: 26px;
   height: 2px;
-  background: currentColor;
+  background: var(--gold-grad);
   border-radius: 2px;
+}
+
+[data-theme="dark"] .eyebrow {
+  color: var(--gold);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .eyebrow {
+    color: var(--gold);
+  }
 }
 
 /* ---- Sections ------------------------------------------------------------ */
@@ -624,7 +774,47 @@ p:last-child {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(48px, 8vw, 104px) 0 clamp(36px, 5vw, 64px);
+  padding: clamp(52px, 9vw, 116px) 0 clamp(40px, 6vw, 76px);
+  background:
+    radial-gradient(620px 420px at 16% 8%, color-mix(in srgb, var(--gold-soft) 75%, transparent), transparent 70%),
+    radial-gradient(780px 520px at 88% 22%, color-mix(in srgb, var(--brand-soft) 70%, transparent), transparent 72%),
+    linear-gradient(180deg, transparent, color-mix(in srgb, var(--bg-deep) 55%, transparent));
+}
+
+/* A faint ornamental arch framing the top-right of the hero — a Romanesque
+   blind arcade drawn in CSS, evoking the Antique Theatre colonnade. */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  width: 360px;
+  height: 320px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.18;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 46px, color-mix(in srgb, var(--gold) 60%, transparent) 46px 47px),
+    radial-gradient(circle at 24px 60px, transparent 22px, color-mix(in srgb, var(--gold) 60%, transparent) 22.5px 24px, transparent 24.5px) 0 0 / 48px 96px;
+  -webkit-mask: linear-gradient(180deg, #000 0 70%, transparent 100%);
+  mask: linear-gradient(180deg, #000 0 70%, transparent 100%);
+}
+
+[data-theme="dark"] .hero::before {
+  opacity: 0.22;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero::before {
+    opacity: 0.22;
+  }
+}
+
+/* On small screens the arcade crowds the heading — keep the mobile hero calm. */
+@media (max-width: 760px) {
+  .hero::before {
+    display: none;
+  }
 }
 
 /* Heritage skyline anchored to the bottom of the hero. */
@@ -638,23 +828,38 @@ p:last-child {
   z-index: 0;
   pointer-events: none;
   color: var(--accent);
-  opacity: 0.16;
-  mask-image: linear-gradient(to top, #000 62%, transparent 100%);
+  opacity: 0.18;
+  mask-image: linear-gradient(to top, #000 64%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, #000 64%, transparent 100%);
 }
 
 [data-theme="dark"] .hero-skyline {
-  opacity: 0.24;
+  opacity: 0.26;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .hero-skyline {
-    opacity: 0.24;
+    opacity: 0.26;
   }
 }
 
 .hero > .container {
   position: relative;
   z-index: 1;
+}
+
+.hero h1 {
+  text-shadow: 0 1px 0 rgb(255 255 255 / 40%);
+}
+
+[data-theme="dark"] .hero h1 {
+  text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero h1 {
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+  }
 }
 
 /* ---- Grids --------------------------------------------------------------- */
@@ -698,9 +903,31 @@ p:last-child {
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--r);
+  border-radius: var(--r-lg);
   padding: clamp(16px, 2.2vw, 22px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  transition: box-shadow 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+}
+
+/* A short gilded accent at the top-left of every card — reads as the corner
+   mark on an engraved plate, without adding DOM. */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 18px;
+  width: 34px;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background: var(--gold-grad);
+  opacity: 0;
+  transition: opacity 0.22s ease, width 0.22s ease;
+}
+
+.card:hover::before {
+  opacity: 0.85;
+  width: 52px;
 }
 
 .card-link {
@@ -711,16 +938,32 @@ p:last-child {
   gap: 4px;
   min-height: 100%;
   text-decoration: none;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  overflow: hidden;
+  transition: transform 0.22s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+/* Soft diagonal sheen across link cards on hover — a faint gilded lightray. */
+.card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 40%, color-mix(in srgb, var(--gold-soft) 50%, transparent) 50%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .card-link:hover,
 .card-link:focus-visible {
-  border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
-  box-shadow: var(--shadow);
-  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--gold) 45%, var(--line));
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
   color: inherit;
   outline: none;
+}
+
+.card-link:hover::after {
+  opacity: 0.5;
 }
 
 .card-link h2,
@@ -758,22 +1001,38 @@ p:last-child {
 }
 
 .stat {
-  background: var(--surface);
+  background: linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--surface-2) 85%, var(--surface)));
   border: 1px solid var(--line);
-  border-radius: var(--r);
-  padding: 16px 18px;
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--r-lg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+/* A faint gilded corner glow on each stat card — adds depth and heritage. */
+.stat::after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 35%, transparent), transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .stat strong {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
-  font-weight: 600;
+  font-size: clamp(1.55rem, 2.6vw, 2.1rem);
+  font-weight: 700;
   letter-spacing: 0;
   color: var(--brand);
   line-height: 1.1;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
+  position: relative;
 }
 
 /* A stat can be tinted to its entity colour (growth, places, …) for the
@@ -820,8 +1079,8 @@ p:last-child {
 
 .button {
   align-items: center;
-  background: var(--brand);
-  border: 1px solid var(--brand);
+  background: linear-gradient(180deg, var(--brand), var(--brand-strong));
+  border: 1px solid var(--brand-strong);
   border-radius: var(--r-sm);
   color: var(--brand-ink);
   display: inline-flex;
@@ -830,30 +1089,34 @@ p:last-child {
   min-height: 46px;
   padding: 0 20px;
   text-decoration: none;
-  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
-  box-shadow: var(--shadow-sm);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+  box-shadow: var(--glow-brand);
+  position: relative;
 }
 
 .button:hover,
 .button:focus-visible {
-  background: var(--brand-strong);
+  filter: brightness(1.06);
   color: var(--brand-ink);
   transform: translateY(-2px);
-  box-shadow: var(--shadow);
+  box-shadow: 0 14px 34px rgb(21 101 127 / 38%);
   outline: none;
 }
 
 .button.secondary {
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
   color: var(--brand);
   border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
 }
 
 .button.secondary:hover,
 .button.secondary:focus-visible {
   background: var(--surface);
-  border-color: var(--brand);
-  color: var(--brand);
+  border-color: var(--gold);
+  color: var(--brand-strong);
+  filter: none;
+  box-shadow: 0 0 0 1px rgb(176 133 52 / 22%);
 }
 
 .button .arrow {
@@ -2153,10 +2416,25 @@ code {
   position: relative;
   overflow: hidden;
   border-top: 1px solid var(--line);
-  background: var(--surface);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, var(--bg-deep)), var(--surface));
   color: var(--muted);
-  padding: clamp(36px, 5vw, 56px) 0 28px;
-  margin-top: 20px;
+  padding: clamp(40px, 6vw, 64px) 0 30px;
+  margin-top: 24px;
+}
+
+/* Gilded rule along the very top of the footer — a brass band that anchors
+   the skyline rising from below. */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold-grad);
+  opacity: 0.45;
+  z-index: 2;
 }
 
 /* Faint heritage skyline rising from the bottom of every page. */
@@ -2170,7 +2448,7 @@ code {
   z-index: 0;
   pointer-events: none;
   color: var(--ink);
-  opacity: 0.05;
+  opacity: 0.06;
 }
 
 [data-theme="dark"] .footer-skyline {
@@ -2240,6 +2518,76 @@ code {
   flex-wrap: wrap;
   padding-top: 22px;
   font-size: 0.88rem;
+}
+
+/* ---- Ornamental dividers (heritage flourishes) -------------------------- */
+
+/* A gilded horizontal rule with a central Revival-style wood-carving
+   flourish. Use <Ornament /> (renders an SVG + rule) or .ornament-rule alone
+   for a plain gilded line. */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: clamp(28px, 4vw, 44px) auto;
+  max-width: var(--maxw);
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+.ornament-rule {
+  height: 1px;
+  flex: 1;
+  max-width: 220px;
+  background: var(--gold-grad);
+  opacity: 0.55;
+}
+
+.ornament-mark {
+  width: clamp(40px, 6vw, 64px);
+  height: auto;
+  flex: none;
+  filter: drop-shadow(0 1px 0 rgb(255 255 255 / 25%));
+}
+
+[data-theme="dark"] .ornament-mark {
+  filter: drop-shadow(0 1px 0 rgb(0 0 0 / 30%));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ornament-mark {
+    filter: drop-shadow(0 1px 0 rgb(0 0 0 / 30%));
+  }
+}
+
+/* A centered gilded rule with a small diamond — a lighter section divider
+   that doesn't need an SVG asset. */
+.ornament-thin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: clamp(22px, 3vw, 34px) 0;
+}
+
+.ornament-thin::before,
+.ornament-thin::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  max-width: 180px;
+  background: var(--gold-grad);
+  opacity: 0.45;
+}
+
+.ornament-thin-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 18%, transparent);
 }
 
 /* ---- Utilities ----------------------------------------------------------- */

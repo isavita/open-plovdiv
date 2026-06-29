@@ -2,6 +2,7 @@
 import "@fontsource-variable/playfair-display/index.css";
 import "../styles/global.css";
 import PlovdivSkyline from "@components/PlovdivSkyline.astro";
+import Ornament from "@components/Ornament.astro";
 import { languages, localeCodes, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import {
   absoluteUrl,
@@ -275,6 +276,7 @@ const footerAbout = [
               </ul>
             </div>
           </div>
+          <Ornament />
           <div class="footer-bottom">
             <span>{t.footer.note}</span>
             <span class="meta">{t.footer.dataNote}</span>
