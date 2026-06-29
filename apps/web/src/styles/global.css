@@ -253,6 +253,17 @@ body::before {
   }
 }
 
+/* On small screens the grain reads as noise against small text — dial it
+   back further so mobile stays clean and legible. */
+@media (max-width: 760px) {
+  body::before {
+    opacity: 0.02;
+  }
+  [data-theme="dark"] body::before {
+    opacity: 0.03;
+  }
+}
+
 /* Keep all real content above the grain layer. */
 .site-shell {
   position: relative;
@@ -623,6 +634,11 @@ img {
   }
 }
 
+/* Secondary link groups live only inside the mobile menu. */
+.nav-groups {
+  display: none;
+}
+
 /* ---- Mobile nav ---------------------------------------------------------- */
 
 @media (max-width: 1240px) {
@@ -631,19 +647,37 @@ img {
   }
 
   .nav-links {
-    position: absolute;
-    inset: 66px 0 auto 0;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    height: calc(100dvh - 70px);
+    max-height: calc(100dvh - 70px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     flex-direction: column;
     align-items: stretch;
-    gap: 4px;
-    padding: 12px var(--gutter) 18px;
-    background: var(--surface);
+    gap: 2px;
+    padding: 14px var(--gutter) 28px;
+    background: linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--surface) 94%, var(--bg-deep)));
     border-bottom: 1px solid var(--line);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-lg);
     transform: translateY(-8px);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.16s ease, transform 0.16s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  /* Gilded rule along the top of the open menu — ties it to the header band. */
+  .nav-links::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold-grad);
+    opacity: 0.4;
   }
 
   .site-header[data-open="true"] .nav-links {
@@ -653,8 +687,67 @@ img {
   }
 
   .nav-links a {
-    padding: 12px 14px;
-    font-size: 1rem;
+    padding: 15px 16px;
+    font-size: 1.04rem;
+    border-radius: var(--r-sm);
+    border: 1px solid transparent;
+  }
+
+  /* In the dropdown, drop the inline gilded underline in favour of a clean
+     left accent bar + tinted row, which reads better as a vertical menu. */
+  .nav-links a::after {
+    display: none;
+  }
+
+  .nav-links a:hover {
+    background: var(--surface-2);
+    border-color: var(--line);
+  }
+
+  .nav-links a[aria-current="page"] {
+    background: var(--brand-soft);
+    border-color: color-mix(in srgb, var(--brand) 30%, transparent);
+    box-shadow: inset 3px 0 0 var(--brand);
+  }
+
+  /* Grouped secondary destinations — quiet, labelled, design-integrated. */
+  .nav-groups {
+    display: grid;
+    gap: 6px;
+    margin-top: 14px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-group {
+    display: grid;
+    gap: 1px;
+  }
+
+  .nav-group-label {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    padding: 10px 16px 4px;
+  }
+
+  [data-theme="dark"] .nav-group-label {
+    color: var(--gold);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .nav-group-label {
+      color: var(--gold);
+    }
+  }
+
+  .nav-group a {
+    padding: 11px 16px;
+    font-size: 0.98rem;
+    font-weight: 550;
   }
 }
 
@@ -859,6 +952,40 @@ p:last-child {
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .hero h1 {
     text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+  }
+}
+
+/* ---- Hero: mobile refinement --------------------------------------------- */
+/* First mobile screen should carry title + short lead + primary CTA + the
+   top of the stat row. Tighten padding, calm the lead, and stack the CTAs
+   full-width so long translations (de/el/tr/ja) never overflow. */
+@media (max-width: 760px) {
+  .hero {
+    padding: clamp(34px, 9vw, 48px) 0 clamp(26px, 6vw, 36px);
+  }
+
+  .hero .lead {
+    font-size: 1.02rem;
+    line-height: 1.55;
+    margin-top: 12px;
+  }
+
+  .hero .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .hero .actions .button {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+  }
+
+  .hero .stat-row {
+    margin-top: 22px;
+    gap: 10px;
   }
 }
 
@@ -1971,59 +2098,257 @@ p:last-child {
 
 /* ---- Mayor chronology ---------------------------------------------------- */
 
-.mayor-timeline {
+/* ---- Mayor chronology: period-grouped vertical timeline -------------- */
+.mt-chronology {
   display: grid;
-  grid-auto-columns: minmax(180px, 240px);
-  grid-auto-flow: column;
-  gap: 12px;
-  overflow-x: auto;
-  padding: 4px 2px 14px;
-  scroll-snap-type: x proximity;
+  gap: clamp(20px, 3vw, 34px);
 }
 
-.mayor-chip {
-  background: var(--surface);
+.mt-period {
+  --mt-sticky-top: 110px;
+}
+
+.mt-period-head {
+  position: sticky;
+  top: var(--mt-sticky-top);
+  z-index: 5;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
   border-radius: var(--r);
-  color: var(--ink);
-  display: grid;
-  gap: 5px;
-  min-height: 138px;
-  padding: 15px;
-  scroll-snap-align: start;
-  text-decoration: none;
   box-shadow: var(--shadow-sm);
 }
 
-.mayor-chip:hover,
-.mayor-chip:focus-visible {
-  border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
-  box-shadow: var(--shadow);
-  color: var(--ink);
+.mt-period-head h3 {
+  margin: 0;
+  font-size: 1.08rem;
 }
 
-.mayor-chip span {
-  align-items: center;
-  background: var(--brand-soft);
+.mt-period-head .meta {
+  margin: 0;
+  margin-left: auto;
+  font-size: 0.82rem;
+}
+
+.mt-period-tag {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--gold-deep);
+  background: var(--gold-soft);
+  padding: 2px 9px;
   border-radius: var(--r-pill);
-  color: var(--brand);
-  display: inline-flex;
-  font-size: 0.78rem;
-  font-weight: 750;
-  height: 28px;
-  justify-content: center;
-  width: 38px;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
 }
 
-.mayor-chip strong {
-  font-size: 1rem;
+[data-theme="dark"] .mt-period-tag {
+  color: var(--gold);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .mt-period-tag {
+    color: var(--gold);
+  }
+}
+
+.mt-rail {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 22px;
+  position: relative;
+  display: grid;
+  gap: 10px;
+}
+
+/* vertical rail line */
+.mt-rail::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold) 0%, var(--line-strong) 60%, transparent 100%);
+  opacity: 0.5;
+  border-radius: 2px;
+}
+
+.mt-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.mt-dot {
+  position: absolute;
+  left: -22px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--brand);
+  box-shadow: 0 0 0 3px var(--bg-tint);
+}
+
+.mt-dot-current {
+  background: var(--brand);
+  border-color: var(--brand-strong);
+  box-shadow: 0 0 0 3px var(--bg-tint), 0 0 0 6px color-mix(in srgb, var(--brand) 25%, transparent);
+}
+
+.mt-year {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+
+.mt-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.mt-card:hover,
+.mt-card:focus-visible {
+  border-color: color-mix(in srgb, var(--gold) 45%, var(--line));
+  box-shadow: var(--shadow-card);
+  transform: translateX(2px);
+  outline: none;
+}
+
+.mt-portrait {
+  width: 40px !important;
+  height: 40px !important;
+  flex: none;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.mt-cardtext {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+
+.mt-cardtext strong {
+  font-size: 0.96rem;
   line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.mayor-chip small {
+.mt-cardtext small {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
-  margin-top: auto;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mt-now,
+.mt-acting {
+  font-style: normal;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 1px 7px;
+  border-radius: var(--r-pill);
+}
+
+.mt-now {
+  background: var(--badge-ok-bg);
+  color: var(--badge-ok-fg);
+}
+
+.mt-acting {
+  background: var(--badge-neutral-bg);
+  color: var(--badge-neutral-fg);
+}
+
+/* Desktop: widen the rail into a two-column compact lane so the chronology
+   reads as a denser timeline rather than a single tall list. */
+@media (min-width: 860px) {
+  .mt-rail {
+    gap: 12px 26px;
+  }
+  .mt-item {
+    grid-template-columns: 70px minmax(0, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .mt-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-left: 26px;
+  }
+  .mt-rail::before {
+    left: 7px;
+  }
+  .mt-dot {
+    left: -26px;
+  }
+}
+
+/* Mobile: keep it a clean single-column vertical timeline. */
+@media (max-width: 760px) {
+  .mt-period {
+    --mt-sticky-top: 96px;
+  }
+  .mt-period-head {
+    padding: 9px 12px;
+  }
+  .mt-period-head h3 {
+    font-size: 1rem;
+  }
+  .mt-period-head .meta {
+    margin-left: 0;
+  }
+  .mt-item {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 10px;
+  }
+  .mt-portrait {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .mt-cardtext strong {
+    white-space: normal;
+  }
+}
+
+/* Respect reduced motion: drop the hover translate. */
+@media (prefers-reduced-motion: reduce) {
+  .mt-card {
+    transition: none;
+  }
+  .mt-card:hover,
+  .mt-card:focus-visible {
+    transform: none;
+  }
 }
 
 .mayor-layout {
@@ -2590,6 +2915,21 @@ code {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 18%, transparent);
 }
 
+/* Mobile: the large flourish reads as vertical noise against compact cards —
+   collapse it to a slim gilded rule so sections still breathe but stay calm. */
+@media (max-width: 760px) {
+  .ornament {
+    gap: 12px;
+    margin: clamp(18px, 4vw, 26px) auto;
+  }
+  .ornament-mark {
+    display: none;
+  }
+  .ornament-rule {
+    max-width: 140px;
+  }
+}
+
 /* ---- Utilities ----------------------------------------------------------- */
 
 .stack-sm > * + * {
@@ -2653,6 +2993,26 @@ code {
   .archive-grid,
   .then-now-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Tighter mobile rhythm: less section padding, more compact cards, stronger
+     hierarchy so small screens feel intentional rather than sparse. */
+  .section {
+    padding: clamp(30px, 7vw, 40px) 0;
+  }
+
+  .card,
+  .stat {
+    padding: 14px 15px;
+  }
+
+  .card .badge,
+  .card-link .badge {
+    font-size: 0.74rem;
+  }
+
+  .section-head {
+    margin-bottom: 18px;
   }
 
   .history-event-card header {
@@ -5123,4 +5483,596 @@ code {
 }
 .lg-precip::before {
   background: var(--brand);
+}
+
+/* ==========================================================================
+   Mobile refinements — mobile-first polish layered on top of the base rules.
+   Tightens the hero, stacks CTAs, calms decoration, compacts cards and
+   ornaments, and improves the opened mobile menu. Overrides above use
+   max-width media queries so they only apply on small screens.
+   ========================================================================== */
+
+/* ---- Hero: first screen should show title + lead + CTA + start of stats ---- */
+@media (max-width: 760px) {
+  .hero {
+    padding-top: clamp(36px, 12vw, 56px);
+    padding-bottom: clamp(28px, 7vw, 40px);
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 8.5vw, 2.7rem);
+    max-width: none;
+  }
+
+  .hero .lead {
+    font-size: 1.02rem;
+    margin-top: 12px;
+  }
+
+  /* Stack CTAs full-width so they read as a clear, consistent pair. */
+  .hero .actions,
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .hero .actions .button,
+  .actions .button {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+
+  /* Bring the stat row closer so at least the first row is visible. */
+  .hero .stat-row {
+    margin-top: 22px;
+  }
+}
+
+/* ---- Calm decoration on small screens ------------------------------- */
+@media (max-width: 760px) {
+  /* Paper grain barely-there on mobile to keep text crisp. */
+  body::before {
+    opacity: 0.022;
+  }
+
+  /* Ornament dividers: compact, shorter rules, less vertical noise. */
+  .ornament {
+    gap: 12px;
+    margin: 22px auto;
+  }
+  .ornament-rule {
+    max-width: 84px;
+  }
+  .ornament-mark {
+    width: 46px;
+  }
+
+  /* Stat cards: tighter so the 2x2 grid breathes on a phone. */
+  .stat {
+    padding: 14px 15px;
+  }
+  .stat strong {
+    font-size: 1.4rem;
+  }
+
+  /* Cards: less padding, stronger hierarchy on mobile. */
+  .card {
+    padding: 15px;
+    border-radius: var(--r);
+  }
+  .card-link {
+    gap: 6px;
+  }
+  .card-link .arrow {
+    padding-top: 10px;
+  }
+}
+
+/* ---- Section rhythm: clearer full-width bands on mobile -------------- */
+@media (max-width: 760px) {
+  .section {
+    padding: clamp(32px, 9vw, 48px) 0;
+  }
+  .section-tint {
+    border-block-width: 1px;
+  }
+  .section-head {
+    margin-bottom: 18px;
+  }
+}
+
+/* ---- Mobile menu: designed, grouped, clear active state -------------- */
+@media (max-width: 1240px) {
+  .site-header[data-open="true"] .nav-links {
+    border-radius: 0 0 var(--r-lg) var(--r-lg);
+    padding-block: 14px 22px;
+    gap: 2px;
+  }
+
+  .site-header .nav-links a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 13px 16px;
+    border-radius: var(--r);
+    font-size: 1.04rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+  }
+
+  .site-header .nav-links a::after {
+    left: 16px;
+    right: auto;
+    bottom: 6px;
+  }
+
+  .site-header .nav-links a[aria-current="page"] {
+    background: var(--brand-soft);
+    border-color: color-mix(in srgb, var(--brand) 28%, transparent);
+  }
+
+  .site-header .nav-links a:hover {
+    background: var(--surface-2);
+  }
+}
+
+/* ---- Long-translation safety: keep CTAs and headers from overflowing -- */
+@media (max-width: 760px) {
+  .hero .actions .button,
+  .actions .button {
+    /* allow wrapping inside long German/Greek/Japanese labels instead of
+       clipping, while keeping the button full-width. */
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .brand {
+    font-size: 1.06rem;
+    max-width: 52vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* ---- Landmark motifs (quiet section markers) ------------------------- */
+.landmark-motif {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  color: var(--gold);
+  opacity: 0.9;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Paired with an eyebrow/heading as a small section marker — a gilded chip
+   holding the motif + label. */
+.section-motif {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 5px 12px 5px 8px;
+  border: 1px solid var(--line-gold);
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--gold-soft) 35%, transparent);
+  color: var(--gold-deep);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.section-motif .landmark-motif {
+  width: 20px;
+  height: 20px;
+  color: var(--gold-deep);
+}
+
+[data-theme="dark"] .section-motif {
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold-soft) 30%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .section-motif {
+    color: var(--gold);
+    background: color-mix(in srgb, var(--gold-soft) 30%, transparent);
+  }
+}
+
+/* ---- History tree (eras -> events -> people/places) ----------------- */
+/* Built with native <details>/<summary> so it expands without JS, works
+   with reduced motion, and stays accessible. */
+
+.htree {
+  display: grid;
+  gap: clamp(12px, 2vw, 18px);
+}
+
+/* Hide the default disclosure marker — we draw our own caret. */
+.htree summary {
+  list-style: none;
+}
+.htree summary::-webkit-details-marker {
+  display: none;
+}
+
+.htree-era {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--era-color, var(--gold));
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.htree-era-sum {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  color: var(--ink-deep);
+  transition: background 0.16s ease;
+}
+
+.htree-era-sum:hover {
+  background: var(--surface-2);
+}
+
+.htree-era-mark {
+  display: inline-flex;
+  color: var(--era-color, var(--gold));
+  flex: none;
+}
+
+.htree-era-mark .landmark-motif {
+  width: 22px;
+  height: 22px;
+  color: inherit;
+}
+
+.htree-era-name {
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.htree-era-range {
+  font-family: var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.htree-era-count {
+  margin-left: auto;
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--era-color, var(--gold-deep));
+  background: color-mix(in srgb, var(--era-color, var(--gold)) 14%, transparent);
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+
+/* Caret: a plus that becomes a minus when open. */
+.htree-caret {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  color: var(--muted);
+}
+.htree-caret::before,
+.htree-caret::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.htree-caret::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+details[open] > .htree-era-sum .htree-caret::after,
+details[open] > .htree-event-sum .htree-caret::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 0;
+}
+
+.htree-events {
+  list-style: none;
+  margin: 0;
+  padding: 4px 16px 14px 30px;
+  position: relative;
+  display: grid;
+  gap: 6px;
+}
+.htree-events::before {
+  content: "";
+  position: absolute;
+  left: 19px;
+  top: 0;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--era-color, var(--gold)) 60%, transparent), transparent);
+  opacity: 0.4;
+  border-radius: 2px;
+}
+
+.htree-event {
+  position: relative;
+}
+
+.htree-event::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 16px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--era-color, var(--brand));
+}
+
+.htree-event-details {
+  background: color-mix(in srgb, var(--surface-2) 60%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.htree-event-sum {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 12px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.htree-event-sum:hover {
+  background: var(--surface-2);
+}
+
+.htree-event-year {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--era-color, var(--brand));
+  font-size: 0.9rem;
+  flex: none;
+  min-width: 3.5em;
+}
+
+.htree-event-title {
+  font-size: 0.94rem;
+  line-height: 1.35;
+}
+
+.htree-event-details .htree-caret {
+  margin-left: auto;
+  align-self: center;
+}
+
+.htree-event-links {
+  padding: 4px 14px 12px 14px;
+  border-top: 1px dashed var(--line);
+  display: grid;
+  gap: 10px;
+}
+
+.htree-link-group + .htree-link-group {
+  margin-top: 2px;
+}
+
+.htree-link-head {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 5px;
+}
+
+.htree-link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.htree-link-list a {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--ink-2);
+  text-decoration: none;
+  font-size: 0.82rem;
+  line-height: 1.3;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.htree-link-list a:hover {
+  border-color: var(--era-color, var(--brand));
+  color: var(--ink-deep);
+  background: var(--surface);
+}
+
+.htree-no-links {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* Desktop: eras flow into side-by-side lanes — a horizontal tree. */
+@media (min-width: 860px) {
+  .htree {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 22px);
+  }
+  /* Let the first era (open by default) span full width as an intro. */
+  .htree-era:first-child {
+    grid-column: 1 / -1;
+  }
+  .htree-event-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (min-width: 1180px) {
+  .htree {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Mobile: single column, compact. */
+@media (max-width: 760px) {
+  .htree-era-sum {
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    padding: 12px 14px;
+  }
+  .htree-era-count {
+    margin-left: 0;
+  }
+  .htree-era-name {
+    flex: 1 1 auto;
+  }
+  .htree-events {
+    padding-left: 26px;
+  }
+  .htree-events::before {
+    left: 16px;
+  }
+  .htree-event::before {
+    left: -14px;
+  }
+  .htree-event-title {
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .htree-caret::before,
+  .htree-caret::after,
+  .htree-era-sum,
+  .htree-event-sum,
+  .htree-link-list a {
+    transition: none;
+  }
+}
+
+/* ---- People relationship graph (on-demand Cytoscape panel) ----------- */
+.graph-opener {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  margin-top: 18px;
+}
+.graph-opener .meta {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 0.85rem;
+}
+
+.graph-panel {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.graph-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.graph-panel-head h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.people-graph {
+  width: 100%;
+  height: clamp(360px, 62vh, 560px);
+  background:
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--gold-soft) 30%, transparent), transparent 60%),
+    var(--bg-tint);
+  position: relative;
+}
+
+#people-graph-status {
+  padding: 8px 16px 12px;
+  margin: 0;
+}
+
+.graph-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 0;
+  padding: 10px 16px 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.graph-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.graph-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brand);
+}
+.graph-legend-line {
+  display: inline-block;
+  width: 22px;
+  height: 0;
+  border-top: 2px dashed var(--gold-deep);
+}
+.graph-legend-line.graph-legend-succession {
+  border-top: 2px solid var(--brand-strong);
+}
+
+@media (max-width: 760px) {
+  .people-graph {
+    height: clamp(320px, 56vh, 460px);
+  }
+  .graph-opener .button {
+    width: 100%;
+    justify-content: center;
+  }
 }

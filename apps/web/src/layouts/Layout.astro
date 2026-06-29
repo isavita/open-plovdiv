@@ -118,6 +118,31 @@ const footerAbout = [
   { href: localizePath("/privacy", lang), label: t.footer.privacy },
   { href: localizePath("/moderation", lang), label: t.footer.moderation }
 ];
+
+// Secondary destinations shown only inside the mobile menu, grouped so the
+// phone nav reaches every page without duplicating the 5 primary links.
+const menuExplore = [
+  { href: localizePath("/people", lang), base: "/people", label: t.nav.people },
+  { href: localizePath("/stories", lang), base: "/stories", label: t.nav.stories },
+  { href: localizePath("/archive", lang), base: "/archive", label: t.nav.archive }
+];
+const menuCivic = [
+  { href: localizePath("/overview", lang), base: "/overview", label: t.nav.overview },
+  { href: localizePath("/budget", lang), base: "/budget", label: t.nav.budget },
+  { href: localizePath("/projects", lang), base: "/projects", label: t.nav.projects },
+  { href: localizePath("/fix-map", lang), base: "/fix-map", label: t.nav.fixMap },
+  { href: localizePath("/community", lang), base: "/community", label: t.footer.community }
+];
+const menuAbout = [
+  { href: localizePath("/data-sources", lang), base: "/data-sources", label: t.footer.sources },
+  { href: localizePath("/privacy", lang), base: "/privacy", label: t.footer.privacy },
+  { href: localizePath("/moderation", lang), base: "/moderation", label: t.footer.moderation }
+];
+const menuGroups = [
+  { label: t.footer.explore, items: menuExplore },
+  { label: t.footer.civic, items: menuCivic },
+  { label: t.footer.about, items: menuAbout }
+];
 ---
 
 <!doctype html>
@@ -189,6 +214,19 @@ const footerAbout = [
                 {item.label}
               </a>
             ))}
+
+            <div class="nav-groups" aria-label={t.footer.explore}>
+              {menuGroups.map((group) => (
+                <div class="nav-group">
+                  <span class="nav-group-label">{group.label}</span>
+                  {group.items.map((item) => (
+                    <a href={item.href} aria-current={isActive(item.base) ? "page" : undefined}>
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
 
           <div class="nav-right">

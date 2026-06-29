@@ -424,6 +424,63 @@ const labels = ({
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
+const graphLabels = ({
+  bg: {
+    open: "Отвори мрежовата графика",
+    close: "Затвори графика",
+    loading: "Зареждане на графика…",
+    lead: "Интерактивна мрежа от личности и връзките между тях. Всяка точка е личност, всяка линия — връзка с източник. Графиката се зарежда само при отваряне."
+  },
+  en: {
+    open: "Open network graph",
+    close: "Close graph",
+    loading: "Loading graph…",
+    lead: "An interactive network of people and the links between them. Each dot is a person, each line a sourced relationship. The graph loads only when opened."
+  },
+  de: {
+    open: "Netzwerkgrafik öffnen",
+    close: "Grafik schließen",
+    loading: "Grafik wird geladen…",
+    lead: "Ein interaktives Netzwerk von Personen und deren Verbindungen. Jeder Punkt ist eine Person, jede Linie eine belegte Beziehung. Die Grafik wird nur beim Öffnen geladen."
+  },
+  fr: {
+    open: "Ouvrir le graphe réseau",
+    close: "Fermer le graphe",
+    loading: "Chargement du graphe…",
+    lead: "Un réseau interactif de personnes et de leurs liens. Chaque point est une personne, chaque ligne une relation sourcée. Le graphe ne se charge qu'à l'ouverture."
+  },
+  it: {
+    open: "Apri il grafo di rete",
+    close: "Chiudi il grafo",
+    loading: "Caricamento del grafo…",
+    lead: "Una rete interattiva di persone e dei loro legami. Ogni punto è una persona, ogni linea una relazione con fonte. Il grafo si carica solo all'apertura."
+  },
+  tr: {
+    open: "Ağ grafiğini aç",
+    close: "Grafiği kapat",
+    loading: "Grafik yükleniyor…",
+    lead: "Kişiler ve aralarındaki bağların interaktif ağı. Her nokta bir kişi, her çizgi kaynaklı bir ilişki. Grafik yalnızca açıldığında yüklenir."
+  },
+  es: {
+    open: "Abrir el grafo de red",
+    close: "Cerrar el grafo",
+    loading: "Cargando el grafo…",
+    lead: "Una red interactiva de personas y sus vínculos. Cada punto es una persona, cada línea una relación con fuente. El grafo se carga solo al abrirlo."
+  },
+  el: {
+    open: "Άνοιγμα γραφήματος δικτύου",
+    close: "Κλείσιμο του γραφήματος",
+    loading: "Φόρτωση γραφήματος…",
+    lead: "Ένα διαδραστικό δίκτυο προσώπων και των δεσμών τους. Κάθε κουκκίδα είναι ένα πρόσωπο, κάθε γραμμή μια σχέση με πηγή. Το γράφημα φορτώνει μόνο κατά το άνοιγμα."
+  },
+  ja: {
+    open: "ネットワーク図を開く",
+    close: "図を閉じる",
+    loading: "グラフを読み込み中…",
+    lead: "人物とそのつながりのインタラクティブなネットワーク。各点が人物、各線が出典付きの関係。図は開いた時だけ読み込まれます。"
+  }
+} satisfies Record<Lang, { open: string; close: string; loading: string; lead: string }>)[lang];
+
 const groupLabels = ({
   bg: {
     governance: "Управление",
@@ -775,6 +832,7 @@ const nodeConfig = {
     linkedEvent: labels.linkedEvent,
     sources: labels.sources
   },
+  graph: graphLabels,
   total: personIndex.length
 };
 ---
@@ -873,6 +931,27 @@ const nodeConfig = {
         <p id="people-count" class="meta">{personIndex.length} {labels.people}</p>
         <button type="button" id="people-reset" class="link-button" hidden>{labels.reset}</button>
       </div>
+
+      <div class="graph-opener" data-graph-closed>
+        <button type="button" id="people-graph-toggle" class="button secondary" aria-expanded="false" aria-controls="people-graph-panel">
+          <span data-graph-toggle-text>{graphLabels.open}</span>
+        </button>
+        <p class="meta">{graphLabels.lead}</p>
+      </div>
+
+      <section class="graph-panel" id="people-graph-panel" hidden aria-live="polite">
+        <div class="graph-panel-head">
+          <h3>{labels.connectionsTitle}</h3>
+          <button type="button" id="people-graph-close" class="link-button" aria-controls="people-graph-panel">{graphLabels.close}</button>
+        </div>
+        <div id="people-graph" class="people-graph" role="img" aria-label={labels.connectionsTitle}></div>
+        <p id="people-graph-status" class="meta" hidden>{graphLabels.loading}</p>
+        <ul class="graph-legend" aria-hidden="true">
+          <li><span class="graph-legend-dot graph-legend-people"></span>{labels.people}</li>
+          <li><span class="graph-legend-line graph-legend-family"></span>{relationshipTypeLabels.spouse[lang]}</li>
+          <li><span class="graph-legend-line graph-legend-succession"></span>{relationshipTypeLabels.succeeds[lang]}</li>
+        </ul>
+      </section>
 
       <section class="relationship-ledger" aria-labelledby="relationship-ledger-title">
         <div class="relationship-ledger-head">
@@ -1304,5 +1383,125 @@ const nodeConfig = {
         loadRelationshipRows().catch(() => {});
       }, 900);
     }
+
+    // ---- On-demand relationship network graph (Cytoscape.js) ----------
+    // Cytoscape is lazy-loaded only when the user opens the graph, so it
+    // never enters the initial bundle. Mobile keeps the relationship cards
+    // above as the primary view; the graph is an on-demand panel.
+    const graphToggle = document.querySelector<HTMLButtonElement>("#people-graph-toggle");
+    const graphClose = document.querySelector<HTMLButtonElement>("#people-graph-close");
+    const graphPanel = document.querySelector<HTMLElement>("#people-graph-panel");
+    const graphEl = document.querySelector<HTMLElement>("#people-graph");
+    const graphStatus = document.querySelector<HTMLElement>("#people-graph-status");
+    const graphToggleText = document.querySelector<HTMLElement>("[data-graph-toggle-text]");
+    let cyInstance: any = null;
+    let graphLoaded = false;
+
+    function setGraphOpen(open: boolean) {
+      if (!graphPanel || !graphToggle || !graphToggleText) return;
+      graphPanel.hidden = !open;
+      graphToggle.setAttribute("aria-expanded", String(open));
+      graphToggleText.textContent = open ? config.graph?.close : config.graph?.open;
+      if (!open && cyInstance) {
+        cyInstance.destroy();
+        cyInstance = null;
+        graphLoaded = false;
+      }
+    }
+
+    async function buildGraphElements() {
+      const api = config.api ?? {};
+      const [peoplePayload, relPayload] = await Promise.all([
+        fetchPeopleJson(api.people),
+        fetchPeopleJson(api.personRelationships)
+      ]);
+      const peopleArr = collectionFromPayload(peoplePayload, "people");
+      const rels = collectionFromPayload(relPayload, "person_relationships");
+      const involved = new Set<string>();
+      const edges: any[] = [];
+      const seenEdge = new Set<string>();
+      for (const rel of rels) {
+        const from = rel.from_person_id;
+        const to = rel.to_person_id;
+        if (!from || !to) continue;
+        involved.add(from);
+        involved.add(to);
+        const key = `${from}|${to}|${rel.relationship_type}|${rel.event_id ?? ""}`;
+        if (seenEdge.has(key)) continue;
+        seenEdge.add(key);
+        edges.push({
+          data: {
+            id: `e-${key}`,
+            source: from,
+            target: to,
+            label: relationshipLabel(rel.relationship_type),
+            category: rel.relationship_type === "succeeded_by" ? "succession" : "family"
+          }
+        });
+      }
+      const nodes = peopleArr
+        .filter((p: any) => involved.has(p.id))
+        .map((p: any) => ({
+          data: {
+            id: p.id,
+            name: localizedPerson(p, "name"),
+            group: config.roleGroups?.[p.roles?.[0]] ?? "civic"
+          }
+        }));
+      return [...nodes, ...edges];
+    }
+
+    async function openGraph() {
+      if (!graphEl || !graphStatus) return;
+      graphStatus.hidden = false;
+      graphStatus.textContent = config.graph?.loading ?? "";
+      try {
+        const elements = await buildGraphElements();
+        const cyModule = await import("cytoscape");
+        const cytoscape = cyModule.default ?? cyModule;
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark"
+          || (document.documentElement.getAttribute("data-theme") !== "light"
+              && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        const nodeBg = isDark ? "#2A5B6F" : "#2c6e9c";
+        const nodeText = isDark ? "#f4ead6" : "#fdfbf7";
+        const edgeFamily = isDark ? "#c8a25b" : "#b4632a";
+        const edgeSucc = isDark ? "#7fb6a8" : "#2f7d6b";
+        cyInstance = cytoscape({
+          container: graphEl,
+          elements,
+          style: [
+            { selector: "node", style: { "background-color": nodeBg, "label": "data(name)", "color": nodeText, "text-valign": "bottom", "text-halign": "center", "text-margin-y": 4, "font-size": 11, "width": 28, "height": 28, "border-width": 2, "border-color": isDark ? "#1c3a45" : "#1f4f63", "text-wrap": "wrap", "text-max-width": 90 } },
+            { selector: "node[group='governance']", style: { "background-color": nodeBg } },
+            { selector: "node[group='culture']", style: { "background-color": isDark ? "#8a6d3b" : "#b4632a" } },
+            { selector: "node[group='science']", style: { "background-color": isDark ? "#4a6b7a" : "#15657f" } },
+            { selector: "edge", style: { "width": 1.5, "line-color": edgeFamily, "target-arrow-color": edgeFamily, "target-arrow-shape": "none", "curve-style": "bezier", "opacity": 0.7, "label": "data(label)", "font-size": 9, "color": nodeText, "text-rotation": "autorotate", "text-background-color": isDark ? "#15151a" : "#fdfbf7", "text-background-opacity": 0.85, "text-background-padding": "2px" } },
+            { selector: "edge[category='succession']", style: { "line-color": edgeSucc, "target-arrow-shape": "triangle", "target-arrow-color": edgeSucc, "line-style": "solid" } },
+            { selector: "edge[category='family']", style: { "line-style": "dashed" } },
+            { selector: ":selected", style: { "border-width": 4, "border-color": "#c8a25b", "line-color": "#c8a25b" } }
+          ],
+          layout: { name: "cose", animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches, fit: true, padding: 28, idealEdgeLength: 110, nodeRepulsion: 9000, randomize: true }
+        });
+        graphLoaded = true;
+        graphStatus.hidden = true;
+        const fit = () => cyInstance && cyInstance.fit(undefined, 28);
+        window.addEventListener("resize", fit);
+        cyInstance.on("destroy", () => window.removeEventListener("resize", fit));
+        cyInstance.fit(undefined, 28);
+      } catch (err) {
+        graphStatus.textContent = config.labels?.noResults ?? "";
+        console.error("graph load failed", err);
+      }
+    }
+
+    graphToggle?.addEventListener("click", () => {
+      const open = graphPanel?.hasAttribute("hidden");
+      if (open) {
+        setGraphOpen(true);
+        if (!graphLoaded) openGraph();
+      } else {
+        setGraphOpen(false);
+      }
+    });
+    graphClose?.addEventListener("click", () => setGraphOpen(false));
   </script>
 </Layout>

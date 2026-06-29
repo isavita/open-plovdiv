@@ -319,6 +319,8 @@ export const jaUiTranslations: Record<string, string> = {
     "Save status": "ステータスの保存",
     "Saved initiatives": "保存されたイニシアチブ",
     "Scroll horizontally to move through every term. The detailed list below remains filterable.": "すべての用語を移動するには、水平方向にスクロールします。以下の詳細リストは引き続きフィルタリング可能です。",
+    "Mayoral terms grouped by political era. Scroll through the periods to follow how the office changed over time; the detailed list below stays filterable.": "任期を政治的時代ごとにグループ化。各時代をスクロールして、職位が時代とともにどう移り変わったかをたどれます。下の詳細リストは引き続きフィルタ可能です。",
+    "Timeline of mandates": "任期の年表",
     "Scrollable timeline": "スクロール可能なタイムライン",
     "Search Wikipedia": "Wikipediaで検索",
     "Search and filter project records with budget, status and sources.": "予算、ステータス、ソースを使用してプロジェクト レコードを検索およびフィルタリングします。",

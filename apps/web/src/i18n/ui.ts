@@ -318,9 +318,9 @@ const bg = {
     countFiltered: (visible: number, total: number) =>
       `${visible} от ${total} ${plural(total, "мандат", "мандата")}`,
     empty: "Няма мандати с избраните филтри.",
-    timelineTitle: "Скролируема времева линия",
+    timelineTitle: "Времева линия на мандатите",
     timelineLead:
-      "Плъзнете хоризонтално, за да минете през всички мандати. Подробният списък отдолу остава филтрируем.",
+      "Мандатите групирани по политическа епоха. Превъртете през периодите, за да проследите как се променя длъжността във времето. Подробният списък отдолу остава филтрируем.",
     detailsTitle: "Подробен списък",
     sourcesTitle: "Проверка на обхвата",
     sourcesText:
@@ -1017,9 +1017,9 @@ const en: typeof bg = {
     countFiltered: (visible: number, total: number) =>
       `${visible} of ${total} ${plural(total, "term", "terms")}`,
     empty: "No terms match the selected filters.",
-    timelineTitle: "Scrollable timeline",
+    timelineTitle: "Timeline of mandates",
     timelineLead:
-      "Scroll horizontally to move through every term. The detailed list below remains filterable.",
+      "Mayoral terms grouped by political era. Scroll through the periods to follow how the office changed over time; the detailed list below stays filterable.",
     detailsTitle: "Detailed list",
     sourcesTitle: "Coverage check",
     sourcesText:
@@ -1752,9 +1752,9 @@ const de: typeof bg = {
     countFiltered: (visible: number, total: number) =>
       `${visible} von ${total} ${plural(total, "Amtszeit", "Amtszeiten")}`,
     empty: "Keine Amtszeiten entsprechen den gewählten Filtern.",
-    timelineTitle: "Scrollbare Zeitleiste",
+    timelineTitle: "Zeitleiste der Mandate",
     timelineLead:
-      "Scrollen Sie horizontal durch alle Amtszeiten. Die detaillierte Liste unten bleibt filterbar.",
+      "Die Mandate nach politischer Epoche gruppiert. Scrollen Sie durch die Epochen, um zu verfolgen, wie sich das Amt wandelte; die detaillierte Liste unten bleibt filterbar.",
     detailsTitle: "Detaillierte Liste",
     sourcesTitle: "Abdeckungsprüfung",
     sourcesText:
@@ -2447,9 +2447,9 @@ const fr: typeof bg = {
     countFiltered: (visible: number, total: number) =>
       `${visible} sur ${total} ${plural(total, "mandat", "mandats")}`,
     empty: "Aucun mandat ne correspond aux filtres sélectionnés.",
-    timelineTitle: "Chronologie défilante",
+    timelineTitle: "Chronologie des mandats",
     timelineLead:
-      "Faites défiler horizontalement pour parcourir chaque mandat. La liste détaillée ci-dessous reste filtrable.",
+      "Les mandats regroupés par époque politique. Faites défiler les périodes pour suivre l'évolution de la charge dans le temps ; la liste détaillée ci-dessous reste filtrable.",
     detailsTitle: "Liste détaillée",
     sourcesTitle: "Vérification de la couverture",
     sourcesText:
@@ -3142,9 +3142,9 @@ const it: typeof bg = {
     countFiltered: (visible: number, total: number) =>
       `${visible} di ${total} ${plural(total, "mandato", "mandati")}`,
     empty: "Nessun mandato corrisponde ai filtri selezionati.",
-    timelineTitle: "Cronologia scorrevole",
+    timelineTitle: "Cronologia dei mandati",
     timelineLead:
-      "Scorri orizzontalmente per percorrere ogni mandato. L'elenco dettagliato qui sotto resta filtrabile.",
+      "I mandati raggruppati per epoca politica. Scorri i periodi per seguire come l'incarico è cambiato nel tempo; l'elenco dettagliato sotto resta filtrabile.",
     detailsTitle: "Elenco dettagliato",
     sourcesTitle: "Verifica della copertura",
     sourcesText:
@@ -3837,9 +3837,9 @@ const tr: typeof bg = {
     countFiltered: (visible: number, total: number) =>
       `${total} ${plural(total, "görev süresi", "görev süresi")} içinden ${visible}`,
     empty: "Seçili filtrelere uyan görev süresi yok.",
-    timelineTitle: "Kaydırılabilir zaman çizelgesi",
+    timelineTitle: "Mandatlar zaman çizelgesi",
     timelineLead:
-      "Her görev süresi arasında ilerlemek için yatay olarak kaydırın. Aşağıdaki ayrıntılı liste filtrelenebilir kalır.",
+      "Görev süreleri siyasi çağa göre gruplandırılmış. Görevin zamanla nasıl değiştiğini izlemek için dönemleri kaydırın; aşağıdaki ayrıntılı liste filtrelenebilir kalır.",
     detailsTitle: "Ayrıntılı liste",
     sourcesTitle: "Kapsam denetimi",
     sourcesText:
@@ -4532,9 +4532,9 @@ const es: typeof bg = {
     countFiltered: (visible: number, total: number) =>
       `${visible} de ${total} ${plural(total, "mandato", "mandatos")}`,
     empty: "Ningún mandato coincide con los filtros seleccionados.",
-    timelineTitle: "Cronología desplazable",
+    timelineTitle: "Cronología de los mandatos",
     timelineLead:
-      "Desplácese horizontalmente para recorrer cada mandato. La lista detallada de abajo sigue siendo filtrable.",
+      "Los mandatos agrupados por época política. Desplázate por los periodos para seguir cómo cambió el cargo con el tiempo; la lista detallada de abajo sigue siendo filtrable.",
     detailsTitle: "Lista detallada",
     sourcesTitle: "Comprobación de cobertura",
     sourcesText:
@@ -5227,9 +5227,9 @@ const el: typeof bg = {
     countFiltered: (visible: number, total: number) =>
       `${visible} από ${total} ${plural(total, "θητεία", "θητείες")}`,
     empty: "Καμία θητεία δεν ταιριάζει με τα επιλεγμένα φίλτρα.",
-    timelineTitle: "Κυλιόμενο χρονολόγιο",
+    timelineTitle: "Χρονολόγιο των θητειών",
     timelineLead:
-      "Κυλήστε οριζόντια για να περιηγηθείτε σε κάθε θητεία. Ο λεπτομερής κατάλογος παρακάτω παραμένει φιλτραρίσιμος.",
+      "Οι θητείες ομαδοποιημένες ανά πολιτική εποχή. Κυλήστε τις περιόδους για να ακολουθήσετε πώς άλλαξε το αξίωμα με την πάροδο του χρόνου· ο αναλυτικός κατάλογος παρακάτω παραμένει φιλτραριστός.",
     detailsTitle: "Λεπτομερής κατάλογος",
     sourcesTitle: "Έλεγχος κάλυψης",
     sourcesText:

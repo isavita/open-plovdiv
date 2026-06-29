@@ -1,0 +1,66 @@
+---
+// Small, quiet landmark motifs used as section markers — not decoration.
+// Each is a simple silhouette drawn at icon scale (24–40px) so it stays
+// legible without fine detail. Fill follows `currentColor` so the motif
+// adapts to the site palette (gold/ink/brand) and to dark mode.
+//
+// Recognisable landmarks:
+//   ancient-theatre  — Antique Theatre colonnade + pediment
+//   dzhumaya-mosque  — Dzhumaya mosque dome with minaret
+//   nebet-tepe       — Nebet Tepe hill with citadel ruins
+//   revival-houses   — National Revival overhanging house
+//   sahath-tepe      — Sahat Tepe clock tower
+//
+// Usage: <LandmarkMotif name="ancient-theatre" class="section-motif" />
+
+type LandmarkName =
+  | "ancient-theatre"
+  | "dzhumaya-mosque"
+  | "nebet-tepe"
+  | "revival-houses"
+  | "sahath-tepe";
+
+type Props = {
+  name: LandmarkName;
+  class?: string;
+  title?: string;
+};
+
+const { name, class: className = "", title } = Astro.props;
+
+const paths: Record<LandmarkName, string> = {
+  // Antique Theatre: stepped base, four columns, entablature, pediment.
+  "ancient-theatre":
+    "M2 30 H30 V33 H2 Z M5 26 H27 V30 H5 Z M7 14 h3 v12 h-3 Z M12 14 h3 v12 h-3 Z M17 14 h3 v12 h-3 Z M22 14 h3 v12 h-3 Z M5 12 H27 V14 H5 Z M5 12 L16 4 L27 12 Z",
+  // Dzhumaya mosque: dome body + dome + minaret with finial.
+  "dzhumaya-mosque":
+    "M10 22 h12 v8 h-12 Z M9 22 Q16 13 23 22 Z M16 11 v2 M15.4 10.5 a0.6 0.6 0 1 0 1.2 0 a0.6 0.6 0 1 0 -1.2 0 M25 12 h1.4 v18 h-1.4 Z M24.6 16 h2.2 v1.4 h-2.2 Z M25.4 12 L26.2 9 L27 12 Z M26.2 8.6 a0.5 0.5 0 1 0 1 0 a0.5 0.5 0 1 0 -1 0",
+  // Nebet Tepe: hill outline + two broken citadel walls on top.
+  "nebet-tepe":
+    "M2 30 Q9 18 16 20 Q23 18 30 30 Z M11 19 h3 v3 h-3 Z M17 17.5 h2.5 v4.5 h-2.5 Z M12.5 17 h0.8 v2 h-0.8 Z M18.5 15.5 h0.8 v2 h-0.8 Z",
+  // Revival house: overhanging upper floor, wide eaves, pitched roof, chimney.
+  "revival-houses":
+    "M9 19 h14 v11 h-14 Z M6 14 h20 v5 h-20 Z M4 14 L10 7 L22 7 L28 14 Z M3.5 13.5 h25 v1.6 h-25 Z M22 9 h1.4 v3 h-1.4 Z M11 16 h2.2 v3 h-2.2 Z M16 16 h2.2 v3 h-2.2 Z",
+  // Sahat Tepe clock tower: shaft, clock face, cornice, pyramidal roof, finial.
+  "sahath-tepe":
+    "M11 12 h10 v18 h-10 Z M10 10 h12 v2 h-12 Z M10 10 L16 3 L22 10 Z M15.6 3 v2 M15.2 2.6 a0.7 0.7 0 1 0 1.4 0 a0.7 0.7 0 1 0 -1.4 0 M16 16 a3 3 0 1 0 0.01 0 Z M16 13.6 v2.2 M13.7 16 h2.3",
+};
+
+const d = paths[name];
+---
+
+<svg
+  class={`landmark-motif ${className}`.trim()}
+  viewBox="0 0 32 32"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.4"
+  stroke-linejoin="round"
+  stroke-linecap="round"
+  aria-hidden={title ? undefined : "true"}
+  role={title ? "img" : undefined}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  {title && <title>{title}</title>}
+  <path d={d} fill="color-mix(in srgb, currentColor 12%, transparent)" />
+</svg>

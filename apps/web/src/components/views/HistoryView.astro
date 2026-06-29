@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import HeroBackdrop from "@components/HeroBackdrop.astro";
 import SectionNav from "@components/SectionNav.astro";
+import LandmarkMotif from "@components/LandmarkMotif.astro";
 import { createHash } from "node:crypto";
 import { roleLabels, ui, type Lang } from "@i18n/ui";
 import { localeForLang, localizePath } from "@i18n/utils";
@@ -1180,6 +1181,43 @@ function dateLabel(event: KnowledgeEvent) {
   return localized(event.date, "display");
 }
 
+// Compact, locale-aware era range. BCE years are stored as negatives; show
+// them as "6000–2500 г. пр.н.е." (locale equivalent) instead of "-6000–-2500".
+const bceSuffix: Record<string, string> = {
+  bg: "г. пр.н.е.",
+  en: "BC",
+  de: "v. Chr",
+  fr: "avant JC",
+  it: "a.C",
+  es: "a.C.",
+  el: "π.Χ"
+};
+function fmtYear(year: number): string {
+  const abs = Math.abs(year);
+  if (year < 0) {
+    if (lang === "tr") return `MÖ ${abs}`;
+    if (lang === "ja") return `紀元前${abs}年`;
+    return `${abs} ${bceSuffix[lang] ?? "BC"}`;
+  }
+  return lang === "ja" ? `${year}年` : `${year}`;
+}
+function fmtYearRange(min: number, max: number): string {
+  if (min === max) return fmtYear(min);
+  const bothBce = min < 0 && max < 0;
+  const bothCe = min > 0 && max > 0;
+  if (bothBce) {
+    const a = Math.abs(min);
+    const b = Math.abs(max);
+    if (lang === "tr") return `MÖ ${a}–${b}`;
+    if (lang === "ja") return `紀元前${a}～${b}年`;
+    return `${a}–${b} ${bceSuffix[lang] ?? "BC"}`;
+  }
+  if (bothCe) {
+    return lang === "ja" ? `${min}–${max}年` : `${min}–${max}`;
+  }
+  return `${fmtYear(min)}–${fmtYear(max)}`;
+}
+
 function placeFacts(place: Record<string, any>) {
   const hasNamedCreator = Boolean(localized(place, "architect") || localized(place, "builder"));
   return [
@@ -1202,6 +1240,85 @@ const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, s
 const peopleById = new Map(historyKnowledgePeople.map((person) => [person.id, person]));
 const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
 const orgsById = new Map(historyKnowledgeOrganizations.map((org) => [org.id, org]));
+
+// --- history tree: eras -> key events -> linked people/places ----------
+// A mobile-first expandable overview of the city's layered history. Each era
+// opens to a handful of key events; each event opens to the people and places
+// it links to in the curated knowledge graph. Built entirely from existing
+// data — no hardcoded demo content.
+const eraMotif: Record<HistoryEra, "nebet-tepe" | "ancient-theatre" | "dzhumaya-mosque" | "revival-houses" | "sahath-tepe"> = {
+  prehistory: "nebet-tepe",
+  thracian: "nebet-tepe",
+  roman: "ancient-theatre",
+  medieval: "revival-houses",
+  ottoman: "dzhumaya-mosque",
+  revival: "revival-houses",
+  liberation: "sahath-tepe",
+  modern: "sahath-tepe"
+};
+
+const treeLabels = {
+  eyebrow: tr("Епохи и събития", "Eras & events", "Epochen & Ereignisse", "Époques & événements", "Epoche & eventi", "Çağlar ve olaylar", "Eras y eventos", "Εποχές & γεγονότα", "時代と出来事"),
+  title: tr("Дърво на историята", "History tree", "Geschichtsbaum", "Arbre de l'histoire", "Albero della storia", "Tarih ağacı", "Árbol de la historia", "Δέντρο ιστορίας", "歴史ツリー"),
+  lead: tr(
+    "Епохите на Пловдив като разгъващо се дърво: ключови събития и свързаните личности и места. Докоснете епоха, за да я отворите.",
+    "Plovdiv's eras as an expanding tree: key events and the people and places linked to them. Tap an era to open it.",
+    "Plovdivs Epochen als entfaltbarer Baum: Schlüsselereignisse und die damit verbundenen Personen und Orte. Tippen Sie auf eine Epoche, um sie zu öffnen.",
+    "Les époques de Plovdiv sous forme d'arbre dépliable : événements clés et personnes et lieux liés. Touchez une époque pour l'ouvrir.",
+    "Le ere di Plovdiv come albero espandibile: eventi chiave e le persone e i luoghi collegati. Tocca un'era per aprirla.",
+    "Plovdiv'in çağları açılır bir ağaç: önemli olaylar ve bunlara bağlı kişiler ve yerler. Açmak için bir çağa dokunun.",
+    "Las eras de Plovdiv como un árbol expandible: eventos clave y las personas y lugares vinculados. Toca una era para abrirla.",
+    "Οι εποχές της Φιλιππούπολης ως εκπτυσσόμενο δέντρο: βασικά γεγονότα και συνδεδεμένα πρόσωπα και μέρη. Πατήστε μια εποχή για να ανοίξει.",
+    "プロヴディフの時代を展開式ツリーで：主要事件と関連する人物・場所。タップで時代を開く。"
+  ),
+  people: tr("Личности", "People", "Personen", "Personnes", "Persone", "Kişiler", "Personas", "Πρόσωπα", "人物"),
+  places: tr("Места", "Places", "Orte", "Lieux", "Luoghi", "Yerler", "Lugares", "Τόποι", "場所"),
+  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα", "出来事"),
+  noLinks: tr("Без посочени връзки", "No recorded links", "Keine Verknüpfungen", "Aucun lien enregistré", "Nessun legame registrato", "Kayıtlı bağ yok", "Sin vínculos registrados", "Χωρίς καταχωρημένες συνδέσεις", "記録されたリンクなし")
+};
+
+function pickKeyEvents(eraEvents: KnowledgeEvent[], max = 6): KnowledgeEvent[] {
+  const sorted = [...eraEvents].sort((a, b) => a.date.year - b.date.year);
+  if (sorted.length <= max) return sorted;
+  // Prefer events that carry people/place links, then spread across the era.
+  const linked = sorted.filter((e) => e.person_ids.length || e.place_ids.length);
+  const pool = linked.length >= max ? linked : sorted;
+  const step = pool.length / max;
+  const picked: KnowledgeEvent[] = [];
+  const seen = new Set<string>();
+  for (let i = 0; i < max; i++) {
+    const ev = pool[Math.min(pool.length - 1, Math.floor(i * step))];
+    if (ev && !seen.has(ev.id)) {
+      seen.add(ev.id);
+      picked.push(ev);
+    }
+  }
+  return picked;
+}
+
+const historyTree = erasPresent.map((era) => {
+  const eraEvents = entries.filter((e) => e.era === era);
+  const years = eraEvents.map((e) => e.date.year);
+  const keyEvents = pickKeyEvents(eraEvents, 6).map((ev) => {
+    const people = (ev.person_ids.slice(0, 4).map((id) => peopleById.get(id)).filter(Boolean) as any[]).map((p) => ({
+      id: p.id,
+      name: localized(p, "name")
+    }));
+    const places = (ev.place_ids.slice(0, 4).map((id) => placesById.get(id)).filter(Boolean) as any[]).map((p) => ({
+      id: p.id,
+      name: localized(p, "name")
+    }));
+    return { id: ev.id, date: dateLabel(ev), title: localized(ev, "title"), people, places };
+  });
+  return {
+    era,
+    motif: eraMotif[era],
+    label: t.history.eraLabels[era],
+    yearRange: eraEvents.length ? fmtYearRange(Math.min(...years), Math.max(...years)) : "",
+    count: eraEvents.length,
+    keyEvents
+  };
+});
 const mapPlaces = historyKnowledgePlaces.filter((place) => place.coordinates);
 const mapPlaceIds = new Set(mapPlaces.map((place) => place.id));
 const mapErasPresent = eraOrder.filter((era) => mapPlaces.some((place) => place.era === era));
@@ -1662,6 +1779,7 @@ const nbEraLabels: Record<NeighbourhoodEra, string> = ({
 // sticky in-page section navigation
 const sectionNav = ({
       bg: [
+        { id: "history-tree", label: "Дърво" },
         { id: "geography", label: "Геогр./климат" },
         { id: "timeline", label: "Хронология" },
         { id: "city-growth", label: "Растеж" },
@@ -1671,6 +1789,7 @@ const sectionNav = ({
         { id: "data", label: "Данни" }
       ],
       en: [
+        { id: "history-tree", label: "Tree" },
         { id: "geography", label: "Geography" },
         { id: "timeline", label: "Timeline" },
         { id: "city-growth", label: "Growth" },
@@ -1680,6 +1799,7 @@ const sectionNav = ({
         { id: "data", label: "Data" }
       ],
       de: [
+        { id: "history-tree", label: "Baum" },
         { id: "geography", label: "Geogr./Klima" },
         { id: "timeline", label: "Zeitleiste" },
         { id: "city-growth", label: "Wachstum" },
@@ -1689,6 +1809,7 @@ const sectionNav = ({
         { id: "data", label: "Daten" }
       ],
       fr: [
+        { id: "history-tree", label: "Arbre" },
         { id: "geography", label: "Géogr./climat" },
         { id: "timeline", label: "Chronologie" },
         { id: "city-growth", label: "Croissance" },
@@ -1698,6 +1819,7 @@ const sectionNav = ({
         { id: "data", label: "Données" }
       ],
       it: [
+        { id: "history-tree", label: "Albero" },
         { id: "geography", label: "Geogr./clima" },
         { id: "timeline", label: "Cronologia" },
         { id: "city-growth", label: "Crescita" },
@@ -1707,6 +1829,7 @@ const sectionNav = ({
         { id: "data", label: "Dati" }
       ],
       tr: [
+        { id: "history-tree", label: "Ağaç" },
         { id: "geography", label: "Coğr./iklim" },
         { id: "timeline", label: "Zaman çizelgesi" },
         { id: "city-growth", label: "Büyüme" },
@@ -1716,6 +1839,7 @@ const sectionNav = ({
         { id: "data", label: "Veriler" }
       ],
       es: [
+        { id: "history-tree", label: "Árbol" },
         { id: "geography", label: "Geogr./clima" },
         { id: "timeline", label: "Cronología" },
         { id: "city-growth", label: "Crecimiento" },
@@ -1725,6 +1849,7 @@ const sectionNav = ({
         { id: "data", label: "Datos" }
       ],
       el: [
+        { id: "history-tree", label: "Δέντρο" },
         { id: "geography", label: "Γεωγρ./κλίμα" },
         { id: "timeline", label: "Χρονολόγιο" },
         { id: "city-growth", label: "Ανάπτυξη" },
@@ -1734,6 +1859,7 @@ const sectionNav = ({
         { id: "data", label: "Δεδομένα" }
       ],
       ja: [
+        { id: "history-tree", label: "ツリー" },
         { id: "geography", label: "地理・気候" },
         { id: "timeline", label: "年表" },
         { id: "city-growth", label: "成長" },
@@ -2113,6 +2239,79 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           </button>
         ))}
       </nav>
+    </div>
+  </section>
+
+  <section class="section" id="history-tree" data-subnav-target>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">{treeLabels.eyebrow}</p>
+          <h2>{treeLabels.title}</h2>
+          <p class="meta" style="margin-top:8px;max-width:76ch">{treeLabels.lead}</p>
+        </div>
+      </div>
+
+      <div class="htree" role="list" aria-label={treeLabels.title}>
+        {historyTree.map((era, eraIndex) => (
+          <details class={`htree-era era-${era.era}`} role="listitem" open={eraIndex === 0}>
+            <summary class="htree-era-sum">
+              <span class="htree-era-mark" aria-hidden="true">
+                <LandmarkMotif name={era.motif} />
+              </span>
+              <span class="htree-era-name">{era.label}</span>
+              <span class="htree-era-range">{era.yearRange}</span>
+              <span class="htree-era-count">{era.count} {treeLabels.events}</span>
+              <span class="htree-caret" aria-hidden="true"></span>
+            </summary>
+            <ol class="htree-events">
+              {era.keyEvents.map((ev) => (
+                <li class="htree-event" role="listitem">
+                  <details class="htree-event-details">
+                    <summary class="htree-event-sum">
+                      <span class="htree-event-year">{ev.date}</span>
+                      <span class="htree-event-title">{ev.title}</span>
+                      <span class="htree-caret" aria-hidden="true"></span>
+                    </summary>
+                    <div class="htree-event-links">
+                      {ev.people.length > 0 || ev.places.length > 0 ? (
+                        <>
+                          {ev.people.length > 0 && (
+                            <div class="htree-link-group">
+                              <h4 class="htree-link-head">{treeLabels.people}</h4>
+                              <ul class="htree-link-list">
+                                {ev.people.map((person) => (
+                                  <li>
+                                    <a href={localizePath(`/people/${person.id}`, lang)}>{person.name}</a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                          {ev.places.length > 0 && (
+                            <div class="htree-link-group">
+                              <h4 class="htree-link-head">{treeLabels.places}</h4>
+                              <ul class="htree-link-list">
+                                {ev.places.map((place) => (
+                                  <li>
+                                    <a href={localizePath(`/places/${place.id}`, lang)}>{place.name}</a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </>
+                      ) : (
+                        <p class="meta htree-no-links">{treeLabels.noLinks}</p>
+                      )}
+                    </div>
+                  </details>
+                </li>
+              ))}
+            </ol>
+          </details>
+        ))}
+      </div>
     </div>
   </section>
 
