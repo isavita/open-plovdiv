@@ -189,6 +189,9 @@ const menuGroups = [
 
     <script is:inline>
       (function () {
+        // Mark JS as available so the scroll-reveal hidden state only applies
+        // when we can actually reveal it (content stays visible without JS).
+        document.documentElement.classList.add("js");
         try {
           var t = localStorage.getItem("op-theme");
           if (t === "dark" || t === "light") {
@@ -371,6 +374,40 @@ const menuGroups = [
               localStorage.setItem("op-theme", next);
             } catch (e) {}
           });
+        }
+
+        // Scroll-reveal: gently fade/rise editorial blocks marked [data-reveal]
+        // or [data-reveal-stagger] as they enter the viewport. Anything already
+        // in view (or when motion is reduced / IO unsupported) shows immediately.
+        var revealEls = document.querySelectorAll("[data-reveal], [data-reveal-stagger]");
+        if (revealEls.length) {
+          var reduceMotion =
+            window.matchMedia &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          if (reduceMotion || !("IntersectionObserver" in window)) {
+            revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+          } else {
+            var io = new IntersectionObserver(
+              function (entries) {
+                entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    io.unobserve(entry.target);
+                  }
+                });
+              },
+              { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
+            );
+            var vh = window.innerHeight || document.documentElement.clientHeight;
+            revealEls.forEach(function (el) {
+              // Already on screen at load → reveal now, no flash.
+              if (el.getBoundingClientRect().top < vh * 0.92) {
+                el.classList.add("is-visible");
+              } else {
+                io.observe(el);
+              }
+            });
+          }
         }
       })();
     </script>

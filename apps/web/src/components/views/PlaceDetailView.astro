@@ -1266,26 +1266,10 @@ const evidenceSourceIds = new Set([
   ...archiveItems.flatMap((item) => item.source_ids ?? []),
   ...pairs.flatMap((pair) => pair.source_ids ?? [])
 ]);
-const evidenceCount =
-  facts.length +
-  relatedEvents.length +
-  archiveItems.length +
-  pairs.length +
-  sourceRecords.length +
-  place.provenance.length +
-  linkedPeople.length +
-  linkedOrganizations.length;
 const dateSource = place.date_context?.source_id ? sourceById.get(place.date_context.source_id) : null;
 const creatorSource = place.creator_context?.source_id ? sourceById.get(place.creator_context.source_id) : null;
 const creatorFact = facts.find((fact) => fact.label === labels.architect || fact.label === labels.builder);
 const creatorDetail = creatorFact?.value ?? localized(place.creator_context, "display");
-const storyMetrics = [
-  { value: evidenceCount, label: storyLabels.sourceBacked },
-  { value: relatedEvents.length, label: storyLabels.linkedEvents },
-  { value: archiveItems.length, label: storyLabels.archiveSignals },
-  { value: pairs.length, label: storyLabels.thenNowSignals },
-  { value: evidenceSourceIds.size, label: storyLabels.sourceCount }
-];
 // Curated, sourced narrative (authored bg+en; other languages resolved at runtime
 // by field() via the translation cache). Replaces the old templated boilerplate.
 const placeHistory = place.history ?? null;
@@ -1380,9 +1364,9 @@ const mapHref = place.coordinates
             <h2>{storyLabels.storyTitle}</h2>
             {placeHistory ? (
               <div class="place-history">
-                {historyLede && <p class="place-history-lede">{historyLede}</p>}
+                {historyLede && <p class="place-history-lede" data-reveal>{historyLede}</p>}
                 {historyHighlights.length > 0 && (
-                  <dl class="place-history-highlights">
+                  <dl class="place-history-highlights" data-reveal-stagger>
                     {historyHighlights.map((highlight) => (
                       <div>
                         <dt>{field(highlight, "label", lang)}</dt>
@@ -1393,7 +1377,7 @@ const mapHref = place.coordinates
                 )}
                 <div class="place-history-article">
                   {historySections.map((section) => (
-                    <section class={`place-history-section is-${section.id}`}>
+                    <section class={`place-history-section is-${section.id}`} data-reveal>
                       <h3>{field(section, "heading", lang)}</h3>
                       {field(section, "body", lang)
                         .split(/\n\n+/)
@@ -1412,14 +1396,6 @@ const mapHref = place.coordinates
                 {fallbackParagraphs.map((paragraph) => <p>{paragraph}</p>)}
               </div>
             )}
-            <dl class="place-story-metrics" aria-label={storyLabels.evidenceTitle}>
-              {storyMetrics.map((metric) => (
-                <div>
-                  <dt>{metric.label}</dt>
-                  <dd>{metric.value}</dd>
-                </div>
-              ))}
-            </dl>
           </section>
 
           <section class="place-story-grid" aria-label={storyLabels.storyTitle}>
@@ -1597,7 +1573,6 @@ const mapHref = place.coordinates
                           <div>
                             <h3>{localized(event, "title")}</h3>
                             <p>{localized(event, "summary")}</p>
-                            <span class="place-event-source-count">{historyAtlasLabels.eventSources(event.source_ids.length)}</span>
                           </div>
                         </li>
                       ))}

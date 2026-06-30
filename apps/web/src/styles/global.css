@@ -280,6 +280,49 @@ body::before {
   }
 }
 
+/* Scroll-reveal — a gentle fade/rise for editorial blocks as they enter view.
+   JS-gated (.js) so content is always visible without JS, and only active when
+   the user has not asked to reduce motion. Matches the site's restrained,
+   editorial feel; the eased curve mirrors the card-hover easing used elsewhere. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Grouped tiles (highlight / fact strips) cascade in with a small stagger. */
+  .js [data-reveal-stagger] > * {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .js [data-reveal-stagger].is-visible > * {
+    opacity: 1;
+    transform: none;
+  }
+  .js [data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay: 0.07s; }
+  .js [data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay: 0.14s; }
+  .js [data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay: 0.21s; }
+  .js [data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay: 0.28s; }
+  .js [data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay: 0.35s; }
+
+  /* Signature touch: the coloured section marker "pops" in just after its text. */
+  .js .place-history-section[data-reveal] h3::before {
+    opacity: 0;
+    transform: translateY(0.02em) scale(0.2);
+    transition: opacity 0.3s ease 0.14s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.14s;
+  }
+  .js .place-history-section[data-reveal].is-visible h3::before {
+    opacity: 1;
+    transform: translateY(0.02em) scale(1);
+  }
+}
+
 a {
   color: var(--brand);
   text-decoration-thickness: 1px;
@@ -3899,7 +3942,11 @@ code {
 
 .mayor-story-prose p:first-child {
   color: var(--ink);
-  font-weight: 680;
+}
+
+/* Biographical facts shown inside the bio panel (born / studied / other roles). */
+.mayor-bio-facts {
+  margin-top: 18px;
 }
 
 .mayor-story-sources {
@@ -5709,13 +5756,53 @@ code {
     padding: 14px;
   }
 
+  /* Slicker, denser cards on phones: keep stat/fact tiles two-up instead of
+     a tall single-column stack, and trim the oversized display numbers. */
   .place-story-metrics {
-    grid-template-columns: 1fr;
+    gap: 8px 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .place-story-metrics dd {
+    font-size: 1.4rem;
+  }
+
+  .place-history {
+    gap: 18px;
+  }
+
+  .place-history-highlights {
+    gap: 8px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .place-history-highlights div {
+    padding: 10px 12px;
+  }
+
+  .place-history-highlights dd {
+    font-size: 1.02rem;
+  }
+
+  .place-history-article {
+    gap: 22px;
   }
 
   .place-chip-list {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  /* Mayor profile facts: stack label over value on phones for a cleaner read. */
+  .mayor-profile-facts > div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .mayor-profile-facts dt {
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 
   .place-context-branches {

@@ -29,7 +29,6 @@ const isActing =
   period.toLocaleLowerCase(locale).includes("amtierend");
 const yearLabel = `${mayor.year_start}${mayor.year_end ? `-${mayor.year_end}` : `-${currentYear}`}`;
 const century = Math.floor((mayor.year_start - 1) / 100) + 1;
-const duration = Math.max(1, (mayor.year_end ?? currentYear) - mayor.year_start + 1);
 
 const otherTerms = terms.filter((r) => r.id !== mayor.id && field(r, "actor", lang) === name);
 const wikiSearch = `https://${lang}.wikipedia.org/w/index.php?search=${encodeURIComponent(name)}`;
@@ -78,7 +77,9 @@ const enrichLink = (item: { name_bg: string | null; name_en: string | null; wiki
   url: pick(item.wikipedia_bg, item.wikipedia_en)
 });
 const education = (enrich?.education ?? []).map(enrichLink).filter((x) => x.name);
-const roles = (enrich?.positions ?? []).map(enrichLink).filter((x) => x.name);
+const roles = (enrich?.positions ?? [])
+  .map(enrichLink)
+  .filter((x) => x.name && !/^list of /i.test(x.name) && !/^списък на /i.test(x.name));
 const birthplaceName = enrich ? pick(enrich.birthplace_name_bg, enrich.birthplace_name_en) : field(mayor, "birthplace", lang) || null;
 const birthplaceUrl = enrich ? pick(enrich.birthplace_wikipedia_bg, enrich.birthplace_wikipedia_en) : null;
 const personWiki = enrich ? pick(enrich.person_wikipedia_bg, enrich.person_wikipedia_en) : null;
@@ -199,17 +200,21 @@ const mayorStoryLabels =
                       repeatSentence: (count: number) => `This person has ${count} other separate mayoral terms in the chronology.`
                     };
 
-const storyListFormatter = new Intl.ListFormat(locale, { style: "long", type: "conjunction" });
-const storyList = (items: string[]) => storyListFormatter.format([...new Set(items.filter(Boolean))].slice(0, 5));
-const mayorStoryParagraphs = [
-  bio,
-  field(mayor, "summary", lang),
-  mayorStoryLabels.termSentence(name, period, yearLabel, t.mayors.yearsApprox(duration)),
-  birthplaceName ? mayorStoryLabels.birthplaceSentence(birthplaceName) : "",
-  education.length > 0 ? mayorStoryLabels.educationSentence(storyList(education.map((item) => item.name))) : "",
-  roles.length > 0 ? mayorStoryLabels.rolesSentence(storyList(roles.map((item) => item.name))) : "",
-  otherTerms.length > 0 ? mayorStoryLabels.repeatSentence(otherTerms.length) : ""
-].filter(Boolean);
+// Lead with the real biography as clean prose; the structured facts (born,
+// studied, other roles) are surfaced separately rather than restated as
+// formula sentences. Falls back to the summary only if no bio exists.
+const bioHeading = ({
+  bg: "Биография",
+  en: "Biography",
+  de: "Biografie",
+  fr: "Biographie",
+  it: "Biografia",
+  tr: "Biyografi",
+  es: "Biografía",
+  el: "Βιογραφία",
+  ja: "略歴"
+} as Record<Lang, string>)[lang];
+const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filter(Boolean);
 ---
 
 <Layout lang={lang} path={`/mayors/${mayor.id}`} title={name} description={field(mayor, "summary", lang)}>
@@ -273,36 +278,12 @@ const mayorStoryParagraphs = [
     <div class="container">
       <article class="card mayor-story-panel" data-mayor-story={mayor.id}>
         <p class="eyebrow">{mayorStoryLabels.eyebrow}</p>
-        <h2>{mayorStoryLabels.title}</h2>
+        <h2>{bioHeading}</h2>
         <div class="mayor-story-prose">
-          {mayorStoryParagraphs.map((paragraph) => <p>{paragraph}</p>)}
-        </div>
-        <div class="mayor-story-sources" aria-label={mayorStoryLabels.sourceTrail}>
-          <a href={mayor.source_document.url} target="_blank" rel="noreferrer">
-            {sourceTitle(mayor.source_document.title, lang)}
-          </a>
-          {referenceLinks.slice(0, 3).map((link) => (
-            <a href={link.url} target="_blank" rel="noreferrer">{link.title}</a>
-          ))}
-          {officialProfileUrl && officialProfileTitle && (
-            <a href={officialProfileUrl} target="_blank" rel="noreferrer">{officialProfileTitle}</a>
-          )}
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="container grid grid-2">
-      <article class="card">
-        <h2>{t.mayors.detailsTitle}</h2>
-        <div class="mayor-facts">
-          <div><span>{t.mayors.years}</span><strong>{yearLabel}</strong></div>
-          <div><span>{t.mayors.duration}</span><strong>{t.mayors.yearsApprox(duration)}</strong></div>
-          <div><span>{t.mayors.century}</span><strong>{t.mayors.centuryLabel(century)}</strong></div>
+          {bioParagraphs.map((paragraph) => <p>{paragraph}</p>)}
         </div>
         {(birthplaceName || education.length > 0 || roles.length > 0) && (
-          <dl class="mayor-profile-facts">
+          <dl class="mayor-profile-facts mayor-bio-facts" data-reveal-stagger>
             {birthplaceName && (
               <div>
                 <dt>{t.mayors.birthplaceLabel}</dt>
@@ -343,10 +324,24 @@ const mayorStoryParagraphs = [
             )}
           </dl>
         )}
-        <p class="meta" style="margin-top:14px">{field(mayor, "summary", lang)}</p>
+        <div class="mayor-story-sources" aria-label={mayorStoryLabels.sourceTrail}>
+          <a href={mayor.source_document.url} target="_blank" rel="noreferrer">
+            {sourceTitle(mayor.source_document.title, lang)}
+          </a>
+          {referenceLinks.slice(0, 3).map((link) => (
+            <a href={link.url} target="_blank" rel="noreferrer">{link.title}</a>
+          ))}
+          {officialProfileUrl && officialProfileTitle && (
+            <a href={officialProfileUrl} target="_blank" rel="noreferrer">{officialProfileTitle}</a>
+          )}
+        </div>
       </article>
+    </div>
+  </section>
 
-      <article class="card">
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <article class="card mayor-sources-card">
         <h2>{t.mayors.moreInfo}</h2>
         <ul class="source-list">
           <li>
@@ -403,7 +398,7 @@ const mayorStoryParagraphs = [
     <section class="section section-tint">
       <div class="container">
         <div class="section-head"><h2>{t.mayors.otherTerms}</h2></div>
-        <div class="grid grid-3">
+        <div class="grid grid-3" data-reveal-stagger>
           {otherTerms.map((term) => (
             <a class="card card-link" href={localizePath(`/mayors/${term.id}`, lang)}>
               <p class="eyebrow">{term.year_start}{term.year_end ? `-${term.year_end}` : `-${currentYear}`}</p>
