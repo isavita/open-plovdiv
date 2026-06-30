@@ -5042,6 +5042,120 @@ code {
   overflow-wrap: anywhere;
 }
 
+/* Editorial per-place history (curated, sourced narrative) */
+.place-history {
+  display: grid;
+  gap: 22px;
+}
+
+.place-history-lede {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.18rem, 2.4vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 4px 0 0;
+  max-width: 60ch;
+  text-wrap: balance;
+}
+
+.place-history-highlights {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin: 0;
+}
+
+.place-history-highlights div {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--data-places);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-sm);
+  padding: 12px 14px;
+}
+
+.place-history-highlights dt {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 820;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.place-history-highlights dd {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.2;
+  margin: 6px 0 0;
+}
+
+.place-history-article {
+  counter-reset: place-history;
+  display: grid;
+  gap: 26px;
+}
+
+.place-history-section {
+  --sec: var(--brand);
+  border-left: 3px solid color-mix(in srgb, var(--sec) 55%, transparent);
+  padding-left: clamp(14px, 2vw, 22px);
+}
+
+.place-history-section.is-origins { --sec: var(--data-places); }
+.place-history-section.is-layers { --sec: var(--data-growth); }
+.place-history-section.is-survives { --sec: var(--brand); }
+.place-history-section.is-significance { --sec: var(--accent); }
+.place-history-section.is-visit { --sec: var(--data-geo); }
+.place-history-section.is-people { --sec: var(--data-people); }
+
+.place-history-section h3 {
+  align-items: baseline;
+  color: var(--ink);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--font-display);
+  font-size: clamp(1.12rem, 2.4vw, 1.42rem);
+  gap: 10px;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+
+.place-history-section h3::before {
+  background: var(--sec);
+  border-radius: 2px;
+  content: "";
+  display: inline-block;
+  flex: none;
+  height: 0.62em;
+  transform: translateY(0.02em);
+  width: 0.62em;
+}
+
+.place-history-section p {
+  color: var(--ink-2);
+  line-height: 1.68;
+  margin: 0 0 12px;
+  max-width: 68ch;
+}
+
+.place-history-section p:last-of-type {
+  margin-bottom: 0;
+}
+
+.place-history-section .src-link {
+  display: inline-block;
+  margin-top: 12px;
+}
+
+@media (max-width: 520px) {
+  .place-history-section {
+    padding-left: 12px;
+  }
+}
+
 .place-history-atlas {
   background:
     linear-gradient(135deg, color-mix(in srgb, var(--surface) 86%, var(--brand-soft)), color-mix(in srgb, var(--surface) 90%, var(--gold-soft))),

@@ -1286,26 +1286,22 @@ const storyMetrics = [
   { value: pairs.length, label: storyLabels.thenNowSignals },
   { value: evidenceSourceIds.size, label: storyLabels.sourceCount }
 ];
-const storyParagraphs = [
-  storyLabels.storyIntro(localized(place, "name"), localized(place, "era")),
+// Curated, sourced narrative (authored bg+en; other languages resolved at runtime
+// by field() via the translation cache). Replaces the old templated boilerplate.
+const placeHistory = place.history ?? null;
+const historyLede = placeHistory ? field(placeHistory, "lede", lang) : "";
+const historySections = placeHistory?.sections ?? [];
+const historyHighlights = placeHistory?.highlights ?? [];
+// Honest fallback for places that do not yet have a curated history — the real
+// summary plus any distinct public-record description and a couple of linked
+// events, with none of the old "not just a point on the map" filler sentences.
+const fallbackParagraphs = [
   localized(place, "summary"),
   wikidataDescription && !localized(place, "summary").toLocaleLowerCase(locale).includes(wikidataDescription.toLocaleLowerCase(locale))
     ? wikidataDescription
     : "",
   ...relatedEvents.slice(0, 3).map((event) => `${localized(event.date, "display")}: ${localized(event, "summary")}`),
-  ...relatedStories.slice(0, 2).map((story) => `${localized(story, "title")}: ${localized(story, "dek")}`),
-  localized(place.date_context, "display")
-    ? storyLabels.dateSentence(
-        localized(place.date_context, "display"),
-        dateSource ? sourceTitle(localized(dateSource, "title"), lang) : ""
-      )
-    : "",
-  localized(place.creator_context, "display")
-    ? storyLabels.creatorSentence(localized(place.creator_context, "display"))
-    : "",
-  storyLabels.statusSentence(localized(place, "current_status")),
-  relatedEvents.length ? storyLabels.timelineSentence(relatedEvents.length) : "",
-  storyLabels.archiveSentence(archiveItems.length, pairs.length)
+  ...relatedStories.slice(0, 2).map((story) => `${localized(story, "title")}: ${localized(story, "dek")}`)
 ].filter(Boolean);
 const stewardshipText = linkedOrganizations.length
   ? storyLabels.stewardshipWithOrgs(formatList(linkedOrganizations.map((organization) => localized(organization!, "name"))))
@@ -1382,9 +1378,40 @@ const mapHref = place.coordinates
           <section class="place-panel place-story-panel" data-place-story={place.id}>
             <p class="eyebrow">{storyLabels.storyEyebrow}</p>
             <h2>{storyLabels.storyTitle}</h2>
-            <div class="place-story-prose">
-              {storyParagraphs.map((paragraph) => <p>{paragraph}</p>)}
-            </div>
+            {placeHistory ? (
+              <div class="place-history">
+                {historyLede && <p class="place-history-lede">{historyLede}</p>}
+                {historyHighlights.length > 0 && (
+                  <dl class="place-history-highlights">
+                    {historyHighlights.map((highlight) => (
+                      <div>
+                        <dt>{field(highlight, "label", lang)}</dt>
+                        <dd>{field(highlight, "value", lang)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                <div class="place-history-article">
+                  {historySections.map((section) => (
+                    <section class={`place-history-section is-${section.id}`}>
+                      <h3>{field(section, "heading", lang)}</h3>
+                      {field(section, "body", lang)
+                        .split(/\n\n+/)
+                        .map((para) => <p>{para}</p>)}
+                      {section.source && (
+                        <a class="src-link" href={section.source.url} target="_blank" rel="noreferrer">
+                          {storyLabels.sourceLabel}: {sourceTitle(section.source.title, lang)} ↗
+                        </a>
+                      )}
+                    </section>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div class="place-story-prose">
+                {fallbackParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+              </div>
+            )}
             <dl class="place-story-metrics" aria-label={storyLabels.evidenceTitle}>
               {storyMetrics.map((metric) => (
                 <div>

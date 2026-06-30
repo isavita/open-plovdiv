@@ -618,7 +618,8 @@ const places = landmarks.map((landmark) => {
         )
       )
     ],
-    editorial: editorial()
+    editorial: editorial(),
+    ...(landmark.history ? { history: landmark.history } : {})
   };
 });
 

@@ -431,6 +431,34 @@ export type KnowledgePlace = {
   source_ids: string[];
   provenance: KnowledgeProvenance;
   editorial: KnowledgeEditorial;
+  history?: PlaceHistory;
+};
+
+export type PlaceHistorySection = {
+  id: "origins" | "layers" | "survives" | "significance" | "visit" | "people";
+  heading_bg: string;
+  heading_en: string;
+  body_bg: string;
+  body_en: string;
+  source?: {
+    title: string;
+    url: string;
+    accessed_at: string;
+  };
+};
+
+export type PlaceHistoryHighlight = {
+  label_bg: string;
+  label_en: string;
+  value_bg: string;
+  value_en: string;
+};
+
+export type PlaceHistory = {
+  lede_bg: string;
+  lede_en: string;
+  sections: PlaceHistorySection[];
+  highlights?: PlaceHistoryHighlight[];
 };
 
 export type PlaceWikidataLocalizedText = Partial<Record<Lang, string>>;
