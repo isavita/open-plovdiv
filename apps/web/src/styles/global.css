@@ -4892,6 +4892,220 @@ code {
   color: var(--ink-2);
 }
 
+.place-story-panel {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface) 88%, var(--brand-soft)), var(--surface)),
+    var(--surface);
+  border-top: 5px solid var(--data-places);
+}
+
+.place-story-prose {
+  display: grid;
+  gap: 10px;
+  max-width: 76ch;
+}
+
+.place-story-prose p {
+  margin: 0;
+}
+
+.place-story-prose p:first-child {
+  color: var(--ink);
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  font-weight: 720;
+}
+
+.place-story-metrics {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  margin: 18px 0 0;
+}
+
+.place-story-metrics div {
+  border-left: 3px solid var(--line-gold);
+  padding-left: 10px;
+}
+
+.place-story-metrics dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 820;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.place-story-metrics dd {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  line-height: 1;
+  margin: 4px 0 0;
+}
+
+.place-story-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.place-story-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--brand);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 16px;
+}
+
+.place-story-card:nth-child(2) {
+  border-left-color: var(--gold);
+}
+
+.place-story-card:nth-child(3) {
+  border-left-color: var(--accent);
+}
+
+.place-story-card span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.place-story-card h3 {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  line-height: 1.25;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.place-story-card p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.place-evidence-list,
+.place-chip-list,
+.place-story-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.place-evidence-list {
+  display: grid;
+  gap: 0;
+}
+
+.place-evidence-list li {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 4px;
+  padding: 11px 0;
+}
+
+.place-evidence-list li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.place-evidence-list li:last-child {
+  padding-bottom: 0;
+}
+
+.place-evidence-list p {
+  margin: 0;
+}
+
+.place-connections-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.place-connections-panel p {
+  margin: 0;
+}
+
+.place-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.place-chip-list li,
+.place-chip-list a {
+  min-width: 0;
+}
+
+.place-chip-list li {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  color: var(--ink-2);
+  font-size: 0.82rem;
+  font-weight: 760;
+  line-height: 1.25;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  padding: 7px 10px;
+}
+
+.place-chip-list a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.place-chip-list a:hover,
+.place-chip-list a:focus-visible {
+  color: var(--brand-strong);
+  text-decoration: underline;
+}
+
+.place-story-timeline {
+  display: grid;
+}
+
+.place-story-timeline li {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(94px, 0.24fr) minmax(0, 1fr);
+  padding: 14px 0;
+}
+
+.place-story-timeline li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.place-story-timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.place-story-timeline time {
+  color: var(--brand-strong);
+  font-size: 0.82rem;
+  font-weight: 850;
+  line-height: 1.3;
+}
+
+.place-story-timeline h3 {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  line-height: 1.25;
+  margin: 0 0 4px;
+}
+
+.place-story-timeline p {
+  margin: 0;
+}
+
 .place-detail-side {
   position: sticky;
   top: 92px;
@@ -4975,7 +5189,8 @@ code {
 
   .place-grid,
   .place-detail-grid,
-  .place-detail-layout {
+  .place-detail-layout,
+  .place-story-grid {
     grid-template-columns: 1fr;
   }
 
@@ -5004,6 +5219,29 @@ code {
 
   .place-detail-side {
     position: static;
+  }
+
+  .place-story-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .place-story-timeline li {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .place-story-card {
+    padding: 14px;
+  }
+
+  .place-story-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .place-chip-list {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }
 

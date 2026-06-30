@@ -237,10 +237,18 @@ if (!historyAssetScripts.includes("history-conflict-note")) {
   fail("history timeline bundle is missing conflict-note rendering");
 }
 
+const placeLocalePrefixes = ["", "/en", "/de", "/fr", "/it", "/tr", "/es", "/el", "/ja"];
 const places = collectionFromPayload(readJson("/api/history/places.json"), "places") ?? [];
 for (const place of places) {
-  assertFile(`/places/${place.id}/`);
-  assertFile(`/en/places/${place.id}/`);
+  for (const prefix of placeLocalePrefixes) {
+    const url = `${prefix}/places/${place.id}/`;
+    const html = readBuilt(url);
+    assertContains(url, html, [
+      `data-place-story="${place.id}"`,
+      'class="place-story-prose"',
+      'class="place-evidence-list"'
+    ]);
+  }
 }
 
 const people = collectionFromPayload(readJson("/api/history/people.json"), "people") ?? [];
@@ -281,5 +289,5 @@ if (issues.length > 0) {
 }
 
 console.log(
-  `history surface validation passed: ${corePagePairs.length * 2} core pages, ${people.length * 2} person pages, ${places.length * 2} place pages, ${stories.length * 2} story pages, ${mayorTerms.length * 2} mayor pages`
+  `history surface validation passed: ${corePagePairs.length * 2} core pages, ${people.length * 2} person pages, ${places.length * placeLocalePrefixes.length} place pages, ${stories.length * 2} story pages, ${mayorTerms.length * 2} mayor pages`
 );

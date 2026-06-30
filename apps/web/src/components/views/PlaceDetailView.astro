@@ -1,11 +1,14 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
+import { field, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import { publicThenNowPairs } from "@lib/thenNow";
 import {
   historicalArchiveItems,
   historyKnowledgeEvents,
+  historyKnowledgeOrganizations,
+  historyKnowledgePeople,
+  historyKnowledgePlaces,
   historyKnowledgeSources,
   storyLongreads,
   thenNowPairs,
@@ -265,8 +268,467 @@ const labels =
           "No separate archive or then/now record is available for this place yet. The main image, coordinates and sources remain published."
       };
 
-function localized(record: Record<string, any>, base: string): string {
-  return knownHistoryLabel(String(record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""), lang);
+type PlaceStoryLabels = {
+  storyEyebrow: string;
+  storyTitle: string;
+  whyTitle: string;
+  originTitle: string;
+  useTitle: string;
+  stewardshipTitle: string;
+  timelineTitle: string;
+  evidenceTitle: string;
+  aroundTitle: string;
+  peopleTitle: string;
+  organizationsTitle: string;
+  relatedPlacesTitle: string;
+  noOwnership: string;
+  noPeople: string;
+  noOrganizations: string;
+  noRelatedPlaces: string;
+  noTimeline: string;
+  sourceBacked: string;
+  linkedEvents: string;
+  archiveSignals: string;
+  thenNowSignals: string;
+  sourceCount: string;
+  dateLabel: string;
+  creatorLabel: string;
+  statusLabel: string;
+  sourceLabel: string;
+  storyIntro: (name: string, era: string) => string;
+  dateSentence: (date: string, source: string) => string;
+  creatorSentence: (creator: string) => string;
+  statusSentence: (status: string) => string;
+  timelineSentence: (count: number) => string;
+  archiveSentence: (archiveCount: number, pairCount: number) => string;
+  stewardshipWithOrgs: (items: string) => string;
+  peopleSentence: (items: string) => string;
+  relatedPlacesSentence: (items: string) => string;
+};
+
+const storyLabels = ({
+  bg: {
+    storyEyebrow: "Разказ за мястото",
+    storyTitle: "Как да четем това място",
+    whyTitle: "Защо е важно",
+    originTitle: "Произход и пластове",
+    useTitle: "Днес и какво да гледате",
+    stewardshipTitle: "Собственост, грижа и институции",
+    timelineTitle: "Сюжет във времето",
+    evidenceTitle: "Следи и доказателства",
+    aroundTitle: "Около това място",
+    peopleTitle: "Свързани личности",
+    organizationsTitle: "Институции и общности",
+    relatedPlacesTitle: "Свързани места",
+    noOwnership:
+      "Публичният запис, използван тук, не посочва проследима история на собствеността или стопанисването. Затова страницата показва само проверените институционални и източникови връзки.",
+    noPeople: "Няма посочени личности в текущата база.",
+    noOrganizations: "Няма посочени институции в текущата база.",
+    noRelatedPlaces: "Няма други места, свързани чрез същите събития.",
+    noTimeline:
+      "В текущата база няма отделни събития за това място; основният разказ се опира на описанието, произхода и публичните източници.",
+    sourceBacked: "източниково подкрепени факта",
+    linkedEvents: "свързани събития",
+    archiveSignals: "архивни следи",
+    thenNowSignals: "сравнения тогава/сега",
+    sourceCount: "публични източника",
+    dateLabel: "Датиране",
+    creatorLabel: "Авторство",
+    statusLabel: "Днешен статус",
+    sourceLabel: "Източникова следа",
+    storyIntro: (name: string, era: string) =>
+      `${name} не е само точка на картата. Това е запис от ${era}, който свързва градски пластове, видими следи, публични източници и съседни истории.`,
+    dateSentence: (date: string, source: string) =>
+      `Датирането е публикувано като ${date}${source ? ` и е вързано към ${source}` : ""}.`,
+    creatorSentence: (creator: string) =>
+      `За авторството текущият запис казва: ${creator}.`,
+    statusSentence: (status: string) =>
+      `Днешният статус е описан така: ${status}`,
+    timelineSentence: (count: number) =>
+      `Историята тук се разгръща през ${count} свързани събития, които поставят мястото в по-широката хронология на Пловдив.`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `Архивният слой е отчетен като архивни записи: ${archiveCount}; визуални сравнения тогава/сега: ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) =>
+      `Институционалният контекст минава през ${items}. Това не е автоматично история на собствеността, а проверима следа за публична грижа, памет или управление.`,
+    peopleSentence: (items: string) =>
+      `Личностите, свързани с това място, помагат историята да се прочете през биографии, събития и градска памет: ${items}.`,
+    relatedPlacesSentence: (items: string) =>
+      `Свързаните места показват, че този обект работи като част от по-широка градска система: ${items}.`
+  },
+  en: {
+    storyEyebrow: "Story of the place",
+    storyTitle: "How to read this place",
+    whyTitle: "Why it matters",
+    originTitle: "Origins and layers",
+    useTitle: "Today and what to notice",
+    stewardshipTitle: "Ownership, care and institutions",
+    timelineTitle: "Story through time",
+    evidenceTitle: "Traces and evidence",
+    aroundTitle: "Around this place",
+    peopleTitle: "Connected people",
+    organizationsTitle: "Institutions and communities",
+    relatedPlacesTitle: "Connected places",
+    noOwnership:
+      "The public record used here does not identify a traceable ownership or management history. This page therefore shows only verified institutional and source links.",
+    noPeople: "No people are linked in the current knowledge base.",
+    noOrganizations: "No institutions are linked in the current knowledge base.",
+    noRelatedPlaces: "No other places are linked through the same events.",
+    noTimeline:
+      "No separate timeline events are linked yet; the story here is built from the place record, provenance and public sources.",
+    sourceBacked: "source-backed facts",
+    linkedEvents: "linked events",
+    archiveSignals: "archive traces",
+    thenNowSignals: "then/now comparisons",
+    sourceCount: "public sources",
+    dateLabel: "Dating",
+    creatorLabel: "Authorship",
+    statusLabel: "Current status",
+    sourceLabel: "Source trail",
+    storyIntro: (name: string, era: string) =>
+      `${name} is not just a point on the map. It is a ${era} record tying together urban layers, visible traces, public sources and neighbouring stories.`,
+    dateSentence: (date: string, source: string) =>
+      `The dating is published as ${date}${source ? ` and is tied to ${source}` : ""}.`,
+    creatorSentence: (creator: string) =>
+      `For authorship, the current record says: ${creator}.`,
+    statusSentence: (status: string) =>
+      `Its present status is described as: ${status}`,
+    timelineSentence: (count: number) =>
+      `The story unfolds through ${count} linked events that place it inside Plovdiv's wider chronology.`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `The archive layer is recorded as archive records: ${archiveCount}; visual then/now comparisons: ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) =>
+      `The institutional context runs through ${items}. That is not automatically an ownership history; it is a verifiable trail of public care, memory or governance.`,
+    peopleSentence: (items: string) =>
+      `People linked to this place help the story read through biographies, events and civic memory: ${items}.`,
+    relatedPlacesSentence: (items: string) =>
+      `Connected places show that this site works as part of a wider urban system: ${items}.`
+  },
+  de: {
+    storyEyebrow: "Geschichte des Ortes",
+    storyTitle: "Wie man diesen Ort liest",
+    whyTitle: "Warum er wichtig ist",
+    originTitle: "Ursprünge und Schichten",
+    useTitle: "Heute und worauf man achten sollte",
+    stewardshipTitle: "Eigentum, Pflege und Institutionen",
+    timelineTitle: "Geschichte durch die Zeit",
+    evidenceTitle: "Spuren und Belege",
+    aroundTitle: "Rund um diesen Ort",
+    peopleTitle: "Verbundene Personen",
+    organizationsTitle: "Institutionen und Gemeinschaften",
+    relatedPlacesTitle: "Verbundene Orte",
+    noOwnership:
+      "Der hier verwendete öffentliche Datensatz nennt keine nachvollziehbare Eigentums- oder Verwaltungsgeschichte. Deshalb zeigt die Seite nur geprüfte institutionelle und quellenbezogene Verbindungen.",
+    noPeople: "In der aktuellen Wissensbasis sind keine Personen verknüpft.",
+    noOrganizations: "In der aktuellen Wissensbasis sind keine Institutionen verknüpft.",
+    noRelatedPlaces: "Keine weiteren Orte sind über dieselben Ereignisse verknüpft.",
+    noTimeline:
+      "Es sind noch keine eigenen Zeitachsenereignisse verknüpft; die Geschichte stützt sich hier auf den Ortsdatensatz, die Provenienz und öffentliche Quellen.",
+    sourceBacked: "quellengestützte Fakten",
+    linkedEvents: "verknüpfte Ereignisse",
+    archiveSignals: "Archivspuren",
+    thenNowSignals: "Damals/heute-Vergleiche",
+    sourceCount: "öffentliche Quellen",
+    dateLabel: "Datierung",
+    creatorLabel: "Urheberschaft",
+    statusLabel: "Heutiger Status",
+    sourceLabel: "Quellenspur",
+    storyIntro: (name: string, era: string) =>
+      `${name} ist nicht nur ein Punkt auf der Karte. Es ist ein Datensatz aus ${era}, der städtische Schichten, sichtbare Spuren, öffentliche Quellen und benachbarte Geschichten verbindet.`,
+    dateSentence: (date: string, source: string) =>
+      `Die Datierung ist als ${date} veröffentlicht${source ? ` und mit ${source} verbunden` : ""}.`,
+    creatorSentence: (creator: string) => `Zur Urheberschaft sagt der aktuelle Datensatz: ${creator}.`,
+    statusSentence: (status: string) => `Der heutige Status wird so beschrieben: ${status}`,
+    timelineSentence: (count: number) =>
+      `Die Geschichte entfaltet sich über ${count} verknüpfte Ereignisse in der breiteren Chronologie Plovdivs.`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `Die Archivschicht ist erfasst als Archivdatensätze: ${archiveCount}; visuelle Damals/heute-Vergleiche: ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) =>
+      `Der institutionelle Kontext verläuft über ${items}. Das ist nicht automatisch eine Eigentumsgeschichte, sondern eine überprüfbare Spur öffentlicher Pflege, Erinnerung oder Verwaltung.`,
+    peopleSentence: (items: string) =>
+      `Mit diesem Ort verbundene Personen machen die Geschichte über Biografien, Ereignisse und städtische Erinnerung lesbar: ${items}.`,
+    relatedPlacesSentence: (items: string) =>
+      `Verbundene Orte zeigen, dass dieses Objekt Teil eines größeren städtischen Systems ist: ${items}.`
+  },
+  fr: {
+    storyEyebrow: "Récit du lieu",
+    storyTitle: "Comment lire ce lieu",
+    whyTitle: "Pourquoi il compte",
+    originTitle: "Origines et strates",
+    useTitle: "Aujourd'hui et ce qu'il faut observer",
+    stewardshipTitle: "Propriété, soin et institutions",
+    timelineTitle: "Récit dans le temps",
+    evidenceTitle: "Traces et preuves",
+    aroundTitle: "Autour de ce lieu",
+    peopleTitle: "Personnes liées",
+    organizationsTitle: "Institutions et communautés",
+    relatedPlacesTitle: "Lieux liés",
+    noOwnership:
+      "Le dossier public utilisé ici n'identifie pas d'historique traçable de propriété ou de gestion. La page montre donc uniquement les liens institutionnels et sourcés vérifiés.",
+    noPeople: "Aucune personne n'est liée dans la base actuelle.",
+    noOrganizations: "Aucune institution n'est liée dans la base actuelle.",
+    noRelatedPlaces: "Aucun autre lieu n'est lié par les mêmes événements.",
+    noTimeline:
+      "Aucun événement chronologique distinct n'est encore lié; le récit s'appuie ici sur la fiche du lieu, la provenance et les sources publiques.",
+    sourceBacked: "faits sourcés",
+    linkedEvents: "événements liés",
+    archiveSignals: "traces d'archives",
+    thenNowSignals: "comparaisons avant/après",
+    sourceCount: "sources publiques",
+    dateLabel: "Datation",
+    creatorLabel: "Attribution",
+    statusLabel: "Statut actuel",
+    sourceLabel: "Trace documentaire",
+    storyIntro: (name: string, era: string) =>
+      `${name} n'est pas seulement un point sur la carte. C'est une fiche de ${era} qui relie strates urbaines, traces visibles, sources publiques et récits voisins.`,
+    dateSentence: (date: string, source: string) =>
+      `La datation est publiée comme ${date}${source ? ` et liée à ${source}` : ""}.`,
+    creatorSentence: (creator: string) => `Pour l'attribution, la fiche actuelle indique : ${creator}.`,
+    statusSentence: (status: string) => `Son statut actuel est décrit ainsi : ${status}`,
+    timelineSentence: (count: number) =>
+      `Le récit se déploie à travers ${count} événements liés dans la chronologie plus large de Plovdiv.`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `La couche d'archives est comptée ainsi : notices d'archives ${archiveCount}; comparaisons visuelles avant/après ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) =>
+      `Le contexte institutionnel passe par ${items}. Ce n'est pas automatiquement une histoire de propriété, mais une trace vérifiable de soin public, de mémoire ou de gouvernance.`,
+    peopleSentence: (items: string) =>
+      `Les personnes liées à ce lieu aident à lire l'histoire par les biographies, les événements et la mémoire civique : ${items}.`,
+    relatedPlacesSentence: (items: string) =>
+      `Les lieux liés montrent que ce site fonctionne comme partie d'un système urbain plus vaste : ${items}.`
+  },
+  it: {
+    storyEyebrow: "Storia del luogo",
+    storyTitle: "Come leggere questo luogo",
+    whyTitle: "Perché conta",
+    originTitle: "Origini e strati",
+    useTitle: "Oggi e cosa osservare",
+    stewardshipTitle: "Proprietà, cura e istituzioni",
+    timelineTitle: "Storia nel tempo",
+    evidenceTitle: "Tracce e prove",
+    aroundTitle: "Intorno a questo luogo",
+    peopleTitle: "Persone collegate",
+    organizationsTitle: "Istituzioni e comunità",
+    relatedPlacesTitle: "Luoghi collegati",
+    noOwnership:
+      "Il record pubblico usato qui non identifica una storia tracciabile di proprietà o gestione. La pagina mostra quindi solo collegamenti istituzionali e fonti verificati.",
+    noPeople: "Nessuna persona è collegata nella base attuale.",
+    noOrganizations: "Nessuna istituzione è collegata nella base attuale.",
+    noRelatedPlaces: "Nessun altro luogo è collegato dagli stessi eventi.",
+    noTimeline:
+      "Non sono ancora collegati eventi cronologici separati; qui la storia si basa sulla scheda del luogo, sulla provenienza e sulle fonti pubbliche.",
+    sourceBacked: "fatti con fonte",
+    linkedEvents: "eventi collegati",
+    archiveSignals: "tracce d'archivio",
+    thenNowSignals: "confronti prima/dopo",
+    sourceCount: "fonti pubbliche",
+    dateLabel: "Datazione",
+    creatorLabel: "Attribuzione",
+    statusLabel: "Stato attuale",
+    sourceLabel: "Traccia delle fonti",
+    storyIntro: (name: string, era: string) =>
+      `${name} non è solo un punto sulla mappa. È un record di ${era} che collega strati urbani, tracce visibili, fonti pubbliche e storie vicine.`,
+    dateSentence: (date: string, source: string) =>
+      `La datazione è pubblicata come ${date}${source ? ` ed è collegata a ${source}` : ""}.`,
+    creatorSentence: (creator: string) => `Per l'attribuzione, il record attuale dice: ${creator}.`,
+    statusSentence: (status: string) => `Lo stato attuale è descritto così: ${status}`,
+    timelineSentence: (count: number) =>
+      `La storia si sviluppa attraverso ${count} eventi collegati nella cronologia più ampia di Plovdiv.`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `Lo strato d'archivio è registrato come record d'archivio: ${archiveCount}; confronti visivi prima/dopo: ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) =>
+      `Il contesto istituzionale passa da ${items}. Non è automaticamente una storia di proprietà, ma una traccia verificabile di cura pubblica, memoria o governo.`,
+    peopleSentence: (items: string) =>
+      `Le persone collegate a questo luogo aiutano a leggere la storia tramite biografie, eventi e memoria civica: ${items}.`,
+    relatedPlacesSentence: (items: string) =>
+      `I luoghi collegati mostrano che questo sito funziona come parte di un sistema urbano più ampio: ${items}.`
+  },
+  tr: {
+    storyEyebrow: "Yerin hikayesi",
+    storyTitle: "Bu yeri nasıl okumalı",
+    whyTitle: "Neden önemli",
+    originTitle: "Kökenler ve katmanlar",
+    useTitle: "Bugün ve nelere bakmalı",
+    stewardshipTitle: "Sahiplik, bakım ve kurumlar",
+    timelineTitle: "Zaman içinde hikaye",
+    evidenceTitle: "İzler ve kanıtlar",
+    aroundTitle: "Bu yerin çevresi",
+    peopleTitle: "Bağlantılı kişiler",
+    organizationsTitle: "Kurumlar ve topluluklar",
+    relatedPlacesTitle: "Bağlantılı yerler",
+    noOwnership:
+      "Burada kullanılan kamu kaydı izlenebilir bir sahiplik veya yönetim geçmişi belirtmiyor. Bu nedenle sayfa yalnızca doğrulanmış kurumsal ve kaynak bağlantılarını gösterir.",
+    noPeople: "Mevcut bilgi tabanında bağlantılı kişi yok.",
+    noOrganizations: "Mevcut bilgi tabanında bağlantılı kurum yok.",
+    noRelatedPlaces: "Aynı olaylar üzerinden bağlı başka yer yok.",
+    noTimeline:
+      "Henüz ayrı zaman çizelgesi olayı bağlı değil; buradaki hikaye yer kaydına, provenansa ve kamu kaynaklarına dayanır.",
+    sourceBacked: "kaynaklı gerçekler",
+    linkedEvents: "bağlantılı olaylar",
+    archiveSignals: "arşiv izleri",
+    thenNowSignals: "önce/sonra karşılaştırmaları",
+    sourceCount: "kamu kaynağı",
+    dateLabel: "Tarihleme",
+    creatorLabel: "Atıf",
+    statusLabel: "Mevcut durum",
+    sourceLabel: "Kaynak izi",
+    storyIntro: (name: string, era: string) =>
+      `${name} haritadaki bir noktadan fazlasıdır. ${era} katmanını, görünür izleri, kamu kaynaklarını ve komşu hikayeleri birbirine bağlayan bir kayıttır.`,
+    dateSentence: (date: string, source: string) =>
+      `Tarihleme ${date} olarak yayımlanmıştır${source ? ` ve ${source} ile bağlantılıdır` : ""}.`,
+    creatorSentence: (creator: string) => `Atıf için mevcut kayıt şöyle der: ${creator}.`,
+    statusSentence: (status: string) => `Bugünkü durum şöyle tanımlanır: ${status}`,
+    timelineSentence: (count: number) =>
+      `Hikaye, Plovdiv'in daha geniş kronolojisine yerleşen ${count} bağlantılı olay üzerinden açılır.`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `Arşiv katmanı şöyle kaydedilir: arşiv kaydı ${archiveCount}; görsel önce/sonra karşılaştırması ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) =>
+      `Kurumsal bağlam ${items} üzerinden okunur. Bu otomatik olarak sahiplik tarihi değildir; kamusal bakım, hafıza veya yönetime dair doğrulanabilir bir izdir.`,
+    peopleSentence: (items: string) =>
+      `Bu yerle bağlantılı kişiler hikayeyi biyografiler, olaylar ve kentsel hafıza üzerinden okumayı sağlar: ${items}.`,
+    relatedPlacesSentence: (items: string) =>
+      `Bağlantılı yerler, bu alanın daha geniş bir kentsel sistemin parçası olduğunu gösterir: ${items}.`
+  },
+  es: {
+    storyEyebrow: "Historia del lugar",
+    storyTitle: "Cómo leer este lugar",
+    whyTitle: "Por qué importa",
+    originTitle: "Orígenes y capas",
+    useTitle: "Hoy y qué observar",
+    stewardshipTitle: "Propiedad, cuidado e instituciones",
+    timelineTitle: "Historia en el tiempo",
+    evidenceTitle: "Huellas y pruebas",
+    aroundTitle: "Alrededor de este lugar",
+    peopleTitle: "Personas conectadas",
+    organizationsTitle: "Instituciones y comunidades",
+    relatedPlacesTitle: "Lugares conectados",
+    noOwnership:
+      "El registro público usado aquí no identifica una historia rastreable de propiedad o gestión. Por eso la página muestra solo vínculos institucionales y de fuentes verificados.",
+    noPeople: "No hay personas vinculadas en la base actual.",
+    noOrganizations: "No hay instituciones vinculadas en la base actual.",
+    noRelatedPlaces: "No hay otros lugares vinculados por los mismos eventos.",
+    noTimeline:
+      "Aún no hay eventos cronológicos separados vinculados; la historia se apoya en la ficha del lugar, la procedencia y las fuentes públicas.",
+    sourceBacked: "hechos con fuente",
+    linkedEvents: "eventos vinculados",
+    archiveSignals: "huellas de archivo",
+    thenNowSignals: "comparaciones antes/después",
+    sourceCount: "fuentes públicas",
+    dateLabel: "Datación",
+    creatorLabel: "Autoría",
+    statusLabel: "Estado actual",
+    sourceLabel: "Rastro de fuentes",
+    storyIntro: (name: string, era: string) =>
+      `${name} no es solo un punto en el mapa. Es un registro de ${era} que enlaza capas urbanas, huellas visibles, fuentes públicas e historias vecinas.`,
+    dateSentence: (date: string, source: string) =>
+      `La datación se publica como ${date}${source ? ` y está vinculada a ${source}` : ""}.`,
+    creatorSentence: (creator: string) => `Sobre la autoría, el registro actual dice: ${creator}.`,
+    statusSentence: (status: string) => `Su estado actual se describe así: ${status}`,
+    timelineSentence: (count: number) =>
+      `La historia se despliega a través de ${count} eventos vinculados dentro de la cronología más amplia de Plovdiv.`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `La capa de archivo se registra como registros de archivo: ${archiveCount}; comparaciones visuales antes/después: ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) =>
+      `El contexto institucional pasa por ${items}. No es automáticamente una historia de propiedad, sino una huella verificable de cuidado público, memoria o gobierno.`,
+    peopleSentence: (items: string) =>
+      `Las personas vinculadas a este lugar ayudan a leer la historia mediante biografías, eventos y memoria cívica: ${items}.`,
+    relatedPlacesSentence: (items: string) =>
+      `Los lugares conectados muestran que este sitio funciona como parte de un sistema urbano más amplio: ${items}.`
+  },
+  el: {
+    storyEyebrow: "Ιστορία του τόπου",
+    storyTitle: "Πώς να διαβάσετε αυτόν τον τόπο",
+    whyTitle: "Γιατί έχει σημασία",
+    originTitle: "Αφετηρίες και στρώματα",
+    useTitle: "Σήμερα και τι να προσέξετε",
+    stewardshipTitle: "Ιδιοκτησία, φροντίδα και θεσμοί",
+    timelineTitle: "Ιστορία μέσα στον χρόνο",
+    evidenceTitle: "Ίχνη και τεκμήρια",
+    aroundTitle: "Γύρω από αυτόν τον τόπο",
+    peopleTitle: "Συνδεδεμένα πρόσωπα",
+    organizationsTitle: "Θεσμοί και κοινότητες",
+    relatedPlacesTitle: "Συνδεδεμένοι τόποι",
+    noOwnership:
+      "Το δημόσιο αρχείο που χρησιμοποιείται εδώ δεν προσδιορίζει ανιχνεύσιμη ιστορία ιδιοκτησίας ή διαχείρισης. Επομένως η σελίδα δείχνει μόνο επαληθευμένους θεσμικούς και πηγαίους δεσμούς.",
+    noPeople: "Δεν συνδέονται πρόσωπα στην τρέχουσα βάση γνώσης.",
+    noOrganizations: "Δεν συνδέονται θεσμοί στην τρέχουσα βάση γνώσης.",
+    noRelatedPlaces: "Δεν συνδέονται άλλοι τόποι μέσω των ίδιων γεγονότων.",
+    noTimeline:
+      "Δεν συνδέονται ακόμη ξεχωριστά χρονολογικά γεγονότα. Η ιστορία εδώ βασίζεται στην εγγραφή του τόπου, την προέλευση και τις δημόσιες πηγές.",
+    sourceBacked: "τεκμηριωμένα γεγονότα",
+    linkedEvents: "συνδεδεμένα γεγονότα",
+    archiveSignals: "αρχειακά ίχνη",
+    thenNowSignals: "συγκρίσεις τότε/τώρα",
+    sourceCount: "δημόσιες πηγές",
+    dateLabel: "Χρονολόγηση",
+    creatorLabel: "Απόδοση",
+    statusLabel: "Τρέχουσα κατάσταση",
+    sourceLabel: "Ίχνος πηγών",
+    storyIntro: (name: string, era: string) =>
+      `${name} δεν είναι απλώς ένα σημείο στον χάρτη. Είναι μια εγγραφή του/της ${era} που ενώνει αστικά στρώματα, ορατά ίχνη, δημόσιες πηγές και γειτονικές ιστορίες.`,
+    dateSentence: (date: string, source: string) =>
+      `Η χρονολόγηση δημοσιεύεται ως ${date}${source ? ` και συνδέεται με ${source}` : ""}.`,
+    creatorSentence: (creator: string) => `Για την απόδοση, η τρέχουσα εγγραφή αναφέρει: ${creator}.`,
+    statusSentence: (status: string) => `Η σημερινή κατάσταση περιγράφεται ως: ${status}`,
+    timelineSentence: (count: number) =>
+      `Η ιστορία ξεδιπλώνεται μέσα από ${count} συνδεδεμένα γεγονότα στη μεγαλύτερη χρονολογία της Φιλιππούπολης.`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `Το αρχειακό στρώμα καταγράφεται ως αρχειακές εγγραφές: ${archiveCount}; οπτικές συγκρίσεις τότε/τώρα: ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) =>
+      `Το θεσμικό πλαίσιο περνά από ${items}. Αυτό δεν είναι αυτόματα ιστορία ιδιοκτησίας, αλλά επαληθεύσιμο ίχνος δημόσιας φροντίδας, μνήμης ή διοίκησης.`,
+    peopleSentence: (items: string) =>
+      `Τα πρόσωπα που συνδέονται με αυτόν τον τόπο βοηθούν να διαβαστεί η ιστορία μέσω βιογραφιών, γεγονότων και αστικής μνήμης: ${items}.`,
+    relatedPlacesSentence: (items: string) =>
+      `Οι συνδεδεμένοι τόποι δείχνουν ότι αυτός ο χώρος λειτουργεί ως μέρος ενός ευρύτερου αστικού συστήματος: ${items}.`
+  },
+  ja: {
+    storyEyebrow: "場所の物語",
+    storyTitle: "この場所をどう読むか",
+    whyTitle: "なぜ重要か",
+    originTitle: "起源と重なり",
+    useTitle: "現在と見るべき点",
+    stewardshipTitle: "所有・管理・機関",
+    timelineTitle: "時間の中の物語",
+    evidenceTitle: "痕跡と証拠",
+    aroundTitle: "この場所の周辺",
+    peopleTitle: "関連人物",
+    organizationsTitle: "機関とコミュニティ",
+    relatedPlacesTitle: "関連する場所",
+    noOwnership:
+      "ここで使用している公開記録では、追跡できる所有・管理の履歴は特定されていません。そのため、このページでは確認済みの機関・出典リンクだけを示します。",
+    noPeople: "現在のナレッジベースには関連人物がありません。",
+    noOrganizations: "現在のナレッジベースには関連機関がありません。",
+    noRelatedPlaces: "同じ出来事を通じて関連する他の場所はありません。",
+    noTimeline:
+      "個別の年表上の出来事はまだ関連付けられていません。この物語は場所の記録、来歴、公開出典にもとづいています。",
+    sourceBacked: "出典付き事実",
+    linkedEvents: "関連する出来事",
+    archiveSignals: "アーカイブの痕跡",
+    thenNowSignals: "今昔比較",
+    sourceCount: "公開出典",
+    dateLabel: "年代",
+    creatorLabel: "作者・建設者",
+    statusLabel: "現在の状態",
+    sourceLabel: "出典の流れ",
+    storyIntro: (name: string, era: string) =>
+      `${name}は地図上の一点だけではありません。${era}の記録として、都市の層、見える痕跡、公開出典、周辺の物語を結びます。`,
+    dateSentence: (date: string, source: string) =>
+      `年代は${date}として公開されています${source ? `。出典は${source}です` : ""}。`,
+    creatorSentence: (creator: string) => `作者・建設者について現在の記録は「${creator}」としています。`,
+    statusSentence: (status: string) => `現在の状態は「${status}」と説明されています。`,
+    timelineSentence: (count: number) =>
+      `物語は、プロヴディフの広い年表の中に位置づく${count}件の関連出来事を通じて展開します。`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `アーカイブ層は、アーカイブ記録${archiveCount}件、今昔比較${pairCount}件として記録されています。`,
+    stewardshipWithOrgs: (items: string) =>
+      `機関的文脈は${items}を通じて読めます。これは自動的に所有史を意味するものではなく、公共的な管理・記憶・統治に関する検証可能な痕跡です。`,
+    peopleSentence: (items: string) =>
+      `この場所に関連する人物は、伝記、出来事、都市の記憶を通して物語を読む助けになります: ${items}。`,
+    relatedPlacesSentence: (items: string) =>
+      `関連する場所は、この場所がより広い都市システムの一部として働いていることを示します: ${items}。`
+  }
+} satisfies Record<Lang, PlaceStoryLabels>)[lang];
+
+function localized(record: Record<string, any> | null | undefined, base: string): string {
+  return knownHistoryLabel(field(record, base, lang), lang);
 }
 
 const matchQualityLabels: Record<string, string> =
@@ -340,19 +802,93 @@ function placeFacts(item: KnowledgePlace) {
   ].filter(Boolean) as Array<{ label: string; value: string }>;
 }
 
+const listFormatter = new Intl.ListFormat(locale, { style: "long", type: "conjunction" });
+function formatList(items: string[], max = 4): string {
+  const clean = [...new Set(items.filter(Boolean))];
+  if (clean.length <= max) return listFormatter.format(clean);
+  return `${listFormatter.format(clean.slice(0, max))} +${clean.length - max}`;
+}
+
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
+const eventById = new Map(historyKnowledgeEvents.map((event) => [event.id, event]));
+const peopleById = new Map(historyKnowledgePeople.map((person) => [person.id, person]));
+const organizationById = new Map(historyKnowledgeOrganizations.map((organization) => [organization.id, organization]));
+const placeById = new Map(historyKnowledgePlaces.map((item) => [item.id, item]));
 const archiveItems = historicalArchiveItems
   .filter((item) => item.place_id === place.id)
   .sort((a, b) => a.date_year - b.date_year || a.id.localeCompare(b.id));
 const pairs = publicThenNowPairs(thenNowPairs.filter((pair) => pair.place_id === place.id))
   .sort((a, b) => localized(a, "title").localeCompare(localized(b, "title"), locale));
-const relatedEvents = historyKnowledgeEvents
-  .filter((event) => event.place_ids.includes(place.id))
-  .sort((a, b) => a.date.year - b.date.year || a.id.localeCompare(b.id));
+const directEvents = place.event_ids.map((eventId) => eventById.get(eventId)).filter(Boolean);
+const reverseLinkedEvents = historyKnowledgeEvents.filter((event) => event.place_ids.includes(place.id));
+const relatedEvents = [...new Map([...directEvents, ...reverseLinkedEvents].map((event) => [event!.id, event!])).values()].sort(
+  (a, b) => a.date.year - b.date.year || a.id.localeCompare(b.id)
+);
 const relatedStories = storyLongreads.filter((story) => story.linked_place_ids.includes(place.id));
 const facts = placeFacts(place);
 const image = place.media[0];
 const sourceRecords = place.source_ids.map((sourceId) => sourceById.get(sourceId)).filter(Boolean);
+const linkedPeople = place.person_ids.map((personId) => peopleById.get(personId)).filter(Boolean);
+const linkedOrganizations = place.organization_ids.map((organizationId) => organizationById.get(organizationId)).filter(Boolean);
+const relatedPlaceIds = [
+  ...new Set(
+    relatedEvents
+      .flatMap((event) => event.place_ids)
+      .filter((placeId) => placeId !== place.id)
+  )
+];
+const relatedPlaces = relatedPlaceIds.map((placeId) => placeById.get(placeId)).filter(Boolean).slice(0, 8);
+const evidenceSourceIds = new Set([
+  ...place.source_ids,
+  ...relatedEvents.flatMap((event) => event.source_ids),
+  ...archiveItems.flatMap((item) => item.source_ids ?? []),
+  ...pairs.flatMap((pair) => pair.source_ids ?? [])
+]);
+const evidenceCount =
+  facts.length +
+  relatedEvents.length +
+  archiveItems.length +
+  pairs.length +
+  sourceRecords.length +
+  place.provenance.length +
+  linkedPeople.length +
+  linkedOrganizations.length;
+const dateSource = place.date_context?.source_id ? sourceById.get(place.date_context.source_id) : null;
+const creatorSource = place.creator_context?.source_id ? sourceById.get(place.creator_context.source_id) : null;
+const creatorFact = facts.find((fact) => fact.label === labels.architect || fact.label === labels.builder);
+const creatorDetail = creatorFact?.value ?? localized(place.creator_context, "display");
+const storyMetrics = [
+  { value: evidenceCount, label: storyLabels.sourceBacked },
+  { value: relatedEvents.length, label: storyLabels.linkedEvents },
+  { value: archiveItems.length, label: storyLabels.archiveSignals },
+  { value: pairs.length, label: storyLabels.thenNowSignals },
+  { value: evidenceSourceIds.size, label: storyLabels.sourceCount }
+];
+const storyParagraphs = [
+  storyLabels.storyIntro(localized(place, "name"), localized(place, "era")),
+  localized(place, "summary"),
+  localized(place.date_context, "display")
+    ? storyLabels.dateSentence(
+        localized(place.date_context, "display"),
+        dateSource ? sourceTitle(localized(dateSource, "title"), lang) : ""
+      )
+    : "",
+  localized(place.creator_context, "display")
+    ? storyLabels.creatorSentence(localized(place.creator_context, "display"))
+    : "",
+  storyLabels.statusSentence(localized(place, "current_status")),
+  relatedEvents.length ? storyLabels.timelineSentence(relatedEvents.length) : "",
+  storyLabels.archiveSentence(archiveItems.length, pairs.length)
+].filter(Boolean);
+const stewardshipText = linkedOrganizations.length
+  ? storyLabels.stewardshipWithOrgs(formatList(linkedOrganizations.map((organization) => localized(organization!, "name"))))
+  : storyLabels.noOwnership;
+const peopleText = linkedPeople.length
+  ? storyLabels.peopleSentence(formatList(linkedPeople.map((person) => localized(person!, "name"))))
+  : storyLabels.noPeople;
+const relatedPlacesText = relatedPlaces.length
+  ? storyLabels.relatedPlacesSentence(formatList(relatedPlaces.map((item) => localized(item!, "name"))))
+  : storyLabels.noRelatedPlaces;
 const mapHref = place.coordinates
   ? `https://www.openstreetmap.org/?mlat=${place.coordinates.lat}&mlon=${place.coordinates.lng}#map=17/${place.coordinates.lat}/${place.coordinates.lng}`
   : "";
@@ -383,9 +919,92 @@ const mapHref = place.coordinates
     <section class="section">
       <div class="container place-detail-layout">
         <div class="place-detail-main">
+          <section class="place-panel place-story-panel" data-place-story={place.id}>
+            <p class="eyebrow">{storyLabels.storyEyebrow}</p>
+            <h2>{storyLabels.storyTitle}</h2>
+            <div class="place-story-prose">
+              {storyParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+            <dl class="place-story-metrics" aria-label={storyLabels.evidenceTitle}>
+              {storyMetrics.map((metric) => (
+                <div>
+                  <dt>{metric.label}</dt>
+                  <dd>{metric.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+
+          <section class="place-story-grid" aria-label={storyLabels.storyTitle}>
+            <article class="place-story-card">
+              <span>{storyLabels.originTitle}</span>
+              <h3>{storyLabels.dateLabel}</h3>
+              <p>{localized(place.date_context, "display")}</p>
+              {dateSource && (
+                <a class="src-link" href={dateSource.url} target="_blank" rel="noreferrer">
+                  {storyLabels.sourceLabel}: {sourceTitle(localized(dateSource, "title"), lang)} ↗
+                </a>
+              )}
+            </article>
+            <article class="place-story-card">
+              <span>{storyLabels.creatorLabel}</span>
+              <h3>{creatorFact?.label ?? labels.creator}</h3>
+              <p>{creatorDetail}</p>
+              {creatorSource && (
+                <a class="src-link" href={creatorSource.url} target="_blank" rel="noreferrer">
+                  {storyLabels.sourceLabel}: {sourceTitle(localized(creatorSource, "title"), lang)} ↗
+                </a>
+              )}
+            </article>
+            <article class="place-story-card">
+              <span>{storyLabels.useTitle}</span>
+              <h3>{storyLabels.statusLabel}</h3>
+              <p>{localized(place, "current_status")}</p>
+              {mapHref && <a class="src-link" href={mapHref} target="_blank" rel="noreferrer">{labels.openMap} ↗</a>}
+            </article>
+          </section>
+
+          <section class="place-panel place-evidence-panel">
+            <h2>{storyLabels.evidenceTitle}</h2>
+            <ul class="place-evidence-list">
+              {place.provenance.map((item) => (
+                <li>
+                  <p>{localized(item, "claim")}</p>
+                  <a class="src-link" href={sourceById.get(item.source_id)?.url ?? item.url} target="_blank" rel="noreferrer">
+                    {storyLabels.sourceLabel}: {sourceTitle(localized(sourceById.get(item.source_id), "title"), lang) || sourceTitle(item.source_id, lang)} ↗
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+
           <section class="place-panel">
             <h2>{labels.currentStatus}</h2>
             <p>{localized(place, "current_status")}</p>
+          </section>
+
+          <section class="place-panel place-connections-panel">
+            <h2>{storyLabels.stewardshipTitle}</h2>
+            <p>{stewardshipText}</p>
+            {linkedOrganizations.length > 0 && (
+              <ul class="place-chip-list">
+                {linkedOrganizations.map((organization) => (
+                  <li>{localized(organization!, "name")}</li>
+                ))}
+              </ul>
+            )}
+          </section>
+
+          <section class="place-panel place-connections-panel">
+            <h2>{storyLabels.peopleTitle}</h2>
+            <p>{peopleText}</p>
+            {linkedPeople.length > 0 && (
+              <ul class="place-chip-list">
+                {linkedPeople.slice(0, 10).map((person) => (
+                  <li><a href={localizePath(`/people/${person!.id}`, lang)}>{localized(person!, "name")}</a></li>
+                ))}
+              </ul>
+            )}
           </section>
 
           <section class="place-panel">
@@ -405,6 +1024,37 @@ const mapHref = place.coordinates
               ))}
             </dl>
             {mapHref && <a class="button secondary" href={mapHref} target="_blank" rel="noreferrer">{labels.openMap}</a>}
+          </section>
+
+          <section class="place-panel place-timeline-panel">
+            <h2>{storyLabels.timelineTitle}</h2>
+            {relatedEvents.length > 0 ? (
+              <ol class="place-story-timeline">
+                {relatedEvents.slice(0, 8).map((event) => (
+                  <li>
+                    <time>{localized(event.date, "display")}</time>
+                    <div>
+                      <h3>{localized(event, "title")}</h3>
+                      <p>{localized(event, "summary")}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p>{storyLabels.noTimeline}</p>
+            )}
+          </section>
+
+          <section class="place-panel place-connections-panel">
+            <h2>{storyLabels.aroundTitle}</h2>
+            <p>{relatedPlacesText}</p>
+            {relatedPlaces.length > 0 && (
+              <ul class="place-chip-list">
+                {relatedPlaces.map((item) => (
+                  <li><a href={localizePath(`/places/${item!.id}`, lang)}>{localized(item!, "name")}</a></li>
+                ))}
+              </ul>
+            )}
           </section>
 
           {pairs.length > 0 && (
