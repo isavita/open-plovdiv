@@ -10,6 +10,7 @@ import populationJson from "../../../../data/curated/plovdiv-population.json";
 import neighbourhoodsJson from "../../../../data/curated/plovdiv-neighbourhoods.json";
 import climateJson from "../../../../data/curated/plovdiv-climate.json";
 import mayorEnrichmentJson from "../../../../data/curated/mayor-wikidata-enrichment.json";
+import placeWikidataEnrichmentJson from "../../../../data/curated/place-wikidata-enrichment.json";
 import historyKnowledgeIndexJson from "../../../../data/generated/history-knowledge/index.json";
 import historyKnowledgeEventsJson from "../../../../data/generated/history-knowledge/events.json";
 import historyKnowledgePeopleJson from "../../../../data/generated/history-knowledge/people.json";
@@ -25,6 +26,7 @@ import storyLongreadsJson from "../../../../data/generated/history-knowledge/sto
 import historyEditorialSignoffsJson from "../../../../data/generated/history-knowledge/editorial-signoffs.json";
 import historyEditorialReviewJson from "../../../../data/generated/history-knowledge/editorial-review.json";
 import historySourceCoverageJson from "../../../../data/generated/history-knowledge/source-coverage.json";
+import type { Lang } from "../i18n/ui";
 import { withGermanFields } from "../i18n/deTranslations";
 
 export type Source = {
@@ -429,6 +431,53 @@ export type KnowledgePlace = {
   source_ids: string[];
   provenance: KnowledgeProvenance;
   editorial: KnowledgeEditorial;
+};
+
+export type PlaceWikidataLocalizedText = Partial<Record<Lang, string>>;
+
+export type PlaceWikidataClaimValue =
+  | {
+      type: "item";
+      id: string;
+      labels: PlaceWikidataLocalizedText;
+      descriptions?: PlaceWikidataLocalizedText;
+    }
+  | {
+      type: "time";
+      time: string;
+      precision: number;
+      year: number | null;
+    }
+  | {
+      type: "text";
+      text: string;
+      language: string | null;
+    };
+
+export type PlaceWikidataEnrichment = {
+  place_id: string;
+  wikidata_id: string;
+  wikidata_url: string;
+  checked_at: string;
+  labels: PlaceWikidataLocalizedText;
+  descriptions: PlaceWikidataLocalizedText;
+  sitelinks: Partial<Record<Lang, { title: string; url: string }>>;
+  claims: Partial<
+    Record<
+      | "instance_of"
+      | "heritage_designation"
+      | "inception"
+      | "start_time"
+      | "architect"
+      | "creator"
+      | "owned_by"
+      | "operator"
+      | "located_in_admin_entity"
+      | "location"
+      | "street_address",
+      PlaceWikidataClaimValue[]
+    >
+  >;
 };
 
 export type KnowledgeOrganization = {
@@ -886,6 +935,7 @@ export type ClimateMonth = {
 
 export const plovdivClimate = withGermanFields(climateJson) as ClimateMonth[];
 export const sourceRegistry = withGermanFields(sourcesJson) as SourceRegistryItem[];
+export const placeWikidataEnrichment = placeWikidataEnrichmentJson as Record<string, PlaceWikidataEnrichment>;
 export const historyKnowledgeIndex = withGermanFields(historyKnowledgeIndexJson) as HistoryKnowledgeIndex;
 export const historyKnowledgeEvents = withGermanFields(historyKnowledgeEventsJson) as KnowledgeEvent[];
 export const historyKnowledgePeople = withGermanFields(historyKnowledgePeopleJson) as KnowledgePerson[];

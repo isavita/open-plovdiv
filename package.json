@@ -15,10 +15,11 @@
     "validate:a11y": "node scripts/validate/validate_static_accessibility.mjs",
     "validate:history-api": "node scripts/validate/validate_history_api.mjs",
     "validate:history-surface": "node scripts/validate/validate_history_surface.mjs",
+    "validate:story-enrichment": "node scripts/validate/validate_story_enrichment_checklist.mjs",
     "validate:lighthouse": "node scripts/validate/validate_lighthouse_mobile.mjs",
     "export:reports": "node scripts/export/export_approved_reports.mjs",
     "validate": "node scripts/validate/validate_data.mjs",
-    "test": "npm run validate && npm --workspace apps/web run test"
+    "test": "npm run validate && npm run validate:story-enrichment && npm --workspace apps/web run test"
   },
   "overrides": {
     "astro": {

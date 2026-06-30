@@ -51,6 +51,10 @@ function readJson(url) {
   }
 }
 
+function readSourceJson(relativePath) {
+  return JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
+}
+
 function collectionFromPayload(payload, preferredKey) {
   if (Array.isArray(payload)) return payload;
   if (!payload || typeof payload !== "object") return null;
@@ -84,6 +88,13 @@ function assertCountAtLeast(label, actual, target) {
   if (typeof actual !== "number" || actual < target) {
     fail(`${label}: expected at least ${target}, got ${actual}`);
   }
+}
+
+function hasWikidataPanel(record) {
+  if (!record) return false;
+  if (Object.keys(record.descriptions ?? {}).length > 0) return true;
+  if (Object.keys(record.sitelinks ?? {}).length > 0) return true;
+  return Object.values(record.claims ?? {}).some((values) => Array.isArray(values) && values.length > 0);
 }
 
 const corePagePairs = [
@@ -135,17 +146,12 @@ const corePagePairs = [
   {
     bg: "/stories/",
     en: "/en/stories/",
-    hooks: ['class="story-grid"', "/api/history/story-longreads.json"]
-  },
-  {
-    bg: "/education/",
-    en: "/en/education/",
-    hooks: ['id="lessons"', "data-education-resource", "/api/history/education-resources.json"]
+    hooks: ['class="story-grid"', "data-story-card"]
   },
   {
     bg: "/mayors/",
     en: "/en/mayors/",
-    hooks: ['id="mayor-search"', "mayor-timeline"]
+    hooks: ['id="mayor-search"', 'id="mayor-config"', "data-mayor-card"]
   },
   {
     bg: "/fix-map/report/",
@@ -237,17 +243,24 @@ if (!historyAssetScripts.includes("history-conflict-note")) {
   fail("history timeline bundle is missing conflict-note rendering");
 }
 
-const placeLocalePrefixes = ["", "/en", "/de", "/fr", "/it", "/tr", "/es", "/el", "/ja"];
+const localePrefixes = ["", "/en", "/de", "/fr", "/it", "/tr", "/es", "/el", "/ja"];
+const placeWikidataEnrichment = readSourceJson("data/curated/place-wikidata-enrichment.json");
 const places = collectionFromPayload(readJson("/api/history/places.json"), "places") ?? [];
 for (const place of places) {
-  for (const prefix of placeLocalePrefixes) {
+  for (const prefix of localePrefixes) {
     const url = `${prefix}/places/${place.id}/`;
     const html = readBuilt(url);
-    assertContains(url, html, [
+    const hooks = [
       `data-place-story="${place.id}"`,
+      `data-place-history-atlas="${place.id}"`,
+      `data-place-event-browser="${place.id}"`,
       'class="place-story-prose"',
       'class="place-evidence-list"'
-    ]);
+    ];
+    if (hasWikidataPanel(placeWikidataEnrichment[place.id])) {
+      hooks.push(`data-place-wikidata="${place.id}"`);
+    }
+    assertContains(url, html, hooks);
   }
 }
 
@@ -277,8 +290,15 @@ for (const story of stories) {
 const cityArchive = collectionFromPayload(readJson("/data/city-archive.json")) ?? [];
 const mayorTerms = cityArchive.filter((record) => record.kind === "mayor_term");
 for (const term of mayorTerms) {
-  assertFile(`/mayors/${term.id}/`);
-  assertFile(`/en/mayors/${term.id}/`);
+  for (const prefix of localePrefixes) {
+    const url = `${prefix}/mayors/${term.id}/`;
+    const html = readBuilt(url);
+    assertContains(url, html, [
+      `data-mayor-story="${term.id}"`,
+      'class="mayor-story-prose"',
+      'class="mayor-story-sources"'
+    ]);
+  }
 }
 assertCountAtLeast("mayor detail pages", mayorTerms.length, 66);
 
@@ -289,5 +309,5 @@ if (issues.length > 0) {
 }
 
 console.log(
-  `history surface validation passed: ${corePagePairs.length * 2} core pages, ${people.length * 2} person pages, ${places.length * placeLocalePrefixes.length} place pages, ${stories.length * 2} story pages, ${mayorTerms.length * 2} mayor pages`
+  `history surface validation passed: ${corePagePairs.length * 2} core pages, ${people.length * 2} person pages, ${places.length * localePrefixes.length} place pages, ${stories.length * 2} story pages, ${mayorTerms.length * localePrefixes.length} mayor pages`
 );

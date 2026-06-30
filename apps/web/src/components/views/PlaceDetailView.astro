@@ -10,8 +10,10 @@ import {
   historyKnowledgePeople,
   historyKnowledgePlaces,
   historyKnowledgeSources,
+  placeWikidataEnrichment,
   storyLongreads,
   thenNowPairs,
+  type PlaceWikidataClaimValue,
   type KnowledgePlace
 } from "@lib/data";
 
@@ -304,6 +306,28 @@ type PlaceStoryLabels = {
   stewardshipWithOrgs: (items: string) => string;
   peopleSentence: (items: string) => string;
   relatedPlacesSentence: (items: string) => string;
+};
+
+type PlaceHistoryAtlasLabels = {
+  eyebrow: string;
+  title: string;
+  lead: (events: number, stories: number, sources: number) => string;
+  contextTitle: string;
+  contextLead: string;
+  eventBrowserTitle: string;
+  eventBrowserLead: (count: number) => string;
+  eventCount: (count: number) => string;
+  eventSources: (count: number) => string;
+  noEvents: string;
+  rootNode: string;
+  eventsNode: string;
+  storiesNode: string;
+  peopleNode: string;
+  organizationsNode: string;
+  archiveNode: string;
+  thenNowNode: string;
+  publicRecordNode: string;
+  sourcesNode: string;
 };
 
 const storyLabels = ({
@@ -727,6 +751,377 @@ const storyLabels = ({
   }
 } satisfies Record<Lang, PlaceStoryLabels>)[lang];
 
+const historyAtlasLabels =
+  lang === "bg"
+    ? {
+        eyebrow: "Исторически атлас",
+        title: "Пластове, връзки и следи",
+        lead: (events: number, stories: number, sources: number) =>
+          `Тази карта събира ${events} събития, ${stories} разказа и ${sources} публични източника, без да добавя неподкрепени твърдения.`,
+        contextTitle: "Контекстна мрежа",
+        contextLead: "Връзките показват какво е проверено за мястото: събития, разкази, хора, институции, архиви и публични записи.",
+        eventBrowserTitle: "Пълен поток от събития",
+        eventBrowserLead: (count: number) =>
+          count > 0 ? `Всички ${count} свързани събития са групирани по тип запис.` : "Няма отделни събития за това място.",
+        eventCount: (count: number) => `${count} записа`,
+        eventSources: (count: number) => `${count} източника`,
+        noEvents: "За това място няма отделни събития в текущата база; вижте публичния запис, източниците и описанието.",
+        rootNode: "място",
+        eventsNode: "събития",
+        storiesNode: "разкази",
+        peopleNode: "хора",
+        organizationsNode: "институции",
+        archiveNode: "архив",
+        thenNowNode: "тогава/сега",
+        publicRecordNode: "публичен запис",
+        sourcesNode: "източници"
+      }
+    : lang === "de"
+      ? {
+          eyebrow: "Historischer Atlas",
+          title: "Schichten, Verbindungen und Spuren",
+          lead: (events: number, stories: number, sources: number) =>
+            `Diese Karte bündelt ${events} Ereignisse, ${stories} Geschichten und ${sources} öffentliche Quellen, ohne unbelegte Behauptungen hinzuzufügen.`,
+          contextTitle: "Kontextnetz",
+          contextLead: "Die Verbindungen zeigen, was zum Ort belegt ist: Ereignisse, Geschichten, Menschen, Institutionen, Archive und öffentliche Datensätze.",
+          eventBrowserTitle: "Vollständiger Ereignisfluss",
+          eventBrowserLead: (count: number) =>
+            count > 0 ? `Alle ${count} verknüpften Ereignisse sind nach Datensatztyp gruppiert.` : "Für diesen Ort gibt es keine eigenen Ereignisse.",
+          eventCount: (count: number) => `${count} Einträge`,
+          eventSources: (count: number) => `${count} Quellen`,
+          noEvents: "Für diesen Ort gibt es in der aktuellen Basis keine eigenen Ereignisse; nutzen Sie den öffentlichen Datensatz, die Quellen und die Beschreibung.",
+          rootNode: "Ort",
+          eventsNode: "Ereignisse",
+          storiesNode: "Geschichten",
+          peopleNode: "Menschen",
+          organizationsNode: "Institutionen",
+          archiveNode: "Archiv",
+          thenNowNode: "Damals/heute",
+          publicRecordNode: "öffentlicher Datensatz",
+          sourcesNode: "Quellen"
+        }
+      : lang === "fr"
+        ? {
+            eyebrow: "Atlas historique",
+            title: "Strates, liens et traces",
+            lead: (events: number, stories: number, sources: number) =>
+              `Cette carte rassemble ${events} événements, ${stories} récits et ${sources} sources publiques, sans ajouter d'affirmations non sourcées.`,
+            contextTitle: "Réseau de contexte",
+            contextLead: "Les liens indiquent ce qui est vérifié pour le lieu : événements, récits, personnes, institutions, archives et fiches publiques.",
+            eventBrowserTitle: "Flux complet des événements",
+            eventBrowserLead: (count: number) =>
+              count > 0 ? `Les ${count} événements liés sont regroupés par type de fiche.` : "Aucun événement distinct n'est lié à ce lieu.",
+            eventCount: (count: number) => `${count} fiches`,
+            eventSources: (count: number) => `${count} sources`,
+            noEvents: "Aucun événement distinct n'est présent dans la base actuelle pour ce lieu; consultez la fiche publique, les sources et la description.",
+            rootNode: "lieu",
+            eventsNode: "événements",
+            storiesNode: "récits",
+            peopleNode: "personnes",
+            organizationsNode: "institutions",
+            archiveNode: "archives",
+            thenNowNode: "avant/après",
+            publicRecordNode: "fiche publique",
+            sourcesNode: "sources"
+          }
+        : lang === "it"
+          ? {
+              eyebrow: "Atlante storico",
+              title: "Strati, collegamenti e tracce",
+              lead: (events: number, stories: number, sources: number) =>
+                `Questa mappa raccoglie ${events} eventi, ${stories} racconti e ${sources} fonti pubbliche, senza aggiungere affermazioni non documentate.`,
+              contextTitle: "Rete di contesto",
+              contextLead: "I collegamenti mostrano ciò che è verificato per il luogo: eventi, racconti, persone, istituzioni, archivi e schede pubbliche.",
+              eventBrowserTitle: "Flusso completo degli eventi",
+              eventBrowserLead: (count: number) =>
+                count > 0 ? `Tutti i ${count} eventi collegati sono raggruppati per tipo di record.` : "Non ci sono eventi distinti collegati a questo luogo.",
+              eventCount: (count: number) => `${count} record`,
+              eventSources: (count: number) => `${count} fonti`,
+              noEvents: "Per questo luogo la base attuale non contiene eventi distinti; consultare la scheda pubblica, le fonti e la descrizione.",
+              rootNode: "luogo",
+              eventsNode: "eventi",
+              storiesNode: "racconti",
+              peopleNode: "persone",
+              organizationsNode: "istituzioni",
+              archiveNode: "archivio",
+              thenNowNode: "prima/dopo",
+              publicRecordNode: "scheda pubblica",
+              sourcesNode: "fonti"
+            }
+          : lang === "tr"
+            ? {
+                eyebrow: "Tarih atlası",
+                title: "Katmanlar, bağlantılar ve izler",
+                lead: (events: number, stories: number, sources: number) =>
+                  `Bu harita ${events} olayı, ${stories} anlatıyı ve ${sources} kamu kaynağını desteklenmeyen iddia eklemeden bir araya getirir.`,
+                contextTitle: "Bağlam ağı",
+                contextLead: "Bağlantılar yer hakkında doğrulananları gösterir: olaylar, anlatılar, kişiler, kurumlar, arşivler ve kamu kayıtları.",
+                eventBrowserTitle: "Tam olay akışı",
+                eventBrowserLead: (count: number) =>
+                  count > 0 ? `Bağlantılı ${count} olay kayıt türüne göre gruplandı.` : "Bu yere bağlı ayrı olay yok.",
+                eventCount: (count: number) => `${count} kayıt`,
+                eventSources: (count: number) => `${count} kaynak`,
+                noEvents: "Bu yer için mevcut tabanda ayrı olay yok; kamu kaydına, kaynaklara ve açıklamaya bakın.",
+                rootNode: "yer",
+                eventsNode: "olaylar",
+                storiesNode: "anlatılar",
+                peopleNode: "kişiler",
+                organizationsNode: "kurumlar",
+                archiveNode: "arşiv",
+                thenNowNode: "önce/sonra",
+                publicRecordNode: "kamu kaydı",
+                sourcesNode: "kaynaklar"
+              }
+            : lang === "es"
+              ? {
+                  eyebrow: "Atlas histórico",
+                  title: "Capas, vínculos y huellas",
+                  lead: (events: number, stories: number, sources: number) =>
+                    `Este mapa reúne ${events} eventos, ${stories} relatos y ${sources} fuentes públicas, sin añadir afirmaciones sin respaldo.`,
+                  contextTitle: "Red de contexto",
+                  contextLead: "Los vínculos muestran lo verificado para el lugar: eventos, relatos, personas, instituciones, archivos y registros públicos.",
+                  eventBrowserTitle: "Flujo completo de eventos",
+                  eventBrowserLead: (count: number) =>
+                    count > 0 ? `Los ${count} eventos vinculados están agrupados por tipo de registro.` : "No hay eventos separados vinculados a este lugar.",
+                  eventCount: (count: number) => `${count} registros`,
+                  eventSources: (count: number) => `${count} fuentes`,
+                  noEvents: "Para este lugar no hay eventos separados en la base actual; consulte el registro público, las fuentes y la descripción.",
+                  rootNode: "lugar",
+                  eventsNode: "eventos",
+                  storiesNode: "relatos",
+                  peopleNode: "personas",
+                  organizationsNode: "instituciones",
+                  archiveNode: "archivo",
+                  thenNowNode: "antes/después",
+                  publicRecordNode: "registro público",
+                  sourcesNode: "fuentes"
+                }
+              : lang === "el"
+                ? {
+                    eyebrow: "Ιστορικός άτλας",
+                    title: "Στρώματα, δεσμοί και ίχνη",
+                    lead: (events: number, stories: number, sources: number) =>
+                      `Αυτός ο χάρτης συγκεντρώνει ${events} γεγονότα, ${stories} αφηγήσεις και ${sources} δημόσιες πηγές, χωρίς να προσθέτει μη τεκμηριωμένους ισχυρισμούς.`,
+                    contextTitle: "Δίκτυο πλαισίου",
+                    contextLead: "Οι δεσμοί δείχνουν τι έχει επαληθευτεί για τον τόπο: γεγονότα, αφηγήσεις, πρόσωπα, θεσμοί, αρχεία και δημόσιες εγγραφές.",
+                    eventBrowserTitle: "Πλήρης ροή γεγονότων",
+                    eventBrowserLead: (count: number) =>
+                      count > 0 ? `Τα ${count} συνδεδεμένα γεγονότα ομαδοποιούνται ανά τύπο εγγραφής.` : "Δεν υπάρχουν ξεχωριστά γεγονότα για αυτόν τον τόπο.",
+                    eventCount: (count: number) => `${count} εγγραφές`,
+                    eventSources: (count: number) => `${count} πηγές`,
+                    noEvents: "Για αυτόν τον τόπο δεν υπάρχουν ξεχωριστά γεγονότα στην τρέχουσα βάση· δείτε τη δημόσια εγγραφή, τις πηγές και την περιγραφή.",
+                    rootNode: "τόπος",
+                    eventsNode: "γεγονότα",
+                    storiesNode: "αφηγήσεις",
+                    peopleNode: "πρόσωπα",
+                    organizationsNode: "θεσμοί",
+                    archiveNode: "αρχείο",
+                    thenNowNode: "τότε/τώρα",
+                    publicRecordNode: "δημόσια εγγραφή",
+                    sourcesNode: "πηγές"
+                  }
+                : lang === "ja"
+                  ? {
+                      eyebrow: "歴史アトラス",
+                      title: "層、つながり、痕跡",
+                      lead: (events: number, stories: number, sources: number) =>
+                        `このマップは、${events}件の出来事、${stories}件のストーリー、${sources}件の公開出典を、裏付けのない主張を加えずにまとめます。`,
+                      contextTitle: "文脈ネットワーク",
+                      contextLead: "つながりは、この場所について確認できる出来事、ストーリー、人物、機関、アーカイブ、公開記録を示します。",
+                      eventBrowserTitle: "出来事の全体フロー",
+                      eventBrowserLead: (count: number) =>
+                        count > 0 ? `関連する${count}件の出来事を記録タイプ別にまとめています。` : "この場所に関連付けられた個別の出来事はありません。",
+                      eventCount: (count: number) => `${count}件`,
+                      eventSources: (count: number) => `${count}件の出典`,
+                      noEvents: "現在のデータベースには、この場所の個別の出来事はありません。公開記録、出典、説明を確認してください。",
+                      rootNode: "場所",
+                      eventsNode: "出来事",
+                      storiesNode: "ストーリー",
+                      peopleNode: "人物",
+                      organizationsNode: "機関",
+                      archiveNode: "アーカイブ",
+                      thenNowNode: "今昔比較",
+                      publicRecordNode: "公開記録",
+                      sourcesNode: "出典"
+                    }
+                  : {
+                      eyebrow: "History atlas",
+                      title: "Layers, links and traces",
+                      lead: (events: number, stories: number, sources: number) =>
+                        `This map brings together ${events} events, ${stories} stories and ${sources} public sources without adding unsupported claims.`,
+                      contextTitle: "Context network",
+                      contextLead: "The links show what is verified for the place: events, stories, people, institutions, archives and public records.",
+                      eventBrowserTitle: "Full event stream",
+                      eventBrowserLead: (count: number) =>
+                        count > 0 ? `All ${count} linked events are grouped by record type.` : "No separate events are linked to this place.",
+                      eventCount: (count: number) => `${count} records`,
+                      eventSources: (count: number) => `${count} sources`,
+                      noEvents: "No separate events are present for this place in the current knowledge base; use the public record, sources and description.",
+                      rootNode: "place",
+                      eventsNode: "events",
+                      storiesNode: "stories",
+                      peopleNode: "people",
+                      organizationsNode: "institutions",
+                      archiveNode: "archive",
+                      thenNowNode: "then/now",
+                      publicRecordNode: "public record",
+                      sourcesNode: "sources"
+                    };
+
+const wikidataLabels =
+  lang === "bg"
+    ? {
+        title: "Публичен запис в Wikidata",
+        description: "Описание",
+        instance_of: "Тип",
+        heritage_designation: "Статут/защита",
+        inception: "Начало",
+        start_time: "Начална дата",
+        architect: "Архитект",
+        creator: "Създател",
+        owned_by: "Собственик",
+        operator: "Оператор",
+        location: "Местоположение",
+        street_address: "Адрес",
+        wikidata: "Wikidata запис",
+        wikipedia: "Уикипедия"
+      }
+    : lang === "de"
+      ? {
+          title: "Öffentlicher Wikidata-Datensatz",
+          description: "Beschreibung",
+          instance_of: "Typ",
+          heritage_designation: "Status/Schutz",
+          inception: "Beginn",
+          start_time: "Startdatum",
+          architect: "Architekt",
+          creator: "Urheber",
+          owned_by: "Eigentümer",
+          operator: "Betreiber",
+          location: "Ort",
+          street_address: "Adresse",
+          wikidata: "Wikidata-Datensatz",
+          wikipedia: "Wikipedia"
+        }
+      : lang === "fr"
+        ? {
+            title: "Fiche publique Wikidata",
+            description: "Description",
+            instance_of: "Type",
+            heritage_designation: "Statut/protection",
+            inception: "Début",
+            start_time: "Date de début",
+            architect: "Architecte",
+            creator: "Créateur",
+            owned_by: "Propriétaire",
+            operator: "Exploitant",
+            location: "Lieu",
+            street_address: "Adresse",
+            wikidata: "Fiche Wikidata",
+            wikipedia: "Wikipédia"
+          }
+        : lang === "it"
+          ? {
+              title: "Scheda pubblica Wikidata",
+              description: "Descrizione",
+              instance_of: "Tipo",
+              heritage_designation: "Status/protezione",
+              inception: "Inizio",
+              start_time: "Data di inizio",
+              architect: "Architetto",
+              creator: "Creatore",
+              owned_by: "Proprietario",
+              operator: "Gestore",
+              location: "Luogo",
+              street_address: "Indirizzo",
+              wikidata: "Scheda Wikidata",
+              wikipedia: "Wikipedia"
+            }
+          : lang === "tr"
+            ? {
+                title: "Kamu Wikidata kaydı",
+                description: "Açıklama",
+                instance_of: "Tür",
+                heritage_designation: "Statü/koruma",
+                inception: "Başlangıç",
+                start_time: "Başlangıç tarihi",
+                architect: "Mimar",
+                creator: "Yaratıcı",
+                owned_by: "Sahibi",
+                operator: "İşletici",
+                location: "Konum",
+                street_address: "Adres",
+                wikidata: "Wikidata kaydı",
+                wikipedia: "Vikipedi"
+              }
+            : lang === "es"
+              ? {
+                  title: "Registro público en Wikidata",
+                  description: "Descripción",
+                  instance_of: "Tipo",
+                  heritage_designation: "Estatus/protección",
+                  inception: "Inicio",
+                  start_time: "Fecha de inicio",
+                  architect: "Arquitecto",
+                  creator: "Creador",
+                  owned_by: "Propietario",
+                  operator: "Operador",
+                  location: "Ubicación",
+                  street_address: "Dirección",
+                  wikidata: "Registro Wikidata",
+                  wikipedia: "Wikipedia"
+                }
+              : lang === "el"
+                ? {
+                    title: "Δημόσια εγγραφή Wikidata",
+                    description: "Περιγραφή",
+                    instance_of: "Τύπος",
+                    heritage_designation: "Καθεστώς/προστασία",
+                    inception: "Έναρξη",
+                    start_time: "Ημερομηνία έναρξης",
+                    architect: "Αρχιτέκτονας",
+                    creator: "Δημιουργός",
+                    owned_by: "Ιδιοκτήτης",
+                    operator: "Φορέας λειτουργίας",
+                    location: "Τοποθεσία",
+                    street_address: "Διεύθυνση",
+                    wikidata: "Εγγραφή Wikidata",
+                    wikipedia: "Wikipedia"
+                  }
+                : lang === "ja"
+                  ? {
+                      title: "Wikidata公開記録",
+                      description: "説明",
+                      instance_of: "種別",
+                      heritage_designation: "指定・保護",
+                      inception: "開始",
+                      start_time: "開始日",
+                      architect: "建築家",
+                      creator: "作成者",
+                      owned_by: "所有者",
+                      operator: "運営者",
+                      location: "場所",
+                      street_address: "住所",
+                      wikidata: "Wikidata記録",
+                      wikipedia: "Wikipedia"
+                    }
+                  : {
+                      title: "Public Wikidata record",
+                      description: "Description",
+                      instance_of: "Type",
+                      heritage_designation: "Status/protection",
+                      inception: "Inception",
+                      start_time: "Start date",
+                      architect: "Architect",
+                      creator: "Creator",
+                      owned_by: "Owned by",
+                      operator: "Operator",
+                      location: "Location",
+                      street_address: "Address",
+                      wikidata: "Wikidata record",
+                      wikipedia: "Wikipedia"
+                    };
+
 function localized(record: Record<string, any> | null | undefined, base: string): string {
   return knownHistoryLabel(field(record, base, lang), lang);
 }
@@ -809,6 +1204,30 @@ function formatList(items: string[], max = 4): string {
   return `${listFormatter.format(clean.slice(0, max))} +${clean.length - max}`;
 }
 
+function localizedText(values: Partial<Record<Lang, string>> | undefined): string {
+  if (!values) return "";
+  return values[lang] ?? values.en ?? values.bg ?? Object.values(values).find(Boolean) ?? "";
+}
+
+function wikidataValueLabel(value: PlaceWikidataClaimValue): string {
+  if (value.type === "item") return localizedText(value.labels);
+  if (value.type === "text") return value.text;
+  if (value.type === "time") {
+    if (value.year == null) return value.time;
+    return new Intl.NumberFormat(locale, { useGrouping: false }).format(value.year);
+  }
+  return "";
+}
+
+function wikidataClaimLabel(key: keyof typeof wikidataLabels): string {
+  return wikidataLabels[key] ?? key.replaceAll("_", " ");
+}
+
+function claimRow(key: keyof typeof wikidataLabels, values: PlaceWikidataClaimValue[] | undefined) {
+  const text = formatList((values ?? []).map(wikidataValueLabel).filter(Boolean), 5);
+  return text ? { label: wikidataClaimLabel(key), value: text } : null;
+}
+
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 const eventById = new Map(historyKnowledgeEvents.map((event) => [event.id, event]));
 const peopleById = new Map(historyKnowledgePeople.map((person) => [person.id, person]));
@@ -828,6 +1247,9 @@ const relatedStories = storyLongreads.filter((story) => story.linked_place_ids.i
 const facts = placeFacts(place);
 const image = place.media[0];
 const sourceRecords = place.source_ids.map((sourceId) => sourceById.get(sourceId)).filter(Boolean);
+const wikidataRecord = placeWikidataEnrichment[place.id] ?? null;
+const wikidataDescription = localizedText(wikidataRecord?.descriptions);
+const wikidataArticle = wikidataRecord?.sitelinks[lang] ?? wikidataRecord?.sitelinks.en ?? wikidataRecord?.sitelinks.bg ?? null;
 const linkedPeople = place.person_ids.map((personId) => peopleById.get(personId)).filter(Boolean);
 const linkedOrganizations = place.organization_ids.map((organizationId) => organizationById.get(organizationId)).filter(Boolean);
 const relatedPlaceIds = [
@@ -867,6 +1289,11 @@ const storyMetrics = [
 const storyParagraphs = [
   storyLabels.storyIntro(localized(place, "name"), localized(place, "era")),
   localized(place, "summary"),
+  wikidataDescription && !localized(place, "summary").toLocaleLowerCase(locale).includes(wikidataDescription.toLocaleLowerCase(locale))
+    ? wikidataDescription
+    : "",
+  ...relatedEvents.slice(0, 3).map((event) => `${localized(event.date, "display")}: ${localized(event, "summary")}`),
+  ...relatedStories.slice(0, 2).map((story) => `${localized(story, "title")}: ${localized(story, "dek")}`),
   localized(place.date_context, "display")
     ? storyLabels.dateSentence(
         localized(place.date_context, "display"),
@@ -889,6 +1316,39 @@ const peopleText = linkedPeople.length
 const relatedPlacesText = relatedPlaces.length
   ? storyLabels.relatedPlacesSentence(formatList(relatedPlaces.map((item) => localized(item!, "name"))))
   : storyLabels.noRelatedPlaces;
+const wikidataFactRows = wikidataRecord
+  ? [
+      claimRow("instance_of", wikidataRecord.claims.instance_of),
+      claimRow("heritage_designation", wikidataRecord.claims.heritage_designation),
+      claimRow("inception", wikidataRecord.claims.inception),
+      claimRow("start_time", wikidataRecord.claims.start_time),
+      claimRow("architect", wikidataRecord.claims.architect),
+      claimRow("creator", wikidataRecord.claims.creator),
+      claimRow("owned_by", wikidataRecord.claims.owned_by),
+      claimRow("operator", wikidataRecord.claims.operator),
+      claimRow("location", wikidataRecord.claims.location),
+      claimRow("street_address", wikidataRecord.claims.street_address)
+    ].filter(Boolean)
+  : [];
+const publicRecordCount = wikidataRecord ? wikidataFactRows.length + (wikidataDescription ? 1 : 0) + (wikidataArticle ? 1 : 0) : 0;
+const contextNodes = [
+  { key: "events", label: historyAtlasLabels.eventsNode, value: relatedEvents.length, accent: "brand" },
+  { key: "stories", label: historyAtlasLabels.storiesNode, value: relatedStories.length, accent: "gold" },
+  { key: "people", label: historyAtlasLabels.peopleNode, value: linkedPeople.length, accent: "accent" },
+  { key: "organizations", label: historyAtlasLabels.organizationsNode, value: linkedOrganizations.length, accent: "data" },
+  { key: "archive", label: historyAtlasLabels.archiveNode, value: archiveItems.length, accent: "archive" },
+  { key: "then-now", label: historyAtlasLabels.thenNowNode, value: pairs.length, accent: "then-now" },
+  { key: "public-record", label: historyAtlasLabels.publicRecordNode, value: publicRecordCount, accent: "record" },
+  { key: "sources", label: historyAtlasLabels.sourcesNode, value: evidenceSourceIds.size, accent: "sources" }
+].filter((node) => node.value > 0);
+const eventGroups = Object.values(
+  relatedEvents.reduce<Record<string, { key: string; label: string; events: typeof relatedEvents }>>((groups, event) => {
+    const key = event.category || "historical_event";
+    groups[key] ??= { key, label: knownHistoryLabel(key, lang), events: [] };
+    groups[key].events.push(event);
+    return groups;
+  }, {})
+).sort((a, b) => b.events.length - a.events.length || a.label.localeCompare(b.label, locale));
 const mapHref = place.coordinates
   ? `https://www.openstreetmap.org/?mlat=${place.coordinates.lat}&mlon=${place.coordinates.lng}#map=17/${place.coordinates.lat}/${place.coordinates.lng}`
   : "";
@@ -964,6 +1424,72 @@ const mapHref = place.coordinates
             </article>
           </section>
 
+          <section class="place-history-atlas" data-place-history-atlas={place.id}>
+            <div class="place-atlas-head">
+              <p class="eyebrow">{historyAtlasLabels.eyebrow}</p>
+              <h2>{historyAtlasLabels.title}</h2>
+              <p>{historyAtlasLabels.lead(relatedEvents.length, relatedStories.length, evidenceSourceIds.size)}</p>
+            </div>
+            <div class="place-atlas-layout">
+              <div class="place-atlas-thread" aria-label={storyLabels.evidenceTitle}>
+                <div>
+                  <span>{storyLabels.dateLabel}</span>
+                  <strong>{localized(place.date_context, "display") || localized(place, "era")}</strong>
+                </div>
+                <div>
+                  <span>{storyLabels.creatorLabel}</span>
+                  <strong>{creatorDetail}</strong>
+                </div>
+                <div>
+                  <span>{storyLabels.statusLabel}</span>
+                  <strong>{localized(place, "current_status")}</strong>
+                </div>
+              </div>
+              <div class="place-context-web" aria-label={historyAtlasLabels.contextTitle}>
+                <div class="place-context-root">
+                  <span>{historyAtlasLabels.rootNode}</span>
+                  <strong>{localized(place, "name")}</strong>
+                </div>
+                <div class="place-context-branches">
+                  {contextNodes.map((node) => (
+                    <div class={`place-context-node is-${node.accent}`}>
+                      <span>{node.label}</span>
+                      <strong>{node.value}</strong>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <p class="place-atlas-note">{historyAtlasLabels.contextLead}</p>
+          </section>
+
+          {wikidataRecord && (wikidataDescription || wikidataFactRows.length > 0 || wikidataArticle) && (
+            <section class="place-panel place-public-record-panel" data-place-wikidata={place.id}>
+              <h2>{wikidataLabels.title}</h2>
+              {wikidataDescription && <p>{wikidataDescription}</p>}
+              {wikidataFactRows.length > 0 && (
+                <dl class="place-public-record-list">
+                  {wikidataFactRows.map((fact) => (
+                    <div>
+                      <dt>{fact!.label}</dt>
+                      <dd>{fact!.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+              <div class="place-record-links">
+                <a class="src-link" href={wikidataRecord.wikidata_url} target="_blank" rel="noreferrer">
+                  {wikidataLabels.wikidata} ↗
+                </a>
+                {wikidataArticle && (
+                  <a class="src-link" href={wikidataArticle.url} target="_blank" rel="noreferrer">
+                    {wikidataLabels.wikipedia}: {wikidataArticle.title} ↗
+                  </a>
+                )}
+              </div>
+            </section>
+          )}
+
           <section class="place-panel place-evidence-panel">
             <h2>{storyLabels.evidenceTitle}</h2>
             <ul class="place-evidence-list">
@@ -1026,22 +1552,34 @@ const mapHref = place.coordinates
             {mapHref && <a class="button secondary" href={mapHref} target="_blank" rel="noreferrer">{labels.openMap}</a>}
           </section>
 
-          <section class="place-panel place-timeline-panel">
-            <h2>{storyLabels.timelineTitle}</h2>
+          <section class="place-panel place-timeline-panel place-event-browser" data-place-event-browser={place.id}>
+            <h2>{historyAtlasLabels.eventBrowserTitle}</h2>
+            <p>{historyAtlasLabels.eventBrowserLead(relatedEvents.length)}</p>
             {relatedEvents.length > 0 ? (
-              <ol class="place-story-timeline">
-                {relatedEvents.slice(0, 8).map((event) => (
-                  <li>
-                    <time>{localized(event.date, "display")}</time>
-                    <div>
-                      <h3>{localized(event, "title")}</h3>
-                      <p>{localized(event, "summary")}</p>
-                    </div>
-                  </li>
+              <div class="place-event-groups">
+                {eventGroups.map((group) => (
+                  <details class="place-event-group" open={relatedEvents.length <= 24}>
+                    <summary>
+                      <span>{group.label}</span>
+                      <strong>{historyAtlasLabels.eventCount(group.events.length)}</strong>
+                    </summary>
+                    <ol class="place-story-timeline">
+                      {group.events.map((event) => (
+                        <li>
+                          <time>{localized(event.date, "display")}</time>
+                          <div>
+                            <h3>{localized(event, "title")}</h3>
+                            <p>{localized(event, "summary")}</p>
+                            <span class="place-event-source-count">{historyAtlasLabels.eventSources(event.source_ids.length)}</span>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  </details>
                 ))}
-              </ol>
+              </div>
             ) : (
-              <p>{storyLabels.noTimeline}</p>
+              <p>{historyAtlasLabels.noEvents}</p>
             )}
           </section>
 
