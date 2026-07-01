@@ -533,7 +533,7 @@ const storyLabels = ({
     organizationsTitle: "Istituzioni e comunità",
     relatedPlacesTitle: "Luoghi collegati",
     noOwnership:
-      "Il record pubblico usato qui non identifica una storia tracciabile di proprietà o gestione. La pagina mostra quindi solo collegamenti istituzionali e fonti verificati.",
+      "La scheda pubblica usata qui non riporta una storia tracciabile di proprietà o gestione. La pagina mostra quindi solo i collegamenti istituzionali e le fonti verificate.",
     noPeople: "Nessuna persona è collegata nella base attuale.",
     noOrganizations: "Nessuna istituzione è collegata nella base attuale.",
     noRelatedPlaces: "Nessun altro luogo è collegato dagli stessi eventi.",
@@ -549,15 +549,15 @@ const storyLabels = ({
     statusLabel: "Stato attuale",
     sourceLabel: "Traccia delle fonti",
     storyIntro: (name: string, era: string) =>
-      `${name} non è solo un punto sulla mappa. È un record di ${era} che collega strati urbani, tracce visibili, fonti pubbliche e storie vicine.`,
+      `${name} non è solo un punto sulla mappa. È una testimonianza di ${era} che collega strati urbani, tracce visibili, fonti pubbliche e storie vicine.`,
     dateSentence: (date: string, source: string) =>
       `La datazione è pubblicata come ${date}${source ? ` ed è collegata a ${source}` : ""}.`,
-    creatorSentence: (creator: string) => `Per l'attribuzione, il record attuale dice: ${creator}.`,
+    creatorSentence: (creator: string) => `Per l'attribuzione, la scheda attuale indica: ${creator}.`,
     statusSentence: (status: string) => `Lo stato attuale è descritto così: ${status}`,
     timelineSentence: (count: number) =>
       `La storia si sviluppa attraverso ${count} eventi collegati nella cronologia più ampia di Plovdiv.`,
     archiveSentence: (archiveCount: number, pairCount: number) =>
-      `Lo strato d'archivio è registrato come record d'archivio: ${archiveCount}; confronti visivi prima/dopo: ${pairCount}.`,
+      `Lo strato d'archivio è così conteggiato: schede d'archivio ${archiveCount}; confronti visivi prima/dopo ${pairCount}.`,
     stewardshipWithOrgs: (items: string) =>
       `Il contesto istituzionale passa da ${items}. Non è automaticamente una storia di proprietà, ma una traccia verificabile di cura pubblica, memoria o governo.`,
     peopleSentence: (items: string) =>
@@ -834,8 +834,8 @@ const historyAtlasLabels =
               contextLead: "I collegamenti mostrano ciò che è verificato per il luogo: eventi, racconti, persone, istituzioni, archivi e schede pubbliche.",
               eventBrowserTitle: "Flusso completo degli eventi",
               eventBrowserLead: (count: number) =>
-                count > 0 ? `Tutti i ${count} eventi collegati sono raggruppati per tipo di record.` : "Non ci sono eventi distinti collegati a questo luogo.",
-              eventCount: (count: number) => `${count} record`,
+                count > 0 ? `Tutti i ${count} eventi collegati sono raggruppati per tipo di scheda.` : "Non ci sono eventi distinti collegati a questo luogo.",
+              eventCount: (count: number) => `${count} schede`,
               eventSources: (count: number) => `${count} fonti`,
               noEvents: "Per questo luogo la base attuale non contiene eventi distinti; consultare la scheda pubblica, le fonti e la descrizione.",
               rootNode: "luogo",
@@ -1025,7 +1025,7 @@ const wikidataLabels =
               title: "Scheda pubblica Wikidata",
               description: "Descrizione",
               instance_of: "Tipo",
-              heritage_designation: "Status/protezione",
+              heritage_designation: "Tutela/vincolo",
               inception: "Inizio",
               start_time: "Data di inizio",
               architect: "Architetto",
