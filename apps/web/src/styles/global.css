@@ -1402,6 +1402,30 @@ p:last-child {
   gap: 8px;
 }
 
+/* Source-citation links (chart data-point sources, "Source" links on cards)
+   sit inside .pill-row as bare <a class="meta">, which read as plain
+   underlined text with no visual grouping despite the container's name.
+   Give them an actual small pill/chip shape — bigger, clearer tap targets
+   on mobile and a visibly distinct "these are citations" cluster. */
+.pill-row a.meta {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  color: var(--ink-2);
+  font-size: 0.78rem;
+  font-weight: 650;
+  min-height: 28px;
+  padding: 4px 12px;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.pill-row a.meta:hover,
+.pill-row a.meta:focus-visible {
+  background: var(--surface-3);
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
 .money {
   font-variant-numeric: tabular-nums;
   font-weight: 700;
@@ -1878,10 +1902,39 @@ p:last-child {
   padding: clamp(16px, 2.2vw, 22px);
   box-shadow: var(--shadow-sm);
   min-width: 0;
+  position: relative;
 }
 
 .chart-card h3 {
   margin: 0 0 16px;
+}
+
+/* Edge fades for the dense bar-chart scroller inside — same pattern and
+   same has-start-fade/has-end-fade toggle as .page-subnav, wired up
+   site-wide in Layout.astro for any `.chart-card` holding a
+   `[data-dense]` scroller (e.g. the archive history chart). */
+.chart-card::before,
+.chart-card::after {
+  content: "";
+  position: absolute;
+  top: 42px;
+  bottom: 16px;
+  width: 34px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.chart-card::before {
+  left: 0;
+  background: linear-gradient(to right, var(--surface), transparent);
+}
+.chart-card::after {
+  right: 0;
+  background: linear-gradient(to left, var(--surface), transparent);
+}
+.chart-card.has-start-fade::before,
+.chart-card.has-end-fade::after {
+  opacity: 0.95;
 }
 
 /* ---- Standard chart figure ---------------------------------------------
@@ -6195,21 +6248,37 @@ code {
   padding-top: 9px;
   padding-bottom: 9px;
   scrollbar-width: none;
-  /* Edge fade signals the row scrolls sideways when tabs overflow the screen. */
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    #000 14px,
-    #000 calc(100% - 14px),
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    #000 14px,
-    #000 calc(100% - 14px),
-    transparent 100%
-  );
+}
+/* Edge fades that signal the tab row scrolls sideways. These are overlays on
+   the STICKY outer nav (not the scrolling inner row), so they stay anchored
+   to the viewport edge, and fade to the nav's own surface tone rather than
+   to transparent — a plain opacity fade barely reads against same-colour
+   pills, this reads clearly regardless of which tab sits underneath.
+   `.has-start-fade`/`.has-end-fade` are toggled by SectionNav's scroll
+   listener so a side's cue disappears once fully scrolled into view. */
+.page-subnav::before,
+.page-subnav::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 36px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1;
+}
+.page-subnav::before {
+  left: 0;
+  background: linear-gradient(to right, var(--surface), transparent);
+}
+.page-subnav::after {
+  right: 0;
+  background: linear-gradient(to left, var(--surface), transparent);
+}
+.page-subnav.has-start-fade::before,
+.page-subnav.has-end-fade::after {
+  opacity: 0.92;
 }
 .page-subnav-inner::-webkit-scrollbar {
   display: none;

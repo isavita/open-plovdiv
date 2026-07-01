@@ -464,6 +464,25 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
             });
           }
         }
+
+        // Edge fades for horizontally-scrollable dense bar charts (e.g. the
+        // archive history chart): toggles has-start-fade / has-end-fade on
+        // the .chart-card so the CSS overlay only shows on whichever side
+        // still has hidden bars, same pattern as the page-subnav tab row.
+        document.querySelectorAll(".chart-card").forEach(function (card) {
+          var scroller = card.querySelector("[data-dense]");
+          if (!scroller) return;
+          var updateChartFade = function () {
+            var overflows = scroller.scrollWidth > scroller.clientWidth + 1;
+            var atStart = scroller.scrollLeft <= 1;
+            var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 1;
+            card.classList.toggle("has-start-fade", overflows && !atStart);
+            card.classList.toggle("has-end-fade", overflows && !atEnd);
+          };
+          scroller.addEventListener("scroll", updateChartFade, { passive: true });
+          window.addEventListener("resize", updateChartFade);
+          updateChartFade();
+        });
       })();
     </script>
 

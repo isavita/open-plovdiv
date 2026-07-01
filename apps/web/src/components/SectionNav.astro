@@ -9,8 +9,8 @@ interface Props {
 const { items, label } = Astro.props;
 ---
 
-<nav class="page-subnav" aria-label={label ?? "Sections"}>
-  <div class="container page-subnav-inner">
+<nav class="page-subnav" aria-label={label ?? "Sections"} data-subnav-fade>
+  <div class="container page-subnav-inner" data-subnav-scroller>
     {items.map((s) => (
       <a href={`#${s.id}`} data-subnav-link={s.id}>{s.label}</a>
     ))}
@@ -58,5 +58,23 @@ const { items, label } = Astro.props;
       { passive: true }
     );
     update();
+
+    // Edge fades on the tab row itself: only show "there's more" on whichever
+    // side actually has hidden content, so the cue disappears once you've
+    // scrolled a side fully into view instead of sitting there as noise.
+    const fadeNav = document.querySelector<HTMLElement>("[data-subnav-fade]");
+    const scroller = document.querySelector<HTMLElement>("[data-subnav-scroller]");
+    if (fadeNav && scroller) {
+      const updateFade = () => {
+        const overflows = scroller.scrollWidth > scroller.clientWidth + 1;
+        const atStart = scroller.scrollLeft <= 1;
+        const atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 1;
+        fadeNav.classList.toggle("has-start-fade", overflows && !atStart);
+        fadeNav.classList.toggle("has-end-fade", overflows && !atEnd);
+      };
+      scroller.addEventListener("scroll", updateFade, { passive: true });
+      window.addEventListener("resize", updateFade);
+      updateFade();
+    }
   })();
 </script>
