@@ -1,29 +1,556 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { ui } from "@i18n/utils";
+import type { Lang } from "@i18n/utils";
 
-const bg = ui.bg;
-const en = ui.en;
+// This page is a single static, prerendered 404.html served as the fallback
+// for every unmatched route across every locale (the site is output:
+// "static"), so there is no per-request server to pick a locale at render
+// time. All 9 languages are authored here; the inline script below detects
+// the locale from the visited path and swaps the text client-side, so a
+// visitor only ever sees ONE language — never the bg+en mix the previous
+// version showed everyone regardless of locale.
+type Content = {
+  eyebrow: string;
+  title: string;
+  sub: string;
+  /** Literal "{path}" token gets replaced with the missing path. */
+  pathTemplate: string;
+  posLabel: string;
+  definition: string;
+  backHome: string;
+  placesLink: string;
+  historyLink: string;
+  bubbles: string[];
+};
+
+const content: Record<Lang, Content> = {
+  bg: {
+    eyebrow: "Грешка 404",
+    title: "Тази страница е на айляк.",
+    sub: "Страницата бавно се мотае — изгубила се е някъде из седемте хълма.",
+    pathTemplate: "Тръгнахте към {path} — но и то реши да си почине.",
+    posLabel: "същ.",
+    definition: "Изкуството да не бързаш за никъде — неофициалната религия на Пловдив.",
+    backHome: "Към началото",
+    placesLink: "Разходка из местата",
+    historyLink: "В историята",
+    bubbles: ["Още 5 минути… 😎", "Шшт. Айляк.", "Ела пак утре.", "По-късно, може би.", "Релакс, друже."]
+  },
+  en: {
+    eyebrow: "Error 404",
+    title: "This page is taking it easy.",
+    sub: "This page is taking it slow — it wandered off somewhere on the seven hills.",
+    pathTemplate: "You headed to {path} — but it also decided to rest.",
+    posLabel: "noun",
+    definition: "The fine Plovdiv art of carefree, unhurried doing-of-absolutely-nothing.",
+    backHome: "Back home",
+    placesLink: "Wander the places",
+    historyLink: "Into the history",
+    bubbles: ["Five more minutes… 😎", "Shh. Aylyak.", "Come back tomorrow.", "Maybe later.", "Relax, friend."]
+  },
+  de: {
+    eyebrow: "Fehler 404",
+    title: "Diese Seite macht gerade Pause.",
+    sub: "Diese Seite lässt sich Zeit – sie hat sich irgendwo auf den sieben Hügeln verlaufen.",
+    pathTemplate: "Sie wollten zu {path} — aber auch diese Seite hat sich eine Pause gegönnt.",
+    posLabel: "Substantiv",
+    definition: "Die feine Plovdiver Kunst des sorglosen, gemütlichen Nichtstuns.",
+    backHome: "Zur Startseite",
+    placesLink: "Orte erkunden",
+    historyLink: "Zur Geschichte",
+    bubbles: ["Noch fünf Minuten… 😎", "Pssst. Aylyak.", "Komm morgen wieder.", "Vielleicht später.", "Entspann dich."]
+  },
+  fr: {
+    eyebrow: "Erreur 404",
+    title: "Cette page fait une pause.",
+    sub: "Cette page prend son temps — elle s'est égarée quelque part sur les sept collines.",
+    pathTemplate: "Vous vouliez aller vers {path} — mais elle aussi a décidé de se reposer.",
+    posLabel: "nom",
+    definition: "Le bel art plovdivien du farniente insouciant et sans hâte.",
+    backHome: "Retour à l'accueil",
+    placesLink: "Explorer les lieux",
+    historyLink: "Dans l'histoire",
+    bubbles: ["Encore cinq minutes… 😎", "Chut. Aylyak.", "Reviens demain.", "Peut-être plus tard.", "Détends-toi."]
+  },
+  it: {
+    eyebrow: "Errore 404",
+    title: "Questa pagina si gode la pausa.",
+    sub: "Questa pagina ci mette calma — si è persa da qualche parte tra le sette colline.",
+    pathTemplate: "Stavi andando verso {path} — ma anche lei ha deciso di riposare.",
+    posLabel: "sostantivo",
+    definition: "La raffinata arte di Plovdiv del dolce far niente, senza fretta né pensieri.",
+    backHome: "Torna alla home",
+    placesLink: "Esplora i luoghi",
+    historyLink: "Nella storia",
+    bubbles: ["Altri cinque minuti… 😎", "Shh. Aylyak.", "Torna domani.", "Magari più tardi.", "Rilassati."]
+  },
+  tr: {
+    eyebrow: "Hata 404",
+    title: "Bu sayfa keyfine bakıyor.",
+    sub: "Bu sayfa acelesi yok — yedi tepeden birinde kaybolmuş.",
+    pathTemplate: "{path} adresine gidiyordunuz — ama o da dinlenmeye karar verdi.",
+    posLabel: "isim",
+    definition: "Plovdiv'in hiçbir şey yapmama sanatı — telaşsız, kaygısız, keyifle.",
+    backHome: "Ana sayfaya",
+    placesLink: "Yerleri keşfet",
+    historyLink: "Tarihe yolculuk",
+    bubbles: ["Beş dakika daha… 😎", "Şşş. Aylyak.", "Yarın tekrar gel.", "Belki sonra.", "Sakin ol."]
+  },
+  es: {
+    eyebrow: "Error 404",
+    title: "Esta página se lo toma con calma.",
+    sub: "Esta página se lo toma con calma — se perdió en algún lugar de las siete colinas.",
+    pathTemplate: "Ibas hacia {path} — pero también decidió descansar.",
+    posLabel: "sustantivo",
+    definition: "El fino arte de Plovdiv de no hacer absolutamente nada, sin prisa y sin preocupaciones.",
+    backHome: "Volver al inicio",
+    placesLink: "Explorar los lugares",
+    historyLink: "Hacia la historia",
+    bubbles: ["Cinco minutos más… 😎", "Shh. Aylyak.", "Vuelve mañana.", "Quizás luego.", "Relájate."]
+  },
+  el: {
+    eyebrow: "Σφάλμα 404",
+    title: "Αυτή η σελίδα κάνει διάλειμμα.",
+    sub: "Αυτή η σελίδα τα παίρνει χαλαρά — χάθηκε κάπου στους εφτά λόφους.",
+    pathTemplate: "Πηγαίνατε προς {path} — αλλά κι αυτή αποφάσισε να ξεκουραστεί.",
+    posLabel: "ουσιαστικό",
+    definition: "Η λεπτή τέχνη του Plovdiv να μην κάνεις απολύτως τίποτα, χωρίς άγχος και βιασύνη.",
+    backHome: "Αρχική σελίδα",
+    placesLink: "Εξερευνήστε τα μέρη",
+    historyLink: "Στην ιστορία",
+    bubbles: ["Πέντε λεπτά ακόμα… 😎", "Σιωπή. Aylyak.", "Ξαναέλα αύριο.", "Ίσως αργότερα.", "Χαλάρωσε."]
+  },
+  ja: {
+    eyebrow: "エラー404",
+    title: "このページは、のんびり休憩中です。",
+    sub: "このページはマイペースです — 七つの丘のどこかで迷子になったようです。",
+    pathTemplate: "{path} へ向かっていたようですが——そのページも休憩することにしたようです。",
+    posLabel: "名詞",
+    definition: "何もしないことを慌てず気楽に楽しむ、プロヴディフ流の極意。",
+    backHome: "ホームに戻る",
+    placesLink: "場所をめぐる",
+    historyLink: "歴史を訪ねる",
+    bubbles: ["あと5分だけ…😎", "しー。アイリャク。", "また明日来てね。", "また今度かも。", "リラックスして。"]
+  }
+};
+
+// Server-rendered default for no-JS visitors and as the initial paint,
+// matching the site convention that an unprefixed path = Bulgarian.
+const c = content.bg;
+const contentJson = JSON.stringify(content);
 ---
 
-<Layout lang="bg" path="/" title={bg.notFound.title}>
-  <section class="notfound">
-    <div class="container">
-      <p class="display-num" aria-hidden="true">404</p>
+<Layout lang="bg" path="/" title={c.title} robots="noindex">
+  <section class="nf-wrap">
+    <div class="container nf-inner">
+      <!-- The scene: a page taking it айляк — napping in a hammock slung between
+           two of Plovdiv's seven hills, under a slow sun, a street cat loafing
+           below and a frappé going warm. -->
+      <div class="nf-stage">
+        <svg class="nf-scene" viewBox="0 0 640 300" role="img" aria-label={c.title}>
+          <!-- soft hills -->
+          <path class="nf-hill" d="M20 264 Q150 188 300 220 Q330 226 360 220 Q500 186 620 264 Z" />
+          <path class="nf-hill nf-hill-2" d="M-20 266 Q120 214 250 240 Q260 242 280 240 Q360 226 470 250 Q560 266 660 266 Z" />
+          <!-- ground -->
+          <rect class="nf-ground" x="48" y="262" width="544" height="3" rx="1.5" />
 
-      <p class="eyebrow" style="justify-content:center">{bg.notFound.eyebrow}</p>
-      <h1 style="margin-inline:auto">{bg.notFound.title}</h1>
-      <p class="lead" style="margin-inline:auto">{bg.notFound.text}</p>
-      <div class="actions" style="justify-content:center">
-        <a class="button" href="/">{bg.common.backHome}<span class="arrow" aria-hidden="true">→</span></a>
+          <!-- sun -->
+          <g class="nf-sun">
+            <g class="nf-sun-rays">
+              <line x1="566" y1="20" x2="566" y2="6" />
+              <line x1="566" y1="110" x2="566" y2="124" />
+              <line x1="520" y1="65" x2="506" y2="65" />
+              <line x1="612" y1="65" x2="626" y2="65" />
+              <line x1="533" y1="32" x2="523" y2="22" />
+              <line x1="599" y1="98" x2="609" y2="108" />
+              <line x1="599" y1="32" x2="609" y2="22" />
+              <line x1="533" y1="98" x2="523" y2="108" />
+            </g>
+            <circle class="nf-sun-core" cx="566" cy="65" r="26" />
+          </g>
+
+          <!-- poles -->
+          <rect class="nf-pole" x="142" y="104" width="9" height="160" rx="4" />
+          <rect class="nf-pole" x="489" y="104" width="9" height="160" rx="4" />
+
+          <!-- the hammock + sleeper sway together -->
+          <g class="nf-hammock">
+            <!-- ropes -->
+            <path class="nf-rope" d="M147 110 L168 150 M147 110 L182 150 M493 110 L472 150 M493 110 L458 150" />
+            <!-- fabric -->
+            <path class="nf-fabric" d="M168 150 Q320 250 472 150 Q320 286 168 150 Z" />
+            <path class="nf-fabric-line" d="M205 168 Q320 252 435 168" />
+
+            <!-- sleeper: one cocoon-shaped blanket body nestled in the sag,
+                 a single bare foot poking out the cool end, a folded-arm
+                 crease across the belly, head + tilted straw hat at the
+                 warm end. Drawn nestled just inside the fabric's top edge
+                 so it reads as "in" the hammock, not floating above it. -->
+            <g class="nf-figure">
+              <!-- body: one smooth "sleeping bag" — a single cubic top edge,
+                   a single cubic bottom edge, two small rounded end caps.
+                   No interior cusps, so it stays a soft blob, not a wing. -->
+              <path
+                class="nf-body"
+                d="M230 182
+                   C 278 206 362 206 410 172
+                   C 420 180 422 192 412 200
+                   C 364 240 282 244 234 216
+                   C 224 210 222 194 230 182
+                   Z"
+              />
+              <!-- a bare foot peeking out the foot end -->
+              <ellipse class="nf-skin" cx="224" cy="199" rx="11" ry="8" transform="rotate(-18 224 199)" />
+              <!-- folded-arm crease across the belly (contrasting tone so it actually reads) -->
+              <path class="nf-fold" d="M290 207 Q322 226 354 200" />
+              <path class="nf-fold nf-fold-soft" d="M258 213 Q322 240 382 196" />
+              <!-- head -->
+              <circle class="nf-skin" cx="412" cy="172" r="17" />
+              <!-- straw hat tipped low over the eyes (peak айляк) -->
+              <path class="nf-hat" d="M392 168 Q412 142 432 168 Z" />
+              <ellipse class="nf-hat" cx="412" cy="169" rx="32" ry="7.5" />
+            </g>
+          </g>
+
+          <!-- warm frappé with a lazy curl of steam -->
+          <g class="nf-coffee">
+            <path class="nf-steam" d="M203 250 q-7 -8 0 -16 q7 -8 0 -16" />
+            <path class="nf-cup" d="M188 250 h30 l-4 22 h-22 z" />
+            <path class="nf-cup-handle" d="M218 254 q11 1 9 12" />
+          </g>
+
+          <!-- a loafing Plovdiv street cat -->
+          <g class="nf-cat">
+            <path class="nf-cat-tail" d="M120 258 q22 -1 18 -19" />
+            <path class="nf-cat-body" d="M70 260 q5 -22 24 -22 q19 0 24 22 q1 4 -4 4 h-40 q-5 0 -4 -4 z" />
+            <path class="nf-cat-ear" d="M80 240 l-3 -12 l11 7 z" />
+            <path class="nf-cat-ear" d="M104 240 l3 -12 l-11 7 z" />
+          </g>
+        </svg>
+
+        <span class="nf-bubble" aria-hidden="true" data-bubble>{c.bubbles[0]}</span>
       </div>
 
-      <hr style="border:none;border-top:1px solid var(--line);max-width:340px;margin:36px auto" />
+      <p class="nf-eyebrow" data-eyebrow>{c.eyebrow}</p>
+      <h1 class="nf-title" data-title>{c.title}</h1>
+      <p class="nf-sub" data-sub>{c.sub}</p>
 
-      <p class="lead" style="margin-inline:auto;font-size:1rem">{en.notFound.text}</p>
-      <div class="actions" style="justify-content:center">
-        <a class="button secondary" href="/en">{en.common.backHome}<span class="arrow" aria-hidden="true">→</span></a>
+      <p class="nf-path" data-path hidden></p>
+
+      <!-- the айляк bit, for the uninitiated — the headword itself and its
+           IPA pronunciation stay as-is in every language (it's a dictionary
+           entry for the actual Bulgarian word), only the label/definition
+           translate. -->
+      <div class="nf-glossary">
+        <p class="nf-word">
+          айляк
+          <span class="nf-pron">/ˈaj·lʲak/</span>
+          <span class="nf-pos" data-pos>{c.posLabel} · PLOVDIVISM</span>
+        </p>
+        <p class="nf-def" data-def>{c.definition}</p>
+      </div>
+
+      <div class="nf-actions">
+        <a class="button" id="nf-home" href="/" data-home>{c.backHome}<span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="nf-links">
+        <a href="/places" data-link-places>{c.placesLink}</a>
+        <span aria-hidden="true">·</span>
+        <a href="/history" data-link-history>{c.historyLink}</a>
       </div>
     </div>
   </section>
+
+  <style>
+    .nf-wrap {
+      text-align: center;
+      padding: clamp(40px, 8vw, 96px) 0 clamp(56px, 10vw, 120px);
+      overflow: hidden;
+    }
+    .nf-inner {
+      max-width: 680px;
+    }
+    .nf-stage {
+      position: relative;
+      margin: 0 auto;
+      width: min(540px, 92%);
+    }
+    .nf-scene {
+      display: block;
+      width: 100%;
+      height: auto;
+      color: var(--ink);
+      overflow: visible;
+    }
+
+    .nf-hill { fill: var(--brand-soft); }
+    .nf-hill-2 { fill: var(--brand-soft); opacity: 0.55; }
+    .nf-ground { fill: currentColor; opacity: 0.18; }
+    .nf-pole { fill: var(--ink-2); }
+    .nf-rope { stroke: var(--ink-2); stroke-width: 2; fill: none; }
+    .nf-fabric { fill: var(--brand); }
+    .nf-fabric-line { stroke: color-mix(in srgb, var(--brand) 55%, #fff); stroke-width: 2; fill: none; opacity: 0.5; }
+    .nf-body { fill: var(--ink); }
+    .nf-skin { fill: color-mix(in srgb, var(--accent) 50%, var(--surface)); }
+    .nf-fold {
+      stroke: color-mix(in srgb, var(--ink) 35%, var(--surface));
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+      opacity: 0.8;
+    }
+    .nf-fold-soft { opacity: 0.45; }
+    .nf-hat { fill: var(--accent); }
+    .nf-sun-core { fill: var(--gold); }
+    .nf-sun-rays line { stroke: var(--gold); stroke-width: 3; stroke-linecap: round; }
+    .nf-coffee { color: var(--brand-strong); }
+    .nf-cup { fill: var(--brand-strong); }
+    .nf-cup-handle { stroke: var(--brand-strong); stroke-width: 3; fill: none; }
+    .nf-steam { stroke: var(--muted); stroke-width: 3; fill: none; stroke-linecap: round; opacity: 0.55; }
+    .nf-cat-body, .nf-cat-ear { fill: var(--ink-2); }
+    .nf-cat-tail { stroke: var(--ink-2); stroke-width: 6; fill: none; stroke-linecap: round; }
+    .nf-stage { cursor: pointer; }
+
+    .nf-eyebrow {
+      color: var(--gold-strong, var(--gold));
+      font-size: 0.82rem;
+      font-weight: 850;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin: 18px 0 8px;
+    }
+    .nf-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 7vw, 3.6rem);
+      line-height: 1.05;
+      margin: 0 auto;
+      max-width: 20ch;
+      text-wrap: balance;
+    }
+    .nf-sub {
+      color: var(--ink-2);
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      line-height: 1.55;
+      margin: 14px auto 0;
+      max-width: 46ch;
+    }
+    .nf-path {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 16px auto 0;
+      max-width: 48ch;
+    }
+    .nf-path code {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink);
+      font-size: 0.85em;
+      padding: 1px 7px;
+      overflow-wrap: anywhere;
+    }
+
+    .nf-glossary {
+      background: linear-gradient(135deg, color-mix(in srgb, var(--surface) 80%, var(--gold-soft)), var(--surface));
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--gold);
+      border-radius: var(--r-md, 14px);
+      box-shadow: var(--shadow-sm);
+      margin: 26px auto 0;
+      max-width: 480px;
+      padding: 18px 22px;
+      text-align: left;
+    }
+    .nf-word {
+      align-items: baseline;
+      color: var(--ink);
+      display: flex;
+      flex-wrap: wrap;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      gap: 6px 12px;
+      margin: 0;
+    }
+    .nf-pron { color: var(--muted); font-family: var(--font-ui); font-size: 0.92rem; font-style: italic; }
+    .nf-pos { color: var(--gold-strong, var(--gold)); font-family: var(--font-ui); font-size: 0.66rem; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nf-def { color: var(--ink-2); line-height: 1.6; margin: 10px 0 0; }
+
+    .nf-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 28px 0 0;
+    }
+    .nf-links {
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      justify-content: center;
+      margin: 18px 0 0;
+    }
+    .nf-links a {
+      color: var(--brand);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .nf-links a:hover, .nf-links a:focus-visible { color: var(--brand-strong); text-decoration: underline; }
+
+    .nf-bubble {
+      background: var(--ink);
+      border-radius: 14px;
+      color: var(--surface);
+      font-size: 0.85rem;
+      font-weight: 700;
+      left: 64%;
+      opacity: 0;
+      padding: 7px 13px;
+      pointer-events: none;
+      position: absolute;
+      top: 6%;
+      transform: translateY(6px) scale(0.9);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+    .nf-bubble::after {
+      border: 7px solid transparent;
+      border-top-color: var(--ink);
+      content: "";
+      left: 24px;
+      position: absolute;
+      top: 100%;
+    }
+    .nf-stage.is-poked .nf-bubble { opacity: 1; transform: translateY(0) scale(1); }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .nf-hammock {
+        transform-origin: 320px 110px;
+        animation: nf-sway 4.6s ease-in-out infinite alternate;
+      }
+      .nf-stage.is-poked .nf-hammock { animation: nf-wobble 0.8s ease-in-out; }
+      .nf-sun-rays {
+        transform-origin: 566px 65px;
+        animation: nf-spin 34s linear infinite;
+      }
+      .nf-sun-core { animation: nf-pulse 5s ease-in-out infinite; transform-origin: 566px 65px; }
+      .nf-steam { animation: nf-steam 3.4s ease-in-out infinite; }
+      .nf-cat-tail { transform-origin: 120px 258px; animation: nf-tail 3.8s ease-in-out infinite; }
+    }
+
+    @keyframes nf-sway {
+      from { transform: rotate(-1.8deg); }
+      to { transform: rotate(1.8deg); }
+    }
+    @keyframes nf-wobble {
+      0%, 100% { transform: rotate(0); }
+      25% { transform: rotate(5deg); }
+      60% { transform: rotate(-3.5deg); }
+      80% { transform: rotate(1.5deg); }
+    }
+    @keyframes nf-spin { to { transform: rotate(360deg); } }
+    @keyframes nf-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.82; } }
+    @keyframes nf-steam {
+      0% { opacity: 0; transform: translateY(2px); }
+      40% { opacity: 0.6; }
+      100% { opacity: 0; transform: translateY(-12px); }
+    }
+    @keyframes nf-tail {
+      0%, 100% { transform: rotate(0); }
+      50% { transform: rotate(-12deg); }
+    }
+  </style>
+
+  <script type="application/json" id="nf-content" set:html={contentJson} />
+  <script is:inline>
+    (function () {
+      var path = window.location.pathname || "/";
+      var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja"];
+      var segments = path.split("/").filter(Boolean);
+      var hasLocalePrefix = segments.length > 0 && codes.indexOf(segments[0]) > -1;
+      var loc = hasLocalePrefix ? segments[0] : "bg";
+
+      // The shared site nav/footer are server-rendered once for this page
+      // (it's the single static 404.html every locale falls back to, since
+      // Astro only supports one global custom-404 page — a nested
+      // src/pages/de/404.astro builds a normal /de/404/ route, not a
+      // per-locale fallback). The body content below is fully localized via
+      // the script; this at least keeps the <html lang> attribute honest for
+      // screen readers/SEO even though the nav chrome itself stays Bulgarian.
+      document.documentElement.lang = loc;
+
+      var contentEl = document.getElementById("nf-content");
+      var content = contentEl ? JSON.parse(contentEl.textContent) : null;
+      var c = content ? content[loc] || content.bg : null;
+
+      // Swap every visible string to the single detected language — the page
+      // is one static prerendered file shared by every locale, so without
+      // this every visitor would see the server-rendered Bulgarian default
+      // mixed with whatever hardcoded fallback existed before.
+      if (c) {
+        var setText = function (selector, value) {
+          var el = document.querySelector(selector);
+          if (el) el.textContent = value;
+        };
+        setText("[data-eyebrow]", c.eyebrow);
+        setText("[data-title]", c.title);
+        setText("[data-sub]", c.sub);
+        setText("[data-def]", c.definition);
+        setText("[data-link-places]", c.placesLink);
+        setText("[data-link-history]", c.historyLink);
+        var posEl = document.querySelector("[data-pos]");
+        if (posEl) posEl.textContent = c.posLabel + " · PLOVDIVISM";
+
+        var home = document.getElementById("nf-home");
+        if (home) {
+          home.setAttribute("href", loc === "bg" ? "/" : "/" + loc);
+          home.childNodes[0].nodeValue = c.backHome;
+        }
+
+        var linkPlaces = document.querySelector("[data-link-places]");
+        var linkHistory = document.querySelector("[data-link-history]");
+        if (linkPlaces) linkPlaces.setAttribute("href", loc === "bg" ? "/places" : "/" + loc + "/places");
+        if (linkHistory) linkHistory.setAttribute("href", loc === "bg" ? "/history" : "/" + loc + "/history");
+
+        var bubble = document.querySelector("[data-bubble]");
+        if (bubble) bubble.textContent = c.bubbles[0];
+      }
+
+      // Cheeky note about the path that wandered off — shown whenever there is
+      // an actual missing route, i.e. something remains after stripping an
+      // optional leading locale segment (so "/en/some-bad-route" qualifies
+      // just like "/some-bad-route", but a bare "/en" does not).
+      var pathEl = document.querySelector("[data-path]");
+      var remaining = hasLocalePrefix ? segments.slice(1) : segments;
+      if (pathEl && c && remaining.length > 0) {
+        var safePath = path.replace(/[<>&]/g, "");
+        pathEl.innerHTML = c.pathTemplate.replace("{path}", "<code>" + safePath + "</code>");
+        pathEl.removeAttribute("hidden");
+      }
+
+      // Easter egg: poke the napper, get a lazy reply in the detected
+      // language. Listens on the whole stage (not just the figure's painted
+      // pixels) so it's easy to find — the SVG group has empty space inside
+      // its own bounding box, which would otherwise swallow clicks that
+      // don't land on actual ink.
+      var stage = document.querySelector(".nf-stage");
+      var figure = document.querySelector(".nf-figure");
+      var bubbles = c ? c.bubbles : ["…"];
+      var i = 0;
+      var timer;
+      if (stage && figure) {
+        stage.addEventListener("click", function () {
+          var b = stage.querySelector("[data-bubble]");
+          if (b) b.textContent = bubbles[i++ % bubbles.length];
+          stage.classList.remove("is-poked");
+          // reflow so the wobble animation restarts on each poke
+          void stage.offsetWidth;
+          stage.classList.add("is-poked");
+          window.clearTimeout(timer);
+          timer = window.setTimeout(function () { stage.classList.remove("is-poked"); }, 2600);
+        });
+      }
+    })();
+  </script>
 </Layout>

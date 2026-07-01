@@ -91,114 +91,20 @@ const existingUrls = new Set(
 );
 const showPersonWiki = Boolean(personWiki && !existingUrls.has(personWiki));
 
-const mayorStoryLabels =
-  lang === "bg"
-    ? {
-        eyebrow: "Разказ за кмета",
-        title: "Къде стои този мандат в историята на Пловдив",
-        sourceTrail: "Източникова следа",
-        termSentence: (person: string, term: string, years: string, yearsCount: string) =>
-          `${person} управлява Пловдив през ${years}. Мандатът е описан като ${term}, с приблизителна продължителност ${yearsCount}.`,
-        birthplaceSentence: (placeName: string) => `Биографичният профил свързва кмета с родно място: ${placeName}.`,
-        educationSentence: (items: string) => `Проследените образователни връзки включват ${items}.`,
-        rolesSentence: (items: string) => `Другите публични длъжности и роли, намерени в източниците, включват ${items}.`,
-        repeatSentence: (count: number) => `Тази личност има още ${count} отделни кметски мандата в хронологията.`
-      }
-    : lang === "de"
-      ? {
-          eyebrow: "Geschichte des Bürgermeisters",
-          title: "Wo diese Amtszeit in der Geschichte Plovdivs steht",
-          sourceTrail: "Quellenspur",
-          termSentence: (person: string, term: string, years: string, yearsCount: string) =>
-            `${person} leitete Plovdiv in den Jahren ${years}. Die Amtszeit ist als ${term} beschrieben und dauerte ungefähr ${yearsCount}.`,
-          birthplaceSentence: (placeName: string) => `Das biografische Profil verbindet den Bürgermeister mit dem Geburtsort ${placeName}.`,
-          educationSentence: (items: string) => `Die nachgewiesenen Bildungsbezüge umfassen ${items}.`,
-          rolesSentence: (items: string) => `Weitere in den Quellen gefundene öffentliche Ämter und Rollen umfassen ${items}.`,
-          repeatSentence: (count: number) => `Diese Person hat ${count} weitere eigene Bürgermeistermandate in der Chronologie.`
-        }
-      : lang === "fr"
-        ? {
-            eyebrow: "Récit du maire",
-            title: "Où ce mandat se situe dans l'histoire de Plovdiv",
-            sourceTrail: "Trace documentaire",
-            termSentence: (person: string, term: string, years: string, yearsCount: string) =>
-              `${person} dirige Plovdiv pendant ${years}. Le mandat est décrit comme ${term}, avec une durée approximative de ${yearsCount}.`,
-            birthplaceSentence: (placeName: string) => `Le profil biographique relie le maire à son lieu de naissance : ${placeName}.`,
-            educationSentence: (items: string) => `Les liens de formation relevés comprennent ${items}.`,
-            rolesSentence: (items: string) => `Les autres fonctions et rôles publics trouvés dans les sources comprennent ${items}.`,
-            repeatSentence: (count: number) => `Cette personne possède ${count} autres mandats distincts dans la chronologie.`
-          }
-        : lang === "it"
-          ? {
-              eyebrow: "Storia del sindaco",
-              title: "Dove si colloca questo mandato nella storia di Plovdiv",
-              sourceTrail: "Traccia delle fonti",
-              termSentence: (person: string, term: string, years: string, yearsCount: string) =>
-                `${person} guidò Plovdiv nel periodo ${years}. Il mandato è descritto come ${term}, con una durata approssimativa di ${yearsCount}.`,
-              birthplaceSentence: (placeName: string) => `Il profilo biografico collega il sindaco al luogo di nascita: ${placeName}.`,
-              educationSentence: (items: string) => `I collegamenti formativi tracciati includono ${items}.`,
-              rolesSentence: (items: string) => `Gli altri incarichi e ruoli pubblici trovati nelle fonti includono ${items}.`,
-              repeatSentence: (count: number) => `Questa persona ha altri ${count} mandati distinti nella cronologia.`
-            }
-          : lang === "tr"
-            ? {
-                eyebrow: "Belediye başkanının hikayesi",
-                title: "Bu dönem Plovdiv tarihinin neresinde duruyor",
-                sourceTrail: "Kaynak izi",
-                termSentence: (person: string, term: string, years: string, yearsCount: string) =>
-                  `${person}, ${years} döneminde Plovdiv'i yönetti. Dönem ${term} olarak tanımlanır ve yaklaşık süresi ${yearsCount}.`,
-                birthplaceSentence: (placeName: string) => `Biyografik profil belediye başkanını doğum yeri olan ${placeName} ile ilişkilendirir.`,
-                educationSentence: (items: string) => `İzlenen eğitim bağlantıları ${items} içerir.`,
-                rolesSentence: (items: string) => `Kaynaklarda bulunan diğer kamusal görev ve roller ${items} içerir.`,
-                repeatSentence: (count: number) => `Bu kişinin kronolojide ${count} ayrı belediye başkanlığı dönemi daha vardır.`
-              }
-            : lang === "es"
-              ? {
-                  eyebrow: "Historia del alcalde",
-                  title: "Dónde encaja este mandato en la historia de Plovdiv",
-                  sourceTrail: "Rastro de fuentes",
-                  termSentence: (person: string, term: string, years: string, yearsCount: string) =>
-                    `${person} gobernó Plovdiv durante ${years}. El mandato se describe como ${term}, con una duración aproximada de ${yearsCount}.`,
-                  birthplaceSentence: (placeName: string) => `El perfil biográfico vincula al alcalde con su lugar de nacimiento: ${placeName}.`,
-                  educationSentence: (items: string) => `Los vínculos educativos documentados incluyen ${items}.`,
-                  rolesSentence: (items: string) => `Otros cargos y roles públicos encontrados en las fuentes incluyen ${items}.`,
-                  repeatSentence: (count: number) => `Esta persona tiene otros ${count} mandatos separados en la cronología.`
-                }
-              : lang === "el"
-                ? {
-                    eyebrow: "Ιστορία του δημάρχου",
-                    title: "Πού βρίσκεται αυτή η θητεία στην ιστορία της Φιλιππούπολης",
-                    sourceTrail: "Ίχνος πηγών",
-                    termSentence: (person: string, term: string, years: string, yearsCount: string) =>
-                      `${person} διοίκησε τη Φιλιππούπολη την περίοδο ${years}. Η θητεία περιγράφεται ως ${term}, με κατά προσέγγιση διάρκεια ${yearsCount}.`,
-                    birthplaceSentence: (placeName: string) => `Το βιογραφικό προφίλ συνδέει τον δήμαρχο με τόπο γέννησης: ${placeName}.`,
-                    educationSentence: (items: string) => `Οι τεκμηριωμένοι εκπαιδευτικοί δεσμοί περιλαμβάνουν ${items}.`,
-                    rolesSentence: (items: string) => `Άλλες δημόσιες θέσεις και ρόλοι που βρέθηκαν στις πηγές περιλαμβάνουν ${items}.`,
-                    repeatSentence: (count: number) => `Αυτό το πρόσωπο έχει ακόμη ${count} χωριστές δημαρχιακές θητείες στη χρονολογία.`
-                  }
-                : lang === "ja"
-                  ? {
-                      eyebrow: "市長の物語",
-                      title: "この任期がプロヴディフ史のどこに位置するか",
-                      sourceTrail: "出典の流れ",
-                      termSentence: (person: string, term: string, years: string, yearsCount: string) =>
-                        `${person}は${years}にプロヴディフを率いました。この任期は${term}として記録され、おおよその期間は${yearsCount}です。`,
-                      birthplaceSentence: (placeName: string) => `伝記情報では、この市長は出生地${placeName}と結び付けられています。`,
-                      educationSentence: (items: string) => `確認された教育上のつながりには${items}があります。`,
-                      rolesSentence: (items: string) => `出典で確認できるその他の公職・役割には${items}があります。`,
-                      repeatSentence: (count: number) => `この人物には、年表上で別に${count}件の市長任期があります。`
-                    }
-                  : {
-                      eyebrow: "Mayor story",
-                      title: "Where this term sits in Plovdiv's history",
-                      sourceTrail: "Source trail",
-                      termSentence: (person: string, term: string, years: string, yearsCount: string) =>
-                        `${person} governed Plovdiv during ${years}. The term is described as ${term}, with an approximate duration of ${yearsCount}.`,
-                      birthplaceSentence: (placeName: string) => `The biographical profile links the mayor to a birthplace: ${placeName}.`,
-                      educationSentence: (items: string) => `The traced education links include ${items}.`,
-                      rolesSentence: (items: string) => `Other public offices and roles found in the sources include ${items}.`,
-                      repeatSentence: (count: number) => `This person has ${count} other separate mayoral terms in the chronology.`
-                    };
+// Only `eyebrow` and `sourceTrail` are rendered — the bio itself leads as
+// plain prose (see bioHeading/bioParagraphs below), so no per-language
+// formula-sentence builders are needed here.
+const mayorStoryLabels = ({
+  bg: { eyebrow: "Разказ за кмета", sourceTrail: "Източникова следа" },
+  de: { eyebrow: "Geschichte des Bürgermeisters", sourceTrail: "Quellenspur" },
+  fr: { eyebrow: "Récit du maire", sourceTrail: "Trace documentaire" },
+  it: { eyebrow: "Storia del sindaco", sourceTrail: "Traccia delle fonti" },
+  tr: { eyebrow: "Belediye başkanının hikayesi", sourceTrail: "Kaynak izi" },
+  es: { eyebrow: "Historia del alcalde", sourceTrail: "Rastro de fuentes" },
+  el: { eyebrow: "Ιστορία του δημάρχου", sourceTrail: "Ίχνος πηγών" },
+  ja: { eyebrow: "市長の物語", sourceTrail: "出典の流れ" },
+  en: { eyebrow: "Mayor story", sourceTrail: "Source trail" }
+} satisfies Record<Lang, { eyebrow: string; sourceTrail: string }>)[lang];
 
 // Lead with the real biography as clean prose; the structured facts (born,
 // studied, other roles) are surfaced separately rather than restated as
