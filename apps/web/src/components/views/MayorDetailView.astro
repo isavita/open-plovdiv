@@ -73,7 +73,11 @@ const mono = name
 const enrich = mayorWikidataEnrichment[field(mayor, "actor", "bg")] ?? null;
 const pick = (bg: string | null, en: string | null) => (lang === "bg" ? bg || en : en || bg) ?? null;
 const enrichLink = (item: { name_bg: string | null; name_en: string | null; wikipedia_bg: string | null; wikipedia_en: string | null }) => ({
-  name: pick(item.name_bg, item.name_en),
+  // Education institutions and role/position titles are descriptive text
+  // (not proper names), so route them through the same translation cache as
+  // every other data field instead of a bare bg/en pick — otherwise every
+  // non-bg/en locale page showed these in raw English regardless of lang.
+  name: field(item, "name", lang) || null,
   url: pick(item.wikipedia_bg, item.wikipedia_en)
 });
 const education = (enrich?.education ?? []).map(enrichLink).filter((x) => x.name);

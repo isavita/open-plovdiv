@@ -2535,6 +2535,43 @@ p:last-child {
   line-height: 1.5;
 }
 
+/* Slicker card treatment for the mayor bio facts (birthplace, education,
+   other roles): accent-bordered cards instead of plain divider rows, reusing
+   the same left-accent pattern as the place "story cards". A responsive
+   auto-fit grid lets short values (a birthplace) sit two-up while long ones
+   (an education institution list) take a full row on their own. */
+.mayor-bio-facts {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin: 18px 0 0;
+}
+.mayor-bio-facts > div {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--brand);
+  border-radius: var(--r-sm);
+  border-top: none;
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 6px;
+  grid-template-columns: 1fr;
+  min-width: 0;
+  padding: 14px 16px;
+}
+.mayor-bio-facts > div:nth-child(2) { border-left-color: var(--gold); }
+.mayor-bio-facts > div:nth-child(3) { border-left-color: var(--accent); }
+.mayor-bio-facts dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.mayor-bio-facts dd {
+  overflow-wrap: anywhere;
+}
+
 /* ---- Table --------------------------------------------------------------- */
 
 .table-wrap {

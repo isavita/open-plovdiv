@@ -22,9 +22,18 @@ type Props = {
   imageAlt?: string;
   robots?: string;
   structuredData?: JsonLdObject | JsonLdObject[];
+  /**
+   * Opt-in for pages that are a single static file shared by every locale
+   * (only the global 404.html today — Astro has no per-locale fallback
+   * route, confirmed by testing). When true, the header/footer chrome below
+   * is additionally re-localized client-side to match the locale detected
+   * from the visited URL, instead of staying fixed at `lang`. Every other
+   * page already renders the correct chrome server-side and leaves this off.
+   */
+  localeDetect?: boolean;
 };
 
-const { lang, path, title, description, image, imageAlt, robots, structuredData } = Astro.props;
+const { lang, path, title, description, image, imageAlt, robots, structuredData, localeDetect } = Astro.props;
 const t = ui[lang];
 
 const pageTitle = title ? `${title} · ${t.site.name}` : t.site.name;
@@ -97,26 +106,26 @@ const structuredDataJson = serializeJsonLd(
 );
 
 const footerHistory = [
-  { href: localizePath("/history", lang), label: t.nav.history },
-  { href: localizePath("/routes", lang), label: routesLabel },
-  { href: localizePath("/mayors", lang), label: t.nav.mayors },
-  { href: localizePath("/governance", lang), label: governanceLabel },
-  { href: localizePath("/people", lang), label: t.nav.people },
-  { href: localizePath("/places", lang), label: t.nav.places },
-  { href: localizePath("/stories", lang), label: t.nav.stories },
-  { href: localizePath("/archive", lang), label: t.nav.archive }
+  { href: localizePath("/history", lang), label: t.nav.history, key: "history" },
+  { href: localizePath("/routes", lang), label: routesLabel, key: "routes" },
+  { href: localizePath("/mayors", lang), label: t.nav.mayors, key: "mayors" },
+  { href: localizePath("/governance", lang), label: governanceLabel, key: "governance" },
+  { href: localizePath("/people", lang), label: t.nav.people, key: "people" },
+  { href: localizePath("/places", lang), label: t.nav.places, key: "places" },
+  { href: localizePath("/stories", lang), label: t.nav.stories, key: "stories" },
+  { href: localizePath("/archive", lang), label: t.nav.archive, key: "archive" }
 ];
 const footerCivic = [
-  { href: localizePath("/overview", lang), label: t.nav.overview },
-  { href: localizePath("/budget", lang), label: t.nav.budget },
-  { href: localizePath("/projects", lang), label: t.nav.projects },
-  { href: localizePath("/fix-map", lang), label: t.nav.fixMap },
-  { href: localizePath("/community", lang), label: t.footer.community }
+  { href: localizePath("/overview", lang), label: t.nav.overview, key: "overview" },
+  { href: localizePath("/budget", lang), label: t.nav.budget, key: "budget" },
+  { href: localizePath("/projects", lang), label: t.nav.projects, key: "projects" },
+  { href: localizePath("/fix-map", lang), label: t.nav.fixMap, key: "fix-map" },
+  { href: localizePath("/community", lang), label: t.footer.community, key: "community" }
 ];
 const footerAbout = [
-  { href: localizePath("/data-sources", lang), label: t.footer.sources },
-  { href: localizePath("/privacy", lang), label: t.footer.privacy },
-  { href: localizePath("/moderation", lang), label: t.footer.moderation }
+  { href: localizePath("/data-sources", lang), label: t.footer.sources, key: "data-sources" },
+  { href: localizePath("/privacy", lang), label: t.footer.privacy, key: "privacy" },
+  { href: localizePath("/moderation", lang), label: t.footer.moderation, key: "moderation" }
 ];
 
 // Secondary destinations shown only inside the mobile menu, grouped so the
@@ -139,10 +148,57 @@ const menuAbout = [
   { href: localizePath("/moderation", lang), base: "/moderation", label: t.footer.moderation }
 ];
 const menuGroups = [
-  { label: t.footer.explore, items: menuExplore },
-  { label: t.footer.civic, items: menuCivic },
-  { label: t.footer.about, items: menuAbout }
+  { key: "explore", label: t.footer.explore, items: menuExplore },
+  { key: "civic", label: t.footer.civic, items: menuCivic },
+  { key: "about", label: t.footer.about, items: menuAbout }
 ];
+
+// All-locale chrome strings for pages that opt into `localeDetect` (see the
+// prop doc above) — built once, only when needed, and consumed client-side
+// by the bottom script to re-localize the header/footer after detecting the
+// visited locale from the URL, using the same stable keys as the
+// data-nav-key/data-menu-key/data-footer-key hooks rendered below.
+const routesLabels = { bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート" } satisfies Record<Lang, string>;
+const governanceLabels = { bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治" } satisfies Record<Lang, string>;
+const chromeI18n = localeDetect
+  ? Object.fromEntries(
+      localeCodes.map((code) => {
+        const l = ui[code];
+        return [
+          code,
+          {
+            siteName: l.site.name,
+            skip: l.site.skip,
+            menuAria: l.site.menu,
+            langSwitchAria: l.site.langSwitch,
+            themeAria: l.site.theme,
+            homeAria: l.nav.home,
+            nav: {
+              history: l.nav.history,
+              routes: routesLabels[code],
+              mayors: l.nav.mayors,
+              governance: governanceLabels[code],
+              places: l.nav.places,
+              people: l.nav.people,
+              stories: l.nav.stories,
+              archive: l.nav.archive,
+              overview: l.nav.overview,
+              budget: l.nav.budget,
+              projects: l.nav.projects,
+              "fix-map": l.nav.fixMap,
+              community: l.footer.community,
+              "data-sources": l.footer.sources,
+              privacy: l.footer.privacy,
+              moderation: l.footer.moderation
+            },
+            groups: { explore: l.footer.explore, civic: l.footer.civic, about: l.footer.about },
+            footer: { blurb: l.footer.blurb, note: l.footer.note, dataNote: l.footer.dataNote }
+          }
+        ];
+      })
+    )
+  : null;
+const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
 ---
 
 <!doctype html>
@@ -203,27 +259,27 @@ const menuGroups = [
   </head>
   <body>
     <div class="site-shell">
-      <a class="skip-link" href="#main">{t.site.skip}</a>
+      <a class="skip-link" href="#main" data-skip-link>{t.site.skip}</a>
 
       <header class="site-header" id="site-header">
-        <nav class="nav" aria-label={t.nav.home}>
-          <a class="brand" href={localizePath("/", lang)} aria-label={`${t.site.name} — ${t.nav.home}`}>
-            <span>{t.site.name}</span>
+        <nav class="nav" aria-label={t.nav.home} data-nav-aria>
+          <a class="brand" href={localizePath("/", lang)} aria-label={`${t.site.name} — ${t.nav.home}`} data-brand data-brand-aria>
+            <span data-brand-name>{t.site.name}</span>
           </a>
 
           <div class="nav-links" id="nav-links">
             {navItems.map((item) => (
-              <a href={item.href} aria-current={isActive(item.base) ? "page" : undefined}>
+              <a href={item.href} data-nav-key={item.base.slice(1)} aria-current={isActive(item.base) ? "page" : undefined}>
                 {item.label}
               </a>
             ))}
 
-            <div class="nav-groups" aria-label={t.footer.explore}>
+            <div class="nav-groups" aria-label={t.footer.explore} data-nav-groups-aria>
               {menuGroups.map((group) => (
                 <div class="nav-group">
-                  <span class="nav-group-label">{group.label}</span>
+                  <span class="nav-group-label" data-menu-group={group.key}>{group.label}</span>
                   {group.items.map((item) => (
-                    <a href={item.href} aria-current={isActive(item.base) ? "page" : undefined}>
+                    <a href={item.href} data-menu-key={item.base.slice(1)} aria-current={isActive(item.base) ? "page" : undefined}>
                       {item.label}
                     </a>
                   ))}
@@ -234,8 +290,8 @@ const menuGroups = [
 
           <div class="nav-right">
             <details class="lang-menu" id="lang-menu">
-              <summary class="icon-btn lang-switch" aria-label={t.site.langSwitch} title={t.site.langSwitch}>
-                <span class="flag" aria-hidden="true">{lang.toUpperCase()}</span>
+              <summary class="icon-btn lang-switch" aria-label={t.site.langSwitch} title={t.site.langSwitch} data-lang-switch-aria>
+                <span class="flag" aria-hidden="true" data-flag>{lang.toUpperCase()}</span>
                 <span class="lang-caret" aria-hidden="true">▾</span>
               </summary>
               <ul class="lang-options">
@@ -245,6 +301,7 @@ const menuGroups = [
                       href={localizePath(path, code)}
                       hreflang={code}
                       lang={code}
+                      data-lang-option={code}
                       aria-current={code === lang ? "true" : undefined}
                     >
                       <span class="lang-code" aria-hidden="true">{code.toUpperCase()}</span>
@@ -260,6 +317,7 @@ const menuGroups = [
               id="theme-toggle"
               aria-label={t.site.theme}
               title={t.site.theme}
+              data-theme-aria
             >
               <span class="sun" aria-hidden="true">☀</span>
               <span class="moon" aria-hidden="true">☾</span>
@@ -271,6 +329,7 @@ const menuGroups = [
               aria-controls="nav-links"
               aria-expanded="false"
               aria-label={t.site.menu}
+              data-menu-aria
             >
               <span aria-hidden="true">☰</span>
             </button>
@@ -287,40 +346,40 @@ const menuGroups = [
         <div class="container">
           <div class="footer-top">
             <div class="footer-brand">
-              <a class="brand" href={localizePath("/", lang)}>
-                <span>{t.site.name}</span>
+              <a class="brand" href={localizePath("/", lang)} data-brand>
+                <span data-brand-name>{t.site.name}</span>
               </a>
-              <p>{t.footer.blurb}</p>
+              <p data-footer-blurb>{t.footer.blurb}</p>
             </div>
             <div class="footer-col">
-              <h4>{t.footer.explore}</h4>
+              <h4 data-footer-group="explore">{t.footer.explore}</h4>
               <ul>
                 {footerHistory.map((item) => (
-                  <li><a href={item.href}>{item.label}</a></li>
+                  <li><a href={item.href} data-footer-key={item.key}>{item.label}</a></li>
                 ))}
               </ul>
             </div>
             <div class="footer-col">
-              <h4>{t.footer.civic}</h4>
+              <h4 data-footer-group="civic">{t.footer.civic}</h4>
               <ul>
                 {footerCivic.map((item) => (
-                  <li><a href={item.href}>{item.label}</a></li>
+                  <li><a href={item.href} data-footer-key={item.key}>{item.label}</a></li>
                 ))}
               </ul>
             </div>
             <div class="footer-col">
-              <h4>{t.footer.about}</h4>
+              <h4 data-footer-group="about">{t.footer.about}</h4>
               <ul>
                 {footerAbout.map((item) => (
-                  <li><a href={item.href}>{item.label}</a></li>
+                  <li><a href={item.href} data-footer-key={item.key}>{item.label}</a></li>
                 ))}
               </ul>
             </div>
           </div>
           <Ornament />
           <div class="footer-bottom">
-            <span>{t.footer.note}</span>
-            <span class="meta">{t.footer.dataNote}</span>
+            <span data-footer-note>{t.footer.note}</span>
+            <span class="meta" data-footer-data-note>{t.footer.dataNote}</span>
           </div>
         </div>
       </footer>
@@ -411,5 +470,92 @@ const menuGroups = [
         }
       })();
     </script>
+
+    {localeDetect && (
+      <>
+        <script type="application/json" id="op-chrome-i18n" set:html={chromeI18nJson} />
+        <script is:inline>
+          (function () {
+            // Re-localize the shared header/footer chrome for pages that are a
+            // single static file shared by every locale (see the `localeDetect`
+            // prop). Detects the locale from the visited URL the same way the
+            // page's own content script does, then swaps text + hrefs by the
+            // stable data-nav-key/data-menu-key/data-footer-key hooks rendered
+            // above. A no-op when the detected locale is already "bg" (the
+            // server-rendered default), so this never fights normal pages —
+            // those never set `localeDetect` in the first place.
+            var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja"];
+            var segments = (window.location.pathname || "/").split("/").filter(Boolean);
+            var loc = segments.length > 0 && codes.indexOf(segments[0]) > -1 ? segments[0] : "bg";
+            if (loc === "bg") return;
+
+            var dataEl = document.getElementById("op-chrome-i18n");
+            var all = dataEl ? JSON.parse(dataEl.textContent) : null;
+            var c = all ? all[loc] : null;
+            if (!c) return;
+
+            var lp = function (base) { return "/" + loc + base; };
+            var setText = function (el, value) { if (el) el.textContent = value; };
+
+            document.querySelectorAll("[data-skip-link]").forEach(function (el) { setText(el, c.skip); });
+            document.querySelectorAll("[data-brand-name]").forEach(function (el) { setText(el, c.siteName); });
+            document.querySelectorAll("[data-brand]").forEach(function (el) {
+              el.setAttribute("href", lp("/"));
+              if (el.hasAttribute("data-brand-aria")) el.setAttribute("aria-label", c.siteName + " — " + c.homeAria);
+            });
+            document.querySelectorAll("[data-nav-aria]").forEach(function (el) { el.setAttribute("aria-label", c.homeAria); });
+            document.querySelectorAll("[data-nav-groups-aria]").forEach(function (el) { el.setAttribute("aria-label", c.groups.explore); });
+            document.querySelectorAll("[data-lang-switch-aria]").forEach(function (el) {
+              el.setAttribute("aria-label", c.langSwitchAria);
+              el.setAttribute("title", c.langSwitchAria);
+            });
+            document.querySelectorAll("[data-theme-aria]").forEach(function (el) {
+              el.setAttribute("aria-label", c.themeAria);
+              el.setAttribute("title", c.themeAria);
+            });
+            document.querySelectorAll("[data-menu-aria]").forEach(function (el) { el.setAttribute("aria-label", c.menuAria); });
+            document.querySelectorAll("[data-flag]").forEach(function (el) { setText(el, loc.toUpperCase()); });
+            document.querySelectorAll("[data-lang-option]").forEach(function (el) {
+              var isCurrent = el.getAttribute("data-lang-option") === loc;
+              if (isCurrent) el.setAttribute("aria-current", "true");
+              else el.removeAttribute("aria-current");
+            });
+
+            document.querySelectorAll("[data-nav-key]").forEach(function (el) {
+              var key = el.getAttribute("data-nav-key");
+              if (c.nav[key]) {
+                setText(el, c.nav[key]);
+                el.setAttribute("href", lp("/" + key));
+              }
+            });
+            document.querySelectorAll("[data-menu-group]").forEach(function (el) {
+              var key = el.getAttribute("data-menu-group");
+              if (c.groups[key]) setText(el, c.groups[key]);
+            });
+            document.querySelectorAll("[data-menu-key]").forEach(function (el) {
+              var key = el.getAttribute("data-menu-key");
+              if (c.nav[key]) {
+                setText(el, c.nav[key]);
+                el.setAttribute("href", lp("/" + key));
+              }
+            });
+            document.querySelectorAll("[data-footer-group]").forEach(function (el) {
+              var key = el.getAttribute("data-footer-group");
+              if (c.groups[key]) setText(el, c.groups[key]);
+            });
+            document.querySelectorAll("[data-footer-key]").forEach(function (el) {
+              var key = el.getAttribute("data-footer-key");
+              if (c.nav[key]) {
+                setText(el, c.nav[key]);
+                el.setAttribute("href", lp("/" + key));
+              }
+            });
+            document.querySelectorAll("[data-footer-blurb]").forEach(function (el) { setText(el, c.footer.blurb); });
+            document.querySelectorAll("[data-footer-note]").forEach(function (el) { setText(el, c.footer.note); });
+            document.querySelectorAll("[data-footer-data-note]").forEach(function (el) { setText(el, c.footer.dataNote); });
+          })();
+        </script>
+      </>
+    )}
   </body>
 </html>
