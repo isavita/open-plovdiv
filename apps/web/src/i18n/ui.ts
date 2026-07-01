@@ -43,7 +43,6 @@ const bg = {
     education: "Образование",
     overview: "Преглед",
     fixMap: "Карта",
-    budget: "Бюджет",
     projects: "Проекти",
     community: "Доброволци",
     archive: "Архив",
@@ -78,7 +77,6 @@ const bg = {
     year2025: "2025 г.",
     year2026: "2026 г. (прогнозно)",
     sourcesNote: "Всички стойности са с публични източници.",
-    viewBudget: "Към бюджета",
     viewProjects: "Към проектите"
   },
   footer: {
@@ -121,23 +119,16 @@ const bg = {
     civicLead:
       "Освен историята, Open Plovdiv поддържа и обществени данни за съвременния Пловдив — бюджет, проекти, граждански сигнали и доброволци, всяко с публичен източник.",
     ctaMap: "Виж картата на проблемите",
-    ctaBudget: "Къде отиват местните данъци?",
     statsLabel: "Проследявани данни",
     statProjects: "проследявани проекта",
     statReportsValue: "На живо",
     statReports: "модерирани сигнали",
     statCommunity: "доброволчески инициативи",
-    statBudget: "бюджетни сектора",
-    statTotal: "капиталова програма 2025",
     exploreTitle: "Откъде да започнете",
     cardMapEyebrow: "Карта",
     cardMapTitle: "Карта на проблемите",
     cardMapText:
       "Вижте публикувани граждански сигнали по категория и статус, с близки публични проекти.",
-    cardBudgetEyebrow: "Бюджет",
-    cardBudgetTitle: "Местни данъци",
-    cardBudgetText:
-      "Бюджет 2025 и прогнозна капиталова програма 2026 — суми, дялове и публични източници.",
     cardProjectsEyebrow: "Проекти",
     cardProjectsTitle: "Публични проекти",
     cardProjectsText:
@@ -209,48 +200,6 @@ const bg = {
       modern: "Панаирният град и Европейска столица на културата."
     }
   },
-  budget: {
-    eyebrow: "Къде отиват местните данъци?",
-    title: "Бюджет и капиталова програма",
-    lead:
-      "Бюджетът за 2025 г., прогнозната капиталова програма за 2026 г. и исторически архив за управлението на града — с ясно показани суми, дялове и публични източници.",
-    totalLabel: "Общ бюджет за 2025 г.",
-    capitalLabel: "Капиталова програма за 2025 г.",
-    sectorTitle: "Капиталова програма за 2025 г. по сектори",
-    approxNote:
-      "Стойностите по сектори са приблизителни — изчислени от публикуваните дялове на капиталовата програма.",
-    shareOfTotal: "дял от капиталовата програма",
-    provTitle: "Капиталова програма за 2026 г. (прогнозна)",
-    provText:
-      "2026 г. е първият бюджет на Пловдив в евро. Прогнозната капиталова програма е около 87 млн. евро. Стойностите са прогнозни и подлежат на промяна с приемането на държавния бюджет.",
-    fundingTitle: "Източници на финансиране за 2026 г.",
-    fundEu: "Европейски средства",
-    fundOwn: "Собствени приходи и преходен остатък",
-    fundOpco: "Съфинансиране по програми",
-    fundState: "Целева държавна субсидия",
-    fundOther: "Други (дарения, заеми)",
-    historyTitle: "Исторически бюджетен архив",
-    historyLead:
-      "Добавени са приет бюджет за 2002 г., реализирани капиталови разходи за 2005-2007 г., отчет за 2010 г., приети бюджетни стойности назад до 2011 г. и капиталови програми от по-старите решения, когато са публикувани отделно.",
-    totalHistoryTitle: "Общ бюджет и отчетено изпълнение",
-    capitalHistoryTitle: "Капиталова програма",
-    historyNote:
-      "2008 г. е проектобюджет от вторичен източник и е маркирана като прогнозна/проектна стойност. 2005-2007 г. в капиталовата графика и 2010 г. в общата графика са отчетени/реализирани стойности, а не първоначално приети рамки. По-старите решения понякога са сканирани документи и различават делегирани, местни и капиталови разходи. Затова графиките са насочващ архив, а конкретна стойност трябва да се цитира от оригиналния документ.",
-    executedShort: "отчет",
-    provisionalShort: "проект",
-    mayorsTitle: "Кой управлява града",
-    mayorsLead:
-      "Архивът включва официално публикуваните кметски мандати от 1878 г. насам и текущия кмет, проверен в Административния регистър.",
-    mayorTermCount: "кметски мандата в архива",
-    currentMayorLabel: "действащ кмет",
-    recentMayorsTitle: "Последни мандати",
-    earlyMayorsTitle: "Първи записи след Освобождението",
-    fullMayorArchive: "Пълен списък на кметовете",
-    eventsTitle: "Събития и програми",
-    eventsLead:
-      "Кратък архив на значими градски инициативи, които помагат да се свържат бюджетните години с публични програми и културни събития.",
-    sourceLabel: "Източник"
-  },
   archive: {
     eyebrow: "Исторически архив",
     title: "Кметове, бюджети и градски програми",
@@ -291,8 +240,7 @@ const bg = {
     amountLabel: "Сума",
     yearLabel: "Година",
     sourceLabel: "Източник",
-    noAmount: "без публикувана сума",
-    viewBudget: "Към бюджетните графики"
+    noAmount: "без публикувана сума"
   },
   mayors: {
     eyebrow: "Управление на града",
@@ -742,7 +690,6 @@ const en: typeof bg = {
     education: "Education",
     overview: "Overview",
     fixMap: "Map",
-    budget: "Budget",
     projects: "Projects",
     community: "Volunteers",
     archive: "Archive",
@@ -777,7 +724,6 @@ const en: typeof bg = {
     year2025: "2025",
     year2026: "2026 (provisional)",
     sourcesNote: "All values have public sources.",
-    viewBudget: "Go to budget",
     viewProjects: "Go to projects"
   },
   footer: {
@@ -820,23 +766,16 @@ const en: typeof bg = {
     civicLead:
       "Beyond history, Open Plovdiv also keeps public data on the modern city — budget, projects, citizen reports and volunteers, each with a public source.",
     ctaMap: "Open the problem map",
-    ctaBudget: "Where do local taxes go?",
     statsLabel: "Tracked data",
     statProjects: "tracked projects",
     statReportsValue: "Live",
     statReports: "moderated reports",
     statCommunity: "volunteer initiatives",
-    statBudget: "budget sectors",
-    statTotal: "2025 capital programme",
     exploreTitle: "Where to start",
     cardMapEyebrow: "Map",
     cardMapTitle: "Problem map",
     cardMapText:
       "See published citizen reports by category and status, with nearby public projects.",
-    cardBudgetEyebrow: "Budget",
-    cardBudgetTitle: "Local taxes",
-    cardBudgetText:
-      "2025 budget and provisional 2026 capital programme — amounts, shares and public sources.",
     cardProjectsEyebrow: "Projects",
     cardProjectsTitle: "Public projects",
     cardProjectsText:
@@ -908,48 +847,6 @@ const en: typeof bg = {
       modern: "The fair city and a European Capital of Culture."
     }
   },
-  budget: {
-    eyebrow: "Where do local taxes go?",
-    title: "Budget and capital programme",
-    lead:
-      "The 2025 budget, provisional 2026 capital programme and historical archive of city governance — with clearly shown amounts, shares and public sources.",
-    totalLabel: "Total 2025 budget",
-    capitalLabel: "2025 capital programme",
-    sectorTitle: "2025 capital programme by sector",
-    approxNote:
-      "Sector values are approximate — derived from the published shares of the capital programme.",
-    shareOfTotal: "share of the capital programme",
-    provTitle: "2026 capital programme (provisional)",
-    provText:
-      "2026 is Plovdiv's first budget in euros. The provisional capital programme is about EUR 87 million. Figures are provisional and may change once the state budget is adopted.",
-    fundingTitle: "2026 funding sources",
-    fundEu: "EU funds",
-    fundOwn: "Own revenue and carry-over",
-    fundOpco: "Programme co-financing",
-    fundState: "State targeted subsidy",
-    fundOther: "Other (donations, loans)",
-    historyTitle: "Historical budget archive",
-    historyLead:
-      "The archive now includes the adopted 2002 budget, executed capital expenditure for 2005-2007, 2010 execution, adopted budget totals back to 2011 and older capital-programme figures where decisions publish them separately.",
-    totalHistoryTitle: "Total budget and execution",
-    capitalHistoryTitle: "Capital programme",
-    historyNote:
-      "2008 is a draft-budget value from a secondary source and is marked as provisional/draft. The 2005-2007 capital chart values and the 2010 total chart value are executed figures, not initially adopted envelopes. Older decisions are sometimes scanned documents and separate delegated, local and capital spending differently. Treat the charts as a navigable archive and quote exact figures from the original document.",
-    executedShort: "exec.",
-    provisionalShort: "draft",
-    mayorsTitle: "Who governed the city",
-    mayorsLead:
-      "The archive includes officially published mayoral terms since 1878 and the current mayor checked against the Bulgarian Administrative Register.",
-    mayorTermCount: "mayoral terms in the archive",
-    currentMayorLabel: "incumbent mayor",
-    recentMayorsTitle: "Recent terms",
-    earlyMayorsTitle: "First post-Liberation records",
-    fullMayorArchive: "Full mayor archive",
-    eventsTitle: "Events and programmes",
-    eventsLead:
-      "A short archive of notable city initiatives that helps connect budget years with public programmes and cultural events.",
-    sourceLabel: "Source"
-  },
   archive: {
     eyebrow: "Historical archive",
     title: "Mayors, budgets and city programmes",
@@ -990,8 +887,7 @@ const en: typeof bg = {
     amountLabel: "Amount",
     yearLabel: "Year",
     sourceLabel: "Source",
-    noAmount: "no published amount",
-    viewBudget: "Open budget charts"
+    noAmount: "no published amount"
   },
   mayors: {
     eyebrow: "City governance",
@@ -1477,7 +1373,6 @@ const de: typeof bg = {
     education: "Bildung",
     overview: "Überblick",
     fixMap: "Karte",
-    budget: "Haushalt",
     projects: "Projekte",
     community: "Freiwillige",
     archive: "Archiv",
@@ -1512,7 +1407,6 @@ const de: typeof bg = {
     year2025: "2025",
     year2026: "2026 (vorläufig)",
     sourcesNote: "Alle Werte haben öffentliche Quellen.",
-    viewBudget: "Zum Haushalt",
     viewProjects: "Zu den Projekten"
   },
   footer: {
@@ -1555,23 +1449,16 @@ const de: typeof bg = {
     civicLead:
       "Über die Geschichte hinaus führt Open Plovdiv auch öffentliche Daten zur heutigen Stadt — Haushalt, Projekte, Bürgermeldungen und Freiwillige, jeweils mit öffentlicher Quelle.",
     ctaMap: "Die Problemkarte öffnen",
-    ctaBudget: "Wohin fließen die kommunalen Steuern?",
     statsLabel: "Erfasste Daten",
     statProjects: "erfasste Projekte",
     statReportsValue: "Live",
     statReports: "moderierte Meldungen",
     statCommunity: "Freiwilligeninitiativen",
-    statBudget: "Haushaltssektoren",
-    statTotal: "Investitionsprogramm 2025",
     exploreTitle: "Wo anfangen",
     cardMapEyebrow: "Karte",
     cardMapTitle: "Problemkarte",
     cardMapText:
       "Sehen Sie veröffentlichte Bürgermeldungen nach Kategorie und Status, mit nahegelegenen öffentlichen Projekten.",
-    cardBudgetEyebrow: "Haushalt",
-    cardBudgetTitle: "Kommunale Steuern",
-    cardBudgetText:
-      "Haushalt 2025 und vorläufiges Investitionsprogramm 2026 — Beträge, Anteile und öffentliche Quellen.",
     cardProjectsEyebrow: "Projekte",
     cardProjectsTitle: "Öffentliche Projekte",
     cardProjectsText:
@@ -1643,48 +1530,6 @@ const de: typeof bg = {
       modern: "Die Messestadt und Kulturhauptstadt Europas."
     }
   },
-  budget: {
-    eyebrow: "Wohin fließen die kommunalen Steuern?",
-    title: "Haushalt und Investitionsprogramm",
-    lead:
-      "Der Haushalt 2025, das vorläufige Investitionsprogramm 2026 und das historische Archiv der Stadtverwaltung — mit klar dargestellten Beträgen, Anteilen und öffentlichen Quellen.",
-    totalLabel: "Gesamthaushalt 2025",
-    capitalLabel: "Investitionsprogramm 2025",
-    sectorTitle: "Investitionsprogramm 2025 nach Sektor",
-    approxNote:
-      "Die Sektorwerte sind näherungsweise — abgeleitet aus den veröffentlichten Anteilen des Investitionsprogramms.",
-    shareOfTotal: "Anteil am Investitionsprogramm",
-    provTitle: "Investitionsprogramm 2026 (vorläufig)",
-    provText:
-      "2026 ist der erste Haushalt von Plovdiv in Euro. Das vorläufige Investitionsprogramm beträgt etwa 87 Millionen EUR. Die Zahlen sind vorläufig und können sich nach Verabschiedung des Staatshaushalts ändern.",
-    fundingTitle: "Finanzierungsquellen 2026",
-    fundEu: "EU-Mittel",
-    fundOwn: "Eigene Einnahmen und Übertrag",
-    fundOpco: "Programm-Kofinanzierung",
-    fundState: "Zweckgebundene staatliche Zuweisung",
-    fundOther: "Sonstiges (Spenden, Darlehen)",
-    historyTitle: "Historisches Haushaltsarchiv",
-    historyLead:
-      "Das Archiv umfasst nun den beschlossenen Haushalt 2002, die ausgeführten Investitionsausgaben 2005-2007, die Ausführung 2010, beschlossene Haushaltssummen bis 2011 zurück und ältere Investitionsprogramm-Zahlen, sofern Beschlüsse sie gesondert veröffentlichen.",
-    totalHistoryTitle: "Gesamthaushalt und Ausführung",
-    capitalHistoryTitle: "Investitionsprogramm",
-    historyNote:
-      "2008 ist ein Entwurfswert aus einer Sekundärquelle und als vorläufig/Entwurf gekennzeichnet. Die Investitionswerte 2005-2007 und der Gesamtwert 2010 sind ausgeführte Zahlen, keine ursprünglich beschlossenen Rahmen. Ältere Beschlüsse sind teils eingescannte Dokumente und trennen delegierte, lokale und Investitionsausgaben unterschiedlich. Betrachten Sie die Diagramme als navigierbares Archiv und zitieren Sie genaue Zahlen aus dem Originaldokument.",
-    executedShort: "ausgef.",
-    provisionalShort: "Entwurf",
-    mayorsTitle: "Wer die Stadt regierte",
-    mayorsLead:
-      "Das Archiv umfasst die offiziell veröffentlichten Amtszeiten seit 1878 und den aktuellen Bürgermeister, abgeglichen mit dem bulgarischen Verwaltungsregister.",
-    mayorTermCount: "Amtszeiten im Archiv",
-    currentMayorLabel: "amtierender Bürgermeister",
-    recentMayorsTitle: "Jüngste Amtszeiten",
-    earlyMayorsTitle: "Erste Aufzeichnungen nach der Befreiung",
-    fullMayorArchive: "Vollständiges Bürgermeister-Archiv",
-    eventsTitle: "Ereignisse und Programme",
-    eventsLead:
-      "Ein kurzes Archiv bemerkenswerter städtischer Initiativen, das hilft, Haushaltsjahre mit öffentlichen Programmen und Kulturereignissen zu verbinden.",
-    sourceLabel: "Quelle"
-  },
   archive: {
     eyebrow: "Historisches Archiv",
     title: "Bürgermeister, Haushalte und Stadtprogramme",
@@ -1725,8 +1570,7 @@ const de: typeof bg = {
     amountLabel: "Betrag",
     yearLabel: "Jahr",
     sourceLabel: "Quelle",
-    noAmount: "kein veröffentlichter Betrag",
-    viewBudget: "Haushaltsdiagramme öffnen"
+    noAmount: "kein veröffentlichter Betrag"
   },
   mayors: {
     eyebrow: "Stadtverwaltung",
@@ -2172,7 +2016,6 @@ const fr: typeof bg = {
     education: "Éducation",
     overview: "Aperçu",
     fixMap: "Carte",
-    budget: "Budget",
     projects: "Projets",
     community: "Bénévoles",
     archive: "Archives",
@@ -2207,7 +2050,6 @@ const fr: typeof bg = {
     year2025: "2025",
     year2026: "2026 (provisoire)",
     sourcesNote: "Toutes les valeurs ont des sources publiques.",
-    viewBudget: "Voir le budget",
     viewProjects: "Voir les projets"
   },
   footer: {
@@ -2250,23 +2092,16 @@ const fr: typeof bg = {
     civicLead:
       "Au-delà de l'histoire, Open Plovdiv tient aussi des données publiques sur la ville moderne — budget, projets, signalements citoyens et bénévoles, chacun avec une source publique.",
     ctaMap: "Ouvrir la carte des problèmes",
-    ctaBudget: "Où vont les impôts locaux ?",
     statsLabel: "Données suivies",
     statProjects: "projets suivis",
     statReportsValue: "En direct",
     statReports: "signalements modérés",
     statCommunity: "initiatives bénévoles",
-    statBudget: "secteurs budgétaires",
-    statTotal: "programme d'investissement 2025",
     exploreTitle: "Par où commencer",
     cardMapEyebrow: "Carte",
     cardMapTitle: "Carte des problèmes",
     cardMapText:
       "Consultez les signalements citoyens publiés par catégorie et statut, avec les projets publics à proximité.",
-    cardBudgetEyebrow: "Budget",
-    cardBudgetTitle: "Impôts locaux",
-    cardBudgetText:
-      "Budget 2025 et programme d'investissement provisoire 2026 — montants, parts et sources publiques.",
     cardProjectsEyebrow: "Projets",
     cardProjectsTitle: "Projets publics",
     cardProjectsText:
@@ -2338,48 +2173,6 @@ const fr: typeof bg = {
       modern: "La ville des foires et une capitale européenne de la culture."
     }
   },
-  budget: {
-    eyebrow: "Où vont les impôts locaux ?",
-    title: "Budget et programme d'investissement",
-    lead:
-      "Le budget 2025, le programme d'investissement provisoire 2026 et les archives historiques de la gouvernance municipale — avec montants, parts et sources publiques clairement indiqués.",
-    totalLabel: "Budget total 2025",
-    capitalLabel: "Programme d'investissement 2025",
-    sectorTitle: "Programme d'investissement 2025 par secteur",
-    approxNote:
-      "Les valeurs par secteur sont approximatives — dérivées des parts publiées du programme d'investissement.",
-    shareOfTotal: "part du programme d'investissement",
-    provTitle: "Programme d'investissement 2026 (provisoire)",
-    provText:
-      "2026 est le premier budget de Plovdiv en euros. Le programme d'investissement provisoire s'élève à environ 87 millions d'euros. Les chiffres sont provisoires et peuvent évoluer une fois le budget de l'État adopté.",
-    fundingTitle: "Sources de financement 2026",
-    fundEu: "Fonds européens",
-    fundOwn: "Recettes propres et report",
-    fundOpco: "Cofinancement de programmes",
-    fundState: "Subvention ciblée de l'État",
-    fundOther: "Autres (dons, emprunts)",
-    historyTitle: "Archives budgétaires historiques",
-    historyLead:
-      "Les archives incluent désormais le budget adopté de 2002, les dépenses d'investissement exécutées pour 2005-2007, l'exécution de 2010, les totaux des budgets adoptés depuis 2011 et d'anciens chiffres de programmes d'investissement lorsque les décisions les publient séparément.",
-    totalHistoryTitle: "Budget total et exécution",
-    capitalHistoryTitle: "Programme d'investissement",
-    historyNote:
-      "2008 est une valeur de projet de budget issue d'une source secondaire et marquée comme provisoire/projet. Les valeurs du graphique d'investissement 2005-2007 et la valeur du graphique du total 2010 sont des chiffres exécutés, et non des enveloppes initialement adoptées. Les décisions plus anciennes sont parfois des documents numérisés qui ventilent différemment les dépenses déléguées, locales et d'investissement. Considérez les graphiques comme des archives consultables et citez les chiffres exacts depuis le document original.",
-    executedShort: "exéc.",
-    provisionalShort: "projet",
-    mayorsTitle: "Qui a gouverné la ville",
-    mayorsLead:
-      "Les archives incluent les mandats de maire officiellement publiés depuis 1878 et le maire actuel vérifié dans le Registre administratif bulgare.",
-    mayorTermCount: "mandats de maire dans les archives",
-    currentMayorLabel: "maire en exercice",
-    recentMayorsTitle: "Mandats récents",
-    earlyMayorsTitle: "Premières fiches après la Libération",
-    fullMayorArchive: "Archives complètes des maires",
-    eventsTitle: "Événements et programmes",
-    eventsLead:
-      "Une courte archive d'initiatives municipales notables qui aide à relier les années budgétaires aux programmes publics et événements culturels.",
-    sourceLabel: "Source"
-  },
   archive: {
     eyebrow: "Archives historiques",
     title: "Maires, budgets et programmes municipaux",
@@ -2420,8 +2213,7 @@ const fr: typeof bg = {
     amountLabel: "Montant",
     yearLabel: "Année",
     sourceLabel: "Source",
-    noAmount: "montant non publié",
-    viewBudget: "Ouvrir les graphiques du budget"
+    noAmount: "montant non publié"
   },
   mayors: {
     eyebrow: "Gouvernance municipale",
@@ -2867,7 +2659,6 @@ const it: typeof bg = {
     education: "Istruzione",
     overview: "Panoramica",
     fixMap: "Mappa",
-    budget: "Bilancio",
     projects: "Progetti",
     community: "Volontari",
     archive: "Archivio",
@@ -2902,7 +2693,6 @@ const it: typeof bg = {
     year2025: "2025",
     year2026: "2026 (provvisorio)",
     sourcesNote: "Tutti i valori hanno fonti pubbliche.",
-    viewBudget: "Vai al bilancio",
     viewProjects: "Vai ai progetti"
   },
   footer: {
@@ -2945,23 +2735,16 @@ const it: typeof bg = {
     civicLead:
       "Oltre alla storia, Open Plovdiv tiene anche dati pubblici sulla città moderna — bilancio, progetti, segnalazioni dei cittadini e volontari, ognuno con una fonte pubblica.",
     ctaMap: "Apri la mappa dei problemi",
-    ctaBudget: "Dove vanno le tasse locali?",
     statsLabel: "Dati monitorati",
     statProjects: "progetti monitorati",
     statReportsValue: "In diretta",
     statReports: "segnalazioni moderate",
     statCommunity: "iniziative di volontariato",
-    statBudget: "settori di bilancio",
-    statTotal: "programma d'investimenti 2025",
     exploreTitle: "Da dove iniziare",
     cardMapEyebrow: "Mappa",
     cardMapTitle: "Mappa dei problemi",
     cardMapText:
       "Consulta le segnalazioni dei cittadini pubblicate per categoria e stato, con i progetti pubblici nelle vicinanze.",
-    cardBudgetEyebrow: "Bilancio",
-    cardBudgetTitle: "Tasse locali",
-    cardBudgetText:
-      "Bilancio 2025 e programma d'investimenti provvisorio 2026 — importi, quote e fonti pubbliche.",
     cardProjectsEyebrow: "Progetti",
     cardProjectsTitle: "Progetti pubblici",
     cardProjectsText:
@@ -3033,48 +2816,6 @@ const it: typeof bg = {
       modern: "La città delle fiere e una capitale europea della cultura."
     }
   },
-  budget: {
-    eyebrow: "Dove vanno le tasse locali?",
-    title: "Bilancio e programma d'investimenti",
-    lead:
-      "Il bilancio 2025, il programma d'investimenti provvisorio 2026 e l'archivio storico del governo cittadino — con importi, quote e fonti pubbliche chiaramente indicati.",
-    totalLabel: "Bilancio totale 2025",
-    capitalLabel: "Programma d'investimenti 2025",
-    sectorTitle: "Programma d'investimenti 2025 per settore",
-    approxNote:
-      "I valori per settore sono approssimativi — ricavati dalle quote pubblicate del programma d'investimenti.",
-    shareOfTotal: "quota del programma d'investimenti",
-    provTitle: "Programma d'investimenti 2026 (provvisorio)",
-    provText:
-      "Il 2026 è il primo bilancio di Plovdiv in euro. Il programma d'investimenti provvisorio ammonta a circa 87 milioni di euro. Le cifre sono provvisorie e potrebbero cambiare una volta adottato il bilancio dello Stato.",
-    fundingTitle: "Fonti di finanziamento 2026",
-    fundEu: "Fondi europei",
-    fundOwn: "Entrate proprie e riporto",
-    fundOpco: "Cofinanziamento di programmi",
-    fundState: "Sovvenzione mirata dello Stato",
-    fundOther: "Altro (donazioni, prestiti)",
-    historyTitle: "Archivio storico del bilancio",
-    historyLead:
-      "L'archivio include ora il bilancio adottato del 2002, le spese d'investimento eseguite per il 2005-2007, l'esecuzione del 2010, i totali dei bilanci adottati dal 2011 e vecchie cifre del programma d'investimenti quando le delibere le pubblicano separatamente.",
-    totalHistoryTitle: "Bilancio totale ed esecuzione",
-    capitalHistoryTitle: "Programma d'investimenti",
-    historyNote:
-      "Il 2008 è un valore di progetto di bilancio da una fonte secondaria ed è contrassegnato come provvisorio/bozza. I valori del grafico d'investimenti 2005-2007 e il valore del grafico del totale 2010 sono cifre eseguite, non dotazioni inizialmente adottate. Le delibere più vecchie sono talvolta documenti digitalizzati che ripartiscono diversamente le spese delegate, locali e d'investimento. Considerate i grafici come un archivio consultabile e citate le cifre esatte dal documento originale.",
-    executedShort: "esec.",
-    provisionalShort: "bozza",
-    mayorsTitle: "Chi ha governato la città",
-    mayorsLead:
-      "L'archivio include i mandati dei sindaci ufficialmente pubblicati dal 1878 e il sindaco attuale verificato nel Registro amministrativo bulgaro.",
-    mayorTermCount: "mandati di sindaco nell'archivio",
-    currentMayorLabel: "sindaco in carica",
-    recentMayorsTitle: "Mandati recenti",
-    earlyMayorsTitle: "Prime schede dopo la Liberazione",
-    fullMayorArchive: "Archivio completo dei sindaci",
-    eventsTitle: "Eventi e programmi",
-    eventsLead:
-      "Un breve archivio di iniziative comunali di rilievo che aiuta a collegare gli anni di bilancio ai programmi pubblici e agli eventi culturali.",
-    sourceLabel: "Fonte"
-  },
   archive: {
     eyebrow: "Archivio storico",
     title: "Sindaci, bilanci e programmi comunali",
@@ -3115,8 +2856,7 @@ const it: typeof bg = {
     amountLabel: "Importo",
     yearLabel: "Anno",
     sourceLabel: "Fonte",
-    noAmount: "importo non pubblicato",
-    viewBudget: "Apri i grafici del bilancio"
+    noAmount: "importo non pubblicato"
   },
   mayors: {
     eyebrow: "Governo cittadino",
@@ -3562,7 +3302,6 @@ const tr: typeof bg = {
     education: "Eğitim",
     overview: "Genel bakış",
     fixMap: "Harita",
-    budget: "Bütçe",
     projects: "Projeler",
     community: "Gönüllüler",
     archive: "Arşiv",
@@ -3597,7 +3336,6 @@ const tr: typeof bg = {
     year2025: "2025",
     year2026: "2026 (geçici)",
     sourcesNote: "Tüm değerlerin kamuya açık kaynakları vardır.",
-    viewBudget: "Bütçeye git",
     viewProjects: "Projelere git"
   },
   footer: {
@@ -3640,23 +3378,16 @@ const tr: typeof bg = {
     civicLead:
       "Tarihin yanı sıra Open Plovdiv modern şehre dair kamu verilerini de tutar — bütçe, projeler, yurttaş bildirimleri ve gönüllüler, her biri kamuya açık bir kaynakla.",
     ctaMap: "Sorun haritasını aç",
-    ctaBudget: "Yerel vergiler nereye gidiyor?",
     statsLabel: "İzlenen veriler",
     statProjects: "izlenen proje",
     statReportsValue: "Canlı",
     statReports: "moderasyondan geçmiş bildirim",
     statCommunity: "gönüllü girişimi",
-    statBudget: "bütçe sektörü",
-    statTotal: "2025 yatırım programı",
     exploreTitle: "Nereden başlamalı",
     cardMapEyebrow: "Harita",
     cardMapTitle: "Sorun haritası",
     cardMapText:
       "Yayımlanan yurttaş bildirimlerini kategoriye ve duruma göre, yakındaki kamu projeleriyle birlikte görün.",
-    cardBudgetEyebrow: "Bütçe",
-    cardBudgetTitle: "Yerel vergiler",
-    cardBudgetText:
-      "2025 bütçesi ve geçici 2026 yatırım programı — tutarlar, paylar ve kamuya açık kaynaklar.",
     cardProjectsEyebrow: "Projeler",
     cardProjectsTitle: "Kamu projeleri",
     cardProjectsText:
@@ -3728,48 +3459,6 @@ const tr: typeof bg = {
       modern: "Fuarlar şehri ve bir Avrupa Kültür Başkenti."
     }
   },
-  budget: {
-    eyebrow: "Yerel vergiler nereye gidiyor?",
-    title: "Bütçe ve yatırım programı",
-    lead:
-      "2025 bütçesi, geçici 2026 yatırım programı ve şehir yönetiminin tarihsel arşivi — tutarlar, paylar ve kamuya açık kaynaklar açıkça gösterilmiştir.",
-    totalLabel: "Toplam 2025 bütçesi",
-    capitalLabel: "2025 yatırım programı",
-    sectorTitle: "Sektöre göre 2025 yatırım programı",
-    approxNote:
-      "Sektör değerleri yaklaşıktır — yatırım programının yayımlanan paylarından türetilmiştir.",
-    shareOfTotal: "yatırım programındaki pay",
-    provTitle: "2026 yatırım programı (geçici)",
-    provText:
-      "2026, Plovdiv'in avro cinsinden ilk bütçesidir. Geçici yatırım programı yaklaşık 87 milyon avrodur. Rakamlar geçicidir ve devlet bütçesi kabul edildiğinde değişebilir.",
-    fundingTitle: "2026 finansman kaynakları",
-    fundEu: "AB fonları",
-    fundOwn: "Öz gelirler ve devir",
-    fundOpco: "Program eş finansmanı",
-    fundState: "Devletin amaca yönelik desteği",
-    fundOther: "Diğer (bağışlar, krediler)",
-    historyTitle: "Tarihsel bütçe arşivi",
-    historyLead:
-      "Arşiv artık 2002 kabul bütçesini, 2005-2007 için gerçekleşen yatırım harcamalarını, 2010 gerçekleşmesini, 2011'den itibaren kabul edilen bütçe toplamlarını ve kararların ayrı yayımladığı durumlarda eski yatırım programı rakamlarını içerir.",
-    totalHistoryTitle: "Toplam bütçe ve gerçekleşme",
-    capitalHistoryTitle: "Yatırım programı",
-    historyNote:
-      "2008, ikincil bir kaynaktan gelen bir bütçe taslağı değeridir ve geçici/taslak olarak işaretlenmiştir. 2005-2007 yatırım grafiği değerleri ve 2010 toplam grafiği değeri gerçekleşen rakamlardır, başlangıçta kabul edilen ödenekler değildir. Daha eski kararlar bazen taranmış belgelerdir ve devredilen, yerel ve yatırım harcamalarını farklı şekilde ayırır. Grafikleri gezilebilir bir arşiv olarak değerlendirin ve kesin rakamları orijinal belgeden alıntılayın.",
-    executedShort: "gerçek.",
-    provisionalShort: "taslak",
-    mayorsTitle: "Şehri kim yönetti",
-    mayorsLead:
-      "Arşiv 1878'den itibaren resmen yayımlanan belediye başkanlığı görev sürelerini ve Bulgar İdari Sicili'nde doğrulanan mevcut belediye başkanını içerir.",
-    mayorTermCount: "arşivdeki belediye başkanlığı görev süresi",
-    currentMayorLabel: "görevdeki belediye başkanı",
-    recentMayorsTitle: "Son görev süreleri",
-    earlyMayorsTitle: "Kurtuluş'tan sonraki ilk kayıtlar",
-    fullMayorArchive: "Belediye başkanlarının tam arşivi",
-    eventsTitle: "Etkinlikler ve programlar",
-    eventsLead:
-      "Bütçe yıllarını kamu programlarına ve kültürel etkinliklere bağlamaya yardımcı olan, dikkate değer belediye girişimlerinin kısa bir arşivi.",
-    sourceLabel: "Kaynak"
-  },
   archive: {
     eyebrow: "Tarihsel arşiv",
     title: "Belediye başkanları, bütçeler ve şehir programları",
@@ -3810,8 +3499,7 @@ const tr: typeof bg = {
     amountLabel: "Tutar",
     yearLabel: "Yıl",
     sourceLabel: "Kaynak",
-    noAmount: "tutar yayımlanmadı",
-    viewBudget: "Bütçe grafiklerini aç"
+    noAmount: "tutar yayımlanmadı"
   },
   mayors: {
     eyebrow: "Şehir yönetimi",
@@ -4257,7 +3945,6 @@ const es: typeof bg = {
     education: "Educación",
     overview: "Resumen",
     fixMap: "Mapa",
-    budget: "Presupuesto",
     projects: "Proyectos",
     community: "Voluntarios",
     archive: "Archivo",
@@ -4292,7 +3979,6 @@ const es: typeof bg = {
     year2025: "2025",
     year2026: "2026 (provisional)",
     sourcesNote: "Todos los valores tienen fuentes públicas.",
-    viewBudget: "Ir al presupuesto",
     viewProjects: "Ir a los proyectos"
   },
   footer: {
@@ -4335,23 +4021,16 @@ const es: typeof bg = {
     civicLead:
       "Más allá de la historia, Open Plovdiv también mantiene datos públicos sobre la ciudad moderna — presupuesto, proyectos, avisos ciudadanos y voluntarios, cada uno con una fuente pública.",
     ctaMap: "Abrir el mapa de problemas",
-    ctaBudget: "¿Adónde van los impuestos locales?",
     statsLabel: "Datos seguidos",
     statProjects: "proyectos seguidos",
     statReportsValue: "En directo",
     statReports: "avisos moderados",
     statCommunity: "iniciativas de voluntariado",
-    statBudget: "sectores del presupuesto",
-    statTotal: "programa de inversiones 2025",
     exploreTitle: "Por dónde empezar",
     cardMapEyebrow: "Mapa",
     cardMapTitle: "Mapa de problemas",
     cardMapText:
       "Vea los avisos ciudadanos publicados por categoría y estado, con los proyectos públicos cercanos.",
-    cardBudgetEyebrow: "Presupuesto",
-    cardBudgetTitle: "Impuestos locales",
-    cardBudgetText:
-      "Presupuesto 2025 y programa de inversiones provisional 2026 — importes, cuotas y fuentes públicas.",
     cardProjectsEyebrow: "Proyectos",
     cardProjectsTitle: "Proyectos públicos",
     cardProjectsText:
@@ -4423,48 +4102,6 @@ const es: typeof bg = {
       modern: "La ciudad de las ferias y una Capital Europea de la Cultura."
     }
   },
-  budget: {
-    eyebrow: "¿Adónde van los impuestos locales?",
-    title: "Presupuesto y programa de inversiones",
-    lead:
-      "El presupuesto de 2025, el programa de inversiones provisional de 2026 y el archivo histórico del gobierno municipal — con importes, cuotas y fuentes públicas claramente indicados.",
-    totalLabel: "Presupuesto total 2025",
-    capitalLabel: "Programa de inversiones 2025",
-    sectorTitle: "Programa de inversiones 2025 por sector",
-    approxNote:
-      "Los valores por sector son aproximados — derivados de las cuotas publicadas del programa de inversiones.",
-    shareOfTotal: "cuota del programa de inversiones",
-    provTitle: "Programa de inversiones 2026 (provisional)",
-    provText:
-      "2026 es el primer presupuesto de Plovdiv en euros. El programa de inversiones provisional es de unos 87 millones de euros. Las cifras son provisionales y pueden cambiar una vez aprobado el presupuesto del Estado.",
-    fundingTitle: "Fuentes de financiación 2026",
-    fundEu: "Fondos de la UE",
-    fundOwn: "Ingresos propios y remanente",
-    fundOpco: "Cofinanciación de programas",
-    fundState: "Subvención específica del Estado",
-    fundOther: "Otros (donaciones, préstamos)",
-    historyTitle: "Archivo histórico del presupuesto",
-    historyLead:
-      "El archivo incluye ahora el presupuesto aprobado de 2002, el gasto de inversión ejecutado de 2005-2007, la ejecución de 2010, los totales de presupuestos aprobados desde 2011 y cifras más antiguas del programa de inversiones cuando las decisiones las publican por separado.",
-    totalHistoryTitle: "Presupuesto total y ejecución",
-    capitalHistoryTitle: "Programa de inversiones",
-    historyNote:
-      "2008 es un valor de anteproyecto de presupuesto de una fuente secundaria y está marcado como provisional/borrador. Los valores del gráfico de inversiones de 2005-2007 y el valor del gráfico del total de 2010 son cifras ejecutadas, no dotaciones aprobadas inicialmente. Las decisiones más antiguas son a veces documentos escaneados que reparten de forma distinta el gasto delegado, local y de inversión. Considere los gráficos como un archivo navegable y cite las cifras exactas del documento original.",
-    executedShort: "ejec.",
-    provisionalShort: "borrador",
-    mayorsTitle: "Quién gobernó la ciudad",
-    mayorsLead:
-      "El archivo incluye los mandatos de alcalde publicados oficialmente desde 1878 y el alcalde actual verificado en el Registro Administrativo búlgaro.",
-    mayorTermCount: "mandatos de alcalde en el archivo",
-    currentMayorLabel: "alcalde en funciones",
-    recentMayorsTitle: "Mandatos recientes",
-    earlyMayorsTitle: "Primeros registros tras la Liberación",
-    fullMayorArchive: "Archivo completo de alcaldes",
-    eventsTitle: "Eventos y programas",
-    eventsLead:
-      "Un breve archivo de iniciativas municipales destacadas que ayuda a relacionar los años presupuestarios con los programas públicos y los eventos culturales.",
-    sourceLabel: "Fuente"
-  },
   archive: {
     eyebrow: "Archivo histórico",
     title: "Alcaldes, presupuestos y programas municipales",
@@ -4505,8 +4142,7 @@ const es: typeof bg = {
     amountLabel: "Importe",
     yearLabel: "Año",
     sourceLabel: "Fuente",
-    noAmount: "importe no publicado",
-    viewBudget: "Abrir los gráficos del presupuesto"
+    noAmount: "importe no publicado"
   },
   mayors: {
     eyebrow: "Gobierno municipal",
@@ -4952,7 +4588,6 @@ const el: typeof bg = {
     education: "Εκπαίδευση",
     overview: "Επισκόπηση",
     fixMap: "Χάρτης",
-    budget: "Προϋπολογισμός",
     projects: "Έργα",
     community: "Εθελοντές",
     archive: "Αρχείο",
@@ -4987,7 +4622,6 @@ const el: typeof bg = {
     year2025: "2025",
     year2026: "2026 (προσωρινό)",
     sourcesNote: "Όλες οι τιμές έχουν δημόσιες πηγές.",
-    viewBudget: "Στον προϋπολογισμό",
     viewProjects: "Στα έργα"
   },
   footer: {
@@ -5030,23 +4664,16 @@ const el: typeof bg = {
     civicLead:
       "Πέρα από την ιστορία, το Open Plovdiv τηρεί επίσης δημόσια δεδομένα για τη σύγχρονη πόλη — προϋπολογισμό, έργα, αναφορές πολιτών και εθελοντές, καθένα με δημόσια πηγή.",
     ctaMap: "Άνοιγμα χάρτη προβλημάτων",
-    ctaBudget: "Πού πηγαίνουν οι τοπικοί φόροι;",
     statsLabel: "Παρακολουθούμενα δεδομένα",
     statProjects: "παρακολουθούμενα έργα",
     statReportsValue: "Ζωντανά",
     statReports: "αναφορές υπό συντονισμό",
     statCommunity: "εθελοντικές πρωτοβουλίες",
-    statBudget: "τομείς προϋπολογισμού",
-    statTotal: "πρόγραμμα επενδύσεων 2025",
     exploreTitle: "Από πού να ξεκινήσετε",
     cardMapEyebrow: "Χάρτης",
     cardMapTitle: "Χάρτης προβλημάτων",
     cardMapText:
       "Δείτε δημοσιευμένες αναφορές πολιτών ανά κατηγορία και κατάσταση, με κοντινά δημόσια έργα.",
-    cardBudgetEyebrow: "Προϋπολογισμός",
-    cardBudgetTitle: "Τοπικοί φόροι",
-    cardBudgetText:
-      "Προϋπολογισμός 2025 και προσωρινό πρόγραμμα επενδύσεων 2026 — ποσά, μερίδια και δημόσιες πηγές.",
     cardProjectsEyebrow: "Έργα",
     cardProjectsTitle: "Δημόσια έργα",
     cardProjectsText:
@@ -5118,48 +4745,6 @@ const el: typeof bg = {
       modern: "Η πόλη των εκθέσεων και μια Πολιτιστική Πρωτεύουσα της Ευρώπης."
     }
   },
-  budget: {
-    eyebrow: "Πού πηγαίνουν οι τοπικοί φόροι;",
-    title: "Προϋπολογισμός και πρόγραμμα επενδύσεων",
-    lead:
-      "Ο προϋπολογισμός του 2025, το προσωρινό πρόγραμμα επενδύσεων του 2026 και το ιστορικό αρχείο της δημοτικής διακυβέρνησης — με σαφώς εμφανιζόμενα ποσά, μερίδια και δημόσιες πηγές.",
-    totalLabel: "Συνολικός προϋπολογισμός 2025",
-    capitalLabel: "Πρόγραμμα επενδύσεων 2025",
-    sectorTitle: "Πρόγραμμα επενδύσεων 2025 ανά τομέα",
-    approxNote:
-      "Οι τιμές ανά τομέα είναι κατά προσέγγιση — προκύπτουν από τα δημοσιευμένα μερίδια του προγράμματος επενδύσεων.",
-    shareOfTotal: "μερίδιο του προγράμματος επενδύσεων",
-    provTitle: "Πρόγραμμα επενδύσεων 2026 (προσωρινό)",
-    provText:
-      "Το 2026 είναι ο πρώτος προϋπολογισμός του Plovdiv σε ευρώ. Το προσωρινό πρόγραμμα επενδύσεων ανέρχεται περίπου σε 87 εκατομμύρια ευρώ. Τα στοιχεία είναι προσωρινά και ενδέχεται να αλλάξουν μόλις εγκριθεί ο κρατικός προϋπολογισμός.",
-    fundingTitle: "Πηγές χρηματοδότησης 2026",
-    fundEu: "Κονδύλια της ΕΕ",
-    fundOwn: "Ίδια έσοδα και μεταφορά υπολοίπου",
-    fundOpco: "Συγχρηματοδότηση προγραμμάτων",
-    fundState: "Στοχευμένη κρατική επιχορήγηση",
-    fundOther: "Άλλα (δωρεές, δάνεια)",
-    historyTitle: "Ιστορικό αρχείο προϋπολογισμού",
-    historyLead:
-      "Το αρχείο περιλαμβάνει πλέον τον εγκεκριμένο προϋπολογισμό του 2002, τις εκτελεσθείσες επενδυτικές δαπάνες 2005-2007, την εκτέλεση του 2010, τα σύνολα των εγκεκριμένων προϋπολογισμών από το 2011 και παλαιότερα στοιχεία του προγράμματος επενδύσεων όπου οι αποφάσεις τα δημοσιεύουν χωριστά.",
-    totalHistoryTitle: "Συνολικός προϋπολογισμός και εκτέλεση",
-    capitalHistoryTitle: "Πρόγραμμα επενδύσεων",
-    historyNote:
-      "Το 2008 είναι τιμή σχεδίου προϋπολογισμού από δευτερεύουσα πηγή και σημειώνεται ως προσωρινή/σχέδιο. Οι τιμές του γραφήματος επενδύσεων 2005-2007 και η τιμή του γραφήματος συνόλου 2010 είναι εκτελεσθέντα στοιχεία, όχι αρχικά εγκεκριμένα κονδύλια. Οι παλαιότερες αποφάσεις είναι ενίοτε σαρωμένα έγγραφα και διαχωρίζουν διαφορετικά τις εκχωρημένες, τοπικές και επενδυτικές δαπάνες. Αντιμετωπίστε τα γραφήματα ως ένα πλοηγήσιμο αρχείο και παραθέστε ακριβή στοιχεία από το πρωτότυπο έγγραφο.",
-    executedShort: "εκτελ.",
-    provisionalShort: "σχέδιο",
-    mayorsTitle: "Ποιος κυβέρνησε την πόλη",
-    mayorsLead:
-      "Το αρχείο περιλαμβάνει τις επίσημα δημοσιευμένες δημαρχιακές θητείες από το 1878 και τον τρέχοντα δήμαρχο όπως επαληθεύεται στο βουλγαρικό Διοικητικό Μητρώο.",
-    mayorTermCount: "δημαρχιακές θητείες στο αρχείο",
-    currentMayorLabel: "εν ενεργεία δήμαρχος",
-    recentMayorsTitle: "Πρόσφατες θητείες",
-    earlyMayorsTitle: "Πρώτες καταχωρίσεις μετά την Απελευθέρωση",
-    fullMayorArchive: "Πλήρες αρχείο δημάρχων",
-    eventsTitle: "Εκδηλώσεις και προγράμματα",
-    eventsLead:
-      "Ένα σύντομο αρχείο αξιόλογων δημοτικών πρωτοβουλιών που βοηθά να συνδεθούν τα οικονομικά έτη με δημόσια προγράμματα και πολιτιστικές εκδηλώσεις.",
-    sourceLabel: "Πηγή"
-  },
   archive: {
     eyebrow: "Ιστορικό αρχείο",
     title: "Δήμαρχοι, προϋπολογισμοί και δημοτικά προγράμματα",
@@ -5200,8 +4785,7 @@ const el: typeof bg = {
     amountLabel: "Ποσό",
     yearLabel: "Έτος",
     sourceLabel: "Πηγή",
-    noAmount: "δεν δημοσιεύτηκε ποσό",
-    viewBudget: "Άνοιγμα γραφημάτων προϋπολογισμού"
+    noAmount: "δεν δημοσιεύτηκε ποσό"
   },
   mayors: {
     eyebrow: "Δημοτική διακυβέρνηση",

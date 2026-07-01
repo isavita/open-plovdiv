@@ -9,7 +9,6 @@ const PUBLIC_STATIC_PATHS = [
   "/overview",
   "/routes",
   "/governance",
-  "/budget",
   "/projects",
   "/places",
   "/people",
