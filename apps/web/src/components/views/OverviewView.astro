@@ -1,15 +1,13 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { categoryColors, ui, type Lang } from "@i18n/ui";
-import { field, localizePath } from "@i18n/utils";
-import { budgetItems, projects } from "@lib/data";
-import { categoryLabel, formatMoney, fundingSourceLabel, projectStatusLabel } from "@lib/format";
+import { localizePath } from "@i18n/utils";
+import { projects } from "@lib/data";
+import { categoryLabel, projectStatusLabel } from "@lib/format";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
-
-const EUR_RATE = 1.95583;
 
 // ---- Projects: status, category, year -------------------------------------
 const statusColors: Record<string, string> = {
@@ -37,58 +35,6 @@ const categoryCounts = [...countBy(projects, (p) => p.category).entries()].sort(
 
 const postponedCount = projects.filter((p) => p.status === "postponed").length;
 
-// ---- Budget figures --------------------------------------------------------
-const capital2025 = budgetItems.find(
-  (b) => b.year === 2025 && b.kind === "summary" && b.summary_key === "capital_programme"
-);
-const sectors2025 = budgetItems
-  .filter((b) => b.year === 2025 && b.kind === "sector" && b.share_percent != null)
-  .sort((a, b) => (b.share_percent ?? 0) - (a.share_percent ?? 0));
-const funding2026 = budgetItems
-  .filter((b) => b.year === 2026 && b.kind === "funding_source" && b.amount_eur != null)
-  .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0));
-
-const capital2025Bgn = capital2025?.amount_bgn ?? 0;
-const capital2026Eur = funding2026.reduce((sum, f) => sum + (f.amount_eur ?? 0), 0);
-
-const budget2025Source = capital2025?.source_document.url;
-const budget2026Source = funding2026[0]?.source_document.url;
-
-// Capital programme by year (BGN). Only years reported on a comparable
-// total basis (incl. EU funds) are plotted: 2024+. 2026 is the provisional
-// EUR figure converted to BGN at the fixed rate.
-const capital2026Lev = Math.round(capital2026Eur * EUR_RATE);
-const capitalByYear = [
-  ...budgetItems
-    .filter((b) => b.kind === "summary" && b.summary_key === "capital_programme" && b.amount_bgn != null)
-    .sort((a, b) => a.year - b.year)
-    .map((b) => ({
-      year: b.year,
-      lev: b.amount_bgn ?? 0,
-      provisional: false,
-      executed: b.basis === "executed",
-      src: b.source_document.url
-    })),
-  { year: 2026, lev: capital2026Lev, provisional: true, executed: false, src: budget2026Source }
-];
-const capitalByYearMax = Math.max(...capitalByYear.map((c) => c.lev), 1);
-
-// Multi-year total budget (BGN), for the historical trend.
-const totalsByYear = budgetItems
-  .filter(
-    (b) =>
-      b.kind === "summary" &&
-      (b.summary_key === "total_budget" || b.summary_key === "budget_execution") &&
-      b.amount_bgn != null
-  )
-  .sort((a, b) => a.year - b.year);
-const totalsMax = Math.max(...totalsByYear.map((b) => b.amount_bgn ?? 0), 1);
-function compactBgn(amount: number): string {
-  const millions = Math.round(amount / 1e6);
-  return lang === "bg" ? `${millions} млн лв` : lang === "de" ? `${millions} Mio. BGN` : lang === "fr" ? `${millions} M BGN` : lang === "it" ? `${millions} mln BGN` : lang === "tr" ? `${millions} milyon BGN` : lang === "es" ? `${millions} M BGN` : lang === "el" ? `${millions} εκατ. BGN` : lang === "ja" ? `${millions}百万 BGN` : `BGN ${millions}M`;
-}
-const bgnShortLabel = lang === "bg" ? "лв." : "BGN";
-
 // ---- Donut helper ----------------------------------------------------------
 const R = 68;
 const CIRC = 2 * Math.PI * R;
@@ -114,16 +60,7 @@ const statusSegs = donut(
   }))
 );
 
-const sectorSegs = donut(
-  sectors2025.map((s) => ({
-    label: categoryLabel(s.category, lang),
-    value: s.share_percent ?? 0,
-    color: categoryColors[s.category] ?? "var(--muted)"
-  }))
-);
-
 const maxCategory = Math.max(...categoryCounts.map(([, c]) => c), 1);
-const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
 ---
 
 <Layout lang={lang} path="/overview" title={t.overview.title} description={t.overview.lead}>
@@ -141,8 +78,6 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
       <div class="stat-row">
         <div class="stat"><strong>{projects.length}</strong><span>{t.overview.statProjects}</span></div>
         <div class="stat"><strong>{postponedCount}</strong><span>{t.overview.statPostponed}</span></div>
-        <div class="stat"><strong>{formatMoney(capital2025Bgn, lang, "BGN")}</strong><span>{t.overview.statCapital2025}</span></div>
-        <div class="stat"><strong>{formatMoney(capital2026Eur, lang, "EUR")}</strong><span>{t.overview.statCapital2026}</span></div>
       </div>
 
       <div class="chart-grid" style="margin-top:24px">
@@ -203,123 +138,6 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
             {t.overview.unitProjects} · <a href={localizePath("/projects", lang)}>{t.overview.viewProjects} →</a>
           </p>
         </div>
-
-        <!-- 2025 capital by sector (donut) -->
-        <div class="chart-card">
-          <h3>{t.overview.sector2025Title}</h3>
-          <div class="donut-wrap">
-            <div class="donut-figure">
-              <svg class="donut" viewBox="0 0 168 168" role="img" aria-label={t.overview.sector2025Title}>
-                <circle cx="84" cy="84" r={R} fill="none" stroke="var(--surface-3)" stroke-width="22" />
-                {sectorSegs.map((s) => (
-                  <circle
-                    class="donut-seg"
-                    cx="84"
-                    cy="84"
-                    r={R}
-                    stroke={s.color}
-                    stroke-dasharray={`${s.len} ${s.gap}`}
-                    stroke-dashoffset={s.offset}
-                  />
-                ))}
-              </svg>
-              <div class="donut-center"><strong>2025</strong><span>{bgnShortLabel}</span></div>
-            </div>
-            <ul class="chart-legend">
-              {sectorSegs.map((s) => (
-                <li>
-                  <span class="swatch" style={`background:${s.color}`}></span>
-                  {s.label}
-                  <span class="legend-value">{s.value}%</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <p class="chart-source">
-            {t.overview.unitSharePercent}
-            {budget2025Source && <> · <a href={budget2025Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a></>}
-          </p>
-        </div>
-
-        <!-- 2026 funding (bars) -->
-        <div class="chart-card">
-          <h3>{t.overview.funding2026Title}</h3>
-          <div class="chart">
-            {funding2026.map((f) => (
-              <div class="bar-row">
-                <span class="bar-label">{f.funding_key ? fundingSourceLabel(f.funding_key, lang) : field(f, "title", lang)}</span>
-                <div class="bar-track" aria-hidden="true">
-                  <div class="bar-fill" style={`width:${Math.max(6, ((f.amount_eur ?? 0) / maxFunding) * 100)}%`}></div>
-                </div>
-                <span class="money">{formatMoney(f.amount_eur ?? 0, lang, "EUR")}</span>
-              </div>
-            ))}
-          </div>
-          <p class="chart-source">
-            {t.overview.unitEur}
-            {budget2026Source && <> · <a href={budget2026Source} target="_blank" rel="noreferrer">{t.budget.sourceLabel}</a></>}
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Total budget by year (historical trend) -->
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="section-head"><h2>{t.overview.totalTrendTitle}</h2></div>
-      <div class="chart-card">
-        <div class="compare-cols" data-dense>
-          {totalsByYear.map((b) => (
-            <div class="compare-col">
-              <div
-                class={`compare-bar${b.basis === "executed" ? " archive" : ""}`}
-                style={`height:${((b.amount_bgn ?? 0) / totalsMax) * 100}%`}
-              ></div>
-              <div class="compare-meta">
-                <strong>{compactBgn(b.amount_bgn ?? 0)}</strong>
-                <span>{b.basis === "executed" ? `${b.year} · ${t.budget.executedShort}` : b.year}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <p class="meta" style="margin-top:14px;max-width:66ch">{t.overview.totalTrendNote}</p>
-      <div class="pill-row" style="margin-top:8px">
-        {totalsByYear.map((b) => (
-          <a class="meta" href={b.source_document.url} target="_blank" rel="noreferrer">{b.year}</a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Capital programme by year -->
-  <section class="section section-tint">
-    <div class="container">
-      <div class="section-head"><h2>{t.overview.capitalTrendTitle}</h2></div>
-      <div class="chart-card">
-        <div class="compare-cols" data-dense>
-          {capitalByYear.map((c) => (
-            <div class="compare-col">
-              <div
-                class={`compare-bar${c.provisional ? " provisional" : c.executed ? " archive" : ""}`}
-                style={`height:${(c.lev / capitalByYearMax) * 100}%`}
-              ></div>
-              <div class="compare-meta">
-                <strong>{compactBgn(c.lev)}</strong>
-                <span>
-                  {c.provisional ? t.overview.year2026 : c.executed ? `${c.year} · ${t.budget.executedShort}` : c.year}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <p class="meta" style="margin-top:14px;max-width:66ch">{t.overview.capitalTrendNote}</p>
-      <div class="pill-row" style="margin-top:8px">
-        {capitalByYear.map((c) => (
-          c.src && <a class="meta" href={c.src} target="_blank" rel="noreferrer">{c.year}</a>
-        ))}
       </div>
     </div>
   </section>
@@ -331,7 +149,6 @@ const maxFunding = Math.max(...funding2026.map((f) => f.amount_eur ?? 0), 1);
         <span>{t.overview.historyNote}</span>
       </div>
       <div class="actions">
-        <a class="button secondary" href={localizePath("/budget", lang)}>{t.overview.viewBudget}</a>
         <a class="button secondary" href={localizePath("/projects", lang)}>{t.overview.viewProjects}</a>
       </div>
     </div>

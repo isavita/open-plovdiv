@@ -218,7 +218,7 @@ describe("route parity", () => {
 
 describe("localised routing", () => {
   it("builds the correct prefix for every locale and never an empty slug", () => {
-    for (const path of ["/", "/budget", "/history/contribute"]) {
+    for (const path of ["/", "/projects", "/history/contribute"]) {
       expect(localizePath(path, "bg")).toBe(path);
       for (const loc of locales.filter((l) => l !== "bg")) {
         const expected = path === "/" ? `/${loc}` : `/${loc}${path}`;
@@ -228,18 +228,18 @@ describe("localised routing", () => {
   });
 
   it("detects the locale from a URL and round-trips back to the logical path", () => {
-    expect(getLangFromUrl("/de/budget")).toBe("de");
+    expect(getLangFromUrl("/de/projects")).toBe("de");
     expect(getLangFromUrl("/fr/history")).toBe("fr");
     expect(getLangFromUrl("/it/mayors")).toBe("it");
     expect(getLangFromUrl("/tr/places")).toBe("tr");
-    expect(getLangFromUrl("/es/budget")).toBe("es");
+    expect(getLangFromUrl("/es/projects")).toBe("es");
     expect(getLangFromUrl("/el/history")).toBe("el");
     expect(getLangFromUrl("/ja/history")).toBe("ja");
     expect(getLangFromUrl("/en/history")).toBe("en");
-    expect(getLangFromUrl("/budget")).toBe("bg");
-    expect(delocalizePath("/ja/budget")).toBe("/budget");
-    expect(delocalizePath("/el/budget")).toBe("/budget");
-    expect(delocalizePath("/de/budget")).toBe("/budget");
+    expect(getLangFromUrl("/projects")).toBe("bg");
+    expect(delocalizePath("/ja/projects")).toBe("/projects");
+    expect(delocalizePath("/el/projects")).toBe("/projects");
+    expect(delocalizePath("/de/projects")).toBe("/projects");
     expect(delocalizePath("/de")).toBe("/");
     expect(delocalizePath("/projects")).toBe("/projects");
   });

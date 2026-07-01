@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
-import { field, localizePath } from "@i18n/utils";
+import { field } from "@i18n/utils";
 import {
   budgetItems,
   cityArchive,
@@ -232,7 +232,6 @@ function transcriptionText(
           <h2>{t.archive.mayorsTitle}</h2>
           <p class="meta" style="margin-top:8px;max-width:74ch">{t.archive.mayorsLead}</p>
         </div>
-        <a href={localizePath("/budget", lang)}>{t.archive.viewBudget} →</a>
       </div>
 
       <div class="chart-card">

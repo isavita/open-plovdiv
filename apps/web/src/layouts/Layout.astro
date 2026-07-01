@@ -14,7 +14,7 @@ import {
 
 type Props = {
   lang: Lang;
-  /** Logical (default-locale) path of this page, e.g. "/budget" or "/". */
+  /** Logical (default-locale) path of this page, e.g. "/projects" or "/". */
   path: string;
   title?: string;
   description?: string;
@@ -94,7 +94,6 @@ const structuredDataJson = serializeJsonLd(
       stories: t.nav.stories,
       archive: t.nav.archive,
       overview: t.nav.overview,
-      budget: t.nav.budget,
       projects: t.nav.projects,
       community: t.nav.community,
       "fix-map": t.nav.fixMap,
@@ -117,7 +116,6 @@ const footerHistory = [
 ];
 const footerCivic = [
   { href: localizePath("/overview", lang), label: t.nav.overview, key: "overview" },
-  { href: localizePath("/budget", lang), label: t.nav.budget, key: "budget" },
   { href: localizePath("/projects", lang), label: t.nav.projects, key: "projects" },
   { href: localizePath("/fix-map", lang), label: t.nav.fixMap, key: "fix-map" },
   { href: localizePath("/community", lang), label: t.footer.community, key: "community" }
@@ -137,7 +135,6 @@ const menuExplore = [
 ];
 const menuCivic = [
   { href: localizePath("/overview", lang), base: "/overview", label: t.nav.overview },
-  { href: localizePath("/budget", lang), base: "/budget", label: t.nav.budget },
   { href: localizePath("/projects", lang), base: "/projects", label: t.nav.projects },
   { href: localizePath("/fix-map", lang), base: "/fix-map", label: t.nav.fixMap },
   { href: localizePath("/community", lang), base: "/community", label: t.footer.community }
@@ -183,7 +180,6 @@ const chromeI18n = localeDetect
               stories: l.nav.stories,
               archive: l.nav.archive,
               overview: l.nav.overview,
-              budget: l.nav.budget,
               projects: l.nav.projects,
               "fix-map": l.nav.fixMap,
               community: l.footer.community,

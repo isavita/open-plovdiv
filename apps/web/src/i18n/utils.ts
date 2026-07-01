@@ -58,9 +58,9 @@ export function useTranslations(lang: Lang) {
 }
 
 /**
- * Turn a logical (default-locale) path such as "/budget" into the real href
+ * Turn a logical (default-locale) path such as "/projects" into the real href
  * for a given locale. The default locale lives at the root; every other locale
- * lives under its own prefix (e.g. "/en/budget", "/de/budget").
+ * lives under its own prefix (e.g. "/en/projects", "/de/projects").
  */
 export function localizePath(path: string, lang: Lang): string {
   const clean = path.startsWith("/") ? path : `/${path}`;

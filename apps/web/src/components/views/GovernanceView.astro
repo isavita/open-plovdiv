@@ -4,11 +4,9 @@ import Layout from "@layouts/Layout.astro";
 import { type Lang } from "@i18n/ui";
 import { field, localeForLang, localizePath } from "@i18n/utils";
 import {
-  budgetItems,
   cityArchive,
   projects,
   sourceRegistry,
-  type BudgetItem,
   type CityArchiveRecord,
   type Project
 } from "@lib/data";
@@ -55,11 +53,6 @@ type Copy = {
   archiveLead: string;
   mayorOverlap: string;
   amountLabel: string;
-  budgetTitle: string;
-  budgetLead: string;
-  latestTotal: string;
-  latestCapital: string;
-  fundingLines: string;
   projectsTitle: string;
   projectLead: string;
   projectYear: string;
@@ -68,8 +61,6 @@ type Copy = {
   deepLead: string;
   ctaMayors: string;
   ctaMayorsText: string;
-  ctaBudget: string;
-  ctaBudgetText: string;
   ctaProjects: string;
   ctaProjectsText: string;
   ctaArchive: string;
@@ -81,15 +72,15 @@ const copy = {
   bg: {
     eyebrow: "Политическа история",
     title: "Управление и политическа история",
-    description: "Кой е управлявал Пловдив и кои архивни, бюджетни и проектни записи стоят около тези мандати.",
+    description: "Кой е управлявал Пловдив и кои архивни и проектни записи стоят около тези мандати.",
     lead:
-      "Една гражданска повърхност за властта във времето: кметски мандати, архивни промени, бюджетни решения и проектни записи, подредени като доказателства.",
+      "Една гражданска повърхност за властта във времето: кметски мандати, архивни промени и проектни записи, подредени като доказателства.",
     currentTitle: "Текущо управление",
     currentMeta: "изведено от активния кметски запис",
     sectionNavLabel: "Раздели на страницата",
     navWho: "Кой управлява",
     navArchive: "Архивни промени",
-    navMoney: "Бюджет и проекти",
+    navMoney: "Проекти",
     navRoutes: "По-дълбоко",
     statTerms: "кметски мандата в архива",
     statMayors: "различими кметски имена",
@@ -111,12 +102,6 @@ const copy = {
       "Избрани записи от градския архив показват управленски промени, общински програми, финанси и културни решения. Връзката с кметове е само времево застъпване.",
     mayorOverlap: "застъпване с мандат",
     amountLabel: "стойност",
-    budgetTitle: "Как управлението се вижда в бюджета и проектите",
-    budgetLead:
-      "Последните бюджетни и проектни записи дават проверим контекст за текущите приоритети, без да заменят подробните бюджетни таблици.",
-    latestTotal: "последен общ бюджет",
-    latestCapital: "последна капиталова програма",
-    fundingLines: "последни капиталови източници",
     projectsTitle: "Текущи проектни записи",
     projectLead: "Активни, договорени или финансирани проекти от публичния проектен регистър.",
     projectYear: "година",
@@ -125,8 +110,6 @@ const copy = {
     deepLead: "Тази страница е навигационен политически слой. Подробните списъци остават в специализираните раздели.",
     ctaMayors: "Всички кметове",
     ctaMayorsText: "пълна хронология и профили",
-    ctaBudget: "Бюджет",
-    ctaBudgetText: "исторически и текущи бюджетни записи",
     ctaProjects: "Проекти",
     ctaProjectsText: "карти и статуси на проектите",
     ctaArchive: "Архив",
@@ -136,15 +119,15 @@ const copy = {
   en: {
     eyebrow: "Political history",
     title: "Governance and political history",
-    description: "Who governed Plovdiv and which archive, budget and project records sit around those terms.",
+    description: "Who governed Plovdiv and which archive and project records sit around those terms.",
     lead:
-      "A civic surface for power over time: mayoral terms, archive changes, budget decisions and project records arranged as evidence.",
+      "A civic surface for power over time: mayoral terms, archive changes and project records arranged as evidence.",
     currentTitle: "Current administration",
     currentMeta: "derived from the active mayoral record",
     sectionNavLabel: "Page sections",
     navWho: "Who governed",
     navArchive: "Archive changes",
-    navMoney: "Budget and projects",
+    navMoney: "Projects",
     navRoutes: "Go deeper",
     statTerms: "mayoral terms in the archive",
     statMayors: "distinct mayor names",
@@ -166,12 +149,6 @@ const copy = {
       "Selected city archive records surface governance changes, municipal programmes, finance and cultural decisions. The mayor link is a time overlap only.",
     mayorOverlap: "term overlap",
     amountLabel: "amount",
-    budgetTitle: "How governance shows up in budgets and projects",
-    budgetLead:
-      "Recent budget and project records give verifiable context for current priorities without replacing the detailed budget tables.",
-    latestTotal: "latest total budget",
-    latestCapital: "latest capital programme",
-    fundingLines: "latest capital funding lines",
     projectsTitle: "Current project records",
     projectLead: "Active, contracted or funded projects from the public project registry.",
     projectYear: "year",
@@ -180,8 +157,6 @@ const copy = {
     deepLead: "This page is a political navigation layer. The complete lists remain in the specialist sections.",
     ctaMayors: "All mayors",
     ctaMayorsText: "full chronology and profiles",
-    ctaBudget: "Budget",
-    ctaBudgetText: "historical and current budget records",
     ctaProjects: "Projects",
     ctaProjectsText: "project maps and statuses",
     ctaArchive: "Archive",
@@ -191,15 +166,15 @@ const copy = {
   de: {
     eyebrow: "Politische Geschichte",
     title: "Governance und politische Geschichte",
-    description: "Wer Plovdiv regierte und welche Archiv-, Haushalts- und Projektdatensätze diese Amtszeiten rahmen.",
+    description: "Wer Plovdiv regierte und welche Archiv- und Projektdatensätze diese Amtszeiten rahmen.",
     lead:
-      "Eine bürgernahe Oberfläche über Macht im Zeitverlauf: Bürgermeistermandate, Archivänderungen, Haushaltsentscheidungen und Projektdatensätze als Belege.",
+      "Eine bürgernahe Oberfläche über Macht im Zeitverlauf: Bürgermeistermandate, Archivänderungen und Projektdatensätze als Belege.",
     currentTitle: "Aktuelle Verwaltung",
     currentMeta: "aus dem aktiven Bürgermeisterdatensatz abgeleitet",
     sectionNavLabel: "Seitenabschnitte",
     navWho: "Wer regierte",
     navArchive: "Archivänderungen",
-    navMoney: "Budget und Projekte",
+    navMoney: "Projekte",
     navRoutes: "Vertiefen",
     statTerms: "Bürgermeistermandate im Archiv",
     statMayors: "unterschiedliche Bürgermeister-Namen",
@@ -221,12 +196,6 @@ const copy = {
       "Ausgewählte Stadtarchivdatensätze zeigen Verwaltungswechsel, kommunale Programme, Finanzen und Kulturentscheidungen. Die Bürgermeisterverknüpfung ist nur eine zeitliche Überlappung.",
     mayorOverlap: "Mandatsüberlappung",
     amountLabel: "Betrag",
-    budgetTitle: "Wie Governance in Budgets und Projekten sichtbar wird",
-    budgetLead:
-      "Aktuelle Budget- und Projektdatensätze geben überprüfbaren Kontext zu Prioritäten, ohne die detaillierten Budgettabellen zu ersetzen.",
-    latestTotal: "letztes Gesamtbudget",
-    latestCapital: "letztes Kapitalprogramm",
-    fundingLines: "letzte Kapitalfinanzierungslinien",
     projectsTitle: "Aktuelle Projektdatensätze",
     projectLead: "Aktive, vergebene oder finanzierte Projekte aus dem öffentlichen Projektregister.",
     projectYear: "Jahr",
@@ -235,8 +204,6 @@ const copy = {
     deepLead: "Diese Seite ist eine politische Navigationsschicht. Die vollständigen Listen bleiben in den Fachbereichen.",
     ctaMayors: "Alle Bürgermeister",
     ctaMayorsText: "vollständige Chronologie und Profile",
-    ctaBudget: "Budget",
-    ctaBudgetText: "historische und aktuelle Budgetdatensätze",
     ctaProjects: "Projekte",
     ctaProjectsText: "Projektkarten und Status",
     ctaArchive: "Archiv",
@@ -246,15 +213,15 @@ const copy = {
   fr: {
     eyebrow: "Histoire politique",
     title: "Gouvernance et histoire politique",
-    description: "Qui a gouverné Plovdiv et quels dossiers d'archives, de budget et de projets entourent ces mandats.",
+    description: "Qui a gouverné Plovdiv et quels dossiers d'archives et de projets entourent ces mandats.",
     lead:
-      "Une surface civique sur le pouvoir dans le temps : mandats des maires, changements d'archives, décisions budgétaires et dossiers de projets comme preuves.",
+      "Une surface civique sur le pouvoir dans le temps : mandats des maires, changements d'archives et dossiers de projets comme preuves.",
     currentTitle: "Administration actuelle",
     currentMeta: "dérivée du dossier actif du maire",
     sectionNavLabel: "Sections de la page",
     navWho: "Qui gouvernait",
     navArchive: "Changements d'archives",
-    navMoney: "Budget et projets",
+    navMoney: "Projets",
     navRoutes: "Approfondir",
     statTerms: "mandats de maire dans l'archive",
     statMayors: "noms de maires distincts",
@@ -276,12 +243,6 @@ const copy = {
       "Des dossiers choisis des archives urbaines montrent changements de gouvernance, programmes municipaux, finances et décisions culturelles. Le lien avec les maires est seulement temporel.",
     mayorOverlap: "recoupement de mandat",
     amountLabel: "montant",
-    budgetTitle: "Comment la gouvernance apparaît dans les budgets et les projets",
-    budgetLead:
-      "Les dossiers budgétaires et de projets récents donnent un contexte vérifiable aux priorités actuelles sans remplacer les tableaux budgétaires détaillés.",
-    latestTotal: "dernier budget total",
-    latestCapital: "dernier programme d'investissement",
-    fundingLines: "dernières lignes de financement",
     projectsTitle: "Dossiers de projets actuels",
     projectLead: "Projets actifs, attribués ou financés du registre public des projets.",
     projectYear: "année",
@@ -290,8 +251,6 @@ const copy = {
     deepLead: "Cette page est une couche de navigation politique. Les listes complètes restent dans les sections spécialisées.",
     ctaMayors: "Tous les maires",
     ctaMayorsText: "chronologie complète et profils",
-    ctaBudget: "Budget",
-    ctaBudgetText: "dossiers budgétaires historiques et actuels",
     ctaProjects: "Projets",
     ctaProjectsText: "cartes et statuts des projets",
     ctaArchive: "Archives",
@@ -301,15 +260,15 @@ const copy = {
   it: {
     eyebrow: "Storia politica",
     title: "Governo e storia politica",
-    description: "Chi ha governato Plovdiv e quali registri di archivio, bilancio e progetto si collocano attorno a quei mandati.",
+    description: "Chi ha governato Plovdiv e quali registri di archivio e progetto si collocano attorno a quei mandati.",
     lead:
-      "Una superficie civica sul potere nel tempo: mandati dei sindaci, cambiamenti d'archivio, decisioni di bilancio e registri di progetto come prove.",
+      "Una superficie civica sul potere nel tempo: mandati dei sindaci, cambiamenti d'archivio e registri di progetto come prove.",
     currentTitle: "Amministrazione attuale",
     currentMeta: "derivata dal registro attivo del sindaco",
     sectionNavLabel: "Sezioni della pagina",
     navWho: "Chi governava",
     navArchive: "Cambiamenti d'archivio",
-    navMoney: "Bilancio e progetti",
+    navMoney: "Progetti",
     navRoutes: "Approfondisci",
     statTerms: "mandati di sindaco nell'archivio",
     statMayors: "nomi distinti di sindaci",
@@ -331,12 +290,6 @@ const copy = {
       "Registri scelti dell'archivio cittadino mostrano cambiamenti di governo, programmi municipali, finanze e decisioni culturali. Il collegamento con i sindaci è solo temporale.",
     mayorOverlap: "sovrapposizione di mandato",
     amountLabel: "importo",
-    budgetTitle: "Come il governo appare nei bilanci e nei progetti",
-    budgetLead:
-      "I registri recenti di bilancio e progetto danno contesto verificabile alle priorità attuali senza sostituire le tabelle dettagliate.",
-    latestTotal: "ultimo bilancio totale",
-    latestCapital: "ultimo programma capitale",
-    fundingLines: "ultime linee di finanziamento",
     projectsTitle: "Registri di progetto attuali",
     projectLead: "Progetti attivi, contrattati o finanziati dal registro pubblico dei progetti.",
     projectYear: "anno",
@@ -345,8 +298,6 @@ const copy = {
     deepLead: "Questa pagina è uno strato di navigazione politica. Gli elenchi completi restano nelle sezioni specialistiche.",
     ctaMayors: "Tutti i sindaci",
     ctaMayorsText: "cronologia completa e profili",
-    ctaBudget: "Bilancio",
-    ctaBudgetText: "registri di bilancio storici e attuali",
     ctaProjects: "Progetti",
     ctaProjectsText: "mappe e stati dei progetti",
     ctaArchive: "Archivio",
@@ -356,15 +307,15 @@ const copy = {
   tr: {
     eyebrow: "Siyasi tarih",
     title: "Yönetim ve siyasi tarih",
-    description: "Plovdiv'i kim yönetti ve bu görev dönemlerinin etrafında hangi arşiv, bütçe ve proje kayıtları var.",
+    description: "Plovdiv'i kim yönetti ve bu görev dönemlerinin etrafında hangi arşiv ve proje kayıtları var.",
     lead:
-      "Zaman içinde iktidarı gösteren yurttaş odaklı bir yüzey: belediye başkanı dönemleri, arşiv değişiklikleri, bütçe kararları ve proje kayıtları kanıt olarak düzenlenir.",
+      "Zaman içinde iktidarı gösteren yurttaş odaklı bir yüzey: belediye başkanı dönemleri, arşiv değişiklikleri ve proje kayıtları kanıt olarak düzenlenir.",
     currentTitle: "Mevcut yönetim",
     currentMeta: "aktif belediye başkanı kaydından türetildi",
     sectionNavLabel: "Sayfa bölümleri",
     navWho: "Kim yönetti",
     navArchive: "Arşiv değişiklikleri",
-    navMoney: "Bütçe ve projeler",
+    navMoney: "Projeler",
     navRoutes: "Derinleş",
     statTerms: "arşivdeki başkanlık dönemleri",
     statMayors: "ayrı belediye başkanı adları",
@@ -386,12 +337,6 @@ const copy = {
       "Seçilmiş şehir arşivi kayıtları yönetim değişikliklerini, belediye programlarını, finansmanı ve kültürel kararları gösterir. Belediye başkanı bağlantısı yalnızca zamansal çakışmadır.",
     mayorOverlap: "dönem çakışması",
     amountLabel: "tutar",
-    budgetTitle: "Yönetim bütçelerde ve projelerde nasıl görünür",
-    budgetLead:
-      "Son bütçe ve proje kayıtları ayrıntılı bütçe tablolarının yerine geçmeden güncel öncelikler için doğrulanabilir bağlam verir.",
-    latestTotal: "son toplam bütçe",
-    latestCapital: "son sermaye programı",
-    fundingLines: "son sermaye finansman satırları",
     projectsTitle: "Güncel proje kayıtları",
     projectLead: "Kamu proje kayıtlarından aktif, sözleşmeli veya finanse edilen projeler.",
     projectYear: "yıl",
@@ -400,8 +345,6 @@ const copy = {
     deepLead: "Bu sayfa siyasi bir gezinme katmanıdır. Tam listeler uzman bölümlerde kalır.",
     ctaMayors: "Tüm belediye başkanları",
     ctaMayorsText: "tam kronoloji ve profiller",
-    ctaBudget: "Bütçe",
-    ctaBudgetText: "tarihsel ve güncel bütçe kayıtları",
     ctaProjects: "Projeler",
     ctaProjectsText: "proje haritaları ve durumları",
     ctaArchive: "Arşiv",
@@ -411,15 +354,15 @@ const copy = {
   es: {
     eyebrow: "Historia política",
     title: "Gobernanza e historia política",
-    description: "Quién gobernó Plovdiv y qué registros de archivo, presupuesto y proyectos rodean esos mandatos.",
+    description: "Quién gobernó Plovdiv y qué registros de archivo y proyectos rodean esos mandatos.",
     lead:
-      "Una superficie cívica sobre el poder en el tiempo: mandatos de alcaldes, cambios de archivo, decisiones presupuestarias y registros de proyectos como evidencia.",
+      "Una superficie cívica sobre el poder en el tiempo: mandatos de alcaldes, cambios de archivo y registros de proyectos como evidencia.",
     currentTitle: "Administración actual",
     currentMeta: "derivada del registro activo del alcalde",
     sectionNavLabel: "Secciones de la página",
     navWho: "Quién gobernó",
     navArchive: "Cambios de archivo",
-    navMoney: "Presupuesto y proyectos",
+    navMoney: "Proyectos",
     navRoutes: "Profundizar",
     statTerms: "mandatos de alcalde en el archivo",
     statMayors: "nombres de alcaldes distintos",
@@ -441,12 +384,6 @@ const copy = {
       "Registros seleccionados del archivo de la ciudad muestran cambios de gobernanza, programas municipales, finanzas y decisiones culturales. El vínculo con alcaldes es solo temporal.",
     mayorOverlap: "superposición de mandato",
     amountLabel: "importe",
-    budgetTitle: "Cómo la gobernanza aparece en presupuestos y proyectos",
-    budgetLead:
-      "Los registros recientes de presupuesto y proyectos dan contexto verificable a las prioridades actuales sin reemplazar las tablas presupuestarias detalladas.",
-    latestTotal: "último presupuesto total",
-    latestCapital: "último programa de capital",
-    fundingLines: "últimas líneas de financiación",
     projectsTitle: "Registros de proyectos actuales",
     projectLead: "Proyectos activos, contratados o financiados del registro público de proyectos.",
     projectYear: "año",
@@ -455,8 +392,6 @@ const copy = {
     deepLead: "Esta página es una capa de navegación política. Las listas completas permanecen en las secciones especializadas.",
     ctaMayors: "Todos los alcaldes",
     ctaMayorsText: "cronología completa y perfiles",
-    ctaBudget: "Presupuesto",
-    ctaBudgetText: "registros presupuestarios históricos y actuales",
     ctaProjects: "Proyectos",
     ctaProjectsText: "mapas y estados de proyectos",
     ctaArchive: "Archivo",
@@ -466,15 +401,15 @@ const copy = {
   el: {
     eyebrow: "Πολιτική ιστορία",
     title: "Διακυβέρνηση και πολιτική ιστορία",
-    description: "Ποιος κυβέρνησε το Plovdiv και ποια αρχειακά, προϋπολογιστικά και έργα πλαισιώνουν αυτές τις θητείες.",
+    description: "Ποιος κυβέρνησε το Plovdiv και ποια αρχειακά και έργα πλαισιώνουν αυτές τις θητείες.",
     lead:
-      "Μια πολιτειακή επιφάνεια για την εξουσία στον χρόνο: θητείες δημάρχων, αρχειακές αλλαγές, αποφάσεις προϋπολογισμού και εγγραφές έργων ως τεκμήρια.",
+      "Μια πολιτειακή επιφάνεια για την εξουσία στον χρόνο: θητείες δημάρχων, αρχειακές αλλαγές και εγγραφές έργων ως τεκμήρια.",
     currentTitle: "Τρέχουσα διοίκηση",
     currentMeta: "προκύπτει από την ενεργή εγγραφή δημάρχου",
     sectionNavLabel: "Ενότητες σελίδας",
     navWho: "Ποιος κυβέρνησε",
     navArchive: "Αρχειακές αλλαγές",
-    navMoney: "Προϋπολογισμός και έργα",
+    navMoney: "Έργα",
     navRoutes: "Περισσότερα",
     statTerms: "θητείες δημάρχων στο αρχείο",
     statMayors: "διακριτά ονόματα δημάρχων",
@@ -496,12 +431,6 @@ const copy = {
       "Επιλεγμένες εγγραφές του αρχείου της πόλης δείχνουν αλλαγές διακυβέρνησης, δημοτικά προγράμματα, οικονομικά και πολιτιστικές αποφάσεις. Ο σύνδεσμος με δημάρχους είναι μόνο χρονική επικάλυψη.",
     mayorOverlap: "επικάλυψη θητείας",
     amountLabel: "ποσό",
-    budgetTitle: "Πώς φαίνεται η διακυβέρνηση στους προϋπολογισμούς και τα έργα",
-    budgetLead:
-      "Οι πρόσφατες εγγραφές προϋπολογισμού και έργων δίνουν επαληθεύσιμο πλαίσιο για τις τρέχουσες προτεραιότητες χωρίς να αντικαθιστούν τους αναλυτικούς πίνακες.",
-    latestTotal: "τελευταίος συνολικός προϋπολογισμός",
-    latestCapital: "τελευταίο κεφαλαιουχικό πρόγραμμα",
-    fundingLines: "τελευταίες γραμμές χρηματοδότησης",
     projectsTitle: "Τρέχουσες εγγραφές έργων",
     projectLead: "Ενεργά, συμβασιοποιημένα ή χρηματοδοτημένα έργα από το δημόσιο μητρώο έργων.",
     projectYear: "έτος",
@@ -510,8 +439,6 @@ const copy = {
     deepLead: "Αυτή η σελίδα είναι πολιτικό επίπεδο πλοήγησης. Οι πλήρεις λίστες μένουν στις ειδικές ενότητες.",
     ctaMayors: "Όλοι οι δήμαρχοι",
     ctaMayorsText: "πλήρης χρονολογία και προφίλ",
-    ctaBudget: "Προϋπολογισμός",
-    ctaBudgetText: "ιστορικές και τρέχουσες εγγραφές προϋπολογισμού",
     ctaProjects: "Έργα",
     ctaProjectsText: "χάρτες και καταστάσεις έργων",
     ctaArchive: "Αρχείο",
@@ -521,15 +448,15 @@ const copy = {
   ja: {
     eyebrow: "政治史",
     title: "統治と政治史",
-    description: "Plovdivを誰が統治し、その任期の周辺にどのアーカイブ、予算、プロジェクト記録があるか。",
+    description: "Plovdivを誰が統治し、その任期の周辺にどのアーカイブとプロジェクト記録があるか。",
     lead:
-      "時間の中の権力を読むための市民向け画面です。市長任期、アーカイブ上の変化、予算決定、プロジェクト記録を根拠として並べます。",
+      "時間の中の権力を読むための市民向け画面です。市長任期、アーカイブ上の変化、プロジェクト記録を根拠として並べます。",
     currentTitle: "現在の行政",
     currentMeta: "有効な市長記録から作成",
     sectionNavLabel: "ページ内セクション",
     navWho: "誰が統治したか",
     navArchive: "アーカイブ上の変化",
-    navMoney: "予算とプロジェクト",
+    navMoney: "プロジェクト",
     navRoutes: "さらに見る",
     statTerms: "アーカイブ内の市長任期",
     statMayors: "識別できる市長名",
@@ -551,12 +478,6 @@ const copy = {
       "選択した都市アーカイブ記録は、統治変更、市政プログラム、財政、文化決定を示します。市長との関連は時間上の重なりのみです。",
     mayorOverlap: "任期との重なり",
     amountLabel: "金額",
-    budgetTitle: "統治は予算とプロジェクトにどう現れるか",
-    budgetLead:
-      "最近の予算・プロジェクト記録は、詳細な予算表を置き換えるものではなく、現在の優先事項に検証可能な文脈を与えます。",
-    latestTotal: "最新の総予算",
-    latestCapital: "最新の資本プログラム",
-    fundingLines: "最新の資本財源項目",
     projectsTitle: "現在のプロジェクト記録",
     projectLead: "公開プロジェクト登録から、進行中、契約済み、または資金確保済みのプロジェクト。",
     projectYear: "年",
@@ -565,8 +486,6 @@ const copy = {
     deepLead: "このページは政治史のナビゲーション層です。完全な一覧は専門セクションにあります。",
     ctaMayors: "すべての市長",
     ctaMayorsText: "完全な年表とプロフィール",
-    ctaBudget: "予算",
-    ctaBudgetText: "過去と現在の予算記録",
     ctaProjects: "プロジェクト",
     ctaProjectsText: "プロジェクトの地図と状態",
     ctaArchive: "アーカイブ",
@@ -709,59 +628,6 @@ const archiveHighlights = [...governanceChanges, ...pickEvenly(programmeAndFinan
   (a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start)
 );
 
-const latestTotalBudget = [...budgetItems]
-  .filter(
-    (item) =>
-      item.kind === "summary" &&
-      item.summary_key === "total_budget" &&
-      item.amount_bgn != null
-  )
-  .sort((a, b) => b.year - a.year)[0];
-const latestCapitalBudget = [...budgetItems]
-  .filter(
-    (item) =>
-      item.kind === "summary" &&
-      item.summary_key === "capital_programme" &&
-      item.amount_bgn != null
-  )
-  .sort((a, b) => b.year - a.year)[0];
-const latestFundingYear = Math.max(
-  ...budgetItems
-    .filter((item) => item.kind === "funding_source" && item.amount_eur != null)
-    .map((item) => item.year),
-  0
-);
-const latestFundingLines = budgetItems.filter(
-  (item) => item.year === latestFundingYear && item.kind === "funding_source" && item.amount_eur != null
-);
-const latestFundingTotal = latestFundingLines.reduce((sum, item) => sum + (item.amount_eur ?? 0), 0);
-
-const budgetPanels = [
-  latestTotalBudget && {
-    label: l.latestTotal,
-    value: formatMoney(latestTotalBudget.amount_bgn ?? 0, lang, "BGN"),
-    meta: `${latestTotalBudget.year} · ${field(latestTotalBudget, "title", lang)}`,
-    source: latestTotalBudget.source_document
-  },
-  latestCapitalBudget && {
-    label: l.latestCapital,
-    value: formatMoney(latestCapitalBudget.amount_bgn ?? 0, lang, "BGN"),
-    meta: `${latestCapitalBudget.year} · ${field(latestCapitalBudget, "title", lang)}`,
-    source: latestCapitalBudget.source_document
-  },
-  latestFundingLines.length > 0 && {
-    label: l.fundingLines,
-    value: formatMoney(latestFundingTotal, lang, "EUR"),
-    meta: `${latestFundingYear} · ${latestFundingLines.map((item) => field(item, "title", lang)).join(" · ")}`,
-    source: latestFundingLines[0].source_document
-  }
-].filter(Boolean) as Array<{
-  label: string;
-  value: string;
-  meta: string;
-  source: BudgetItem["source_document"];
-}>;
-
 const statusRank: Record<string, number> = {
   in_progress: 0,
   contracted: 1,
@@ -826,7 +692,6 @@ const mayorGroups = [
 
 const ctas = [
   { href: "/mayors", title: l.ctaMayors, text: l.ctaMayorsText },
-  { href: "/budget", title: l.ctaBudget, text: l.ctaBudgetText },
   { href: "/projects", title: l.ctaProjects, text: l.ctaProjectsText },
   { href: "/archive", title: l.ctaArchive, text: l.ctaArchiveText }
 ];
@@ -983,27 +848,6 @@ const ctas = [
   <section class="section" id="money-projects" data-subnav-target>
     <div class="container">
       <div class="section-head">
-        <div>
-          <h2>{l.budgetTitle}</h2>
-          <p class="meta">{l.budgetLead}</p>
-        </div>
-        <a href={localizePath("/budget", lang)}>{l.ctaBudget} →</a>
-      </div>
-
-      <div class="budget-panels">
-        {budgetPanels.map((panel) => (
-          <article class="budget-panel">
-            <p class="eyebrow">{panel.label}</p>
-            <strong>{panel.value}</strong>
-            <p>{panel.meta}</p>
-            <a class="meta" href={panel.source.url} target="_blank" rel="noreferrer">
-              {sourceLabel(panel.source)}
-            </a>
-          </article>
-        ))}
-      </div>
-
-      <div class="section-head compact" style="margin-top:34px">
         <div>
           <h2>{l.projectsTitle}</h2>
           <p class="meta">{l.projectLead}</p>
@@ -1284,37 +1128,6 @@ const ctas = [
     color: var(--ink-2);
   }
 
-  .budget-panels {
-    display: grid;
-    gap: 14px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .budget-panel {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--r);
-    box-shadow: var(--shadow-sm);
-    display: grid;
-    gap: 8px;
-    min-width: 0;
-    padding: clamp(16px, 2.2vw, 22px);
-  }
-
-  .budget-panel strong {
-    color: var(--data-growth);
-    font-family: var(--font-display);
-    font-size: clamp(1.35rem, 2.6vw, 2rem);
-    font-weight: 650;
-    line-height: 1.05;
-    overflow-wrap: anywhere;
-  }
-
-  .budget-panel p {
-    color: var(--ink-2);
-    margin: 0;
-  }
-
   .governance-projects {
     align-items: stretch;
   }
@@ -1326,7 +1139,7 @@ const ctas = [
   .cta-grid {
     display: grid;
     gap: 14px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .governance-cta {
@@ -1376,7 +1189,6 @@ const ctas = [
       grid-template-columns: 1fr;
     }
 
-    .budget-panels,
     .cta-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -1408,7 +1220,6 @@ const ctas = [
       font-size: 1rem;
     }
 
-    .budget-panels,
     .cta-grid {
       grid-template-columns: 1fr;
     }
