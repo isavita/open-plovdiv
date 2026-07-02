@@ -8,6 +8,7 @@ import {
   thenNowPairs
 } from "@lib/data";
 import { localeForLang, type Lang } from "@i18n/utils";
+import { fallbackPlaceColor, placeColors } from "@lib/placeCategories";
 
 export const prerender = true;
 
@@ -21,18 +22,6 @@ const categoryLabels: Record<string, Record<Lang, string>> = {
   revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale", tr: "Ulusal Uyanış", es: "Renacimiento Nacional", el: "Εθνική Αναγέννηση", ja: "民族復興期" },
   roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano", tr: "Roma", es: "Romano", el: "Ρωμαϊκό", ja: "ローマ層" },
   thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio", tr: "Trak", es: "Tracio", el: "Θρακικό", ja: "トラキア層" }
-};
-
-const placeColors: Record<string, string> = {
-  thracian: "#9c6b3f",
-  roman: "#a23b2d",
-  medieval: "#5d6b8a",
-  ottoman: "#2f7d6b",
-  revival: "#b4632a",
-  religious: "#7d5a9c",
-  hill: "#7d8471",
-  civic: "#15657f",
-  monument: "#8a6d3b"
 };
 
 const archiveCountByPlace = new Map<string, number>();
@@ -62,7 +51,7 @@ function placeMapItems(lang: Lang) {
       era: place.era,
       catLabel: categoryLabel(place.category, lang),
       href: lang === "bg" ? `/places/${place.id}` : `/${lang}/places/${place.id}`,
-      color: placeColors[place.category] ?? "#6b7280",
+      color: placeColors[place.category] ?? fallbackPlaceColor,
       archive: (archiveCountByPlace.get(place.id) ?? 0) > 0,
       thenNow: (pairCountByPlace.get(place.id) ?? 0) > 0,
       search: [

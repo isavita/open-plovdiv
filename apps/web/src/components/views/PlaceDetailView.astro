@@ -16,6 +16,7 @@ import {
   type PlaceWikidataClaimValue,
   type KnowledgePlace
 } from "@lib/data";
+import { routesThroughPlace } from "@lib/routes";
 
 type Props = {
   lang: Lang;
@@ -1244,6 +1245,70 @@ const relatedEvents = [...new Map([...directEvents, ...reverseLinkedEvents].map(
   (a, b) => a.date.year - b.date.year || a.id.localeCompare(b.id)
 );
 const relatedStories = storyLongreads.filter((story) => story.linked_place_ids.includes(place.id));
+
+// --- discovery cross-links: walking routes through this place + nearby ----
+const trx = (
+  bg: string,
+  en: string,
+  de: string,
+  fr: string,
+  it: string,
+  trk: string,
+  es: string,
+  el: string,
+  ja: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja })[lang];
+
+const discoveryL = {
+  onRoute: trx("Част от маршрут", "On a walking route", "Teil einer Route", "Sur un parcours", "Su un percorso", "Bir rotanın parçası", "En una ruta", "Σε διαδρομή", "散策ルートの一部"),
+  stop: trx("Спирка", "Stop", "Station", "Étape", "Tappa", "Durak", "Parada", "Στάση", "地点"),
+  of: trx("от", "of", "von", "sur", "di", "/", "de", "από", "/"),
+  minutes: trx("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分"),
+  nextStop: trx("Следваща спирка", "Next stop", "Nächste Station", "Étape suivante", "Prossima tappa", "Sonraki durak", "Siguiente parada", "Επόμενη στάση", "次の地点"),
+  openRoute: trx("Виж целия маршрут", "See the full route", "Ganze Route ansehen", "Voir tout le parcours", "Vedi tutto il percorso", "Rotanın tamamını gör", "Ver la ruta completa", "Δείτε όλη τη διαδρομή", "ルート全体を見る"),
+  nearby: trx("Наблизо", "Nearby", "In der Nähe", "À proximité", "Nelle vicinanze", "Yakınında", "Cerca", "Κοντά", "近くの場所"),
+  nearbyNote: trx(
+    "Разстояния по права линия, изчислени от координатите.",
+    "Straight-line distances computed from the coordinates.",
+    "Luftlinien-Entfernungen, aus den Koordinaten berechnet.",
+    "Distances à vol d'oiseau calculées à partir des coordonnées.",
+    "Distanze in linea d'aria calcolate dalle coordinate.",
+    "Koordinatlardan hesaplanan kuş uçuşu mesafeler.",
+    "Distancias en línea recta calculadas a partir de las coordenadas.",
+    "Αποστάσεις σε ευθεία γραμμή, υπολογισμένες από τις συντεταγμένες.",
+    "座標から算出した直線距離です。"
+  ),
+  meters: trx("м", "m", "m", "m", "m", "m", "m", "μ.", "m")
+};
+
+const placeRoutes = routesThroughPlace(place.id).map(({ route, stopIndex }) => {
+  const nextId = route.stopIds[stopIndex + 1];
+  return {
+    route,
+    stopIndex,
+    next: nextId ? (placeById.get(nextId) ?? null) : null
+  };
+});
+
+function distanceMeters(a: { lat: number; lng: number }, b: { lat: number; lng: number }): number {
+  const rad = Math.PI / 180;
+  const dLat = (b.lat - a.lat) * rad;
+  const dLng = (b.lng - a.lng) * rad;
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(a.lat * rad) * Math.cos(b.lat * rad) * Math.sin(dLng / 2) ** 2;
+  return 2 * 6371000 * Math.asin(Math.sqrt(h));
+}
+
+const nearbyPlaces = place.coordinates
+  ? historyKnowledgePlaces
+      .filter((other) => other.id !== place.id && other.coordinates)
+      .map((other) => ({ place: other, meters: distanceMeters(place.coordinates!, other.coordinates!) }))
+      .filter((entry) => entry.meters <= 800)
+      .sort((a, b) => a.meters - b.meters)
+      .slice(0, 4)
+  : [];
+
 const facts = placeFacts(place);
 const image = place.media[0];
 const sourceRecords = place.source_ids.map((sourceId) => sourceById.get(sourceId)).filter(Boolean);
@@ -1684,6 +1749,29 @@ const mapHref = place.coordinates
         </div>
 
         <aside class="place-detail-side">
+          {placeRoutes.length > 0 && (
+            <section class="place-route-callout">
+              <h2>{discoveryL.onRoute}</h2>
+              {placeRoutes.map(({ route, stopIndex, next }) => (
+                <div class="place-route-item" style={`--route-accent:${route.accent}`}>
+                  <p class="place-route-name">
+                    <span class="route-strip-dot" aria-hidden="true"></span>
+                    <strong>{route.title[lang]}</strong>
+                  </p>
+                  <p class="meta">
+                    {discoveryL.stop} {stopIndex + 1} {discoveryL.of} {route.stopIds.length} · {route.durationMinutes} {discoveryL.minutes}
+                  </p>
+                  {next && (
+                    <p class="meta">
+                      {discoveryL.nextStop}: <a href={localizePath(`/places/${next.id}`, lang)}>{localized(next, "name")}</a>
+                    </p>
+                  )}
+                  <a class="text-link" href={`${localizePath("/routes", lang)}#route-${route.id}`}>{discoveryL.openRoute} →</a>
+                </div>
+              ))}
+            </section>
+          )}
+
           <section>
             <h2>{labels.sources}</h2>
             <ul class="source-list">
@@ -1718,6 +1806,21 @@ const mapHref = place.coordinates
                   <li><a href={localizePath(`/stories/${story.id}`, lang)}>{localized(story, "title")}</a></li>
                 ))}
               </ul>
+            </section>
+          )}
+
+          {nearbyPlaces.length > 0 && (
+            <section>
+              <h2>{discoveryL.nearby}</h2>
+              <ul class="place-nearby-list">
+                {nearbyPlaces.map((entry) => (
+                  <li>
+                    <a href={localizePath(`/places/${entry.place.id}`, lang)}>{localized(entry.place, "name")}</a>
+                    <span class="meta">≈{Math.max(10, Math.round(entry.meters / 10) * 10)} {discoveryL.meters} · {localized(entry.place, "era")}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="meta place-nearby-note">{discoveryL.nearbyNote}</p>
             </section>
           )}
 

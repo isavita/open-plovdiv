@@ -3,6 +3,8 @@ import Layout from "@layouts/Layout.astro";
 import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { commonsImageUrl } from "@lib/commons";
 import { sectionMotifs } from "@lib/motifs";
+import { fallbackPlaceColor, placeColors } from "@lib/placeCategories";
+import { walkingRoutes } from "@lib/routes";
 import { sourceTitle } from "@lib/format";
 import { publicThenNowPairs, thenNowCountByPlace } from "@lib/thenNow";
 import {
@@ -504,6 +506,57 @@ const placesMapConfig = {
   lang,
   mapEndpoint: "/api/history/place-map.json"
 };
+
+// --- discovery layer: guided route strip + clickable category legend -------
+const trd = (
+  bg: string,
+  en: string,
+  de: string,
+  fr: string,
+  it: string,
+  trk: string,
+  es: string,
+  el: string,
+  ja: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja })[lang];
+
+const discoverL = {
+  routeStrip: trd(
+    "Не знаете откъде да започнете? Тръгнете по готов маршрут:",
+    "Not sure where to start? Follow a ready-made route:",
+    "Sie wissen nicht, wo Sie anfangen sollen? Folgen Sie einer fertigen Route:",
+    "Vous ne savez pas par où commencer ? Suivez un parcours prêt :",
+    "Non sapete da dove iniziare? Seguite un percorso già pronto:",
+    "Nereden başlayacağınızdan emin değil misiniz? Hazır bir rotayı izleyin:",
+    "¿No sabe por dónde empezar? Siga una ruta preparada:",
+    "Δεν ξέρετε από πού να ξεκινήσετε; Ακολουθήστε μια έτοιμη διαδρομή:",
+    "どこから始めるか迷ったら、おすすめルートをどうぞ："
+  ),
+  minutes: trd("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分"),
+  stops: trd("спирки", "stops", "Stationen", "étapes", "tappe", "durak", "paradas", "στάσεις", "地点"),
+  legendLabel: trd(
+    "Категории на картата — натиснете, за да филтрирате",
+    "Map categories — click to filter",
+    "Kartenkategorien — zum Filtern klicken",
+    "Catégories de la carte — cliquez pour filtrer",
+    "Categorie della mappa — clicca per filtrare",
+    "Harita kategorileri — filtrelemek için tıklayın",
+    "Categorías del mapa — pulse para filtrar",
+    "Κατηγορίες χάρτη — πατήστε για φιλτράρισμα",
+    "地図のカテゴリ — クリックで絞り込み"
+  )
+};
+
+const categoryCounts = new Map<string, number>();
+for (const card of placeCards) {
+  categoryCounts.set(card.category, (categoryCounts.get(card.category) ?? 0) + 1);
+}
+const legendItems = categories.map((category) => ({
+  category,
+  label: categoryLabel(category),
+  color: placeColors[category] ?? fallbackPlaceColor,
+  count: categoryCounts.get(category) ?? 0
+}));
 ---
 
 <Layout lang={lang} path="/places" title={labels.title} description={labels.lead}>
@@ -538,12 +591,43 @@ const placesMapConfig = {
 
   <section class="section" id="places-catalog">
     <div class="container">
+      <nav class="route-strip" aria-label={discoverL.routeStrip}>
+        <span class="route-strip-label meta">{discoverL.routeStrip}</span>
+        {walkingRoutes.map((route) => (
+          <a
+            class="route-strip-pill"
+            href={`${localizePath("/routes", lang)}#route-${route.id}`}
+            style={`--route-accent:${route.accent}`}
+          >
+            <span class="route-strip-dot" aria-hidden="true"></span>
+            <strong>{route.shortTitle[lang]}</strong>
+            <span>{route.durationMinutes} {discoverL.minutes} · {route.stopIds.length} {discoverL.stops}</span>
+          </a>
+        ))}
+      </nav>
+
       <div class="places-map-head">
         <h2>{mapL.title}</h2>
         <p class="meta" style="max-width:74ch;margin-top:6px">{mapL.lead}</p>
       </div>
-      <div class="card map-card" style="padding:0;overflow:hidden;margin-bottom:24px">
+      <div class="card map-card" style="padding:0;overflow:hidden;margin-bottom:12px">
         <div id="places-map" class="places-map"></div>
+      </div>
+
+      <div class="map-legend" role="group" aria-label={discoverL.legendLabel}>
+        {legendItems.map((item) => (
+          <button
+            type="button"
+            class="map-legend-chip"
+            data-legend-category={item.category}
+            aria-pressed="false"
+            title={discoverL.legendLabel}
+          >
+            <span class="map-legend-dot" style={`--dot:${item.color}`} aria-hidden="true"></span>
+            {item.label}
+            <span class="map-legend-count">{item.count}</span>
+          </button>
+        ))}
       </div>
 
       <div class="toolbar places-toolbar">
@@ -843,9 +927,21 @@ const placesMapConfig = {
       applyPlacesFilters();
     }
 
+    // Legend chips mirror the category select: click toggles the filter,
+    // and any category change (select or reset) re-syncs the pressed state.
+    const legendChips = [...document.querySelectorAll<HTMLButtonElement>("[data-legend-category]")];
+    function syncLegend() {
+      for (const chip of legendChips) {
+        chip.setAttribute("aria-pressed", String(chip.dataset.legendCategory === category.value));
+      }
+    }
+
     search.addEventListener("input", () => void applyFiltersFromControls());
     era.addEventListener("change", () => void applyFiltersFromControls());
-    category.addEventListener("change", () => void applyFiltersFromControls());
+    category.addEventListener("change", () => {
+      syncLegend();
+      void applyFiltersFromControls();
+    });
     evidence.addEventListener("change", () => void applyFiltersFromControls());
     loadMore.addEventListener("click", () => void renderNextPlaces());
     reset.addEventListener("click", () => {
@@ -853,9 +949,18 @@ const placesMapConfig = {
       era.value = "all";
       category.value = "all";
       evidence.value = "all";
+      syncLegend();
       applyPlacesFilters();
       search.focus();
     });
+    for (const chip of legendChips) {
+      chip.addEventListener("click", () => {
+        const next = chip.dataset.legendCategory ?? "all";
+        category.value = category.value === next ? "all" : next;
+        category.dispatchEvent(new Event("change"));
+      });
+    }
+    syncLegend();
 
     function hydratePlaceImages() {
       if (!("IntersectionObserver" in window)) {

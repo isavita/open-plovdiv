@@ -20,6 +20,7 @@ import {
   type StoryLongread,
   type ThenNowPair
 } from "@lib/data";
+import { walkingRoutes } from "@lib/routes";
 
 type Props = {
   lang: Lang;
@@ -168,111 +169,14 @@ const labels = {
   )
 };
 
-const routeSpecs: RouteSpec[] = [
-  {
-    id: "roman-plovdiv-90",
-    title: tr(
-      "Римски Пловдив за 90 минути",
-      "Roman Plovdiv in 90 minutes",
-      "Römisches Plovdiv in 90 Minuten",
-      "Plovdiv romain en 90 minutes",
-      "Plovdiv romana in 90 minuti",
-      "90 dakikada Roma Plovdiv'i",
-      "Plovdiv romano en 90 minutos",
-      "Ρωμαϊκό Plovdiv σε 90 λεπτά",
-      "90分で巡るローマ時代のPlovdiv"
-    ),
-    shortTitle: tr("Римски Пловдив", "Roman Plovdiv", "Römisches Plovdiv", "Plovdiv romain", "Plovdiv romana", "Roma Plovdiv'i", "Plovdiv romano", "Ρωμαϊκό Plovdiv", "ローマ時代のPlovdiv"),
-    durationMinutes: 90,
-    pace: tr("антични сцени, стадион и форум", "ancient stages, stadium and forum", "antike Bühnen, Stadion und Forum", "théâtre antique, stade et forum", "scene antiche, stadio e foro", "antik sahneler, stadyum ve forum", "escenarios antiguos, estadio y foro", "αρχαίες σκηνές, στάδιο και αγορά", "古代劇場、競技場、フォルム"),
-    accent: "#a23b2d",
-    storyId: "story-roman-philippopolis",
-    educationId: "education-roman-philippopolis",
-    stopIds: [
-      "place-nebet-tepe",
-      "place-ancient-theatre",
-      "place-forum-philippopolis",
-      "place-odeon-of-philippopolis-q26046109",
-      "place-ancient-stadium",
-      "place-bishop-s-basilica-of-philippopolis-q20500169"
-    ]
-  },
-  {
-    id: "old-town-revival-houses",
-    title: tr(
-      "Старият град и възрожденските къщи",
-      "Old Town and Revival houses",
-      "Altstadt und Wiedergeburtshäuser",
-      "Vieille ville et maisons de la Renaissance",
-      "Città vecchia e case della Rinascita",
-      "Eski Şehir ve Uyanış dönemi evleri",
-      "Casco antiguo y casas del Renacimiento",
-      "Παλιά Πόλη και αναγεννησιακά σπίτια",
-      "旧市街と民族復興期の邸宅"
-    ),
-    shortTitle: tr("Стар град", "Old Town", "Altstadt", "Vieille ville", "Città vecchia", "Eski Şehir", "Casco antiguo", "Παλιά Πόλη", "旧市街"),
-    durationMinutes: 75,
-    pace: tr("къщи, училища и общности", "houses, schools and communities", "Häuser, Schulen und Gemeinschaften", "maisons, écoles et communautés", "case, scuole e comunità", "evler, okullar ve topluluklar", "casas, escuelas y comunidades", "σπίτια, σχολεία και κοινότητες", "邸宅、学校、共同体"),
-    accent: "#b4632a",
-    storyId: "story-revival-houses-schools",
-    educationId: "education-revival-houses-schools",
-    stopIds: [
-      "place-old-town",
-      "place-humanitarian-high-school-saints-cyril-and-methodius-plovdiv-q12290859",
-      "place-holy-mother-of-god",
-      "place-lamartine-house",
-      "place-house-of-hristo-g-danov-q29961385",
-      "place-hindliyan-house-q19810343"
-    ]
-  },
-  {
-    id: "filibe-ottoman-layer",
-    title: tr(
-      "Филибе / османският пласт",
-      "Filibe / Ottoman layer",
-      "Filibe / osmanische Schicht",
-      "Filibe / couche ottomane",
-      "Filibe / strato ottomano",
-      "Filibe / Osmanlı katmanı",
-      "Filibe / capa otomana",
-      "Filibe / οθωμανικό στρώμα",
-      "Filibe / オスマン層"
-    ),
-    shortTitle: tr("Филибе", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe"),
-    durationMinutes: 60,
-    pace: tr("джамия, хамам, теке и часовников хълм", "mosque, bath, dervish space and clock hill", "Moschee, Bad, Derwischort und Uhrhügel", "mosquée, bain, espace derviche et colline de l'horloge", "moschea, bagno, loggia dervisca e colle dell'orologio", "cami, hamam, tekke ve saat tepesi", "mezquita, baño, espacio derviche y colina del reloj", "τζαμί, λουτρό, τεκές και λόφος ρολογιού", "モスク、浴場、デルヴィーシュ空間、時計塔の丘"),
-    accent: "#5f6f52",
-    storyId: "story-ottoman-filibe-city",
-    stopIds: [
-      "place-dzhumaya-mosque",
-      "place-dzhumaya-square-q59368698",
-      "place-chifte-hamam",
-      "place-mevlevi-hane",
-      "place-sahat-hill-in-plovdiv-q12293012"
-    ]
-  },
-  {
-    id: "unification-civic-memory",
-    title: tr(
-      "Съединение и гражданска памет",
-      "Unification and civic memory",
-      "Vereinigung und Bürgergedächtnis",
-      "Unification et mémoire civique",
-      "Unificazione e memoria civica",
-      "Birleşme ve kent hafızası",
-      "Unificación y memoria cívica",
-      "Ένωση και αστική μνήμη",
-      "統一と市民の記憶"
-    ),
-    shortTitle: tr("Съединение", "Unification", "Vereinigung", "Unification", "Unificazione", "Birleşme", "Unificación", "Ένωση", "統一"),
-    durationMinutes: 45,
-    pace: tr("площад, институции и градска памет", "square, institutions and urban memory", "Platz, Institutionen und Stadtgedächtnis", "place, institutions et mémoire urbaine", "piazza, istituzioni e memoria urbana", "meydan, kurumlar ve kentsel hafıza", "plaza, instituciones y memoria urbana", "πλατεία, θεσμοί και αστική μνήμη", "広場、制度、都市の記憶"),
-    accent: "#315f7d",
-    storyId: "story-unification-civic-memory",
-    educationId: "education-unification-civic-city",
-    stopIds: ["place-unification-square-plovdiv-q58885892", "place-plovdiv-city", "place-old-town"]
-  }
-];
+// Route definitions live in the shared registry so places pages can
+// cross-link back to the routes that pass through them.
+const routeSpecs: RouteSpec[] = walkingRoutes.map((route) => ({
+  ...route,
+  title: route.title[lang],
+  shortTitle: route.shortTitle[lang],
+  pace: route.pace[lang]
+}));
 
 const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
 const storiesById = new Map(storyLongreads.map((story) => [story.id, story]));
@@ -461,6 +365,16 @@ const firstRoute = routeViews[0];
                   <dd>{route.evidenceCount}</dd>
                 </div>
               </dl>
+              <ol class="route-itinerary" aria-label={labels.stops}>
+                {route.stops.map((stop, index) => (
+                  <li>
+                    <a href={localizePath(`/places/${stop.place.id}`, lang)}>
+                      <span class="route-itinerary-index" aria-hidden="true">{index + 1}</span>
+                      {localizedAny(stop.place, "name")}
+                    </a>
+                  </li>
+                ))}
+              </ol>
               <div class="route-card-actions">
                 <a class="text-link" href={`#route-${route.id}`}>{labels.stops}</a>
                 <a class="text-link" href={localizePath(`/stories/${route.story.id}`, lang)}>{labels.openStory}</a>

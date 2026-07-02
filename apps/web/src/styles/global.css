@@ -7485,3 +7485,210 @@ details[open] > .htree-event-sum .htree-caret::after {
     justify-content: center;
   }
 }
+
+/* ---- Places & routes discovery layer ------------------------------------ */
+
+/* Guided route strip on /places — quick handoff into the walking routes. */
+.route-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+  padding: 12px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
+
+.route-strip-label {
+  margin: 0;
+  font-weight: 650;
+}
+
+.route-strip-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  min-height: 34px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.86rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.route-strip-pill span:last-child {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.route-strip-pill:hover,
+.route-strip-pill:focus-visible {
+  border-color: var(--route-accent, var(--brand));
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.route-strip-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--route-accent, var(--brand));
+  flex-shrink: 0;
+}
+
+/* Clickable category legend under the all-places map. */
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.map-legend-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  min-height: 32px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  color: var(--ink-2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.map-legend-chip:hover,
+.map-legend-chip:focus-visible {
+  border-color: var(--dot, var(--brand));
+  color: var(--ink);
+}
+
+.map-legend-chip[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--dot, var(--brand)) 14%, var(--surface));
+  border-color: var(--dot, var(--brand));
+  color: var(--ink);
+}
+
+.map-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--dot, var(--brand));
+  flex-shrink: 0;
+}
+
+.map-legend-count {
+  color: var(--muted);
+  font-weight: 650;
+  font-size: 0.74rem;
+}
+
+/* Stop itinerary preview on the route cards. */
+.route-itinerary {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 4px;
+  align-items: center;
+}
+
+.route-itinerary li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.route-itinerary li + li::before {
+  content: "→";
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin: 0 6px 0 2px;
+}
+
+.route-itinerary a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-2);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+}
+
+.route-itinerary a:hover,
+.route-itinerary a:focus-visible {
+  color: var(--route-accent, var(--brand));
+  border-bottom-color: currentColor;
+}
+
+.route-itinerary-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--route-accent, var(--brand)) 16%, var(--surface-2));
+  color: color-mix(in srgb, var(--route-accent, var(--brand)) 80%, var(--ink));
+  font-size: 0.66rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Place detail: walking-route callout + nearby places. */
+.place-route-callout .place-route-item {
+  border-left: 3px solid var(--route-accent, var(--brand));
+  padding: 2px 0 4px 12px;
+  margin-top: 10px;
+  display: grid;
+  gap: 4px;
+}
+
+.place-route-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.place-nearby-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.place-nearby-list li {
+  display: grid;
+  gap: 2px;
+}
+
+.place-nearby-list .meta {
+  font-size: 0.8rem;
+}
+
+.place-nearby-note {
+  margin-top: 10px;
+  font-size: 0.78rem;
+}
+
+@media (max-width: 760px) {
+  .route-strip {
+    padding: 12px;
+  }
+
+  .route-strip-label {
+    flex-basis: 100%;
+  }
+}
