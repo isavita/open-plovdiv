@@ -1182,6 +1182,43 @@ p:last-child {
   gap: 10px;
 }
 
+/* Homepage essentials — photo-led place cards (Commons media with credit). */
+.essential-card {
+  padding: 0;
+}
+
+.essential-media {
+  margin: 0;
+  position: relative;
+  background: var(--surface-3);
+}
+
+.essential-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.essential-media figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 4px 10px;
+  font-size: 0.66rem;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.92);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
+}
+
+.essential-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 auto;
+  padding: clamp(16px, 2.2vw, 22px);
+}
+
 /* ---- Hero stats ---------------------------------------------------------- */
 
 .stat-row {
@@ -1212,6 +1249,22 @@ p:last-child {
   background: radial-gradient(circle, color-mix(in srgb, var(--gold) 35%, transparent), transparent 70%);
   opacity: 0.5;
   pointer-events: none;
+}
+
+/* Hero stats double as quiet links into the catalogues they count. */
+a.stat {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+a.stat:hover,
+a.stat:focus-visible {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--gold) 45%, var(--line));
+  box-shadow: var(--shadow-card-hover);
+  outline: none;
 }
 
 .stat strong {
@@ -1445,6 +1498,13 @@ p:last-child {
   background: var(--surface-3);
   border-color: var(--brand);
   color: var(--brand);
+}
+
+/* Homepage "explore more" row under the civic cards. */
+.home-more {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
 }
 
 .money {
@@ -3915,54 +3975,63 @@ code {
   font-size: 1.05rem;
 }
 
-/* Homepage "mayors" portrait strip — a visual way into the full catalogue. */
-.home-mayors-lead {
-  margin: 6px 0 0;
-  max-width: 70ch;
+/* Homepage mayors chronology preview — the first mayor to take office in
+   each political period, from the Liberation to the incumbent. */
+.mayor-era-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
 }
-.mayor-strip {
-  list-style: none;
-  margin: 20px 0 0;
-  padding: 2px 0 10px;
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
+
+@media (max-width: 980px) {
+  .mayor-era-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
-.mayor-strip > li {
-  flex: 0 0 auto;
-  width: 116px;
-  scroll-snap-align: start;
+
+@media (max-width: 430px) {
+  .mayor-era-grid {
+    grid-template-columns: 1fr;
+  }
 }
-.mayor-strip a {
-  display: flex;
-  flex-direction: column;
+
+.mayor-era-card {
   align-items: center;
   text-align: center;
-  gap: 7px;
-  text-decoration: none;
-  color: inherit;
+  gap: 6px;
 }
-.mayor-portrait-strip {
-  width: 104px;
-  height: 128px;
-  border-radius: 12px;
+
+.mayor-era-card .eyebrow {
+  margin: 0 0 4px;
 }
-.mayor-strip strong {
-  font-size: 0.92rem;
-  line-height: 1.22;
-  font-weight: 600;
+
+.mayor-era-portrait {
+  width: 108px;
+  height: 132px;
+  border-radius: 14px;
 }
-.mayor-strip span {
-  font-size: 0.82rem;
+
+.mayor-era-portrait.mayor-portrait-fallback {
+  font-size: 1.5rem;
+}
+
+.mayor-era-card h3 {
+  margin: 6px 0 0;
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.mayor-era-years {
   color: var(--muted);
+  font-size: 0.88rem;
+  margin: 0;
 }
-.mayor-strip a:hover strong {
-  color: var(--accent);
+
+.mayor-era-card .badge {
+  margin-top: 6px;
 }
-.mayor-strip a:hover .mayor-portrait-strip {
-  border-color: var(--accent);
+
+.mayor-era-card .arrow {
+  padding-top: 10px;
 }
 .mayor-card-head {
   display: flex;

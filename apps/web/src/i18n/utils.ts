@@ -91,6 +91,12 @@ export function field(
   if (!record) return "";
   const localized = record[`${base}_${lang}`];
   if (typeof localized === "string" && localized.length > 0) return localized;
+  // The unsuffixed field is the Bulgarian source value — on the default locale
+  // it beats the English translation (e.g. sources.json `used_for`/`used_for_en`).
+  if (lang === defaultLang) {
+    const bulgarianSource = record[base];
+    if (typeof bulgarianSource === "string" && bulgarianSource.length > 0) return bulgarianSource;
+  }
   const english = record[`${base}_en`];
   if (typeof english === "string" && english.length > 0) {
     return shouldTranslateField(record, base) ? translateEn(english, lang) ?? english : english;

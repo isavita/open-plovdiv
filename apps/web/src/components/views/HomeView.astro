@@ -4,7 +4,15 @@ import Ornament from "@components/Ornament.astro";
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
-import { plovdivLandmarks, cityArchive, storyLongreads, type HistoryEra } from "@lib/data";
+import { commonsImageUrl } from "@lib/commons";
+import {
+  plovdivLandmarks,
+  cityArchive,
+  historyKnowledgePlaces,
+  sourceRegistry,
+  storyLongreads,
+  type HistoryEra
+} from "@lib/data";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -21,23 +29,18 @@ const eraOrder: HistoryEra[] = [
   "modern"
 ];
 
-const mayorCount = cityArchive.filter((r) => r.kind === "mayor_term").length;
-
-const stats = [
-  { value: t.home.statYearsValue, label: t.home.statYears },
-  { value: String(eraOrder.length), label: t.home.statEras },
-  { value: String(mayorCount), label: t.home.statMayors },
-  { value: String(plovdivLandmarks.length), label: t.home.statLandmarks }
-];
-
-// A small, chronological set of mayors with portraits — a visual way into the
-// full 1878→today catalogue (not a "most important" claim).
-const mayorsWithPortraits = cityArchive
-  .filter((r) => r.kind === "mayor_term" && r.image)
+const mayorTerms = cityArchive
+  .filter((r) => r.kind === "mayor_term")
   .sort((a, b) => a.year_start - b.year_start);
-const featuredMayors = [
-  ...new Set([0, 0.25, 0.5, 0.72, 1].map((f) => Math.round(f * (mayorsWithPortraits.length - 1))))
-].map((i) => mayorsWithPortraits[i]);
+const mayorCount = mayorTerms.length;
+
+// Each hero stat doubles as a quiet link into the catalogue it counts.
+const stats = [
+  { value: t.home.statYearsValue, label: t.home.statYears, href: localizePath("/history", lang) },
+  { value: String(eraOrder.length), label: t.home.statEras, href: localizePath("/history", lang) + "#timeline" },
+  { value: String(mayorCount), label: t.home.statMayors, href: localizePath("/mayors", lang) },
+  { value: String(plovdivLandmarks.length), label: t.home.statLandmarks, href: localizePath("/places", lang) }
+];
 
 const tr = (
   bg: string,
@@ -198,28 +201,90 @@ const labels = {
     "市内最古の居住地。先史時代の集落跡から、屋根越しに最高の夕日を望めます。"
   ),
   allPlaces: tr("Всички места", "All places", "Alle Orte", "Tous les lieux", "Tutti i luoghi", "Tüm yerler", "Todos los lugares", "Όλα τα μέρη", "すべての場所"),
-  politicalTitle: tr(
-    "Кой е управлявал — и как да помогнеш днес",
-    "Who governed — and how to help today",
-    "Wer regierte — und wie man heute hilft",
-    "Qui a gouverné — et comment aider aujourd'hui",
-    "Chi ha governato — e come aiutare oggi",
-    "Kim yönetti — ve bugün nasıl yardım edilir",
-    "Quién gobernó y cómo ayudar hoy",
-    "Ποιος κυβέρνησε — και πώς να βοηθήσετε σήμερα",
-    "誰が統治したか — そして今日できる協力"
+  mayorsTitle: tr(
+    "От първия кмет до днешния",
+    "From the first mayor to today's",
+    "Vom ersten Bürgermeister bis heute",
+    "Du premier maire à celui d'aujourd'hui",
+    "Dal primo sindaco a quello di oggi",
+    "İlk belediye başkanından bugünküne",
+    "Del primer alcalde al actual",
+    "Από τον πρώτο δήμαρχο έως τον σημερινό",
+    "初代市長から現職まで"
   ),
-  politicalLead: tr(
-    "Извън разходките: пълната хронология на кметовете от 1878 г., архивът на управлението и тихи начини да се включите — без профили и без шум.",
-    "Beyond the walks: the full chronology of mayors since 1878, the governance archive, and quiet ways to take part — no accounts, no noise.",
-    "Jenseits der Spaziergänge: die vollständige Chronologie der Bürgermeister seit 1878, das Verwaltungsarchiv und stille Wege mitzumachen — ohne Konten, ohne Lärm.",
-    "Au-delà des promenades : la chronologie complète des maires depuis 1878, les archives de la gouvernance et des façons discrètes de participer — sans comptes, sans bruit.",
-    "Oltre le passeggiate: la cronologia completa dei sindaci dal 1878, l'archivio del governo cittadino e modi discreti per partecipare — senza account, senza rumore.",
-    "Yürüyüşlerin ötesinde: 1878'den bu yana belediye başkanlarının tam kronolojisi, yönetim arşivi ve sessizce katılma yolları — hesapsız, gürültüsüz.",
-    "Más allá de los paseos: la cronología completa de los alcaldes desde 1878, el archivo de la gobernanza y formas discretas de participar, sin cuentas ni ruido.",
-    "Πέρα από τους περιπάτους: η πλήρης χρονολογία των δημάρχων από το 1878, το αρχείο της διακυβέρνησης και ήσυχοι τρόποι συμμετοχής — χωρίς λογαριασμούς, χωρίς θόρυβο.",
-    "散策の先へ。1878年以降の市長の完全な年譜、市政アーカイブ、そして静かに参加できる方法 — アカウントは不要です。"
+  mayorsLead: tr(
+    "По един кмет от началото на всеки политически период — от Освобождението до действащия мандат. Пълната хронология проследява всички мандати с биографии и източници.",
+    "One mayor from the start of each political period — from the Liberation to the current term. The full chronology traces every term with biographies and sources.",
+    "Je ein Bürgermeister vom Beginn jeder politischen Periode — von der Befreiung bis zur aktuellen Amtszeit. Die vollständige Chronologie erfasst jedes Mandat mit Biografien und Quellen.",
+    "Un maire au début de chaque période politique — de la Libération au mandat en cours. La chronologie complète retrace chaque mandat avec biographies et sources.",
+    "Un sindaco per l'inizio di ogni periodo politico — dalla Liberazione al mandato in corso. La cronologia completa ripercorre ogni mandato con biografie e fonti.",
+    "Her siyasi dönemin başından birer belediye başkanı — Kurtuluş'tan görevdeki başkana. Tam kronoloji, tüm görev sürelerini biyografiler ve kaynaklarla izler.",
+    "Un alcalde del inicio de cada periodo político: de la Liberación al mandato actual. La cronología completa recorre todos los mandatos con biografías y fuentes.",
+    "Ένας δήμαρχος από την αρχή κάθε πολιτικής περιόδου — από την Απελευθέρωση έως τη σημερινή θητεία. Το πλήρες χρονολόγιο καλύπτει όλες τις θητείες με βιογραφίες και πηγές.",
+    "各政治時代の最初の市長を一人ずつ — 解放から現職まで。完全な年譜では、すべての任期を経歴と出典つきでたどれます。"
   ),
+  eraLiberation: tr("След Освобождението", "Post-Liberation", "Nach der Befreiung", "Après la Libération", "Post-Liberazione", "Kurtuluş sonrası", "Posliberación", "Μετά την Απελευθέρωση", "解放後"),
+  eraSocialist: tr("Социалистически период", "Socialist period", "Sozialistische Periode", "Période socialiste", "Periodo socialista", "Sosyalist dönem", "Periodo socialista", "Σοσιαλιστική περίοδος", "社会主義時代"),
+  eraDemocratic: tr("Демократичен период", "Democratic period", "Demokratische Periode", "Période démocratique", "Periodo democratico", "Demokratik dönem", "Periodo democrático", "Δημοκρατική περίοδος", "民主化以降"),
+  eraCurrent: tr("Настоящ мандат", "Current office", "Aktuelle Amtszeit", "Mandat en cours", "Mandato in corso", "Görevdeki başkan", "Mandato actual", "Τρέχουσα θητεία", "現職"),
+  allMayors: tr("Всички кметове", "All mayors", "Alle Bürgermeister", "Tous les maires", "Tutti i sindaci", "Tüm başkanlar", "Todos los alcaldes", "Όλοι οι δήμαρχοι", "歴代市長一覧"),
+  civicTitle: tr(
+    "Управление, участие и източници",
+    "Governance, participation and sources",
+    "Verwaltung, Beteiligung und Quellen",
+    "Gouvernance, participation et sources",
+    "Governo, partecipazione e fonti",
+    "Yönetim, katılım ve kaynaklar",
+    "Gobernanza, participación y fuentes",
+    "Διακυβέρνηση, συμμετοχή και πηγές",
+    "市政・参加・出典"
+  ),
+  civicLead: tr(
+    "Гражданската страна на сайта: архивът на управлението, тихи начини да помогнете и откъде идва всяко твърдение — без профили и без шум.",
+    "The civic side of the site: the governance archive, quiet ways to help, and where every claim comes from — no accounts, no noise.",
+    "Die bürgerschaftliche Seite: das Verwaltungsarchiv, stille Wege zu helfen und die Herkunft jeder Angabe — ohne Konten, ohne Lärm.",
+    "Le versant civique du site : les archives de la gouvernance, des façons discrètes d'aider et l'origine de chaque affirmation — sans comptes, sans bruit.",
+    "Il lato civico del sito: l'archivio del governo cittadino, modi discreti per aiutare e l'origine di ogni affermazione — senza account, senza rumore.",
+    "Sitenin yurttaş tarafı: yönetim arşivi, sessizce yardım etme yolları ve her ifadenin kaynağı — hesapsız, gürültüsüz.",
+    "El lado cívico del sitio: el archivo de la gobernanza, formas discretas de ayudar y el origen de cada afirmación, sin cuentas ni ruido.",
+    "Η πολιτική πλευρά του ιστότοπου: το αρχείο της διακυβέρνησης, ήσυχοι τρόποι να βοηθήσετε και η προέλευση κάθε ισχυρισμού — χωρίς λογαριασμούς, χωρίς θόρυβο.",
+    "サイトの市民的な側面。市政アーカイブ、静かに助ける方法、そしてすべての記述の出典 — アカウントは不要です。"
+  ),
+  govCardTitle: tr(
+    "Архивът на управлението",
+    "The governance archive",
+    "Das Verwaltungsarchiv",
+    "Les archives de la gouvernance",
+    "L'archivio del governo cittadino",
+    "Yönetim arşivi",
+    "El archivo de la gobernanza",
+    "Το αρχείο της διακυβέρνησης",
+    "市政アーカイブ"
+  ),
+  sourcesCardTitle: tr(
+    "Източници и методология",
+    "Sources and methodology",
+    "Quellen und Methodik",
+    "Sources et méthodologie",
+    "Fonti e metodologia",
+    "Kaynaklar ve yöntem",
+    "Fuentes y metodología",
+    "Πηγές και μεθοδολογία",
+    "出典と方法論"
+  ),
+  sourcesCardText: tr(
+    "Регистър на всички използвани източници — какво покриват, какви са ограниченията им и кога са проверени.",
+    "A register of every source used — what it covers, its limitations, and when it was checked.",
+    "Ein Register aller verwendeten Quellen — was sie abdecken, ihre Grenzen und wann sie geprüft wurden.",
+    "Un registre de toutes les sources utilisées — ce qu'elles couvrent, leurs limites et la date de leur vérification.",
+    "Un registro di tutte le fonti utilizzate — cosa coprono, i loro limiti e quando sono state verificate.",
+    "Kullanılan tüm kaynakların kaydı — neyi kapsadıkları, sınırları ve ne zaman doğrulandıkları.",
+    "Un registro de todas las fuentes utilizadas: qué cubren, sus limitaciones y cuándo se comprobaron.",
+    "Μητρώο όλων των πηγών που χρησιμοποιούνται — τι καλύπτουν, τους περιορισμούς τους και πότε ελέγχθηκαν.",
+    "使用したすべての出典の一覧 — 対象範囲、限界、確認日を記載。"
+  ),
+  sourcesCount: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "件の出典"),
+  moreLabel: tr("Разгледай още:", "Explore more:", "Mehr entdecken:", "À explorer aussi :", "Da esplorare:", "Daha fazlası:", "Más para explorar:", "Περισσότερα:", "さらに見る："),
   govCardText: tr(
     "Архивни промени, проекти и източници — подредени като доказателства за това какво се е променило.",
     "Archive changes, projects and sources — arranged as evidence of what changed.",
@@ -248,6 +313,43 @@ const labels = {
   openGovernance: tr("Управление", "Governance", "Governance", "Gouvernance", "Governo", "Yönetim", "Gobernanza", "Διακυβέρνηση", "統治"),
   evidenceLabel: tr("с източници", "with sources", "mit Quellen", "avec sources", "con fonti", "kaynaklı", "con fuentes", "με πηγές", "出典付き"),
   storiesCountLabel: tr("илюстрирани разказа", "illustrated stories", "illustrierte Geschichten", "récits illustrés", "racconti illustrati", "resimli anlatı", "relatos ilustrados", "εικονογραφημένες αφηγήσεις", "図版つきの物語")
+};
+
+// Mayors preview: the first mayor to take office in each of the city's four
+// political periods (same bands as the /mayors chronology). A deterministic,
+// factual selection — from the Liberation to the incumbent.
+const mayorPeriods = [
+  { start: 1878, end: 1944, label: labels.eraLiberation },
+  { start: 1945, end: 1989, label: labels.eraSocialist },
+  { start: 1990, end: 2022, label: labels.eraDemocratic },
+  { start: 2023, end: null as number | null, label: labels.eraCurrent }
+]
+  .map((band) => {
+    const terms = mayorTerms.filter(
+      (m) => m.year_start >= band.start && (band.end == null || m.year_start <= band.end)
+    );
+    return { ...band, count: terms.length, mayor: terms[0] };
+  })
+  .filter((band) => band.mayor);
+
+const termYears = (m: (typeof mayorTerms)[number]): string =>
+  m.year_end == null ? `${m.year_start}–` : m.year_end === m.year_start ? `${m.year_start}` : `${m.year_start}–${m.year_end}`;
+
+const initialsOf = (name: string): string =>
+  name
+    .replace(/^(д-р|Д-р|инж\.)\s+/u, "")
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0] ?? "")
+    .join("");
+
+// Commons photo (with credit) for an essentials place card.
+const placeMedia = (id: string) => {
+  const media = historyKnowledgePlaces.find((p) => p.id === id)?.media?.[0];
+  return media
+    ? { src: commonsImageUrl(media.url, 640), credit: `${media.credit} · ${media.license}` }
+    : null;
 };
 
 // The four visitor-first entry paths: history, routes, places, stories.
@@ -289,26 +391,38 @@ const essentials = [
     href: localizePath("/places/place-old-town", lang),
     eyebrow: labels.oldTownEyebrow,
     title: labels.oldTownTitle,
-    text: labels.oldTownText
+    text: labels.oldTownText,
+    media: placeMedia("place-old-town")
   },
   {
     href: localizePath("/places/place-ancient-theatre", lang),
     eyebrow: labels.theatreEyebrow,
     title: labels.theatreTitle,
-    text: labels.theatreText
+    text: labels.theatreText,
+    media: placeMedia("place-ancient-theatre")
   },
   {
     href: localizePath("/places/place-kapana-q12282547", lang),
     eyebrow: labels.kapanaEyebrow,
     title: labels.kapanaTitle,
-    text: labels.kapanaText
+    text: labels.kapanaText,
+    media: placeMedia("place-kapana-q12282547")
   },
   {
     href: localizePath("/places/place-nebet-tepe", lang),
     eyebrow: labels.nebetEyebrow,
     title: labels.nebetTitle,
-    text: labels.nebetText
+    text: labels.nebetText,
+    media: placeMedia("place-nebet-tepe")
   }
+];
+
+// Quiet secondary destinations under the civic section.
+const moreLinks = [
+  { href: localizePath("/people", lang), label: t.nav.people },
+  { href: localizePath("/archive", lang), label: t.nav.archive },
+  { href: localizePath("/overview", lang), label: t.nav.overview },
+  { href: localizePath("/projects", lang), label: t.nav.projects }
 ];
 ---
 
@@ -324,11 +438,11 @@ const essentials = [
         <a class="button" href={localizePath("/history", lang)}>
           {t.home.ctaHistory}<span class="arrow" aria-hidden="true">→</span>
         </a>
-        <a class="button secondary" href={localizePath("/routes", lang)}>{labels.openRoutes}</a>
+        <a class="button secondary" href={localizePath("/routes", lang)}>{labels.routesPath}</a>
       </div>
       <div class="stat-row" aria-label={t.history.title}>
         {stats.map((s) => (
-          <div class="stat"><strong>{s.value}</strong><span>{s.label}</span></div>
+          <a class="stat" href={s.href}><strong>{s.value}</strong><span>{s.label}</span></a>
         ))}
       </div>
     </div>
@@ -369,11 +483,26 @@ const essentials = [
       </div>
       <div class="grid grid-2">
         {essentials.map((place) => (
-          <a class="card card-link" href={place.href}>
-            <p class="eyebrow">{place.eyebrow}</p>
-            <h3>{place.title}</h3>
-            <p>{place.text}</p>
-            <span class="arrow" aria-hidden="true">→</span>
+          <a class="card card-link essential-card" href={place.href}>
+            {place.media && (
+              <figure class="essential-media">
+                <img
+                  src={place.media.src}
+                  alt={place.title}
+                  loading="lazy"
+                  decoding="async"
+                  width="640"
+                  height="400"
+                />
+                <figcaption>{place.media.credit}</figcaption>
+              </figure>
+            )}
+            <div class="essential-body">
+              <p class="eyebrow">{place.eyebrow}</p>
+              <h3>{place.title}</h3>
+              <p>{place.text}</p>
+              <span class="arrow" aria-hidden="true">→</span>
+            </div>
           </a>
         ))}
       </div>
@@ -386,22 +515,57 @@ const essentials = [
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>{labels.politicalTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.politicalLead}</p>
+          <p class="eyebrow">{t.nav.mayors} · 1878–{new Date().getFullYear()}</p>
+          <h2>{labels.mayorsTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.mayorsLead}</p>
         </div>
-        <a href={localizePath("/governance", lang)}>{labels.openGovernance} →</a>
+        <a href={localizePath("/mayors", lang)}>{labels.allMayors} →</a>
       </div>
-      <div class="grid grid-3" style="align-items:start;margin-bottom:24px">
-        <a class="card card-link" href={localizePath("/mayors", lang)}>
-          <p class="eyebrow">{t.nav.mayors}</p>
-          <h3>{t.home.cardMayorsTitle}</h3>
-          <p>{t.home.cardMayorsText}</p>
-          <span class="badge no-dot">{mayorCount} {labels.evidenceLabel}</span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
+      <div class="grid mayor-era-grid">
+        {mayorPeriods.map((band) => (
+          <a class="card card-link mayor-era-card" href={localizePath(`/mayors/${band.mayor.id}`, lang)}>
+            <p class="eyebrow">{band.label}</p>
+            {band.mayor.image ? (
+              <img
+                class="mayor-portrait mayor-era-portrait"
+                src={band.mayor.image}
+                alt={t.mayors.portraitAlt(field(band.mayor, "actor", lang))}
+                loading="lazy"
+                decoding="async"
+                width="108"
+                height="132"
+              />
+            ) : (
+              <span class="mayor-portrait mayor-portrait-fallback mayor-era-portrait" aria-hidden="true">
+                {initialsOf(field(band.mayor, "actor", lang))}
+              </span>
+            )}
+            <h3>{field(band.mayor, "actor", lang)}</h3>
+            <p class="mayor-era-years">{termYears(band.mayor)}</p>
+            <span class="badge no-dot">
+              {band.end == null ? t.archive.currentMayor : `${band.start}–${band.end} · ${t.mayors.count(band.count)}`}
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Ornament />
+
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{labels.civicTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.civicLead}</p>
+        </div>
+      </div>
+      <div class="grid grid-3" style="align-items:start">
         <a class="card card-link" href={localizePath("/governance", lang)}>
           <p class="eyebrow">{labels.openGovernance}</p>
-          <h3>{labels.openGovernance}</h3>
+          <h3>{labels.govCardTitle}</h3>
           <p>{labels.govCardText}</p>
           <span class="badge no-dot">{t.nav.projects}</span>
           <span class="arrow" aria-hidden="true">→</span>
@@ -413,26 +577,20 @@ const essentials = [
           <span class="badge no-dot">{t.home.statReportsValue} · {t.home.statReports}</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
+        <a class="card card-link" href={localizePath("/data-sources", lang)}>
+          <p class="eyebrow">{t.footer.sources}</p>
+          <h3>{labels.sourcesCardTitle}</h3>
+          <p>{labels.sourcesCardText}</p>
+          <span class="badge no-dot">{sourceRegistry.length} {labels.sourcesCount}</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
       </div>
-      <ul class="mayor-strip" role="list">
-        {featuredMayors.map((m) => (
-          <li>
-            <a href={localizePath("/mayors", lang)}>
-              <img
-                class="mayor-portrait mayor-portrait-strip"
-                src={m.image}
-                alt={t.mayors.portraitAlt(field(m, "actor", lang))}
-                loading="lazy"
-                decoding="async"
-                width="104"
-                height="128"
-              />
-              <strong>{field(m, "actor", lang)}</strong>
-              <span>{!m.year_end ? `${m.year_start}–` : m.year_end === m.year_start ? `${m.year_start}` : `${m.year_start}–${m.year_end}`}</span>
-            </a>
-          </li>
+      <div class="pill-row home-more">
+        <span class="meta">{labels.moreLabel}</span>
+        {moreLinks.map((link) => (
+          <a class="meta" href={link.href}>{link.label}</a>
         ))}
-      </ul>
+      </div>
     </div>
   </section>
 </Layout>
