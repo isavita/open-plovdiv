@@ -441,6 +441,71 @@ const labels =
         }
       };
 
+const trc = (
+  bg: string,
+  en: string,
+  de: string,
+  fr: string,
+  it: string,
+  trk: string,
+  es: string,
+  el: string,
+  ja: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja } satisfies Record<Lang, string>)[lang];
+
+// Compact "how it works" steps + trust chips shown above the form.
+const steps = [
+  {
+    title: trc("Опишете приноса", "Describe the contribution", "Beitrag beschreiben", "Décrivez la contribution", "Descrivete il contributo", "Katkıyı anlatın", "Describa la contribución", "Περιγράψτε τη συνεισφορά", "内容を記入"),
+    hint: trc(
+      "Снимка, спомен или източник — какво показва и откъде идва.",
+      "A photo, memory or source — what it shows and where it comes from.",
+      "Foto, Erinnerung oder Quelle — was sie zeigt und woher sie stammt.",
+      "Photo, souvenir ou source — ce qu'elle montre et d'où elle vient.",
+      "Foto, ricordo o fonte — cosa mostra e da dove proviene.",
+      "Fotoğraf, anı veya kaynak — neyi gösterdiği ve nereden geldiği.",
+      "Foto, recuerdo o fuente: qué muestra y de dónde procede.",
+      "Φωτογραφία, ανάμνηση ή πηγή — τι δείχνει και από πού προέρχεται.",
+      "写真・思い出・出典 — 何が写っていて、どこから来たのか。"
+    )
+  },
+  {
+    title: trc("Посочете произхода", "State the provenance", "Herkunft angeben", "Indiquez la provenance", "Indicate la provenienza", "Kaynağını belirtin", "Indique la procedencia", "Δηλώστε την προέλευση", "出所を明記"),
+    hint: trc(
+      "Линк или бележка за произхода; място на картата по избор.",
+      "A link or a provenance note; a map location is optional.",
+      "Link oder Herkunftshinweis; Kartenpunkt optional.",
+      "Un lien ou une note de provenance ; le lieu sur la carte est facultatif.",
+      "Un link o una nota di provenienza; il punto sulla mappa è facoltativo.",
+      "Bağlantı veya köken notu; haritada konum isteğe bağlıdır.",
+      "Un enlace o una nota de procedencia; la ubicación es opcional.",
+      "Σύνδεσμος ή σημείωση προέλευσης· το σημείο στον χάρτη είναι προαιρετικό.",
+      "リンクまたは出所メモ。地図上の場所は任意です。"
+    )
+  },
+  {
+    title: trc("Редакторска проверка", "Editorial review", "Redaktionelle Prüfung", "Vérification éditoriale", "Verifica editoriale", "Editoryal inceleme", "Revisión editorial", "Συντακτικός έλεγχος", "編集チェック"),
+    hint: trc(
+      "Права, лични данни и източник се проверяват преди публикуване.",
+      "Rights, personal data and the source are checked before publishing.",
+      "Rechte, persönliche Daten und Quelle werden vor der Veröffentlichung geprüft.",
+      "Droits, données personnelles et source sont vérifiés avant publication.",
+      "Diritti, dati personali e fonte vengono verificati prima della pubblicazione.",
+      "Yayından önce haklar, kişisel veriler ve kaynak kontrol edilir.",
+      "Derechos, datos personales y fuente se comprueban antes de publicar.",
+      "Δικαιώματα, προσωπικά δεδομένα και πηγή ελέγχονται πριν τη δημοσίευση.",
+      "公開前に権利・個人情報・出典を確認します。"
+    )
+  }
+];
+
+const trustChips = [
+  trc("Без профили", "No accounts", "Ohne Konto", "Sans compte", "Senza account", "Hesap gerekmez", "Sin cuentas", "Χωρίς λογαριασμούς", "アカウント不要"),
+  trc("Без лични данни", "No personal data", "Keine persönlichen Daten", "Sans données personnelles", "Niente dati personali", "Kişisel veri yok", "Sin datos personales", "Χωρίς προσωπικά δεδομένα", "個人情報なし"),
+  trc("EXIF/GPS се премахват", "EXIF/GPS stripped", "EXIF/GPS entfernt", "EXIF/GPS supprimés", "EXIF/GPS rimossi", "EXIF/GPS silinir", "EXIF/GPS eliminados", "Αφαίρεση EXIF/GPS", "EXIF/GPS除去"),
+  trc("Редакторска проверка", "Editorial review", "Redaktionelle Prüfung", "Vérification éditoriale", "Verifica editoriale", "Editoryal inceleme", "Revisión editorial", "Συντακτικός έλεγχος", "編集チェック")
+];
+
 const config = {
   lang,
   apiUrl: "/api/reports",
@@ -452,7 +517,7 @@ const config = {
 ---
 
 <Layout lang={lang} path="/history/contribute" title={labels.title} description={labels.lead}>
-  <section class="page-head">
+  <section class="page-head" data-section="history">
     <div class="container">
       <nav class="breadcrumb" aria-label="breadcrumb">
         <a href={localizePath("/", lang)}>{t.nav.home}</a>
@@ -467,8 +532,23 @@ const config = {
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <section class="section" style="padding-top:0" data-section="history">
     <div class="container">
+      <ol class="step-strip">
+        {steps.map((step) => (
+          <li>
+            <strong>{step.title}</strong>
+            <span>{step.hint}</span>
+          </li>
+        ))}
+      </ol>
+
+      <div class="trust-chips">
+        {trustChips.map((chip) => (
+          <span class="trust-chip">{chip}</span>
+        ))}
+      </div>
+
       <div class="notice" style="margin-bottom:22px">
         <span class="notice-icon" aria-hidden="true">ⓘ</span>
         <span>{labels.notice}</span>

@@ -3337,6 +3337,17 @@ a.stat:focus-visible {
   background: var(--surface-2);
 }
 
+/* Richer empty state: message + a recovery action (e.g. reset filters). */
+.empty-state {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}
+
+.empty-state p {
+  margin: 0;
+}
+
 .error {
   color: var(--badge-bad-fg);
   border-color: color-mix(in srgb, var(--badge-bad-fg) 40%, transparent);
@@ -7689,6 +7700,176 @@ details[open] > .htree-event-sum .htree-caret::after {
   font-size: 0.66rem;
   font-weight: 700;
   flex-shrink: 0;
+}
+
+/* ---- Civic action surfaces ------------------------------------------------
+   Step strips, trust chips and the moderation status flow used on /fix-map,
+   /fix-map/report, /community and /history/contribute. */
+
+/* Numbered "how it works" steps above the submission forms. */
+.step-strip {
+  list-style: none;
+  counter-reset: step;
+  margin: 0 0 14px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.step-strip li {
+  counter-increment: step;
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 12px 14px 12px 46px;
+}
+
+.step-strip li::before {
+  content: counter(step);
+  position: absolute;
+  left: 13px;
+  top: 13px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--section-accent, var(--brand)) 14%, var(--surface-2));
+  color: color-mix(in srgb, var(--section-accent, var(--brand)) 85%, var(--ink));
+  font-weight: 750;
+  font-size: 0.78rem;
+}
+
+.step-strip strong {
+  display: block;
+  font-size: 0.92rem;
+  margin-bottom: 2px;
+}
+
+.step-strip span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 760px) {
+  .step-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Compact trust/safety chips ("no accounts", "EXIF stripped", …). */
+.trust-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 18px;
+}
+
+.trust-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  min-height: 28px;
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.trust-chip::before {
+  content: "✓";
+  color: var(--badge-ok-fg);
+  font-weight: 800;
+}
+
+/* Moderation pipeline: a vertical flow of status badges with descriptions. */
+.status-flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.status-flow li {
+  position: relative;
+  padding: 0 0 18px 28px;
+}
+
+.status-flow li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.status-flow li::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 21px;
+  bottom: 0;
+  width: 2px;
+  background: var(--line);
+}
+
+.status-flow li:last-child {
+  padding-bottom: 0;
+}
+
+.status-flow li:last-child::after {
+  display: none;
+}
+
+.status-flow .meta {
+  margin: 6px 0 0;
+}
+
+/* Side outcome ("closed") shown apart from the main pipeline. */
+.status-flow-aside {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r);
+  background: var(--surface-2);
+}
+
+.status-flow-aside .meta {
+  margin: 6px 0 0;
+}
+
+/* Map detail panel: engraved-pin empty/select states. */
+.detail-empty {
+  text-align: center;
+  padding: 10px 6px;
+}
+
+.detail-empty-glyph {
+  display: block;
+  width: 42px;
+  height: 42px;
+  margin: 6px auto 10px;
+  color: color-mix(in srgb, var(--data-events) 65%, var(--ink-2));
+}
+
+.detail-empty-glyph svg {
+  width: 100%;
+  height: 100%;
+}
+
+.detail-empty h2 {
+  font-size: 1.12rem;
+  margin: 0 0 6px;
 }
 
 /* Place detail: walking-route callout + nearby places. */
