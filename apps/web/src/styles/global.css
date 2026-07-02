@@ -1439,6 +1439,52 @@ p:last-child {
   stroke-linecap: round;
 }
 
+/* ---- Bust fallback -------------------------------------------------------
+   Portrait fallback used wherever a person has no licensed image: the shared
+   engraved bust glyph with a small monogram over the shoulders. The container
+   keeps its context class (person-avatar-fallback, mayor-portrait-fallback…)
+   for size/tint; these rules only lay out the glyph + monogram inside it. */
+.bust-fallback {
+  position: relative;
+  overflow: hidden;
+}
+
+.bust-fallback svg {
+  position: absolute;
+  inset: 6% 0 0;
+  width: 100%;
+  height: 94%;
+}
+
+.bust-mono {
+  position: absolute;
+  inset: auto 0 5%;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Mayor contexts: warm the engraved bust to the section's gilded accent. */
+.mayor-portrait-fallback.bust-fallback {
+  color: color-mix(in srgb, var(--data-growth) 60%, var(--ink-2));
+  background: color-mix(in srgb, var(--data-growth) 10%, var(--surface-3));
+}
+
+/* Larger formats get a larger monogram. */
+.mayor-era-portrait .bust-mono {
+  font-size: 0.85rem;
+}
+
+.mayor-portrait-lg .bust-mono,
+.person-profile-initials .bust-mono {
+  font-size: 1.3rem;
+  inset: auto 0 9%;
+}
+
 /* ---- Section identities --------------------------------------------------
    Every top-level page head carries a `data-section` key: it sets the accent
    (from the theme-aware data palette) used by the eyebrow and the engraved

@@ -10,7 +10,7 @@ import {
   historyKnowledgeSources,
   type KnowledgePerson
 } from "@lib/data";
-import { sectionMotifs } from "@lib/motifs";
+import { bustGlyph, sectionMotifs } from "@lib/motifs";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -655,6 +655,40 @@ const roleGroups: Record<string, keyof typeof groupLabels> = {
 const groupOrder = ["governance", "culture", "science", "faith", "sport", "civic"] as const;
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 
+// Clickable group legend above the catalogue — same colours as the
+// `.people-group-*` card accents, counts derived with the client's
+// primary-group rule (first role wins, "civic" as fallback).
+const groupColors: Record<string, string> = {
+  governance: "#15657f",
+  culture: "#b4632a",
+  science: "#5d6b8a",
+  faith: "#2f7d6b",
+  sport: "#8a2f3b",
+  civic: "#7d8471"
+};
+const groupCounts = new Map<string, number>();
+for (const person of historyKnowledgePeople) {
+  const group = roleGroups[person.roles?.[0] ?? ""] ?? "civic";
+  groupCounts.set(group, (groupCounts.get(group) ?? 0) + 1);
+}
+const groupLegend = groupOrder.map((group) => ({
+  group,
+  label: groupLabels[group],
+  color: groupColors[group],
+  count: groupCounts.get(group) ?? 0
+}));
+const legendLabel = ({
+  bg: "Групи — натиснете, за да филтрирате",
+  en: "Groups — click to filter",
+  de: "Gruppen — zum Filtern klicken",
+  fr: "Groupes — cliquez pour filtrer",
+  it: "Gruppi — clicca per filtrare",
+  tr: "Gruplar — filtrelemek için tıklayın",
+  es: "Grupos — pulse para filtrar",
+  el: "Ομάδες — πατήστε για φιλτράρισμα",
+  ja: "グループ — クリックで絞り込み"
+} satisfies Record<Lang, string>)[lang];
+
 function localized(record: Record<string, any>, base: string): string {
   return String(
     record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""
@@ -811,6 +845,7 @@ const nodeConfig = {
     sources: historyKnowledgeIndex.endpoints.sources
   },
   groupLabels,
+  bustGlyph,
   relationshipLabels: clientRelationshipLabels,
   roleGroups,
   roleLabels: clientRoleLabels,
@@ -896,6 +931,23 @@ const nodeConfig = {
           <h2>{labels.connectionsTitle}</h2>
           <p class="meta" style="margin-top:8px;max-width:78ch">{labels.connectionsLead}</p>
         </div>
+      </div>
+
+      <div class="map-legend people-legend" role="group" aria-label={legendLabel}>
+        {groupLegend.map((item) => (
+          <button
+            type="button"
+            class="map-legend-chip"
+            data-group-chip={item.group}
+            aria-pressed="false"
+            title={legendLabel}
+            style={`--dot:${item.color}`}
+          >
+            <span class="map-legend-dot" aria-hidden="true"></span>
+            {item.label}
+            <span class="map-legend-count">{item.count}</span>
+          </button>
+        ))}
       </div>
 
       <div class="toolbar people-toolbar">
@@ -1234,7 +1286,7 @@ const nodeConfig = {
       const profileHref = `${prefix}/people/${encodeURIComponent(card.id)}/`;
       const avatar = card.avatar
         ? `<img class="person-avatar" src="${escapePeopleHtml(card.avatar)}" alt="${escapePeopleHtml(card.name)}" loading="lazy" decoding="async" />`
-        : `<span class="person-avatar person-avatar-fallback" aria-hidden="true">${escapePeopleHtml(card.initials)}</span>`;
+        : `<span class="person-avatar person-avatar-fallback bust-fallback" aria-hidden="true">${config.bustGlyph ?? ""}<span class="bust-mono">${escapePeopleHtml(card.initials)}</span></span>`;
       const roles = Array.isArray(card.roles)
         ? `<div class="tag-row">${card.roles.map((role: string) => `<span>${escapePeopleHtml(role)}</span>`).join("")}</div>`
         : "";
@@ -1336,8 +1388,27 @@ const nodeConfig = {
         });
     }
 
+    // Legend chips mirror the group select: click toggles the filter, and
+    // any group change (select or reset) re-syncs the pressed state.
+    const groupChips = [...document.querySelectorAll<HTMLButtonElement>("[data-group-chip]")];
+    function syncGroupLegend() {
+      for (const chip of groupChips) {
+        chip.setAttribute("aria-pressed", String(chip.dataset.groupChip === group.value));
+      }
+    }
+    for (const chip of groupChips) {
+      chip.addEventListener("click", () => {
+        const next = chip.dataset.groupChip ?? "all";
+        group.value = group.value === next ? "all" : next;
+        group.dispatchEvent(new Event("change"));
+      });
+    }
+
     search.addEventListener("input", refreshPeopleCatalogue);
-    group.addEventListener("change", refreshPeopleCatalogue);
+    group.addEventListener("change", () => {
+      syncGroupLegend();
+      refreshPeopleCatalogue();
+    });
     century.addEventListener("change", refreshPeopleCatalogue);
     relationship.addEventListener("change", refreshPeopleCatalogue);
     reset.addEventListener("click", () => {
@@ -1345,9 +1416,11 @@ const nodeConfig = {
       group.value = "all";
       century.value = "all";
       relationship.value = "all";
+      syncGroupLegend();
       refreshPeopleCatalogue();
       search.focus();
     });
+    syncGroupLegend();
     const catalogSection = document.getElementById("people-catalog");
     if (catalogSection && "IntersectionObserver" in window) {
       const observer = new IntersectionObserver(

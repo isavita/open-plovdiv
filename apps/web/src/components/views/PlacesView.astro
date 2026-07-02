@@ -622,8 +622,9 @@ const legendItems = categories.map((category) => ({
             data-legend-category={item.category}
             aria-pressed="false"
             title={discoverL.legendLabel}
+            style={`--dot:${item.color}`}
           >
-            <span class="map-legend-dot" style={`--dot:${item.color}`} aria-hidden="true"></span>
+            <span class="map-legend-dot" aria-hidden="true"></span>
             {item.label}
             <span class="map-legend-count">{item.count}</span>
           </button>

@@ -5,7 +5,7 @@ import { ui, type Lang } from "@i18n/ui";
 import { field, localeForLang, localizePath } from "@i18n/utils";
 import { cityArchive } from "@lib/data";
 import { sourceTitle } from "@lib/format";
-import { sectionMotifs } from "@lib/motifs";
+import { bustGlyph, sectionMotifs } from "@lib/motifs";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -441,8 +441,9 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
                           loading="lazy"
                         />
                       ) : (
-                        <span class="mayor-portrait mayor-portrait-fallback mt-portrait" aria-hidden="true">
-                          {initials(field(term, "actor", lang))}
+                        <span class="mayor-portrait mayor-portrait-fallback bust-fallback mt-portrait" aria-hidden="true">
+                          <Fragment set:html={bustGlyph} />
+                          <span class="bust-mono">{initials(field(term, "actor", lang))}</span>
                         </span>
                       )}
                       <span class="mt-cardtext">
@@ -566,8 +567,9 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
                               loading="lazy"
                             />
                           ) : (
-                            <span class="mayor-portrait mayor-portrait-fallback" aria-hidden="true">
-                              {initials(field(term, "actor", lang))}
+                            <span class="mayor-portrait mayor-portrait-fallback bust-fallback" aria-hidden="true">
+                              <Fragment set:html={bustGlyph} />
+                              <span class="bust-mono">{initials(field(term, "actor", lang))}</span>
                             </span>
                           )}
                           <div class="mayor-card-headtext">

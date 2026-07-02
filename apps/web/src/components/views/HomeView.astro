@@ -5,7 +5,7 @@ import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
 import { commonsImageUrl } from "@lib/commons";
-import { sectionMotifs } from "@lib/motifs";
+import { bustGlyph, sectionMotifs } from "@lib/motifs";
 import {
   plovdivLandmarks,
   cityArchive,
@@ -539,8 +539,9 @@ const moreLinks = [
                 height="132"
               />
             ) : (
-              <span class="mayor-portrait mayor-portrait-fallback mayor-era-portrait" aria-hidden="true">
-                {initialsOf(field(band.mayor, "actor", lang))}
+              <span class="mayor-portrait mayor-portrait-fallback bust-fallback mayor-era-portrait" aria-hidden="true">
+                <Fragment set:html={bustGlyph} />
+                <span class="bust-mono">{initialsOf(field(band.mayor, "actor", lang))}</span>
               </span>
             )}
             <h3>{field(band.mayor, "actor", lang)}</h3>

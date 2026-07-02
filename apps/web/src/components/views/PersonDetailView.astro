@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import { roleLabels as sharedRoleLabels } from "@i18n/ui";
 import { localeForLang, localizePath, type Lang } from "@i18n/utils";
 import { knownHistoryLabel } from "@lib/format";
+import { bustGlyph } from "@lib/motifs";
 import {
   historyKnowledgeEvents,
   historyKnowledgePeople,
@@ -596,7 +597,10 @@ const sourceRecords = [...sourceIds]
           {person.image ? (
             <img src={person.image} alt={localized(person, "name")} loading="eager" decoding="async" />
           ) : (
-            <div class="person-profile-initials" aria-hidden="true">{localized(person, "name").slice(0, 2)}</div>
+            <div class="person-profile-initials bust-fallback" aria-hidden="true">
+              <Fragment set:html={bustGlyph} />
+              <span class="bust-mono">{localized(person, "name").slice(0, 2)}</span>
+            </div>
           )}
           {imageCredit && <figcaption>{labels.imageCredit}: {imageCredit}</figcaption>}
         </figure>

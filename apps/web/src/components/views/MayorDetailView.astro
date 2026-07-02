@@ -4,6 +4,7 @@ import { ui, type Lang } from "@i18n/ui";
 import { field, localeForLang, localizePath } from "@i18n/utils";
 import { cityArchive, mayorWikidataEnrichment, type CityArchiveRecord } from "@lib/data";
 import { sourceTitle } from "@lib/format";
+import { bustGlyph } from "@lib/motifs";
 
 type Props = { lang: Lang; mayor: CityArchiveRecord };
 const { lang, mayor } = Astro.props;
@@ -149,7 +150,10 @@ const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filt
               loading="lazy"
             />
           ) : (
-            <span class="mayor-portrait-lg mayor-portrait-fallback" aria-hidden="true">{mono}</span>
+            <span class="mayor-portrait-lg mayor-portrait-fallback bust-fallback" aria-hidden="true">
+              <Fragment set:html={bustGlyph} />
+              <span class="bust-mono">{mono}</span>
+            </span>
           )}
           {mayor.image && mayor.image_credit && (
             <figcaption>{t.mayors.imageCredit}: {mayor.image_credit}</figcaption>

@@ -35,6 +35,18 @@ const personGlyphSmall = (x: number, y: number): string =>
   `<circle class="motif-bust-head" cx="${x}" cy="${y}" r="5.5"/>` +
   `<path class="motif-bust" d="M${x - 10} ${y + 16}c2.5-8 17.5-8 20 0"/>`;
 
+/**
+ * Engraved bust used as the portrait fallback wherever a person has no
+ * licensed image — paired with a small monogram (`.bust-mono`) it reads as an
+ * intentional engraved plate rather than a missing photo. Styled by the
+ * shared `.bust-fallback` rules in global.css.
+ */
+export const bustGlyph =
+  `<svg viewBox="0 0 56 56" preserveAspectRatio="xMidYMid meet" aria-hidden="true">` +
+  `<circle class="motif-bust-head" cx="28" cy="20" r="9.5"/>` +
+  `<path class="motif-bust" d="M11 45c3-12 31-12 34 0"/>` +
+  `</svg>`;
+
 export const sectionMotifs: Record<string, string> = {
   // Chronology of eras: dots alternate above/below a baseline with an arrow.
   history: svg(
