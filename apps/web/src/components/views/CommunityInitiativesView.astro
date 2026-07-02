@@ -9,6 +9,7 @@ import {
 } from "@i18n/ui";
 import { field, localeForLang, localizePath } from "@i18n/utils";
 import { communityInitiatives, projects } from "@lib/data";
+import { sectionMotifs } from "@lib/motifs";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -58,17 +59,20 @@ const config = {
 ---
 
 <Layout lang={lang} path="/community" title={t.community.title} description={t.community.lead}>
-  <section class="page-head">
-    <div class="container">
-      <p class="eyebrow">{t.community.eyebrow}</p>
-      <h1>{t.community.title}</h1>
-      <p class="lead">{t.community.lead}</p>
-      <div class="actions">
-        <a class="button secondary" href={`${localizePath("/fix-map", lang)}#how-to-help`}>
-          {t.community.seeProblems}<span class="arrow" aria-hidden="true">→</span>
-        </a>
+  <section class="page-head" data-section="community">
+    <div class="container page-head-grid">
+      <div>
+        <p class="eyebrow">{t.community.eyebrow}</p>
+        <h1>{t.community.title}</h1>
+        <p class="lead">{t.community.lead}</p>
+        <div class="actions">
+          <a class="button secondary" href={`${localizePath("/fix-map", lang)}#how-to-help`}>
+            {t.community.seeProblems}<span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+        <p class="meta" style="margin-top:14px;max-width:70ch">{t.community.donationDisclaimer}</p>
       </div>
-      <p class="meta" style="margin-top:14px;max-width:70ch">{t.community.donationDisclaimer}</p>
+      <div class="section-plate" aria-hidden="true" set:html={sectionMotifs.community} />
     </div>
   </section>
 

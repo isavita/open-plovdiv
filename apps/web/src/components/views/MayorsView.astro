@@ -5,6 +5,7 @@ import { ui, type Lang } from "@i18n/ui";
 import { field, localeForLang, localizePath } from "@i18n/utils";
 import { cityArchive } from "@lib/data";
 import { sourceTitle } from "@lib/format";
+import { sectionMotifs } from "@lib/motifs";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -273,12 +274,15 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
 ---
 
 <Layout lang={lang} path="/mayors" title={t.mayors.title} description={t.mayors.lead}>
-  <section class="page-head">
-    <div class="container">
-      <p class="eyebrow">{t.mayors.eyebrow}</p>
-      <h1>{t.mayors.title}</h1>
-      <p class="lead">{t.mayors.lead}</p>
-      <p class="meta" style="margin-top:10px">{t.mayors.sourceNote}</p>
+  <section class="page-head" data-section="mayors">
+    <div class="container page-head-grid">
+      <div>
+        <p class="eyebrow">{t.mayors.eyebrow}</p>
+        <h1>{t.mayors.title}</h1>
+        <p class="lead">{t.mayors.lead}</p>
+        <p class="meta" style="margin-top:10px">{t.mayors.sourceNote}</p>
+      </div>
+      <div class="section-plate" aria-hidden="true" set:html={sectionMotifs.mayors} />
     </div>
   </section>
 

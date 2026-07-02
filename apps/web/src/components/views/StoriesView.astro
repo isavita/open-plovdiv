@@ -11,6 +11,7 @@ import {
   thenNowPairs,
   type StoryLongread
 } from "@lib/data";
+import { sectionMotifs } from "@lib/motifs";
 
 type Props = {
   lang: Lang;
@@ -193,9 +194,10 @@ const archiveLinkCount = storyLongreads.reduce(
 ---
 
 <Layout lang={lang} path="/stories" title={labels.title} description={labels.lead}>
-  <section class="section hero hero-compact stories-hero">
+  <section class="section hero hero-compact stories-hero" data-section="stories">
     <div class="container hero-grid">
       <div>
+        <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.stories} />
         <p class="eyebrow">{labels.eyebrow}</p>
         <h1>{labels.title}</h1>
         <p class="lead">{labels.lead}</p>

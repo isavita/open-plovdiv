@@ -5,6 +5,7 @@ import { categoryColors, projectStatusLabels, ui, type Lang } from "@i18n/ui";
 import { field, localeForLang, localizePath } from "@i18n/utils";
 import { projects } from "@lib/data";
 import { categoryLabel, formatMoney, projectStatusLabel } from "@lib/format";
+import { sectionMotifs } from "@lib/motifs";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -30,11 +31,14 @@ function searchable(p: (typeof projects)[number]): string {
 ---
 
 <Layout lang={lang} path="/projects" title={t.projects.title} description={t.projects.lead}>
-  <section class="page-head">
-    <div class="container">
-      <p class="eyebrow">{t.projects.eyebrow}</p>
-      <h1>{t.projects.title}</h1>
-      <p class="lead">{t.projects.lead}</p>
+  <section class="page-head" data-section="projects">
+    <div class="container page-head-grid">
+      <div>
+        <p class="eyebrow">{t.projects.eyebrow}</p>
+        <h1>{t.projects.title}</h1>
+        <p class="lead">{t.projects.lead}</p>
+      </div>
+      <div class="section-plate" aria-hidden="true" set:html={sectionMotifs.projects} />
     </div>
   </section>
 

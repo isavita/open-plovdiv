@@ -10,6 +10,7 @@ import {
   primaryDocuments
 } from "@lib/data";
 import { formatMoney } from "@lib/format";
+import { sectionMotifs } from "@lib/motifs";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -65,11 +66,14 @@ function transcriptionText(
 ---
 
 <Layout lang={lang} path="/archive" title={t.archive.title} description={t.archive.lead}>
-  <section class="page-head">
-    <div class="container">
-      <p class="eyebrow">{t.archive.eyebrow}</p>
-      <h1>{t.archive.title}</h1>
-      <p class="lead">{t.archive.lead}</p>
+  <section class="page-head" data-section="archive">
+    <div class="container page-head-grid">
+      <div>
+        <p class="eyebrow">{t.archive.eyebrow}</p>
+        <h1>{t.archive.title}</h1>
+        <p class="lead">{t.archive.lead}</p>
+      </div>
+      <div class="section-plate" aria-hidden="true" set:html={sectionMotifs.archive} />
     </div>
   </section>
 

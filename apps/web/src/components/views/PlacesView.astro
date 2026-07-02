@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { commonsImageUrl } from "@lib/commons";
+import { sectionMotifs } from "@lib/motifs";
 import { sourceTitle } from "@lib/format";
 import { publicThenNowPairs, thenNowCountByPlace } from "@lib/thenNow";
 import {
@@ -506,9 +507,10 @@ const placesMapConfig = {
 ---
 
 <Layout lang={lang} path="/places" title={labels.title} description={labels.lead}>
-  <section class="section hero hero-compact places-hero">
+  <section class="section hero hero-compact places-hero" data-section="places">
     <div class="container hero-grid">
       <div>
+        <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.places} />
         <p class="eyebrow">{labels.eyebrow}</p>
         <h1>{labels.title}</h1>
         <p class="lead">{labels.lead}</p>

@@ -7,6 +7,7 @@ import {
   historySourceCoverage,
   type EditorialReviewRecord
 } from "@lib/data";
+import { sectionMotifs } from "@lib/motifs";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -909,9 +910,10 @@ const reviewConfig = {
 ---
 
 <Layout lang={lang} path="/history/editorial-review" title={labels.title} description={labels.lead}>
-  <section class="section hero hero-compact review-hero">
+  <section class="section hero hero-compact review-hero" data-section="editorial-review">
     <div class="container hero-grid">
       <div>
+        <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs["editorial-review"]} />
         <p class="eyebrow">{labels.eyebrow}</p>
         <h1>{labels.title}</h1>
         <p class="lead">{labels.lead}</p>

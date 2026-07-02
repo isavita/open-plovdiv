@@ -10,6 +10,7 @@ import {
   historyKnowledgeSources,
   type KnowledgePerson
 } from "@lib/data";
+import { sectionMotifs } from "@lib/motifs";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -838,9 +839,10 @@ const nodeConfig = {
 ---
 
 <Layout lang={lang} path="/people" title={labels.title} description={labels.lead}>
-  <section class="section hero hero-compact people-hero">
+  <section class="section hero hero-compact people-hero" data-section="people">
     <div class="container hero-grid">
       <div>
+        <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.people} />
         <p class="eyebrow">{labels.eyebrow}</p>
         <h1>{labels.title}</h1>
         <p class="lead">{labels.lead}</p>

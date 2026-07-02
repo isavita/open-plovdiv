@@ -1348,6 +1348,192 @@ p:last-child {
   transform-origin: center;
 }
 
+/* Extra motif primitives used by the section plates (see @lib/motifs). */
+.motif-link {
+  stroke: currentColor;
+  stroke-width: 1.5;
+  opacity: 0.4;
+}
+
+.motif-dashed {
+  stroke-dasharray: 5 6;
+}
+
+.motif-ring {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.motif-ring.thin {
+  stroke-width: 1.5;
+  opacity: 0.45;
+}
+
+.motif-fill {
+  fill: currentColor;
+  opacity: 0.45;
+}
+
+.motif-fill.soft {
+  opacity: 0.2;
+}
+
+.motif-plan {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  opacity: 0.5;
+}
+
+.motif-glyph-head {
+  fill: var(--surface);
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.motif-glyph {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.motif-bust-head {
+  fill: currentColor;
+  opacity: 0.55;
+}
+
+.motif-bust {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+.motif-check {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.motif-glass {
+  fill: currentColor;
+  opacity: 0.12;
+}
+
+.motif-handle {
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.motif-pin-mark {
+  stroke: var(--surface);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+/* ---- Section identities --------------------------------------------------
+   Every top-level page head carries a `data-section` key: it sets the accent
+   (from the theme-aware data palette) used by the eyebrow and the engraved
+   "section plate" — the same motif language as the homepage entry cards. */
+[data-section] {
+  --section-accent: var(--brand);
+}
+
+[data-section="history"],
+[data-section="fix-map"] {
+  --section-accent: var(--data-events);
+}
+
+[data-section="routes"],
+[data-section="projects"] {
+  --section-accent: var(--data-geo);
+}
+
+[data-section="places"],
+[data-section="community"] {
+  --section-accent: var(--data-places);
+}
+
+[data-section="stories"],
+[data-section="data-sources"] {
+  --section-accent: var(--data-sources);
+}
+
+[data-section="mayors"],
+[data-section="archive"] {
+  --section-accent: var(--data-growth);
+}
+
+[data-section="governance"],
+[data-section="people"],
+[data-section="editorial-review"] {
+  --section-accent: var(--data-people);
+}
+
+[data-section] .eyebrow {
+  color: color-mix(in srgb, var(--section-accent) 78%, var(--ink));
+}
+
+[data-section] .eyebrow::before {
+  background: var(--section-accent);
+}
+
+.page-head-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(20px, 4vw, 56px);
+  align-items: center;
+}
+
+.section-plate {
+  width: clamp(240px, 24vw, 330px);
+  padding: 6px 10px;
+  background: color-mix(in srgb, var(--section-accent) 8%, var(--surface-2));
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  color: color-mix(in srgb, var(--section-accent) 82%, var(--ink));
+  box-shadow: var(--shadow-card);
+}
+
+.section-plate svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Compact "bookplate" variant for heroes whose right column already holds
+   stats or a portrait card — sits above the eyebrow as a small signature. */
+.section-plate.compact {
+  width: 190px;
+  padding: 2px 8px;
+  margin-bottom: 18px;
+  box-shadow: none;
+}
+
+@media (max-width: 760px) {
+  .page-head-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .section-plate {
+    width: min(280px, 100%);
+  }
+
+  .section-plate.compact {
+    width: 170px;
+    margin-bottom: 14px;
+  }
+}
+
 /* Hover life for each vignette — colour/opacity always, movement only when
    the visitor hasn't asked for reduced motion. */
 .entry-card:hover .motif-photo {

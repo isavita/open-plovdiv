@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { field, ui, type Lang } from "@i18n/utils";
 import { sourceRegistry } from "@lib/data";
+import { sectionMotifs } from "@lib/motifs";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -12,11 +13,14 @@ const limits = (s: (typeof sourceRegistry)[number]) => field(s, "limitations", l
 ---
 
 <Layout lang={lang} path="/data-sources" title={t.sources.title} description={t.sources.lead}>
-  <section class="page-head">
-    <div class="container">
-      <p class="eyebrow">{t.sources.eyebrow}</p>
-      <h1>{t.sources.title}</h1>
-      <p class="lead">{t.sources.lead}</p>
+  <section class="page-head" data-section="data-sources">
+    <div class="container page-head-grid">
+      <div>
+        <p class="eyebrow">{t.sources.eyebrow}</p>
+        <h1>{t.sources.title}</h1>
+        <p class="lead">{t.sources.lead}</p>
+      </div>
+      <div class="section-plate" aria-hidden="true" set:html={sectionMotifs["data-sources"]} />
     </div>
   </section>
 

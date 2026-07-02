@@ -17,6 +17,7 @@ import {
   projectStatusLabel,
   sourceTitle
 } from "@lib/format";
+import { sectionMotifs } from "@lib/motifs";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -698,9 +699,10 @@ const ctas = [
 ---
 
 <Layout lang={lang} path="/governance" title={l.title} description={l.description}>
-  <section class="page-head governance-hero">
+  <section class="page-head governance-hero" data-section="governance">
     <div class="container governance-hero-grid">
       <div class="governance-intro">
+        <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.governance} />
         <p class="eyebrow">{l.eyebrow}</p>
         <h1>{l.title}</h1>
         <p class="lead">{l.lead}</p>
