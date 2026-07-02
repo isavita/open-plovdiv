@@ -1780,92 +1780,92 @@ const nbEraLabels: Record<NeighbourhoodEra, string> = ({
 const sectionNav = ({
       bg: [
         { id: "history-tree", label: "Дърво" },
-        { id: "geography", label: "Геогр./климат" },
         { id: "timeline", label: "Хронология" },
-        { id: "city-growth", label: "Растеж" },
         { id: "landmarks", label: "Места" },
         { id: "archive-layer", label: "Архив" },
         { id: "people", label: "Хора" },
+        { id: "geography", label: "Геогр./климат" },
+        { id: "city-growth", label: "Растеж" },
         { id: "data", label: "Данни" }
       ],
       en: [
         { id: "history-tree", label: "Tree" },
-        { id: "geography", label: "Geography" },
         { id: "timeline", label: "Timeline" },
-        { id: "city-growth", label: "Growth" },
         { id: "landmarks", label: "Landmarks" },
         { id: "archive-layer", label: "Archive" },
         { id: "people", label: "People" },
+        { id: "geography", label: "Geography" },
+        { id: "city-growth", label: "Growth" },
         { id: "data", label: "Data" }
       ],
       de: [
         { id: "history-tree", label: "Baum" },
-        { id: "geography", label: "Geogr./Klima" },
         { id: "timeline", label: "Zeitleiste" },
-        { id: "city-growth", label: "Wachstum" },
         { id: "landmarks", label: "Orte" },
         { id: "archive-layer", label: "Archiv" },
         { id: "people", label: "Personen" },
+        { id: "geography", label: "Geogr./Klima" },
+        { id: "city-growth", label: "Wachstum" },
         { id: "data", label: "Daten" }
       ],
       fr: [
         { id: "history-tree", label: "Arbre" },
-        { id: "geography", label: "Géogr./climat" },
         { id: "timeline", label: "Chronologie" },
-        { id: "city-growth", label: "Croissance" },
         { id: "landmarks", label: "Lieux" },
         { id: "archive-layer", label: "Archives" },
         { id: "people", label: "Personnes" },
+        { id: "geography", label: "Géogr./climat" },
+        { id: "city-growth", label: "Croissance" },
         { id: "data", label: "Données" }
       ],
       it: [
         { id: "history-tree", label: "Albero" },
-        { id: "geography", label: "Geogr./clima" },
         { id: "timeline", label: "Cronologia" },
-        { id: "city-growth", label: "Crescita" },
         { id: "landmarks", label: "Luoghi" },
         { id: "archive-layer", label: "Archivio" },
         { id: "people", label: "Persone" },
+        { id: "geography", label: "Geogr./clima" },
+        { id: "city-growth", label: "Crescita" },
         { id: "data", label: "Dati" }
       ],
       tr: [
         { id: "history-tree", label: "Ağaç" },
-        { id: "geography", label: "Coğr./iklim" },
         { id: "timeline", label: "Zaman çizelgesi" },
-        { id: "city-growth", label: "Büyüme" },
         { id: "landmarks", label: "Yerler" },
         { id: "archive-layer", label: "Arşiv" },
         { id: "people", label: "Kişiler" },
+        { id: "geography", label: "Coğr./iklim" },
+        { id: "city-growth", label: "Büyüme" },
         { id: "data", label: "Veriler" }
       ],
       es: [
         { id: "history-tree", label: "Árbol" },
-        { id: "geography", label: "Geogr./clima" },
         { id: "timeline", label: "Cronología" },
-        { id: "city-growth", label: "Crecimiento" },
         { id: "landmarks", label: "Lugares" },
         { id: "archive-layer", label: "Archivo" },
         { id: "people", label: "Personas" },
+        { id: "geography", label: "Geogr./clima" },
+        { id: "city-growth", label: "Crecimiento" },
         { id: "data", label: "Datos" }
       ],
       el: [
         { id: "history-tree", label: "Δέντρο" },
-        { id: "geography", label: "Γεωγρ./κλίμα" },
         { id: "timeline", label: "Χρονολόγιο" },
-        { id: "city-growth", label: "Ανάπτυξη" },
         { id: "landmarks", label: "Τοποθεσίες" },
         { id: "archive-layer", label: "Αρχείο" },
         { id: "people", label: "Πρόσωπα" },
+        { id: "geography", label: "Γεωγρ./κλίμα" },
+        { id: "city-growth", label: "Ανάπτυξη" },
         { id: "data", label: "Δεδομένα" }
       ],
       ja: [
         { id: "history-tree", label: "ツリー" },
-        { id: "geography", label: "地理・気候" },
         { id: "timeline", label: "年表" },
-        { id: "city-growth", label: "成長" },
         { id: "landmarks", label: "場所" },
         { id: "archive-layer", label: "アーカイブ" },
         { id: "people", label: "人物" },
+        { id: "geography", label: "地理・気候" },
+        { id: "city-growth", label: "成長" },
         { id: "data", label: "データ" }
       ]
     } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
@@ -2315,91 +2315,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     </div>
   </section>
 
-  <section class="section" id="geography" data-subnav-target>
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>{geo.title}</h2>
-          <p class="meta" style="margin-top:8px;max-width:76ch">{geo.lead}</p>
-        </div>
-      </div>
-
-      <div class="grid grid-2" style="align-items:start">
-        <div class="card">
-          <h3>{geo.geographyTitle}</h3>
-          <dl class="geo-facts">
-            {geo.facts.map((f) => (
-              <div><dt>{f.label}</dt><dd>{f.value}</dd></div>
-            ))}
-          </dl>
-        </div>
-        <div class="card">
-          <h3>{geo.climateTitle}</h3>
-          <dl class="geo-facts">
-            {geo.stats.map((f) => (
-              <div><dt>{f.label}</dt><dd>{f.value}</dd></div>
-            ))}
-          </dl>
-        </div>
-      </div>
-
-      <div class="card chart-card" style="margin-top:18px">
-        <span class="chart-q">{geo.chartQ}</span>
-        <h3>{geo.chartTitle}</h3>
-        <div class="climate-legend">
-          <span class="lg lg-temp">{geo.legendTemp}</span>
-          <span class="lg lg-precip">{geo.legendPrecip}</span>
-        </div>
-        <div class="chart-scroll">
-        <svg class="climate-chart" viewBox={`0 0 ${CW} ${CH}`} role="img" aria-label={geo.chartTitle}>
-          <defs>
-            <linearGradient id="cl-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#c0392b" />
-              <stop offset="1" stop-color="#2c6e9c" />
-            </linearGradient>
-          </defs>
-          {tTicks.map((t) => (
-            <g>
-              <line class="cl-grid" x1={cL} y1={tY(t)} x2={CW - cR} y2={tY(t)} />
-              <text class="cl-axis" x={cL - 8} y={tY(t) + 5} text-anchor="end">{`${t}°`}</text>
-            </g>
-          ))}
-          {pTicks.map((p) => (
-            <text class="cl-axis cl-axis-precip" x={CW - cR + 8} y={pY(p) + 5} text-anchor="start">{p}</text>
-          ))}
-          {climate.map((m, i) => (
-            <g>
-              <rect
-                class="cl-bar"
-                x={cCenter(i) - cBarW / 2}
-                y={tY(m.high)}
-                width={cBarW}
-                height={Math.max(2, tY(m.low) - tY(m.high))}
-                rx="4"
-              >
-                <title>{`${geo.months[i]}: ${m.high}° / ${m.low}° · ${m.precip} mm`}</title>
-              </rect>
-              <text class="cl-val" x={cCenter(i)} y={tY(m.high) - 6} text-anchor="middle">{Math.round(m.high)}</text>
-              <text class="cl-val cl-val-low" x={cCenter(i)} y={tY(m.low) + 17} text-anchor="middle">{Math.round(m.low)}</text>
-            </g>
-          ))}
-          <polyline class="cl-precip-line" points={precipPts} fill="none" />
-          {climate.map((m, i) => (
-            <circle class="cl-precip-dot" cx={cCenter(i)} cy={pY(m.precip)} r="3.5" />
-          ))}
-          {geo.months.map((mo, i) => (
-            <text class="cl-month" x={cCenter(i)} y={CH - cB + 24} text-anchor="middle">{mo}</text>
-          ))}
-        </svg>
-        </div>
-        <p class="meta" style="margin-top:8px">
-          {geo.source}:{" "}
-          <a href={climateSourceUrl} target="_blank" rel="noreferrer">Wikipedia — Plovdiv</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
   <section class="section section-tint" id="timeline" data-subnav-target>
     <div class="container">
       <div class="section-head">
@@ -2485,168 +2400,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
       <ol class="timeline history-deep-list" id="history-event-list" aria-live="polite"></ol>
       <p id="history-empty" class="empty" hidden>{labels.noResults}</p>
-    </div>
-  </section>
-
-  <section class="section" id="city-growth" data-subnav-target>
-    <div class="container">
-      <div class="section-head">
-        <div><h2>{growth.title}</h2></div>
-      </div>
-
-      <div class="card chart-card">
-        <span class="chart-q">{growth.popQ}</span>
-        <h3>{growth.popTitle}</h3>
-        <p class="meta" style="max-width:76ch;margin:6px 0 16px">{growth.popLead}</p>
-        <div class="stat-row" style="margin:0 0 18px">
-          <div class="stat" data-cat="growth">
-            <strong>{numberFmt.format(peakPoint.population)}</strong>
-            <span>{`${growth.peakWord} · ${peakPoint.year}`}</span>
-          </div>
-          <div class="stat" data-cat="growth">
-            <strong>{numberFmt.format(latestPopulationPoint.population)}</strong>
-            <span>{`${growth.latestWord} · ${latestPopulationPoint.year}`}</span>
-          </div>
-          <div class="stat" data-cat="growth">
-            <strong>{`×${(latestPopulationPoint.population / pop[0].population).toFixed(1)}`}</strong>
-            <span>{`${growth.growthWord} ${minYear}`}</span>
-          </div>
-        </div>
-        <div class="chart-scroll">
-          <svg class="pop-chart" viewBox={`0 0 ${PW} ${PH}`} role="img" aria-label={growth.popTitle}>
-            {popYTicks.map((v) => (
-              <g>
-                <line class="pop-grid" x1={popL} y1={popY(v)} x2={PW - popR} y2={popY(v)} />
-                <text class="pop-axis-label" x={popL - 8} y={popY(v) + 5} text-anchor="end">
-                  {v === 0 ? "0" : `${v / 1000}k`}
-                </text>
-              </g>
-            ))}
-            {popXTicks.map((y) => (
-              <text class="pop-axis-label" x={popX(y)} y={PH - popB + 24} text-anchor="middle">{y}</text>
-            ))}
-            <path class="pop-area" d={popArea} />
-            <path class="pop-line" d={popLine} />
-            {pop.map((p) => (
-              <circle
-                class={p.year === peakPoint.year ? "pop-dot pop-dot-peak" : "pop-dot"}
-                cx={popX(p.year)}
-                cy={popY(p.population)}
-                r={p.year === peakPoint.year ? 6 : 3.5}
-              >
-                <title>{`${p.year}: ${numberFmt.format(p.population)}`}</title>
-              </circle>
-            ))}
-            <text class="pop-peak-label" x={popX(peakPoint.year)} y={popY(peakPoint.population) - 14} text-anchor="middle">
-              {`${numberFmt.format(peakPoint.population)} · ${peakPoint.year}`}
-            </text>
-          </svg>
-        </div>
-        <p class="meta" style="margin-top:8px">
-          {growth.source}:{" "}
-          {populationSources.map((source, index) => (
-            <>
-              {index > 0 ? " · " : ""}
-              <a href={source.url} target="_blank" rel="noreferrer">{sourceTitle(source.title, lang)}</a>
-            </>
-          ))}
-        </p>
-      </div>
-
-      <div class="grid grid-2 city-growth-metrics" style="margin-top:18px">
-        <div class="card chart-card rate-card">
-          <span class="chart-q">{growth.rateQ}</span>
-          <h3 style="font-size:clamp(1.05rem,2vw,1.3rem)">{growth.rateTitle}</h3>
-          <p class="meta" style="margin:6px 0 14px">{growth.rateLead}</p>
-          <div class="chart-scroll">
-            <svg class="rate-chart" viewBox={`0 0 ${RW} ${RH}`} role="img" aria-label={growth.rateTitle}>
-              <line class="pop-grid" x1={rL} y1={rZero} x2={RW - rR} y2={rZero} />
-              {growthRates.map((g, i) => {
-                const h = Math.max(1, rateBarH(g.rate));
-                const x = rL + i * rStep + (rStep - rBarW) / 2;
-                const y = g.rate >= 0 ? rZero - h : rZero;
-                return (
-                  <g>
-                    <rect class={g.rate >= 0 ? "rate-bar rate-pos" : "rate-bar rate-neg"} x={x} y={y} width={rBarW} height={h} rx="1.5">
-                      <title>{`${g.from}-${g.to}: ${g.label} ${growth.perYear}`}</title>
-                    </rect>
-                    <text class="rate-val" x={x + rBarW / 2} y={g.rate >= 0 ? y - 5 : y + h + 15} text-anchor="middle">{g.label}</text>
-                    <text class="pop-axis-label" x={x + rBarW / 2} y={RH - rB + 22} text-anchor="middle">{g.to}</text>
-                  </g>
-                );
-              })}
-            </svg>
-          </div>
-          <p class="meta" style="margin-top:6px">{growth.rateUnitNote}</p>
-        </div>
-
-        <div class="card density-card">
-          <h3 style="font-size:clamp(1.05rem,2vw,1.3rem)">{growth.densityTitle}</h3>
-          <dl class="stats-grid" style="margin-top:14px">
-            <div class="stat-card">
-              <dt>{`${growth.areaLabel} (${areaUnit})`}</dt>
-              <dd>{numberFmt.format(cityAreaKm2)}</dd>
-            </div>
-            <div class="stat-card">
-              <dt>{`${growth.densityNow} (${latestPopulationPoint.year}) · ${growth.perKm}`}</dt>
-              <dd>{numberFmt.format(densityNowVal)}</dd>
-            </div>
-            <div class="stat-card">
-              <dt>{`${growth.densityPeak} · ${growth.perKm}`}</dt>
-              <dd>{numberFmt.format(densityPeakVal)}</dd>
-            </div>
-          </dl>
-          <p class="meta" style="margin-top:14px">
-            {growth.densityNote}{" "}
-            {growth.source}:{" "}
-            {populationSources.map((source, index) => (
-              <>
-                {index > 0 ? " · " : ""}
-                <a href={source.url} target="_blank" rel="noreferrer">{sourceTitle(source.title, lang)}</a>
-              </>
-            ))}
-          </p>
-        </div>
-      </div>
-
-      <div class="section-head" style="margin-top:34px">
-        <div>
-          <h2 style="font-size:clamp(1.3rem,2.4vw,1.7rem)">{growth.nbTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:76ch">{growth.nbLead}</p>
-        </div>
-      </div>
-      <div class="nb-eras">
-        {nbByEra.map((group) => (
-          <div class={`nb-era nb-${group.era}`}>
-            <div class="nb-era-head">
-              <span class="nb-era-dot" aria-hidden="true"></span>
-              <h3>{nbEraLabels[group.era]}</h3>
-            </div>
-            <div class="nb-list">
-              {group.items.map((n) => (
-                <article class="card nb-card">
-                  <p class="nb-period">{localized(n, "period")}</p>
-                  <h4>{localized(n, "name")}</h4>
-                  <p>{localized(n, "summary")}</p>
-                  <a class="src-link" href={n.source.url} target="_blank" rel="noreferrer">
-                    {`${growth.source}: ${sourceTitle(n.source.title, lang)} ↗`}
-                  </a>
-                </article>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div class="section-head" style="margin-top:34px">
-        <div>
-          <h2 style="font-size:clamp(1.3rem,2.4vw,1.7rem)">{growth.mapTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:76ch">{growth.mapLead}</p>
-        </div>
-      </div>
-      <div class="card map-card" style="padding:0;overflow:hidden">
-        <div id="nb-map" class="nb-map"></div>
-      </div>
     </div>
   </section>
 
@@ -2866,7 +2619,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     </div>
   </section>
 
-  <section class="section section-tint" id="people" data-subnav-target>
+  <section class="section" id="people" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>
@@ -2899,7 +2652,254 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     </div>
   </section>
 
-  <section class="section" id="data" data-subnav-target>
+  <section class="section section-tint" id="geography" data-subnav-target>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{geo.title}</h2>
+          <p class="meta" style="margin-top:8px;max-width:76ch">{geo.lead}</p>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="align-items:start">
+        <div class="card">
+          <h3>{geo.geographyTitle}</h3>
+          <dl class="geo-facts">
+            {geo.facts.map((f) => (
+              <div><dt>{f.label}</dt><dd>{f.value}</dd></div>
+            ))}
+          </dl>
+        </div>
+        <div class="card">
+          <h3>{geo.climateTitle}</h3>
+          <dl class="geo-facts">
+            {geo.stats.map((f) => (
+              <div><dt>{f.label}</dt><dd>{f.value}</dd></div>
+            ))}
+          </dl>
+        </div>
+      </div>
+
+      <div class="card chart-card" style="margin-top:18px">
+        <span class="chart-q">{geo.chartQ}</span>
+        <h3>{geo.chartTitle}</h3>
+        <div class="climate-legend">
+          <span class="lg lg-temp">{geo.legendTemp}</span>
+          <span class="lg lg-precip">{geo.legendPrecip}</span>
+        </div>
+        <div class="chart-scroll">
+        <svg class="climate-chart" viewBox={`0 0 ${CW} ${CH}`} role="img" aria-label={geo.chartTitle}>
+          <defs>
+            <linearGradient id="cl-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#c0392b" />
+              <stop offset="1" stop-color="#2c6e9c" />
+            </linearGradient>
+          </defs>
+          {tTicks.map((t) => (
+            <g>
+              <line class="cl-grid" x1={cL} y1={tY(t)} x2={CW - cR} y2={tY(t)} />
+              <text class="cl-axis" x={cL - 8} y={tY(t) + 5} text-anchor="end">{`${t}°`}</text>
+            </g>
+          ))}
+          {pTicks.map((p) => (
+            <text class="cl-axis cl-axis-precip" x={CW - cR + 8} y={pY(p) + 5} text-anchor="start">{p}</text>
+          ))}
+          {climate.map((m, i) => (
+            <g>
+              <rect
+                class="cl-bar"
+                x={cCenter(i) - cBarW / 2}
+                y={tY(m.high)}
+                width={cBarW}
+                height={Math.max(2, tY(m.low) - tY(m.high))}
+                rx="4"
+              >
+                <title>{`${geo.months[i]}: ${m.high}° / ${m.low}° · ${m.precip} mm`}</title>
+              </rect>
+              <text class="cl-val" x={cCenter(i)} y={tY(m.high) - 6} text-anchor="middle">{Math.round(m.high)}</text>
+              <text class="cl-val cl-val-low" x={cCenter(i)} y={tY(m.low) + 17} text-anchor="middle">{Math.round(m.low)}</text>
+            </g>
+          ))}
+          <polyline class="cl-precip-line" points={precipPts} fill="none" />
+          {climate.map((m, i) => (
+            <circle class="cl-precip-dot" cx={cCenter(i)} cy={pY(m.precip)} r="3.5" />
+          ))}
+          {geo.months.map((mo, i) => (
+            <text class="cl-month" x={cCenter(i)} y={CH - cB + 24} text-anchor="middle">{mo}</text>
+          ))}
+        </svg>
+        </div>
+        <p class="meta" style="margin-top:8px">
+          {geo.source}:{" "}
+          <a href={climateSourceUrl} target="_blank" rel="noreferrer">Wikipedia — Plovdiv</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="city-growth" data-subnav-target>
+    <div class="container">
+      <div class="section-head">
+        <div><h2>{growth.title}</h2></div>
+      </div>
+
+      <div class="card chart-card">
+        <span class="chart-q">{growth.popQ}</span>
+        <h3>{growth.popTitle}</h3>
+        <p class="meta" style="max-width:76ch;margin:6px 0 16px">{growth.popLead}</p>
+        <div class="stat-row" style="margin:0 0 18px">
+          <div class="stat" data-cat="growth">
+            <strong>{numberFmt.format(peakPoint.population)}</strong>
+            <span>{`${growth.peakWord} · ${peakPoint.year}`}</span>
+          </div>
+          <div class="stat" data-cat="growth">
+            <strong>{numberFmt.format(latestPopulationPoint.population)}</strong>
+            <span>{`${growth.latestWord} · ${latestPopulationPoint.year}`}</span>
+          </div>
+          <div class="stat" data-cat="growth">
+            <strong>{`×${(latestPopulationPoint.population / pop[0].population).toFixed(1)}`}</strong>
+            <span>{`${growth.growthWord} ${minYear}`}</span>
+          </div>
+        </div>
+        <div class="chart-scroll">
+          <svg class="pop-chart" viewBox={`0 0 ${PW} ${PH}`} role="img" aria-label={growth.popTitle}>
+            {popYTicks.map((v) => (
+              <g>
+                <line class="pop-grid" x1={popL} y1={popY(v)} x2={PW - popR} y2={popY(v)} />
+                <text class="pop-axis-label" x={popL - 8} y={popY(v) + 5} text-anchor="end">
+                  {v === 0 ? "0" : `${v / 1000}k`}
+                </text>
+              </g>
+            ))}
+            {popXTicks.map((y) => (
+              <text class="pop-axis-label" x={popX(y)} y={PH - popB + 24} text-anchor="middle">{y}</text>
+            ))}
+            <path class="pop-area" d={popArea} />
+            <path class="pop-line" d={popLine} />
+            {pop.map((p) => (
+              <circle
+                class={p.year === peakPoint.year ? "pop-dot pop-dot-peak" : "pop-dot"}
+                cx={popX(p.year)}
+                cy={popY(p.population)}
+                r={p.year === peakPoint.year ? 6 : 3.5}
+              >
+                <title>{`${p.year}: ${numberFmt.format(p.population)}`}</title>
+              </circle>
+            ))}
+            <text class="pop-peak-label" x={popX(peakPoint.year)} y={popY(peakPoint.population) - 14} text-anchor="middle">
+              {`${numberFmt.format(peakPoint.population)} · ${peakPoint.year}`}
+            </text>
+          </svg>
+        </div>
+        <p class="meta" style="margin-top:8px">
+          {growth.source}:{" "}
+          {populationSources.map((source, index) => (
+            <>
+              {index > 0 ? " · " : ""}
+              <a href={source.url} target="_blank" rel="noreferrer">{sourceTitle(source.title, lang)}</a>
+            </>
+          ))}
+        </p>
+      </div>
+
+      <div class="grid grid-2 city-growth-metrics" style="margin-top:18px">
+        <div class="card chart-card rate-card">
+          <span class="chart-q">{growth.rateQ}</span>
+          <h3 style="font-size:clamp(1.05rem,2vw,1.3rem)">{growth.rateTitle}</h3>
+          <p class="meta" style="margin:6px 0 14px">{growth.rateLead}</p>
+          <div class="chart-scroll">
+            <svg class="rate-chart" viewBox={`0 0 ${RW} ${RH}`} role="img" aria-label={growth.rateTitle}>
+              <line class="pop-grid" x1={rL} y1={rZero} x2={RW - rR} y2={rZero} />
+              {growthRates.map((g, i) => {
+                const h = Math.max(1, rateBarH(g.rate));
+                const x = rL + i * rStep + (rStep - rBarW) / 2;
+                const y = g.rate >= 0 ? rZero - h : rZero;
+                return (
+                  <g>
+                    <rect class={g.rate >= 0 ? "rate-bar rate-pos" : "rate-bar rate-neg"} x={x} y={y} width={rBarW} height={h} rx="1.5">
+                      <title>{`${g.from}-${g.to}: ${g.label} ${growth.perYear}`}</title>
+                    </rect>
+                    <text class="rate-val" x={x + rBarW / 2} y={g.rate >= 0 ? y - 5 : y + h + 15} text-anchor="middle">{g.label}</text>
+                    <text class="pop-axis-label" x={x + rBarW / 2} y={RH - rB + 22} text-anchor="middle">{g.to}</text>
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+          <p class="meta" style="margin-top:6px">{growth.rateUnitNote}</p>
+        </div>
+
+        <div class="card density-card">
+          <h3 style="font-size:clamp(1.05rem,2vw,1.3rem)">{growth.densityTitle}</h3>
+          <dl class="stats-grid" style="margin-top:14px">
+            <div class="stat-card">
+              <dt>{`${growth.areaLabel} (${areaUnit})`}</dt>
+              <dd>{numberFmt.format(cityAreaKm2)}</dd>
+            </div>
+            <div class="stat-card">
+              <dt>{`${growth.densityNow} (${latestPopulationPoint.year}) · ${growth.perKm}`}</dt>
+              <dd>{numberFmt.format(densityNowVal)}</dd>
+            </div>
+            <div class="stat-card">
+              <dt>{`${growth.densityPeak} · ${growth.perKm}`}</dt>
+              <dd>{numberFmt.format(densityPeakVal)}</dd>
+            </div>
+          </dl>
+          <p class="meta" style="margin-top:14px">
+            {growth.densityNote}{" "}
+            {growth.source}:{" "}
+            {populationSources.map((source, index) => (
+              <>
+                {index > 0 ? " · " : ""}
+                <a href={source.url} target="_blank" rel="noreferrer">{sourceTitle(source.title, lang)}</a>
+              </>
+            ))}
+          </p>
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-top:34px">
+        <div>
+          <h2 style="font-size:clamp(1.3rem,2.4vw,1.7rem)">{growth.nbTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:76ch">{growth.nbLead}</p>
+        </div>
+      </div>
+      <div class="nb-eras">
+        {nbByEra.map((group) => (
+          <div class={`nb-era nb-${group.era}`}>
+            <div class="nb-era-head">
+              <span class="nb-era-dot" aria-hidden="true"></span>
+              <h3>{nbEraLabels[group.era]}</h3>
+            </div>
+            <div class="nb-list">
+              {group.items.map((n) => (
+                <article class="card nb-card">
+                  <p class="nb-period">{localized(n, "period")}</p>
+                  <h4>{localized(n, "name")}</h4>
+                  <p>{localized(n, "summary")}</p>
+                  <a class="src-link" href={n.source.url} target="_blank" rel="noreferrer">
+                    {`${growth.source}: ${sourceTitle(n.source.title, lang)} ↗`}
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="section-head" style="margin-top:34px">
+        <div>
+          <h2 style="font-size:clamp(1.3rem,2.4vw,1.7rem)">{growth.mapTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:76ch">{growth.mapLead}</p>
+        </div>
+      </div>
+      <div class="card map-card" style="padding:0;overflow:hidden">
+        <div id="nb-map" class="nb-map"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="data" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>

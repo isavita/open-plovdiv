@@ -4,7 +4,7 @@ import Ornament from "@components/Ornament.astro";
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
-import { plovdivLandmarks, cityArchive, type HistoryEra } from "@lib/data";
+import { plovdivLandmarks, cityArchive, storyLongreads, type HistoryEra } from "@lib/data";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -52,19 +52,30 @@ const tr = (
 ): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja } satisfies Record<Lang, string>)[lang];
 
 const labels = {
-  pathsTitle: tr("Три начина да започнете", "Three ways to start", "Drei Einstiege", "Trois façons de commencer", "Tre modi per iniziare", "Başlamak için üç yol", "Tres formas de empezar", "Τρεις τρόποι να ξεκινήσετε", "3つの入口"),
-  pathsLead: tr(
-    "Началната страница вече води към три ясни задачи: научете историята, обиколете местата или помогнете на града.",
-    "The homepage now points to three clear jobs: learn the history, walk the places, or help the city.",
-    "Die Startseite führt zu drei klaren Aufgaben: Geschichte verstehen, Orte ablaufen oder der Stadt helfen.",
-    "La page d'accueil mène à trois usages clairs : comprendre l'histoire, parcourir les lieux ou aider la ville.",
-    "La homepage porta a tre azioni chiare: conoscere la storia, percorrere i luoghi o aiutare la città.",
-    "Ana sayfa üç net işe yönlendirir: tarihi öğren, yerleri gez veya şehre yardım et.",
-    "La portada lleva a tres tareas claras: conocer la historia, recorrer los lugares o ayudar a la ciudad.",
-    "Η αρχική σελίδα οδηγεί σε τρεις καθαρές χρήσεις: μάθετε την ιστορία, περπατήστε τα μέρη ή βοηθήστε την πόλη.",
-    "トップページは、歴史を学ぶ、場所を歩く、街を助けるという3つの目的に整理されています。"
+  heroMotto: tr(
+    "„Айляк“ е пловдивската дума за изкуството да не бързаш. Разглеждайте града в същия дух — бавно, пласт по пласт.",
+    "\u201CAilyak\u201D is Plovdiv's word for the art of taking it slow. Explore the city in the same spirit — unhurried, layer by layer.",
+    "„Ailyak“ ist Plovdivs Wort für die Kunst, es langsam anzugehen. Erkunden Sie die Stadt im selben Geist — ohne Eile, Schicht für Schicht.",
+    "« Aïlyak », c'est le mot de Plovdiv pour l'art de prendre son temps. Explorez la ville dans le même esprit — sans hâte, couche par couche.",
+    "\u201CAilyak\u201D è la parola di Plovdiv per l'arte di prendersela con calma. Esplorate la città nello stesso spirito — senza fretta, strato dopo strato.",
+    "\u201CAylak\u201D, Plovdiv'in acele etmeme sanatına verdiği addır. Şehri aynı ruhla keşfedin — acele etmeden, katman katman.",
+    "«Ailyak» es la palabra de Plovdiv para el arte de tomarse las cosas con calma. Explore la ciudad con el mismo espíritu: sin prisa, capa a capa.",
+    "«Αϊλιάκ» είναι η λέξη της Φιλιππούπολης για την τέχνη να μη βιάζεσαι. Εξερευνήστε την πόλη με το ίδιο πνεύμα — αβίαστα, στρώμα στρώμα.",
+    "「アイリャク」は、急がない技をあらわすプロヴディフの言葉。同じ心持ちで、街をゆっくり、層をたどるように巡ってください。"
   ),
-  historyPath: tr("Разгледай историята", "Explore history", "Geschichte erkunden", "Explorer l'histoire", "Esplora la storia", "Tarihi keşfet", "Explorar la historia", "Εξερεύνηση ιστορίας", "歴史を探る"),
+  startTitle: tr("Започнете спокойно", "Start slowly", "Beginnen Sie in Ruhe", "Commencez sans hâte", "Iniziate con calma", "Sakin başlayın", "Empiece con calma", "Ξεκινήστε ήρεμα", "ゆっくり始める"),
+  startLead: tr(
+    "Четири спокойни входа към града — за гости, за любопитни и за всеки, който иска да опознае историята на Пловдив.",
+    "Four unhurried ways into the city — for visitors, for the curious, and for anyone who wants to know Plovdiv's history.",
+    "Vier ruhige Zugänge zur Stadt — für Gäste, Neugierige und alle, die Plovdivs Geschichte kennenlernen möchten.",
+    "Quatre entrées tranquilles dans la ville — pour les visiteurs, les curieux et tous ceux qui veulent connaître l'histoire de Plovdiv.",
+    "Quattro ingressi tranquilli alla città — per i visitatori, i curiosi e chiunque voglia conoscere la storia di Plovdiv.",
+    "Şehre dört sakin giriş — ziyaretçiler, meraklılar ve Plovdiv'in tarihini öğrenmek isteyen herkes için.",
+    "Cuatro entradas tranquilas a la ciudad: para visitantes, curiosos y cualquiera que quiera conocer la historia de Plovdiv.",
+    "Τέσσερις ήρεμες είσοδοι στην πόλη — για επισκέπτες, για περίεργους και για όποιον θέλει να γνωρίσει την ιστορία της πόλης.",
+    "街への4つの静かな入口 — 旅行者にも、好奇心のある人にも、プロヴディフの歴史を知りたいすべての人へ。"
+  ),
+  historyPath: tr("Разгледай историята", "Explore the history", "Geschichte erkunden", "Explorer l'histoire", "Esplora la storia", "Tarihi keşfet", "Explorar la historia", "Εξερεύνηση ιστορίας", "歴史を探る"),
   historyPathText: tr(
     "Хронология, личности, разкази и източници от праисторията до днес.",
     "Timeline, people, stories and sources from prehistory to today.",
@@ -76,8 +87,8 @@ const labels = {
     "Χρονολόγιο, πρόσωπα, αφηγήσεις και πηγές από την προϊστορία έως σήμερα.",
     "先史時代から現在までの年表、人物、ストーリー、出典。"
   ),
-  visitPath: tr("Посети местата", "Visit places", "Orte besuchen", "Visiter les lieux", "Visita i luoghi", "Yerleri gez", "Visitar lugares", "Επίσκεψη σε μέρη", "場所を訪ねる"),
-  visitPathText: tr(
+  routesPath: tr("Тръгни по маршрутите", "Walk the routes", "Die Routen ablaufen", "Suivre les parcours", "Percorri gli itinerari", "Rotalarda yürü", "Recorrer las rutas", "Περπατήστε τις διαδρομές", "ルートを歩く"),
+  routesPathText: tr(
     "Кратки пешеходни маршрути през римския, османския, възрожденския и гражданския пласт на града.",
     "Short walking routes through the Roman, Ottoman, Revival and civic layers of the city.",
     "Kurze Spazierwege durch römische, osmanische, Wiedergeburts- und bürgerliche Stadtschichten.",
@@ -87,6 +98,138 @@ const labels = {
     "Rutas cortas por las capas romana, otomana, renacentista y cívica de la ciudad.",
     "Σύντομες διαδρομές στα ρωμαϊκά, οθωμανικά, αναγεννησιακά και αστικά στρώματα της πόλης.",
     "ローマ、オスマン、民族復興、市民記憶の層を歩く短い散策ルート。"
+  ),
+  placesPath: tr("Открий местата", "Find the places", "Orte entdecken", "Découvrir les lieux", "Scopri i luoghi", "Yerleri keşfet", "Descubrir los lugares", "Ανακαλύψτε τα μέρη", "場所を見つける"),
+  placesPathText: tr(
+    "Карта и каталог на местата и забележителностите — с епохи, снимки и източници.",
+    "A map and catalogue of the city's places and landmarks — with eras, photos and sources.",
+    "Karte und Katalog der Orte und Sehenswürdigkeiten — mit Epochen, Fotos und Quellen.",
+    "Une carte et un catalogue des lieux et monuments — avec époques, photos et sources.",
+    "Una mappa e un catalogo di luoghi e monumenti — con epoche, foto e fonti.",
+    "Yerlerin ve anıtların haritası ve kataloğu — dönemler, fotoğraflar ve kaynaklarla.",
+    "Un mapa y un catálogo de lugares y monumentos, con épocas, fotos y fuentes.",
+    "Χάρτης και κατάλογος τόπων και αξιοθέατων — με εποχές, φωτογραφίες και πηγές.",
+    "街の場所と名所を地図とカタログで — 時代、写真、出典つき。"
+  ),
+  storiesPath: tr("Прочети разказите", "Read the stories", "Die Geschichten lesen", "Lire les récits", "Leggi i racconti", "Anlatıları oku", "Leer los relatos", "Διαβάστε τις αφηγήσεις", "物語を読む"),
+  storiesPathText: tr(
+    "Дълги разкази с архивни снимки — земетресението от 1928 г., панаирният град, тепетата и още.",
+    "Long reads with archive photographs — the 1928 earthquake, the fair city, the hills and more.",
+    "Lange Lesestücke mit Archivfotos — das Erdbeben von 1928, die Messestadt, die Hügel und mehr.",
+    "De longs récits avec photos d'archives — le séisme de 1928, la ville de foire, les collines et plus encore.",
+    "Racconti lunghi con foto d'archivio — il terremoto del 1928, la città della fiera, le colline e altro.",
+    "Arşiv fotoğraflı uzun anlatılar — 1928 depremi, fuar şehri, tepeler ve daha fazlası.",
+    "Relatos largos con fotos de archivo: el terremoto de 1928, la ciudad ferial, las colinas y más.",
+    "Εκτενείς αφηγήσεις με αρχειακές φωτογραφίες — ο σεισμός του 1928, η πόλη της έκθεσης, οι λόφοι και άλλα.",
+    "アーカイブ写真とともに読む長編 — 1928年の地震、見本市の街、丘の物語など。"
+  ),
+  essentialsTitle: tr(
+    "Четири места, където айлякът се усеща",
+    "Four places to feel the ailyak",
+    "Vier Orte, an denen man das Ailyak spürt",
+    "Quatre lieux où sentir l'aïlyak",
+    "Quattro luoghi dove sentire l'ailyak",
+    "Aylak ruhunu hissedeceğiniz dört yer",
+    "Cuatro lugares donde sentir el ailyak",
+    "Τέσσερα μέρη όπου νιώθεις το αϊλιάκ",
+    "アイリャクを感じる4つの場所"
+  ),
+  essentialsLead: tr(
+    "Ако сте в града за първи път, започнете оттук — четири места на кратко пешеходно разстояние едно от друго.",
+    "If it is your first time in the city, start here — four places within a short walk of one another.",
+    "Wenn Sie zum ersten Mal in der Stadt sind, beginnen Sie hier — vier Orte, jeweils nur einen kurzen Spaziergang voneinander entfernt.",
+    "Si c'est votre première visite, commencez ici — quatre lieux à quelques minutes de marche les uns des autres.",
+    "Se è la vostra prima volta in città, iniziate da qui — quattro luoghi a pochi passi l'uno dall'altro.",
+    "Şehre ilk kez geliyorsanız buradan başlayın — birbirine kısa yürüyüş mesafesinde dört yer.",
+    "Si es su primera vez en la ciudad, empiece aquí: cuatro lugares a poca distancia a pie entre sí.",
+    "Αν είναι η πρώτη σας φορά στην πόλη, ξεκινήστε από εδώ — τέσσερα μέρη σε μικρή απόσταση με τα πόδια μεταξύ τους.",
+    "初めて訪れるなら、ここから。歩いてすぐの距離に並ぶ4つの場所です。"
+  ),
+  oldTownEyebrow: tr("Възраждане", "Revival", "Wiedergeburt", "Renaissance bulgare", "Rinascita", "Uyanış", "Renacimiento", "Αναγέννηση", "民族復興期"),
+  oldTownTitle: tr("Старият град", "The Old Town", "Die Altstadt", "La vieille ville", "La città vecchia", "Eski Şehir", "El casco antiguo", "Η Παλιά Πόλη", "旧市街"),
+  oldTownText: tr(
+    "Възрожденски къщи и калдъръмени улици по трите хълма — без план, просто се изкачвайте.",
+    "Revival-era houses and cobbled lanes across the three hills — no plan needed, just wander uphill.",
+    "Häuser der Wiedergeburtszeit und Kopfsteingassen über drei Hügel — kein Plan nötig, einfach bergauf schlendern.",
+    "Maisons de la Renaissance bulgare et ruelles pavées sur trois collines — sans plan, montez au hasard.",
+    "Case della Rinascita nazionale e vicoli acciottolati su tre colline — nessun piano, basta salire.",
+    "Üç tepeye yayılmış Uyanış dönemi evleri ve arnavut kaldırımlı sokaklar — plana gerek yok, yokuş yukarı yürüyün.",
+    "Casas del Renacimiento búlgaro y callejuelas empedradas sobre tres colinas: sin plan, simplemente suba.",
+    "Σπίτια της Αναγέννησης και λιθόστρωτα σοκάκια σε τρεις λόφους — χωρίς σχέδιο, απλώς ανηφορίστε.",
+    "三つの丘に広がる民族復興期の家並みと石畳の路地。計画は不要、坂を登るだけ。"
+  ),
+  theatreEyebrow: tr("Римска епоха", "Roman", "Römisch", "Époque romaine", "Epoca romana", "Roma dönemi", "Época romana", "Ρωμαϊκή εποχή", "ローマ時代"),
+  theatreTitle: tr("Античният театър", "The Ancient Theatre", "Das antike Theater", "Le théâtre antique", "Il teatro antico", "Antik Tiyatro", "El teatro antiguo", "Το αρχαίο θέατρο", "古代劇場"),
+  theatreText: tr(
+    "Римски театър от I век, все още действаща сцена. Най-добре е привечер, с изглед към Родопите.",
+    "A 1st-century Roman theatre that is still a working stage. Best towards evening, with the Rhodopes on the horizon.",
+    "Ein römisches Theater aus dem 1. Jahrhundert, bis heute eine Bühne. Am schönsten gegen Abend, mit den Rhodopen am Horizont.",
+    "Un théâtre romain du Ier siècle, toujours en activité. Idéal en fin de journée, avec les Rhodopes à l'horizon.",
+    "Un teatro romano del I secolo, ancora oggi un palcoscenico. Ideale verso sera, con i Rodopi all'orizzonte.",
+    "1. yüzyıldan kalma, hâlâ sahne olarak kullanılan bir Roma tiyatrosu. En güzeli akşama doğru, ufukta Rodoplarla.",
+    "Un teatro romano del siglo I que sigue siendo un escenario. Mejor al atardecer, con los Ródopes en el horizonte.",
+    "Ρωμαϊκό θέατρο του 1ου αιώνα, ακόμη ενεργή σκηνή. Ιδανικό προς το βράδυ, με τη Ροδόπη στον ορίζοντα.",
+    "1世紀のローマ劇場は、今も現役の舞台。ロドピ山脈を望む夕暮れどきが最高です。"
+  ),
+  kapanaEyebrow: tr("Кварталът на изкуствата", "Arts district", "Kunstviertel", "Quartier des arts", "Quartiere delle arti", "Sanat semti", "Barrio de las artes", "Συνοικία τεχνών", "アート地区"),
+  kapanaTitle: tr("Капана", "Kapana", "Kapana", "Kapana", "Kapana", "Kapana", "Kapana", "Καπάνα", "カパナ"),
+  kapanaText: tr(
+    "„Капанът“ — стари занаятчийски улички, днес квартал на изкуствата, кафенета и бавни следобеди.",
+    "\u201CThe Trap\u201D — old artisan lanes, today a district of arts, cafés and slow afternoons.",
+    "„Die Falle“ — alte Handwerksgassen, heute ein Viertel der Künste, Cafés und langsamen Nachmittage.",
+    "« Le Piège » — d'anciennes ruelles d'artisans, aujourd'hui quartier des arts, des cafés et des après-midi tranquilles.",
+    "\u201CLa Trappola\u201D — antiche vie artigiane, oggi quartiere di arti, caffè e pomeriggi lenti.",
+    "\u201CKapan\u201D — eski zanaatkâr sokakları; bugün sanatın, kahvelerin ve yavaş öğleden sonraların semti.",
+    "«La Trampa»: antiguas calles de artesanos, hoy un barrio de arte, cafés y tardes lentas.",
+    "«Η Παγίδα» — παλιά σοκάκια τεχνιτών, σήμερα συνοικία τεχνών, καφέ και αργών απογευμάτων.",
+    "「罠」という名の旧職人街。いまはアートとカフェ、ゆったりした午後の地区です。"
+  ),
+  nebetEyebrow: tr("Праистория", "Prehistory", "Vorgeschichte", "Préhistoire", "Preistoria", "Tarih öncesi", "Prehistoria", "Προϊστορία", "先史時代"),
+  nebetTitle: tr("Небет тепе", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Νεμπέτ Τεπέ", "ネベト・テペ"),
+  nebetText: tr(
+    "Най-старото обитавано място в града — праисторическо селище и най-хубавият залез над покривите.",
+    "The oldest inhabited spot in the city — a prehistoric settlement and the best sunset over the rooftops.",
+    "Der älteste besiedelte Ort der Stadt — eine prähistorische Siedlung und der schönste Sonnenuntergang über den Dächern.",
+    "Le plus ancien lieu habité de la ville — un site préhistorique et le plus beau coucher de soleil sur les toits.",
+    "Il luogo abitato più antico della città — un insediamento preistorico e il tramonto più bello sui tetti.",
+    "Şehrin en eski yerleşim noktası — tarih öncesi bir yerleşme ve çatıların üzerindeki en güzel gün batımı.",
+    "El lugar habitado más antiguo de la ciudad: un asentamiento prehistórico y la mejor puesta de sol sobre los tejados.",
+    "Το παλαιότερο κατοικημένο σημείο της πόλης — προϊστορικός οικισμός και το ωραιότερο ηλιοβασίλεμα πάνω από τις στέγες.",
+    "市内最古の居住地。先史時代の集落跡から、屋根越しに最高の夕日を望めます。"
+  ),
+  allPlaces: tr("Всички места", "All places", "Alle Orte", "Tous les lieux", "Tutti i luoghi", "Tüm yerler", "Todos los lugares", "Όλα τα μέρη", "すべての場所"),
+  politicalTitle: tr(
+    "Кой е управлявал — и как да помогнеш днес",
+    "Who governed — and how to help today",
+    "Wer regierte — und wie man heute hilft",
+    "Qui a gouverné — et comment aider aujourd'hui",
+    "Chi ha governato — e come aiutare oggi",
+    "Kim yönetti — ve bugün nasıl yardım edilir",
+    "Quién gobernó y cómo ayudar hoy",
+    "Ποιος κυβέρνησε — και πώς να βοηθήσετε σήμερα",
+    "誰が統治したか — そして今日できる協力"
+  ),
+  politicalLead: tr(
+    "Извън разходките: пълната хронология на кметовете от 1878 г., архивът на управлението и тихи начини да се включите — без профили и без шум.",
+    "Beyond the walks: the full chronology of mayors since 1878, the governance archive, and quiet ways to take part — no accounts, no noise.",
+    "Jenseits der Spaziergänge: die vollständige Chronologie der Bürgermeister seit 1878, das Verwaltungsarchiv und stille Wege mitzumachen — ohne Konten, ohne Lärm.",
+    "Au-delà des promenades : la chronologie complète des maires depuis 1878, les archives de la gouvernance et des façons discrètes de participer — sans comptes, sans bruit.",
+    "Oltre le passeggiate: la cronologia completa dei sindaci dal 1878, l'archivio del governo cittadino e modi discreti per partecipare — senza account, senza rumore.",
+    "Yürüyüşlerin ötesinde: 1878'den bu yana belediye başkanlarının tam kronolojisi, yönetim arşivi ve sessizce katılma yolları — hesapsız, gürültüsüz.",
+    "Más allá de los paseos: la cronología completa de los alcaldes desde 1878, el archivo de la gobernanza y formas discretas de participar, sin cuentas ni ruido.",
+    "Πέρα από τους περιπάτους: η πλήρης χρονολογία των δημάρχων από το 1878, το αρχείο της διακυβέρνησης και ήσυχοι τρόποι συμμετοχής — χωρίς λογαριασμούς, χωρίς θόρυβο.",
+    "散策の先へ。1878年以降の市長の完全な年譜、市政アーカイブ、そして静かに参加できる方法 — アカウントは不要です。"
+  ),
+  govCardText: tr(
+    "Архивни промени, проекти и източници — подредени като доказателства за това какво се е променило.",
+    "Archive changes, projects and sources — arranged as evidence of what changed.",
+    "Archivänderungen, Projekte und Quellen — geordnet als Belege dafür, was sich änderte.",
+    "Changements d'archives, projets et sources — présentés comme des preuves de ce qui a changé.",
+    "Cambiamenti d'archivio, progetti e fonti — ordinati come prove di ciò che è cambiato.",
+    "Arşiv değişiklikleri, projeler ve kaynaklar — neyin değiştiğinin kanıtı olarak düzenlendi.",
+    "Cambios de archivo, proyectos y fuentes, ordenados como evidencia de lo que cambió.",
+    "Αρχειακές αλλαγές, έργα και πηγές — ταξινομημένα ως τεκμήρια του τι άλλαξε.",
+    "アーカイブの変化、事業、出典 — 何が変わったかの証拠として整理。"
   ),
   helpPath: tr("Помогни на града", "Help the city", "Der Stadt helfen", "Aider la ville", "Aiuta la città", "Şehre yardım et", "Ayudar a la ciudad", "Βοηθήστε την πόλη", "街を助ける"),
   helpPathText: tr(
@@ -100,24 +243,14 @@ const labels = {
     "Αναφορές πολιτών, εθελοντικές πρωτοβουλίες και τρόποι συμμετοχής χωρίς προφίλ ή θόρυβο.",
     "市民レポート、ボランティア活動、プロフィール不要で参加できる方法。"
   ),
-  politicalTitle: tr("Политическата история е ядрото", "Political history is the core", "Politische Geschichte als Kern", "L'histoire politique comme noyau", "La storia politica è il nucleo", "Siyasi tarih çekirdektir", "La historia política es el núcleo", "Η πολιτική ιστορία είναι ο πυρήνας", "政治史が中核です"),
-  politicalLead: tr(
-    "Кметовете, архивните промени и проектите са събрани като въпрос: кой управляваше и какво се промени.",
-    "Mayors, archive changes and projects are framed as one question: who governed, and what changed.",
-    "Bürgermeister, Archivänderungen und Projekte stehen unter einer Frage: Wer regierte, und was änderte sich?",
-    "Maires, changements d'archives et projets répondent à une question : qui gouvernait, et qu'est-ce qui a changé ?",
-    "Sindaci, cambiamenti d'archivio e progetti rispondono a una domanda: chi governava e cosa è cambiato.",
-    "Belediye başkanları, arşiv değişiklikleri ve projeler tek soruda birleşir: kim yönetti, ne değişti?",
-    "Alcaldes, cambios de archivo y proyectos se leen como una pregunta: quién gobernó y qué cambió.",
-    "Δήμαρχοι, αρχειακές αλλαγές και έργα απαντούν σε ένα ερώτημα: ποιος κυβέρνησε και τι άλλαξε.",
-    "市長、アーカイブ上の変化、プロジェクトを、誰が統治し何が変わったかという問いで結びます。"
-  ),
   openRoutes: tr("Маршрутите", "Walking routes", "Routen", "Parcours", "Percorsi", "Rotalar", "Rutas", "Διαδρομές", "散策ルート"),
   routeCount: tr("4 маршрута", "4 walking routes", "4 Routen", "4 parcours", "4 percorsi", "4 rota", "4 rutas", "4 διαδρομές", "4 散策ルート"),
   openGovernance: tr("Управление", "Governance", "Governance", "Gouvernance", "Governo", "Yönetim", "Gobernanza", "Διακυβέρνηση", "統治"),
-  evidenceLabel: tr("с източници", "with sources", "mit Quellen", "avec sources", "con fonti", "kaynaklı", "con fuentes", "με πηγές", "出典付き")
+  evidenceLabel: tr("с източници", "with sources", "mit Quellen", "avec sources", "con fonti", "kaynaklı", "con fuentes", "με πηγές", "出典付き"),
+  storiesCountLabel: tr("илюстрирани разказа", "illustrated stories", "illustrierte Geschichten", "récits illustrés", "racconti illustrati", "resimli anlatı", "relatos ilustrados", "εικονογραφημένες αφηγήσεις", "図版つきの物語")
 };
 
+// The four visitor-first entry paths: history, routes, places, stories.
 const entryPaths = [
   {
     href: localizePath("/history", lang),
@@ -129,16 +262,52 @@ const entryPaths = [
   {
     href: localizePath("/routes", lang),
     eyebrow: labels.openRoutes,
-    title: labels.visitPath,
-    text: labels.visitPathText,
+    title: labels.routesPath,
+    text: labels.routesPathText,
     meta: labels.routeCount
   },
   {
-    href: localizePath("/community", lang),
-    eyebrow: t.nav.community,
-    title: labels.helpPath,
-    text: labels.helpPathText,
-    meta: `${t.home.statReportsValue} · ${t.home.statReports}`
+    href: localizePath("/places", lang),
+    eyebrow: t.nav.places,
+    title: labels.placesPath,
+    text: labels.placesPathText,
+    meta: `${plovdivLandmarks.length} ${t.home.statLandmarks}`
+  },
+  {
+    href: localizePath("/stories", lang),
+    eyebrow: t.nav.stories,
+    title: labels.storiesPath,
+    text: labels.storiesPathText,
+    meta: `${storyLongreads.length} ${labels.storiesCountLabel}`
+  }
+];
+
+// First-visit "ailyak essentials" — four landmark pages within a short walk
+// of one another, each with a practical, unhurried tip.
+const essentials = [
+  {
+    href: localizePath("/places/place-old-town", lang),
+    eyebrow: labels.oldTownEyebrow,
+    title: labels.oldTownTitle,
+    text: labels.oldTownText
+  },
+  {
+    href: localizePath("/places/place-ancient-theatre", lang),
+    eyebrow: labels.theatreEyebrow,
+    title: labels.theatreTitle,
+    text: labels.theatreText
+  },
+  {
+    href: localizePath("/places/place-kapana-q12282547", lang),
+    eyebrow: labels.kapanaEyebrow,
+    title: labels.kapanaTitle,
+    text: labels.kapanaText
+  },
+  {
+    href: localizePath("/places/place-nebet-tepe", lang),
+    eyebrow: labels.nebetEyebrow,
+    title: labels.nebetTitle,
+    text: labels.nebetText
   }
 ];
 ---
@@ -150,6 +319,7 @@ const entryPaths = [
       <p class="eyebrow">{t.home.eyebrow}</p>
       <h1>{t.site.name}</h1>
       <p class="lead">{t.home.lead}</p>
+      <p class="hero-motto">{labels.heroMotto}</p>
       <div class="actions">
         <a class="button" href={localizePath("/history", lang)}>
           {t.home.ctaHistory}<span class="arrow" aria-hidden="true">→</span>
@@ -168,11 +338,11 @@ const entryPaths = [
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>{labels.pathsTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.pathsLead}</p>
+          <h2>{labels.startTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.startLead}</p>
         </div>
       </div>
-      <div class="grid grid-3">
+      <div class="grid grid-2">
         {entryPaths.map((path) => (
           <a class="card card-link civic-card" href={path.href}>
             <p class="eyebrow">{path.eyebrow}</p>
@@ -192,12 +362,36 @@ const entryPaths = [
     <div class="container">
       <div class="section-head">
         <div>
+          <h2>{labels.essentialsTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.essentialsLead}</p>
+        </div>
+        <a href={localizePath("/places", lang)}>{labels.allPlaces} →</a>
+      </div>
+      <div class="grid grid-2">
+        {essentials.map((place) => (
+          <a class="card card-link" href={place.href}>
+            <p class="eyebrow">{place.eyebrow}</p>
+            <h3>{place.title}</h3>
+            <p>{place.text}</p>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Ornament />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
           <h2>{labels.politicalTitle}</h2>
           <p class="meta" style="margin-top:8px;max-width:74ch">{labels.politicalLead}</p>
         </div>
         <a href={localizePath("/governance", lang)}>{labels.openGovernance} →</a>
       </div>
-      <div class="grid grid-2" style="align-items:start;margin-bottom:24px">
+      <div class="grid grid-3" style="align-items:start;margin-bottom:24px">
         <a class="card card-link" href={localizePath("/mayors", lang)}>
           <p class="eyebrow">{t.nav.mayors}</p>
           <h3>{t.home.cardMayorsTitle}</h3>
@@ -208,8 +402,15 @@ const entryPaths = [
         <a class="card card-link" href={localizePath("/governance", lang)}>
           <p class="eyebrow">{labels.openGovernance}</p>
           <h3>{labels.openGovernance}</h3>
-          <p>{labels.politicalLead}</p>
+          <p>{labels.govCardText}</p>
           <span class="badge no-dot">{t.nav.projects}</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="card card-link" href={localizePath("/community", lang)}>
+          <p class="eyebrow">{t.nav.community}</p>
+          <h3>{labels.helpPath}</h3>
+          <p>{labels.helpPathText}</p>
+          <span class="badge no-dot">{t.home.statReportsValue} · {t.home.statReports}</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
       </div>

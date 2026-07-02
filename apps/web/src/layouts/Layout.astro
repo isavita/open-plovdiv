@@ -45,14 +45,30 @@ const ogLocale = ogLocales[lang];
 const routesLabel = ({ bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート" } satisfies Record<Lang, string>)[lang];
 const governanceLabel = ({ bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治" } satisfies Record<Lang, string>)[lang];
 
-// Primary nav now separates deep history, visitor routes and political context;
-// civic + reference links live in the footer and homepage action paths.
+// The city's own word for its unhurried spirit — a quiet signature repeated
+// in the footer so the whole site keeps the same relaxed, "ailyak" tone.
+const ailyakMottos = {
+  bg: "Айляк — пловдивското изкуство да не бързаш.",
+  en: "Ailyak — the Plovdiv art of taking it slow.",
+  de: "Ailyak — die Plovdiver Kunst, es langsam anzugehen.",
+  fr: "Aïlyak — l'art plovdivien de prendre son temps.",
+  it: "Ailyak — l'arte di Plovdiv di prendersela con calma.",
+  tr: "Aylak — Plovdiv'in acele etmeme sanatı.",
+  es: "Ailyak: el arte de Plovdiv de tomarse las cosas con calma.",
+  el: "Αϊλιάκ — η τέχνη της Φιλιππούπολης να μη βιάζεσαι.",
+  ja: "アイリャク — 急がないプロヴディフの流儀。"
+} satisfies Record<Lang, string>;
+const ailyakMotto = ailyakMottos[lang];
+
+// Primary nav is visitor-first: history, walking routes, places and stories
+// lead; political context sits last. Civic + reference links live in the
+// grouped menu, the footer and homepage action paths.
 const navItems = [
   { href: localizePath("/history", lang), base: "/history", label: t.nav.history },
   { href: localizePath("/routes", lang), base: "/routes", label: routesLabel },
-  { href: localizePath("/mayors", lang), base: "/mayors", label: t.nav.mayors },
-  { href: localizePath("/governance", lang), base: "/governance", label: governanceLabel },
-  { href: localizePath("/places", lang), base: "/places", label: t.nav.places }
+  { href: localizePath("/places", lang), base: "/places", label: t.nav.places },
+  { href: localizePath("/stories", lang), base: "/stories", label: t.nav.stories },
+  { href: localizePath("/governance", lang), base: "/governance", label: governanceLabel }
 ];
 
 function isActive(base: string): boolean {
@@ -107,11 +123,11 @@ const structuredDataJson = serializeJsonLd(
 const footerHistory = [
   { href: localizePath("/history", lang), label: t.nav.history, key: "history" },
   { href: localizePath("/routes", lang), label: routesLabel, key: "routes" },
+  { href: localizePath("/places", lang), label: t.nav.places, key: "places" },
+  { href: localizePath("/stories", lang), label: t.nav.stories, key: "stories" },
   { href: localizePath("/mayors", lang), label: t.nav.mayors, key: "mayors" },
   { href: localizePath("/governance", lang), label: governanceLabel, key: "governance" },
   { href: localizePath("/people", lang), label: t.nav.people, key: "people" },
-  { href: localizePath("/places", lang), label: t.nav.places, key: "places" },
-  { href: localizePath("/stories", lang), label: t.nav.stories, key: "stories" },
   { href: localizePath("/archive", lang), label: t.nav.archive, key: "archive" }
 ];
 const footerCivic = [
@@ -129,8 +145,8 @@ const footerAbout = [
 // Secondary destinations shown only inside the mobile menu, grouped so the
 // phone nav reaches every page without duplicating the 5 primary links.
 const menuExplore = [
+  { href: localizePath("/mayors", lang), base: "/mayors", label: t.nav.mayors },
   { href: localizePath("/people", lang), base: "/people", label: t.nav.people },
-  { href: localizePath("/stories", lang), base: "/stories", label: t.nav.stories },
   { href: localizePath("/archive", lang), base: "/archive", label: t.nav.archive }
 ];
 const menuCivic = [
@@ -188,7 +204,7 @@ const chromeI18n = localeDetect
               moderation: l.footer.moderation
             },
             groups: { explore: l.footer.explore, civic: l.footer.civic, about: l.footer.about },
-            footer: { blurb: l.footer.blurb, note: l.footer.note, dataNote: l.footer.dataNote }
+            footer: { blurb: l.footer.blurb, motto: ailyakMottos[code], note: l.footer.note, dataNote: l.footer.dataNote }
           }
         ];
       })
@@ -346,6 +362,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
                 <span data-brand-name>{t.site.name}</span>
               </a>
               <p data-footer-blurb>{t.footer.blurb}</p>
+              <p class="footer-motto" data-footer-motto>{ailyakMotto}</p>
             </div>
             <div class="footer-col">
               <h4 data-footer-group="explore">{t.footer.explore}</h4>
@@ -566,6 +583,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
               }
             });
             document.querySelectorAll("[data-footer-blurb]").forEach(function (el) { setText(el, c.footer.blurb); });
+            document.querySelectorAll("[data-footer-motto]").forEach(function (el) { setText(el, c.footer.motto); });
             document.querySelectorAll("[data-footer-note]").forEach(function (el) { setText(el, c.footer.note); });
             document.querySelectorAll("[data-footer-data-note]").forEach(function (el) { setText(el, c.footer.dataNote); });
           })();
