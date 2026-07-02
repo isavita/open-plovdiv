@@ -998,6 +998,27 @@ p:last-child {
   }
 }
 
+/* The "ailyak" line under the hero lead: a gilded serif aside that sets the
+   unhurried tone without shouting. */
+.hero-motto {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold-deep);
+  font-size: clamp(1.02rem, 1.5vw, 1.16rem);
+  margin: 14px 0 0;
+  max-width: 56ch;
+}
+
+[data-theme="dark"] .hero-motto {
+  color: var(--gold);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero-motto {
+    color: var(--gold);
+  }
+}
+
 /* ---- Hero: mobile refinement --------------------------------------------- */
 /* First mobile screen should carry title + short lead + primary CTA + the
    top of the stat row. Tighten padding, calm the lead, and stack the CTAs
@@ -2939,6 +2960,25 @@ code {
 .footer-brand p {
   max-width: 38ch;
   font-size: 0.94rem;
+}
+
+/* The site-wide "ailyak" signature line — quiet, serif, gilded. */
+.footer-motto {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold-deep);
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+[data-theme="dark"] .footer-motto {
+  color: var(--gold);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .footer-motto {
+    color: var(--gold);
+  }
 }
 
 .footer-col h4 {
