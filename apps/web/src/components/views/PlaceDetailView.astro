@@ -1663,7 +1663,7 @@ const mapHref = place.coordinates
           </section>
 
           {pairs.length > 0 && (
-            <section class="place-panel">
+            <section class="place-panel" id="place-then-now" style="scroll-margin-top:84px">
               <h2>{labels.thenNowTitle}</h2>
               <div class="then-now-grid">
                 {pairs.map((pair) => (
@@ -1724,7 +1724,7 @@ const mapHref = place.coordinates
           )}
 
           {archiveItems.length > 0 ? (
-            <section class="place-panel">
+            <section class="place-panel" id="place-archive" style="scroll-margin-top:84px">
               <h2>{labels.archiveTitle}</h2>
               <div class="archive-grid place-archive-grid">
                 {archiveItems.map((item) => (

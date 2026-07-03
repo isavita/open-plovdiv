@@ -4790,7 +4790,8 @@ code {
   margin-top: 16px;
 }
 
-.tag-row span {
+.tag-row span,
+.tag-row a {
   background: var(--surface-2);
   border: 1px solid var(--line);
   border-radius: var(--r-pill);
@@ -4798,6 +4799,19 @@ code {
   font-size: 0.82rem;
   font-weight: 700;
   padding: 5px 9px;
+}
+
+/* Tag links (e.g. a route stop's then/now or archive evidence) behave like
+   chips but signal navigation on hover. */
+.tag-row a {
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.tag-row a:hover,
+.tag-row a:focus-visible {
+  border-color: var(--route-accent, var(--brand));
+  color: var(--route-accent, var(--brand));
 }
 
 .education-columns {
@@ -7599,6 +7613,198 @@ details[open] > .htree-event-sum .htree-caret::after {
   border-radius: 50%;
   background: var(--route-accent, var(--brand));
   flex-shrink: 0;
+}
+
+/* Toggle + open-link pair per route: the pill toggles the map overlay, the
+   arrow opens the full route page. */
+.route-strip-item {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.route-strip-pill {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.route-strip-pill[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--route-accent, var(--brand)) 12%, var(--surface));
+  border-color: var(--route-accent, var(--brand));
+}
+
+.route-strip-open {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  min-height: 34px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--route-accent, var(--brand));
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.route-strip-open:hover,
+.route-strip-open:focus-visible {
+  border-color: var(--route-accent, var(--brand));
+  transform: translateY(-1px);
+}
+
+/* Grid-cluster bubble on the all-places map. */
+.map-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--brand);
+  border: 2.5px solid var(--surface);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 750;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+/* Mobile bottom sheet for marker details (replaces popups ≤760px). */
+.map-sheet {
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1100;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.map-sheet-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.map-sheet-body .eyebrow {
+  margin-bottom: 6px;
+}
+
+.map-sheet-body h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.map-sheet-close {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+@media (min-width: 761px) {
+  .map-sheet {
+    display: none;
+  }
+}
+
+/* Per-route maps on /routes. */
+.route-map-card {
+  margin: 0 0 18px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.route-map {
+  height: clamp(240px, 36vw, 320px);
+}
+
+.route-map-card figcaption {
+  padding: 8px 14px;
+  border-top: 1px solid var(--line);
+}
+
+.route-map-stop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--route-accent, var(--brand));
+  border: 2.5px solid #fff;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 750;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+.route-stop-flash {
+  animation: route-stop-flash 1.6s ease;
+}
+
+@keyframes route-stop-flash {
+  0%, 60% {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--route-accent, var(--brand)) 55%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+/* "Near this route" list in the route evidence panel. */
+.route-near-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.route-near-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.route-near-list a {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.route-near-list a:hover,
+.route-near-list a:focus-visible {
+  color: var(--route-accent, var(--brand));
+  border-bottom-color: currentColor;
+}
+
+.route-near-list .meta {
+  flex: none;
+  font-size: 0.8rem;
+}
+
+.route-near-note {
+  margin-top: 10px;
+  font-size: 0.78rem;
 }
 
 /* Clickable category legend under the all-places map. */

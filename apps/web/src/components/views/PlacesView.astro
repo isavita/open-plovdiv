@@ -501,12 +501,6 @@ const mapL =
         title: "Map of the places",
         lead: "All documented places with coordinates, coloured by category. The filters below also drive the map."
       };
-const placesMapConfig = {
-  openLabel: labels.open,
-  lang,
-  mapEndpoint: "/api/history/place-map.json"
-};
-
 // --- discovery layer: guided route strip + clickable category legend -------
 const trd = (
   bg: string,
@@ -557,6 +551,47 @@ const legendItems = categories.map((category) => ({
   color: placeColors[category] ?? fallbackPlaceColor,
   count: categoryCounts.get(category) ?? 0
 }));
+
+// Route overlays for the all-places map: the walking routes as accent
+// polylines over their published stop coordinates. Toggled from the route
+// strip; each overlay links back to the full route page.
+const placeById = new Map(places.map((place) => [place.id, place]));
+const routeOverlays = walkingRoutes
+  .map((route) => ({
+    id: route.id,
+    accent: route.accent,
+    title: route.shortTitle[lang],
+    href: `${localizePath("/routes", lang)}#route-${route.id}`,
+    points: route.stopIds
+      .map((id) => placeById.get(id)?.coordinates)
+      .filter((c): c is NonNullable<typeof c> => Boolean(c))
+      .map((c) => [c.lat, c.lng] as [number, number])
+  }))
+  .filter((overlay) => overlay.points.length >= 2);
+
+const sheetL = {
+  close: trd("Затвори", "Close", "Schließen", "Fermer", "Chiudi", "Kapat", "Cerrar", "Κλείσιμο", "閉じる"),
+  openRoute: trd("Отвори маршрута", "Open route", "Route öffnen", "Ouvrir le parcours", "Apri il percorso", "Rotayı aç", "Abrir la ruta", "Άνοιγμα διαδρομής", "ルートを開く"),
+  routeToggleHint: trd(
+    "Покажи на картата",
+    "Show on the map",
+    "Auf der Karte zeigen",
+    "Afficher sur la carte",
+    "Mostra sulla mappa",
+    "Haritada göster",
+    "Mostrar en el mapa",
+    "Εμφάνιση στον χάρτη",
+    "地図に表示"
+  )
+};
+
+const placesMapConfig = {
+  openLabel: labels.open,
+  lang,
+  mapEndpoint: "/api/history/place-map.json",
+  routeOverlays,
+  openRouteLabel: sheetL.openRoute
+};
 ---
 
 <Layout lang={lang} path="/places" title={labels.title} description={labels.lead}>
@@ -594,15 +629,24 @@ const legendItems = categories.map((category) => ({
       <nav class="route-strip" aria-label={discoverL.routeStrip}>
         <span class="route-strip-label meta">{discoverL.routeStrip}</span>
         {walkingRoutes.map((route) => (
-          <a
-            class="route-strip-pill"
-            href={`${localizePath("/routes", lang)}#route-${route.id}`}
-            style={`--route-accent:${route.accent}`}
-          >
-            <span class="route-strip-dot" aria-hidden="true"></span>
-            <strong>{route.shortTitle[lang]}</strong>
-            <span>{route.durationMinutes} {discoverL.minutes} · {route.stopIds.length} {discoverL.stops}</span>
-          </a>
+          <span class="route-strip-item" style={`--route-accent:${route.accent}`}>
+            <button
+              type="button"
+              class="route-strip-pill"
+              data-route-toggle={route.id}
+              aria-pressed="false"
+              title={sheetL.routeToggleHint}
+            >
+              <span class="route-strip-dot" aria-hidden="true"></span>
+              <strong>{route.shortTitle[lang]}</strong>
+              <span>{route.durationMinutes} {discoverL.minutes} · {route.stopIds.length} {discoverL.stops}</span>
+            </button>
+            <a
+              class="route-strip-open"
+              href={`${localizePath("/routes", lang)}#route-${route.id}`}
+              aria-label={`${sheetL.openRoute}: ${route.shortTitle[lang]}`}
+            >→</a>
+          </span>
         ))}
       </nav>
 
@@ -612,6 +656,14 @@ const legendItems = categories.map((category) => ({
       </div>
       <div class="card map-card" style="padding:0;overflow:hidden;margin-bottom:12px">
         <div id="places-map" class="places-map"></div>
+      </div>
+      <div id="places-sheet" class="map-sheet" role="dialog" aria-modal="false" hidden>
+        <div class="map-sheet-body">
+          <p class="eyebrow" id="places-sheet-kicker"></p>
+          <h3 id="places-sheet-title"></h3>
+          <a class="text-link" id="places-sheet-open" href="#">{labels.open} →</a>
+        </div>
+        <button type="button" class="map-sheet-close" id="places-sheet-close" aria-label={sheetL.close}>✕</button>
       </div>
 
       <div class="map-legend" role="group" aria-label={discoverL.legendLabel}>
@@ -1015,10 +1067,14 @@ const legendItems = categories.map((category) => ({
       return Array.isArray(localizedPlaces) ? localizedPlaces : [];
     }
 
-    async function initPlacesMap() {
-      if (!mapEl) return;
+    type PlacesMapApi = { toggleRoute: (id: string, button: HTMLButtonElement) => void };
+
+    const isNarrowViewport = () => window.matchMedia("(max-width: 760px)").matches;
+
+    async function initPlacesMap(): Promise<PlacesMapApi | null> {
+      if (!mapEl) return null;
       const placeItems = await loadPlaceMapItems();
-      if (!placeItems.length) return;
+      if (!placeItems.length) return null;
       const leaflet = await import("leaflet");
       const L = leaflet.default;
       const map = L.map(mapEl, { scrollWheelZoom: false }).setView([42.145, 24.75], 13);
@@ -1027,6 +1083,25 @@ const legendItems = categories.map((category) => ({
         attribution: "&copy; OpenStreetMap contributors"
       }).addTo(map);
       const layer = L.layerGroup().addTo(map);
+      const routeLayer = L.layerGroup().addTo(map);
+
+      // Mobile bottom sheet: marker taps fill a fixed sheet instead of the
+      // (fiddly on touch) popup. Desktop keeps the regular popup.
+      const sheet = document.getElementById("places-sheet");
+      const sheetKicker = document.getElementById("places-sheet-kicker");
+      const sheetTitle = document.getElementById("places-sheet-title");
+      const sheetOpen = document.getElementById("places-sheet-open") as HTMLAnchorElement | null;
+      document.getElementById("places-sheet-close")?.addEventListener("click", () => {
+        if (sheet) sheet.hidden = true;
+      });
+      function openSheet(it: PlaceMapItem) {
+        if (!sheet || !sheetKicker || !sheetTitle || !sheetOpen) return;
+        sheetKicker.textContent = it.catLabel;
+        sheetTitle.textContent = it.name;
+        sheetOpen.href = it.href;
+        sheet.hidden = false;
+      }
+
       const markers = placeItems.map((it) => {
         const marker = L.marker([it.lat, it.lng], {
           title: it.name,
@@ -1038,9 +1113,17 @@ const legendItems = categories.map((category) => ({
             popupAnchor: [0, -28]
           })
         });
-        marker.bindPopup(
-          `<strong>${mEsc(it.name)}</strong><br><span class="meta">${mEsc(it.catLabel)}</span><br><a href="${mEsc(it.href)}">${mEsc(mapCfg.openLabel)} →</a>`
-        );
+        marker.on("click", () => {
+          if (isNarrowViewport()) {
+            openSheet(it);
+            return;
+          }
+          marker
+            .bindPopup(
+              `<strong>${mEsc(it.name)}</strong><br><span class="meta">${mEsc(it.catLabel)}</span><br><a href="${mEsc(it.href)}">${mEsc(mapCfg.openLabel)} →</a>`
+            )
+            .openPopup();
+        });
         return { marker, it };
       });
 
@@ -1049,47 +1132,141 @@ const legendItems = categories.map((category) => ({
       const fCat = document.querySelector<HTMLSelectElement>("#places-category");
       const fEvi = document.querySelector<HTMLSelectElement>("#places-evidence");
 
+      // Grid clustering: below street zoom the filtered markers are grouped
+      // per ~56px screen cell; a numbered bubble zooms into its group.
+      let currentEntries = markers;
+      const CLUSTER_MAX_ZOOM = 16;
+      function renderMarkers() {
+        layer.clearLayers();
+        const zoom = map.getZoom();
+        if (zoom >= CLUSTER_MAX_ZOOM) {
+          for (const { marker } of currentEntries) marker.addTo(layer);
+          return;
+        }
+        const cell = 56;
+        const groups = new Map<string, typeof markers>();
+        for (const entry of currentEntries) {
+          const point = map.project([entry.it.lat, entry.it.lng], zoom);
+          const key = `${Math.floor(point.x / cell)}:${Math.floor(point.y / cell)}`;
+          const group = groups.get(key) ?? [];
+          if (group.length === 0) groups.set(key, group);
+          group.push(entry);
+        }
+        for (const group of groups.values()) {
+          if (group.length === 1) {
+            group[0].marker.addTo(layer);
+            continue;
+          }
+          const lat = group.reduce((sum, entry) => sum + entry.it.lat, 0) / group.length;
+          const lng = group.reduce((sum, entry) => sum + entry.it.lng, 0) / group.length;
+          const bounds = group.map((entry) => [entry.it.lat, entry.it.lng] as [number, number]);
+          const cluster = L.marker([lat, lng], {
+            icon: L.divIcon({
+              className: "",
+              html: `<span class="map-cluster">${group.length}</span>`,
+              iconSize: [34, 34],
+              iconAnchor: [17, 17]
+            })
+          });
+          cluster.on("click", () => map.fitBounds(bounds, { padding: [46, 46], maxZoom: 17 }));
+          cluster.addTo(layer);
+        }
+      }
+      map.on("zoomend", renderMarkers);
+
       function applyMap(refit: boolean) {
         const q = (fSearch?.value ?? "").trim().toLowerCase();
         const era = fEra?.value ?? "all";
         const cat = fCat?.value ?? "all";
         const evi = fEvi?.value ?? "all";
-        layer.clearLayers();
         const visible: [number, number][] = [];
-        for (const { marker, it } of markers) {
+        currentEntries = markers.filter(({ it }) => {
           const ok =
             (!q || it.search.includes(q)) &&
             (era === "all" || it.era === era) &&
             (cat === "all" || it.category === cat) &&
             (evi === "all" || (evi === "archive" ? it.archive : evi === "then-now" ? it.thenNow : true));
-          if (ok) {
-            marker.addTo(layer);
-            visible.push([it.lat, it.lng]);
-          }
-        }
+          if (ok) visible.push([it.lat, it.lng]);
+          return ok;
+        });
         if (refit && visible.length) map.fitBounds(visible, { padding: [30, 30], maxZoom: 15 });
+        renderMarkers();
       }
 
       applyMap(true);
       fSearch?.addEventListener("input", () => applyMap(false));
       [fEra, fCat, fEvi].forEach((el) => el?.addEventListener("change", () => applyMap(true)));
       document.querySelector("#places-reset")?.addEventListener("click", () => window.setTimeout(() => applyMap(true), 0));
+
+      // Walking-route overlays: accent polylines with white stop rings,
+      // toggled from the route strip above the map.
+      type Overlay = { id: string; accent: string; title: string; href: string; points: [number, number][] };
+      const overlays = new Map<string, { group: ReturnType<typeof L.layerGroup>; points: [number, number][] }>();
+      for (const overlay of (mapCfg.routeOverlays ?? []) as Overlay[]) {
+        const group = L.layerGroup();
+        const line = L.polyline(overlay.points, {
+          color: overlay.accent,
+          weight: 4,
+          dashArray: "7 8",
+          opacity: 0.9
+        });
+        line.bindPopup(
+          `<strong>${mEsc(overlay.title)}</strong><br><a href="${mEsc(overlay.href)}">${mEsc(mapCfg.openRouteLabel)} →</a>`
+        );
+        line.addTo(group);
+        for (const point of overlay.points) {
+          L.circleMarker(point, {
+            radius: 5,
+            color: overlay.accent,
+            weight: 2.5,
+            fillColor: "#ffffff",
+            fillOpacity: 1
+          }).addTo(group);
+        }
+        overlays.set(overlay.id, { group, points: overlay.points });
+      }
+
+      function toggleRoute(id: string, button: HTMLButtonElement) {
+        const entry = overlays.get(id);
+        if (!entry) return;
+        const pressed = button.getAttribute("aria-pressed") === "true";
+        if (pressed) {
+          routeLayer.removeLayer(entry.group);
+          button.setAttribute("aria-pressed", "false");
+          return;
+        }
+        entry.group.addTo(routeLayer);
+        button.setAttribute("aria-pressed", "true");
+        mapEl?.scrollIntoView({ behavior: "smooth", block: "center" });
+        map.fitBounds(entry.points, { padding: [36, 36], maxZoom: 16 });
+      }
+
+      return { toggleRoute };
     }
+
+    // The map initialises lazily (scroll into view), but a route toggle click
+    // forces initialisation and applies the toggle once ready.
+    let mapPromise: Promise<PlacesMapApi | null> | null = null;
+    function ensurePlacesMap(): Promise<PlacesMapApi | null> {
+      if (!mapPromise) mapPromise = initPlacesMap().catch(() => null);
+      return mapPromise;
+    }
+
+    document.querySelectorAll<HTMLButtonElement>("[data-route-toggle]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const id = button.dataset.routeToggle ?? "";
+        void ensurePlacesMap().then((api) => api?.toggleRoute(id, button));
+      });
+    });
 
     function schedulePlacesMap() {
       if (!mapEl) return;
-      let started = false;
-      const start = () => {
-        if (started) return;
-        started = true;
-        void initPlacesMap();
-      };
       if ("IntersectionObserver" in window) {
         const observer = new IntersectionObserver(
           (entries) => {
             if (entries.some((entry) => entry.isIntersecting)) {
               observer.disconnect();
-              start();
+              void ensurePlacesMap();
             }
           },
           { rootMargin: "60px 0px" }
@@ -1097,7 +1274,7 @@ const legendItems = categories.map((category) => ({
         observer.observe(mapEl);
         return;
       }
-      window.setTimeout(start, 1600);
+      window.setTimeout(() => void ensurePlacesMap(), 1600);
     }
 
     schedulePlacesMap();
