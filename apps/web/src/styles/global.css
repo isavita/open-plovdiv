@@ -917,37 +917,40 @@ p:last-child {
     linear-gradient(180deg, transparent, color-mix(in srgb, var(--bg-deep) 55%, transparent));
 }
 
-/* A faint ornamental arch framing the top-right of the hero — a Romanesque
-   blind arcade drawn in CSS, evoking the Antique Theatre colonnade. */
+/* A quiet gilded rosette in the hero's top-right: three concentric rings over
+   a soft glow — the same round-seal language as the section motifs. Drawn
+   fully inside its own box (largest ring 153px < 180px half-size) and offset
+   inside the hero, so nothing ever clips at the page or hero edges. */
 .hero::before {
   content: "";
   position: absolute;
-  top: -40px;
-  right: -60px;
+  top: 44px;
+  right: 52px;
   width: 360px;
-  height: 320px;
+  height: 360px;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.18;
+  opacity: 0.55;
   background:
-    repeating-linear-gradient(90deg, transparent 0 46px, color-mix(in srgb, var(--gold) 60%, transparent) 46px 47px),
-    radial-gradient(circle at 24px 60px, transparent 22px, color-mix(in srgb, var(--gold) 60%, transparent) 22.5px 24px, transparent 24.5px) 0 0 / 48px 96px;
-  -webkit-mask: linear-gradient(180deg, #000 0 70%, transparent 100%);
-  mask: linear-gradient(180deg, #000 0 70%, transparent 100%);
+    radial-gradient(circle, transparent 150px, color-mix(in srgb, var(--gold) 22%, transparent) 151px 153px, transparent 154px),
+    radial-gradient(circle, transparent 118px, color-mix(in srgb, var(--gold) 26%, transparent) 119px 121px, transparent 122px),
+    radial-gradient(circle, transparent 77px, color-mix(in srgb, var(--gold) 18%, transparent) 78px 80px, transparent 81px),
+    radial-gradient(circle, color-mix(in srgb, var(--gold-soft) 50%, transparent), transparent 72px);
 }
 
 [data-theme="dark"] .hero::before {
-  opacity: 0.22;
+  opacity: 0.4;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .hero::before {
-    opacity: 0.22;
+    opacity: 0.4;
   }
 }
 
-/* On small screens the arcade crowds the heading — keep the mobile hero calm. */
-@media (max-width: 760px) {
+/* Below wide-desktop widths the lead text can reach the rosette's area —
+   keep the smaller heroes calm. */
+@media (max-width: 1159px) {
   .hero::before {
     display: none;
   }
