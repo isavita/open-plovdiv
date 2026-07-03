@@ -1401,6 +1401,18 @@ const clientCategoryLabels = Object.fromEntries(categories.map((category) => [ca
 const clientThemeLabels = Object.fromEntries(themeTags.map((theme) => [theme, labelTheme(theme)]));
 
 const repeatedPeople = historyKnowledgePeople.filter((person) => person.term_events.length > 1);
+const timelinePersonIds = new Set(timelinePeople.map((person) => person.id));
+
+// --- history atlas: one selection (era / person / place) drives the page ---
+const atlasL = {
+  label: tr("Атлас", "Atlas", "Atlas", "Atlas", "Atlante", "Atlas", "Atlas", "Άτλαντας", "アトラス"),
+  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "olay", "eventos", "γεγονότα", "件の出来事"),
+  seeMap: tr("Виж на картата", "See on the map", "Auf der Karte", "Voir sur la carte", "Vedi sulla mappa", "Haritada gör", "Ver en el mapa", "Δείτε στον χάρτη", "地図で見る"),
+  seeTimeline: tr("Към хронологията", "To the timeline", "Zur Zeitleiste", "Vers la chronologie", "Alla cronologia", "Zaman çizelgesine", "A la cronología", "Στο χρονολόγιο", "年表へ"),
+  clear: tr("Изчисти избора", "Clear selection", "Auswahl löschen", "Effacer la sélection", "Cancella selezione", "Seçimi temizle", "Borrar selección", "Καθαρισμός επιλογής", "選択を解除"),
+  personEvents: tr("Събития →", "Events →", "Ereignisse →", "Événements →", "Eventi →", "Olaylar →", "Eventos →", "Γεγονότα →", "出来事 →"),
+  placeEvents: tr("Събития на това място →", "Events at this place →", "Ereignisse an diesem Ort →", "Événements en ce lieu →", "Eventi in questo luogo →", "Bu yerdeki olaylar →", "Eventos en este lugar →", "Γεγονότα σε αυτό το μέρος →", "この場所の出来事 →")
+};
 const successionCount = historyKnowledgePeople.reduce(
   (sum, person) => sum + person.relationships.filter((relationship) => relationship.type === "succeeded_by").length,
   0
@@ -1445,7 +1457,8 @@ const historyMapConfig = {
     visiblePlaces: labels.visiblePlaces,
     visibleArchiveItems: labels.visibleArchiveItems,
     routeStops: labels.routeStops,
-    archiveOverlayNote: labels.archiveOverlayNote
+    archiveOverlayNote: labels.archiveOverlayNote,
+    atlasPlaceEvents: atlasL.placeEvents
   },
   routes: mapRoutes
 };
@@ -1472,7 +1485,8 @@ const timelineConfig = {
     noOnThisDay: labels.noOnThisDay,
     source: labels.source,
     sourcePlural: labels.sourcePlural,
-    conflictNote: labels.conflictNote
+    conflictNote: labels.conflictNote,
+    atlasEvents: atlasL.events
   },
   total: entries.length,
 };
@@ -2230,6 +2244,19 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
   <SectionNav items={sectionNav} label={sectionNavLabel} />
 
+  <div class="history-atlas-bar" id="history-atlas-bar" hidden>
+    <div class="container history-atlas-inner">
+      <span class="history-atlas-label">{atlasL.label}</span>
+      <span class="history-atlas-chips" id="history-atlas-chips"></span>
+      <span class="meta" id="history-atlas-count" aria-live="polite"></span>
+      <span class="history-atlas-links">
+        <button type="button" class="link-button" id="history-atlas-map" hidden>{atlasL.seeMap}</button>
+        <button type="button" class="link-button" id="history-atlas-timeline">{atlasL.seeTimeline}</button>
+        <button type="button" class="link-button" id="history-atlas-clear">{atlasL.clear}</button>
+      </span>
+    </div>
+  </div>
+
   <section class="section" style="padding-top:0">
     <div class="container">
       <nav class="era-nav" aria-label={t.history.erasNav}>
@@ -2254,7 +2281,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
       <div class="htree" role="list" aria-label={treeLabels.title}>
         {historyTree.map((era, eraIndex) => (
-          <details class={`htree-era era-${era.era}`} role="listitem" open={eraIndex === 0}>
+          <details class={`htree-era era-${era.era}`} data-tree-era={era.era} role="listitem" open={eraIndex === 0}>
             <summary class="htree-era-sum">
               <span class="htree-era-mark" aria-hidden="true">
                 <LandmarkMotif name={era.motif} />
@@ -2644,7 +2671,14 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                 <span>{localized(person, "name")}</span>
                 <span class="connect-count" data-cat="people">{`${person.term_events.length}×`}</span>
               </span>
-              <span class="connect-years">{`${person.term_events.length} ${t.mayors.statTerms}`}</span>
+              <span class="connect-years">
+                {`${person.term_events.length} ${t.mayors.statTerms}`}
+                {timelinePersonIds.has(person.id) && (
+                  <button type="button" class="link-button atlas-person-link" data-atlas-person={person.id}>
+                    {atlasL.personEvents}
+                  </button>
+                )}
+              </span>
             </li>
           ))}
         </ul>
@@ -3192,6 +3226,76 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         linked.value !== "all"
       );
       syncEraButtons();
+      updateAtlas(visibleItems.length);
+    }
+
+    // ---- history atlas: one era/person/place selection drives the page ----
+    // The active timeline facets are mirrored into the URL (?era/&person/&place
+    // deep links), a sticky atlas bar (chips + count + cross-section jumps),
+    // the history tree (matching era opens, others dim) and the landmarks map.
+    const atlasBar = document.getElementById("history-atlas-bar");
+    const atlasChips = document.getElementById("history-atlas-chips");
+    const atlasCount = document.getElementById("history-atlas-count");
+    const atlasMapBtn = document.getElementById("history-atlas-map") as HTMLButtonElement | null;
+    const atlasMapEraSelect = document.querySelector<HTMLSelectElement>("#history-map-era");
+    const atlasTreeEras = [...document.querySelectorAll<HTMLElement>("[data-tree-era]")];
+    const atlasFacets = [
+      ["era", era],
+      ["person", person],
+      ["place", place]
+    ] as const;
+
+    function atlasOptionExists(select: HTMLSelectElement, value: string) {
+      return [...select.options].some((option) => option.value === value);
+    }
+
+    function atlasSelectionLabel(select: HTMLSelectElement) {
+      return select.selectedOptions[0]?.textContent?.trim() ?? select.value;
+    }
+
+    function syncAtlasUrl() {
+      const params = new URLSearchParams(window.location.search);
+      for (const [key, select] of atlasFacets) {
+        if (select.value === "all") params.delete(key);
+        else params.set(key, select.value);
+      }
+      const query = params.toString();
+      history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`);
+    }
+
+    function syncAtlasTree() {
+      const active = era.value;
+      for (const el of atlasTreeEras) {
+        const isMatch = active !== "all" && el.dataset.treeEra === active;
+        el.classList.toggle("atlas-match", isMatch);
+        el.classList.toggle("atlas-dim", active !== "all" && !isMatch);
+        if (isMatch) (el as HTMLDetailsElement).open = true;
+      }
+    }
+
+    function updateAtlas(visibleCount: number) {
+      syncAtlasUrl();
+      syncAtlasTree();
+      if (!atlasBar || !atlasChips || !atlasCount) return;
+      const chips: string[] = [];
+      for (const [key, select] of atlasFacets) {
+        if (select.value === "all") continue;
+        chips.push(
+          `<button type="button" class="history-atlas-chip" data-atlas-clear="${key}"><span>${escapeTimelineHtml(atlasSelectionLabel(select))}</span><span aria-hidden="true">✕</span></button>`
+        );
+      }
+      if (chips.length === 0) {
+        atlasBar.hidden = true;
+        return;
+      }
+      atlasChips.innerHTML = chips.join("");
+      atlasCount.textContent = `${visibleCount} ${timelineConfig.labels.atlasEvents ?? ""}`;
+      if (atlasMapBtn) {
+        atlasMapBtn.hidden = !(
+          era.value !== "all" && atlasMapEraSelect && atlasOptionExists(atlasMapEraSelect, era.value)
+        );
+      }
+      atlasBar.hidden = false;
     }
 
     function refreshHistoryTimeline() {
@@ -3381,7 +3485,68 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     });
     void renderOnThisDay();
     syncEraButtons();
-    scheduleInitialTimelineRender();
+
+    // Atlas bar interactions: per-chip clear, clear-all, cross-section jumps.
+    atlasChips?.addEventListener("click", (event) => {
+      const chip = (event.target as HTMLElement).closest<HTMLElement>("[data-atlas-clear]");
+      if (!chip) return;
+      const key = chip.dataset.atlasClear;
+      if (key === "era") era.value = "all";
+      if (key === "person") person.value = "all";
+      if (key === "place") place.value = "all";
+      refreshHistoryTimeline();
+    });
+    document.getElementById("history-atlas-clear")?.addEventListener("click", () => {
+      era.value = "all";
+      person.value = "all";
+      place.value = "all";
+      refreshHistoryTimeline();
+    });
+    document.getElementById("history-atlas-timeline")?.addEventListener("click", () => {
+      alignHistorySection("timeline");
+    });
+    atlasMapBtn?.addEventListener("click", () => {
+      if (atlasMapEraSelect && era.value !== "all" && atlasOptionExists(atlasMapEraSelect, era.value)) {
+        atlasMapEraSelect.value = era.value;
+        atlasMapEraSelect.dispatchEvent(new Event("change"));
+      }
+      void prepareAndJumpToHistorySection("landmarks");
+    });
+
+    // Cross-section hooks: person rows in #people and the landmarks-map place
+    // panel carry data-atlas-person / data-atlas-place. Delegated, because the
+    // map panel is rendered client-side. A hook without matching timeline
+    // events removes itself instead of leading to a dead filter.
+    document.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      const personHook = target.closest<HTMLElement>("[data-atlas-person]");
+      const placeHook = target.closest<HTMLElement>("[data-atlas-place]");
+      const hook = personHook ?? placeHook;
+      if (!hook) return;
+      const select = personHook ? person : place;
+      const value = (personHook ? hook.dataset.atlasPerson : hook.dataset.atlasPlace) ?? "";
+      if (!atlasOptionExists(select, value)) {
+        hook.remove();
+        return;
+      }
+      select.value = value;
+      refreshHistoryTimeline();
+      alignHistorySection("timeline");
+    });
+
+    // Deep links: ?era=&person=&place= pre-select the timeline facets and
+    // render immediately (instead of waiting for the lazy first render).
+    const atlasStartParams = new URLSearchParams(window.location.search);
+    let atlasDeepLinked = false;
+    for (const [key, select] of atlasFacets) {
+      const value = atlasStartParams.get(key);
+      if (value && atlasOptionExists(select, value)) {
+        select.value = value;
+        atlasDeepLinked = true;
+      }
+    }
+    if (atlasDeepLinked) refreshHistoryTimeline();
+    else scheduleInitialTimelineRender();
 
     function syncHistoryHashTarget() {
       const target = window.location.hash.slice(1);
@@ -3654,6 +3819,11 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         ${factRows ? `<dl class="place-facts">${factRows}</dl>` : ""}
         <p>${escapeHtml(place.summary)}</p>
         <p class="meta">${escapeHtml(place.status)}</p>
+        ${
+          place.id
+            ? `<p><button type="button" class="link-button" data-atlas-place="${escapeHtml(place.id)}">${escapeHtml(config.labels.atlasPlaceEvents ?? "")}</button></p>`
+            : ""
+        }
         ${
           place.source
             ? `<a class="src-link" href="${escapeHtml(place.source.url)}" target="_blank" rel="noreferrer">${escapeHtml(config.labels.source)}: ${escapeHtml(place.source.title)} ↗</a>`

@@ -7911,6 +7911,95 @@ details[open] > .htree-event-sum .htree-caret::after {
   flex-shrink: 0;
 }
 
+/* ---- History atlas ---------------------------------------------------------
+   Sticky selection bar under the page subnav: chips for the active era /
+   person / place facets, a live event count, and cross-section jump buttons.
+   The history tree mirrors the era selection (match opens, rest dims). */
+.history-atlas-bar {
+  position: sticky;
+  top: 118px;
+  z-index: 25;
+  background: color-mix(in srgb, var(--surface) 92%, var(--gold-soft));
+  border-block: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.history-atlas-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.history-atlas-label {
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+.history-atlas-chips {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.history-atlas-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 10px;
+  min-height: 28px;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.history-atlas-chip:hover,
+.history-atlas-chip:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.history-atlas-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-left: auto;
+}
+
+.atlas-person-link {
+  margin-left: 10px;
+}
+
+/* Era selection mirrored in the history tree. */
+.htree-era.atlas-dim {
+  opacity: 0.45;
+}
+
+.htree-era.atlas-match {
+  border-color: color-mix(in srgb, var(--era-color, var(--accent)) 55%, var(--line));
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 760px) {
+  .history-atlas-bar {
+    top: 110px;
+  }
+
+  .history-atlas-links {
+    margin-left: 0;
+  }
+}
+
 /* ---- Source registry (/data-sources) --------------------------------------
    Provenance-grouped source cards: group accent, prominent limitation block
    (transparency stays louder than in the old muted table cell). */
