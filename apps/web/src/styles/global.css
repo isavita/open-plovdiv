@@ -7504,13 +7504,210 @@ details[open] > .htree-event-sum .htree-caret::after {
   font-size: 1rem;
 }
 
+/* Graph toolbar: edge filters, notable-path group chips, zoom controls. */
+.graph-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px 18px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.graph-toolgroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.graph-toolgroup-label {
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 2px;
+}
+
+.graph-zoomgroup {
+  margin-left: auto;
+}
+
+.graph-zoomgroup .icon-btn {
+  width: 34px;
+  height: 34px;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.graph-toggle,
+.graph-group-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 11px;
+  min-height: 30px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+.graph-toggle .graph-toggle-swatch {
+  width: 20px;
+  height: 0;
+  border-top: 2px solid var(--gold-deep);
+}
+.graph-toggle .graph-toggle-swatch.graph-legend-succession {
+  border-top: 2px solid var(--data-places);
+}
+.graph-toggle .graph-toggle-swatch.graph-legend-family {
+  border-top: 2px dashed var(--data-events);
+}
+
+.graph-toggle:not(.is-on) {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.graph-group-chip .graph-toggle-swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--dot, var(--brand));
+}
+
+.graph-group-count {
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.74rem;
+}
+
+.graph-group-chip:hover,
+.graph-group-chip:focus-visible,
+.graph-toggle:hover,
+.graph-toggle:focus-visible {
+  border-color: var(--dot, var(--brand));
+  color: var(--ink);
+}
+
+.graph-group-chip.is-on {
+  background: color-mix(in srgb, var(--dot, var(--brand)) 16%, var(--surface));
+  border-color: var(--dot, var(--brand));
+  color: var(--ink);
+}
+
+/* Graph stage: canvas + selection detail panel side by side. */
+.graph-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 270px;
+}
+
 .people-graph {
   width: 100%;
-  height: clamp(360px, 62vh, 560px);
+  height: clamp(380px, 64vh, 580px);
   background:
-    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--gold-soft) 30%, transparent), transparent 60%),
+    radial-gradient(circle at 30% 18%, color-mix(in srgb, var(--gold-soft) 26%, transparent), transparent 62%),
     var(--bg-tint);
   position: relative;
+  touch-action: none;
+}
+
+.graph-detail {
+  border-left: 1px solid var(--line);
+  background: var(--surface);
+  padding: 16px;
+  overflow-y: auto;
+  max-height: clamp(380px, 64vh, 580px);
+}
+
+.graph-detail-hint {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  right: 286px;
+  margin: 0;
+  padding: 7px 12px;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.78rem;
+  pointer-events: none;
+  width: max-content;
+  max-width: calc(100% - 302px);
+}
+
+.graph-detail-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.graph-detail-group span:first-child {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--dot, var(--brand));
+}
+
+.graph-detail h4 {
+  margin: 0 0 8px;
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.graph-detail-roles {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+.graph-detail-key {
+  font-weight: 700;
+  color: var(--muted);
+  margin-right: 4px;
+}
+
+.graph-detail-degree {
+  margin: 8px 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.graph-detail-links {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 6px;
+}
+.graph-detail-links li {
+  display: flex;
+  gap: 8px;
+  font-size: 0.82rem;
+}
+.graph-detail-rel {
+  flex: none;
+  color: var(--muted);
+  min-width: 96px;
+}
+
+.graph-detail-profile {
+  width: 100%;
+  justify-content: center;
 }
 
 #people-graph-status {
@@ -7518,41 +7715,34 @@ details[open] > .htree-event-sum .htree-caret::after {
   margin: 0;
 }
 
-.graph-legend {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin: 0;
-  padding: 10px 16px 14px;
-  border-top: 1px solid var(--line);
-  font-size: 0.78rem;
-  color: var(--muted);
-}
-.graph-legend li {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-.graph-legend-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--brand);
-}
-.graph-legend-line {
-  display: inline-block;
-  width: 22px;
-  height: 0;
-  border-top: 2px dashed var(--gold-deep);
-}
-.graph-legend-line.graph-legend-succession {
-  border-top: 2px solid var(--brand-strong);
-}
-
 @media (max-width: 760px) {
+  .graph-toolbar {
+    gap: 8px 12px;
+  }
+  .graph-zoomgroup {
+    margin-left: 0;
+  }
+  .graph-stage {
+    grid-template-columns: 1fr;
+  }
   .people-graph {
-    height: clamp(320px, 56vh, 460px);
+    height: clamp(300px, 52vh, 440px);
+  }
+  /* Detail panel becomes a bottom sheet over the canvas. */
+  .graph-detail {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-left: none;
+    border-top: 1px solid var(--line-strong);
+    border-radius: var(--r-lg) var(--r-lg) 0 0;
+    max-height: 62%;
+    box-shadow: 0 -8px 24px rgb(0 0 0 / 18%);
+  }
+  .graph-detail-hint {
+    right: 16px;
+    max-width: calc(100% - 32px);
   }
   .graph-opener .button {
     width: 100%;
