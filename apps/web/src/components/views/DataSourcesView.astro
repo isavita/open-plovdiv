@@ -8,8 +8,139 @@ type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
 
-const usedFor = (s: (typeof sourceRegistry)[number]) => field(s, "used_for", lang);
-const limits = (s: (typeof sourceRegistry)[number]) => field(s, "limitations", lang);
+const trs = (
+  bg: string,
+  en: string,
+  de: string,
+  fr: string,
+  it: string,
+  trk: string,
+  es: string,
+  el: string,
+  ja: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja } satisfies Record<Lang, string>)[lang];
+
+// Provenance groups — a presentation-only classification of the registry by
+// domain, so a visitor can see at a glance whether a claim rests on an
+// official document, a press report or an open database. Unknown hosts fall
+// back to the media/press group rather than being over-claimed as official.
+type SourceGroup = "official" | "media" | "open";
+
+const hostGroups: Record<string, SourceGroup> = {
+  "plovdiv.bg": "official",
+  "aop.bg": "official",
+  "iisda.government.bg": "official",
+  "bulnao.government.bg": "official",
+  "strategy.bg": "official",
+  "dv.parliament.bg": "official",
+  "ciela.net": "official",
+  "culture.ec.europa.eu": "official",
+  "rimplovdiv.com": "official",
+  "plovdiv2019.eu": "official",
+  "fair.bg": "official",
+  "openstreetmap.org": "open",
+  "wikidata.org": "open",
+  "commons.wikimedia.org": "open"
+};
+
+function hostOf(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+}
+
+const groupMeta: Record<SourceGroup, { label: string; blurb: string }> = {
+  official: {
+    label: trs(
+      "Институции и официални документи",
+      "Institutions and official documents",
+      "Institutionen und offizielle Dokumente",
+      "Institutions et documents officiels",
+      "Istituzioni e documenti ufficiali",
+      "Kurumlar ve resmî belgeler",
+      "Instituciones y documentos oficiales",
+      "Θεσμοί και επίσημα έγγραφα",
+      "公的機関・公文書"
+    ),
+    blurb: trs(
+      "Общински, държавни и институционални страници — решения, регистри и първични документи.",
+      "Municipal, state and institutional pages — decisions, registers and primary documents.",
+      "Kommunale, staatliche und institutionelle Seiten — Beschlüsse, Register und Primärdokumente.",
+      "Pages municipales, étatiques et institutionnelles — décisions, registres et documents primaires.",
+      "Pagine comunali, statali e istituzionali — decisioni, registri e documenti primari.",
+      "Belediye, devlet ve kurum sayfaları — kararlar, siciller ve birincil belgeler.",
+      "Páginas municipales, estatales e institucionales: decisiones, registros y documentos primarios.",
+      "Δημοτικές, κρατικές και θεσμικές σελίδες — αποφάσεις, μητρώα και πρωτογενή έγγραφα.",
+      "自治体・国・公的機関のページ — 決定、登録簿、一次資料。"
+    )
+  },
+  media: {
+    label: trs("Медии", "Media", "Medien", "Médias", "Media", "Medya", "Medios", "Μέσα ενημέρωσης", "報道"),
+    blurb: trs(
+      "Журналистически публикации — използват се, когато официалният документ не е публикуван онлайн; вижте ограниченията на всеки запис.",
+      "Press reports — used when the official document is not published online; see each record's limitations.",
+      "Presseberichte — genutzt, wenn das offizielle Dokument nicht online verfügbar ist; siehe die Einschränkungen je Eintrag.",
+      "Articles de presse — utilisés lorsque le document officiel n'est pas publié en ligne ; voir les limites de chaque fiche.",
+      "Articoli di stampa — usati quando il documento ufficiale non è online; vedere i limiti di ogni scheda.",
+      "Basın haberleri — resmî belge çevrimiçi yayımlanmadığında kullanılır; her kaydın sınırlamalarına bakın.",
+      "Publicaciones de prensa: se usan cuando el documento oficial no está en línea; vea las limitaciones de cada registro.",
+      "Δημοσιογραφικές πηγές — χρησιμοποιούνται όταν το επίσημο έγγραφο δεν είναι διαθέσιμο διαδικτυακά· δείτε τους περιορισμούς κάθε εγγραφής.",
+      "報道記事 — 公文書がオンラインにない場合に使用。各記録の「限界」を参照。"
+    )
+  },
+  open: {
+    label: trs(
+      "Отворени данни",
+      "Open data",
+      "Offene Daten",
+      "Données ouvertes",
+      "Dati aperti",
+      "Açık veri",
+      "Datos abiertos",
+      "Ανοιχτά δεδομένα",
+      "オープンデータ"
+    ),
+    blurb: trs(
+      "Отворени бази и хранилища — координати, изображения и структурирани данни.",
+      "Open databases and repositories — coordinates, images and structured data.",
+      "Offene Datenbanken und Repositorien — Koordinaten, Bilder und strukturierte Daten.",
+      "Bases et dépôts ouverts — coordonnées, images et données structurées.",
+      "Basi e archivi aperti — coordinate, immagini e dati strutturati.",
+      "Açık veri tabanları ve depolar — koordinatlar, görseller ve yapılandırılmış veri.",
+      "Bases y repositorios abiertos: coordenadas, imágenes y datos estructurados.",
+      "Ανοιχτές βάσεις και αποθετήρια — συντεταγμένες, εικόνες και δομημένα δεδομένα.",
+      "オープンなデータベースとリポジトリ — 座標、画像、構造化データ。"
+    )
+  }
+};
+
+const labels = {
+  statSources: trs("източника в регистъра", "sources in the register", "Quellen im Register", "sources au registre", "fonti nel registro", "kayıtlı kaynak", "fuentes en el registro", "πηγές στο μητρώο", "件の出典"),
+  statHosts: trs("домейна", "domains", "Domains", "domaines", "domini", "alan adı", "dominios", "τομείς", "ドメイン"),
+  statChecked: trs("последна проверка", "last checked", "zuletzt geprüft", "dernière vérification", "ultima verifica", "son kontrol", "última comprobación", "τελευταίος έλεγχος", "最終確認"),
+  usedFor: trs("Използва се за", "Used for", "Verwendet für", "Utilisée pour", "Usata per", "Kullanım amacı", "Se usa para", "Χρησιμοποιείται για", "用途"),
+  limits: trs("Ограничения", "Limitations", "Einschränkungen", "Limites", "Limiti", "Sınırlamalar", "Limitaciones", "Περιορισμοί", "限界"),
+  accessed: t.common.accessed
+};
+
+const grouped = new Map<SourceGroup, (typeof sourceRegistry)[number][]>([
+  ["official", []],
+  ["media", []],
+  ["open", []]
+]);
+for (const source of sourceRegistry) {
+  const group = hostGroups[hostOf(source.url)] ?? "media";
+  grouped.get(group)!.push(source);
+}
+
+const hostCount = new Set(sourceRegistry.map((source) => hostOf(source.url))).size;
+const lastChecked = sourceRegistry
+  .map((source) => source.accessed_at)
+  .sort()
+  .at(-1);
+const groupOrder: SourceGroup[] = ["official", "media", "open"];
 ---
 
 <Layout lang={lang} path="/data-sources" title={t.sources.title} description={t.sources.lead}>
@@ -24,32 +155,44 @@ const limits = (s: (typeof sourceRegistry)[number]) => field(s, "limitations", l
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <section class="section" style="padding-top:0" data-section="data-sources">
     <div class="container">
-      <div class="table-wrap">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>{t.sources.colSource}</th>
-              <th>{t.sources.colUsedFor}</th>
-              <th>{t.sources.colLimits}</th>
-              <th>{t.sources.colAccessed}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sourceRegistry.map((source) => (
-              <tr>
-                <td>
-                  <a href={source.url} target="_blank" rel="noreferrer">{field(source, "title", lang)}</a>
-                </td>
-                <td>{usedFor(source)}</td>
-                <td class="meta">{limits(source)}</td>
-                <td><span class="meta">{source.accessed_at}</span></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div class="stat-row source-stat-row">
+        <div class="stat"><strong>{sourceRegistry.length}</strong><span>{labels.statSources}</span></div>
+        <div class="stat"><strong>{hostCount}</strong><span>{labels.statHosts}</span></div>
+        {lastChecked && <div class="stat"><strong>{lastChecked}</strong><span>{labels.statChecked}</span></div>}
       </div>
+
+      {groupOrder.map((group) => {
+        const sources = grouped.get(group)!;
+        if (sources.length === 0) return null;
+        return (
+          <div class="source-group">
+            <div class="section-head">
+              <div>
+                <h2>{groupMeta[group].label} <span class="source-group-count">{sources.length}</span></h2>
+                <p class="meta" style="margin-top:8px;max-width:74ch">{groupMeta[group].blurb}</p>
+              </div>
+            </div>
+            <div class="grid grid-2 source-grid">
+              {sources.map((source) => (
+                <article class="card source-card" data-group={group}>
+                  <p class="source-host"><span class="cat-dot"></span>{hostOf(source.url)}</p>
+                  <h3>
+                    <a href={source.url} target="_blank" rel="noreferrer">{field(source, "title", lang)} ↗</a>
+                  </h3>
+                  <p class="source-used"><strong>{labels.usedFor}:</strong> {field(source, "used_for", lang)}</p>
+                  <div class="source-limits">
+                    <p class="eyebrow">{labels.limits}</p>
+                    <p>{field(source, "limitations", lang)}</p>
+                  </div>
+                  <p class="meta source-accessed">{labels.accessed} {source.accessed_at}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </div>
   </section>
 </Layout>
