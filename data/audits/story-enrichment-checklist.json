@@ -14,10 +14,10 @@
   ],
   "policy": "Only source-backed material is rendered. Unsupported records stay checked but are not padded with invented narrative.",
   "summary": {
-    "places_total": 150,
+    "places_total": 151,
     "places_long_story_rendered": 29,
     "places_structured_record_rendered": 121,
-    "places_checked_no_added_story": 0,
+    "places_checked_no_added_story": 1,
     "mayors_total": 68,
     "mayors_long_story_rendered": 68,
     "mayors_checked_no_added_story": 0
@@ -7287,6 +7287,49 @@
         ]
       },
       "decision": "Checked. A structured public-record panel is rendered from Wikidata, but no long free-form story was added."
+    },
+    {
+      "id": "place-rowing-canal-plovdiv",
+      "kind": "place",
+      "name_en": "Rowing Canal / Grebna Baza",
+      "checked_at": "2026-06-30",
+      "status": "checked_no_added_story",
+      "localized_route_languages": [
+        "bg",
+        "en",
+        "de",
+        "fr",
+        "it",
+        "tr",
+        "es",
+        "el",
+        "ja"
+      ],
+      "evidence": {
+        "summary_words_en": 32,
+        "rendered_story_word_estimate_en": 32,
+        "source_count": 3,
+        "linked_events": 0,
+        "linked_longreads": 0,
+        "archive_items": 0,
+        "then_now_pairs": 0,
+        "wikidata_id": null,
+        "wikidata_claim_count": 0,
+        "wikidata_description_languages": [],
+        "wikipedia_sitelink_languages": [],
+        "translated_story_languages": [
+          "bg",
+          "en",
+          "de",
+          "fr",
+          "it",
+          "tr",
+          "es",
+          "el",
+          "ja"
+        ]
+      },
+      "decision": "Checked. No longer source-backed story was added because the local and Wikidata evidence is too thin."
     }
   ],
   "mayors": [

@@ -4,10 +4,10 @@
   "acceptance_requirement": "Independent editorial sign-off must be logged for 100% of published content before the history platform is complete.",
   "status": "incomplete",
   "summary": {
-    "total_tracked_records": 1001,
+    "total_tracked_records": 1002,
     "signed_off_records": 0,
-    "records_needing_review": 1001,
-    "records_with_blockers": 1001,
+    "records_needing_review": 1002,
+    "records_with_blockers": 1002,
     "signed_off_percent": 0,
     "tracking_gap_collections": 0
   },
@@ -43,10 +43,10 @@
       "label_bg": "Места",
       "label_en": "Places",
       "role": "primary_entity",
-      "total_records": 150,
+      "total_records": 151,
       "signed_off_records": 0,
-      "records_needing_review": 150,
-      "records_with_blockers": 150
+      "records_needing_review": 151,
+      "records_with_blockers": 151
     },
     "organizations": {
       "label_bg": "Организации",
@@ -48016,6 +48016,85 @@
         "open_license"
       ],
       "source_count": 2,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "place-rowing-canal-plovdiv",
+      "collection": "places",
+      "role": "primary_entity",
+      "title_bg": "Гребна база / Гребен канал",
+      "title_en": "Rowing Canal / Grebna Baza",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/places/place-rowing-canal-plovdiv/",
+      "review_url_en": "/en/places/place-rowing-canal-plovdiv/",
+      "api_url": "/api/history/places.json",
+      "review_sources": [
+        {
+          "source_id": "source-obshtina-plovdiv-greben-kanal",
+          "title_bg": "Община Пловдив — Гребен канал",
+          "title_en": "Община Пловдив — Гребен канал",
+          "url": "https://www.plovdiv.bg/item/ecology/wate/%D0%BF%D0%BE%D0%B2%D1%8A%D1%80%D1%85%D0%BD%D0%BE%D1%81%D1%82%D0%BD%D0%B8-%D0%B2%D0%BE%D0%B4%D0%B8/%D0%B3%D1%80%D0%B5%D0%B1%D0%BD%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B0/",
+          "accessed_at": "2026-07-04",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.plovdiv.bg/item/ecology/wate/%D0%BF%D0%BE%D0%B2%D1%8A%D1%80%D1%85%D0%BD%D0%BE%D1%81%D1%82%D0%BD%D0%B8-%D0%B2%D0%BE%D0%B4%D0%B8/%D0%B3%D1%80%D0%B5%D0%B1%D0%BD%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Описание и исторически контекст за Гребна база / Гребен канал.",
+          "claim_en": "Description and historical context for Rowing Canal / Grebna Baza."
+        },
+        {
+          "source_id": "source-plovdiv-rowing-committee-about-regatta-venue",
+          "title_bg": "Plovdiv Rowing Committee — About regatta venue",
+          "title_en": "Plovdiv Rowing Committee — About regatta venue",
+          "url": "https://www.plovdivrowing.com/about/about-regatta-venue",
+          "accessed_at": "2026-07-04",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.plovdivrowing.com/about/about-regatta-venue",
+          "evidence_type": "map_reference",
+          "claim_bg": "Координати за Гребна база / Гребен канал.",
+          "claim_en": "Coordinates for Rowing Canal / Grebna Baza."
+        },
+        {
+          "source_id": "source-open-plovdiv-rowing-canal-route-motif",
+          "title_bg": "Open Plovdiv — Rowing Canal route motif",
+          "title_en": "Open Plovdiv — Rowing Canal route motif",
+          "url": "https://openplovdiv.com/place-media/rowing-canal-route.svg",
+          "accessed_at": "2026-07-04",
+          "license_status": "open_license",
+          "license_label": "CC0 1.0 Universal",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "evidence_type": "media_reference",
+          "claim_bg": "Медия и лиценз за Гребна база / Гребен канал: Open Plovdiv — Rowing Canal route motif.",
+          "claim_en": "Media and license for Rowing Canal / Grebna Baza: Open Plovdiv — Rowing Canal route motif."
+        }
+      ],
+      "source_ids": [
+        "source-obshtina-plovdiv-greben-kanal",
+        "source-plovdiv-rowing-committee-about-regatta-venue",
+        "source-open-plovdiv-rowing-canal-route-motif"
+      ],
+      "source_urls": [
+        "https://www.plovdiv.bg/item/ecology/wate/%D0%BF%D0%BE%D0%B2%D1%8A%D1%80%D1%85%D0%BD%D0%BE%D1%81%D1%82%D0%BD%D0%B8-%D0%B2%D0%BE%D0%B4%D0%B8/%D0%B3%D1%80%D0%B5%D0%B1%D0%BD%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B0/",
+        "https://www.plovdivrowing.com/about/about-regatta-venue",
+        "https://openplovdiv.com/place-media/rowing-canal-route.svg"
+      ],
+      "license_statuses": [
+        "public_reference_terms_unverified",
+        "open_license"
+      ],
+      "source_count": 3,
       "has_license_or_reuse_status": true,
       "blockers": [
         "needs_independent_editorial_signoff"

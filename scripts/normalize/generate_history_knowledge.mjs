@@ -207,6 +207,28 @@ function registerMediaSource(media, usedForBg, usedForEn) {
   );
 }
 
+function isWikimediaMedia(media) {
+  return [media?.url, media?.page_url, media?.title]
+    .filter(Boolean)
+    .some((value) => String(value).toLocaleLowerCase("bg-BG").includes("wikimedia"));
+}
+
+function landmarkMediaSource(media) {
+  if (isWikimediaMedia(media)) {
+    return {
+      title: `Wikimedia Commons — ${media.title}`,
+      limitations_bg: "Медията е от Wikimedia Commons; спазвайте конкретния лиценз и атрибуция на файла.",
+      limitations_en: "Media from Wikimedia Commons; follow the file-specific license and attribution."
+    };
+  }
+
+  return {
+    title: media.title,
+    limitations_bg: "Медия с отворен лиценз; следвайте посочения лиценз и атрибуция.",
+    limitations_en: "Open-license media; follow the stated license and attribution."
+  };
+}
+
 function editorial(status = "needs_editorial_signoff") {
   return {
     status,
@@ -526,9 +548,10 @@ const places = landmarks.map((landmark) => {
         ? osmSourceId
         : null;
   const media = (landmark.media ?? []).map((item) => {
+    const mediaSource = landmarkMediaSource(item);
     const mediaSourceId = registerSource(
       {
-        title: `Wikimedia Commons — ${item.title}`,
+        title: mediaSource.title,
         url: item.page_url,
         accessed_at: item.accessed_at,
         license: {
@@ -536,8 +559,8 @@ const places = landmarks.map((landmark) => {
           label: item.license,
           url: item.license_url
         },
-        limitations_bg: "Медията е от Wikimedia Commons; спазвайте конкретния лиценз и атрибуция на файла.",
-        limitations_en: "Media from Wikimedia Commons; follow the file-specific license and attribution."
+        limitations_bg: mediaSource.limitations_bg,
+        limitations_en: mediaSource.limitations_en
       },
       `Медия за забележителност: ${landmark.name_bg}`,
       `Media for landmark: ${landmark.name_en}`

@@ -20752,5 +20752,165 @@
         }
       ]
     }
+  },
+  {
+    "id": "place-rowing-canal-plovdiv",
+    "type": "place",
+    "category": "civic",
+    "era": "modern",
+    "era_bg": "Модерен период",
+    "era_en": "Modern period",
+    "name_bg": "Гребна база / Гребен канал",
+    "name_en": "Rowing Canal / Grebna Baza",
+    "summary_bg": "Гребната база е голям спортен и рекреационен комплекс в парк „Отдих и култура“, с 2,2 км канал за гребане, алеи за разходка и колоездене и събития на открито.",
+    "summary_en": "The Rowing Canal, often called Grebna Baza, is a major sport and leisure complex in Recreation and Culture Park, with a 2.2 km rowing course, walking and cycling paths, and open-air events.",
+    "wikidata_id": null,
+    "built_year": 1988,
+    "built_date": null,
+    "date_context": {
+      "precision": "year",
+      "display_bg": "1988 г.",
+      "display_en": "1988",
+      "source_id": "source-obshtina-plovdiv-greben-kanal"
+    },
+    "architect_bg": null,
+    "architect_en": null,
+    "builder_bg": null,
+    "builder_en": null,
+    "creator_context": {
+      "status": "not_identified",
+      "display_bg": "не е идентифициран в текущия публичен източник",
+      "display_en": "not identified in the current public source",
+      "source_id": "source-obshtina-plovdiv-greben-kanal"
+    },
+    "coordinates": {
+      "lat": 42.150583,
+      "lng": 24.718111,
+      "accuracy": "official_regatta_venue_boathouse",
+      "source_id": "source-plovdiv-rowing-committee-about-regatta-venue"
+    },
+    "current_status_bg": "Действащ спортен комплекс и публична зона за разходки, бягане, колоездене, състезания и събития.",
+    "current_status_en": "Active sports venue and public leisure area for walking, running, cycling, competitions and events.",
+    "media": [
+      {
+        "type": "image",
+        "title": "Open Plovdiv — Rowing Canal route motif",
+        "accessed_at": "2026-07-04",
+        "url": "https://openplovdiv.com/place-media/rowing-canal-route.svg",
+        "page_url": "https://openplovdiv.com/place-media/rowing-canal-route.svg",
+        "credit": "Open Plovdiv",
+        "license": "CC0 1.0 Universal",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "source_id": "source-open-plovdiv-rowing-canal-route-motif"
+      }
+    ],
+    "event_ids": [],
+    "person_ids": [],
+    "organization_ids": [],
+    "archive_item_ids": [],
+    "then_now_pair_ids": [],
+    "source_ids": [
+      "source-obshtina-plovdiv-greben-kanal",
+      "source-plovdiv-rowing-committee-about-regatta-venue",
+      "source-open-plovdiv-rowing-canal-route-motif"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-obshtina-plovdiv-greben-kanal",
+        "evidence_type": "public_source",
+        "claim_bg": "Описание и исторически контекст за Гребна база / Гребен канал.",
+        "claim_en": "Description and historical context for Rowing Canal / Grebna Baza.",
+        "url": "https://www.plovdiv.bg/item/ecology/wate/%D0%BF%D0%BE%D0%B2%D1%8A%D1%80%D1%85%D0%BD%D0%BE%D1%81%D1%82%D0%BD%D0%B8-%D0%B2%D0%BE%D0%B4%D0%B8/%D0%B3%D1%80%D0%B5%D0%B1%D0%BD%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B0/",
+        "accessed_at": "2026-07-04",
+        "license_status": "public_reference_terms_unverified"
+      },
+      {
+        "source_id": "source-plovdiv-rowing-committee-about-regatta-venue",
+        "evidence_type": "map_reference",
+        "claim_bg": "Координати за Гребна база / Гребен канал.",
+        "claim_en": "Coordinates for Rowing Canal / Grebna Baza.",
+        "url": "https://www.plovdivrowing.com/about/about-regatta-venue",
+        "accessed_at": "2026-07-04",
+        "license_status": "public_reference_terms_unverified"
+      },
+      {
+        "source_id": "source-open-plovdiv-rowing-canal-route-motif",
+        "evidence_type": "media_reference",
+        "claim_bg": "Медия и лиценз за Гребна база / Гребен канал: Open Plovdiv — Rowing Canal route motif.",
+        "claim_en": "Media and license for Rowing Canal / Grebna Baza: Open Plovdiv — Rowing Canal route motif.",
+        "url": "https://openplovdiv.com/place-media/rowing-canal-route.svg",
+        "accessed_at": "2026-07-04",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    },
+    "history": {
+      "lede_bg": "Гребната база е западният спортен и зелен пояс на Пловдив — място, където официалната регатна инфраструктура се среща с ежедневните разходки, бягане, колоездене и летни събития.",
+      "lede_en": "Grebna Baza is Plovdiv's western sport and green belt: a place where official regatta infrastructure meets everyday walks, running, cycling and summer events.",
+      "sections": [
+        {
+          "id": "origins",
+          "heading_bg": "Проектирана за гребане",
+          "heading_en": "Designed for rowing",
+          "body_bg": "Съвременният регатен курс е изкуствен канал, проектиран за големи състезания по гребни спортове. Според официалната информация за мястото строителството започва през 1984 г. и завършва през 1988 г.; каналът е дълъг 2200 метра.",
+          "body_en": "The modern regatta course is an artificial canal designed for major rowing competitions. According to the venue information, construction began in 1984 and was completed in 1988; the course is 2,200 metres long.",
+          "source": {
+            "title": "Plovdiv Rowing Committee — About regatta venue",
+            "url": "https://www.plovdivrowing.com/about/about-regatta-venue",
+            "accessed_at": "2026-07-04"
+          }
+        },
+        {
+          "id": "significance",
+          "heading_bg": "Голям спортен адрес",
+          "heading_en": "A major sports address",
+          "body_bg": "Община Пловдив описва канала като спортно съоръжение за гребане с размери 2200 м дължина, 120 м ширина и 3 м дълбочина, както и като най-голямата подобна база на Балканите, подходяща за състезания по гребни спортове.",
+          "body_en": "Plovdiv Municipality describes the canal as a rowing facility measuring 2,200 m long, 120 m wide and 3 m deep, and as the largest venue of its kind in the Balkans for rowing competitions.",
+          "source": {
+            "title": "Община Пловдив — Гребен канал",
+            "url": "https://www.plovdiv.bg/item/ecology/wate/%D0%BF%D0%BE%D0%B2%D1%8A%D1%80%D1%85%D0%BD%D0%BE%D1%81%D1%82%D0%BD%D0%B8-%D0%B2%D0%BE%D0%B4%D0%B8/%D0%B3%D1%80%D0%B5%D0%B1%D0%BD%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B0/",
+            "accessed_at": "2026-07-04"
+          }
+        },
+        {
+          "id": "visit",
+          "heading_bg": "Разходка без организирана група",
+          "heading_en": "A self-guided outing",
+          "body_bg": "За посетителите мястото работи и като лесен самостоятелен маршрут: алеите около канала са популярни за ходене, бягане и колоездене, а зоната около Гребната база често приема спортни, културни и музикални прояви.",
+          "body_en": "For visitors, the area also works as an easy self-guided route: the paths around the canal are popular for walking, running and cycling, while the Rowing Canal area often hosts sporting, cultural and musical events.",
+          "source": {
+            "title": "Visit Plovdiv — Гребна база",
+            "url": "https://www.visitplovdiv.com/bg/node/215",
+            "accessed_at": "2026-07-04"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "label_bg": "Канал",
+          "label_en": "Course",
+          "value_bg": "2200 м",
+          "value_en": "2,200 m"
+        },
+        {
+          "label_bg": "Ширина",
+          "label_en": "Width",
+          "value_bg": "120 м",
+          "value_en": "120 m"
+        },
+        {
+          "label_bg": "Завършен",
+          "label_en": "Completed",
+          "value_bg": "1988 г.",
+          "value_en": "1988"
+        }
+      ]
+    }
   }
 ]

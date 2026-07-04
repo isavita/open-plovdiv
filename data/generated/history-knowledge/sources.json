@@ -810,6 +810,24 @@
     "limitations_en": "The source is publicly accessible, but reuse terms should be checked before publishing media or long quotations."
   },
   {
+    "id": "source-obshtina-plovdiv-greben-kanal",
+    "type": "source",
+    "title_bg": "Община Пловдив — Гребен канал",
+    "title_en": "Община Пловдив — Гребен канал",
+    "publisher": "Община Пловдив",
+    "url": "https://www.plovdiv.bg/item/ecology/wate/%D0%BF%D0%BE%D0%B2%D1%8A%D1%80%D1%85%D0%BD%D0%BE%D1%81%D1%82%D0%BD%D0%B8-%D0%B2%D0%BE%D0%B4%D0%B8/%D0%B3%D1%80%D0%B5%D0%B1%D0%BD%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B0/",
+    "accessed_at": "2026-07-04",
+    "license": {
+      "status": "public_reference_terms_unverified",
+      "label": "Public web reference; reuse terms not verified",
+      "url": "https://www.plovdiv.bg/item/ecology/wate/%D0%BF%D0%BE%D0%B2%D1%8A%D1%80%D1%85%D0%BD%D0%BE%D1%81%D1%82%D0%BD%D0%B8-%D0%B2%D0%BE%D0%B4%D0%B8/%D0%B3%D1%80%D0%B5%D0%B1%D0%BD%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B0/"
+    },
+    "used_for_bg": "Забележителност: Гребна база / Гребен канал",
+    "used_for_en": "Landmark: Rowing Canal / Grebna Baza",
+    "limitations_bg": "Източникът е публично достъпен, но условията за повторна употреба трябва да се проверят преди публикуване на медия или дълъг цитат.",
+    "limitations_en": "The source is publicly accessible, but reuse terms should be checked before publishing media or long quotations."
+  },
+  {
     "id": "source-obshtina-plovdiv-misiya-lauta-5",
     "type": "source",
     "title_bg": "Община Пловдив — „Мисия Лаута 5“",
@@ -862,6 +880,24 @@
     "used_for_en": "City archive: Dedicated funding for the European Capital of Culture candidacy",
     "limitations_bg": "Източникът е публично достъпен, но условията за повторна употреба трябва да се проверят преди публикуване на медия или дълъг цитат.",
     "limitations_en": "The source is publicly accessible, but reuse terms should be checked before publishing media or long quotations."
+  },
+  {
+    "id": "source-open-plovdiv-rowing-canal-route-motif",
+    "type": "source",
+    "title_bg": "Open Plovdiv — Rowing Canal route motif",
+    "title_en": "Open Plovdiv — Rowing Canal route motif",
+    "publisher": "Open Plovdiv",
+    "url": "https://openplovdiv.com/place-media/rowing-canal-route.svg",
+    "accessed_at": "2026-07-04",
+    "license": {
+      "status": "open_license",
+      "label": "CC0 1.0 Universal",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "used_for_bg": "Медия за забележителност: Гребна база / Гребен канал",
+    "used_for_en": "Media for landmark: Rowing Canal / Grebna Baza",
+    "limitations_bg": "Медия с отворен лиценз; следвайте посочения лиценз и атрибуция.",
+    "limitations_en": "Open-license media; follow the stated license and attribution."
   },
   {
     "id": "source-openstreetmap",
@@ -1222,6 +1258,24 @@
     "used_for_en": "Aggregate 2007-2013 capital-investment programme, expenditure structure and evaluation of the municipal development plan implementation.",
     "limitations_bg": "Сканиран доклад с OCR проверка и визуална проверка на страниците; използван е само за ясно четимите агрегирани стойности, не за извличане на отделни редове от плътните таблици.",
     "limitations_en": "Scanned report checked with OCR and visual page review; used only for clearly readable aggregate values, not to extract individual rows from dense tables."
+  },
+  {
+    "id": "source-plovdiv-rowing-committee-about-regatta-venue",
+    "type": "source",
+    "title_bg": "Plovdiv Rowing Committee — About regatta venue",
+    "title_en": "Plovdiv Rowing Committee — About regatta venue",
+    "publisher": "Plovdiv Rowing Committee",
+    "url": "https://www.plovdivrowing.com/about/about-regatta-venue",
+    "accessed_at": "2026-07-04",
+    "license": {
+      "status": "public_reference_terms_unverified",
+      "label": "Public web reference; reuse terms not verified",
+      "url": "https://www.plovdivrowing.com/about/about-regatta-venue"
+    },
+    "used_for_bg": "Координати за забележителност: Гребна база / Гребен канал",
+    "used_for_en": "Coordinates for landmark: Rowing Canal / Grebna Baza",
+    "limitations_bg": "Източникът е публично достъпен, но условията за повторна употреба трябва да се проверят преди публикуване на медия или дълъг цитат.",
+    "limitations_en": "The source is publicly accessible, but reuse terms should be checked before publishing media or long quotations."
   },
   {
     "id": "source-plovdiv-train-station-around-1880-jpg",

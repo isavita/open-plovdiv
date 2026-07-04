@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Open Plovdiv rowing canal route motif</title>
+  <desc id="desc">A stylized open-license illustration of Plovdiv's rowing canal, paths and park edge.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7efe0"/>
+      <stop offset="1" stop-color="#dce9df"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2f7d8a"/>
+      <stop offset="1" stop-color="#68aeb1"/>
+    </linearGradient>
+    <linearGradient id="path" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#c79b5b"/>
+      <stop offset="1" stop-color="#e2c083"/>
+    </linearGradient>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#4d351a" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" fill="url(#sky)"/>
+  <path d="M0 528c142-86 275-116 398-89 112 24 201 88 321 76 159-16 260-134 481-102v347H0z" fill="#b9cda9" opacity=".8"/>
+  <path d="M0 588c139-72 273-91 403-57 113 30 208 86 327 72 154-18 260-104 470-81v238H0z" fill="#7f9b70" opacity=".45"/>
+  <g filter="url(#soft)">
+    <path d="M196 566c70-130 172-244 303-341 77-57 160-103 250-138 34-13 75 5 87 39 10 29-2 61-29 77-190 113-328 248-413 405-22 41-75 54-115 29-27-17-43-43-83-71z" fill="url(#path)" opacity=".94"/>
+    <path d="M290 585c82-141 202-263 359-366 47-31 97-59 150-83" fill="none" stroke="#fff7e8" stroke-width="26" stroke-linecap="round" opacity=".55"/>
+  </g>
+  <g transform="translate(438 154) rotate(-15)">
+    <rect x="0" y="0" width="548" height="185" rx="86" fill="url(#water)" filter="url(#soft)"/>
+    <path d="M48 92h448" stroke="#d6f3ef" stroke-width="8" stroke-linecap="round" opacity=".75"/>
+    <path d="M92 54h362M92 130h362" stroke="#e5fbf7" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+    <path d="M194 86c43-13 88-13 135 0" fill="none" stroke="#153f45" stroke-width="8" stroke-linecap="round" opacity=".45"/>
+    <path d="M230 67l28 51M291 67l-28 51" stroke="#153f45" stroke-width="5" stroke-linecap="round" opacity=".45"/>
+  </g>
+  <g opacity=".78">
+    <circle cx="156" cy="536" r="34" fill="#315f7d"/>
+    <circle cx="156" cy="536" r="16" fill="#f9f3e7"/>
+    <circle cx="328" cy="454" r="26" fill="#b4632a"/>
+    <circle cx="520" cy="306" r="30" fill="#5f6f52"/>
+    <circle cx="877" cy="192" r="28" fill="#a23b2d"/>
+  </g>
+  <g fill="#394b35" opacity=".72">
+    <circle cx="116" cy="438" r="44"/>
+    <circle cx="108" cy="488" r="34"/>
+    <circle cx="1036" cy="428" r="42"/>
+    <circle cx="1096" cy="464" r="50"/>
+    <circle cx="986" cy="514" r="34"/>
+    <circle cx="724" cy="604" r="38"/>
+    <circle cx="790" cy="630" r="28"/>
+  </g>
+  <path d="M0 704h1200v56H0z" fill="#efe1c7" opacity=".9"/>
+</svg>

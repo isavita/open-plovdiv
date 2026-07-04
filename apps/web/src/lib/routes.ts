@@ -134,6 +134,52 @@ export const walkingRoutes: WalkingRouteSpec[] = [
     storyId: "story-unification-civic-memory",
     educationId: "education-unification-civic-city",
     stopIds: ["place-unification-square-plovdiv-q58885892", "place-plovdiv-city", "place-old-town"]
+  },
+  {
+    id: "kapana-parks-rowing-canal",
+    title: tr(
+      "Капана, парковете и Гребната база",
+      "Kapana, parks and the Rowing Canal",
+      "Kapana, Parks und der Ruderkanal",
+      "Kapana, parcs et canal d'aviron",
+      "Kapana, parchi e canale di canottaggio",
+      "Kapana, parklar ve Kürek Kanalı",
+      "Kapana, parques y canal de remo",
+      "Kapana, πάρκα και κανάλι κωπηλασίας",
+      "Kapana、公園、ボート競技場"
+    ),
+    shortTitle: tr(
+      "Капана → Гребната",
+      "Kapana → Rowing Canal",
+      "Kapana → Ruderkanal",
+      "Kapana → canal d'aviron",
+      "Kapana → canale",
+      "Kapana → Kürek Kanalı",
+      "Kapana → canal de remo",
+      "Kapana → κανάλι",
+      "Kapana → ボート場"
+    ),
+    pace: tr(
+      "творчески квартал, зелени хълмове и западен спортен пояс",
+      "creative district, green hills and west-side sport belt",
+      "Kreativviertel, grüne Hügel und westlicher Sportgürtel",
+      "quartier créatif, collines vertes et ceinture sportive ouest",
+      "quartiere creativo, colline verdi e fascia sportiva occidentale",
+      "yaratıcı bölge, yeşil tepeler ve batı spor kuşağı",
+      "distrito creativo, colinas verdes y franja deportiva occidental",
+      "δημιουργική συνοικία, πράσινοι λόφοι και δυτική ζώνη αθλητισμού",
+      "クリエイティブ地区、緑の丘、西側のスポーツ帯"
+    ),
+    durationMinutes: 120,
+    accent: "#2f7d6b",
+    storyId: "story-european-capital-culture",
+    stopIds: [
+      "place-kapana-q12282547",
+      "place-tzar-simeon-garden-q12298697",
+      "place-bunardzhik-q12274023",
+      "place-dzhendem-tepe-q5319673",
+      "place-rowing-canal-plovdiv"
+    ]
   }
 ];
 
