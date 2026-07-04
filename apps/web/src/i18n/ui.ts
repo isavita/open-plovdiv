@@ -106,7 +106,7 @@ const bg = {
   home: {
     eyebrow: "Един от най-старите градове в света",
     lead:
-      "Пловдив е жив от над 8000 години. Тракийска Евмолпия, Филипопол на Филип II Македонски, римски Тримонциум, османско Филибе — и градът на Съединението.",
+      "Пловдив е обитаван без прекъсване повече от 8000 години. Тракийска Евмолпия, Филипопол на Филип II Македонски, римски Тримонциум, османско Филибе — и градът на Съединението.",
     ctaHistory: "Разгледай хронологията",
     ctaMayors: "Кметовете на Пловдив",
     statYearsValue: "8000+",
@@ -210,7 +210,7 @@ const bg = {
     statProgrammes: "програми и събития",
     statDocuments: "първични документа",
     currentMayor: "Действащ кмет",
-    financeTitle: "Финансови архивни снимки",
+    financeTitle: "Исторически финансови стойности",
     financeLead:
       "Номинални стойности от исторически източници. Старите левове не са директно сравними със съвременния BGN и са показани като архивни ориентири.",
     programmesTitle: "Какво е организирала общината",
@@ -753,7 +753,7 @@ const en: typeof bg = {
   home: {
     eyebrow: "One of the oldest cities in the world",
     lead:
-      "Plovdiv has been alive for over 8,000 years. Thracian Eumolpias, Philip II of Macedon's Philippopolis, Roman Trimontium, Ottoman Filibe — and the city of the Unification.",
+      "Plovdiv has been continuously inhabited for more than 8,000 years. Thracian Eumolpias, Philip II of Macedon's Philippopolis, Roman Trimontium, Ottoman Filibe — and the city of the Unification.",
     ctaHistory: "Explore the timeline",
     ctaMayors: "The mayors of Plovdiv",
     statYearsValue: "8000+",
@@ -857,7 +857,7 @@ const en: typeof bg = {
     statProgrammes: "programmes and events",
     statDocuments: "primary documents",
     currentMayor: "Incumbent mayor",
-    financeTitle: "Financial archive snapshots",
+    financeTitle: "Historical financial figures",
     financeLead:
       "Nominal values from historical sources. Old lev amounts are not directly comparable with modern BGN and are shown as archival markers.",
     programmesTitle: "What the municipality organised",
@@ -1436,7 +1436,7 @@ const de: typeof bg = {
   home: {
     eyebrow: "Eine der ältesten Städte der Welt",
     lead:
-      "Plovdiv lebt seit über 8.000 Jahren. Das thrakische Eumolpia, das Philippopolis von Philipp II. von Makedonien, das römische Trimontium, das osmanische Filibe — und die Stadt der Vereinigung.",
+      "Plovdiv ist seit mehr als 8.000 Jahren durchgehend besiedelt. Das thrakische Eumolpia, das Philippopolis von Philipp II. von Makedonien, das römische Trimontium, das osmanische Filibe — und die Stadt der Vereinigung.",
     ctaHistory: "Die Zeitleiste erkunden",
     ctaMayors: "Die Bürgermeister von Plovdiv",
     statYearsValue: "8000+",
@@ -1540,7 +1540,7 @@ const de: typeof bg = {
     statProgrammes: "Programme und Ereignisse",
     statDocuments: "Primärdokumente",
     currentMayor: "Amtierender Bürgermeister",
-    financeTitle: "Finanzarchiv-Momentaufnahmen",
+    financeTitle: "Historische Finanzzahlen",
     financeLead:
       "Nominalwerte aus historischen Quellen. Alte Lewa-Beträge sind nicht direkt mit modernen BGN vergleichbar und werden als Archivmarken gezeigt.",
     programmesTitle: "Was die Gemeinde organisierte",
@@ -2079,7 +2079,7 @@ const fr: typeof bg = {
   home: {
     eyebrow: "L'une des plus anciennes villes du monde",
     lead:
-      "Plovdiv est vivante depuis plus de 8 000 ans. Eumolpias thrace, Philippopolis de Philippe II de Macédoine, Trimontium romaine, Filibe ottomane — et la ville de l'Unification.",
+      "Plovdiv est habitée sans interruption depuis plus de 8 000 ans. Eumolpias thrace, Philippopolis de Philippe II de Macédoine, Trimontium romaine, Filibe ottomane — et la ville de l'Unification.",
     ctaHistory: "Explorer la chronologie",
     ctaMayors: "Les maires de Plovdiv",
     statYearsValue: "8000+",
@@ -2183,7 +2183,7 @@ const fr: typeof bg = {
     statProgrammes: "programmes et événements",
     statDocuments: "documents primaires",
     currentMayor: "Maire en exercice",
-    financeTitle: "Instantanés des archives financières",
+    financeTitle: "Chiffres financiers historiques",
     financeLead:
       "Valeurs nominales issues de sources historiques. Les anciens montants en levs ne sont pas directement comparables au BGN moderne et sont présentés comme repères d'archives.",
     programmesTitle: "Ce que la municipalité a organisé",
@@ -2722,7 +2722,7 @@ const it: typeof bg = {
   home: {
     eyebrow: "Una delle città più antiche del mondo",
     lead:
-      "Plovdiv è viva da oltre 8.000 anni. L'Eumolpiade tracia, la Filippopoli di Filippo II di Macedonia, la Trimontium romana, la Filibe ottomana — e la città dell'Unificazione.",
+      "Plovdiv è abitata senza interruzioni da oltre 8.000 anni. L'Eumolpiade tracia, la Filippopoli di Filippo II di Macedonia, la Trimontium romana, la Filibe ottomana — e la città dell'Unificazione.",
     ctaHistory: "Esplora la cronologia",
     ctaMayors: "I sindaci di Plovdiv",
     statYearsValue: "8000+",
@@ -2826,7 +2826,7 @@ const it: typeof bg = {
     statProgrammes: "programmi ed eventi",
     statDocuments: "documenti primari",
     currentMayor: "Sindaco in carica",
-    financeTitle: "Istantanee dell'archivio finanziario",
+    financeTitle: "Cifre finanziarie storiche",
     financeLead:
       "Valori nominali da fonti storiche. I vecchi importi in lev non sono direttamente comparabili con il BGN moderno e sono mostrati come riferimenti d'archivio.",
     programmesTitle: "Cosa ha organizzato il comune",
@@ -3365,7 +3365,7 @@ const tr: typeof bg = {
   home: {
     eyebrow: "Dünyanın en eski şehirlerinden biri",
     lead:
-      "Plovdiv 8.000 yılı aşkın süredir yaşıyor. Trak Eumolpias'ı, Makedonyalı II. Filip'in Philippopolis'i, Roma Trimontium'u, Osmanlı Filibe'si — ve Birleşme'nin şehri.",
+      "Plovdiv 8.000 yılı aşkın süredir kesintisiz olarak yerleşim yeri olmuştur. Trak Eumolpias'ı, Makedonyalı II. Filip'in Philippopolis'i, Roma Trimontium'u, Osmanlı Filibe'si — ve Birleşme'nin şehri.",
     ctaHistory: "Zaman çizelgesini keşfet",
     ctaMayors: "Plovdiv'in belediye başkanları",
     statYearsValue: "8000+",
@@ -3469,7 +3469,7 @@ const tr: typeof bg = {
     statProgrammes: "program ve etkinlik",
     statDocuments: "birincil belge",
     currentMayor: "Görevdeki belediye başkanı",
-    financeTitle: "Mali arşiv anlık görüntüleri",
+    financeTitle: "Tarihsel mali rakamlar",
     financeLead:
       "Tarihsel kaynaklardan nominal değerler. Eski leva tutarları modern BGN ile doğrudan karşılaştırılamaz ve arşiv işaretleri olarak gösterilir.",
     programmesTitle: "Belediyenin düzenledikleri",
@@ -4008,7 +4008,7 @@ const es: typeof bg = {
   home: {
     eyebrow: "Una de las ciudades más antiguas del mundo",
     lead:
-      "Plovdiv vive desde hace más de 8000 años. La Eumolpíade tracia, la Filipópolis de Filipo II de Macedonia, la Trimontium romana, la Filibe otomana — y la ciudad de la Unificación.",
+      "Plovdiv está habitada de forma ininterrumpida desde hace más de 8000 años. La Eumolpíade tracia, la Filipópolis de Filipo II de Macedonia, la Trimontium romana, la Filibe otomana — y la ciudad de la Unificación.",
     ctaHistory: "Explorar la cronología",
     ctaMayors: "Los alcaldes de Plovdiv",
     statYearsValue: "8000+",
@@ -4112,7 +4112,7 @@ const es: typeof bg = {
     statProgrammes: "programas y eventos",
     statDocuments: "documentos primarios",
     currentMayor: "Alcalde en funciones",
-    financeTitle: "Instantáneas del archivo financiero",
+    financeTitle: "Cifras financieras históricas",
     financeLead:
       "Valores nominales de fuentes históricas. Los importes antiguos en levas no son directamente comparables con el BGN moderno y se muestran como marcadores de archivo.",
     programmesTitle: "Lo que organizó el municipio",
@@ -4651,7 +4651,7 @@ const el: typeof bg = {
   home: {
     eyebrow: "Μία από τις αρχαιότερες πόλεις του κόσμου",
     lead:
-      "Το Plovdiv ζει εδώ και πάνω από 8.000 χρόνια. Θρακική Ευμολπία, Φιλιππούπολη του Φιλίππου Β΄ της Μακεδονίας, ρωμαϊκή Τριμόντιον, οθωμανική Φιλιμπέ — και η πόλη της Ένωσης.",
+      "Το Plovdiv κατοικείται αδιάλειπτα εδώ και πάνω από 8.000 χρόνια. Θρακική Ευμολπία, Φιλιππούπολη του Φιλίππου Β΄ της Μακεδονίας, ρωμαϊκή Τριμόντιον, οθωμανική Φιλιμπέ — και η πόλη της Ένωσης.",
     ctaHistory: "Εξερευνήστε το χρονολόγιο",
     ctaMayors: "Οι δήμαρχοι του Plovdiv",
     statYearsValue: "8000+",
@@ -4755,7 +4755,7 @@ const el: typeof bg = {
     statProgrammes: "προγράμματα και εκδηλώσεις",
     statDocuments: "πρωτογενή έγγραφα",
     currentMayor: "Εν ενεργεία δήμαρχος",
-    financeTitle: "Στιγμιότυπα του οικονομικού αρχείου",
+    financeTitle: "Ιστορικά οικονομικά μεγέθη",
     financeLead:
       "Ονομαστικές τιμές από ιστορικές πηγές. Τα παλιά ποσά σε λεβ δεν είναι άμεσα συγκρίσιμα με το σύγχρονο BGN και εμφανίζονται ως δείκτες αρχείου.",
     programmesTitle: "Τι οργάνωσε ο δήμος",
