@@ -23,9 +23,17 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../
 const CYRILLIC = /[Ѐ-ӿ]/;
 const GREEK = /[Ͱ-Ͽἀ-῿]/;
 const JAPANESE = /[\u3040-\u30ff\u3400-\u9fff]/;
+// Letters that exist in the Ukrainian Cyrillic alphabet but not the Bulgarian
+// one (\u0456, \u0457, \u0454, \u0491). Used to confirm uk text is genuinely Ukrainian rather than
+// an untranslated Bulgarian passthrough, since the generic CYRILLIC check
+// can't distinguish the two related, same-script languages.
+const UKRAINIAN_ONLY_LETTERS = /[\u0456\u0457\u0454\u0491]/i;
 // Non-Bulgarian locales whose UI must not leak Bulgarian Cyrillic. Greek (`el`) is
 // included: it uses its own (Greek) script, which the CYRILLIC range does not match,
 // so the same no-Cyrillic-leak assertion is Greek-aware (allows Greek, catches Cyrillic).
+// Ukrainian (`uk`) is intentionally excluded: it shares Bulgarian's Cyrillic script,
+// so a blanket "no Cyrillic" assertion would false-positive on correctly translated
+// Ukrainian text. See the dedicated "Ukrainian UI" test below instead.
 const NON_BG_SCRIPT_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "el", "ja", "tl"];
 // Locales written in the Latin script (used for assertions that are Latin-only).
 const LATIN_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "tl"];
@@ -49,7 +57,7 @@ function collectStrings(
 
 describe("i18n locales", () => {
   it("registers every shipped locale", () => {
-    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl"]);
+    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk"]);
   });
 
   it("every locale exposes a non-empty display name", () => {
@@ -100,11 +108,24 @@ describe("ui dictionary parity", () => {
     const japaneseStrings = collectStrings(ui.ja).filter(([, value]) => JAPANESE.test(value));
     expect(japaneseStrings.length).toBeGreaterThan(200);
   });
+
+  it("Ukrainian UI is genuinely Ukrainian (uses letters absent from Bulgarian), not an untranslated bg passthrough", () => {
+    const ukrainianStrings = collectStrings(ui.uk).filter(([, value]) => UKRAINIAN_ONLY_LETTERS.test(value));
+    expect(ukrainianStrings.length).toBeGreaterThan(100);
+  });
+
+  it("Ukrainian UI is not just a copy of the Bulgarian source strings", () => {
+    const bgPairs = collectStrings(ui.bg);
+    const ukByPath = new Map(collectStrings(ui.uk));
+    const identical = bgPairs.filter(([bgPath, bgValue]) => ukByPath.get(bgPath) === bgValue);
+    // A handful of strings (site name, shared proper nouns) may legitimately match.
+    expect(identical.length).toBeLessThan(bgPairs.length * 0.1);
+  });
 });
 
 describe("generated translation JSON", () => {
   it("Japanese translations have exact key parity with the other generated locales and no blanks", () => {
-    const langs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl"];
+    const langs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk"];
     const translations = Object.fromEntries(
       langs.map((lang) => [
         lang,
@@ -185,6 +206,7 @@ describe("data-label maps", () => {
     const elKeys = Object.keys(sourceTitleLabels.el).sort();
     const jaKeys = Object.keys(sourceTitleLabels.ja).sort();
     const tlKeys = Object.keys(sourceTitleLabels.tl).sort();
+    const ukKeys = Object.keys(sourceTitleLabels.uk).sort();
     expect(deKeys, "de source titles drift from en").toEqual(enKeys);
     expect(frKeys, "fr source titles drift from en").toEqual(enKeys);
     expect(itKeys, "it source titles drift from en").toEqual(enKeys);
@@ -193,16 +215,20 @@ describe("data-label maps", () => {
     expect(elKeys, "el source titles drift from en").toEqual(enKeys);
     expect(jaKeys, "ja source titles drift from en").toEqual(enKeys);
     expect(tlKeys, "tl source titles drift from en").toEqual(enKeys);
+    expect(ukKeys, "uk source titles drift from en").toEqual(enKeys);
     for (const loc of NON_BG_SCRIPT_LOCALES) {
       for (const [key, value] of Object.entries(sourceTitleLabels[loc])) {
         expect(value.trim().length, `sourceTitleLabels.${loc}.${key} empty`).toBeGreaterThan(0);
       }
     }
+    for (const [key, value] of Object.entries(sourceTitleLabels.uk)) {
+      expect(value.trim().length, `sourceTitleLabels.uk.${key} empty`).toBeGreaterThan(0);
+    }
   });
 });
 
 describe("route parity", () => {
-  function routeFiles(locale: "en" | "ja" | "tl") {
+  function routeFiles(locale: "en" | "ja" | "tl" | "uk") {
     const base = path.join(repoRoot, "apps/web/src/pages", locale);
     const walk = (dir: string): string[] =>
       fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -219,6 +245,10 @@ describe("route parity", () => {
 
   it("/tl has exact source route parity with /en", () => {
     expect(routeFiles("tl")).toEqual(routeFiles("en"));
+  });
+
+  it("/uk has exact source route parity with /en", () => {
+    expect(routeFiles("uk")).toEqual(routeFiles("en"));
   });
 });
 
@@ -242,10 +272,12 @@ describe("localised routing", () => {
     expect(getLangFromUrl("/el/history")).toBe("el");
     expect(getLangFromUrl("/ja/history")).toBe("ja");
     expect(getLangFromUrl("/tl/history")).toBe("tl");
+    expect(getLangFromUrl("/uk/history")).toBe("uk");
     expect(getLangFromUrl("/en/history")).toBe("en");
     expect(getLangFromUrl("/projects")).toBe("bg");
     expect(delocalizePath("/ja/projects")).toBe("/projects");
     expect(delocalizePath("/tl/projects")).toBe("/projects");
+    expect(delocalizePath("/uk/projects")).toBe("/projects");
     expect(delocalizePath("/el/projects")).toBe("/projects");
     expect(delocalizePath("/de/projects")).toBe("/projects");
     expect(delocalizePath("/de")).toBe("/");
@@ -275,5 +307,6 @@ describe("localised routing", () => {
     expect(localeForLang("el")).toBe("el-GR");
     expect(localeForLang("ja")).toBe("ja-JP");
     expect(localeForLang("tl")).toBe("fil-PH");
+    expect(localeForLang("uk")).toBe("uk-UA");
   });
 });

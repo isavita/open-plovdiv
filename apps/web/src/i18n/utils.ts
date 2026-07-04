@@ -20,7 +20,8 @@ const intlLocaleByLang: Record<Lang, string> = {
   es: "es-ES",
   el: "el-GR",
   ja: "ja-JP",
-  tl: "fil-PH"
+  tl: "fil-PH",
+  uk: "uk-UA"
 };
 const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builder"]);
 

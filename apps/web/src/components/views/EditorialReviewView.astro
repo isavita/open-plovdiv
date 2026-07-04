@@ -510,6 +510,68 @@ const labels =
         tableLimit: "最初の",
         tableLimitSuffix: "件を表示しています。完全な一覧はCSVファイルにあります。"
       }
+      : lang === "uk"
+      ? {
+        title: "Редакційна перевірка",
+        eyebrow: "Перевірка історичної бази даних",
+        lead:
+          "Огляд записів, які ще очікують на редакційну перевірку людиною. Дані технічно перевірені, але цей екран показує, де ще потрібні надійніші джерела, дані про ліцензію або редакційне підтвердження.",
+        status: "Статус",
+        total: "відстежуваних записів",
+        signedOff: "затверджено",
+        needsReview: "очікують перевірки",
+        blockers: "з проблемами",
+        trackingGaps: "прогалини відстеження",
+        sourceCoverageTitle: "Покриття джерелами",
+        sourceCoverageLead:
+          "Окрема перевірка тих самих записів: чи має кожен рядок публічне джерело, дані про ліцензію чи повторне використання, і чи позначено рядки з єдиним джерелом для посиленої перевірки.",
+        traceability: "простежуваність",
+        multiSourceReview: "перевірка з посиленими джерелами",
+        complete: "завершено",
+        incomplete: "не завершено",
+        needsSourceReview: "потребує перевірки",
+        recordsWithSources: "із джерелами",
+        missingSources: "без джерела",
+        licenseReady: "з ліцензією/умовами",
+        missingLicenses: "без ліцензії/умов",
+        singleSource: "одне джерело",
+        multiSource: "2+ джерела",
+        openLicenseRows: "рядки з відкритою ліцензією",
+        publicTermsRows: "рядки з публічним посиланням",
+        sourceCoverageApi: "Джерела JSON",
+        sourceCoverageCsv: "Джерела CSV",
+        requirement: "Критерій",
+        collections: "Колекції",
+        collection: "Колекція",
+        records: "Записи",
+        reviewer: "Редакційна перевірка",
+        sources: "Джерела",
+        sourceLicense: "Джерела і ліцензія",
+        blockersLabel: "Проблеми",
+        search: "Пошук",
+        searchPlaceholder: "запис, колекція, проблема...",
+        allCollections: "Усі колекції",
+        allStatuses: "Усі статуси",
+        allBlockers: "Усі проблеми",
+        record: "Запис",
+        visible: "Видимі",
+        of: "з",
+        empty: "Немає записів за цими фільтрами.",
+        loading: "Завантаження редакційної черги...",
+        api: "Дані JSON",
+        csv: "Дані CSV",
+        openRecord: "Відкрити запис",
+        openApi: "Дані",
+        signedOffStatus: "затверджено",
+        needsStatus: "очікує перевірки",
+        missingStatus: "відсутній статус",
+        unsigned: "не перевірено",
+        hasLicense: "є ліцензія/умови",
+        missingLicense: "відсутня ліцензія/умови",
+        reset: "Скинути фільтри",
+        tableLimit: "Показано перші",
+        tableLimitSuffix: "записів для поточного фільтра. Повний список доступний у файлі CSV."
+      }
       : lang === "tl"
       ? {
         title: "Pagsusuring Editoryal",
@@ -645,7 +707,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     es: "se requiere aprobación editorial independiente",
     el: "απαιτείται ανεξάρτητη συντακτική έγκριση",
     ja: "独立した編集承認が必要",
-    tl: "kailangan ng independiyenteng pag-apruba ng editor"
+    tl: "kailangan ng independiyenteng pag-apruba ng editor",
+    uk: "потрібне незалежне редакційне затвердження"
   },
   missing_independent_editorial_signoff_log: {
     bg: "липсва име или дата на редактора",
@@ -657,7 +720,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     es: "falta el nombre o la fecha del revisor",
     el: "λείπει το όνομα ή η ημερομηνία του ελεγκτή",
     ja: "レビュー担当者名または日付が不足",
-    tl: "kulang ang pangalan o petsa ng tagasuri"
+    tl: "kulang ang pangalan o petsa ng tagasuri",
+    uk: "відсутнє ім'я або дата рецензента"
   },
   missing_source_reference: {
     bg: "липсва източникова връзка",
@@ -669,7 +733,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     es: "falta la referencia de la fuente",
     el: "λείπει η αναφορά πηγής",
     ja: "出典参照が不足",
-    tl: "kulang ang sanggunian sa pinagmulan"
+    tl: "kulang ang sanggunian sa pinagmulan",
+    uk: "відсутнє посилання на джерело"
   },
   missing_license_or_reuse_status: {
     bg: "липсва лиценз или статус за повторна употреба",
@@ -681,7 +746,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     es: "falta la licencia o el estado de reutilización",
     el: "λείπει η άδεια ή το καθεστώς επαναχρησιμοποίησης",
     ja: "ライセンスまたは再利用状態が不足",
-    tl: "kulang ang lisensya o katayuan sa muling paggamit"
+    tl: "kulang ang lisensya o katayuan sa muling paggamit",
+    uk: "відсутня ліцензія або статус повторного використання"
   },
   missing_external_editorial_signoff_record: {
     bg: "липсва външен редакторски запис",
@@ -693,7 +759,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     es: "falta el registro de revisión editorial externa",
     el: "λείπει η εγγραφή εξωτερικού συντακτικού ελέγχου",
     ja: "外部編集レビュー記録が不足",
-    tl: "kulang ang talaan ng panlabas na pagsusuring editoryal"
+    tl: "kulang ang talaan ng panlabas na pagsusuring editoryal",
+    uk: "відсутній запис зовнішньої редакційної перевірки"
   },
   editorial_signoff_log_mismatch: {
     bg: "несъответствие в редакторския запис",
@@ -705,7 +772,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     es: "incoherencia en el registro de revisión editorial",
     el: "ασυμφωνία στην εγγραφή συντακτικού ελέγχου",
     ja: "編集レビュー記録に不一致",
-    tl: "hindi tugma ang talaan ng pagsusuring editoryal"
+    tl: "hindi tugma ang talaan ng pagsusuring editoryal",
+    uk: "невідповідність у записі редакційної перевірки"
   }
 };
 
@@ -720,7 +788,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     es: "ficha principal",
     el: "κύρια καρτέλα",
     ja: "主要記録",
-    tl: "pangunahing talaan"
+    tl: "pangunahing talaan",
+    uk: "основний запис"
   },
   relationship_entity: {
     bg: "връзка между записи",
@@ -732,7 +801,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     es: "ficha de relación",
     el: "καρτέλα σχέσης",
     ja: "関係記録",
-    tl: "talaan ng relasyon"
+    tl: "talaan ng relasyon",
+    uk: "запис зв'язку"
   },
   supporting_archive: {
     bg: "архивен материал",
@@ -744,7 +814,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     es: "elemento de archivo complementario",
     el: "συμπληρωματικό αρχειακό στοιχείο",
     ja: "補助アーカイブ項目",
-    tl: "suportang item sa arkibo"
+    tl: "suportang item sa arkibo",
+    uk: "додатковий архівний матеріал"
   },
   primary_document: {
     bg: "първичен документ",
@@ -756,7 +827,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     es: "documento primario",
     el: "πρωτογενές έγγραφο",
     ja: "一次資料",
-    tl: "pangunahing dokumento"
+    tl: "pangunahing dokumento",
+    uk: "первинний документ"
   },
   editorial_feature: {
     bg: "редакционен материал",
@@ -768,7 +840,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     es: "artículo editorial",
     el: "συντακτικό άρθρο",
     ja: "編集記事",
-    tl: "artikulong editoryal"
+    tl: "artikulong editoryal",
+    uk: "редакційний матеріал"
   },
   education_material: {
     bg: "образователен материал",
@@ -780,7 +853,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     es: "recurso educativo",
     el: "εκπαιδευτικό υλικό",
     ja: "教育資料",
-    tl: "kagamitang pang-edukasyon"
+    tl: "kagamitang pang-edukasyon",
+    uk: "освітній матеріал"
   }
 };
 
@@ -911,6 +985,23 @@ const collectionLabelsTl: Record<string, string> = {
   editorial_review: "Pagsusuring Editoryal"
 };
 
+// Ukrainian collection labels (the generated dataset only carries label_bg/label_en).
+const collectionLabelsUk: Record<string, string> = {
+  events: "Події",
+  people: "Особи",
+  person_relationships: "Зв'язки між особами",
+  places: "Місця",
+  organizations: "Організації",
+  sources: "Джерела",
+  archive_items: "Архівні матеріали",
+  then_now_pairs: "Пари тоді/зараз",
+  primary_documents: "Первинні документи",
+  story_longreads: "Довгі розповіді",
+  education_resources: "Освітні ресурси",
+  editorial_signoffs: "Редакційні затвердження",
+  editorial_review: "Редакційна перевірка"
+};
+
 function collectionLabel(id: string) {
   const collection = historyEditorialReview.collections[id];
   if (lang === "fr" && collectionLabelsFr[id]) return collectionLabelsFr[id];
@@ -920,6 +1011,7 @@ function collectionLabel(id: string) {
   if (lang === "el" && collectionLabelsEl[id]) return collectionLabelsEl[id];
   if (lang === "ja" && collectionLabelsJa[id]) return collectionLabelsJa[id];
   if (lang === "tl" && collectionLabelsTl[id]) return collectionLabelsTl[id];
+  if (lang === "uk" && collectionLabelsUk[id]) return collectionLabelsUk[id];
   return collection?.[`label_${lang}`] ?? collection?.label_en ?? collection?.label_bg ?? id.replaceAll("_", " ");
 }
 

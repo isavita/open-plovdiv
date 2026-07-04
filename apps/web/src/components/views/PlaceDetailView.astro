@@ -244,6 +244,33 @@ const labels =
         noArchive:
           "この場所には、独立したアーカイブまたは今昔比較の記録がまだありません。主要画像、座標、出典は引き続き公開されています。"
       }
+      : lang === "uk"
+      ? {
+        back: "Усі місця",
+        facts: "Дані",
+        currentStatus: "Поточний статус",
+        visit: "Відвідування та орієнтація",
+        coordinates: "Координати",
+        openMap: "Відкрити карту",
+        built: "Дата/будівництво",
+        architect: "Архітектор",
+        builder: "Будівельник",
+        creator: "Архітектор/будівельник",
+        source: "Джерело",
+        sources: "Джерела",
+        mediaLicense: "Ліцензія зображення",
+        mediaFile: "Медіафайл",
+        mediaCredit: "Автор",
+        matchQuality: "Збіг",
+        archiveTitle: "Архів для цього місця",
+        thenNowTitle: "Тоді/тепер",
+        thenLabel: "Тоді",
+        nowLabel: "Тепер",
+        eventsTitle: "Пов'язані події",
+        storiesTitle: "Пов'язані розповіді",
+        noArchive:
+          "Для цього місця ще немає окремого архівного запису чи запису тоді/тепер. Основне зображення, координати та джерела залишаються опублікованими."
+      }
       : lang === "tl"
       ? {
         back: "Lahat ng Lugar",
@@ -777,6 +804,54 @@ const storyLabels = ({
     relatedPlacesSentence: (items: string) =>
       `関連する場所は、この場所がより広い都市システムの一部として働いていることを示します: ${items}。`
   },
+  uk: {
+    storyEyebrow: "Розповідь про місце",
+    storyTitle: "Як читати це місце",
+    whyTitle: "Чому це важливо",
+    originTitle: "Походження і шари",
+    useTitle: "Сьогодні і на що звернути увагу",
+    stewardshipTitle: "Власність, догляд та установи",
+    timelineTitle: "Історія в часі",
+    evidenceTitle: "Сліди та свідчення",
+    aroundTitle: "Навколо цього місця",
+    peopleTitle: "Пов'язані особи",
+    organizationsTitle: "Установи та спільноти",
+    relatedPlacesTitle: "Пов'язані місця",
+    noOwnership:
+      "Публічний запис, використаний тут, не вказує на простежувану історію власності чи управління. Тому сторінка показує лише перевірені інституційні та джерельні зв'язки.",
+    noPeople: "У поточній базі знань не пов'язано жодної особи.",
+    noOrganizations: "У поточній базі знань не пов'язано жодної установи.",
+    noRelatedPlaces: "Немає інших місць, пов'язаних через ті самі події.",
+    noTimeline:
+      "Окремі події хронології ще не пов'язані; розповідь тут спирається на запис про місце, походження та публічні джерела.",
+    sourceBacked: "фактів, підтверджених джерелами",
+    linkedEvents: "пов'язані події",
+    archiveSignals: "архівні сліди",
+    thenNowSignals: "порівняння тоді/тепер",
+    sourceCount: "публічних джерел",
+    dateLabel: "Датування",
+    creatorLabel: "Авторство",
+    statusLabel: "Поточний статус",
+    sourceLabel: "Джерельний слід",
+    storyIntro: (name: string, era: string) =>
+      `${name} — це не просто точка на карті. Це запис з ${era}, який пов'язує міські шари, видимі сліди, публічні джерела та сусідні розповіді.`,
+    dateSentence: (date: string, source: string) =>
+      `Датування опубліковано як ${date}${source ? `, пов'язане з ${source}` : ""}.`,
+    creatorSentence: (creator: string) =>
+      `Щодо авторства поточний запис зазначає: ${creator}.`,
+    statusSentence: (status: string) =>
+      `Сьогоднішній статус описано так: ${status}`,
+    timelineSentence: (count: number) =>
+      `Розповідь розгортається через ${count} пов'язаних подій, які вписують це місце в ширшу хронологію Пловдива.`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `Архівний шар зафіксовано так: архівних записів: ${archiveCount}; візуальних порівнянь тоді/тепер: ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) =>
+      `Інституційний контекст проходить через ${items}. Це не є автоматично історією власності, а перевірюваним слідом публічного догляду, пам'яті чи управління.`,
+    peopleSentence: (items: string) =>
+      `Особи, пов'язані з цим місцем, допомагають прочитати історію через біографії, події та міську пам'ять: ${items}.`,
+    relatedPlacesSentence: (items: string) =>
+      `Пов'язані місця показують, що цей об'єкт працює як частина ширшої міської системи: ${items}.`
+  },
   tl: {
     storyEyebrow: "Kuwento ng lugar",
     storyTitle: "Paano basahin ang lugar na ito",
@@ -1020,6 +1095,30 @@ const historyAtlasLabels =
                       publicRecordNode: "公開記録",
                       sourcesNode: "出典"
                     }
+                  : lang === "uk"
+                  ? {
+                      eyebrow: "Історичний атлас",
+                      title: "Шари, зв'язки і сліди",
+                      lead: (events: number, stories: number, sources: number) =>
+                        `Ця карта об'єднує ${events} подій, ${stories} розповідей і ${sources} публічних джерел, не додаючи непідтверджених тверджень.`,
+                      contextTitle: "Мережа контексту",
+                      contextLead: "Зв'язки показують, що перевірено для цього місця: події, розповіді, людей, установи, архіви та публічні записи.",
+                      eventBrowserTitle: "Повний потік подій",
+                      eventBrowserLead: (count: number) =>
+                        count > 0 ? `Усі ${count} пов'язаних подій згруповано за типом запису.` : "Для цього місця немає окремих подій.",
+                      eventCount: (count: number) => `${count} записів`,
+                      eventSources: (count: number) => `${count} джерел`,
+                      noEvents: "Для цього місця в поточній базі немає окремих подій; див. публічний запис, джерела та опис.",
+                      rootNode: "місце",
+                      eventsNode: "події",
+                      storiesNode: "розповіді",
+                      peopleNode: "люди",
+                      organizationsNode: "установи",
+                      archiveNode: "архів",
+                      thenNowNode: "тоді/тепер",
+                      publicRecordNode: "публічний запис",
+                      sourcesNode: "джерела"
+                    }
                   : lang === "tl"
                   ? {
                       eyebrow: "Atlas ng Kasaysayan",
@@ -1205,6 +1304,23 @@ const wikidataLabels =
                       wikidata: "Wikidata記録",
                       wikipedia: "Wikipedia"
                     }
+                  : lang === "uk"
+                  ? {
+                      title: "Публічний запис Wikidata",
+                      description: "Опис",
+                      instance_of: "Тип",
+                      heritage_designation: "Статус/охорона",
+                      inception: "Заснування",
+                      start_time: "Дата початку",
+                      architect: "Архітектор",
+                      creator: "Автор",
+                      owned_by: "Власник",
+                      operator: "Оператор",
+                      location: "Розташування",
+                      street_address: "Адреса",
+                      wikidata: "Запис Wikidata",
+                      wikipedia: "Вікіпедія"
+                    }
                   : lang === "tl"
                   ? {
                       title: "Pampublikong Talaan ng Wikidata",
@@ -1291,6 +1407,12 @@ const matchQualityLabels: Record<string, string> =
         same_place_approximate_viewpoint: "同じ場所、おおよその視点",
         same_place_close_viewpoint: "同じ場所、近い視点",
         city_context: "都市文脈"
+      }
+      : lang === "uk"
+      ? {
+        same_place_approximate_viewpoint: "те саме місце, приблизна точка огляду",
+        same_place_close_viewpoint: "те саме місце, близька точка огляду",
+        city_context: "міський контекст"
       }
       : lang === "tl"
       ? {
@@ -1379,17 +1501,18 @@ const trx = (
   es: string,
   el: string,
   ja: string,
+  uk: string,
   tl: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl })[lang];
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, uk, tl })[lang];
 
 const discoveryL = {
-  onRoute: trx("Част от маршрут", "On a walking route", "Teil einer Route", "Sur un parcours", "Su un percorso", "Bir rotanın parçası", "En una ruta", "Σε διαδρομή", "散策ルートの一部", "Bahagi ng ruta"),
-  stop: trx("Спирка", "Stop", "Station", "Étape", "Tappa", "Durak", "Parada", "Στάση", "地点", "Hintuan"),
-  of: trx("от", "of", "von", "sur", "di", "/", "de", "από", "/", "sa"),
-  minutes: trx("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "min"),
-  nextStop: trx("Следваща спирка", "Next stop", "Nächste Station", "Étape suivante", "Prossima tappa", "Sonraki durak", "Siguiente parada", "Επόμενη στάση", "次の地点", "Susunod na hintuan"),
-  openRoute: trx("Виж целия маршрут", "See the full route", "Ganze Route ansehen", "Voir tout le parcours", "Vedi tutto il percorso", "Rotanın tamamını gör", "Ver la ruta completa", "Δείτε όλη τη διαδρομή", "ルート全体を見る", "Tingnan ang buong ruta"),
-  nearby: trx("Наблизо", "Nearby", "In der Nähe", "À proximité", "Nelle vicinanze", "Yakınında", "Cerca", "Κοντά", "近くの場所", "Malapit"),
+  onRoute: trx("Част от маршрут", "On a walking route", "Teil einer Route", "Sur un parcours", "Su un percorso", "Bir rotanın parçası", "En una ruta", "Σε διαδρομή", "散策ルートの一部", "Частина маршруту", "Bahagi ng ruta"),
+  stop: trx("Спирка", "Stop", "Station", "Étape", "Tappa", "Durak", "Parada", "Στάση", "地点", "Зупинка", "Hintuan"),
+  of: trx("от", "of", "von", "sur", "di", "/", "de", "από", "/", "з", "sa"),
+  minutes: trx("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "хв", "min"),
+  nextStop: trx("Следваща спирка", "Next stop", "Nächste Station", "Étape suivante", "Prossima tappa", "Sonraki durak", "Siguiente parada", "Επόμενη στάση", "次の地点", "Наступна зупинка", "Susunod na hintuan"),
+  openRoute: trx("Виж целия маршрут", "See the full route", "Ganze Route ansehen", "Voir tout le parcours", "Vedi tutto il percorso", "Rotanın tamamını gör", "Ver la ruta completa", "Δείτε όλη τη διαδρομή", "ルート全体を見る", "Переглянути весь маршрут", "Tingnan ang buong ruta"),
+  nearby: trx("Наблизо", "Nearby", "In der Nähe", "À proximité", "Nelle vicinanze", "Yakınında", "Cerca", "Κοντά", "近くの場所", "Поруч", "Malapit"),
   nearbyNote: trx(
     "Разстояния по права линия, изчислени от координатите.",
     "Straight-line distances computed from the coordinates.",
@@ -1400,9 +1523,10 @@ const discoveryL = {
     "Distancias en línea recta calculadas a partir de las coordenadas.",
     "Αποστάσεις σε ευθεία γραμμή, υπολογισμένες από τις συντεταγμένες.",
     "座標から算出した直線距離です。",
+    "Відстані по прямій лінії, розраховані за координатами.",
     "Mga tuwid na distansya na kinalkula mula sa mga coordinate."
   ),
-  meters: trx("м", "m", "m", "m", "m", "m", "m", "μ.", "m", "m")
+  meters: trx("м", "m", "m", "m", "m", "m", "m", "μ.", "m", "м", "m")
 };
 
 const placeRoutes = routesThroughPlace(place.id).map(({ route, stopIndex }) => {

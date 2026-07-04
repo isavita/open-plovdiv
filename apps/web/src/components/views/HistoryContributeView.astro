@@ -499,13 +499,14 @@ const trc = (
   es: string,
   el: string,
   ja: string,
-  tl: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl } satisfies Record<Lang, string>)[lang];
+  tl: string,
+  uk: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk } satisfies Record<Lang, string>)[lang];
 
 // Compact "how it works" steps + trust chips shown above the form.
 const steps = [
   {
-    title: trc("Опишете приноса", "Describe the contribution", "Beitrag beschreiben", "Décrivez la contribution", "Descrivete il contributo", "Katkıyı anlatın", "Describa la contribución", "Περιγράψτε τη συνεισφορά", "内容を記入", "Ilarawan ang kontribusyon"),
+    title: trc("Опишете приноса", "Describe the contribution", "Beitrag beschreiben", "Décrivez la contribution", "Descrivete il contributo", "Katkıyı anlatın", "Describa la contribución", "Περιγράψτε τη συνεισφορά", "内容を記入", "Ilarawan ang kontribusyon", "Опишіть внесок"),
     hint: trc(
       "Снимка, спомен или източник — какво показва и откъде идва.",
       "A photo, memory or source — what it shows and where it comes from.",
@@ -516,11 +517,12 @@ const steps = [
       "Foto, recuerdo o fuente: qué muestra y de dónde procede.",
       "Φωτογραφία, ανάμνηση ή πηγή — τι δείχνει και από πού προέρχεται.",
       "写真・思い出・出典 — 何が写っていて、どこから来たのか。",
-      "Isang larawan, alaala, o pinagmulan — kung ano ang ipinapakita nito at saan galing."
+      "Isang larawan, alaala, o pinagmulan — kung ano ang ipinapakita nito at saan galing.",
+      "Фото, спогад або джерело — що зображено і звідки походить."
     )
   },
   {
-    title: trc("Посочете произхода", "State the provenance", "Herkunft angeben", "Indiquez la provenance", "Indicate la provenienza", "Kaynağını belirtin", "Indique la procedencia", "Δηλώστε την προέλευση", "出所を明記", "Ilahad ang pinagmulan"),
+    title: trc("Посочете произхода", "State the provenance", "Herkunft angeben", "Indiquez la provenance", "Indicate la provenienza", "Kaynağını belirtin", "Indique la procedencia", "Δηλώστε την προέλευση", "出所を明記", "Ilahad ang pinagmulan", "Вкажіть походження"),
     hint: trc(
       "Линк или бележка за произхода; място на картата по избор.",
       "A link or a provenance note; a map location is optional.",
@@ -531,11 +533,12 @@ const steps = [
       "Un enlace o una nota de procedencia; la ubicación es opcional.",
       "Σύνδεσμος ή σημείωση προέλευσης· το σημείο στον χάρτη είναι προαιρετικό.",
       "リンクまたは出所メモ。地図上の場所は任意です。",
-      "Isang link o tala ng pinagmulan; opsyonal ang lokasyon sa mapa."
+      "Isang link o tala ng pinagmulan; opsyonal ang lokasyon sa mapa.",
+      "Посилання або примітка про походження; місце на карті — необовʼязково."
     )
   },
   {
-    title: trc("Редакторска проверка", "Editorial review", "Redaktionelle Prüfung", "Vérification éditoriale", "Verifica editoriale", "Editoryal inceleme", "Revisión editorial", "Συντακτικός έλεγχος", "編集チェック", "Pagsusuring editoryal"),
+    title: trc("Редакторска проверка", "Editorial review", "Redaktionelle Prüfung", "Vérification éditoriale", "Verifica editoriale", "Editoryal inceleme", "Revisión editorial", "Συντακτικός έλεγχος", "編集チェック", "Pagsusuring editoryal", "Редакційна перевірка"),
     hint: trc(
       "Права, лични данни и източник се проверяват преди публикуване.",
       "Rights, personal data and the source are checked before publishing.",
@@ -546,16 +549,17 @@ const steps = [
       "Derechos, datos personales y fuente se comprueban antes de publicar.",
       "Δικαιώματα, προσωπικά δεδομένα και πηγή ελέγχονται πριν τη δημοσίευση.",
       "公開前に権利・個人情報・出典を確認します。",
-      "Sinusuri ang karapatan, personal na datos, at pinagmulan bago ilathala."
+      "Sinusuri ang karapatan, personal na datos, at pinagmulan bago ilathala.",
+      "Права, особисті дані та джерело перевіряються перед публікацією."
     )
   }
 ];
 
 const trustChips = [
-  trc("Без профили", "No accounts", "Ohne Konto", "Sans compte", "Senza account", "Hesap gerekmez", "Sin cuentas", "Χωρίς λογαριασμούς", "アカウント不要", "Walang account"),
-  trc("Без лични данни", "No personal data", "Keine persönlichen Daten", "Sans données personnelles", "Niente dati personali", "Kişisel veri yok", "Sin datos personales", "Χωρίς προσωπικά δεδομένα", "個人情報なし", "Walang personal na datos"),
-  trc("EXIF/GPS се премахват", "EXIF/GPS stripped", "EXIF/GPS entfernt", "EXIF/GPS supprimés", "EXIF/GPS rimossi", "EXIF/GPS silinir", "EXIF/GPS eliminados", "Αφαίρεση EXIF/GPS", "EXIF/GPS除去", "Tinatanggal ang EXIF/GPS"),
-  trc("Редакторска проверка", "Editorial review", "Redaktionelle Prüfung", "Vérification éditoriale", "Verifica editoriale", "Editoryal inceleme", "Revisión editorial", "Συντακτικός έλεγχος", "編集チェック", "Pagsusuring editoryal")
+  trc("Без профили", "No accounts", "Ohne Konto", "Sans compte", "Senza account", "Hesap gerekmez", "Sin cuentas", "Χωρίς λογαριασμούς", "アカウント不要", "Walang account", "Без акаунтів"),
+  trc("Без лични данни", "No personal data", "Keine persönlichen Daten", "Sans données personnelles", "Niente dati personali", "Kişisel veri yok", "Sin datos personales", "Χωρίς προσωπικά δεδομένα", "個人情報なし", "Walang personal na datos", "Без особистих даних"),
+  trc("EXIF/GPS се премахват", "EXIF/GPS stripped", "EXIF/GPS entfernt", "EXIF/GPS supprimés", "EXIF/GPS rimossi", "EXIF/GPS silinir", "EXIF/GPS eliminados", "Αφαίρεση EXIF/GPS", "EXIF/GPS除去", "Tinatanggal ang EXIF/GPS", "EXIF/GPS видаляються"),
+  trc("Редакторска проверка", "Editorial review", "Redaktionelle Prüfung", "Vérification éditoriale", "Verifica editoriale", "Editoryal inceleme", "Revisión editorial", "Συντακτικός έλεγχος", "編集チェック", "Pagsusuring editoryal", "Редакційна перевірка")
 ];
 
 const config = {

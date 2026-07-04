@@ -28,7 +28,8 @@
       "notes_es": "El mapa está georreferenciado al registro central de Plovdiv; Los puntos exactos de control ráster aún están pendientes.",
       "notes_el": "Ο χάρτης είναι γεωαναφορά στο κεντρικό αρχείο Plovdiv. Τα ακριβή σημεία ελέγχου ράστερ εξακολουθούν να εκκρεμούν.",
       "notes_ja": "この地図は中央Plovdiv記録に地理参照されています。正確なラスター制御点はまだ保留中です。",
-      "notes_tl": "Ang mapa ay georeferenced sa gitnang Plovdiv record; ang eksaktong raster control point ay nakabinbin pa rin."
+      "notes_tl": "Ang mapa ay georeferenced sa gitnang Plovdiv record; ang eksaktong raster control point ay nakabinbin pa rin.",
+      "notes_uk": "Карта має геоприв'язку до центрального запису Plovdiv; точні растрові контрольні точки ще очікують."
     },
     "overlay_bounds": {
       "south": 42.005,
@@ -45,7 +46,8 @@
       "notes_es": "Extensión rectangular aproximada para superponer visualmente el mapa en el mapa base moderno; Esto no es una rectificación de puntos de control.",
       "notes_el": "Κατά προσέγγιση ορθογώνια έκταση για οπτική επικάλυψη του χάρτη στον σύγχρονο βασικό χάρτη. αυτό δεν είναι διόρθωση σημείου ελέγχου.",
       "notes_ja": "最新のベースマップ上にマップを視覚的にオーバーレイするためのおおよその長方形の範囲。これは制御点の修正ではありません。",
-      "notes_tl": "Tinatayang hugis-parihaba na lawak para sa biswal na pag-overlay sa mapa sa modernong basemap; hindi ito control-point rectification."
+      "notes_tl": "Tinatayang hugis-parihaba na lawak para sa biswal na pag-overlay sa mapa sa modernong basemap; hindi ito control-point rectification.",
+      "notes_uk": "Приблизний прямокутний екстент для візуального накладання карти на сучасну базову карту; це не виправлення контрольної точки."
     },
     "media": {
       "type": "image",
@@ -63,7 +65,8 @@
       "title_es": "BASA-3K-7-334-14-Mapa de Plovdiv - Ferrocarril Stanimaka.jpeg",
       "title_el": "BASA-3K-7-334-14-Χάρτης Plovdiv - Stanimaka railway.jpeg",
       "title_ja": "BASA-3K-7-334-14-Plovdivの地図 - スタニマカ鉄道.jpeg",
-      "title_tl": "BASA-3K-7-334-14-Mapa ng Plovdiv - Stanimaka railway.jpeg"
+      "title_tl": "BASA-3K-7-334-14-Mapa ng Plovdiv - Stanimaka railway.jpeg",
+      "title_uk": "BASA-3K-7-334-14-Карта Plovdiv - Stanimaka railway.jpeg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-3K-7-334-14-Map of Plovdiv - Stanimaka railway.jpeg",
@@ -81,7 +84,8 @@
       "title_es": "Wikimedia Commons — BASA-3K-7-334-14-Mapa de Plovdiv - Ferrocarril Stanimaka.jpeg",
       "title_el": "Wikimedia Commons — BASA-3K-7-334-14-Χάρτης του Plovdiv - Stanimaka railway.jpeg",
       "title_ja": "Wikimedia Commons — BASA-3K-7-334-14-Plovdivの地図 - スタニマカ鉄道.jpeg",
-      "title_tl": "Wikimedia Commons — BASA-3K-7-334-14-Mapa ng Plovdiv - Stanimaka railway.jpeg"
+      "title_tl": "Wikimedia Commons — BASA-3K-7-334-14-Mapa ng Plovdiv - Stanimaka railway.jpeg",
+      "title_uk": "Wikimedia Commons — BASA-3K-7-334-14-Карта Plovdiv - Stanimaka railway.jpeg"
     },
     "commons_categories": [
       "1928 in Bulgaria",
@@ -111,7 +115,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Karte der Eisenbahnlinie Plovdiv - Stanimaka",
     "title_fr": "Carte du chemin de fer Plovdiv - Stanimaka",
@@ -121,6 +126,7 @@
     "title_el": "Χάρτης του σιδηροδρόμου Plovdiv - Stanimaka",
     "title_ja": "Plovdiv - スタニマカ鉄道の地図",
     "title_tl": "Mapa ng Plovdiv - Stanimaka railway",
+    "title_uk": "Карта залізниці Plovdiv - Станімака",
     "description_de": "Archivkarte aus der Sammlung des Bulgarischen Archivs, die als georeferenzierte kartografische Ausgangsebene für Plovdiv verwendet wird.",
     "description_fr": "Carte d'archives de la collection de l'Agence d'État des Archives bulgares, utilisée comme couche cartographique géoréférencée de départ pour Plovdiv.",
     "description_it": "Mappa dell'archivio dalla collezione dell'Agenzia di Stato degli Archivi bulgari, utilizzata come livello cartografico georeferenziato di partenza per Plovdiv.",
@@ -128,7 +134,8 @@
     "description_es": "Mapa de archivo de la colección de la Agencia Estatal de Archivos de Bulgaria, utilizado como capa cartográfica georreferenciada inicial para Plovdiv.",
     "description_el": "Χάρτης αρχείου από τη συλλογή Κρατικής Υπηρεσίας Αρχείων της Βουλγαρίας, που χρησιμοποιείται ως αρχικό χαρτογραφικό στρώμα γεωαναφοράς για το Plovdiv.",
     "description_ja": "ブルガリア公文書館コレクションのアーカイブ マップ。Plovdivのスターター地理参照地図レイヤーとして使用されます。",
-    "description_tl": "I-archive ang mapa mula sa koleksyon ng Bulgarian Archives State Agency, na ginamit bilang isang starter georeferenced cartographic layer para sa Plovdiv."
+    "description_tl": "I-archive ang mapa mula sa koleksyon ng Bulgarian Archives State Agency, na ginamit bilang isang starter georeferenced cartographic layer para sa Plovdiv.",
+    "description_uk": "Архівна карта з колекції Державного агентства архівів Болгарії, яка використовується як початковий картографічний шар із геоприв’язкою для Plovdiv."
   },
   {
     "id": "archive-photo-philippopolis-street-1878",
@@ -159,7 +166,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: La Ciudad Vieja (Viejo Plovdiv).",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Η Παλιά Πόλη (Παλιά Plovdiv).",
       "notes_ja": "この画像は、既存の場所レコードの座標にリンクされています: 旧市街 (旧Plovdiv)。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Ang Lumang Bayan (Old Plovdiv)."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Ang Lumang Bayan (Old Plovdiv).",
+      "notes_uk": "Зображення пов'язане з координатами існуючого запису місця: Старе місто (Старий Plovdiv)."
     },
     "media": {
       "type": "image",
@@ -177,7 +185,8 @@
       "title_es": "0530 Вид на одну из улиц Филипополя (Пловдива), январь 1878.jpg",
       "title_el": "0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg",
       "title_ja": "0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg",
-      "title_tl": "0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg"
+      "title_tl": "0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg",
+      "title_uk": "0530 Вид на одну з улиц Филиппополя (Plovdiv), січень 1878.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — 0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg",
@@ -195,7 +204,8 @@
       "title_es": "Wikimedia Commons — 0530 Вид на одну из улиц Филипополя (Пловдива), январь 1878.jpg",
       "title_el": "Wikimedia Commons — 0530 Βλέπε απόну из улиц Филиппополя (Пловдива), Ιανουάριος 1878.jpg",
       "title_ja": "Wikimedia Commons — 0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg",
-      "title_tl": "Wikimedia Commons — 0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg"
+      "title_tl": "Wikimedia Commons — 0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg",
+      "title_uk": "Wikimedia Commons — 0530 Вид на одну з вулиці Філіппополя (Plovdiv), січень 1878.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -220,7 +230,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Straße in Philippopolis, Januar 1878",
     "title_fr": "Rue de Philippopolis, janvier 1878",
@@ -230,6 +241,7 @@
     "title_el": "Οδός στη Φιλιππούπολη, Ιανουάριος 1878",
     "title_ja": "フィリポポリスの通り、1878 年 1 月",
     "title_tl": "Kalye sa Philippopolis, Enero 1878",
+    "title_uk": "Вулиця у Філіпполісі, січень 1878 року",
     "description_de": "Frühes Foto einer Straße in Philippopolis/Plovdiv, georeferenziert auf die Altstadt als ungefähren städtischen Kontext.",
     "description_fr": "Première photographie d'une rue de Philippopolis/Plovdiv, géoréférencée à la vieille ville comme contexte urbain approximatif.",
     "description_it": "Prima fotografia di una strada a Philippopolis/Plovdiv, georeferenziata alla Città Vecchia come contesto urbano approssimativo.",
@@ -238,6 +250,7 @@
     "description_el": "Πρώιμη φωτογραφία ενός δρόμου στη Φιλιππούπολη/Plovdiv, με γεωαναφορά στην Παλιά Πόλη ως προσεγγιστικό αστικό περιβάλλον.",
     "description_ja": "フィリポポリス/Plovdivの通りの初期の写真。おおよその都市状況として旧市街に地理参照されています。",
     "description_tl": "Maagang larawan ng isang kalye sa Philippopolis/Plovdiv, na naka-georeference sa Old Town bilang tinatayang konteksto ng urban.",
+    "description_uk": "Рання фотографія вулиці у Філіпполісі/Пловдіві, геоприв’язана до Старого міста як приблизний міський контекст.",
     "date_display_de": "Januar 1878",
     "date_display_fr": "janvier 1878",
     "date_display_it": "Gennaio 1878",
@@ -245,7 +258,8 @@
     "date_display_es": "enero de 1878",
     "date_display_el": "Ιανουάριος 1878",
     "date_display_ja": "1878年1月",
-    "date_display_tl": "Enero 1878"
+    "date_display_tl": "Enero 1878",
+    "date_display_uk": "Січень 1878 року"
   },
   {
     "id": "archive-photo-plovdiv-station-around-1880",
@@ -276,7 +290,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Estación central de trenes de Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες του υπάρχοντος αρχείου τόπου: Κεντρικός σιδηροδρομικός σταθμός Plovdiv.",
       "notes_ja": "画像は、既存の場所レコードの座標、Plovdiv中央駅にリンクされています。",
-      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Plovdiv Central railway station."
+      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Plovdiv Central railway station.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого запису місця: Центральний залізничний вокзал Plovdiv."
     },
     "media": {
       "type": "image",
@@ -294,7 +309,8 @@
       "title_es": "Estación de tren de Plovdiv alrededor de 1880.jpg",
       "title_el": "Σιδηροδρομικός Σταθμός Plovdiv Around 1880.jpg",
       "title_ja": "Plovdiv駅 1880 年頃.jpg",
-      "title_tl": "Plovdiv Train Station Sa paligid ng 1880.jpg"
+      "title_tl": "Plovdiv Train Station Sa paligid ng 1880.jpg",
+      "title_uk": "Залізничний вокзал Plovdiv, близько 1880 року.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Plovdiv Train Station Around 1880.jpg",
@@ -312,7 +328,8 @@
       "title_es": "Wikimedia Commons - Estación de tren de Plovdiv alrededor de 1880.jpg",
       "title_el": "Wikimedia Commons — Σιδηροδρομικός σταθμός Plovdiv Around 1880.jpg",
       "title_ja": "Wikimedia Commons — Plovdiv駅 1880 年頃.jpg",
-      "title_tl": "Wikimedia Commons — Plovdiv Train Station Bandang 1880.jpg"
+      "title_tl": "Wikimedia Commons — Plovdiv Train Station Bandang 1880.jpg",
+      "title_uk": "Wikimedia Commons — Залізничний вокзал Plovdiv близько 1880.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -335,7 +352,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Bahnhof Plovdiv um 1880",
     "title_fr": "Gare de Plovdiv vers 1880",
@@ -345,6 +363,7 @@
     "title_el": "Σιδηροδρομικός σταθμός Plovdiv γύρω στο 1880",
     "title_ja": "1880年頃のPlovdiv駅",
     "title_tl": "istasyon ng tren sa Plovdiv noong 1880",
+    "title_uk": "Залізничний вокзал Plovdiv близько 1880 року",
     "description_de": "Historisches Foto des Bahnhofs, verknüpft mit den Koordinaten des modernen Hauptbahnhofs.",
     "description_fr": "Photographie historique de la gare, liée aux coordonnées de la gare centrale moderne.",
     "description_it": "Fotografia storica della stazione ferroviaria, collegata alle coordinate della moderna Stazione Centrale.",
@@ -353,6 +372,7 @@
     "description_el": "Ιστορική φωτογραφία του σιδηροδρομικού σταθμού, που συνδέεται με τις συντεταγμένες του σύγχρονου κεντρικού σιδηροδρομικού σταθμού.",
     "description_ja": "鉄道駅の歴史的な写真。現在の中央駅の座標とリンクされています。",
     "description_tl": "Makasaysayang larawan ng istasyon ng tren, na naka-link sa modernong Central railway station coordinate.",
+    "description_uk": "Історична фотографія вокзалу, прив'язана до координат сучасного Центрального вокзалу.",
     "date_display_de": "c. 1880",
     "date_display_fr": "c. 1880",
     "date_display_it": "c. 1880",
@@ -360,7 +380,8 @@
     "date_display_es": "c. 1880",
     "date_display_el": "γ. 1880",
     "date_display_ja": "c. 1880年",
-    "date_display_tl": "c. 1880"
+    "date_display_tl": "c. 1880",
+    "date_display_uk": "в. 1880 рік"
   },
   {
     "id": "archive-postcard-bahnhof-von-plowdiw",
@@ -391,7 +412,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Estación central de trenes de Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες του υπάρχοντος αρχείου τόπου: Κεντρικός σιδηροδρομικός σταθμός Plovdiv.",
       "notes_ja": "画像は、既存の場所レコードの座標、Plovdiv中央駅にリンクされています。",
-      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Plovdiv Central railway station."
+      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Plovdiv Central railway station.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого запису місця: Центральний залізничний вокзал Plovdiv."
     },
     "media": {
       "type": "image",
@@ -409,7 +431,8 @@
       "title_es": "Bahnhof von Plowdiw.jpg",
       "title_el": "Bahnhof von Plowdiw.jpg",
       "title_ja": "Bahnhof von Plowdiw.jpg",
-      "title_tl": "Bahnhof von Plowdiw.jpg"
+      "title_tl": "Bahnhof von Plowdiw.jpg",
+      "title_uk": "Bahnhof von Plowdiw.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Bahnhof von Plowdiw.jpg",
@@ -427,7 +450,8 @@
       "title_es": "Wikimedia Commons — Bahnhof von Plowdiw.jpg",
       "title_el": "Wikimedia Commons — Bahnhof von Plowdiw.jpg",
       "title_ja": "Wikimedia Commons — Bahnhof von Plowdiw.jpg",
-      "title_tl": "Wikimedia Commons — Bahnhof von Plowdiw.jpg"
+      "title_tl": "Wikimedia Commons — Bahnhof von Plowdiw.jpg",
+      "title_uk": "Wikimedia Commons — Bahnhof von Plowdiw.jpg"
     },
     "commons_categories": [
       "1916 postcards",
@@ -451,7 +475,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Postkarte: Bahnhof von Plovdiv",
     "title_fr": "Carte postale : Bahnhof von Ploughdiw",
@@ -461,6 +486,7 @@
     "title_el": "Καρτ ποστάλ: Bahnhof von Plowdiw",
     "title_ja": "絵葉書: Bahnhof von Plowdiw",
     "title_tl": "Postcard: Bahnhof von Plowdiw",
+    "title_uk": "Листівка: Bahnhof von Plowdiw",
     "description_de": "Alte Postkarte des Bahnhofs Plovdiv, verwendet für einen damaligen/heute-Vergleich mit dem heutigen Hauptbahnhof.",
     "description_fr": "Carte postale ancienne de la gare de Plovdiv, utilisée pour une comparaison d'hier/aujourd'hui avec la gare centrale actuelle.",
     "description_it": "Vecchia cartolina della stazione di Plovdiv, utilizzata per un confronto allora/oggi con l'attuale stazione Centrale.",
@@ -469,6 +495,7 @@
     "description_el": "Παλιά καρτ ποστάλ του σταθμού Plovdiv, που χρησιμοποιείται για μια σύγκριση τότε/τώρα με τον σημερινό κεντρικό σταθμό.",
     "description_ja": "Plovdiv駅の古い絵葉書。現在の中央駅と今昔比較を比較するために使用されます。",
     "description_tl": "Lumang postcard ng istasyon ng Plovdiv, na ginamit para sa paghahambing noon/ngayon sa kasalukuyang istasyon ng Central.",
+    "description_uk": "Стара листівка станції Plovdiv, використана для порівняння тодішнього/теперішнього вокзалу з сучасним Центральним вокзалом.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
@@ -476,7 +503,8 @@
     "date_display_es": "principios del siglo XX.",
     "date_display_el": "αρχές 20ου αι.",
     "date_display_ja": "20世紀初頭。",
-    "date_display_tl": "maagang ika-20 c."
+    "date_display_tl": "maagang ika-20 c.",
+    "date_display_uk": "початок 20 ст."
   },
   {
     "id": "archive-photo-plovdiv-karastoyanov-c1908",
@@ -507,7 +535,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες του υπάρχοντος αρχείου τοποθεσιών: Plovdiv.",
       "notes_ja": "画像は、既存の場所レコードの座標 (Plovdiv) にリンクされています。",
-      "notes_tl": "Ang larawan ay naka-link sa mga coordinate ng kasalukuyang tala ng lugar: Plovdiv."
+      "notes_tl": "Ang larawan ay naka-link sa mga coordinate ng kasalukuyang tala ng lugar: Plovdiv.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого запису місця: Plovdiv."
     },
     "media": {
       "type": "image",
@@ -525,7 +554,8 @@
       "title_es": "Plovdiv Ivan Karastoyanov.jpg",
       "title_el": "Plovdiv Ivan Karastoyanov.jpg",
       "title_ja": "Plovdiv・イワン・カラストヤノフ.jpg",
-      "title_tl": "Plovdiv Ivan Karastoyanov.jpg"
+      "title_tl": "Plovdiv Ivan Karastoyanov.jpg",
+      "title_uk": "Plovdiv Іван Карастоянов.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg",
@@ -543,7 +573,8 @@
       "title_es": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg",
       "title_el": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg",
       "title_ja": "Wikimedia Commons — Plovdiv・イワン・カラストヤノフ.jpg",
-      "title_tl": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg"
+      "title_tl": "Wikimedia Commons — Plovdiv Ivan Karastoyanov.jpg",
+      "title_uk": "Wikimedia Commons — Plovdiv Іван Карастоянов.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -566,7 +597,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Plovdiv fotografiert von Ivan Karastoyanov",
     "title_fr": "Plovdiv photographié par Ivan Karastoyanov",
@@ -576,6 +608,7 @@
     "title_el": "Το Plovdiv φωτογραφήθηκε από τον Ivan Karastoyanov",
     "title_ja": "Plovdiv、イワン・カラストヤノフ撮影",
     "title_tl": "Si Plovdiv ay nakuhanan ng larawan ni Ivan Karastoyanov",
+    "title_uk": "Plovdiv сфотографував Іван Карастоянов",
     "description_de": "Panoramafoto des Stadtarchivs, georeferenziert auf das Zentrum von Plovdiv für eine umfassende historische Orientierung.",
     "description_fr": "Photographie panoramique d'archives urbaines, géoréférencée au centre de Plovdiv pour une orientation historique générale.",
     "description_it": "Fotografia panoramica d'archivio urbano, georeferenziata al centro di Plovdiv per un ampio orientamento storico.",
@@ -584,6 +617,7 @@
     "description_el": "Πανοραμική αστική φωτογραφία αρχείου, με γεωαναφορά στο κέντρο του Plovdiv για ευρύ ιστορικό προσανατολισμό.",
     "description_ja": "都市アーカイブのパノラマ写真。広範な歴史的方向性を示すためにPlovdiv中心部を地理参照。",
     "description_tl": "Panoramic na urban archive na larawan, na naka-georeference sa gitnang Plovdiv para sa malawak na oryentasyong pangkasaysayan.",
+    "description_uk": "Панорамна міська архівна фотографія з геоприв’язкою до центру Plovdiv для широкої історичної орієнтації.",
     "date_display_de": "c. 1908",
     "date_display_fr": "c. 1908",
     "date_display_it": "c. 1908",
@@ -591,7 +625,8 @@
     "date_display_es": "c. 1908",
     "date_display_el": "γ. 1908",
     "date_display_ja": "c. 1908年",
-    "date_display_tl": "c. 1908"
+    "date_display_tl": "c. 1908",
+    "date_display_uk": "в. 1908 рік"
   },
   {
     "id": "archive-photo-dzhambaztepe-1892",
@@ -622,7 +657,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la colina Dzhambaz en Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής τοποθεσιών: λόφος Dzhambaz στο Plovdiv.",
       "notes_ja": "この画像は、既存の場所レコードの座標にリンクされています: Plovdivのジャンバズの丘。",
-      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Dzhambaz hill sa Plovdiv."
+      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Dzhambaz hill sa Plovdiv.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого місця запису: пагорб Джамбаз у Plovdiv."
     },
     "media": {
       "type": "image",
@@ -640,7 +676,8 @@
       "title_es": "Dzhambaztepe 1892.jpg",
       "title_el": "Dzhambaztepe 1892.jpg",
       "title_ja": "ジャンバステペ 1892.jpg",
-      "title_tl": "Dzhambaztepe 1892.jpg"
+      "title_tl": "Dzhambaztepe 1892.jpg",
+      "title_uk": "Джамбазтепе 1892.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhambaztepe 1892.jpg",
@@ -658,7 +695,8 @@
       "title_es": "Wikimedia Commons — Dzhambaztepe 1892.jpg",
       "title_el": "Wikimedia Commons — Dzhambaztepe 1892.jpg",
       "title_ja": "Wikimedia Commons — ジャンバズテペ 1892.jpg",
-      "title_tl": "Wikimedia Commons — Dzhambaztepe 1892.jpg"
+      "title_tl": "Wikimedia Commons — Dzhambaztepe 1892.jpg",
+      "title_uk": "Wikimedia Commons — Джамбазтепе 1892.jpg"
     },
     "commons_categories": [
       "Author died more than 70 years ago public domain images",
@@ -682,7 +720,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Dzhambaz Tepe im Jahr 1892",
     "title_fr": "Dzhambaz Tepe en 1892",
@@ -692,6 +731,7 @@
     "title_el": "Dzhambaz Tepe το 1892",
     "title_ja": "ジャンバズ・テペ、1892年",
     "title_tl": "Dzhambaz Tepe noong 1892",
+    "title_uk": "Джамбаз Тепе в 1892 році",
     "description_de": "Historische Ansicht eines der drei Hügel, verbunden mit der modernen Ortsaufzeichnung Dzhambaz Tepe.",
     "description_fr": "Vue historique de l'une des Trois Collines, liée au registre moderne du lieu de Dzhambaz Tepe.",
     "description_it": "Veduta storica di una delle Tre Colline, legata al moderno record del luogo di Dzhambaz Tepe.",
@@ -699,7 +739,8 @@
     "description_es": "Vista histórica de una de las Tres Colinas, vinculada al registro del lugar moderno de Dzhambaz Tepe.",
     "description_el": "Ιστορική άποψη ενός από τους Τρεις Λόφους, που συνδέεται με το σύγχρονο αρχείο Dzhambaz Tepe.",
     "description_ja": "現代のジャンバズ テペの場所の記録に関連付けられている、スリー ヒルズの 1 つの歴史的な眺め。",
-    "description_tl": "Makasaysayang view ng isa sa Three Hills, na naka-link sa modernong Dzhambaz Tepe place record."
+    "description_tl": "Makasaysayang view ng isa sa Three Hills, na naka-link sa modernong Dzhambaz Tepe place record.",
+    "description_uk": "Історичний вид на один із трьох пагорбів, пов’язаний із сучасним пам’ятником Джамбаз-Тепе."
   },
   {
     "id": "archive-photo-ottoman-clock-tower-1936",
@@ -730,7 +771,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la colina Sahat en Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής τοποθεσιών: λόφος Σαχάτ στο Plovdiv.",
       "notes_ja": "この画像は、既存の場所レコードの座標 (Plovdivのサハトの丘) にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Sahat hill sa Plovdiv."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Sahat hill sa Plovdiv.",
+      "notes_uk": "Зображення пов’язане з координатами існуючого місця запису: пагорб Сахат у Plovdiv."
     },
     "media": {
       "type": "image",
@@ -748,7 +790,8 @@
       "title_es": "Torre del reloj otomana en Plovdiv en foto antigua.jpg",
       "title_el": "Οθωμανικός πύργος ρολογιού στο Plovdiv στο παλιό photo.jpg",
       "title_ja": "古い photo.jpg のPlovdivのオスマン帝国の時計塔",
-      "title_tl": "Ottoman clock tower sa Plovdiv sa lumang photo.jpg"
+      "title_tl": "Ottoman clock tower sa Plovdiv sa lumang photo.jpg",
+      "title_uk": "Османська годинникова вежа в Plovdiv на старому фото.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Ottoman clock tower in Plovdiv on old photo.jpg",
@@ -766,7 +809,8 @@
       "title_es": "Wikimedia Commons — Torre del reloj otomana en Plovdiv en foto antigua.jpg",
       "title_el": "Wikimedia Commons — Οθωμανικός πύργος ρολογιού στο Plovdiv στο παλιό photo.jpg",
       "title_ja": "Wikimedia Commons — Plovdivのオスマン帝国の時計塔、古い photo.jpg",
-      "title_tl": "Wikimedia Commons — Ottoman clock tower sa Plovdiv sa lumang photo.jpg"
+      "title_tl": "Wikimedia Commons — Ottoman clock tower sa Plovdiv sa lumang photo.jpg",
+      "title_uk": "Wikimedia Commons — Османська годинникова вежа в Plovdiv на старому фото.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -790,7 +834,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Osmanischer Glockenturm auf Sahat Tepe",
     "title_fr": "Tour de l'horloge ottomane sur Sahat Tepe",
@@ -800,6 +845,7 @@
     "title_el": "Οθωμανικός πύργος ρολογιού στο Σαχάτ Τεπέ",
     "title_ja": "サハト・テペのオスマン帝国の時計塔",
     "title_tl": "Ottoman clock tower sa Sahat Tepe",
+    "title_uk": "Османська годинникова вежа на Сахат-Тепе",
     "description_de": "Altes Foto des Glockenturms, georeferenziert auf Sahat Tepe.",
     "description_fr": "Ancienne photographie de la tour de l'horloge, géoréférencée à Sahat Tepe.",
     "description_it": "Vecchia fotografia della torre dell'orologio, georeferenziata a Sahat Tepe.",
@@ -808,6 +854,7 @@
     "description_el": "Παλιά φωτογραφία του πύργου του ρολογιού, με γεωγραφική αναφορά στο Sahat Tepe.",
     "description_ja": "サハト・テペを地理参照した時計塔の古い写真。",
     "description_tl": "Lumang larawan ng clock tower, na naka-georeference sa Sahat Tepe.",
+    "description_uk": "Стара фотографія годинникової вежі з геоприв'язкою до Сахат-Тепе.",
     "date_display_de": "17. April 1936",
     "date_display_fr": "17 avril 1936",
     "date_display_it": "17 aprile 1936",
@@ -815,7 +862,8 @@
     "date_display_es": "17 de abril de 1936",
     "date_display_el": "17 Απριλίου 1936",
     "date_display_ja": "1936 年 4 月 17 日",
-    "date_display_tl": "Abril 17, 1936"
+    "date_display_tl": "Abril 17, 1936",
+    "date_display_uk": "17 квітня 1936 року"
   },
   {
     "id": "archive-postcard-ottoman-clock-tower",
@@ -846,7 +894,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la colina Sahat en Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής τοποθεσιών: λόφος Σαχάτ στο Plovdiv.",
       "notes_ja": "この画像は、既存の場所レコードの座標 (Plovdivのサハトの丘) にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Sahat hill sa Plovdiv."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Sahat hill sa Plovdiv.",
+      "notes_uk": "Зображення пов’язане з координатами існуючого місця запису: пагорб Сахат у Plovdiv."
     },
     "media": {
       "type": "image",
@@ -864,7 +913,8 @@
       "title_es": "Torre del reloj otomana en Plovdiv en postal antigua.jpg",
       "title_el": "Οθωμανικός πύργος ρολογιού στη Plovdiv στο παλιό postcard.jpg",
       "title_ja": "Plovdivのオスマン帝国の時計塔、古いはがき.jpg",
-      "title_tl": "Ottoman clock tower sa Plovdiv sa lumang postcard.jpg"
+      "title_tl": "Ottoman clock tower sa Plovdiv sa lumang postcard.jpg",
+      "title_uk": "Османська годинникова вежа в Plovdiv на старій postcard.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Ottoman clock tower in Plovdiv on old postcard.jpg",
@@ -882,7 +932,8 @@
       "title_es": "Wikimedia Commons — Torre del reloj otomana en Plovdiv en una postal antigua.jpg",
       "title_el": "Wikimedia Commons — Οθωμανικός πύργος ρολογιού στο Plovdiv στο old postcard.jpg",
       "title_ja": "Wikimedia Commons — Plovdivのオスマン帝国の時計塔、古い Postcard.jpg",
-      "title_tl": "Wikimedia Commons — Ottoman clock tower sa Plovdiv sa lumang postcard.jpg"
+      "title_tl": "Wikimedia Commons — Ottoman clock tower sa Plovdiv sa lumang postcard.jpg",
+      "title_uk": "Wikimedia Commons — Османська годинникова вежа в Plovdiv на старій postcard.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -907,7 +958,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Postkarte des Glockenturms",
     "title_fr": "Carte postale de la tour de l'horloge",
@@ -917,6 +969,7 @@
     "title_el": "Καρτ ποστάλ του πύργου του ρολογιού",
     "title_ja": "時計塔の絵葉書",
     "title_tl": "Postcard ng tore ng orasan",
+    "title_uk": "Листівка вежі з годинником",
     "description_de": "Historische Postkarte von Sahat Tepe und seinem Glockenturm, verknüpft mit den Hügelkoordinaten.",
     "description_fr": "Carte postale historique de Sahat Tepe et de sa tour de l'horloge, liée aux coordonnées de la colline.",
     "description_it": "Cartolina storica di Sahat Tepe e della sua torre dell'orologio, collegata alle coordinate della collina.",
@@ -925,6 +978,7 @@
     "description_el": "Ιστορική καρτ ποστάλ του Σαχάτ Τεπέ και του πύργου του ρολογιού του, που συνδέεται με τις συντεταγμένες του λόφου.",
     "description_ja": "サハト・テペとその時計塔の歴史的な絵葉書。丘の座標にリンクされています。",
     "description_tl": "Makasaysayang postcard ng Sahat Tepe at ang clock tower nito, na naka-link sa mga coordinate ng burol.",
+    "description_uk": "Історична листівка Сахат-Тепе та його годинникова вежа, пов’язана з координатами пагорба.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
@@ -932,7 +986,8 @@
     "date_display_es": "principios del siglo XX.",
     "date_display_el": "αρχές 20ου αι.",
     "date_display_ja": "20世紀初頭。",
-    "date_display_tl": "maagang ika-20 c."
+    "date_display_tl": "maagang ika-20 c.",
+    "date_display_uk": "початок 20 ст."
   },
   {
     "id": "archive-postcard-sahat-hill-1",
@@ -963,7 +1018,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la colina Sahat en Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής τοποθεσιών: λόφος Σαχάτ στο Plovdiv.",
       "notes_ja": "この画像は、既存の場所レコードの座標 (Plovdivのサハトの丘) にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Sahat hill sa Plovdiv."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Sahat hill sa Plovdiv.",
+      "notes_uk": "Зображення пов’язане з координатами існуючого місця запису: пагорб Сахат у Plovdiv."
     },
     "media": {
       "type": "image",
@@ -981,7 +1037,8 @@
       "title_es": "Colina Sahat en Plovdiv en una postal antigua 1.jpg",
       "title_el": "Ο λόφος Sahat στο Plovdiv στην παλιά καρτ ποστάλ 1.jpg",
       "title_ja": "古い絵葉書に描かれたPlovdivのサハットの丘 1.jpg",
-      "title_tl": "Sahat Hill sa Plovdiv sa lumang postcard 1.jpg"
+      "title_tl": "Sahat Hill sa Plovdiv sa lumang postcard 1.jpg",
+      "title_uk": "Пагорб Сахат у Plovdiv на старій листівці 1.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Sahat Hill in Plovdiv on old postcard 1.jpg",
@@ -999,7 +1056,8 @@
       "title_es": "Wikimedia Commons — Sahat Tepe en Plovdiv en una postal antigua 1.jpg",
       "title_el": "Wikimedia Commons — Ο λόφος Σαχάτ στη Plovdiv στην παλιά καρτ ποστάλ 1.jpg",
       "title_ja": "Wikimedia Commons — 古い絵葉書にあるPlovdivのサハットの丘 1.jpg",
-      "title_tl": "Wikimedia Commons — Sahat Hill sa Plovdiv sa lumang postcard 1.jpg"
+      "title_tl": "Wikimedia Commons — Sahat Hill sa Plovdiv sa lumang postcard 1.jpg",
+      "title_uk": "Wikimedia Commons — Пагорб Сахат у Plovdiv на старій листівці 1.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -1024,7 +1082,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Sahat Hill auf einer alten Postkarte",
     "title_fr": "Sahat Hill sur une vieille carte postale",
@@ -1034,6 +1093,7 @@
     "title_el": "Ο λόφος Σαχάτ σε μια παλιά καρτ ποστάλ",
     "title_ja": "古い絵葉書に描かれたサハト・テペ",
     "title_tl": "Sahat Hill sa isang lumang postcard",
+    "title_uk": "Пагорб Сахат на старій листівці",
     "description_de": "Postkartenansicht von Sahat Hill, enthalten in der georeferenzierten Archivebene.",
     "description_fr": "Vue de carte postale de Sahat Hill incluse dans la couche d'archives géoréférencées.",
     "description_it": "Veduta da cartolina della collina Sahat inclusa nel livello di archivio georeferenziato.",
@@ -1042,6 +1102,7 @@
     "description_el": "Άποψη καρτ ποστάλ του λόφου Sahat που περιλαμβάνεται στο στρώμα αρχειοθέτησης με γεωαναφορά.",
     "description_ja": "地理参照アーカイブ レイヤーに含まれるサハト・テペの絵葉書 ビュー。",
     "description_tl": "Ang postcard view ng Sahat Hill na kasama sa georeferenced archive layer.",
+    "description_uk": "Вид листівки на пагорб Сахат, включений у шар архіву з геоприв’язкою.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
@@ -1049,7 +1110,8 @@
     "date_display_es": "principios del siglo XX.",
     "date_display_el": "αρχές 20ου αι.",
     "date_display_ja": "20世紀初頭。",
-    "date_display_tl": "maagang ika-20 c."
+    "date_display_tl": "maagang ika-20 c.",
+    "date_display_uk": "початок 20 ст."
   },
   {
     "id": "archive-postcard-dzhumaya-square-1",
@@ -1080,7 +1142,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la plaza Dzhumaya.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας εγγραφής θέσης: πλατεία Dzhumaya.",
       "notes_ja": "画像は既存の場所レコードの座標 (ジュマヤ広場) にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Dzhumaya square."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Dzhumaya square.",
+      "notes_uk": "Зображення прив'язане до координат існуючого запису місця: площа Джумая."
     },
     "media": {
       "type": "image",
@@ -1098,7 +1161,8 @@
       "title_es": "Plaza Dzhumaya en postal antigua.jpg",
       "title_el": "Πλατεία Dzhumaya στην παλιά καρτ ποστάλ.jpg",
       "title_ja": "古い絵葉書のジュマヤ広場.jpg",
-      "title_tl": "Dzhumaya square sa lumang postcard.jpg"
+      "title_tl": "Dzhumaya square sa lumang postcard.jpg",
+      "title_uk": "Площа Джумая на старій листівці.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhumaya square on old postcard.jpg",
@@ -1116,7 +1180,8 @@
       "title_es": "Wikimedia Commons — Plaza Dzhumaya en una postal antigua.jpg",
       "title_el": "Wikimedia Commons — Πλατεία Dzhumaya στο παλιό postcard.jpg",
       "title_ja": "Wikimedia Commons — 古い絵葉書のジュマヤ広場.jpg",
-      "title_tl": "Wikimedia Commons — Dzhumaya square sa lumang postcard.jpg"
+      "title_tl": "Wikimedia Commons — Dzhumaya square sa lumang postcard.jpg",
+      "title_uk": "Wikimedia Commons — Площа Джумая на старій листівці.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -1140,7 +1205,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Dzhumaya square auf einer alten Postkarte",
     "title_fr": "Place Dzhumaya sur une vieille carte postale",
@@ -1150,6 +1216,7 @@
     "title_el": "Πλατεία Dzhumaya σε μια παλιά καρτ ποστάλ",
     "title_ja": "古い絵葉書に描かれたジュマヤ広場",
     "title_tl": "Dzhumaya Square sa isang lumang postcard",
+    "title_uk": "Площа Джумая на старій листівці",
     "description_de": "Alte Postkarte des Dzhumaya squarees, verknüpft mit den Koordinaten des Platzes und des römischen Stadions.",
     "description_fr": "Carte postale ancienne de la place Dzhumaya, liée aux coordonnées de la place et du stade romain.",
     "description_it": "Vecchia cartolina di Piazza Dzhumaya, con link alle coordinate della piazza e dello stadio romano.",
@@ -1158,6 +1225,7 @@
     "description_el": "Παλιά καρτ ποστάλ της πλατείας Dzhumaya, που συνδέεται με τις συντεταγμένες της πλατείας και του ρωμαϊκού σταδίου.",
     "description_ja": "ジュマヤ広場の古い絵葉書。広場とローマのスタジアムの座標にリンクされています。",
     "description_tl": "Lumang postcard ng Dzhumaya Square, na naka-link sa square at Roman stadium coordinate.",
+    "description_uk": "Стара листівка площі Джумає, пов'язана з координатами площі та римського стадіону.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
@@ -1165,7 +1233,8 @@
     "date_display_es": "principios del siglo XX.",
     "date_display_el": "αρχές 20ου αι.",
     "date_display_ja": "20世紀初頭。",
-    "date_display_tl": "maagang ika-20 c."
+    "date_display_tl": "maagang ika-20 c.",
+    "date_display_uk": "початок 20 ст."
   },
   {
     "id": "archive-postcard-dzhumaya-square-2",
@@ -1196,7 +1265,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la plaza Dzhumaya.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας εγγραφής θέσης: πλατεία Dzhumaya.",
       "notes_ja": "画像は既存の場所レコードの座標 (ジュマヤ広場) にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Dzhumaya square."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Dzhumaya square.",
+      "notes_uk": "Зображення прив'язане до координат існуючого запису місця: площа Джумая."
     },
     "media": {
       "type": "image",
@@ -1214,7 +1284,8 @@
       "title_es": "Plaza Dzhumaya en postal antigua 2.jpg",
       "title_el": "Πλατεία Dzhumaya σε παλιά καρτ ποστάλ 2.jpg",
       "title_ja": "古い絵葉書のジュマヤ広場 2.jpg",
-      "title_tl": "Dzhumaya square sa lumang postcard 2.jpg"
+      "title_tl": "Dzhumaya square sa lumang postcard 2.jpg",
+      "title_uk": "Площа Джумая на старій листівці 2.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhumaya square on old postcard 2.jpg",
@@ -1232,7 +1303,8 @@
       "title_es": "Wikimedia Commons — Plaza Dzhumaya en una postal antigua 2.jpg",
       "title_el": "Wikimedia Commons — Πλατεία Dzhumaya σε παλιά καρτ ποστάλ 2.jpg",
       "title_ja": "Wikimedia Commons — 古い絵葉書のジュマヤ広場 2.jpg",
-      "title_tl": "Wikimedia Commons — Dzhumaya square sa lumang postcard 2.jpg"
+      "title_tl": "Wikimedia Commons — Dzhumaya square sa lumang postcard 2.jpg",
+      "title_uk": "Wikimedia Commons — Площа Джумая на старій листівці 2.jpg"
     },
     "commons_categories": [
       "1914 in Bulgaria",
@@ -1257,7 +1329,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Dzhumaya square - Postkarte 2",
     "title_fr": "Place Dzhumaya - carte postale 2",
@@ -1267,6 +1340,7 @@
     "title_el": "Πλατεία Dzhumaya - καρτ ποστάλ 2",
     "title_ja": "ジュマヤ広場 - 絵葉書 2",
     "title_tl": "Dzhumaya Square - postcard 2",
+    "title_uk": "Площа Джумая - листівка 2",
     "description_de": "Zweite alte Postkarte in der Dzhumaya square-Serie, die für den städtischen Vergleich zwischen damals und heute verwendet wird.",
     "description_fr": "Deuxième carte postale ancienne de la série Place Dzhumaya, utilisée pour la comparaison urbaine d'hier et d'aujourd'hui.",
     "description_it": "Seconda vecchia cartolina della serie Piazza Dzhumaya, utilizzata per il confronto urbano di allora/oggi.",
@@ -1275,6 +1349,7 @@
     "description_el": "Δεύτερη παλιά καρτ ποστάλ στη σειρά Dzhumaya Square, που χρησιμοποιείται για αστική σύγκριση τότε/τώρα.",
     "description_ja": "ジュマヤ広場シリーズの 2 番目の古い絵葉書。都市部の今昔比較の比較に使用されます。",
     "description_tl": "Pangalawang lumang postcard sa serye ng Dzhumaya Square, na ginagamit para sa paghahambing sa urban noon/ngayon.",
+    "description_uk": "Друга стара листівка із серії «Площа Джумая», використана для порівняння міста тоді/тепер.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
@@ -1282,7 +1357,8 @@
     "date_display_es": "principios del siglo XX.",
     "date_display_el": "αρχές 20ου αι.",
     "date_display_ja": "20世紀初頭。",
-    "date_display_tl": "maagang ika-20 c."
+    "date_display_tl": "maagang ika-20 c.",
+    "date_display_uk": "початок 20 ст."
   },
   {
     "id": "archive-postcard-dzhumaya-square-3",
@@ -1313,7 +1389,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: la plaza Dzhumaya.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας εγγραφής θέσης: πλατεία Dzhumaya.",
       "notes_ja": "画像は既存の場所レコードの座標 (ジュマヤ広場) にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Dzhumaya square."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Dzhumaya square.",
+      "notes_uk": "Зображення прив'язане до координат існуючого запису місця: площа Джумая."
     },
     "media": {
       "type": "image",
@@ -1331,7 +1408,8 @@
       "title_es": "Plaza Dzhumaya en postal antigua 3.jpg",
       "title_el": "Πλατεία Dzhumaya σε παλιά καρτ ποστάλ 3.jpg",
       "title_ja": "古い絵葉書のジュマヤ広場 3.jpg",
-      "title_tl": "Dzhumaya square sa lumang postcard 3.jpg"
+      "title_tl": "Dzhumaya square sa lumang postcard 3.jpg",
+      "title_uk": "Площа Джумая на старій листівці 3.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Dzhumaya square on old postcard 3.jpg",
@@ -1349,7 +1427,8 @@
       "title_es": "Wikimedia Commons — Plaza Dzhumaya en una postal antigua 3.jpg",
       "title_el": "Wikimedia Commons — Πλατεία Dzhumaya σε παλιά καρτ ποστάλ 3.jpg",
       "title_ja": "Wikimedia Commons — 古い絵葉書のジュマヤ広場 3.jpg",
-      "title_tl": "Wikimedia Commons — Dzhumaya square sa lumang postcard 3.jpg"
+      "title_tl": "Wikimedia Commons — Dzhumaya square sa lumang postcard 3.jpg",
+      "title_uk": "Wikimedia Commons — Площа Джумая на старій листівці 3.jpg"
     },
     "commons_categories": [
       "CC-BY-SA-3.0",
@@ -1373,7 +1452,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Dzhumaya square - Postkarte 3",
     "title_fr": "Place Dzhumaya - carte postale 3",
@@ -1383,6 +1463,7 @@
     "title_el": "Πλατεία Dzhumaya - καρτ ποστάλ 3",
     "title_ja": "ジュマヤ広場 - 絵葉書 3",
     "title_tl": "Dzhumaya Square - postcard 3",
+    "title_uk": "Площа Джумая - листівка 3",
     "description_de": "Dritte alte Postkarte aus dem öffentlichen Commons-Archiv für den Dzhumaya square.",
     "description_fr": "Troisième carte postale ancienne des archives publiques des Communes pour la place Dzhumaya.",
     "description_it": "Terza vecchia cartolina dall'archivio pubblico dei Comuni per Piazza Dzhumaya.",
@@ -1391,6 +1472,7 @@
     "description_el": "Τρίτη παλιά καρτ ποστάλ από το δημόσιο αρχείο Commons για την πλατεία Dzhumaya.",
     "description_ja": "ジュマヤ広場のパブリック コモンズ アーカイブからの 3 枚目の古い絵葉書。",
     "description_tl": "Pangatlong lumang postcard mula sa pampublikong Commons archive para sa Dzhumaya Square.",
+    "description_uk": "Третя стара листівка з громадського архіву площі Джумаєва.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
@@ -1398,7 +1480,8 @@
     "date_display_es": "principios del siglo XX.",
     "date_display_el": "αρχές 20ου αι.",
     "date_display_ja": "20世紀初頭。",
-    "date_display_tl": "maagang ika-20 c."
+    "date_display_tl": "maagang ika-20 c.",
+    "date_display_uk": "початок 20 ст."
   },
   {
     "id": "archive-postcard-gerdjica-1931",
@@ -1429,7 +1512,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Puente Gerdzhika.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Γέφυρα Γκέρτζικα.",
       "notes_ja": "この画像は、既存の場所の記録であるゲルジカ橋の座標にリンクされています。",
-      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Gerdzhika Bridge."
+      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Gerdzhika Bridge.",
+      "notes_uk": "Зображення прив'язане до координат існуючого місця запису: Міст Герджика."
     },
     "media": {
       "type": "image",
@@ -1447,7 +1531,8 @@
       "title_es": "Gerdjica 1931.jpg",
       "title_el": "Gerdjica 1931.jpg",
       "title_ja": "ゲルジツァ 1931.jpg",
-      "title_tl": "Gerdjica 1931.jpg"
+      "title_tl": "Gerdjica 1931.jpg",
+      "title_uk": "Герджика 1931.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Gerdjica 1931.jpg",
@@ -1465,7 +1550,8 @@
       "title_es": "Wikimedia Commons — Gerdjica 1931.jpg",
       "title_el": "Wikimedia Commons — Gerdjica 1931.jpg",
       "title_ja": "Wikimedia Commons — ゲルジツァ 1931.jpg",
-      "title_tl": "Wikimedia Commons — Gerdjica 1931.jpg"
+      "title_tl": "Wikimedia Commons — Gerdjica 1931.jpg",
+      "title_uk": "Wikimedia Commons — Gerdjica 1931.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -1487,7 +1573,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Gerdschika im Jahr 1931",
     "title_fr": "Gerdjika en 1931",
@@ -1497,6 +1584,7 @@
     "title_el": "Gerdzhika το 1931",
     "title_ja": "1931年のゲルジカ",
     "title_tl": "Gerdzhika noong 1931",
+    "title_uk": "Герджика 1931 року",
     "description_de": "Alte Postkarte/Foto von Gerdzhika, georeferenziert auf die moderne Brücke.",
     "description_fr": "Carte postale/photo ancienne de Gerdzhika, géoréférencée au pont moderne.",
     "description_it": "Vecchia cartolina/foto di Gerdzhika, georeferenziata al ponte moderno.",
@@ -1504,7 +1592,8 @@
     "description_es": "Postal/foto antigua de Gerdzhika, georreferenciada al puente moderno.",
     "description_el": "Παλιά καρτ ποστάλ/φωτογραφία Gerdzhika, γεωαναφορά στη σύγχρονη γέφυρα.",
     "description_ja": "ゲルジカの古い絵葉書/写真。現代の橋を地理参照。",
-    "description_tl": "Lumang postcard/larawan ni Gerdzhika, naka-georeference sa modernong tulay."
+    "description_tl": "Lumang postcard/larawan ni Gerdzhika, naka-georeference sa modernong tulay.",
+    "description_uk": "Стара листівка/фото Герджика з геоприв'язкою до сучасного мосту."
   },
   {
     "id": "archive-postcard-old-bridge-gerdjika-1930s",
@@ -1535,7 +1624,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Puente Gerdzhika.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Γέφυρα Γκέρτζικα.",
       "notes_ja": "この画像は、既存の場所の記録であるゲルジカ橋の座標にリンクされています。",
-      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Gerdzhika Bridge."
+      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Gerdzhika Bridge.",
+      "notes_uk": "Зображення прив'язане до координат існуючого місця запису: Міст Герджика."
     },
     "media": {
       "type": "image",
@@ -1553,7 +1643,8 @@
       "title_es": "Plovdiv, Puente Viejo y Puente Gerdjika, años 30.jpg",
       "title_el": "Plovdiv, Old Bridge and Gerdjika Bridge, 1930s.jpg",
       "title_ja": "Plovdiv、古い橋とゲルジカ橋、1930 年代.jpg",
-      "title_tl": "Plovdiv, Old Bridge at Gerdjika Bridge, 1930s.jpg"
+      "title_tl": "Plovdiv, Old Bridge at Gerdjika Bridge, 1930s.jpg",
+      "title_uk": "Plovdiv, Старий міст і міст Герджика, 1930-ті роки.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Plovdiv, Old Bridge and Gerdjika Bridge, 1930s.jpg",
@@ -1571,7 +1662,8 @@
       "title_es": "Wikimedia Commons: Plovdiv, Puente Viejo y Puente Gerdjika, años 30.jpg",
       "title_el": "Wikimedia Commons — Plovdiv, Old Bridge and Gerdjika Bridge, 1930s.jpg",
       "title_ja": "Wikimedia Commons — Plovdiv、旧橋とゲルジカ橋、1930 年代.jpg",
-      "title_tl": "Wikimedia Commons — Plovdiv, Old Bridge at Gerdjika Bridge, 1930s.jpg"
+      "title_tl": "Wikimedia Commons — Plovdiv, Old Bridge at Gerdjika Bridge, 1930s.jpg",
+      "title_uk": "Wikimedia Commons — Plovdiv, Старий міст і міст Герджика, 1930-ті роки.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -1598,7 +1690,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Alte Brücke und Gerdzhika Bridge in den 1930er Jahren",
     "title_fr": "Vieux pont et pont Gerdzhika dans les années 1930",
@@ -1608,6 +1701,7 @@
     "title_el": "Παλιά Γέφυρα και Γέφυρα Γκέρτζικα τη δεκαετία του 1930",
     "title_ja": "1930 年代の旧橋とゲルジカ橋",
     "title_tl": "Old Bridge at Gerdzhika Bridge noong 1930s",
+    "title_uk": "Старий міст і міст Герджика 1930-х років",
     "description_de": "Historische Ansicht der Brücken bei Gerdzhika, verknüpft mit der modernen Brückenaufzeichnung.",
     "description_fr": "Vue historique des ponts près de Gerdzhika, liée au registre des ponts modernes.",
     "description_it": "Veduta storica dei ponti vicino a Gerdzhika, collegata alla documentazione del ponte moderno.",
@@ -1616,6 +1710,7 @@
     "description_el": "Ιστορική άποψη των γεφυρών κοντά στο Gerdzhika, που συνδέεται με το σύγχρονο αρχείο γέφυρας.",
     "description_ja": "ゲルジカ近くの橋の歴史的な眺め。現代の橋の記録にリンクされています。",
     "description_tl": "Makasaysayang tanawin ng mga tulay malapit sa Gerdzhika, na naka-link sa modernong tala ng tulay.",
+    "description_uk": "Історичний вигляд мостів біля Герджика, пов'язаний із сучасним мостовим записом.",
     "date_display_de": "1930er Jahre",
     "date_display_fr": "années 1930",
     "date_display_it": "Anni 1930",
@@ -1623,7 +1718,8 @@
     "date_display_es": "década de 1930",
     "date_display_el": "δεκαετία του 1930",
     "date_display_ja": "1930年代",
-    "date_display_tl": "1930s"
+    "date_display_tl": "1930s",
+    "date_display_uk": "1930-ті роки"
   },
   {
     "id": "archive-postcard-greek-high-school",
@@ -1654,7 +1750,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Escuela primaria Geo Milev.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Δημοτικό Σχολείο Geo Milev.",
       "notes_ja": "この画像は、既存の場所レコードの座標 (ゲオ・ミレフ小学校) にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Geo Milev Primary School."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Geo Milev Primary School.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого запису місця: Початкова школа Гео Мілева."
     },
     "media": {
       "type": "image",
@@ -1672,7 +1769,8 @@
       "title_es": "Escuela secundaria griega en Plovdiv.jpg",
       "title_el": "Ελληνικό Λύκειο στο Plovdiv.jpg",
       "title_ja": "Plovdivのギリシャ高校.jpg",
-      "title_tl": "Mataas na Paaralan ng Greek sa Plovdiv.jpg"
+      "title_tl": "Mataas na Paaralan ng Greek sa Plovdiv.jpg",
+      "title_uk": "Грецька середня школа в Plovdiv.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Greek High School in Plovdiv.jpg",
@@ -1690,7 +1788,8 @@
       "title_es": "Wikimedia Commons — Escuela secundaria griega en Plovdiv.jpg",
       "title_el": "Wikimedia Commons — Ελληνικό Λύκειο στο Plovdiv.jpg",
       "title_ja": "Wikimedia Commons — Plovdivのギリシャ高校.jpg",
-      "title_tl": "Wikimedia Commons — Mataas na Paaralan ng Greek sa Plovdiv.jpg"
+      "title_tl": "Wikimedia Commons — Mataas na Paaralan ng Greek sa Plovdiv.jpg",
+      "title_uk": "Wikimedia Commons — Грецька середня школа в Plovdiv.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -1717,7 +1816,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Griechisches Gymnasium in Plovdiv",
     "title_fr": "Lycée grec de Plovdiv",
@@ -1727,6 +1827,7 @@
     "title_el": "Ελληνικό Λύκειο Plovdiv",
     "title_ja": "Plovdivのギリシャ高校",
     "title_tl": "Greek High School sa Plovdiv",
+    "title_uk": "Грецька середня школа в Plovdiv",
     "description_de": "Alte Postkarte eines zentralen Schulgebäudes, verknüpft mit der modernen Schulakte von Geo Milev.",
     "description_fr": "Carte postale ancienne d'un bâtiment scolaire central, liée au dossier scolaire moderne Geo Milev.",
     "description_it": "Vecchia cartolina dell'edificio scolastico centrale, collegata al moderno registro della scuola Geo Milev.",
@@ -1735,6 +1836,7 @@
     "description_el": "Παλιά καρτ ποστάλ ενός κεντρικού σχολικού κτηρίου, που συνδέεται με το σύγχρονο σχολικό αρχείο Geo Milev.",
     "description_ja": "中央校舎の古い絵葉書。現代のジオ・ミレフ学校の記録にリンクされています。",
     "description_tl": "Lumang postcard ng isang gusali ng gitnang paaralan, na naka-link sa modernong rekord ng paaralang Geo Milev.",
+    "description_uk": "Стара листівка будівлі центральної школи, пов'язана з сучасним шкільним записом імені Гео Мілева.",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
@@ -1742,7 +1844,8 @@
     "date_display_es": "principios del siglo XX.",
     "date_display_el": "αρχές 20ου αι.",
     "date_display_ja": "20世紀初頭。",
-    "date_display_tl": "maagang ika-20 c."
+    "date_display_tl": "maagang ika-20 c.",
+    "date_display_uk": "початок 20 ст."
   },
   {
     "id": "archive-postcard-german-school-1928",
@@ -1773,7 +1876,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Escuela alemana en Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Γερμανικό σχολείο στο Plovdiv.",
       "notes_ja": "この画像は、既存の場所レコードの座標にリンクされています: Plovdivのドイツ学校。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: German school sa Plovdiv."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: German school sa Plovdiv.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого місця запису: німецька школа в Plovdiv."
     },
     "media": {
       "type": "image",
@@ -1791,7 +1895,8 @@
       "title_es": "La escuela alemana, Plovdiv, 1928.jpg",
       "title_el": "The German School, Plovdiv, 1928.jpg",
       "title_ja": "ドイツ学校、Plovdiv、1928.jpg",
-      "title_tl": "Ang paaralang Aleman, Plovdiv, 1928.jpg"
+      "title_tl": "Ang paaralang Aleman, Plovdiv, 1928.jpg",
+      "title_uk": "Німецька школа, Plovdiv, 1928.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — The German school, Plovdiv, 1928.jpg",
@@ -1809,7 +1914,8 @@
       "title_es": "Wikimedia Commons — La escuela alemana, Plovdiv, 1928.jpg",
       "title_el": "Wikimedia Commons — Το γερμανικό σχολείο, Plovdiv, 1928.jpg",
       "title_ja": "Wikimedia Commons — ドイツの学校、Plovdiv、1928.jpg",
-      "title_tl": "Wikimedia Commons — Ang paaralang Aleman, Plovdiv, 1928.jpg"
+      "title_tl": "Wikimedia Commons — Ang paaralang Aleman, Plovdiv, 1928.jpg",
+      "title_uk": "Wikimedia Commons — Німецька школа, Plovdiv, 1928.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -1835,7 +1941,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Die deutsche Schule in Plovdiv, 1928",
     "title_fr": "L'école allemande de Plovdiv, 1928",
@@ -1845,6 +1952,7 @@
     "title_el": "Το γερμανικό σχολείο στο Plovdiv, 1928",
     "title_ja": "Plovdivのドイツ学校、1928年",
     "title_tl": "Ang paaralang Aleman sa Plovdiv, 1928",
+    "title_uk": "Німецька школа в Plovdiv, 1928 рік",
     "description_de": "Postkarte/Foto der Deutschen Schule, verlinkt mit der georeferenzierten Bauakte.",
     "description_fr": "Carte postale/photo de l'école allemande, liée au dossier de construction géoréférencé.",
     "description_it": "Cartolina/foto della scuola tedesca, collegata alla scheda dell'edificio georeferenziata.",
@@ -1852,7 +1960,8 @@
     "description_es": "Postal/foto del colegio alemán, vinculada al registro del edificio georeferenciado.",
     "description_el": "Καρτ ποστάλ/φωτογραφία του γερμανικού σχολείου, που συνδέεται με το γεωαναφερόμενο αρχείο κτιρίου.",
     "description_ja": "ドイツの学校の絵葉書/写真。地理参照された建物の記録にリンクされています。",
-    "description_tl": "Postcard/larawan ng German school, na naka-link sa georeferenced na rekord ng gusali."
+    "description_tl": "Postcard/larawan ng German school, na naka-link sa georeferenced na rekord ng gusali.",
+    "description_uk": "Листівка/фото німецької школи, пов’язане з геоприв’язаним записом будівлі."
   },
   {
     "id": "archive-postcard-tsar-simeon-garden-1915",
@@ -1883,7 +1992,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Jardín del Zar Simeón.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Tzar Simeon Garden.",
       "notes_ja": "画像は既存の場所レコードの座標にリンクされています: Tzar Simeon Garden。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Tzar Simeon Garden."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Tzar Simeon Garden.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого місця запису: сад царя Симеона."
     },
     "media": {
       "type": "image",
@@ -1901,7 +2011,8 @@
       "title_es": "BASA-1735K-1-345-24-Jardín del Zar Simeón, Plovdiv, Bulgaria, 1915.jpg",
       "title_el": "BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgaria, 1915.jpg",
       "title_ja": "BASA-1735K-1-345-24-皇帝シメオン庭園、Plovdiv、ブルガリア、1915.jpg",
-      "title_tl": "BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgaria, 1915.jpg"
+      "title_tl": "BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgaria, 1915.jpg",
+      "title_uk": "BASA-1735K-1-345-24-Сад царя Симеона, Plovdiv, Болгарія, 1915.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgaria, 1915.jpg",
@@ -1919,7 +2030,8 @@
       "title_es": "Wikimedia Commons — BASA-1735K-1-345-24-Jardín del Zar Simeón, Plovdiv, Bulgaria, 1915.jpg",
       "title_el": "Wikimedia Commons — BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgaria, 1915.jpg",
       "title_ja": "Wikimedia Commons — BASA-1735K-1-345-24-ツァール・シメオン・ガーデン、ブルガリア、Plovdiv、1915.jpg",
-      "title_tl": "Wikimedia Commons — BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgaria, 1915.jpg"
+      "title_tl": "Wikimedia Commons — BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Bulgaria, 1915.jpg",
+      "title_uk": "Wikimedia Commons — BASA-1735K-1-345-24-Tsar Simeon Garden, Plovdiv, Болгарія, 1915.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -1946,7 +2058,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Tzar Simeon Garden im Jahr 1915",
     "title_fr": "Jardin du tsar Siméon en 1915",
@@ -1956,6 +2069,7 @@
     "title_el": "Ο κήπος του Τσάρου Συμεών το 1915",
     "title_ja": "1915 年の皇帝シメオン庭園",
     "title_tl": "Tsar Simeon Garden noong 1915",
+    "title_uk": "Цар-Симеонівський сад 1915 р",
     "description_de": "Postkarte der Staatsagentur des Bulgarischen Archivs mit dem Tzar Simeon Garden.",
     "description_fr": "Carte postale de l’Agence d’État des Archives bulgares montrant le jardin du tsar Siméon.",
     "description_it": "Cartolina dell'Agenzia di Stato degli Archivi bulgari che mostra il giardino dello zar Simeone.",
@@ -1963,7 +2077,8 @@
     "description_es": "Postal de la Agencia Estatal de Archivos de Bulgaria que muestra el Jardín del Zar Simeón.",
     "description_el": "Καρτ ποστάλ της Κρατικής Υπηρεσίας Αρχείων της Βουλγαρίας που δείχνει τον κήπο του Τσάρου Συμεών.",
     "description_ja": "ブルガリア公文書館国家機関の絵葉書。皇帝シメオン庭園が描かれています。",
-    "description_tl": "Postcard ng Bulgarian Archives State Agency na nagpapakita ng Tsar Simeon Garden."
+    "description_tl": "Postcard ng Bulgarian Archives State Agency na nagpapakita ng Tsar Simeon Garden.",
+    "description_uk": "Листівка Державного агентства архівів Болгарії із зображенням саду царя Симеона."
   },
   {
     "id": "archive-photo-princes-garden-plovdiv",
@@ -1994,7 +2109,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Jardín del Zar Simeón.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Tzar Simeon Garden.",
       "notes_ja": "画像は既存の場所レコードの座標にリンクされています: Tzar Simeon Garden。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Tzar Simeon Garden."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Tzar Simeon Garden.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого місця запису: сад царя Симеона."
     },
     "media": {
       "type": "image",
@@ -2012,7 +2128,8 @@
       "title_es": "Jardín del Príncipe Plovdiv.jpg",
       "title_el": "Prince's Garden Plovdiv.jpg",
       "title_ja": "プリンスズ ガーデン Plovdiv.jpg",
-      "title_tl": "Hardin ng Prinsipe Plovdiv.jpg"
+      "title_tl": "Hardin ng Prinsipe Plovdiv.jpg",
+      "title_uk": "Княжий сад Plovdiv.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Prince's Garden Plovdiv.jpg",
@@ -2030,7 +2147,8 @@
       "title_es": "Wikimedia Commons — Jardín del Príncipe Plovdiv.jpg",
       "title_el": "Wikimedia Commons — Prince's Garden Plovdiv.jpg",
       "title_ja": "Wikimedia Commons — Prince's Garden Plovdiv.jpg",
-      "title_tl": "Wikimedia Commons — Prince's Garden Plovdiv.jpg"
+      "title_tl": "Wikimedia Commons — Prince's Garden Plovdiv.jpg",
+      "title_uk": "Wikimedia Commons — Prince's Garden Plovdiv.jpg"
     },
     "commons_categories": [
       "CC-PD-Mark",
@@ -2055,7 +2173,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Fürstengarten in Plovdiv",
     "title_fr": "Jardin du Prince à Plovdiv",
@@ -2065,6 +2184,7 @@
     "title_el": "Prince’s Garden στο Plovdiv",
     "title_ja": "Plovdivの王子の庭園",
     "title_tl": "Hardin ng Prinsipe sa Plovdiv",
+    "title_uk": "Княжий сад у Plovdiv",
     "description_de": "Blick auf den historischen Garten, verbunden mit dem modernen Tsar-Simeon-Gartenpark.",
     "description_fr": "Vue sur le jardin historique lié à la fiche moderne du parc Tsar Simeon Garden.",
     "description_it": "Vista sul giardino storico legato al moderno record del parco Giardino dello Zar Simeone.",
@@ -2073,6 +2193,7 @@
     "description_el": "Ιστορική θέα στον κήπο που συνδέεται με το σύγχρονο πάρκο του Tsar Simeon Garden.",
     "description_ja": "現代の皇帝シメオン庭園の公園記録につながる歴史的な庭園の眺め。",
     "description_tl": "Makasaysayang tanawin ng hardin na naka-link sa modernong Tsar Simeon Garden park record.",
+    "description_uk": "Історичний вид на сад, пов’язаний із сучасним рекордом парку «Сад царя Симеона».",
     "date_display_de": "Anfang des 20. Jahrhunderts.",
     "date_display_fr": "début 20e s.",
     "date_display_it": "inizi del XX sec.",
@@ -2080,7 +2201,8 @@
     "date_display_es": "principios del siglo XX.",
     "date_display_el": "αρχές 20ου αι.",
     "date_display_ja": "20世紀初頭。",
-    "date_display_tl": "maagang ika-20 c."
+    "date_display_tl": "maagang ika-20 c.",
+    "date_display_uk": "початок 20 ст."
   },
   {
     "id": "archive-photo-opening-1939-plovdiv-fair",
@@ -2111,7 +2233,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Feria Internacional de Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας εγγραφής τόπου: International Fair Plovdiv.",
       "notes_ja": "画像は、既存の場所レコードの座標にリンクされています: International Fair Plovdiv。",
-      "notes_tl": "Ang larawan ay naka-link sa mga coordinate ng umiiral na tala ng lugar: International Fair Plovdiv."
+      "notes_tl": "Ang larawan ay naka-link sa mga coordinate ng umiiral na tala ng lugar: International Fair Plovdiv.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого місця запису: Міжнародний ярмарок Plovdiv."
     },
     "media": {
       "type": "image",
@@ -2129,7 +2252,8 @@
       "title_es": "BASA 1318K-1-5896-2 Inauguración de la feria de Plovdiv de 1939.jpg",
       "title_el": "BASA 1318K-1-5896-2 Εγκαίνια του 1939 Plovdiv fair.jpg",
       "title_ja": "BASA 1318K-1-5896-2 1939 Plovdiv フェアのオープニング.jpg",
-      "title_tl": "BASA 1318K-1-5896-2 Pagbubukas ng 1939 Plovdiv fair.jpg"
+      "title_tl": "BASA 1318K-1-5896-2 Pagbubukas ng 1939 Plovdiv fair.jpg",
+      "title_uk": "BASA 1318K-1-5896-2 Opening of 1939 Plovdiv fair.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA 1318K-1-5896-2 Opening of 1939 Plovdiv fair.jpg",
@@ -2147,7 +2271,8 @@
       "title_es": "Wikimedia Commons — BASA 1318K-1-5896-2 Inauguración de la feria de Plovdiv de 1939.jpg",
       "title_el": "Wikimedia Commons — BASA 1318K-1-5896-2 Έναρξη λειτουργίας του 1939 Plovdiv fair.jpg",
       "title_ja": "Wikimedia Commons — BASA 1318K-1-5896-2 1939 年Plovdiv フェアのオープニング.jpg",
-      "title_tl": "Wikimedia Commons — BASA 1318K-1-5896-2 Pagbubukas ng 1939 Plovdiv fair.jpg"
+      "title_tl": "Wikimedia Commons — BASA 1318K-1-5896-2 Pagbubukas ng 1939 Plovdiv fair.jpg",
+      "title_uk": "Wikimedia Commons — BASA 1318K-1-5896-2 Opening of 1939 Plovdiv fair.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -2175,7 +2300,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Eröffnung der Plovdiver Messe 1939",
     "title_fr": "Ouverture de la Foire de Plovdiv 1939",
@@ -2185,6 +2311,7 @@
     "title_el": "Εγκαίνια της Έκθεσης του Plovdiv 1939",
     "title_ja": "1939 年のPlovdiv フェアの開幕",
     "title_tl": "Pagbubukas ng 1939 Plovdiv Fair",
+    "title_uk": "Відкриття пловдивського ярмарку 1939 року",
     "description_de": "Archivfoto von der Eröffnung der Plovdiv-Messe 1939, verbunden mit dem modernen Messekomplex.",
     "description_fr": "Photographie d'archive de l'ouverture de la Foire de Plovdiv de 1939, liée au complexe de foire moderne.",
     "description_it": "Fotografia d'archivio dell'inaugurazione della Fiera di Plovdiv del 1939, collegata al moderno complesso fieristico.",
@@ -2192,7 +2319,8 @@
     "description_es": "Fotografía de archivo de la inauguración de la Feria de Plovdiv de 1939, vinculada al moderno complejo ferial.",
     "description_el": "Φωτογραφία αρχείου από τα εγκαίνια της Έκθεσης της Plovdiv το 1939, που συνδέεται με το σύγχρονο εκθεσιακό συγκρότημα.",
     "description_ja": "1939 年のPlovdiv見本市のオープニングのアーカイブ写真。現代の見本市複合施設にリンクされています。",
-    "description_tl": "I-archive ang larawan mula sa pagbubukas ng 1939 Plovdiv Fair, na naka-link sa modernong fair complex."
+    "description_tl": "I-archive ang larawan mula sa pagbubukas ng 1939 Plovdiv Fair, na naka-link sa modernong fair complex.",
+    "description_uk": "Архівна фотографія з відкриття пловдивського ярмарку 1939 року, пов’язаного з сучасним ярмарковим комплексом."
   },
   {
     "id": "archive-photo-international-fair-1892-1",
@@ -2223,7 +2351,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Feria Internacional de Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας εγγραφής τόπου: International Fair Plovdiv.",
       "notes_ja": "画像は、既存の場所レコードの座標にリンクされています: International Fair Plovdiv。",
-      "notes_tl": "Ang larawan ay naka-link sa mga coordinate ng umiiral na tala ng lugar: International Fair Plovdiv."
+      "notes_tl": "Ang larawan ay naka-link sa mga coordinate ng umiiral na tala ng lugar: International Fair Plovdiv.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого місця запису: Міжнародний ярмарок Plovdiv."
     },
     "media": {
       "type": "image",
@@ -2241,7 +2370,8 @@
       "title_es": "BASA-3K-7-327-1-Feria Internacional Plovdiv, 1892.jpg",
       "title_el": "BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg",
       "title_ja": "BASA-3K-7-327-1-Plovdiv国際見本市、1892.jpg",
-      "title_tl": "BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg"
+      "title_tl": "BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg",
+      "title_uk": "BASA-3K-7-327-1-Міжнародний ярмарок Plovdiv, 1892.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg",
@@ -2259,7 +2389,8 @@
       "title_es": "Wikimedia Commons — BASA-3K-7-327-1-Feria Internacional de Plovdiv, 1892.jpg",
       "title_el": "Wikimedia Commons — BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg",
       "title_ja": "Wikimedia Commons — BASA-3K-7-327-1-Plovdiv国際見本市、1892.jpg",
-      "title_tl": "Wikimedia Commons — BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg"
+      "title_tl": "Wikimedia Commons — BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg",
+      "title_uk": "Wikimedia Commons — BASA-3K-7-327-1-International Fair Plovdiv, 1892.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -2286,7 +2417,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Erste Plovdiver Ausstellung, 1892 – Bild 1",
     "title_fr": "Première exposition de Plovdiv, 1892 - image 1",
@@ -2296,6 +2428,7 @@
     "title_el": "Πρώτη Έκθεση Plovdiv, 1892 - εικόνα 1",
     "title_ja": "最初のPlovdiv展示会、1892 - 画像 1",
     "title_tl": "Unang Plovdiv Exhibition, 1892 - larawan 1",
+    "title_uk": "Перша пловдивська виставка, 1892 р. - фото 1",
     "description_de": "Foto von der Internationalen Ausstellung in Plovdiv 1892, aus der Sammlung der Staatsagentur des Bulgarischen Archivs.",
     "description_fr": "Photographie de l'Exposition internationale de Plovdiv de 1892, de la collection de l'Agence d'État des Archives bulgares.",
     "description_it": "Fotografia dell'Esposizione Internazionale di Plovdiv del 1892, dalla collezione dell'Agenzia di Stato degli Archivi bulgari.",
@@ -2303,7 +2436,8 @@
     "description_es": "Fotografía de la Exposición Internacional de Plovdiv de 1892, de la colección de la Agencia Estatal de Archivos de Bulgaria.",
     "description_el": "Φωτογραφία από τη Διεθνή Έκθεση της Plovdiv του 1892, από τη συλλογή του Κρατικού Οργανισμού Αρχείων της Βουλγαρίας.",
     "description_ja": "1892 年のPlovdiv国際展示会の写真、ブルガリア公文書館所蔵。",
-    "description_tl": "Larawan mula sa 1892 Plovdiv International Exhibition, mula sa koleksyon ng Bulgarian Archives State Agency."
+    "description_tl": "Larawan mula sa 1892 Plovdiv International Exhibition, mula sa koleksyon ng Bulgarian Archives State Agency.",
+    "description_uk": "Фотографія з Пловдівської міжнародної виставки 1892 року з колекції Державного агентства архівів Болгарії."
   },
   {
     "id": "archive-photo-international-fair-1892-10",
@@ -2334,7 +2468,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Feria Internacional de Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας εγγραφής τόπου: International Fair Plovdiv.",
       "notes_ja": "画像は、既存の場所レコードの座標にリンクされています: International Fair Plovdiv。",
-      "notes_tl": "Ang larawan ay naka-link sa mga coordinate ng umiiral na tala ng lugar: International Fair Plovdiv."
+      "notes_tl": "Ang larawan ay naka-link sa mga coordinate ng umiiral na tala ng lugar: International Fair Plovdiv.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого місця запису: Міжнародний ярмарок Plovdiv."
     },
     "media": {
       "type": "image",
@@ -2352,7 +2487,8 @@
       "title_es": "BASA-3K-7-327-10-Feria Internacional Plovdiv, 1892.jpg",
       "title_el": "BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg",
       "title_ja": "BASA-3K-7-327-10-Plovdiv国際見本市、1892.jpg",
-      "title_tl": "BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg"
+      "title_tl": "BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg",
+      "title_uk": "BASA-3K-7-327-10-Міжнародний ярмарок Plovdiv, 1892.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg",
@@ -2370,7 +2506,8 @@
       "title_es": "Wikimedia Commons — BASA-3K-7-327-10-Feria Internacional de Plovdiv, 1892.jpg",
       "title_el": "Wikimedia Commons — BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg",
       "title_ja": "Wikimedia Commons — BASA-3K-7-327-10-Plovdiv国際見本市、1892.jpg",
-      "title_tl": "Wikimedia Commons — BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg"
+      "title_tl": "Wikimedia Commons — BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg",
+      "title_uk": "Wikimedia Commons — BASA-3K-7-327-10-International Fair Plovdiv, 1892.jpg"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -2397,7 +2534,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Erste Plovdiver Ausstellung, 1892 – Bild 10",
     "title_fr": "Première exposition de Plovdiv, 1892 - image 10",
@@ -2407,6 +2545,7 @@
     "title_el": "Πρώτη Έκθεση Plovdiv, 1892 - εικόνα 10",
     "title_ja": "最初のPlovdiv展示会、1892 - 画像 10",
     "title_tl": "Unang Plovdiv Exhibition, 1892 - larawan 10",
+    "title_uk": "Перша пловдивська виставка, 1892 р. - фото 10",
     "description_de": "Zweites ausgewähltes Bild aus der Ausstellungsfotoserie von 1892.",
     "description_fr": "Deuxième image sélectionnée de la série de photographies de l’exposition de 1892.",
     "description_it": "Seconda immagine selezionata dalla serie di fotografie della mostra del 1892.",
@@ -2414,7 +2553,8 @@
     "description_es": "Segunda imagen seleccionada de la serie de fotografías de la exposición de 1892.",
     "description_el": "Δεύτερη επιλεγμένη εικόνα από τη σειρά φωτογραφιών της έκθεσης του 1892.",
     "description_ja": "1892 年の展示写真シリーズから 2 番目に選ばれた画像。",
-    "description_tl": "Pangalawang napiling imahe mula sa 1892 exhibition photograph series."
+    "description_tl": "Pangalawang napiling imahe mula sa 1892 exhibition photograph series.",
+    "description_uk": "Друге вибране зображення з серії фотографій виставки 1892 року."
   },
   {
     "id": "archive-photo-ancient-theatre-uncovered-1",
@@ -2445,7 +2585,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Teatro Antiguo.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Αρχαίο Θέατρο.",
       "notes_ja": "この画像は、既存の場所レコードである古代劇場の座標にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Sinaunang Teatro."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Sinaunang Teatro.",
+      "notes_uk": "Зображення пов’язане з координатами існуючого запису місця: Античний театр."
     },
     "media": {
       "type": "image",
@@ -2463,7 +2604,8 @@
       "title_es": "Razkrivane antichen teatur.jpg",
       "title_el": "Razkrivane antichen teatur.jpg",
       "title_ja": "Razkrivane antichen teatur.jpg",
-      "title_tl": "Razkrivane antichen teatur.jpg"
+      "title_tl": "Razkrivane antichen teatur.jpg",
+      "title_uk": "Razkrivane antichen teatur.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane antichen teatur.jpg",
@@ -2481,7 +2623,8 @@
       "title_es": "Wikimedia Commons — Razkrivane antichen teatur.jpg",
       "title_el": "Wikimedia Commons — Razkrivane antichen teatur.jpg",
       "title_ja": "Wikimedia Commons — Razkrivane antichen teatur.jpg",
-      "title_tl": "Wikimedia Commons — Razkrivane antichen teatur.jpg"
+      "title_tl": "Wikimedia Commons — Razkrivane antichen teatur.jpg",
+      "title_uk": "Wikimedia Commons — Razkrivane antichen teatur.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -2502,7 +2645,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Aufdeckung des antiken Theaters – Bild 1",
     "title_fr": "À la découverte du théâtre antique - image 1",
@@ -2512,6 +2656,7 @@
     "title_el": "Αποκαλύπτοντας το Αρχαίο Θέατρο - εικόνα 1",
     "title_ja": "古代劇場の解明 - 画像 1",
     "title_tl": "Pagbubunyag ng Sinaunang Teatro - larawan 1",
+    "title_uk": "Розкриття античного театру - зображення 1",
     "description_de": "Fotoarchivmaterial von der Freilegung des antiken Theaters.",
     "description_fr": "Documents d'archives photographiques provenant de la découverte du Théâtre Antique.",
     "description_it": "Materiale fotografico d'archivio proveniente dal rinvenimento del Teatro Antico.",
@@ -2520,6 +2665,7 @@
     "description_el": "Φωτογραφικό αρχειακό υλικό από την αποκάλυψη του Αρχαίου Θεάτρου.",
     "description_ja": "古代劇場の発掘時の写真アーカイブ資料。",
     "description_tl": "Photographic archive materyal mula sa uncovering ng Ancient Theatre.",
+    "description_uk": "Архівний фотоматеріал з розкриття Античного театру.",
     "date_display_de": "Ausgrabungszeit, 20. Jh.",
     "date_display_fr": "période de fouilles, 20e s.",
     "date_display_it": "periodo degli scavi, XX sec.",
@@ -2527,7 +2673,8 @@
     "date_display_es": "Periodo de excavación, siglo XX.",
     "date_display_el": "ανασκαφική περίοδος, 20ος αι.",
     "date_display_ja": "発掘時期、20世紀。",
-    "date_display_tl": "panahon ng paghuhukay, ika-20 c."
+    "date_display_tl": "panahon ng paghuhukay, ika-20 c.",
+    "date_display_uk": "період розкопок 20 ст."
   },
   {
     "id": "archive-photo-ancient-theatre-uncovered-2",
@@ -2558,7 +2705,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Teatro Antiguo.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Αρχαίο Θέατρο.",
       "notes_ja": "この画像は、既存の場所レコードである古代劇場の座標にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Sinaunang Teatro."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Sinaunang Teatro.",
+      "notes_uk": "Зображення пов’язане з координатами існуючого запису місця: Античний театр."
     },
     "media": {
       "type": "image",
@@ -2576,7 +2724,8 @@
       "title_es": "Razkrivane antichen teatur1.jpg",
       "title_el": "Razkrivane antichen teatur1.jpg",
       "title_ja": "Razkrivane antichen teatur1.jpg",
-      "title_tl": "Razkrivane antichen teatur1.jpg"
+      "title_tl": "Razkrivane antichen teatur1.jpg",
+      "title_uk": "Razkrivane antichen teatur1.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane antichen teatur1.jpg",
@@ -2594,7 +2743,8 @@
       "title_es": "Wikimedia Commons — Razkrivane antichen teatur1.jpg",
       "title_el": "Wikimedia Commons — Razkrivane antichen teatur1.jpg",
       "title_ja": "Wikimedia Commons — Razkrivane antichen teatur1.jpg",
-      "title_tl": "Wikimedia Commons — Razkrivane antichen teatur1.jpg"
+      "title_tl": "Wikimedia Commons — Razkrivane antichen teatur1.jpg",
+      "title_uk": "Wikimedia Commons — Razkrivane antichen teatur1.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -2615,7 +2765,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Aufdeckung des antiken Theaters – Bild 2",
     "title_fr": "À la découverte du théâtre antique - image 2",
@@ -2625,6 +2776,7 @@
     "title_el": "Αποκαλύπτοντας το Αρχαίο Θέατρο - εικόνα 2",
     "title_ja": "古代劇場の解明 - 画像 2",
     "title_tl": "Pagbubunyag ng Sinaunang Teatro - larawan 2",
+    "title_uk": "Розкриття античного театру - зображення 2",
     "description_de": "Zweites Archivbild von der Freilegung des antiken Theaters.",
     "description_fr": "Deuxième image d'archive de la découverte du Théâtre Antique.",
     "description_it": "Seconda immagine d'archivio dal ritrovamento del Teatro Antico.",
@@ -2633,6 +2785,7 @@
     "description_el": "Δεύτερη αρχειακή εικόνα από την αποκάλυψη του Αρχαίου Θεάτρου.",
     "description_ja": "古代劇場の発掘からの 2 番目のアーカイブ画像。",
     "description_tl": "Pangalawang archive na imahe mula sa pag-alis ng takip ng Sinaunang Teatro.",
+    "description_uk": "Друге архівне зображення з розкриття Античного театру.",
     "date_display_de": "Ausgrabungszeit, 20. Jh.",
     "date_display_fr": "période de fouilles, 20e s.",
     "date_display_it": "periodo degli scavi, XX sec.",
@@ -2640,7 +2793,8 @@
     "date_display_es": "Periodo de excavación, siglo XX.",
     "date_display_el": "ανασκαφική περίοδος, 20ος αι.",
     "date_display_ja": "発掘時期、20世紀。",
-    "date_display_tl": "panahon ng paghuhukay, ika-20 c."
+    "date_display_tl": "panahon ng paghuhukay, ika-20 c.",
+    "date_display_uk": "період розкопок 20 ст."
   },
   {
     "id": "archive-photo-ancient-stadium-uncovered-1",
@@ -2671,7 +2825,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Estadio Antiguo.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας εγγραφής: Αρχαίο Στάδιο.",
       "notes_ja": "画像は、既存の場所のレコードである古代スタジアムの座標にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Ancient Stadium."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Ancient Stadium.",
+      "notes_uk": "Зображення пов’язане з координатами існуючого запису місця: Стародавній стадіон."
     },
     "media": {
       "type": "image",
@@ -2689,7 +2844,8 @@
       "title_es": "Estadio Razkrivane.jpg",
       "title_el": "Razkrivane stadion.jpg",
       "title_ja": "ラズクリヴァネ スタジアム.jpg",
-      "title_tl": "Razkrivane stadium.jpg"
+      "title_tl": "Razkrivane stadium.jpg",
+      "title_uk": "Razkrivane stadion.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane stadion.jpg",
@@ -2707,7 +2863,8 @@
       "title_es": "Wikimedia Commons — Estadio Razkrivane.jpg",
       "title_el": "Wikimedia Commons — Razkrivane stadion.jpg",
       "title_ja": "Wikimedia Commons — Razkrivane stadion.jpg",
-      "title_tl": "Wikimedia Commons — Razkrivane stadion.jpg"
+      "title_tl": "Wikimedia Commons — Razkrivane stadion.jpg",
+      "title_uk": "Wikimedia Commons — Razkrivane stadion.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -2728,7 +2885,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Freilegung des antiken Stadions – Bild 1",
     "title_fr": "Découverte de l'ancien stade - image 1",
@@ -2738,6 +2896,7 @@
     "title_el": "Αποκάλυψη του Αρχαίου Σταδίου - εικόνα 1",
     "title_ja": "古代スタジアムを明らかにする - 画像 1",
     "title_tl": "Pagbubunyag ng Sinaunang Istadyum - larawan 1",
+    "title_uk": "Розкриття стародавнього стадіону - зображення 1",
     "description_de": "Fotoarchivmaterial von der Freilegung des Antiken Stadions.",
     "description_fr": "Documents d'archives photographiques provenant de la découverte de l'ancien stade.",
     "description_it": "Materiale fotografico d'archivio proveniente dal rinvenimento dello Stadio Antico.",
@@ -2746,6 +2905,7 @@
     "description_el": "Φωτογραφικό αρχειακό υλικό από την αποκάλυψη του Αρχαίου Σταδίου.",
     "description_ja": "古代スタジアムの発掘時の写真アーカイブ資料。",
     "description_tl": "Photographic archive materyal mula sa uncovering ng Ancient Stadium.",
+    "description_uk": "Архівні фотоматеріали з розкриття Античного стадіону.",
     "date_display_de": "Ausgrabungszeit, 20. Jh.",
     "date_display_fr": "période de fouilles, 20e s.",
     "date_display_it": "periodo degli scavi, XX sec.",
@@ -2753,7 +2913,8 @@
     "date_display_es": "Periodo de excavación, siglo XX.",
     "date_display_el": "ανασκαφική περίοδος, 20ος αι.",
     "date_display_ja": "発掘時期、20世紀。",
-    "date_display_tl": "panahon ng paghuhukay, ika-20 c."
+    "date_display_tl": "panahon ng paghuhukay, ika-20 c.",
+    "date_display_uk": "період розкопок 20 ст."
   },
   {
     "id": "archive-photo-ancient-stadium-uncovered-2",
@@ -2784,7 +2945,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Estadio Antiguo.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας εγγραφής: Αρχαίο Στάδιο.",
       "notes_ja": "画像は、既存の場所のレコードである古代スタジアムの座標にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Ancient Stadium."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Ancient Stadium.",
+      "notes_uk": "Зображення пов’язане з координатами існуючого запису місця: Стародавній стадіон."
     },
     "media": {
       "type": "image",
@@ -2802,7 +2964,8 @@
       "title_es": "Estadio Razkrivane2.jpg",
       "title_el": "Razkrivane stadion2.jpg",
       "title_ja": "ラズクリヴァネ スタジアム2.jpg",
-      "title_tl": "Razkrivane stadion2.jpg"
+      "title_tl": "Razkrivane stadion2.jpg",
+      "title_uk": "Razkrivane stadion2.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Razkrivane stadion2.jpg",
@@ -2820,7 +2983,8 @@
       "title_es": "Wikimedia Commons — Estadio Razkrivane2.jpg",
       "title_el": "Wikimedia Commons — Razkrivane stadion2.jpg",
       "title_ja": "Wikimedia Commons — Razkrivane stadion2.jpg",
-      "title_tl": "Wikimedia Commons — Razkrivane stadion2.jpg"
+      "title_tl": "Wikimedia Commons — Razkrivane stadion2.jpg",
+      "title_uk": "Wikimedia Commons — Razkrivane stadion2.jpg"
     },
     "commons_categories": [
       "CC-BY-4.0",
@@ -2841,7 +3005,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Freilegung des antiken Stadions – Bild 2",
     "title_fr": "Découverte de l'ancien stade - image 2",
@@ -2851,6 +3016,7 @@
     "title_el": "Αποκάλυψη του Αρχαίου Σταδίου - εικόνα 2",
     "title_ja": "古代スタジアムを明らかにする - 画像 2",
     "title_tl": "Uncovering the Ancient Stadium - larawan 2",
+    "title_uk": "Розкриття стародавнього стадіону – фото 2",
     "description_de": "Zweites Archivbild von der Freilegung des antiken Stadions.",
     "description_fr": "Deuxième image d'archive de la découverte de l'Ancien Stade.",
     "description_it": "Seconda immagine d'archivio dal ritrovamento dello Stadio Antico.",
@@ -2859,6 +3025,7 @@
     "description_el": "Δεύτερη αρχειακή εικόνα από την αποκάλυψη του Αρχαίου Σταδίου.",
     "description_ja": "古代スタジアムの発掘時の 2 番目のアーカイブ画像。",
     "description_tl": "Pangalawang archive na imahe mula sa pag-uncover ng Ancient Stadium.",
+    "description_uk": "Друге архівне зображення з розкриття Античного стадіону.",
     "date_display_de": "Ausgrabungszeit, 20. Jh.",
     "date_display_fr": "période de fouilles, 20e s.",
     "date_display_it": "periodo degli scavi, XX sec.",
@@ -2866,7 +3033,8 @@
     "date_display_es": "Periodo de excavación, siglo XX.",
     "date_display_el": "ανασκαφική περίοδος, 20ος αι.",
     "date_display_ja": "発掘時期、20世紀。",
-    "date_display_tl": "panahon ng paghuhukay, ika-20 c."
+    "date_display_tl": "panahon ng paghuhukay, ika-20 c.",
+    "date_display_uk": "період розкопок 20 ст."
   },
   {
     "id": "archive-photo-chirpan-earthquake-st-josif-1928",
@@ -2897,7 +3065,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Hospital St Josif, Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Hospital St Josif, Plovdiv.",
       "notes_ja": "この画像は、既存の場所レコードの座標にリンクされています: Hospital St Josif, Plovdiv。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Hospital St Josif, Plovdiv."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Hospital St Josif, Plovdiv.",
+      "notes_uk": "Зображення пов’язане з координатами існуючого запису місця: Лікарня Св. Йосифа, Plovdiv."
     },
     "media": {
       "type": "image",
@@ -2915,7 +3084,8 @@
       "title_es": "Terremoto de Chirpan - Plovdiv.jpg",
       "title_el": "Σεισμός Chirpan - Plovdiv.jpg",
       "title_ja": "Chirpan地震 - Plovdiv.jpg",
-      "title_tl": "Chirpan Earthquake - Plovdiv.jpg"
+      "title_tl": "Chirpan Earthquake - Plovdiv.jpg",
+      "title_uk": "Chirpan землетрус - Plovdiv.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — Chirpan Earthquake - Plovdiv.jpg",
@@ -2933,7 +3103,8 @@
       "title_es": "Wikimedia Commons — Terremoto de Chirpan - Plovdiv.jpg",
       "title_el": "Wikimedia Commons — Σεισμός Chirpan - Plovdiv.jpg",
       "title_ja": "Wikimedia Commons — Chirpan地震 - Plovdiv.jpg",
-      "title_tl": "Wikimedia Commons — Chirpan Earthquake - Plovdiv.jpg"
+      "title_tl": "Wikimedia Commons — Chirpan Earthquake - Plovdiv.jpg",
+      "title_uk": "Wikimedia Commons — Chirpan землетрус - Plovdiv.jpg"
     },
     "commons_categories": [
       "Chirpan earthquake in Plovdiv",
@@ -2955,7 +3126,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Tschirpan-Erdbebenschaden in der Nähe von St. Josif",
     "title_fr": "Dommages causés par le tremblement de terre de Chirpan près de St Josif",
@@ -2965,6 +3137,7 @@
     "title_el": "Ζημιές από τον σεισμό Chirpan κοντά στο St Josif",
     "title_ja": "セント・ジョシフ近郊のChirpan地震被害",
     "title_tl": "Pinsala mula sa lindol sa Chirpan malapit sa St Josif",
+    "title_uk": "Пошкодження від Chirpan землетрусу біля Св. Йосифа",
     "description_de": "Foto der Schäden nach dem Erdbeben von 1928 im Zusammenhang mit dem St. Josif-Krankenhaus.",
     "description_fr": "Photographie des dégâts après le séisme de 1928, liés à l'hôpital St Josif.",
     "description_it": "Fotografia dei danni dopo il terremoto del 1928, collegata all'ospedale St Josif.",
@@ -2972,7 +3145,8 @@
     "description_es": "Fotografía de los daños tras el terremoto de 1928, vinculados al hospital St Josif.",
     "description_el": "Φωτογραφία ζημιάς μετά τον σεισμό του 1928, που συνδέεται με το νοσοκομείο St Josif.",
     "description_ja": "1928 年の地震後の被害の写真。セント ジョシフ病院に関連しています。",
-    "description_tl": "Larawan ng pinsala pagkatapos ng lindol noong 1928, na nauugnay sa St Josif hospital."
+    "description_tl": "Larawan ng pinsala pagkatapos ng lindol noong 1928, na nauugnay sa St Josif hospital.",
+    "description_uk": "Фотографія пошкоджень після землетрусу 1928 року, пов’язана з лікарнею Святого Йосипа."
   },
   {
     "id": "archive-photo-ivan-vazov-library-earthquake-1928",
@@ -3003,7 +3177,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Biblioteca Nacional Ivan Vazov.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Εθνική Βιβλιοθήκη Ivan Vazov.",
       "notes_ja": "この画像は、既存の場所レコードの座標にリンクされています: イワン ヴァゾフ国立図書館。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Ivan Vazov National Library."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang talaan ng lugar: Ivan Vazov National Library.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого запису: Національна бібліотека імені Івана Вазова."
     },
     "media": {
       "type": "image",
@@ -3021,7 +3196,8 @@
       "title_es": "BASA-741K-2-124-2-Biblioteca Nacional Ivan Vazov, Plovdiv.JPG",
       "title_el": "BASA-741K-2-124-2-Ivan Vazov National Library, Plovdiv.JPG",
       "title_ja": "BASA-741K-2-124-2-イワン ヴァゾフ国立図書館、Plovdiv.JPG",
-      "title_tl": "BASA-741K-2-124-2-Ivan Vazov National Library, Plovdiv.JPG"
+      "title_tl": "BASA-741K-2-124-2-Ivan Vazov National Library, Plovdiv.JPG",
+      "title_uk": "BASA-741K-2-124-2-Національна бібліотека імені Івана Вазова, Plovdiv.JPG"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-741K-2-124-2-Ivan Vazov National Library, Plovdiv.JPG",
@@ -3039,7 +3215,8 @@
       "title_es": "Wikimedia Commons — BASA-741K-2-124-2-Biblioteca Nacional Ivan Vazov, Plovdiv.JPG",
       "title_el": "Wikimedia Commons — BASA-741K-2-124-2-Ivan Vazov National Library, Plovdiv.JPG",
       "title_ja": "Wikimedia Commons — BASA-741K-2-124-2-イワン・ヴァゾフ国立図書館、Plovdiv.JPG",
-      "title_tl": "Wikimedia Commons — BASA-741K-2-124-2-Ivan Vazov National Library, Plovdiv.JPG"
+      "title_tl": "Wikimedia Commons — BASA-741K-2-124-2-Ivan Vazov National Library, Plovdiv.JPG",
+      "title_uk": "Wikimedia Commons — BASA-741K-2-124-2-Національна бібліотека імені Івана Вазова, Plovdiv.JPG"
     },
     "commons_categories": [
       "Artworks with known accession number",
@@ -3065,7 +3242,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Ivan Vazov Nationalbibliothek nach dem Erdbeben",
     "title_fr": "Bibliothèque nationale Ivan Vazov après le tremblement de terre",
@@ -3075,6 +3253,7 @@
     "title_el": "Εθνική Βιβλιοθήκη Ιβάν Βάζοφ μετά τον σεισμό",
     "title_ja": "地震後のイワン・ヴァゾフ国立図書館",
     "title_tl": "Ivan Vazov National Library pagkatapos ng lindol",
+    "title_uk": "Національна бібліотека імені Івана Вазова після землетрусу",
     "description_de": "Archivfoto der Bibliothek im Kontext des Erdbebens von 1928.",
     "description_fr": "Photographie d'archive de la bibliothèque dans le contexte du tremblement de terre de 1928.",
     "description_it": "Fotografia d'archivio della biblioteca nel contesto del terremoto del 1928.",
@@ -3082,7 +3261,8 @@
     "description_es": "Fotografía de archivo de la biblioteca en el contexto del terremoto de 1928.",
     "description_el": "Φωτογραφία αρχείου της βιβλιοθήκης στο πλαίσιο του σεισμού του 1928.",
     "description_ja": "1928 年の地震当時の図書館のアーカイブ写真。",
-    "description_tl": "I-archive ang larawan ng library sa konteksto ng 1928 na lindol."
+    "description_tl": "I-archive ang larawan ng library sa konteksto ng 1928 na lindol.",
+    "description_uk": "Архівна фотографія бібліотеки під час землетрусу 1928 року."
   },
   {
     "id": "archive-photo-balkan-cinema-plovdiv",
@@ -3113,7 +3293,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Kino Balkan.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας εγγραφής: Kino Balkan.",
       "notes_ja": "この画像は、既存の場所の記録であるキノ バルカンの座標にリンクされています。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Kino Balkan."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Kino Balkan.",
+      "notes_uk": "Зображення пов’язане з координатами існуючого місця запису: Кіно Балкан."
     },
     "media": {
       "type": "image",
@@ -3131,7 +3312,8 @@
       "title_es": "BASA-1625K-1-22-5-Cine balcánico, Plovdiv, Bulgaria.jpg",
       "title_el": "BASA-1625K-1-22-5-Balkan cinema, Plovdiv, Bulgaria.jpg",
       "title_ja": "BASA-1625K-1-22-5-バルカン映画、Plovdiv、ブルガリア.jpg",
-      "title_tl": "BASA-1625K-1-22-5-Balkan cinema, Plovdiv, Bulgaria.jpg"
+      "title_tl": "BASA-1625K-1-22-5-Balkan cinema, Plovdiv, Bulgaria.jpg",
+      "title_uk": "BASA-1625K-1-22-5-Кінотеатр Балкан, Plovdiv, Болгарія.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — BASA-1625K-1-22-5-Balkan cinema, Plovdiv, Bulgaria.jpg",
@@ -3149,7 +3331,8 @@
       "title_es": "Wikimedia Commons — BASA-1625K-1-22-5-Cine balcánico, Plovdiv, Bulgaria.jpg",
       "title_el": "Wikimedia Commons — BASA-1625K-1-22-5-Balkan cinema, Plovdiv, Bulgaria.jpg",
       "title_ja": "Wikimedia Commons — BASA-1625K-1-22-5-バルカン映画、Plovdiv、ブルガリア.jpg",
-      "title_tl": "Wikimedia Commons — BASA-1625K-1-22-5-Balkan cinema, Plovdiv, Bulgaria.jpg"
+      "title_tl": "Wikimedia Commons — BASA-1625K-1-22-5-Balkan cinema, Plovdiv, Bulgaria.jpg",
+      "title_uk": "Wikimedia Commons — BASA-1625K-1-22-5-Balkan cinema, Plovdiv, Болгарія.jpg"
     },
     "commons_categories": [
       "1942 in Bulgaria",
@@ -3181,7 +3364,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Balkankino in Plovdiv",
     "title_fr": "Cinéma balkanique à Plovdiv",
@@ -3191,6 +3375,7 @@
     "title_el": "Βαλκανικός κινηματογράφος στο Plovdiv",
     "title_ja": "Plovdivのバルカン映画館",
     "title_tl": "Balkan cinema sa Plovdiv",
+    "title_uk": "Кінотеатр Балкан в Plovdiv",
     "description_de": "Archivfoto des Balkankinos, verknüpft mit der modernen Baugeschichte.",
     "description_fr": "Photographie d'archive du cinéma balkanique, liée à l'histoire de la construction moderne.",
     "description_it": "Fotografia d'archivio del cinema balcanico, legata alla documentazione edilizia moderna.",
@@ -3199,6 +3384,7 @@
     "description_el": "Φωτογραφία αρχείου του βαλκανικού κινηματογράφου, που συνδέεται με τη σύγχρονη οικοδομική ιστορία.",
     "description_ja": "バルカン半島の映画のアーカイブ写真。近代建築の記録とリンク。",
     "description_tl": "I-archive ang larawan ng Balkan cinema, na naka-link sa modernong rekord ng gusali.",
+    "description_uk": "Архівна фотографія балканського кіно, пов’язана з сучасними будівлями.",
     "date_display_de": "20. Jh.",
     "date_display_fr": "20e s.",
     "date_display_it": "20° sec.",
@@ -3206,7 +3392,8 @@
     "date_display_es": "Siglo XX.",
     "date_display_el": "20ος αι.",
     "date_display_ja": "20世紀",
-    "date_display_tl": "ika-20 c."
+    "date_display_tl": "ika-20 c.",
+    "date_display_uk": "20 ст."
   },
   {
     "id": "archive-photo-trimontium-view-1958",
@@ -3237,7 +3424,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Trimontsium Hotel en Plovdiv.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Trimontsium Hotel στο Plovdiv.",
       "notes_ja": "この画像は、既存の場所レコードの座標にリンクされています: Plovdivのトリモンチウム ホテル。",
-      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Trimontsium Hotel sa Plovdiv."
+      "notes_tl": "Ang imahe ay naka-link sa mga coordinate ng umiiral na talaan ng lugar: Trimontsium Hotel sa Plovdiv.",
+      "notes_uk": "Зображення пов'язане з координатами існуючого місця запису: готель Trimontsium у Plovdiv."
     },
     "media": {
       "type": "image",
@@ -3255,7 +3443,8 @@
       "title_es": "PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
       "title_el": "PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
       "title_ja": "PLOVDIV、ブリック・ヴォム・ツィマー・イム・トリモンティウム - 58 - 046.44.jpg",
-      "title_tl": "PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg"
+      "title_tl": "PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
+      "title_uk": "ПЛОВДІВ, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg"
     },
     "source": {
       "title": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
@@ -3273,7 +3462,8 @@
       "title_es": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
       "title_el": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
       "title_ja": "Wikimedia Commons — PLOVDIV、Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
-      "title_tl": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg"
+      "title_tl": "Wikimedia Commons — PLOVDIV, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg",
+      "title_uk": "Wikimedia Commons — ПЛОВДІВ, Blick vom Zimmer im Trimontium - 58 - 046.44.jpg"
     },
     "commons_categories": [
       "1958 in Bulgaria",
@@ -3295,7 +3485,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Blick vom Trimontium Hotel, 1958",
     "title_fr": "Vue depuis l'hôtel Trimontium, 1958",
@@ -3305,6 +3496,7 @@
     "title_el": "Θέα από το ξενοδοχείο Trimontium, 1958",
     "title_ja": "トリモンチウム ホテルからの眺め、1958 年",
     "title_tl": "Tingnan mula sa Trimontium Hotel, 1958",
+    "title_uk": "Вид з готелю «Тримонціум», 1958 рік",
     "description_de": "Foto aus einem Zimmer im Trimontium Hotel, georeferenziert auf das Hotel als Aussichtspunkt.",
     "description_fr": "Photographie prise depuis une chambre de l'hôtel Trimontium, géoréférencée à l'hôtel comme point de vue.",
     "description_it": "Fotografia di una stanza del Trimontium Hotel, georeferenziata all'hotel come punto di vista.",
@@ -3312,7 +3504,8 @@
     "description_es": "Fotografía desde una habitación del Hotel Trimontium, georreferenciada al hotel como mirador.",
     "description_el": "Φωτογραφία από ένα δωμάτιο στο ξενοδοχείο Trimontium, με γεωγραφική αναφορά στο ξενοδοχείο ως θέα.",
     "description_ja": "トリモンティウム ホテルの部屋からの写真。視点としてホテルを地理参照しています。",
-    "description_tl": "Kuha mula sa isang silid sa Trimontium Hotel, na naka-georeference sa hotel bilang viewpoint."
+    "description_tl": "Kuha mula sa isang silid sa Trimontium Hotel, na naka-georeference sa hotel bilang viewpoint.",
+    "description_uk": "Фотографія з номеру в готелі «Тримонціум» з геоприв’язкою до готелю як точки зору."
   },
   {
     "id": "archive-photo-lamartine-house-restoration-1972",
@@ -3343,7 +3536,8 @@
       "notes_es": "La imagen está vinculada a las coordenadas del registro de lugar existente: Casa Lamartine.",
       "notes_el": "Η εικόνα συνδέεται με τις συντεταγμένες της υπάρχουσας καταγραφής: Σπίτι Λαμαρτίνου.",
       "notes_ja": "画像は既存の場所レコードの座標にリンクされています: ラマルティーヌ邸。",
-      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Lamartine House."
+      "notes_tl": "Naka-link ang larawan sa mga coordinate ng kasalukuyang tala ng lugar: Lamartine House.",
+      "notes_uk": "Зображення пов’язане з координатами існуючого запису місця: Lamartine House."
     },
     "media": {
       "type": "image",
@@ -3361,7 +3555,8 @@
       "title_es": "1972febrero de 150* Lamartine FFloor.jpeg",
       "title_el": "1972 Φεβ 150* Lamartine FFloor.jpeg",
       "title_ja": "1972年2月 150* ラマルティーヌ FFloor.jpeg",
-      "title_tl": "1972Feb 150* Lamartine FFloor.jpeg"
+      "title_tl": "1972Feb 150* Lamartine FFloor.jpeg",
+      "title_uk": "1972 Лютий 150* Ламартін FFloor.jpeg"
     },
     "source": {
       "title": "Wikimedia Commons — 1972Feb 150* Lamartine FFloor.jpeg",
@@ -3379,7 +3574,8 @@
       "title_es": "Wikimedia Commons - 150 de febrero de 1972 * Lamartine FFloor.jpeg",
       "title_el": "Wikimedia Commons — 1972 Φεβ 150* Lamartine FFloor.jpeg",
       "title_ja": "Wikimedia Commons — 1972年2月150* ラマルティーヌ FFloor.jpeg",
-      "title_tl": "Wikimedia Commons — 1972Feb 150* Lamartine FFloor.jpeg"
+      "title_tl": "Wikimedia Commons — 1972Feb 150* Lamartine FFloor.jpeg",
+      "title_uk": "Wikimedia Commons — 1972, лютий 150* Lamartine FFloor.jpeg"
     },
     "commons_categories": [
       "Black and white photographs",
@@ -3402,7 +3598,8 @@
       "notes_es": "Registro de archivo preparado automáticamente de Wikimedia Commons; requiere una revisión editorial independiente y una georreferenciación más precisa antes de la publicación final.",
       "notes_el": "Αυτόματη προετοιμασία αρχείου από το Wikimedia Commons. απαιτεί ανεξάρτητη εκδοτική ανασκόπηση και λεπτότερη γεωαναφορά πριν από την τελική δημοσίευση.",
       "notes_ja": "Wikimedia Commonsから自動的に準備されたアーカイブ・レコード。最終出版前に独立した編集レビューとより詳細な地理参照が必要です。",
-      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon."
+      "notes_tl": "Awtomatikong inihanda ang archive record mula sa Wikimedia Commons; nangangailangan ng independiyenteng pagsusuri sa editoryal at mas pinong georeferencing bago ang huling publikasyon.",
+      "notes_uk": "Автоматично підготовлений архівний запис із Wikimedia Commons; потребує незалежної редакційної перевірки та більш точної геоприв’язки перед остаточною публікацією."
     },
     "title_de": "Restaurierungsarchiv des Lamartine House, 1972",
     "title_fr": "Archives de restauration de la Maison Lamartine, 1972",
@@ -3412,6 +3609,7 @@
     "title_el": "Αρχείο αναπαλαίωσης του σπιτιού Lamartine, 1972",
     "title_ja": "ラマルティーヌ邸修復アーカイブ、1972 年",
     "title_tl": "Lamartine House restoration archive, 1972",
+    "title_uk": "Архів реставрації будинку Ламартіна, 1972 рік",
     "description_de": "Foto aus einer Archivserie für Lamartine House im Jahr 1972.",
     "description_fr": "Photographie issue d'une série d'archives pour la Maison Lamartine en 1972.",
     "description_it": "Fotografia da una serie d'archivio sulla Casa Lamartine nel 1972.",
@@ -3420,6 +3618,7 @@
     "description_el": "Φωτογραφία από μια σειρά αρχείου για το Σπίτι Λαμαρτίνου το 1972.",
     "description_ja": "1972 年のラマルティーヌ邸のアーカイブ シリーズの写真。",
     "description_tl": "Kuha mula sa isang archive series para sa Lamartine House noong 1972.",
+    "description_uk": "Фотографія з архівної серії для Lamartine House 1972 року.",
     "date_display_de": "Februar 1972",
     "date_display_fr": "Février 1972",
     "date_display_it": "Febbraio 1972",
@@ -3427,6 +3626,7 @@
     "date_display_es": "febrero de 1972",
     "date_display_el": "Φεβρουάριος 1972",
     "date_display_ja": "1972年2月",
-    "date_display_tl": "Pebrero 1972"
+    "date_display_tl": "Pebrero 1972",
+    "date_display_uk": "Лютий 1972 року"
   }
 ]

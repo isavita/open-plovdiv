@@ -4,7 +4,7 @@ import process from "node:process";
 
 const root = process.cwd();
 const targetLang = process.argv[2] ?? "de";
-const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el", "ja", "tl"]);
+const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk"]);
 if (!supportedTargetLangs.has(targetLang)) {
   throw new Error(`Unsupported target language "${targetLang}". Expected one of: ${[...supportedTargetLangs].join(", ")}`);
 }
@@ -158,6 +158,38 @@ const manualTranslationsByLang = {
       "Ang kronolohiya ng alkalde ay nag-uugnay kay Slavcho Atanasov kay Eng. Ivan Totev sa pamamagitan ng relasyong \"nagtagumpay ng\".",
     "The mayoral chronology links Zdravko Dimitrov with Eng. Ivan Totev through the relationship \"succeeds\".":
       "Ang kronolohiya ng alkalde ay nag-uugnay kay Zdravko Dimitrov kay Eng. Ivan Totev sa pamamagitan ng relasyong \"nagtagumpay\"."
+  },
+  uk: {
+    "Public web reference; reuse terms not verified":
+      "Публічне вебпосилання; умови повторного використання не перевірено",
+    "Wikimedia Commons file license, verify per file":
+      "Ліцензія файлу Wikimedia Commons; перевіряйте для кожного файлу",
+    "Creative Commons Attribution-ShareAlike 4.0 International":
+      "Creative Commons Attribution-ShareAlike 4.0 International",
+    "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
+    "Open Database License 1.0": "Open Database License 1.0",
+    "Open-license media; follow the stated license and attribution.":
+      "Медіа з відкритою ліцензією; дотримуйтеся вказаної ліцензії та атрибуції.",
+    "Bulgarian Revival": "Болгарське національне відродження",
+    "State targeted subsidy": "Цільова державна субсидія",
+    "Mayor of Plovdiv Municipality": "Мер муніципалітету Plovdiv",
+    "Mayoral term(s) for Eng. Ivan Totev.": "Мерська каденція: Eng. Ivan Totev.",
+    "Wikipedia — Д-р Иван Чомаков": "Wikipedia — Dr. Ivan Chomakov",
+    "Wikipedia — д-р Асен Кожухаров": "Wikipedia — Dr. Asen Kozhuharov",
+    "Wikipedia — д-р Гарабед Томасян": "Wikipedia — Dr. Garabed Tomasyan",
+    "Wikipedia — д-р Иван Кесяков": "Wikipedia — Dr. Ivan Kesyakov",
+    "Wikipedia — д-р Сотир Антониади": "Wikipedia — Dr. Sotir Antoniadi",
+    "Wikipedia — д-р Христо Танчев": "Wikipedia — Dr. Hristo Tanchev",
+    // Machine translation truncated the surname "Samokovliev"/"Samokovets" into
+    // a bare "Samokov" (the name of an unrelated real town) when it tried to
+    // decline it; pin clean sentences that keep the full recorded name intact.
+    "Atanas Samokovliev, also known as Atanas Samokovets (1832-1905), was a merchant, public figure and Plovdiv's first mayor after the Liberation. Born in Samokov, he was the son of icon painter Dimitar Zograf and brother of artist Stanislav Dospevski. After settling in Plovdiv he worked in tailoring and trade, helped administer the Holy Mother of God church and served in the city medjlis. The Provisional Russian Administration appointed him first mayor on 12 January 1878; he left office on 26 February that year. He later joined the Provisional Government after the Unification, was elected to parliament and was among the founders of the Plovdiv Chamber of Commerce and Industry. He was a deputy in the First Ordinary National Assembly and the Third Grand National Assembly.":
+      "Atanas Samokovliev, також відомий як Atanas Samokovets (1832-1905), був купцем, громадським діячем і першим мером Plovdiv після визволення. Народився в Samokov, він був сином іконописця Димитра Зографа та братом художника Станіслава Доспевського. Поселившись у Plovdiv, він займався кравецтвом і торгівлею, допомагав в управлінні церкви Пресвятої Богородиці та служив у міському меджлісі. Тимчасова російська адміністрація призначила його першим мером 12 січня 1878 року; він залишив посаду 26 лютого того ж року. Пізніше він увійшов до Тимчасового уряду після Об'єднання, був обраний до парламенту та був одним із засновників Пловдівської торгово-промислової палати. Був депутатом Перших звичайних народних зборів і Третіх Великих народних зборів.",
+    "Mayoral term(s) for Atanas Samokovliev.": "Термін(и) мера для Atanas Samokovliev.",
+    "The mayoral chronology links Atanas Samokovliev with Kostaki Peev through the relationship \"succeeded by\".":
+      "Мерська хронологія пов'язує Atanas Samokovliev з Kostaki Peev через стосунки «наступник».",
+    "The mayoral chronology links Kostaki Peev with Atanas Samokovliev through the relationship \"succeeds\".":
+      "Мерська хронологія пов'язує Kostaki Peev з Atanas Samokovliev через стосунки «наступник»."
   }
 };
 
@@ -538,6 +570,22 @@ const namePatternsByLang = {
     ],
     archive: /Alkalde\s*:\s*([^"”]+)["”]\.?$/,
     relationshipPrefix: /^Relasyon ng tao\s*:\s*/
+  },
+  uk: {
+    direct: (escapedName) => [
+      [`Biographical reference: ${escapedName}`, /^Біографічна довідка\s*:\s*(.+)$/],
+      [`Birth of ${escapedName}`, /^Народ(?:ження|ився|илася)\s*:?\s*(.+)$/],
+      [`Birth year and birthplace for ${escapedName}.`, /^Рік і місце народження\s*:?\s*(.+)\.$/],
+      [
+        `Biographical data and Plovdiv birthplace link for ${escapedName}.`,
+        /^Біографічні дані.*(?:для|про|:)\s*(.+?)(?:\s+в Plovdiv)?\.$/
+      ],
+      [`Mayor: ${escapedName}`, /^(?:Мер|Міський голова|Бургомістр)\s*:\s*(.+)$/],
+      [`Mayoral term\\(s\\) for ${escapedName}.`, /^Мерська каденція\s*:\s*(.+)\.$/],
+      [`Wikipedia [—–-] ${escapedName}`, /^Wikipedia\s*[—–:-]\s*(.+)$/]
+    ],
+    archive: /(?:Мер|Міський голова|Бургомістр)\s*:\s*([^"»]+)["»]\.?$/,
+    relationshipPrefix: /^(?:Зв'язок між особами|Особисті стосунки|Особистість|Спорідненість)\s*:\s*/
   }
 };
 
@@ -647,6 +695,240 @@ function applyExonymFixups(translations) {
       if (!out.includes(form) || (guarded && !guardOk)) continue;
       out = out.replaceAll(form, "Plovdiv");
     }
+    translations[source] = out;
+  }
+}
+
+// Ukrainian is a declined language, so machine translation glues Cyrillic case
+// endings directly onto the protected Latin noun "Plovdiv" (e.g. "Plovdivі",
+// "Plovdivа") and forms hybrid adjectives ("Plovdivський"). Adjectives derived
+// from the city name are ordinary Ukrainian words (like "римський" for
+// "Roman") and get fully transliterated; the plain noun stays untouched and
+// indeclinable, matching how every other locale keeps "Plovdiv" as-is.
+const ukrainianAdjectiveSuffixes = [
+  "ський", "ського", "ська", "ської", "ські", "ському", "ську", "ській", "ське"
+];
+function applyUkrainianDeclensionFixups(translations) {
+  if (targetLang !== "uk") return;
+  for (const [source, translated] of Object.entries(translations)) {
+    if (typeof translated !== "string") continue;
+    let out = translated;
+    for (const suffix of ukrainianAdjectiveSuffixes) {
+      out = out.replaceAll(`Plovdiv${suffix}`, `пловдив${suffix}`);
+    }
+    // JS's \b treats Cyrillic letters as non-word characters, so it never matches
+    // right after one; use a negative lookahead for another Cyrillic letter instead.
+    out = out.replace(/Plovdiv(?:і|а|у|ом)(?![а-яіїєґ'])/gu, "Plovdiv");
+    // The same declension-gluing happens to every other protected Latin proper
+    // noun (other town names, person surnames): a Cyrillic case ending gets
+    // glued directly onto the untranslated Latin word with no separator,
+    // producing a garbled hybrid (e.g. "Samokovлєва", "Chirpanі"). There is no
+    // general way to produce a correctly declined Ukrainian form for an
+    // arbitrary protected name, so strip the glued suffix back to the bare,
+    // indeclinable Latin form instead, matching how "Plovdiv" itself is kept.
+    out = out.replace(/([A-Za-z]{3,})[а-яіїєґ]{1,8}(?![а-яіїєґA-Za-z])/gu, "$1");
+    translations[source] = out;
+  }
+  applyUkrainianRelationshipTagFixups(translations);
+  applyUkrainianNameConsistencyFixups(translations);
+}
+
+// The mayoral-succession templates ("A — succeeds — B", "Person relationship:
+// A — succeeds — B.", and the prose "...through the relationship
+// "succeeds".") each get retranslated independently per line, so Google
+// Translate picks a different word for the same relationship_type almost
+// every time ("змінює", "наступає", "переходить", "наступник", "успішний",
+// "досягає успіху", "успішає", "успішно", "вдається", ...) instead of one
+// stable term. Force every occurrence of a given relationship_type to the
+// same word, matching how "person_id"-to-"to_person_id" is always read from
+// the "from" person's perspective: succeeds means "to" is from's
+// predecessor, succeeded_by means "to" is from's successor (confirmed
+// against generate_history_knowledge.mjs's from/to construction and mirrored
+// by PersonDetailView.astro's relationshipLabelsUk).
+const relationshipTagLabelsUk = { succeeds: "попередник", succeededBy: "наступник" };
+function applyUkrainianRelationshipTagFixups(translations) {
+  if (targetLang !== "uk") return;
+  for (const [source, translated] of Object.entries(translations)) {
+    if (typeof translated !== "string") continue;
+    let out = translated;
+    if (/ — succeeds — /.test(source)) {
+      out = out.replace(/ — .+? — /, ` — ${relationshipTagLabelsUk.succeeds} — `);
+    } else if (/ — succeeded by — /.test(source)) {
+      out = out.replace(/ — .+? — /, ` — ${relationshipTagLabelsUk.succeededBy} — `);
+    }
+    if (/through the relationship "succeeds"\.$/.test(source)) {
+      out = out.replace(/(["«])[^"»]*(["»])\.?$/, `$1${relationshipTagLabelsUk.succeeds}$2.`);
+    } else if (/through the relationship "succeeded by"\.$/.test(source)) {
+      out = out.replace(/(["«])[^"»]*(["»])\.?$/, `$1${relationshipTagLabelsUk.succeededBy}$2.`);
+    }
+    if (out !== translated) translations[source] = out;
+  }
+}
+
+// Person bios whose official name repeats a surname (e.g. "Kostadin Dimitrov
+// Dimitrov", where the patronymic and surname coincide) confuse Google
+// Translate: it leaves the first occurrence in Latin but transliterates the
+// second into Cyrillic, producing one name rendered two different ways in the
+// same sentence. Revert the transliterated tail back to the Latin form used
+// for the rest of the name, matching how every other locale keeps full names
+// in Latin script within prose.
+const ukrainianNameConsistencyFixups = [
+  [/Kostadin Dimitrov Дімітров/g, "Kostadin Dimitrov Dimitrov"],
+  [/Ivan Dimitrov Панев/g, "Ivan Dimitrov Panev"],
+  [/Hristo Pavlov Шкодров/g, "Hristo Pavlov Shkodrov"]
+];
+function applyUkrainianNameConsistencyFixups(translations) {
+  if (targetLang !== "uk") return;
+  for (const [source, translated] of Object.entries(translations)) {
+    if (typeof translated !== "string") continue;
+    let out = translated;
+    for (const [pattern, replacement] of ukrainianNameConsistencyFixups) out = out.replace(pattern, replacement);
+    if (out !== translated) translations[source] = out;
+  }
+}
+
+const ukrainianRelationshipLabels = {
+  child: "дитина",
+  father: "батько",
+  mother: "мати",
+  parent: "батько/мати",
+  sibling: "брат/сестра",
+  spouse: "подружжя",
+  succeeds: relationshipTagLabelsUk.succeeds,
+  succeeded_by: relationshipTagLabelsUk.succeededBy,
+  mentor: "наставник",
+  student: "учень/студент",
+  partner: "партнер",
+  influenced_by: "зазнав(-ла) впливу"
+};
+
+function applyUkrainianTemplateFixups(translations) {
+  if (targetLang !== "uk") return;
+  const relationUk = (relation) =>
+    relation === "succeeds" ? relationshipTagLabelsUk.succeeds : relationshipTagLabelsUk.succeededBy;
+
+  for (const source of Object.keys(translations)) {
+    if (manualTranslations[source]) continue;
+
+    let match = source.match(/^Person relationship: (.+) — (succeeds|succeeded by) — (.+)\.$/);
+    if (match) {
+      const [, left, relation, right] = match;
+      translations[source] = `Зв'язок між особами: ${left} — ${relationUk(relation)} — ${right}.`;
+      continue;
+    }
+
+    match = source.match(/^(.+) — (succeeds|succeeded by) — (.+)$/);
+    if (match) {
+      const [, left, relation, right] = match;
+      translations[source] = `${left} — ${relationUk(relation)} — ${right}`;
+      continue;
+    }
+
+    match = source.match(/^The mayoral chronology links (.+) with (.+) through the relationship "(succeeds|succeeded by)"\.$/);
+    if (match) {
+      const [, left, right, relation] = match;
+      translations[source] = `Хронологія мерів пов'язує ${left} з ${right} через зв'язок "${relationUk(relation)}".`;
+      continue;
+    }
+
+    match = source.match(/^A biographical source documents the relationship "(.+)" between (.+) and (.+)\.$/);
+    if (match) {
+      const [, relation, left, right] = match;
+      translations[source] = `Біографічне джерело документує зв'язок "${ukrainianRelationshipLabels[relation] ?? relation}" між ${left} і ${right}.`;
+      continue;
+    }
+
+    match = source.match(/^Mayoral term\(s\) for (.+)\.$/);
+    if (match) {
+      translations[source] = `Мерська каденція: ${match[1]}.`;
+      continue;
+    }
+
+    match = source.match(/^Wikipedia [—-] (.+)$/);
+    if (match) {
+      translations[source] = `Wikipedia — ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Biographical reference: (.+)$/);
+    if (match) {
+      translations[source] = `Біографічна довідка: ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Birth of (.+)$/);
+    if (match) {
+      translations[source] = `Народження: ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Birth year and birthplace for (.+)\.$/);
+    if (match) {
+      translations[source] = `Рік і місце народження: ${match[1]}.`;
+      continue;
+    }
+
+    match = source.match(/^Biographical data and Plovdiv birthplace link for (.+)\.$/);
+    if (match) {
+      translations[source] = `Біографічні дані та зв'язок із місцем народження у Plovdiv: ${match[1]}.`;
+      continue;
+    }
+
+    match = source.match(/^(.+)'s birthplace is Plovdiv; the recorded birth year is (.+)\.$/);
+    if (match) {
+      translations[source] = `Місце народження ${match[1]}: Plovdiv; зафіксований рік народження - ${match[2]}.`;
+      continue;
+    }
+
+    match = source.match(/^City archive record "Mayor: (.+)"\.$/);
+    if (match) {
+      translations[source] = `Запис міського архіву "Мер: ${match[1]}".`;
+      continue;
+    }
+
+    match = source.match(/^Dating and summary for timeline record "(.+)"\.$/);
+    if (match) {
+      translations[source] = `Датування та короткий зміст для запису хронології "${match[1]}".`;
+      continue;
+    }
+
+    const bioLead = source.match(/^([A-ZÀ-ž][^()\n]{2,160}) \((?:b\.|born|c\.|active|fl\.|\d{3,4})/);
+    if (bioLead) {
+      translations[source] = translations[source].replace(/^.+?(?=\s*[（(])/, bioLead[1]);
+    }
+  }
+
+  const cleanupReplacements = [
+    [/Містр:/g, "Мер:"],
+    [/Бургомістр:/g, "Мер:"],
+    [/Міський голова:/g, "Мер:"],
+    [/Міський архівний запис/g, "Запис міського архіву"],
+    [/(?:Особисті стосунки|Особистість|Спорідненість):/g, "Зв'язок між особами:"],
+    [/Термін\(и\) мера/g, "Мерська каденція"],
+    [/англ\. Іван Тот[еє]в/g, "Eng. Ivan Totev"],
+    [/інж\. Іван Тотев/g, "Eng. Ivan Totev"],
+    [/д-р Сотир Антоніаді/g, "Dr. Sotir Antoniadi"],
+    [/д-ра Сотіра Антоніаді/g, "Dr. Sotir Antoniadi"],
+    [/доктор Асен Кожухаров/g, "Dr. Asen Kozhuharov"],
+    [/доктора Асена Кожухарова/g, "Dr. Asen Kozhuharov"],
+    [/доктор Гарабед Томасян/g, "Dr. Garabed Tomasyan"],
+    [/д-ра Гарабеда Томасяна/g, "Dr. Garabed Tomasyan"],
+    [/доктор Христо Танчев/g, "Dr. Hristo Tanchev"],
+    [/д-ра Христо Танчева/g, "Dr. Hristo Tanchev"],
+    [/д-р Іван Чомаков/g, "Dr. Ivan Chomakov"],
+    [/д-ра Івана Чомакова/g, "Dr. Ivan Chomakov"],
+    [/д-р Іван Кесяков/g, "Dr. Ivan Kesyakov"],
+    [/д-ра Івана Кесякова/g, "Dr. Ivan Kesyakov"],
+    [/д-р Панайот Костов/g, "Dr. Panayot Kostov"],
+    [/д-ра Панайота Костова/g, "Dr. Panayot Kostov"],
+    [/Цільова субсидія держави/g, "Цільова державна субсидія"],
+    [/Болгарське Відродження/g, "Болгарське національне відродження"]
+  ];
+
+  for (const [source, translated] of Object.entries(translations)) {
+    if (typeof translated !== "string") continue;
+    let out = translated;
+    for (const [from, to] of cleanupReplacements) out = out.replace(from, to);
     translations[source] = out;
   }
 }
@@ -1203,6 +1485,8 @@ applyHonorificFixups(translations);
 applyLandmarkFixups(translations);
 applyGreekTemplateFixups(translations);
 applyJapaneseTemplateFixups(translations);
+applyUkrainianDeclensionFixups(translations);
+applyUkrainianTemplateFixups(translations);
 applyTagalogTemplateFixups(translations);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });

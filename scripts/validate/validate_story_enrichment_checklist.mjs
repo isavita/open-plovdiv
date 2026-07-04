@@ -3,7 +3,7 @@ import path from "node:path";
 import process from "node:process";
 
 const root = process.cwd();
-const supportedLanguages = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl"];
+const supportedLanguages = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk"];
 const translationTargetLanguages = supportedLanguages.filter((lang) => lang !== "bg" && lang !== "en");
 const validPlaceStatuses = new Set(["long_story_rendered", "structured_record_rendered", "checked_no_added_story"]);
 const validMayorStatuses = new Set(["long_story_rendered", "checked_no_added_story"]);

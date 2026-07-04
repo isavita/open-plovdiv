@@ -29,8 +29,9 @@ const tr = (
   es: string,
   el: string,
   ja: string,
-  tl: string
-): Record<Lang, string> => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl });
+  tl: string,
+  uk: string
+): Record<Lang, string> => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk });
 
 export const walkingRoutes: WalkingRouteSpec[] = [
   {
@@ -45,10 +46,11 @@ export const walkingRoutes: WalkingRouteSpec[] = [
       "Plovdiv romano en 90 minutos",
       "Ρωμαϊκό Plovdiv σε 90 λεπτά",
       "90分で巡るローマ時代のPlovdiv",
-      "Romanong Plovdiv sa loob ng 90 minuto"
+      "Romanong Plovdiv sa loob ng 90 minuto",
+      "Римський Пловдив за 90 хвилин"
     ),
-    shortTitle: tr("Римски Пловдив", "Roman Plovdiv", "Römisches Plovdiv", "Plovdiv romain", "Plovdiv romana", "Roma Plovdiv'i", "Plovdiv romano", "Ρωμαϊκό Plovdiv", "ローマ時代のPlovdiv", "Romanong Plovdiv"),
-    pace: tr("антични сцени, стадион и форум", "ancient stages, stadium and forum", "antike Bühnen, Stadion und Forum", "théâtre antique, stade et forum", "scene antiche, stadio e foro", "antik sahneler, stadyum ve forum", "escenarios antiguos, estadio y foro", "αρχαίες σκηνές, στάδιο και αγορά", "古代劇場、競技場、フォルム", "sinaunang entablado, istadyum, at foro"),
+    shortTitle: tr("Римски Пловдив", "Roman Plovdiv", "Römisches Plovdiv", "Plovdiv romain", "Plovdiv romana", "Roma Plovdiv'i", "Plovdiv romano", "Ρωμαϊκό Plovdiv", "ローマ時代のPlovdiv", "Romanong Plovdiv", "Римський Пловдив"),
+    pace: tr("антични сцени, стадион и форум", "ancient stages, stadium and forum", "antike Bühnen, Stadion und Forum", "théâtre antique, stade et forum", "scene antiche, stadio e foro", "antik sahneler, stadyum ve forum", "escenarios antiguos, estadio y foro", "αρχαίες σκηνές, στάδιο και αγορά", "古代劇場、競技場、フォルム", "sinaunang entablado, istadyum, at foro", "античні сцени, стадіон і форум"),
     durationMinutes: 90,
     accent: "#a23b2d",
     storyId: "story-roman-philippopolis",
@@ -74,10 +76,11 @@ export const walkingRoutes: WalkingRouteSpec[] = [
       "Casco antiguo y casas del Renacimiento",
       "Παλιά Πόλη και αναγεννησιακά σπίτια",
       "旧市街と民族復興期の邸宅",
-      "Lumang Bayan at mga bahay ng Pambansang Muling Pagsilang"
+      "Lumang Bayan at mga bahay ng Pambansang Muling Pagsilang",
+      "Старе місто і будинки Відродження"
     ),
-    shortTitle: tr("Стар град", "Old Town", "Altstadt", "Vieille ville", "Città vecchia", "Eski Şehir", "Casco antiguo", "Παλιά Πόλη", "旧市街", "Lumang Bayan"),
-    pace: tr("къщи, училища и общности", "houses, schools and communities", "Häuser, Schulen und Gemeinschaften", "maisons, écoles et communautés", "case, scuole e comunità", "evler, okullar ve topluluklar", "casas, escuelas y comunidades", "σπίτια, σχολεία και κοινότητες", "邸宅、学校、共同体", "bahay, paaralan, at komunidad"),
+    shortTitle: tr("Стар град", "Old Town", "Altstadt", "Vieille ville", "Città vecchia", "Eski Şehir", "Casco antiguo", "Παλιά Πόλη", "旧市街", "Lumang Bayan", "Старе місто"),
+    pace: tr("къщи, училища и общности", "houses, schools and communities", "Häuser, Schulen und Gemeinschaften", "maisons, écoles et communautés", "case, scuole e comunità", "evler, okullar ve topluluklar", "casas, escuelas y comunidades", "σπίτια, σχολεία και κοινότητες", "邸宅、学校、共同体", "bahay, paaralan, at komunidad", "будинки, школи та громади"),
     durationMinutes: 75,
     accent: "#b4632a",
     storyId: "story-revival-houses-schools",
@@ -103,10 +106,11 @@ export const walkingRoutes: WalkingRouteSpec[] = [
       "Filibe / capa otomana",
       "Filibe / οθωμανικό στρώμα",
       "Filibe / オスマン層",
-      "Filibe / Yugtong Ottoman"
+      "Filibe / Yugtong Ottoman",
+      "Філібе / османський шар"
     ),
-    shortTitle: tr("Филибе", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe"),
-    pace: tr("джамия, хамам, теке и часовников хълм", "mosque, bath, dervish space and clock hill", "Moschee, Bad, Derwischort und Uhrhügel", "mosquée, bain, espace derviche et colline de l'horloge", "moschea, bagno, loggia dervisca e colle dell'orologio", "cami, hamam, tekke ve saat tepesi", "mezquita, baño, espacio derviche y colina del reloj", "τζαμί, λουτρό, τεκές και λόφος ρολογιού", "モスク、浴場、デルヴィーシュ空間、時計塔の丘", "moske, paliguan, espasyo ng mga dervish, at burol ng orasan"),
+    shortTitle: tr("Филибе", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Filibe", "Філібе"),
+    pace: tr("джамия, хамам, теке и часовников хълм", "mosque, bath, dervish space and clock hill", "Moschee, Bad, Derwischort und Uhrhügel", "mosquée, bain, espace derviche et colline de l'horloge", "moschea, bagno, loggia dervisca e colle dell'orologio", "cami, hamam, tekke ve saat tepesi", "mezquita, baño, espacio derviche y colina del reloj", "τζαμί, λουτρό, τεκές και λόφος ρολογιού", "モスク、浴場、デルヴィーシュ空間、時計塔の丘", "moske, paliguan, espasyo ng mga dervish, at burol ng orasan", "мечеть, лазня, текке та Годинникова гора"),
     durationMinutes: 60,
     accent: "#5f6f52",
     storyId: "story-ottoman-filibe-city",
@@ -130,10 +134,11 @@ export const walkingRoutes: WalkingRouteSpec[] = [
       "Unificación y memoria cívica",
       "Ένωση και αστική μνήμη",
       "統一と市民の記憶",
-      "Pagkakaisa at sibikong alaala"
+      "Pagkakaisa at sibikong alaala",
+      "Об'єднання і громадянська пам'ять"
     ),
-    shortTitle: tr("Съединение", "Unification", "Vereinigung", "Unification", "Unificazione", "Birleşme", "Unificación", "Ένωση", "統一", "Pagkakaisa"),
-    pace: tr("площад, институции и градска памет", "square, institutions and urban memory", "Platz, Institutionen und Stadtgedächtnis", "place, institutions et mémoire urbaine", "piazza, istituzioni e memoria urbana", "meydan, kurumlar ve kentsel hafıza", "plaza, instituciones y memoria urbana", "πλατεία, θεσμοί και αστική μνήμη", "広場、制度、都市の記憶", "plaza, institusyon, at alaalang urban"),
+    shortTitle: tr("Съединение", "Unification", "Vereinigung", "Unification", "Unificazione", "Birleşme", "Unificación", "Ένωση", "統一", "Pagkakaisa", "Об'єднання"),
+    pace: tr("площад, институции и градска памет", "square, institutions and urban memory", "Platz, Institutionen und Stadtgedächtnis", "place, institutions et mémoire urbaine", "piazza, istituzioni e memoria urbana", "meydan, kurumlar ve kentsel hafıza", "plaza, instituciones y memoria urbana", "πλατεία, θεσμοί και αστική μνήμη", "広場、制度、都市の記憶", "plaza, institusyon, at alaalang urban", "площа, установи та міська пам'ять"),
     durationMinutes: 45,
     accent: "#315f7d",
     storyId: "story-unification-civic-memory",
@@ -152,7 +157,8 @@ export const walkingRoutes: WalkingRouteSpec[] = [
       "Kapana, parques y canal de remo",
       "Kapana, πάρκα και κανάλι κωπηλασίας",
       "Kapana、公園、ボート競技場",
-      "Kapana, mga parke, at ang Rowing Canal"
+      "Kapana, mga parke, at ang Rowing Canal",
+      "Капана, парки та Гребний канал"
     ),
     shortTitle: tr(
       "Капана → Гребната",
@@ -164,7 +170,8 @@ export const walkingRoutes: WalkingRouteSpec[] = [
       "Kapana → canal de remo",
       "Kapana → κανάλι",
       "Kapana → ボート場",
-      "Kapana → Rowing Canal"
+      "Kapana → Rowing Canal",
+      "Капана → Гребний канал"
     ),
     pace: tr(
       "творчески квартал, зелени хълмове и западен спортен пояс",
@@ -176,7 +183,8 @@ export const walkingRoutes: WalkingRouteSpec[] = [
       "distrito creativo, colinas verdes y franja deportiva occidental",
       "δημιουργική συνοικία, πράσινοι λόφοι και δυτική ζώνη αθλητισμού",
       "クリエイティブ地区、緑の丘、西側のスポーツ帯",
-      "malikhaing distrito, luntiang burol, at sports belt sa kanluran"
+      "malikhaing distrito, luntiang burol, at sports belt sa kanluran",
+      "творчий квартал, зелені пагорби та західна спортивна смуга"
     ),
     durationMinutes: 120,
     accent: "#2f7d6b",

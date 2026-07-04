@@ -10,7 +10,7 @@ import {
 } from "../i18n/ui";
 import { translateEn } from "../i18n/deTranslations";
 
-const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP", tl: "fil-PH" };
+const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP", tl: "fil-PH", uk: "uk-UA" };
 
 const knownHistoryText: Record<Lang, Record<string, string>> = {
   bg: {},
@@ -166,6 +166,25 @@ const knownHistoryText: Record<Lang, Record<string, string>> = {
       "Institusyon, gusali, o lugar sa lungsod ng Plovdiv na nakadokumento nang pampubliko.",
     "Building or urban site from Plovdiv's Revival and early modern heritage.":
       "Gusali o lugar sa lungsod mula sa pamana ng Pambansang Muling Pagsilang at maagang makabagong panahon ng Plovdiv."
+  },
+  uk: {
+    "wikidata_coordinate": "Координати Wikidata",
+    "approximate_site": "приблизне місце",
+    "district_centroid": "центр району",
+    "citywide_reference": "загальноміський орієнтир",
+    "Modern period": "Новітній період",
+    "Bulgarian Revival": "Болгарське національне відродження",
+    "Thracian era – Antiquity": "Фракійська епоха – античність",
+    "Roman period": "Римський період",
+    "Ottoman period": "Османський період",
+    "not identified in the current public source": "не визначено в наявному публічному джерелі",
+    "not applicable for a natural hill or terrain feature": "не застосовується для природного пагорба чи форми рельєфу",
+    "Publicly documented historic site; detailed visiting status still needs verification.":
+      "Публічно задокументована історична пам'ятка; детальний статус відвідування ще потребує перевірки.",
+    "Publicly documented institution, building, or urban site in Plovdiv.":
+      "Публічно задокументована установа, будівля або міський об'єкт у Пловдиві.",
+    "Building or urban site from Plovdiv's Revival and early modern heritage.":
+      "Будівля або міський об'єкт зі спадщини доби Відродження та раннього нового часу Пловдива."
   }
 };
 

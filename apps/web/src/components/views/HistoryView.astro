@@ -63,14 +63,14 @@ const historyDataVersion = createHash("sha1")
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
 const mayorEvents = entries.filter((event) => event.category === "mayor_term");
 
-const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string, ell: string, ja: string, tl: string): string =>
-  ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell, ja, tl } satisfies Record<Lang, string>)[lang];
+const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string, ell: string, ja: string, tl: string, uk: string): string =>
+  ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell, ja, tl, uk } satisfies Record<Lang, string>)[lang];
 
 const stats = [
   { value: t.home.statYearsValue, label: t.history.statYears },
-  { value: String(historyKnowledgeEvents.length), label: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα", "出来事", "kaganapan") },
-  { value: String(historyKnowledgePeople.length), label: tr("хора", "people", "Personen", "personnalités", "personalità", "kişi", "personas", "πρόσωπα", "人物", "tao") },
-  { value: String(historyKnowledgeSources.length), label: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "出典", "pinagmulan") }
+  { value: String(historyKnowledgeEvents.length), label: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα", "出来事", "kaganapan", "подій") },
+  { value: String(historyKnowledgePeople.length), label: tr("хора", "people", "Personen", "personnalités", "personalità", "kişi", "personas", "πρόσωπα", "人物", "tao", "осіб") },
+  { value: String(historyKnowledgeSources.length), label: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "出典", "pinagmulan", "джерел") }
 ];
 
 const labels = ({
@@ -1053,6 +1053,104 @@ const labels = ({
         download: "I-download",
         jsonData: "Datos na JSON",
         csvData: "Mga talahanayang CSV"
+      },
+      uk: {
+        people: "Люди",
+        places: "Місця",
+        contribute: "Надіслати фото чи спогад",
+        records: "записів",
+        of: "з",
+        timelineTitle: "Детальна хронологія",
+        timelineLead:
+          "Датовані записи від первісної доби до сьогодення, зокрема 68 мерських каденцій і подій міського архіву. Кожен запис має вказане джерело.",
+        search: "Пошук",
+        searchPlaceholder: "ім'я, місце, подія…",
+        era: "Епоха",
+        category: "Тип",
+        theme: "Тема",
+        person: "Особа",
+        place: "Місце",
+        linked: "Зв'язки",
+        allEras: "Усі епохи",
+        allCategories: "Усі типи",
+        allThemes: "Усі теми",
+        allPeople: "Усі особи",
+        allPlaces: "Усі місця",
+        allLinks: "Усі записи",
+        withPeople: "з особами",
+        withPlaces: "з місцями",
+        withOrganizations: "з організаціями",
+        visible: "Видимі",
+        reset: "Скинути фільтри",
+        noResults: "Немає записів за цими фільтрами.",
+        onThisDayTitle: "Цього дня",
+        onThisDayLead:
+          "Оберіть дату, щоб побачити пов'язані моменти з історії Пловдива.",
+        today: "Сьогодні",
+        noOnThisDay: "Немає події для обраної дати.",
+        source: "Джерело",
+        sourcePlural: "Джерела",
+        conflictNote: "Примітка про розбіжність",
+        mapTitle: "Історична карта",
+        mapLead:
+          "Перші місця розміщені на карті з приблизними координатами та окремим джерелом для контексту.",
+        mapLayer: "Шар за епохою",
+        allMapEras: "Усі епохи",
+        mapRoutes: "Тематичні пішохідні маршрути",
+        noRoute: "Без маршруту",
+        visiblePlaces: "Видимі місця",
+        mapArchiveLayer: "Архівний шар",
+        noArchiveOverlay: "Без архіву",
+        archiveOverlayMaps: "Старі карти",
+        archiveOverlayAll: "Усі архівні матеріали",
+        archiveOverlayPhotos: "Фото та листівки",
+        archiveOverlayDocuments: "Документи",
+        visibleArchiveItems: "архівних маркерів",
+        archiveOverlayNote: "Цей шар накладає старі карти й фотографії на сучасну карту. Вирівнювання є приблизним.",
+        routeStops: "зупинок",
+        routeAncientTitle: "Античний Філіпополь",
+        routeAncientLead:
+          "Короткий маршрут римськими та пізньоантичними об'єктами навколо Трьох пагорбів.",
+        routeRevivalTitle: "Старе місто доби Відродження",
+        routeRevivalLead:
+          "Пішохідний маршрут будинками, церквами та місцями, пов'язаними зі школами доби Відродження.",
+        routeHillsTitle: "Пагорби",
+        routeHillsLead:
+          "Географічний маршрут пагорбами, що зберігають ранню історію та міську пам'ять.",
+        openPlaces: "Усі місця",
+        selectPlace: "Обране місце",
+        coordinates: "Координати",
+        built: "Дата/спорудження",
+        architect: "Архітектор",
+        builder: "Будівельник",
+        creator: "Архітектор/будівельник",
+        archiveTitle: "Геореференсний архів і тоді/тепер",
+        archiveLead:
+          "Архівний шар пов'язує історичні карти, фотографії та листівки з місцями міста. Кожен елемент зберігає джерело і ліцензію Wikimedia Commons.",
+        georeferencedItems: "геореференсних архівних об'єктів",
+        thenNowPairs: "пар тоді/тепер",
+        archiveDate: "Дата",
+        archivePlace: "Місце",
+        georeference: "Геоприв'язка",
+        license: "Ліцензія",
+        thenNowTitle: "Порівняння тоді/тепер",
+        thenNowLead:
+          "Повзунки порівнюють архівне зображення із сучасним фото з відкритою ліцензією того самого місця або найближчого перевірюваного міського контексту.",
+        thenLabel: "Тоді",
+        nowLabel: "Тепер",
+        peopleTitle: "Зв'язки між людьми",
+        peopleLead:
+          "Мережа охоплює всіх осіб, а спадкоємність мерів становить у ній окремий шар.",
+        repeatTerms: "повторних каденцій",
+        successionLinks: "зв'язків спадкоємності",
+        openMayors: "Уся мережа людей",
+        dataTitle: "Відкриті дані та API",
+        dataLead:
+          "П'ять типів історичних об'єктів публікуються як JSON і CSV, а статичні маршрути API повертають ті самі записи.",
+        endpoint: "Маршрут",
+        download: "Завантажити",
+        jsonData: "Дані JSON",
+        csvData: "Таблиці CSV"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -1216,6 +1314,22 @@ const dataResourceLabels: Record<string, string> = ({
         education_resources: "Kagamitang Pang-edukasyon",
         editorial_signoffs: "Editoryal na Pag-apruba",
         editorial_review: "Pagsusuring Editoryal"
+      },
+      uk: {
+        index: "Індекс",
+        events: "Події",
+        people: "Люди",
+        person_relationships: "Зв'язки між особами",
+        places: "Місця",
+        organizations: "Організації",
+        sources: "Джерела",
+        archive_items: "Архівні об'єкти",
+        then_now_pairs: "Пари тоді/тепер",
+        primary_documents: "Первинні документи",
+        story_longreads: "Довгі матеріали",
+        education_resources: "Освітні ресурси",
+        editorial_signoffs: "Редакційні підписи",
+        editorial_review: "Редакційний перегляд"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -1251,22 +1365,22 @@ const downloadRows = Object.entries(historyKnowledgeIndex.downloads)
   });
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi", es: "Cronología", el: "Χρονολόγιο", ja: "年表", tl: "Talaan ng Kasaysayan" },
-  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi", es: "Mandato de alcalde", el: "Θητεία δημάρχου", ja: "市長任期", tl: "Termino ng Alkalde" },
-  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik", es: "Evento histórico", el: "Ιστορικό γεγονός", ja: "歴史的出来事", tl: "Makasaysayang Pangyayari" },
-  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı", es: "Programa cultural", el: "Πολιτιστικό πρόγραμμα", ja: "文化プログラム", tl: "Programang Pangkultura" },
-  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans", es: "Finanzas históricas", el: "Ιστορικά οικονομικά", ja: "歴史的財政", tl: "Makasaysayang Pananalapi" },
-  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı", es: "Programa municipal", el: "Δημοτικό πρόγραμμα", ja: "自治体プログラム", tl: "Programang Munisipal" },
-  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği", es: "Cambio de gobierno", el: "Αλλαγή διακυβέρνησης", ja: "行政上の変更", tl: "Pagbabago sa Pamamahala" },
-  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu", es: "Nacimiento de una personalidad", el: "Γέννηση αξιόλογου προσώπου", ja: "著名人物の誕生", tl: "Kapanganakan ng Kilalang Tao" },
-  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı", es: "Fuente de archivo", el: "Πηγή αρχείου", ja: "アーカイブ出典", tl: "Pinagmulan ng Arkibo" }
+  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi", es: "Cronología", el: "Χρονολόγιο", ja: "年表", tl: "Talaan ng Kasaysayan", uk: "Хронологія" },
+  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi", es: "Mandato de alcalde", el: "Θητεία δημάρχου", ja: "市長任期", tl: "Termino ng Alkalde", uk: "Мерська каденція" },
+  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik", es: "Evento histórico", el: "Ιστορικό γεγονός", ja: "歴史的出来事", tl: "Makasaysayang Pangyayari", uk: "Історична подія" },
+  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı", es: "Programa cultural", el: "Πολιτιστικό πρόγραμμα", ja: "文化プログラム", tl: "Programang Pangkultura", uk: "Культурна програма" },
+  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans", es: "Finanzas históricas", el: "Ιστορικά οικονομικά", ja: "歴史的財政", tl: "Makasaysayang Pananalapi", uk: "Історичні фінанси" },
+  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı", es: "Programa municipal", el: "Δημοτικό πρόγραμμα", ja: "自治体プログラム", tl: "Programang Munisipal", uk: "Муніципальна програма" },
+  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği", es: "Cambio de gobierno", el: "Αλλαγή διακυβέρνησης", ja: "行政上の変更", tl: "Pagbabago sa Pamamahala", uk: "Зміна врядування" },
+  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu", es: "Nacimiento de una personalidad", el: "Γέννηση αξιόλογου προσώπου", ja: "著名人物の誕生", tl: "Kapanganakan ng Kilalang Tao", uk: "Народження відомої особи" },
+  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı", es: "Fuente de archivo", el: "Πηγή αρχείου", ja: "アーカイブ出典", tl: "Pinagmulan ng Arkibo", uk: "Архівне джерело" }
 };
 
 // Timeline theme tags = the shared person-role labels plus two history-only tags.
 const themeLabels: Record<string, Record<Lang, string>> = {
   ...roleLabels,
-  people: { bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler", es: "Personas", el: "Πρόσωπα", ja: "人物", tl: "Mga Tao" },
-  birth: { bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum", es: "Nacimiento", el: "Γέννηση", ja: "誕生", tl: "Kapanganakan" }
+  people: { bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler", es: "Personas", el: "Πρόσωπα", ja: "人物", tl: "Mga Tao", uk: "Особи" },
+  birth: { bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum", es: "Nacimiento", el: "Γέννηση", ja: "誕生", tl: "Kapanganakan", uk: "Народження" }
 };
 
 const hiddenThemeTags = new Set(["people", "birth"]);
@@ -1372,8 +1486,8 @@ const eraMotif: Record<HistoryEra, "nebet-tepe" | "ancient-theatre" | "dzhumaya-
 };
 
 const treeLabels = {
-  eyebrow: tr("Епохи и събития", "Eras & events", "Epochen & Ereignisse", "Époques & événements", "Epoche & eventi", "Çağlar ve olaylar", "Eras y eventos", "Εποχές & γεγονότα", "時代と出来事", "Mga yugto at kaganapan"),
-  title: tr("Дърво на историята", "History tree", "Geschichtsbaum", "Arbre de l'histoire", "Albero della storia", "Tarih ağacı", "Árbol de la historia", "Δέντρο ιστορίας", "歴史ツリー", "Puno ng kasaysayan"),
+  eyebrow: tr("Епохи и събития", "Eras & events", "Epochen & Ereignisse", "Époques & événements", "Epoche & eventi", "Çağlar ve olaylar", "Eras y eventos", "Εποχές & γεγονότα", "時代と出来事", "Mga yugto at kaganapan", "Епохи та події"),
+  title: tr("Дърво на историята", "History tree", "Geschichtsbaum", "Arbre de l'histoire", "Albero della storia", "Tarih ağacı", "Árbol de la historia", "Δέντρο ιστορίας", "歴史ツリー", "Puno ng kasaysayan", "Дерево історії"),
   lead: tr(
     "Епохите на Пловдив като разгъващо се дърво: ключови събития и свързаните личности и места. Докоснете епоха, за да я отворите.",
     "Plovdiv's eras as an expanding tree: key events and the people and places linked to them. Tap an era to open it.",
@@ -1384,12 +1498,13 @@ const treeLabels = {
     "Las eras de Plovdiv como un árbol expandible: eventos clave y las personas y lugares vinculados. Toca una era para abrirla.",
     "Οι εποχές της Φιλιππούπολης ως εκπτυσσόμενο δέντρο: βασικά γεγονότα και συνδεδεμένα πρόσωπα και μέρη. Πατήστε μια εποχή για να ανοίξει.",
     "プロヴディフの時代を展開式ツリーで：主要事件と関連する人物・場所。タップで時代を開く。",
-    "Ang mga yugto ng Plovdiv bilang isang lumalawak na puno: mahahalagang kaganapan at ang mga taong at lugar na kaugnay nito. Pindutin ang isang yugto para buksan ito."
+    "Ang mga yugto ng Plovdiv bilang isang lumalawak na puno: mahahalagang kaganapan at ang mga taong at lugar na kaugnay nito. Pindutin ang isang yugto para buksan ito.",
+    "Епохи Пловдива у вигляді дерева, що розгортається: ключові події та пов'язані з ними особи й місця. Торкніться епохи, щоб відкрити її."
   ),
-  people: tr("Личности", "People", "Personen", "Personnes", "Persone", "Kişiler", "Personas", "Πρόσωπα", "人物", "Mga Tao"),
-  places: tr("Места", "Places", "Orte", "Lieux", "Luoghi", "Yerler", "Lugares", "Τόποι", "場所", "Mga Lugar"),
-  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα", "出来事", "kaganapan"),
-  noLinks: tr("Без посочени връзки", "No recorded links", "Keine Verknüpfungen", "Aucun lien enregistré", "Nessun legame registrato", "Kayıtlı bağ yok", "Sin vínculos registrados", "Χωρίς καταχωρημένες συνδέσεις", "記録されたリンクなし", "Walang naitalang koneksyon")
+  people: tr("Личности", "People", "Personen", "Personnes", "Persone", "Kişiler", "Personas", "Πρόσωπα", "人物", "Mga Tao", "Особи"),
+  places: tr("Места", "Places", "Orte", "Lieux", "Luoghi", "Yerler", "Lugares", "Τόποι", "場所", "Mga Lugar", "Місця"),
+  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα", "出来事", "kaganapan", "подій"),
+  noLinks: tr("Без посочени връзки", "No recorded links", "Keine Verknüpfungen", "Aucun lien enregistré", "Nessun legame registrato", "Kayıtlı bağ yok", "Sin vínculos registrados", "Χωρίς καταχωρημένες συνδέσεις", "記録されたリンクなし", "Walang naitalang koneksyon", "Без зафіксованих зв'язків")
 };
 
 function pickKeyEvents(eraEvents: KnowledgeEvent[], max = 6): KnowledgeEvent[] {
@@ -1520,13 +1635,13 @@ const timelinePersonIds = new Set(timelinePeople.map((person) => person.id));
 
 // --- history atlas: one selection (era / person / place) drives the page ---
 const atlasL = {
-  label: tr("Атлас", "Atlas", "Atlas", "Atlas", "Atlante", "Atlas", "Atlas", "Άτλαντας", "アトラス", "Atlas"),
-  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "olay", "eventos", "γεγονότα", "件の出来事", "kaganapan"),
-  seeMap: tr("Виж на картата", "See on the map", "Auf der Karte", "Voir sur la carte", "Vedi sulla mappa", "Haritada gör", "Ver en el mapa", "Δείτε στον χάρτη", "地図で見る", "Tingnan sa mapa"),
-  seeTimeline: tr("Към хронологията", "To the timeline", "Zur Zeitleiste", "Vers la chronologie", "Alla cronologia", "Zaman çizelgesine", "A la cronología", "Στο χρονολόγιο", "年表へ", "Sa talaan ng kasaysayan"),
-  clear: tr("Изчисти избора", "Clear selection", "Auswahl löschen", "Effacer la sélection", "Cancella selezione", "Seçimi temizle", "Borrar selección", "Καθαρισμός επιλογής", "選択を解除", "Alisin ang pinili"),
-  personEvents: tr("Събития →", "Events →", "Ereignisse →", "Événements →", "Eventi →", "Olaylar →", "Eventos →", "Γεγονότα →", "出来事 →", "Mga kaganapan →"),
-  placeEvents: tr("Събития на това място →", "Events at this place →", "Ereignisse an diesem Ort →", "Événements en ce lieu →", "Eventi in questo luogo →", "Bu yerdeki olaylar →", "Eventos en este lugar →", "Γεγονότα σε αυτό το μέρος →", "この場所の出来事 →", "Mga kaganapan sa lugar na ito →")
+  label: tr("Атлас", "Atlas", "Atlas", "Atlas", "Atlante", "Atlas", "Atlas", "Άτλαντας", "アトラス", "Atlas", "Атлас"),
+  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "olay", "eventos", "γεγονότα", "件の出来事", "kaganapan", "подій"),
+  seeMap: tr("Виж на картата", "See on the map", "Auf der Karte", "Voir sur la carte", "Vedi sulla mappa", "Haritada gör", "Ver en el mapa", "Δείτε στον χάρτη", "地図で見る", "Tingnan sa mapa", "Виж на карті"),
+  seeTimeline: tr("Към хронологията", "To the timeline", "Zur Zeitleiste", "Vers la chronologie", "Alla cronologia", "Zaman çizelgesine", "A la cronología", "Στο χρονολόγιο", "年表へ", "Sa talaan ng kasaysayan", "До хронології"),
+  clear: tr("Изчисти избора", "Clear selection", "Auswahl löschen", "Effacer la sélection", "Cancella selezione", "Seçimi temizle", "Borrar selección", "Καθαρισμός επιλογής", "選択を解除", "Alisin ang pinili", "Скасувати вибір"),
+  personEvents: tr("Събития →", "Events →", "Ereignisse →", "Événements →", "Eventi →", "Olaylar →", "Eventos →", "Γεγονότα →", "出来事 →", "Mga kaganapan →", "Події →"),
+  placeEvents: tr("Събития на това място →", "Events at this place →", "Ereignisse an diesem Ort →", "Événements en ce lieu →", "Eventi in questo luogo →", "Bu yerdeki olaylar →", "Eventos en este lugar →", "Γεγονότα σε αυτό το μέρος →", "この場所の出来事 →", "Mga kaganapan sa lugar na ito →", "Події на цьому місці →")
 };
 const successionCount = historyKnowledgePeople.reduce(
   (sum, person) => sum + person.relationships.filter((relationship) => relationship.type === "succeeded_by").length,
@@ -1921,6 +2036,36 @@ const growth = ({
         mapLead: "Tinatayang lokasyon ng mga kapitbahayan, kinulayan ayon sa yugtong lumitaw ang mga ito.",
         approxNote: "Tinatayang lokasyon",
         source: "Pinagmulan"
+      },
+      uk: {
+        title: "Як зростало місто",
+        popQ: "Як змінювалося населення?",
+        rateQ: "Коли місто зростало найшвидше?",
+        popTitle: "Населення Пловдива з роками",
+        popLead:
+          "Історичні дані до 2021 р. базуються на переписах і опублікованих історичних рядах; 2022-2025 рр. — річні оцінки Національного статистичного інституту Болгарії станом на 31 грудня.",
+        peakWord: "Пік",
+        latestWord: "Остання оцінка",
+        growthWord: "Зростання від",
+        rateTitle: "Темп зміни населення",
+        rateLead:
+          "Середньорічна зміна для кожного періоду між сусідніми точками обліку.",
+        perYear: "% на рік",
+        rateUnitNote: "Значення — це середньорічна зміна, % на рік.",
+        densityTitle: "Густота населення",
+        areaLabel: "Площа міста",
+        densityNow: "Густота",
+        densityPeak: "Густота на піку (1985)",
+        perKm: "ос./км²",
+        densityNote:
+          "Густота розрахована відносно нинішньої площі міста (101,98 км²). Пловдив — найгустонаселеніше місто Болгарії.",
+        nbTitle: "Коли з'явилися райони",
+        nbLead:
+          "Обрані райони та мікрорайони Пловдива, впорядковані за часом виникнення — кожен із публічним джерелом.",
+        mapTitle: "Райони на карті",
+        mapLead: "Приблизне розташування районів, забарвлених за епохою виникнення.",
+        approxNote: "Приблизне розташування",
+        source: "Джерело"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 const nbEraLabels: Record<NeighbourhoodEra, string> = ({
@@ -1933,7 +2078,8 @@ const nbEraLabels: Record<NeighbourhoodEra, string> = ({
       es: { ottoman: "Época otomana", revival: "Renacimiento Nacional", modern: "Época moderna (s. XX)", socialist: "Época socialista" },
       el: { ottoman: "Οθωμανική περίοδος", revival: "Εθνική Αναγέννηση", modern: "Σύγχρονη εποχή (20ός αι.)", socialist: "Σοσιαλιστική περίοδος" },
       ja: { ottoman: "オスマン時代", revival: "民族復興期", modern: "近現代（20世紀）", socialist: "社会主義時代" },
-      tl: { ottoman: "Panahong Ottoman", revival: "Pambansang Muling Pagsilang", modern: "Makabagong panahon (ika-20 siglo)", socialist: "Panahong Sosyalista" }
+      tl: { ottoman: "Panahong Ottoman", revival: "Pambansang Muling Pagsilang", modern: "Makabagong panahon (ika-20 siglo)", socialist: "Panahong Sosyalista" },
+      uk: { ottoman: "Османський період", revival: "Відродження", modern: "Новітній час (XX ст.)", socialist: "Соціалістичний період" }
     } satisfies Record<Lang, Record<NeighbourhoodEra, string>>)[lang];
 
 // sticky in-page section navigation
@@ -2037,9 +2183,19 @@ const sectionNav = ({
         { id: "geography", label: "Heograpiya/Klima" },
         { id: "city-growth", label: "Paglago" },
         { id: "data", label: "Datos" }
+      ],
+      uk: [
+        { id: "history-tree", label: "Дерево" },
+        { id: "timeline", label: "Хронологія" },
+        { id: "landmarks", label: "Місця" },
+        { id: "archive-layer", label: "Архів" },
+        { id: "people", label: "Люди" },
+        { id: "geography", label: "Геогр./клімат" },
+        { id: "city-growth", label: "Зростання" },
+        { id: "data", label: "Дані" }
       ]
     } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
-const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página", el: "Ενότητες σελίδας", ja: "ページ内セクション", tl: "Mga Seksyon ng Pahina" } satisfies Record<Lang, string>)[lang];
+const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página", el: "Ενότητες σελίδας", ja: "ページ内セクション", tl: "Mga Seksyon ng Pahina", uk: "Розділи сторінки" } satisfies Record<Lang, string>)[lang];
 
 const numberFmt = new Intl.NumberFormat(locale);
 
@@ -2388,6 +2544,33 @@ const geo = ({
           { label: "Taunang pag-ulan", value: "502 mm" }
         ],
         source: "Pinagmulan"
+      },
+      uk: {
+        title: "Географія і клімат",
+        lead:
+          "Пловдив розташований на сієнітових пагорбах Верхньофракійської низовини, на обох берегах річки Марица.",
+        geographyTitle: "Географія",
+        climateTitle: "Клімат",
+        chartQ: "Яка погода протягом року?",
+        chartTitle: "Середньомісячні температури та опади",
+        legendTemp: "Макс. / мін. температура",
+        legendPrecip: "Опади",
+        months: ["С", "Л", "Б", "К", "Т", "Ч", "Л", "С", "В", "Ж", "Л", "Г"],
+        facts: [
+          { label: "Координати", value: "42°09′пн.ш., 24°45′сх.д." },
+          { label: "Висота над рівнем моря", value: "164 м" },
+          { label: "Річка", value: "Марица" },
+          { label: "Низовина", value: "Верхньофракійська низовина" },
+          { label: "Пагорби", value: "6 збережених пагорбів (історично 7)" },
+          { label: "Площа", value: "101,98 км²" }
+        ],
+        stats: [
+          { label: "Тип клімату", value: "Вологий субтропічний" },
+          { label: "Середньорічні макс./мін.", value: "18,9 / 7,3 °C" },
+          { label: "Абсолютні рекорди", value: "45,0 / −31,5 °C" },
+          { label: "Річна кількість опадів", value: "502 мм" }
+        ],
+        source: "Джерело"
       }
     })[lang];
 

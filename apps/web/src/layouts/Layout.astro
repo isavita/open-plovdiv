@@ -40,10 +40,10 @@ const pageTitle = title ? `${title} · ${t.site.name}` : t.site.name;
 const pageDescription = description ?? t.site.tagline;
 const structuredTitle = title ?? t.site.name;
 
-const ogLocales: Record<Lang, string> = { bg: "bg_BG", en: "en_GB", de: "de_DE", fr: "fr_FR", it: "it_IT", tr: "tr_TR", es: "es_ES", el: "el_GR", ja: "ja_JP", tl: "fil_PH" };
+const ogLocales: Record<Lang, string> = { bg: "bg_BG", en: "en_GB", de: "de_DE", fr: "fr_FR", it: "it_IT", tr: "tr_TR", es: "es_ES", el: "el_GR", ja: "ja_JP", tl: "fil_PH", uk: "uk_UA" };
 const ogLocale = ogLocales[lang];
-const routesLabel = ({ bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta" } satisfies Record<Lang, string>)[lang];
-const governanceLabel = ({ bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala" } satisfies Record<Lang, string>)[lang];
+const routesLabel = ({ bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути" } satisfies Record<Lang, string>)[lang];
+const governanceLabel = ({ bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління" } satisfies Record<Lang, string>)[lang];
 
 // The city's own word for its unhurried spirit — a quiet signature repeated
 // in the footer so the whole site keeps the same relaxed, "ailyak" tone.
@@ -57,7 +57,8 @@ const ailyakMottos = {
   es: "Ailyak: el arte de Plovdiv de tomarse las cosas con calma.",
   el: "Αϊλιάκ — η τέχνη της Φιλιππούπολης να μη βιάζεσαι.",
   ja: "アイリャク — 急がないプロヴディフの流儀。",
-  tl: "Ailyak — ang sining ng Plovdiv na huwag magmadali."
+  tl: "Ailyak — ang sining ng Plovdiv na huwag magmadali.",
+  uk: "Айляк — пловдивське мистецтво не поспішати."
 } satisfies Record<Lang, string>;
 const ailyakMotto = ailyakMottos[lang];
 
@@ -172,8 +173,8 @@ const menuGroups = [
 // by the bottom script to re-localize the header/footer after detecting the
 // visited locale from the URL, using the same stable keys as the
 // data-nav-key/data-menu-key/data-footer-key hooks rendered below.
-const routesLabels = { bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta" } satisfies Record<Lang, string>;
-const governanceLabels = { bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala" } satisfies Record<Lang, string>;
+const routesLabels = { bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути" } satisfies Record<Lang, string>;
+const governanceLabels = { bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління" } satisfies Record<Lang, string>;
 const chromeI18n = localeDetect
   ? Object.fromEntries(
       localeCodes.map((code) => {

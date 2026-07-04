@@ -18,8 +18,9 @@ const trs = (
   es: string,
   el: string,
   ja: string,
-  tl: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl } satisfies Record<Lang, string>)[lang];
+  tl: string,
+  uk: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk } satisfies Record<Lang, string>)[lang];
 
 // Provenance groups — a presentation-only classification of the registry by
 // domain, so a visitor can see at a glance whether a claim rests on an
@@ -64,7 +65,8 @@ const groupMeta: Record<SourceGroup, { label: string; blurb: string }> = {
       "Instituciones y documentos oficiales",
       "Θεσμοί και επίσημα έγγραφα",
       "公的機関・公文書",
-      "Mga institusyon at opisyal na dokumento"
+      "Mga institusyon at opisyal na dokumento",
+      "Установи та офіційні документи"
     ),
     blurb: trs(
       "Общински, държавни и институционални страници — решения, регистри и първични документи.",
@@ -76,11 +78,12 @@ const groupMeta: Record<SourceGroup, { label: string; blurb: string }> = {
       "Páginas municipales, estatales e institucionales: decisiones, registros y documentos primarios.",
       "Δημοτικές, κρατικές και θεσμικές σελίδες — αποφάσεις, μητρώα και πρωτογενή έγγραφα.",
       "自治体・国・公的機関のページ — 決定、登録簿、一次資料。",
-      "Mga pahina ng munisipalidad, estado, at institusyon — desisyon, rehistro, at pangunahing dokumento."
+      "Mga pahina ng munisipalidad, estado, at institusyon — desisyon, rehistro, at pangunahing dokumento.",
+      "Сторінки громади, держави та установ — рішення, реєстри та первинні документи."
     )
   },
   media: {
-    label: trs("Медии", "Media", "Medien", "Médias", "Media", "Medya", "Medios", "Μέσα ενημέρωσης", "報道", "Media"),
+    label: trs("Медии", "Media", "Medien", "Médias", "Media", "Medya", "Medios", "Μέσα ενημέρωσης", "報道", "Media", "Медіа"),
     blurb: trs(
       "Журналистически публикации — използват се, когато официалният документ не е публикуван онлайн; вижте ограниченията на всеки запис.",
       "Press reports — used when the official document is not published online; see each record's limitations.",
@@ -91,7 +94,8 @@ const groupMeta: Record<SourceGroup, { label: string; blurb: string }> = {
       "Publicaciones de prensa: se usan cuando el documento oficial no está en línea; vea las limitaciones de cada registro.",
       "Δημοσιογραφικές πηγές — χρησιμοποιούνται όταν το επίσημο έγγραφο δεν είναι διαθέσιμο διαδικτυακά· δείτε τους περιορισμούς κάθε εγγραφής.",
       "報道記事 — 公文書がオンラインにない場合に使用。各記録の「限界」を参照。",
-      "Ulat mula sa pahayagan — ginagamit kapag hindi nailathala online ang opisyal na dokumento; tingnan ang limitasyon ng bawat talaan."
+      "Ulat mula sa pahayagan — ginagamit kapag hindi nailathala online ang opisyal na dokumento; tingnan ang limitasyon ng bawat talaan.",
+      "Повідомлення преси — використовуються, коли офіційний документ не опубліковано онлайн; дивіться обмеження кожного запису."
     )
   },
   open: {
@@ -105,7 +109,8 @@ const groupMeta: Record<SourceGroup, { label: string; blurb: string }> = {
       "Datos abiertos",
       "Ανοιχτά δεδομένα",
       "オープンデータ",
-      "Bukas na datos"
+      "Bukas na datos",
+      "Відкриті дані"
     ),
     blurb: trs(
       "Отворени бази и хранилища — координати, изображения и структурирани данни.",
@@ -117,17 +122,18 @@ const groupMeta: Record<SourceGroup, { label: string; blurb: string }> = {
       "Bases y repositorios abiertos: coordenadas, imágenes y datos estructurados.",
       "Ανοιχτές βάσεις και αποθετήρια — συντεταγμένες, εικόνες και δομημένα δεδομένα.",
       "オープンなデータベースとリポジトリ — 座標、画像、構造化データ。",
-      "Bukas na database at repositoryo — coordinate, larawan, at structured na datos."
+      "Bukas na database at repositoryo — coordinate, larawan, at structured na datos.",
+      "Відкриті бази даних і репозиторії — координати, зображення та структуровані дані."
     )
   }
 };
 
 const labels = {
-  statSources: trs("източника в регистъра", "sources in the register", "Quellen im Register", "sources au registre", "fonti nel registro", "kayıtlı kaynak", "fuentes en el registro", "πηγές στο μητρώο", "件の出典", "pinagmulan sa rehistro"),
-  statHosts: trs("домейна", "domains", "Domains", "domaines", "domini", "alan adı", "dominios", "τομείς", "ドメイン", "domain"),
-  statChecked: trs("последна проверка", "last checked", "zuletzt geprüft", "dernière vérification", "ultima verifica", "son kontrol", "última comprobación", "τελευταίος έλεγχος", "最終確認", "huling sinuri"),
-  usedFor: trs("Използва се за", "Used for", "Verwendet für", "Utilisée pour", "Usata per", "Kullanım amacı", "Se usa para", "Χρησιμοποιείται για", "用途", "Ginagamit para sa"),
-  limits: trs("Ограничения", "Limitations", "Einschränkungen", "Limites", "Limiti", "Sınırlamalar", "Limitaciones", "Περιορισμοί", "限界", "Limitasyon"),
+  statSources: trs("източника в регистъра", "sources in the register", "Quellen im Register", "sources au registre", "fonti nel registro", "kayıtlı kaynak", "fuentes en el registro", "πηγές στο μητρώο", "件の出典", "pinagmulan sa rehistro", "джерел у реєстрі"),
+  statHosts: trs("домейна", "domains", "Domains", "domaines", "domini", "alan adı", "dominios", "τομείς", "ドメイン", "domain", "доменів"),
+  statChecked: trs("последна проверка", "last checked", "zuletzt geprüft", "dernière vérification", "ultima verifica", "son kontrol", "última comprobación", "τελευταίος έλεγχος", "最終確認", "huling sinuri", "остання перевірка"),
+  usedFor: trs("Използва се за", "Used for", "Verwendet für", "Utilisée pour", "Usata per", "Kullanım amacı", "Se usa para", "Χρησιμοποιείται για", "用途", "Ginagamit para sa", "Використовується для"),
+  limits: trs("Ограничения", "Limitations", "Einschränkungen", "Limites", "Limiti", "Sınırlamalar", "Limitaciones", "Περιορισμοί", "限界", "Limitasyon", "Обмеження"),
   accessed: t.common.accessed
 };
 

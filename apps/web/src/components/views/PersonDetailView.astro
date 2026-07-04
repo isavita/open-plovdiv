@@ -204,6 +204,26 @@ const labels =
         linkedEvent: "Kaugnay na pangyayari",
         imageCredit: "Kredito ng larawan"
       }
+      : lang === "uk"
+      ? {
+        back: "Усі люди",
+        profile: "Профіль",
+        facts: "Дані",
+        roles: "Ролі",
+        life: "Роки життя",
+        born: "Народився/народилася",
+        wikidata: "Wikidata",
+        linkedEvents: "Пов'язані події",
+        relationships: "Зв'язки з іншими людьми",
+        noRelationships: "Прямих зв'язків з іншими людьми ще не зафіксовано.",
+        evidence: "Джерела",
+        source: "Джерело",
+        accessed: "Доступ",
+        license: "Ліцензія",
+        relationshipSource: "Джерело зв'язку",
+        linkedEvent: "Пов'язана подія",
+        imageCredit: "Кредит зображення"
+      }
       : {
         back: "All people",
         profile: "Profile",
@@ -439,6 +459,21 @@ const relationshipLabelsTl: Record<string, string> = {
   influenced_by: "naimpluwensyahan ni"
 };
 
+const relationshipLabelsUk: Record<string, string> = {
+  succeeds: "попередник",
+  succeeded_by: "наступник",
+  spouse: "подружжя",
+  father: "батько",
+  mother: "мати",
+  parent: "батько/мати",
+  child: "дитина",
+  sibling: "брат/сестра",
+  mentor: "наставник",
+  student: "учень/студент",
+  partner: "партнер",
+  influenced_by: "під впливом"
+};
+
 const roleGroups: Record<string, RoleGroup> = {
   mayor: "governance",
   politician: "governance",
@@ -541,6 +576,7 @@ function relationshipLabel(type: string): string {
   if (lang === "el") return relationshipLabelsEl[type] ?? type.replaceAll("_", " ");
   if (lang === "ja") return relationshipLabelsJa[type] ?? type.replaceAll("_", " ");
   if (lang === "tl") return relationshipLabelsTl[type] ?? type.replaceAll("_", " ");
+  if (lang === "uk") return relationshipLabelsUk[type] ?? type.replaceAll("_", " ");
   return relationshipLabels[type]?.[lang] ?? type.replaceAll("_", " ");
 }
 
@@ -551,6 +587,7 @@ function primaryGroup(item: KnowledgePerson): RoleGroup {
 function lifeLabel(item: KnowledgePerson): string {
   if (item.birth_year && item.death_year) return `${item.birth_year}-${item.death_year}`;
   if (item.birth_year) return `${labels.born} ${item.birth_year}`;
+  if (lang === "uk") return "невідомо";
   return lang === "ja" ? "不明" : "n/a";
 }
 

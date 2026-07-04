@@ -303,6 +303,41 @@ const labels =
         open: "開く",
         loadMore: "さらに表示"
       }
+      : lang === "uk"
+      ? {
+        title: "Місця та пам'ятки",
+        eyebrow: "Координати, зображення та джерела",
+        lead:
+          "Каталог місць з історії Пловдива: пам'ятки, площі, пагорби, громадські будівлі та культурні об'єкти з фотографіями, координатами та публічними джерелами.",
+        places: "місця",
+        coordinates: "координати",
+        images: "зображення",
+        events: "події",
+        thenNow: "тоді/зараз",
+        archive: "архів",
+        search: "Пошук",
+        searchPlaceholder: "місце, епоха, архітектор...",
+        era: "Епоха",
+        category: "Категорія",
+        evidence: "Архів",
+        allEras: "Усі епохи",
+        allCategories: "Усі категорії",
+        allEvidence: "Усі записи",
+        withThenNow: "з тоді/зараз",
+        withArchive: "з архівом",
+        visible: "Видимі",
+        of: "з",
+        reset: "Скинути фільтри",
+        noResults: "Немає місць за цими фільтрами.",
+        source: "Джерело",
+        status: "Статус",
+        built: "Дата/спорудження",
+        architect: "Архітектор",
+        builder: "Будівельник",
+        creator: "Архітектор/будівельник",
+        open: "Відкрити",
+        loadMore: "Показати ще"
+      }
       : lang === "tl"
       ? {
         title: "Mga Lugar at Makasaysayang Lugar",
@@ -374,15 +409,15 @@ const labels =
       };
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain", it: "Spazio urbano", tr: "Kentsel alan", es: "Espacio urbano", el: "Αστικός χώρος", ja: "都市空間", tl: "Pampublikong espasyo" },
-  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline", it: "Colle", tr: "Tepe", es: "Colina", el: "Λόφος", ja: "丘", tl: "Burol" },
-  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval", it: "Medievale", tr: "Orta Çağ", es: "Medieval", el: "Μεσαιωνικό", ja: "中世", tl: "Medyebal" },
-  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument", it: "Monumento", tr: "Anıt", es: "Monumento", el: "Μνημείο", ja: "記念碑", tl: "Monumento" },
-  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman", it: "Ottomano", tr: "Osmanlı", es: "Otomano", el: "Οθωμανικό", ja: "オスマン層", tl: "Ottoman" },
-  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux", it: "Sito religioso", tr: "Dinî yapı", es: "Sitio religioso", el: "Θρησκευτικός χώρος", ja: "宗教施設", tl: "Relihiyoso" },
-  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale", tr: "Ulusal Uyanış", es: "Renacimiento Nacional", el: "Εθνική Αναγέννηση", ja: "民族復興期", tl: "Pambansang Muling Pagsilang" },
-  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano", tr: "Roma", es: "Romano", el: "Ρωμαϊκό", ja: "ローマ層", tl: "Romano" },
-  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio", tr: "Trak", es: "Tracio", el: "Θρακικό", ja: "トラキア層", tl: "Trakiano" }
+  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain", it: "Spazio urbano", tr: "Kentsel alan", es: "Espacio urbano", el: "Αστικός χώρος", ja: "都市空間", tl: "Pampublikong espasyo", uk: "Міський простір" },
+  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline", it: "Colle", tr: "Tepe", es: "Colina", el: "Λόφος", ja: "丘", tl: "Burol", uk: "Пагорб" },
+  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval", it: "Medievale", tr: "Orta Çağ", es: "Medieval", el: "Μεσαιωνικό", ja: "中世", tl: "Medyebal", uk: "Середньовіччя" },
+  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument", it: "Monumento", tr: "Anıt", es: "Monumento", el: "Μνημείο", ja: "記念碑", tl: "Monumento", uk: "Пам'ятник" },
+  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman", it: "Ottomano", tr: "Osmanlı", es: "Otomano", el: "Οθωμανικό", ja: "オスマン層", tl: "Ottoman", uk: "Османський шар" },
+  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux", it: "Sito religioso", tr: "Dinî yapı", es: "Sitio religioso", el: "Θρησκευτικός χώρος", ja: "宗教施設", tl: "Relihiyoso", uk: "Релігійна споруда" },
+  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale", tr: "Ulusal Uyanış", es: "Renacimiento Nacional", el: "Εθνική Αναγέννηση", ja: "民族復興期", tl: "Pambansang Muling Pagsilang", uk: "Доба Відродження" },
+  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano", tr: "Roma", es: "Romano", el: "Ρωμαϊκό", ja: "ローマ層", tl: "Romano", uk: "Римський шар" },
+  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio", tr: "Trak", es: "Tracio", el: "Θρακικό", ja: "トラキア層", tl: "Trakiano", uk: "Фракійський шар" }
 };
 
 function localized(record: Record<string, any>, base: string): string {
@@ -537,6 +572,11 @@ const mapL =
         title: "Mapa ng mga Lugar",
         lead: "Lahat ng nakadokumentong lugar na may coordinates, kinulayan ayon sa kategorya. Ang mga filter sa ibaba ay naaapekto rin ang mapa."
       }
+      : lang === "uk"
+      ? {
+        title: "Карта місць",
+        lead: "Усі задокументовані місця з координатами, кольори яких відповідають категоріям. Фільтри нижче також діють на карту."
+      }
       : {
         title: "Map of the places",
         lead: "All documented places with coordinates, coloured by category. The filters below also drive the map."
@@ -552,8 +592,9 @@ const trd = (
   es: string,
   el: string,
   ja: string,
-  tl: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl })[lang];
+  tl: string,
+  uk: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk })[lang];
 
 const discoverL = {
   routeStrip: trd(
@@ -566,10 +607,11 @@ const discoverL = {
     "¿No sabe por dónde empezar? Siga una ruta preparada:",
     "Δεν ξέρετε από πού να ξεκινήσετε; Ακολουθήστε μια έτοιμη διαδρομή:",
     "どこから始めるか迷ったら、おすすめルートをどうぞ：",
-    "Hindi sigurado kung saan magsisimula? Sundan ang isang handa nang ruta:"
+    "Hindi sigurado kung saan magsisimula? Sundan ang isang handa nang ruta:",
+    "Не знаєте, з чого почати? Пройдіться готовим маршрутом:"
   ),
-  minutes: trd("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "min"),
-  stops: trd("спирки", "stops", "Stationen", "étapes", "tappe", "durak", "paradas", "στάσεις", "地点", "hintuan"),
+  minutes: trd("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "min", "хв"),
+  stops: trd("спирки", "stops", "Stationen", "étapes", "tappe", "durak", "paradas", "στάσεις", "地点", "hintuan", "зупинок"),
   legendLabel: trd(
     "Категории на картата — натиснете, за да филтрирате",
     "Map categories — click to filter",
@@ -580,7 +622,8 @@ const discoverL = {
     "Categorías del mapa — pulse para filtrar",
     "Κατηγορίες χάρτη — πατήστε για φιλτράρισμα",
     "地図のカテゴリ — クリックで絞り込み",
-    "Mga kategorya sa mapa — pindutin para i-filter"
+    "Mga kategorya sa mapa — pindutin para i-filter",
+    "Категорії карти — натисніть, щоб відфільтрувати"
   )
 };
 
@@ -613,8 +656,8 @@ const routeOverlays = walkingRoutes
   .filter((overlay) => overlay.points.length >= 2);
 
 const sheetL = {
-  close: trd("Затвори", "Close", "Schließen", "Fermer", "Chiudi", "Kapat", "Cerrar", "Κλείσιμο", "閉じる", "Isara"),
-  openRoute: trd("Отвори маршрута", "Open route", "Route öffnen", "Ouvrir le parcours", "Apri il percorso", "Rotayı aç", "Abrir la ruta", "Άνοιγμα διαδρομής", "ルートを開く", "Buksan ang ruta"),
+  close: trd("Затвори", "Close", "Schließen", "Fermer", "Chiudi", "Kapat", "Cerrar", "Κλείσιμο", "閉じる", "Isara", "Закрити"),
+  openRoute: trd("Отвори маршрута", "Open route", "Route öffnen", "Ouvrir le parcours", "Apri il percorso", "Rotayı aç", "Abrir la ruta", "Άνοιγμα διαδρομής", "ルートを開く", "Buksan ang ruta", "Відкрити маршрут"),
   routeToggleHint: trd(
     "Покажи на картата",
     "Show on the map",
@@ -625,7 +668,8 @@ const sheetL = {
     "Mostrar en el mapa",
     "Εμφάνιση στον χάρτη",
     "地図に表示",
-    "Ipakita sa mapa"
+    "Ipakita sa mapa",
+    "Показати на карті"
   )
 };
 

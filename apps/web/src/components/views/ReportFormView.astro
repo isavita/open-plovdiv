@@ -19,14 +19,15 @@ const trc = (
   es: string,
   el: string,
   ja: string,
-  tl: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl } satisfies Record<Lang, string>)[lang];
+  tl: string,
+  uk: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk } satisfies Record<Lang, string>)[lang];
 
 // Compact "how it works" steps + trust chips shown above the form — the
 // same facts the notice and checkboxes state, made scannable.
 const steps = [
   {
-    title: trc("Опишете проблема", "Describe the problem", "Problem beschreiben", "Décrivez le problème", "Descrivete il problema", "Sorunu anlatın", "Describa el problema", "Περιγράψτε το πρόβλημα", "問題を記入", "Ilarawan ang suliranin"),
+    title: trc("Опишете проблема", "Describe the problem", "Problem beschreiben", "Décrivez le problème", "Descrivete il problema", "Sorunu anlatın", "Describa el problema", "Περιγράψτε το πρόβλημα", "問題を記入", "Ilarawan ang suliranin", "Опишіть проблему"),
     hint: trc(
       "Категория, кратко заглавие и описание.",
       "Category, a short title and a description.",
@@ -37,11 +38,12 @@ const steps = [
       "Categoría, título corto y descripción.",
       "Κατηγορία, σύντομος τίτλος και περιγραφή.",
       "カテゴリ・短いタイトル・説明。",
-      "Kategorya, maikling pamagat, at deskripsyon."
+      "Kategorya, maikling pamagat, at deskripsyon.",
+      "Категорія, короткий заголовок і опис."
     )
   },
   {
-    title: trc("Посочете мястото", "Pin the location", "Ort markieren", "Localisez le lieu", "Indicate il luogo", "Konumu işaretleyin", "Señale el lugar", "Ορίστε το σημείο", "場所を指定", "Markahan ang lokasyon"),
+    title: trc("Посочете мястото", "Pin the location", "Ort markieren", "Localisez le lieu", "Indicate il luogo", "Konumu işaretleyin", "Señale el lugar", "Ορίστε το σημείο", "場所を指定", "Markahan ang lokasyon", "Позначте місце"),
     hint: trc(
       "Кликнете върху картата, за да поставите точката.",
       "Click the map to drop the point.",
@@ -52,11 +54,12 @@ const steps = [
       "Haga clic en el mapa para colocar el punto.",
       "Κάντε κλικ στον χάρτη για να ορίσετε το σημείο.",
       "地図をクリックして地点を置きます。",
-      "I-click ang mapa para ilagay ang punto."
+      "I-click ang mapa para ilagay ang punto.",
+      "Клацніть на карті, щоб поставити точку."
     )
   },
   {
-    title: trc("Преглед и публикуване", "Review and publish", "Prüfung und Veröffentlichung", "Vérification et publication", "Revisione e pubblicazione", "İnceleme ve yayın", "Revisión y publicación", "Έλεγχος και δημοσίευση", "確認と公開", "Suriin at ilathala"),
+    title: trc("Преглед и публикуване", "Review and publish", "Prüfung und Veröffentlichung", "Vérification et publication", "Revisione e pubblicazione", "İnceleme ve yayın", "Revisión y publicación", "Έλεγχος και δημοσίευση", "確認と公開", "Suriin at ilathala", "Перевірка та публікація"),
     hint: trc(
       "Модератор проверява сигнала, преди да се появи на картата.",
       "A moderator checks the report before it appears on the map.",
@@ -67,16 +70,17 @@ const steps = [
       "Un moderador revisa el aviso antes de que aparezca en el mapa.",
       "Ένας συντονιστής ελέγχει την αναφορά πριν εμφανιστεί στον χάρτη.",
       "モデレーターが確認したうえで地図に掲載されます。",
-      "Sinusuri ng moderator ang ulat bago ito lumitaw sa mapa."
+      "Sinusuri ng moderator ang ulat bago ito lumitaw sa mapa.",
+      "Модератор перевіряє звернення, перш ніж воно з'явиться на карті."
     )
   }
 ];
 
 const trustChips = [
-  trc("Без профили", "No accounts", "Ohne Konto", "Sans compte", "Senza account", "Hesap gerekmez", "Sin cuentas", "Χωρίς λογαριασμούς", "アカウント不要", "Walang account"),
-  trc("Без лични данни", "No personal data", "Keine persönlichen Daten", "Sans données personnelles", "Niente dati personali", "Kişisel veri yok", "Sin datos personales", "Χωρίς προσωπικά δεδομένα", "個人情報なし", "Walang personal na datos"),
-  trc("EXIF/GPS се премахват", "EXIF/GPS stripped", "EXIF/GPS entfernt", "EXIF/GPS supprimés", "EXIF/GPS rimossi", "EXIF/GPS silinir", "EXIF/GPS eliminados", "Αφαίρεση EXIF/GPS", "EXIF/GPS除去", "Tinatanggal ang EXIF/GPS"),
-  trc("Ръчна модерация", "Human moderation", "Manuelle Moderation", "Modération humaine", "Moderazione umana", "İnsan denetimi", "Moderación humana", "Ανθρώπινη εποπτεία", "人による確認", "Moderasyon ng tao")
+  trc("Без профили", "No accounts", "Ohne Konto", "Sans compte", "Senza account", "Hesap gerekmez", "Sin cuentas", "Χωρίς λογαριασμούς", "アカウント不要", "Walang account", "Без акаунтів"),
+  trc("Без лични данни", "No personal data", "Keine persönlichen Daten", "Sans données personnelles", "Niente dati personali", "Kişisel veri yok", "Sin datos personales", "Χωρίς προσωπικά δεδομένα", "個人情報なし", "Walang personal na datos", "Без особистих даних"),
+  trc("EXIF/GPS се премахват", "EXIF/GPS stripped", "EXIF/GPS entfernt", "EXIF/GPS supprimés", "EXIF/GPS rimossi", "EXIF/GPS silinir", "EXIF/GPS eliminados", "Αφαίρεση EXIF/GPS", "EXIF/GPS除去", "Tinatanggal ang EXIF/GPS", "EXIF/GPS видаляються"),
+  trc("Ръчна модерация", "Human moderation", "Manuelle Moderation", "Modération humaine", "Moderazione umana", "İnsan denetimi", "Moderación humana", "Ανθρώπινη εποπτεία", "人による確認", "Moderasyon ng tao", "Ручна модерація")
 ];
 
 const config = {
