@@ -4,7 +4,7 @@ import process from "node:process";
 
 const root = process.cwd();
 const targetLang = process.argv[2] ?? "de";
-const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el", "ja"]);
+const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el", "ja", "tl"]);
 if (!supportedTargetLangs.has(targetLang)) {
   throw new Error(`Unsupported target language "${targetLang}". Expected one of: ${[...supportedTargetLangs].join(", ")}`);
 }
@@ -122,6 +122,42 @@ const manualTranslationsByLang = {
     // Bulgarian-only Wikimedia image captions that the machine left untranslated.
     "Природна забележителност в България.": "ブルガリアの自然記念物。",
     "Баня в Пловдив, България.": "Plovdivの公衆浴場、ブルガリア。"
+  },
+  tl: {
+    "Public web reference; reuse terms not verified":
+      "Pampublikong sanggunian sa web; hindi pa nasusuring mga tuntunin sa muling paggamit",
+    "Wikimedia Commons file license, verify per file":
+      "Lisensya ng file sa Wikimedia Commons; suriin sa bawat file",
+    "Creative Commons Attribution-ShareAlike 4.0 International":
+      "Creative Commons Attribution-ShareAlike 4.0 International",
+    "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
+    "Open Database License 1.0": "Open Database License 1.0",
+    "Open-license media; follow the stated license and attribution.":
+      "Medyang may bukas na lisensya; sundin ang nakasaad na lisensya at atribusyon.",
+    "Bulgarian Revival": "Pambansang Muling Pagsilang ng Bulgaria",
+    "State targeted subsidy": "Nakatuong subsidyo ng estado",
+    "Mayor of Plovdiv Municipality": "Alkalde ng Munisipalidad ng Plovdiv",
+    "Mayoral term(s) for Eng. Ivan Totev.": "Termino bilang alkalde: Eng. Ivan Totev.",
+    // Machine translation dropped the "Hristo G. Danov" publishing-house name entirely
+    // and fabricated a different institutional detail; pin an accurate hand translation.
+    "Spas Georgiev Garnevski (born 18 January 1953 in Plovdiv) is a Bulgarian politician, public figure and economist who was mayor of Plovdiv from 1995 to 1999. He graduated from the University of National and World Economy in labour economics and organisation, worked at Plovdiv's state printing house and at the Hristo G. Danov publishing house, and in 1992-1995 was executive director of the printing house. After his mayoral term he remained active in local and national politics: he was expelled from the Union of Democratic Forces in 2003, led DSB's Plovdiv organisation, served as a municipal councillor, and in 2017 was elected an MP from Plovdiv-city on the GERB list. He also published the poetry collections The End of the Night and The Grandchildren of Bay Ganyo.":
+      "Si Spas Georgiev Garnevski (ipinanganak noong 18 Enero 1953 sa Plovdiv) ay isang Bulgarian na politiko, pampublikong personalidad, at ekonomista na naging alkalde ng Plovdiv mula 1995 hanggang 1999. Nagtapos siya sa Unibersidad ng Pambansa at Pandaigdigang Ekonomiya sa larangan ng ekonomiya ng paggawa at organisasyon, nagtrabaho sa estatal na palimbagan ng Plovdiv at sa palimbagang Hristo G. Danov, at noong 1992-1995 ay naging punong ehekutibo ng palimbagan. Pagkatapos ng kanyang termino bilang alkalde, nanatili siyang aktibo sa lokal at pambansang pulitika: pinatalsik siya sa Union of Democratic Forces noong 2003, pinamunuan ang organisasyon ng DSB sa Plovdiv, naglingkod bilang konsehal ng munisipalidad, at noong 2017 ay nahalal na kinatawan mula sa lungsod ng Plovdiv sa listahan ng GERB. Inilathala rin niya ang mga koleksyon ng tula na Ang Katapusan ng Gabi at Ang mga Apo ni Bay Ganyo.",
+    // Machine translation lowercased the "Chirpan" place name mid-sentence.
+    "Chirpan earthquake damage near St Josif — then/now":
+      "Pinsala mula sa lindol sa Chirpan malapit sa St Josif — noon/ngayon",
+    "Chirpan earthquake damage near St Josif":
+      "Pinsala mula sa lindol sa Chirpan malapit sa St Josif",
+    // Machine translation split into two inconsistent templates and, for two of the
+    // four sentences, wedged the "Si" personal-name marker between the "Eng."
+    // honorific and the recorded name; pin one clean, consistent template for all four.
+    "The mayoral chronology links Eng. Ivan Totev with Slavcho Atanasov through the relationship \"succeeds\".":
+      "Ang kronolohiya ng alkalde ay nag-uugnay kay Eng. Ivan Totev kay Slavcho Atanasov sa pamamagitan ng relasyong \"nagtagumpay\".",
+    "The mayoral chronology links Eng. Ivan Totev with Zdravko Dimitrov through the relationship \"succeeded by\".":
+      "Ang kronolohiya ng alkalde ay nag-uugnay kay Eng. Ivan Totev kay Zdravko Dimitrov sa pamamagitan ng relasyong \"nagtagumpay ng\".",
+    "The mayoral chronology links Slavcho Atanasov with Eng. Ivan Totev through the relationship \"succeeded by\".":
+      "Ang kronolohiya ng alkalde ay nag-uugnay kay Slavcho Atanasov kay Eng. Ivan Totev sa pamamagitan ng relasyong \"nagtagumpay ng\".",
+    "The mayoral chronology links Zdravko Dimitrov with Eng. Ivan Totev through the relationship \"succeeds\".":
+      "Ang kronolohiya ng alkalde ay nag-uugnay kay Zdravko Dimitrov kay Eng. Ivan Totev sa pamamagitan ng relasyong \"nagtagumpay\"."
   }
 };
 
@@ -134,6 +170,13 @@ const protectedNameOverridesByLang = {
     ["フリスト・G・ダノフ", "Hristo G. Danov"],
     ["フリスト・グルエフ・ダノフ", "Hristo Gruev Danov"],
     ["Christos Tsiiridis", "Christos Tsigiridis"]
+  ],
+  // Machine translation dropped/added letters in these names in a handful of batches
+  // (most occurrences of each name translated correctly); pin the corrupted forms back.
+  tl: [
+    ["Georgi Dzhezov", "Georgi Dzhevizov"],
+    ["Nikolay Marinecheshki", "Nikolay Marincheshki"],
+    ["Polis Karastoyanova", "Poli Karastoyanova"]
   ]
 };
 
@@ -479,6 +522,22 @@ const namePatternsByLang = {
     ],
     archive: /市長\s*[:：]\s*([^"」]+)["」]\.?$/,
     relationshipPrefix: /^人物関係\s*[:：]\s*/
+  },
+  tl: {
+    direct: (escapedName) => [
+      [`Biographical reference: ${escapedName}`, /^Sanggunian ng talambuhay\s*:\s*(.+)$/],
+      [`Birth of ${escapedName}`, /^Kapanganakan\s*:\s*(.+)$/],
+      [`Birth year and birthplace for ${escapedName}.`, /^Taon at lugar ng kapanganakan\s*:\s*(.+)\.$/],
+      [
+        `Biographical data and Plovdiv birthplace link for ${escapedName}.`,
+        /^Datos ng talambuhay at ugnay sa lugar ng kapanganakan sa Plovdiv\s*:\s*(.+)\.$/
+      ],
+      [`Mayor: ${escapedName}`, /^Alkalde\s*:\s*(.+)$/],
+      [`Mayoral term\\(s\\) for ${escapedName}.`, /^Termino bilang alkalde\s*:\s*(.+)\.$/],
+      [`Wikipedia [—–-] ${escapedName}`, /^Wikipedia [—–-]\s*(.+)$/]
+    ],
+    archive: /Alkalde\s*:\s*([^"”]+)["”]\.?$/,
+    relationshipPrefix: /^Relasyon ng tao\s*:\s*/
   }
 };
 
@@ -965,6 +1024,133 @@ function applyJapaneseTemplateFixups(translations) {
   }
 }
 
+function applyTagalogTemplateFixups(translations) {
+  if (targetLang !== "tl") return;
+  const relationTl = (relation) => (relation === "succeeds" ? "humalili kay" : "hinalinhan ni");
+
+  for (const source of Object.keys(translations)) {
+    let match = source.match(/^(.+) — (succeeds|succeeded by) — (.+)$/);
+    if (match) {
+      const [, left, relation, right] = match;
+      translations[source] = `${left} — ${relationTl(relation)} — ${right}`;
+      continue;
+    }
+
+    match = source.match(/^Person relationship: (.+) — (succeeds|succeeded by) — (.+)\.$/);
+    if (match) {
+      const [, left, relation, right] = match;
+      translations[source] = `Relasyon ng tao: ${left} — ${relationTl(relation)} — ${right}.`;
+      continue;
+    }
+
+    match = source.match(/^The mayoral chronology links (.+) with (.+) through the relationship "(succeeds|succeeded by)"\.$/);
+    if (match) {
+      const [, left, right, relation] = match;
+      translations[source] = `Iniuugnay ng kronolohiya ng mga alkalde sina ${left} at ${right} sa pamamagitan ng relasyong "${relationTl(relation)}".`;
+      continue;
+    }
+
+    match = source.match(/^A biographical source documents the relationship "(.+)" between (.+) and (.+)\.$/);
+    if (match) {
+      const [, relation, left, right] = match;
+      translations[source] = `Itinatala ng sangguniang talambuhay ang relasyong "${relation}" sa pagitan nina ${left} at ${right}.`;
+      continue;
+    }
+
+    match = source.match(/^Dating and summary for timeline record "(.+)"\.$/);
+    if (match) {
+      translations[source] = `Petsa at buod para sa tala ng timeline na "${match[1]}".`;
+      continue;
+    }
+
+    match = source.match(/^City archive record "Mayor: (.+)"\.$/);
+    if (match) {
+      translations[source] = `Talaan ng arkibo ng lungsod "Alkalde: ${match[1]}".`;
+      continue;
+    }
+
+    match = source.match(/^Mayoral term\(s\) for (.+)\.$/);
+    if (match) {
+      translations[source] = `Termino bilang alkalde: ${match[1]}.`;
+      continue;
+    }
+
+    match = source.match(/^Wikipedia [—-] (.+)$/);
+    if (match) {
+      translations[source] = `Wikipedia — ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Biographical reference: (.+)$/);
+    if (match) {
+      translations[source] = `Sanggunian ng talambuhay: ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Birth of (.+)$/);
+    if (match) {
+      translations[source] = `Kapanganakan: ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Birth year and birthplace for (.+)\.$/);
+    if (match) {
+      translations[source] = `Taon at lugar ng kapanganakan: ${match[1]}.`;
+      continue;
+    }
+
+    match = source.match(/^Biographical data and Plovdiv birthplace link for (.+)\.$/);
+    if (match) {
+      translations[source] = `Datos ng talambuhay at ugnay sa lugar ng kapanganakan sa Plovdiv: ${match[1]}.`;
+      continue;
+    }
+
+    match = source.match(/^Historical image for then\/now pair: (.+)$/);
+    if (match) {
+      translations[source] = `Makasaysayang larawan para sa pares noon/ngayon: ${match[1]}`;
+      continue;
+    }
+
+    match = source.match(/^Current comparison image for then\/now pair: (.+)$/);
+    if (match) {
+      translations[source] = `Kasalukuyang larawang panghambing para sa pares noon/ngayon: ${match[1]}`;
+      continue;
+    }
+  }
+
+  const cleanupReplacements = [
+    [/Pakikipag-date/g, "Petsa"],
+    [/nagtagumpay ng/g, "hinalinhan ni"],
+    [/nagtagumpay/g, "humalili kay"],
+    [/mayoral chronology/g, "kronolohiya ng mga alkalde"],
+    [/Person relationship:/g, "Relasyon ng tao:"],
+    [/City archive record/g, "Talaan ng arkibo ng lungsod"],
+    [/Mayor:/g, "Alkalde:"],
+    [/Mayor ng Plovdiv Municipality/g, "Alkalde ng Munisipalidad ng Plovdiv"],
+    [/Plovdiv Municipality/g, "Munisipalidad ng Plovdiv"],
+    [/State targeted subsidy/g, "Nakatuong subsidyo ng estado"],
+    [/Tinutukoy ng estado ang subsidy/g, "Nakatuong subsidyo ng estado"],
+    [/Open-license media/g, "Medyang may bukas na lisensya"],
+    [/attribution/g, "atribusyon"],
+    [/public figure/g, "pampublikong personalidad"],
+    [/basalyo/g, "sakop na alyado"],
+    [/Rebiba ng Bulgaria/g, "Pambansang Muling Pagsilang ng Bulgaria"],
+    [/Bulgarian Muling Pagkabuhay/g, "Pambansang Muling Pagsilang ng Bulgaria"],
+    [/Rebiba/g, "Pambansang Muling Pagsilang"],
+    [/Landmark:/g, "Palatandaan:"],
+    [/landmark:/g, "palatandaan:"],
+    [/Coordinates para/g, "Mga coordinate para"],
+    [/coordinates para/g, "mga coordinate para"]
+  ];
+
+  for (const [source, translated] of Object.entries(translations)) {
+    if (typeof translated !== "string") continue;
+    let out = translated;
+    for (const [from, to] of cleanupReplacements) out = out.replace(from, to);
+    translations[source] = out;
+  }
+}
+
 const existing = fs.existsSync(outputPath) ? readJson(outputPath) : {};
 const allStrings = new Set(Object.keys(manualTranslations));
 const protectedNames = new Set();
@@ -1017,6 +1203,7 @@ applyHonorificFixups(translations);
 applyLandmarkFixups(translations);
 applyGreekTemplateFixups(translations);
 applyJapaneseTemplateFixups(translations);
+applyTagalogTemplateFixups(translations);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, `${JSON.stringify(Object.fromEntries(Object.entries(translations).sort()), null, 2)}\n`);

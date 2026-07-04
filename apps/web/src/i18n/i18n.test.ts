@@ -26,9 +26,9 @@ const JAPANESE = /[\u3040-\u30ff\u3400-\u9fff]/;
 // Non-Bulgarian locales whose UI must not leak Bulgarian Cyrillic. Greek (`el`) is
 // included: it uses its own (Greek) script, which the CYRILLIC range does not match,
 // so the same no-Cyrillic-leak assertion is Greek-aware (allows Greek, catches Cyrillic).
-const NON_BG_SCRIPT_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "el", "ja"];
+const NON_BG_SCRIPT_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "el", "ja", "tl"];
 // Locales written in the Latin script (used for assertions that are Latin-only).
-const LATIN_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es"];
+const LATIN_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "tl"];
 
 /** Collect [dottedPath, value] for every *string* leaf; skip functions. */
 function collectStrings(
@@ -49,7 +49,7 @@ function collectStrings(
 
 describe("i18n locales", () => {
   it("registers every shipped locale", () => {
-    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja"]);
+    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl"]);
   });
 
   it("every locale exposes a non-empty display name", () => {
@@ -104,7 +104,7 @@ describe("ui dictionary parity", () => {
 
 describe("generated translation JSON", () => {
   it("Japanese translations have exact key parity with the other generated locales and no blanks", () => {
-    const langs = ["de", "fr", "it", "tr", "es", "el", "ja"];
+    const langs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl"];
     const translations = Object.fromEntries(
       langs.map((lang) => [
         lang,
@@ -184,6 +184,7 @@ describe("data-label maps", () => {
     const esKeys = Object.keys(sourceTitleLabels.es).sort();
     const elKeys = Object.keys(sourceTitleLabels.el).sort();
     const jaKeys = Object.keys(sourceTitleLabels.ja).sort();
+    const tlKeys = Object.keys(sourceTitleLabels.tl).sort();
     expect(deKeys, "de source titles drift from en").toEqual(enKeys);
     expect(frKeys, "fr source titles drift from en").toEqual(enKeys);
     expect(itKeys, "it source titles drift from en").toEqual(enKeys);
@@ -191,6 +192,7 @@ describe("data-label maps", () => {
     expect(esKeys, "es source titles drift from en").toEqual(enKeys);
     expect(elKeys, "el source titles drift from en").toEqual(enKeys);
     expect(jaKeys, "ja source titles drift from en").toEqual(enKeys);
+    expect(tlKeys, "tl source titles drift from en").toEqual(enKeys);
     for (const loc of NON_BG_SCRIPT_LOCALES) {
       for (const [key, value] of Object.entries(sourceTitleLabels[loc])) {
         expect(value.trim().length, `sourceTitleLabels.${loc}.${key} empty`).toBeGreaterThan(0);
@@ -200,7 +202,7 @@ describe("data-label maps", () => {
 });
 
 describe("route parity", () => {
-  function routeFiles(locale: "en" | "ja") {
+  function routeFiles(locale: "en" | "ja" | "tl") {
     const base = path.join(repoRoot, "apps/web/src/pages", locale);
     const walk = (dir: string): string[] =>
       fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -213,6 +215,10 @@ describe("route parity", () => {
 
   it("/ja has exact source route parity with /en", () => {
     expect(routeFiles("ja")).toEqual(routeFiles("en"));
+  });
+
+  it("/tl has exact source route parity with /en", () => {
+    expect(routeFiles("tl")).toEqual(routeFiles("en"));
   });
 });
 
@@ -235,9 +241,11 @@ describe("localised routing", () => {
     expect(getLangFromUrl("/es/projects")).toBe("es");
     expect(getLangFromUrl("/el/history")).toBe("el");
     expect(getLangFromUrl("/ja/history")).toBe("ja");
+    expect(getLangFromUrl("/tl/history")).toBe("tl");
     expect(getLangFromUrl("/en/history")).toBe("en");
     expect(getLangFromUrl("/projects")).toBe("bg");
     expect(delocalizePath("/ja/projects")).toBe("/projects");
+    expect(delocalizePath("/tl/projects")).toBe("/projects");
     expect(delocalizePath("/el/projects")).toBe("/projects");
     expect(delocalizePath("/de/projects")).toBe("/projects");
     expect(delocalizePath("/de")).toBe("/");
@@ -266,5 +274,6 @@ describe("localised routing", () => {
     expect(localeForLang("es")).toBe("es-ES");
     expect(localeForLang("el")).toBe("el-GR");
     expect(localeForLang("ja")).toBe("ja-JP");
+    expect(localeForLang("tl")).toBe("fil-PH");
   });
 });

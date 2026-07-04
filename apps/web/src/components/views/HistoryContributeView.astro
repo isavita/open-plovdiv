@@ -393,6 +393,54 @@ const labels =
           default: "投稿を送信できませんでした。もう一度お試しください。"
         }
       }
+      : lang === "tl"
+      ? {
+        eyebrow: "Arkibo ng Komunidad",
+        title: "Magsumite ng Larawan, Alaala, o Pinagmulan",
+        lead:
+          "Ang mga makasaysayang kontribusyon ay pumapasok sa parehong pila ng moderasyon tulad ng mga ulat ng mamamayan. Walang awtomatikong nailalathala: sinusuri muna ng editor ang personal na datos, karapatan sa larawan, at konteksto ng pinagmulan bago maging pampubliko ang isang talaan.",
+        notice:
+          "Huwag magsumite ng personal na datos, eksaktong pribadong address, o larawang may mukha maliban kung may karapatan kang ilathala ito. Magdagdag ng pinagmulan, link sa arkibo, o tala ng pinagmulan kung mayroon ka.",
+        category: "Uri ng Kontribusyon",
+        titleLabel: "Maikling Pamagat",
+        titlePlaceholder: "hal. lumang larawan ng Dzhumaya",
+        description: "Deskripsyon / Alaala",
+        descriptionPlaceholder: "Ilarawan kung ano ang ipinapakita, tinatayang petsa, pinagmulan, at kung ano ang dapat suriin.",
+        sourceUrl: "Pinagmulan o Link sa Arkibo",
+        sourceUrlPlaceholder: "https://...",
+        sourceNote: "Tala ng Pinagmulan",
+        sourceNotePlaceholder: "hal. larawan ng pamilya, na-scan na postkard, post mula sa arkibo...",
+        photos: "Mga Larawan",
+        photoHint:
+          "Opsyonal, hanggang 3 larawan, pinakamataas na 5 MB bawat isa. Aalisin ang EXIF/GPS metadata at ico-convert ang mga larawan bago suriin.",
+        location: "Lugar",
+        locationHint: "I-click ang mapa kung ang kontribusyon ay kaugnay ng partikular na lugar.",
+        noLocation: "Wala pang napiling punto",
+        confirmNoPersonal: "Kinukumpirma kong walang personal na datos ang kontribusyong ito.",
+        confirmPublicInterest: "Kinukumpirma kong masusuri ang kontribusyong ito at para sa interes ng publiko.",
+        submit: "Isumite para sa Pagsusuri",
+        submitting: "Isinusumite...",
+        successTitle: "Natanggap",
+        successText: "Nasa pila ng moderasyon ang kontribusyon. Numero ng sanggunian:",
+        submitAnother: "Magsumite ng Isa Pa",
+        backToHistory: "Bumalik sa Kasaysayan",
+        selected: "Napiling Punto",
+        errors: {
+          rate_limited: "Sobrang dami ng isinumite sa maikling panahon. Subukan muli mamaya.",
+          invalid_category: "Pumili ng wastong uri ng kontribusyon.",
+          invalid_title: "Ang pamagat ay dapat 3 hanggang 120 na karakter.",
+          invalid_description: "Ang deskripsyon ay dapat 10 hanggang 1000 na karakter.",
+          invalid_source: "Ang pinagmulan ay dapat wastong http/https na link o maikling tala.",
+          contains_personal_data: "May laman ang teksto na mukhang personal na datos.",
+          invalid_location: "Pumili ng punto sa loob ng Plovdiv.",
+          missing_confirmation: "Markahan ang dalawang kumpirmasyon.",
+          too_many_photos: "Mag-upload ng hanggang 3 larawan lamang.",
+          photo_too_large: "Ang bawat larawan ay dapat 5 MB o mas maliit.",
+          invalid_photo_type: "JPEG, PNG, o WebP na larawan lamang ang pinapayagan.",
+          invalid_photo: "Hindi maproseso ang larawan.",
+          default: "Hindi maipadala ang kontribusyon. Subukan muli."
+        }
+      }
       : {
         eyebrow: "Community archive",
         title: "Submit a photo, memory or source",
@@ -450,13 +498,14 @@ const trc = (
   trk: string,
   es: string,
   el: string,
-  ja: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja } satisfies Record<Lang, string>)[lang];
+  ja: string,
+  tl: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl } satisfies Record<Lang, string>)[lang];
 
 // Compact "how it works" steps + trust chips shown above the form.
 const steps = [
   {
-    title: trc("Опишете приноса", "Describe the contribution", "Beitrag beschreiben", "Décrivez la contribution", "Descrivete il contributo", "Katkıyı anlatın", "Describa la contribución", "Περιγράψτε τη συνεισφορά", "内容を記入"),
+    title: trc("Опишете приноса", "Describe the contribution", "Beitrag beschreiben", "Décrivez la contribution", "Descrivete il contributo", "Katkıyı anlatın", "Describa la contribución", "Περιγράψτε τη συνεισφορά", "内容を記入", "Ilarawan ang kontribusyon"),
     hint: trc(
       "Снимка, спомен или източник — какво показва и откъде идва.",
       "A photo, memory or source — what it shows and where it comes from.",
@@ -466,11 +515,12 @@ const steps = [
       "Fotoğraf, anı veya kaynak — neyi gösterdiği ve nereden geldiği.",
       "Foto, recuerdo o fuente: qué muestra y de dónde procede.",
       "Φωτογραφία, ανάμνηση ή πηγή — τι δείχνει και από πού προέρχεται.",
-      "写真・思い出・出典 — 何が写っていて、どこから来たのか。"
+      "写真・思い出・出典 — 何が写っていて、どこから来たのか。",
+      "Isang larawan, alaala, o pinagmulan — kung ano ang ipinapakita nito at saan galing."
     )
   },
   {
-    title: trc("Посочете произхода", "State the provenance", "Herkunft angeben", "Indiquez la provenance", "Indicate la provenienza", "Kaynağını belirtin", "Indique la procedencia", "Δηλώστε την προέλευση", "出所を明記"),
+    title: trc("Посочете произхода", "State the provenance", "Herkunft angeben", "Indiquez la provenance", "Indicate la provenienza", "Kaynağını belirtin", "Indique la procedencia", "Δηλώστε την προέλευση", "出所を明記", "Ilahad ang pinagmulan"),
     hint: trc(
       "Линк или бележка за произхода; място на картата по избор.",
       "A link or a provenance note; a map location is optional.",
@@ -480,11 +530,12 @@ const steps = [
       "Bağlantı veya köken notu; haritada konum isteğe bağlıdır.",
       "Un enlace o una nota de procedencia; la ubicación es opcional.",
       "Σύνδεσμος ή σημείωση προέλευσης· το σημείο στον χάρτη είναι προαιρετικό.",
-      "リンクまたは出所メモ。地図上の場所は任意です。"
+      "リンクまたは出所メモ。地図上の場所は任意です。",
+      "Isang link o tala ng pinagmulan; opsyonal ang lokasyon sa mapa."
     )
   },
   {
-    title: trc("Редакторска проверка", "Editorial review", "Redaktionelle Prüfung", "Vérification éditoriale", "Verifica editoriale", "Editoryal inceleme", "Revisión editorial", "Συντακτικός έλεγχος", "編集チェック"),
+    title: trc("Редакторска проверка", "Editorial review", "Redaktionelle Prüfung", "Vérification éditoriale", "Verifica editoriale", "Editoryal inceleme", "Revisión editorial", "Συντακτικός έλεγχος", "編集チェック", "Pagsusuring editoryal"),
     hint: trc(
       "Права, лични данни и източник се проверяват преди публикуване.",
       "Rights, personal data and the source are checked before publishing.",
@@ -494,16 +545,17 @@ const steps = [
       "Yayından önce haklar, kişisel veriler ve kaynak kontrol edilir.",
       "Derechos, datos personales y fuente se comprueban antes de publicar.",
       "Δικαιώματα, προσωπικά δεδομένα και πηγή ελέγχονται πριν τη δημοσίευση.",
-      "公開前に権利・個人情報・出典を確認します。"
+      "公開前に権利・個人情報・出典を確認します。",
+      "Sinusuri ang karapatan, personal na datos, at pinagmulan bago ilathala."
     )
   }
 ];
 
 const trustChips = [
-  trc("Без профили", "No accounts", "Ohne Konto", "Sans compte", "Senza account", "Hesap gerekmez", "Sin cuentas", "Χωρίς λογαριασμούς", "アカウント不要"),
-  trc("Без лични данни", "No personal data", "Keine persönlichen Daten", "Sans données personnelles", "Niente dati personali", "Kişisel veri yok", "Sin datos personales", "Χωρίς προσωπικά δεδομένα", "個人情報なし"),
-  trc("EXIF/GPS се премахват", "EXIF/GPS stripped", "EXIF/GPS entfernt", "EXIF/GPS supprimés", "EXIF/GPS rimossi", "EXIF/GPS silinir", "EXIF/GPS eliminados", "Αφαίρεση EXIF/GPS", "EXIF/GPS除去"),
-  trc("Редакторска проверка", "Editorial review", "Redaktionelle Prüfung", "Vérification éditoriale", "Verifica editoriale", "Editoryal inceleme", "Revisión editorial", "Συντακτικός έλεγχος", "編集チェック")
+  trc("Без профили", "No accounts", "Ohne Konto", "Sans compte", "Senza account", "Hesap gerekmez", "Sin cuentas", "Χωρίς λογαριασμούς", "アカウント不要", "Walang account"),
+  trc("Без лични данни", "No personal data", "Keine persönlichen Daten", "Sans données personnelles", "Niente dati personali", "Kişisel veri yok", "Sin datos personales", "Χωρίς προσωπικά δεδομένα", "個人情報なし", "Walang personal na datos"),
+  trc("EXIF/GPS се премахват", "EXIF/GPS stripped", "EXIF/GPS entfernt", "EXIF/GPS supprimés", "EXIF/GPS rimossi", "EXIF/GPS silinir", "EXIF/GPS eliminados", "Αφαίρεση EXIF/GPS", "EXIF/GPS除去", "Tinatanggal ang EXIF/GPS"),
+  trc("Редакторска проверка", "Editorial review", "Redaktionelle Prüfung", "Vérification éditoriale", "Verifica editoriale", "Editoryal inceleme", "Revisión editorial", "Συντακτικός έλεγχος", "編集チェック", "Pagsusuring editoryal")
 ];
 
 const config = {

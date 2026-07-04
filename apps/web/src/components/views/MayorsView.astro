@@ -60,7 +60,7 @@ const sourceUrls = [...new Map(mayorTerms.map((term) => [term.source_document.ur
 
 const config = {
   countAll: t.mayors.count(mayorTerms.length),
-  countFiltered: "{visible} " + (lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : lang === "ja" ? "/" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : lang === "de" ? "Mandaten" : lang === "fr" ? "mandats" : lang === "it" ? "mandati" : lang === "tr" ? "görev süresi" : lang === "es" ? "mandatos" : lang === "el" ? "θητείες" : lang === "ja" ? "任期" : "terms"),
+  countFiltered: "{visible} " + (lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : lang === "ja" ? "/" : lang === "tl" ? "sa" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : lang === "de" ? "Mandaten" : lang === "fr" ? "mandats" : lang === "it" ? "mandati" : lang === "tr" ? "görev süresi" : lang === "es" ? "mandatos" : lang === "el" ? "θητείες" : lang === "ja" ? "任期" : lang === "tl" ? "na termino" : "terms"),
   empty: t.mayors.empty
 };
 
@@ -88,7 +88,7 @@ const multiTerm = [...groups.values()]
 
 // sourced family ties between mayors (kept only when both members exist as terms)
 const familyPairs = [
-  { a: "Христо Г. Данов", b: "Милош Данов", label_bg: "баща и син", label_en: "father & son", label_de: "Vater und Sohn", label_fr: "père et fils", label_it: "padre e figlio", label_tr: "baba ve oğul", label_es: "padre e hijo", label_el: "πατέρας και γιος", label_ja: "父と息子" }
+  { a: "Христо Г. Данов", b: "Милош Данов", label_bg: "баща и син", label_en: "father & son", label_de: "Vater und Sohn", label_fr: "père et fils", label_it: "padre e figlio", label_tr: "baba ve oğul", label_es: "padre e hijo", label_el: "πατέρας και γιος", label_ja: "父と息子", label_tl: "ama at anak" }
 ];
 const familyTies = familyPairs.filter(
   (pair) =>
@@ -135,8 +135,9 @@ const tr = (
   trk: string,
   es: string,
   el: string,
-  ja: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja } satisfies Record<Lang, string>)[lang];
+  ja: string,
+  tl: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl } satisfies Record<Lang, string>)[lang];
 
 const periodBands = [
   {
@@ -152,7 +153,8 @@ const periodBands = [
       "Kurtuluş sonrası",
       "Posliberación",
       "Μετά την Απελευθέρωση",
-      "解放後"
+      "解放後",
+      "Pagkatapos ng Paglaya"
     )
   },
   {
@@ -168,7 +170,8 @@ const periodBands = [
       "Sosyalist dönem",
       "Periodo socialista",
       "Σοσιαλιστική περίοδος",
-      "社会主義時代"
+      "社会主義時代",
+      "Panahon ng Sosyalismo"
     )
   },
   {
@@ -184,7 +187,8 @@ const periodBands = [
       "Demokratik dönem",
       "Periodo democrático",
       "Δημοκρατική περίοδος",
-      "民主化以降"
+      "民主化以降",
+      "Panahon ng Demokrasya"
     )
   },
   {
@@ -200,7 +204,8 @@ const periodBands = [
       "Görevdeki başkan",
       "Mandato actual",
       "Τρέχουσα θητεία",
-      "現職"
+      "現職",
+      "Kasalukuyang Termino"
     )
   }
 ];
@@ -212,7 +217,7 @@ const periodGroups = periodBands
   }))
   .filter((band) => band.mayors.length > 0);
 
-const timelineEyebrow = tr("Хронология по епохи", "Chronology by era", "Chronologie nach Epochen", "Chronologie par époque", "Cronologia per epoca", "Çağa göre kronoloji", "Cronología por época", "Χρονολόγιο ανά εποχή", "時代別年表");
+const timelineEyebrow = tr("Хронология по епохи", "Chronology by era", "Chronologie nach Epochen", "Chronologie par époque", "Cronologia per epoca", "Çağa göre kronoloji", "Cronología por época", "Χρονολόγιο ανά εποχή", "時代別年表", "Kronolohiya ayon sa Panahon");
 
 const sectionNav = ({
       bg: [
@@ -268,9 +273,15 @@ const sectionNav = ({
         { id: "birthplaces", label: "出生地" },
         { id: "timeline", label: "年表" },
         { id: "all-mayors", label: "すべて" }
+      ],
+      tl: [
+        { id: "connections", label: "Mga Koneksyon" },
+        { id: "birthplaces", label: "Mga Lugar ng Kapanganakan" },
+        { id: "timeline", label: "Kronolohiya" },
+        { id: "all-mayors", label: "Lahat" }
       ]
     } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
-const sectionNavLabel = lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : "Page sections";
+const sectionNavLabel = lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : lang === "tl" ? "Mga Seksyon ng Pahina" : "Page sections";
 ---
 
 <Layout lang={lang} path="/mayors" title={t.mayors.title} description={t.mayors.lead}>

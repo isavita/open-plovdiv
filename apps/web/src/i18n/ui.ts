@@ -13,7 +13,8 @@ export const languages = {
   tr: "Türkçe",
   es: "Español",
   el: "Ελληνικά",
-  ja: "日本語"
+  ja: "日本語",
+  tl: "Filipino"
 } as const;
 
 export type Lang = keyof typeof languages;
@@ -5208,7 +5209,650 @@ const el: typeof bg = {
   }
 };
 
-export const ui = { bg, en, de, fr, it, tr, es, el, ja } as const;
+const tl: typeof bg = {
+  site: {
+    name: "Open Plovdiv",
+    short: "OP",
+    tagline:
+      "Mga pampublikong proyekto, pampublikong pondo, mga suliranin ng lungsod — ipinaliwanag nang simple.",
+    skip: "Lumaktaw papunta sa nilalaman",
+    menu: "Menu",
+    close: "Isara",
+    theme: "Maliwanag / madilim na tema",
+    langName: "Wika",
+    langSwitch: "Pumili ng wika"
+  },
+  nav: {
+    home: "Simula",
+    history: "Kasaysayan",
+    mayors: "Mga Alkalde",
+    people: "Mga Tao",
+    places: "Mga Lugar",
+    stories: "Mga Kuwento",
+    education: "Edukasyon",
+    overview: "Pangkalahatang-ideya",
+    fixMap: "Mapa",
+    projects: "Mga Proyekto",
+    community: "Mga Boluntaryo",
+    archive: "Arkibo",
+    sources: "Mga Pinagmulan"
+  },
+  overview: {
+    eyebrow: "Biswal na pangkalahatang-ideya",
+    title: "Pangkalahatang-ideya sa mga Tsart",
+    lead:
+      "Isang buod ng mga sinusubaybayang proyekto at pampublikong pondo ng Plovdiv — ayon sa katayuan, kategorya, at taon, kasama ang mga pinagmulan.",
+    asOf: "Datos hanggang Hunyo 2026",
+    statProjects: "sinusubaybayang proyekto",
+    statPostponed: "ipinagpalibang proyekto",
+    statCapital2025: "kapital na programa 2025",
+    statCapital2026: "kapital na programa 2026 (paunang tantiya)",
+    unitProjects: "Bilang ng sinusubaybayang proyekto",
+    unitSharePercent: "Bahagi ng kapital na programa (%)",
+    unitEur: "Halaga sa euro (€)",
+    byStatusTitle: "Mga proyekto ayon sa katayuan",
+    byCategoryTitle: "Mga proyekto ayon sa kategorya",
+    byYearTitle: "Mga proyekto ayon sa taon ng badyet",
+    sector2025Title: "Kapital na programa 2025 ayon sa sektor",
+    funding2026Title: "Pagpopondo ng kapital na programa para sa 2026",
+    capitalTrendTitle: "Kapital na programa ayon sa taon",
+    capitalTrendNote:
+      "Kapital na programa ayon sa taon (sa lev). Ang datos para sa 2013-2018 ay mula sa mga desisyon ng Konseho ng Lungsod, habang ang mas bagong mga taon ay mula sa opisyal na mga pahina at pampublikong publikasyon. Ang 2026 ay paunang tantiya, na kinalkula mula sa humigit-kumulang €87 milyon sa palitang 1,95583 lev.",
+    totalTrendTitle: "Kabuuang badyet ng Plovdiv ayon sa taon",
+    totalTrendNote:
+      "Kabuuang taunang badyet ng Munisipalidad ng Plovdiv (sa lev). Kasama sa arkibo ang aktwal na paggasta para sa 2010 at mga naaprubahang badyet para sa 2011-2018; ang mga halaga para sa 2020, 2022, at 2024 ay nananatiling tinatayang/binilog. Bawat taon ay may nakalagay na pampublikong pinagmulan.",
+    historyNote:
+      "Ang mga bilang ay mula sa mga pampublikong pinagmulan (mga badyet ng munisipalidad at mga ulat ng media). Suriin ang mga orihinal na dokumento bago sipiin ang isang partikular na halaga.",
+    year2025: "2025",
+    year2026: "2026 (paunang tantiya)",
+    sourcesNote: "Lahat ng halaga ay may pampublikong pinagmulan.",
+    viewProjects: "Tingnan ang mga proyekto"
+  },
+  footer: {
+    blurb:
+      "Isang hindi kumikitang proyekto na naglalathala ng mga pampublikong datos tungkol sa Plovdiv. Walang account, walang komento, walang database ng gumagamit.",
+    explore: "Galugarin",
+    civic: "Sibikong Datos",
+    about: "Tungkol sa Proyekto",
+    privacy: "Pagkapribado",
+    moderation: "Moderasyon",
+    community: "Mga Boluntaryo",
+    methodology: "Metodolohiya",
+    sources: "Mga Pinagmulan",
+    note: "Open Plovdiv · pampublikong datos tungkol sa Plovdiv",
+    dataNote: "Datos mula sa mga pampublikong pinagmulan · napapanahon hanggang Hunyo 2026",
+    rights: "Pampublikong Datos"
+  },
+  common: {
+    all: "Lahat",
+    accessed: "na-access",
+    source: "Pinagmulan",
+    loading: "Naglo-load…",
+    error: "May naganap na error.",
+    backHome: "Bumalik sa simula",
+    noSource: "Walang pampublikong pinagmulan."
+  },
+  home: {
+    eyebrow: "Isa sa mga pinakamatandang lungsod sa mundo",
+    lead:
+      "Patuloy na tinitirhan ang Plovdiv nang mahigit 8000 taon. Trakiang Eumolpias, Philippopolis ni Philip II ng Macedonia, Romanong Trimontium, Ottoman na Filibe — at ang lungsod ng Pagkakaisa.",
+    ctaHistory: "Tuklasin ang talaan ng kasaysayan",
+    ctaMayors: "Ang mga Alkalde ng Plovdiv",
+    statYearsValue: "8000+",
+    statYears: "taon ng kasaysayan",
+    statEras: "yugto",
+    statMayors: "alkalde",
+    statLandmarks: "makasaysayang lugar",
+    featuredTitle: "Mga Sandali sa Kasaysayan",
+    civicTitle: "Sibikong Datos para sa Lungsod Ngayon",
+    civicLead:
+      "Bukod sa kasaysayan, nagpapanatili rin ang Open Plovdiv ng pampublikong datos tungkol sa makabagong Plovdiv — badyet, proyekto, ulat ng mamamayan, at mga boluntaryo, bawat isa'y may pampublikong pinagmulan.",
+    ctaMap: "Tingnan ang mapa ng mga suliranin",
+    statsLabel: "Sinusubaybayang Datos",
+    statProjects: "sinusubaybayang proyekto",
+    statReportsValue: "Live",
+    statReports: "napagpasyahang ulat",
+    statCommunity: "boluntaryong inisyatiba",
+    exploreTitle: "Saan Magsisimula",
+    cardMapEyebrow: "Mapa",
+    cardMapTitle: "Mapa ng mga Suliranin",
+    cardMapText:
+      "Tingnan ang mga inilathalang ulat ng mamamayan ayon sa kategorya at katayuan, kasama ang mga malapit na pampublikong proyekto.",
+    cardProjectsEyebrow: "Mga Proyekto",
+    cardProjectsTitle: "Mga Pampublikong Proyekto",
+    cardProjectsText:
+      "Maghanap at mag-filter ng mga talaan ng proyekto ayon sa badyet, katayuan, at pinagmulan.",
+    cardCommunityEyebrow: "Mga Boluntaryo",
+    cardCommunityTitle: "Mga Sibikong Inisyatiba",
+    cardCommunityText:
+      "Mga grupo at kampanya na nag-oorganisa ng paglilinis, pag-aalaga sa mga hintuan, parke, at kapitbahayan.",
+    cardArchiveEyebrow: "Arkibo",
+    cardArchiveTitle: "Mga Alkalde at Makasaysayang Datos",
+    cardArchiveText:
+      "Kumpletong panloob na talaan ng mga termino ng alkalde, lumang mga tala sa pananalapi, at mga programa ng lungsod.",
+    cardMayorsEyebrow: "Mga Alkalde",
+    cardMayorsTitle: "Lahat ng Alkalde ng Plovdiv",
+    cardMayorsText:
+      "Detalyadong talaan mula 1878 hanggang sa kasalukuyang termino, may paghahanap, siglo, at mga pinagmulan.",
+    latestProjects: "Kamakailang na-update na proyekto",
+    latestReports: "Kamakailang idinagdag na ulat",
+    liveReportsTitle: "Tunay na mga Ulat Pagkatapos ng Moderasyon",
+    liveReportsText:
+      "Ipinapakita na ngayon ng mapa ang mga ulat ng mamamayan lamang na isinumite sa pamamagitan ng form at inaprubahan ng moderator.",
+    viewAll: "Tingnan Lahat",
+    noticeTitle: "Datos at Pinagmulan",
+    notice:
+      "Napapanahon ang datos hanggang Hunyo 2026. Naaprubahan na ang badyet para sa 2025, habang paunang tantiya pa ang kapital na programa para sa 2026. Bawat talaan ay may nakalagay na pampublikong pinagmulan.",
+    noticeSources: "Tingnan ang mga pinagmulan",
+    noticeMethodology: "metodolohiya"
+  },
+  history: {
+    eyebrow: "Talaan ng Kasaysayan ng Lungsod",
+    title: "Ang Kasaysayan ng Plovdiv",
+    lead:
+      "Mahigit walong milenyo sa ibabaw ng pitong burol — mula sa Trakiang Eumolpias at Romanong Trimontium, sa Ottoman na Filibe at ang Pambansang Muling Pagsilang, hanggang sa Pagkakaisa at ngayon.",
+    timelineTitle: "Talaan ng Kasaysayan",
+    timelineLead:
+      "Mga mahalagang sandali sa kasaysayan ng lungsod, nakaayos ayon sa yugto. Bawat talaan ay may nakalagay na pampublikong pinagmulan.",
+    erasTitle: "Mga Yugto ng Plovdiv",
+    erasNav: "Mga Yugto",
+    landmarksTitle: "Makasaysayang mga Lugar",
+    landmarksLead:
+      "Mga monumento na nagkukuwento ng kasaysayan ng lungsod — mula sa Trakiang muog hanggang sa Lumang Bayan ng panahon ng Pambansang Muling Pagsilang.",
+    mayorsTitle: "Mga Alkalde ng Plovdiv",
+    mayorsLead:
+      "68 termino mula sa Paglaya hanggang ngayon — detalyadong talaan may talambuhay at pampublikong pinagmulan.",
+    mayorsCta: "Tingnan Lahat ng Alkalde",
+    sourceNote:
+      "Ang makasaysayang datos ay buod mula sa mga pampublikong pinagmulan (Wikipedia at opisyal na mga pahina). Suriin ang orihinal na pinagmulan bago sipiin ang isang partikular na katotohanan.",
+    statYears: "taon ng kasaysayan",
+    statEras: "yugto",
+    statLandmarks: "makasaysayang lugar",
+    eraLabels: {
+      prehistory: "Prehistorya",
+      thracian: "Yugtong Trakiano",
+      roman: "Panahong Romano",
+      medieval: "Medyebal",
+      ottoman: "Panahong Ottoman",
+      revival: "Pambansang Muling Pagsilang",
+      liberation: "Paglaya at Pagkakaisa",
+      modern: "Makabagong Kasaysayan"
+    },
+    eraBlurbs: {
+      prehistory: "May mga pamayanan sa mga burol mula pa noong ika-6 na milenyo BCE.",
+      thracian: "Ang Trakiang Eumolpias at Philippopolis ni Philip II ng Macedonia.",
+      roman: "Ang Trimontium — isang makinang na lungsod na Romano may teatro at estadyum.",
+      medieval: "Mga siglo ng nagpapalitang pamumuno sa pagitan ng Bulgaria at Byzantium.",
+      ottoman: "Limang siglo bilang Filibe — isang sangandaan ng Balkan.",
+      revival: "Ang paggising ng edukasyon at simbahang Bulgaro.",
+      liberation: "Ang Paglaya, kabisera ng Silangang Rumelia, at ang Pagkakaisa.",
+      modern: "Ang lungsod ng piyesta at Kabisera ng Kultura ng Europa."
+    }
+  },
+  archive: {
+    eyebrow: "Makasaysayang Arkibo",
+    title: "Mga Alkalde, Badyet, at Programa ng Lungsod",
+    lead:
+      "Panloob na arkibo ng pamamahala ng Plovdiv: mga termino ng alkalde, makasaysayang tala sa pananalapi, mga programang pangkultura at panlipunan, may nakikitang mga pinagmulan.",
+    statMayors: "termino ng alkalde",
+    statFinance: "makasaysayang tala sa pananalapi",
+    statProgrammes: "programa at pangyayari",
+    statDocuments: "orihinal na dokumento",
+    currentMayor: "Kasalukuyang Alkalde",
+    financeTitle: "Makasaysayang Halaga sa Pananalapi",
+    financeLead:
+      "Nominal na halaga mula sa makasaysayang pinagmulan. Ang lumang lev ay hindi direktang maihahambing sa modernong BGN at ipinapakita bilang panuntunang pang-arkibo.",
+    programmesTitle: "Ano ang Inorganisa ng Munisipalidad",
+    programmesLead:
+      "Piniling mga talaan ng panlipunan, pangkultura, at pamahalaang aksyon na nag-uugnay sa mga namuno sa lungsod sa tunay na pampublikong programa.",
+    documentsTitle: "Mga Orihinal na Dokumento",
+    documentsLead:
+      "Paunang antas na may maiikling isinaling sipi mula sa mga aksyon ng munisipalidad at Gaseta ng Estado. Bawat sipi ay may link sa kumpletong pampublikong dokumento at kaugnay na mga talaan.",
+    transcriptLabel: "Isinaling Sipi",
+    linkedRecords: "Kaugnay na mga Talaan",
+    documentTypes: {
+      municipal_decision: "desisyon ng munisipalidad",
+      state_gazette_decree: "atas ng estado",
+      municipal_rule: "regulasyon ng munisipalidad",
+      council_minutes: "protokol",
+      period_press: "peryodikal",
+      other: "dokumento"
+    },
+    transcriptionTypes: {
+      excerpt: "sipi",
+      full: "kumpletong teksto",
+      diplomatic_excerpt: "diplomatikong sipi"
+    },
+    mayorsTitle: "Kumpletong Talaan ng mga Alkalde",
+    mayorsLead:
+      "Ang listahan ay panloob na kopya ng opisyal na arkibo ng Munisipalidad ng Plovdiv, dinagdagan ng kasalukuyang termino mula sa Administratibong Rehistro.",
+    amountLabel: "Halaga",
+    yearLabel: "Taon",
+    sourceLabel: "Pinagmulan",
+    noAmount: "walang inilathalang halaga"
+  },
+  mayors: {
+    eyebrow: "Pamamahala ng Lungsod",
+    title: "Lahat ng Alkalde ng Plovdiv",
+    lead:
+      "Kumpletong talaan ng mga termino ng alkalde mula sa unang alkalde pagkatapos ng Paglaya noong 1878 hanggang sa kasalukuyang alkalde noong 2026.",
+    sourceNote:
+      "Ang batayan ay ang opisyal na pahinang „Mga Alkalde ng Plovdiv“ ng Munisipalidad ng Plovdiv. Idinagdag ang kasalukuyang termino mula sa Administratibong Rehistro dahil ang makasaysayang listahan ng munisipalidad ay hanggang sa termino 2019-2023 pa lamang.",
+    statTerms: "termino ng alkalde",
+    statPeople: "kakaibang tao",
+    statYears: "taon ng talaan",
+    statCurrent: "kasalukuyang alkalde",
+    search: "Maghanap",
+    searchPlaceholder: "Pangalan, taon, o panahon",
+    century: "Siglo",
+    status: "Katayuan",
+    allCenturies: "Lahat ng Siglo",
+    allStatuses: "Lahat",
+    currentOnly: "Kasalukuyan lamang",
+    actingOnly: "Pansamantalang alkalde lamang",
+    reset: "I-reset ang mga Filter",
+    count: (n: number) => `${n} ${plural(n, "termino", "termino")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} sa ${total} na ${plural(total, "termino", "termino")}`,
+    empty: "Walang termino sa napiling mga filter.",
+    timelineTitle: "Guhit ng Panahon ng mga Termino",
+    timelineLead:
+      "Ang mga termino ay pinagsama-sama ayon sa yugtong pampulitika. I-scroll ang mga panahon para masubaybayan kung paano nagbago ang katungkulan sa paglipas ng panahon. Ang detalyadong listahan sa ibaba ay nananatiling maaaring i-filter.",
+    detailsTitle: "Detalyadong Listahan",
+    sourcesTitle: "Pagsuri ng Saklaw",
+    sourcesText:
+      "Nasa panloob na arkibo ang lahat ng 65 termino mula sa opisyal na listahan ng munisipalidad kasama ang kasalukuyang termino ni Kostadin Dimitrov.",
+    termNumber: "Termino",
+    years: "Taon",
+    duration: "Tinatayang Tagal",
+    source: "Pinagmulan / karagdagang impormasyon",
+    currentBadge: "Kasalukuyan",
+    actingBadge: "pansamantalang alkalde",
+    officialArchive: "Opisyal na Listahan",
+    currentRegistry: "Administratibong Rehistro",
+    yearsApprox: (n: number) => `${n} ${plural(n, "taon", "taon")}`,
+    centuryLabel: (century: number) => `ika-${century} na siglo`,
+    centuryRange: (start: number, end: number) => `${start}–${end}`,
+    openSource: "Buksan ang Pinagmulan",
+    profile: "Profile",
+    backToAll: "Bumalik sa Lahat ng Alkalde",
+    otherTerms: "Ibang Termino ng Parehong Tao",
+    moreInfo: "Karagdagang Impormasyon",
+    biography: "Talambuhay",
+    imageCredit: "Kredito ng Larawan",
+    officialProfile: "Opisyal na Pinagmulan",
+    referenceSource: "Karagdagang Pinagmulan",
+    moreInfoLink: "Karagdagang Impormasyon",
+    wikipediaArticle: "Artikulo sa Wikipedia",
+    wikipediaSearch: "Maghanap sa Wikipedia",
+    birthplaceLabel: "Lugar ng Kapanganakan",
+    educationLabel: "Edukasyon",
+    rolesLabel: "Ibang Katungkulan",
+    profileLinks: "Profile at mga Link",
+    connectionsTitle: "Mga Koneksyon sa Pagitan ng mga Alkalde",
+    connectionsLead:
+      "Kung sinong mga alkalde ang namuno nang paulit-ulit at kung sino ang may kaugnayang pamilya.",
+    multiTermTitle: "Mga Alkalde na Maraming Termino",
+    familyTitle: "Mga Angkan at Pamilya",
+    legendSame: "Parehong alkalde (paulit-ulit na termino)",
+    legendFamily: "Kaugnayang pampamilya",
+    legendKilled: "Napatay",
+    legendCurrent: "Kasalukuyan",
+    fateHeading: "Kapalaran",
+    fateLabels: {
+      killed: "Napatay",
+      executed: "Pinatay sa bitay",
+      assassinated: "Napatay sa isang atake",
+      died_in_office: "Namatay habang nanunungkulan"
+    },
+    portraitNote: "Ang mga makasaysayang larawan ay nasa pampublikong pag-aari.",
+    portraitAlt: (name: string) => `Larawan ni ${name}`,
+    birthTitle: "Saan Ipinanganak ang mga Alkalde",
+    birthLead:
+      "Ang mga lugar ng kapanganakan ng mga nasuring alkalde, nakamapa. I-click ang isang punto para makita ang mga pangalan.",
+    birthByTown: "Mga Lugar ng Kapanganakan ayon sa Bilang ng Alkalde",
+    birthStatTowns: "mga lugar",
+    birthStatCountries: "mga bansa",
+    birthPopupMayors: "Mga Alkalde",
+    prevTerm: "Nauna",
+    nextTerm: "Susunod"
+  },
+  projects: {
+    eyebrow: "Mga Pampublikong Proyekto",
+    title: "Mga Proyekto",
+    lead:
+      "Maghanap ayon sa pamagat at mag-filter ayon sa kategorya, katayuan, at taon. Bawat proyekto ay may sariling pahina.",
+    dataNotice:
+      "Walang inilathalang iisang opisyal na listahan ng „natapos noong 2025“. Kaya't minarkahan lamang ang mga proyekto ayon sa pinagmulan: nagsimula na/hinihintay ang pagpopondo noong 2026, bago para sa 2026, o ipinagpaliban na may 0 lev para sa 2025-2026.",
+    search: "Maghanap",
+    searchPlaceholder: "Hal. bangketa, parke, hintuan",
+    category: "Kategorya",
+    status: "Katayuan",
+    year: "Taon",
+    reset: "I-reset ang mga Filter",
+    count: (n: number) => `${n} ${plural(n, "proyekto", "proyekto")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} sa ${total} na ${plural(total, "proyekto", "proyekto")}`,
+    empty: "Walang proyekto sa napiling mga filter."
+  },
+  community: {
+    eyebrow: "Sibikong Partisipasyon",
+    title: "Mga Boluntaryong Inisyatiba",
+    lead:
+      "Tunay na mga grupo at kampanya sa Plovdiv na nag-oorganisa ng mga boluntaryo para sa paglilinis, pagpapanibago, at pag-aalaga sa mga pampublikong lugar.",
+    dataNotice:
+      "Ang mga talaan ay natagpuan sa pamamagitan ng paghahanap ng AI sa mga pampublikong pinagmulan o idinagdag ng administrator. Dapat may nakikitang link ang bawat inisyatiba sa isang grupo, website, o publikasyon, para hindi ito mukhang opisyal na proyekto ng munisipalidad na walang pinagmulan.",
+    search: "Maghanap",
+    searchPlaceholder: "Hal. mga hintuan, Maritsa, Lauta",
+    category: "Kategorya",
+    status: "Katayuan",
+    organizer: "Organisador",
+    links: "Mga Link",
+    sources: "Mga Pinagmulan",
+    relatedProjects: "Kaugnay na Pampublikong Proyekto",
+    noRelatedProjects: "Walang kaugnay na pampublikong proyekto.",
+    discovered: "Natagpuan sa pamamagitan ng",
+    lastChecked: "Huling Sinuri",
+    viewSource: "Pinagmulan",
+    contact: "Kontak / grupo",
+    reset: "I-reset ang mga Filter",
+    count: (n: number) => `${n} ${plural(n, "inisyatiba", "inisyatiba")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} sa ${total} na ${plural(total, "inisyatiba", "inisyatiba")}`,
+    empty: "Walang inisyatiba sa napiling mga filter.",
+    adminCta: "Admin: magdagdag o suriin ang isang inisyatiba",
+    seeProblems: "Tingnan ang mga suliraning matutulungan mo",
+    donate: "Magbigay-donasyon sa organisasyon",
+    acceptsDonations: "Tumatanggap ng Donasyon",
+    donationsFilter: "Tumatanggap lamang ng donasyon",
+    donationDisclaimer: "Hindi tumatanggap o nagpoproseso ng donasyon ang Open Plovdiv. Ang mga link na „Magbigay-donasyon“ ay direktang papunta sa mga website ng mismong mga organisasyon."
+  },
+  project: {
+    breadcrumb: "Mga Proyekto",
+    keyFacts: "Pangunahing Impormasyon",
+    budget: "Badyet",
+    year: "Taon",
+    funding: "Pagpopondo",
+    status: "Katayuan",
+    district: "Distrito",
+    location: "Lokasyon",
+    notSpecified: "Hindi Tinukoy",
+    sources: "Mga Pinagmulan",
+    sourcesNote:
+      "Ang datos ng proyekto ay kinolekta mula sa mga pampublikong pinagmulan. Para sa opisyal na detalye, suriin ang orihinal na pinagmulan.",
+    noteLabel: "Tala",
+    noAmount: "Hindi inilathala ang halaga.",
+    approxLocation: "Tinatayang lokasyon (ayon sa distrito).",
+    provisional: "Paunang Tantiyang Datos",
+    relatedBudget: "Kaugnay na Linya ng Badyet",
+    noRelatedBudget: "Walang kaugnay na linya ng badyet.",
+    communityInitiatives: "Mga Boluntaryong Inisyatiba",
+    communityInitiativesText:
+      "Mga sibikong grupo o kampanya na kaugnay sa lugar o paksang ito. Hindi ito opisyal na katayuan ng proyekto.",
+    noCommunityInitiatives: "Walang kaugnay na boluntaryong inisyatiba.",
+    nearbyReports: "Mga Malapit na Ulat",
+    noNearby: "Walang inilathalang ulat sa loob ng 1 km na radius.",
+    nearbyReportsText:
+      "Ipinapakita lamang ng pampublikong mapa ang mga napagpasyahang ulat ng mamamayan. Buksan ang mapa para makita ang kasalukuyang inilathalang mga ulat sa paligid ng lugar na ito.",
+    timeline: "Talaan ng Panahon",
+    noTimeline: "Walang idinagdag na talaan ng panahon.",
+    updated: "Na-update",
+    mapLabel: "Mapa ng Proyekto"
+  },
+  fixMap: {
+    eyebrow: "Mapa ng mga Suliranin",
+    title: "Mapa ng mga Suliranin sa Lungsod",
+    lead:
+      "Mga inilathalang ulat ng mamamayan na walang personal na datos. I-filter ayon sa kategorya at katayuan, tingnan ang mga detalye at malapit na pampublikong proyekto.",
+    notice:
+      "Ipinapakita lamang ng mapa ang mga ulat na isinumite sa pamamagitan ng form at inaprubahan ng moderator. Ipinapakita ng katayuan kung ang talaan ay nasuri na, naipadala na, isinasagawa pa, o sarado na.",
+    category: "Kategorya",
+    allCategories: "Lahat ng Kategorya",
+    status: "Katayuan",
+    allStatuses: "Lahat ng Katayuan",
+    radius: "Malapit na Proyekto",
+    radius500: "hanggang 500 m",
+    radius1: "hanggang 1 km",
+    radius2: "hanggang 2 km",
+    visible: "Nakikitang mga Talaan",
+    selectTitle: "Pumili ng Ulat",
+    selectHint:
+      "I-click ang isang marker para makita ang detalye, katayuan, at malapit na mga proyekto.",
+    emptyTitle: "Wala Pang Inilathalang Ulat",
+    emptyText:
+      "Lalabas dito ang mga isinumiteng ulat pagkatapos masuri at aprubahan ng moderator.",
+    noFilterResults: "Walang ulat sa mga filter na ito",
+    legend: "Alamat",
+    statusesTitle: "Ano ang Ibig Sabihin ng mga Katayuan",
+    officialTitle: "Opisyal na Pagsumite",
+    officialText:
+      "Para sa tunay na mga ulat, gamitin ang opisyal na mga channel ng munisipalidad o distritong administrasyon. Tumatanggap ang Open Plovdiv ng mga ulat ng mamamayan na sinusuri bago ilathala, ngunit hindi ito kapalit ng opisyal na pagsumite.",
+    officialLink: "Munisipalidad ng Plovdiv",
+    statusLabel: "Katayuan",
+    nearbyProjects: "Malapit na Proyekto",
+    noNearbyRadius: "Walang proyekto sa napiling radius.",
+    loadErrorTitle: "Hindi Na-load ang Datos",
+    loadErrorText:
+      "Suriin kung nabuo na ang mga pampublikong JSON file gamit ang make data.",
+    reportCta: "Magsumite ng Ulat",
+    communityBadge: "Ulat ng Mamamayan",
+    lastUpdated: "Na-update",
+    justNow: "kararaan lang",
+    liveNote: "Awtomatikong na-a-update ang mapa tuwing 30 segundo.",
+    newReports: "Mga bagong ulat: {count}",
+    downloadCommunityData: "I-download ang mga Ulat ng Mamamayan"
+  },
+  civic: {
+    title: "Paano Ka Makakatulong",
+    lead:
+      "Nangangailangan ng iba't ibang aksyon ang iba't ibang suliranin. Ang ilan ay responsibilidad ng munisipalidad, ang iba naman ay maaaring pagbutihin ng mga mamamayan at boluntaryo.",
+    trackOfficial: "Nangangailangan ng Opisyal na Aksyon",
+    trackOfficialText:
+      "Ang mga mapanganib na kalsada, ilaw, drenahe, at pagkumpuni ng imprastraktura ay dapat asikasuhin ng munisipalidad o kaugnay na institusyon.",
+    trackCivic: "Angkop para sa Sibikong Partisipasyon",
+    trackCivicText:
+      "Ang paglilinis ng basura, maliliit na pagpapabuti sa berdeng espasyo, pagmamapa ng mga balakid sa akses, at dokumentasyon ay maaaring iorganisa ng mga mamamayan at grupo.",
+    trackBoth: "Pinagsamang Responsibilidad",
+    whatYouCanDo: "Ano ang Puwede Mong Gawin",
+    actReportOfficial: "Magsumite ng Ulat sa Munisipalidad",
+    actJoinGroup: "Sumali sa Isang Sibikong Grupo",
+    actAddReport: "Markahan ang Suliranin sa Mapa",
+    actDocument: "Tumulong sa Dokumentasyon at Larawan",
+    actFollow: "Subaybayan ang Progreso",
+    groupsTitle: "Mga Grupong Makakatulong",
+    noGroups: "Wala pang nakatalang grupo para sa kategoryang ito.",
+    seeAllGroups: "Tingnan Lahat ng Boluntaryong Grupo"
+  },
+  sources: {
+    eyebrow: "Kapanipaniwala",
+    title: "Mga Pinagmulan ng Datos",
+    lead:
+      "Bawat talaan sa site na ito ay may nakalagay na pampublikong pinagmulan. Nasa ibaba ang mga pangunahing pinagmulang ginamit at kung para saan ang mga ito.",
+    colSource: "Pinagmulan",
+    colUsedFor: "Ginamit Para sa",
+    colLimits: "Mga Limitasyon",
+    colAccessed: "Petsa ng Akses"
+  },
+  methodology: {
+    eyebrow: "Paano Ito Gumagana",
+    title: "Metodolohiya",
+    lead:
+      "Naghahanap ang AI ng mga pampublikong pinagmulan, kumukuha ng mga talaan ng proyekto at badyet, at sinusuri ang mga ito laban sa mga schema, URL, halaga, at koordinada bago ilathala. Nananatiling nakikita ang mga pinagmulan dahil posibleng magkamali ang AI.",
+    collectTitle: "Paghahanap ng AI",
+    collectText:
+      "Hinahanap at inihahambing ng AI ang mga pampublikong pinagmulan — ang badyet at mga desisyon ng Munisipalidad ng Plovdiv, ang kapital na programa, at lokal na media — at nagdaragdag sa bawat talaan ng link sa ginamit na pinagmulan.",
+    verifyTitle: "Pagsuri ng AI",
+    verifyText:
+      "Kinukuha at sinusuri ng AI ang mga field, katayuan, URL, halaga, taon, koordinada, at kawalan ng personal na datos sa mga ulat. Pagkatapos, sinusuri ng mga JSON schema ang estruktura bago ang build.",
+    aiTitle: "AI",
+    aiText:
+      "Isinasagawa ng AI ang paghahanap, pagbubuod, at pagsuri. Kapag hindi inilathala ng pinagmulan ang isang halaga, katayuan, o pagkatapos, dapat ipakita ito ng site bilang nawawala o tinatayang datos, hindi kathang-isip.",
+    correctTitle: "Mga Pagwawasto",
+    correctText:
+      "Ang isang pagwawasto ay dapat magdagdag o magpalit ng pampublikong pinagmulan, i-update ang curated na JSON, at dumaan sa awtomatikong pagsuri at build."
+  },
+  privacy: {
+    eyebrow: "Walang Personal na Datos",
+    title: "Pagkapribado",
+    lead:
+      "Gumagana ang unang bersyon nang walang account ng gumagamit, komento, botohan, o pampublikong pangongolekta ng personal na datos.",
+    notCollectTitle: "Ano ang Hindi Namin Kinokolekta",
+    notCollectText:
+      "Walang pangalan, email, telepono, account, o eksaktong pribadong address sa mga ulat.",
+    beforeTitle: "Ulat ng Mamamayan",
+    beforeText:
+      "Kinokolekta ng mga ulat ang kategorya, maikling teksto, tinatayang punto sa mapa, at opsyonal na mga larawan. Ginagamit lamang ang IP address bilang pansamantalang hash para limitahan ang dalas at hindi ito nakaimbak sa malinaw na anyo."
+  },
+  moderation: {
+    eyebrow: "Ulat ng Mamamayan na May Pagsusuri",
+    title: "Moderasyon",
+    lead:
+      "Maaaring magsumite ang mga mamamayan ng ulat tungkol sa mga suliranin ng lungsod. Sinusuri ng isang editor ang bawat ulat at inilalathala lamang ito kung ligtas at may pampublikong interes.",
+    notice:
+      "Konserbatibo ang moderasyon: inilalathala lamang ang napapatunayang mga suliranin sa lungsod na walang personal na datos — hindi ito para sa insulto, akusasyon, o kampanyang pampulitika. Inilalathala ang mga larawan pagkatapos lamang ng pagsusuri at maaari itong itago."
+  },
+  notFound: {
+    eyebrow: "Error 404",
+    title: "Hindi Natagpuan ang Pahina",
+    text: "Maaaring luma na o mali ang link. Bumalik sa simula o pumili ng isang seksyon."
+  },
+  reportForm: {
+    eyebrow: "Ulat ng Mamamayan",
+    title: "Pagsumite ng Ulat",
+    lead:
+      "Ilarawan ang isang pampublikong suliranin sa lungsod at markahan ang lokasyon sa mapa. Susuriin ng isang editor ang ulat bago ito lumabas sa mapa.",
+    notice:
+      "Huwag maglagay ng personal na datos — pangalan, telepono, email, o eksaktong pribadong address. Sinusuri nang manu-mano ang mga larawan at hindi inilalathala bago maaprubahan.",
+    category: "Kategorya",
+    titleLabel: "Maikling Pamagat",
+    titlePlaceholder: "Hal. hindi pantay na bangketa malapit sa hintuan",
+    description: "Paglalarawan",
+    descriptionPlaceholder: "Ilarawan ang suliranin nang maikli at obhetibo.",
+    photos: "Mga Larawan",
+    photoHint:
+      "Opsyonal, hanggang 3 larawan, pinakamataas na 5 MB bawat isa. Aalisin ang EXIF/GPS na datos at ico-convert ang mga larawan bago suriin.",
+    location: "Lokasyon",
+    locationHint: "I-click ang mapa para markahan ang lugar.",
+    selected: "Napiling Punto",
+    noLocation: "Wala pang napiling punto",
+    confirmNoPersonal: "Kinukumpirma ko na ang ulat na ito ay walang personal na datos.",
+    confirmPublicInterest: "Kinukumpirma ko na ito ay isyung may pampublikong interes.",
+    submit: "Isumite ang Ulat",
+    submitting: "Isinusumite…",
+    successTitle: "Salamat!",
+    successText:
+      "Natanggap na ang ulat at susuriin ito bago ilathala. Numero ng reperensya:",
+    submitAnother: "Magsumite ng Bagong Ulat",
+    backToMap: "Bumalik sa Mapa",
+    errorGeneric: "Hindi naisumite ang ulat. Subukan muli.",
+    errRateLimited: "Sobrang dami ng ulat sa maikling panahon. Subukan mamaya.",
+    errCategory: "Pumili ng balidong kategorya.",
+    errTitle: "Dapat nasa pagitan ng 3 at 120 na karakter ang pamagat.",
+    errDescription: "Dapat nasa pagitan ng 10 at 1000 na karakter ang paglalarawan.",
+    errPersonalData: "May laman ang teksto na parang personal na datos.",
+    errLocation: "Pumili ng punto sa loob ng Plovdiv.",
+    errConfirmation: "Paki-check ang parehong kumpirmasyon.",
+    errTooManyPhotos: "Mag-upload ng hindi hihigit sa 3 larawan.",
+    errPhotoLarge: "Dapat hanggang 5 MB lamang ang bawat larawan.",
+    errPhotoType: "JPEG, PNG, o WebP na larawan lamang ang pinapayagan.",
+    errPhotoInvalid: "Hindi maproseso ang larawan."
+  },
+  admin: {
+    title: "Moderasyon ng mga Ulat",
+    lead: "Suriin ang mga ulat ng mamamayan bago ilathala. Protektado ang akses.",
+    tokenLabel: "Susi ng Administrator",
+    tokenPlaceholder: "Ilagay ang susi",
+    signIn: "Mag-sign In",
+    signOut: "Mag-sign Out",
+    authError: "Hindi balido ang susi.",
+    refresh: "I-refresh",
+    pendingTitle: "Naghihintay ng Pagsusuri",
+    noPending: "Walang naghihintay na ulat.",
+    publicStatus: "Pampublikong Katayuan",
+    rejectReason: "Dahilan ng Pagtanggi (opsyonal)",
+    approve: "Aprubahan at Ilathala",
+    reject: "Tanggihan",
+    publishedTitle: "Mga Inilathalang Ulat",
+    noPublished: "Walang inilathalang ulat ng mamamayan.",
+    saveStatus: "I-save ang Katayuan",
+    editDetails: "Detalye ng Ulat",
+    kind: "Uri ng Talaan",
+    kindFix: "Ulat sa Lungsod",
+    kindHistory: "Makasaysayang Kontribusyon",
+    saveDetails: "I-save ang Detalye",
+    titleBg: "Pamagat (BG)",
+    titleEn: "Pamagat (EN, opsyonal)",
+    descriptionBg: "Paglalarawan (BG)",
+    descriptionEn: "Paglalarawan (EN, opsyonal)",
+    category: "Kategorya",
+    latitude: "Latitude",
+    longitude: "Longitude",
+    addressBg: "Address/Palatandaan (BG, opsyonal)",
+    addressEn: "Address/Palatandaan (EN, opsyonal)",
+    photos: "Mga Larawan",
+    hidePhoto: "Itago ang Larawan",
+    hiddenPhoto: "Nakatagong Larawan",
+    moderationWarning:
+      "Maglathala lamang ng mga larawan kung walang mukha, bata, plaka ng sasakyan, dokumento, pribadong interior, o personal na impormasyon.",
+    submitted: "Naisumite",
+    loading: "Naglo-load…",
+    actionError: "Hindi matagumpay ang aksyon."
+  },
+  adminCommunity: {
+    title: "Mga Boluntaryong Inisyatiba",
+    lead:
+      "Pagdaragdag at pag-update ng mga tunay na sibikong grupo at kampanyang boluntaryo na may pampublikong link.",
+    tokenLabel: "Susi ng Administrator",
+    tokenPlaceholder: "Ilagay ang susi",
+    signIn: "Mag-sign In",
+    signOut: "Mag-sign Out",
+    authError: "Hindi balido ang susi.",
+    refresh: "I-refresh",
+    discoveryTitle: "Paghahanap ng AI/Online",
+    discoveryLead:
+      "Maghanap ng mga pampublikong pahina at publikasyon. Nagmumungkahi lamang ng mga pinagmulan ang resulta; pinipili ng administrator kung ano ang isa-save.",
+    queryLabel: "Paghahanap",
+    queryPlaceholder: "Hal. boluntaryo paglilinis hintuan Plovdiv",
+    find: "Maghanap Online",
+    sourceUrl: "URL ng Pinagmulan",
+    inspectUrl: "Suriin ang URL",
+    noCandidates: "Walang natagpuang resulta.",
+    useCandidate: "Gamitin Bilang Pinagmulan",
+    formTitle: "Magdagdag o I-update ang Inisyatiba",
+    id: "ID (opsyonal)",
+    titleBg: "Pamagat (BG)",
+    titleEn: "Pamagat (EN)",
+    summaryBg: "Paglalarawan (BG)",
+    summaryEn: "Paglalarawan (EN, opsyonal)",
+    category: "Kategorya",
+    status: "Katayuan",
+    organizerBg: "Organisador (BG)",
+    organizerEn: "Organisador (EN, opsyonal)",
+    organizerType: "Uri ng Organisador",
+    website: "Website",
+    facebook: "Facebook",
+    donationUrl: "Link ng Donasyon (opsyonal)",
+    callToActionBg: "Panawagan (BG, opsyonal)",
+    callToActionEn: "Panawagan (EN, opsyonal)",
+    addressBg: "Address/Distrito (BG)",
+    addressEn: "Address/Distrito (EN, opsyonal)",
+    latitude: "Latitude",
+    longitude: "Longitude",
+    relatedProjects: "Kaugnay na Project ID (pinaghihiwalay ng kuwit)",
+    tags: "Mga Tag (pinaghihiwalay ng kuwit)",
+    sourceTitle: "Pamagat ng Pinagmulan",
+    sourceUrlLabel: "Link ng Pinagmulan",
+    save: "I-save ang Inisyatiba",
+    saved: "Na-save na ang inisyatiba.",
+    existingTitle: "Mga Nakatalang Inisyatiba",
+    noExisting: "Walang nakatalang inisyatiba.",
+    edit: "I-edit",
+    loading: "Naglo-load…",
+    actionError: "Hindi matagumpay ang aksyon."
+  }
+};
+
+export const ui = { bg, en, de, fr, it, tr, es, el, ja, tl } as const;
 
 export type CategoryKey =
   | "roads"
@@ -5416,6 +6060,27 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     source_tip: "資料・アーカイブ情報",
     history_correction: "歴史情報の訂正",
     other: "その他"
+  },
+  tl: {
+    roads: "Mga Kalsada",
+    pavement: "Mga Bangketa",
+    street_lighting: "Ilaw sa Kalsada",
+    parks: "Mga Parke",
+    waste: "Basura",
+    public_transport: "Transportasyon",
+    accessibility: "Akses",
+    drainage: "Drenahe",
+    culture: "Kultura",
+    education: "Edukasyon",
+    civic: "Sibikong Inisyatiba",
+    environment: "Kapaligiran",
+    social: "Panlipunan",
+    sport: "Isports",
+    historic_photo: "Makasaysayang Larawan",
+    oral_memory: "Salaysay na Alaala",
+    source_tip: "Pinagmulan/Bakas sa Arkibo",
+    history_correction: "Pagwawasto sa Kasaysayan",
+    other: "Iba Pa"
   }
 };
 
@@ -5563,6 +6228,16 @@ export const projectStatusLabels: Record<Lang, Record<string, string>> = {
     delayed: "遅延",
     postponed: "延期",
     unknown: "不明"
+  },
+  tl: {
+    planned: "Nakaplano",
+    funded: "May Pondo",
+    contracted: "May Kontrata",
+    in_progress: "Isinasagawa",
+    completed: "Natapos",
+    delayed: "Naantala",
+    postponed: "Ipinagpaliban",
+    unknown: "Hindi Alam"
   }
 };
 
@@ -5629,6 +6304,13 @@ export const communityStatusLabels: Record<Lang, Record<string, string>> = {
     completed: "完了",
     planned: "計画中",
     unknown: "状態不明"
+  },
+  tl: {
+    active: "Aktibo",
+    recurring: "Paulit-ulit",
+    completed: "Natapos",
+    planned: "Nakaplano",
+    unknown: "Hindi Alam ang Katayuan"
   }
 };
 
@@ -5704,6 +6386,14 @@ export const fixStatusLabels: Record<Lang, Record<string, string>> = {
     in_progress: "対応中",
     fixed: "修繕済み",
     closed: "終了"
+  },
+  tl: {
+    unverified: "Hindi Pa Nasusuri",
+    verified: "Nasuri Na",
+    sent_to_municipality: "Naipadala Na",
+    in_progress: "Isinasagawa",
+    fixed: "Naayos Na",
+    closed: "Sarado"
   }
 };
 
@@ -5779,6 +6469,14 @@ export const fixStatusDescriptions: Record<Lang, Record<string, string>> = {
     in_progress: "修繕または確認作業が進行中です。",
     fixed: "修繕済みとして記録されています。",
     closed: "次の対応予定なしで終了しています。"
+  },
+  tl: {
+    unverified: "Nailathala na ang ulat ngunit hindi pa ito independiyenteng nasusuri.",
+    verified: "Nasuri na ng isang editor o pampublikong pinagmulan.",
+    sent_to_municipality: "Minarkahang naipadala na sa isang institusyon.",
+    in_progress: "May tinatalang kasalukuyang pagkumpuni o pagsusuri.",
+    fixed: "Minarkahang naayos na.",
+    closed: "Sarado na, walang aktibong susunod na hakbang."
   }
 };
 
@@ -5846,6 +6544,12 @@ export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
     municipal_capital: "市の資本プログラム",
     state_subsidy: "国の目的補助金",
     eu_program: "EUプログラム"
+  },
+  tl: {
+    municipal_budget: "Badyet ng Munisipalidad",
+    municipal_capital: "Kapital na Programa (Munisipal)",
+    state_subsidy: "Nakatuong Subsidyo ng Estado",
+    eu_program: "Programa ng EU"
   }
 };
 
@@ -5996,88 +6700,106 @@ export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
     "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5": "TrafficNews — Mission Lauta 5で過去最多のボランティア",
     "БНТ — почистват квартал „Столипиново“": "BNT — Stolipinovo地区の清掃",
     "Радио Пловдив — доброволци чистят и облагородяват Столипиново": "Radio Plovdiv — ボランティアがStolipinovoを清掃・改善"
+  },
+  tl: {
+    "Община Пловдив — представяне на Бюджет 2025": "Munisipalidad ng Plovdiv — pagpapakilala sa Badyet 2025",
+    "TrafficNews — бюджет на Пловдив за 2025 г.": "TrafficNews — badyet ng Plovdiv para sa 2025",
+    "TrafficNews — проектобюджет 2026 и замразени проекти": "TrafficNews — panukalang badyet 2026 at mga nakatiwangwang na proyekto",
+    "Под тепето — капиталова програма за 2026 г.": "Pod tepeto — kapital na programa para sa 2026",
+    "Община Пловдив - Кметове на Пловдив": "Munisipalidad ng Plovdiv — Mga Alkalde ng Plovdiv",
+    "Административен регистър - кмет на Община Пловдив": "Administratibong Rehistro — Alkalde ng Munisipalidad ng Plovdiv",
+    "Plovdiv24 — доброволци се заемат с реновирането на спирки": "Plovdiv24 — sinimulan ng mga boluntaryo ang pagpapanibago ng mga hintuan",
+    "NOVA — доброволци реновират автобусни спирки": "NOVA — pinapanibago ng mga boluntaryo ang mga hintuan ng bus",
+    "Plovdiv24 — търсят се доброволци за почистване на 11 км от река Марица": "Plovdiv24 — naghahanap ng boluntaryo para linisin ang 11 km ng ilog Maritsa",
+    "BG Be Active — контакт": "BG Be Active — kontak",
+    "Красив Пловдив — будни граждани с кауза": "Krasiv Plovdiv — mga mamamayang aktibo para sa isang layunin",
+    "Красив Пловдив — начало": "Krasiv Plovdiv — simula",
+    "Община Пловдив — „Мисия Лаута 5“": "Munisipalidad ng Plovdiv — „Misyon Lauta 5“",
+    "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5": "TrafficNews — rekord na bilang ng boluntaryo sa „Misyon Lauta“ 5",
+    "БНТ — почистват квартал „Столипиново“": "BNT — paglilinis sa distrito ng Stolipinovo",
+    "Радио Пловдив — доброволци чистят и облагородяват Столипиново": "Radio Plovdiv — nililinis at pinapaganda ng mga boluntaryo ang Stolipinovo"
   }
 };
 
 // Shared person-role tags (objective: one source of truth for People + History).
 // Adding a locale to `Lang` forces a translation here via the Record<Lang> type.
 export const roleLabels: Record<string, Record<Lang, string>> = {
-  academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien", it: "accademico", tr: "akademisyen", es: "académico", el: "ακαδημαϊκός" , ja: "学者" },
-  actor: { bg: "актьор", en: "actor", de: "Schauspieler", fr: "acteur", it: "attore", tr: "aktör", es: "actor", el: "ηθοποιός" , ja: "俳優" },
-  art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker", fr: "historien de l'art", it: "storico dell'arte", tr: "sanat tarihçisi", es: "historiador del arte", el: "ιστορικός τέχνης" , ja: "美術史家" },
-  artist: { bg: "художник", en: "artist", de: "Künstler", fr: "artiste", it: "artista", tr: "sanatçı", es: "artista", el: "καλλιτέχνης" , ja: "芸術家" },
-  athlete: { bg: "спортист", en: "athlete", de: "Sportler", fr: "athlète", it: "atleta", tr: "atlet", es: "atleta", el: "αθλητής" , ja: "アスリート" },
-  basketball_player: { bg: "баскетболист", en: "basketball player", de: "Basketballspieler", fr: "basketteur", it: "cestista", tr: "basketbolcu", es: "baloncestista", el: "καλαθοσφαιριστής" , ja: "バスケットボール選手" },
-  boxer: { bg: "боксьор", en: "boxer", de: "Boxer", fr: "boxeur", it: "pugile", tr: "boksör", es: "boxeador", el: "πυγμάχος" , ja: "ボクサー" },
-  canoeist: { bg: "кануист", en: "canoeist", de: "Kanute", fr: "canoéiste", it: "canoista", tr: "kanocu", es: "piragüista", el: "κανοϊστής" , ja: "カヌー選手" },
-  chef: { bg: "готвач", en: "chef", de: "Koch", fr: "chef cuisinier", it: "chef", tr: "aşçı", es: "chef", el: "σεφ" , ja: "料理人" },
-  chess_player: { bg: "шахматист", en: "chess player", de: "Schachspieler", fr: "joueur d'échecs", it: "scacchista", tr: "satranç oyuncusu", es: "ajedrecista", el: "σκακιστής" , ja: "チェス選手" },
-  choreographer: { bg: "хореограф", en: "choreographer", de: "Choreograf", fr: "chorégraphe", it: "coreografo", tr: "koreograf", es: "coreógrafo", el: "χορογράφος" , ja: "振付家" },
-  clergy: { bg: "духовник", en: "clergy", de: "Geistlicher", fr: "ecclésiastique", it: "religioso", tr: "din adamı", es: "clérigo", el: "κληρικός" , ja: "聖職者" },
-  composer: { bg: "композитор", en: "composer", de: "Komponist", fr: "compositeur", it: "compositore", tr: "besteci", es: "compositor", el: "συνθέτης" , ja: "作曲家" },
-  conductor: { bg: "диригент", en: "conductor", de: "Dirigent", fr: "chef d'orchestre", it: "direttore d'orchestra", tr: "orkestra şefi", es: "director de orquesta", el: "μαέστρος" , ja: "指揮者" },
-  cultural_manager: { bg: "културен мениджър", en: "cultural manager", de: "Kulturmanager", fr: "gestionnaire culturel", it: "manager culturale", tr: "kültür yöneticisi", es: "gestor cultural", el: "πολιτιστικός διαχειριστής" , ja: "文化マネージャー" },
-  designer: { bg: "дизайнер", en: "designer", de: "Designer", fr: "designer", it: "designer", tr: "tasarımcı", es: "diseñador", el: "σχεδιαστής" , ja: "デザイナー" },
-  diplomat: { bg: "дипломат", en: "diplomat", de: "Diplomat", fr: "diplomate", it: "diplomatico", tr: "diplomat", es: "diplomático", el: "διπλωμάτης" , ja: "外交官" },
-  economist: { bg: "икономист", en: "economist", de: "Ökonom", fr: "économiste", it: "economista", tr: "iktisatçı", es: "economista", el: "οικονομολόγος" , ja: "経済学者" },
-  educator: { bg: "педагог", en: "educator", de: "Pädagoge", fr: "pédagogue", it: "pedagogo", tr: "eğitimci", es: "pedagogo", el: "παιδαγωγός" , ja: "教育者" },
-  electrical_engineer: { bg: "електроинженер", en: "electrical engineer", de: "Elektroingenieur", fr: "ingénieur électricien", it: "ingegnere elettrico", tr: "elektrik mühendisi", es: "ingeniero eléctrico", el: "ηλεκτρολόγος μηχανικός" , ja: "電気技師" },
-  engineer: { bg: "инженер", en: "engineer", de: "Ingenieur", fr: "ingénieur", it: "ingegnere", tr: "mühendis", es: "ingeniero", el: "μηχανικός" , ja: "技師" },
-  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler", fr: "cavalier", it: "cavaliere", tr: "binici", es: "jinete", el: "ιππέας" , ja: "馬術選手" },
-  fencer: { bg: "фехтовач", en: "fencer", de: "Fechter", fr: "escrimeur", it: "schermidore", tr: "eskrimci", es: "esgrimista", el: "ξιφομάχος" , ja: "フェンシング選手" },
-  film_director: { bg: "филмов режисьор", en: "film director", de: "Filmregisseur", fr: "réalisateur", it: "regista cinematografico", tr: "film yönetmeni", es: "director de cine", el: "σκηνοθέτης κινηματογράφου" , ja: "映画監督" },
-  first_lady: { bg: "първа дама", en: "first lady", de: "First Lady", fr: "première dame", it: "first lady", tr: "first lady", es: "primera dama", el: "πρώτη κυρία" , ja: "ファーストレディー" },
-  football_referee: { bg: "футболен съдия", en: "football referee", de: "Fußballschiedsrichter", fr: "arbitre de football", it: "arbitro di calcio", tr: "futbol hakemi", es: "árbitro de fútbol", el: "διαιτητής ποδοσφαίρου" , ja: "サッカー審判員" },
-  footballer: { bg: "футболист", en: "footballer", de: "Fußballspieler", fr: "footballeur", it: "calciatore", tr: "futbolcu", es: "futbolista", el: "ποδοσφαιριστής" , ja: "サッカー選手" },
-  general: { bg: "генерал", en: "general", de: "General", fr: "général", it: "generale", tr: "general", es: "general", el: "στρατηγός" , ja: "将軍" },
-  geographer: { bg: "географ", en: "geographer", de: "Geograf", fr: "géographe", it: "geografo", tr: "coğrafyacı", es: "geógrafo", el: "γεωγράφος" , ja: "地理学者" },
-  gymnast: { bg: "гимнастик", en: "gymnast", de: "Turner", fr: "gymnaste", it: "ginnasta", tr: "jimnastikçi", es: "gimnasta", el: "γυμναστής" , ja: "体操選手" },
-  high_jumper: { bg: "скачач на височина", en: "high jumper", de: "Hochspringer", fr: "sauteur en hauteur", it: "saltatore in alto", tr: "yüksek atlamacı", es: "saltador de altura", el: "άλτης ύψους" , ja: "走高跳選手" },
-  illustrator: { bg: "илюстратор", en: "illustrator", de: "Illustrator", fr: "illustrateur", it: "illustratore", tr: "illüstratör", es: "ilustrador", el: "εικονογράφος" , ja: "イラストレーター" },
-  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower", de: "Speerwerfer", fr: "lanceur de javelot", it: "lanciatore di giavellotto", tr: "cirit atıcısı", es: "lanzador de jabalina", el: "ακοντιστής" , ja: "やり投げ選手" },
-  journalist: { bg: "журналист", en: "journalist", de: "Journalist", fr: "journaliste", it: "giornalista", tr: "gazeteci", es: "periodista", el: "δημοσιογράφος" , ja: "ジャーナリスト" },
-  jurist: { bg: "юрист", en: "jurist", de: "Jurist", fr: "juriste", it: "giurista", tr: "hukukçu", es: "jurista", el: "νομικός" , ja: "法律家" },
-  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist", de: "Kampfsportler", fr: "artiste martial", it: "artista marziale", tr: "dövüş sanatçısı", es: "artista marcial", el: "αθλητής πολεμικών τεχνών" , ja: "武道家" },
-  mathematician: { bg: "математик", en: "mathematician", de: "Mathematiker", fr: "mathématicien", it: "matematico", tr: "matematikçi", es: "matemático", el: "μαθηματικός" , ja: "数学者" },
-  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister", fr: "maire", it: "sindaco", tr: "belediye başkanı", es: "alcalde", el: "δήμαρχος" , ja: "市長" },
-  merchant: { bg: "търговец", en: "merchant", de: "Kaufmann", fr: "marchand", it: "mercante", tr: "tüccar", es: "comerciante", el: "έμπορος" , ja: "商人" },
-  military_officer: { bg: "офицер", en: "military officer", de: "Offizier", fr: "officier", it: "ufficiale", tr: "subay", es: "oficial", el: "αξιωματικός" , ja: "軍人" },
-  mineralogist: { bg: "минералог", en: "mineralogist", de: "Mineraloge", fr: "minéralogiste", it: "mineralogista", tr: "mineralog", es: "mineralogista", el: "ορυκτολόγος" , ja: "鉱物学者" },
-  missionary: { bg: "мисионер", en: "missionary", de: "Missionar", fr: "missionnaire", it: "missionario", tr: "misyoner", es: "misionero", el: "ιεραπόστολος" , ja: "宣教師" },
-  model: { bg: "модел", en: "model", de: "Model", fr: "mannequin", it: "modella", tr: "manken", es: "modelo", el: "μοντέλο" , ja: "モデル" },
-  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete", de: "Moderner Fünfkämpfer", fr: "pentathlonien moderne", it: "pentatleta moderno", tr: "modern pentatlet", es: "pentatleta moderno", el: "αθλητής σύγχρονου πεντάθλου" , ja: "近代五種選手" },
-  musician: { bg: "музикант", en: "musician", de: "Musiker", fr: "musicien", it: "musicista", tr: "müzisyen", es: "músico", el: "μουσικός" , ja: "音楽家" },
-  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger", fr: "chanteur d'opéra", it: "cantante lirico", tr: "opera sanatçısı", es: "cantante de ópera", el: "λυρικός τραγουδιστής" , ja: "オペラ歌手" },
-  painter: { bg: "живописец", en: "painter", de: "Maler", fr: "peintre", it: "pittore", tr: "ressam", es: "pintor", el: "ζωγράφος" , ja: "画家" },
-  paleontologist: { bg: "палеонтолог", en: "paleontologist", de: "Paläontologe", fr: "paléontologue", it: "paleontologo", tr: "paleontolog", es: "paleontólogo", el: "παλαιοντολόγος" , ja: "古生物学者" },
-  patriarch: { bg: "патриарх", en: "patriarch", de: "Patriarch", fr: "patriarche", it: "patriarca", tr: "patrik", es: "patriarca", el: "πατριάρχης" , ja: "総主教" },
-  philosopher: { bg: "философ", en: "philosopher", de: "Philosoph", fr: "philosophe", it: "filosofo", tr: "filozof", es: "filósofo", el: "φιλόσοφος" , ja: "哲学者" },
-  physicist: { bg: "физик", en: "physicist", de: "Physiker", fr: "physicien", it: "fisico", tr: "fizikçi", es: "físico", el: "φυσικός" , ja: "物理学者" },
-  pianist: { bg: "пианист", en: "pianist", de: "Pianist", fr: "pianiste", it: "pianista", tr: "piyanist", es: "pianista", el: "πιανίστας" , ja: "ピアニスト" },
-  poet: { bg: "поет", en: "poet", de: "Dichter", fr: "poète", it: "poeta", tr: "şair", es: "poeta", el: "ποιητής" , ja: "詩人" },
-  politician: { bg: "политик", en: "politician", de: "Politiker", fr: "politicien", it: "politico", tr: "siyasetçi", es: "político", el: "πολιτικός" , ja: "政治家" },
-  priest: { bg: "свещеник", en: "priest", de: "Priester", fr: "prêtre", it: "sacerdote", tr: "rahip", es: "sacerdote", el: "ιερέας" , ja: "司祭" },
-  printmaker: { bg: "график", en: "printmaker", de: "Grafiker", fr: "graveur", it: "incisore", tr: "gravürcü", es: "grabador", el: "χαράκτης" , ja: "版画家" },
-  producer: { bg: "продуцент", en: "producer", de: "Produzent", fr: "producteur", it: "produttore", tr: "yapımcı", es: "productor", el: "παραγωγός" , ja: "プロデューサー" },
-  public_figure: { bg: "обществена фигура", en: "public figure", de: "Person des öffentlichen Lebens", fr: "personnalité publique", it: "personaggio pubblico", tr: "kamusal figür", es: "figura pública", el: "δημόσιο πρόσωπο" , ja: "公人" },
-  racing_driver: { bg: "автомобилен състезател", en: "racing driver", de: "Rennfahrer", fr: "pilote automobile", it: "pilota automobilistico", tr: "yarış pilotu", es: "piloto de carreras", el: "οδηγός αγώνων" , ja: "レーシングドライバー" },
-  revolutionary: { bg: "революционер", en: "revolutionary", de: "Revolutionär", fr: "révolutionnaire", it: "rivoluzionario", tr: "devrimci", es: "revolucionario", el: "επαναστάτης" , ja: "革命家" },
-  rower: { bg: "гребец", en: "rower", de: "Ruderer", fr: "rameur", it: "canottiere", tr: "kürekçi", es: "remero", el: "κωπηλάτης" , ja: "ボート選手" },
-  saint: { bg: "светец", en: "saint", de: "Heiliger", fr: "saint", it: "santo", tr: "aziz", es: "santo", el: "άγιος" , ja: "聖人" },
-  scholar: { bg: "учен", en: "scholar", de: "Gelehrter", fr: "érudit", it: "studioso", tr: "âlim", es: "erudito", el: "λόγιος" , ja: "学者" },
-  scientist: { bg: "учен", en: "scientist", de: "Wissenschaftler", fr: "scientifique", it: "scienziato", tr: "bilim insanı", es: "científico", el: "επιστήμονας" , ja: "科学者" },
-  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor", fr: "scénariste", it: "sceneggiatore", tr: "senarist", es: "guionista", el: "σεναριογράφος" , ja: "脚本家" },
-  sculptor: { bg: "скулптор", en: "sculptor", de: "Bildhauer", fr: "sculpteur", it: "scultore", tr: "heykeltıraş", es: "escultor", el: "γλύπτης" , ja: "彫刻家" },
-  singer: { bg: "певец", en: "singer", de: "Sänger", fr: "chanteur", it: "cantante", tr: "şarkıcı", es: "cantante", el: "τραγουδιστής" , ja: "歌手" },
-  sports_shooter: { bg: "спортен стрелец", en: "sport shooter", de: "Sportschütze", fr: "tireur sportif", it: "tiratore sportivo", tr: "atıcı", es: "tirador deportivo", el: "σκοπευτής" , ja: "射撃選手" },
-  swimmer: { bg: "плувец", en: "swimmer", de: "Schwimmer", fr: "nageur", it: "nuotatore", tr: "yüzücü", es: "nadador", el: "κολυμβητής" , ja: "水泳選手" },
-  tennis_player: { bg: "тенисист", en: "tennis player", de: "Tennisspieler", fr: "joueur de tennis", it: "tennista", tr: "tenisçi", es: "tenista", el: "τενίστας" , ja: "テニス選手" },
-  theatre_director: { bg: "театрален режисьор", en: "theatre director", de: "Theaterregisseur", fr: "metteur en scène", it: "regista teatrale", tr: "tiyatro yönetmeni", es: "director de teatro", el: "σκηνοθέτης θεάτρου" , ja: "演劇演出家" },
-  violinist: { bg: "цигулар", en: "violinist", de: "Geiger", fr: "violoniste", it: "violinista", tr: "kemancı", es: "violinista", el: "βιολιστής" , ja: "バイオリニスト" },
-  visual_artist: { bg: "визуален художник", en: "visual artist", de: "Bildender Künstler", fr: "artiste visuel", it: "artista visivo", tr: "görsel sanatçı", es: "artista visual", el: "εικαστικός καλλιτέχνης" , ja: "ビジュアルアーティスト" },
-  volleyball_player: { bg: "волейболист", en: "volleyball player", de: "Volleyballspieler", fr: "volleyeur", it: "pallavolista", tr: "voleybolcu", es: "voleibolista", el: "πετοσφαιριστής" , ja: "バレーボール選手" },
-  weightlifter: { bg: "щангист", en: "weightlifter", de: "Gewichtheber", fr: "haltérophile", it: "sollevatore di pesi", tr: "halterci", es: "halterófilo", el: "αρσιβαρίστας" , ja: "重量挙げ選手" },
-  wrestler: { bg: "борец", en: "wrestler", de: "Ringer", fr: "lutteur", it: "lottatore", tr: "güreşçi", es: "luchador", el: "παλαιστής" , ja: "レスリング選手" },
-  writer: { bg: "писател", en: "writer", de: "Schriftsteller", fr: "écrivain", it: "scrittore", tr: "yazar", es: "escritor", el: "συγγραφέας" , ja: "作家" },
-  zoologist: { bg: "зоолог", en: "zoologist", de: "Zoologe", fr: "zoologiste", it: "zoologo", tr: "zoolog", es: "zoólogo", el: "ζωολόγος", ja: "動物学者" }
+  academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien", it: "accademico", tr: "akademisyen", es: "académico", el: "ακαδημαϊκός" , ja: "学者", tl: "akademiko" },
+  actor: { bg: "актьор", en: "actor", de: "Schauspieler", fr: "acteur", it: "attore", tr: "aktör", es: "actor", el: "ηθοποιός" , ja: "俳優", tl: "aktor" },
+  art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker", fr: "historien de l'art", it: "storico dell'arte", tr: "sanat tarihçisi", es: "historiador del arte", el: "ιστορικός τέχνης" , ja: "美術史家", tl: "istoryador ng sining" },
+  artist: { bg: "художник", en: "artist", de: "Künstler", fr: "artiste", it: "artista", tr: "sanatçı", es: "artista", el: "καλλιτέχνης" , ja: "芸術家", tl: "artista" },
+  athlete: { bg: "спортист", en: "athlete", de: "Sportler", fr: "athlète", it: "atleta", tr: "atlet", es: "atleta", el: "αθλητής" , ja: "アスリート", tl: "atleta" },
+  basketball_player: { bg: "баскетболист", en: "basketball player", de: "Basketballspieler", fr: "basketteur", it: "cestista", tr: "basketbolcu", es: "baloncestista", el: "καλαθοσφαιριστής" , ja: "バスケットボール選手", tl: "basketbolista" },
+  boxer: { bg: "боксьор", en: "boxer", de: "Boxer", fr: "boxeur", it: "pugile", tr: "boksör", es: "boxeador", el: "πυγμάχος" , ja: "ボクサー", tl: "boksingero" },
+  canoeist: { bg: "кануист", en: "canoeist", de: "Kanute", fr: "canoéiste", it: "canoista", tr: "kanocu", es: "piragüista", el: "κανοϊστής" , ja: "カヌー選手", tl: "manlalaro ng kanoa" },
+  chef: { bg: "готвач", en: "chef", de: "Koch", fr: "chef cuisinier", it: "chef", tr: "aşçı", es: "chef", el: "σεφ" , ja: "料理人", tl: "chef" },
+  chess_player: { bg: "шахматист", en: "chess player", de: "Schachspieler", fr: "joueur d'échecs", it: "scacchista", tr: "satranç oyuncusu", es: "ajedrecista", el: "σκακιστής" , ja: "チェス選手", tl: "manlalaro ng ahedres" },
+  choreographer: { bg: "хореограф", en: "choreographer", de: "Choreograf", fr: "chorégraphe", it: "coreografo", tr: "koreograf", es: "coreógrafo", el: "χορογράφος" , ja: "振付家", tl: "koreograpo" },
+  clergy: { bg: "духовник", en: "clergy", de: "Geistlicher", fr: "ecclésiastique", it: "religioso", tr: "din adamı", es: "clérigo", el: "κληρικός" , ja: "聖職者", tl: "klero" },
+  composer: { bg: "композитор", en: "composer", de: "Komponist", fr: "compositeur", it: "compositore", tr: "besteci", es: "compositor", el: "συνθέτης" , ja: "作曲家", tl: "kompositor" },
+  conductor: { bg: "диригент", en: "conductor", de: "Dirigent", fr: "chef d'orchestre", it: "direttore d'orchestra", tr: "orkestra şefi", es: "director de orquesta", el: "μαέστρος" , ja: "指揮者", tl: "konduktor" },
+  cultural_manager: { bg: "културен мениджър", en: "cultural manager", de: "Kulturmanager", fr: "gestionnaire culturel", it: "manager culturale", tr: "kültür yöneticisi", es: "gestor cultural", el: "πολιτιστικός διαχειριστής" , ja: "文化マネージャー", tl: "tagapamahala ng kultura" },
+  designer: { bg: "дизайнер", en: "designer", de: "Designer", fr: "designer", it: "designer", tr: "tasarımcı", es: "diseñador", el: "σχεδιαστής" , ja: "デザイナー", tl: "disenyador" },
+  diplomat: { bg: "дипломат", en: "diplomat", de: "Diplomat", fr: "diplomate", it: "diplomatico", tr: "diplomat", es: "diplomático", el: "διπλωμάτης" , ja: "外交官", tl: "diplomatiko" },
+  economist: { bg: "икономист", en: "economist", de: "Ökonom", fr: "économiste", it: "economista", tr: "iktisatçı", es: "economista", el: "οικονομολόγος" , ja: "経済学者", tl: "ekonomista" },
+  educator: { bg: "педагог", en: "educator", de: "Pädagoge", fr: "pédagogue", it: "pedagogo", tr: "eğitimci", es: "pedagogo", el: "παιδαγωγός" , ja: "教育者", tl: "edukador" },
+  electrical_engineer: { bg: "електроинженер", en: "electrical engineer", de: "Elektroingenieur", fr: "ingénieur électricien", it: "ingegnere elettrico", tr: "elektrik mühendisi", es: "ingeniero eléctrico", el: "ηλεκτρολόγος μηχανικός" , ja: "電気技師", tl: "inhinyerong elektrikal" },
+  engineer: { bg: "инженер", en: "engineer", de: "Ingenieur", fr: "ingénieur", it: "ingegnere", tr: "mühendis", es: "ingeniero", el: "μηχανικός" , ja: "技師", tl: "inhinyero" },
+  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler", fr: "cavalier", it: "cavaliere", tr: "binici", es: "jinete", el: "ιππέας" , ja: "馬術選手", tl: "mangangabayo" },
+  fencer: { bg: "фехтовач", en: "fencer", de: "Fechter", fr: "escrimeur", it: "schermidore", tr: "eskrimci", es: "esgrimista", el: "ξιφομάχος" , ja: "フェンシング選手", tl: "esgrimista" },
+  film_director: { bg: "филмов режисьор", en: "film director", de: "Filmregisseur", fr: "réalisateur", it: "regista cinematografico", tr: "film yönetmeni", es: "director de cine", el: "σκηνοθέτης κινηματογράφου" , ja: "映画監督", tl: "direktor ng pelikula" },
+  first_lady: { bg: "първа дама", en: "first lady", de: "First Lady", fr: "première dame", it: "first lady", tr: "first lady", es: "primera dama", el: "πρώτη κυρία" , ja: "ファーストレディー", tl: "Unang Ginang" },
+  football_referee: { bg: "футболен съдия", en: "football referee", de: "Fußballschiedsrichter", fr: "arbitre de football", it: "arbitro di calcio", tr: "futbol hakemi", es: "árbitro de fútbol", el: "διαιτητής ποδοσφαίρου" , ja: "サッカー審判員", tl: "referi ng football" },
+  footballer: { bg: "футболист", en: "footballer", de: "Fußballspieler", fr: "footballeur", it: "calciatore", tr: "futbolcu", es: "futbolista", el: "ποδοσφαιριστής" , ja: "サッカー選手", tl: "manlalaro ng football" },
+  general: { bg: "генерал", en: "general", de: "General", fr: "général", it: "generale", tr: "general", es: "general", el: "στρατηγός" , ja: "将軍", tl: "heneral" },
+  geographer: { bg: "географ", en: "geographer", de: "Geograf", fr: "géographe", it: "geografo", tr: "coğrafyacı", es: "geógrafo", el: "γεωγράφος" , ja: "地理学者", tl: "geograpo" },
+  gymnast: { bg: "гимнастик", en: "gymnast", de: "Turner", fr: "gymnaste", it: "ginnasta", tr: "jimnastikçi", es: "gimnasta", el: "γυμναστής" , ja: "体操選手", tl: "jimnasta" },
+  high_jumper: { bg: "скачач на височина", en: "high jumper", de: "Hochspringer", fr: "sauteur en hauteur", it: "saltatore in alto", tr: "yüksek atlamacı", es: "saltador de altura", el: "άλτης ύψους" , ja: "走高跳選手", tl: "tumatalon nang mataas" },
+  illustrator: { bg: "илюстратор", en: "illustrator", de: "Illustrator", fr: "illustrateur", it: "illustratore", tr: "illüstratör", es: "ilustrador", el: "εικονογράφος" , ja: "イラストレーター", tl: "ilustrador" },
+  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower", de: "Speerwerfer", fr: "lanceur de javelot", it: "lanciatore di giavellotto", tr: "cirit atıcısı", es: "lanzador de jabalina", el: "ακοντιστής" , ja: "やり投げ選手", tl: "naghahagis ng habalina" },
+  journalist: { bg: "журналист", en: "journalist", de: "Journalist", fr: "journaliste", it: "giornalista", tr: "gazeteci", es: "periodista", el: "δημοσιογράφος" , ja: "ジャーナリスト", tl: "mamamahayag" },
+  jurist: { bg: "юрист", en: "jurist", de: "Jurist", fr: "juriste", it: "giurista", tr: "hukukçu", es: "jurista", el: "νομικός" , ja: "法律家", tl: "hurista" },
+  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist", de: "Kampfsportler", fr: "artiste martial", it: "artista marziale", tr: "dövüş sanatçısı", es: "artista marcial", el: "αθλητής πολεμικών τεχνών" , ja: "武道家", tl: "mandirigma" },
+  mathematician: { bg: "математик", en: "mathematician", de: "Mathematiker", fr: "mathématicien", it: "matematico", tr: "matematikçi", es: "matemático", el: "μαθηματικός" , ja: "数学者", tl: "matematiko" },
+  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister", fr: "maire", it: "sindaco", tr: "belediye başkanı", es: "alcalde", el: "δήμαρχος" , ja: "市長", tl: "alkalde" },
+  merchant: { bg: "търговец", en: "merchant", de: "Kaufmann", fr: "marchand", it: "mercante", tr: "tüccar", es: "comerciante", el: "έμπορος" , ja: "商人", tl: "mangangalakal" },
+  military_officer: { bg: "офицер", en: "military officer", de: "Offizier", fr: "officier", it: "ufficiale", tr: "subay", es: "oficial", el: "αξιωματικός" , ja: "軍人", tl: "opisyal militar" },
+  mineralogist: { bg: "минералог", en: "mineralogist", de: "Mineraloge", fr: "minéralogiste", it: "mineralogista", tr: "mineralog", es: "mineralogista", el: "ορυκτολόγος" , ja: "鉱物学者", tl: "mineralogo" },
+  missionary: { bg: "мисионер", en: "missionary", de: "Missionar", fr: "missionnaire", it: "missionario", tr: "misyoner", es: "misionero", el: "ιεραπόστολος" , ja: "宣教師", tl: "misyonero" },
+  model: { bg: "модел", en: "model", de: "Model", fr: "mannequin", it: "modella", tr: "manken", es: "modelo", el: "μοντέλο" , ja: "モデル", tl: "modelo" },
+  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete", de: "Moderner Fünfkämpfer", fr: "pentathlonien moderne", it: "pentatleta moderno", tr: "modern pentatlet", es: "pentatleta moderno", el: "αθλητής σύγχρονου πεντάθλου" , ja: "近代五種選手", tl: "atleta ng modernong pentahlon" },
+  musician: { bg: "музикант", en: "musician", de: "Musiker", fr: "musicien", it: "musicista", tr: "müzisyen", es: "músico", el: "μουσικός" , ja: "音楽家", tl: "musikero" },
+  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger", fr: "chanteur d'opéra", it: "cantante lirico", tr: "opera sanatçısı", es: "cantante de ópera", el: "λυρικός τραγουδιστής" , ja: "オペラ歌手", tl: "mang-aawit ng opera" },
+  painter: { bg: "живописец", en: "painter", de: "Maler", fr: "peintre", it: "pittore", tr: "ressam", es: "pintor", el: "ζωγράφος" , ja: "画家", tl: "pintor" },
+  paleontologist: { bg: "палеонтолог", en: "paleontologist", de: "Paläontologe", fr: "paléontologue", it: "paleontologo", tr: "paleontolog", es: "paleontólogo", el: "παλαιοντολόγος" , ja: "古生物学者", tl: "paleontologo" },
+  patriarch: { bg: "патриарх", en: "patriarch", de: "Patriarch", fr: "patriarche", it: "patriarca", tr: "patrik", es: "patriarca", el: "πατριάρχης" , ja: "総主教", tl: "patriyarka" },
+  philosopher: { bg: "философ", en: "philosopher", de: "Philosoph", fr: "philosophe", it: "filosofo", tr: "filozof", es: "filósofo", el: "φιλόσοφος" , ja: "哲学者", tl: "pilosopo" },
+  physicist: { bg: "физик", en: "physicist", de: "Physiker", fr: "physicien", it: "fisico", tr: "fizikçi", es: "físico", el: "φυσικός" , ja: "物理学者", tl: "pisiko" },
+  pianist: { bg: "пианист", en: "pianist", de: "Pianist", fr: "pianiste", it: "pianista", tr: "piyanist", es: "pianista", el: "πιανίστας" , ja: "ピアニスト", tl: "pyanista" },
+  poet: { bg: "поет", en: "poet", de: "Dichter", fr: "poète", it: "poeta", tr: "şair", es: "poeta", el: "ποιητής" , ja: "詩人", tl: "makata" },
+  politician: { bg: "политик", en: "politician", de: "Politiker", fr: "politicien", it: "politico", tr: "siyasetçi", es: "político", el: "πολιτικός" , ja: "政治家", tl: "pulitiko" },
+  priest: { bg: "свещеник", en: "priest", de: "Priester", fr: "prêtre", it: "sacerdote", tr: "rahip", es: "sacerdote", el: "ιερέας" , ja: "司祭", tl: "pari" },
+  printmaker: { bg: "график", en: "printmaker", de: "Grafiker", fr: "graveur", it: "incisore", tr: "gravürcü", es: "grabador", el: "χαράκτης" , ja: "版画家", tl: "tagagawa ng grabado" },
+  producer: { bg: "продуцент", en: "producer", de: "Produzent", fr: "producteur", it: "produttore", tr: "yapımcı", es: "productor", el: "παραγωγός" , ja: "プロデューサー", tl: "produser" },
+  public_figure: { bg: "обществена фигура", en: "public figure", de: "Person des öffentlichen Lebens", fr: "personnalité publique", it: "personaggio pubblico", tr: "kamusal figür", es: "figura pública", el: "δημόσιο πρόσωπο" , ja: "公人", tl: "pampublikong personalidad" },
+  racing_driver: { bg: "автомобилен състезател", en: "racing driver", de: "Rennfahrer", fr: "pilote automobile", it: "pilota automobilistico", tr: "yarış pilotu", es: "piloto de carreras", el: "οδηγός αγώνων" , ja: "レーシングドライバー", tl: "drayber ng karera" },
+  revolutionary: { bg: "революционер", en: "revolutionary", de: "Revolutionär", fr: "révolutionnaire", it: "rivoluzionario", tr: "devrimci", es: "revolucionario", el: "επαναστάτης" , ja: "革命家", tl: "rebolusyonaryo" },
+  rower: { bg: "гребец", en: "rower", de: "Ruderer", fr: "rameur", it: "canottiere", tr: "kürekçi", es: "remero", el: "κωπηλάτης" , ja: "ボート選手", tl: "mananagwan" },
+  saint: { bg: "светец", en: "saint", de: "Heiliger", fr: "saint", it: "santo", tr: "aziz", es: "santo", el: "άγιος" , ja: "聖人", tl: "santo" },
+  scholar: { bg: "учен", en: "scholar", de: "Gelehrter", fr: "érudit", it: "studioso", tr: "âlim", es: "erudito", el: "λόγιος" , ja: "学者", tl: "iskolar" },
+  scientist: { bg: "учен", en: "scientist", de: "Wissenschaftler", fr: "scientifique", it: "scienziato", tr: "bilim insanı", es: "científico", el: "επιστήμονας" , ja: "科学者", tl: "siyentista" },
+  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor", fr: "scénariste", it: "sceneggiatore", tr: "senarist", es: "guionista", el: "σεναριογράφος" , ja: "脚本家", tl: "manunulat ng iskrip" },
+  sculptor: { bg: "скулптор", en: "sculptor", de: "Bildhauer", fr: "sculpteur", it: "scultore", tr: "heykeltıraş", es: "escultor", el: "γλύπτης" , ja: "彫刻家", tl: "eskultor" },
+  singer: { bg: "певец", en: "singer", de: "Sänger", fr: "chanteur", it: "cantante", tr: "şarkıcı", es: "cantante", el: "τραγουδιστής" , ja: "歌手", tl: "mang-aawit" },
+  sports_shooter: { bg: "спортен стрелец", en: "sport shooter", de: "Sportschütze", fr: "tireur sportif", it: "tiratore sportivo", tr: "atıcı", es: "tirador deportivo", el: "σκοπευτής" , ja: "射撃選手", tl: "mamamaril sa isports" },
+  swimmer: { bg: "плувец", en: "swimmer", de: "Schwimmer", fr: "nageur", it: "nuotatore", tr: "yüzücü", es: "nadador", el: "κολυμβητής" , ja: "水泳選手", tl: "manlalangoy" },
+  tennis_player: { bg: "тенисист", en: "tennis player", de: "Tennisspieler", fr: "joueur de tennis", it: "tennista", tr: "tenisçi", es: "tenista", el: "τενίστας" , ja: "テニス選手", tl: "manlalaro ng tenis" },
+  theatre_director: { bg: "театрален режисьор", en: "theatre director", de: "Theaterregisseur", fr: "metteur en scène", it: "regista teatrale", tr: "tiyatro yönetmeni", es: "director de teatro", el: "σκηνοθέτης θεάτρου" , ja: "演劇演出家", tl: "direktor ng dulaan" },
+  violinist: { bg: "цигулар", en: "violinist", de: "Geiger", fr: "violoniste", it: "violinista", tr: "kemancı", es: "violinista", el: "βιολιστής" , ja: "バイオリニスト", tl: "biyolinista" },
+  visual_artist: { bg: "визуален художник", en: "visual artist", de: "Bildender Künstler", fr: "artiste visuel", it: "artista visivo", tr: "görsel sanatçı", es: "artista visual", el: "εικαστικός καλλιτέχνης" , ja: "ビジュアルアーティスト", tl: "biswal na artista" },
+  volleyball_player: { bg: "волейболист", en: "volleyball player", de: "Volleyballspieler", fr: "volleyeur", it: "pallavolista", tr: "voleybolcu", es: "voleibolista", el: "πετοσφαιριστής" , ja: "バレーボール選手", tl: "manlalaro ng volleyball" },
+  weightlifter: { bg: "щангист", en: "weightlifter", de: "Gewichtheber", fr: "haltérophile", it: "sollevatore di pesi", tr: "halterci", es: "halterófilo", el: "αρσιβαρίστας" , ja: "重量挙げ選手", tl: "tagabuhat ng bigat" },
+  wrestler: { bg: "борец", en: "wrestler", de: "Ringer", fr: "lutteur", it: "lottatore", tr: "güreşçi", es: "luchador", el: "παλαιστής" , ja: "レスリング選手", tl: "mambubuno" },
+  writer: { bg: "писател", en: "writer", de: "Schriftsteller", fr: "écrivain", it: "scrittore", tr: "yazar", es: "escritor", el: "συγγραφέας" , ja: "作家", tl: "manunulat" },
+  zoologist: { bg: "зоолог", en: "zoologist", de: "Zoologe", fr: "zoologiste", it: "zoologo", tr: "zoolog", es: "zoólogo", el: "ζωολόγος", ja: "動物学者", tl: "zoologo" }
 };

@@ -4,7 +4,7 @@ import process from "node:process";
 
 const root = process.cwd();
 const checkedAt = "2026-06-30";
-const localizedRouteLanguages = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja"];
+const localizedRouteLanguages = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl"];
 const translationTargetLanguages = localizedRouteLanguages.filter((lang) => lang !== "bg" && lang !== "en");
 
 const places = readJson("data/generated/history-knowledge/places.json");

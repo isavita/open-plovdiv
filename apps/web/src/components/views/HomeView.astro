@@ -51,8 +51,9 @@ const tr = (
   trk: string,
   es: string,
   el: string,
-  ja: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja } satisfies Record<Lang, string>)[lang];
+  ja: string,
+  tl: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl } satisfies Record<Lang, string>)[lang];
 
 const labels = {
   heroMotto: tr(
@@ -64,9 +65,10 @@ const labels = {
     "\u201CAylak\u201D, Plovdiv'in acele etmeme sanatına verdiği addır. Şehri aynı ruhla keşfedin — acele etmeden, katman katman.",
     "«Ailyak» es la palabra de Plovdiv para el arte de tomarse las cosas con calma. Explore la ciudad con el mismo espíritu: sin prisa, capa a capa.",
     "«Αϊλιάκ» είναι η λέξη της Φιλιππούπολης για την τέχνη να μη βιάζεσαι. Εξερευνήστε την πόλη με το ίδιο πνεύμα — αβίαστα, στρώμα στρώμα.",
-    "「アイリャク」は、急がない技をあらわすプロヴディフの言葉。同じ心持ちで、街をゆっくり、層をたどるように巡ってください。"
+    "「アイリャク」は、急がない技をあらわすプロヴディフの言葉。同じ心持ちで、街をゆっくり、層をたどるように巡ってください。",
+    "Ang “Ailyak” ay ang salitang Plovdiv para sa sining ng hindi pagmamadali. Galugarin ang lungsod sa parehong diwa — walang pagmamadali, patong-patong."
   ),
-  startTitle: tr("Започнете спокойно", "Start slowly", "Beginnen Sie in Ruhe", "Commencez sans hâte", "Iniziate con calma", "Sakin başlayın", "Empiece con calma", "Ξεκινήστε ήρεμα", "ゆっくり始める"),
+  startTitle: tr("Започнете спокойно", "Start slowly", "Beginnen Sie in Ruhe", "Commencez sans hâte", "Iniziate con calma", "Sakin başlayın", "Empiece con calma", "Ξεκινήστε ήρεμα", "ゆっくり始める", "Magsimula nang dahan-dahan"),
   startLead: tr(
     "Четири спокойни входа към града — за гости, за любопитни и за всеки, който иска да опознае историята на Пловдив.",
     "Four unhurried ways into the city — for visitors, for the curious, and for anyone who wants to know Plovdiv's history.",
@@ -76,9 +78,10 @@ const labels = {
     "Şehre dört sakin giriş — ziyaretçiler, meraklılar ve Plovdiv'in tarihini öğrenmek isteyen herkes için.",
     "Cuatro entradas tranquilas a la ciudad: para visitantes, curiosos y cualquiera que quiera conocer la historia de Plovdiv.",
     "Τέσσερις ήρεμες είσοδοι στην πόλη — για επισκέπτες, για περίεργους και για όποιον θέλει να γνωρίσει την ιστορία της πόλης.",
-    "街への4つの静かな入口 — 旅行者にも、好奇心のある人にも、プロヴディフの歴史を知りたいすべての人へ。"
+    "街への4つの静かな入口 — 旅行者にも、好奇心のある人にも、プロヴディフの歴史を知りたいすべての人へ。",
+    "Apat na hindi nagmamadaling daan patungo sa lungsod — para sa mga bisita, sa mga mausisa, at sa sinumang gustong malaman ang kasaysayan ng Plovdiv."
   ),
-  historyPath: tr("Разгледай историята", "Explore the history", "Geschichte erkunden", "Explorer l'histoire", "Esplora la storia", "Tarihi keşfet", "Explorar la historia", "Εξερεύνηση ιστορίας", "歴史を探る"),
+  historyPath: tr("Разгледай историята", "Explore the history", "Geschichte erkunden", "Explorer l'histoire", "Esplora la storia", "Tarihi keşfet", "Explorar la historia", "Εξερεύνηση ιστορίας", "歴史を探る", "Galugarin ang kasaysayan"),
   historyPathText: tr(
     "Хронология, личности, разкази и източници от праисторията до днес.",
     "Timeline, people, stories and sources from prehistory to today.",
@@ -88,9 +91,10 @@ const labels = {
     "Tarih öncesinden bugüne zaman çizelgesi, kişiler, anlatılar ve kaynaklar.",
     "Cronología, personas, relatos y fuentes desde la prehistoria hasta hoy.",
     "Χρονολόγιο, πρόσωπα, αφηγήσεις και πηγές από την προϊστορία έως σήμερα.",
-    "先史時代から現在までの年表、人物、ストーリー、出典。"
+    "先史時代から現在までの年表、人物、ストーリー、出典。",
+    "Talaan ng kasaysayan, tao, kuwento, at pinagmulan mula sa panahong prehistoriko hanggang ngayon."
   ),
-  routesPath: tr("Тръгни по маршрутите", "Walk the routes", "Die Routen ablaufen", "Suivre les parcours", "Percorri gli itinerari", "Rotalarda yürü", "Recorrer las rutas", "Περπατήστε τις διαδρομές", "ルートを歩く"),
+  routesPath: tr("Тръгни по маршрутите", "Walk the routes", "Die Routen ablaufen", "Suivre les parcours", "Percorri gli itinerari", "Rotalarda yürü", "Recorrer las rutas", "Περπατήστε τις διαδρομές", "ルートを歩く", "Lakarin ang mga ruta"),
   routesPathText: tr(
     "Кратки пешеходни маршрути през римския, османския, възрожденския и гражданския пласт на града.",
     "Short walking routes through the Roman, Ottoman, Revival and civic layers of the city.",
@@ -100,9 +104,10 @@ const labels = {
     "Şehrin Roma, Osmanlı, Uyanış ve yurttaş katmanlarında kısa yürüyüş rotaları.",
     "Rutas cortas por las capas romana, otomana, renacentista y cívica de la ciudad.",
     "Σύντομες διαδρομές στα ρωμαϊκά, οθωμανικά, αναγεννησιακά και αστικά στρώματα της πόλης.",
-    "ローマ、オスマン、民族復興、市民記憶の層を歩く短い散策ルート。"
+    "ローマ、オスマン、民族復興、市民記憶の層を歩く短い散策ルート。",
+    "Maiikling ruta na paglalakaran sa Romano, Ottoman, Pambansang Muling Pagsilang, at sibikong yugto ng lungsod."
   ),
-  placesPath: tr("Открий местата", "Find the places", "Orte entdecken", "Découvrir les lieux", "Scopri i luoghi", "Yerleri keşfet", "Descubrir los lugares", "Ανακαλύψτε τα μέρη", "場所を見つける"),
+  placesPath: tr("Открий местата", "Find the places", "Orte entdecken", "Découvrir les lieux", "Scopri i luoghi", "Yerleri keşfet", "Descubrir los lugares", "Ανακαλύψτε τα μέρη", "場所を見つける", "Hanapin ang mga lugar"),
   placesPathText: tr(
     "Карта и каталог на местата и забележителностите — с епохи, снимки и източници.",
     "A map and catalogue of the city's places and landmarks — with eras, photos and sources.",
@@ -112,9 +117,10 @@ const labels = {
     "Yerlerin ve anıtların haritası ve kataloğu — dönemler, fotoğraflar ve kaynaklarla.",
     "Un mapa y un catálogo de lugares y monumentos, con épocas, fotos y fuentes.",
     "Χάρτης και κατάλογος τόπων και αξιοθέατων — με εποχές, φωτογραφίες και πηγές.",
-    "街の場所と名所を地図とカタログで — 時代、写真、出典つき。"
+    "街の場所と名所を地図とカタログで — 時代、写真、出典つき。",
+    "Isang mapa at katalogo ng mga lugar at makasaysayang lugar ng lungsod — may yugto, larawan, at pinagmulan."
   ),
-  storiesPath: tr("Прочети разказите", "Read the stories", "Die Geschichten lesen", "Lire les récits", "Leggi i racconti", "Anlatıları oku", "Leer los relatos", "Διαβάστε τις αφηγήσεις", "物語を読む"),
+  storiesPath: tr("Прочети разказите", "Read the stories", "Die Geschichten lesen", "Lire les récits", "Leggi i racconti", "Anlatıları oku", "Leer los relatos", "Διαβάστε τις αφηγήσεις", "物語を読む", "Basahin ang mga kuwento"),
   storiesPathText: tr(
     "Дълги разкази с архивни снимки — земетресението от 1928 г., панаирният град, тепетата и още.",
     "Long reads with archive photographs — the 1928 earthquake, the fair city, the hills and more.",
@@ -124,7 +130,8 @@ const labels = {
     "Arşiv fotoğraflı uzun anlatılar — 1928 depremi, fuar şehri, tepeler ve daha fazlası.",
     "Relatos largos con fotos de archivo: el terremoto de 1928, la ciudad ferial, las colinas y más.",
     "Εκτενείς αφηγήσεις με αρχειακές φωτογραφίες — ο σεισμός του 1928, η πόλη της έκθεσης, οι λόφοι και άλλα.",
-    "アーカイブ写真とともに読む長編 — 1928年の地震、見本市の街、丘の物語など。"
+    "アーカイブ写真とともに読む長編 — 1928年の地震、見本市の街、丘の物語など。",
+    "Mahahabang artikulo na may larawan mula sa arkibo — ang lindol noong 1928, ang lungsod ng piyesta, ang mga burol, at marami pa."
   ),
   essentialsTitle: tr(
     "Четири места, където айлякът се усеща",
@@ -135,7 +142,8 @@ const labels = {
     "Aylak ruhunu hissedeceğiniz dört yer",
     "Cuatro lugares donde sentir el ailyak",
     "Τέσσερα μέρη όπου νιώθεις το αϊλιάκ",
-    "アイリャクを感じる4つの場所"
+    "アイリャクを感じる4つの場所",
+    "Apat na lugar para maramdaman ang ailyak"
   ),
   essentialsLead: tr(
     "Ако сте в града за първи път, започнете оттук — четири места на кратко пешеходно разстояние едно от друго.",
@@ -146,10 +154,11 @@ const labels = {
     "Şehre ilk kez geliyorsanız buradan başlayın — birbirine kısa yürüyüş mesafesinde dört yer.",
     "Si es su primera vez en la ciudad, empiece aquí: cuatro lugares a poca distancia a pie entre sí.",
     "Αν είναι η πρώτη σας φορά στην πόλη, ξεκινήστε από εδώ — τέσσερα μέρη σε μικρή απόσταση με τα πόδια μεταξύ τους.",
-    "初めて訪れるなら、ここから。歩いてすぐの距離に並ぶ4つの場所です。"
+    "初めて訪れるなら、ここから。歩いてすぐの距離に並ぶ4つの場所です。",
+    "Kung unang beses mo sa lungsod, magsimula rito — apat na lugar na magkakalapit at madaling lakarin."
   ),
-  oldTownEyebrow: tr("Възраждане", "Revival", "Wiedergeburt", "Renaissance bulgare", "Rinascita", "Uyanış", "Renacimiento", "Αναγέννηση", "民族復興期"),
-  oldTownTitle: tr("Старият град", "The Old Town", "Die Altstadt", "La vieille ville", "La città vecchia", "Eski Şehir", "El casco antiguo", "Η Παλιά Πόλη", "旧市街"),
+  oldTownEyebrow: tr("Възраждане", "Revival", "Wiedergeburt", "Renaissance bulgare", "Rinascita", "Uyanış", "Renacimiento", "Αναγέννηση", "民族復興期", "Pambansang Muling Pagsilang"),
+  oldTownTitle: tr("Старият град", "The Old Town", "Die Altstadt", "La vieille ville", "La città vecchia", "Eski Şehir", "El casco antiguo", "Η Παλιά Πόλη", "旧市街", "Ang Lumang Bayan"),
   oldTownText: tr(
     "Възрожденски къщи и калдъръмени улици по трите хълма — без план, просто се изкачвайте.",
     "Revival-era houses and cobbled lanes across the three hills — no plan needed, just wander uphill.",
@@ -159,10 +168,11 @@ const labels = {
     "Üç tepeye yayılmış Uyanış dönemi evleri ve arnavut kaldırımlı sokaklar — plana gerek yok, yokuş yukarı yürüyün.",
     "Casas del Renacimiento búlgaro y callejuelas empedradas sobre tres colinas: sin plan, simplemente suba.",
     "Σπίτια της Αναγέννησης και λιθόστρωτα σοκάκια σε τρεις λόφους — χωρίς σχέδιο, απλώς ανηφορίστε.",
-    "三つの丘に広がる民族復興期の家並みと石畳の路地。計画は不要、坂を登るだけ。"
+    "三つの丘に広がる民族復興期の家並みと石畳の路地。計画は不要、坂を登るだけ。",
+    "Mga bahay mula sa panahon ng Pambansang Muling Pagsilang at kalyeng bato sa tatlong burol — walang kailangang plano, maglakad na lang paakyat."
   ),
-  theatreEyebrow: tr("Римска епоха", "Roman", "Römisch", "Époque romaine", "Epoca romana", "Roma dönemi", "Época romana", "Ρωμαϊκή εποχή", "ローマ時代"),
-  theatreTitle: tr("Античният театър", "The Ancient Theatre", "Das antike Theater", "Le théâtre antique", "Il teatro antico", "Antik Tiyatro", "El teatro antiguo", "Το αρχαίο θέατρο", "古代劇場"),
+  theatreEyebrow: tr("Римска епоха", "Roman", "Römisch", "Époque romaine", "Epoca romana", "Roma dönemi", "Época romana", "Ρωμαϊκή εποχή", "ローマ時代", "Panahong Romano"),
+  theatreTitle: tr("Античният театър", "The Ancient Theatre", "Das antike Theater", "Le théâtre antique", "Il teatro antico", "Antik Tiyatro", "El teatro antiguo", "Το αρχαίο θέατρο", "古代劇場", "Ang Sinaunang Teatro"),
   theatreText: tr(
     "Римски театър от I век, все още действаща сцена. Най-добре е привечер, с изглед към Родопите.",
     "A 1st-century Roman theatre that is still a working stage. Best towards evening, with the Rhodopes on the horizon.",
@@ -172,10 +182,11 @@ const labels = {
     "1. yüzyıldan kalma, hâlâ sahne olarak kullanılan bir Roma tiyatrosu. En güzeli akşama doğru, ufukta Rodoplarla.",
     "Un teatro romano del siglo I que sigue siendo un escenario. Mejor al atardecer, con los Ródopes en el horizonte.",
     "Ρωμαϊκό θέατρο του 1ου αιώνα, ακόμη ενεργή σκηνή. Ιδανικό προς το βράδυ, με τη Ροδόπη στον ορίζοντα.",
-    "1世紀のローマ劇場は、今も現役の舞台。ロドピ山脈を望む夕暮れどきが最高です。"
+    "1世紀のローマ劇場は、今も現役の舞台。ロドピ山脈を望む夕暮れどきが最高です。",
+    "Isang teatrong Romano mula ika-1 siglo na gumagana pa rin bilang entablado. Pinakamaganda tuwing gabi, may tanawin ng mga bundok Rhodope sa abot-tanaw."
   ),
-  kapanaEyebrow: tr("Кварталът на изкуствата", "Arts district", "Kunstviertel", "Quartier des arts", "Quartiere delle arti", "Sanat semti", "Barrio de las artes", "Συνοικία τεχνών", "アート地区"),
-  kapanaTitle: tr("Капана", "Kapana", "Kapana", "Kapana", "Kapana", "Kapana", "Kapana", "Καπάνα", "カパナ"),
+  kapanaEyebrow: tr("Кварталът на изкуствата", "Arts district", "Kunstviertel", "Quartier des arts", "Quartiere delle arti", "Sanat semti", "Barrio de las artes", "Συνοικία τεχνών", "アート地区", "Distrito ng sining"),
+  kapanaTitle: tr("Капана", "Kapana", "Kapana", "Kapana", "Kapana", "Kapana", "Kapana", "Καπάνα", "カパナ", "Kapana"),
   kapanaText: tr(
     "„Капанът“ — стари занаятчийски улички, днес квартал на изкуствата, кафенета и бавни следобеди.",
     "\u201CThe Trap\u201D — old artisan lanes, today a district of arts, cafés and slow afternoons.",
@@ -185,10 +196,11 @@ const labels = {
     "\u201CKapan\u201D — eski zanaatkâr sokakları; bugün sanatın, kahvelerin ve yavaş öğleden sonraların semti.",
     "«La Trampa»: antiguas calles de artesanos, hoy un barrio de arte, cafés y tardes lentas.",
     "«Η Παγίδα» — παλιά σοκάκια τεχνιτών, σήμερα συνοικία τεχνών, καφέ και αργών απογευμάτων.",
-    "「罠」という名の旧職人街。いまはアートとカフェ、ゆったりした午後の地区です。"
+    "「罠」という名の旧職人街。いまはアートとカフェ、ゆったりした午後の地区です。",
+    "\u201CAng Patibong\u201D — lumang kalye ng mga panday-kamay, ngayon ay distrito ng sining, mga kapehan, at mabagal na hapon."
   ),
-  nebetEyebrow: tr("Праистория", "Prehistory", "Vorgeschichte", "Préhistoire", "Preistoria", "Tarih öncesi", "Prehistoria", "Προϊστορία", "先史時代"),
-  nebetTitle: tr("Небет тепе", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Νεμπέτ Τεπέ", "ネベト・テペ"),
+  nebetEyebrow: tr("Праистория", "Prehistory", "Vorgeschichte", "Préhistoire", "Preistoria", "Tarih öncesi", "Prehistoria", "Προϊστορία", "先史時代", "Prehistorya"),
+  nebetTitle: tr("Небет тепе", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Νεμπέτ Τεπέ", "ネベト・テペ", "Nebet Tepe"),
   nebetText: tr(
     "Най-старото обитавано място в града — праисторическо селище и най-хубавият залез над покривите.",
     "The oldest inhabited spot in the city — a prehistoric settlement and the best sunset over the rooftops.",
@@ -198,9 +210,10 @@ const labels = {
     "Şehrin en eski yerleşim noktası — tarih öncesi bir yerleşme ve çatıların üzerindeki en güzel gün batımı.",
     "El lugar habitado más antiguo de la ciudad: un asentamiento prehistórico y la mejor puesta de sol sobre los tejados.",
     "Το παλαιότερο κατοικημένο σημείο της πόλης — προϊστορικός οικισμός και το ωραιότερο ηλιοβασίλεμα πάνω από τις στέγες.",
-    "市内最古の居住地。先史時代の集落跡から、屋根越しに最高の夕日を望めます。"
+    "市内最古の居住地。先史時代の集落跡から、屋根越しに最高の夕日を望めます。",
+    "Ang pinakamatandang tinirhang lugar sa lungsod — isang prehistorikong pamayanan at ang pinakamagandang paglubog ng araw sa ibabaw ng mga bubong."
   ),
-  allPlaces: tr("Всички места", "All places", "Alle Orte", "Tous les lieux", "Tutti i luoghi", "Tüm yerler", "Todos los lugares", "Όλα τα μέρη", "すべての場所"),
+  allPlaces: tr("Всички места", "All places", "Alle Orte", "Tous les lieux", "Tutti i luoghi", "Tüm yerler", "Todos los lugares", "Όλα τα μέρη", "すべての場所", "Lahat ng lugar"),
   mayorsTitle: tr(
     "От първия кмет до днешния",
     "From the first mayor to today's",
@@ -210,7 +223,8 @@ const labels = {
     "İlk belediye başkanından bugünküne",
     "Del primer alcalde al actual",
     "Από τον πρώτο δήμαρχο έως τον σημερινό",
-    "初代市長から現職まで"
+    "初代市長から現職まで",
+    "Mula sa unang alkalde hanggang sa kasalukuyan"
   ),
   mayorsLead: tr(
     "По един кмет от началото на всеки политически период — от Освобождението до действащия мандат. Пълната хронология проследява всички мандати с биографии и източници.",
@@ -221,13 +235,14 @@ const labels = {
     "Her siyasi dönemin başından birer belediye başkanı — Kurtuluş'tan görevdeki başkana. Tam kronoloji, tüm görev sürelerini biyografiler ve kaynaklarla izler.",
     "Un alcalde del inicio de cada periodo político: de la Liberación al mandato actual. La cronología completa recorre todos los mandatos con biografías y fuentes.",
     "Ένας δήμαρχος από την αρχή κάθε πολιτικής περιόδου — από την Απελευθέρωση έως τη σημερινή θητεία. Το πλήρες χρονολόγιο καλύπτει όλες τις θητείες με βιογραφίες και πηγές.",
-    "各政治時代の最初の市長を一人ずつ — 解放から現職まで。完全な年譜では、すべての任期を経歴と出典つきでたどれます。"
+    "各政治時代の最初の市長を一人ずつ — 解放から現職まで。完全な年譜では、すべての任期を経歴と出典つきでたどれます。",
+    "Isang alkalde mula sa simula ng bawat panahong pampulitika — mula sa Paglaya hanggang sa kasalukuyang termino. Sinusundan ng kumpletong kronolohiya ang bawat termino kasama ang talambuhay at pinagmulan."
   ),
-  eraLiberation: tr("След Освобождението", "Post-Liberation", "Nach der Befreiung", "Après la Libération", "Post-Liberazione", "Kurtuluş sonrası", "Posliberación", "Μετά την Απελευθέρωση", "解放後"),
-  eraSocialist: tr("Социалистически период", "Socialist period", "Sozialistische Periode", "Période socialiste", "Periodo socialista", "Sosyalist dönem", "Periodo socialista", "Σοσιαλιστική περίοδος", "社会主義時代"),
-  eraDemocratic: tr("Демократичен период", "Democratic period", "Demokratische Periode", "Période démocratique", "Periodo democratico", "Demokratik dönem", "Periodo democrático", "Δημοκρατική περίοδος", "民主化以降"),
-  eraCurrent: tr("Настоящ мандат", "Current office", "Aktuelle Amtszeit", "Mandat en cours", "Mandato in corso", "Görevdeki başkan", "Mandato actual", "Τρέχουσα θητεία", "現職"),
-  allMayors: tr("Всички кметове", "All mayors", "Alle Bürgermeister", "Tous les maires", "Tutti i sindaci", "Tüm başkanlar", "Todos los alcaldes", "Όλοι οι δήμαρχοι", "歴代市長一覧"),
+  eraLiberation: tr("След Освобождението", "Post-Liberation", "Nach der Befreiung", "Après la Libération", "Post-Liberazione", "Kurtuluş sonrası", "Posliberación", "Μετά την Απελευθέρωση", "解放後", "Pagkatapos ng Paglaya"),
+  eraSocialist: tr("Социалистически период", "Socialist period", "Sozialistische Periode", "Période socialiste", "Periodo socialista", "Sosyalist dönem", "Periodo socialista", "Σοσιαλιστική περίοδος", "社会主義時代", "Panahong Sosyalista"),
+  eraDemocratic: tr("Демократичен период", "Democratic period", "Demokratische Periode", "Période démocratique", "Periodo democratico", "Demokratik dönem", "Periodo democrático", "Δημοκρατική περίοδος", "民主化以降", "Panahong Demokratiko"),
+  eraCurrent: tr("Настоящ мандат", "Current office", "Aktuelle Amtszeit", "Mandat en cours", "Mandato in corso", "Görevdeki başkan", "Mandato actual", "Τρέχουσα θητεία", "現職", "Kasalukuyang termino"),
+  allMayors: tr("Всички кметове", "All mayors", "Alle Bürgermeister", "Tous les maires", "Tutti i sindaci", "Tüm başkanlar", "Todos los alcaldes", "Όλοι οι δήμαρχοι", "歴代市長一覧", "Lahat ng alkalde"),
   civicTitle: tr(
     "Управление, участие и източници",
     "Governance, participation and sources",
@@ -237,7 +252,8 @@ const labels = {
     "Yönetim, katılım ve kaynaklar",
     "Gobernanza, participación y fuentes",
     "Διακυβέρνηση, συμμετοχή και πηγές",
-    "市政・参加・出典"
+    "市政・参加・出典",
+    "Pamamahala, paglahok, at pinagmulan"
   ),
   civicLead: tr(
     "Гражданската страна на сайта: архивът на управлението, тихи начини да помогнете и откъде идва всяко твърдение — без профили и без шум.",
@@ -248,7 +264,8 @@ const labels = {
     "Sitenin yurttaş tarafı: yönetim arşivi, sessizce yardım etme yolları ve her ifadenin kaynağı — hesapsız, gürültüsüz.",
     "El lado cívico del sitio: el archivo de la gobernanza, formas discretas de ayudar y el origen de cada afirmación, sin cuentas ni ruido.",
     "Η πολιτική πλευρά του ιστότοπου: το αρχείο της διακυβέρνησης, ήσυχοι τρόποι να βοηθήσετε και η προέλευση κάθε ισχυρισμού — χωρίς λογαριασμούς, χωρίς θόρυβο.",
-    "サイトの市民的な側面。市政アーカイブ、静かに助ける方法、そしてすべての記述の出典 — アカウントは不要です。"
+    "サイトの市民的な側面。市政アーカイブ、静かに助ける方法、そしてすべての記述の出典 — アカウントは不要です。",
+    "Ang sibikong bahagi ng site: ang arkibo ng pamamahala, tahimik na paraan para tumulong, at kung saan nanggaling ang bawat pahayag — walang account, walang ingay."
   ),
   govCardTitle: tr(
     "Архивът на управлението",
@@ -259,7 +276,8 @@ const labels = {
     "Yönetim arşivi",
     "El archivo de la gobernanza",
     "Το αρχείο της διακυβέρνησης",
-    "市政アーカイブ"
+    "市政アーカイブ",
+    "Ang arkibo ng pamamahala"
   ),
   sourcesCardTitle: tr(
     "Източници и методология",
@@ -270,7 +288,8 @@ const labels = {
     "Kaynaklar ve yöntem",
     "Fuentes y metodología",
     "Πηγές και μεθοδολογία",
-    "出典と方法論"
+    "出典と方法論",
+    "Mga pinagmulan at metodolohiya"
   ),
   sourcesCardText: tr(
     "Регистър на всички използвани източници — какво покриват, какви са ограниченията им и кога са проверени.",
@@ -281,10 +300,11 @@ const labels = {
     "Kullanılan tüm kaynakların kaydı — neyi kapsadıkları, sınırları ve ne zaman doğrulandıkları.",
     "Un registro de todas las fuentes utilizadas: qué cubren, sus limitaciones y cuándo se comprobaron.",
     "Μητρώο όλων των πηγών που χρησιμοποιούνται — τι καλύπτουν, τους περιορισμούς τους και πότε ελέγχθηκαν.",
-    "使用したすべての出典の一覧 — 対象範囲、限界、確認日を記載。"
+    "使用したすべての出典の一覧 — 対象範囲、限界、確認日を記載。",
+    "Isang rehistro ng bawat pinagmulang ginamit — ano ang saklaw nito, ang mga limitasyon, at kung kailan ito sinuri."
   ),
-  sourcesCount: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "件の出典"),
-  moreLabel: tr("Разгледай още:", "Explore more:", "Mehr entdecken:", "À explorer aussi :", "Da esplorare:", "Daha fazlası:", "Más para explorar:", "Περισσότερα:", "さらに見る："),
+  sourcesCount: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "件の出典", "pinagmulan"),
+  moreLabel: tr("Разгледай още:", "Explore more:", "Mehr entdecken:", "À explorer aussi :", "Da esplorare:", "Daha fazlası:", "Más para explorar:", "Περισσότερα:", "さらに見る：", "Galugarin pa:"),
   govCardText: tr(
     "Архивни промени, проекти и източници — подредени като доказателства за това какво се е променило.",
     "Archive changes, projects and sources — arranged as evidence of what changed.",
@@ -294,9 +314,10 @@ const labels = {
     "Arşiv değişiklikleri, projeler ve kaynaklar — neyin değiştiğinin kanıtı olarak düzenlendi.",
     "Cambios de archivo, proyectos y fuentes, ordenados como evidencia de lo que cambió.",
     "Αρχειακές αλλαγές, έργα και πηγές — ταξινομημένα ως τεκμήρια του τι άλλαξε.",
-    "アーカイブの変化、事業、出典 — 何が変わったかの証拠として整理。"
+    "アーカイブの変化、事業、出典 — 何が変わったかの証拠として整理。",
+    "Mga pagbabago sa arkibo, proyekto, at pinagmulan — inayos bilang ebidensya kung ano ang nagbago."
   ),
-  helpPath: tr("Помогни на града", "Help the city", "Der Stadt helfen", "Aider la ville", "Aiuta la città", "Şehre yardım et", "Ayudar a la ciudad", "Βοηθήστε την πόλη", "街を助ける"),
+  helpPath: tr("Помогни на града", "Help the city", "Der Stadt helfen", "Aider la ville", "Aiuta la città", "Şehre yardım et", "Ayudar a la ciudad", "Βοηθήστε την πόλη", "街を助ける", "Tumulong sa lungsod"),
   helpPathText: tr(
     "Граждански сигнали, доброволчески инициативи и начини да се включите без профили и без шум.",
     "Citizen reports, volunteer initiatives and ways to take part without profiles or noise.",
@@ -306,13 +327,14 @@ const labels = {
     "Yurttaş bildirimleri, gönüllü girişimleri ve profilsiz, gürültüsüz katılım yolları.",
     "Avisos ciudadanos, iniciativas voluntarias y formas de participar sin perfiles ni ruido.",
     "Αναφορές πολιτών, εθελοντικές πρωτοβουλίες και τρόποι συμμετοχής χωρίς προφίλ ή θόρυβο.",
-    "市民レポート、ボランティア活動、プロフィール不要で参加できる方法。"
+    "市民レポート、ボランティア活動、プロフィール不要で参加できる方法。",
+    "Mga ulat ng mamamayan, boluntaryong inisyatiba, at paraan para lumahok nang walang profile o ingay."
   ),
-  openRoutes: tr("Маршрутите", "Walking routes", "Routen", "Parcours", "Percorsi", "Rotalar", "Rutas", "Διαδρομές", "散策ルート"),
-  routeCount: tr("4 маршрута", "4 walking routes", "4 Routen", "4 parcours", "4 percorsi", "4 rota", "4 rutas", "4 διαδρομές", "4 散策ルート"),
-  openGovernance: tr("Управление", "Governance", "Governance", "Gouvernance", "Governo", "Yönetim", "Gobernanza", "Διακυβέρνηση", "統治"),
-  evidenceLabel: tr("с източници", "with sources", "mit Quellen", "avec sources", "con fonti", "kaynaklı", "con fuentes", "με πηγές", "出典付き"),
-  storiesCountLabel: tr("илюстрирани разказа", "illustrated stories", "illustrierte Geschichten", "récits illustrés", "racconti illustrati", "resimli anlatı", "relatos ilustrados", "εικονογραφημένες αφηγήσεις", "図版つきの物語")
+  openRoutes: tr("Маршрутите", "Walking routes", "Routen", "Parcours", "Percorsi", "Rotalar", "Rutas", "Διαδρομές", "散策ルート", "Mga ruta na lalakaran"),
+  routeCount: tr("4 маршрута", "4 walking routes", "4 Routen", "4 parcours", "4 percorsi", "4 rota", "4 rutas", "4 διαδρομές", "4 散策ルート", "4 rutang lalakaran"),
+  openGovernance: tr("Управление", "Governance", "Governance", "Gouvernance", "Governo", "Yönetim", "Gobernanza", "Διακυβέρνηση", "統治", "Pamamahala"),
+  evidenceLabel: tr("с източници", "with sources", "mit Quellen", "avec sources", "con fonti", "kaynaklı", "con fuentes", "με πηγές", "出典付き", "may pinagmulan"),
+  storiesCountLabel: tr("илюстрирани разказа", "illustrated stories", "illustrierte Geschichten", "récits illustrés", "racconti illustrati", "resimli anlatı", "relatos ilustrados", "εικονογραφημένες αφηγήσεις", "図版つきの物語", "may-larawang kuwento")
 };
 
 // Mayors preview: the first mayor to take office in each of the city's four

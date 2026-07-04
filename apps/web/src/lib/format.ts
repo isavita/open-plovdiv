@@ -10,7 +10,7 @@ import {
 } from "../i18n/ui";
 import { translateEn } from "../i18n/deTranslations";
 
-const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP" };
+const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP", tl: "fil-PH" };
 
 const knownHistoryText: Record<Lang, Record<string, string>> = {
   bg: {},
@@ -147,6 +147,25 @@ const knownHistoryText: Record<Lang, Record<string, string>> = {
       "Plovdivにある、公開情報で確認できる機関、建物、または都市空間です。",
     "Building or urban site from Plovdiv's Revival and early modern heritage.":
       "Plovdivの民族復興期および近代初期の遺産に属する建物または都市空間です。"
+  },
+  tl: {
+    "wikidata_coordinate": "Koordinada ng Wikidata",
+    "approximate_site": "tinatayang lokasyon",
+    "district_centroid": "gitna ng distrito",
+    "citywide_reference": "sanggunian sa buong lungsod",
+    "Modern period": "Makabagong panahon",
+    "Bulgarian Revival": "Pambansang Muling Pagsilang ng Bulgaria",
+    "Thracian era – Antiquity": "Yugtong Trakiano – Sinaunang Panahon",
+    "Roman period": "Panahong Romano",
+    "Ottoman period": "Panahong Ottoman",
+    "not identified in the current public source": "hindi natukoy sa kasalukuyang pampublikong pinagmulan",
+    "not applicable for a natural hill or terrain feature": "hindi angkop para sa likas na burol o tampok ng lupain",
+    "Publicly documented historic site; detailed visiting status still needs verification.":
+      "Makasaysayang lugar na nakadokumento nang pampubliko; kailangan pang tiyakin ang detalyadong katayuan ng pagbisita.",
+    "Publicly documented institution, building, or urban site in Plovdiv.":
+      "Institusyon, gusali, o lugar sa lungsod ng Plovdiv na nakadokumento nang pampubliko.",
+    "Building or urban site from Plovdiv's Revival and early modern heritage.":
+      "Gusali o lugar sa lungsod mula sa pamana ng Pambansang Muling Pagsilang at maagang makabagong panahon ng Plovdiv."
   }
 };
 

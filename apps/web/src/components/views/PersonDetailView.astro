@@ -184,6 +184,26 @@ const labels =
         linkedEvent: "関連する出来事",
         imageCredit: "画像クレジット"
       }
+      : lang === "tl"
+      ? {
+        back: "Lahat ng Tao",
+        profile: "Profile",
+        facts: "Mga Datos",
+        roles: "Mga Tungkulin",
+        life: "Mga Petsa ng Buhay",
+        born: "Ipinanganak",
+        wikidata: "Wikidata",
+        linkedEvents: "Kaugnay na Pangyayari",
+        relationships: "Koneksyon sa Ibang Tao",
+        noRelationships: "Wala pang direktang koneksyon sa ibang tao na naitala.",
+        evidence: "Mga Pinagmulan",
+        source: "Pinagmulan",
+        accessed: "Na-access",
+        license: "Lisensya",
+        relationshipSource: "Pinagmulan ng relasyon",
+        linkedEvent: "Kaugnay na pangyayari",
+        imageCredit: "Kredito ng larawan"
+      }
       : {
         back: "All people",
         profile: "Profile",
@@ -404,6 +424,21 @@ const relationshipLabelsJa: Record<string, string> = {
   influenced_by: "影響を受けた相手"
 };
 
+const relationshipLabelsTl: Record<string, string> = {
+  succeeds: "humalili kay",
+  succeeded_by: "hinalinhan ni",
+  spouse: "asawa",
+  father: "ama",
+  mother: "ina",
+  parent: "magulang",
+  child: "anak",
+  sibling: "kapatid",
+  mentor: "mentor",
+  student: "estudyante",
+  partner: "kapareha",
+  influenced_by: "naimpluwensyahan ni"
+};
+
 const roleGroups: Record<string, RoleGroup> = {
   mayor: "governance",
   politician: "governance",
@@ -505,6 +540,7 @@ function relationshipLabel(type: string): string {
   if (lang === "es") return relationshipLabelsEs[type] ?? type.replaceAll("_", " ");
   if (lang === "el") return relationshipLabelsEl[type] ?? type.replaceAll("_", " ");
   if (lang === "ja") return relationshipLabelsJa[type] ?? type.replaceAll("_", " ");
+  if (lang === "tl") return relationshipLabelsTl[type] ?? type.replaceAll("_", " ");
   return relationshipLabels[type]?.[lang] ?? type.replaceAll("_", " ");
 }
 

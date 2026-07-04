@@ -244,6 +244,33 @@ const labels =
         noArchive:
           "この場所には、独立したアーカイブまたは今昔比較の記録がまだありません。主要画像、座標、出典は引き続き公開されています。"
       }
+      : lang === "tl"
+      ? {
+        back: "Lahat ng Lugar",
+        facts: "Mga Datos",
+        currentStatus: "Kasalukuyang Katayuan",
+        visit: "Pagbisita at Oryentasyon",
+        coordinates: "Coordinates",
+        openMap: "Buksan ang mapa",
+        built: "Itinayo/petsa",
+        architect: "Arkitekto",
+        builder: "Tagapagtayo",
+        creator: "Arkitekto/tagapagtayo",
+        source: "Pinagmulan",
+        sources: "Mga Pinagmulan",
+        mediaLicense: "Lisensya ng larawan",
+        mediaFile: "File ng media",
+        mediaCredit: "Kredito",
+        matchQuality: "Pagkakatugma",
+        archiveTitle: "Arkibo para sa lugar na ito",
+        thenNowTitle: "Noon/Ngayon",
+        thenLabel: "Noon",
+        nowLabel: "Ngayon",
+        eventsTitle: "Kaugnay na Pangyayari",
+        storiesTitle: "Kaugnay na Kuwento",
+        noArchive:
+          "Wala pang hiwalay na talaan ng arkibo o noon/ngayon para sa lugar na ito. Nananatiling nailathala ang pangunahing larawan, coordinates, at pinagmulan."
+      }
       : {
         back: "All places",
         facts: "Facts",
@@ -749,6 +776,54 @@ const storyLabels = ({
       `この場所に関連する人物は、伝記、出来事、都市の記憶を通して物語を読む助けになります: ${items}。`,
     relatedPlacesSentence: (items: string) =>
       `関連する場所は、この場所がより広い都市システムの一部として働いていることを示します: ${items}。`
+  },
+  tl: {
+    storyEyebrow: "Kuwento ng lugar",
+    storyTitle: "Paano basahin ang lugar na ito",
+    whyTitle: "Bakit ito mahalaga",
+    originTitle: "Pinagmulan at mga hanay",
+    useTitle: "Ngayon at ang dapat pansinin",
+    stewardshipTitle: "Pagmamay-ari, pag-aalaga at mga institusyon",
+    timelineTitle: "Kuwento sa habang panahon",
+    evidenceTitle: "Mga bakas at ebidensya",
+    aroundTitle: "Sa paligid ng lugar na ito",
+    peopleTitle: "Mga kaugnay na tao",
+    organizationsTitle: "Mga institusyon at komunidad",
+    relatedPlacesTitle: "Mga kaugnay na lugar",
+    noOwnership:
+      "Ang pampublikong talaan na ginamit dito ay hindi tumutukoy sa masusubaybayang kasaysayan ng pagmamay-ari o pamamahala. Kaya naman ipinapakita lang ng pahinang ito ang beripikadong mga koneksyon sa institusyon at pinagmulan.",
+    noPeople: "Walang taong naka-link sa kasalukuyang batayan ng kaalaman.",
+    noOrganizations: "Walang institusyong naka-link sa kasalukuyang batayan ng kaalaman.",
+    noRelatedPlaces: "Walang ibang lugar na naka-link sa parehong mga pangyayari.",
+    noTimeline:
+      "Wala pang hiwalay na mga pangyayari sa timeline na naka-link; ang kuwento rito ay binuo mula sa talaan ng lugar, pinagmulan, at mga pampublikong pinagmulan.",
+    sourceBacked: "katotohanang may pinagmulan",
+    linkedEvents: "kaugnay na pangyayari",
+    archiveSignals: "bakas sa arkibo",
+    thenNowSignals: "paghahambing noon/ngayon",
+    sourceCount: "pampublikong pinagmulan",
+    dateLabel: "Petsa",
+    creatorLabel: "May-akda",
+    statusLabel: "Kasalukuyang katayuan",
+    sourceLabel: "Bakas ng pinagmulan",
+    storyIntro: (name: string, era: string) =>
+      `Hindi lang basta punto sa mapa ang ${name}. Ito ay talaan mula sa ${era} na nag-uugnay ng mga hanay ng lungsod, nakikitang bakas, pampublikong pinagmulan, at mga kalapit na kuwento.`,
+    dateSentence: (date: string, source: string) =>
+      `Ang petsa ay inilathala bilang ${date}${source ? ` at naka-link sa ${source}` : ""}.`,
+    creatorSentence: (creator: string) =>
+      `Tungkol sa may-akda, ito ang sinasabi ng kasalukuyang talaan: ${creator}.`,
+    statusSentence: (status: string) =>
+      `Ang kasalukuyang katayuan ay inilarawan bilang: ${status}`,
+    timelineSentence: (count: number) =>
+      `Ang kuwento ay umuunlad sa pamamagitan ng ${count} kaugnay na pangyayari na naglalagay dito sa mas malawak na kronolohiya ng Plovdiv.`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `Ang hanay ng arkibo ay naitala bilang mga talaan ng arkibo: ${archiveCount}; biswal na paghahambing noon/ngayon: ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) =>
+      `Ang institusyonal na konteksto ay dumadaan sa ${items}. Hindi ito awtomatikong kasaysayan ng pagmamay-ari; ito ay isang mapatutunayang bakas ng pampublikong pag-aalaga, alaala, o pamamahala.`,
+    peopleSentence: (items: string) =>
+      `Ang mga taong kaugnay ng lugar na ito ay tumutulong basahin ang kuwento sa pamamagitan ng talambuhay, pangyayari, at alaalang sibiko: ${items}.`,
+    relatedPlacesSentence: (items: string) =>
+      `Ipinapakita ng mga kaugnay na lugar na ang lugar na ito ay bahagi ng mas malawak na sistema ng lungsod: ${items}.`
   }
 } satisfies Record<Lang, PlaceStoryLabels>)[lang];
 
@@ -945,6 +1020,30 @@ const historyAtlasLabels =
                       publicRecordNode: "公開記録",
                       sourcesNode: "出典"
                     }
+                  : lang === "tl"
+                  ? {
+                      eyebrow: "Atlas ng Kasaysayan",
+                      title: "Mga Yugto, Koneksyon, at Bakas",
+                      lead: (events: number, stories: number, sources: number) =>
+                        `Pinagsasama ng mapang ito ang ${events} pangyayari, ${stories} kuwento, at ${sources} pampublikong pinagmulan nang walang idinaragdag na hindi mapapatunayang pahayag.`,
+                      contextTitle: "Network ng Konteksto",
+                      contextLead: "Ipinapakita ng mga koneksyon kung ano ang naberipika para sa lugar: pangyayari, kuwento, tao, institusyon, arkibo, at pampublikong talaan.",
+                      eventBrowserTitle: "Buong Daloy ng Pangyayari",
+                      eventBrowserLead: (count: number) =>
+                        count > 0 ? `Ang lahat ng ${count} kaugnay na pangyayari ay pinagsama-sama ayon sa uri ng talaan.` : "Walang hiwalay na pangyayaring nakaugnay sa lugar na ito.",
+                      eventCount: (count: number) => `${count} talaan`,
+                      eventSources: (count: number) => `${count} pinagmulan`,
+                      noEvents: "Walang hiwalay na pangyayari para sa lugar na ito sa kasalukuyang knowledge base; gamitin ang pampublikong talaan, pinagmulan, at deskripsyon.",
+                      rootNode: "lugar",
+                      eventsNode: "pangyayari",
+                      storiesNode: "kuwento",
+                      peopleNode: "tao",
+                      organizationsNode: "institusyon",
+                      archiveNode: "arkibo",
+                      thenNowNode: "noon/ngayon",
+                      publicRecordNode: "pampublikong talaan",
+                      sourcesNode: "pinagmulan"
+                    }
                   : {
                       eyebrow: "History atlas",
                       title: "Layers, links and traces",
@@ -1106,6 +1205,23 @@ const wikidataLabels =
                       wikidata: "Wikidata記録",
                       wikipedia: "Wikipedia"
                     }
+                  : lang === "tl"
+                  ? {
+                      title: "Pampublikong Talaan ng Wikidata",
+                      description: "Deskripsyon",
+                      instance_of: "Uri",
+                      heritage_designation: "Katayuan/proteksyon",
+                      inception: "Simula",
+                      start_time: "Petsa ng simula",
+                      architect: "Arkitekto",
+                      creator: "Lumikha",
+                      owned_by: "Pag-aari ni",
+                      operator: "Operator",
+                      location: "Lokasyon",
+                      street_address: "Address",
+                      wikidata: "Talaan ng Wikidata",
+                      wikipedia: "Wikipedia"
+                    }
                   : {
                       title: "Public Wikidata record",
                       description: "Description",
@@ -1175,6 +1291,12 @@ const matchQualityLabels: Record<string, string> =
         same_place_approximate_viewpoint: "同じ場所、おおよその視点",
         same_place_close_viewpoint: "同じ場所、近い視点",
         city_context: "都市文脈"
+      }
+      : lang === "tl"
+      ? {
+        same_place_approximate_viewpoint: "parehong lugar, tinatayang punto ng tanaw",
+        same_place_close_viewpoint: "parehong lugar, malapit na punto ng tanaw",
+        city_context: "konteksto ng lungsod"
       }
       : {
         same_place_approximate_viewpoint: "same place, approximate viewpoint",
@@ -1256,17 +1378,18 @@ const trx = (
   trk: string,
   es: string,
   el: string,
-  ja: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja })[lang];
+  ja: string,
+  tl: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl })[lang];
 
 const discoveryL = {
-  onRoute: trx("Част от маршрут", "On a walking route", "Teil einer Route", "Sur un parcours", "Su un percorso", "Bir rotanın parçası", "En una ruta", "Σε διαδρομή", "散策ルートの一部"),
-  stop: trx("Спирка", "Stop", "Station", "Étape", "Tappa", "Durak", "Parada", "Στάση", "地点"),
-  of: trx("от", "of", "von", "sur", "di", "/", "de", "από", "/"),
-  minutes: trx("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分"),
-  nextStop: trx("Следваща спирка", "Next stop", "Nächste Station", "Étape suivante", "Prossima tappa", "Sonraki durak", "Siguiente parada", "Επόμενη στάση", "次の地点"),
-  openRoute: trx("Виж целия маршрут", "See the full route", "Ganze Route ansehen", "Voir tout le parcours", "Vedi tutto il percorso", "Rotanın tamamını gör", "Ver la ruta completa", "Δείτε όλη τη διαδρομή", "ルート全体を見る"),
-  nearby: trx("Наблизо", "Nearby", "In der Nähe", "À proximité", "Nelle vicinanze", "Yakınında", "Cerca", "Κοντά", "近くの場所"),
+  onRoute: trx("Част от маршрут", "On a walking route", "Teil einer Route", "Sur un parcours", "Su un percorso", "Bir rotanın parçası", "En una ruta", "Σε διαδρομή", "散策ルートの一部", "Bahagi ng ruta"),
+  stop: trx("Спирка", "Stop", "Station", "Étape", "Tappa", "Durak", "Parada", "Στάση", "地点", "Hintuan"),
+  of: trx("от", "of", "von", "sur", "di", "/", "de", "από", "/", "sa"),
+  minutes: trx("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "min"),
+  nextStop: trx("Следваща спирка", "Next stop", "Nächste Station", "Étape suivante", "Prossima tappa", "Sonraki durak", "Siguiente parada", "Επόμενη στάση", "次の地点", "Susunod na hintuan"),
+  openRoute: trx("Виж целия маршрут", "See the full route", "Ganze Route ansehen", "Voir tout le parcours", "Vedi tutto il percorso", "Rotanın tamamını gör", "Ver la ruta completa", "Δείτε όλη τη διαδρομή", "ルート全体を見る", "Tingnan ang buong ruta"),
+  nearby: trx("Наблизо", "Nearby", "In der Nähe", "À proximité", "Nelle vicinanze", "Yakınında", "Cerca", "Κοντά", "近くの場所", "Malapit"),
   nearbyNote: trx(
     "Разстояния по права линия, изчислени от координатите.",
     "Straight-line distances computed from the coordinates.",
@@ -1276,9 +1399,10 @@ const discoveryL = {
     "Koordinatlardan hesaplanan kuş uçuşu mesafeler.",
     "Distancias en línea recta calculadas a partir de las coordenadas.",
     "Αποστάσεις σε ευθεία γραμμή, υπολογισμένες από τις συντεταγμένες.",
-    "座標から算出した直線距離です。"
+    "座標から算出した直線距離です。",
+    "Mga tuwid na distansya na kinalkula mula sa mga coordinate."
   ),
-  meters: trx("м", "m", "m", "m", "m", "m", "m", "μ.", "m")
+  meters: trx("м", "m", "m", "m", "m", "m", "m", "μ.", "m", "m")
 };
 
 const placeRoutes = routesThroughPlace(place.id).map(({ route, stopIndex }) => {

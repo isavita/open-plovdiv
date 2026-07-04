@@ -226,7 +226,8 @@ export function validateSubmission(input: SubmissionInput): ValidationResult {
     input.lang === "tr" ||
     input.lang === "es" ||
     input.lang === "el" ||
-    input.lang === "ja"
+    input.lang === "ja" ||
+    input.lang === "tl"
       ? input.lang
       : "bg";
 

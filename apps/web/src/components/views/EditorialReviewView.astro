@@ -510,6 +510,68 @@ const labels =
         tableLimit: "最初の",
         tableLimitSuffix: "件を表示しています。完全な一覧はCSVファイルにあります。"
       }
+      : lang === "tl"
+      ? {
+        title: "Pagsusuring Editoryal",
+        eyebrow: "Pagsusuri ng makasaysayang datos",
+        lead:
+          "Isang pagsusuri ng mga talaang naghihintay pa ng pagsusuri ng tao. Teknikal nang na-validate ang datos; ipinapakita ng pahinang ito kung saan kailangan pa ng mas matibay na pinagmulan, lisensya, o pagkumpirma ng editor.",
+        status: "Katayuan",
+        total: "sinusubaybayang talaan",
+        signedOff: "naaprubahan",
+        needsReview: "naghihintay ng pagsusuri",
+        blockers: "may problema",
+        trackingGaps: "puwang sa pagsubaybay",
+        sourceCoverageTitle: "Saklaw ng Pinagmulan",
+        sourceCoverageLead:
+          "Isang hiwalay na pagsusuri ng parehong mga talaan: kung ang bawat hilera ay may pampublikong pinagmulan, metadata ng lisensya/muling paggamit, at kung ang mga hilerang may iisang pinagmulan ay minarkahan para sa mas matibay na pagsusuri ng ebidensya.",
+        traceability: "kakayahang masubaybayan",
+        multiSourceReview: "mas matibay na pagsusuri ng pinagmulan",
+        complete: "kumpleto",
+        incomplete: "hindi kumpleto",
+        needsSourceReview: "kailangan ng pagsusuri",
+        recordsWithSources: "may pinagmulan",
+        missingSources: "walang pinagmulan",
+        licenseReady: "may lisensya/tuntunin",
+        missingLicenses: "kulang ang lisensya/tuntunin",
+        singleSource: "iisang pinagmulan",
+        multiSource: "2+ na pinagmulan",
+        openLicenseRows: "hilera na may bukas na lisensya",
+        publicTermsRows: "hilera na may pampublikong sanggunian",
+        sourceCoverageApi: "Pinagmulan JSON",
+        sourceCoverageCsv: "Pinagmulan CSV",
+        requirement: "Kinakailangan",
+        collections: "Mga Koleksyon",
+        collection: "Koleksyon",
+        records: "Mga Talaan",
+        reviewer: "Pagsusuring editoryal",
+        sources: "Mga Pinagmulan",
+        sourceLicense: "Pinagmulan at lisensya",
+        blockersLabel: "Mga Problema",
+        search: "Maghanap",
+        searchPlaceholder: "talaan, koleksyon, problema...",
+        allCollections: "Lahat ng koleksyon",
+        allStatuses: "Lahat ng katayuan",
+        allBlockers: "Lahat ng problema",
+        record: "Talaan",
+        visible: "Nakikita",
+        of: "sa",
+        empty: "Walang talaang tumutugma sa mga filter na ito.",
+        loading: "Nilo-load ang pila ng editoryal...",
+        api: "Datos na JSON",
+        csv: "Datos na CSV",
+        openRecord: "Buksan ang talaan",
+        openApi: "Datos",
+        signedOffStatus: "naaprubahan",
+        needsStatus: "naghihintay ng pagsusuri",
+        missingStatus: "kulang ang katayuan",
+        unsigned: "hindi pa nasusuri",
+        hasLicense: "may lisensya/tuntunin",
+        missingLicense: "kulang ang lisensya/tuntunin",
+        reset: "I-clear ang mga filter",
+        tableLimit: "Ipinapakita ang unang",
+        tableLimitSuffix: "talaan para sa kasalukuyang filter. Available ang buong listahan sa CSV file."
+      }
       : {
         title: "Editorial Review",
         eyebrow: "Historical data review",
@@ -582,7 +644,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     tr: "bağımsız editöryal onay gerekli",
     es: "se requiere aprobación editorial independiente",
     el: "απαιτείται ανεξάρτητη συντακτική έγκριση",
-    ja: "独立した編集承認が必要"
+    ja: "独立した編集承認が必要",
+    tl: "kailangan ng independiyenteng pag-apruba ng editor"
   },
   missing_independent_editorial_signoff_log: {
     bg: "липсва име или дата на редактора",
@@ -593,7 +656,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     tr: "inceleyenin adı veya tarihi eksik",
     es: "falta el nombre o la fecha del revisor",
     el: "λείπει το όνομα ή η ημερομηνία του ελεγκτή",
-    ja: "レビュー担当者名または日付が不足"
+    ja: "レビュー担当者名または日付が不足",
+    tl: "kulang ang pangalan o petsa ng tagasuri"
   },
   missing_source_reference: {
     bg: "липсва източникова връзка",
@@ -604,7 +668,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     tr: "kaynak referansı eksik",
     es: "falta la referencia de la fuente",
     el: "λείπει η αναφορά πηγής",
-    ja: "出典参照が不足"
+    ja: "出典参照が不足",
+    tl: "kulang ang sanggunian sa pinagmulan"
   },
   missing_license_or_reuse_status: {
     bg: "липсва лиценз или статус за повторна употреба",
@@ -615,7 +680,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     tr: "lisans veya yeniden kullanım durumu eksik",
     es: "falta la licencia o el estado de reutilización",
     el: "λείπει η άδεια ή το καθεστώς επαναχρησιμοποίησης",
-    ja: "ライセンスまたは再利用状態が不足"
+    ja: "ライセンスまたは再利用状態が不足",
+    tl: "kulang ang lisensya o katayuan sa muling paggamit"
   },
   missing_external_editorial_signoff_record: {
     bg: "липсва външен редакторски запис",
@@ -626,7 +692,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     tr: "dış editöryal inceleme kaydı eksik",
     es: "falta el registro de revisión editorial externa",
     el: "λείπει η εγγραφή εξωτερικού συντακτικού ελέγχου",
-    ja: "外部編集レビュー記録が不足"
+    ja: "外部編集レビュー記録が不足",
+    tl: "kulang ang talaan ng panlabas na pagsusuring editoryal"
   },
   editorial_signoff_log_mismatch: {
     bg: "несъответствие в редакторския запис",
@@ -637,7 +704,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     tr: "editöryal inceleme kaydında tutarsızlık",
     es: "incoherencia en el registro de revisión editorial",
     el: "ασυμφωνία στην εγγραφή συντακτικού ελέγχου",
-    ja: "編集レビュー記録に不一致"
+    ja: "編集レビュー記録に不一致",
+    tl: "hindi tugma ang talaan ng pagsusuring editoryal"
   }
 };
 
@@ -651,7 +719,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     tr: "birincil kayıt",
     es: "ficha principal",
     el: "κύρια καρτέλα",
-    ja: "主要記録"
+    ja: "主要記録",
+    tl: "pangunahing talaan"
   },
   relationship_entity: {
     bg: "връзка между записи",
@@ -662,7 +731,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     tr: "ilişki kaydı",
     es: "ficha de relación",
     el: "καρτέλα σχέσης",
-    ja: "関係記録"
+    ja: "関係記録",
+    tl: "talaan ng relasyon"
   },
   supporting_archive: {
     bg: "архивен материал",
@@ -673,7 +743,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     tr: "tamamlayıcı arşiv ögesi",
     es: "elemento de archivo complementario",
     el: "συμπληρωματικό αρχειακό στοιχείο",
-    ja: "補助アーカイブ項目"
+    ja: "補助アーカイブ項目",
+    tl: "suportang item sa arkibo"
   },
   primary_document: {
     bg: "първичен документ",
@@ -684,7 +755,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     tr: "birincil belge",
     es: "documento primario",
     el: "πρωτογενές έγγραφο",
-    ja: "一次資料"
+    ja: "一次資料",
+    tl: "pangunahing dokumento"
   },
   editorial_feature: {
     bg: "редакционен материал",
@@ -695,7 +767,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     tr: "editöryal içerik",
     es: "artículo editorial",
     el: "συντακτικό άρθρο",
-    ja: "編集記事"
+    ja: "編集記事",
+    tl: "artikulong editoryal"
   },
   education_material: {
     bg: "образователен материал",
@@ -706,7 +779,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     tr: "eğitim materyali",
     es: "recurso educativo",
     el: "εκπαιδευτικό υλικό",
-    ja: "教育資料"
+    ja: "教育資料",
+    tl: "kagamitang pang-edukasyon"
   }
 };
 
@@ -820,6 +894,23 @@ const collectionLabelsJa: Record<string, string> = {
   editorial_review: "編集レビュー"
 };
 
+// Filipino collection labels (the generated dataset only carries label_bg/label_en).
+const collectionLabelsTl: Record<string, string> = {
+  events: "Mga Pangyayari",
+  people: "Mga Tao",
+  person_relationships: "Relasyon ng mga Tao",
+  places: "Mga Lugar",
+  organizations: "Mga Organisasyon",
+  sources: "Mga Pinagmulan",
+  archive_items: "Mga Item sa Arkibo",
+  then_now_pairs: "Mga Pares na Noon/Ngayon",
+  primary_documents: "Pangunahing Dokumento",
+  story_longreads: "Mahahabang Kuwento",
+  education_resources: "Kagamitang Pang-edukasyon",
+  editorial_signoffs: "Editoryal na Pag-apruba",
+  editorial_review: "Pagsusuring Editoryal"
+};
+
 function collectionLabel(id: string) {
   const collection = historyEditorialReview.collections[id];
   if (lang === "fr" && collectionLabelsFr[id]) return collectionLabelsFr[id];
@@ -828,6 +919,7 @@ function collectionLabel(id: string) {
   if (lang === "es" && collectionLabelsEs[id]) return collectionLabelsEs[id];
   if (lang === "el" && collectionLabelsEl[id]) return collectionLabelsEl[id];
   if (lang === "ja" && collectionLabelsJa[id]) return collectionLabelsJa[id];
+  if (lang === "tl" && collectionLabelsTl[id]) return collectionLabelsTl[id];
   return collection?.[`label_${lang}`] ?? collection?.label_en ?? collection?.label_bg ?? id.replaceAll("_", " ");
 }
 

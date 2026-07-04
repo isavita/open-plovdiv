@@ -422,6 +422,51 @@ const labels = ({
     sources: "出典",
     source: "出典",
     profile: "プロフィール"
+  },
+  tl: {
+    title: "Mga Tao ng Plovdiv",
+    eyebrow: "Mga tao at koneksyon",
+    lead:
+      "Isang katalogo ng mga tao sa Open Plovdiv: lahat ng alkalde at mga piling kilalang Plovdivian, na nakaugnay sa mga pangyayari, tungkulin at pinagmulan.",
+    people: "mga tao",
+    roles: "tungkulin",
+    links: "koneksyon",
+    events: "pangyayari",
+    connectionsTitle: "Mga Koneksyon ng Tao",
+    connectionsLead:
+      "Mga koneksyon sa pagitan ng mga tao: ang kronolohiya ng mga alkalde, relasyong pampamilya at ang pampublikong pinagmulan ng bawat isa.",
+    catalogTitle: "Katalogo",
+    search: "Maghanap",
+    searchPlaceholder: "pangalan, tungkulin, paglalarawan...",
+    group: "Grupo",
+    allGroups: "Lahat ng grupo",
+    century: "Siglo",
+    allCenturies: "Lahat ng siglo",
+    relationship: "Koneksyon",
+    allRelationships: "Lahat",
+    withRelationships: "may koneksyon sa ibang tao",
+    withoutRelationships: "walang koneksyon sa ibang tao",
+    visible: "Nakikita",
+    of: "sa",
+    reset: "Alisin ang mga filter",
+    noResults: "Walang taong tumutugma sa mga filter na ito.",
+    born: "Ipinanganak",
+    life: "Mga Taon",
+    linkedEvents: "kaugnay na pangyayari",
+    relationshipCount: "koneksyon",
+    relationshipSources: "Koneksyon",
+    ledgerTitle: "Mga koneksyon at pinagmulan",
+    ledgerLead:
+      "Ipinapakita ng bawat relasyon ang mga tao, ang uri, ang kaugnay na pangyayari para sa kronolohiya ng mga alkalde at ang pampublikong pinagmulan.",
+    ledgerRows: "koneksyon",
+    from: "Mula",
+    to: "Kay",
+    type: "Uri",
+    evidence: "Ebidensya",
+    linkedEvent: "Pangyayari",
+    sources: "Mga Pinagmulan",
+    source: "Pinagmulan",
+    profile: "Profile"
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -614,8 +659,29 @@ const graphLabels = ({
     connectionsWord: "件",
     noHighlight: "このグループに該当者はいません。",
     allGroups: "すべてのグループ"
+  },
+  tl: {
+    open: "Buksan ang graph ng network",
+    close: "Isara ang graph",
+    loading: "Naglo-load ang graph…",
+    lead: "Isang interaktibong network ng mga tao at ang mga koneksyon sa pagitan nila. Bawat tuldok ay isang tao, bawat linya ay isang relasyong may pinagmulan. Ang graph ay naglo-load lamang kapag binuksan.",
+    succession: "Kronolohiya ng mga alkalde",
+    family: "Mga koneksyon sa pamilya",
+    links: "Koneksyon",
+    highlightPaths: "Mga kapansin-pansing landas",
+    fitView: "I-fit sa view",
+    zoomIn: "Palakihin",
+    zoomOut: "Paliitin",
+    selectHint: "Pindutin ang isang tuldok para makita ang tao at ang mga koneksyon niya.",
+    roles: "Tungkulin",
+    life: "Mga Taon",
+    degreeLabel: "Koneksyon sa network",
+    viewProfile: "Tingnan ang profile",
+    connectionsWord: "koneksyon",
+    noHighlight: "Walang tao sa grupong ito.",
+    allGroups: "Lahat ng grupo"
   }
-} satisfies Record<Lang, { open: string; close: string; loading: string; lead: string }>)[lang];
+} satisfies Record<Lang, Record<string, string>>)[lang];
 
 const groupLabels = ({
   bg: {
@@ -689,22 +755,30 @@ const groupLabels = ({
     faith: "信仰",
     sport: "スポーツ",
     civic: "社会"
+  },
+  tl: {
+    governance: "Pamamahala",
+    culture: "Kultura",
+    science: "Agham",
+    faith: "Pananampalataya",
+    sport: "Isports",
+    civic: "Sibiko"
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
 const relationshipTypeLabels: Record<string, Record<Lang, string>> = {
-  succeeds: { bg: "наследява", en: "succeeds", de: "folgt auf", fr: "succède à", it: "succede a", tr: "yerine geçer", es: "sucede a", el: "διαδέχεται τον/την", ja: "前任者" },
-  succeeded_by: { bg: "наследен/а от", en: "succeeded by", de: "abgelöst von", fr: "remplacé(e) par", it: "sostituito/a da", tr: "yerine geçilir", es: "sucedido/a por", el: "διαδέχθηκε από", ja: "後任者" },
-  spouse: { bg: "съпруг/съпруга", en: "spouse", de: "Ehepartner", fr: "conjoint(e)", it: "coniuge", tr: "eş", es: "cónyuge", el: "σύζυγος", ja: "配偶者" },
-  father: { bg: "баща", en: "father", de: "Vater", fr: "père", it: "padre", tr: "baba", es: "padre", el: "πατέρας", ja: "父" },
-  mother: { bg: "майка", en: "mother", de: "Mutter", fr: "mère", it: "madre", tr: "anne", es: "madre", el: "μητέρα", ja: "母" },
-  parent: { bg: "родител", en: "parent", de: "Elternteil", fr: "parent", it: "genitore", tr: "ebeveyn", es: "progenitor", el: "γονέας", ja: "親" },
-  child: { bg: "дете", en: "child", de: "Kind", fr: "enfant", it: "figlio/a", tr: "çocuk", es: "hijo/a", el: "παιδί", ja: "子" },
-  sibling: { bg: "брат/сестра", en: "sibling", de: "Geschwister", fr: "frère/sœur", it: "fratello/sorella", tr: "kardeş", es: "hermano/a", el: "αδελφός/ή", ja: "きょうだい" },
-  mentor: { bg: "ментор", en: "mentor", de: "Mentor", fr: "mentor", it: "mentore", tr: "akıl hocası", es: "mentor", el: "μέντορας", ja: "師" },
-  student: { bg: "ученик/студент", en: "student", de: "Schüler", fr: "élève", it: "allievo/a", tr: "öğrenci", es: "alumno/a", el: "μαθητής/τρια", ja: "弟子・学生" },
-  partner: { bg: "партньор", en: "partner", de: "Partner", fr: "partenaire", it: "partner", tr: "ortak", es: "pareja", el: "σύντροφος", ja: "協力者" },
-  influenced_by: { bg: "повлиян/а от", en: "influenced by", de: "beeinflusst von", fr: "influencé(e) par", it: "influenzato/a da", tr: "etkilendiği", es: "influido/a por", el: "επηρεάστηκε από", ja: "影響を受けた相手" }
+  succeeds: { bg: "наследява", en: "succeeds", de: "folgt auf", fr: "succède à", it: "succede a", tr: "yerine geçer", es: "sucede a", el: "διαδέχεται τον/την", ja: "前任者", tl: "humalili kay" },
+  succeeded_by: { bg: "наследен/а от", en: "succeeded by", de: "abgelöst von", fr: "remplacé(e) par", it: "sostituito/a da", tr: "yerine geçilir", es: "sucedido/a por", el: "διαδέχθηκε από", ja: "後任者", tl: "hinalinhan ni" },
+  spouse: { bg: "съпруг/съпруга", en: "spouse", de: "Ehepartner", fr: "conjoint(e)", it: "coniuge", tr: "eş", es: "cónyuge", el: "σύζυγος", ja: "配偶者", tl: "asawa" },
+  father: { bg: "баща", en: "father", de: "Vater", fr: "père", it: "padre", tr: "baba", es: "padre", el: "πατέρας", ja: "父", tl: "ama" },
+  mother: { bg: "майка", en: "mother", de: "Mutter", fr: "mère", it: "madre", tr: "anne", es: "madre", el: "μητέρα", ja: "母", tl: "ina" },
+  parent: { bg: "родител", en: "parent", de: "Elternteil", fr: "parent", it: "genitore", tr: "ebeveyn", es: "progenitor", el: "γονέας", ja: "親", tl: "magulang" },
+  child: { bg: "дете", en: "child", de: "Kind", fr: "enfant", it: "figlio/a", tr: "çocuk", es: "hijo/a", el: "παιδί", ja: "子", tl: "anak" },
+  sibling: { bg: "брат/сестра", en: "sibling", de: "Geschwister", fr: "frère/sœur", it: "fratello/sorella", tr: "kardeş", es: "hermano/a", el: "αδελφός/ή", ja: "きょうだい", tl: "kapatid" },
+  mentor: { bg: "ментор", en: "mentor", de: "Mentor", fr: "mentor", it: "mentore", tr: "akıl hocası", es: "mentor", el: "μέντορας", ja: "師", tl: "mentor" },
+  student: { bg: "ученик/студент", en: "student", de: "Schüler", fr: "élève", it: "allievo/a", tr: "öğrenci", es: "alumno/a", el: "μαθητής/τρια", ja: "弟子・学生", tl: "estudyante" },
+  partner: { bg: "партньор", en: "partner", de: "Partner", fr: "partenaire", it: "partner", tr: "ortak", es: "pareja", el: "σύντροφος", ja: "協力者", tl: "kasosyo" },
+  influenced_by: { bg: "повлиян/а от", en: "influenced by", de: "beeinflusst von", fr: "influencé(e) par", it: "influenzato/a da", tr: "etkilendiği", es: "influido/a por", el: "επηρεάστηκε από", ja: "影響を受けた相手", tl: "naimpluwensyahan ni" }
 };
 
 const roleGroups: Record<string, keyof typeof groupLabels> = {
@@ -821,7 +895,8 @@ const legendLabel = ({
   tr: "Gruplar — filtrelemek için tıklayın",
   es: "Grupos — pulse para filtrar",
   el: "Ομάδες — πατήστε για φιλτράρισμα",
-  ja: "グループ — クリックで絞り込み"
+  ja: "グループ — クリックで絞り込み",
+  tl: "Mga grupo — pindutin para mag-filter"
 } satisfies Record<Lang, string>)[lang];
 
 function localized(record: Record<string, any>, base: string): string {
@@ -1057,8 +1132,10 @@ const nodeConfig = {
         ? [{ id: "people-connections", label: "Συνδέσεις" }, { id: "people-catalog", label: "Κατάλογος" }]
         : lang === "ja"
         ? [{ id: "people-connections", label: "つながり" }, { id: "people-catalog", label: "カタログ" }]
+        : lang === "tl"
+        ? [{ id: "people-connections", label: "Mga Koneksyon" }, { id: "people-catalog", label: "Katalogo" }]
         : [{ id: "people-connections", label: "Connections" }, { id: "people-catalog", label: "Catalog" }]}
-    label={lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : "Page sections"}
+    label={lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : lang === "tl" ? "Mga Seksyon ng Pahina" : "Page sections"}
   />
 
   <section class="section people-connections" id="people-connections" data-subnav-target>

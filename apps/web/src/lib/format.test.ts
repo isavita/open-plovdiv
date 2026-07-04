@@ -32,4 +32,10 @@ describe("format utilities", () => {
     expect(knownHistoryLabel("Modern period, 1984", "ja")).toBe("現代、1984");
     expect(knownHistoryLabel("not identified in the current public source", "ja")).toContain("現在の公開情報源");
   });
+
+  it("localizes generated history labels for Filipino pages", () => {
+    expect(knownHistoryLabel("wikidata_coordinate", "tl")).toBe("Koordinada ng Wikidata");
+    expect(knownHistoryLabel("Modern period, 1984", "tl")).toBe("Makabagong panahon, 1984");
+    expect(knownHistoryLabel("not identified in the current public source", "tl")).toContain("pinagmulan");
+  });
 });

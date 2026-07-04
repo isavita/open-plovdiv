@@ -131,6 +131,18 @@ const content: Record<Lang, Content> = {
     placesLink: "場所をめぐる",
     historyLink: "歴史を訪ねる",
     bubbles: ["あと5分だけ…😎", "しー。アイリャク。", "また明日来てね。", "また今度かも。", "リラックスして。"]
+  },
+  tl: {
+    eyebrow: "Error 404",
+    title: "Nagpapahinga muna ang pahinang ito.",
+    sub: "Kinukuha nito nang dahan-dahan — naligaw ito sa isa sa pitong burol.",
+    pathTemplate: "Patungo ka sana sa {path} — pero nagpasya rin itong magpahinga.",
+    posLabel: "pangngalan",
+    definition: "Ang magandang sining ng Plovdiv sa walang-alalahanin, hindi nagmamadaling paggawa ng ganap na wala.",
+    backHome: "Bumalik sa simula",
+    placesLink: "Galugarin ang mga lugar",
+    historyLink: "Sa kasaysayan",
+    bubbles: ["Limang minuto pa… 😎", "Shh. Ailyak.", "Bumalik ka bukas.", "Baka mamaya na lang.", "Mag-relax ka, kaibigan."]
   }
 };
 
@@ -466,7 +478,7 @@ const contentJson = JSON.stringify(content);
   <script is:inline>
     (function () {
       var path = window.location.pathname || "/";
-      var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja"];
+      var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl"];
       var segments = path.split("/").filter(Boolean);
       var hasLocalePrefix = segments.length > 0 && codes.indexOf(segments[0]) > -1;
       var loc = hasLocalePrefix ? segments[0] : "bg";
