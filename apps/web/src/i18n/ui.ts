@@ -5297,7 +5297,7 @@ const tl: typeof bg = {
   home: {
     eyebrow: "Isa sa mga pinakamatandang lungsod sa mundo",
     lead:
-      "Mahigit 8000 taon nang tuloy-tuloy na tinitirhan ang Plovdiv. Ipinapakita ng mga lumang pangalan nito ang iba't ibang pamumuno at kultura — Trakiang Eumolpias, Romanong Philippopolis/Trimontium, at Ottoman na Filibe. Noong 1885, naging mahalaga ang lungsod sa Pagkakaisa ng Bulgaria, nang sumapi ang Eastern Rumelia sa Principality of Bulgaria.",
+      "Mahigit 8000 taon nang tuloy-tuloy na tinitirhan ang Plovdiv. Ipinapakita ng mga lumang pangalan nito ang iba't ibang pamumuno at kultura — Trakiang Eumolpias, Romanong Philippopolis/Trimontium, at Osmanling Filibe. Noong 1885, naging mahalaga ang lungsod sa Pagkakaisa ng Bulgaria, nang sumapi ang Silangang Rumelia sa Prinsipalidad ng Bulgaria.",
     ctaHistory: "Tuklasin ang talaan ng kasaysayan",
     ctaMayors: "Ang mga Alkalde ng Plovdiv",
     statYearsValue: "8000+",

@@ -138,10 +138,50 @@ const manualTranslationsByLang = {
     "State targeted subsidy": "Nakatuong subsidyo ng estado",
     "Mayor of Plovdiv Municipality": "Alkalde ng Munisipalidad ng Plovdiv",
     "Mayoral term(s) for Eng. Ivan Totev.": "Termino bilang alkalde: Eng. Ivan Totev.",
+    "A bloodless coup in Plovdiv united Eastern Rumelia with the Principality of Bulgaria. 6 September is celebrated as Unification Day and the Day of Plovdiv.":
+      "Sa isang mapayapang pag-aaklas sa Plovdiv, naisama ang Silangang Rumelia sa Prinsipalidad ng Bulgaria. Ipinagdiriwang ang Setyembre 6 bilang Araw ng Pagkakaisa at Araw ng Plovdiv.",
+    "After the Congress of Berlin, Plovdiv became the capital of the autonomous Ottoman province of Eastern Rumelia.":
+      "Pagkatapos ng Kongreso ng Berlin, naging kabisera ang Plovdiv ng awtonomong lalawigang Osmanli ng Silangang Rumelia.",
+    "A National Revival house in Plovdiv's Old Town, built in 1863 and preserved as a house-museum of 19th-century urban life.":
+      "Isang bahay mula sa Pambansang Muling Pagsilang sa Lumang Bayan ng Plovdiv, itinayo noong 1863 at pinangalagaan bilang bahay-museo ng buhay-lungsod noong ika-19 na siglo.",
+    "A building from Plovdiv's National Revival period, dating to 1846.":
+      "Isang gusali mula sa panahon ng Pambansang Muling Pagsilang sa Plovdiv, na itinayo noong 1846.",
+    "A building from Plovdiv's National Revival period, dating to 1848.":
+      "Isang gusali mula sa panahon ng Pambansang Muling Pagsilang sa Plovdiv, na itinayo noong 1848.",
+    "A building from Plovdiv's National Revival period.":
+      "Isang gusali mula sa panahon ng Pambansang Muling Pagsilang sa Plovdiv.",
+    "Bulgarian Revival, 1832": "Pambansang Muling Pagsilang ng Bulgaria, 1832",
+    "Bulgarian Revival, 1838": "Pambansang Muling Pagsilang ng Bulgaria, 1838",
+    "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete.":
+      "Awtomatikong inayos mula sa kasalukuyang piniling datos; kailangan pa ng hiwalay na pagsusuring editoryal bago ituring na kumpleto.",
+    "Automatically prepared archive record from Wikimedia Commons; requires independent editorial review and finer georeferencing before final publication.":
+      "Awtomatikong inihandang talaan mula sa arkibo ng Wikimedia Commons; kailangan pa ng hiwalay na pagsusuring editoryal at mas tumpak na paglalapat sa mapa bago ang huling paglalathala.",
+    "Automatically prepared then/now pair; requires independent editorial review of the match, license and context before final publication.":
+      "Awtomatikong inihandang pares ng noon/ngayon; kailangan pa ng hiwalay na pagsusuring editoryal sa tugma, lisensya, at konteksto bago ang huling paglalathala.",
+    "Requires independent editorial review and full transcription before it counts as a finished primary document.":
+      "Kailangan ng hiwalay na pagsusuring editoryal at buong transkripsyon bago ito ituring na tapos na pangunahing dokumento.",
+    "The 1999 archive record is programme context, not a municipal budget.":
+      "Ang talaan sa arkibo mula 1999 ay konteksto ng programa, hindi badyet ng munisipalidad.",
+    "The education resource is assembled from public knowledge-base records and requires pedagogical and editorial review before formal use.":
+      "Ang mapagkukunang pang-edukasyon ay binuo mula sa mga pampublikong talaan ng kaalaman at kailangan pa ng pagsusuring pedagogical at editoryal bago gamitin nang pormal.",
+    "The Old Town is not only a National Revival quarter. It stands over older layers and lets us talk about continuity.":
+      "Ang Lumang Bayan ay hindi lamang kapitbahayan ng Pambansang Muling Pagsilang. Nakatayo ito sa mas matatandang patong ng kasaysayan at tumutulong ipaliwanag ang pagpapatuloy ng lungsod.",
+    "The Old Town of Plovdiv climbs across three of the city's hills, where six thousand years of habitation lie layered one upon another — Thracian, Roman, medieval and, most visibly, the painted timber mansions of the Bulgarian National Revival.":
+      "Umaakayat ang Lumang Bayan ng Plovdiv sa tatlo sa mga burol ng lungsod, kung saan magkakapatong ang anim na libong taon ng paninirahan — Trakiano, Romano, medyebal, at higit na kapansin-pansin, ang mga makukulay na kahoy na mansiyon ng Pambansang Muling Pagsilang ng Bulgaria.",
+    "The first Bulgarian school in the city was opened — part of the educational awakening of the National Revival.":
+      "Binuksan ang unang paaralang Bulgaro sa lungsod — bahagi ng pagkamulat sa edukasyon noong Pambansang Muling Pagsilang.",
+    "The home is one of the expositions of the Regional Historical Museum and, in six halls, tells the story of book publishing during the National Revival.":
+      "Ang bahay ay isa sa mga eksposisyon ng Regional Historical Museum at, sa anim na bulwagan, ikinukuwento nito ang paglalathala ng mga aklat noong Pambansang Muling Pagsilang.",
+    "Under Rome the city became Trimontium — capital of the province of Thracia, with a theatre, stadium and forum. In the Ottoman period it was known as Filibe, and in the 19th century it became a centre of the Bulgarian Revival and of trade.":
+      "Sa ilalim ng Roma, naging Trimontium ang lungsod — kabisera ng lalawigan ng Thracia, na may teatro, istadyum, at forum. Sa panahong Osmanli kilala ito bilang Filibe, at noong ika-19 na siglo naging sentro ito ng Pambansang Muling Pagsilang ng Bulgaria at ng kalakalan.",
+    "Used as a structured public source for starter relationship links; each relationship still awaits independent editorial review.":
+      "Ginamit bilang nakabalangkas na pampublikong pinagmulan para sa panimulang mga ugnayan; bawat ugnayan ay kailangan pa ng hiwalay na pagsusuring editoryal.",
     // Machine translation dropped the "Hristo G. Danov" publishing-house name entirely
     // and fabricated a different institutional detail; pin an accurate hand translation.
     "Spas Georgiev Garnevski (born 18 January 1953 in Plovdiv) is a Bulgarian politician, public figure and economist who was mayor of Plovdiv from 1995 to 1999. He graduated from the University of National and World Economy in labour economics and organisation, worked at Plovdiv's state printing house and at the Hristo G. Danov publishing house, and in 1992-1995 was executive director of the printing house. After his mayoral term he remained active in local and national politics: he was expelled from the Union of Democratic Forces in 2003, led DSB's Plovdiv organisation, served as a municipal councillor, and in 2017 was elected an MP from Plovdiv-city on the GERB list. He also published the poetry collections The End of the Night and The Grandchildren of Bay Ganyo.":
-      "Si Spas Georgiev Garnevski (ipinanganak noong 18 Enero 1953 sa Plovdiv) ay isang Bulgarian na politiko, pampublikong personalidad, at ekonomista na naging alkalde ng Plovdiv mula 1995 hanggang 1999. Nagtapos siya sa Unibersidad ng Pambansa at Pandaigdigang Ekonomiya sa larangan ng ekonomiya ng paggawa at organisasyon, nagtrabaho sa estatal na palimbagan ng Plovdiv at sa palimbagang Hristo G. Danov, at noong 1992-1995 ay naging punong ehekutibo ng palimbagan. Pagkatapos ng kanyang termino bilang alkalde, nanatili siyang aktibo sa lokal at pambansang pulitika: pinatalsik siya sa Union of Democratic Forces noong 2003, pinamunuan ang organisasyon ng DSB sa Plovdiv, naglingkod bilang konsehal ng munisipalidad, at noong 2017 ay nahalal na kinatawan mula sa lungsod ng Plovdiv sa listahan ng GERB. Inilathala rin niya ang mga koleksyon ng tula na Ang Katapusan ng Gabi at Ang mga Apo ni Bay Ganyo.",
+      "Si Spas Georgiev Garnevski (ipinanganak noong 18 Enero 1953 sa Plovdiv) ay isang Bulgarong politiko, taong pampubliko, at ekonomista na naging alkalde ng Plovdiv mula 1995 hanggang 1999. Nagtapos siya sa Unibersidad ng Pambansa at Pandaigdigang Ekonomiya sa ekonomiya ng paggawa at organisasyon, nagtrabaho sa estatal na palimbagan ng Plovdiv at sa palimbagang Hristo G. Danov, at noong 1992-1995 ay naging punong ehekutibo ng palimbagan. Pagkatapos ng kanyang termino bilang alkalde, nanatili siyang aktibo sa lokal at pambansang pulitika: pinatalsik siya sa Union of Democratic Forces noong 2003, pinamunuan ang organisasyon ng DSB sa Plovdiv, naglingkod bilang konsehal ng munisipalidad, at noong 2017 ay nahalal na kinatawan mula sa lungsod ng Plovdiv sa listahan ng GERB. Inilathala rin niya ang mga koleksyon ng tula na Ang Katapusan ng Gabi at Ang mga Apo ni Bay Ganyo.",
+    "Zdravko Dimitrov Dimitrov (born 22 May 1963 in Plovdiv) is a Bulgarian politician, sports administrator and former basketball player who was mayor of Plovdiv from 2019 to 2023. He graduated from Vasil Levski Secondary School in Plovdiv, earned a bachelor's degree in sports pedagogy from Plovdiv University, master's degrees in psychology and public administration from the same university, and financial-management training from the D. A. Tsenov Academy of Economics in Svishtov. As a player he competed for CSKA and SSK Akademik Plovdiv and played for Bulgaria's national basketball team; later he served as president of BC Akademik. In politics he was a GERB founding member, mayor of Zapaden District (2007-2011), regional governor of Plovdiv, MP in the 42nd and 43rd National Assemblies, and in 2019 won the mayoral election for Plovdiv Municipality.":
+      "Si Zdravko Dimitrov Dimitrov (ipinanganak noong 22 Mayo 1963 sa Plovdiv) ay isang Bulgarong politiko, tagapangasiwa sa palakasan, at dating manlalaro ng basketball na naging alkalde ng Plovdiv mula 2019 hanggang 2023. Nagtapos siya sa Vasil Levski Secondary School sa Plovdiv, kumuha ng digring bachelor sa sports pedagogy mula sa Plovdiv University, mga masterado sa sikolohiya at pampublikong administrasyon mula sa parehong unibersidad, at pagsasanay sa pamamahalang pinansyal mula sa D. A. Tsenov Academy of Economics sa Svishtov. Bilang manlalaro, lumaban siya para sa CSKA at SSK Akademik Plovdiv at naglaro para sa pambansang koponan ng basketball ng Bulgaria; kalaunan naging pangulo siya ng BC Akademik. Sa pulitika, isa siya sa mga tagapagtatag ng GERB, naging alkalde ng distrito ng Zapaden (2007-2011), gobernador ng rehiyon ng Plovdiv, kinatawan sa ika-42 at ika-43 na Pambansang Asamblea, at noong 2019 nanalo sa halalan sa pagkaalkalde ng Munisipalidad ng Plovdiv.",
     // Machine translation lowercased the "Chirpan" place name mid-sentence.
     "Chirpan earthquake damage near St Josif — then/now":
       "Pinsala mula sa lindol sa Chirpan malapit sa St Josif — noon/ngayon",
@@ -1736,6 +1776,368 @@ function applyJapaneseTemplateFixups(translations) {
   }
 }
 
+const tagalogProfessionLabels = {
+  actor: "artista",
+  "actor and film director": "artista at direktor ng pelikula",
+  actress: "artista",
+  "actress and politician": "artista at politiko",
+  artist: "artista",
+  "artistic gymnast": "artistikong himnasta",
+  athlete: "atleta",
+  "basketball player": "manlalaro ng basketball",
+  "bass singer": "mang-aawit na bass",
+  "beer company": "kompanya ng serbesa",
+  boxer: "boksingero",
+  "canoe racer": "manlalaro sa karera ng canoe",
+  canoeist: "manlalaro ng canoe",
+  "Catholic priest": "paring Katoliko",
+  "chess grandmaster": "grandmaster sa chess",
+  "chess player": "manlalaro ng chess",
+  clergyman: "klerigo",
+  composer: "kompositor",
+  conductor: "konduktor",
+  "conductor and cultural manager": "konduktor at tagapamahalang pangkultura",
+  coxswain: "tagatimon sa bangka",
+  "director, screenwriter and producer": "direktor, tagasulat ng senaryo, at producer",
+  economist: "ekonomista",
+  "economist and politician": "ekonomista at politiko",
+  equestrian: "mangangabayo",
+  fencer: "eskrimador",
+  "film director": "direktor ng pelikula",
+  "film director and screenwriter": "direktor ng pelikula at tagasulat ng senaryo",
+  "film director, screenwriter and writer": "direktor ng pelikula, tagasulat ng senaryo, at manunulat",
+  "football referee": "reperi ng football",
+  footballer: "manlalaro ng football",
+  general: "heneral",
+  geographer: "heograpo",
+  gymnast: "himnasta",
+  "high jumper": "atleta sa high jump",
+  "investigative journalist": "mamamahayag na imbestigatibo",
+  "javelin thrower": "tagahagis ng sibat",
+  "jazz pianist and composer": "piyanista ng jazz at kompositor",
+  journalist: "mamamahayag",
+  "journalist and politician": "mamamahayag at politiko",
+  "jurist and politician": "hurista at politiko",
+  liturgy: "liturhiya",
+  logician: "dalubhasa sa lohika",
+  "martial artist": "manlalaban sa martial arts",
+  "middle-distance runner": "mananakbo sa gitnang distansya",
+  "military officer": "opisyal militar",
+  mineralogist: "mineralogo",
+  model: "modelo",
+  "modern pentathlete": "atleta sa modernong pentathlon",
+  musician: "musikero",
+  "opera singer": "mang-aawit ng opera",
+  painter: "pintor",
+  "philosopher and art historian": "pilosopo at historyador ng sining",
+  physicist: "pisiko",
+  pianist: "piyanista",
+  politician: "politiko",
+  "politician and jurist": "politiko at hurista",
+  "professional wrestler, rower and powerlifter": "propesyonal na wrestler, mananagwan, at powerlifter",
+  "public figure": "taong pampubliko",
+  "racing driver": "drayber sa karera",
+  revolutionary: "rebolusyonaryo",
+  "rhythmic gymnast": "ritmikong himnasta",
+  rower: "mananagwan",
+  "scientist and anti-terrorism expert": "siyentipiko at eksperto sa kontra-terorismo",
+  sculptor: "iskultor",
+  singer: "mang-aawit",
+  "sport shooter": "tagabaril sa palakasan",
+  "sports shooter": "tagabaril sa palakasan",
+  "sprint canoer": "manlalaro ng sprint canoe",
+  swimmer: "manlalangoy",
+  "State Security officer": "opisyal ng seguridad ng estado",
+  "tennis player": "manlalaro ng tennis",
+  "theatre director": "direktor ng teatro",
+  university: "unibersidad",
+  violinist: "biyolinista",
+  "visual artist": "biswal na artista",
+  "volleyball player": "manlalaro ng volleyball",
+  weightlifter: "tagapagbuhat ng timbang",
+  wrestler: "wrestler",
+  writer: "manunulat",
+  "writer and poet": "manunulat at makata",
+  zoologist: "zoologo"
+};
+
+function tagalogDateNote(note) {
+  return note.replace(/^born\s+(\d{4})$/i, "ipinanganak $1");
+}
+
+function tagalogProfessionLabel(profession) {
+  const match = profession.match(/^(.+?) \((.+)\)$/);
+  const base = match ? match[1] : profession;
+  const note = match ? match[2] : null;
+  const label = tagalogProfessionLabels[base];
+  if (!label) return null;
+  return note ? `${label} (${tagalogDateNote(note)})` : label;
+}
+
+function tagalogBiographicalLead(lead) {
+  return lead.replace(/\(b\. (\d{4})\)/g, "(ipinanganak $1)");
+}
+
+function tagalogLabel(text) {
+  return text
+    .replace(/\bDefinitive Bulgarian rule\b/g, "Tiyak na pamumunong Bulgaro")
+    .replace(/\bInto the Bulgarian Empire\b/g, "Sa loob ng Imperyong Bulgaro")
+    .replace(/\bThe Bulgarian Church is restored\b/g, "Naibalik ang Simbahang Bulgaro")
+    .replace(/\bThe first Bulgarian school\b/g, "Ang unang paaralang Bulgaro")
+    .replace(/\bThe Old Town \(Old Plovdiv\)\b/g, "Lumang Bayan (Old Plovdiv)")
+    .replace(/\bThe Seven Hills \(tepeta\)\b/g, "Pitong Burol (tepeta)")
+    .replace(/\bThe Old Town\b/g, "Lumang Bayan")
+    .replace(/\bOld Town\b/g, "Lumang Bayan")
+    .replace(/\bOld Plovdiv\b/g, "Lumang Plovdiv")
+    .replace(/\bUnification square\b/g, "Liwasan ng Pagkakaisa")
+    .replace(/\bEastern Rumelia\b/g, "Silangang Rumelia")
+    .replace(/\bPrincipality of Bulgaria\b/g, "Prinsipalidad ng Bulgaria")
+    .replace(/\bBulgarian Revival\b/g, "Pambansang Muling Pagsilang ng Bulgaria")
+    .replace(/\bNational Revival\b/g, "Pambansang Muling Pagsilang")
+    .replace(/\bLiberation\b/g, "Paglaya")
+    .replace(/\bUnification\b/g, "Pagkakaisa")
+    .replace(/\bCentral district\b/g, "distrito ng Central")
+    .replace(/\bEastern district\b/g, "distrito ng Eastern")
+    .replace(/\bNorthern district\b/g, "distrito ng Northern")
+    .replace(/\bSouthern district\b/g, "distrito ng Southern")
+    .replace(/\bWestern district\b/g, "distrito ng Western")
+    .replace(/\bTrakiya district\b/g, "distrito ng Trakiya");
+}
+
+function isFileOnlyTranslationSource(source, translated) {
+  return (
+    source === translated &&
+    /\.(?:jpe?g|png|webp|gif|svg|pdf)\b/i.test(source)
+  );
+}
+
+function cleanupTagalogText(source, translated) {
+  if (isFileOnlyTranslationSource(source, translated)) return translated;
+
+  const cleanupReplacements = [
+    [/\bPrincipality of Bulgaria\b/g, "Prinsipalidad ng Bulgaria"],
+    [/\bEastern Rumelia\b/g, "Silangang Rumelia"],
+    [/\bUnification Day\b/g, "Araw ng Pagkakaisa"],
+    [/\bThe Unification of Bulgaria\b/g, "Pagkakaisa ng Bulgaria"],
+    [/\bthe Unification\b/g, "ang Pagkakaisa"],
+    [/\bUnification\b/g, "Pagkakaisa"],
+    [/\bLiberation\b/g, "Paglaya"],
+    [/\bBulgarian National Revival\b/g, "Pambansang Muling Pagsilang ng Bulgaria"],
+    [/\bBulgarian Revival\b/g, "Pambansang Muling Pagsilang ng Bulgaria"],
+    [/\bNational Revival\b/g, "Pambansang Muling Pagsilang"],
+    [/\bRevival-era\b/g, "panahon ng Pambansang Muling Pagsilang"],
+    [/\bRevival era\b/g, "panahon ng Pambansang Muling Pagsilang"],
+    [/\bRevival\b/g, "Pambansang Muling Pagsilang"],
+    [/\bOttoman-era\b/g, "panahong Osmanli"],
+    [/\bOttoman period\b/g, "panahong Osmanli"],
+    [/\bOttoman\b/g, "Osmanli"],
+    [/\bRoman\b/g, "Romano"],
+    [/\bThracian\b/g, "Trakiano"],
+    [/\bMacedonian\b/g, "Macedoniano"],
+    [/\bOld Town\b/g, "Lumang Bayan"],
+    [/\bOld Plovdiv\b/g, "Lumang Plovdiv"],
+    [/\bUnification square\b/g, "Liwasan ng Pagkakaisa"],
+    [/\barchive record\b/g, "talaan sa arkibo"],
+    [/\bgeoreferencing\b/g, "paglalapat sa mapa"],
+    [/\beditorial review\b/g, "pagsusuring editoryal"],
+    [/\beditoryal na pagsusuri\b/g, "pagsusuring editoryal"],
+    [/\bindependiyenteng pagsusuri sa editoryal\b/g, "hiwalay na pagsusuring editoryal"],
+    [/\bindependiyenteng pagsusuri ng editoryal\b/g, "hiwalay na pagsusuring editoryal"],
+    [/\bcapital programme\b/g, "programang kapital"],
+    [/\bcapital program\b/g, "programang kapital"],
+    [/\bprograma ng kapital\b/g, "programang kapital"],
+    [/\bprograma ng kabisera\b/g, "programang kapital"],
+    [/\bdraft programang kapital\b/g, "burador na programang kapital"],
+    [/\bbudget-adoption report\b/g, "ulat sa pagpapatibay ng badyet"],
+    [/\bpag-aampon ng badyet\b/g, "pagpapatibay ng badyet"],
+    [/\bpublic budget presentation\b/g, "pampublikong presentasyon ng badyet"],
+    [/\bbudget presentation\b/g, "presentasyon ng badyet"],
+    [/\bpublic source\b/g, "pampublikong pinagmulan"],
+    [/\bstructured pampublikong pinagmulan\b/g, "nakabalangkas na pampublikong pinagmulan"],
+    [/\bsource\b/g, "pinagmulan"],
+    [/\btimeline record\b/g, "talaan sa kronolohiya"],
+    [/\btimeline\b/g, "kronolohiya"],
+    [/\bmayoral election\b/g, "halalan sa pagkaalkalde"],
+    [/\bmayoral term\b/g, "termino bilang alkalde"],
+    [/\bmayoral terms\b/g, "mga termino bilang alkalde"],
+    [/\bmayors\b/g, "mga alkalde"],
+    [/\bmayoral\b/g, "pang-alkalde"],
+    [/\bacting alkalde\b/g, "pansamantalang alkalde"],
+    [/\bmayor\b/g, "alkalde"],
+    [/\bMayor\b/g, "Alkalde"],
+    [/\bTrakiya Distrito\b/g, "distrito ng Trakiya"],
+    [/\bZapaden Distrito\b/g, "distrito ng Zapaden"],
+    [/\bCentral Distrito\b/g, "distrito ng Central"],
+    [/\bDistrict\b/g, "Distrito"],
+    [/\bdistrict\b/g, "distrito"],
+    [/\blayered religious heritage\b/g, "patong-patong na pamanang panrelihiyon"],
+    [/\barchitectural-historical reserve\b/g, "reserbang arkitektural at historikal"],
+    [/\bcultural monument\b/g, "monumentong pangkultura"],
+    [/\burban architecture\b/g, "arkitekturang panglungsod"],
+    [/\burban memory\b/g, "alaalang panglungsod"],
+    [/\burban life\b/g, "buhay-lungsod"],
+    [/\bmerchant\b/g, "mangangalakal"],
+    [/\bmerchants\b/g, "mga mangangalakal"],
+    [/\bquarter\b/g, "kapitbahayan"],
+    [/\blayers\b/g, "mga patong"],
+    [/\blayer\b/g, "patong"],
+    [/\bpublic figure\b/g, "taong pampubliko"],
+    [/\bpublic data\b/g, "pampublikong datos"],
+    [/\bpublic buildings\b/g, "mga pampublikong gusali"],
+    [/\bpublic works\b/g, "mga gawaing pampubliko"],
+    [/\bresidential\b/g, "tirahan"],
+    [/\bmunicipal task\b/g, "gawaing munisipal"],
+    [/\bmunicipal administration\b/g, "administrasyong munisipal"],
+    [/\bmunicipal co-financing\b/g, "kasamang pondo ng munisipalidad"],
+    [/\bmunicipal development plan\b/g, "plano sa pagpapaunlad ng munisipalidad"],
+    [/\bmunicipal councillor\b/g, "konsehal ng munisipalidad"],
+    [/\bmunicipal\b/g, "munisipal"],
+    [/\bpostwar\b/g, "pagkatapos ng digmaan"],
+    [/\bpagkatapos ng digmaan city\b/g, "lungsod pagkatapos ng digmaan"],
+    [/\bpagkatapos ng digmaan gawaing munisipal\b/g, "gawaing munisipal pagkatapos ng digmaan"],
+    [/\bpublic-works program\b/g, "programa ng mga gawaing pampubliko"],
+    [/\bpublic-works programme\b/g, "programa ng mga gawaing pampubliko"],
+    [/\boperational-programme projects\b/g, "mga proyektong programang operasyonal"],
+    [/\bCapital investment program\b/g, "Programang pamumuhunang kapital"],
+    [/\bcapital investment program\b/g, "programang pamumuhunang kapital"],
+    [/\bcapital expenditure of\b/g, "gastos kapital na"],
+    [/\breports executed\b/g, "ay nag-uulat ng naisagawang"],
+    [/\bfunctional analysis\b/g, "pagsusuring panggamit"],
+    [/\bair raids\b/g, "mga pagsalakay mula sa himpapawid"],
+    [/\bblack-market\b/g, "iligal na pamilihan"],
+    [/\beducational awakening\b/g, "pagkamulat sa edukasyon"],
+    [/\bedukasyonal na paggising\b/g, "pagkamulat sa edukasyon"],
+    [/\bEuropean Capital of Culture\b/g, "Kapital ng Kultura sa Europa"],
+    [/"Pag-iisa ng Bulgaria"/g, "\"Pagkakaisa ng Bulgaria\""],
+    [/"Book Publishing"/g, "\"Paglalathala ng Aklat\""],
+    [/\bModern History Center\b/g, "Sentro ng Makabagong Kasaysayan"],
+    [/\bModern History Centre\b/g, "Sentro ng Makabagong Kasaysayan"],
+    [/\bCenter\b/g, "Sentro"],
+    [/\bBulgarian beer company\b/g, "Kompanya ng serbesa sa Bulgaria"],
+    [/\bBulgarian Administrative Register\b/g, "Administratibong Rehistro ng Bulgaria"],
+    [/\bBulgarian Archives State Agency\b/g, "Ahensiya ng Estado para sa mga Arkibo ng Bulgaria"],
+    [/\bBulgarian National Audit Office\b/g, "Pambansang Tanggapan ng Awdit ng Bulgaria"],
+    [/\baudit ulat\b/g, "ulat ng awdit"],
+    [/\bfinancial audit\b/g, "pinansyal na awdit"],
+    [/\bBulgarian Exarchate\b/g, "Eksarkado ng Bulgaria"],
+    [/\bBulgarian Empire\b/g, "Imperyong Bulgaro"],
+    [/\bBulgarian Church\b/g, "Simbahang Bulgaro"],
+    [/\bBulgarian Red Cross\b/g, "Krus na Pula ng Bulgaria"],
+    [/\bBulgarian Agricultural Bank\b/g, "Bangko Agrikultural ng Bulgaria"],
+    [/\bBulgarian Agrarian National Union\b/g, "Pambansang Unyong Agraryo ng Bulgaria"],
+    [/\bBulgarian National Assembly\b/g, "Pambansang Asamblea ng Bulgaria"],
+    [/\bmember of the Pambansang Asamblea ng Bulgaria\b/g, "miyembro ng Pambansang Asamblea ng Bulgaria"],
+    [/\bBulgarian Literary Society\b/g, "Lipunang Pampanitikan ng Bulgaria"],
+    [/\bSecret Bulgarian Central Revolutionary Committee\b/g, "Lihim na Sentral na Rebolusyonaryong Komite ng Bulgaria"],
+    [/\bFirst Bulgarian Fair\b/g, "Unang Peryang Bulgaro"],
+    [/\bUnang Bulgarian Agricultural at Industrial Exhibition\b/g, "Unang Pang-agrikultura at Pang-industriyang Eksibisyon ng Bulgaria"],
+    [/\bUnang Bulgarian Agricultural-Industrial Exhibition\b/g, "Unang Pang-agrikultura at Pang-industriyang Eksibisyon ng Bulgaria"],
+    [/\bBulgarian Agricultural at Industrial Exhibition\b/g, "Pang-agrikultura at Pang-industriyang Eksibisyon ng Bulgaria"],
+    [/\bBulgarian Agricultural-Industrial Exhibition\b/g, "Pang-agrikultura at Pang-industriyang Eksibisyon ng Bulgaria"],
+    [/\bunang Bulgarian Kapital ng Kultura sa Europa\b/g, "unang Kapital ng Kultura sa Europa mula sa Bulgaria"],
+    [/\bBulgarian grammar school\b/g, "gimnasyong Bulgaro"],
+    [/\bBulgarian gymnasium\b/g, "gimnasyong Bulgaro"],
+    [/\bgurong Bulgarian\b/g, "gurong Bulgaro"],
+    [/\bPartido Komunista ng Bulgarong ipinanganak\b/g, "Partido Komunista ng Bulgaria na ipinanganak"],
+    [/\bBulgarian dark beer\b/g, "maitim na serbesang Bulgaro"],
+    [/\bBulgarian religious community\b/g, "pamayanang panrelihiyong Bulgaro"],
+    [/\bBulgarian artistic gymnast\b/g, "Bulgarong artistikong himnasta"],
+    [/\bdating Bulgarian artistic gymnast\b/g, "dating Bulgarong artistikong himnasta"],
+    [/\bFormer Bulgarian artistic gymnast\b/g, "Dating Bulgarong artistikong himnasta"],
+    [/\bBulgarian artist\b/g, "Bulgarong artista"],
+    [/\bBulgarian artists\b/g, "mga Bulgarong artista"],
+    [/\bBulgarian publicist\b/g, "Bulgarong publisista"],
+    [/\bSerbo-Bulgarian War\b/g, "Digmaang Serbo-Bulgaro"],
+    [/\bRusso-Turkish War\b/g, "Digmaang Ruso-Turko"],
+    [/\bApril Uprising\b/g, "Pag-aalsang Abril"],
+    [/\bAbril Pag-aalsa\b/g, "Pag-aalsang Abril"],
+    [/\bUnity committee\b/g, "komite ng Pagkakaisa"],
+    [/\bProvisional Government of Silangang Rumelia\b/g, "Pansamantalang Pamahalaan ng Silangang Rumelia"],
+    [/\bNational Assembly\b/g, "Pambansang Asamblea"],
+    [/\bGrand National Assemblies\b/g, "mga Dakilang Pambansang Asamblea"],
+    [/\bGrand National Assembly\b/g, "Dakilang Pambansang Asamblea"],
+    [/\bChurch-and-People councils\b/g, "mga konseho ng Simbahan at Bayan"],
+    [/\bChurch-and-People council\b/g, "konseho ng Simbahan at Bayan"],
+    [/\bsa Bulgarong nagho-host\b/g, "sa Bulgaria na nag-host"],
+    [/\bBulgarong mga tagapaglathala\b/g, "mga Bulgarong tagapaglathala"],
+    [/\bgeographical atlase\b/g, "mga atlas na heograpiko"],
+    [/\bfirst Bulgarian encyclopedia\b/g, "unang ensiklopediyang Bulgaro"],
+    [/\bunang Bulgarian encyclopedia\b/g, "unang ensiklopediyang Bulgaro"],
+    [/\bBulgarian enterprise\b/g, "negosyong Bulgaro"],
+    [/\bpublishing house\b/g, "palimbagan"],
+    [/\bbahay-publish\b/g, "palimbagan"],
+    [/\bpublishing and distributing books\b/g, "paglalathala at pamamahagi ng mga aklat"],
+    [/\bbooks\b/g, "mga aklat"],
+    [/\bprovisional 2026 programang kapital\b/g, "pansamantalang programang kapital para sa 2026"],
+    [/\bProvisional 2026 programang kapital\b/g, "Pansamantalang programang kapital para sa 2026"],
+    [/\bstate-subsidy\b/g, "subsidyo ng estado"],
+    [/\btarget na subsidy ng estado\b/g, "nakatuong subsidyo ng estado"],
+    [/\bsubsidy na naka-target ng estado\b/g, "nakatuong subsidyo ng estado"],
+    [/\bNational Assembly of the Prinsipalidad ng Bulgaria\b/g, "Pambansang Asamblea ng Prinsipalidad ng Bulgaria"],
+    [/\bNational Assembly of the Prinsipalidad\b/g, "Pambansang Asamblea ng Prinsipalidad"],
+    [/\bRegional Assembly\b/g, "Panrehiyong Asamblea"],
+    [/\bBulgarian public figure\b/g, "Bulgarong taong pampubliko"],
+    [/\bBulgarian taong pampubliko\b/g, "Bulgarong taong pampubliko"],
+    [/\bBulgarian pampublikong personalidad\b/g, "Bulgarong taong pampubliko"],
+    [/\bBulgarian pampublikong pigura\b/g, "Bulgarong taong pampubliko"],
+    [/\bisang Bulgarian pampublikong personalidad\b/g, "isang Bulgarong taong pampubliko"],
+    [/\bisang Bulgarian pampublikong pigura\b/g, "isang Bulgarong taong pampubliko"],
+    [/\bisang Bulgarian\b/g, "isang Bulgarong"],
+    [/\bBulgarian na\b/g, "Bulgarong"],
+    [/\bBulgarian aktor\b/g, "Bulgarong aktor"],
+    [/\bBulgarian politiko\b/g, "Bulgarong politiko"],
+    [/\bpolitiko ng Bulgaria\b/g, "Bulgarong politiko"],
+    [/\bBulgaria na\b/g, "Bulgarong"],
+    [/\bBulgarian Communist Party\b/g, "Partido Komunista ng Bulgaria"],
+    [/\bBulgarian-Soviet Society\b/g, "Lipunang Bulgaro-Sobyet"],
+    [/\bFirst Bulgarian Agricultural and Industrial Exhibition\b/g, "Unang Pang-agrikultura at Pang-industriyang Eksibisyon ng Bulgaria"],
+    [/\bBulgarian Agricultural and Industrial Exhibition\b/g, "Pang-agrikultura at Pang-industriyang Eksibisyon ng Bulgaria"],
+    [/\bBulgarian European Capital of Culture\b/g, "Bulgarong Kapital ng Kultura sa Europa"],
+    [/\bin Bulgarian\b/g, "sa wikang Bulgaro"],
+    [/\bwikang Bulgarian\b/g, "wikang Bulgaro"],
+    [/\bthe Thracians\b/g, "ang mga Trakiano"],
+    [/\bThracians\b/g, "mga Trakiano"],
+    [/\bThrace\b/g, "Thracia"],
+    [/\bPambansang Muling Pagsilang ng Bulgaria-era\b/g, "panahon ng Pambansang Muling Pagsilang ng Bulgaria"],
+    [/\bisang panahon ng Pambansang Muling Pagsilang ng Bulgaria tagapagturo, tagapaglathala at pampublikong personalidad\b/g, "isang tagapagturo, tagapaglathala, at taong pampubliko noong Pambansang Muling Pagsilang ng Bulgaria"],
+    [/\bisang panahon ng Pambansang Muling Pagsilang ng Bulgaria guro\b/g, "isang guro noong Pambansang Muling Pagsilang ng Bulgaria"],
+    [/\bPambansang Muling Pagsilang ng Bulgarong bahay\b/g, "bahay mula sa Pambansang Muling Pagsilang ng Bulgaria"],
+    [/\bmga bahay mula sa Pambansang Muling Pagsilang ng Bulgaria ng Lumang Bayan ng Plovdiv\b/g, "mga bahay ng Lumang Bayan ng Plovdiv mula sa Pambansang Muling Pagsilang ng Bulgaria"],
+    [/\bmga bahay mula sa Pambansang Muling Pagsilang ng Bulgaria ng Lumang Bayan\b/g, "mga bahay ng Lumang Bayan mula sa Pambansang Muling Pagsilang ng Bulgaria"],
+    [/\bPambansang Muling Pagsilang house museum\b/g, "bahay-museo ng Pambansang Muling Pagsilang"],
+    [/\bPambansang Muling Pagsilang house\b/g, "bahay ng Pambansang Muling Pagsilang"],
+    [/\bpanahong Osmanli mosque\b/g, "moske mula sa panahong Osmanli"],
+    [/\bOsmanli bath\b/g, "paliguang Osmanli"],
+    [/\bOsmanli Empire\b/g, "Imperyong Osmanli"],
+    [/\burban-mobility\b/g, "mobilidad sa lungsod"],
+    [/\burban fabric\b/g, "estrukturang panglungsod"],
+    [/\burban topography\b/g, "topograpiyang panglungsod"],
+    [/\burban site\b/g, "pook panglungsod"],
+    [/\burban hill\b/g, "burol sa lungsod"],
+    [/\burban patong\b/g, "patong panglungsod"],
+    [/\burban communities\b/g, "mga pamayanang panglungsod"],
+    [/\bcommunities sa lunsod\b/g, "mga pamayanang panglungsod"],
+    [/\bkonteksto ng urban\b/g, "kontekstong panglungsod"],
+    [/\burban\b/g, "panglungsod"],
+    [/\bquarters\b/g, "mga kapitbahayan"],
+    [/\bPlovdiv's\b/g, "ng Plovdiv"],
+    [/\bng Plovdiv 2024 programang kapital\b/g, "programang kapital ng Plovdiv noong 2024"],
+    [/\bstarter georeferenced cartographic patong\b/g, "panimulang kartograpikong patong na inilapat sa mapa"],
+    [/\bI-archive ang mapa\b/g, "Mapa sa arkibo"],
+    [/\bGreek Patriarch\b/g, "Patriyarkang Griyego"],
+    [/\bGreek school\b/g, "paaralang Griyego"],
+    [/\bGreek sa\b/g, "Griyego sa"],
+    [/\beditorial board\b/g, "lupon ng patnugot"],
+    [/\bpublisher\b/g, "tagapaglathala"],
+    [/\beducator\b/g, "tagapagturo"],
+    [/\bPambansang Pambansang Muling Pagsilang\b/g, "Pambansang Muling Pagsilang"]
+  ];
+
+  let out = translated;
+  for (const [from, to] of cleanupReplacements) out = out.replace(from, to);
+  return out;
+}
+
 function applyTagalogTemplateFixups(translations) {
   if (targetLang !== "tl") return;
   const relationTl = (relation) => (relation === "succeeds" ? "humalili kay" : "hinalinhan ni");
@@ -1771,7 +2173,7 @@ function applyTagalogTemplateFixups(translations) {
 
     match = source.match(/^Dating and summary for timeline record "(.+)"\.$/);
     if (match) {
-      translations[source] = `Petsa at buod para sa tala ng timeline na "${match[1]}".`;
+      translations[source] = `Petsa at buod para sa talaan sa kronolohiya na "${tagalogLabel(match[1])}".`;
       continue;
     }
 
@@ -1819,13 +2221,80 @@ function applyTagalogTemplateFixups(translations) {
 
     match = source.match(/^Historical image for then\/now pair: (.+)$/);
     if (match) {
-      translations[source] = `Makasaysayang larawan para sa pares noon/ngayon: ${match[1]}`;
+      translations[source] = `Makasaysayang larawan para sa pares noon/ngayon: ${tagalogLabel(match[1])}`;
       continue;
     }
 
     match = source.match(/^Current comparison image for then\/now pair: (.+)$/);
     if (match) {
-      translations[source] = `Kasalukuyang larawang panghambing para sa pares noon/ngayon: ${match[1]}`;
+      translations[source] = `Kasalukuyang larawang panghambing para sa pares noon/ngayon: ${tagalogLabel(match[1])}`;
+      continue;
+    }
+
+    match = source.match(/^Coordinates for (.+)\.$/);
+    if (match) {
+      translations[source] = `Mga coordinate para sa ${tagalogLabel(match[1])}.`;
+      continue;
+    }
+
+    match = source.match(/^Landmark: (.+)$/);
+    if (match) {
+      translations[source] = `Palatandaan: ${tagalogLabel(match[1])}`;
+      continue;
+    }
+
+    match = source.match(/^landmark: (.+)$/);
+    if (match) {
+      translations[source] = `palatandaan: ${tagalogLabel(match[1])}`;
+      continue;
+    }
+
+    match = source.match(/^Media for landmark: (.+)$/);
+    if (match) {
+      translations[source] = `Media para sa palatandaan: ${tagalogLabel(match[1])}`;
+      continue;
+    }
+
+    match = source.match(/^Description and historical context for (.+)\.$/);
+    if (match) {
+      translations[source] = `Paglalarawan at makasaysayang konteksto para sa ${tagalogLabel(match[1])}.`;
+      continue;
+    }
+
+    match = source.match(/^Media and license for (.+): (.+)\.$/);
+    if (match) {
+      const [, subject, fileName] = match;
+      translations[source] = `Media at lisensya para sa ${tagalogLabel(subject)}: ${fileName}.`;
+      continue;
+    }
+
+    match = source.match(/^(.+) — Bulgarian (.+)\.$/);
+    if (match) {
+      const [, name, profession] = match;
+      const professionTl = tagalogProfessionLabel(profession);
+      if (professionTl) {
+        translations[source] = `${tagalogBiographicalLead(name)} — Bulgarong ${professionTl}.`;
+        continue;
+      }
+    }
+
+    match = source.match(/^Bulgarian (.+)$/);
+    if (match) {
+      const professionTl = tagalogProfessionLabel(match[1]);
+      if (professionTl) {
+        translations[source] = `Bulgarong ${professionTl}`;
+        continue;
+      }
+    }
+
+    match = source.match(/^([A-Z][A-Za-z]+) (.+) \((born \d{4}|\d{4}[–-]\d{4})\)\.?$/);
+    if (match) {
+      const [, nationality, profession, note] = match;
+      const professionTl = nationality === "Bulgarian" ? tagalogProfessionLabel(profession) : null;
+      if (professionTl) {
+        translations[source] = `Bulgarong ${professionTl} (${tagalogDateNote(note)})`;
+        continue;
+      }
       continue;
     }
   }
@@ -1857,7 +2326,7 @@ function applyTagalogTemplateFixups(translations) {
 
   for (const [source, translated] of Object.entries(translations)) {
     if (typeof translated !== "string") continue;
-    let out = translated;
+    let out = cleanupTagalogText(source, translated);
     for (const [from, to] of cleanupReplacements) out = out.replace(from, to);
     translations[source] = out;
   }
