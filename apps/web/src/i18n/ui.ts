@@ -756,7 +756,7 @@ const en: typeof bg = {
   home: {
     eyebrow: "One of the oldest cities in the world",
     lead:
-      "Plovdiv has been continuously inhabited for more than 8,000 years. Thracian Eumolpias, Philip II of Macedon's Philippopolis, Roman Trimontium, Ottoman Filibe — and the city of the Unification.",
+      "Plovdiv has been continuously inhabited for more than 8,000 years. Its old names mark different rulers and cultures — Thracian Eumolpias, Roman Philippopolis/Trimontium and Ottoman Filibe. In 1885 the city became central to Bulgaria's Unification, when Eastern Rumelia joined the Principality of Bulgaria.",
     ctaHistory: "Explore the timeline",
     ctaMayors: "The mayors of Plovdiv",
     statYearsValue: "8000+",
@@ -1439,7 +1439,7 @@ const de: typeof bg = {
   home: {
     eyebrow: "Eine der ältesten Städte der Welt",
     lead:
-      "Plovdiv ist seit mehr als 8.000 Jahren durchgehend besiedelt. Das thrakische Eumolpia, das Philippopolis von Philipp II. von Makedonien, das römische Trimontium, das osmanische Filibe — und die Stadt der Vereinigung.",
+      "Plovdiv ist seit mehr als 8.000 Jahren durchgehend besiedelt. Seine alten Namen markieren verschiedene Herrschaften und Kulturen — das thrakische Eumolpia, das römische Philippopolis/Trimontium und das osmanische Filibe. 1885 wurde die Stadt zum Zentrum der bulgarischen Vereinigung, als Ostrumelien dem Fürstentum Bulgarien beitrat.",
     ctaHistory: "Die Zeitleiste erkunden",
     ctaMayors: "Die Bürgermeister von Plovdiv",
     statYearsValue: "8000+",
@@ -2082,7 +2082,7 @@ const fr: typeof bg = {
   home: {
     eyebrow: "L'une des plus anciennes villes du monde",
     lead:
-      "Plovdiv est habitée sans interruption depuis plus de 8 000 ans. Eumolpias thrace, Philippopolis de Philippe II de Macédoine, Trimontium romaine, Filibe ottomane — et la ville de l'Unification.",
+      "Plovdiv est habitée sans interruption depuis plus de 8 000 ans. Ses anciens noms marquent différentes dominations et cultures — Eumolpias thrace, Philippopolis/Trimontium romaine et Filibe ottomane. En 1885, la ville devient centrale dans l'Unification de la Bulgarie, lorsque la Roumélie orientale rejoint la Principauté de Bulgarie.",
     ctaHistory: "Explorer la chronologie",
     ctaMayors: "Les maires de Plovdiv",
     statYearsValue: "8000+",
@@ -2725,7 +2725,7 @@ const it: typeof bg = {
   home: {
     eyebrow: "Una delle città più antiche del mondo",
     lead:
-      "Plovdiv è abitata senza interruzioni da oltre 8.000 anni. L'Eumolpiade tracia, la Filippopoli di Filippo II di Macedonia, la Trimontium romana, la Filibe ottomana — e la città dell'Unificazione.",
+      "Plovdiv è abitata senza interruzioni da oltre 8.000 anni. I suoi antichi nomi indicano dominazioni e culture diverse — Eumolpia tracia, Philippopolis/Trimontium romana e Filibe ottomana. Nel 1885 la città divenne centrale nell'Unificazione della Bulgaria, quando la Rumelia orientale si unì al Principato di Bulgaria.",
     ctaHistory: "Esplora la cronologia",
     ctaMayors: "I sindaci di Plovdiv",
     statYearsValue: "8000+",
@@ -3368,7 +3368,7 @@ const tr: typeof bg = {
   home: {
     eyebrow: "Dünyanın en eski şehirlerinden biri",
     lead:
-      "Plovdiv 8.000 yılı aşkın süredir kesintisiz olarak yerleşim yeri olmuştur. Trak Eumolpias'ı, Makedonyalı II. Filip'in Philippopolis'i, Roma Trimontium'u, Osmanlı Filibe'si — ve Birleşme'nin şehri.",
+      "Plovdiv 8.000 yılı aşkın süredir kesintisiz yerleşim görür. Eski adları farklı yönetimleri ve kültürleri gösterir — Trak Eumolpias'ı, Roma Philippopolis/Trimontium'u ve Osmanlı Filibe'si. 1885'te şehir, Doğu Rumeli'nin Bulgaristan Prensliği'ne katıldığı Bulgaristan Birleşmesi'nin merkezlerinden biri oldu.",
     ctaHistory: "Zaman çizelgesini keşfet",
     ctaMayors: "Plovdiv'in belediye başkanları",
     statYearsValue: "8000+",
@@ -4011,7 +4011,7 @@ const es: typeof bg = {
   home: {
     eyebrow: "Una de las ciudades más antiguas del mundo",
     lead:
-      "Plovdiv está habitada de forma ininterrumpida desde hace más de 8000 años. La Eumolpíade tracia, la Filipópolis de Filipo II de Macedonia, la Trimontium romana, la Filibe otomana — y la ciudad de la Unificación.",
+      "Plovdiv está habitada de forma ininterrumpida desde hace más de 8000 años. Sus nombres antiguos señalan distintos poderes y culturas: la Eumolpias tracia, la Philippopolis/Trimontium romana y la Filibe otomana. En 1885 la ciudad fue central para la Unificación de Bulgaria, cuando Rumelia Oriental se unió al Principado de Bulgaria.",
     ctaHistory: "Explorar la cronología",
     ctaMayors: "Los alcaldes de Plovdiv",
     statYearsValue: "8000+",
@@ -4654,7 +4654,7 @@ const el: typeof bg = {
   home: {
     eyebrow: "Μία από τις αρχαιότερες πόλεις του κόσμου",
     lead:
-      "Το Plovdiv κατοικείται αδιάλειπτα εδώ και πάνω από 8.000 χρόνια. Θρακική Ευμολπία, Φιλιππούπολη του Φιλίππου Β΄ της Μακεδονίας, ρωμαϊκή Τριμόντιον, οθωμανική Φιλιμπέ — και η πόλη της Ένωσης.",
+      "Το Plovdiv κατοικείται αδιάλειπτα εδώ και πάνω από 8.000 χρόνια. Τα παλαιά του ονόματα δείχνουν διαφορετικές εξουσίες και πολιτισμούς — θρακική Ευμολπία, ρωμαϊκή Φιλιππούπολη/Τριμόντιον και οθωμανική Φιλιμπέ. Το 1885 η πόλη βρέθηκε στο κέντρο της βουλγαρικής Ένωσης, όταν η Ανατολική Ρωμυλία ενώθηκε με το Πριγκιπάτο της Βουλγαρίας.",
     ctaHistory: "Εξερευνήστε το χρονολόγιο",
     ctaMayors: "Οι δήμαρχοι του Plovdiv",
     statYearsValue: "8000+",
@@ -5297,7 +5297,7 @@ const tl: typeof bg = {
   home: {
     eyebrow: "Isa sa mga pinakamatandang lungsod sa mundo",
     lead:
-      "Patuloy na tinitirhan ang Plovdiv nang mahigit 8000 taon. Trakiang Eumolpias, Philippopolis ni Philip II ng Macedonia, Romanong Trimontium, Ottoman na Filibe — at ang lungsod ng Pagkakaisa.",
+      "Mahigit 8000 taon nang tuloy-tuloy na tinitirhan ang Plovdiv. Ipinapakita ng mga lumang pangalan nito ang iba't ibang pamumuno at kultura — Trakiang Eumolpias, Romanong Philippopolis/Trimontium, at Ottoman na Filibe. Noong 1885, naging mahalaga ang lungsod sa Pagkakaisa ng Bulgaria, nang sumapi ang Eastern Rumelia sa Principality of Bulgaria.",
     ctaHistory: "Tuklasin ang talaan ng kasaysayan",
     ctaMayors: "Ang mga Alkalde ng Plovdiv",
     statYearsValue: "8000+",
@@ -5940,7 +5940,7 @@ const uk: typeof bg = {
   home: {
     eyebrow: "Одне з найдавніших міст світу",
     lead:
-      "Пловдив безперервно заселений уже понад 8000 років. Фракійський Евмолпій, Філіппополь Філіппа II Македонського, римський Трімонцій, османське Філібе — і місто Об'єднання.",
+      "Пловдив безперервно заселений уже понад 8000 років. Його давні назви позначають різні влади й культури — фракійську Евмолпію, римський Філіппополь/Трімонцій та османське Філібе. У 1885 році місто стало одним із центрів Об'єднання Болгарії, коли Східна Румелія приєдналася до Князівства Болгарія.",
     ctaHistory: "Дослідити хронологію",
     ctaMayors: "Мери Пловдива",
     statYearsValue: "8000+",
@@ -6583,7 +6583,7 @@ const ru: typeof bg = {
   home: {
     eyebrow: "Один из старейших городов мира",
     lead:
-      "Пловдив непрерывно заселён уже более 8000 лет. Фракийский Эвмолпия, Филиппополь Филиппа II Македонского, римский Тримонциум, османский Филибе — и город Объединения.",
+      "Пловдив непрерывно заселён уже более 8000 лет. Его старые названия показывают разные власти и культуры — фракийскую Эвмолпию, римский Филиппополь/Тримонциум и османский Филибе. В 1885 году город стал одним из центров Объединения Болгарии, когда Восточная Румелия присоединилась к Княжеству Болгария.",
     ctaHistory: "Исследовать хронологию",
     ctaMayors: "Мэры Пловдива",
     statYearsValue: "8000+",

@@ -268,7 +268,7 @@ export const jaUiTranslations: Record<string, string> = {
     "Please tick both confirmations.": "両方の確認にチェックを入れてください。",
     "Plovdiv Municipality's total annual budget (in BGN). The archive includes executed 2010 figures and adopted budgets for 2011-2018; 2020, 2022 and 2024 remain approximate/rounded. Every year links to a public source.": "Plovdiv市の年間予算総額 (BGN)。アーカイブには、2010 年の執行済みの数字と 2011 年から 2018 年の採択された予算が含まれています。 2020 年、2022 年、2024 年は近似/四捨五入のままです。毎年、公開情報源にリンクしています。",
     "Plovdiv Municipality": "Plovdiv市",
-    "Plovdiv has been continuously inhabited for more than 8,000 years. Thracian Eumolpias, Philip II of Macedon's Philippopolis, Roman Trimontium, Ottoman Filibe — and the city of the Unification.": "Plovdivには 8,000 年以上にわたり途切れることなく人が暮らしてきました。トラキアのエウモルピア、マケドニア王フィリッポス 2 世のフィリッポポリス、ローマのトリモンティウム、オスマン帝国のフィリベ、そして統一の都市。",
+    "Plovdiv has been continuously inhabited for more than 8,000 years. Its old names mark different rulers and cultures — Thracian Eumolpias, Roman Philippopolis/Trimontium and Ottoman Filibe. In 1885 the city became central to Bulgaria's Unification, when Eastern Rumelia joined the Principality of Bulgaria.": "Plovdivは8,000年以上にわたって人が住み続けてきた街です。古い名称は、それぞれ異なる支配と文化の層を示しています — トラキアのEumolpias、ローマ時代のPhilippopolis/Trimontium、オスマン時代のFilibe。1885年には、東ルメリ自治州がブルガリア公国に合流した「ブルガリア統一」の中心地の一つになりました。",
     "Plovdiv total budget by year": "Plovdivの年度別総予算",
     "Prehistory": "先史時代",
     "Previous": "前へ",
