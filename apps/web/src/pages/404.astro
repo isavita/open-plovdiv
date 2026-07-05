@@ -5,7 +5,7 @@ import type { Lang } from "@i18n/utils";
 // This page is a single static, prerendered 404.html served as the fallback
 // for every unmatched route across every locale (the site is output:
 // "static"), so there is no per-request server to pick a locale at render
-// time. All 9 languages are authored here; the inline script below detects
+// time. All site languages are authored here; the inline script below detects
 // the locale from the visited path and swaps the text client-side, so a
 // visitor only ever sees ONE language — never the bg+en mix the previous
 // version showed everyone regardless of locale.
@@ -155,6 +155,18 @@ const content: Record<Lang, Content> = {
     placesLink: "Прогулятися місцями",
     historyLink: "В історію",
     bubbles: ["Ще п'ять хвилин… 😎", "Тсс. Айляк.", "Приходь завтра.", "Може, пізніше.", "Розслабся, друже."]
+  },
+  ru: {
+    eyebrow: "Ошибка 404",
+    title: "Эта страница отдыхает на айляк.",
+    sub: "Эта страница никуда не спешит — затерялась где-то среди семи холмов.",
+    pathTemplate: "Вы направлялись к {path} — но и она решила отдохнуть.",
+    posLabel: "сущ.",
+    definition: "Тонкое пловдивское искусство никуда не спешить и ничего не делать.",
+    backHome: "На главную",
+    placesLink: "Прогуляться по местам",
+    historyLink: "В историю",
+    bubbles: ["Ещё пять минут… 😎", "Тсс. Айляк.", "Заходи завтра.", "Может, позже.", "Расслабься, друг."]
   }
 };
 
@@ -490,7 +502,7 @@ const contentJson = JSON.stringify(content);
   <script is:inline>
     (function () {
       var path = window.location.pathname || "/";
-      var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl"];
+      var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
       var segments = path.split("/").filter(Boolean);
       var hasLocalePrefix = segments.length > 0 && codes.indexOf(segments[0]) > -1;
       var loc = hasLocalePrefix ? segments[0] : "bg";

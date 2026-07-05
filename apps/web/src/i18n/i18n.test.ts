@@ -28,12 +28,19 @@ const JAPANESE = /[\u3040-\u30ff\u3400-\u9fff]/;
 // an untranslated Bulgarian passthrough, since the generic CYRILLIC check
 // can't distinguish the two related, same-script languages.
 const UKRAINIAN_ONLY_LETTERS = /[\u0456\u0457\u0454\u0491]/i;
+// Letters that exist in the Russian Cyrillic alphabet but never appear in
+// Bulgarian text (\u044b, \u044d, \u0451). Used the same way as UKRAINIAN_ONLY_LETTERS: to
+// confirm ru text is genuinely Russian rather than an untranslated Bulgarian
+// passthrough, since the generic CYRILLIC check can't distinguish the two
+// related, same-script languages.
+const RUSSIAN_ONLY_LETTERS = /[\u044b\u044d\u0451]/i;
 // Non-Bulgarian locales whose UI must not leak Bulgarian Cyrillic. Greek (`el`) is
 // included: it uses its own (Greek) script, which the CYRILLIC range does not match,
 // so the same no-Cyrillic-leak assertion is Greek-aware (allows Greek, catches Cyrillic).
-// Ukrainian (`uk`) is intentionally excluded: it shares Bulgarian's Cyrillic script,
-// so a blanket "no Cyrillic" assertion would false-positive on correctly translated
-// Ukrainian text. See the dedicated "Ukrainian UI" test below instead.
+// Ukrainian (`uk`) and Russian (`ru`) are intentionally excluded: they share
+// Bulgarian's Cyrillic script, so a blanket "no Cyrillic" assertion would
+// false-positive on correctly translated text. See the dedicated "Ukrainian UI"
+// and "Russian UI" tests below instead.
 const NON_BG_SCRIPT_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "el", "ja", "tl"];
 // Locales written in the Latin script (used for assertions that are Latin-only).
 const LATIN_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "tl"];
@@ -57,7 +64,7 @@ function collectStrings(
 
 describe("i18n locales", () => {
   it("registers every shipped locale", () => {
-    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk"]);
+    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"]);
   });
 
   it("every locale exposes a non-empty display name", () => {
@@ -121,11 +128,23 @@ describe("ui dictionary parity", () => {
     // A handful of strings (site name, shared proper nouns) may legitimately match.
     expect(identical.length).toBeLessThan(bgPairs.length * 0.1);
   });
+
+  it("Russian UI is genuinely Russian (uses letters absent from Bulgarian), not an untranslated bg passthrough", () => {
+    const russianStrings = collectStrings(ui.ru).filter(([, value]) => RUSSIAN_ONLY_LETTERS.test(value));
+    expect(russianStrings.length).toBeGreaterThan(100);
+  });
+
+  it("Russian UI is not just a copy of the Bulgarian source strings", () => {
+    const bgPairs = collectStrings(ui.bg);
+    const ruByPath = new Map(collectStrings(ui.ru));
+    const identical = bgPairs.filter(([bgPath, bgValue]) => ruByPath.get(bgPath) === bgValue);
+    expect(identical.length).toBeLessThan(bgPairs.length * 0.1);
+  });
 });
 
 describe("generated translation JSON", () => {
   it("Japanese translations have exact key parity with the other generated locales and no blanks", () => {
-    const langs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk"];
+    const langs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
     const translations = Object.fromEntries(
       langs.map((lang) => [
         lang,
@@ -207,6 +226,7 @@ describe("data-label maps", () => {
     const jaKeys = Object.keys(sourceTitleLabels.ja).sort();
     const tlKeys = Object.keys(sourceTitleLabels.tl).sort();
     const ukKeys = Object.keys(sourceTitleLabels.uk).sort();
+    const ruKeys = Object.keys(sourceTitleLabels.ru).sort();
     expect(deKeys, "de source titles drift from en").toEqual(enKeys);
     expect(frKeys, "fr source titles drift from en").toEqual(enKeys);
     expect(itKeys, "it source titles drift from en").toEqual(enKeys);
@@ -216,19 +236,22 @@ describe("data-label maps", () => {
     expect(jaKeys, "ja source titles drift from en").toEqual(enKeys);
     expect(tlKeys, "tl source titles drift from en").toEqual(enKeys);
     expect(ukKeys, "uk source titles drift from en").toEqual(enKeys);
+    expect(ruKeys, "ru source titles drift from en").toEqual(enKeys);
     for (const loc of NON_BG_SCRIPT_LOCALES) {
       for (const [key, value] of Object.entries(sourceTitleLabels[loc])) {
         expect(value.trim().length, `sourceTitleLabels.${loc}.${key} empty`).toBeGreaterThan(0);
       }
     }
-    for (const [key, value] of Object.entries(sourceTitleLabels.uk)) {
-      expect(value.trim().length, `sourceTitleLabels.uk.${key} empty`).toBeGreaterThan(0);
+    for (const loc of ["uk", "ru"] as const) {
+      for (const [key, value] of Object.entries(sourceTitleLabels[loc])) {
+        expect(value.trim().length, `sourceTitleLabels.${loc}.${key} empty`).toBeGreaterThan(0);
+      }
     }
   });
 });
 
 describe("route parity", () => {
-  function routeFiles(locale: "en" | "ja" | "tl" | "uk") {
+  function routeFiles(locale: "en" | "ja" | "tl" | "uk" | "ru") {
     const base = path.join(repoRoot, "apps/web/src/pages", locale);
     const walk = (dir: string): string[] =>
       fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -249,6 +272,10 @@ describe("route parity", () => {
 
   it("/uk has exact source route parity with /en", () => {
     expect(routeFiles("uk")).toEqual(routeFiles("en"));
+  });
+
+  it("/ru has exact source route parity with /en", () => {
+    expect(routeFiles("ru")).toEqual(routeFiles("en"));
   });
 });
 
@@ -273,11 +300,13 @@ describe("localised routing", () => {
     expect(getLangFromUrl("/ja/history")).toBe("ja");
     expect(getLangFromUrl("/tl/history")).toBe("tl");
     expect(getLangFromUrl("/uk/history")).toBe("uk");
+    expect(getLangFromUrl("/ru/history")).toBe("ru");
     expect(getLangFromUrl("/en/history")).toBe("en");
     expect(getLangFromUrl("/projects")).toBe("bg");
     expect(delocalizePath("/ja/projects")).toBe("/projects");
     expect(delocalizePath("/tl/projects")).toBe("/projects");
     expect(delocalizePath("/uk/projects")).toBe("/projects");
+    expect(delocalizePath("/ru/projects")).toBe("/projects");
     expect(delocalizePath("/el/projects")).toBe("/projects");
     expect(delocalizePath("/de/projects")).toBe("/projects");
     expect(delocalizePath("/de")).toBe("/");
@@ -308,5 +337,6 @@ describe("localised routing", () => {
     expect(localeForLang("ja")).toBe("ja-JP");
     expect(localeForLang("tl")).toBe("fil-PH");
     expect(localeForLang("uk")).toBe("uk-UA");
+    expect(localeForLang("ru")).toBe("ru-RU");
   });
 });

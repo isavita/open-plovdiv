@@ -40,10 +40,10 @@ const pageTitle = title ? `${title} · ${t.site.name}` : t.site.name;
 const pageDescription = description ?? t.site.tagline;
 const structuredTitle = title ?? t.site.name;
 
-const ogLocales: Record<Lang, string> = { bg: "bg_BG", en: "en_GB", de: "de_DE", fr: "fr_FR", it: "it_IT", tr: "tr_TR", es: "es_ES", el: "el_GR", ja: "ja_JP", tl: "fil_PH", uk: "uk_UA" };
+const ogLocales: Record<Lang, string> = { bg: "bg_BG", en: "en_GB", de: "de_DE", fr: "fr_FR", it: "it_IT", tr: "tr_TR", es: "es_ES", el: "el_GR", ja: "ja_JP", tl: "fil_PH", uk: "uk_UA", ru: "ru_RU" };
 const ogLocale = ogLocales[lang];
-const routesLabel = ({ bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути" } satisfies Record<Lang, string>)[lang];
-const governanceLabel = ({ bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління" } satisfies Record<Lang, string>)[lang];
+const routesLabel = ({ bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути", ru: "Маршруты" } satisfies Record<Lang, string>)[lang];
+const governanceLabel = ({ bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління", ru: "Управление" } satisfies Record<Lang, string>)[lang];
 
 // The city's own word for its unhurried spirit — a quiet signature repeated
 // in the footer so the whole site keeps the same relaxed, "ailyak" tone.
@@ -58,7 +58,8 @@ const ailyakMottos = {
   el: "Αϊλιάκ — η τέχνη της Φιλιππούπολης να μη βιάζεσαι.",
   ja: "アイリャク — 急がないプロヴディフの流儀。",
   tl: "Ailyak — ang sining ng Plovdiv na huwag magmadali.",
-  uk: "Айляк — пловдивське мистецтво не поспішати."
+  uk: "Айляк — пловдивське мистецтво не поспішати.",
+  ru: "Айляк — пловдивское искусство никуда не спешить."
 } satisfies Record<Lang, string>;
 const ailyakMotto = ailyakMottos[lang];
 
@@ -173,8 +174,8 @@ const menuGroups = [
 // by the bottom script to re-localize the header/footer after detecting the
 // visited locale from the URL, using the same stable keys as the
 // data-nav-key/data-menu-key/data-footer-key hooks rendered below.
-const routesLabels = { bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути" } satisfies Record<Lang, string>;
-const governanceLabels = { bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління" } satisfies Record<Lang, string>;
+const routesLabels = { bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути", ru: "Маршруты" } satisfies Record<Lang, string>;
+const governanceLabels = { bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління", ru: "Управление" } satisfies Record<Lang, string>;
 const chromeI18n = localeDetect
   ? Object.fromEntries(
       localeCodes.map((code) => {
@@ -518,7 +519,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
             // above. A no-op when the detected locale is already "bg" (the
             // server-rendered default), so this never fights normal pages —
             // those never set `localeDetect` in the first place.
-            var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja"];
+            var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
             var segments = (window.location.pathname || "/").split("/").filter(Boolean);
             var loc = segments.length > 0 && codes.indexOf(segments[0]) > -1 ? segments[0] : "bg";
             if (loc === "bg") return;

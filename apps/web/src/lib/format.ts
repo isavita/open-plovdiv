@@ -10,7 +10,7 @@ import {
 } from "../i18n/ui";
 import { translateEn } from "../i18n/deTranslations";
 
-const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP", tl: "fil-PH", uk: "uk-UA" };
+const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP", tl: "fil-PH", uk: "uk-UA", ru: "ru-RU" };
 
 const knownHistoryText: Record<Lang, Record<string, string>> = {
   bg: {},
@@ -185,6 +185,25 @@ const knownHistoryText: Record<Lang, Record<string, string>> = {
       "Публічно задокументована установа, будівля або міський об'єкт у Пловдиві.",
     "Building or urban site from Plovdiv's Revival and early modern heritage.":
       "Будівля або міський об'єкт зі спадщини доби Відродження та раннього нового часу Пловдива."
+  },
+  ru: {
+    "wikidata_coordinate": "Координаты Wikidata",
+    "approximate_site": "приблизительное место",
+    "district_centroid": "центр района",
+    "citywide_reference": "общегородской ориентир",
+    "Modern period": "Новейший период",
+    "Bulgarian Revival": "Болгарское национальное возрождение",
+    "Thracian era – Antiquity": "Фракийская эпоха – античность",
+    "Roman period": "Римский период",
+    "Ottoman period": "Османский период",
+    "not identified in the current public source": "не определено в имеющемся публичном источнике",
+    "not applicable for a natural hill or terrain feature": "неприменимо для природного холма или элемента рельефа",
+    "Publicly documented historic site; detailed visiting status still needs verification.":
+      "Публично задокументированный исторический объект; подробный статус посещения ещё требует проверки.",
+    "Publicly documented institution, building, or urban site in Plovdiv.":
+      "Публично задокументированное учреждение, здание или городской объект в Пловдиве.",
+    "Building or urban site from Plovdiv's Revival and early modern heritage.":
+      "Здание или городской объект из наследия эпохи Возрождения и раннего нового времени Пловдива."
   }
 };
 

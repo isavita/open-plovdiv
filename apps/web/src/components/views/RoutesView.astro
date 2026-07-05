@@ -74,8 +74,9 @@ const tr = (
   el: string,
   ja: string,
   tl: string,
-  uk: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk })[lang];
+  uk: string,
+  ru: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru })[lang];
 
 const labels = {
   title: tr(
@@ -89,7 +90,8 @@ const labels = {
     "Περιπατητικές διαδρομές στο Plovdiv",
     "Plovdivの散策ルート",
     "Mga Ruta na Lalakaran sa Plovdiv",
-    "Пішохідні маршрути Plovdiv"
+    "Пішохідні маршрути Plovdiv",
+    "Пешеходные маршруты Пловдива"
   ),
   eyebrow: tr(
     "За посетители",
@@ -102,7 +104,8 @@ const labels = {
     "Για επισκέπτες",
     "訪問者向け",
     "Para sa mga bisita",
-    "Для відвідувачів"
+    "Для відвідувачів",
+    "Для гостей города"
   ),
   lead: tr(
     "Самостоятелни пешеходни маршрути, изградени от вече публикуваните места, разкази, архивни изображения и източници в Open Plovdiv.",
@@ -115,20 +118,21 @@ const labels = {
     "Αυτοκαθοδηγούμενες διαδρομές με τα πόδια, βασισμένες στις ήδη δημοσιευμένες τοποθεσίες, αφηγήσεις, εικόνες αρχείου και πηγές του Open Plovdiv.",
     "Open Plovdivで公開済みの場所、ストーリー、アーカイブ画像、出典から組み立てたセルフガイド散策ルートです。",
     "Mga ruta na maaaring lakarin nang mag-isa, hango sa mga lugar, kuwento, larawan mula sa arkibo, at pinagmulang nailathala na sa Open Plovdiv.",
-    "Маршрути для самостійних пішохідних прогулянок, побудовані на основі вже опублікованих на Open Plovdiv місць, розповідей, архівних зображень і джерел."
+    "Маршрути для самостійних пішохідних прогулянок, побудовані на основі вже опублікованих на Open Plovdiv місць, розповідей, архівних зображень і джерел.",
+    "Самостоятельные пешеходные маршруты, составленные из уже опубликованных в Open Plovdiv мест, историй, архивных изображений и источников."
   ),
-  routes: tr("маршрута", "routes", "Routen", "parcours", "percorsi", "rota", "rutas", "διαδρομές", "ルート", "ruta", "маршрути"),
-  stops: tr("спирки", "stops", "Stationen", "étapes", "tappe", "durak", "paradas", "στάσεις", "地点", "hintuan", "зупинки"),
-  sources: tr("източници", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "出典", "pinagmulan", "джерела"),
-  source: tr("Източник", "Source", "Quelle", "Source", "Fonte", "Kaynak", "Fuente", "Πηγή", "出典", "Pinagmulan", "Джерело"),
-  thenNow: tr("тогава/сега", "then/now", "damals/heute", "avant/après", "prima/dopo", "önce/sonra", "antes/después", "πριν/μετά", "今昔比較", "noon/ngayon", "тоді/тепер"),
-  archive: tr("архив", "archive", "Archiv", "archives", "archivio", "arşiv", "archivo", "αρχείο", "アーカイブ", "arkibo", "архів"),
-  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlikler", "eventos", "γεγονότα", "出来事", "pangyayari", "події"),
-  evidence: tr("Записи", "Records", "Datensätze", "Fiches", "Schede", "Kayıtlar", "Registros", "Εγγραφές", "記録", "Mga Talaan", "Записи"),
-  suggestedDuration: tr("Препоръчано време", "Suggested time", "Empfohlene Zeit", "Durée suggérée", "Tempo suggerito", "Önerilen süre", "Tiempo sugerido", "Προτεινόμενος χρόνος", "目安時間", "Iminumungkahing oras", "Орієнтовний час"),
-  minutes: tr("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "min", "хв"),
-  start: tr("Начало", "Start", "Start", "Départ", "Partenza", "Başlangıç", "Inicio", "Αρχή", "開始", "Simula", "Початок"),
-  finish: tr("Край", "Finish", "Ziel", "Arrivée", "Arrivo", "Bitiş", "Final", "Τέλος", "終了", "Tapos", "Кінець"),
+  routes: tr("маршрута", "routes", "Routen", "parcours", "percorsi", "rota", "rutas", "διαδρομές", "ルート", "ruta", "маршрути", "маршрута"),
+  stops: tr("спирки", "stops", "Stationen", "étapes", "tappe", "durak", "paradas", "στάσεις", "地点", "hintuan", "зупинки", "остановки"),
+  sources: tr("източници", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "出典", "pinagmulan", "джерела", "источники"),
+  source: tr("Източник", "Source", "Quelle", "Source", "Fonte", "Kaynak", "Fuente", "Πηγή", "出典", "Pinagmulan", "Джерело", "Источник"),
+  thenNow: tr("тогава/сега", "then/now", "damals/heute", "avant/après", "prima/dopo", "önce/sonra", "antes/después", "πριν/μετά", "今昔比較", "noon/ngayon", "тоді/тепер", "тогда/сейчас"),
+  archive: tr("архив", "archive", "Archiv", "archives", "archivio", "arşiv", "archivo", "αρχείο", "アーカイブ", "arkibo", "архів", "архив"),
+  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlikler", "eventos", "γεγονότα", "出来事", "pangyayari", "події", "события"),
+  evidence: tr("Записи", "Records", "Datensätze", "Fiches", "Schede", "Kayıtlar", "Registros", "Εγγραφές", "記録", "Mga Talaan", "Записи", "Записи"),
+  suggestedDuration: tr("Препоръчано време", "Suggested time", "Empfohlene Zeit", "Durée suggérée", "Tempo suggerito", "Önerilen süre", "Tiempo sugerido", "Προτεινόμενος χρόνος", "目安時間", "Iminumungkahing oras", "Орієнтовний час", "Рекомендуемое время"),
+  minutes: tr("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "min", "хв", "мин"),
+  start: tr("Начало", "Start", "Start", "Départ", "Partenza", "Başlangıç", "Inicio", "Αρχή", "開始", "Simula", "Початок", "Начало"),
+  finish: tr("Край", "Finish", "Ziel", "Arrivée", "Arrivo", "Bitiş", "Final", "Τέλος", "終了", "Tapos", "Кінець", "Конец"),
   chooseTitle: tr(
     "Изберете маршрут",
     "Choose a route",
@@ -140,7 +144,8 @@ const labels = {
     "Επιλέξτε διαδρομή",
     "ルートを選ぶ",
     "Pumili ng ruta",
-    "Оберіть маршрут"
+    "Оберіть маршрут",
+    "Выберите маршрут"
   ),
   chooseLead: tr(
     "Всеки маршрут показва времето за разходка, спирките, свързан разказ и доказателствените записи, които го поддържат.",
@@ -153,22 +158,23 @@ const labels = {
     "Κάθε διαδρομή δείχνει χρόνο περιπάτου, στάσεις, συνδεδεμένη αφήγηση και τεκμήρια.",
     "各ルートは所要時間、地点、関連ストーリー、根拠となる記録を示します。",
     "Ipinapakita ng bawat ruta ang oras ng paglalakad, mga hintuan, kaugnay na kuwento, at mga talaang ebidensya sa likod nito.",
-    "Кожен маршрут показує час прогулянки, зупинки, пов'язану розповідь і записи-докази, на яких він ґрунтується."
+    "Кожен маршрут показує час прогулянки, зупинки, пов'язану розповідь і записи-докази, на яких він ґрунтується.",
+    "Каждый маршрут показывает время прогулки, остановки, связанную историю и подтверждающие записи."
   ),
-  routeStory: tr("Свързан разказ", "Linked story", "Verknüpfte Geschichte", "Récit lié", "Racconto collegato", "Bağlantılı anlatı", "Relato vinculado", "Συνδεδεμένη αφήγηση", "関連ストーリー", "Kaugnay na kuwento", "Пов'язана розповідь"),
-  openStory: tr("Отвори разказа", "Open story", "Geschichte öffnen", "Ouvrir le récit", "Apri il racconto", "Anlatıyı aç", "Abrir relato", "Άνοιγμα αφήγησης", "ストーリーを開く", "Buksan ang kuwento", "Відкрити розповідь"),
-  openPlace: tr("Отвори мястото", "Open place", "Ort öffnen", "Ouvrir le lieu", "Apri il luogo", "Yeri aç", "Abrir lugar", "Άνοιγμα τοποθεσίας", "場所を開く", "Buksan ang lugar", "Відкрити місце"),
-  firstStop: tr("Първа спирка", "First stop", "Erste Station", "Première étape", "Prima tappa", "İlk durak", "Primera parada", "Πρώτη στάση", "最初の地点", "Unang hintuan", "Перша зупинка"),
-  historyMap: tr("Историческа карта", "History map", "Geschichtskarte", "Carte historique", "Mappa storica", "Tarih haritası", "Mapa histórico", "Ιστορικός χάρτης", "歴史地図", "Mapa ng kasaysayan", "Історична карта"),
-  openMap: tr("Виж на картата", "See on map", "Auf Karte ansehen", "Voir sur la carte", "Vedi sulla mappa", "Haritada gör", "Ver en el mapa", "Δείτε στον χάρτη", "地図で見る", "Tingnan sa mapa", "Дивитися на карті"),
-  startRoute: tr("Започни маршрут", "Start route", "Route starten", "Commencer le parcours", "Avvia percorso", "Rotayı başlat", "Iniciar ruta", "Έναρξη διαδρομής", "ルートを開始", "Simulan ang ruta", "Почати маршрут"),
-  mapView: tr("Карта", "Map view", "Kartenansicht", "Vue carte", "Vista mappa", "Harita görünümü", "Vista de mapa", "Προβολή χάρτη", "地図表示", "Tanawin ng mapa", "Карта"),
-  mapHint: tr("Места и спирки", "Places and stops", "Orte und Stationen", "Lieux et étapes", "Luoghi e tappe", "Yerler ve duraklar", "Lugares y paradas", "Τοποθεσίες και στάσεις", "場所と地点", "Mga lugar at hintuan", "Місця та зупинки"),
-  allPlaces: tr("Всички места", "All places", "Alle Orte", "Tous les lieux", "Tutti i luoghi", "Tüm yerler", "Todos los lugares", "Όλες οι τοποθεσίες", "すべての場所", "Lahat ng lugar", "Усі місця"),
-  compareArchive: tr("Архив и тогава/сега", "Archive and then/now", "Archiv und damals/heute", "Archives et avant/après", "Archivio e prima/dopo", "Arşiv ve önce/sonra", "Archivo y antes/después", "Αρχείο και πριν/μετά", "アーカイブと今昔比較", "Arkibo at noon/ngayon", "Архів і тоді/тепер"),
-  routeEvidence: tr("Доказателства по маршрута", "Route evidence", "Routennachweise", "Preuves du parcours", "Evidenze del percorso", "Rota kanıtları", "Evidencia de la ruta", "Τεκμήρια διαδρομής", "ルートの根拠", "Ebidensya ng ruta", "Докази маршруту"),
-  linkedEvents: tr("Свързани събития", "Linked events", "Verknüpfte Ereignisse", "Événements liés", "Eventi collegati", "Bağlantılı etkinlikler", "Eventos vinculados", "Συνδεδεμένα γεγονότα", "関連する出来事", "Kaugnay na pangyayari", "Пов'язані події"),
-  linkedMedia: tr("Архивни и тогава/сега записи", "Archive and then/now records", "Archiv- und damals/heute-Datensätze", "Fiches d'archives et avant/après", "Schede archivio e prima/dopo", "Arşiv ve önce/sonra kayıtları", "Registros de archivo y antes/después", "Αρχεία και εγγραφές πριν/μετά", "アーカイブと今昔比較の記録", "Mga talaan mula sa arkibo at noon/ngayon", "Записи архіву та тоді/тепер"),
+  routeStory: tr("Свързан разказ", "Linked story", "Verknüpfte Geschichte", "Récit lié", "Racconto collegato", "Bağlantılı anlatı", "Relato vinculado", "Συνδεδεμένη αφήγηση", "関連ストーリー", "Kaugnay na kuwento", "Пов'язана розповідь", "Связанная история"),
+  openStory: tr("Отвори разказа", "Open story", "Geschichte öffnen", "Ouvrir le récit", "Apri il racconto", "Anlatıyı aç", "Abrir relato", "Άνοιγμα αφήγησης", "ストーリーを開く", "Buksan ang kuwento", "Відкрити розповідь", "Открыть историю"),
+  openPlace: tr("Отвори мястото", "Open place", "Ort öffnen", "Ouvrir le lieu", "Apri il luogo", "Yeri aç", "Abrir lugar", "Άνοιγμα τοποθεσίας", "場所を開く", "Buksan ang lugar", "Відкрити місце", "Открыть место"),
+  firstStop: tr("Първа спирка", "First stop", "Erste Station", "Première étape", "Prima tappa", "İlk durak", "Primera parada", "Πρώτη στάση", "最初の地点", "Unang hintuan", "Перша зупинка", "Первая остановка"),
+  historyMap: tr("Историческа карта", "History map", "Geschichtskarte", "Carte historique", "Mappa storica", "Tarih haritası", "Mapa histórico", "Ιστορικός χάρτης", "歴史地図", "Mapa ng kasaysayan", "Історична карта", "Историческая карта"),
+  openMap: tr("Виж на картата", "See on map", "Auf Karte ansehen", "Voir sur la carte", "Vedi sulla mappa", "Haritada gör", "Ver en el mapa", "Δείτε στον χάρτη", "地図で見る", "Tingnan sa mapa", "Дивитися на карті", "Смотреть на карте"),
+  startRoute: tr("Започни маршрут", "Start route", "Route starten", "Commencer le parcours", "Avvia percorso", "Rotayı başlat", "Iniciar ruta", "Έναρξη διαδρομής", "ルートを開始", "Simulan ang ruta", "Почати маршрут", "Начать маршрут"),
+  mapView: tr("Карта", "Map view", "Kartenansicht", "Vue carte", "Vista mappa", "Harita görünümü", "Vista de mapa", "Προβολή χάρτη", "地図表示", "Tanawin ng mapa", "Карта", "Карта"),
+  mapHint: tr("Места и спирки", "Places and stops", "Orte und Stationen", "Lieux et étapes", "Luoghi e tappe", "Yerler ve duraklar", "Lugares y paradas", "Τοποθεσίες και στάσεις", "場所と地点", "Mga lugar at hintuan", "Місця та зупинки", "Места и остановки"),
+  allPlaces: tr("Всички места", "All places", "Alle Orte", "Tous les lieux", "Tutti i luoghi", "Tüm yerler", "Todos los lugares", "Όλες οι τοποθεσίες", "すべての場所", "Lahat ng lugar", "Усі місця", "Все места"),
+  compareArchive: tr("Архив и тогава/сега", "Archive and then/now", "Archiv und damals/heute", "Archives et avant/après", "Archivio e prima/dopo", "Arşiv ve önce/sonra", "Archivo y antes/después", "Αρχείο και πριν/μετά", "アーカイブと今昔比較", "Arkibo at noon/ngayon", "Архів і тоді/тепер", "Архив и тогда/сейчас"),
+  routeEvidence: tr("Доказателства по маршрута", "Route evidence", "Routennachweise", "Preuves du parcours", "Evidenze del percorso", "Rota kanıtları", "Evidencia de la ruta", "Τεκμήρια διαδρομής", "ルートの根拠", "Ebidensya ng ruta", "Докази маршруту", "Доказательства маршрута"),
+  linkedEvents: tr("Свързани събития", "Linked events", "Verknüpfte Ereignisse", "Événements liés", "Eventi collegati", "Bağlantılı etkinlikler", "Eventos vinculados", "Συνδεδεμένα γεγονότα", "関連する出来事", "Kaugnay na pangyayari", "Пов'язані події", "Связанные события"),
+  linkedMedia: tr("Архивни и тогава/сега записи", "Archive and then/now records", "Archiv- und damals/heute-Datensätze", "Fiches d'archives et avant/après", "Schede archivio e prima/dopo", "Arşiv ve önce/sonra kayıtları", "Registros de archivo y antes/después", "Αρχεία και εγγραφές πριν/μετά", "アーカイブと今昔比較の記録", "Mga talaan mula sa arkibo at noon/ngayon", "Записи архіву та тоді/тепер", "Архивные записи и записи «тогда/сейчас»"),
   dataBoundary: tr(
     "Маршрутите използват съществуващи записи; маршрутното време е посетителска ориентация, а историческите твърдения остават в свързаните източници.",
     "Routes reuse existing records; route time is visitor guidance, while historical claims stay with the linked sources.",
@@ -180,7 +186,8 @@ const labels = {
     "Οι διαδρομές επαναχρησιμοποιούν υπάρχουσες εγγραφές· ο χρόνος είναι οδηγός επίσκεψης, ενώ οι ιστορικοί ισχυρισμοί παραμένουν στις πηγές.",
     "ルートは既存の記録を再利用します。所要時間は訪問者向けの目安で、歴史的記述はリンク先の出典に基づきます。",
     "Muling ginagamit ng mga ruta ang umiiral nang talaan; ang oras ng ruta ay gabay lamang para sa bisita, habang ang mga makasaysayang pahayag ay nananatili sa kaugnay na pinagmulan.",
-    "Маршрути повторно використовують наявні записи; час маршруту є орієнтиром для відвідувачів, а історичні твердження залишаються за пов'язаними джерелами."
+    "Маршрути повторно використовують наявні записи; час маршруту є орієнтиром для відвідувачів, а історичні твердження залишаються за пов'язаними джерелами.",
+    "Маршруты используют существующие записи; время маршрута — ориентир для посетителей, а исторические утверждения остаются за связанными источниками."
   )
 };
 
@@ -337,7 +344,7 @@ const nearByRoute = new Map(
 );
 
 const mapLabels = {
-  mapTitle: tr("Карта на маршрута", "Route map", "Routenkarte", "Carte du parcours", "Mappa del percorso", "Rota haritası", "Mapa de la ruta", "Χάρτης διαδρομής", "ルート地図", "Mapa ng ruta", "Карта маршруту"),
+  mapTitle: tr("Карта на маршрута", "Route map", "Routenkarte", "Carte du parcours", "Mappa del percorso", "Rota haritası", "Mapa de la ruta", "Χάρτης διαδρομής", "ルート地図", "Mapa ng ruta", "Карта маршруту", "Карта маршрута"),
   mapHintStops: tr(
     "Кликнете върху номерирана спирка, за да отидете на описанието ѝ.",
     "Click a numbered stop to jump to its description.",
@@ -349,9 +356,10 @@ const mapLabels = {
     "Κάντε κλικ σε αριθμημένη στάση για να μεταβείτε στην περιγραφή της.",
     "番号付きの地点をクリックすると説明へ移動します。",
     "I-click ang isang numerong hintuan para pumunta sa deskripsyon nito.",
-    "Натисніть на пронумеровану зупинку, щоб перейти до її опису."
+    "Натисніть на пронумеровану зупинку, щоб перейти до її опису.",
+    "Нажмите на пронумерованную остановку, чтобы перейти к её описанию."
   ),
-  nearTitle: tr("Наблизо по маршрута", "Near this route", "In der Nähe der Route", "À proximité du parcours", "Vicino al percorso", "Rotanın yakınında", "Cerca de la ruta", "Κοντά στη διαδρομή", "ルート周辺", "Malapit sa rutang ito", "Поблизу маршруту"),
+  nearTitle: tr("Наблизо по маршрута", "Near this route", "In der Nähe der Route", "À proximité du parcours", "Vicino al percorso", "Rotanın yakınında", "Cerca de la ruta", "Κοντά στη διαδρομή", "ルート周辺", "Malapit sa rutang ito", "Поблизу маршруту", "Рядом с маршрутом"),
   nearNote: tr(
     "Документирани места на до 400 м по права линия от спирка.",
     "Documented places within 400 m straight-line of a stop.",
@@ -363,9 +371,10 @@ const mapLabels = {
     "Τεκμηριωμένα μέρη έως 400 μ. σε ευθεία από στάση.",
     "各地点から直線距離400m以内の記録済みの場所。",
     "Mga nakadokumentong lugar na nasa loob ng 400 m sa tuwid na linya mula sa isang hintuan.",
-    "Задокументовані місця в межах 400 м по прямій від зупинки."
+    "Задокументовані місця в межах 400 м по прямій від зупинки.",
+    "Задокументированные места в пределах 400 м по прямой от остановки."
   ),
-  metersShort: tr("м", "m", "m", "m", "m", "m", "m", "μ.", "m", "m", "м")
+  metersShort: tr("м", "m", "m", "m", "m", "m", "m", "μ.", "m", "m", "м", "м")
 };
 ---
 

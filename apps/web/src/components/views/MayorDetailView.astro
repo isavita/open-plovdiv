@@ -110,7 +110,8 @@ const mayorStoryLabels = ({
   ja: { eyebrow: "市長の物語", sourceTrail: "出典の流れ" },
   en: { eyebrow: "Mayor story", sourceTrail: "Source trail" },
   tl: { eyebrow: "Kuwento ng alkalde", sourceTrail: "Landas ng pinagmulan" },
-  uk: { eyebrow: "Історія мера", sourceTrail: "Слід джерел" }
+  uk: { eyebrow: "Історія мера", sourceTrail: "Слід джерел" },
+  ru: { eyebrow: "История мэра", sourceTrail: "След источников" }
 } satisfies Record<Lang, { eyebrow: string; sourceTrail: string }>)[lang];
 
 // Lead with the real biography as clean prose; the structured facts (born,
@@ -127,7 +128,8 @@ const bioHeading = ({
   el: "Βιογραφία",
   ja: "略歴",
   tl: "Talambuhay",
-  uk: "Біографія"
+  uk: "Біографія",
+  ru: "Биография"
 } as Record<Lang, string>)[lang];
 const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filter(Boolean);
 ---
