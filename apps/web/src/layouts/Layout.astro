@@ -43,23 +43,23 @@ const structuredTitle = title ?? t.site.name;
 const ogLocales: Record<Lang, string> = { bg: "bg_BG", en: "en_GB", de: "de_DE", fr: "fr_FR", it: "it_IT", tr: "tr_TR", es: "es_ES", el: "el_GR", ja: "ja_JP", tl: "fil_PH", uk: "uk_UA", ru: "ru_RU" };
 const ogLocale = ogLocales[lang];
 const routesLabel = ({ bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути", ru: "Маршруты" } satisfies Record<Lang, string>)[lang];
-const governanceLabel = ({ bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління", ru: "Управление" } satisfies Record<Lang, string>)[lang];
+const governanceLabel = ({ bg: "Управление", en: "Governance", de: "Verwaltung", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління", ru: "Управление" } satisfies Record<Lang, string>)[lang];
 
 // The city's own word for its easygoing rhythm — a quiet signature repeated
 // in the footer so the whole site keeps the same "ailyak" tone.
 const ailyakMottos = {
-  bg: "Айляк — спокойният ритъм на Пловдив.",
+  bg: "Айляк — пловдивското спокойствие.",
   en: "Ailyak — Plovdiv's easygoing rhythm.",
-  de: "Ailyak — Plovdivs entspannter Rhythmus.",
-  fr: "Aïlyak — le rythme tranquille de Plovdiv.",
-  it: "Ailyak — il ritmo rilassato di Plovdiv.",
-  tr: "Aylak — Plovdiv'in sakin ritmi.",
-  es: "Ailyak: el ritmo tranquilo de Plovdiv.",
-  el: "Αϊλιάκ — ο χαλαρός ρυθμός του Πλόβντιβ.",
-  ja: "アイリャク — プロヴディフらしいゆったりしたリズム。",
-  tl: "Ailyak — ang kalmadong ritmo ng Plovdiv.",
-  uk: "Айляк — спокійний ритм Пловдива.",
-  ru: "Айляк — спокойный ритм Пловдива."
+  de: "Ailyak — Plovdivs Gelassenheit.",
+  fr: "Aïlyak — l'art plovdivien de prendre son temps.",
+  it: "Ailyak — Plovdiv senza fretta.",
+  tr: "Ailyak — Plovdiv'in sakin hali.",
+  es: "Ailyak: Plovdiv sin prisa.",
+  el: "Αϊλιάκ — η ήρεμη πλευρά του Πλόβντιβ.",
+  ja: "アイリャク — プロヴディフらしい穏やかな時間。",
+  tl: "Ailyak — ang payapang pakiramdam ng Plovdiv.",
+  uk: "Айляк — спокійний настрій Пловдива.",
+  ru: "Айляк — спокойное настроение Пловдива."
 } satisfies Record<Lang, string>;
 const ailyakMotto = ailyakMottos[lang];
 
@@ -175,7 +175,7 @@ const menuGroups = [
 // visited locale from the URL, using the same stable keys as the
 // data-nav-key/data-menu-key/data-footer-key hooks rendered below.
 const routesLabels = { bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути", ru: "Маршруты" } satisfies Record<Lang, string>;
-const governanceLabels = { bg: "Управление", en: "Governance", de: "Governance", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління", ru: "Управление" } satisfies Record<Lang, string>;
+const governanceLabels = { bg: "Управление", en: "Governance", de: "Verwaltung", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління", ru: "Управление" } satisfies Record<Lang, string>;
 const chromeI18n = localeDetect
   ? Object.fromEntries(
       localeCodes.map((code) => {

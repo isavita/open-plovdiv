@@ -166,7 +166,7 @@ const copy = {
   },
   de: {
     eyebrow: "Politische Geschichte",
-    title: "Governance und politische Geschichte",
+    title: "Verwaltung und politische Geschichte",
     description: "Wer Plovdiv regierte und welche Archiv- und Projektdatensätze diese Amtszeiten rahmen.",
     lead:
       "Wie Plovdiv im Lauf der Zeit regiert wurde: Bürgermeistermandate, Archivänderungen und Projektdatensätze, geordnet als nachprüfbare Belege.",
@@ -192,7 +192,7 @@ const copy = {
     noLinkedArchive: "kein überlappender Archivdatensatz in dieser Auswahl",
     detail: "Profil",
     source: "Quelle",
-    archiveTitle: "Was sich änderte: Archiv-Rückgrat der Governance",
+    archiveTitle: "Was sich änderte: Archiv-Rückgrat der Verwaltung",
     archiveLead:
       "Ausgewählte Stadtarchivdatensätze zeigen Verwaltungswechsel, kommunale Programme, Finanzen und Kulturentscheidungen. Die Bürgermeisterverknüpfung ist nur eine zeitliche Überlappung.",
     mayorOverlap: "Mandatsüberlappung",
@@ -519,7 +519,7 @@ const copy = {
     officeTerm: "termino",
     linkedArchive: "kaugnay na talaan sa arkibo",
     noLinkedArchive: "walang kaugnay na talaan sa arkibo sa napiling grupong ito",
-    detail: "profile",
+    detail: "detalye",
     source: "pinagmulan",
     archiveTitle: "Ano ang nagbago: ang arkibo bilang gulugod ng pamamahala",
     archiveLead:
@@ -533,7 +533,7 @@ const copy = {
     deepTitle: "Buksan ang Buong Seksyon",
     deepLead: "Ang pahinang ito ay isang gabay lamang sa pulitika. Nananatili ang kumpletong talaan sa mga tanging seksyon.",
     ctaMayors: "Lahat ng Alkalde",
-    ctaMayorsText: "kumpletong kronolohiya at profile",
+    ctaMayorsText: "kumpletong kronolohiya at mga detalye",
     ctaProjects: "Mga Proyekto",
     ctaProjectsText: "mapa at katayuan ng proyekto",
     ctaArchive: "Arkibo",
@@ -1282,7 +1282,12 @@ const ctas = [
     display: grid;
     gap: 10px;
     min-width: 0;
+    overflow-wrap: anywhere;
     padding: clamp(15px, 2vw, 20px);
+  }
+
+  .node-body > * {
+    min-width: 0;
   }
 
   .node-body h3,
@@ -1296,6 +1301,14 @@ const ctas = [
 
   .node-body > p:not(.eyebrow) {
     color: var(--ink-2);
+  }
+
+  .node-body .badge,
+  .node-body .meta {
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    white-space: normal;
   }
 
   .governance-projects {

@@ -1,0 +1,40 @@
+import type { Lang } from "@i18n/ui";
+
+const tagLabels: Record<string, Record<Lang, string>> = {
+  archaeology: { bg: "археология", en: "archaeology", de: "Archäologie", fr: "archéologie", it: "archeologia", tr: "arkeoloji", es: "arqueología", el: "αρχαιολογία", ja: "考古学", tl: "arkeolohiya", uk: "археологія", ru: "археология" },
+  architecture: { bg: "архитектура", en: "architecture", de: "Architektur", fr: "architecture", it: "architettura", tr: "mimari", es: "arquitectura", el: "αρχιτεκτονική", ja: "建築", tl: "arkitektura", uk: "архітектура", ru: "архитектура" },
+  archive_media: { bg: "архивни медии", en: "archive media", de: "Archivmedien", fr: "archives visuelles", it: "media d'archivio", tr: "arşiv medyası", es: "material de archivo", el: "αρχειακό υλικό", ja: "アーカイブ資料", tl: "materyal mula sa arkibo", uk: "архівні матеріали", ru: "архивные материалы" },
+  civic_memory: { bg: "гражданска памет", en: "civic memory", de: "bürgerschaftliche Erinnerung", fr: "mémoire civique", it: "memoria civica", tr: "kent hafızası", es: "memoria cívica", el: "αστική μνήμη", ja: "市民の記憶", tl: "alaalang sibiko", uk: "громадянська пам'ять", ru: "гражданская память" },
+  community: { bg: "общност", en: "community", de: "Gemeinschaft", fr: "communauté", it: "comunità", tr: "topluluk", es: "comunidad", el: "κοινότητα", ja: "コミュニティ", tl: "komunidad", uk: "громада", ru: "сообщество" },
+  culture: { bg: "култура", en: "culture", de: "Kultur", fr: "culture", it: "cultura", tr: "kültür", es: "cultura", el: "πολιτισμός", ja: "文化", tl: "kultura", uk: "культура", ru: "культура" },
+  deep_time: { bg: "дълбоко време", en: "deep time", de: "Tiefenzeit", fr: "temps long", it: "tempo profondo", tr: "derin zaman", es: "tiempo profundo", el: "βαθύς χρόνος", ja: "長い時間", tl: "malalim na panahon", uk: "глибокий час", ru: "глубокое время" },
+  earthquake: { bg: "земетресение", en: "earthquake", de: "Erdbeben", fr: "séisme", it: "terremoto", tr: "deprem", es: "terremoto", el: "σεισμός", ja: "地震", tl: "lindol", uk: "землетрус", ru: "землетрясение" },
+  economy: { bg: "икономика", en: "economy", de: "Wirtschaft", fr: "économie", it: "economia", tr: "ekonomi", es: "economía", el: "οικονομία", ja: "経済", tl: "ekonomiya", uk: "економіка", ru: "экономика" },
+  education: { bg: "образование", en: "education", de: "Bildung", fr: "éducation", it: "istruzione", tr: "eğitim", es: "educación", el: "εκπαίδευση", ja: "教育", tl: "edukasyon", uk: "освіта", ru: "образование" },
+  europe: { bg: "Европа", en: "Europe", de: "Europa", fr: "Europe", it: "Europa", tr: "Avrupa", es: "Europa", el: "Ευρώπη", ja: "ヨーロッパ", tl: "Europa", uk: "Європа", ru: "Европа" },
+  fair: { bg: "панаир", en: "fair", de: "Messe", fr: "foire", it: "fiera", tr: "fuar", es: "feria", el: "έκθεση", ja: "見本市", tl: "perya", uk: "ярмарок", ru: "ярмарка" },
+  filibe: { bg: "Филибе", en: "Filibe", de: "Filibe", fr: "Filibe", it: "Filibe", tr: "Filibe", es: "Filibe", el: "Φιλιμπέ", ja: "フィリベ", tl: "Filibe", uk: "Філібе", ru: "Филибе" },
+  frontier: { bg: "граница", en: "frontier", de: "Grenze", fr: "frontière", it: "frontiera", tr: "sınır", es: "frontera", el: "σύνορο", ja: "境界", tl: "hangganan", uk: "кордон", ru: "граница" },
+  governance: { bg: "управление", en: "governance", de: "Verwaltung", fr: "gouvernance", it: "governo", tr: "yönetim", es: "gobernanza", el: "διακυβέρνηση", ja: "統治", tl: "pamamahala", uk: "управління", ru: "управление" },
+  heritage_management: { bg: "управление на наследството", en: "heritage management", de: "Kulturerbe-Management", fr: "gestion du patrimoine", it: "gestione del patrimonio", tr: "miras yönetimi", es: "gestión del patrimonio", el: "διαχείριση κληρονομιάς", ja: "遺産管理", tl: "pamamahala ng pamana", uk: "управління спадщиною", ru: "управление наследием" },
+  hills: { bg: "тепета", en: "hills", de: "Hügel", fr: "collines", it: "colline", tr: "tepeler", es: "colinas", el: "λόφοι", ja: "丘", tl: "mga burol", uk: "пагорби", ru: "холмы" },
+  infrastructure: { bg: "инфраструктура", en: "infrastructure", de: "Infrastruktur", fr: "infrastructure", it: "infrastruttura", tr: "altyapı", es: "infraestructura", el: "υποδομές", ja: "インフラ", tl: "imprastraktura", uk: "інфраструктура", ru: "инфраструктура" },
+  modern_city: { bg: "модерен град", en: "modern city", de: "moderne Stadt", fr: "ville moderne", it: "città moderna", tr: "modern şehir", es: "ciudad moderna", el: "σύγχρονη πόλη", ja: "近代都市", tl: "makabagong lungsod", uk: "модерне місто", ru: "современный город" },
+  municipality: { bg: "община", en: "municipality", de: "Gemeinde", fr: "municipalité", it: "municipalità", tr: "belediye", es: "municipio", el: "δήμος", ja: "自治体", tl: "munisipalidad", uk: "муніципалітет", ru: "муниципалитет" },
+  names: { bg: "имена", en: "names", de: "Namen", fr: "noms", it: "nomi", tr: "adlar", es: "nombres", el: "ονόματα", ja: "地名", tl: "mga pangalan", uk: "назви", ru: "названия" },
+  old_town: { bg: "Старият град", en: "old town", de: "Altstadt", fr: "vieille ville", it: "città vecchia", tr: "Eski Şehir", es: "casco antiguo", el: "Παλιά πόλη", ja: "旧市街", tl: "Lumang Bayan", uk: "Старе місто", ru: "Старый город" },
+  postwar: { bg: "след войната", en: "postwar", de: "Nachkriegszeit", fr: "après-guerre", it: "dopoguerra", tr: "savaş sonrası", es: "posguerra", el: "μεταπολεμικά", ja: "戦後", tl: "pagkatapos ng digmaan", uk: "повоєнний період", ru: "послевоенное время" },
+  public_programme: { bg: "публична програма", en: "public programme", de: "öffentliches Programm", fr: "programme public", it: "programma pubblico", tr: "kamusal program", es: "programa público", el: "δημόσιο πρόγραμμα", ja: "公共プログラム", tl: "pampublikong programa", uk: "публічна програма", ru: "публичная программа" },
+  public_space: { bg: "публично пространство", en: "public space", de: "öffentlicher Raum", fr: "espace public", it: "spazio pubblico", tr: "kamusal alan", es: "espacio público", el: "δημόσιος χώρος", ja: "公共空間", tl: "pampublikong espasyo", uk: "публічний простір", ru: "общественное пространство" },
+  recovery: { bg: "възстановяване", en: "recovery", de: "Wiederaufbau", fr: "relance", it: "ripresa", tr: "iyileşme", es: "recuperación", el: "ανάκαμψη", ja: "復興", tl: "pagbangon", uk: "відновлення", ru: "восстановление" },
+  religion: { bg: "религия", en: "religion", de: "Religion", fr: "religion", it: "religione", tr: "din", es: "religión", el: "θρησκεία", ja: "宗教", tl: "relihiyon", uk: "релігія", ru: "религия" },
+  restoration: { bg: "реставрация", en: "restoration", de: "Restaurierung", fr: "restauration", it: "restauro", tr: "restorasyon", es: "restauración", el: "αποκατάσταση", ja: "修復", tl: "pagpapanumbalik", uk: "реставрація", ru: "реставрация" },
+  unification: { bg: "Съединение", en: "unification", de: "Vereinigung", fr: "Unification", it: "Unificazione", tr: "Birleşme", es: "Unificación", el: "Ένωση", ja: "統一", tl: "Pagkakaisa", uk: "Об'єднання", ru: "Объединение" },
+  urban_layers: { bg: "градски пластове", en: "urban layers", de: "Stadtschichten", fr: "strates urbaines", it: "strati urbani", tr: "kentsel katmanlar", es: "capas urbanas", el: "αστικά στρώματα", ja: "都市の層", tl: "mga patong ng lungsod", uk: "міські шари", ru: "городские слои" },
+  urban_memory: { bg: "градска памет", en: "urban memory", de: "Stadterinnerung", fr: "mémoire urbaine", it: "memoria urbana", tr: "kentsel hafıza", es: "memoria urbana", el: "αστική μνήμη", ja: "都市の記憶", tl: "alaalang urban", uk: "міська пам'ять", ru: "городская память" },
+  urbanism: { bg: "урбанизъм", en: "urbanism", de: "Urbanismus", fr: "urbanisme", it: "urbanistica", tr: "şehircilik", es: "urbanismo", el: "πολεοδομία", ja: "都市計画", tl: "urbanismo", uk: "урбанізм", ru: "урбанистика" }
+};
+
+export function storyThemeTagLabel(tag: string, lang: Lang): string {
+  return tagLabels[tag]?.[lang] ?? tag.replaceAll("_", " ");
+}

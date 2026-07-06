@@ -268,7 +268,7 @@
         "body_es": "El registro sobre la unión de Trimontium al Imperio Romano sitúa a Filipópolis en un marco político más amplio. La historia no se basa únicamente en un nombre: conecta la datación, el espacio urbano y los vestigios arqueológicos posteriores que hacen que la antigua ciudad sea legible hoy para visitantes y estudiantes.",
         "body_el": "Η καταγραφή για την ένταξη του Trimontium στη Ρωμαϊκή Αυτοκρατορία τοποθετεί τη Φιλιππούπολη σε ένα ευρύτερο πολιτικό πλαίσιο. Η ιστορία δεν στηρίζεται σε ένα όνομα μόνο: συνδέει χρονολόγηση, αστικό χώρο και αργότερα αρχαιολογικά ίχνη που κάνουν την αρχαία πόλη αναγνώσιμη σήμερα για επισκέπτες και μαθητές.",
         "body_ja": "トリモンティウムがローマ帝国に加わったという記録は、フィリポポリスをより広い政治的枠組みの中に位置づけている。この物語は名前だけに基づいているわけではありません。それは、古代都市を今日の訪問者や学生が読めるようにする、年代測定、都市空間、そしてその後の考古学的痕跡を結び付けています。",
-        "body_tl": "Ang rekord sa pagsali ng Trimontium sa Imperyo ng Roma ay naglalagay ng Philippopolis sa isang mas malawak na pampulitikang frame. Ang kuwento ay hindi nakasalalay sa isang pangalan lamang: ito ay nag-uugnay sa pakikipag-date, panglungsod space at sa ibang pagkakataon na archaeological traces na ginagawang ang sinaunang lungsod ay nababasa ngayon para sa mga bisita at mga mag-aaral.",
+        "body_tl": "Inilalagay ng tala tungkol sa pagsama ng Trimontium sa Imperyong Romano ang Philippopolis sa mas malawak na pampulitikang konteksto. Hindi nakasalalay ang kuwento sa pangalan lamang: pinag-uugnay nito ang petsa, espasyong urban at mga sumunod na bakás arkeolohiko na ginagawang nababasa pa rin ngayon ang sinaunang lungsod para sa mga bisita at mag-aaral.",
         "body_uk": "Запис про приєднання Трімонціума до Римської імперії ставить Філіппополь у ширшу політичну рамку. Історія не спирається лише на назву: вона пов’язує датування, міський простір і пізніші археологічні сліди, які роблять стародавнє місто читабельним сьогодні для відвідувачів і студентів.",
         "body_ru": "Запись о присоединении Тримонтия к Римской империи ставит Филиппополь в более широкие политические рамки. История не опирается только на название: она соединяет датировку, городское пространство и более поздние археологические следы, которые делают древний город сегодня доступным для чтения посетителями и студентами."
       },
@@ -809,7 +809,7 @@
     "title_es": "Filibe otomano: plazas, lugares sagrados y artesanías urbanas",
     "title_el": "Ottoman Filibe: Πλατείες, Ιεροί Τόποι και Αστικές Τέχνες",
     "title_ja": "オスマン帝国のフィリベ: 広場、神聖な場所、都市工芸品",
-    "title_tl": "Osmanli Filibe: Mga Square, Sacred Places at Urban Crafts",
+    "title_tl": "Filibe noong panahong Ottoman: mga plaza, sagradong lugar at gawaing-bayan",
     "title_uk": "Османський Філібе: площі, священні місця та міські ремесла",
     "title_ru": "Османские филибе: площади, священные места и городские ремесла",
     "dek_de": "Die Dzhumaya Mosque, Bäder, Derwischräume und Spuren eines Uhrturms zeigen, dass die osmanische Schicht weiterhin Teil der städtischen Topographie von Plovdiv ist.",
@@ -1055,11 +1055,11 @@
       "caption_it": "Piazza dell'Unificazione traduce l'evento storico in spazio urbano e memoria pubblica.",
       "caption_tr": "Birleşme Meydanı, tarihi olayı kentsel mekana ve kamusal hafızaya dönüştürüyor.",
       "caption_es": "La Plaza de la Unificación traduce el acontecimiento histórico en espacio urbano y memoria pública.",
-      "caption_el": "Η Πλατεία Ενοποίησης μεταφράζει το ιστορικό γεγονός σε αστικό χώρο και δημόσια μνήμη.",
+      "caption_el": "Η Πλατεία Ενοποίησης μεταφέρει το ιστορικό γεγονός στον αστικό χώρο και στη δημόσια μνήμη.",
       "caption_ja": "統一広場は歴史的出来事を都市空間と公共の記憶に変換します。",
-      "caption_tl": "Isinasalin ng Pagkakaisa Square ang makasaysayang kaganapan sa panglungsod space at pampublikong memorya.",
-      "caption_uk": "Майдан Об’єднання транслює історичну подію в міський простір і суспільну пам’ять.",
-      "caption_ru": "Площадь Объединения транслирует историческое событие в городское пространство и общественную память."
+      "caption_tl": "Ginagawang bahagi ng espasyong urban at pampublikong alaala ng Plaza ng Pagkakaisa ang makasaysayang pangyayaring ito.",
+      "caption_uk": "Площа Об’єднання переносить історичну подію в міський простір і громадську пам’ять.",
+      "caption_ru": "Площадь Объединения переносит историческое событие в городское пространство и общественную память."
     },
     "sections": [
       {
@@ -1094,8 +1094,8 @@
         "body_es": "La Unificación es un acontecimiento nacional, pero para Plovdiv también es una memoria cívica. El registro de la línea de tiempo vincula la fecha con la ciudad, mientras que los lugares públicos mantienen esa conexión visible. Por tanto, la historia puede leerse como acto político y como memoria espacial.",
         "body_el": "Η Ενοποίηση είναι ένα εθνικό γεγονός, αλλά για τη Plovdiv είναι και μνήμη πολιτών. Η εγγραφή της γραμμής χρόνου συνδέει την ημερομηνία με την πόλη, ενώ οι δημόσιοι χώροι διατηρούν αυτή τη σύνδεση ορατή. Επομένως, η ιστορία μπορεί να διαβαστεί τόσο ως πολιτική πράξη όσο και ως χωρική μνήμη.",
         "body_ja": "統一は国家的な行事ですが、Plovdivにとっては市民の記憶でもあります。タイムラインの記録は日付と都市を結びつけますが、公共の場所ではそのつながりを目に見える形で残します。したがって、歴史は政治的行為と空間記憶の両方として読み取ることができます。",
-        "body_tl": "Ang Pagkakaisa ay isang pambansang kaganapan, ngunit para sa Plovdiv ito ay civic memory din. Iniuugnay ng talaan ng kronolohiya ang petsa sa lungsod, habang ang mga pampublikong lugar ay pinananatiling nakikita ang koneksyong iyon. Ang kasaysayan samakatuwid ay mababasa bilang pampulitikang pagkilos at spatial na memorya.",
-        "body_uk": "Saedinenie є національною подією, але для Plovdiv це також громадянська пам'ять. Запис часової шкали пов’язує дату з містом, а громадські місця залишають цей зв’язок видимим. Отже, історію можна сприймати як політичний акт і як просторову пам’ять.",
+        "body_tl": "Ang Pagkakaisa ay pambansang pangyayari, ngunit para sa Plovdiv isa rin itong alaalang sibiko. Iniuugnay ng tala sa kronolohiya ang petsa sa lungsod, habang pinananatiling nakikita ng mga pampublikong lugar ang koneksyong iyon. Kaya mababasa ang kasaysayan kapwa bilang pampulitikang pagkilos at bilang alaala sa espasyo ng lungsod.",
+        "body_uk": "Об’єднання є національною подією, але для Пловдива це також громадська пам’ять. Запис у хронології пов’язує дату з містом, а публічні простори роблять цей зв’язок видимим. Тому історію тут можна читати і як політичний акт, і як просторову пам’ять.",
         "body_ru": "Объединение – событие национального масштаба, но для Plovdiv это также гражданская память. Запись на временной шкале связывает дату с городом, а в общественных местах эта связь сохраняется. Таким образом, историю можно читать и как политический акт, и как пространственную память."
       },
       {
@@ -1156,19 +1156,19 @@
         "heading_es": "La plaza como memoria",
         "heading_el": "Το τετράγωνο ως μνήμη",
         "heading_ja": "記憶としての広場",
-        "heading_tl": "Ang Square bilang Memorya",
+        "heading_tl": "Ang plaza bilang alaala",
         "heading_uk": "Площа як пам'ять",
         "heading_ru": "Площадь как память",
         "body_de": "Der Platz der Vereinigung und sein Denkmal ersetzen nicht die Archive, aber sie zeigen, wie die Stadt sich erinnert. In einer offenen Geschichtsplattform wird der Platz mit Daten, Bildern und Quellen verknüpft, sodass Erinnerung nicht zu einem Slogan ohne nachweisbare Grundlage wird.",
-        "body_fr": "La place de l'Unification et son monument ne remplacent pas les archives, mais ils montrent comment la ville choisit de se souvenir. Dans une plateforme historique ouverte, le carré est lié à des données, des images et des sources afin que la mémoire ne devienne pas un slogan sans fondement vérifiable.",
+        "body_fr": "La place de l’Unification et son monument ne remplacent pas les archives, mais ils montrent comment la ville choisit de se souvenir. Dans une plateforme historique ouverte, la place est reliée aux données, aux images et aux sources afin que la mémoire ne devienne pas un slogan sans fondement vérifiable.",
         "body_it": "Piazza dell'Unificazione e il suo monumento non sostituiscono gli archivi, ma mostrano come la città sceglie di ricordare. In una piattaforma di storia aperta la piazza è collegata a dati, immagini e fonti affinché la memoria non diventi uno slogan senza fondamento verificabile.",
         "body_tr": "Birleşme Meydanı ve anıtı arşivlerin yerini almıyor ancak şehrin nasıl hatırlamayı seçtiğini gösteriyor. Açık bir tarih platformunda meydan verilerle, görüntülerle ve kaynaklarla bağlantılıdır, böylece bellek, doğrulanabilir bir temeli olmayan bir slogan haline gelmez.",
         "body_es": "La Plaza de la Unificación y su monumento no reemplazan los archivos, pero muestran cómo la ciudad elige recordar. En una plataforma de historia abierta, la plaza está vinculada a datos, imágenes y fuentes para que la memoria no se convierta en un eslogan sin fundamento verificable.",
-        "body_el": "Η Πλατεία Ενοποίησης και το μνημείο της δεν αντικαθιστούν τα αρχεία, αλλά δείχνουν πώς η πόλη επιλέγει να θυμάται. Σε μια ανοιχτή πλατφόρμα ιστορίας, το τετράγωνο συνδέεται με δεδομένα, εικόνες και πηγές, ώστε η μνήμη να μην γίνεται σύνθημα χωρίς επαληθεύσιμο έδαφος.",
+        "body_el": "Η Πλατεία Ενοποίησης και το μνημείο της δεν αντικαθιστούν τα αρχεία, αλλά δείχνουν πώς η πόλη επιλέγει να θυμάται. Σε μια ανοιχτή πλατφόρμα ιστορίας, η πλατεία συνδέεται με δεδομένα, εικόνες και πηγές, ώστε η μνήμη να μη γίνεται σύνθημα χωρίς επαληθεύσιμη βάση.",
         "body_ja": "統一広場とその記念碑はアーカイブに代わるものではありませんが、都市がどのように記憶することを選択したかを示しています。オープンな歴史プラットフォームでは、広場はデータ、画像、情報源にリンクされているため、検証可能な根拠なしに記憶がスローガンになることはありません。",
-        "body_tl": "Ang Pagkakaisa Square at ang monumento nito ay hindi pinapalitan ang mga archive, ngunit ipinapakita nila kung paano pinipili ng lungsod na tandaan. Sa isang bukas na platform ng kasaysayan ang parisukat ay naka-link sa data, mga larawan at mga mapagkukunan upang ang memorya ay hindi maging isang slogan nang walang napapatunayan na batayan.",
-        "body_uk": "Майдан Об’єднання та його пам’ятник не замінюють архівів, але показують, як місто вирішує пам’ятати. На відкритій історичній платформі квадрат пов’язаний із даними, зображеннями та джерелами, щоб пам’ять не стала гаслом без підтвердження.",
-        "body_ru": "Площадь Объединения и памятник ей не заменяют архивы, но показывают, как город хочет помнить. На платформе открытой истории квадрат связан с данными, изображениями и источниками, поэтому память не становится лозунгом без поддающегося проверке основания."
+        "body_tl": "Hindi pinapalitan ng Plaza ng Pagkakaisa at ng monumento nito ang mga archive, ngunit ipinapakita nila kung paano pinipili ng lungsod na alalahanin ang nakaraan. Sa bukas na platform ng kasaysayan, nakakabit ang plaza sa datos, larawan at pinagmulan upang hindi maging islogan ang alaala nang walang mapapatunayang batayan.",
+        "body_uk": "Площа Об’єднання та її пам’ятник не замінюють архівів, але показують, як місто обирає пам’ятати. На відкритій історичній платформі площа пов’язана з даними, зображеннями та джерелами, щоб пам’ять не перетворювалася на гасло без перевірної основи.",
+        "body_ru": "Площадь Объединения и ее памятник не заменяют архивы, но показывают, как город выбирает помнить. На платформе открытой истории площадь связана с данными, изображениями и источниками, поэтому память не превращается в лозунг без проверяемой основы."
       }
     ],
     "linked_event_ids": [
@@ -1218,7 +1218,7 @@
     "title_es": "La Ciudad de la Unificación: Evento, Institución, Plaza",
     "title_el": "Η Πόλη της Ενοποίησης: Εκδήλωση, Ίδρυμα, Πλατεία",
     "title_ja": "統一都市: イベント、制度、広場",
-    "title_tl": "Ang Lungsod ng Pag-iisa: Kaganapan, Institusyon, Square",
+    "title_tl": "Lungsod ng Pagkakaisa: kaganapan, institusyon, plaza",
     "title_uk": "Місто Соборності: подія, заклад, площа",
     "title_ru": "Город Объединения: событие, учреждение, площадь",
     "dek_de": "Die Wiedervereinigung von 1885, die ersten Amtszeiten des Bürgermeisters und der Vereinigungsplatz zeigen, wie ein politisches Ereignis Teil der bürgerlichen Identität wird.",
@@ -1228,7 +1228,7 @@
     "dek_es": "La Unificación de 1885, los primeros mandatos de alcalde y la Plaza de la Unificación muestran cómo un evento político se convierte en parte de la identidad cívica.",
     "dek_el": "Η Ενοποίηση του 1885, οι πρώτες δημαρχιακές θητείες και η Πλατεία Ενοποίησης δείχνουν πώς ένα πολιτικό γεγονός γίνεται μέρος της ταυτότητας του πολίτη.",
     "dek_ja": "1885 年の統一、初期の市長任期、統一広場は、政治的出来事がどのように市民のアイデンティティの一部となるかを示しています。",
-    "dek_tl": "Ang 1885 Pagkakaisa, mga unang termino ng pang-alkalde at Pagkakaisa Square ay nagpapakita kung paano nagiging bahagi ng civic identity ang isang kaganapang pampulitika.",
+    "dek_tl": "Ipinapakita ng Pagkakaisa noong 1885, ng mga unang termino ng alkalde at ng Plaza ng Pagkakaisa kung paano nagiging bahagi ng pagkakakilanlang sibiko ang isang pampulitikang pangyayari.",
     "dek_uk": "Об’єднання 1885 року, ранні посади мера та площа Об’єднання показують, як політична подія стає частиною громадянської ідентичності.",
     "dek_ru": "Объединение 1885 года, первые сроки полномочий мэра и Площадь Объединения показывают, как политическое событие становится частью гражданской идентичности."
   },

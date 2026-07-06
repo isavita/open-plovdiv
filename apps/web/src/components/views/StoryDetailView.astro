@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
 import { sourceTitle } from "@lib/format";
+import { storyThemeTagLabel } from "@lib/storyTags";
 import { publicThenNowPairs } from "@lib/thenNow";
 import {
   historicalArchiveItems,
@@ -194,7 +195,7 @@ const relatedStories = storyLongreads
           <p class="lead">{localized(story, "dek")}</p>
           <div class="tag-row">
             {story.era_tags.map((tag) => <span>{t.history.eraLabels[tag]}</span>)}
-            {story.theme_tags.map((tag) => <span>{tag.replaceAll("_", " ")}</span>)}
+            {story.theme_tags.map((tag) => <span>{storyThemeTagLabel(tag, lang)}</span>)}
           </div>
         </div>
         {media && (

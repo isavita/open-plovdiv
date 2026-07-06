@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
 import { sourceTitle } from "@lib/format";
 import { publicThenNowPairs } from "@lib/thenNow";
+import { storyThemeTagLabel } from "@lib/storyTags";
 import {
   historicalArchiveItems,
   historyKnowledgeSources,
@@ -294,7 +295,7 @@ const archiveLinkCount = storyLongreads.reduce(
                 <p>{localized(story, "dek")}</p>
                 <div class="tag-row">
                   {story.era_tags.map((tag) => <span>{t.history.eraLabels[tag]}</span>)}
-                  {story.theme_tags.slice(0, 3).map((tag) => <span>{tag.replaceAll("_", " ")}</span>)}
+                  {story.theme_tags.slice(0, 3).map((tag) => <span>{storyThemeTagLabel(tag, lang)}</span>)}
                 </div>
                 <dl class="story-evidence-counts">
                   <dt>{labels.evidence}</dt>

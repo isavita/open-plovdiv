@@ -5476,7 +5476,7 @@ const tl: typeof bg = {
     centuryLabel: (century: number) => `ika-${century} na siglo`,
     centuryRange: (start: number, end: number) => `${start}–${end}`,
     openSource: "Buksan ang Pinagmulan",
-    profile: "Profile",
+    profile: "Detalye",
     backToAll: "Bumalik sa Lahat ng Alkalde",
     otherTerms: "Ibang Termino ng Parehong Tao",
     moreInfo: "Karagdagang Impormasyon",
@@ -5490,7 +5490,7 @@ const tl: typeof bg = {
     birthplaceLabel: "Lugar ng Kapanganakan",
     educationLabel: "Edukasyon",
     rolesLabel: "Ibang Katungkulan",
-    profileLinks: "Profile at mga Link",
+    profileLinks: "Detalye at mga Link",
     connectionsTitle: "Mga Koneksyon sa Pagitan ng mga Alkalde",
     connectionsLead:
       "Kung sinong mga alkalde ang namuno nang paulit-ulit at kung sino ang may kaugnayang pamilya.",
