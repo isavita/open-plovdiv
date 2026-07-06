@@ -7,6 +7,7 @@ import {
   processPendingPhotos,
   validateImageFiles
 } from "@lib/server/imageUpload";
+import { notifyAgentReportCreated } from "@lib/server/agentSignal";
 import { attachPendingPhotos, createReport, rejectReport } from "@lib/server/reportStore";
 
 export const prerender = false;
@@ -42,16 +43,25 @@ export const POST: APIRoute = async ({ request }) => {
   const imageResult = validateImageFiles(parsed.photos);
   if (!imageResult.ok) return json({ error: imageResult.error }, 400);
 
-  const report = await createReport(result.value);
+  let report = await createReport(result.value);
   if (imageResult.files.length > 0) {
     try {
       const photos = await processPendingPhotos(report.id, imageResult.files);
-      await attachPendingPhotos(report.id, photos);
+      report = (await attachPendingPhotos(report.id, photos)) ?? report;
     } catch {
       await rejectReport(report.id, "invalid_photo");
       return json({ error: "invalid_photo" }, 400);
     }
   }
 
-  return json({ id: report.id, moderation_status: report.moderation_status }, 201);
+  const signal = await notifyAgentReportCreated(report, request.url);
+
+  return json(
+    {
+      id: report.id,
+      moderation_status: report.moderation_status,
+      agent_signal: signal.ok ? "sent" : signal.skipped ? "skipped" : "failed"
+    },
+    201
+  );
 };

@@ -20,10 +20,18 @@ function safeEqual(a: string, b: string): boolean {
   return crypto.timingSafeEqual(bufA, bufB);
 }
 
-export function isAdmin(request: Request): boolean {
+export function bearerToken(request: Request): string {
   const header = request.headers.get("authorization") ?? "";
-  const token = header.startsWith("Bearer ") ? header.slice(7) : "";
-  return token.length > 0 && safeEqual(token, TOKEN);
+  return header.startsWith("Bearer ") ? header.slice(7) : "";
+}
+
+export function hasBearerToken(request: Request, expectedToken: string): boolean {
+  const token = bearerToken(request);
+  return token.length > 0 && expectedToken.length > 0 && safeEqual(token, expectedToken);
+}
+
+export function isAdmin(request: Request): boolean {
+  return hasBearerToken(request, TOKEN);
 }
 
 export function unauthorized(): Response {

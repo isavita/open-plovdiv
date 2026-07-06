@@ -17,10 +17,12 @@
     "astro": "^6.4.6",
     "cytoscape": "^3.34.0",
     "leaflet": "^1.9.4",
+    "nodemailer": "^9.0.3",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.20",
+    "@types/nodemailer": "^8.0.1",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   }

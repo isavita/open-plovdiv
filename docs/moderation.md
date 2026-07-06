@@ -26,3 +26,9 @@ Moderators can:
 - hide unsafe photos before or after publishing
 
 Approved fix-map citizen reports are displayed on the Fix Map and exported to `/data/community-fix-reports.json`. Historical contributions share the moderation queue, but are kept out of the public Fix Map feed until they can be turned into sourced history/archive records.
+
+## Agent Notifications
+
+If SMTP is configured, a newly accepted citizen report or history contribution sends a best-effort email signal to the configured agent mailbox. The email is only a moderation notification: it does not approve, publish, or expose the report publicly.
+
+The agent can manage the request only with an admin credential. Use `Authorization: Bearer <ADMIN_TOKEN>` against the existing admin APIs, or open `/admin/reports` and sign in with the same token. A separate `AGENT_SIGNAL_TOKEN` may be configured for `POST /api/agent/signal` when a caller should wake the agent without receiving report-moderation permissions.

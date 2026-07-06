@@ -45,6 +45,13 @@ Set production variables in Railway before opening moderation publicly:
 - `ADMIN_TOKEN`: required for `/admin/reports`
 - `IP_HASH_SALT`: stable random salt for rate-limit hashes
 - `PUBLIC_SITE_URL`: optional canonical URL, for example your Railway domain
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`: optional SMTP
+  settings for agent email notifications. For Hostinger, use
+  `smtp.hostinger.com`, port `465`, SSL, and a mailbox app password.
+- `AGENT_EMAIL_TO`: mailbox that receives new-report signals, for example
+  `agent@openplovdiv.com`
+- `AGENT_SIGNAL_TOKEN`: optional signal-only bearer token for
+  `POST /api/agent/signal`; `ADMIN_TOKEN` also authorizes that endpoint
 - `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`: recommended for
   persistent reports across redeploys
 - `REPORT_IMAGE_*`: recommended S3/R2-backed public image storage for approved
@@ -75,8 +82,17 @@ The report layer adds:
 - `GET /api/reports/public` for approved map reports
 - `GET /api/reports/stream` for Server-Sent Events
 - admin-only approve, reject, edit details, hide-photo, and status update endpoints
+- `POST /api/agent/signal` for authenticated operational/test signals to the
+  agent mailbox
 
 Set `ADMIN_TOKEN` before using the admin dashboard outside local development. With no Redis environment variables, reports are stored locally under `apps/web/.data/`. With `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`, metadata is stored in Redis. Moderators can update report text, category, coordinates, address, public status, and photo visibility. Uploaded photos are converted to WebP with metadata stripped, kept private until approval, and then copied to the configured public uploads directory.
+
+When SMTP is configured, every accepted report submission sends a best-effort
+email signal to `AGENT_EMAIL_TO`. The email includes the report ID, public-safe
+submission text, coordinates, the admin panel URL, and the admin API endpoints.
+The agent can manage the request by calling the existing admin APIs with
+`Authorization: Bearer <ADMIN_TOKEN>`, or by opening `/admin/reports` and using
+the same token. Notification failure does not reject the citizen submission.
 
 ## Repository Layout
 
