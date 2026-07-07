@@ -20794,14 +20794,14 @@
     "media": [
       {
         "type": "image",
-        "title": "Open Plovdiv — Rowing Canal route motif",
-        "accessed_at": "2026-07-04",
-        "url": "https://openplovdiv.com/place-media/rowing-canal-route.svg",
-        "page_url": "https://openplovdiv.com/place-media/rowing-canal-route.svg",
-        "credit": "Open Plovdiv",
-        "license": "CC0 1.0 Universal",
-        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "source_id": "source-open-plovdiv-rowing-canal-route-motif"
+        "title": "Grebna baza Plovdiv.jpg",
+        "accessed_at": "2026-07-07",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Grebna_baza_Plovdiv.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Grebna_baza_Plovdiv.jpg",
+        "credit": "Община Пловдив, Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "source_id": "source-wikimedia-commons-grebna-baza-plovdiv-jpg"
       }
     ],
     "event_ids": [],
@@ -20812,7 +20812,7 @@
     "source_ids": [
       "source-obshtina-plovdiv-greben-kanal",
       "source-plovdiv-rowing-committee-about-regatta-venue",
-      "source-open-plovdiv-rowing-canal-route-motif"
+      "source-wikimedia-commons-grebna-baza-plovdiv-jpg"
     ],
     "provenance": [
       {
@@ -20834,12 +20834,12 @@
         "license_status": "public_reference_terms_unverified"
       },
       {
-        "source_id": "source-open-plovdiv-rowing-canal-route-motif",
+        "source_id": "source-wikimedia-commons-grebna-baza-plovdiv-jpg",
         "evidence_type": "media_reference",
-        "claim_bg": "Медия и лиценз за Гребна база / Гребен канал: Open Plovdiv — Rowing Canal route motif.",
-        "claim_en": "Media and license for Rowing Canal / Grebna Baza: Open Plovdiv — Rowing Canal route motif.",
-        "url": "https://openplovdiv.com/place-media/rowing-canal-route.svg",
-        "accessed_at": "2026-07-04",
+        "claim_bg": "Медия и лиценз за Гребна база / Гребен канал: Grebna baza Plovdiv.jpg.",
+        "claim_en": "Media and license for Rowing Canal / Grebna Baza: Grebna baza Plovdiv.jpg.",
+        "url": "https://commons.wikimedia.org/wiki/File:Grebna_baza_Plovdiv.jpg",
+        "accessed_at": "2026-07-07",
         "license_status": "open_license"
       }
     ],

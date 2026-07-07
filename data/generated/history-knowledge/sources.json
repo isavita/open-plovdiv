@@ -882,24 +882,6 @@
     "limitations_en": "The source is publicly accessible, but reuse terms should be checked before publishing media or long quotations."
   },
   {
-    "id": "source-open-plovdiv-rowing-canal-route-motif",
-    "type": "source",
-    "title_bg": "Open Plovdiv — Rowing Canal route motif",
-    "title_en": "Open Plovdiv — Rowing Canal route motif",
-    "publisher": "Open Plovdiv",
-    "url": "https://openplovdiv.com/place-media/rowing-canal-route.svg",
-    "accessed_at": "2026-07-04",
-    "license": {
-      "status": "open_license",
-      "label": "CC0 1.0 Universal",
-      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
-    },
-    "used_for_bg": "Медия за забележителност: Гребна база / Гребен канал",
-    "used_for_en": "Media for landmark: Rowing Canal / Grebna Baza",
-    "limitations_bg": "Медия с отворен лиценз; следвайте посочения лиценз и атрибуция.",
-    "limitations_en": "Open-license media; follow the stated license and attribution."
-  },
-  {
     "id": "source-openstreetmap",
     "type": "source",
     "title_bg": "OpenStreetMap",
@@ -5504,6 +5486,24 @@
     },
     "used_for_bg": "Медия за забележителност: Житен пазар",
     "used_for_en": "Media for landmark: Grain Market Square in Plovdiv",
+    "limitations_bg": "Медията е от Wikimedia Commons; спазвайте конкретния лиценз и атрибуция на файла.",
+    "limitations_en": "Media from Wikimedia Commons; follow the file-specific license and attribution."
+  },
+  {
+    "id": "source-wikimedia-commons-grebna-baza-plovdiv-jpg",
+    "type": "source",
+    "title_bg": "Wikimedia Commons — Grebna baza Plovdiv.jpg",
+    "title_en": "Wikimedia Commons — Grebna baza Plovdiv.jpg",
+    "publisher": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/wiki/File:Grebna_baza_Plovdiv.jpg",
+    "accessed_at": "2026-07-07",
+    "license": {
+      "status": "open_license",
+      "label": "CC BY-SA 4.0",
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "used_for_bg": "Медия за забележителност: Гребна база / Гребен канал",
+    "used_for_en": "Media for landmark: Rowing Canal / Grebna Baza",
     "limitations_bg": "Медията е от Wikimedia Commons; спазвайте конкретния лиценз и атрибуция на файла.",
     "limitations_en": "Media from Wikimedia Commons; follow the file-specific license and attribution."
   },
