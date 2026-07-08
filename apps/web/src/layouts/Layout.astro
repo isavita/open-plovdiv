@@ -44,6 +44,8 @@ const ogLocales: Record<Lang, string> = { bg: "bg_BG", en: "en_GB", de: "de_DE",
 const ogLocale = ogLocales[lang];
 const routesLabel = ({ bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути", ru: "Маршруты" } satisfies Record<Lang, string>)[lang];
 const governanceLabel = ({ bg: "Управление", en: "Governance", de: "Verwaltung", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління", ru: "Управление" } satisfies Record<Lang, string>)[lang];
+const neighbourhoodsLabels = { bg: "Квартали", en: "Neighbourhoods", de: "Viertel", fr: "Quartiers", it: "Quartieri", tr: "Mahalleler", es: "Barrios", el: "Συνοικίες", ja: "街区", tl: "Mga Purok", uk: "Квартали", ru: "Кварталы" } satisfies Record<Lang, string>;
+const neighbourhoodsLabel = neighbourhoodsLabels[lang];
 
 // The city's own word for its easygoing rhythm — a quiet signature repeated
 // in the footer so the whole site keeps the same "ailyak" tone.
@@ -106,6 +108,7 @@ const structuredDataJson = serializeJsonLd(
       home: t.nav.home,
       history: t.nav.history,
       routes: routesLabel,
+      neighbourhoods: neighbourhoodsLabel,
       mayors: t.nav.mayors,
       governance: governanceLabel,
       people: t.nav.people,
@@ -127,6 +130,7 @@ const footerHistory = [
   { href: localizePath("/history", lang), label: t.nav.history, key: "history" },
   { href: localizePath("/routes", lang), label: routesLabel, key: "routes" },
   { href: localizePath("/places", lang), label: t.nav.places, key: "places" },
+  { href: localizePath("/neighbourhoods", lang), label: neighbourhoodsLabel, key: "neighbourhoods" },
   { href: localizePath("/stories", lang), label: t.nav.stories, key: "stories" },
   { href: localizePath("/mayors", lang), label: t.nav.mayors, key: "mayors" },
   { href: localizePath("/governance", lang), label: governanceLabel, key: "governance" },
@@ -148,6 +152,7 @@ const footerAbout = [
 // Secondary destinations shown only inside the mobile menu, grouped so the
 // phone nav reaches every page without duplicating the 5 primary links.
 const menuExplore = [
+  { href: localizePath("/neighbourhoods", lang), base: "/neighbourhoods", label: neighbourhoodsLabel },
   { href: localizePath("/mayors", lang), base: "/mayors", label: t.nav.mayors },
   { href: localizePath("/people", lang), base: "/people", label: t.nav.people },
   { href: localizePath("/archive", lang), base: "/archive", label: t.nav.archive }
@@ -192,6 +197,7 @@ const chromeI18n = localeDetect
             nav: {
               history: l.nav.history,
               routes: routesLabels[code],
+              neighbourhoods: neighbourhoodsLabels[code],
               mayors: l.nav.mayors,
               governance: governanceLabels[code],
               places: l.nav.places,

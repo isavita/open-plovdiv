@@ -1,0 +1,832 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { field, localeForLang, localizePath, type Lang } from "@i18n/utils";
+import { commonsImageUrl } from "@lib/commons";
+import { districtLabel, sourceTitle } from "@lib/format";
+import { publicThenNowPairs } from "@lib/thenNow";
+import {
+  historicalArchiveItems,
+  historyKnowledgePlaces,
+  projects,
+  storyLongreads,
+  thenNowPairs
+} from "@lib/data";
+import {
+  neighbourhoodEraColors,
+  neighbourhoodRoutes,
+  type NeighbourhoodHistory
+} from "@lib/neighbourhoods";
+import {
+  neighbourhoodAreaLabels,
+  neighbourhoodEraLabels,
+  neighbourhoodLabels
+} from "@lib/neighbourhoodLabels";
+import { formatKm, routeGeometry } from "@lib/routes";
+
+type Props = {
+  lang: Lang;
+  neighbourhood: NeighbourhoodHistory;
+};
+
+const { lang, neighbourhood } = Astro.props;
+const t = neighbourhoodLabels(lang);
+const eraLabels = neighbourhoodEraLabels(lang);
+const areaLabels = neighbourhoodAreaLabels(lang);
+const locale = localeForLang(lang);
+
+const localized = (record: Record<string, unknown> | null | undefined, base: string): string =>
+  field(record, base, lang);
+const localizedAny = (record: unknown, base: string): string =>
+  localized(record as Record<string, unknown>, base);
+
+const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
+const storiesById = new Map(storyLongreads.map((story) => [story.id, story]));
+
+const name = localizedAny(neighbourhood, "name");
+const tagline = localizedAny(neighbourhood, "tagline");
+const summary = localizedAny(neighbourhood, "summary");
+const nameOrigin = localizedAny(neighbourhood, "name_origin");
+const gettingThere = localizedAny(neighbourhood, "getting_there");
+const coverageNote = localized(neighbourhood as unknown as Record<string, unknown>, "coverage_note");
+
+const accent = neighbourhoodEraColors[neighbourhood.era_tags[0]];
+
+const keyPlaces = neighbourhood.place_ids
+  .map((id) => placesById.get(id))
+  .filter((place): place is NonNullable<typeof place> => Boolean(place))
+  .map((place) => ({
+    place,
+    name: localizedAny(place, "name"),
+    summary: localizedAny(place, "summary"),
+    href: localizePath(`/places/${place.id}`, lang),
+    media: place.media[0] ?? null
+  }));
+
+const stories = neighbourhood.story_ids
+  .map((id) => storiesById.get(id))
+  .filter((story): story is NonNullable<typeof story> => Boolean(story));
+
+const placeIdSet = new Set(neighbourhood.place_ids);
+const archiveItems = historicalArchiveItems.filter((item) => placeIdSet.has(item.place_id));
+const pairs = publicThenNowPairs(thenNowPairs.filter((pair) => placeIdSet.has(pair.place_id)));
+
+const districtProjects = projects
+  .filter((project) => project.district === neighbourhood.district_bg)
+  .slice(0, 4);
+
+const routes = neighbourhoodRoutes(neighbourhood).map((route) => {
+  const geometry = routeGeometry(route.id);
+  return {
+    route,
+    href: localizePath(`/routes/${route.id}`, lang),
+    title: localizedAny(route, "title"),
+    km: geometry ? formatKm(geometry.distance_m, locale) : null
+  };
+});
+
+const timeline = neighbourhood.timeline.map((entry) => ({
+  display: localizedAny(entry, "display"),
+  title: localizedAny(entry, "title"),
+  body: localizedAny(entry, "body")
+}));
+const earliest = timeline[0]?.display ?? null;
+
+const heroMedia = keyPlaces.find((entry) => entry.media)?.media ?? null;
+
+// Map: approximate quarter anchor + key place pins.
+const mapConfig = {
+  accent,
+  center: neighbourhood.center,
+  name,
+  places: keyPlaces
+    .map((entry) =>
+      entry.place.coordinates
+        ? {
+            name: entry.name,
+            href: entry.href,
+            lat: entry.place.coordinates.lat,
+            lng: entry.place.coordinates.lng
+          }
+        : null
+    )
+    .filter(Boolean)
+};
+
+const structuredData = {
+  "@type": "Place",
+  name,
+  description: summary,
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: neighbourhood.center.lat,
+    longitude: neighbourhood.center.lng
+  },
+  containedInPlace: {
+    "@type": "City",
+    name: "Plovdiv"
+  }
+};
+---
+
+<Layout
+  lang={lang}
+  path={`/neighbourhoods/${neighbourhood.id}`}
+  title={name}
+  description={summary}
+  image={heroMedia ? commonsImageUrl(heroMedia.url, 1200) : undefined}
+  imageAlt={name}
+  structuredData={structuredData}
+>
+  <article class="nb-page" style={`--nb-accent:${accent}`} data-section="neighbourhoods">
+    <header class="section nb-hero">
+      <div class="container">
+        <p class="nb-breadcrumb">
+          <a href={localizePath("/neighbourhoods", lang)}>← {t.backToIndex}</a>
+        </p>
+        <div class="nb-hero-grid">
+          <div class="nb-hero-main">
+            <p class="eyebrow">
+              {neighbourhood.era_tags.map((era, index) => (
+                <>
+                  {index > 0 && " · "}
+                  {eraLabels[era]}
+                </>
+              ))}
+            </p>
+            <h1>{name}</h1>
+            <p class="nb-tagline">{tagline}</p>
+            <p class="lead nb-lead">{summary}</p>
+          </div>
+          <aside class="nb-glance" aria-label={t.atGlance}>
+            <h2>{t.atGlance}</h2>
+            <dl>
+              <div>
+                <dt>{t.areaLabel}</dt>
+                <dd>{areaLabels[neighbourhood.area]}</dd>
+              </div>
+              <div>
+                <dt>{t.districtLabel}</dt>
+                <dd>{districtLabel(neighbourhood.district_bg, lang)}</dd>
+              </div>
+              {earliest && (
+                <div>
+                  <dt>{t.firstRecord}</dt>
+                  <dd>{earliest}</dd>
+                </div>
+              )}
+              <div>
+                <dt>{t.keyPlaces}</dt>
+                <dd>{keyPlaces.length}</dd>
+              </div>
+            </dl>
+            <p class="meta nb-glance-note">{t.approxNote}</p>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <section class="section nb-body-section">
+      <div class="container nb-body">
+        <div class="nb-main">
+          {coverageNote && (
+            <p class="notice nb-coverage">
+              <span class="notice-icon" aria-hidden="true">!</span>
+              <span><strong>{t.coverageTitle}:</strong> {coverageNote}</span>
+            </p>
+          )}
+
+          <div class="nb-callouts">
+            <div class="nb-callout">
+              <h3>{t.nameOriginTitle}</h3>
+              <p>{nameOrigin}</p>
+            </div>
+            <div class="nb-callout">
+              <h3>{t.gettingThereTitle}</h3>
+              <p>{gettingThere}</p>
+            </div>
+          </div>
+
+          {mapConfig.places.length > 0 || neighbourhood.center ? (
+            <figure class="card map-card nb-map-card">
+              <div class="nb-detail-map" id="nb-detail-map" aria-label={t.mapTitle}></div>
+              <figcaption class="meta">{t.approxNote}</figcaption>
+            </figure>
+          ) : null}
+
+          <section class="nb-timeline-section" aria-label={t.timelineTitle}>
+            <h2>{t.timelineTitle}</h2>
+            <ol class="nb-timeline">
+              {timeline.map((entry) => (
+                <li>
+                  <p class="nb-timeline-year">{entry.display}</p>
+                  <div class="nb-timeline-body">
+                    <h3>{entry.title}</h3>
+                    <p>{entry.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          {keyPlaces.length > 0 && (
+            <section aria-label={t.keyPlaces}>
+              <h2>{t.keyPlaces}</h2>
+              <ul class="nb-place-grid">
+                {keyPlaces.map((entry) => (
+                  <li class="nb-place-card">
+                    {entry.media && (
+                      <a class="nb-place-media" href={entry.href} aria-label={entry.name} tabindex="-1">
+                        <img
+                          src={commonsImageUrl(entry.media.url, 360)}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          referrerpolicy="no-referrer"
+                        />
+                      </a>
+                    )}
+                    <div class="nb-place-body">
+                      <h3><a href={entry.href}>{entry.name}</a></h3>
+                      <p class="meta">{entry.summary.length > 130 ? `${entry.summary.slice(0, 130).trim()}...` : entry.summary}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {routes.length > 0 && (
+            <section aria-label={t.routesTitle}>
+              <h2>{t.routesTitle}</h2>
+              <ul class="nb-route-list">
+                {routes.map((entry) => (
+                  <li>
+                    <a href={entry.href}>
+                      <strong>{entry.title}</strong>
+                      <span class="meta">
+                        {entry.km && `${entry.km} ${t.km} · `}~{entry.route.duration_minutes} {t.minutes} · {entry.route.stops.length} {t.stops}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </div>
+
+        <aside class="nb-side">
+          {stories.length > 0 && (
+            <section>
+              <h3>{t.linkedStories}</h3>
+              <ul class="nb-side-list">
+                {stories.map((story) => (
+                  <li>
+                    <a href={localizePath(`/stories/${story.id}`, lang)}>{localizedAny(story, "title")}</a>
+                    <p class="meta">{localizedAny(story, "dek")}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {(archiveItems.length > 0 || pairs.length > 0) && (
+            <section>
+              <h3>{t.archiveTitle}</h3>
+              <ul class="source-list compact nb-archive-list">
+                {pairs.slice(0, 4).map((pair) => (
+                  <li>
+                    <a href={`${localizePath(`/places/${pair.place_id}`, lang)}#place-then-now`}>
+                      {localizedAny(pair, "title")}
+                    </a>
+                  </li>
+                ))}
+                {archiveItems.slice(0, 4).map((item) => (
+                  <li>
+                    <a href={`${localizePath(`/places/${item.place_id}`, lang)}#place-archive`}>
+                      {localizedAny(item, "title")}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {districtProjects.length > 0 && (
+            <section>
+              <h3>{t.civicTitle}</h3>
+              <ul class="nb-side-list">
+                {districtProjects.map((project) => (
+                  <li>
+                    <a href={localizePath(`/projects/${project.id}`, lang)}>{localizedAny(project, "title")}</a>
+                  </li>
+                ))}
+              </ul>
+              <a class="text-link" href={localizePath("/projects", lang)}>{t.allProjects} →</a>
+            </section>
+          )}
+
+          <section>
+            <h3>{t.sourcesTitle}</h3>
+            <ul class="source-list compact">
+              {neighbourhood.sources.map((source) => (
+                <li>
+                  <a href={source.url} target="_blank" rel="noreferrer">
+                    {sourceTitle(source.title, lang)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <p class="meta nb-updated">{t.updatedWord}: {neighbourhood.updated_at}</p>
+        </aside>
+      </div>
+    </section>
+  </article>
+
+  <script type="application/json" id="nb-detail-config" set:html={JSON.stringify(mapConfig)}></script>
+  <script>
+    import "leaflet/dist/leaflet.css";
+
+    type NbPlacePin = { name: string; href: string; lat: number; lng: number };
+    type NbDetailConfig = {
+      accent: string;
+      name: string;
+      center: { lat: number; lng: number };
+      places: NbPlacePin[];
+    };
+
+    const mapEl = document.getElementById("nb-detail-map");
+    const config: NbDetailConfig = JSON.parse(
+      document.getElementById("nb-detail-config")?.textContent ?? "{}"
+    );
+    const esc = (v: unknown) =>
+      String(v).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+
+    async function initNbDetailMap(): Promise<void> {
+      if (!mapEl || !config.center) return;
+      const leaflet = await import("leaflet");
+      const L = leaflet.default;
+      const map = L.map(mapEl, { scrollWheelZoom: false });
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+
+      // Approximate quarter anchor: dashed circle, deliberately not a boundary.
+      L.circle([config.center.lat, config.center.lng], {
+        radius: 420,
+        color: config.accent,
+        weight: 2,
+        dashArray: "6 7",
+        fillColor: config.accent,
+        fillOpacity: 0.07
+      }).addTo(map);
+      L.marker([config.center.lat, config.center.lng], {
+        title: config.name,
+        icon: L.divIcon({
+          className: "",
+          html: `<span class="nb-map-marker" style="--nb-era:${esc(config.accent)}"></span>`,
+          iconSize: [18, 18],
+          iconAnchor: [9, 9]
+        })
+      }).addTo(map);
+
+      const points: Array<[number, number]> = [[config.center.lat, config.center.lng]];
+      for (const pin of config.places) {
+        points.push([pin.lat, pin.lng]);
+        const marker = L.marker([pin.lat, pin.lng], {
+          title: pin.name,
+          icon: L.divIcon({
+            className: "",
+            html: `<span class="nb-place-pin" style="--nb-era:${esc(config.accent)}"></span>`,
+            iconSize: [12, 12],
+            iconAnchor: [6, 6]
+          })
+        }).addTo(map);
+        marker.bindTooltip(pin.name, { direction: "top", offset: [0, -6] });
+        marker.on("click", () => {
+          window.location.href = pin.href;
+        });
+      }
+      map.fitBounds(points, { padding: [30, 30], maxZoom: 15 });
+    }
+
+    if (mapEl) {
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                io.disconnect();
+                void initNbDetailMap();
+              }
+            }
+          },
+          { rootMargin: "200px 0px" }
+        );
+        io.observe(mapEl);
+      } else {
+        void initNbDetailMap();
+      }
+    }
+  </script>
+
+  <style>
+    .nb-page {
+      --nb-accent-soft: color-mix(in srgb, var(--nb-accent) 9%, var(--surface));
+    }
+
+    .nb-hero {
+      border-top: 4px solid var(--nb-accent);
+      background: linear-gradient(180deg, var(--nb-accent-soft), transparent 82%);
+      padding-bottom: 8px;
+    }
+
+    .nb-breadcrumb {
+      margin: 0 0 14px;
+    }
+
+    .nb-breadcrumb a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nb-breadcrumb a:hover,
+    .nb-breadcrumb a:focus-visible {
+      color: var(--brand);
+    }
+
+    .nb-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .nb-hero-main h1 {
+      margin: 6px 0 4px;
+      overflow-wrap: break-word;
+    }
+
+    .nb-tagline {
+      color: var(--muted);
+      font-style: italic;
+      margin: 0 0 10px;
+      font-size: 1.04rem;
+    }
+
+    .nb-lead {
+      max-width: 66ch;
+    }
+
+    .nb-glance {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      padding: 18px;
+    }
+
+    .nb-glance h2 {
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    .nb-glance dl {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 14px;
+      margin: 0;
+    }
+
+    .nb-glance dt {
+      color: var(--muted);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .nb-glance dd {
+      margin: 3px 0 0;
+      font-weight: 800;
+      color: var(--ink);
+      overflow-wrap: break-word;
+    }
+
+    .nb-glance-note {
+      margin: 14px 0 0;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .nb-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .nb-main {
+      display: grid;
+      gap: 24px;
+      min-width: 0;
+    }
+
+    .nb-coverage {
+      margin: 0;
+    }
+
+    .nb-callouts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+      gap: 14px;
+    }
+
+    .nb-callout {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--nb-accent);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 14px 16px;
+    }
+
+    .nb-callout h3 {
+      margin: 0 0 6px;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nb-callout p {
+      margin: 0;
+    }
+
+    .nb-map-card {
+      margin: 0;
+    }
+
+    .nb-detail-map {
+      height: 360px;
+      background: var(--surface-2);
+    }
+
+    .nb-timeline-section h2,
+    .nb-main section h2 {
+      margin: 4px 0 14px;
+    }
+
+    .nb-timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0;
+    }
+
+    .nb-timeline li {
+      display: grid;
+      grid-template-columns: minmax(84px, 130px) minmax(0, 1fr);
+      gap: 16px;
+      position: relative;
+      padding: 0 0 22px 0;
+    }
+
+    .nb-timeline li::before {
+      content: "";
+      position: absolute;
+      left: calc(min(130px, max(84px, 22%)) + 7px);
+      top: 8px;
+      bottom: -2px;
+      width: 2px;
+      background: color-mix(in srgb, var(--nb-accent) 34%, var(--line));
+    }
+
+    .nb-timeline li:last-child::before {
+      display: none;
+    }
+
+    .nb-timeline-year {
+      margin: 0;
+      text-align: right;
+      color: var(--nb-accent);
+      font-weight: 800;
+      font-size: 0.92rem;
+      padding-right: 22px;
+      position: relative;
+    }
+
+    .nb-timeline-year::after {
+      content: "";
+      position: absolute;
+      right: -12px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--nb-accent);
+      border: 2px solid var(--surface);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--nb-accent) 45%, transparent);
+    }
+
+    .nb-timeline-body h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      line-height: 1.3;
+    }
+
+    .nb-timeline-body p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .nb-place-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+      gap: 14px;
+    }
+
+    .nb-place-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .nb-place-media {
+      display: block;
+      background: var(--surface-2);
+    }
+
+    .nb-place-media img {
+      display: block;
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .nb-place-body {
+      padding: 12px 14px;
+    }
+
+    .nb-place-body h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .nb-place-body h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .nb-place-body h3 a:hover,
+    .nb-place-body h3 a:focus-visible {
+      color: var(--brand);
+    }
+
+    .nb-place-body .meta {
+      margin: 0;
+    }
+
+    .nb-route-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .nb-route-list a {
+      display: block;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--nb-accent);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 12px 16px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nb-route-list a:hover,
+    .nb-route-list a:focus-visible {
+      border-color: var(--brand);
+    }
+
+    .nb-route-list strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .nb-route-list .meta {
+      display: block;
+    }
+
+    .nb-side {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      gap: 18px;
+      padding: 18px;
+      position: sticky;
+      top: 96px;
+    }
+
+    .nb-side section + section {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .nb-side h3 {
+      margin: 0 0 10px;
+    }
+
+    .nb-side-list {
+      list-style: none;
+      margin: 0 0 8px;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .nb-side-list a {
+      font-weight: 700;
+    }
+
+    .nb-side-list .meta {
+      margin: 3px 0 0;
+    }
+
+    .nb-archive-list {
+      margin: 0;
+    }
+
+    .nb-updated {
+      margin: 0;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    @media (max-width: 920px) {
+      .nb-hero-grid,
+      .nb-body {
+        grid-template-columns: 1fr;
+      }
+
+      .nb-side {
+        position: static;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nb-detail-map {
+        height: 300px;
+      }
+
+      .nb-timeline li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding-left: 22px;
+      }
+
+      .nb-timeline li::before {
+        left: 4px;
+        top: 6px;
+      }
+
+      .nb-timeline-year {
+        text-align: left;
+        padding-right: 0;
+      }
+
+      .nb-timeline-year::after {
+        left: -18px;
+        right: auto;
+      }
+    }
+  </style>
+
+  <style is:global>
+    /* Key-place pin on the neighbourhood context map (Leaflet divIcon). */
+    .nb-place-pin {
+      display: block;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 3px solid var(--nb-era, var(--brand));
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+  </style>
+</Layout>

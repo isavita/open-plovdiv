@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { localeCodes, localizePath, type Lang } from "@i18n/utils";
 import { cityArchive, historyKnowledgePeople, historyKnowledgePlaces, projects, storyLongreads } from "@lib/data";
 import { walkingRoutes } from "@lib/routes";
+import { neighbourhoodHistories } from "@lib/neighbourhoods";
 
 export const prerender = true;
 
@@ -9,6 +10,7 @@ const PUBLIC_STATIC_PATHS = [
   "/",
   "/overview",
   "/routes",
+  "/neighbourhoods",
   "/governance",
   "/projects",
   "/places",
@@ -50,6 +52,9 @@ function getPublicLogicalPaths(): string[] {
 
   projects.forEach((project) => paths.add(`/projects/${encodePathSegment(project.id)}`));
   walkingRoutes.forEach((route) => paths.add(`/routes/${encodePathSegment(route.id)}`));
+  neighbourhoodHistories.forEach((neighbourhood) =>
+    paths.add(`/neighbourhoods/${encodePathSegment(neighbourhood.id)}`)
+  );
   historyKnowledgePlaces.forEach((place) => paths.add(`/places/${encodePathSegment(place.id)}`));
   historyKnowledgePeople.forEach((person) => paths.add(`/people/${encodePathSegment(person.id)}`));
   storyLongreads.forEach((story) => paths.add(`/stories/${encodePathSegment(story.id)}`));

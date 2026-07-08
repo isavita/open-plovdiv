@@ -9,6 +9,7 @@ import { localeForLang, localizePath } from "@i18n/utils";
 import { publicArchiveItems } from "@lib/archive";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import { publicThenNowPairs } from "@lib/thenNow";
+import { neighbourhoodLabels } from "@lib/neighbourhoodLabels";
 import {
   historyKnowledgeEvents,
   historyKnowledgeIndex,
@@ -3479,6 +3480,9 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       <div class="card map-card" style="padding:0;overflow:hidden">
         <div id="nb-map" class="nb-map"></div>
       </div>
+      <p style="margin-top:12px">
+        <a class="text-link" href={localizePath("/neighbourhoods", lang)}>{neighbourhoodLabels(lang).indexTitle} →</a>
+      </p>
     </div>
   </section>
 

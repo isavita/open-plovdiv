@@ -1,0 +1,261 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/neighbourhood-history.schema.json",
+  "title": "Open Plovdiv neighbourhood history",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name_bg",
+    "name_en",
+    "tagline_bg",
+    "tagline_en",
+    "summary_bg",
+    "summary_en",
+    "era_tags",
+    "area",
+    "district_bg",
+    "center",
+    "approximate",
+    "name_origin_bg",
+    "name_origin_en",
+    "timeline",
+    "place_ids",
+    "story_ids",
+    "route_ids",
+    "getting_there_bg",
+    "getting_there_en",
+    "sources",
+    "data_quality",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]+$"
+    },
+    "name_bg": {
+      "type": "string",
+      "minLength": 3
+    },
+    "name_en": {
+      "type": "string",
+      "minLength": 3
+    },
+    "tagline_bg": {
+      "type": "string",
+      "minLength": 10
+    },
+    "tagline_en": {
+      "type": "string",
+      "minLength": 10
+    },
+    "summary_bg": {
+      "type": "string",
+      "minLength": 120
+    },
+    "summary_en": {
+      "type": "string",
+      "minLength": 120
+    },
+    "era_tags": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "enum": [
+          "ottoman",
+          "revival",
+          "modern",
+          "socialist"
+        ]
+      }
+    },
+    "area": {
+      "type": "string",
+      "enum": [
+        "centre",
+        "north",
+        "east",
+        "south",
+        "west"
+      ]
+    },
+    "district_bg": {
+      "type": "string",
+      "enum": [
+        "Централен",
+        "Северен",
+        "Източен",
+        "Южен",
+        "Западен",
+        "Тракия"
+      ]
+    },
+    "center": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lat",
+        "lng"
+      ],
+      "properties": {
+        "lat": {
+          "type": "number",
+          "minimum": 42.0,
+          "maximum": 42.3
+        },
+        "lng": {
+          "type": "number",
+          "minimum": 24.5,
+          "maximum": 25.0
+        }
+      }
+    },
+    "approximate": {
+      "type": "boolean",
+      "const": true
+    },
+    "anchor_place_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^place-[0-9a-z-]+$"
+    },
+    "name_origin_bg": {
+      "type": "string",
+      "minLength": 20
+    },
+    "name_origin_en": {
+      "type": "string",
+      "minLength": 20
+    },
+    "coverage_note_bg": {
+      "type": "string",
+      "minLength": 20
+    },
+    "coverage_note_en": {
+      "type": "string",
+      "minLength": 20
+    },
+    "timeline": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "year",
+          "display_bg",
+          "display_en",
+          "title_bg",
+          "title_en",
+          "body_bg",
+          "body_en"
+        ],
+        "properties": {
+          "year": {
+            "type": "integer",
+            "minimum": -6000,
+            "maximum": 2100
+          },
+          "display_bg": {
+            "type": "string",
+            "minLength": 3
+          },
+          "display_en": {
+            "type": "string",
+            "minLength": 3
+          },
+          "title_bg": {
+            "type": "string",
+            "minLength": 3
+          },
+          "title_en": {
+            "type": "string",
+            "minLength": 3
+          },
+          "body_bg": {
+            "type": "string",
+            "minLength": 30
+          },
+          "body_en": {
+            "type": "string",
+            "minLength": 30
+          }
+        }
+      }
+    },
+    "place_ids": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "string",
+        "pattern": "^place-[0-9a-z-]+$"
+      }
+    },
+    "story_ids": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "string",
+        "pattern": "^story-[0-9a-z-]+$"
+      }
+    },
+    "route_ids": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]+$"
+      }
+    },
+    "getting_there_bg": {
+      "type": "string",
+      "minLength": 30
+    },
+    "getting_there_en": {
+      "type": "string",
+      "minLength": 30
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "url",
+          "accessed_at"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 5
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "accessed_at": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "data_quality": {
+      "type": "string",
+      "minLength": 4
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

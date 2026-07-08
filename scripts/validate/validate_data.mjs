@@ -218,6 +218,12 @@ const datasets = [
     dataPath: "data/curated/walking-routes.json",
     schemaPath: "data/schemas/walking-route.schema.json",
     minRecords: 12
+  },
+  {
+    label: "neighbourhood histories",
+    dataPath: "data/curated/neighbourhood-histories.json",
+    schemaPath: "data/schemas/neighbourhood-history.schema.json",
+    minRecords: 12
   }
 ];
 
@@ -1306,31 +1312,97 @@ for (const dataset of datasets) {
  * string is covered by all ten translation maps so no locale silently falls
  * back to English.
  */
+const translationLangs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
+const nonLatinTranslationLangs = new Set(["el", "ja", "uk", "ru"]);
+let cachedTranslationsByLang = null;
+
+function translationsByLangMap() {
+  if (!cachedTranslationsByLang) {
+    cachedTranslationsByLang = new Map(
+      translationLangs.map((lang) => [lang, readJson(`data/translations/${lang}.json`)])
+    );
+  }
+  return cachedTranslationsByLang;
+}
+
+function collectEnglishStrings(value, key, out) {
+  if (Array.isArray(value)) {
+    for (const item of value) collectEnglishStrings(item, key, out);
+    return out;
+  }
+  if (value && typeof value === "object") {
+    for (const [childKey, childValue] of Object.entries(value)) {
+      collectEnglishStrings(childValue, childKey, out);
+    }
+    return out;
+  }
+  if (typeof value === "string" && key.endsWith("_en") && value.trim()) {
+    // Mirror the translation generator's collector: numeric-only strings
+    // (years like "1847") are never translated, so never required.
+    if (!/^[-+]?\d+(?:[.,]\d+)?$/.test(value.trim())) out.add(value.trim());
+  }
+  return out;
+}
+
+/** A run of >=6 consecutive ASCII-alphabetic words reads as untranslated English. */
+function longestLatinWordRun(text) {
+  let run = 0;
+  let longest = 0;
+  for (const token of String(text).split(/\s+/)) {
+    if (/^[A-Za-z][A-Za-z'’.,;:()\-]*$/.test(token)) {
+      run += 1;
+      longest = Math.max(longest, run);
+    } else {
+      run = 0;
+    }
+  }
+  return longest;
+}
+
+/**
+ * Every `_en` string of the records must exist in all ten translation maps —
+ * and the values must be real translations: not the English source echoed
+ * back (identity), and, for non-Latin-script locales, not carrying long runs
+ * of untranslated English words.
+ */
+function assertTranslatedStrings(label, records) {
+  const englishStrings = collectEnglishStrings(records, "", new Set());
+  for (const [lang, map] of translationsByLangMap()) {
+    const missing = [];
+    const leaked = [];
+    for (const text of englishStrings) {
+      const value = map[text];
+      if (!value) {
+        missing.push(text);
+        continue;
+      }
+      const identity = text.length >= 40 && String(value).trim() === text;
+      const englishRun = nonLatinTranslationLangs.has(lang) && longestLatinWordRun(value) >= 6;
+      if (identity || englishRun) leaked.push(text);
+    }
+    if (missing.length > 0) {
+      throw new Error(
+        `${label}: ${missing.length} strings missing ${lang} translations (run scripts/translate/generate_de_translations.mjs ${lang}); first: ${JSON.stringify(
+          missing[0]
+        )}`
+      );
+    }
+    if (leaked.length > 0) {
+      throw new Error(
+        `${label}: ${leaked.length} ${lang} translations look untranslated (identity/English fragments); first: ${JSON.stringify(
+          leaked[0]
+        )}`
+      );
+    }
+  }
+  return englishStrings.size;
+}
+
 function assertWalkingRoutes(loaded) {
   const routes = loaded.get("walking routes");
   const placesById = new Map(loaded.get("knowledge places").map((record) => [record.id, record]));
   const storyIds = new Set(loaded.get("knowledge story longreads").map((record) => record.id));
   const educationIds = new Set(loaded.get("knowledge education resources").map((record) => record.id));
-
-  const translationLangs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
-  const translationsByLang = new Map(
-    translationLangs.map((lang) => [lang, readJson(`data/translations/${lang}.json`)])
-  );
-
-  const collectEnglishStrings = (value, key, out) => {
-    if (Array.isArray(value)) {
-      for (const item of value) collectEnglishStrings(item, key, out);
-      return out;
-    }
-    if (value && typeof value === "object") {
-      for (const [childKey, childValue] of Object.entries(value)) {
-        collectEnglishStrings(childValue, childKey, out);
-      }
-      return out;
-    }
-    if (typeof value === "string" && key.endsWith("_en") && value.trim()) out.add(value.trim());
-    return out;
-  };
 
   const bandRange = {
     short: [20, 75],
@@ -1407,19 +1479,69 @@ function assertWalkingRoutes(loaded) {
     }
   }
 
-  const englishStrings = collectEnglishStrings(routes, "", new Set());
-  for (const [lang, map] of translationsByLang) {
-    const missing = [...englishStrings].filter((text) => !map[text]);
-    if (missing.length > 0) {
+  const translatedCount = assertTranslatedStrings("walking routes", routes);
+
+  console.log(`walking routes checks passed: ${routes.length} routes, ${translatedCount} translated strings`);
+}
+
+/**
+ * Neighbourhood histories are a connective layer over the knowledge base:
+ * every linked place/story/route id must resolve, timelines must be ordered,
+ * each record needs at least two independent sources, and every English
+ * string must be genuinely translated in all ten locales.
+ */
+function assertNeighbourhoodHistories(loaded) {
+  const neighbourhoods = loaded.get("neighbourhood histories");
+  const placeIds = new Set(loaded.get("knowledge places").map((record) => record.id));
+  const storyIds = new Set(loaded.get("knowledge story longreads").map((record) => record.id));
+  const routeIds = new Set(loaded.get("walking routes").map((record) => record.id));
+  const projectDistricts = new Set(loaded.get("projects").map((record) => record.district).filter(Boolean));
+
+  const ids = new Set();
+  for (const neighbourhood of neighbourhoods) {
+    const label = `neighbourhood histories: ${neighbourhood.id}`;
+    if (ids.has(neighbourhood.id)) throw new Error(`${label} duplicates a slug`);
+    ids.add(neighbourhood.id);
+
+    for (const placeId of neighbourhood.place_ids) {
+      if (!placeIds.has(placeId)) throw new Error(`${label} references missing place ${placeId}`);
+    }
+    if (neighbourhood.anchor_place_id && !placeIds.has(neighbourhood.anchor_place_id)) {
+      throw new Error(`${label} references missing anchor place ${neighbourhood.anchor_place_id}`);
+    }
+    for (const storyId of neighbourhood.story_ids) {
+      if (!storyIds.has(storyId)) throw new Error(`${label} references missing story ${storyId}`);
+    }
+    for (const routeId of neighbourhood.route_ids) {
+      if (!routeIds.has(routeId)) throw new Error(`${label} references missing route ${routeId}`);
+    }
+    if (!projectDistricts.has(neighbourhood.district_bg)) {
       throw new Error(
-        `walking routes: ${missing.length} strings missing ${lang} translations (run scripts/translate/generate_de_translations.mjs ${lang}); first: ${JSON.stringify(
-          missing[0]
-        )}`
+        `${label} district ${neighbourhood.district_bg} matches no project district — civic links would be dead`
       );
+    }
+
+    const years = neighbourhood.timeline.map((entry) => entry.year);
+    for (let i = 1; i < years.length; i += 1) {
+      if (years[i] < years[i - 1]) {
+        throw new Error(`${label} timeline is not in chronological order (${years[i - 1]} → ${years[i]})`);
+      }
+    }
+
+    if (neighbourhood.sources.length < 2) {
+      throw new Error(`${label} needs at least two sources (has ${neighbourhood.sources.length})`);
+    }
+    const sourceUrls = new Set(neighbourhood.sources.map((source) => source.url));
+    if (sourceUrls.size !== neighbourhood.sources.length) {
+      throw new Error(`${label} repeats a source URL`);
     }
   }
 
-  console.log(`walking routes checks passed: ${routes.length} routes, ${englishStrings.size} translated strings`);
+  const translatedCount = assertTranslatedStrings("neighbourhood histories", neighbourhoods);
+
+  console.log(
+    `neighbourhood histories checks passed: ${neighbourhoods.length} quarters, ${translatedCount} translated strings`
+  );
 }
 
 assertNoPrivateFixFields(loaded.get("fix reports"));
@@ -1439,5 +1561,6 @@ assertStoryLongreads(loaded);
 assertEditorialReviewReport(loaded);
 assertSourceCoverageReport();
 assertWalkingRoutes(loaded);
+assertNeighbourhoodHistories(loaded);
 
 console.log("data validation passed");

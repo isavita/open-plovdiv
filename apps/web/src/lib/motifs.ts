@@ -91,6 +91,20 @@ export const sectionMotifs: Record<string, string> = {
     </g>`
   ),
 
+  // A mahala skyline: three gabled houses on a street line, a hill behind.
+  neighbourhoods: svg(
+    `<path class="motif-contour dim" d="M0 56C52 30 118 22 162 28 212 35 262 28 320 44" fill="none"/>
+    <circle class="motif-node" cx="160" cy="23" r="4"/>
+    <line class="motif-line" x1="20" y1="74" x2="300" y2="74"/>
+    <rect class="motif-sheet" x="74" y="50" width="34" height="24" rx="2"/>
+    <path class="motif-line" d="M70 50l21-13 21 13" fill="none"/>
+    <rect class="motif-sheet" x="142" y="42" width="40" height="32" rx="2"/>
+    <path class="motif-line" d="M138 42l24-15 24 15" fill="none"/>
+    <rect class="motif-photo" x="157" y="58" width="10" height="16" rx="1"/>
+    <rect class="motif-sheet" x="216" y="52" width="32" height="22" rx="2"/>
+    <path class="motif-line" d="M212 52l20-12 20 12" fill="none"/>`
+  ),
+
   // A stack of archive prints, the front one with a photo and caption lines.
   stories: svg(
     `<g transform="translate(160 45)">

@@ -1,0 +1,618 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { field, localeForLang, localizePath, type Lang } from "@i18n/utils";
+import { commonsImageUrl } from "@lib/commons";
+import { sectionMotifs } from "@lib/motifs";
+import { historyKnowledgePlaces } from "@lib/data";
+import {
+  neighbourhoodAreaOrder,
+  neighbourhoodEraColors,
+  neighbourhoodEraOrder,
+  neighbourhoodHistories
+} from "@lib/neighbourhoods";
+import {
+  neighbourhoodAreaLabels,
+  neighbourhoodEraLabels,
+  neighbourhoodLabels
+} from "@lib/neighbourhoodLabels";
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+const t = neighbourhoodLabels(lang);
+const eraLabels = neighbourhoodEraLabels(lang);
+const areaLabels = neighbourhoodAreaLabels(lang);
+const locale = localeForLang(lang);
+
+const localized = (record: Record<string, unknown> | null | undefined, base: string): string =>
+  field(record, base, lang);
+const localizedAny = (record: unknown, base: string): string =>
+  localized(record as Record<string, unknown>, base);
+
+const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
+
+const cards = neighbourhoodHistories.map((neighbourhood) => {
+  const media = neighbourhood.place_ids
+    .map((id) => placesById.get(id))
+    .find((place) => place && place.media.length > 0)?.media[0];
+  const earliest = neighbourhood.timeline[0];
+  return {
+    neighbourhood,
+    href: localizePath(`/neighbourhoods/${neighbourhood.id}`, lang),
+    name: localizedAny(neighbourhood, "name"),
+    tagline: localizedAny(neighbourhood, "tagline"),
+    summary: localizedAny(neighbourhood, "summary"),
+    earliest: earliest ? localizedAny(earliest, "display") : null,
+    media
+  };
+});
+const sortedCards = [...cards].sort((a, b) => a.name.localeCompare(b.name, locale));
+
+const totalPlaces = new Set(neighbourhoodHistories.flatMap((n) => n.place_ids)).size;
+const totalTimeline = neighbourhoodHistories.reduce((sum, n) => sum + n.timeline.length, 0);
+const totalSources = new Set(neighbourhoodHistories.flatMap((n) => n.sources.map((s) => s.url))).size;
+
+// Map config: era-coloured approximate markers, one per quarter.
+const mapConfig = {
+  approxNote: t.approxNote,
+  markers: cards.map(({ neighbourhood, name, href }) => ({
+    id: neighbourhood.id,
+    name,
+    href,
+    lat: neighbourhood.center.lat,
+    lng: neighbourhood.center.lng,
+    color: neighbourhoodEraColors[neighbourhood.era_tags[0]],
+    era: eraLabels[neighbourhood.era_tags[0]]
+  }))
+};
+---
+
+<Layout lang={lang} path="/neighbourhoods" title={t.indexTitle} description={t.indexLead}>
+  <section class="section hero hero-compact nb-hero" data-section="neighbourhoods">
+    <div class="container hero-grid">
+      <div>
+        <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.neighbourhoods} />
+        <p class="eyebrow">{t.indexEyebrow}</p>
+        <h1>{t.indexTitle}</h1>
+        <p class="lead">{t.indexLead}</p>
+      </div>
+      <dl class="stats-grid nb-stats" aria-label={t.indexTitle}>
+        <div class="stat-card">
+          <dt>{t.quarters}</dt>
+          <dd>{neighbourhoodHistories.length}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{t.placesStat}</dt>
+          <dd>{totalPlaces}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{t.timelineStat}</dt>
+          <dd>{totalTimeline}</dd>
+        </div>
+        <div class="stat-card">
+          <dt>{t.sourcesStat}</dt>
+          <dd>{totalSources}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section nb-picker" id="neighbourhoods">
+    <div class="container">
+      <figure class="card map-card nb-map-card">
+        <div class="nb-index-map" id="nb-index-map" aria-label={t.mapTitle}></div>
+        <figcaption class="meta">{t.approxNote}</figcaption>
+      </figure>
+
+      <form class="nb-filters" id="nb-filters" aria-label={t.searchLabel}>
+        <div class="nb-search">
+          <label class="nb-search-label" for="nb-search-input">{t.searchLabel}</label>
+          <input
+            type="search"
+            id="nb-search-input"
+            name="q"
+            autocomplete="off"
+            placeholder={t.searchLabel}
+          />
+        </div>
+        <fieldset class="nb-filter-group" data-nb-group="era">
+          <legend>{t.filterEra}</legend>
+          <div class="nb-chips">
+            <button type="button" class="nb-chip" data-nb-value="" aria-pressed="true">{t.filterAll}</button>
+            {neighbourhoodEraOrder.map((era) => (
+              <button type="button" class="nb-chip" data-nb-value={era} aria-pressed="false">
+                <span class="nb-era-dot" style={`--nb-era:${neighbourhoodEraColors[era]}`} aria-hidden="true"></span>
+                {eraLabels[era]}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+        <fieldset class="nb-filter-group" data-nb-group="area">
+          <legend>{t.filterArea}</legend>
+          <div class="nb-chips">
+            <button type="button" class="nb-chip" data-nb-value="" aria-pressed="true">{t.filterAll}</button>
+            {neighbourhoodAreaOrder.map((area) => (
+              <button type="button" class="nb-chip" data-nb-value={area} aria-pressed="false">
+                {areaLabels[area]}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+      </form>
+
+      <p class="notice nb-no-matches" id="nb-no-matches" hidden>
+        <span class="notice-icon" aria-hidden="true">i</span>
+        <span>
+          {t.noMatches}{" "}
+          <button type="button" class="nb-reset-inline" data-nb-reset>{t.resetFilters}</button>
+        </span>
+      </p>
+
+      <div class="nb-card-grid" id="nb-card-grid">
+        {sortedCards.map(({ neighbourhood, href, name, tagline, summary, earliest, media }) => (
+          <article
+            class="nb-card"
+            id={`nb-${neighbourhood.id}`}
+            data-nb-card
+            data-era={neighbourhood.era_tags.join(" ")}
+            data-area={neighbourhood.area}
+            data-name={name.toLocaleLowerCase(locale)}
+            style={`--nb-accent:${neighbourhoodEraColors[neighbourhood.era_tags[0]]}`}
+          >
+            {media && (
+              <a class="nb-card-media" href={href} aria-label={name} tabindex="-1">
+                <img
+                  src={commonsImageUrl(media.url, 560)}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer"
+                />
+              </a>
+            )}
+            <div class="nb-card-body">
+              <p class="nb-card-kicker">
+                {neighbourhood.era_tags.map((era) => (
+                  <span class="nb-era-tag">
+                    <span class="nb-era-dot" style={`--nb-era:${neighbourhoodEraColors[era]}`} aria-hidden="true"></span>
+                    {eraLabels[era]}
+                  </span>
+                ))}
+                <span class="nb-card-area">{areaLabels[neighbourhood.area]}</span>
+              </p>
+              <h3><a href={href}>{name}</a></h3>
+              <p class="nb-card-tagline">{tagline}</p>
+              <p class="nb-card-summary">{summary}</p>
+              <p class="nb-card-facts meta">
+                {earliest && <span>{t.firstRecord}: {earliest}</span>}
+                <span>{neighbourhood.place_ids.length} {t.placesStat}</span>
+              </p>
+              <div class="nb-card-actions">
+                <a class="button" href={href}>{t.openQuarter}</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p class="notice nb-boundary">
+        <span class="notice-icon" aria-hidden="true">i</span>
+        <span>{t.dataBoundary}</span>
+      </p>
+    </div>
+  </section>
+
+  <script type="application/json" id="nb-map-config" set:html={JSON.stringify(mapConfig)}></script>
+  <script>
+    import "leaflet/dist/leaflet.css";
+
+    // --- filters: search + era + area over the server-rendered cards -------
+    const cards = [...document.querySelectorAll<HTMLElement>("[data-nb-card]")];
+    const form = document.getElementById("nb-filters");
+    const searchInput = document.getElementById("nb-search-input") as HTMLInputElement | null;
+    const noMatches = document.getElementById("nb-no-matches");
+    const state = { era: "", area: "", q: "" };
+
+    function applyFilters(): void {
+      const query = state.q.trim().toLocaleLowerCase();
+      let visible = 0;
+      for (const card of cards) {
+        const eras = (card.dataset.era ?? "").split(" ");
+        const matches =
+          (!state.era || eras.includes(state.era)) &&
+          (!state.area || card.dataset.area === state.area) &&
+          (!query || (card.dataset.name ?? "").includes(query));
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      }
+      if (noMatches) noMatches.hidden = visible > 0;
+      form?.querySelectorAll<HTMLButtonElement>("[data-nb-value]").forEach((button) => {
+        const group = button.closest<HTMLElement>("[data-nb-group]")?.dataset.nbGroup;
+        const current = group === "era" ? state.era : state.area;
+        button.setAttribute("aria-pressed", String((button.dataset.nbValue ?? "") === current));
+      });
+    }
+
+    form?.addEventListener("click", (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-nb-value]");
+      if (!button) return;
+      const group = button.closest<HTMLElement>("[data-nb-group]")?.dataset.nbGroup;
+      const value = button.dataset.nbValue ?? "";
+      if (group === "era") state.era = value;
+      if (group === "area") state.area = value;
+      applyFilters();
+    });
+    form?.addEventListener("submit", (event) => event.preventDefault());
+    searchInput?.addEventListener("input", () => {
+      state.q = searchInput.value;
+      applyFilters();
+    });
+    document.querySelectorAll("[data-nb-reset]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.era = "";
+        state.area = "";
+        state.q = "";
+        if (searchInput) searchInput.value = "";
+        applyFilters();
+      });
+    });
+
+    // --- map: era-coloured approximate markers ------------------------------
+    type NbMarker = { id: string; name: string; href: string; lat: number; lng: number; color: string; era: string };
+    const mapEl = document.getElementById("nb-index-map");
+    const config: { markers: NbMarker[] } = JSON.parse(
+      document.getElementById("nb-map-config")?.textContent ?? "{}"
+    );
+    const esc = (v: unknown) =>
+      String(v).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+
+    async function initNbMap(): Promise<void> {
+      if (!mapEl || !config.markers?.length) return;
+      const leaflet = await import("leaflet");
+      const L = leaflet.default;
+      const map = L.map(mapEl, { scrollWheelZoom: false });
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+      const points: Array<[number, number]> = [];
+      for (const marker of config.markers) {
+        points.push([marker.lat, marker.lng]);
+        const pin = L.marker([marker.lat, marker.lng], {
+          title: marker.name,
+          icon: L.divIcon({
+            className: "",
+            html: `<span class="nb-map-marker" style="--nb-era:${esc(marker.color)}" title="${esc(marker.name)}"></span>`,
+            iconSize: [18, 18],
+            iconAnchor: [9, 9]
+          })
+        }).addTo(map);
+        pin.bindTooltip(marker.name, { direction: "top", offset: [0, -8] });
+        pin.on("click", () => {
+          const card = document.getElementById(`nb-${marker.id}`);
+          if (!card || card.hidden) {
+            window.location.href = marker.href;
+            return;
+          }
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          card.classList.remove("nb-card-flash");
+          void card.offsetWidth;
+          card.classList.add("nb-card-flash");
+        });
+      }
+      map.fitBounds(points, { padding: [24, 24], maxZoom: 13 });
+    }
+
+    if (mapEl) {
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                io.disconnect();
+                void initNbMap();
+              }
+            }
+          },
+          { rootMargin: "200px 0px" }
+        );
+        io.observe(mapEl);
+      } else {
+        void initNbMap();
+      }
+    }
+  </script>
+
+  <style>
+    .stats-grid.nb-stats {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-width: 880px;
+      width: 100%;
+    }
+
+    .nb-stats .stat-card {
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .nb-map-card {
+      margin: 0 0 18px;
+    }
+
+    .nb-index-map {
+      height: 380px;
+      background: var(--surface-2);
+    }
+
+    .nb-filters {
+      display: grid;
+      gap: 14px;
+      margin: 0 0 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      padding: 16px 18px;
+    }
+
+    .nb-search {
+      display: grid;
+      gap: 6px;
+    }
+
+    .nb-search-label {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nb-search input {
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      font: inherit;
+      padding: 10px 12px;
+      max-width: 420px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .nb-search input:focus-visible {
+      border-color: var(--brand);
+      outline: none;
+    }
+
+    .nb-filter-group {
+      border: 0;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+    }
+
+    .nb-filter-group legend {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      padding: 0;
+    }
+
+    .nb-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nb-chip {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.88rem;
+      line-height: 1;
+      padding: 8px 13px;
+      transition: border-color 0.14s ease, background 0.14s ease, color 0.14s ease;
+    }
+
+    .nb-chip:hover,
+    .nb-chip:focus-visible {
+      border-color: var(--brand);
+      color: var(--brand);
+      outline: none;
+    }
+
+    .nb-chip[aria-pressed="true"] {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: var(--brand-ink);
+    }
+
+    .nb-era-dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--nb-era, var(--brand));
+      flex: 0 0 auto;
+    }
+
+    .nb-no-matches {
+      margin-bottom: 18px;
+    }
+
+    .nb-reset-inline {
+      appearance: none;
+      border: 0;
+      background: none;
+      color: var(--brand);
+      cursor: pointer;
+      font: inherit;
+      padding: 0;
+      text-decoration: underline;
+    }
+
+    .nb-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+      gap: 18px;
+    }
+
+    .nb-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      border-top: 4px solid var(--nb-accent);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nb-card-flash {
+      animation: nb-card-flash 1.6s ease;
+    }
+
+    @keyframes nb-card-flash {
+      0%, 60% {
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--nb-accent, var(--brand)) 55%, transparent);
+      }
+      100% {
+        box-shadow: 0 0 0 0 transparent;
+      }
+    }
+
+    .nb-card-media {
+      display: block;
+      background: var(--surface-2);
+    }
+
+    .nb-card-media img {
+      display: block;
+      width: 100%;
+      height: 156px;
+      object-fit: cover;
+    }
+
+    .nb-card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .nb-card-kicker {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 12px;
+      margin: 0;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .nb-era-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--muted);
+    }
+
+    .nb-card-area {
+      color: var(--muted);
+      opacity: 0.85;
+    }
+
+    .nb-card h3 {
+      margin: 0;
+      line-height: 1.2;
+      font-size: 1.24rem;
+      overflow-wrap: break-word;
+    }
+
+    .nb-card h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .nb-card h3 a:hover,
+    .nb-card h3 a:focus-visible {
+      color: var(--brand);
+    }
+
+    .nb-card-tagline {
+      margin: 0;
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.94rem;
+    }
+
+    .nb-card-summary {
+      margin: 0;
+      color: var(--muted);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .nb-card-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 16px;
+      margin: 0;
+    }
+
+    .nb-card-actions {
+      margin-top: auto;
+      padding-top: 6px;
+    }
+
+    .nb-boundary {
+      margin-top: 22px;
+    }
+
+    @media (max-width: 680px) {
+      .stats-grid.nb-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nb-index-map {
+        height: 300px;
+      }
+
+      .nb-filters {
+        padding: 14px;
+      }
+    }
+  </style>
+
+  <style is:global>
+    /* Neighbourhood map marker (injected via Leaflet divIcon). */
+    .nb-map-marker {
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--nb-era, var(--brand));
+      border: 2.5px solid #fff;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+    }
+  </style>
+</Layout>

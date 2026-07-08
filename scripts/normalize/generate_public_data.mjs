@@ -20,6 +20,7 @@ const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builde
 
 const files = [
   "walking-routes.json",
+  "neighbourhood-histories.json",
   "projects.json",
   "community-initiatives.json",
   "budget-items.json",

@@ -1507,6 +1507,7 @@ p:last-child {
 }
 
 [data-section="places"],
+[data-section="neighbourhoods"],
 [data-section="community"] {
   --section-accent: var(--data-places);
 }

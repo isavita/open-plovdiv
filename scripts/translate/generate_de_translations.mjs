@@ -21,6 +21,10 @@ let protectedNameFixups = [];
 
 const manualTranslationsByLang = {
   de: {
+    // Neighbourhood names: keep the site-wide Latin forms stable ("Parish"
+    // was a mistranslation of Parizh).
+    "Kyuchuk Parizh": "Kyuchuk Parizh",
+    "Marasha": "Marasha",
     "Public web reference; reuse terms not verified":
       "Öffentliche Webreferenz; Wiederverwendungsbedingungen nicht geprüft",
     "Wikimedia Commons file license, verify per file":
@@ -57,6 +61,11 @@ const manualTranslationsByLang = {
     "Open Database License 1.0": "Open Database License 1.0"
   },
   tr: {
+    // Neighbourhood names: real Turkish forms (the machine produced
+    // "Küçükçuk Parish"); Zaharna Fabrika keeps its Bulgarian name.
+    "Kyuchuk Parizh": "Küçük Paris",
+    "Hadzhi Hasan Mahala": "Hacı Hasan Mahallesi",
+    "Zaharna Fabrika": "Zaharna Fabrika",
     // The Ottoman-layer route deliberately uses the historical name Filibe;
     // keep it ahead of the Filibe→Plovdiv exonym normalisation.
     "Filibe / Ottoman layer": "Filibe / Osmanlı katmanı",
@@ -95,6 +104,19 @@ const manualTranslationsByLang = {
     "Open Database License 1.0": "Open Database License 1.0"
   },
   el: {
+    // Story titles the machine keeps returning in English even solo.
+    "Plovdiv Before the City: The Hills as Deep-Time Memory":
+      "Το Plovdiv πριν από την πόλη: οι λόφοι ως μνήμη του βαθέος χρόνου",
+    "Roman Philippopolis: A City of Stages, Games and Forums":
+      "Ρωμαϊκή Φιλιππούπολη: πόλη σκηνών, αγώνων και αγορών",
+    "The Fair City: Exhibition, Industry and Modernity":
+      "Η πόλη του πανηγυριού: έκθεση, βιομηχανία και νεωτερικότητα",
+    // Neighbourhood names: Greek transliterations for consistency with the
+    // rest of the quarter names (the machine left these four in Latin).
+    "Trakiya": "Τρακίγια",
+    "Mladezhki Halm": "Μλαντέζκι Χαλμ",
+    "Zaharna Fabrika": "Ζαχάρνα Φάμπρικα",
+    "Hadzhi Hasan Mahala": "Χατζή Χασάν μαχαλά",
     // Route title: "χωρίς βήμα" reads as "without a step (in a dance)";
     // stairs are what the route avoids.
     "Step-free Plovdiv": "Plovdiv χωρίς σκαλοπάτια",
@@ -116,6 +138,10 @@ const manualTranslationsByLang = {
       "Ο Sotir Antoniadi (1843-1928) ήταν γιατρός και πολιτικός ελληνικής καταγωγής, γεννημένος στη Στανιμάκα, σήμερα Asenovgrad. Αρχικά σπούδασε στο κεντρικό ελληνικό σχολείο του Plovdiv, στη συνέχεια σε γυμνάσιο της Αθήνας και αργότερα ιατρική στη Βιέννη, πριν εργαστεί για δύο χρόνια στο Παρίσι. Ο Antoniadi ήταν βουλευτής στην Περιφερειακή Συνέλευση της Ανατολικής Ρωμυλίας και το 1885 στην Εθνοσυνέλευση του Πριγκιπάτου της Βουλγαρίας. Από τις 26 Ιανουαρίου έως τις 21 Απριλίου 1883 υπηρέτησε σύντομα ως αναπληρωτής δήμαρχος του Plovdiv. Το 1915 μετακόμισε στην Ελλάδα· το σπίτι του και το φαρμακείο που χτίστηκε το 1872 αποτελούν μέρος του αρχιτεκτονικού και ιστορικού αποθέματος του Παλαιού Plovdiv."
   },
   ja: {
+    // Half-translated by the machine ("Named after the poet ... にちなんで");
+    // keep the recorded Latin name per the protected-name convention.
+    "Named after the poet Hristo Smirnenski (1898–1923).":
+      "詩人Hristo Smirnenski（1898–1923）にちなんで名付けられました。",
     // Route title: the walk visits history/ethnographic museums, so 博物館 fits
     // better than the machine's 美術館 (fine-art museum).
     "A museum day for the rain": "雨の日の博物館めぐり",
@@ -229,6 +255,15 @@ const manualTranslationsByLang = {
       "Ang kronolohiya ng alkalde ay nag-uugnay kay Zdravko Dimitrov kay Eng. Ivan Totev sa pamamagitan ng relasyong \"nagtagumpay\"."
   },
   uk: {
+    // Full identity from the machine; uk transliterates famous names.
+    "Named after the poet Hristo Smirnenski (1898–1923).":
+      "Названий на честь поета Христо Смирненски (1898–1923).",
+    "The Khan Krum monument (2007) and the water park (2006) add new landmarks around Lauta park.":
+      "Пам'ятник хану Круму (2007) та аквапарк (2006) додають нові орієнтири навколо парку „Лаута“.",
+    // Neighbourhood names: transliterate the Bulgarian quarter names instead
+    // of declining them or swapping in Ukrainian common nouns.
+    "Kamenitsa": "Каменица",
+    "Smirnenski": "Смирненски",
     // Route titles: keep the reviewed Unification wording ahead of the
     // template fixups, and disambiguate "заходи" (events) → "заходи сонця".
     "Unification and civic memory": "Об'єднання і громадянська пам'ять",
@@ -267,6 +302,11 @@ const manualTranslationsByLang = {
       "Мерська хронологія пов'язує Kostaki Peev з Atanas Samokovliev через стосунки «наступник»."
   },
   ru: {
+    // Full identity from the machine; ru transliterates famous names.
+    "Named after the poet Hristo Smirnenski (1898–1923).":
+      "Назван в честь поэта Христо Смирненски (1898–1923).",
+    "The Khan Krum monument (2007) and the water park (2006) add new landmarks around Lauta park.":
+      "Памятник хану Круму (2007) и аквапарк (2006) добавляют новые ориентиры вокруг парка «Лаута».",
     // Route titles: the machine turned the museum day into a "museum of rain"
     // and left a stray trailing period on the 20th-century title.
     "A museum day for the rain": "Музейный день — и в дождь",
@@ -2396,10 +2436,55 @@ const pending = [...allStrings]
 
 console.log(`${targetLang} translations: ${Object.keys(translations).length} cached, ${pending.length} pending`);
 
+// --- untranslated-output detection -----------------------------------------
+// On long batched strings the endpoint sometimes returns the English source
+// verbatim or translates only the middle sentence. Detect those and retry the
+// string on its own (solo requests almost always succeed where batches fail).
+const NON_LATIN_TARGETS = new Set(["el", "ja", "uk", "ru"]);
+
+/** A run of >=6 consecutive ASCII-alphabetic words reads as untranslated English. */
+function longestLatinWordRun(text) {
+  let run = 0;
+  let longest = 0;
+  for (const token of String(text).split(/\s+/)) {
+    if (/^[A-Za-z][A-Za-z'’.,;:()\-]*$/.test(token)) {
+      run += 1;
+      longest = Math.max(longest, run);
+    } else {
+      run = 0;
+    }
+  }
+  return longest;
+}
+
+function looksUntranslated(source, translated) {
+  const src = String(source).trim();
+  const out = String(translated).trim();
+  if (!out) return true;
+  if (src.length >= 40 && out === src) return true;
+  if (NON_LATIN_TARGETS.has(targetLang) && longestLatinWordRun(out) >= 6) return true;
+  return false;
+}
+
+/** Retry untranslated batch results one-by-one; warn when a retry still fails. */
+async function retryUntranslated(batch, translated) {
+  for (let j = 0; j < batch.length; j += 1) {
+    if (!looksUntranslated(batch[j], translated[j])) continue;
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    const solo = (await translateBatch([batch[j]]))[0];
+    if (!looksUntranslated(batch[j], solo)) {
+      translated[j] = solo;
+    } else {
+      console.warn(`still untranslated after solo retry (${targetLang}): ${batch[j].slice(0, 80)}...`);
+    }
+  }
+  return translated;
+}
+
 const batches = makeBatches(pending);
 for (let i = 0; i < batches.length; i += 1) {
   const batch = batches[i];
-  const translated = await translateBatch(batch);
+  const translated = await retryUntranslated(batch, await translateBatch(batch));
   for (let j = 0; j < batch.length; j += 1) translations[batch[j]] = normalizeTranslation(translated[j]);
   if ((i + 1) % 10 === 0 || i === batches.length - 1) {
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });

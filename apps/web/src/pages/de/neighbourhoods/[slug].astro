@@ -1,0 +1,15 @@
+---
+import NeighbourhoodDetailView from "@components/views/NeighbourhoodDetailView.astro";
+import { neighbourhoodHistories } from "@lib/neighbourhoods";
+
+export function getStaticPaths() {
+  return neighbourhoodHistories.map((neighbourhood) => ({
+    params: { slug: neighbourhood.id },
+    props: { neighbourhood }
+  }));
+}
+
+const { neighbourhood } = Astro.props;
+---
+
+<NeighbourhoodDetailView lang="de" neighbourhood={neighbourhood} />
