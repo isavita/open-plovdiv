@@ -212,6 +212,12 @@ const datasets = [
     dataPath: "data/generated/history-knowledge/source-coverage.json",
     schemaPath: "data/schemas/source-coverage.schema.json",
     topLevel: "object"
+  },
+  {
+    label: "walking routes",
+    dataPath: "data/curated/walking-routes.json",
+    schemaPath: "data/schemas/walking-route.schema.json",
+    minRecords: 12
   }
 ];
 
@@ -1292,6 +1298,130 @@ for (const dataset of datasets) {
   console.log(`valid ${dataset.label}: ${data.length}`);
 }
 
+/**
+ * Walking routes must stay a pure remix layer: every stop/detour resolves to
+ * a published place WITH coordinates, linked stories/education records exist,
+ * the committed OSRM geometry is present and plausibly matches the stops, the
+ * suggested duration agrees with walking time + dwell, and every English
+ * string is covered by all ten translation maps so no locale silently falls
+ * back to English.
+ */
+function assertWalkingRoutes(loaded) {
+  const routes = loaded.get("walking routes");
+  const placesById = new Map(loaded.get("knowledge places").map((record) => [record.id, record]));
+  const storyIds = new Set(loaded.get("knowledge story longreads").map((record) => record.id));
+  const educationIds = new Set(loaded.get("knowledge education resources").map((record) => record.id));
+
+  const translationLangs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
+  const translationsByLang = new Map(
+    translationLangs.map((lang) => [lang, readJson(`data/translations/${lang}.json`)])
+  );
+
+  const collectEnglishStrings = (value, key, out) => {
+    if (Array.isArray(value)) {
+      for (const item of value) collectEnglishStrings(item, key, out);
+      return out;
+    }
+    if (value && typeof value === "object") {
+      for (const [childKey, childValue] of Object.entries(value)) {
+        collectEnglishStrings(childValue, childKey, out);
+      }
+      return out;
+    }
+    if (typeof value === "string" && key.endsWith("_en") && value.trim()) out.add(value.trim());
+    return out;
+  };
+
+  const bandRange = {
+    short: [20, 75],
+    "half-day": [76, 240],
+    "full-day": [241, 600]
+  };
+
+  for (const route of routes) {
+    const label = `walking routes: ${route.id}`;
+
+    const requirePlace = (placeId, role) => {
+      const place = placesById.get(placeId);
+      if (!place) throw new Error(`${label} references missing ${role} place ${placeId}`);
+      if (!place.coordinates) {
+        throw new Error(`${label} ${role} place ${placeId} has no published coordinates`);
+      }
+      return place;
+    };
+
+    for (const stop of route.stops) requirePlace(stop.place_id, "stop");
+    for (const detour of route.detours ?? []) requirePlace(detour.place_id, "detour");
+    const stopIds = route.stops.map((stop) => stop.place_id);
+    if (new Set(stopIds).size !== stopIds.length) {
+      throw new Error(`${label} repeats a place as more than one stop`);
+    }
+
+    if (route.story_id && !storyIds.has(route.story_id)) {
+      throw new Error(`${label} references missing story ${route.story_id}`);
+    }
+    if (route.education_id && !educationIds.has(route.education_id)) {
+      throw new Error(`${label} references missing education resource ${route.education_id}`);
+    }
+
+    const geometryPath = `data/curated/route-geometry/${route.id}.json`;
+    if (!fs.existsSync(path.join(root, geometryPath))) {
+      throw new Error(`${label} has no committed walking geometry (${geometryPath}); run scripts/ingest/fetch_route_geometry.mjs`);
+    }
+    const geometry = readJson(geometryPath);
+    if (geometry.route_id !== route.id) {
+      throw new Error(`${label} geometry file carries route_id ${geometry.route_id}`);
+    }
+    if (!Array.isArray(geometry.geometry?.coordinates) || geometry.geometry.coordinates.length < 2) {
+      throw new Error(`${label} geometry has no usable line`);
+    }
+    if (geometry.legs.length !== route.stops.length - 1) {
+      throw new Error(
+        `${label} geometry has ${geometry.legs.length} legs for ${route.stops.length} stops; refetch geometry`
+      );
+    }
+    for (const snap of geometry.stops) {
+      if (snap.snap_distance_m > 150) {
+        throw new Error(
+          `${label} stop ${snap.place_id} snaps ${snap.snap_distance_m} m from the walking network — check its coordinates`
+        );
+      }
+    }
+
+    const walkMinutes = geometry.walk_duration_s / 60;
+    const dwellMinutes = route.stops.reduce((sum, stop) => sum + stop.minutes, 0);
+    const expected = walkMinutes + dwellMinutes;
+    const ratio = route.duration_minutes / expected;
+    if (ratio < 0.8 || ratio > 1.3) {
+      throw new Error(
+        `${label} duration ${route.duration_minutes} min is out of step with walking ${Math.round(
+          walkMinutes
+        )} min + stops ${dwellMinutes} min`
+      );
+    }
+    const [bandMin, bandMax] = bandRange[route.duration_band];
+    if (route.duration_minutes < bandMin || route.duration_minutes > bandMax) {
+      throw new Error(
+        `${label} duration ${route.duration_minutes} min does not fit band ${route.duration_band}`
+      );
+    }
+  }
+
+  const englishStrings = collectEnglishStrings(routes, "", new Set());
+  for (const [lang, map] of translationsByLang) {
+    const missing = [...englishStrings].filter((text) => !map[text]);
+    if (missing.length > 0) {
+      throw new Error(
+        `walking routes: ${missing.length} strings missing ${lang} translations (run scripts/translate/generate_de_translations.mjs ${lang}); first: ${JSON.stringify(
+          missing[0]
+        )}`
+      );
+    }
+  }
+
+  console.log(`walking routes checks passed: ${routes.length} routes, ${englishStrings.size} translated strings`);
+}
+
 assertNoPrivateFixFields(loaded.get("fix reports"));
 assertProjectBudgetLinks(loaded.get("projects"), loaded.get("budget items"));
 assertCommunityProjectLinks(loaded.get("community initiatives"), loaded.get("projects"));
@@ -1308,5 +1438,6 @@ assertEducationResources(loaded);
 assertStoryLongreads(loaded);
 assertEditorialReviewReport(loaded);
 assertSourceCoverageReport();
+assertWalkingRoutes(loaded);
 
 console.log("data validation passed");

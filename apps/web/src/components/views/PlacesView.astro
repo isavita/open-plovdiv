@@ -4,7 +4,7 @@ import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { commonsImageUrl } from "@lib/commons";
 import { sectionMotifs } from "@lib/motifs";
 import { fallbackPlaceColor, placeColors } from "@lib/placeCategories";
-import { walkingRoutes } from "@lib/routes";
+import { routeGeometry, walkingRoutes } from "@lib/routes";
 import { sourceTitle } from "@lib/format";
 import { publicThenNowPairs, thenNowCountByPlace } from "@lib/thenNow";
 import {
@@ -682,19 +682,31 @@ const legendItems = categories.map((category) => ({
 }));
 
 // Route overlays for the all-places map: the walking routes as accent
-// polylines over their published stop coordinates. Toggled from the route
-// strip; each overlay links back to the full route page.
+// polylines over their committed walking geometry (downsampled to keep the
+// inline config light), falling back to straight stop connections when a
+// route has no geometry yet. Toggled from the route strip; each overlay
+// links to the full route page.
 const placeById = new Map(places.map((place) => [place.id, place]));
+function overlayPoints(route: (typeof walkingRoutes)[number]): Array<[number, number]> {
+  const geometry = routeGeometry(route.id);
+  if (geometry) {
+    const coords = geometry.geometry.coordinates;
+    return coords
+      .filter((_, index) => index % 3 === 0 || index === coords.length - 1)
+      .map(([lng, lat]) => [lat, lng] as [number, number]);
+  }
+  return route.stops
+    .map((stop) => placeById.get(stop.place_id)?.coordinates)
+    .filter((c): c is NonNullable<typeof c> => Boolean(c))
+    .map((c) => [c.lat, c.lng] as [number, number]);
+}
 const routeOverlays = walkingRoutes
   .map((route) => ({
     id: route.id,
     accent: route.accent,
-    title: route.shortTitle[lang],
-    href: `${localizePath("/routes", lang)}#route-${route.id}`,
-    points: route.stopIds
-      .map((id) => placeById.get(id)?.coordinates)
-      .filter((c): c is NonNullable<typeof c> => Boolean(c))
-      .map((c) => [c.lat, c.lng] as [number, number])
+    title: localized(route, "short_title"),
+    href: localizePath(`/routes/${route.id}`, lang),
+    points: overlayPoints(route)
   }))
   .filter((overlay) => overlay.points.length >= 2);
 
@@ -770,13 +782,13 @@ const placesMapConfig = {
               title={sheetL.routeToggleHint}
             >
               <span class="route-strip-dot" aria-hidden="true"></span>
-              <strong>{route.shortTitle[lang]}</strong>
-              <span>{route.durationMinutes} {discoverL.minutes} · {route.stopIds.length} {discoverL.stops}</span>
+              <strong>{localized(route, "short_title")}</strong>
+              <span>{route.duration_minutes} {discoverL.minutes} · {route.stops.length} {discoverL.stops}</span>
             </button>
             <a
               class="route-strip-open"
-              href={`${localizePath("/routes", lang)}#route-${route.id}`}
-              aria-label={`${sheetL.openRoute}: ${route.shortTitle[lang]}`}
+              href={localizePath(`/routes/${route.id}`, lang)}
+              aria-label={`${sheetL.openRoute}: ${localized(route, "short_title")}`}
             >→</a>
           </span>
         ))}

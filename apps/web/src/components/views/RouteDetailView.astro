@@ -1,0 +1,1236 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { field, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
+import { commonsImageUrl } from "@lib/commons";
+import { distanceMeters } from "@lib/geo";
+import { sourceTitle } from "@lib/format";
+import { publicThenNowPairs } from "@lib/thenNow";
+import {
+  educationResources,
+  historicalArchiveItems,
+  historyKnowledgeEvents,
+  historyKnowledgePlaces,
+  historyKnowledgeSources,
+  storyLongreads,
+  thenNowPairs,
+  type KnowledgePlace
+} from "@lib/data";
+import { formatKm, routeGeometry, walkingMinutes, type WalkingRoute } from "@lib/routes";
+import {
+  routeCategoryLabels,
+  routeDifficultyLabels,
+  routeDurationBandLabels,
+  routeLabels,
+  routePracticalKindLabels,
+  routeWheelchairLabels
+} from "@lib/routeLabels";
+
+type Props = {
+  lang: Lang;
+  route: WalkingRoute;
+};
+
+const { lang, route } = Astro.props;
+const t = routeLabels(lang);
+const uiT = ui[lang];
+const locale = localeForLang(lang);
+const categoryLabels = routeCategoryLabels(lang);
+const bandLabels = routeDurationBandLabels(lang);
+const difficultyLabels = routeDifficultyLabels(lang);
+const wheelchairLabels = routeWheelchairLabels(lang);
+const practicalKindLabels = routePracticalKindLabels(lang);
+
+const localized = (record: Record<string, unknown> | null | undefined, base: string): string =>
+  field(record, base, lang);
+const localizedAny = (record: unknown, base: string): string =>
+  localized(record as Record<string, unknown>, base);
+
+const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
+const sourcesById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
+const storiesById = new Map(storyLongreads.map((story) => [story.id, story]));
+const educationById = new Map(educationResources.map((resource) => [resource.id, resource]));
+const eventsById = new Map(historyKnowledgeEvents.map((event) => [event.id, event]));
+
+function requirePlace(placeId: string): KnowledgePlace {
+  const place = placesById.get(placeId);
+  if (!place) throw new Error(`Missing place record for walking route ${route.id}: ${placeId}`);
+  return place;
+}
+
+function compactText(value: string, maxLength = 220): string {
+  if (value.length <= maxLength) return value;
+  const cut = value.slice(0, maxLength).lastIndexOf(" ");
+  return `${value.slice(0, cut > 80 ? cut : maxLength).trim()}...`;
+}
+
+const geometry = routeGeometry(route.id);
+const story = route.story_id ? (storiesById.get(route.story_id) ?? null) : null;
+const education = route.education_id ? (educationById.get(route.education_id) ?? null) : null;
+
+// Itinerary: each stop pairs the curated route note with the place's own
+// summary, then the leg to the NEXT stop (real OSRM distance/duration).
+const stops = route.stops.map((stop, index) => {
+  const place = requirePlace(stop.place_id);
+  const leg = geometry?.legs[index] ?? null;
+  return {
+    index: index + 1,
+    stop,
+    place,
+    name: localizedAny(place, "name"),
+    note: localized(stop as unknown as Record<string, unknown>, "note"),
+    summary: compactText(localizedAny(place, "summary")),
+    media: place.media[0] ?? null,
+    href: localizePath(`/places/${place.id}`, lang),
+    legToNext: leg
+      ? {
+          minutes: Math.max(1, Math.round(leg.duration_s / 60)),
+          meters: Math.round(leg.distance_m / 10) * 10
+        }
+      : null
+  };
+});
+
+const detours = (route.detours ?? []).map((detour) => {
+  const place = requirePlace(detour.place_id);
+  return {
+    place,
+    name: localizedAny(place, "name"),
+    note: localized(detour as unknown as Record<string, unknown>, "note"),
+    href: localizePath(`/places/${place.id}`, lang)
+  };
+});
+
+// "Near this route": documented places within 400 m of a stop that are not
+// already stops or detours (straight-line, rounded to 50 m).
+const routePlaceIds = new Set([...route.stops.map((s) => s.place_id), ...(route.detours ?? []).map((d) => d.place_id)]);
+const stopCoords = stops
+  .map((entry) => entry.place.coordinates)
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+const nearby = historyKnowledgePlaces
+  .filter((place) => place.coordinates && !routePlaceIds.has(place.id))
+  .map((place) => ({
+    place,
+    meters: Math.min(...stopCoords.map((c) => distanceMeters(c, place.coordinates!)))
+  }))
+  .filter((entry) => entry.meters <= 400)
+  .sort((a, b) => a.meters - b.meters)
+  .slice(0, 4)
+  .map((entry) => ({
+    name: localizedAny(entry.place, "name"),
+    href: localizePath(`/places/${entry.place.id}`, lang),
+    meters: Math.max(50, Math.round(entry.meters / 50) * 50)
+  }));
+
+// Evidence: everything on this page traces back to published records.
+const stopPlaces = stops.map((entry) => entry.place);
+const routeEvents = (story?.linked_event_ids ?? [])
+  .map((id) => eventsById.get(id))
+  .filter((event): event is NonNullable<typeof event> => Boolean(event));
+const routeArchiveItems = historicalArchiveItems.filter((item) => routePlaceIds.has(item.place_id));
+const routePairs = publicThenNowPairs(
+  thenNowPairs.filter((pair) => routePlaceIds.has(pair.place_id))
+);
+// Everything the sidebar counts (stops, events, then/now) contributes its
+// source ids; archive items carry no source ids — their provenance is the
+// Commons file page linked from the place record itself.
+const sourceIds = [
+  ...new Set([
+    ...(story?.source_ids ?? []),
+    ...stopPlaces.flatMap((place) => place.source_ids),
+    ...routeEvents.flatMap((event) => event.source_ids),
+    ...routePairs.flatMap((pair) => pair.source_ids)
+  ])
+];
+const sources = sourceIds
+  .map((id) => sourcesById.get(id))
+  .filter((source): source is NonNullable<typeof source> => Boolean(source));
+
+const heroMedia = stops.find((entry) => entry.media)?.media ?? null;
+const km = geometry ? formatKm(geometry.distance_m, locale) : null;
+const pureWalking = geometry ? walkingMinutes(geometry) : null;
+const ascent = geometry?.elevation.ascent_m ?? null;
+
+const wheelchairNote = localized(route as unknown as Record<string, unknown>, "wheelchair_note");
+const transitNote = localized(route as unknown as Record<string, unknown>, "transit_note");
+const bestTime = localized(route as unknown as Record<string, unknown>, "best_time");
+const startGuidance = localized(route as unknown as Record<string, unknown>, "start_guidance");
+const endGuidance = localized(route as unknown as Record<string, unknown>, "end_guidance");
+const title = localizedAny(route, "title");
+const tagline = localizedAny(route, "tagline");
+const summary = localizedAny(route, "summary");
+
+// Map config: the committed OSRM walking line plus numbered stops (snapped
+// where available) and outlined detour markers.
+const snappedByPlaceId = new Map((geometry?.stops ?? []).map((snap) => [snap.place_id, snap.snapped]));
+const mapConfig = {
+  accent: route.accent,
+  line: geometry ? geometry.geometry.coordinates.map(([lng, lat]) => [lat, lng]) : [],
+  stops: stops
+    .map((entry) => {
+      const snapped = snappedByPlaceId.get(entry.place.id);
+      const lat = snapped?.[1] ?? entry.place.coordinates?.lat;
+      const lng = snapped?.[0] ?? entry.place.coordinates?.lng;
+      return lat != null && lng != null ? { index: entry.index, name: entry.name, lat, lng } : null;
+    })
+    .filter(Boolean),
+  detours: detours
+    .map((entry) =>
+      entry.place.coordinates
+        ? {
+            name: entry.name,
+            lat: entry.place.coordinates.lat,
+            lng: entry.place.coordinates.lng,
+            href: entry.href
+          }
+        : null
+    )
+    .filter(Boolean)
+};
+
+// External map-app links: Google walking directions with the stops as
+// waypoints, plus the committed GPX/GeoJSON downloads.
+const coordOf = (entry: (typeof stops)[number]) => {
+  const snapped = snappedByPlaceId.get(entry.place.id);
+  const lat = snapped?.[1] ?? entry.place.coordinates?.lat;
+  const lng = snapped?.[0] ?? entry.place.coordinates?.lng;
+  return lat != null && lng != null ? `${lat},${lng}` : null;
+};
+const stopCoordStrings = stops.map(coordOf).filter((value): value is string => Boolean(value));
+const googleMapsUrl =
+  stopCoordStrings.length >= 2
+    ? `https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=${stopCoordStrings[0]}&destination=${
+        stopCoordStrings[stopCoordStrings.length - 1]
+      }${
+        stopCoordStrings.length > 2
+          ? `&waypoints=${stopCoordStrings.slice(1, -1).join("%7C")}`
+          : ""
+      }`
+    : null;
+const gpxUrl = geometry ? `/data/route-geometry/${route.id}.gpx` : null;
+const startGeoUrl = stopCoordStrings.length ? `geo:${stopCoordStrings[0]}?q=${stopCoordStrings[0]}` : null;
+
+const eraLabels = uiT.history.eraLabels as Record<string, string>;
+
+const structuredData = {
+  "@type": "TouristTrip",
+  name: title,
+  description: summary,
+  ...(geometry
+    ? {
+        distance: {
+          "@type": "QuantitativeValue",
+          value: Number((geometry.distance_m / 1000).toFixed(1)),
+          unitCode: "KMT"
+        }
+      }
+    : {}),
+  itinerary: {
+    "@type": "ItemList",
+    numberOfItems: stops.length,
+    itemListElement: stops.map((entry) => ({
+      "@type": "ListItem",
+      position: entry.index,
+      item: {
+        "@type": "TouristAttraction",
+        name: entry.name,
+        url: new URL(entry.href, Astro.site ?? "https://openplovdiv.example").href,
+        ...(entry.place.coordinates
+          ? {
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: entry.place.coordinates.lat,
+                longitude: entry.place.coordinates.lng
+              }
+            }
+          : {})
+      }
+    }))
+  }
+};
+---
+
+<Layout
+  lang={lang}
+  path={`/routes/${route.id}`}
+  title={title}
+  description={summary}
+  image={heroMedia ? commonsImageUrl(heroMedia.url, 1200) : undefined}
+  imageAlt={title}
+  structuredData={structuredData}
+>
+  <article class="route-page" style={`--route-accent:${route.accent}`} data-section="routes">
+    <header class="section route-hero">
+      <div class="container">
+        <p class="route-breadcrumb">
+          <a href={localizePath("/routes", lang)}>← {t.backToRoutes}</a>
+        </p>
+        <div class="route-hero-grid">
+          <div class="route-hero-main">
+            <p class="eyebrow">
+              {categoryLabels[route.category]} · {bandLabels[route.duration_band]}
+            </p>
+            <h1>{title}</h1>
+            <p class="route-tagline">{tagline}</p>
+            <p class="lead route-lead">{summary}</p>
+            <div class="tag-row route-hero-badges">
+              {route.wheelchair === "good" && <span class="route-badge">{t.toggleStepFree}</span>}
+              {route.family_friendly && <span class="route-badge">{t.toggleFamily}</span>}
+              {route.rainy_day_ok && <span class="route-badge">{t.toggleRainy}</span>}
+              {route.transit_required && <span class="route-badge">{t.toggleTransit}</span>}
+            </div>
+            <div class="route-hero-actions">
+              <a class="button" href="#route-stop-1">{t.startRoute}</a>
+              <button type="button" class="button secondary" data-route-share data-copied-label={t.linkCopied}>
+                {t.shareRoute}
+              </button>
+              <button type="button" class="button secondary" data-route-print>{t.printRoute}</button>
+            </div>
+          </div>
+          <aside class="route-glance" aria-label={t.atGlance}>
+            <h2>{t.atGlance}</h2>
+            <dl>
+              {km && (
+                <div>
+                  <dt>{t.distance}</dt>
+                  <dd>{km} {t.km}</dd>
+                </div>
+              )}
+              <div>
+                <dt>{t.suggestedTime}</dt>
+                <dd>~{route.duration_minutes} {t.minutes}</dd>
+              </div>
+              {pureWalking != null && (
+                <div>
+                  <dt>{t.walkingTime}</dt>
+                  <dd>~{pureWalking} {t.minutes}</dd>
+                </div>
+              )}
+              {ascent != null && (
+                <div>
+                  <dt>{t.ascent}</dt>
+                  <dd>+{ascent} {t.meters}</dd>
+                </div>
+              )}
+              <div>
+                <dt>{t.difficulty}</dt>
+                <dd>{difficultyLabels[route.difficulty]}</dd>
+              </div>
+              <div>
+                <dt>{t.accessibility}</dt>
+                <dd>{wheelchairLabels[route.wheelchair]}</dd>
+              </div>
+              <div>
+                <dt>{t.start}</dt>
+                <dd class="route-glance-place">{stops[0].name}</dd>
+              </div>
+              <div>
+                <dt>{t.finish}</dt>
+                <dd class="route-glance-place">{stops[stops.length - 1].name}</dd>
+              </div>
+            </dl>
+            {wheelchairNote && <p class="meta route-glance-note">{wheelchairNote}</p>}
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <section class="section route-body-section">
+      <div class="container route-body">
+        <div class="route-main">
+          {mapConfig.stops.length >= 2 && (
+            <figure class="card map-card route-map-card">
+              <div class="route-map" id="route-detail-map" aria-label={t.mapTitle}></div>
+              <figcaption class="meta">{t.mapHint}</figcaption>
+            </figure>
+          )}
+
+          <p class="notice route-approx-note">
+            <span class="notice-icon" aria-hidden="true">i</span>
+            <span>{t.approxNote}</span>
+          </p>
+
+          <div class="route-map-links" aria-label={t.openInMaps}>
+            <span class="route-map-links-label">{t.openInMaps}:</span>
+            {googleMapsUrl && (
+              <a class="text-link" href={googleMapsUrl} target="_blank" rel="noreferrer">Google Maps ↗</a>
+            )}
+            {startGeoUrl && <a class="text-link route-geo-link" href={startGeoUrl}>geo: ↗</a>}
+            {gpxUrl && (
+              <a class="text-link" href={gpxUrl} download={`${route.id}.gpx`}>{t.downloadGpx}</a>
+            )}
+          </div>
+
+          {(bestTime || (route.transit_required && transitNote)) && (
+            <div class="route-callouts">
+              {bestTime && (
+                <div class="route-callout">
+                  <h3>{t.bestTime}</h3>
+                  <p>{bestTime}</p>
+                </div>
+              )}
+              {route.transit_required && transitNote && (
+                <div class="route-callout">
+                  <h3>{t.transitTitle}</h3>
+                  <p>{transitNote}</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          <section class="route-guidance">
+            <div class="route-callout">
+              <h3>{t.gettingThere}</h3>
+              <p>{startGuidance}</p>
+            </div>
+            <div class="route-callout">
+              <h3>{t.afterFinish}</h3>
+              <p>{endGuidance}</p>
+            </div>
+          </section>
+
+          <section aria-label={t.itinerary} class="route-itinerary-section">
+            <h2>{t.itinerary}</h2>
+            <ol class="route-stop-cards">
+              {stops.map((entry) => (
+                <li class="route-stop-item">
+                  <article class="route-stop-card" id={`route-stop-${entry.index}`}>
+                    <div class="route-stop-index" aria-hidden="true">{entry.index}</div>
+                    {entry.media && (
+                      <a class="route-stop-media" href={entry.href} aria-label={entry.name} tabindex="-1">
+                        <img
+                          src={commonsImageUrl(entry.media.url, 420)}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          referrerpolicy="no-referrer"
+                        />
+                      </a>
+                    )}
+                    <div class="route-stop-body">
+                      <p class="eyebrow">
+                        {t.stopWord} {entry.index} {t.ofWord} {stops.length} · {eraLabels[entry.place.era]}
+                        {entry.stop.optional && <span class="route-optional"> · {t.optionalStop}</span>}
+                      </p>
+                      <h3><a href={entry.href}>{entry.name}</a></h3>
+                      <p class="route-stop-note">{entry.note}</p>
+                      <p class="route-stop-summary meta">{entry.summary}</p>
+                      <p class="route-stop-facts">
+                        <span>{t.suggestedStay}: ~{entry.stop.minutes} {t.minutes}</span>
+                        <a class="text-link" href={entry.href}>{t.openPlace} →</a>
+                      </p>
+                    </div>
+                  </article>
+                  {entry.legToNext && (
+                    <p class="route-leg" aria-hidden="false">
+                      <span class="route-leg-line" aria-hidden="true"></span>
+                      <span class="route-leg-text">
+                        {entry.legToNext.minutes} {t.minutes} {t.walkWord} · {entry.legToNext.meters} {t.meters}
+                      </span>
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          {detours.length > 0 && (
+            <section class="route-detours">
+              <h2>{t.detours}</h2>
+              <ul>
+                {detours.map((entry) => (
+                  <li>
+                    <a href={entry.href}>{entry.name}</a>
+                    <p class="meta">{entry.note}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <section class="route-practical">
+            <h2>{t.practicalTitle}</h2>
+            <ul>
+              {route.practical.map((item) => (
+                <li>
+                  <span class="route-practical-kind">{practicalKindLabels[item.kind]}</span>
+                  <span>{localizedAny(item, "text")}</span>
+                </li>
+              ))}
+            </ul>
+            {route.caveats.map((caveat) => (
+              <p class="notice route-caveat">
+                <span class="notice-icon" aria-hidden="true">!</span>
+                <span>{localizedAny(caveat, "text")}</span>
+              </p>
+            ))}
+          </section>
+        </div>
+
+        <aside class="route-side">
+          {story && (
+            <section>
+              <h3>{t.routeStory}</h3>
+              <p>{localizedAny(story, "title")}</p>
+              <a class="button secondary" href={localizePath(`/stories/${story.id}`, lang)}>{t.openStory}</a>
+            </section>
+          )}
+
+          <section>
+            <h3>{t.evidenceTitle}</h3>
+            <dl class="route-evidence-counts">
+              <div><dt>{t.stops}</dt><dd>{stops.length}</dd></div>
+              <div><dt>{t.events}</dt><dd>{routeEvents.length}</dd></div>
+              <div><dt>{t.archive}</dt><dd>{routeArchiveItems.length}</dd></div>
+              <div><dt>{t.thenNow}</dt><dd>{routePairs.length}</dd></div>
+              <div><dt>{t.sources}</dt><dd>{sources.length}</dd></div>
+            </dl>
+            <ul class="source-list compact route-source-list">
+              {sources.slice(0, 8).map((source) => (
+                <li>
+                  <a href={source.url} target="_blank" rel="noreferrer">
+                    {sourceTitle(localizedAny(source, "title"), lang)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            {sources.length > 8 && (
+              <details class="route-more-sources">
+                <summary>+{sources.length - 8} {t.sources}</summary>
+                <ul class="source-list compact route-source-list">
+                  {sources.slice(8).map((source) => (
+                    <li>
+                      <a href={source.url} target="_blank" rel="noreferrer">
+                        {sourceTitle(localizedAny(source, "title"), lang)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
+          </section>
+
+          {routeEvents.length > 0 && (
+            <section>
+              <h3>{t.events}</h3>
+              <ol class="route-evidence-list">
+                {routeEvents.slice(0, 5).map((event) => (
+                  <li>
+                    <span>{localizedAny(event.date, "display")}</span>
+                    <strong>{localizedAny(event, "title")}</strong>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+
+          {nearby.length > 0 && (
+            <section>
+              <h3>{t.nearRoute}</h3>
+              <ul class="route-near-list">
+                {nearby.map((entry) => (
+                  <li>
+                    <a href={entry.href}>{entry.name}</a>
+                    <span class="meta">~{entry.meters} {t.meters}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="meta route-near-note">{t.nearNote}</p>
+            </section>
+          )}
+
+          <p class="meta route-updated">{t.updatedWord}: {route.updated_at}</p>
+        </aside>
+      </div>
+    </section>
+
+    <nav class="route-start-bar" aria-label={t.startRoute}>
+      <a class="button" href="#route-stop-1">{t.startRoute}</a>
+      {startGeoUrl && (
+        <a class="button secondary" href={startGeoUrl} aria-label={t.openInMaps}>{t.mapAppShort}</a>
+      )}
+    </nav>
+  </article>
+
+  <script type="application/json" id="route-detail-config" set:html={JSON.stringify(mapConfig)}></script>
+  <script>
+    import "leaflet/dist/leaflet.css";
+
+    type StopMarker = { index: number; name: string; lat: number; lng: number };
+    type DetourMarker = { name: string; lat: number; lng: number; href: string };
+    type RouteDetailConfig = {
+      accent: string;
+      line: Array<[number, number]>;
+      stops: StopMarker[];
+      detours: DetourMarker[];
+    };
+
+    const configEl = document.getElementById("route-detail-config");
+    const mapEl = document.getElementById("route-detail-map");
+    const esc = (value: unknown) =>
+      String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+
+    async function initRouteMap(): Promise<void> {
+      if (!configEl || !mapEl) return;
+      const config: RouteDetailConfig = JSON.parse(configEl.textContent ?? "{}");
+      if (!config.stops || config.stops.length < 2) return;
+      const leaflet = await import("leaflet");
+      const L = leaflet.default;
+      const map = L.map(mapEl, { scrollWheelZoom: false });
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+
+      const stopPoints = config.stops.map((stop) => [stop.lat, stop.lng] as [number, number]);
+      const linePoints = config.line.length >= 2 ? config.line : stopPoints;
+      L.polyline(linePoints, { color: config.accent, weight: 4, opacity: 0.85 }).addTo(map);
+
+      for (const detour of config.detours) {
+        const marker = L.marker([detour.lat, detour.lng], {
+          title: detour.name,
+          icon: L.divIcon({
+            className: "",
+            html: `<span class="route-map-detour" style="--route-accent:${esc(config.accent)}" title="${esc(detour.name)}"></span>`,
+            iconSize: [16, 16],
+            iconAnchor: [8, 8]
+          })
+        }).addTo(map);
+        marker.on("click", () => {
+          window.location.href = detour.href;
+        });
+      }
+
+      for (const stop of config.stops) {
+        const marker = L.marker([stop.lat, stop.lng], {
+          title: stop.name,
+          icon: L.divIcon({
+            className: "",
+            html: `<span class="route-map-stop" style="--route-accent:${esc(config.accent)}">${stop.index}</span>`,
+            iconSize: [26, 26],
+            iconAnchor: [13, 13]
+          })
+        }).addTo(map);
+        marker.on("click", () => {
+          const card = document.getElementById(`route-stop-${stop.index}`);
+          if (!card) return;
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          card.classList.remove("route-stop-flash");
+          void card.offsetWidth;
+          card.classList.add("route-stop-flash");
+        });
+      }
+
+      map.fitBounds(linePoints, { padding: [28, 28], maxZoom: 16 });
+    }
+
+    if (mapEl) {
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                io.disconnect();
+                void initRouteMap();
+              }
+            }
+          },
+          { rootMargin: "200px 0px" }
+        );
+        io.observe(mapEl);
+      } else {
+        void initRouteMap();
+      }
+    }
+
+    // Share: native share sheet when available, clipboard fallback with a
+    // brief "copied" confirmation on the button label.
+    document.querySelectorAll<HTMLButtonElement>("[data-route-share]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const shareData = { title: document.title, url: window.location.href };
+        if (navigator.share) {
+          try {
+            await navigator.share(shareData);
+          } catch {
+            /* dismissed */
+          }
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(shareData.url);
+          const original = button.textContent;
+          button.textContent = button.dataset.copiedLabel ?? original;
+          window.setTimeout(() => {
+            button.textContent = original;
+          }, 1600);
+        } catch {
+          /* clipboard unavailable */
+        }
+      });
+    });
+
+    document.querySelectorAll<HTMLButtonElement>("[data-route-print]").forEach((button) => {
+      button.addEventListener("click", () => window.print());
+    });
+
+    // The fixed mobile start bar can grow when localized labels wrap; reserve
+    // page bottom padding from its measured height instead of a fixed guess.
+    const startBar = document.querySelector<HTMLElement>(".route-start-bar");
+    if (startBar && "ResizeObserver" in window) {
+      const syncBarHeight = () => {
+        document.documentElement.style.setProperty(
+          "--route-start-bar-h",
+          `${Math.ceil(startBar.getBoundingClientRect().height)}px`
+        );
+      };
+      new ResizeObserver(syncBarHeight).observe(startBar);
+      syncBarHeight();
+    }
+  </script>
+
+  <style>
+    .route-page {
+      --route-accent-soft: color-mix(in srgb, var(--route-accent) 9%, var(--surface));
+    }
+
+    .route-hero {
+      border-top: 4px solid var(--route-accent);
+      background: linear-gradient(180deg, var(--route-accent-soft), transparent 82%);
+      padding-bottom: 8px;
+    }
+
+    .route-breadcrumb {
+      margin: 0 0 14px;
+    }
+
+    .route-breadcrumb a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .route-breadcrumb a:hover,
+    .route-breadcrumb a:focus-visible {
+      color: var(--brand);
+    }
+
+    .route-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(250px, 320px);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .route-hero-main h1 {
+      margin: 6px 0 4px;
+    }
+
+    .route-tagline {
+      color: var(--muted);
+      font-style: italic;
+      margin: 0 0 10px;
+      font-size: 1.04rem;
+    }
+
+    .route-lead {
+      max-width: 66ch;
+    }
+
+    .route-hero-badges {
+      margin: 14px 0 0;
+      gap: 6px;
+    }
+
+    .route-badge {
+      border: 1px solid color-mix(in srgb, var(--route-accent) 46%, var(--line));
+      border-radius: 999px;
+      color: color-mix(in srgb, var(--route-accent) 72%, var(--ink));
+      background: color-mix(in srgb, var(--route-accent) 8%, var(--surface));
+      font-size: 0.78rem;
+      padding: 3px 9px;
+    }
+
+    .route-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .route-glance {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      padding: 18px;
+    }
+
+    .route-glance h2 {
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    .route-glance dl {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 14px;
+      margin: 0;
+    }
+
+    .route-glance dt {
+      color: var(--muted);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .route-glance dd {
+      margin: 3px 0 0;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .route-glance-place {
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+
+    .route-glance-note {
+      margin: 14px 0 0;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .route-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(270px, 330px);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .route-main {
+      display: grid;
+      gap: 22px;
+      min-width: 0;
+    }
+
+    .route-map-card {
+      margin: 0;
+    }
+
+    .route-map {
+      height: 420px;
+      background: var(--surface-2);
+    }
+
+    .route-approx-note,
+    .route-caveat {
+      margin: 0;
+    }
+
+    .route-map-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px 16px;
+    }
+
+    .route-map-links-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .route-callouts,
+    .route-guidance {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .route-callout {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--route-accent);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 14px 16px;
+    }
+
+    .route-callout h3 {
+      margin: 0 0 6px;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .route-callout p {
+      margin: 0;
+      color: var(--ink-2, var(--ink));
+    }
+
+    .route-itinerary-section h2,
+    .route-detours h2,
+    .route-practical h2 {
+      margin: 6px 0 14px;
+    }
+
+    .route-stop-cards {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+    }
+
+    .route-stop-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 44px minmax(0, 200px) minmax(0, 1fr);
+      overflow: hidden;
+      scroll-margin-top: 90px;
+    }
+
+    .route-stop-index {
+      display: grid;
+      place-items: center;
+      background: var(--route-accent);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+
+    .route-stop-media {
+      display: block;
+      background: var(--surface-2);
+    }
+
+    .route-stop-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 180px;
+      object-fit: cover;
+    }
+
+    .route-stop-body {
+      padding: 16px 18px;
+      min-width: 0;
+    }
+
+    .route-stop-body h3 {
+      margin: 2px 0 8px;
+      line-height: 1.25;
+    }
+
+    .route-stop-body h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .route-stop-body h3 a:hover,
+    .route-stop-body h3 a:focus-visible {
+      color: var(--brand);
+    }
+
+    .route-stop-note {
+      margin: 0 0 8px;
+    }
+
+    .route-stop-summary {
+      margin: 0 0 10px;
+    }
+
+    .route-optional {
+      color: var(--muted);
+    }
+
+    .route-stop-facts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 16px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .route-leg {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      padding: 6px 0 6px 21px;
+    }
+
+    .route-leg-line {
+      display: inline-block;
+      width: 2px;
+      height: 34px;
+      background: repeating-linear-gradient(
+        180deg,
+        var(--route-accent) 0 5px,
+        transparent 5px 9px
+      );
+    }
+
+    .route-leg-text {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .route-detours ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .route-detours li {
+      border: 1px dashed var(--line-strong);
+      border-radius: 8px;
+      padding: 12px 16px;
+      background: var(--surface);
+    }
+
+    .route-detours a {
+      font-weight: 700;
+    }
+
+    .route-detours .meta {
+      margin: 4px 0 0;
+    }
+
+    .route-practical ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .route-practical li {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      align-items: baseline;
+    }
+
+    .route-practical li > span:last-child {
+      flex: 1 1 20ch;
+      min-width: 0;
+    }
+
+    .route-practical-kind {
+      flex: 0 0 auto;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      background: var(--surface-2);
+    }
+
+    .route-side {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      gap: 18px;
+      padding: 18px;
+      position: sticky;
+      top: 96px;
+    }
+
+    .route-side section + section {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .route-side h3 {
+      margin: 0 0 10px;
+    }
+
+    .route-evidence-counts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 0 12px;
+    }
+
+    .route-evidence-counts dt {
+      color: var(--muted);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+    }
+
+    .route-evidence-counts dd {
+      margin: 3px 0 0;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .route-evidence-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .route-evidence-list span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 2px;
+    }
+
+    .route-source-list {
+      margin: 0;
+    }
+
+    .route-more-sources {
+      margin-top: 10px;
+    }
+
+    .route-more-sources summary {
+      color: var(--brand);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .route-more-sources[open] summary {
+      margin-bottom: 8px;
+    }
+
+    .route-near-note {
+      margin: 10px 0 0;
+    }
+
+    .route-updated {
+      margin: 0;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .route-start-bar {
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      .route-hero-grid,
+      .route-body {
+        grid-template-columns: 1fr;
+      }
+
+      .route-side {
+        position: static;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .route-stop-card {
+        grid-template-columns: 38px minmax(0, 1fr);
+      }
+
+      .route-stop-media {
+        grid-column: 2;
+      }
+
+      .route-stop-media img {
+        height: 170px;
+        min-height: 0;
+      }
+
+      .route-stop-body {
+        grid-column: 1 / -1;
+      }
+
+      .route-map {
+        height: 320px;
+      }
+
+      .route-start-bar {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 40;
+        padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+        background: color-mix(in srgb, var(--surface) 92%, transparent);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid var(--line);
+      }
+
+      .route-start-bar .button {
+        flex: 1;
+        max-width: 240px;
+        text-align: center;
+      }
+
+      .route-page {
+        padding-bottom: var(--route-start-bar-h, 76px);
+      }
+    }
+  </style>
+
+  <style is:global>
+    /* Detour marker on the route map (global: injected via Leaflet divIcon). */
+    .route-map-detour {
+      display: block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 3px dashed var(--route-accent, var(--brand));
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+
+    /* Print / offline: strip the chrome and interactive layers, keep the
+       facts, itinerary, guidance and sources as a clean take-along sheet. */
+    @media print {
+      .site-header,
+      .site-footer,
+      .route-start-bar,
+      .route-hero-actions,
+      .route-map-card,
+      .route-map-links,
+      .route-approx-note ~ .route-map-links,
+      .skip-link {
+        display: none !important;
+      }
+
+      .route-side {
+        position: static !important;
+        box-shadow: none !important;
+      }
+
+      .route-body {
+        display: block !important;
+      }
+
+      .route-stop-item {
+        break-inside: avoid;
+      }
+
+      .route-page {
+        padding-bottom: 0 !important;
+      }
+
+      a[href]::after {
+        content: "";
+      }
+    }
+  </style>
+</Layout>

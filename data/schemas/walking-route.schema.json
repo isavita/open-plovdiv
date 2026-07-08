@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openplovdiv.example/schemas/walking-route.schema.json",
+  "title": "Open Plovdiv walking route",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title_bg",
+    "title_en",
+    "short_title_bg",
+    "short_title_en",
+    "tagline_bg",
+    "tagline_en",
+    "summary_bg",
+    "summary_en",
+    "category",
+    "duration_minutes",
+    "duration_band",
+    "difficulty",
+    "wheelchair",
+    "family_friendly",
+    "rainy_day_ok",
+    "transit_required",
+    "accent",
+    "stops",
+    "start_guidance_bg",
+    "start_guidance_en",
+    "end_guidance_bg",
+    "end_guidance_en",
+    "practical",
+    "caveats",
+    "data_quality",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]+$"
+    },
+    "title_bg": { "type": "string", "minLength": 4 },
+    "title_en": { "type": "string", "minLength": 4 },
+    "short_title_bg": { "type": "string", "minLength": 2 },
+    "short_title_en": { "type": "string", "minLength": 2 },
+    "tagline_bg": { "type": "string", "minLength": 8 },
+    "tagline_en": { "type": "string", "minLength": 8 },
+    "summary_bg": { "type": "string", "minLength": 60 },
+    "summary_en": { "type": "string", "minLength": 60 },
+    "category": {
+      "type": "string",
+      "enum": ["first-visit", "history-layers", "sacred", "creative", "nature"]
+    },
+    "duration_minutes": { "type": "integer", "minimum": 20, "maximum": 600 },
+    "duration_band": {
+      "type": "string",
+      "enum": ["short", "half-day", "full-day"]
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["easy", "moderate", "steep"]
+    },
+    "wheelchair": {
+      "type": "string",
+      "enum": ["good", "partial", "hard"]
+    },
+    "wheelchair_note_bg": { "type": "string", "minLength": 8 },
+    "wheelchair_note_en": { "type": "string", "minLength": 8 },
+    "family_friendly": { "type": "boolean" },
+    "rainy_day_ok": { "type": "boolean" },
+    "transit_required": { "type": "boolean" },
+    "transit_note_bg": { "type": "string", "minLength": 8 },
+    "transit_note_en": { "type": "string", "minLength": 8 },
+    "best_time_bg": { "type": "string", "minLength": 8 },
+    "best_time_en": { "type": "string", "minLength": 8 },
+    "walking_only_note": { "type": "boolean" },
+    "accent": { "type": "string", "pattern": "^#[0-9a-f]{6}$" },
+    "story_id": { "type": "string", "pattern": "^story-[0-9a-z-]+$" },
+    "education_id": { "type": "string", "pattern": "^education-[0-9a-z-]+$" },
+    "stops": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["place_id", "minutes", "note_bg", "note_en"],
+        "properties": {
+          "place_id": { "type": "string", "pattern": "^place-[0-9a-z-]+$" },
+          "minutes": { "type": "integer", "minimum": 5, "maximum": 90 },
+          "note_bg": { "type": "string", "minLength": 12 },
+          "note_en": { "type": "string", "minLength": 12 },
+          "optional": { "type": "boolean" }
+        }
+      }
+    },
+    "detours": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["place_id", "note_bg", "note_en"],
+        "properties": {
+          "place_id": { "type": "string", "pattern": "^place-[0-9a-z-]+$" },
+          "note_bg": { "type": "string", "minLength": 12 },
+          "note_en": { "type": "string", "minLength": 12 }
+        }
+      }
+    },
+    "start_guidance_bg": { "type": "string", "minLength": 20 },
+    "start_guidance_en": { "type": "string", "minLength": 20 },
+    "end_guidance_bg": { "type": "string", "minLength": 20 },
+    "end_guidance_en": { "type": "string", "minLength": 20 },
+    "practical": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "text_bg", "text_en"],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["food", "water", "terrain", "transit", "luggage", "toilets", "shade", "safety"]
+          },
+          "text_bg": { "type": "string", "minLength": 12 },
+          "text_en": { "type": "string", "minLength": 12 }
+        }
+      }
+    },
+    "caveats": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text_bg", "text_en"],
+        "properties": {
+          "text_bg": { "type": "string", "minLength": 20 },
+          "text_en": { "type": "string", "minLength": 20 }
+        }
+      }
+    },
+    "data_quality": { "type": "string", "minLength": 4 },
+    "updated_at": { "type": "string", "format": "date" }
+  }
+}

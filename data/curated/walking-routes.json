@@ -1,0 +1,1520 @@
+[
+  {
+    "id": "first-day-plovdiv",
+    "title_bg": "Първи ден в Пловдив",
+    "title_en": "First day in Plovdiv",
+    "short_title_bg": "Първи ден",
+    "short_title_en": "First day",
+    "tagline_bg": "главната улица, Капана, Старият град и залез от тепето",
+    "tagline_en": "the main street, Kapana, the Old Town and a hilltop sunset",
+    "summary_bg": "Обиколка за първо запознанство: започвате от градината, минавате по пешеходната главна улица покрай Античния стадион, потапяте се в Капана и Стария град и завършвате със залез от Небет тепе. Всичко най-важно за един ден, без бързане.",
+    "summary_en": "The get-to-know-Plovdiv loop: start in the city garden, follow the pedestrian main street past the Ancient Stadium, dive into Kapana and the Old Town, and finish with sunset from Nebet Tepe. The essentials in one unhurried day.",
+    "category": "first-visit",
+    "duration_minutes": 330,
+    "duration_band": "full-day",
+    "walking_only_note": false,
+    "difficulty": "moderate",
+    "wheelchair": "partial",
+    "wheelchair_note_bg": "Равно по главната улица и в Капана; калдъръмът и наклонът в Стария град са трудни за колела — за маршрут без стъпала вижте „Пловдив без стъпала“.",
+    "wheelchair_note_en": "Level along the main street and in Kapana; the Old Town's cobbles and slopes are hard on wheels — see the step-free route for a fully level walk.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Тръгнете следобед, за да стигнете Небет тепе по залез.",
+    "best_time_en": "Start after lunch so you reach Nebet Tepe around sunset.",
+    "accent": "#15657f",
+    "story_id": "story-deep-time-seven-hills",
+    "education_id": "education-seven-hills-deep-time",
+    "stops": [
+      {
+        "place_id": "place-tzar-simeon-garden-q12298697",
+        "minutes": 25,
+        "note_bg": "Започнете от градината с фонтаните — най-лесното място за ориентация и първо кафе.",
+        "note_en": "Start in the fountain garden — the easiest place to get oriented and grab a first coffee."
+      },
+      {
+        "place_id": "place-stefan-stambolov-square-plovdiv-q59441964",
+        "minutes": 15,
+        "note_bg": "Централният площад пред общината отваря пешеходната главна улица на север.",
+        "note_en": "The central square by the municipality opens onto the pedestrian main street heading north."
+      },
+      {
+        "place_id": "place-ancient-stadium",
+        "minutes": 25,
+        "note_bg": "Северният завой на римския стадион се вижда от нивото на площад Джумая; слезте до експозицията, ако е отворена.",
+        "note_en": "The Roman stadium's northern curve is visible from Dzhumaya square level; descend to the exhibition space if it is open."
+      },
+      {
+        "place_id": "place-dzhumaya-mosque",
+        "minutes": 15,
+        "note_bg": "Действащата джамия до стадиона е една от най-старите османски сгради в града.",
+        "note_en": "The working mosque beside the stadium is one of the city's oldest Ottoman buildings."
+      },
+      {
+        "place_id": "place-kapana-q12282547",
+        "minutes": 60,
+        "note_bg": "Кварталът на занаятите е идеален за обяд: пешеходни улички, галерии и малки магазини.",
+        "note_en": "The creative quarter is the natural lunch break: pedestrian lanes, galleries and small shops."
+      },
+      {
+        "place_id": "place-old-town",
+        "minutes": 60,
+        "note_bg": "Изкачете се по калдъръма между възрожденските къщи; носете удобни обувки.",
+        "note_en": "Climb the cobbled lanes between the Revival-era houses; sturdy shoes help here."
+      },
+      {
+        "place_id": "place-ancient-theatre",
+        "minutes": 30,
+        "note_bg": "Античният театър е най-емблематичната гледка в града — проверете дали няма събитие вечерта.",
+        "note_en": "The Ancient Theatre is the city's signature view — check whether an evening event is scheduled."
+      },
+      {
+        "place_id": "place-nebet-tepe",
+        "minutes": 40,
+        "note_bg": "Финал на северния край на Трихълмието: панорама към Марица и класическото място за залез.",
+        "note_en": "Finish at the northern tip of the Three Hills: a panorama over the Maritsa and the classic sunset spot."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-hisar-kapia",
+        "note_bg": "Средновековната порта е на две минути от църквата „Св. св. Константин и Елена“ в Стария град.",
+        "note_en": "The medieval gate is a two-minute side step inside the Old Town, next to the Church of St Constantine and Helena."
+      },
+      {
+        "place_id": "place-plovdiv-regional-ethnographic-museum-q876619",
+        "note_bg": "Ако имате сили, къщата с емблематичния двор е сред най-фотографираните в Стария град.",
+        "note_en": "If you have energy left, the museum house with its famous courtyard is among the Old Town's most photographed."
+      }
+    ],
+    "start_guidance_bg": "Градината „Цар Симеон“ е на 15–20 минути пеша от жп гарата или няколко минути с такси; всички централни автобусни линии спират наблизо.",
+    "start_guidance_en": "Tzar Simeon Garden is a 15–20 minute walk from the railway station or a short taxi ride; most central bus lines stop nearby.",
+    "end_guidance_bg": "От Небет тепе се слиза за 10 минути обратно до Капана, където вечерта продължава; такситата се хващат най-лесно при площад Джумая.",
+    "end_guidance_en": "From Nebet Tepe it is a 10-minute walk back down to Kapana for the evening; taxis are easiest to find around Dzhumaya square.",
+    "practical": [
+      {
+        "kind": "terrain",
+        "text_bg": "Калдъръмът в Стария град е хлъзгав при дъжд — обувки със стабилна подметка.",
+        "text_en": "Old Town cobbles get slippery when wet — wear shoes with decent grip."
+      },
+      {
+        "kind": "food",
+        "text_bg": "Най-голям избор за обяд и вечеря има в Капана и по главната улица.",
+        "text_en": "The widest food choice is in Kapana and along the main street."
+      },
+      {
+        "kind": "water",
+        "text_bg": "Лятото е горещо — носете вода; сянката по тепетата е малко.",
+        "text_en": "Summers run hot — carry water; shade on the hills is limited."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Работното време на стадиона, театъра и къщите музеи се променя — проверявайте преди посещение; улиците и панорамите са достъпни по всяко време.",
+        "text_en": "Opening hours for the stadium, theatre and house museums change — check before you visit; the streets and viewpoints are open at all times."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "roman-plovdiv-90",
+    "title_bg": "Римски Пловдив за 90 минути",
+    "title_en": "Roman Plovdiv in 90 minutes",
+    "short_title_bg": "Римски Пловдив",
+    "short_title_en": "Roman Plovdiv",
+    "tagline_bg": "антични сцени, стадион и форум",
+    "tagline_en": "ancient stages, stadium and forum",
+    "summary_bg": "Компактна обиколка на античния Филипопол: от акропола на Небет тепе през театъра и епископската базилика до форума, одеона и стадиона. Всеки етап стъпва върху публикуваните записи за римския град.",
+    "summary_en": "A compact circuit of ancient Philippopolis: from the Nebet Tepe acropolis past the theatre and the Bishop's Basilica to the forum, the odeon and the stadium. Every leg follows the published records of the Roman city.",
+    "category": "history-layers",
+    "duration_minutes": 90,
+    "duration_band": "half-day",
+    "difficulty": "moderate",
+    "wheelchair": "hard",
+    "wheelchair_note_bg": "Небет тепе и театърът са по калдъръм и стълби; форумът, одеонът и стадионът са достъпни от ниво улица.",
+    "wheelchair_note_en": "Nebet Tepe and the theatre involve cobbles and stairs; the forum, odeon and stadium can be seen from street level.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Сутрин, преди жегата — театърът и тепето са без сянка.",
+    "best_time_en": "Morning, before the heat — the theatre and the hilltop have little shade.",
+    "accent": "#a23b2d",
+    "story_id": "story-roman-philippopolis",
+    "education_id": "education-roman-philippopolis",
+    "stops": [
+      {
+        "place_id": "place-nebet-tepe",
+        "minutes": 15,
+        "note_bg": "Започнете от най-стария обитаван пласт на града — крепостните останки на върха.",
+        "note_en": "Start at the city's oldest inhabited layer — the fortress remains on the summit."
+      },
+      {
+        "place_id": "place-ancient-theatre",
+        "minutes": 15,
+        "note_bg": "Слезте по калдъръма до театъра между Джамбаз и Таксим тепе.",
+        "note_en": "Walk down the cobbles to the theatre saddled between Dzhambaz and Taksim hills."
+      },
+      {
+        "place_id": "place-bishop-s-basilica-of-philippopolis-q20500169",
+        "minutes": 10,
+        "note_bg": "Мозайките на раннохристиянската базилика се разглеждат в модерната защитна сграда.",
+        "note_en": "The early-Christian basilica's mosaics are displayed inside the modern protective building."
+      },
+      {
+        "place_id": "place-forum-philippopolis",
+        "minutes": 5,
+        "note_bg": "Останките от градския площад на Филипопол са до Централна поща.",
+        "note_en": "The remains of Philippopolis's civic square sit beside the Central Post Office."
+      },
+      {
+        "place_id": "place-odeon-of-philippopolis-q26046109",
+        "minutes": 5,
+        "note_bg": "Малката покрита сцена на форума е на крачка от северния му ъгъл.",
+        "note_en": "The forum's small roofed stage is a step away from its northern corner."
+      },
+      {
+        "place_id": "place-ancient-stadium",
+        "minutes": 10,
+        "note_bg": "Финал при северния завой на стадиона под площад Джумая.",
+        "note_en": "Finish at the stadium's northern curve beneath Dzhumaya square."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-eastern-gate-of-philippopolis-q20500154",
+        "note_bg": "Източната порта с калдъръмената улица е на 5–10 минути източно от Стария град.",
+        "note_en": "The Eastern Gate with its paved Roman street is 5–10 minutes east of the Old Town."
+      },
+      {
+        "place_id": "place-small-basilica-q16744679",
+        "note_bg": "Малката базилика с мозайките е по-далечна отбивка на изток — комбинирайте я с Източната порта.",
+        "note_en": "The Small Basilica and its mosaics are a farther eastern detour — pair it with the Eastern Gate."
+      }
+    ],
+    "start_guidance_bg": "До Небет тепе се стига пеша през Стария град — изкачването от площад Джумая отнема около 15 минути.",
+    "start_guidance_en": "Reach Nebet Tepe on foot through the Old Town — the climb from Dzhumaya square takes about 15 minutes.",
+    "end_guidance_bg": "Завършвате в сърцето на центъра: Капана и главната улица са на минута от стадиона.",
+    "end_guidance_en": "You finish in the heart of the centre: Kapana and the main street are a minute from the stadium.",
+    "practical": [
+      {
+        "kind": "terrain",
+        "text_bg": "Началото е по калдъръм и надолнище; след базиликата маршрутът е равен.",
+        "text_en": "The first legs are cobbled and downhill; after the basilica the route is level."
+      },
+      {
+        "kind": "food",
+        "text_bg": "Кафенета има около площад Джумая и в Капана — точно при финала.",
+        "text_en": "Cafés cluster around Dzhumaya square and Kapana — right at the finish."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Театърът, базиликата и стадионната експозиция имат входни такси и работно време — проверете предварително; останалите обекти се виждат от улицата.",
+        "text_en": "The theatre, the basilica and the stadium exhibition keep ticketed opening hours — check ahead; the other sites are visible from the street."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "old-town-revival-houses",
+    "title_bg": "Старият град и възрожденските къщи",
+    "title_en": "Old Town and Revival houses",
+    "short_title_bg": "Стар град",
+    "short_title_en": "Old Town",
+    "tagline_bg": "къщи, училища и общности",
+    "tagline_en": "houses, schools and communities",
+    "summary_bg": "Разходка между симетричните къщи, църквите и училищата на възрожденския Пловдив — архитектурата, с която градът застава на световната карта. Кратки изкачвания по калдъръм и много поводи за снимки.",
+    "summary_en": "A walk among the symmetrical houses, churches and schools of Revival-era Plovdiv — the architecture that put the city on the world map. Short cobbled climbs and endless photo stops.",
+    "category": "history-layers",
+    "duration_minutes": 105,
+    "duration_band": "half-day",
+    "difficulty": "moderate",
+    "wheelchair": "hard",
+    "wheelchair_note_bg": "Целият маршрут е по калдъръм с наклони; количките и колелата се справят трудно.",
+    "wheelchair_note_en": "The whole route is on sloping cobbles; wheels of any kind struggle here.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Късният следобед дава най-мека светлина по фасадите.",
+    "best_time_en": "Late afternoon gives the softest light on the painted façades.",
+    "accent": "#b4632a",
+    "story_id": "story-revival-houses-schools",
+    "education_id": "education-revival-houses-schools",
+    "stops": [
+      {
+        "place_id": "place-old-town",
+        "minutes": 15,
+        "note_bg": "Влезте в резервата откъм площад Джумая и оставете уличките да ви водят нагоре.",
+        "note_en": "Enter the reserve from the Dzhumaya square side and let the lanes pull you uphill."
+      },
+      {
+        "place_id": "place-hindliyan-house-q19810343",
+        "minutes": 25,
+        "note_bg": "Една от най-богато изписаните къщи; ако е отворена, интериорът си струва билета.",
+        "note_en": "One of the most richly painted houses; if open, the interior is worth the ticket."
+      },
+      {
+        "place_id": "place-lamartine-house",
+        "minutes": 10,
+        "note_bg": "Къщата, свързана с престоя на френския поет Ламартин, се разглежда отвън.",
+        "note_en": "The house tied to French poet Lamartine's stay is viewed from outside."
+      },
+      {
+        "place_id": "place-holy-mother-of-god",
+        "minutes": 15,
+        "note_bg": "Възрожденската катедрална църква с камбанарията е действащ храм — влиза се тихо.",
+        "note_en": "The Revival-era cathedral church with its bell tower is a working church — enter quietly."
+      },
+      {
+        "place_id": "place-house-of-hristo-g-danov-q29961385",
+        "minutes": 20,
+        "note_bg": "Домът на бащата на българското книгоиздаване гледа към града от Таксим тепе.",
+        "note_en": "The home of Bulgaria's pioneering publisher looks over the city from Taksim hill."
+      },
+      {
+        "place_id": "place-humanitarian-high-school-saints-cyril-and-methodius-plovdiv-q12290859",
+        "minutes": 10,
+        "note_bg": "Финал при внушителната сграда на гимназията — наследник на възрожденските училища.",
+        "note_en": "Finish at the imposing high-school building — heir to the Revival-era schools."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-klianti-house-q50073497",
+        "note_bg": "Къща с едни от най-старите запазени стенописи в резервата, на пряка от Ламартиновата.",
+        "note_en": "A house with some of the reserve's oldest surviving murals, one lane from the Lamartine house."
+      },
+      {
+        "place_id": "place-balabanov-house-q12272873",
+        "note_bg": "Възстановената търговска къща често е сцена за изложби и камерни концерти.",
+        "note_en": "The reconstructed merchant house often hosts exhibitions and chamber concerts."
+      }
+    ],
+    "start_guidance_bg": "Стартът е на минута от площад Джумая — най-лесната входна точка към Стария град.",
+    "start_guidance_en": "The start is a minute from Dzhumaya square — the easiest gateway into the Old Town.",
+    "end_guidance_bg": "От гимназията слизате към Капана за 5 минути; оттам центърът е пешеходен.",
+    "end_guidance_en": "From the high school it is a 5-minute descent to Kapana; from there the centre is pedestrian.",
+    "practical": [
+      {
+        "kind": "terrain",
+        "text_bg": "Само калдъръм — с детска количка изберете друг маршрут.",
+        "text_en": "Cobbles throughout — with a stroller, pick another route."
+      },
+      {
+        "kind": "food",
+        "text_bg": "В самия Стар град заведенията са малко; планирайте храна в Капана преди или след.",
+        "text_en": "Eating spots inside the Old Town are few; plan food in Kapana before or after."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Къщите музеи работят с различно, често сезонно работно време и такси — проверявайте за всяка поотделно.",
+        "text_en": "House museums keep separate, often seasonal opening hours and fees — check each one individually."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "filibe-ottoman-layer",
+    "title_bg": "Филибе / османският пласт",
+    "title_en": "Filibe / Ottoman layer",
+    "short_title_bg": "Филибе",
+    "short_title_en": "Filibe",
+    "tagline_bg": "джамия, хамам, теке и часовников хълм",
+    "tagline_en": "mosque, bath, dervish space and clock hill",
+    "summary_bg": "Пет века градът се казва Филибе. Този кратък маршрут свързва оцелелите пластове от онова време: петъчната джамия, двойната баня, мевлевийското теке и хълма с часовниковата кула.",
+    "summary_en": "For five centuries the city was called Filibe. This short route links the surviving layers of that era: the Friday mosque, the double bath, the Mevlevi lodge and the clock-tower hill.",
+    "category": "history-layers",
+    "duration_minutes": 105,
+    "duration_band": "half-day",
+    "difficulty": "moderate",
+    "wheelchair": "partial",
+    "wheelchair_note_bg": "Равно между джамията, банята и площада; изкачването към текето и Сахат тепе е стръмно.",
+    "wheelchair_note_en": "Level between the mosque, the bath and the square; the climbs to the lodge and Sahat hill are steep.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Привечер — часовниковата кула на Сахат тепе е приятен финал по светло.",
+    "best_time_en": "Early evening — the clock tower on Sahat hill is a fine finish while there is still light.",
+    "accent": "#5f6f52",
+    "story_id": "story-ottoman-filibe-city",
+    "stops": [
+      {
+        "place_id": "place-dzhumaya-square-q59368698",
+        "minutes": 10,
+        "note_bg": "Площадът пред джамията е било и е средището на търговския град.",
+        "note_en": "The square before the mosque was, and remains, the trading city's midpoint."
+      },
+      {
+        "place_id": "place-dzhumaya-mosque",
+        "minutes": 20,
+        "note_bg": "Действащ храм — посещава се извън молитвените часове, с подходящо облекло.",
+        "note_en": "A working mosque — visit outside prayer times, dressed modestly."
+      },
+      {
+        "place_id": "place-chifte-hamam",
+        "minutes": 15,
+        "note_bg": "Двойната баня на север от Капана днес е пространство за съвременно изкуство.",
+        "note_en": "The double bath north of Kapana now serves as a contemporary-art space."
+      },
+      {
+        "place_id": "place-mevlevi-hane",
+        "minutes": 15,
+        "note_bg": "Домът на въртящите се дервиши е скрит в Стария град — качете се по уличката над Джумая.",
+        "note_en": "The whirling dervishes' lodge hides in the Old Town — climb the lane above Dzhumaya."
+      },
+      {
+        "place_id": "place-sahat-hill-in-plovdiv-q12293012",
+        "minutes": 15,
+        "note_bg": "Финал при часовниковата кула — една от най-старите в Европа според свързаните записи.",
+        "note_en": "Finish at the clock tower — among Europe's oldest, per the linked records."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-sahabettin-imaret-mosque-q3409168",
+        "note_bg": "Имарет джамия с необичайния зигзагообразен градеж е на 10 минути северно, до Марица.",
+        "note_en": "The Imaret Mosque with its unusual zigzag brickwork is 10 minutes north, near the Maritsa."
+      },
+      {
+        "place_id": "place-tashkyopryu-mosque-q26258392",
+        "note_bg": "По-малката Ташкьопрю джамия остава в жилищните улици западно от центъра.",
+        "note_en": "The smaller Tashkyopryu Mosque sits among the residential streets west of the centre."
+      }
+    ],
+    "start_guidance_bg": "Площад Джумая е нулевата точка на центъра — всички пешеходни посоки минават оттук.",
+    "start_guidance_en": "Dzhumaya square is the centre's zero point — every pedestrian axis passes through it.",
+    "end_guidance_bg": "От Сахат тепе слизате за 5 минути обратно до главната улица при Централна поща.",
+    "end_guidance_en": "From Sahat hill you descend in 5 minutes back to the main street by the Central Post Office.",
+    "practical": [
+      {
+        "kind": "terrain",
+        "text_bg": "Две кратки, но осезаеми изкачвания — към текето и към часовниковата кула.",
+        "text_en": "Two short but real climbs — up to the lodge and up the clock-tower hill."
+      },
+      {
+        "kind": "safety",
+        "text_bg": "В джамията се влиза без обувки; жените обичайно покриват раменете и косата.",
+        "text_en": "Shoes come off inside the mosque; women customarily cover shoulders and hair."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Джамията и банята са отворени според богослужебния и изложбения календар — възможно е да заварите затворено.",
+        "text_en": "The mosque and the bath open around the prayer and exhibition calendars — you may find doors closed."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "sacred-plovdiv",
+    "title_bg": "Свещеният Пловдив",
+    "title_en": "Sacred Plovdiv",
+    "short_title_bg": "Свещен град",
+    "short_title_en": "Sacred city",
+    "tagline_bg": "катедрали, църкви на тепето, джамия и синагога",
+    "tagline_en": "cathedrals, hilltop churches, a mosque and a synagogue",
+    "summary_bg": "Половин ден между действащите храмове на пет общности: католическата катедрала, православните църкви на Трихълмието, арменската „Св. Георги“, петъчната джамия и синагогата. Маршрут за тихо разглеждане и уважение към богослужението.",
+    "summary_en": "Half a day among the working shrines of five communities: the Catholic cathedral, the Orthodox churches of the Three Hills, the Armenian St George, the Friday mosque and the synagogue. A route for quiet visits and respect for services in progress.",
+    "category": "sacred",
+    "duration_minutes": 165,
+    "duration_band": "half-day",
+    "difficulty": "moderate",
+    "wheelchair": "hard",
+    "wheelchair_note_bg": "Църквите на тепето са по калдъръм и стълби; катедралата, джамията и синагогата са достъпни от ниво улица.",
+    "wheelchair_note_en": "The hilltop churches sit on cobbles and stairs; the cathedral, the mosque and the synagogue are reachable from street level.",
+    "family_friendly": false,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Сутрин между службите — тогава най-често ще намерите отворени врати.",
+    "best_time_en": "Mid-morning between services — the likeliest window to find doors open.",
+    "accent": "#7d5a9c",
+    "stops": [
+      {
+        "place_id": "place-st-louis-cathedral",
+        "minutes": 20,
+        "note_bg": "Католическата катедрала пази гроба на княгиня Мария Луиза — започнете от южния край на центъра.",
+        "note_en": "The Catholic cathedral holds Princess Maria Luisa's tomb — start at the centre's southern edge."
+      },
+      {
+        "place_id": "place-holy-mother-of-god",
+        "minutes": 20,
+        "note_bg": "Изкачете се към възрожденската катедрална църква в подножието на Стария град.",
+        "note_en": "Climb to the Revival-era cathedral church at the foot of the Old Town."
+      },
+      {
+        "place_id": "place-st-dimitar-church-plovdiv-q12293159",
+        "minutes": 10,
+        "note_bg": "Малката „Св. Димитър“ е на самата уличка към Античния театър.",
+        "note_en": "The small St Dimitar sits right on the lane toward the Ancient Theatre."
+      },
+      {
+        "place_id": "place-church-of-st-constantine-and-helena-q5117391",
+        "minutes": 20,
+        "note_bg": "Най-старият църковен парцел в града, с иконите на Захарий Зограф до Хисар капия.",
+        "note_en": "The city's oldest church site, with Zahari Zograf's icons, beside Hisar Kapia."
+      },
+      {
+        "place_id": "place-st-nedelya-church-q12293066",
+        "minutes": 15,
+        "note_bg": "Просторната „Св. Неделя“ e на източното рамо на Стария град.",
+        "note_en": "The spacious St Nedelya rests on the Old Town's eastern shoulder."
+      },
+      {
+        "place_id": "place-st-george-armenian-church",
+        "minutes": 15,
+        "note_bg": "Арменската църква и дворът ѝ разказват за една от най-старите общности на града.",
+        "note_en": "The Armenian church and its courtyard speak for one of the city's oldest communities."
+      },
+      {
+        "place_id": "place-dzhumaya-mosque",
+        "minutes": 15,
+        "note_bg": "Слезте при петъчната джамия — посещава се извън молитвените часове.",
+        "note_en": "Descend to the Friday mosque — visited outside prayer times."
+      },
+      {
+        "place_id": "place-plovdiv-synagogue-q7205169",
+        "minutes": 15,
+        "note_bg": "Финал при синагогата в двора северозападно от центъра — един от малкото действащи сефарадски храмове в страната.",
+        "note_en": "Finish at the courtyard synagogue north-west of the centre — one of the country's few working Sephardic shrines."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-evangelical-cathedral-plovdiv-q57275218",
+        "note_bg": "Протестантската катедрална църква е на две преки южно от синагогата.",
+        "note_en": "The Protestant cathedral church stands two blocks south of the synagogue."
+      }
+    ],
+    "start_guidance_bg": "Катедралата „Св. Лудвиг“ е на 10 минути пеша южно от площад Стамболов, по булеварда към гарата.",
+    "start_guidance_en": "St Louis Cathedral is a 10-minute walk south of Stambolov square, along the boulevard toward the station.",
+    "end_guidance_bg": "От синагогата сте на 5 минути от площад Съединение и на 10 от Капана.",
+    "end_guidance_en": "From the synagogue you are 5 minutes from Unification square and 10 from Kapana.",
+    "practical": [
+      {
+        "kind": "safety",
+        "text_bg": "Всички храмове са действащи: тихо поведение, дискретни снимки, покрити рамене.",
+        "text_en": "All shrines are active: keep quiet, photograph discreetly, cover shoulders."
+      },
+      {
+        "kind": "terrain",
+        "text_bg": "Средната част минава по калдъръма на Стария град.",
+        "text_en": "The middle third crosses the Old Town's cobbles."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Храмовете отварят според богослужебния си календар, а синагогата обичайно се посещава с предварителна уговорка — възможно е да заварите затворени врати.",
+        "text_en": "Shrines open around their liturgical calendars, and the synagogue is usually visited by prior arrangement — expect the occasional closed door."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "kapana-creative-hour",
+    "title_bg": "Капана и творческият град",
+    "title_en": "Kapana and the creative city",
+    "short_title_bg": "Капана",
+    "short_title_en": "Kapana",
+    "tagline_bg": "занаятчийски улички, галерии и баня за изкуство",
+    "tagline_en": "artisan lanes, galleries and an art-filled bathhouse",
+    "summary_bg": "Един час (или колкото решите) в квартала, който превърна Пловдив в Европейска столица на културата: уличките на занаятите, площадът при стадиона и старата баня, станала дом на съвременното изкуство.",
+    "summary_en": "One hour (or as long as you let it become) in the district that carried Plovdiv to European Capital of Culture: the artisan lanes, the stadium square and the old bathhouse reborn as a contemporary-art hall.",
+    "category": "creative",
+    "duration_minutes": 70,
+    "duration_band": "short",
+    "difficulty": "easy",
+    "wheelchair": "partial",
+    "wheelchair_note_bg": "Кварталът е равен, но с неравна калдъръмена настилка на места.",
+    "wheelchair_note_en": "The quarter is level, though the paving is uneven in places.",
+    "family_friendly": true,
+    "rainy_day_ok": true,
+    "transit_required": false,
+    "best_time_bg": "Следобед и привечер, когато ателиетата и заведенията оживяват.",
+    "best_time_en": "Afternoon into evening, when the studios and bars come alive.",
+    "accent": "#9c4f6e",
+    "story_id": "story-european-capital-culture",
+    "stops": [
+      {
+        "place_id": "place-dzhumaya-square-q59368698",
+        "minutes": 10,
+        "note_bg": "Тръгнете от площада — мястото, където античният град и Капана се допират.",
+        "note_en": "Set off from the square — where the ancient city and Kapana touch."
+      },
+      {
+        "place_id": "place-ancient-stadium",
+        "minutes": 10,
+        "note_bg": "Хвърлете поглед към завоя на стадиона, преди да потънете в уличките.",
+        "note_en": "Glance over the stadium's curve before sinking into the lanes."
+      },
+      {
+        "place_id": "place-kapana-q12282547",
+        "minutes": 30,
+        "note_bg": "„Капанът“ от улички носи имена на занаяти — Железарска, Кожухарска, Златарска; изгубете се нарочно.",
+        "note_en": "The \"trap\" of lanes carries craft names — Ironmongers', Furriers', Goldsmiths'; get lost on purpose."
+      },
+      {
+        "place_id": "place-chifte-hamam",
+        "minutes": 10,
+        "note_bg": "Финал при двойната баня — проверете каква изложба тече в купола ѝ.",
+        "note_en": "Finish at the double bath — see what exhibition currently fills its dome."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-11th-of-may-square-plovdiv-q60206648",
+        "note_bg": "Тихият площад на север затваря квартала откъм жилищните улици.",
+        "note_en": "The quiet square to the north seals the quarter off from the residential streets."
+      }
+    ],
+    "start_guidance_bg": "Площад Джумая е в самия център — на 15 минути пеша от повечето хотели в широкия център.",
+    "start_guidance_en": "Dzhumaya square is dead centre — a 15-minute walk from most central hotels.",
+    "end_guidance_bg": "Оставате в Капана: вечерята и вечерта са на място. Главната улица е на 3 минути.",
+    "end_guidance_en": "You end inside Kapana: dinner and the evening are already around you. The main street is 3 minutes away.",
+    "practical": [
+      {
+        "kind": "food",
+        "text_bg": "Това е кварталът с най-гъста мрежа от кафенета и барове в града — резервации трябват само вечер в уикенда.",
+        "text_en": "This is the city's densest café-and-bar grid — reservations only matter on weekend evenings."
+      },
+      {
+        "kind": "terrain",
+        "text_bg": "Кратък и равен маршрут — става и с куфар, и с количка, макар настилката да не е идеална.",
+        "text_en": "Short and level — manageable with a suitcase or stroller despite the imperfect paving."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Изложбите в банята и ателиетата сменят програма често; уличният живот на Капана е постоянен.",
+        "text_en": "Exhibitions in the bath and the studios rotate often; Kapana's street life is the constant."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "hills-and-sunsets",
+    "title_bg": "Тепетата и залезите",
+    "title_en": "The tepeta and their sunsets",
+    "short_title_bg": "Тепетата",
+    "short_title_en": "The hills",
+    "tagline_bg": "три хълма, паметникът Альоша и най-широката панорама",
+    "tagline_en": "three hills, the Alyosha monument and the widest panorama",
+    "summary_bg": "Следобед по западните тепета: часовниковата кула на Сахат тепе, Бунарджика с паметника Альоша и финал на Джендем тепе — най-високия и най-дивия хълм, с панорама към Родопите. Истинско изкачване, истинска награда.",
+    "summary_en": "An afternoon across the western tepeta: the clock tower on Sahat hill, Bunardzhik with the Alyosha monument, and a finale on Dzhendem tepe — the highest, wildest hill, facing the Rhodope mountains. A real climb, a real reward.",
+    "category": "nature",
+    "duration_minutes": 165,
+    "duration_band": "half-day",
+    "difficulty": "steep",
+    "wheelchair": "hard",
+    "wheelchair_note_bg": "Стълби и стръмни пътеки по трите хълма; маршрутът не е подходящ за колела.",
+    "wheelchair_note_en": "Stairs and steep paths on all three hills; unsuitable for wheels.",
+    "family_friendly": false,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Тръгнете 3 часа преди залез: последното изкачване е точно за златния час.",
+    "best_time_en": "Start 3 hours before sunset: the last climb lands exactly in golden hour.",
+    "accent": "#7d8471",
+    "story_id": "story-deep-time-seven-hills",
+    "education_id": "education-seven-hills-deep-time",
+    "stops": [
+      {
+        "place_id": "place-sahat-hill-in-plovdiv-q12293012",
+        "minutes": 25,
+        "note_bg": "Загрявка: кратко изкачване до часовниковата кула с изглед към Трихълмието.",
+        "note_en": "Warm-up: a short climb to the clock tower facing the Three Hills."
+      },
+      {
+        "place_id": "place-bunardzhik-q12274023",
+        "minutes": 30,
+        "note_bg": "Хълмът на освободителите — алеи, чешми и стълбища нагоре.",
+        "note_en": "The Hill of the Liberators — alleys, fountains and stairways up."
+      },
+      {
+        "place_id": "place-alyosha-monument-q4063802",
+        "minutes": 20,
+        "note_bg": "Гранитният войник на върха се вижда от целия град; оттук панорамата се отваря на 360°.",
+        "note_en": "The granite soldier on the summit is visible citywide; from here the panorama opens 360°."
+      },
+      {
+        "place_id": "place-markovo-tepe-q6771348",
+        "minutes": 10,
+        "note_bg": "По пътя надолу: мястото на изчезналото тепе, разказано в свързания запис.",
+        "note_en": "On the way down: the site of the vanished hill, told in the linked record."
+      },
+      {
+        "place_id": "place-dzhendem-tepe-q5319673",
+        "minutes": 50,
+        "note_bg": "Финалното изкачване е най-дълго — горе сте на най-високата естествена точка на града за залеза.",
+        "note_en": "The final climb is the longest — the top is the city's highest natural point, just in time for sunset."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-three-hills-tunnel-plovdiv-q70882697",
+        "note_bg": "Любопитна отбивка в началото: тунелът под Трихълмието, прокопан през 50-те години.",
+        "note_en": "A curious opening detour: the tunnel bored beneath the Three Hills in the 1950s."
+      }
+    ],
+    "start_guidance_bg": "Сахат тепе се изкачва откъм Централна поща или откъм улица „Хъшовска“ — и двете начала са на 5 минути от главната улица.",
+    "start_guidance_en": "Sahat hill is climbed from the Central Post Office side or from Hashovska street — both trailheads are 5 minutes off the main street.",
+    "end_guidance_bg": "Слизането от Джендем тепе ви оставя на булеварда при Гребната база или към Медицинския университет; автобус или такси ви връщат в центъра за 10 минути.",
+    "end_guidance_en": "Descending Dzhendem tepe drops you on the boulevard toward the Rowing Canal or the Medical University; a bus or taxi returns you to the centre in 10 minutes.",
+    "practical": [
+      {
+        "kind": "water",
+        "text_bg": "Носете вода — по хълмовете няма магазини, а сянката на Джендем тепе е рехава.",
+        "text_en": "Carry water — the hills have no shops and Dzhendem tepe's shade is thin."
+      },
+      {
+        "kind": "terrain",
+        "text_bg": "Стабилни обувки: пътеките на Джендем тепе са скалисти и хлъзгави на слизане.",
+        "text_en": "Solid shoes: Dzhendem tepe's paths are rocky and slippery on the way down."
+      },
+      {
+        "kind": "safety",
+        "text_bg": "След залез слизайте по осветените алеи на Бунарджика или по булеварда — не по горските пътеки.",
+        "text_en": "After sunset descend via Bunardzhik's lit alleys or the boulevard — not the wooded paths."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Тепетата са открити паркове без работно време; в жега и буря изкачванията не са препоръчителни.",
+        "text_en": "The tepeta are open parkland with no closing time; skip the climbs in extreme heat or storms."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "rainy-day-museums",
+    "title_bg": "Музеен ден (и за дъжд)",
+    "title_en": "A museum day for the rain",
+    "short_title_bg": "Музеен ден",
+    "short_title_en": "Museum day",
+    "tagline_bg": "къщи музеи, галерии и една аптека от XIX век",
+    "tagline_en": "house museums, galleries and a 19th-century pharmacy",
+    "summary_bg": "Планът за лошо време: осем интериора на пешеходно разстояние в Стария град — етнографският музей, изписаните къщи, две галерии и аптеката музей „Хипократ“. Кратки отсечки навън, дълги престои вътре.",
+    "summary_en": "The bad-weather plan: eight interiors within footsteps of each other in the Old Town — the ethnographic museum, the painted houses, two galleries and the Hippocrates pharmacy museum. Short dashes outside, long stays inside.",
+    "category": "creative",
+    "duration_minutes": 210,
+    "duration_band": "half-day",
+    "difficulty": "moderate",
+    "wheelchair": "hard",
+    "wheelchair_note_bg": "Калдъръм между обектите и стълбища в самите къщи.",
+    "wheelchair_note_en": "Cobbles between sites and staircases inside the houses themselves.",
+    "family_friendly": true,
+    "rainy_day_ok": true,
+    "transit_required": false,
+    "best_time_bg": "Делнична сутрин — най-малко посетители в тесните интериори.",
+    "best_time_en": "A weekday morning — the fewest visitors in the narrow interiors.",
+    "accent": "#8a6d3b",
+    "story_id": "story-old-plovdiv-restoration",
+    "stops": [
+      {
+        "place_id": "place-plovdiv-regional-history-museum-q1501330",
+        "minutes": 30,
+        "note_bg": "Започнете с историческия музей — контекстът за всичко останало по маршрута.",
+        "note_en": "Start with the history museum — the context for everything else on the route."
+      },
+      {
+        "place_id": "place-plovdiv-regional-ethnographic-museum-q876619",
+        "minutes": 45,
+        "note_bg": "Къщата с извития фронтон и дворът ѝ са сред задължителните интериори на града.",
+        "note_en": "The house with the curved pediment and its courtyard are among the city's essential interiors."
+      },
+      {
+        "place_id": "place-balabanov-house-q12272873",
+        "minutes": 25,
+        "note_bg": "Възстановената голяма търговска къща често съчетава експозиция с временни изложби.",
+        "note_en": "The reconstructed merchant mansion usually pairs its display with temporary exhibitions."
+      },
+      {
+        "place_id": "place-hindliyan-house-q19810343",
+        "minutes": 30,
+        "note_bg": "Стенописи, ниши и хамам в къщата на арменския търговец Хиндлиян.",
+        "note_en": "Murals, alcoves and a private bath inside Armenian merchant Hindliyan's house."
+      },
+      {
+        "place_id": "place-zlatyu-boyadzhiev-exposition-q12291130",
+        "minutes": 25,
+        "note_bg": "Галерията с платната на Златю Бояджиев е в съседната къща „Д-р Чомаков“.",
+        "note_en": "The gallery of Zlatyu Boyadzhiev's canvases fills the neighbouring Dr Chomakov house."
+      },
+      {
+        "place_id": "place-hippocrates-pharmacy-plovdiv-q113632624",
+        "minutes": 15,
+        "note_bg": "Аптеката музей пази обзавеждането и шишетата на градската медицина от XIX век.",
+        "note_en": "The pharmacy museum keeps the fittings and flasks of 19th-century city medicine."
+      },
+      {
+        "place_id": "place-encho-pironkov-gallery-q12287461",
+        "minutes": 20,
+        "note_bg": "Малка градска галерия с колекцията на пловдивския живописец.",
+        "note_en": "A small city gallery holding the Plovdiv painter's collection."
+      },
+      {
+        "place_id": "place-klianti-house-q50073497",
+        "minutes": 20,
+        "note_bg": "Финал в къщата с едни от най-старите стенописи и тавани в резервата.",
+        "note_en": "Finish in the house with some of the reserve's oldest murals and ceilings."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-georgi-bojilov-house-museum-q20497770",
+        "note_bg": "Ателието на художника Георги Божилов-Слона е на минута от галерия „Пиронков“.",
+        "note_en": "Painter Georgi Bojilov's studio-house is a minute from the Pironkov gallery."
+      },
+      {
+        "place_id": "place-ivan-vazov-national-library-q630839",
+        "note_bg": "При продължителен дъжд: читалните на националната библиотека са на 15 минути, в центъра.",
+        "note_en": "If the rain settles in: the national library's reading rooms are 15 minutes away, downtown."
+      }
+    ],
+    "start_guidance_bg": "Историческият музей е в Стария град, на 10 минути изкачване от площад Джумая.",
+    "start_guidance_en": "The history museum sits in the Old Town, a 10-minute climb from Dzhumaya square.",
+    "end_guidance_bg": "От къщата Клианти слизате за 5 минути до Джумая; при дъжд такситата чакат при Централна поща.",
+    "end_guidance_en": "From the Klianti house it is a 5-minute descent to Dzhumaya; in rain, taxis wait by the Central Post Office.",
+    "practical": [
+      {
+        "kind": "terrain",
+        "text_bg": "Мократа калдъръмена настилка е най-хлъзгавото нещо по маршрута — стъпвайте по фугите.",
+        "text_en": "Wet cobbles are the slipperiest part of the route — step on the joints."
+      },
+      {
+        "kind": "food",
+        "text_bg": "Вътре в резервата заведенията са малко — вземете си кафе от Капана на тръгване.",
+        "text_en": "Cafés are scarce inside the reserve — pick up coffee in Kapana on your way."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Почивните дни на музеите не съвпадат (често понеделник или вторник) и билетите са отделни за всяка къща — проверете преди тръгване.",
+        "text_en": "Museum closing days differ (often Monday or Tuesday) and each house tickets separately — check before setting out."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "multicultural-plovdiv",
+    "title_bg": "Многоликият Пловдив",
+    "title_en": "Plovdiv of many communities",
+    "short_title_bg": "Общностите",
+    "short_title_en": "Communities",
+    "tagline_bg": "синагогата, арменският двор, катедралата и джамията",
+    "tagline_en": "the synagogue, the Armenian courtyard, the cathedral and the mosque",
+    "summary_bg": "Град, в който от векове живеят заедно българи, турци, евреи, арменци и католици „павликяни“. Маршрутът минава през действащите домове на тези общности — от синагогата през еврейския културен дом и джамията до арменската църква и католическата катедрала.",
+    "summary_en": "A city where Bulgarians, Turks, Jews, Armenians and \"Paulician\" Catholics have lived side by side for centuries. The route passes their living community houses — from the synagogue via the Jewish cultural centre and the mosque to the Armenian church and the Catholic cathedral.",
+    "category": "sacred",
+    "duration_minutes": 135,
+    "duration_band": "half-day",
+    "difficulty": "moderate",
+    "wheelchair": "partial",
+    "wheelchair_note_bg": "Равно в центъра; единственото изкачване е кратката отсечка до арменската църква.",
+    "wheelchair_note_en": "Level downtown; the only climb is the short stretch up to the Armenian church.",
+    "family_friendly": false,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Сутрин в делник — така съчетавате отворени дворове и спокойни улици.",
+    "best_time_en": "A weekday morning — the best mix of open courtyards and calm streets.",
+    "accent": "#5d6b8a",
+    "story_id": "story-ottoman-filibe-city",
+    "stops": [
+      {
+        "place_id": "place-plovdiv-synagogue-q7205169",
+        "minutes": 20,
+        "note_bg": "Синагогата в скрития двор е началото — посещенията обичайно стават с уговорка.",
+        "note_en": "The courtyard synagogue opens the route — visits usually happen by arrangement."
+      },
+      {
+        "place_id": "place-jewish-cultural-centre-shalom-aleichem-plovdiv-q113559164",
+        "minutes": 10,
+        "note_bg": "Домът „Шалом Алейхем“ е центърът на общността и до днес.",
+        "note_en": "The Shalom Aleichem house remains the community's centre to this day."
+      },
+      {
+        "place_id": "place-evangelical-cathedral-plovdiv-q57275218",
+        "minutes": 10,
+        "note_bg": "Протестантската катедрална църква допълва религиозната мозайка на центъра.",
+        "note_en": "The Protestant cathedral church completes the downtown's religious mosaic."
+      },
+      {
+        "place_id": "place-dzhumaya-mosque",
+        "minutes": 20,
+        "note_bg": "Петъчната джамия държи мюсюлманския пласт жив в самото сърце на града.",
+        "note_en": "The Friday mosque keeps the Muslim layer alive at the city's very heart."
+      },
+      {
+        "place_id": "place-st-george-armenian-church",
+        "minutes": 20,
+        "note_bg": "Изкачете се до арменския двор с църквата, училището и паметниците на общността.",
+        "note_en": "Climb to the Armenian courtyard with its church, school and community memorials."
+      },
+      {
+        "place_id": "place-st-louis-cathedral",
+        "minutes": 20,
+        "note_bg": "Финал при католическата катедрала — домът на пловдивските „павликяни“.",
+        "note_en": "Finish at the Catholic cathedral — home of Plovdiv's \"Paulician\" Catholics."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-jewish-cemetery-in-plovdiv-q64578596",
+        "note_bg": "Еврейските гробища са на 20 минути пеша на изток — тиха, рядко посещавана отбивка.",
+        "note_en": "The Jewish cemetery lies a 20-minute walk east — a quiet, rarely visited detour."
+      },
+      {
+        "place_id": "place-orta-mezar-q37813975",
+        "note_bg": "Кварталът Орта мезар на запад пази името на някогашното мюсюлманско гробище.",
+        "note_en": "The Orta Mezar quarter to the west preserves the name of a former Muslim burial ground."
+      }
+    ],
+    "start_guidance_bg": "Синагогата е на 5 минути от площад Съединение; входът е от вътрешния двор.",
+    "start_guidance_en": "The synagogue is 5 minutes from Unification square; the entrance is through the inner courtyard.",
+    "end_guidance_bg": "От катедралата главната улица и градината „Цар Симеон“ са на 5 минути.",
+    "end_guidance_en": "From the cathedral the main street and Tzar Simeon Garden are 5 minutes away.",
+    "practical": [
+      {
+        "kind": "safety",
+        "text_bg": "Всички обекти са действащи домове на общности — влизайте тихо и питайте преди да снимате хора.",
+        "text_en": "Every stop is a living community house — enter quietly and ask before photographing people."
+      },
+      {
+        "kind": "transit",
+        "text_bg": "Маршрутът е изцяло пешеходен; за гробищата на изток е удобно такси на отиване.",
+        "text_en": "The route is fully walkable; for the eastern cemetery a taxi out is convenient."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Синагогата и арменският двор нямат постоянно туристическо работно време — възможно е да разгледате само отвън.",
+        "text_en": "The synagogue and the Armenian courtyard keep no fixed tourist hours — you may only see them from outside."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "unification-civic-memory",
+    "title_bg": "Съединение и гражданска памет",
+    "title_en": "Unification and civic memory",
+    "short_title_bg": "Съединение",
+    "short_title_en": "Unification",
+    "tagline_bg": "площад, институции и градска памет",
+    "tagline_en": "square, institutions and urban memory",
+    "summary_bg": "Кратък маршрут за събитието, което Пловдив подари на България: Съединението от 1885 г. От площада с паметника през сградите на институциите до Стария град, където е обявено то.",
+    "summary_en": "A short route for the event Plovdiv gave Bulgaria: the 1885 Unification. From the memorial square past the civic institutions to the Old Town where it was proclaimed.",
+    "category": "history-layers",
+    "duration_minutes": 70,
+    "duration_band": "short",
+    "difficulty": "easy",
+    "wheelchair": "partial",
+    "wheelchair_note_bg": "Равно до последната отсечка; финалът в Стария град е по калдъръм.",
+    "wheelchair_note_en": "Level until the last leg; the Old Town finish is cobbled.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "По всяко време; на 6 септември площадът е центърът на честванията.",
+    "best_time_en": "Any time; on 6 September the square is the heart of the anniversary.",
+    "accent": "#315f7d",
+    "story_id": "story-unification-civic-memory",
+    "education_id": "education-unification-civic-city",
+    "stops": [
+      {
+        "place_id": "place-unification-square-plovdiv-q58885892",
+        "minutes": 10,
+        "note_bg": "Паметникът на Съединението и площадът около него са отправната точка.",
+        "note_en": "The Unification memorial and its square are the point of departure."
+      },
+      {
+        "place_id": "place-plovdiv-city",
+        "minutes": 5,
+        "note_bg": "Слезте по главната улица към сградата на общината на площад „Стефан Стамболов“.",
+        "note_en": "Walk down the main street to the municipality building on Stefan Stambolov square."
+      },
+      {
+        "place_id": "place-old-town",
+        "minutes": 15,
+        "note_bg": "Финал в Стария град — сцената, на която е обявено Съединението през 1885 г.",
+        "note_en": "Finish in the Old Town — the stage on which the Unification was proclaimed in 1885."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-plovdiv-regional-history-museum-q1501330",
+        "note_bg": "Експозицията за Съединението е в музейната сграда на площад Съединение.",
+        "note_en": "The Unification exhibition occupies the museum building on Unification square."
+      }
+    ],
+    "start_guidance_bg": "Площад Съединение е на 5 минути северно от Капана, до сградата на музея.",
+    "start_guidance_en": "Unification square is 5 minutes north of Kapana, beside the museum building.",
+    "end_guidance_bg": "От Стария град се връщате към Джумая за 5–10 минути надолу по калдъръма.",
+    "end_guidance_en": "From the Old Town you return to Dzhumaya in 5–10 minutes downhill on the cobbles.",
+    "practical": [
+      {
+        "kind": "terrain",
+        "text_bg": "Почти изцяло равно; единственото изкачване е финалът към Стария град.",
+        "text_en": "Almost entirely level; the only climb is the Old Town finish."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Историческите твърдения по маршрута остават в свързаните записи и източници — маршрутът е ориентация, не учебник.",
+        "text_en": "The historical claims along the way stay with the linked records and sources — the route is orientation, not a textbook."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "family-green-afternoon",
+    "title_bg": "Семеен следобед по равното",
+    "title_en": "A family afternoon on level ground",
+    "short_title_bg": "Семеен следобед",
+    "short_title_en": "Family afternoon",
+    "tagline_bg": "фонтани, стадионът отгоре и сладолед в Капана",
+    "tagline_en": "fountains, the stadium from above and ice cream in Kapana",
+    "summary_bg": "Лек следобед с деца, без нито едно сериозно изкачване: пеещите фонтани и алеите на градината, главната улица, античният стадион, уличките на Капана и финал в Дондуковата градина.",
+    "summary_en": "An easy afternoon with kids and not a single real climb: the singing fountains and garden alleys, the main street, the ancient stadium, Kapana's lanes and a finish in the Dondukova garden.",
+    "category": "nature",
+    "duration_minutes": 110,
+    "duration_band": "half-day",
+    "difficulty": "easy",
+    "wheelchair": "good",
+    "wheelchair_note_bg": "Изцяло равен маршрут по паркови алеи и пешеходни улици.",
+    "wheelchair_note_en": "Entirely level along park alleys and pedestrian streets.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Късен следобед — сянка в градините и оживление по главната.",
+    "best_time_en": "Late afternoon — shade in the gardens and buzz on the main street.",
+    "accent": "#3f7d54",
+    "stops": [
+      {
+        "place_id": "place-tzar-simeon-garden-q12298697",
+        "minutes": 30,
+        "note_bg": "Градината с езерото и фонтаните е естественото начало — и мястото за тичане.",
+        "note_en": "The garden with the lake and fountains is the natural start — and the running-around spot."
+      },
+      {
+        "place_id": "place-stefan-stambolov-square-plovdiv-q59441964",
+        "minutes": 10,
+        "note_bg": "Пресечете централния площад и поемете по пешеходната главна улица.",
+        "note_en": "Cross the central square and take the pedestrian main street."
+      },
+      {
+        "place_id": "place-ancient-stadium",
+        "minutes": 15,
+        "note_bg": "Завоят на римския стадион, гледан отгоре, е сигурен хит за децата.",
+        "note_en": "The Roman stadium's curve seen from above is a guaranteed hit with kids."
+      },
+      {
+        "place_id": "place-kapana-q12282547",
+        "minutes": 20,
+        "note_bg": "Кратка обиколка на уличките — и заслуженият сладолед.",
+        "note_en": "A short loop of the lanes — and the earned ice cream."
+      },
+      {
+        "place_id": "place-city-garden-dondukova-garden-q12279001",
+        "minutes": 15,
+        "note_bg": "Финал в най-старата градска градина, две преки западно от Капана.",
+        "note_en": "Finish in the city's oldest public garden, two blocks west of Kapana."
+      }
+    ],
+    "detours": [],
+    "start_guidance_bg": "Градината „Цар Симеон“ огражда центъра от юг; с кола паркирайте в подземния паркинг наблизо.",
+    "start_guidance_en": "Tzar Simeon Garden edges the centre from the south; by car, use the underground parking nearby.",
+    "end_guidance_bg": "От Дондуковата градина сте на 5 минути от площад Съединение и на 10 от Джумая.",
+    "end_guidance_en": "From the Dondukova garden you are 5 minutes from Unification square and 10 from Dzhumaya.",
+    "practical": [
+      {
+        "kind": "food",
+        "text_bg": "Сладолед и закуски: най-лесно в Капана и по главната улица.",
+        "text_en": "Ice cream and snacks: easiest in Kapana and along the main street."
+      },
+      {
+        "kind": "terrain",
+        "text_bg": "Подходящо за колички и бягащи деца — без стъпала по целия път.",
+        "text_en": "Stroller- and toddler-proof — no steps the whole way."
+      },
+      {
+        "kind": "water",
+        "text_bg": "Чешми има в двете градини; през лятото фонтаните са най-хладното място в центъра.",
+        "text_en": "Both gardens have drinking fountains; in summer the fountain plazas are the centre's coolest spot."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Пеещите фонтани работят по сезонна програма — вечерното шоу не е гарантирано.",
+        "text_en": "The singing fountains run on a seasonal schedule — the evening show is not guaranteed."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "step-free-plovdiv",
+    "title_bg": "Пловдив без стъпала",
+    "title_en": "Step-free Plovdiv",
+    "short_title_bg": "Без стъпала",
+    "short_title_en": "Step-free",
+    "tagline_bg": "центърът на равно — за колела, колички и спокойни крачки",
+    "tagline_en": "the level centre — for wheels, strollers and unhurried steps",
+    "summary_bg": "Най-доброто от центъра без нито едно тепе: градините, пешеходната главна улица, погледът към античния стадион от нивото на площада, Капана и площад Съединение. Маршрут, планиран за достъпност, а не като компромис.",
+    "summary_en": "The best of the centre without a single hill: the gardens, the pedestrian main street, the ancient stadium seen from square level, Kapana and Unification square. A route planned for access, not as a compromise.",
+    "category": "first-visit",
+    "duration_minutes": 95,
+    "duration_band": "half-day",
+    "difficulty": "easy",
+    "wheelchair": "good",
+    "wheelchair_note_bg": "Изцяло на едно ниво: паркови алеи, пешеходна улица и площади; настилката в Капана е с неравни фуги на места.",
+    "wheelchair_note_en": "Single-level throughout: park alleys, the pedestrian street and squares; Kapana's paving has uneven joints in places.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Сутрин, докато главната улица е още тиха.",
+    "best_time_en": "Morning, while the main street is still quiet.",
+    "accent": "#2c6e9c",
+    "stops": [
+      {
+        "place_id": "place-tzar-simeon-garden-q12298697",
+        "minutes": 20,
+        "note_bg": "Широките алеи на градината са най-удобното начало на равно.",
+        "note_en": "The garden's wide alleys are the most comfortable level start."
+      },
+      {
+        "place_id": "place-stefan-stambolov-square-plovdiv-q59441964",
+        "minutes": 10,
+        "note_bg": "Гладък площад с рампи към главната улица.",
+        "note_en": "A smooth square with ramped access onto the main street."
+      },
+      {
+        "place_id": "place-ancient-stadium",
+        "minutes": 15,
+        "note_bg": "Завоят на стадиона се разглежда изцяло от нивото на площад Джумая — без слизане.",
+        "note_en": "The stadium's curve is fully visible from Dzhumaya square level — no descent needed."
+      },
+      {
+        "place_id": "place-kapana-q12282547",
+        "minutes": 20,
+        "note_bg": "Кварталът е равен; централните улички имат най-гладката настилка.",
+        "note_en": "The quarter is level; the central lanes have the smoothest paving."
+      },
+      {
+        "place_id": "place-unification-square-plovdiv-q58885892",
+        "minutes": 10,
+        "note_bg": "Финал на широкия площад с паметника на Съединението.",
+        "note_en": "Finish on the broad square with the Unification memorial."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-city-garden-dondukova-garden-q12279001",
+        "note_bg": "Дондуковата градина добавя още 15 равни минути западно от Капана.",
+        "note_en": "The Dondukova garden adds another 15 level minutes west of Kapana."
+      }
+    ],
+    "start_guidance_bg": "До градината се стига на равно от повечето централни хотели; таксита спират на булеварда до нея.",
+    "start_guidance_en": "The garden is reachable on the level from most central hotels; taxis stop on the boulevard beside it.",
+    "end_guidance_bg": "Площад Съединение е удобен за прибиране с такси; обратният път пеша по същите улици е също толкова равен.",
+    "end_guidance_en": "Unification square is convenient for a taxi pick-up; walking back the same streets is just as level.",
+    "practical": [
+      {
+        "kind": "terrain",
+        "text_bg": "Целият маршрут избягва Стария град и тепетата — най-гладката настилка е по главната улица.",
+        "text_en": "The whole route avoids the Old Town and the hills — the smoothest surface is the main street."
+      },
+      {
+        "kind": "toilets",
+        "text_bg": "Разчитайте на заведенията по главната улица и в Капана — обществените тоалетни в центъра са малко.",
+        "text_en": "Rely on cafés along the main street and in Kapana — public toilets downtown are scarce."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Оценката „на равно“ описва терена, а не официална сертификация за достъпност — подходите към отделни сгради се различават.",
+        "text_en": "\"Step-free\" describes the terrain, not a formal accessibility certification — individual building entrances vary."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "station-to-old-town",
+    "title_bg": "От гарата към Стария град",
+    "title_en": "From the station to the Old Town",
+    "short_title_bg": "От гарата",
+    "short_title_en": "From the station",
+    "tagline_bg": "маршрутът за пристигане — от перона до сърцето на града",
+    "tagline_en": "the arrival walk — from the train platform into the heart of the city",
+    "summary_bg": "Пристигате с влак или автобус? Това е най-приятният път навътре: покрай „Иван Вазов“ до градината „Цар Симеон“, после по пешеходната главна улица до площад Джумая. Тридесет минути, изцяло по равно, с куфар в ръка.",
+    "summary_en": "Arriving by train or coach? This is the pleasantest way in: up Ivan Vazov street to Tzar Simeon Garden, then along the pedestrian main street to Dzhumaya square. Thirty minutes, dead flat, suitcase in tow.",
+    "category": "first-visit",
+    "duration_minutes": 55,
+    "duration_band": "short",
+    "difficulty": "easy",
+    "wheelchair": "good",
+    "wheelchair_note_bg": "Равен градски маршрут; при гарата има подлези — използвайте наземните пресичания по булеварда.",
+    "wheelchair_note_en": "A level city walk; underpasses exist near the station — use the surface crossings on the boulevard instead.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Когато пристигнете — маршрутът работи по всяко време на деня.",
+    "best_time_en": "Whenever you arrive — the walk works at any hour of the day.",
+    "accent": "#c08a2d",
+    "story_id": "story-international-fair-modernity",
+    "stops": [
+      {
+        "place_id": "place-plovdiv-central-railway-station-q7205164",
+        "minutes": 5,
+        "note_bg": "Сградата на гарата сама по себе си е паметник на железопътната модерност на града.",
+        "note_en": "The station building is itself a monument to the city's railway modernity."
+      },
+      {
+        "place_id": "place-ivan-vazov-street-q58177011",
+        "minutes": 5,
+        "note_bg": "Правата улица от гарата към центъра — най-спокойният коридор за пешеходци с багаж.",
+        "note_en": "The straight street from the station toward the centre — the calmest corridor for walkers with luggage."
+      },
+      {
+        "place_id": "place-tzar-simeon-garden-q12298697",
+        "minutes": 10,
+        "note_bg": "Първа спирка за издишване: пейки, сянка и фонтаните на градината.",
+        "note_en": "First exhale: benches, shade and the garden's fountains."
+      },
+      {
+        "place_id": "place-stefan-stambolov-square-plovdiv-q59441964",
+        "minutes": 5,
+        "note_bg": "Центърът на града — оттук главната улица тръгва на север.",
+        "note_en": "The city's midpoint — from here the main street runs north."
+      },
+      {
+        "place_id": "place-dzhumaya-square-q59368698",
+        "minutes": 5,
+        "note_bg": "Финал при Джумая: стадионът, джамията, Капана и Старият град са на минута.",
+        "note_en": "Finish at Dzhumaya: the stadium, the mosque, Kapana and the Old Town are all a minute away."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-ivan-vazov-national-library-q630839",
+        "note_bg": "Народната библиотека „Иван Вазов“ е на крачка от градината, ако искате култура още с пристигането.",
+        "note_en": "The Ivan Vazov national library is a step from the garden if you want culture on arrival."
+      }
+    ],
+    "start_guidance_bg": "Излезте от централния вход на гарата и пресечете булеварда на светофара; улица „Иван Вазов“ започва срещу площада пред гарата.",
+    "start_guidance_en": "Leave by the station's main exit and cross the boulevard at the lights; Ivan Vazov street begins opposite the station forecourt.",
+    "end_guidance_bg": "От Джумая повечето централни хотели са на 5–10 минути; такситата чакат при Централна поща.",
+    "end_guidance_en": "From Dzhumaya most central hotels are 5–10 minutes away; taxis wait by the Central Post Office.",
+    "practical": [
+      {
+        "kind": "luggage",
+        "text_bg": "С куфар на колелца маршрутът е удобен по целия си ход; калдъръмът започва чак след Джумая.",
+        "text_en": "With a rolling suitcase the walk is comfortable throughout; cobbles only begin past Dzhumaya."
+      },
+      {
+        "kind": "transit",
+        "text_bg": "Не ви се ходи? Градските автобуси и такситата от гарата стигат центъра за 5 минути.",
+        "text_en": "Not in the mood? City buses and taxis reach the centre from the station in 5 minutes."
+      },
+      {
+        "kind": "safety",
+        "text_bg": "Дръжте багажа под око в района на гарата, както на всяка голяма гара.",
+        "text_en": "Keep an eye on bags around the station, as at any big terminus."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "При ремонти по булеварда пресичането при гарата се мести — следвайте временната маркировка.",
+        "text_en": "During boulevard roadworks the station crossing shifts — follow the temporary markings."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "modern-plovdiv-20th-century",
+    "title_bg": "Модерният Пловдив на XX век",
+    "title_en": "Modern Plovdiv of the 20th century",
+    "short_title_bg": "XX век",
+    "short_title_en": "20th century",
+    "tagline_bg": "соцархитектура, мостове и панаирният град отвъд реката",
+    "tagline_en": "socialist architecture, bridges and the fair city across the river",
+    "summary_bg": "Другото лице на града: хотелът от 50-те, гранитният Альоша над центъра, покритият пешеходен мост и панаирът, който повече от век дърпа Пловдив на север през Марица. Маршрут за бетон, неон и широки булеварди.",
+    "summary_en": "The city's other face: the 1950s grand hotel, the granite Alyosha above the rooftops, the covered pedestrian bridge and the fair that has pulled Plovdiv north across the Maritsa for over a century. A route of concrete, neon and wide boulevards.",
+    "category": "history-layers",
+    "duration_minutes": 180,
+    "duration_band": "half-day",
+    "difficulty": "moderate",
+    "wheelchair": "partial",
+    "wheelchair_note_bg": "Равно, с изключение на изкачването до Альоша (стълби) — то може да се пропусне.",
+    "wheelchair_note_en": "Level except for the Alyosha climb (stairs) — which can be skipped.",
+    "family_friendly": false,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "transit_note_bg": "Обратно от панаира: автобусите по булевард „Цар Борис III Обединител“ връщат до центъра за 10 минути.",
+    "transit_note_en": "Return from the fair: buses along Tsar Boris III Obedinitel boulevard reach the centre in 10 minutes.",
+    "best_time_bg": "Следобед — светлината пада върху северния бряг, а мостът е оживен.",
+    "best_time_en": "Afternoon — the light hits the northern riverbank and the bridge is at its liveliest.",
+    "accent": "#566073",
+    "story_id": "story-socialist-infrastructure",
+    "stops": [
+      {
+        "place_id": "place-trimontsium-hotel-in-plovdiv-q60318638",
+        "minutes": 15,
+        "note_bg": "Хотелът от 1956 г. е парадният вход на социалистическия център — разгледайте фасадата и фоайето.",
+        "note_en": "The 1956 hotel is the socialist centre's ceremonial front — take in the façade and lobby."
+      },
+      {
+        "place_id": "place-alyosha-monument-q4063802",
+        "minutes": 40,
+        "note_bg": "Изкачете Бунарджика до гранитния войник — най-видимият паметник на епохата (по стълби; пропуска се при нужда).",
+        "note_en": "Climb Bunardzhik to the granite soldier — the era's most visible monument (stairs; skippable if needed)."
+      },
+      {
+        "place_id": "place-novotel-plovdiv-q7065087",
+        "minutes": 10,
+        "note_bg": "Слезте на север до реката: бетонният силует на „Новотел“ бележи модерния бряг.",
+        "note_en": "Descend north to the river: the Novotel's concrete silhouette marks the modern riverbank."
+      },
+      {
+        "place_id": "place-maritsa-hotel-q6765912",
+        "minutes": 10,
+        "note_bg": "Съседният хотел „Марица“ допълва ансамбъла на панаирния бряг.",
+        "note_en": "The neighbouring Maritsa hotel completes the hotel ensemble on the fairground side of the river."
+      },
+      {
+        "place_id": "place-fairground-bridge-q56613441",
+        "minutes": 15,
+        "note_bg": "Покритият пешеходен мост с магазините е сам по себе си спирка — минете го в двете посоки.",
+        "note_en": "The covered pedestrian shopping bridge is a stop in itself — walk it both ways."
+      },
+      {
+        "place_id": "place-international-fair-plovdiv-q1667383",
+        "minutes": 30,
+        "note_bg": "Финал при панаира — икономическият двигател, обърнал града към северния бряг.",
+        "note_en": "Finish at the fairgrounds — the economic engine that turned the city toward its northern riverbank."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-park-sankt-peterburg-hotel-q60324839",
+        "note_bg": "Панелният гигант „Санкт Петербург“ е на 20 минути западно по северния бряг.",
+        "note_en": "The prefab giant Sankt Peterburg hotel is 20 minutes west along the northern riverbank."
+      },
+      {
+        "place_id": "place-saint-ivan-of-rila-church-q57601813",
+        "note_bg": "Кварталната църква „Св. Иван Рилски“ е тиха отбивка северно от панаира.",
+        "note_en": "The neighbourhood church of St Ivan of Rila is a quiet detour north of the fair."
+      }
+    ],
+    "start_guidance_bg": "Хотел „Тримонциум“ е на централния площад, срещу пощата — не можете да го пропуснете.",
+    "start_guidance_en": "The Trimontsium hotel fronts the central square, opposite the post office — impossible to miss.",
+    "end_guidance_bg": "От панаира се връщате с автобус по булеварда или пеша обратно през моста (25 минути до Джумая).",
+    "end_guidance_en": "From the fair, ride a boulevard bus back or retrace the bridge on foot (25 minutes to Dzhumaya).",
+    "practical": [
+      {
+        "kind": "terrain",
+        "text_bg": "Стълбите към Альоша са единственото усилие; останалото е равно и широко.",
+        "text_en": "The Alyosha stairs are the only exertion; the rest is flat and wide."
+      },
+      {
+        "kind": "food",
+        "text_bg": "Между Альоша и моста заведенията оредяват — заредете се в центъра.",
+        "text_en": "Between Alyosha and the bridge, food options thin out — stock up downtown."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Панаирът се разглежда отвън извън изложенията; по време на панаирни издания достъпът е с билет.",
+        "text_en": "The fairgrounds are viewed from outside between shows; during fair editions entry is ticketed."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "grebna-baza-riverside",
+    "title_bg": "Гребната база и брегът на Марица",
+    "title_en": "The Rowing Canal and the Maritsa riverside",
+    "short_title_bg": "Гребната база",
+    "short_title_en": "Rowing Canal",
+    "tagline_bg": "два километра вода, алеи за тичане и следобед на запад",
+    "tagline_en": "two kilometres of water, running lanes and a westside afternoon",
+    "summary_bg": "Любимият спортен следобед на пловдивчани: с автобус или такси до Гребната база, обиколка на канала по алеите, после спокойно връщане по южния бряг на Марица през Мараша до Дондуковата градина. Равно, зелено и без нито един паметник за отмятане.",
+    "summary_en": "The locals' favourite sporting afternoon: bus or taxi out to the Rowing Canal, a lap of the water on its alleys, then an easy return along the Maritsa's southern riverbank through Marasha to the Dondukova garden. Flat, green and blissfully free of must-see monuments.",
+    "category": "nature",
+    "duration_minutes": 150,
+    "duration_band": "half-day",
+    "difficulty": "easy",
+    "wheelchair": "partial",
+    "wheelchair_note_bg": "Алеите са равни и гладки; разстоянието (7+ км общо) е основното предизвикателство.",
+    "wheelchair_note_en": "The alleys are level and smooth; the total distance (7+ km) is the real challenge.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": true,
+    "transit_note_bg": "До Гребната база: автобусните линии по бул. „6-ти септември“ на запад или 10 минути с такси от центъра.",
+    "transit_note_en": "To the Rowing Canal: westbound buses along 6th September boulevard or a 10-minute taxi from the centre.",
+    "best_time_bg": "Късен следобед; при състезания каналът е най-зрелищен.",
+    "best_time_en": "Late afternoon; on regatta days the canal is at its liveliest.",
+    "accent": "#38788f",
+    "stops": [
+      {
+        "place_id": "place-rowing-canal-plovdiv",
+        "minutes": 70,
+        "note_bg": "Обиколете канала по алеите — пълната обиколка е около 5 километра равна разходка.",
+        "note_en": "Lap the canal on its alleys — the full loop is about 5 level kilometres."
+      },
+      {
+        "place_id": "place-marasha-q12285874",
+        "minutes": 15,
+        "note_bg": "Върнете се на изток през тихия квартал Мараша покрай южния бряг.",
+        "note_en": "Head back east through the quiet Marasha quarter along the southern riverbank."
+      },
+      {
+        "place_id": "place-city-garden-dondukova-garden-q12279001",
+        "minutes": 15,
+        "note_bg": "Финал в Дондуковата градина — на прага на центъра.",
+        "note_en": "Finish in the Dondukova garden — on the centre's doorstep."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-green-bridge-in-plovdiv-q56632059",
+        "note_bg": "Зеленият мост над Марица е на две крачки от Мараша, ако искате поглед към реката.",
+        "note_en": "The Green Bridge over the Maritsa is steps from Marasha if you want a river view."
+      },
+      {
+        "place_id": "place-dzhendem-tepe-q5319673",
+        "note_bg": "Комбинирайте с изкачване на Джендем тепе — най-високият хълм е точно между канала и центъра.",
+        "note_en": "Combine with a Dzhendem tepe climb — the highest hill stands right between the canal and the centre."
+      }
+    ],
+    "start_guidance_bg": "Слезте на спирката при Гребната база; каналът е на минута южно от булеварда.",
+    "start_guidance_en": "Get off at the Rowing Canal stop; the water is a minute south of the boulevard.",
+    "end_guidance_bg": "От Дондуковата градина центърът е пешеходен: Капана е на 10 минути.",
+    "end_guidance_en": "From the Dondukova garden the centre is walkable: Kapana is 10 minutes away.",
+    "practical": [
+      {
+        "kind": "water",
+        "text_bg": "Дълги открити отсечки — вода и шапка през лятото задължително.",
+        "text_en": "Long exposed stretches — water and a hat are mandatory in summer."
+      },
+      {
+        "kind": "food",
+        "text_bg": "Около канала има само сезонни павилиони; истинската храна е обратно в центъра.",
+        "text_en": "Only seasonal kiosks ring the canal; real food waits back in the centre."
+      },
+      {
+        "kind": "transit",
+        "text_bg": "Уморени? Автобусите по булеварда връщат от канала до центъра за 10 минути.",
+        "text_en": "Worn out? Boulevard buses run from the canal back to the centre in 10 minutes."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "По време на регати част от алеите около канала се ограждат за състезателите.",
+        "text_en": "During regattas some canal-side alleys are fenced off for competitors."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "kapana-parks-rowing-canal",
+    "title_bg": "Капана, парковете и Гребната база",
+    "title_en": "Kapana, parks and the Rowing Canal",
+    "short_title_bg": "Капана → Гребната",
+    "short_title_en": "Kapana → Rowing Canal",
+    "tagline_bg": "творчески квартал, зелени хълмове и западен спортен пояс",
+    "tagline_en": "creative district, green hills and west-side sport belt",
+    "summary_bg": "Дългият зелен диагонал на града: от уличките на Капана през градината „Цар Симеон“, нагоре по Бунарджика и Джендем тепе и надолу до водата на Гребната база. За ходещи хора с цял свободен ден.",
+    "summary_en": "The city's long green diagonal: from Kapana's lanes through Tzar Simeon Garden, up and over Bunardzhik and Dzhendem tepe, then down to the water at the Rowing Canal. For committed walkers with a free day.",
+    "category": "nature",
+    "duration_minutes": 270,
+    "duration_band": "full-day",
+    "difficulty": "steep",
+    "wheelchair": "hard",
+    "wheelchair_note_bg": "Двете тепета в средата са със стълби и пътеки; за равната алтернатива вижте маршрута „Гребната база и брегът на Марица“.",
+    "wheelchair_note_en": "The two hills mid-route mean stairs and trails; for the level alternative see the Rowing Canal riverside route.",
+    "family_friendly": false,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "transit_note_bg": "Връщане от Гребната база: автобус или такси до центъра за 10 минути.",
+    "transit_note_en": "Return from the Rowing Canal: bus or taxi to the centre in 10 minutes.",
+    "best_time_bg": "Целодневен маршрут — тръгнете преди обяд, за да хванете залеза при водата.",
+    "best_time_en": "A full-day route — leave before noon to catch sunset by the water.",
+    "accent": "#2f7d6b",
+    "story_id": "story-european-capital-culture",
+    "stops": [
+      {
+        "place_id": "place-kapana-q12282547",
+        "minutes": 30,
+        "note_bg": "Закуска и кафе в квартала на занаятите, преди градът да се разбуди.",
+        "note_en": "Breakfast and coffee in the creative quarter before the city wakes."
+      },
+      {
+        "place_id": "place-tzar-simeon-garden-q12298697",
+        "minutes": 25,
+        "note_bg": "Прекосете центъра на юг до градината с фонтаните.",
+        "note_en": "Cross the centre south to the fountain garden."
+      },
+      {
+        "place_id": "place-bunardzhik-q12274023",
+        "minutes": 40,
+        "note_bg": "Първото изкачване: алеите на Хълма на освободителите и панорамата от Альоша.",
+        "note_en": "First climb: the Liberators' Hill alleys and the panorama from Alyosha."
+      },
+      {
+        "place_id": "place-dzhendem-tepe-q5319673",
+        "minutes": 50,
+        "note_bg": "Второто, по-диво изкачване — най-високата точка на маршрута.",
+        "note_en": "The second, wilder climb — the route's highest point."
+      },
+      {
+        "place_id": "place-rowing-canal-plovdiv",
+        "minutes": 45,
+        "note_bg": "Слезте на запад до канала: финал с два километра спокойна вода.",
+        "note_en": "Descend west to the canal: a finale of two kilometres of calm water."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-alyosha-monument-q4063802",
+        "note_bg": "Върхът на Бунарджика с паметника е на 10 минути стълби от алеята.",
+        "note_en": "Bunardzhik's summit with the monument is 10 minutes of stairs off the alley."
+      }
+    ],
+    "start_guidance_bg": "Започнете от Капана — закусвалните отварят рано, а кварталът е на минута от Джумая.",
+    "start_guidance_en": "Start in Kapana — the breakfast spots open early and the quarter is a minute from Dzhumaya.",
+    "end_guidance_bg": "От канала се прибирате с автобус по булеварда или с такси; пеша обратно е още час.",
+    "end_guidance_en": "From the canal, take a boulevard bus or taxi back; on foot the return adds another hour.",
+    "practical": [
+      {
+        "kind": "water",
+        "text_bg": "Между Цар-Симеоновата градина и канала магазините са редки — носете вода за хълмовете.",
+        "text_en": "Shops are sparse between Tzar Simeon Garden and the canal — carry water for the hills."
+      },
+      {
+        "kind": "terrain",
+        "text_bg": "Пътеките по Джендем тепе са скалисти; в дъжд хълмът се заобикаля по булеварда.",
+        "text_en": "Dzhendem tepe's trails are rocky; in rain, skirt the hill along the boulevard."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Маршрутът е дълъг над 8 километра с два хълма — преценете силите си и режете спирки без угризения.",
+        "text_en": "The route runs over 8 kilometres with two hills — pace yourself and cut stops without guilt."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-07"
+  }
+]

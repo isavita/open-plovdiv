@@ -1654,7 +1654,7 @@ const discoveryL = {
 };
 
 const placeRoutes = routesThroughPlace(place.id).map(({ route, stopIndex }) => {
-  const nextId = route.stopIds[stopIndex + 1];
+  const nextId = route.stops[stopIndex + 1]?.place_id;
   return {
     route,
     stopIndex,
@@ -2128,17 +2128,17 @@ const mapHref = place.coordinates
                 <div class="place-route-item" style={`--route-accent:${route.accent}`}>
                   <p class="place-route-name">
                     <span class="route-strip-dot" aria-hidden="true"></span>
-                    <strong>{route.title[lang]}</strong>
+                    <strong>{localized(route, "title")}</strong>
                   </p>
                   <p class="meta">
-                    {discoveryL.stop} {stopIndex + 1} {discoveryL.of} {route.stopIds.length} · {route.durationMinutes} {discoveryL.minutes}
+                    {discoveryL.stop} {stopIndex + 1} {discoveryL.of} {route.stops.length} · {route.duration_minutes} {discoveryL.minutes}
                   </p>
                   {next && (
                     <p class="meta">
                       {discoveryL.nextStop}: <a href={localizePath(`/places/${next.id}`, lang)}>{localized(next, "name")}</a>
                     </p>
                   )}
-                  <a class="text-link" href={`${localizePath("/routes", lang)}#route-${route.id}`}>{discoveryL.openRoute} →</a>
+                  <a class="text-link" href={localizePath(`/routes/${route.id}`, lang)}>{discoveryL.openRoute} →</a>
                 </div>
               ))}
             </section>

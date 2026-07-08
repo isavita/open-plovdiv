@@ -1,0 +1,15 @@
+---
+import RouteDetailView from "@components/views/RouteDetailView.astro";
+import { walkingRoutes } from "@lib/routes";
+
+export function getStaticPaths() {
+  return walkingRoutes.map((route) => ({
+    params: { slug: route.id },
+    props: { route }
+  }));
+}
+
+const { route } = Astro.props;
+---
+
+<RouteDetailView lang="fr" route={route} />

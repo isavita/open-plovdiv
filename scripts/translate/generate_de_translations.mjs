@@ -27,6 +27,8 @@ const manualTranslationsByLang = {
       "Wikimedia-Commons-Dateilizenz; pro Datei prüfen",
     "Creative Commons Attribution-ShareAlike 4.0 International":
       "Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International",
+    "Open-license media; follow the stated license and attribution.":
+      "Medien mit offener Lizenz; beachten Sie die angegebene Lizenz und Namensnennung.",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
     "Open Database License 1.0": "Open Database License 1.0"
   },
@@ -37,6 +39,8 @@ const manualTranslationsByLang = {
       "Licence de fichier Wikimedia Commons ; vérifier chaque fichier",
     "Creative Commons Attribution-ShareAlike 4.0 International":
       "Creative Commons Attribution - Partage dans les mêmes conditions 4.0 International",
+    "Open-license media; follow the stated license and attribution.":
+      "Médias sous licence ouverte ; respectez la licence indiquée et l'attribution.",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
     "Open Database License 1.0": "Open Database License 1.0"
   },
@@ -47,10 +51,16 @@ const manualTranslationsByLang = {
       "Licenza del file Wikimedia Commons; verificare per ciascun file",
     "Creative Commons Attribution-ShareAlike 4.0 International":
       "Creative Commons Attribuzione - Condividi allo stesso modo 4.0 Internazionale",
+    "Open-license media; follow the stated license and attribution.":
+      "Media con licenza aperta; rispettare la licenza indicata e l'attribuzione.",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
     "Open Database License 1.0": "Open Database License 1.0"
   },
   tr: {
+    // The Ottoman-layer route deliberately uses the historical name Filibe;
+    // keep it ahead of the Filibe→Plovdiv exonym normalisation.
+    "Filibe / Ottoman layer": "Filibe / Osmanlı katmanı",
+    "Filibe": "Filibe",
     "Hristo Milev (1867-1943) was a Bulgarian public figure and National Liberal Party politician born in Shipka. He graduated with distinction from the Plovdiv Boys' Gymnasium, then worked as an investigator and judge, later becoming secretary and district governor of Plovdiv Municipality. From 9 October to 3 December 1903 he chaired the three-member commission, then governed as mayor until 19 September 1905. After his term he was reappointed district governor of Stara Zagora. He authored The Killing of Hadzhi Dimitar's Detachment and Sketches from the Lives of the Insurgents and a Historical-Geographical Atlas of Bulgaria.":
       "Hristo Milev (1867-1943), Shipka doğumlu Bulgar halk figürü ve Ulusal Liberal Parti politikacısıydı. Plovdiv Erkek Lisesi'ndan üstün başarı ile mezun oldu, ardından müfettiş ve yargıç olarak çalıştı, daha sonra Plovdiv Belediyesi'nde sekreter ve kaymakam oldu. 9 Ekim'den 3 Aralık 1903'e kadar üç üyeli komisyona başkanlık etti, ardından 19 Eylül 1905'e kadar belediye başkanı olarak görev yaptı. Görev süresinin ardından yeniden Stara Zagora kaymakamlığına atandı. Hacı Dimitar'ın Öldürülmesi ve İsyancıların Hayatlarından Taslaklar ile Bulgaristan Tarihsel-Coğrafya Atlası'nın yazarıdır.",
     "Milosh Hristov Danov (1874-1943) was a Bulgarian public figure and son of Hristo G. Danov. Born in Stara Zagora, he completed Bulgarian gymnasium in Thessaloniki and studied mathematical sciences in Leipzig without completing a doctorate, since his father's publishing house needed him back in Plovdiv by 1898. During the Balkan War of 1912 he volunteered in the Macedonian-Adrianopolitan Volunteer Corps. In the First World War he served as a junior officer and received an order for bravery. In 1908 he became deputy mayor of Plovdiv, and was mayor twice: in 1918-1919 as chair of a three-member commission and in 1928-1929 as chair of a seven-member commission. He was deputy chair of the Chamber of Commerce and Industry in Plovdiv and later moved his father's publishing house to Sofia.":
@@ -61,6 +71,8 @@ const manualTranslationsByLang = {
       "Wikimedia Commons dosya lisansı; her dosya için doğrulayın",
     "Creative Commons Attribution-ShareAlike 4.0 International":
       "Creative Commons Atıf-AynıLisanslaPaylaş 4.0 Uluslararası",
+    "Open-license media; follow the stated license and attribution.":
+      "Açık lisanslı medya; belirtilen lisansa ve atfa uyun.",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
     "Open Database License 1.0": "Open Database License 1.0",
     // Machine reordering separates the "Eng." honorific from the surname here;
@@ -69,22 +81,31 @@ const manualTranslationsByLang = {
       "Eng. Ivan Totev için belediye başkanlığı dönemleri."
   },
   es: {
+    // Route title: drop the machine's trailing period and Roman-numeral quirk.
+    "Modern Plovdiv of the 20th century": "Plovdiv moderno del siglo XX",
     "Public web reference; reuse terms not verified":
       "Referencia web pública; condiciones de reutilización no verificadas",
     "Wikimedia Commons file license, verify per file":
       "Licencia de archivo de Wikimedia Commons; verificar en cada archivo",
     "Creative Commons Attribution-ShareAlike 4.0 International":
       "Creative Commons Atribución-CompartirIgual 4.0 Internacional",
+    "Open-license media; follow the stated license and attribution.":
+      "Medios con licencia abierta; respete la licencia indicada y la atribución.",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
     "Open Database License 1.0": "Open Database License 1.0"
   },
   el: {
+    // Route title: "χωρίς βήμα" reads as "without a step (in a dance)";
+    // stairs are what the route avoids.
+    "Step-free Plovdiv": "Plovdiv χωρίς σκαλοπάτια",
     "Public web reference; reuse terms not verified":
       "Δημόσια διαδικτυακή αναφορά· οι όροι επαναχρησιμοποίησης δεν επαληθεύτηκαν",
     "Wikimedia Commons file license, verify per file":
       "Άδεια αρχείου Wikimedia Commons· επαληθεύστε ανά αρχείο",
     "Creative Commons Attribution-ShareAlike 4.0 International":
       "Creative Commons Attribution-ShareAlike 4.0 International",
+    "Open-license media; follow the stated license and attribution.":
+      "Πολυμέσα με ανοιχτή άδεια· τηρήστε την αναφερόμενη άδεια και την απόδοση.",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
     "Open Database License 1.0": "Open Database License 1.0",
     "Engineer Ivan Borisov Totev (born 28 October 1975 in Plovdiv) is a Bulgarian engineer and GERB politician who served two consecutive terms as mayor of Plovdiv from 2011 to 2019. He graduated from the Gotse Delchev Transport Technical School in Plovdiv, from the Technical University in Sofia as a master engineer in computer systems and technologies, and in public administration from Plovdiv University. Before becoming mayor he was mayor of Iztochen District (2007-2009), briefly an MP in 2009, and regional governor of Plovdiv (2009-2011). During his administration the city prepared and delivered the European Capital of Culture 2019 title, and after his mayoral term Totev was again elected to the 45th, 46th and 47th National Assemblies.":
@@ -95,6 +116,12 @@ const manualTranslationsByLang = {
       "Ο Sotir Antoniadi (1843-1928) ήταν γιατρός και πολιτικός ελληνικής καταγωγής, γεννημένος στη Στανιμάκα, σήμερα Asenovgrad. Αρχικά σπούδασε στο κεντρικό ελληνικό σχολείο του Plovdiv, στη συνέχεια σε γυμνάσιο της Αθήνας και αργότερα ιατρική στη Βιέννη, πριν εργαστεί για δύο χρόνια στο Παρίσι. Ο Antoniadi ήταν βουλευτής στην Περιφερειακή Συνέλευση της Ανατολικής Ρωμυλίας και το 1885 στην Εθνοσυνέλευση του Πριγκιπάτου της Βουλγαρίας. Από τις 26 Ιανουαρίου έως τις 21 Απριλίου 1883 υπηρέτησε σύντομα ως αναπληρωτής δήμαρχος του Plovdiv. Το 1915 μετακόμισε στην Ελλάδα· το σπίτι του και το φαρμακείο που χτίστηκε το 1872 αποτελούν μέρος του αρχιτεκτονικού και ιστορικού αποθέματος του Παλαιού Plovdiv."
   },
   ja: {
+    // Route title: the walk visits history/ethnographic museums, so 博物館 fits
+    // better than the machine's 美術館 (fine-art museum).
+    "A museum day for the rain": "雨の日の博物館めぐり",
+    // Route title: the machine renders the rowing venue as a "hand-rowed
+    // canal"; keep the site's established ボート競技場 wording.
+    "The Rowing Canal and the Maritsa riverside": "ボート競技場とマリツァ川沿い",
     "Hristo Milev (1867-1943) was a Bulgarian public figure and National Liberal Party politician born in Shipka. He graduated with distinction from the Plovdiv Boys' Gymnasium, then worked as an investigator and judge, later becoming secretary and district governor of Plovdiv Municipality. From 9 October to 3 December 1903 he chaired the three-member commission, then governed as mayor until 19 September 1905. After his term he was reappointed district governor of Stara Zagora. He authored The Killing of Hadzhi Dimitar's Detachment and Sketches from the Lives of the Insurgents and a Historical-Geographical Atlas of Bulgaria.":
       "Hristo Milev (1867-1943) はShipka生まれのブルガリアの著名人であり国民自由党の政治家でした。彼はプロヴディフ男子ギムナジウムを優秀な成績で卒業し、その後捜査官および判事として働き、後にPlovdiv Municipalityの秘書および地区知事に就任した。 1903年10月9日から12月3日まで、彼は3人の委員からなる委員会の委員長を務め、その後1905年9月19日まで市長として統治した。任期後はStara Zagora地区ガバナーに再任された。彼は、『ハッジ・ディミタル分遣隊の殺害』、『反乱軍の生活からのスケッチ』、およびブルガリアの歴史・地理アトラスを執筆しました。",
     "Milosh Hristov Danov (1874-1943) was a Bulgarian public figure and son of Hristo G. Danov. Born in Stara Zagora, he completed Bulgarian gymnasium in Thessaloniki and studied mathematical sciences in Leipzig without completing a doctorate, since his father's publishing house needed him back in Plovdiv by 1898. During the Balkan War of 1912 he volunteered in the Macedonian-Adrianopolitan Volunteer Corps. In the First World War he served as a junior officer and received an order for bravery. In 1908 he became deputy mayor of Plovdiv, and was mayor twice: in 1918-1919 as chair of a three-member commission and in 1928-1929 as chair of a seven-member commission. He was deputy chair of the Chamber of Commerce and Industry in Plovdiv and later moved his father's publishing house to Sofia.":
@@ -105,6 +132,8 @@ const manualTranslationsByLang = {
       "Wikimedia Commons のファイルライセンス。各ファイルごとに確認",
     "Creative Commons Attribution-ShareAlike 4.0 International":
       "Creative Commons Attribution-ShareAlike 4.0 International",
+    "Open-license media; follow the stated license and attribution.":
+      "オープンライセンスのメディア。記載のライセンスと帰属表示に従ってください。",
     "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
     "Open Database License 1.0": "Open Database License 1.0",
     "A large prefab housing complex designed by architect Ivan Popov (1968); construction began in 1973 and it became a separate district in 1983.":
@@ -200,6 +229,12 @@ const manualTranslationsByLang = {
       "Ang kronolohiya ng alkalde ay nag-uugnay kay Zdravko Dimitrov kay Eng. Ivan Totev sa pamamagitan ng relasyong \"nagtagumpay\"."
   },
   uk: {
+    // Route titles: keep the reviewed Unification wording ahead of the
+    // template fixups, and disambiguate "заходи" (events) → "заходи сонця".
+    "Unification and civic memory": "Об'єднання і громадянська пам'ять",
+    "The tepeta and their sunsets": "Тепета та їхні заходи сонця",
+    "A museum day for the rain": "Музейний день — і в дощ",
+    "Step-free Plovdiv": "Plovdiv без сходинок",
     "Public web reference; reuse terms not verified":
       "Публічне вебпосилання; умови повторного використання не перевірено",
     "Wikimedia Commons file license, verify per file":
@@ -232,6 +267,11 @@ const manualTranslationsByLang = {
       "Мерська хронологія пов'язує Kostaki Peev з Atanas Samokovliev через стосунки «наступник»."
   },
   ru: {
+    // Route titles: the machine turned the museum day into a "museum of rain"
+    // and left a stray trailing period on the 20th-century title.
+    "A museum day for the rain": "Музейный день — и в дождь",
+    "Modern Plovdiv of the 20th century": "Современный Plovdiv XX века",
+    "Step-free Plovdiv": "Plovdiv без ступеней",
     "Public web reference; reuse terms not verified":
       "Публичная веб-ссылка; условия повторного использования не проверены",
     "Wikimedia Commons file license, verify per file":
