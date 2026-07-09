@@ -1548,6 +1548,34 @@ function assertNeighbourhoodHistories(loaded) {
 
   const translatedCount = assertTranslatedStrings("neighbourhood histories", neighbourhoods);
 
+  // Tourist-completeness report (non-fatal): a quarter without mapped places
+  // or without any route is legitimate (honest context treatment), but each
+  // one should be a conscious choice — keep them visible at validation time.
+  const routesByPlace = new Map();
+  for (const route of loaded.get("walking routes")) {
+    for (const stop of route.stops) {
+      const list = routesByPlace.get(stop.place_id) ?? [];
+      list.push(route.id);
+      routesByPlace.set(stop.place_id, list);
+    }
+  }
+  const zeroPlaces = [];
+  const zeroRoutes = [];
+  for (const neighbourhood of neighbourhoods) {
+    if (neighbourhood.place_ids.length === 0) zeroPlaces.push(neighbourhood.id);
+    const derivedRoutes = new Set(neighbourhood.route_ids);
+    for (const placeId of neighbourhood.place_ids) {
+      for (const routeId of routesByPlace.get(placeId) ?? []) derivedRoutes.add(routeId);
+    }
+    if (derivedRoutes.size === 0) zeroRoutes.push(neighbourhood.id);
+  }
+  if (zeroPlaces.length > 0) {
+    console.warn(`neighbourhood histories: context-only (no mapped places): ${zeroPlaces.join(", ")}`);
+  }
+  if (zeroRoutes.length > 0) {
+    console.warn(`neighbourhood histories: no walking route reaches: ${zeroRoutes.join(", ")}`);
+  }
+
   console.log(
     `neighbourhood histories checks passed: ${neighbourhoods.length} quarters, ${translatedCount} translated strings`
   );

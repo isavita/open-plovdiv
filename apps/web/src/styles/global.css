@@ -4095,6 +4095,7 @@ code {
 
 /* compact source link */
 .src-link {
+  overflow-wrap: break-word;
   display: inline-block;
   font-size: 0.8rem;
   color: var(--muted);
@@ -7956,6 +7957,98 @@ details[open] > .htree-event-sum .htree-caret::after {
   100% {
     box-shadow: 0 0 0 0 transparent;
   }
+}
+
+/* Compact route picker on /places: select grouped by category + active chip. */
+.route-picker {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+}
+
+.route-picker > *,
+.route-picker-row > * {
+  min-width: 0;
+}
+
+.route-picker-label {
+  margin: 0;
+}
+
+.route-picker-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+
+.route-picker select {
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  padding: 9px 12px;
+  max-width: 100%;
+  min-width: 0;
+  flex: 1 1 260px;
+}
+
+.route-picker select:focus-visible {
+  border-color: var(--brand);
+  outline: none;
+}
+
+.route-picker-all {
+  flex: 0 0 auto;
+}
+
+.route-active {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+.route-active .route-strip-dot {
+  flex: 0 0 auto;
+}
+
+.route-active-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 180px;
+}
+
+.route-active-text strong {
+  line-height: 1.25;
+}
+
+.route-active-clear {
+  appearance: none;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 5px 11px;
+}
+
+.route-active-clear:hover,
+.route-active-clear:focus-visible {
+  border-color: var(--brand);
+  color: var(--brand);
+  outline: none;
 }
 
 /* "Near this route" list in the route evidence panel. */

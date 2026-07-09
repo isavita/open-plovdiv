@@ -206,10 +206,17 @@ const structuredData = {
                   <dd>{earliest}</dd>
                 </div>
               )}
-              <div>
-                <dt>{t.keyPlaces}</dt>
-                <dd>{keyPlaces.length}</dd>
-              </div>
+              {keyPlaces.length > 0 ? (
+                <div>
+                  <dt>{t.keyPlaces}</dt>
+                  <dd>{keyPlaces.length}</dd>
+                </div>
+              ) : (
+                <div class="nb-glance-context">
+                  <dt>{t.keyPlaces}</dt>
+                  <dd class="nb-glance-context-badge">{t.contextBadge}</dd>
+                </div>
+              )}
             </dl>
             <p class="meta nb-glance-note">{t.approxNote}</p>
           </aside>
@@ -622,6 +629,16 @@ const structuredData = {
       font-weight: 800;
       color: var(--ink);
       overflow-wrap: break-word;
+    }
+
+    .nb-glance-context {
+      grid-column: 1 / -1;
+    }
+
+    .nb-glance-context-badge {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--muted);
     }
 
     .nb-glance-note {

@@ -466,6 +466,20 @@ const labelTable = {
     "Тоді й тепер",
     "Тогда и сейчас"
   ),
+  contextBadge: tr(
+    "Исторически контекст — малко картирани места",
+    "Historical context — few mapped stops",
+    "Historischer Kontext — wenige kartierte Orte",
+    "Contexte historique — peu de lieux cartographiés",
+    "Contesto storico — pochi luoghi mappati",
+    "Tarihsel bağlam — az sayıda haritalanmış yer",
+    "Contexto histórico — pocos lugares cartografiados",
+    "Ιστορικό πλαίσιο — λίγες χαρτογραφημένες στάσεις",
+    "歴史的背景ページ — 地図上のスポットは少なめ",
+    "Kontekstong pangkasaysayan — kaunting naka-mapang lugar",
+    "Історичний контекст — мало картованих місць",
+    "Исторический контекст — мало отмеченных мест"
+  ),
   tnThen: tr("Тогава", "Then", "Damals", "Hier", "Ieri", "Dün", "Antes", "Τότε", "昔", "Noon", "Тоді", "Тогда"),
   tnNow: tr("Сега", "Now", "Heute", "Aujourd'hui", "Oggi", "Bugün", "Ahora", "Τώρα", "今", "Ngayon", "Тепер", "Сейчас"),
   dataBoundary: tr(

@@ -4,7 +4,9 @@ import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { commonsImageUrl } from "@lib/commons";
 import { sectionMotifs } from "@lib/motifs";
 import { fallbackPlaceColor, placeColors } from "@lib/placeCategories";
-import { routeGeometry, walkingRoutes } from "@lib/routes";
+import { distanceMeters } from "@lib/geo";
+import { formatKm, routeCategoryOrder, routeGeometry, walkingRoutes } from "@lib/routes";
+import { routeCategoryLabels } from "@lib/routeLabels";
 import { sourceTitle } from "@lib/format";
 import { publicThenNowPairs, thenNowCountByPlace } from "@lib/thenNow";
 import {
@@ -681,13 +683,12 @@ const legendItems = categories.map((category) => ({
   count: categoryCounts.get(category) ?? 0
 }));
 
-// Route overlays for the all-places map: the walking routes as accent
-// polylines over their committed walking geometry (downsampled to keep the
-// inline config light), falling back to straight stop connections when a
-// route has no geometry yet. Toggled from the route strip; each overlay
-// links to the full route page.
+// Route focus data for the all-places map: the walking line (downsampled
+// committed geometry), the NUMBERED stops (only these become markers), and
+// the curated nearby places (≤300 m of a stop) that stay visible as context
+// when a route is selected. One route can be active at a time.
 const placeById = new Map(places.map((place) => [place.id, place]));
-function overlayPoints(route: (typeof walkingRoutes)[number]): Array<[number, number]> {
+function overlayLine(route: (typeof walkingRoutes)[number]): Array<[number, number]> {
   const geometry = routeGeometry(route.id);
   if (geometry) {
     const coords = geometry.geometry.coordinates;
@@ -701,14 +702,58 @@ function overlayPoints(route: (typeof walkingRoutes)[number]): Array<[number, nu
     .map((c) => [c.lat, c.lng] as [number, number]);
 }
 const routeOverlays = walkingRoutes
-  .map((route) => ({
-    id: route.id,
-    accent: route.accent,
-    title: localized(route, "short_title"),
-    href: localizePath(`/routes/${route.id}`, lang),
-    points: overlayPoints(route)
+  .map((route) => {
+    const geometry = routeGeometry(route.id);
+    const stops = route.stops
+      .map((stop, index) => {
+        const place = placeById.get(stop.place_id);
+        return place?.coordinates
+          ? {
+              id: place.id,
+              index: index + 1,
+              name: localized(place, "name"),
+              href: localizePath(`/places/${place.id}`, lang),
+              lat: place.coordinates.lat,
+              lng: place.coordinates.lng
+            }
+          : null;
+      })
+      .filter((stop): stop is NonNullable<typeof stop> => Boolean(stop));
+    const stopIds = new Set(stops.map((stop) => stop.id));
+    const nearbyIds = places
+      .filter(
+        (place) =>
+          place.coordinates &&
+          !stopIds.has(place.id) &&
+          stops.some((stop) => distanceMeters(place.coordinates!, stop) <= 300)
+      )
+      .map((place) => place.id);
+    return {
+      id: route.id,
+      accent: route.accent,
+      title: localized(route, "short_title"),
+      href: localizePath(`/routes/${route.id}`, lang),
+      km: geometry ? formatKm(geometry.distance_m, locale) : null,
+      minutes: route.duration_minutes,
+      line: overlayLine(route),
+      stops,
+      nearbyIds
+    };
+  })
+  .filter((overlay) => overlay.stops.length >= 2);
+
+const routePickerGroups = routeCategoryOrder
+  .map((categoryKey) => ({
+    label: routeCategoryLabels(lang)[categoryKey],
+    routes: walkingRoutes
+      .filter((route) => route.category === categoryKey)
+      .map((route) => ({
+        id: route.id,
+        title: localized(route, "short_title"),
+        minutes: route.duration_minutes
+      }))
   }))
-  .filter((overlay) => overlay.points.length >= 2);
+  .filter((group) => group.routes.length > 0);
 
 const sheetL = {
   close: trd("Затвори", "Close", "Schließen", "Fermer", "Chiudi", "Kapat", "Cerrar", "Κλείσιμο", "閉じる", "Isara", "Закрити", "Закрыть"),
@@ -726,6 +771,49 @@ const sheetL = {
     "Ipakita sa mapa",
     "Показати на карті",
     "Показать на карте"
+  ),
+  noRoute: trd(
+    "Без маршрут — всички места",
+    "No route — all places",
+    "Keine Route — alle Orte",
+    "Aucun parcours — tous les lieux",
+    "Nessun percorso — tutti i luoghi",
+    "Rota yok — tüm yerler",
+    "Sin ruta — todos los lugares",
+    "Χωρίς διαδρομή — όλες οι τοποθεσίες",
+    "ルートなし — すべての場所",
+    "Walang ruta — lahat ng lugar",
+    "Без маршруту — усі місця",
+    "Без маршрута — все места"
+  ),
+  clearRoute: trd("Изчисти", "Clear", "Zurücksetzen", "Effacer", "Rimuovi", "Temizle", "Quitar", "Καθαρισμός", "解除", "Alisin", "Скинути", "Убрать"),
+  allRoutes: trd(
+    "Всички маршрути",
+    "All routes",
+    "Alle Routen",
+    "Tous les parcours",
+    "Tutti i percorsi",
+    "Tüm rotalar",
+    "Todas las rutas",
+    "Όλες οι διαδρομές",
+    "すべてのルート",
+    "Lahat ng ruta",
+    "Усі маршрути",
+    "Все маршруты"
+  ),
+  nearRoute: trd(
+    "наблизо",
+    "nearby",
+    "in der Nähe",
+    "à proximité",
+    "nei dintorni",
+    "yakında",
+    "cerca",
+    "κοντά",
+    "周辺",
+    "malapit",
+    "поблизу",
+    "рядом"
   )
 };
 
@@ -734,7 +822,13 @@ const placesMapConfig = {
   lang,
   mapEndpoint: "/api/history/place-map.json",
   routeOverlays,
-  openRouteLabel: sheetL.openRoute
+  openRouteLabel: sheetL.openRoute,
+  words: {
+    minutes: discoverL.minutes,
+    stops: discoverL.stops,
+    near: sheetL.nearRoute,
+    clear: sheetL.clearRoute
+  }
 };
 ---
 
@@ -770,29 +864,31 @@ const placesMapConfig = {
 
   <section class="section" id="places-catalog">
     <div class="container">
-      <nav class="route-strip" aria-label={discoverL.routeStrip}>
-        <span class="route-strip-label meta">{discoverL.routeStrip}</span>
-        {walkingRoutes.map((route) => (
-          <span class="route-strip-item" style={`--route-accent:${route.accent}`}>
-            <button
-              type="button"
-              class="route-strip-pill"
-              data-route-toggle={route.id}
-              aria-pressed="false"
-              title={sheetL.routeToggleHint}
-            >
-              <span class="route-strip-dot" aria-hidden="true"></span>
-              <strong>{localized(route, "short_title")}</strong>
-              <span>{route.duration_minutes} {discoverL.minutes} · {route.stops.length} {discoverL.stops}</span>
-            </button>
-            <a
-              class="route-strip-open"
-              href={localizePath(`/routes/${route.id}`, lang)}
-              aria-label={`${sheetL.openRoute}: ${localized(route, "short_title")}`}
-            >→</a>
+      <div class="route-picker" id="places-route-picker">
+        <label class="route-picker-label meta" for="places-route">{discoverL.routeStrip}</label>
+        <div class="route-picker-row">
+          <select id="places-route">
+            <option value="">{sheetL.noRoute}</option>
+            {routePickerGroups.map((group) => (
+              <optgroup label={group.label}>
+                {group.routes.map((route) => (
+                  <option value={route.id}>{route.title} · {route.minutes} {discoverL.minutes}</option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+          <a class="text-link route-picker-all" href={localizePath("/routes", lang)}>{sheetL.allRoutes} →</a>
+        </div>
+        <div class="route-active" id="places-route-active" hidden>
+          <span class="route-strip-dot" aria-hidden="true"></span>
+          <span class="route-active-text">
+            <strong id="places-route-active-title"></strong>
+            <span class="meta" id="places-route-active-stats"></span>
           </span>
-        ))}
-      </nav>
+          <a class="text-link" id="places-route-active-open" href="#">{sheetL.openRoute} →</a>
+          <button type="button" class="route-active-clear" id="places-route-clear">{sheetL.clearRoute} ✕</button>
+        </div>
+      </div>
 
       <div class="places-map-head">
         <h2>{mapL.title}</h2>
@@ -1029,39 +1125,74 @@ const placesMapConfig = {
       loadMore.hidden = renderedCount >= totalCards || hasActiveFilters();
     }
 
+    // Route focus: the selected route narrows the card list to its stops and
+    // curated nearby places; search/era/category/evidence act as subfilters.
+    // The stop/nearby sets come from the same config the map consumes, so the
+    // two surfaces can never disagree.
+    const routeSelect = document.querySelector<HTMLSelectElement>("#places-route");
+    const routeFocusSets = new Map<string, Set<string>>();
+    {
+      const overlayConfig = JSON.parse(
+        document.getElementById("places-map-config")?.textContent ?? "{}"
+      );
+      for (const overlay of overlayConfig.routeOverlays ?? []) {
+        routeFocusSets.set(
+          overlay.id,
+          new Set([...overlay.stops.map((stop: { id: string }) => stop.id), ...overlay.nearbyIds])
+        );
+      }
+    }
+
+    /** The one shared filter state: query, era, category, evidence, routeId. */
+    function readPlacesState() {
+      return {
+        query: search.value.trim().toLocaleLowerCase(),
+        era: era.value,
+        category: category.value,
+        evidence: evidence.value,
+        routeId: routeSelect?.value ?? ""
+      };
+    }
+
+    function cardPlaceId(card: HTMLElement): string {
+      if (!card.dataset.pid) {
+        const href = card.querySelector<HTMLAnchorElement>("a[href*='/places/']")?.getAttribute("href") ?? "";
+        card.dataset.pid = decodeURIComponent(href.split("/places/")[1] ?? "");
+      }
+      return card.dataset.pid;
+    }
+
     function applyPlacesFilters() {
-      const q = search.value.trim().toLocaleLowerCase();
+      const state = readPlacesState();
+      const focus = state.routeId ? routeFocusSets.get(state.routeId) : null;
       let visible = 0;
       for (const card of cards) {
-        const evidenceMode = evidence.value;
         const show =
-          (!q || (card.dataset.search ?? "").includes(q)) &&
-          (era.value === "all" || card.dataset.era === era.value) &&
-          (category.value === "all" || card.dataset.category === category.value) &&
-          (evidenceMode === "all" ||
-            (evidenceMode === "archive" && Number(card.dataset.archive) > 0) ||
-            (evidenceMode === "then-now" && Number(card.dataset.thenNow) > 0));
+          (!focus || focus.has(cardPlaceId(card))) &&
+          (!state.query || (card.dataset.search ?? "").includes(state.query)) &&
+          (state.era === "all" || card.dataset.era === state.era) &&
+          (state.category === "all" || card.dataset.category === state.category) &&
+          (state.evidence === "all" ||
+            (state.evidence === "archive" && Number(card.dataset.archive) > 0) ||
+            (state.evidence === "then-now" && Number(card.dataset.thenNow) > 0));
         card.hidden = !show;
         if (show) visible += 1;
       }
       const total = hasActiveFilters() ? cards.length : totalCards;
       count.textContent = `${config.labels.visible}: ${visible} ${config.labels.of} ${total} ${config.labels.places}`;
       empty.hidden = visible !== 0;
-      reset.hidden = !(
-        search.value ||
-        era.value !== "all" ||
-        category.value !== "all" ||
-        evidence.value !== "all"
-      );
+      reset.hidden = !hasActiveFilters();
       loadMore.hidden = renderedCount >= totalCards || hasActiveFilters();
     }
 
     function hasActiveFilters() {
+      const state = readPlacesState();
       return Boolean(
-        search.value.trim() ||
-        era.value !== "all" ||
-        category.value !== "all" ||
-        evidence.value !== "all"
+        state.query ||
+        state.era !== "all" ||
+        state.category !== "all" ||
+        state.evidence !== "all" ||
+        state.routeId
       );
     }
 
@@ -1140,12 +1271,14 @@ const placesMapConfig = {
       void applyFiltersFromControls();
     });
     evidence.addEventListener("change", () => void applyFiltersFromControls());
+    routeSelect?.addEventListener("change", () => void applyFiltersFromControls());
     loadMore.addEventListener("click", () => void renderNextPlaces());
     reset.addEventListener("click", () => {
       search.value = "";
       era.value = "all";
       category.value = "all";
       evidence.value = "all";
+      if (routeSelect) routeSelect.value = "";
       syncLegend();
       applyPlacesFilters();
       search.focus();
@@ -1211,7 +1344,7 @@ const placesMapConfig = {
       return Array.isArray(localizedPlaces) ? localizedPlaces : [];
     }
 
-    type PlacesMapApi = { toggleRoute: (id: string, button: HTMLButtonElement) => void };
+    type PlacesMapApi = { selectRoute: (id: string | null) => void };
 
     const isNarrowViewport = () => window.matchMedia("(max-width: 760px)").matches;
 
@@ -1318,14 +1451,140 @@ const placesMapConfig = {
       }
       map.on("zoomend", renderMarkers);
 
+      const fRoute = document.querySelector<HTMLSelectElement>("#places-route");
+      const placeIdOf = (it: PlaceMapItem) => decodeURIComponent((it.href.split("/places/")[1] ?? ""));
+
+      // Route focus overlays: ONE route active at a time — an accent walking
+      // line plus numbered markers for the actual stops (never for geometry
+      // samples). Selecting a route narrows the map to stops + curated nearby
+      // places; the card list follows through the shared #places-route control.
+      type OverlayStop = { id: string; index: number; name: string; href: string; lat: number; lng: number };
+      type Overlay = {
+        id: string;
+        accent: string;
+        title: string;
+        href: string;
+        km: string | null;
+        minutes: number;
+        line: [number, number][];
+        stops: OverlayStop[];
+        nearbyIds: string[];
+      };
+      const overlays = new Map<string, { group: ReturnType<typeof L.layerGroup>; data: Overlay }>();
+      for (const data of (mapCfg.routeOverlays ?? []) as Overlay[]) {
+        const group = L.layerGroup();
+        L.polyline(data.line, {
+          color: data.accent,
+          weight: 4,
+          opacity: 0.9
+        }).addTo(group);
+        for (const stop of data.stops) {
+          const marker = L.marker([stop.lat, stop.lng], {
+            title: stop.name,
+            icon: L.divIcon({
+              className: "",
+              html: `<span class="route-map-stop" style="--route-accent:${mEsc(data.accent)}">${stop.index}</span>`,
+              iconSize: [26, 26],
+              iconAnchor: [13, 13]
+            })
+          });
+          marker.on("click", () => {
+            if (isNarrowViewport()) {
+              openSheet({ catLabel: `${stop.index}. ${data.title}`, name: stop.name, href: stop.href } as PlaceMapItem);
+              return;
+            }
+            marker
+              .bindPopup(
+                `<strong>${mEsc(stop.index)}. ${mEsc(stop.name)}</strong><br><a href="${mEsc(stop.href)}">${mEsc(mapCfg.openLabel)} →</a>`
+              )
+              .openPopup();
+          });
+          marker.addTo(group);
+        }
+        overlays.set(data.id, { group, data });
+      }
+
+      let activeRouteId: string | null = null;
+      const activeChip = document.getElementById("places-route-active");
+      const activeTitle = document.getElementById("places-route-active-title");
+      const activeStats = document.getElementById("places-route-active-stats");
+      const activeOpen = document.getElementById("places-route-active-open") as HTMLAnchorElement | null;
+
+      function syncRouteUi(overlay: Overlay | null) {
+        if (fRoute) fRoute.value = overlay?.id ?? "";
+        if (!activeChip) return;
+        if (!overlay) {
+          activeChip.hidden = true;
+          return;
+        }
+        const stats = [
+          overlay.km ? `${overlay.km} km` : null,
+          `~${overlay.minutes} ${mapCfg.words.minutes}`,
+          `${overlay.stops.length} ${mapCfg.words.stops}`,
+          `+${overlay.nearbyIds.length} ${mapCfg.words.near}`
+        ]
+          .filter(Boolean)
+          .join(" · ");
+        activeChip.hidden = false;
+        activeChip.style.setProperty("--route-accent", overlay.accent);
+        if (activeTitle) activeTitle.textContent = overlay.title;
+        if (activeStats) activeStats.textContent = stats;
+        if (activeOpen) activeOpen.href = overlay.href;
+      }
+
+      function selectRoute(id: string | null) {
+        const previous = activeRouteId ? overlays.get(activeRouteId) : null;
+        if (previous) routeLayer.removeLayer(previous.group);
+        const next = id ? overlays.get(id) : null;
+        activeRouteId = next ? id : null;
+        if (next) {
+          next.group.addTo(routeLayer);
+          mapEl?.scrollIntoView({ behavior: "smooth", block: "center" });
+          if (isNarrowViewport()) {
+            openSheet({
+              catLabel: [
+                next.data.km ? `${next.data.km} km` : null,
+                `~${next.data.minutes} ${mapCfg.words.minutes}`,
+                `${next.data.stops.length} ${mapCfg.words.stops}`
+              ]
+                .filter(Boolean)
+                .join(" · "),
+              name: next.data.title,
+              href: next.data.href
+            } as PlaceMapItem);
+          }
+        } else {
+          const sheetEl = document.getElementById("places-sheet");
+          if (sheetEl) sheetEl.hidden = true;
+        }
+        syncRouteUi(next ? next.data : null);
+        applyMap(true);
+      }
+
+      // Clearing routes through the select keeps the cards script in sync:
+      // both scripts listen to the same #places-route change event.
+      document.getElementById("places-route-clear")?.addEventListener("click", () => {
+        if (!fRoute) {
+          selectRoute(null);
+          return;
+        }
+        fRoute.value = "";
+        fRoute.dispatchEvent(new Event("change"));
+      });
+
       function applyMap(refit: boolean) {
         const q = (fSearch?.value ?? "").trim().toLowerCase();
         const era = fEra?.value ?? "all";
         const cat = fCat?.value ?? "all";
         const evi = fEvi?.value ?? "all";
+        const overlay = activeRouteId ? overlays.get(activeRouteId) : null;
+        // In route focus mode the numbered stop markers stand for the stops
+        // themselves; regular pins show only the curated nearby places.
+        const focusNearby = overlay ? new Set(overlay.data.nearbyIds) : null;
         const visible: [number, number][] = [];
         currentEntries = markers.filter(({ it }) => {
           const ok =
+            (!focusNearby || focusNearby.has(placeIdOf(it))) &&
             (!q || it.search.includes(q)) &&
             (era === "all" || it.era === era) &&
             (cat === "all" || it.category === cat) &&
@@ -1333,59 +1592,23 @@ const placesMapConfig = {
           if (ok) visible.push([it.lat, it.lng]);
           return ok;
         });
-        if (refit && visible.length) map.fitBounds(visible, { padding: [30, 30], maxZoom: 15 });
+        if (overlay) {
+          if (refit) map.fitBounds(overlay.data.line, { padding: [36, 36], maxZoom: 16 });
+        } else if (refit && visible.length) {
+          map.fitBounds(visible, { padding: [30, 30], maxZoom: 15 });
+        }
         renderMarkers();
       }
 
       applyMap(true);
       fSearch?.addEventListener("input", () => applyMap(false));
       [fEra, fCat, fEvi].forEach((el) => el?.addEventListener("change", () => applyMap(true)));
-      document.querySelector("#places-reset")?.addEventListener("click", () => window.setTimeout(() => applyMap(true), 0));
+      fRoute?.addEventListener("change", () => selectRoute(fRoute.value || null));
+      document.querySelector("#places-reset")?.addEventListener("click", () =>
+        window.setTimeout(() => selectRoute(null), 0)
+      );
 
-      // Walking-route overlays: accent polylines with white stop rings,
-      // toggled from the route strip above the map.
-      type Overlay = { id: string; accent: string; title: string; href: string; points: [number, number][] };
-      const overlays = new Map<string, { group: ReturnType<typeof L.layerGroup>; points: [number, number][] }>();
-      for (const overlay of (mapCfg.routeOverlays ?? []) as Overlay[]) {
-        const group = L.layerGroup();
-        const line = L.polyline(overlay.points, {
-          color: overlay.accent,
-          weight: 4,
-          dashArray: "7 8",
-          opacity: 0.9
-        });
-        line.bindPopup(
-          `<strong>${mEsc(overlay.title)}</strong><br><a href="${mEsc(overlay.href)}">${mEsc(mapCfg.openRouteLabel)} →</a>`
-        );
-        line.addTo(group);
-        for (const point of overlay.points) {
-          L.circleMarker(point, {
-            radius: 5,
-            color: overlay.accent,
-            weight: 2.5,
-            fillColor: "#ffffff",
-            fillOpacity: 1
-          }).addTo(group);
-        }
-        overlays.set(overlay.id, { group, points: overlay.points });
-      }
-
-      function toggleRoute(id: string, button: HTMLButtonElement) {
-        const entry = overlays.get(id);
-        if (!entry) return;
-        const pressed = button.getAttribute("aria-pressed") === "true";
-        if (pressed) {
-          routeLayer.removeLayer(entry.group);
-          button.setAttribute("aria-pressed", "false");
-          return;
-        }
-        entry.group.addTo(routeLayer);
-        button.setAttribute("aria-pressed", "true");
-        mapEl?.scrollIntoView({ behavior: "smooth", block: "center" });
-        map.fitBounds(entry.points, { padding: [36, 36], maxZoom: 16 });
-      }
-
-      return { toggleRoute };
+      return { selectRoute };
     }
 
     // The map initialises lazily (scroll into view), but a route toggle click
@@ -1396,10 +1619,21 @@ const placesMapConfig = {
       return mapPromise;
     }
 
-    document.querySelectorAll<HTMLButtonElement>("[data-route-toggle]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const id = button.dataset.routeToggle ?? "";
-        void ensurePlacesMap().then((api) => api?.toggleRoute(id, button));
+    // The route picker initialises the lazy map on first use; once the map is
+    // live its own #places-route listener takes over (registered inside
+    // initPlacesMap), so this bootstrap only forwards the very first choice.
+    const routeSelectEl = document.querySelector<HTMLSelectElement>("#places-route");
+    let mapReady = false;
+    routeSelectEl?.addEventListener("change", function bootstrapRoute() {
+      if (mapReady) {
+        routeSelectEl.removeEventListener("change", bootstrapRoute);
+        return;
+      }
+      void ensurePlacesMap().then((api) => {
+        if (!mapReady) {
+          mapReady = true;
+          api?.selectRoute(routeSelectEl.value || null);
+        }
       });
     });
 

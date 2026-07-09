@@ -187,7 +187,11 @@ const mapConfig = {
               <p class="nb-card-summary">{summary}</p>
               <p class="nb-card-facts meta">
                 {earliest && <span>{t.firstRecord}: {earliest}</span>}
-                <span>{neighbourhood.place_ids.length} {t.placesStat}</span>
+                {neighbourhood.place_ids.length > 0 ? (
+                  <span>{neighbourhood.place_ids.length} {t.placesStat}</span>
+                ) : (
+                  <span class="nb-context-badge">{t.contextBadge}</span>
+                )}
               </p>
               <div class="nb-card-actions">
                 <a class="button" href={href}>{t.openQuarter}</a>
@@ -569,6 +573,13 @@ const mapConfig = {
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
+    }
+
+    .nb-context-badge {
+      border: 1px dashed var(--line-strong);
+      border-radius: 999px;
+      padding: 2px 9px;
+      background: var(--surface-2);
     }
 
     .nb-card-facts {
