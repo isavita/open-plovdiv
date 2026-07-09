@@ -43,6 +43,7 @@ describe("neighbourhood histories registry", () => {
       const years = neighbourhood.timeline.map((entry) => entry.year);
       expect([...years].sort((a, b) => a - b), neighbourhood.id).toEqual(years);
       expect(neighbourhood.sources.length, `${neighbourhood.id} sources`).toBeGreaterThanOrEqual(2);
+      expect(neighbourhood.fabric?.length ?? 0, `${neighbourhood.id} fabric`).toBeGreaterThanOrEqual(1);
     }
   });
 
@@ -77,6 +78,11 @@ describe("neighbourhood histories registry", () => {
         expect(field(record, "name", lang), `${neighbourhood.id} name ${lang}`).not.toBe("");
         expect(field(record, "summary", lang), `${neighbourhood.id} summary ${lang}`).not.toBe("");
         expect(field(record, "getting_there", lang), `${neighbourhood.id} getting_there ${lang}`).not.toBe("");
+        expect(field(record, "why", lang), `${neighbourhood.id} why ${lang}`).not.toBe("");
+        expect(
+          field(neighbourhood.visit as unknown as Record<string, unknown>, "see", lang),
+          `${neighbourhood.id} visit.see ${lang}`
+        ).not.toBe("");
       }
       expect(field(record, "summary", "de")).not.toBe(field(record, "summary", "en"));
       expect(field(record, "summary", "ja")).not.toBe(field(record, "summary", "en"));

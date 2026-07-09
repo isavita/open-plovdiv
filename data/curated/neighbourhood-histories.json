@@ -49,6 +49,15 @@
         "body_en": "Wealthy merchants build the symmetrical houses with oriels and painted façades — the 1847 Kuyumdzhioglu House is today's Ethnographic Museum."
       },
       {
+        "year": 1885,
+        "display_bg": "6 септември 1885 г.",
+        "display_en": "6 September 1885",
+        "title_bg": "Съединението",
+        "title_en": "The Unification",
+        "body_bg": "От сърцето на квартала е обявено Съединението на Източна Румелия с Княжество България.",
+        "body_en": "From the quarter's heart the Unification of Eastern Rumelia with the Principality of Bulgaria is proclaimed."
+      },
+      {
         "year": 1956,
         "display_bg": "1956 г.",
         "display_en": "1956",
@@ -82,7 +91,9 @@
       "story-revival-houses-schools",
       "story-roman-philippopolis"
     ],
-    "route_ids": [],
+    "route_ids": [
+      "old-town-gates-and-churches"
+    ],
     "getting_there_bg": "Влиза се пеша от площад Джумая или откъм Хисар капия; уличките са калдъръмени и стръмни, затова тук колите не помагат.",
     "getting_there_en": "Enter on foot from Dzhumaya square or through Hisar Kapia; the lanes are cobbled and steep, so cars are no help here.",
     "sources": [
@@ -98,7 +109,66 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Ако Пловдив претендира да е сред най-старите живи градове в Европа, доказателството е този квартал: шест хилядолетия непрекъснат живот върху три хълма, където тракийска крепост, римски театър и възрожденски салони стоят на една улица. Тук се е обявявало Съединението, тук започва и българската консервация на градско наследство.",
+    "why_en": "If Plovdiv claims a place among Europe's oldest living cities, this quarter is the proof: six millennia of unbroken life on three hills, where a Thracian stronghold, a Roman theatre and Revival-era salons share a single street. The Unification was proclaimed here, and Bulgarian urban conservation was born here too.",
+    "alt_names": [
+      {
+        "name_bg": "Трихълмието",
+        "name_en": "The Three Hills",
+        "note_bg": "по трите тепета на резервата",
+        "note_en": "after the reserve's three hills"
+      },
+      {
+        "name_bg": "Старинен Пловдив",
+        "name_en": "Ancient Plovdiv",
+        "note_bg": "официалното име на резервата",
+        "note_en": "the reserve's official name"
+      }
+    ],
+    "fabric": [
+      {
+        "kind": "institution",
+        "name_bg": "Резерватът „Старинен Пловдив“",
+        "name_en": "The Ancient Plovdiv reserve",
+        "note_bg": "Институцията от 1956 г., която превърна западащите къщи в консервационен образец.",
+        "note_en": "The 1956 institution that turned decaying mansions into a conservation model."
+      },
+      {
+        "kind": "community",
+        "name_bg": "Възрожденските търговци",
+        "name_en": "The Revival merchants",
+        "note_bg": "Куюмджиоглу, Хиндлиян, Балабанов — домовете им са музеите на квартала.",
+        "note_en": "Kuyumdzhioglu, Hindliyan, Balabanov — their homes are the quarter's museums.",
+        "place_id": "place-hindliyan-house-q19810343"
+      },
+      {
+        "kind": "people",
+        "name_bg": "Алфонс дьо Ламартин",
+        "name_en": "Alphonse de Lamartine",
+        "note_bg": "Френският поет отсяда тук през 1833 г. — къщата носи името му.",
+        "note_en": "The French poet stayed here in 1833 — the house bears his name.",
+        "place_id": "place-lamartine-house"
+      },
+      {
+        "kind": "faith",
+        "name_bg": "Храмовете на източното рамо",
+        "name_en": "The eastern shoulder's churches",
+        "note_bg": "„Св. св. Константин и Елена“ и „Св. Неделя“ пазят зографски иконостаси.",
+        "note_en": "St Constantine and Helena and St Nedelya keep master-painted iconostases.",
+        "place_id": "place-church-of-st-constantine-and-helena-q5117391"
+      }
+    ],
+    "visit": {
+      "see_bg": "Небет тепе, Античния театър, Хисар капия и поне една изписана къща отвътре — Хиндлиян или Етнографския музей.",
+      "see_en": "Nebet Tepe, the Ancient Theatre, Hisar Kapia and at least one painted house interior — Hindliyan or the Ethnographic Museum.",
+      "time_bg": "Половин ден; цял ден с музеите.",
+      "time_en": "Half a day; a full day with the museums.",
+      "best_bg": "Рано сутрин за празни улички или late следобед за златна светлина по фасадите.",
+      "best_en": "Early morning for empty lanes or late afternoon for golden light on the façades.",
+      "food_bg": "В самия резерват заведенията са малко — Капана е на 5 минути надолу с целия си избор.",
+      "food_en": "Few eateries inside the reserve — Kapana waits 5 minutes downhill with all the choice."
+    }
   },
   {
     "id": "kapana",
@@ -167,6 +237,15 @@
         "title_en": "The creative-industries quarter",
         "body_bg": "По пътя към „Европейска столица на културата 2019“ Капана се изпълва с ателиета, галерии и фестивали.",
         "body_en": "On the road to European Capital of Culture 2019, Kapana fills with studios, galleries and festivals."
+      },
+      {
+        "year": 2019,
+        "display_bg": "2019 г.",
+        "display_en": "2019",
+        "title_bg": "Столица на културата",
+        "title_en": "Capital of Culture",
+        "body_bg": "Капана е сцената, на която Пловдив изживява годината си като Европейска столица на културата.",
+        "body_en": "Kapana is the stage on which Plovdiv lives its European Capital of Culture year."
       }
     ],
     "place_ids": [
@@ -180,7 +259,9 @@
       "story-european-capital-culture",
       "story-ottoman-filibe-city"
     ],
-    "route_ids": [],
+    "route_ids": [
+      "kapana-creative-hour"
+    ],
     "getting_there_bg": "Кварталът е на минута пеша северно от площад Джумая — равен и изцяло пешеходен.",
     "getting_there_en": "A minute's walk north of Dzhumaya square — level and fully pedestrian.",
     "sources": [
@@ -196,7 +277,52 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Капана е рядък случай на квартал, оцелял два пъти: веднъж от пожара през 1906 г. и веднъж от булдозерите през 70-те. Уличната мрежа на османската чаршия днес носи най-гъстата концентрация на ателиета и галерии в България — жив урок как занаятчийски квартал се преражда, без да бъде разрушен.",
+    "why_en": "Kapana is that rare quarter which survived twice: once the 1906 fire, once the bulldozers of the 1970s. The Ottoman bazaar's street grid now carries Bulgaria's densest concentration of studios and galleries — a living lesson in how a craft quarter is reborn without being demolished.",
+    "alt_names": [
+      {
+        "name_bg": "Ун капан и Буюк капан",
+        "name_en": "Un Kapan and Buyuk Kapan",
+        "note_bg": "пазарните имена от XV век",
+        "note_en": "the 15th-century market names"
+      }
+    ],
+    "fabric": [
+      {
+        "kind": "industry",
+        "name_bg": "Занаятите на уличните имена",
+        "name_en": "The trades of the street names",
+        "note_bg": "Железарска, Кожухарска, Абаджийска, Златарска — всяка улица помни занаята си.",
+        "note_en": "Zhelezarska, Kozhuharska, Abadzhiyska, Zlatarska — every street remembers its trade."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Баня „Старинна“ (Чифте баня)",
+        "name_en": "The Chifte bath",
+        "note_bg": "Османската двойна баня, днес зала за съвременно изкуство.",
+        "note_en": "The Ottoman double bath, today a contemporary-art hall.",
+        "place_id": "place-chifte-hamam"
+      },
+      {
+        "kind": "community",
+        "name_bg": "Творческата общност",
+        "name_en": "The creative community",
+        "note_bg": "Ателиетата и фестивалите от 2014 г. насам върнаха квартала към занаятчийския му ген.",
+        "note_en": "The studios and festivals since 2014 returned the quarter to its artisan gene.",
+        "place_id": "place-kapana-q12282547"
+      }
+    ],
+    "visit": {
+      "see_bg": "Уличките с имената на занаятите, изложбата в Чифте баня и завоя на Античния стадион на две крачки.",
+      "see_en": "The craft-named lanes, the exhibition inside the Chifte bath and the Ancient Stadium's curve two steps away.",
+      "time_bg": "Един час за обиколка; цяла вечер, ако останете.",
+      "time_en": "An hour for the loop; a whole evening if you stay.",
+      "best_bg": "Следобед към привечер, когато ателиетата и баровете оживяват.",
+      "best_en": "Afternoon into dusk, when the studios and bars come alive.",
+      "food_bg": "Най-гъстата мрежа от кафенета и барове в града — резервации трябват само в уикенда.",
+      "food_en": "The city's densest café-and-bar grid — reservations matter only on weekends."
+    }
   },
   {
     "id": "hadzhi-hasan-mahala",
@@ -276,7 +402,45 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Това е кварталът, който показва какво е бил Пловдив преди булевардите: махленска мрежа от XV век, оцеляла в самия център, където български, арменски, турски и ромски семейства живеят врата до врата от столетия. Под улиците ѝ лежи Източната порта на античния град — три епохи в петстотин метра.",
+    "why_en": "This is the quarter that shows what Plovdiv was before the boulevards: a 15th-century mahala grid surviving in the very centre, where Bulgarian, Armenian, Turkish and Roma families have lived door to door for centuries. Beneath its streets lies the ancient city's Eastern Gate — three eras in five hundred metres.",
+    "fabric": [
+      {
+        "kind": "community",
+        "name_bg": "Многоетническата махала",
+        "name_en": "The multiethnic mahala",
+        "note_bg": "Българи, арменци, турци и роми съжителстват тук от османско време; мнозинството днес се самоопределя като турци.",
+        "note_en": "Bulgarians, Armenians, Turks and Roma have shared the mahala since Ottoman times; most residents today identify as Turkish."
+      },
+      {
+        "kind": "faith",
+        "name_bg": "Изчезналата джамия „Хаджи Хасан“",
+        "name_en": "The lost Hadzhi Hasan mosque",
+        "note_bg": "Храмът, дал името на махалата, не е оцелял — името е единственият му паметник.",
+        "note_en": "The mosque that named the mahala has not survived — the name is its only monument."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Понеделник пазарът",
+        "name_en": "The Monday Market",
+        "note_bg": "Пазарното каре на западния ръб храни квартала и до днес.",
+        "note_en": "The market block on the western edge still feeds the quarter.",
+        "place_id": "place-monday-market-in-plovdiv-q60242590"
+      }
+    ],
+    "visit": {
+      "see_bg": "Разкопките на Източната порта, Понеделник пазара и самата махленска мрежа — ниски къщи и тесни улици под тепето.",
+      "see_en": "The Eastern Gate excavations, the Monday Market and the mahala grid itself — low houses and narrow streets below the hill.",
+      "time_bg": "Около час, най-добре по път между Стария град и Каменица.",
+      "time_en": "About an hour, best en route between the Old Town and Kamenitsa.",
+      "best_bg": "Делнична сутрин, когато пазарът работи.",
+      "best_en": "A weekday morning, while the market runs.",
+      "food_bg": "Пазарните закусвални са насреща; за ресторанти слезте към центъра.",
+      "food_en": "The market's snack counters are at hand; for restaurants head back toward the centre.",
+      "respect_bg": "Махалата е гъсто населен дом, не атракция — минавайте с уважение и питайте, преди да снимате хора.",
+      "respect_en": "The mahala is a densely lived-in home, not an attraction — pass with respect and ask before photographing people."
+    }
   },
   {
     "id": "karshiyaka",
@@ -359,7 +523,8 @@
       "story-international-fair-modernity"
     ],
     "route_ids": [
-      "modern-plovdiv-20th-century"
+      "modern-plovdiv-20th-century",
+      "karshiyaka-north-bank"
     ],
     "getting_there_bg": "Пеша по покрития Панаирен мост от центъра (10 минути от Джумая) или с автобусите по бул. „Цар Борис III Обединител“.",
     "getting_there_en": "On foot over the covered Fairground Bridge from the centre (10 minutes from Dzhumaya) or by bus along Tsar Boris III Obedinitel boulevard.",
@@ -376,7 +541,66 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Кършияка е половината от историята на Пловдив, която повечето посетители пропускат: градът отвъд реката, където кервани, панаири и индустрия пет века теглят Пловдив на север. От сефарадските и арменските заселници до панаирните палати и панелите — това е кварталът на пристиганията.",
+    "why_en": "Karshiyaka is the half of Plovdiv's story most visitors miss: the city across the river, where caravans, fairs and industry have pulled Plovdiv northward for five centuries. From Sephardic and Armenian settlers to fair pavilions and panel blocks — it is the quarter of arrivals.",
+    "alt_names": [
+      {
+        "name_bg": "Отсрещната страна",
+        "name_en": "The opposite side",
+        "note_bg": "буквалният превод на турското име",
+        "note_en": "the Turkish name's literal meaning"
+      },
+      {
+        "name_bg": "Район „Северен“",
+        "name_en": "The Northern district",
+        "note_bg": "административното име днес",
+        "note_en": "today's administrative name"
+      }
+    ],
+    "fabric": [
+      {
+        "kind": "community",
+        "name_bg": "Сефаради и арменци",
+        "name_en": "Sephardim and Armenians",
+        "note_bg": "Първите големи общности на брега — от XVI и XVII век.",
+        "note_en": "The bank's first big communities — from the 16th and 17th centuries."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Международният панаир",
+        "name_en": "The International Fair",
+        "note_bg": "От изложението през 1892 г. до панаирните палати — икономическият магнит на севера.",
+        "note_en": "From the 1892 exhibition to the fair pavilions — the north's economic magnet.",
+        "place_id": "place-international-fair-plovdiv-q1667383"
+      },
+      {
+        "kind": "faith",
+        "name_bg": "„Св. Иван Рилски“",
+        "name_en": "St Ivan of Rila",
+        "note_bg": "Енорийската църква от 1931 г., сърцето на междувоенния квартал.",
+        "note_en": "The 1931 parish church, heart of the interwar quarter.",
+        "place_id": "place-saint-ivan-of-rila-church-q57601813"
+      },
+      {
+        "kind": "industry",
+        "name_bg": "Панаирните хотели",
+        "name_en": "The fair hotels",
+        "note_bg": "„Марица“, „Новотел“, „Санкт Петербург“ — бетонният хоризонт на модерната Кършияка.",
+        "note_en": "The Maritsa, Novotel and Sankt Peterburg — modern Karshiyaka's concrete skyline.",
+        "place_id": "place-novotel-plovdiv-q7065087"
+      }
+    ],
+    "visit": {
+      "see_bg": "Покритият Панаирен мост, панаирният ансамбъл с хотелите и „Св. Иван Рилски“ сред жилищните улици.",
+      "see_en": "The covered Fairground Bridge, the fair ensemble with its hotels, and St Ivan of Rila amid the residential streets.",
+      "time_bg": "Два часа пеша; повече по време на панаирно изложение.",
+      "time_en": "Two hours on foot; longer during a fair show.",
+      "best_bg": "Следобед — реката и мостът са най-хубави на ниско слънце.",
+      "best_en": "Afternoon — the river and the bridge are best in low sun.",
+      "food_bg": "Заведения по моста и около хотелите; северните улици са жилищни.",
+      "food_en": "Eateries on the bridge and around the hotels; the northern streets are residential."
+    }
   },
   {
     "id": "marasha",
@@ -421,6 +645,15 @@
         "body_en": "The quarter's Church of St George and its school become a centre of the church-national struggles and of Bulgarian education."
       },
       {
+        "year": 1887,
+        "display_bg": "1887 г.",
+        "display_en": "1887",
+        "title_bg": "Синагогата",
+        "title_en": "The synagogue",
+        "body_bg": "В скрит двор на квартала е издигната сефарадската синагога — молитвеният дом на пловдивските евреи.",
+        "body_en": "In a hidden courtyard rises the Sephardic synagogue — the prayer home of Plovdiv's Jews."
+      },
+      {
         "year": 1900,
         "display_bg": "около 1900 г.",
         "display_en": "around 1900",
@@ -443,7 +676,8 @@
     ],
     "route_ids": [
       "grebna-baza-riverside",
-      "multicultural-plovdiv"
+      "multicultural-plovdiv",
+      "marasha-between-the-bridges"
     ],
     "getting_there_bg": "Начало от площад Съединение или Дондуковата градина; кварталът е равен и удобен за разходка към брега на Марица.",
     "getting_there_en": "Start from Unification square or the Dondukova garden; the quarter is level and easy walking toward the Maritsa bank.",
@@ -460,7 +694,45 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Мараша пази мащаба на предмодерния Пловдив: ниски къщи, градинска памет и три религиозни дома — имарет джамия, синагогата и „Св. Георги“ — на десет минути една от друга. Кварталът е тихото доказателство, че многоликият град не е бил само в центъра.",
+    "why_en": "Marasha keeps pre-modern Plovdiv's scale: low houses, garden memory and three religious homes — the Imaret Mosque, the synagogue and St George — ten minutes apart. The quarter is quiet proof that the many-voiced city was never confined to the centre.",
+    "fabric": [
+      {
+        "kind": "faith",
+        "name_bg": "„Св. Георги“ и училището",
+        "name_en": "St George and its school",
+        "note_bg": "Възрожденското средище на църковно-националните борби в квартала.",
+        "note_en": "The Revival-era hub of the quarter's church-national struggles."
+      },
+      {
+        "kind": "faith",
+        "name_bg": "Синагогата",
+        "name_en": "The synagogue",
+        "note_bg": "Сефарадският дом в скрития двор — един от малкото действащи в страната.",
+        "note_en": "The Sephardic home in its hidden courtyard — among the country's few still active.",
+        "place_id": "place-plovdiv-synagogue-q7205169"
+      },
+      {
+        "kind": "community",
+        "name_bg": "Градинарите",
+        "name_en": "The market gardeners",
+        "note_bg": "Зеленчуковите градини и чифлиците са дали облика и поминъка на стария квартал.",
+        "note_en": "Vegetable gardens and estates gave the old quarter its shape and its living."
+      }
+    ],
+    "visit": {
+      "see_bg": "Имарет джамия, Герджика мост, двора на синагогата и Дондуковата градина.",
+      "see_en": "The Imaret Mosque, the Gerdzhika bridge, the synagogue courtyard and the Dondukova garden.",
+      "time_bg": "Час и половина до два часа.",
+      "time_en": "An hour and a half to two hours.",
+      "best_bg": "Сутрин — кварталът е най-тих, а дворовете отворени.",
+      "best_en": "Morning — the quarter is quietest and the courtyards open.",
+      "food_bg": "Кафенета около Дондуковата градина; останалото е жилищно.",
+      "food_en": "Cafés around the Dondukova garden; the rest is residential.",
+      "respect_bg": "Улиците са малки и жилищни — снимайте сградите, не дворовете.",
+      "respect_en": "The streets are small and residential — photograph the buildings, not the courtyards."
+    }
   },
   {
     "id": "kyuchuk-parizh",
@@ -548,7 +820,8 @@
       "story-1928-earthquake"
     ],
     "route_ids": [
-      "station-to-old-town"
+      "station-to-old-town",
+      "kyuchuk-parizh-little-paris"
     ],
     "getting_there_bg": "От Централна гара — през подлеза или Родопския надлез на юг; повечето автобусни линии към Южен район минават оттук.",
     "getting_there_en": "From the Central Station head south via the underpass or the Rhodope overpass; most Southern-district bus lines pass through here.",
@@ -565,7 +838,65 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Кючук Париж е учебникът по работнически Пловдив: квартал, роден от една тухларна фабрика, отгледан от бежанската вълна след 1919 г. и свързан с центъра едва през 1928 г. Името му — „малкият Париж“ — е и самоирония, и самочувствие; и двете са живи и днес.",
+    "why_en": "Kyuchuk Parizh is the textbook of working-class Plovdiv: a quarter born of a brickworks, raised by the refugee wave after 1919, and linked to the centre only in 1928. Its name — \"Little Paris\" — is both self-irony and self-confidence; both are alive today.",
+    "alt_names": [
+      {
+        "name_bg": "Кючука",
+        "name_en": "Kyuchuka",
+        "note_bg": "свитата градска форма",
+        "note_en": "the clipped local form"
+      },
+      {
+        "name_bg": "Малкият Париж",
+        "name_en": "Little Paris",
+        "note_bg": "преводът, който кварталът носи с усмивка",
+        "note_en": "the translation the quarter wears with a smile"
+      }
+    ],
+    "fabric": [
+      {
+        "kind": "people",
+        "name_bg": "Павел Калпакчиев",
+        "name_en": "Pavel Kalpakchiev",
+        "note_bg": "Индустриалецът, чиято тухларна от 1896 г. е ядрото на квартала.",
+        "note_en": "The industrialist whose 1896 brickworks seeded the quarter."
+      },
+      {
+        "kind": "community",
+        "name_bg": "Тракийските бежанци",
+        "name_en": "The Thracian refugees",
+        "note_bg": "Хиляди прокудени семейства след Ньойския договор строят южните улици.",
+        "note_en": "Thousands of displaced families after the Treaty of Neuilly build the southern streets."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Читалище „Христо Ботев“",
+        "name_en": "The Hristo Botev chitalishte",
+        "note_bg": "Първата обществена институция на квартала, основана 1905 г.",
+        "note_en": "The quarter's first public institution, founded in 1905."
+      },
+      {
+        "kind": "industry",
+        "name_bg": "Тухларната индустрия",
+        "name_en": "The brick industry",
+        "note_bg": "Пещите и глината на юга изградиха буквално и преносно следосвобожденския Пловдив.",
+        "note_en": "The south's kilns and clay built post-Liberation Plovdiv, literally and figuratively."
+      }
+    ],
+    "visit": {
+      "see_bg": "Гарата, Родопския надлез с гледката към коловозите и „Света Богородица Лурдска“.",
+      "see_en": "The station, the Rhodope overpass with its railyard view and Our Lady of Lourdes.",
+      "time_bg": "Около час — идеален при пристигане или заминаване с влак.",
+      "time_en": "About an hour — ideal on a train arrival or departure.",
+      "best_bg": "По всяко време; неделя сутрин около църквата е най-живо.",
+      "best_en": "Any time; Sunday morning around the church is liveliest.",
+      "food_bg": "Квартални закусвални по „Македония“; за ресторанти — центъра отвъд гарата.",
+      "food_en": "Neighbourhood snack bars along Makedonia street; for restaurants, cross to the centre.",
+      "respect_bg": "Работнически жилищен квартал без туристическа сцена — гостувайте, не обикаляйте като по музей.",
+      "respect_en": "A workers' residential quarter with no tourist stage — visit as a guest, not as if in a museum."
+    }
   },
   {
     "id": "stolipinovo",
@@ -660,7 +991,52 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Никоя история на Пловдив не е пълна без Столипиново: кварталът е създаден от общинско решение през 1889 г. и оттогава всяко десетилетие оставя тук следа от градската политика — преселване, наводнение, панелни блокове, недостигаща инфраструктура. Да го разкажеш честно значи да разкажеш как градът се отнася към най-уязвимите си жители.",
+    "why_en": "No history of Plovdiv is complete without Stolipinovo: the quarter was created by a municipal decision in 1889, and every decade since has left the mark of city policy here — resettlement, flood, panel blocks, infrastructure that never quite arrived. To tell it honestly is to tell how the city treats its most vulnerable residents.",
+    "alt_names": [
+      {
+        "name_bg": "Новото село",
+        "name_en": "The New Village",
+        "note_bg": "първото име от 1889 г.",
+        "note_en": "the first name, from 1889"
+      }
+    ],
+    "fabric": [
+      {
+        "kind": "community",
+        "name_bg": "Мюсюлманските ромски общности",
+        "name_en": "The Muslim Roma communities",
+        "note_bg": "Мнозинството жители; много семейства се самоопределят като турци.",
+        "note_en": "The majority of residents; many families identify as Turkish."
+      },
+      {
+        "kind": "community",
+        "name_bg": "Бурджиите",
+        "name_en": "The burgudzhii",
+        "note_bg": "Християнски ромски родове, преселили се от Кючук Париж през 30-те.",
+        "note_en": "Christian Roma families who moved from Kyuchuk Parizh in the 1930s."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Пловдивската община",
+        "name_en": "The Plovdiv municipality",
+        "note_bg": "От решението през 1889 г. до жилищата след наводнението от 1957 г. — институцията, чиито избори са оформили квартала.",
+        "note_en": "From the 1889 decision to the housing after the 1957 flood — the institution whose choices shaped the quarter."
+      }
+    ],
+    "visit": {
+      "see_bg": "Столипиново не е туристическа дестинация; историята му се чете най-добре тук, в записите и източниците, и в разказа за следвоенния град.",
+      "see_en": "Stolipinovo is not a tourist destination; its history is best read here, in the records and sources, and in the postwar-city story.",
+      "time_bg": "Четете страницата; посещение има смисъл само с местен повод или домакин.",
+      "time_en": "Read the page; a visit makes sense only with a local occasion or host.",
+      "best_bg": "Няма туристически сезон — има съседи и тяхното ежедневие.",
+      "best_en": "There is no tourist season — there are neighbours and their everyday life.",
+      "food_bg": "Кварталната търговия обслужва квартала; не разчитайте на туристическа инфраструктура.",
+      "food_en": "The local trade serves the locals; do not expect tourist infrastructure.",
+      "respect_bg": "Десетки хиляди души живеят тук с право на всекидневие без обективи — никакво „сафари“ фотографиране.",
+      "respect_en": "Tens of thousands live here with a right to an everyday life free of lenses — no \"safari\" photography."
+    }
   },
   {
     "id": "kamenitsa",
@@ -713,6 +1089,15 @@
         "title_en": "The Hristo Botev stadium",
         "body_bg": "На южния край на квартала е открит стадионът на „Ботев“ — до днес домът на жълто-черните.",
         "body_en": "Botev's stadium opens on the quarter's southern edge — the yellow-and-blacks' home to this day."
+      },
+      {
+        "year": 2000,
+        "display_bg": "днес",
+        "display_en": "today",
+        "title_bg": "Кварталът на марката",
+        "title_en": "The brand's quarter",
+        "body_bg": "Името „Каменица“ живее двойно — като квартал и като една от най-разпознаваемите марки на страната.",
+        "body_en": "The name Kamenitsa lives twice over — as a quarter and as one of the country's most recognisable brands."
       }
     ],
     "place_ids": [
@@ -721,7 +1106,9 @@
       "place-botev-1912-football-complex-q30644373"
     ],
     "story_ids": [],
-    "route_ids": [],
+    "route_ids": [
+      "kamenitsa-brewery-and-east"
+    ],
     "getting_there_bg": "На 15 минути пеша източно от площад Джумая по бул. „Мария Луиза“; равен терен.",
     "getting_there_en": "Fifteen minutes on foot east of Dzhumaya square along Maria Luiza boulevard; level ground.",
     "sources": [
@@ -737,7 +1124,46 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Каменица разказва индустриалния изток на Пловдив: тепе, изчезнало в каменоломни, пивоварна, станала национална марка още през 1881 г., и стадион, около който кварталът мери пулса си. Малко квартали показват така ясно как индустрията буквално е погълнала ландшафта — и е създала идентичност.",
+    "why_en": "Kamenitsa tells Plovdiv's industrial east: a hill that vanished into quarries, a brewery that became a national brand back in 1881, and a stadium by which the quarter takes its pulse. Few quarters show so plainly how industry literally consumed the landscape — and created an identity.",
+    "fabric": [
+      {
+        "kind": "industry",
+        "name_bg": "Пивоварна „Каменица“",
+        "name_en": "The Kamenitza brewery",
+        "note_bg": "Вари бира на това място от 1881 г. — една от най-старите индустрии на града.",
+        "note_en": "Brewing on this spot since 1881 — one of the city's oldest industries.",
+        "place_id": "place-kamenitza-q12282497"
+      },
+      {
+        "kind": "industry",
+        "name_bg": "Каменоломните",
+        "name_en": "The quarries",
+        "note_bg": "През XVIII–XIX век възвишението е разсечено за строителен камък, докато изчезва.",
+        "note_en": "Through the 18th–19th centuries the rise was cut away for building stone until it vanished."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Стадион „Христо Ботев“",
+        "name_en": "The Hristo Botev stadium",
+        "note_bg": "Домът на жълто-черните от 1961 г. — южната котва на квартала.",
+        "note_en": "The yellow-and-blacks' home since 1961 — the quarter's southern anchor.",
+        "place_id": "place-hristo-botev-stadium-q849662"
+      }
+    ],
+    "visit": {
+      "see_bg": "Пивоварната отвън, стадиона и кварталните улици между двата булеварда.",
+      "see_en": "The brewery from outside, the stadium and the quarter streets between the two boulevards.",
+      "time_bg": "Около час — удобно продължение след Хаджи Хасан махала.",
+      "time_en": "About an hour — a natural continuation after Hadzhi Hasan Mahala.",
+      "best_bg": "Мачов ден за атмосфера; делник за спокойна разходка.",
+      "best_en": "A match day for atmosphere; a weekday for a calm walk.",
+      "food_bg": "Заведения около стадиона и по „Мария Луиза“.",
+      "food_en": "Eateries around the stadium and along Maria Luiza boulevard.",
+      "respect_bg": "Между спирките са жилищни улици — кварталът е дом, не декор.",
+      "respect_en": "Residential streets lie between the stops — the quarter is a home, not a backdrop."
+    }
   },
   {
     "id": "trakiya",
@@ -815,7 +1241,9 @@
     "story_ids": [
       "story-socialist-infrastructure"
     ],
-    "route_ids": [],
+    "route_ids": [
+      "trakiya-panel-city"
+    ],
     "getting_there_bg": "С автобусите по бул. „Освобождение“ и „Съединение“; пеша от центъра е далеч — комплексът започва на около 4 км източно.",
     "getting_there_en": "By bus along Osvobozhdenie and Saedinenie boulevards; it is a long walk — the complex starts about 4 km east of the centre.",
     "sources": [
@@ -831,7 +1259,60 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "„Тракия“ е най-амбициозният градостроителен проект в историята на Пловдив — град за 60 000 души, начертан наведнъж през 1968 г. и построен за едно десетилетие. Който иска да разбере социалистическия урбанизъм не от учебник, а отвътре, трябва да върви между микрорайоните ѝ.",
+    "why_en": "Trakiya is the most ambitious planning project in Plovdiv's history — a city for 60,000 drawn in one stroke in 1968 and built within a decade. Anyone who wants to understand socialist urbanism from the inside rather than a textbook should walk its microdistricts.",
+    "alt_names": [
+      {
+        "name_bg": "ж.к. „Тракия“",
+        "name_en": "Trakiya housing estate",
+        "note_bg": "официалното жилищно-комплексно име",
+        "note_en": "the official housing-estate designation"
+      }
+    ],
+    "fabric": [
+      {
+        "kind": "people",
+        "name_bg": "Арх. Иван Попов и екипът му",
+        "name_en": "Architect Ivan Popov and his team",
+        "note_bg": "Проектантите, начертали 13-те микрорайона през 1968 г.",
+        "note_en": "The planners who drew the 13 microdistricts in 1968."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Парк „Лаута“",
+        "name_en": "Lauta park",
+        "note_bg": "Зеленият дроб и спортното сърце на района.",
+        "note_en": "The district's green lung and sporting heart.",
+        "place_id": "place-lokomotiv-stadium-q3623331"
+      },
+      {
+        "kind": "faith",
+        "name_bg": "„Свети Дух“ и „Св. Преображение“",
+        "name_en": "Holy Spirit and Transfiguration",
+        "note_bg": "Католическият храм от 1996 г. — първият след 1989 г. в България — и православният от 2012 г.",
+        "note_en": "The 1996 Catholic church — Bulgaria's first after 1989 — and the 2012 Orthodox one."
+      },
+      {
+        "kind": "community",
+        "name_bg": "Жителите на микрорайоните",
+        "name_en": "The microdistrict residents",
+        "note_bg": "Около 60 000 съседи — трети по големина панелен район в страната.",
+        "note_en": "Some 60,000 neighbours — the country's third-largest panel district."
+      }
+    ],
+    "visit": {
+      "see_bg": "Алеите между микрорайоните, парк „Лаута“ със стадиона и паметника на хан Крум.",
+      "see_en": "The alleys between microdistricts, Lauta park with the stadium and the Khan Krum monument.",
+      "time_bg": "Час и половина; с „Лаута“ — половин следобед.",
+      "time_en": "An hour and a half; with Lauta, half an afternoon.",
+      "best_bg": "Късен следобед, когато животът между блоковете излиза навън.",
+      "best_en": "Late afternoon, when life between the blocks spills outdoors.",
+      "food_bg": "Квартални заведения из микрорайоните и около „Лаута“.",
+      "food_en": "Neighbourhood eateries across the microdistricts and around Lauta.",
+      "respect_bg": "Панелите са домове на десетки хиляди — фотографирайте архитектурата, не хората по балконите.",
+      "respect_en": "The panels are home to tens of thousands — photograph the architecture, not the people on the balconies."
+    }
   },
   {
     "id": "smirnenski",
@@ -876,6 +1357,15 @@
         "body_en": "Past Tsarevets street rise the panel blocks of the newer half; to the north the quarter leans on the Rowing Canal parkland."
       },
       {
+        "year": 1988,
+        "display_bg": "1988 г.",
+        "display_en": "1988",
+        "title_bg": "Гребният канал",
+        "title_en": "The rowing canal",
+        "body_bg": "Каналът на Гребната база стъпва на северната граница на квартала — оттогава Смирненски живее с водата.",
+        "body_en": "The Rowing Canal takes its place on the quarter's northern edge — Smirnenski has lived with the water ever since."
+      },
+      {
         "year": 2000,
         "display_bg": "днес",
         "display_en": "today",
@@ -892,7 +1382,8 @@
     "story_ids": [],
     "route_ids": [
       "grebna-baza-riverside",
-      "kapana-parks-rowing-canal"
+      "kapana-parks-rowing-canal",
+      "smirnenski-hill-to-water"
     ],
     "getting_there_bg": "С автобусите по бул. „Пещерско шосе“ или пеша покрай Гребната база; теренът е равен.",
     "getting_there_en": "By bus along Peshtersko Shose boulevard or on foot past the Rowing Canal; the ground is level.",
@@ -909,7 +1400,52 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Смирненски е кварталът, в който следвоенният Пловдив се учи да живее модерно: тухлените кооперации на 50-те и панелите на 70-те, разделени от една улица, а до тях — университетски кампус, най-високото тепе и гребният канал. Западът на града в едно каре.",
+    "why_en": "Smirnenski is where postwar Plovdiv learned to live modern: 1950s brick cooperatives and 1970s panels split by a single street, with a university campus, the highest tepe and the rowing canal alongside. The city's west in one frame.",
+    "alt_names": [
+      {
+        "name_bg": "ж.к. „Христо Смирненски“",
+        "name_en": "Hristo Smirnenski estate",
+        "note_bg": "пълното официално име",
+        "note_en": "the full official name"
+      }
+    ],
+    "fabric": [
+      {
+        "kind": "institution",
+        "name_bg": "Медицинският университет",
+        "name_en": "The Medical University",
+        "note_bg": "Кампусът, който прави квартала студентския запад на града.",
+        "note_en": "The campus that makes the quarter the city's student west.",
+        "place_id": "place-plovdiv-medical-university-q3557727"
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Гребната база",
+        "name_en": "The Rowing Canal",
+        "note_bg": "Северната граница на квартала е двукилометровата писта на българското гребане.",
+        "note_en": "The quarter's northern edge is Bulgarian rowing's two-kilometre course.",
+        "place_id": "place-rowing-canal-plovdiv"
+      },
+      {
+        "kind": "people",
+        "name_bg": "Христо Смирненски",
+        "name_en": "Hristo Smirnenski",
+        "note_bg": "Поетът (1898–1923), чието име носи кварталът.",
+        "note_en": "The poet (1898–1923) whose name the quarter carries."
+      }
+    ],
+    "visit": {
+      "see_bg": "Контрастът тухла–панел по „Царевец“, изкачването на Джендем тепе и алеите на Гребната база.",
+      "see_en": "The brick-versus-panel contrast along Tsarevets street, the Dzhendem tepe climb and the Rowing Canal alleys.",
+      "time_bg": "Два часа с тепето; час по равното.",
+      "time_en": "Two hours with the hill; one on the flat.",
+      "best_bg": "Предзалезните часове — върхът и водата в най-добрата си светлина.",
+      "best_en": "The pre-sunset hours — summit and water at their best light.",
+      "food_bg": "Студентски заведения около кампуса; при канала — само сезонни павилиони.",
+      "food_en": "Student eateries around the campus; by the canal, only seasonal kiosks."
+    }
   },
   {
     "id": "mladezhki-halm",
@@ -997,7 +1533,63 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Кварталът около най-високото тепе пази най-дългата само-история на Пловдив в миниатюра: светилище на Аполон на върха, име от младежките бригади на 1948 г., детска железница по склона и студентски кампус в подножието. Геология, идеология и всекидневие на едно място.",
+    "why_en": "The quarter around the highest tepe holds Plovdiv's longest self-history in miniature: an Apollo sanctuary on the summit, a name from the 1948 youth brigades, a children's railway on the slope and a student campus at the foot. Geology, ideology and daily life in one place.",
+    "alt_names": [
+      {
+        "name_bg": "Джендем тепе",
+        "name_en": "Dzhendem tepe",
+        "note_bg": "османското име — „адският хълм“",
+        "note_en": "the Ottoman name — \"hell hill\""
+      },
+      {
+        "name_bg": "Джин тепе",
+        "name_en": "Dzhin tepe",
+        "note_bg": "„хълмът на духовете“",
+        "note_en": "\"the hill of spirits\""
+      },
+      {
+        "name_bg": "Чигдем тепе",
+        "name_en": "Chigdem tepe",
+        "note_bg": "„хълмът на минзухарите“",
+        "note_en": "\"the hill of crocuses\""
+      }
+    ],
+    "fabric": [
+      {
+        "kind": "faith",
+        "name_bg": "Светилището на Аполон Кендрисийски",
+        "name_en": "The sanctuary of Apollo Kendrisos",
+        "note_bg": "Античният храм на върха, по-късно заменен от трикорабна базилика.",
+        "note_en": "The summit's ancient temple, later succeeded by a three-nave basilica."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Детската железница",
+        "name_en": "The children's railway",
+        "note_bg": "Теснолинейката от 600 мм по южния склон — с гарички „Пионер“, „Снежанка“ и „Панорама“.",
+        "note_en": "The 600 mm narrow-gauge line on the southern slope — with stations Pioneer, Snow White and Panorama."
+      },
+      {
+        "kind": "community",
+        "name_bg": "Студентите на запада",
+        "name_en": "The west's students",
+        "note_bg": "Кампусът на Медицинския университет държи квартала млад.",
+        "note_en": "The Medical University campus keeps the quarter young.",
+        "place_id": "place-plovdiv-medical-university-q3557727"
+      }
+    ],
+    "visit": {
+      "see_bg": "Изкачването до върха (307 м), детската железница по южния склон и панорамата към Родопите.",
+      "see_en": "The climb to the 307 m summit, the children's railway on the southern slope and the Rhodope panorama.",
+      "time_bg": "Час и половина за хълма и склона.",
+      "time_en": "An hour and a half for the hill and slope.",
+      "best_bg": "Златният час преди залез — това е сунсет-хълмът на запада.",
+      "best_en": "Golden hour before sunset — this is the west's sunset hill.",
+      "food_bg": "Носете вода; заведенията са в подножието към „Пещерско шосе“.",
+      "food_en": "Carry water; the eateries sit at the foot toward Peshtersko Shose."
+    }
   },
   {
     "id": "proslav",
@@ -1086,7 +1678,50 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Прослав показва как Пловдив расте, поглъщайки села: Мичкюр става Прослав през 1934 г., квартал — през 1969 г., а между двете дати тук процъфтява една от най-необичайните общности в региона — толстоистка земеделска колония. Малка история с голям въпрос: какво губи и какво печели селото, станало град.",
+    "why_en": "Proslav shows how Plovdiv grows by absorbing villages: Michkur became Proslav in 1934 and a quarter in 1969, and between those dates one of the region's most unusual communities flourished here — a Tolstoyan farming colony. A small history with a big question: what does a village gain and lose in becoming city.",
+    "alt_names": [
+      {
+        "name_bg": "Мичкюр",
+        "name_en": "Michkur",
+        "note_bg": "името до 1934 г.",
+        "note_en": "the name until 1934"
+      }
+    ],
+    "fabric": [
+      {
+        "kind": "community",
+        "name_bg": "Толстоистите",
+        "name_en": "The Tolstoyans",
+        "note_bg": "Колонията от 1926 г. обработва 264 декара по идеите на Толстой за прост живот и общ труд.",
+        "note_en": "The 1926 colony farmed 264 decares on Tolstoy's ideas of simple living and shared labour."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "ТКЗС-то",
+        "name_en": "The collective farm",
+        "note_bg": "Земята на колонията ляга в основата на кооперативното стопанство след 1945 г.",
+        "note_en": "The colony's land seeded the cooperative farm after 1945."
+      },
+      {
+        "kind": "community",
+        "name_bg": "Опълченците от 1912 г.",
+        "name_en": "The 1912 volunteers",
+        "note_bg": "Мичкюрци се записват в Македоно-одринското опълчение — селската страница от националната история.",
+        "note_en": "Michkur men joined the Macedonian-Adrianopolitan Corps — the village's page in the national story."
+      }
+    ],
+    "visit": {
+      "see_bg": "Селската улична мрежа, старите дворове по „Елена“ и краят на града при Първенецката река.",
+      "see_en": "The village street grid, the old yards and the city's edge at the Parvenetska river.",
+      "time_bg": "Около час, най-добре с колело по Пещерско шосе.",
+      "time_en": "About an hour, best by bicycle along Peshtersko Shose.",
+      "best_bg": "Пролет и ранна есен, когато дворовете са зелени.",
+      "best_en": "Spring and early autumn, when the yards are green.",
+      "food_bg": "Селски магазини и по някоя механа — не туристическа зона.",
+      "food_en": "Village shops and the odd tavern — not a tourist zone."
+    }
   },
   {
     "id": "komatevo",
@@ -1148,7 +1783,9 @@
         "body_en": "The village is annexed to the city; today Orthodox, Catholic and Protestant churches share the quarter."
       }
     ],
-    "place_ids": [],
+    "place_ids": [
+      "place-botev-1912-football-complex-q30644373"
+    ],
     "story_ids": [],
     "route_ids": [],
     "getting_there_bg": "В югозападния край на града, до Околовръстното; стига се с автобусите по Коматевско шосе.",
@@ -1166,7 +1803,43 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Коматево е най-дълбокият селски корен на градска територия: документирано през 1477 г. като село на войнугани — християни с привилегии да гледат коне за султанските походи, то пази и следа от базилика от V век. Кварталът е жив атлас на прехода село–град, с три храма на три изповедания.",
+    "why_en": "Komatevo is the deepest village root on city territory: documented in 1477 as a village of voynugans — Christians privileged to keep horses for the sultans' campaigns — it also guards traces of a 5th-century basilica. The quarter is a living atlas of the village-to-city passage, with three churches of three confessions.",
+    "fabric": [
+      {
+        "kind": "community",
+        "name_bg": "Войнуганите",
+        "name_en": "The voynugans",
+        "note_bg": "Привилегированите коневъди на османската армия — социалният статут, съхранил християнското село.",
+        "note_en": "The Ottoman army's privileged horse-keepers — the status that preserved the Christian village."
+      },
+      {
+        "kind": "faith",
+        "name_bg": "Три храма, три изповедания",
+        "name_en": "Three churches, three confessions",
+        "note_bg": "Православен, католически и протестантски храм делят едно бивше село.",
+        "note_en": "Orthodox, Catholic and Protestant churches share one former village."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Базата на „Ботев 1912“",
+        "name_en": "The Botev 1912 training ground",
+        "note_bg": "Клубният комплекс направи името на Коматево познато на футболна България.",
+        "note_en": "The club's training complex put Komatevo's name on football Bulgaria's map.",
+        "place_id": "place-botev-1912-football-complex-q30644373"
+      }
+    ],
+    "visit": {
+      "see_bg": "Селската мрежа около площада, трите храма и тренировъчния комплекс на „Ботев“.",
+      "see_en": "The village grid around the square, the three churches and Botev's training complex.",
+      "time_bg": "Около час; комбинирайте с Прослав за селския запад.",
+      "time_en": "About an hour; pair with Proslav for the village west.",
+      "best_bg": "Неделя сутрин, когато и трите камбанарии/салона са будни.",
+      "best_en": "Sunday morning, when all three congregations are awake.",
+      "food_bg": "Квартални заведения около площада.",
+      "food_en": "Neighbourhood eateries around the square."
+    }
   },
   {
     "id": "zaharna-fabrika",
@@ -1209,6 +1882,15 @@
         "title_en": "In the Northern district",
         "body_bg": "Кварталът влиза в днешните граници на район „Северен“, между жп линията за Филипово и бул. „Васил Априлов“.",
         "body_en": "The quarter settles into today's Northern district, between the Filipovo railway line and Vasil Aprilov boulevard."
+      },
+      {
+        "year": 2000,
+        "display_bg": "днес",
+        "display_en": "today",
+        "title_bg": "Работническият пласт оцелява",
+        "title_en": "The workers' layer survives",
+        "body_bg": "Ниските работнически улици пазят мащаба на 30-те сред индустриалния север.",
+        "body_en": "The low workers' streets keep the 1930s scale amid the industrial north."
       }
     ],
     "place_ids": [],
@@ -1231,7 +1913,35 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Захарна фабрика е кварталът, който индустрията е именувала буквално: работническите улици от 30-те носят името на фабриката „Кристал“, около която са възникнали. В историята на индустриалния северен бряг този малък квартал е липсващото звено между панаира и железницата.",
+    "why_en": "Zaharna Fabrika is the quarter industry named literally: the 1930s workers' streets carry the name of the Kristal factory around which they grew. In the industrial north bank's story, this small quarter is the missing link between the fair and the railway.",
+    "fabric": [
+      {
+        "kind": "industry",
+        "name_bg": "Фабриката „Кристал“",
+        "name_en": "The Kristal factory",
+        "note_bg": "Захарната фабрика, дала име и поминък на квартала.",
+        "note_en": "The sugar factory that gave the quarter its name and its living."
+      },
+      {
+        "kind": "community",
+        "name_bg": "Работническите семейства",
+        "name_en": "The workers' families",
+        "note_bg": "Кварталът от 30-те е строен от и за хората на индустриалната Кършияка.",
+        "note_en": "The 1930s quarter was built by and for industrial Karshiyaka's people."
+      }
+    ],
+    "visit": {
+      "see_bg": "Работническата улична мрежа между жп линията за Филипово и „Васил Априлов“; индустриалният пейзаж се чете отвън.",
+      "see_en": "The workers' street grid between the Filipovo railway and Vasil Aprilov boulevard; the industrial landscape reads from outside.",
+      "time_bg": "Половин час, по път между панаира и Филипово.",
+      "time_en": "Half an hour, en route between the fair and Filipovo.",
+      "best_bg": "По всяко време; кварталът е делничен по характер.",
+      "best_en": "Any time; the quarter is workaday by nature.",
+      "food_bg": "Малки квартални магазини; заведенията са към панаира.",
+      "food_en": "Small local shops; eateries lie toward the fair."
+    }
   },
   {
     "id": "izgrev",
@@ -1267,6 +1977,15 @@
         "body_en": "Low panel blocks rise at the city's eastern edge, with towers of up to 22 storeys along Prepa street."
       },
       {
+        "year": 1995,
+        "display_bg": "1995 г.",
+        "display_en": "1995",
+        "title_bg": "В район „Източен“",
+        "title_en": "In the Eastern district",
+        "body_bg": "Кварталът влиза в днешните граници на район „Източен“ — най-източният жилищен край на града.",
+        "body_en": "The quarter settles into today's Eastern district — the city's easternmost residential edge."
+      },
+      {
         "year": 2000,
         "display_bg": "днес",
         "display_en": "today",
@@ -1296,7 +2015,37 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Изгрев е последната страница на социалистическото разширяване на изток — кварталът, с който урбанизираният Пловдив свършва. Ниските панели и 22-етажните кули от края на 70-те са назидателен контраст с махалите в центъра: една и съща държава, две коренно различни идеи за квартал.",
+    "why_en": "Izgrev is the last page of the socialist eastward expansion — the quarter where urbanised Plovdiv ends. Its late-1970s low panels and 22-storey towers stand in instructive contrast to the central mahalas: one state, two radically different ideas of a neighbourhood.",
+    "fabric": [
+      {
+        "kind": "community",
+        "name_bg": "Жителите на източния край",
+        "name_en": "The eastern edge's residents",
+        "note_bg": "Смесен квартал на границата на града — домът на хора, а не на забележителности.",
+        "note_en": "A mixed quarter at the city limit — home to people, not to sights."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Училищата и градините",
+        "name_en": "The schools and kindergartens",
+        "note_bg": "Шест детски градини и три училища носят всекидневието на квартала.",
+        "note_en": "Six kindergartens and three schools carry the quarter's daily life."
+      }
+    ],
+    "visit": {
+      "see_bg": "Изгрев е жилищен край без туристически обекти — контекстът му се чете тук и от прозореца на автобуса.",
+      "see_en": "Izgrev is a residential edge without tourist sights — its context reads best here and from the bus window.",
+      "time_bg": "Страницата стига; посещение — само с местен повод.",
+      "time_en": "The page suffices; visit only with a local reason.",
+      "best_bg": "Името подсказва: изгревът тук е пръв в града.",
+      "best_en": "The name is the hint: sunrise reaches here first.",
+      "food_bg": "Кварталната търговия обслужва квартала.",
+      "food_en": "Local trade serves the locals.",
+      "respect_bg": "Жилищен квартал с общности, уморени от чужди обективи — гледайте с уважение, не през визьор.",
+      "respect_en": "A residential quarter whose communities are weary of outside lenses — look with respect, not through a viewfinder."
+    }
   },
   {
     "id": "belomorski-vardarski",
@@ -1375,7 +2124,35 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Двете кварталски имена са паметник, какъвто никой не е строил нарочно: Беломорски и Вардарски пазят в адресите си географията на изгубените домове — Беломорска Тракия и Вардарска Македония. Бежанската вълна на 20-те е сред най-големите демографски събития в историята на Пловдив и тези улици са нейният жив архив.",
+    "why_en": "The two quarter names are a monument nobody built on purpose: Belomorski and Vardarski keep in their addresses the geography of lost homes — Aegean Thrace and Vardar Macedonia. The refugee wave of the 1920s is among the largest demographic events in Plovdiv's history, and these streets are its living archive.",
+    "fabric": [
+      {
+        "kind": "community",
+        "name_bg": "Тракийските и македонските бежанци",
+        "name_en": "The Thracian and Macedonian refugees",
+        "note_bg": "Семействата, дошли след 1919 г., застроиха южния край и му дадоха имената.",
+        "note_en": "The families who came after 1919 built the southern edge and gave it its names."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Имената-паметници",
+        "name_en": "The memorial names",
+        "note_bg": "„Беломорски“ и „Вардарски“ са градска топонимия като паметна плоча.",
+        "note_en": "Belomorski and Vardarski are urban toponymy as a memorial plaque."
+      }
+    ],
+    "visit": {
+      "see_bg": "Уличната мрежа на бежанското планиране от 20-те — равни карета южно от жп линията.",
+      "see_en": "The 1920s refugee-planning street grid — even blocks south of the railway.",
+      "time_bg": "Половин час пеша, най-добре в комбинация с Кючук Париж.",
+      "time_en": "Half an hour on foot, best combined with Kyuchuk Parizh.",
+      "best_bg": "По всяко време — това е обикновен жилищен юг.",
+      "best_en": "Any time — this is the ordinary residential south.",
+      "food_bg": "Квартални закусвални; ресторантите са към центъра.",
+      "food_en": "Local snack bars; restaurants lie toward the centre."
+    }
   },
   {
     "id": "filipovo",
@@ -1449,6 +2226,41 @@
       }
     ],
     "data_quality": "editorial_neighbourhood_history",
-    "updated_at": "2026-07-08"
+    "updated_at": "2026-07-09",
+    "why_bg": "Филипово е кварталът-възел: гарата от 1915 г. върза северния бряг към Бургас, Карлово и Панагюрище и превърна едно село в железничарски квартал. Историята му е историята на българската железница в мащаб една махала — включително автогарата „Север“, дошла през 1970 г. да я допълни.",
+    "why_en": "Filipovo is the junction quarter: the 1915 station tied the north bank to Burgas, Karlovo and Panagyurishte and turned a village into a railway neighbourhood. Its story is Bulgarian railway history at mahala scale — including the Sever bus terminal that arrived in 1970 to complete it.",
+    "fabric": [
+      {
+        "kind": "institution",
+        "name_bg": "Гара Филипово",
+        "name_en": "Filipovo station",
+        "note_bg": "Възелът от 1915 г. с разклонения в четири посоки.",
+        "note_en": "The 1915 junction with branches in four directions."
+      },
+      {
+        "kind": "institution",
+        "name_bg": "Автогара „Север“",
+        "name_en": "The Sever bus terminal",
+        "note_bg": "От 1970 г. — автобусната врата на северния град.",
+        "note_en": "Since 1970 — the north city's bus gate."
+      },
+      {
+        "kind": "community",
+        "name_bg": "Железничарите",
+        "name_en": "The railway families",
+        "note_bg": "Кварталът израства около хората, които обслужват възела.",
+        "note_en": "The quarter grew around the people who run the junction."
+      }
+    ],
+    "visit": {
+      "see_bg": "Гарата и коловозното ветрило — индустриална археология в действие; кварталните улици наоколо са обикновени и живи.",
+      "see_en": "The station and its fan of tracks — industrial archaeology in operation; the surrounding streets are ordinary and alive.",
+      "time_bg": "Половин час, удобно при път с влак на север.",
+      "time_en": "Half an hour, convenient when riding a northbound train.",
+      "best_bg": "Делник сутрин, когато възелът работи с пълен график.",
+      "best_en": "A weekday morning, when the junction runs its full timetable.",
+      "food_bg": "Гарова закусвалня и квартални магазини.",
+      "food_en": "A station snack bar and neighbourhood shops."
+    }
   }
 ]

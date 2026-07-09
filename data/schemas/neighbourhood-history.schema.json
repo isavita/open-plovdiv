@@ -27,7 +27,10 @@
     "getting_there_en",
     "sources",
     "data_quality",
-    "updated_at"
+    "updated_at",
+    "why_bg",
+    "why_en",
+    "visit"
   ],
   "properties": {
     "id": {
@@ -143,7 +146,7 @@
     "timeline": {
       "type": "array",
       "minItems": 2,
-      "maxItems": 7,
+      "maxItems": 10,
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -256,6 +259,147 @@
     "updated_at": {
       "type": "string",
       "format": "date"
+    },
+    "why_bg": {
+      "type": "string",
+      "minLength": 150
+    },
+    "why_en": {
+      "type": "string",
+      "minLength": 150
+    },
+    "alt_names": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name_bg",
+          "name_en"
+        ],
+        "properties": {
+          "name_bg": {
+            "type": "string",
+            "minLength": 2
+          },
+          "name_en": {
+            "type": "string",
+            "minLength": 2
+          },
+          "note_bg": {
+            "type": "string",
+            "minLength": 8
+          },
+          "note_en": {
+            "type": "string",
+            "minLength": 8
+          }
+        }
+      }
+    },
+    "fabric": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "name_bg",
+          "name_en",
+          "note_bg",
+          "note_en"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "people",
+              "community",
+              "industry",
+              "institution",
+              "faith"
+            ]
+          },
+          "name_bg": {
+            "type": "string",
+            "minLength": 2
+          },
+          "name_en": {
+            "type": "string",
+            "minLength": 2
+          },
+          "note_bg": {
+            "type": "string",
+            "minLength": 20
+          },
+          "note_en": {
+            "type": "string",
+            "minLength": 20
+          },
+          "place_id": {
+            "type": "string",
+            "pattern": "^place-[0-9a-z-]+$"
+          }
+        }
+      }
+    },
+    "visit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "see_bg",
+        "see_en",
+        "time_bg",
+        "time_en",
+        "best_bg",
+        "best_en",
+        "food_bg",
+        "food_en"
+      ],
+      "properties": {
+        "see_bg": {
+          "type": "string",
+          "minLength": 40
+        },
+        "see_en": {
+          "type": "string",
+          "minLength": 40
+        },
+        "time_bg": {
+          "type": "string",
+          "minLength": 10
+        },
+        "time_en": {
+          "type": "string",
+          "minLength": 10
+        },
+        "best_bg": {
+          "type": "string",
+          "minLength": 10
+        },
+        "best_en": {
+          "type": "string",
+          "minLength": 10
+        },
+        "food_bg": {
+          "type": "string",
+          "minLength": 20
+        },
+        "food_en": {
+          "type": "string",
+          "minLength": 20
+        },
+        "respect_bg": {
+          "type": "string",
+          "minLength": 20
+        },
+        "respect_en": {
+          "type": "string",
+          "minLength": 20
+        }
+      }
     }
   }
 }

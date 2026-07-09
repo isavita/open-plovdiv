@@ -93,6 +93,14 @@ const areaTable: Record<NeighbourhoodArea, Record<Lang, string>> = {
   west: tr("Запад", "West", "Westen", "Ouest", "Ovest", "Batı", "Oeste", "Δυτικά", "西部", "Kanluran", "Захід", "Запад")
 };
 
+const fabricKindTable: Record<string, Record<Lang, string>> = {
+  people: tr("Личности", "People", "Personen", "Personnalités", "Persone", "Kişiler", "Personas", "Πρόσωπα", "人物", "Mga tao", "Постаті", "Личности"),
+  community: tr("Общност", "Community", "Gemeinschaft", "Communauté", "Comunità", "Topluluk", "Comunidad", "Κοινότητα", "コミュニティ", "Komunidad", "Громада", "Община"),
+  industry: tr("Индустрия", "Industry", "Industrie", "Industrie", "Industria", "Sanayi", "Industria", "Βιομηχανία", "産業", "Industriya", "Промисловість", "Промышленность"),
+  institution: tr("Институция", "Institution", "Institution", "Institution", "Istituzione", "Kurum", "Institución", "Θεσμός", "施設・機関", "Institusyon", "Установа", "Учреждение"),
+  faith: tr("Вяра", "Faith", "Glaube", "Religion", "Fede", "İnanç", "Fe", "Πίστη", "信仰", "Pananampalataya", "Віра", "Вера")
+};
+
 const labelTable = {
   indexTitle: tr(
     "Кварталните истории на Пловдив",
@@ -370,6 +378,96 @@ const labelTable = {
   thenNow: tr("тогава/сега", "then/now", "damals/heute", "avant/après", "prima/dopo", "önce/sonra", "antes/después", "πριν/μετά", "今昔比較", "noon/ngayon", "тоді/тепер", "тогда/сейчас"),
   archiveWord: tr("архив", "archive", "Archiv", "archives", "archivio", "arşiv", "archivo", "αρχείο", "アーカイブ", "arkibo", "архів", "архив"),
   updatedWord: tr("Обновено", "Updated", "Aktualisiert", "Mis à jour", "Aggiornato", "Güncellendi", "Actualizado", "Ενημερώθηκε", "更新日", "Na-update", "Оновлено", "Обновлено"),
+  whyTitle: tr(
+    "Защо този квартал е важен",
+    "Why this quarter matters",
+    "Warum dieses Viertel zählt",
+    "Pourquoi ce quartier compte",
+    "Perché questo quartiere conta",
+    "Bu mahalle neden önemli",
+    "Por qué importa este barrio",
+    "Γιατί μετράει αυτή η συνοικία",
+    "この街区が重要な理由",
+    "Bakit mahalaga ang purok na ito",
+    "Чому цей квартал важливий",
+    "Почему этот квартал важен"
+  ),
+  altNamesTitle: tr(
+    "Други имена",
+    "Also known as",
+    "Auch bekannt als",
+    "Autres noms",
+    "Altri nomi",
+    "Diğer adları",
+    "Otros nombres",
+    "Άλλες ονομασίες",
+    "別名",
+    "Iba pang tawag",
+    "Інші назви",
+    "Другие названия"
+  ),
+  fabricTitle: tr(
+    "Хора, общности и институции",
+    "People, communities and institutions",
+    "Menschen, Gemeinschaften und Institutionen",
+    "Personnes, communautés et institutions",
+    "Persone, comunità e istituzioni",
+    "İnsanlar, topluluklar ve kurumlar",
+    "Personas, comunidades e instituciones",
+    "Άνθρωποι, κοινότητες και θεσμοί",
+    "人・コミュニティ・機関",
+    "Mga tao, komunidad at institusyon",
+    "Люди, громади та установи",
+    "Люди, общины и учреждения"
+  ),
+  visitTitle: tr(
+    "За посетителя",
+    "For the visitor",
+    "Für Besucher",
+    "Pour le visiteur",
+    "Per chi visita",
+    "Ziyaretçi için",
+    "Para el visitante",
+    "Για τον επισκέπτη",
+    "訪れる人へ",
+    "Para sa bisita",
+    "Для відвідувача",
+    "Для посетителя"
+  ),
+  visitSee: tr("Какво да видите", "What to see", "Was ansehen", "Que voir", "Cosa vedere", "Ne görmeli", "Qué ver", "Τι να δείτε", "見どころ", "Ano ang makikita", "Що подивитися", "Что посмотреть"),
+  visitTime: tr("Колко време", "How long", "Wie lange", "Combien de temps", "Quanto tempo", "Ne kadar süre", "Cuánto tiempo", "Πόσος χρόνος", "所要時間", "Gaano katagal", "Скільки часу", "Сколько времени"),
+  visitBest: tr("Кога да дойдете", "When to come", "Wann kommen", "Quand venir", "Quando venire", "Ne zaman gelmeli", "Cuándo venir", "Πότε να έρθετε", "おすすめの時間", "Kailan pupunta", "Коли приходити", "Когда приходить"),
+  visitFood: tr("Храна наблизо", "Food nearby", "Essen in der Nähe", "Où manger", "Dove mangiare", "Yakında yemek", "Comida cerca", "Φαγητό κοντά", "近くの食事", "Pagkain sa malapit", "Їжа поруч", "Еда рядом"),
+  respectTitle: tr(
+    "Посещавайте с уважение",
+    "Visit with respect",
+    "Mit Respekt besuchen",
+    "Visiter avec respect",
+    "Visitare con rispetto",
+    "Saygıyla ziyaret edin",
+    "Visitar con respeto",
+    "Επισκεφθείτε με σεβασμό",
+    "敬意をもって訪れる",
+    "Bumisita nang may paggalang",
+    "Відвідуйте з повагою",
+    "Посещайте с уважением"
+  ),
+  tnTitle: tr(
+    "Тогава и сега",
+    "Then and now",
+    "Damals und heute",
+    "Hier et aujourd'hui",
+    "Ieri e oggi",
+    "Dün ve bugün",
+    "Antes y ahora",
+    "Τότε και τώρα",
+    "今と昔",
+    "Noon at ngayon",
+    "Тоді й тепер",
+    "Тогда и сейчас"
+  ),
+  tnThen: tr("Тогава", "Then", "Damals", "Hier", "Ieri", "Dün", "Antes", "Τότε", "昔", "Noon", "Тоді", "Тогда"),
+  tnNow: tr("Сега", "Now", "Heute", "Aujourd'hui", "Oggi", "Bugün", "Ahora", "Τώρα", "今", "Ngayon", "Тепер", "Сейчас"),
   dataBoundary: tr(
     "Кварталните записи преизползват съществуващи места, разкази и източници; където документацията е откъслечна, това е казано изрично.",
     "Quarter records reuse existing places, stories and sources; where documentation is fragmentary, this is said explicitly.",
@@ -398,4 +496,8 @@ export function neighbourhoodEraLabels(lang: Lang): Record<NeighbourhoodEraTag, 
 
 export function neighbourhoodAreaLabels(lang: Lang): Record<NeighbourhoodArea, string> {
   return pick(areaTable, lang) as Record<NeighbourhoodArea, string>;
+}
+
+export function neighbourhoodFabricKindLabels(lang: Lang): Record<string, string> {
+  return pick(fabricKindTable, lang);
 }

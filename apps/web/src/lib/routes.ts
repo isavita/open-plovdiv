@@ -14,7 +14,7 @@ import { withTranslatedFields } from "../i18n/deTranslations";
  * data/curated/route-geometry/<id>.json (OSRM foot profile + elevation).
  */
 
-export type RouteCategory = "first-visit" | "history-layers" | "sacred" | "creative" | "nature";
+export type RouteCategory = "first-visit" | "history-layers" | "sacred" | "creative" | "nature" | "quarters";
 export type RouteDurationBand = "short" | "half-day" | "full-day";
 export type RouteDifficulty = "easy" | "moderate" | "steep";
 export type RouteWheelchair = "good" | "partial" | "hard";
@@ -131,7 +131,8 @@ export const routeCategoryOrder: RouteCategory[] = [
   "history-layers",
   "sacred",
   "creative",
-  "nature"
+  "nature",
+  "quarters"
 ];
 
 /** Routes that include a given place as a numbered stop (0-based position). */

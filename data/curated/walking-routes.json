@@ -1516,5 +1516,581 @@
     ],
     "data_quality": "editorial_route_guidance",
     "updated_at": "2026-07-07"
+  },
+  {
+    "id": "old-town-gates-and-churches",
+    "title_bg": "Старият град: порти, храмове и Небет тепе",
+    "title_en": "Old Town: gates, churches and Nebet Tepe",
+    "short_title_bg": "Порти и храмове",
+    "short_title_en": "Gates and churches",
+    "tagline_bg": "кварталската обиколка на Трихълмието — отвъд къщите",
+    "tagline_en": "the Three Hills quarter walk — beyond the houses",
+    "summary_bg": "Кварталският маршрут на Стария град за онези, които вече са видели къщите: през средновековната Хисар капия, покрай храмовете на източното рамо, дервишкия дом и Античния театър, до крепостта на Небет тепе. Кратък, стръмен и плътен откъм история.",
+    "summary_en": "The Old Town's quarter walk for those who have seen the houses: through the medieval Hisar Kapia, past the eastern shoulder's churches, the dervish lodge and the Ancient Theatre, up to the Nebet Tepe fortress. Short, steep and dense with history.",
+    "category": "quarters",
+    "duration_minutes": 110,
+    "duration_band": "half-day",
+    "difficulty": "moderate",
+    "wheelchair": "hard",
+    "wheelchair_note_bg": "Целият маршрут е по калдъръм със стълби и наклони.",
+    "wheelchair_note_en": "The whole walk runs on cobbles with stairs and slopes.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Късен следобед — финалът на Небет тепе съвпада със залеза.",
+    "best_time_en": "Late afternoon — the Nebet Tepe finish lines up with sunset.",
+    "accent": "#b4632a",
+    "story_id": "story-roman-philippopolis",
+    "stops": [
+      {
+        "place_id": "place-hisar-kapia",
+        "minutes": 10,
+        "note_bg": "Започнете от средновековната порта — входът на акропола от изток.",
+        "note_en": "Start at the medieval gate — the acropolis' eastern doorway."
+      },
+      {
+        "place_id": "place-church-of-st-constantine-and-helena-q5117391",
+        "minutes": 15,
+        "note_bg": "Най-старият църковен парцел на града е точно до портата; вътре са иконите на Захарий Зограф.",
+        "note_en": "The city's oldest church site sits right by the gate; Zahari Zograf's icons are inside."
+      },
+      {
+        "place_id": "place-st-nedelya-church-q12293066",
+        "minutes": 10,
+        "note_bg": "Слезте по източното рамо до просторната възрожденска „Св. Неделя“.",
+        "note_en": "Walk down the eastern shoulder to the spacious Revival-era St Nedelya."
+      },
+      {
+        "place_id": "place-mevlevi-hane",
+        "minutes": 10,
+        "note_bg": "Домът на въртящите се дервиши напомня, че кварталът е бил и османски.",
+        "note_en": "The whirling dervishes' lodge recalls the quarter's Ottoman centuries."
+      },
+      {
+        "place_id": "place-ancient-theatre",
+        "minutes": 20,
+        "note_bg": "Театърът между Джамбаз и Таксим тепе е сцената на квартала от 19 века насам.",
+        "note_en": "The theatre between Dzhambaz and Taksim hills has been the quarter's stage for nineteen centuries."
+      },
+      {
+        "place_id": "place-nebet-tepe",
+        "minutes": 20,
+        "note_bg": "Финал на крепостния връх — най-старият обитаван пласт на Пловдив и най-добрата панорама на квартала.",
+        "note_en": "Finish on the fortress summit — Plovdiv's oldest inhabited layer and the quarter's best panorama."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-eastern-gate-of-philippopolis-q20500154",
+        "note_bg": "Източната порта на античния град е на 5 минути под Хисар капия.",
+        "note_en": "The ancient city's Eastern Gate is 5 minutes below Hisar Kapia."
+      },
+      {
+        "place_id": "place-plovdiv-regional-ethnographic-museum-q876619",
+        "note_bg": "Дворът на Етнографския музей е на крачка от „Св. св. Константин и Елена“.",
+        "note_en": "The Ethnographic Museum's courtyard is a step from St Constantine and Helena."
+      }
+    ],
+    "start_guidance_bg": "До Хисар капия се стига за 10 минути изкачване от площад Джумая през улица „Съборна“.",
+    "start_guidance_en": "Reach Hisar Kapia with a 10-minute climb from Dzhumaya square via Saborna street.",
+    "end_guidance_bg": "От Небет тепе слизате до Капана за 10 минути. Комбинирайте с маршрута „Римски Пловдив за 90 минути“, който тръгва оттук.",
+    "end_guidance_en": "From Nebet Tepe it is a 10-minute descent to Kapana. Combine with the \"Roman Plovdiv in 90 minutes\" route, which starts here.",
+    "practical": [
+      {
+        "kind": "terrain",
+        "text_bg": "Калдъръм, стълби и две изкачвания — обувки със стабилна подметка.",
+        "text_en": "Cobbles, stairs and two climbs — wear shoes with solid grip."
+      },
+      {
+        "kind": "water",
+        "text_bg": "Заведенията са преди театъра; на Небет тепе няма нищо освен гледката.",
+        "text_en": "Cafés end before the theatre; Nebet Tepe offers nothing but the view."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Църквите са действащи храмове, а дворовете между тях са жилищни — минавайте тихо и не надничайте през огради.",
+        "text_en": "The churches are working shrines and the courtyards between them are private homes — pass quietly and do not peer over fences."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-09"
+  },
+  {
+    "id": "karshiyaka-north-bank",
+    "title_bg": "Кършияка: отсрещният бряг",
+    "title_en": "Karshiyaka: the opposite shore",
+    "short_title_bg": "Кършияка",
+    "short_title_en": "Karshiyaka",
+    "tagline_bg": "мостът, панаирните хотели и енорията на северния град",
+    "tagline_en": "the bridge, the fair hotels and the north city's parish",
+    "summary_bg": "Кварталската разходка на северния бряг: през покрития Панаирен мост към бетонните силуети на „Марица“ и „Новотел“, панелния гигант „Санкт Петербург“, междувоенната църква „Св. Иван Рилски“ и финал при панаира, който от 1892 г. дърпа града на север.",
+    "summary_en": "The north bank's quarter walk: over the covered Fairground Bridge to the concrete silhouettes of the Maritsa and Novotel hotels, the prefab giant Sankt Peterburg, the interwar parish church of St Ivan of Rila, and a finish at the fair that has pulled the city northward since 1892.",
+    "category": "quarters",
+    "duration_minutes": 120,
+    "duration_band": "half-day",
+    "difficulty": "easy",
+    "wheelchair": "good",
+    "wheelchair_note_bg": "Равен маршрут по широки булеварди и алеи; мостът е с рампи.",
+    "wheelchair_note_en": "A level walk on wide boulevards and alleys; the bridge has ramps.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Следобед — светлината пада върху северния бряг откъм реката.",
+    "best_time_en": "Afternoon — the light hits the north bank from the river side.",
+    "accent": "#2f7d6b",
+    "story_id": "story-international-fair-modernity",
+    "stops": [
+      {
+        "place_id": "place-fairground-bridge-q56613441",
+        "minutes": 10,
+        "note_bg": "Покритият пешеходен мост с магазините е официалният вход на Кършияка.",
+        "note_en": "The covered shopping bridge is Karshiyaka's ceremonial entrance."
+      },
+      {
+        "place_id": "place-maritsa-hotel-q6765912",
+        "minutes": 5,
+        "note_bg": "Хотел „Марица“ отваря панаирния ансамбъл на брега.",
+        "note_en": "The Maritsa hotel opens the fairground ensemble on the bank."
+      },
+      {
+        "place_id": "place-novotel-plovdiv-q7065087",
+        "minutes": 10,
+        "note_bg": "Бетонният силует на „Новотел“ бележи модерната Кършияка от 70-те.",
+        "note_en": "The Novotel's concrete silhouette marks 1970s modern Karshiyaka."
+      },
+      {
+        "place_id": "place-park-sankt-peterburg-hotel-q60324839",
+        "minutes": 10,
+        "note_bg": "Панелният гигант „Санкт Петербург“ стои на западния край на кварталния булевард.",
+        "note_en": "The prefab giant Sankt Peterburg holds the quarter boulevard's western end."
+      },
+      {
+        "place_id": "place-saint-ivan-of-rila-church-q57601813",
+        "minutes": 15,
+        "note_bg": "Енорийската църква от 1931 г. е сърцето на междувоенната Кършияка — тиха пресечка сред жилищните улици.",
+        "note_en": "The 1931 parish church is interwar Karshiyaka's heart — a quiet crossing amid residential streets."
+      },
+      {
+        "place_id": "place-international-fair-plovdiv-q1667383",
+        "minutes": 30,
+        "note_bg": "Финал при панаира — икономическият двигател на северния град от 1892 г. насам.",
+        "note_en": "Finish at the fairgrounds — the north city's economic engine since 1892."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-adata-bridge-plovdiv-q56616556",
+        "note_bg": "Мостът „Адата“ на изток гледа към речния остров, дал името си на квартала около него.",
+        "note_en": "The Adata bridge to the east faces the river island that named its surroundings."
+      }
+    ],
+    "start_guidance_bg": "Панаирният мост започва от северния край на Капана, при Часовниковата кула на моста; от Джумая са 10 минути пеша.",
+    "start_guidance_en": "The Fairground Bridge starts at Kapana's northern end; it is a 10-minute walk from Dzhumaya.",
+    "end_guidance_bg": "От панаира се връщате с автобус по бул. „Цар Борис III Обединител“ или пеша по моста. Комбинирайте с маршрута „Модерният Пловдив на XX век“.",
+    "end_guidance_en": "Return from the fair by bus along Tsar Boris III Obedinitel boulevard or back over the bridge on foot. Combine with the \"Modern Plovdiv of the 20th century\" route.",
+    "practical": [
+      {
+        "kind": "food",
+        "text_bg": "Заведенията се редят по моста и около хотелите; към църквата стават по-редки.",
+        "text_en": "Eating spots line the bridge and the hotel block; they thin out toward the church."
+      },
+      {
+        "kind": "shade",
+        "text_bg": "Булевардите са широки и открити — лятото носете шапка.",
+        "text_en": "The boulevards are wide and exposed — bring a hat in summer."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Между хотелите и църквата минавате през жилищни улици — това е живият квартал, не музей.",
+        "text_en": "Between the hotels and the church you cross residential streets — this is a living quarter, not a museum."
+      },
+      {
+        "text_bg": "Панаирът се влиза само по време на изложения; извън тях се разглежда отвън.",
+        "text_en": "The fairgrounds open only during shows; otherwise view them from outside."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-09"
+  },
+  {
+    "id": "marasha-between-the-bridges",
+    "title_bg": "Мараша: между два моста",
+    "title_en": "Marasha: between two bridges",
+    "short_title_bg": "Мараша",
+    "short_title_en": "Marasha",
+    "tagline_bg": "имаретът, синагогата и брегът на стария запад",
+    "tagline_en": "the imaret, the synagogue and the old west's riverbank",
+    "summary_bg": "Кварталска разходка из Мараша — някогашната зона на градини и чифлици западно от центъра: от зигзагообразния градеж на Имарет джамия през Герджика мост и скрития двор на синагогата до Дондуковата градина и Зеления мост на Марица.",
+    "summary_en": "A quarter walk through Marasha — the onetime belt of gardens and estates west of the centre: from the Imaret Mosque's zigzag brickwork via the Gerdzhika bridge and the synagogue's hidden courtyard to the Dondukova garden and the Maritsa's Green Bridge.",
+    "category": "quarters",
+    "duration_minutes": 105,
+    "duration_band": "half-day",
+    "difficulty": "easy",
+    "wheelchair": "good",
+    "wheelchair_note_bg": "Равен маршрут по улици и паркови алеи.",
+    "wheelchair_note_en": "A level walk on streets and park alleys.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Сутрин — дворовете и градината са най-тихи преди обяд.",
+    "best_time_en": "Morning — the courtyards and the garden are quietest before noon.",
+    "accent": "#b4632a",
+    "story_id": "story-ottoman-filibe-city",
+    "stops": [
+      {
+        "place_id": "place-sahabettin-imaret-mosque-q3409168",
+        "minutes": 15,
+        "note_bg": "Имарет джамия от XV век с необичайния си зигзагообразен градеж пази северния вход на квартала.",
+        "note_en": "The 15th-century Imaret Mosque with its unusual zigzag brickwork guards the quarter's northern gate."
+      },
+      {
+        "place_id": "place-gerdzhika-bridge-q56636017",
+        "minutes": 10,
+        "note_bg": "Герджика мост отваря гледката по Марица — западната граница на стария град.",
+        "note_en": "The Gerdzhika bridge opens the Maritsa view — the old city's western brink."
+      },
+      {
+        "place_id": "place-plovdiv-synagogue-q7205169",
+        "minutes": 15,
+        "note_bg": "Синагогата в скрития двор е един от малкото действащи сефарадски храмове в страната.",
+        "note_en": "The courtyard synagogue is among the country's few working Sephardic shrines."
+      },
+      {
+        "place_id": "place-orta-mezar-q37813975",
+        "minutes": 10,
+        "note_bg": "Орта мезар пази името на някогашното мюсюлманско гробище — днес обикновен жилищен ъгъл на Мараша.",
+        "note_en": "Orta Mezar keeps the name of a former Muslim burial ground — today an ordinary residential corner of Marasha."
+      },
+      {
+        "place_id": "place-city-garden-dondukova-garden-q12279001",
+        "minutes": 15,
+        "note_bg": "Най-старата градска градина е следобедната всекидневна на квартала.",
+        "note_en": "The city's oldest public garden is the quarter's afternoon living room."
+      },
+      {
+        "place_id": "place-green-bridge-in-plovdiv-q56632059",
+        "minutes": 10,
+        "note_bg": "Финал на Зеления мост — жп мостът, станал пешеходна връзка над Марица.",
+        "note_en": "Finish on the Green Bridge — the rail bridge turned pedestrian link over the Maritsa."
+      }
+    ],
+    "detours": [
+      {
+        "place_id": "place-unification-square-plovdiv-q58885892",
+        "note_bg": "Площад Съединение с паметника е на 5 минути източно от синагогата.",
+        "note_en": "Unification square and its memorial are 5 minutes east of the synagogue."
+      }
+    ],
+    "start_guidance_bg": "Имарет джамия е на брега до Стария мост, 10 минути северозападно от площад Съединение.",
+    "start_guidance_en": "The Imaret Mosque stands by the riverbank near the Old Bridge, 10 minutes north-west of Unification square.",
+    "end_guidance_bg": "От Зеления мост поемете по крайречната алея на запад към Гребната база или се върнете през Мараша за 15 минути. Комбинирайте с маршрута „Гребната база и брегът на Марица“.",
+    "end_guidance_en": "From the Green Bridge follow the riverside alley west toward the Rowing Canal, or return through Marasha in 15 minutes. Combine with the \"Rowing Canal and the Maritsa riverside\" route.",
+    "practical": [
+      {
+        "kind": "safety",
+        "text_bg": "Синагогата се посещава с предварителна уговорка; дворът се разглежда тихо.",
+        "text_en": "The synagogue is visited by prior arrangement; view the courtyard quietly."
+      },
+      {
+        "kind": "food",
+        "text_bg": "Кафенета има около Дондуковата градина и по „Иван Андонов“; останалото е жилищно.",
+        "text_en": "Cafés cluster around the Dondukova garden; the rest is residential."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Мараша е жилищен квартал с малки улици — снимайте сградите, не дворовете и хората.",
+        "text_en": "Marasha is a residential quarter of small streets — photograph the buildings, not the courtyards or the people."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-09"
+  },
+  {
+    "id": "kyuchuk-parizh-little-paris",
+    "title_bg": "Кючук Париж: малкият Париж на юг",
+    "title_en": "Kyuchuk Parizh: the Little Paris of the south",
+    "short_title_bg": "Кючука",
+    "short_title_en": "Kyuchuka",
+    "tagline_bg": "гарата, надлезът и лурдската църква на работническия юг",
+    "tagline_en": "the station, the overpass and the workers' south's Lourdes church",
+    "summary_bg": "Кратка кварталска разходка в работническия юг: от Централна гара — портата, която създаде квартала — през Родопския надлез над коловозите до „Света Богородица Лурдска“, енорията на южните улици. Историята на тухларната и бежанските години върви с вас в бележките.",
+    "summary_en": "A short quarter walk in the workers' south: from the Central Station — the gate that created the quarter — over the Rhodope overpass above the tracks to Our Lady of Lourdes, parish of the southern streets. The brickworks and refugee years travel with you in the notes.",
+    "category": "quarters",
+    "duration_minutes": 60,
+    "duration_band": "short",
+    "difficulty": "easy",
+    "wheelchair": "partial",
+    "wheelchair_note_bg": "Гарата и улиците са равни; Родопският надлез се минава по стълби — стъпков участък без обходен маршрут по трасето.",
+    "wheelchair_note_en": "The station and streets are level; the Rhodope overpass involves stairs, with no step-free alternative on this line.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "По всяко време на деня; неделя сутрин църквата е най-жива.",
+    "best_time_en": "Any time of day; Sunday morning finds the church at its liveliest.",
+    "accent": "#15657f",
+    "story_id": "story-1928-earthquake",
+    "stops": [
+      {
+        "place_id": "place-plovdiv-central-railway-station-q7205164",
+        "minutes": 10,
+        "note_bg": "Гарата е северната порта на Кючука — жп линията е границата, която е родила квартала.",
+        "note_en": "The station is Kyuchuka's northern gate — the railway is the border that birthed the quarter."
+      },
+      {
+        "place_id": "place-rhodope-overpass-in-plovdiv-q57069714",
+        "minutes": 10,
+        "note_bg": "Надлезът над коловозите е наследникът на Бетонния мост от 1928 г. — гледката към депата е неочаквано фотогенична.",
+        "note_en": "The overpass above the tracks succeeds the 1928 Concrete Bridge — the railyard view is unexpectedly photogenic."
+      },
+      {
+        "place_id": "place-our-lady-of-lourdes-church-q29035428",
+        "minutes": 15,
+        "note_bg": "Финал при католическата „Света Богородица Лурдска“ — енорийският дом на южните улици.",
+        "note_en": "Finish at the Catholic Our Lady of Lourdes — the parish home of the southern streets."
+      }
+    ],
+    "detours": [],
+    "start_guidance_bg": "Стартирате на самата Централна гара — при пристигане с влак маршрутът започва от перона.",
+    "start_guidance_en": "You start at the Central Station itself — arriving by train, the walk begins on the platform.",
+    "end_guidance_bg": "Обратно към центъра сте на 20 минути пеша през гарата. Комбинирайте с маршрута „От гарата към Стария град“ за пълния ден на пристигане.",
+    "end_guidance_en": "The centre is 20 minutes back on foot via the station. Combine with \"From the station to the Old Town\" for a full arrival day.",
+    "practical": [
+      {
+        "kind": "terrain",
+        "text_bg": "Надлезът е със стълби; иначе маршрутът е равен.",
+        "text_en": "The overpass means stairs; the rest is level."
+      },
+      {
+        "kind": "safety",
+        "text_bg": "Около гарата дръжте багажа под око, както на всяка голяма гара.",
+        "text_en": "Around the station keep an eye on bags, as at any big terminus."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Кючук Париж е жилищен квартал без туристическа инфраструктура — тук се идва за градската история, не за атракции.",
+        "text_en": "Kyuchuk Parizh is a residential quarter without tourist infrastructure — you come for the urban history, not for attractions."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-09"
+  },
+  {
+    "id": "kamenitsa-brewery-and-east",
+    "title_bg": "Каменица: пивоварната и източният град",
+    "title_en": "Kamenitsa: the brewery and the east city",
+    "short_title_bg": "Каменица",
+    "short_title_en": "Kamenitsa",
+    "tagline_bg": "индустриалният пласт, стадионът на „Ботев“ и тихият край на изтока",
+    "tagline_en": "the industrial layer, Botev's stadium and the east's quiet edge",
+    "summary_bg": "Кварталска разходка в източния град: покрай пивоварната, варила бира от 1881 г. на мястото на изчезналото каменисто възвишение, през стадион „Христо Ботев“ — дома на жълто-черните от 1961 г., до еврейските гробища на Рогошко шосе, тихия завършек на източния Пловдив.",
+    "summary_en": "A quarter walk in the east city: past the brewery that has brewed since 1881 on the site of the vanished stony rise, via the Hristo Botev stadium — the yellow-and-blacks' home since 1961 — to the Jewish cemetery on Rogoshko Shose, the east's quiet closing note.",
+    "category": "quarters",
+    "duration_minutes": 75,
+    "duration_band": "short",
+    "difficulty": "easy",
+    "wheelchair": "good",
+    "wheelchair_note_bg": "Равни улици и булеварди по целия маршрут.",
+    "wheelchair_note_en": "Level streets and boulevards throughout.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "В мачов ден кварталът живее около стадиона; в останалите — тиха следобедна разходка.",
+    "best_time_en": "On match days the quarter lives around the stadium; otherwise it is a quiet afternoon walk.",
+    "accent": "#8a6d3b",
+    "stops": [
+      {
+        "place_id": "place-kamenitza-q12282497",
+        "minutes": 10,
+        "note_bg": "Пивоварната носи името на квартала от 1881 г. — индустриалният корен на източния град (разглежда се отвън).",
+        "note_en": "The brewery has carried the quarter's name since 1881 — the east city's industrial root (viewed from outside)."
+      },
+      {
+        "place_id": "place-hristo-botev-stadium-q849662",
+        "minutes": 15,
+        "note_bg": "Стадионът на „Ботев“ от 1961 г. е южният котва на квартала; жълто-черното е кварталска идентичност.",
+        "note_en": "Botev's 1961 stadium anchors the quarter's south; yellow-and-black is a neighbourhood identity."
+      },
+      {
+        "place_id": "place-jewish-cemetery-in-plovdiv-q64578596",
+        "minutes": 15,
+        "note_bg": "Финал при еврейските гробища на Рогошко шосе — тихо място на паметта в източния край.",
+        "note_en": "Finish at the Jewish cemetery on Rogoshko Shose — a quiet place of memory at the eastern edge."
+      }
+    ],
+    "detours": [],
+    "start_guidance_bg": "Пивоварната е на бул. „Източен“, 15 минути пеша източно от площад Джумая по „Мария Луиза“.",
+    "start_guidance_en": "The brewery stands on Iztochen boulevard, a 15-minute walk east of Dzhumaya along Maria Luiza.",
+    "end_guidance_bg": "Обратно към центъра — с автобусите по „Цариградско шосе“ или пеша за 25 минути. Комбинирайте с кварталната страница на Каменица за контекста.",
+    "end_guidance_en": "Back to the centre by bus along Tsarigradsko Shose or a 25-minute walk. Combine with the Kamenitsa quarter page for the context.",
+    "practical": [
+      {
+        "kind": "safety",
+        "text_bg": "Гробищата са място на памет — влиза се тихо, мъжете по традиция с покрита глава.",
+        "text_en": "The cemetery is a place of memory — enter quietly; men traditionally cover their heads."
+      },
+      {
+        "kind": "food",
+        "text_bg": "Заведенията са около стадиона и по „Мария Луиза“; към гробищата няма нищо.",
+        "text_en": "Food sits around the stadium and along Maria Luiza; there is nothing toward the cemetery."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Пивоварната е работещо предприятие без постоянен посетителски достъп — маршрутът я разглежда отвън.",
+        "text_en": "The brewery is a working plant without regular visitor access — the route views it from outside."
+      },
+      {
+        "text_bg": "Между спирките минавате жилищни улици — кварталът е дом, не декор.",
+        "text_en": "Between stops you cross residential streets — the quarter is a home, not a backdrop."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-09"
+  },
+  {
+    "id": "trakiya-panel-city",
+    "title_bg": "Тракия: панелният град",
+    "title_en": "Trakiya: the panel city",
+    "short_title_bg": "Тракия",
+    "short_title_en": "Trakiya",
+    "tagline_bg": "микрорайоните, Лаута и социалистическият урбанизъм отблизо",
+    "tagline_en": "the microdistricts, Lauta and socialist urbanism up close",
+    "summary_bg": "Кварталска разходка из най-големия панелен район на Пловдив: от сърцето на микрорайоните, проектирани през 1968 г. от екипа на арх. Иван Попов, през парк „Лаута“ и стадиона на „Локомотив“, до Аграрния университет на западната граница. Социалистическият урбанизъм такъв, какъвто се живее.",
+    "summary_en": "A quarter walk through Plovdiv's biggest panel district: from the heart of the microdistricts designed in 1968 by architect Ivan Popov's team, through Lauta park and Lokomotiv's stadium, to the Agrarian University on the western edge. Socialist urbanism as it is actually lived.",
+    "category": "quarters",
+    "duration_minutes": 90,
+    "duration_band": "half-day",
+    "difficulty": "easy",
+    "wheelchair": "good",
+    "wheelchair_note_bg": "Широки равни алеи и булеварди; панелният район е плосък по проект.",
+    "wheelchair_note_en": "Wide level alleys and boulevards; the panel district is flat by design.",
+    "family_friendly": true,
+    "rainy_day_ok": false,
+    "transit_required": true,
+    "transit_note_bg": "До „Тракия“: автобусите по бул. „Освобождение“ и „Съединение“ от центъра (15–20 минути).",
+    "transit_note_en": "To Trakiya: buses along Osvobozhdenie and Saedinenie boulevards from the centre (15–20 minutes).",
+    "best_time_bg": "Късен следобед — животът между блоковете е тогава, а „Лаута“ хваща ниското слънце.",
+    "best_time_en": "Late afternoon — life between the blocks happens then, and Lauta catches the low sun.",
+    "accent": "#8a6d3b",
+    "story_id": "story-socialist-infrastructure",
+    "stops": [
+      {
+        "place_id": "place-trakiya-district-q3557743",
+        "minutes": 20,
+        "note_bg": "Започнете от сърцето на микрорайоните: 252 блока със 770 входа, замислени като „град в града“.",
+        "note_en": "Start in the heart of the microdistricts: 252 blocks with 770 entrances, conceived as a city within the city."
+      },
+      {
+        "place_id": "place-lokomotiv-stadium-q3623331",
+        "minutes": 15,
+        "note_bg": "Стадионът на „Локомотив“ в парк „Лаута“ е спортното сърце на района — и черно-бялата половина на пловдивското дерби.",
+        "note_en": "Lokomotiv's stadium in Lauta park is the district's sporting heart — and the black-and-white half of the Plovdiv derby."
+      },
+      {
+        "place_id": "place-agricultural-university-plovdiv-q30257336",
+        "minutes": 10,
+        "note_bg": "Финал при Аграрния университет — зелената западна граница между „Тракия“ и стария град.",
+        "note_en": "Finish at the Agrarian University — the green western border between Trakiya and the older city."
+      }
+    ],
+    "detours": [],
+    "start_guidance_bg": "Слезте на спирка в центъра на „Тракия“ по бул. „Освобождение“; маршрутът тръгва от алеите между микрорайоните.",
+    "start_guidance_en": "Get off at a central Trakiya stop on Osvobozhdenie boulevard; the walk starts on the alleys between microdistricts.",
+    "end_guidance_bg": "От Аграрния университет автобусите по „Менделеев“ връщат към центъра за 10 минути. Комбинирайте с кварталната страница на Тракия и разказа за следвоенния град.",
+    "end_guidance_en": "From the Agrarian University, buses along Mendeleev boulevard reach the centre in 10 minutes. Combine with the Trakiya quarter page and the postwar-city story.",
+    "practical": [
+      {
+        "kind": "shade",
+        "text_bg": "Между блоковете сянката е от дърветата на 50 години — в „Лаута“ е най-гъста.",
+        "text_en": "Between the blocks the shade comes from 50-year-old trees — densest in Lauta."
+      },
+      {
+        "kind": "food",
+        "text_bg": "Квартални заведения има из микрорайоните; около стадиона в мачов ден е най-оживено.",
+        "text_en": "Neighbourhood eateries dot the microdistricts; match days around the stadium are liveliest."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Вие сте между жилищните входове на десетки хиляди души — снимайте архитектурата, не балконите и хората.",
+        "text_en": "You walk among the home entrances of tens of thousands — photograph the architecture, not the balconies or the people."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-09"
+  },
+  {
+    "id": "smirnenski-hill-to-water",
+    "title_bg": "Смирненски: от тепето до водата",
+    "title_en": "Smirnenski: hill to water",
+    "short_title_bg": "Смирненски",
+    "short_title_en": "Smirnenski",
+    "tagline_bg": "университетският запад, Джендем тепе и Гребната база",
+    "tagline_en": "the university west, Dzhendem tepe and the Rowing Canal",
+    "summary_bg": "Кварталска разходка на западния град: от кампуса на Медицинския университет — студентското сърце на квартала, нагоре по пътеките на Джендем тепе (Младежкия хълм) и надолу до Гребната база, където Смирненски опира във водата. Едно истинско изкачване, възнаградено с двете най-хубави гледки на запада.",
+    "summary_en": "A west-city quarter walk: from the Medical University campus — the quarter's student heart — up the trails of Dzhendem tepe (Youth Hill) and down to the Rowing Canal, where Smirnenski meets the water. One real climb, rewarded with the west's two best views.",
+    "category": "quarters",
+    "duration_minutes": 130,
+    "duration_band": "half-day",
+    "difficulty": "steep",
+    "wheelchair": "hard",
+    "wheelchair_note_bg": "Изкачването на тепето е по скалисти пътеки; за равна алтернатива вижте маршрута „Гребната база и брегът на Марица“.",
+    "wheelchair_note_en": "The hill climb runs on rocky trails; for a level alternative see the Rowing Canal riverside route.",
+    "family_friendly": false,
+    "rainy_day_ok": false,
+    "transit_required": false,
+    "best_time_bg": "Тръгнете 2–3 часа преди залез — върхът по златния час, водата по здрач.",
+    "best_time_en": "Start 2–3 hours before sunset — the summit in golden hour, the water at dusk.",
+    "accent": "#8a6d3b",
+    "story_id": "story-deep-time-seven-hills",
+    "stops": [
+      {
+        "place_id": "place-plovdiv-medical-university-q3557727",
+        "minutes": 10,
+        "note_bg": "Кампусът на Медицинския университет прави Смирненски студентския запад на Пловдив.",
+        "note_en": "The Medical University campus makes Smirnenski Plovdiv's student west."
+      },
+      {
+        "place_id": "place-dzhendem-tepe-q5319673",
+        "minutes": 45,
+        "note_bg": "Изкачете най-високото тепе (307 м) — от светилището на Аполон до детската железница по южния склон.",
+        "note_en": "Climb the highest tepe (307 m) — from Apollo's sanctuary to the children's railway on the southern slope."
+      },
+      {
+        "place_id": "place-rowing-canal-plovdiv",
+        "minutes": 30,
+        "note_bg": "Слезте на северозапад до Гребната база — двата километра вода, по които кварталът тича и гребе.",
+        "note_en": "Descend north-west to the Rowing Canal — the two kilometres of water where the quarter runs and rows."
+      }
+    ],
+    "detours": [],
+    "start_guidance_bg": "Кампусът е на бул. „Васил Априлов“ 15А; автобусите по „Пещерско шосе“ спират до него.",
+    "start_guidance_en": "The campus sits on Vasil Aprilov boulevard; Peshtersko Shose buses stop beside it.",
+    "end_guidance_bg": "От канала се прибирате с автобус по булеварда или пеша по крайречната алея. Комбинирайте с маршрута „Тепетата и залезите“ за пълния хълмов ден.",
+    "end_guidance_en": "From the canal, ride a boulevard bus back or walk the riverside alley. Combine with \"The tepeta and their sunsets\" for the full hill day.",
+    "practical": [
+      {
+        "kind": "terrain",
+        "text_bg": "Пътеките на тепето са скалисти и хлъзгави на слизане — стабилни обувки.",
+        "text_en": "The tepe's trails are rocky and slippery downhill — solid shoes."
+      },
+      {
+        "kind": "water",
+        "text_bg": "След университета магазини почти няма — носете вода за изкачването.",
+        "text_en": "Shops all but vanish past the university — carry water for the climb."
+      }
+    ],
+    "caveats": [
+      {
+        "text_bg": "Тепето е защитена местност — оставате по пътеките; след залез слизайте по осветените алеи.",
+        "text_en": "The tepe is protected ground — stay on the trails; after sunset descend by the lit alleys."
+      }
+    ],
+    "data_quality": "editorial_route_guidance",
+    "updated_at": "2026-07-09"
   }
 ]

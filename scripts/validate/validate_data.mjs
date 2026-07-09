@@ -1531,6 +1531,15 @@ function assertNeighbourhoodHistories(loaded) {
     if (neighbourhood.sources.length < 2) {
       throw new Error(`${label} needs at least two sources (has ${neighbourhood.sources.length})`);
     }
+
+    if (!Array.isArray(neighbourhood.fabric) || neighbourhood.fabric.length < 1) {
+      throw new Error(`${label} needs at least one fabric entry (people/community/industry/institution/faith)`);
+    }
+    for (const entry of neighbourhood.fabric) {
+      if (entry.place_id && !placeIds.has(entry.place_id)) {
+        throw new Error(`${label} fabric entry "${entry.name_en}" references missing place ${entry.place_id}`);
+      }
+    }
     const sourceUrls = new Set(neighbourhood.sources.map((source) => source.url));
     if (sourceUrls.size !== neighbourhood.sources.length) {
       throw new Error(`${label} repeats a source URL`);

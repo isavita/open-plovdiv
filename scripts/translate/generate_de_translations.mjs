@@ -21,6 +21,9 @@ let protectedNameFixups = [];
 
 const manualTranslationsByLang = {
   de: {
+    // Mini-route title: "Tafelstadt" reads as dining-table city; Plattenbau
+    // is the German term for panel construction.
+    "Trakiya: the panel city": "Trakiya: die Plattenbaustadt",
     // Neighbourhood names: keep the site-wide Latin forms stable ("Parish"
     // was a mistranslation of Parizh).
     "Kyuchuk Parizh": "Kyuchuk Parizh",
@@ -61,6 +64,8 @@ const manualTranslationsByLang = {
     "Open Database License 1.0": "Open Database License 1.0"
   },
   tr: {
+    // Mini-route title: keep Parizh (the machine writes "Parish" again).
+    "Kyuchuk Parizh: the Little Paris of the south": "Kyuchuk Parizh: güneyin Küçük Paris'i",
     // Neighbourhood names: real Turkish forms (the machine produced
     // "Küçükçuk Parish"); Zaharna Fabrika keeps its Bulgarian name.
     "Kyuchuk Parizh": "Küçük Paris",
@@ -104,6 +109,12 @@ const manualTranslationsByLang = {
     "Open Database License 1.0": "Open Database License 1.0"
   },
   el: {
+    // Mini-route titles: Greek transliterations for name consistency and a
+    // correct "from the hill to the water".
+    "Karshiyaka: the opposite shore": "Καρσιγιάκα: η απέναντι όχθη",
+    "Kyuchuk Parizh: the Little Paris of the south": "Κιουτσούκ Παρίζ: το Μικρό Παρίσι του νότου",
+    "Trakiya: the panel city": "Τρακίγια: η πόλη των πάνελ",
+    "Smirnenski: hill to water": "Σμιρνένσκι: από τον λόφο στο νερό",
     // Story titles the machine keeps returning in English even solo.
     "Plovdiv Before the City: The Hills as Deep-Time Memory":
       "Το Plovdiv πριν από την πόλη: οι λόφοι ως μνήμη του βαθέος χρόνου",
@@ -255,6 +266,10 @@ const manualTranslationsByLang = {
       "Ang kronolohiya ng alkalde ay nag-uugnay kay Zdravko Dimitrov kay Eng. Ivan Totev sa pamamagitan ng relasyong \"nagtagumpay\"."
   },
   uk: {
+    // Mini-route titles: keep the Bulgarian quarter names transliterated and
+    // fix the literal "hill to water".
+    "Kamenitsa: the brewery and the east city": "Каменица: пивоварня і східне місто",
+    "Smirnenski: hill to water": "Смирненски: від пагорба до води",
     // Full identity from the machine; uk transliterates famous names.
     "Named after the poet Hristo Smirnenski (1898–1923).":
       "Названий на честь поета Христо Смирненски (1898–1923).",

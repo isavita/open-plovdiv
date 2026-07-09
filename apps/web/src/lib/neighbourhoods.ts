@@ -26,6 +26,37 @@ export type NeighbourhoodTimelineEntry = {
   body_en: string;
 };
 
+export type NeighbourhoodAltName = {
+  name_bg: string;
+  name_en: string;
+  note_bg?: string;
+  note_en?: string;
+};
+
+export type NeighbourhoodFabricKind = "people" | "community" | "industry" | "institution" | "faith";
+
+export type NeighbourhoodFabricEntry = {
+  kind: NeighbourhoodFabricKind;
+  name_bg: string;
+  name_en: string;
+  note_bg: string;
+  note_en: string;
+  place_id?: string;
+};
+
+export type NeighbourhoodVisit = {
+  see_bg: string;
+  see_en: string;
+  time_bg: string;
+  time_en: string;
+  best_bg: string;
+  best_en: string;
+  food_bg: string;
+  food_en: string;
+  respect_bg?: string;
+  respect_en?: string;
+};
+
 export type NeighbourhoodHistory = {
   id: string;
   name_bg: string;
@@ -34,6 +65,11 @@ export type NeighbourhoodHistory = {
   tagline_en: string;
   summary_bg: string;
   summary_en: string;
+  why_bg: string;
+  why_en: string;
+  alt_names?: NeighbourhoodAltName[];
+  fabric?: NeighbourhoodFabricEntry[];
+  visit: NeighbourhoodVisit;
   era_tags: NeighbourhoodEraTag[];
   area: NeighbourhoodArea;
   district_bg: string;

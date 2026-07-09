@@ -89,6 +89,20 @@ const categoryTable: Record<RouteCategory, Record<Lang, string>> = {
     "Творчість і музеї",
     "Творчество и музеи"
   ),
+  quarters: tr(
+    "Кварталски разходки",
+    "Quarter walks",
+    "Viertelspaziergänge",
+    "Balades de quartier",
+    "Passeggiate di quartiere",
+    "Mahalle yürüyüşleri",
+    "Paseos de barrio",
+    "Περίπατοι στις συνοικίες",
+    "街区さんぽ",
+    "Mga lakad sa purok",
+    "Прогулянки кварталами",
+    "Прогулки по кварталам"
+  ),
   nature: tr(
     "Тепета, паркове и река",
     "Hills, parks & river",
@@ -282,18 +296,18 @@ const labelTable = {
     "Для гостей города"
   ),
   indexLead: tr(
-    "Шестнадесет самостоятелни маршрута с реална пешеходна линия, времена и практични бележки — изградени от документираните места, разкази и източници на Open Plovdiv.",
-    "Sixteen self-guided routes with real walking lines, timings and practical notes — built from the documented places, stories and sources of Open Plovdiv.",
-    "Sechzehn selbstgeführte Routen mit echten Gehlinien, Zeiten und praktischen Hinweisen — aufgebaut aus den dokumentierten Orten, Geschichten und Quellen von Open Plovdiv.",
-    "Seize parcours autonomes avec tracés piétons réels, durées et notes pratiques — construits à partir des lieux, récits et sources documentés d'Open Plovdiv.",
-    "Sedici percorsi autoguidati con tracciati pedonali reali, tempi e note pratiche — costruiti dai luoghi, racconti e fonti documentati di Open Plovdiv.",
-    "Gerçek yürüyüş hatları, süreler ve pratik notlarla on altı rota — Open Plovdiv'in belgelenmiş yerleri, anlatıları ve kaynaklarından oluşturuldu.",
-    "Dieciséis rutas autoguiadas con trazados peatonales reales, tiempos y notas prácticas — creadas a partir de los lugares, relatos y fuentes documentados de Open Plovdiv.",
-    "Δεκαέξι αυτοκαθοδηγούμενες διαδρομές με πραγματικές πεζοπορικές γραμμές, χρόνους και πρακτικές σημειώσεις — χτισμένες από τις τεκμηριωμένες τοποθεσίες, αφηγήσεις και πηγές του Open Plovdiv.",
-    "実際の歩行ルート・所要時間・実用メモを備えた16のセルフガイドルート。Open Plovdivの記録済みの場所、ストーリー、出典から組み立てています。",
-    "Labing-anim na rutang self-guided na may totoong linya ng lakad, oras at praktikal na tala — hango sa mga dokumentadong lugar, kuwento at pinagmulan ng Open Plovdiv.",
-    "Шістнадцять маршрутів для самостійних прогулянок зі справжніми пішохідними лініями, часом і практичними порадами — на основі задокументованих місць, розповідей і джерел Open Plovdiv.",
-    "Шестнадцать самостоятельных маршрутов с реальными пешеходными линиями, временем и практичными заметками — на основе задокументированных мест, историй и источников Open Plovdiv."
+    "Самостоятелни маршрути с реална пешеходна линия, времена и практични бележки — изградени от документираните места, разкази и източници на Open Plovdiv.",
+    "Self-guided routes with real walking lines, timings and practical notes — built from the documented places, stories and sources of Open Plovdiv.",
+    "Selbstgeführte Routen mit echten Gehlinien, Zeiten und praktischen Hinweisen — aufgebaut aus den dokumentierten Orten, Geschichten und Quellen von Open Plovdiv.",
+    "Des parcours autonomes avec tracés piétons réels, durées et notes pratiques — construits à partir des lieux, récits et sources documentés d'Open Plovdiv.",
+    "Percorsi autoguidati con tracciati pedonali reali, tempi e note pratiche — costruiti dai luoghi, racconti e fonti documentati di Open Plovdiv.",
+    "Gerçek yürüyüş hatları, süreler ve pratik notlarla rotalar — Open Plovdiv'in belgelenmiş yerleri, anlatıları ve kaynaklarından oluşturuldu.",
+    "Rutas autoguiadas con trazados peatonales reales, tiempos y notas prácticas — creadas a partir de los lugares, relatos y fuentes documentados de Open Plovdiv.",
+    "Αυτοκαθοδηγούμενες διαδρομές με πραγματικές πεζοπορικές γραμμές, χρόνους και πρακτικές σημειώσεις — χτισμένες από τις τεκμηριωμένες τοποθεσίες, αφηγήσεις και πηγές του Open Plovdiv.",
+    "実際の歩行ルート・所要時間・実用メモを備えたセルフガイドルート。Open Plovdivの記録済みの場所、ストーリー、出典から組み立てています。",
+    "Mga rutang self-guided na may totoong linya ng lakad, oras at praktikal na tala — hango sa mga dokumentadong lugar, kuwento at pinagmulan ng Open Plovdiv.",
+    "Маршрути для самостійних прогулянок зі справжніми пішохідними лініями, часом і практичними порадами — на основі задокументованих місць, розповідей і джерел Open Plovdiv.",
+    "Самостоятельные маршруты с реальными пешеходными линиями, временем и практичными заметками — на основе задокументированных мест, историй и источников Open Plovdiv."
   ),
   routes: tr("маршрута", "routes", "Routen", "parcours", "percorsi", "rota", "rutas", "διαδρομές", "ルート", "ruta", "маршрути", "маршрутов"),
   stops: tr("спирки", "stops", "Stationen", "étapes", "tappe", "durak", "paradas", "στάσεις", "地点", "hintuan", "зупинки", "остановки"),

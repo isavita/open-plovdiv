@@ -19,6 +19,7 @@ import {
 import {
   neighbourhoodAreaLabels,
   neighbourhoodEraLabels,
+  neighbourhoodFabricKindLabels,
   neighbourhoodLabels
 } from "@lib/neighbourhoodLabels";
 import { formatKm, routeGeometry } from "@lib/routes";
@@ -42,12 +43,35 @@ const localizedAny = (record: unknown, base: string): string =>
 const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
 const storiesById = new Map(storyLongreads.map((story) => [story.id, story]));
 
+const fabricKindLabels = neighbourhoodFabricKindLabels(lang);
 const name = localizedAny(neighbourhood, "name");
 const tagline = localizedAny(neighbourhood, "tagline");
 const summary = localizedAny(neighbourhood, "summary");
 const nameOrigin = localizedAny(neighbourhood, "name_origin");
 const gettingThere = localizedAny(neighbourhood, "getting_there");
 const coverageNote = localized(neighbourhood as unknown as Record<string, unknown>, "coverage_note");
+const why = localizedAny(neighbourhood, "why");
+const altNames = (neighbourhood.alt_names ?? []).map((entry) => ({
+  name: localizedAny(entry, "name"),
+  note: localized(entry as unknown as Record<string, unknown>, "note")
+}));
+const fabric = (neighbourhood.fabric ?? []).map((entry) => {
+  const place = entry.place_id ? placesById.get(entry.place_id) : null;
+  return {
+    kind: entry.kind,
+    name: localizedAny(entry, "name"),
+    note: localizedAny(entry, "note"),
+    href: place ? localizePath(`/places/${place.id}`, lang) : null
+  };
+});
+const visit = neighbourhood.visit;
+const visitRows = [
+  { label: "visitSee", value: localizedAny(visit, "see") },
+  { label: "visitTime", value: localizedAny(visit, "time") },
+  { label: "visitBest", value: localizedAny(visit, "best") },
+  { label: "visitFood", value: localizedAny(visit, "food") }
+] as const;
+const respect = localized(visit as unknown as Record<string, unknown>, "respect");
 
 const accent = neighbourhoodEraColors[neighbourhood.era_tags[0]];
 
@@ -90,6 +114,14 @@ const timeline = neighbourhood.timeline.map((entry) => ({
   body: localizedAny(entry, "body")
 }));
 const earliest = timeline[0]?.display ?? null;
+
+const thenNowMedia = pairs.slice(0, 2).map((pair) => ({
+  title: localizedAny(pair, "title"),
+  caption: localizedAny(pair, "caption"),
+  href: `${localizePath(`/places/${pair.place_id}`, lang)}#place-then-now`,
+  thenUrl: pair.then_media.url,
+  nowUrl: pair.now_media.url
+}));
 
 const heroMedia = keyPlaces.find((entry) => entry.media)?.media ?? null;
 
@@ -195,10 +227,45 @@ const structuredData = {
             </p>
           )}
 
+          <section class="nb-why">
+            <h2>{t.whyTitle}</h2>
+            <p>{why}</p>
+          </section>
+
+          <section class="nb-visit" aria-label={t.visitTitle}>
+            <h2>{t.visitTitle}</h2>
+            <dl>
+              {visitRows.map((row) => (
+                <div>
+                  <dt>{t[row.label]}</dt>
+                  <dd>{row.value}</dd>
+                </div>
+              ))}
+            </dl>
+            {respect && (
+              <p class="notice nb-respect">
+                <span class="notice-icon" aria-hidden="true">!</span>
+                <span><strong>{t.respectTitle}:</strong> {respect}</span>
+              </p>
+            )}
+          </section>
+
           <div class="nb-callouts">
             <div class="nb-callout">
               <h3>{t.nameOriginTitle}</h3>
               <p>{nameOrigin}</p>
+              {altNames.length > 0 && (
+                <p class="meta nb-alt-names">
+                  <strong>{t.altNamesTitle}:</strong>{" "}
+                  {altNames.map((entry, index) => (
+                    <span>
+                      {index > 0 && "; "}
+                      {entry.name}
+                      {entry.note && ` (${entry.note})`}
+                    </span>
+                  ))}
+                </p>
+              )}
             </div>
             <div class="nb-callout">
               <h3>{t.gettingThereTitle}</h3>
@@ -228,6 +295,21 @@ const structuredData = {
             </ol>
           </section>
 
+          {fabric.length > 0 && (
+            <section aria-label={t.fabricTitle}>
+              <h2>{t.fabricTitle}</h2>
+              <ul class="nb-fabric-grid">
+                {fabric.map((entry) => (
+                  <li class="nb-fabric-card">
+                    <p class="nb-fabric-kind">{fabricKindLabels[entry.kind]}</p>
+                    <h3>{entry.href ? <a href={entry.href}>{entry.name}</a> : entry.name}</h3>
+                    <p class="meta">{entry.note}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {keyPlaces.length > 0 && (
             <section aria-label={t.keyPlaces}>
               <h2>{t.keyPlaces}</h2>
@@ -249,6 +331,31 @@ const structuredData = {
                       <h3><a href={entry.href}>{entry.name}</a></h3>
                       <p class="meta">{entry.summary.length > 130 ? `${entry.summary.slice(0, 130).trim()}...` : entry.summary}</p>
                     </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {thenNowMedia.length > 0 && (
+            <section aria-label={t.tnTitle}>
+              <h2>{t.tnTitle}</h2>
+              <ul class="nb-tn-list">
+                {thenNowMedia.map((pair) => (
+                  <li class="nb-tn-pair">
+                    <a href={pair.href} aria-label={pair.title}>
+                      <span class="nb-tn-frames">
+                        <span class="nb-tn-frame">
+                          <img src={commonsImageUrl(pair.thenUrl, 420)} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                          <span class="nb-tn-tag">{t.tnThen}</span>
+                        </span>
+                        <span class="nb-tn-frame">
+                          <img src={commonsImageUrl(pair.nowUrl, 420)} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                          <span class="nb-tn-tag">{t.tnNow}</span>
+                        </span>
+                      </span>
+                      <span class="nb-tn-title">{pair.title}</span>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -769,6 +876,163 @@ const structuredData = {
 
     .nb-archive-list {
       margin: 0;
+    }
+
+    .nb-why h2 {
+      margin: 0 0 10px;
+    }
+
+    .nb-why p {
+      margin: 0;
+      max-width: 72ch;
+      font-size: 1.06rem;
+      line-height: 1.6;
+    }
+
+    .nb-visit {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      border-left: 4px solid var(--nb-accent);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      padding: 16px 18px;
+    }
+
+    .nb-visit h2 {
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    .nb-visit dl {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+      gap: 12px 18px;
+      margin: 0;
+    }
+
+    .nb-visit dt {
+      color: var(--muted);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .nb-visit dd {
+      margin: 3px 0 0;
+      color: var(--ink);
+    }
+
+    .nb-respect {
+      margin: 14px 0 0;
+    }
+
+    .nb-alt-names {
+      margin: 10px 0 0;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+    }
+
+    .nb-fabric-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+      gap: 14px;
+    }
+
+    .nb-fabric-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      padding: 14px 16px;
+    }
+
+    .nb-fabric-kind {
+      display: inline-block;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 2px 9px;
+      margin: 0 0 8px;
+      background: var(--surface-2);
+    }
+
+    .nb-fabric-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.02rem;
+      line-height: 1.3;
+    }
+
+    .nb-fabric-card h3 a {
+      color: inherit;
+    }
+
+    .nb-fabric-card .meta {
+      margin: 0;
+    }
+
+    .nb-tn-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 14px;
+    }
+
+    .nb-tn-pair a {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nb-tn-frames {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .nb-tn-frame {
+      position: relative;
+      display: block;
+    }
+
+    .nb-tn-frame img {
+      display: block;
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+    }
+
+    .nb-tn-tag {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      background: color-mix(in srgb, var(--ink) 72%, transparent);
+      color: var(--surface);
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 7px;
+    }
+
+    .nb-tn-title {
+      display: block;
+      padding: 10px 14px;
+      font-weight: 700;
     }
 
     .nb-updated {
