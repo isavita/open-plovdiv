@@ -267,6 +267,27 @@ export function districtLabel(value: string | null, lang: Lang = "bg"): string {
 }
 
 export function sourceTitle(title: string, lang: Lang = "bg"): string {
+  // Imported coordinate records are useful evidence, but their machine-like
+  // source titles made otherwise editorial pages read like an export. Keep
+  // the source and place name visible while presenting the record naturally.
+  const coordinateRecord = title.match(/^Wikidata\s+[—-]\s+(.+?)\s+coordinates$/i);
+  if (coordinateRecord) {
+    const coordinateLabels: Record<Lang, string> = {
+      bg: "Координати (Wikidata)",
+      en: "Coordinates (Wikidata)",
+      de: "Koordinaten (Wikidata)",
+      fr: "Coordonnées (Wikidata)",
+      it: "Coordinate (Wikidata)",
+      tr: "Koordinatlar (Wikidata)",
+      es: "Coordenadas (Wikidata)",
+      el: "Συντεταγμένες (Wikidata)",
+      ja: "座標（Wikidata）",
+      tl: "Mga coordinate (Wikidata)",
+      uk: "Координати (Wikidata)",
+      ru: "Координаты (Wikidata)"
+    };
+    return `${coordinateLabels[lang]} · ${coordinateRecord[1]}`;
+  }
   return sourceTitleLabels[lang]?.[title] ?? translateEn(title, lang) ?? title;
 }
 

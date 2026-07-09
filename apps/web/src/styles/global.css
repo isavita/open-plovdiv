@@ -8622,3 +8622,197 @@ details[open] > .htree-event-sum .htree-caret::after {
     flex-basis: 100%;
   }
 }
+
+/* ---- Mobile visitor experience ------------------------------------------
+   On a phone the site behaves more like a field guide: the primary visitor
+   destinations are always within reach, while the dense catalogue/map UI
+   remains a deliberate second step rather than a wall of controls. */
+.mobile-dock {
+  display: none;
+}
+
+.place-hero-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.place-map-button {
+  min-height: 46px;
+}
+
+@media (max-width: 760px) {
+  .site-shell {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom));
+  }
+
+  .nav {
+    min-height: 64px;
+  }
+
+  .site-header .nav-links {
+    top: 64px;
+    height: calc(100dvh - 64px);
+    max-height: calc(100dvh - 64px);
+    padding: 16px var(--gutter) calc(112px + env(safe-area-inset-bottom));
+  }
+
+  .site-header .nav-links > a {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    min-height: 50px;
+    padding-block: 12px;
+  }
+
+  .site-header .nav-links > a::before {
+    color: var(--gold-deep);
+    content: "→";
+    font-size: 0.9rem;
+    order: 2;
+  }
+
+  .site-header .nav-links > a[aria-current="page"]::before {
+    color: var(--brand);
+  }
+
+  .mobile-dock {
+    position: fixed;
+    z-index: 35;
+    left: max(12px, env(safe-area-inset-left));
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(10px, env(safe-area-inset-bottom));
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 3px;
+    padding: 5px;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    border: 1px solid color-mix(in srgb, var(--gold) 35%, var(--line));
+    border-radius: 18px;
+    box-shadow: 0 16px 38px rgb(47 35 17 / 20%), 0 2px 8px rgb(47 35 17 / 10%);
+    backdrop-filter: blur(18px) saturate(1.35);
+    -webkit-backdrop-filter: blur(18px) saturate(1.35);
+  }
+
+  .mobile-dock a,
+  .mobile-dock button {
+    appearance: none;
+    min-height: 58px;
+    border: 0;
+    border-radius: 13px;
+    background: transparent;
+    color: var(--muted);
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 3px;
+    font: inherit;
+    font-size: 0.66rem;
+    font-weight: 750;
+    line-height: 1.05;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+
+  .mobile-dock svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+  }
+
+  .mobile-dock a[aria-current="page"],
+  .mobile-dock a:active,
+  .mobile-dock button:active {
+    background: color-mix(in srgb, var(--brand-soft) 80%, var(--surface));
+    color: var(--brand);
+    transform: translateY(1px);
+  }
+
+  .main:has(.route-start-bar) + .mobile-dock {
+    display: none;
+  }
+
+  .site-shell:has(.route-start-bar) {
+    padding-bottom: 0;
+  }
+
+  .map-sheet {
+    bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+
+  .places-map {
+    height: min(46vh, 360px);
+  }
+
+  .map-legend {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding: 2px 1px 8px;
+    scrollbar-width: none;
+  }
+
+  .map-legend::-webkit-scrollbar {
+    display: none;
+  }
+
+  .map-legend-chip {
+    flex: 0 0 auto;
+    min-height: 38px;
+  }
+
+  .places-toolbar .filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .places-toolbar .field:first-child,
+  .places-toolbar .field:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .route-picker {
+    border-radius: var(--r-lg);
+    padding: 15px;
+  }
+
+  .route-picker select {
+    min-height: 46px;
+  }
+
+  .place-card {
+    border-radius: var(--r-lg);
+  }
+
+  .place-card-body {
+    padding: 14px;
+  }
+
+  .place-card .eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.09em;
+    margin-bottom: 0;
+  }
+
+  .route-chip {
+    min-height: 40px;
+  }
+
+  .route-card {
+    border-radius: var(--r-lg);
+  }
+
+  .place-hero-actions,
+  .place-hero-actions .button {
+    width: 100%;
+  }
+
+  .place-hero-actions .button {
+    justify-content: center;
+  }
+}

@@ -351,6 +351,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
               aria-expanded="false"
               aria-label={t.site.menu}
               data-menu-aria
+              data-nav-toggle
             >
               <span aria-hidden="true">☰</span>
             </button>
@@ -361,6 +362,25 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
       <main class="main" id="main">
         <slot />
       </main>
+
+      <nav class="mobile-dock" aria-label={t.footer.explore}>
+        <a href={localizePath("/", lang)} aria-current={isActive("/") ? "page" : undefined}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z" /></svg>
+          <span>{t.nav.home}</span>
+        </a>
+        <a href={localizePath("/routes", lang)} aria-current={isActive("/routes") ? "page" : undefined}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h4v4H5zM15 16h4v4h-4zM9 6h3a4 4 0 0 1 4 4v6M12 10H8a4 4 0 0 0-4 4v2" /></svg>
+          <span>{routesLabel}</span>
+        </a>
+        <a href={localizePath("/places", lang)} aria-current={isActive("/places") ? "page" : undefined}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z" /><path d="M9 3v15M15 6v15" /></svg>
+          <span>{t.nav.places}</span>
+        </a>
+        <button type="button" aria-controls="nav-links" aria-expanded="false" aria-label={t.site.menu} data-nav-toggle>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+          <span>{t.site.menu}</span>
+        </button>
+      </nav>
 
       <footer class="site-footer">
         <PlovdivSkyline class="footer-skyline" />
@@ -410,9 +430,17 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
     <script is:inline>
       (function () {
         var header = document.getElementById("site-header");
-        var navToggle = document.getElementById("nav-toggle");
+        var navToggles = document.querySelectorAll("[data-nav-toggle]");
         var themeToggle = document.getElementById("theme-toggle");
         var langMenu = document.getElementById("lang-menu");
+
+        function setNavOpen(open) {
+          if (!header) return;
+          header.setAttribute("data-open", open ? "true" : "false");
+          navToggles.forEach(function (toggle) {
+            toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          });
+        }
 
         // Close the language dropdown when clicking outside it.
         if (langMenu) {
@@ -423,19 +451,23 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
           });
         }
 
-        if (navToggle && header) {
-          navToggle.addEventListener("click", function () {
+        if (navToggles.length && header) {
+          navToggles.forEach(function (navToggle) {
+            navToggle.addEventListener("click", function () {
             var open = header.getAttribute("data-open") === "true";
-            header.setAttribute("data-open", open ? "false" : "true");
-            navToggle.setAttribute("aria-expanded", open ? "false" : "true");
+              setNavOpen(!open);
+            });
           });
         }
+
+        document.querySelectorAll("#nav-links a").forEach(function (link) {
+          link.addEventListener("click", function () { setNavOpen(false); });
+        });
 
         document.addEventListener("keydown", function (e) {
           if (e.key === "Escape") {
             if (header && header.getAttribute("data-open") === "true") {
-              header.setAttribute("data-open", "false");
-              if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+              setNavOpen(false);
             }
             if (langMenu && langMenu.open) langMenu.open = false;
           }

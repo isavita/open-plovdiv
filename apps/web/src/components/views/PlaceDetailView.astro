@@ -1780,6 +1780,13 @@ const mapHref = place.coordinates
           <p class="eyebrow">{localized(place, "era")}</p>
           <h1>{localized(place, "name")}</h1>
           <p class="lead">{localized(place, "summary")}</p>
+          {mapHref && (
+            <div class="place-hero-actions">
+              <a class="button place-map-button" href={mapHref} target="_blank" rel="noreferrer">
+                {labels.openMap} <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          )}
         </div>
         {image && (
           <figure class="place-detail-media">

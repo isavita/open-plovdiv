@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { categoryLabel, distanceKm, formatMoneyBGN, knownHistoryLabel, projectStatusLabel } from "./format";
+import { categoryLabel, distanceKm, formatMoneyBGN, knownHistoryLabel, projectStatusLabel, sourceTitle } from "./format";
 
 describe("format utilities", () => {
   it("formats BGN without cents", () => {
@@ -37,5 +37,10 @@ describe("format utilities", () => {
     expect(knownHistoryLabel("wikidata_coordinate", "tl")).toBe("Koordinada ng Wikidata");
     expect(knownHistoryLabel("Modern period, 1984", "tl")).toBe("Makabagong panahon, 1984");
     expect(knownHistoryLabel("not identified in the current public source", "tl")).toContain("pinagmulan");
+  });
+
+  it("turns imported coordinate source names into reader-facing evidence labels", () => {
+    expect(sourceTitle("Wikidata — Nebet Tepe coordinates", "en")).toBe("Coordinates (Wikidata) · Nebet Tepe");
+    expect(sourceTitle("Wikidata — Nebet Tepe coordinates", "bg")).toBe("Координати (Wikidata) · Nebet Tepe");
   });
 });
