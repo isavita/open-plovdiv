@@ -8051,6 +8051,12 @@ details[open] > .htree-event-sum .htree-caret::after {
   outline: none;
 }
 
+.route-active-toggle[aria-pressed="true"] {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--brand-ink);
+}
+
 /* "Near this route" list in the route evidence panel. */
 .route-near-list {
   list-style: none;
