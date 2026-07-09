@@ -12,6 +12,7 @@ import {
   type KnowledgePlace
 } from "@lib/data";
 import { localeForLang, type Lang } from "@i18n/utils";
+import { sortPlacesForDiscovery } from "@lib/placeDiscovery";
 
 export const prerender = true;
 
@@ -133,8 +134,7 @@ for (const event of historyKnowledgeEvents) {
 
 function placeCards(lang: Lang) {
   const locale = localeForLang(lang);
-  return [...historyKnowledgePlaces]
-    .sort((a, b) => localized(a, "name", lang).localeCompare(localized(b, "name", lang), locale))
+  return sortPlacesForDiscovery(historyKnowledgePlaces, (place) => localized(place, "name", lang), locale)
     .map((place) => {
       const source = sourceById.get(place.source_ids[0]);
       const facts = placeFacts(place, lang);
@@ -193,7 +193,9 @@ const cards = {
   es: placeCards("es"),
   el: placeCards("el"),
   ja: placeCards("ja"),
-  tl: placeCards("tl")
+  tl: placeCards("tl"),
+  uk: placeCards("uk"),
+  ru: placeCards("ru")
 };
 
 export const GET: APIRoute = () =>

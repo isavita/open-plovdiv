@@ -8,6 +8,7 @@ import { distanceMeters } from "@lib/geo";
 import { formatKm, routeCategoryOrder, routeGeometry, walkingRoutes } from "@lib/routes";
 import { routeCategoryLabels } from "@lib/routeLabels";
 import { sourceTitle } from "@lib/format";
+import { sortPlacesForDiscovery } from "@lib/placeDiscovery";
 import { publicThenNowPairs, thenNowCountByPlace } from "@lib/thenNow";
 import {
   historicalArchiveItems,
@@ -478,9 +479,7 @@ function placeFacts(place: KnowledgePlace, options: { includeCreatorFallback?: b
   ].filter(Boolean) as Array<{ label: string; value: string }>;
 }
 
-const places = [...historyKnowledgePlaces].sort((a, b) =>
-  localized(a, "name").localeCompare(localized(b, "name"), locale)
-);
+const places = sortPlacesForDiscovery(historyKnowledgePlaces, (place) => localized(place, "name"), locale);
 const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 const archiveCountByPlace = new Map<string, number>();
 const pairCountByPlace = thenNowCountByPlace(thenNowPairs);
