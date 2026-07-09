@@ -111,6 +111,9 @@
         "needs_multi_source_review_records": { "type": "integer", "minimum": 0 },
         "open_license_records": { "type": "integer", "minimum": 0 },
         "public_reference_terms_records": { "type": "integer", "minimum": 0 }
+      },
+      "patternProperties": {
+        "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 2 }
       }
     },
     "coverage_record": {
@@ -198,6 +201,9 @@
             ]
           }
         }
+      },
+      "patternProperties": {
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 1 }
       }
     }
   }

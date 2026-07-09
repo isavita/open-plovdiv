@@ -13,10 +13,10 @@
       "display_bg": "6000–5000 г. пр.н.е.",
       "display_en": "6000–5000 BC"
     },
-    "title_bg": "Едно от най-старите селища в света",
-    "title_en": "One of the world's oldest settlements",
-    "summary_bg": "Археолозите датират най-ранните селища на пловдивските тепета (Яса тепе) към VI–V хилядолетие пр.н.е. Това нарежда Пловдив сред най-старите непрекъснато обитавани градове в света.",
-    "summary_en": "Archaeologists date the earliest settlements on Plovdiv's hills (Yasa Tepe) to the 6th–5th millennium BC, placing Plovdiv among the oldest continuously inhabited cities in the world.",
+    "title_bg": "Раннонеолитни селища",
+    "title_en": "Early Neolithic settlements",
+    "summary_bg": "Първите праисторически селища на територията на днешен Пловдив се появяват през неолита — преди повече от 8000 години. Яса тепе в днешния квартал „Лаута“ е сред най-добре проучените селищни могили.",
+    "summary_en": "The first prehistoric settlements in the area of present-day Plovdiv appeared in the Neolithic period, more than 8,000 years ago. Yasa Tepe, in today’s Lauta district, is among the best-studied settlement mounds.",
     "conflict_notes_bg": null,
     "conflict_notes_en": null,
     "theme_tags": [
@@ -24,32 +24,31 @@
     ],
     "person_ids": [],
     "place_ids": [
-      "place-old-town",
       "place-plovdiv-city",
       "place-seven-hills"
     ],
     "organization_ids": [],
     "source_ids": [
-      "source-wikipedia-plovdiv",
-      "source-visit-plovdiv-the-antique-plovdiv"
+      "source-visit-plovdiv-prehistory",
+      "source-plovdiv-municipality-ancient-plovdiv"
     ],
     "provenance": [
       {
-        "source_id": "source-wikipedia-plovdiv",
+        "source_id": "source-visit-plovdiv-prehistory",
         "evidence_type": "public_source",
-        "claim_bg": "Датиране и обобщение за хронологичния запис \"Едно от най-старите селища в света\".",
-        "claim_en": "Dating and summary for timeline record \"One of the world's oldest settlements\".",
-        "url": "https://en.wikipedia.org/wiki/Plovdiv",
-        "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Раннонеолитни селища\".",
+        "claim_en": "Dating and summary for timeline record \"Early Neolithic settlements\".",
+        "url": "https://www.visitplovdiv.com/en/node/293",
+        "accessed_at": "2026-07-09",
+        "license_status": "public_reference_terms_unverified"
       },
       {
-        "source_id": "source-visit-plovdiv-the-antique-plovdiv",
+        "source_id": "source-plovdiv-municipality-ancient-plovdiv",
         "evidence_type": "public_source",
-        "claim_bg": "Датиране и обобщение за хронологичния запис \"Едно от най-старите селища в света\".",
-        "claim_en": "Dating and summary for timeline record \"One of the world's oldest settlements\".",
-        "url": "https://www.visitplovdiv.com/en/node/520",
-        "accessed_at": "2026-06-19",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Раннонеолитни селища\".",
+        "claim_en": "Dating and summary for timeline record \"Early Neolithic settlements\".",
+        "url": "https://www.plovdiv.bg/en/tourists/sight-seeing/ancient-plovdiv/",
+        "accessed_at": "2026-07-09",
         "license_status": "public_reference_terms_unverified"
       }
     ],
@@ -67,20 +66,20 @@
     "category": "historical_timeline",
     "era": "prehistory",
     "date": {
-      "year": -4000,
+      "year": -5000,
       "year_end": null,
       "month": null,
       "day": null,
       "precision": "display_period",
-      "display_bg": "края на IV хилядолетие пр.н.е.",
-      "display_en": "late 4th millennium BC"
+      "display_bg": "VI–IV хилядолетие пр.н.е.",
+      "display_en": "6th–4th millennium BC"
     },
-    "title_bg": "Постоянно селище на Небет тепе",
-    "title_en": "A lasting settlement on Nebet Tepe",
-    "summary_bg": "На Небет тепе са открити фина халколитна керамика и предмети от бита, които показват, че към края на IV хилядолетие пр.н.е. на хълма вече има установено селище — обитавано без прекъсване оттогава.",
-    "summary_en": "Fine Chalcolithic pottery and everyday objects found on Nebet Tepe show that by the end of the 4th millennium BC there was already an established settlement on the hill — continuously inhabited ever since.",
-    "conflict_notes_bg": null,
-    "conflict_notes_en": null,
+    "title_bg": "Дългата селищна последователност на Небет тепе",
+    "title_en": "Nebet Tepe’s long settlement sequence",
+    "summary_bg": "Общинските туристически източници поставят най-ранните следи на Небет тепе между неолита през VI хилядолетие пр.н.е. и IV хилядолетие пр.н.е. Слоевете на обекта свидетелстват за многохилядолетна последователност на обитаване, а не за една безспорно датирана „основателна“ година.",
+    "summary_en": "Municipal visitor sources place the earliest traces at Nebet Tepe between the Neolithic 6th millennium BC and the 4th millennium BC. Its layers show a settlement sequence spanning millennia, rather than one uncontested founding date.",
+    "conflict_notes_bg": "Два актуални общински туристически източника дават различни най-ранни ориентири — VI хилядолетие пр.н.е. и IV хилядолетие пр.н.е.; затова записът представя диапазон вместо привидно точна дата.",
+    "conflict_notes_en": "Two current municipal visitor sources give different earliest reference points — the 6th and the 4th millennium BC — so this record presents a range rather than a deceptively exact date.",
     "theme_tags": [
       "prehistory"
     ],
@@ -91,27 +90,27 @@
     ],
     "organization_ids": [],
     "source_ids": [
-      "source-wikipedia-plovdiv",
-      "source-wikipedia-nebet-tepe"
+      "source-visit-plovdiv-archaeological-complex-nebet-tepe",
+      "source-visit-plovdiv-discover-plovdiv-brochure"
     ],
     "provenance": [
       {
-        "source_id": "source-wikipedia-plovdiv",
+        "source_id": "source-visit-plovdiv-archaeological-complex-nebet-tepe",
         "evidence_type": "public_source",
-        "claim_bg": "Датиране и обобщение за хронологичния запис \"Постоянно селище на Небет тепе\".",
-        "claim_en": "Dating and summary for timeline record \"A lasting settlement on Nebet Tepe\".",
-        "url": "https://en.wikipedia.org/wiki/Plovdiv",
-        "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Дългата селищна последователност на Небет тепе\".",
+        "claim_en": "Dating and summary for timeline record \"Nebet Tepe’s long settlement sequence\".",
+        "url": "https://www.visitplovdiv.com/en/node/521",
+        "accessed_at": "2026-07-09",
+        "license_status": "public_reference_terms_unverified"
       },
       {
-        "source_id": "source-wikipedia-nebet-tepe",
+        "source_id": "source-visit-plovdiv-discover-plovdiv-brochure",
         "evidence_type": "public_source",
-        "claim_bg": "Датиране и обобщение за хронологичния запис \"Постоянно селище на Небет тепе\".",
-        "claim_en": "Dating and summary for timeline record \"A lasting settlement on Nebet Tepe\".",
-        "url": "https://en.wikipedia.org/wiki/Nebet_Tepe",
-        "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Дългата селищна последователност на Небет тепе\".",
+        "claim_en": "Dating and summary for timeline record \"Nebet Tepe’s long settlement sequence\".",
+        "url": "https://www.visitplovdiv.com/sites/default/files/2026-05-11_visitplovdiv_brochure_discoverplovdiv_EN_DIGITAL.pdf",
+        "accessed_at": "2026-07-09",
+        "license_status": "public_reference_terms_unverified"
       }
     ],
     "editorial": {
@@ -179,18 +178,18 @@
     "category": "historical_timeline",
     "era": "thracian",
     "date": {
-      "year": -1200,
+      "year": -600,
       "year_end": null,
       "month": null,
       "day": null,
       "precision": "display_period",
-      "display_bg": "II–I хилядолетие пр.н.е.",
-      "display_en": "2nd–1st millennium BC"
+      "display_bg": "VI – първата половина на V в. пр.н.е.",
+      "display_en": "6th to early 5th century BC"
     },
-    "title_bg": "Тракийският град и племето беси",
-    "title_en": "The Thracian town and the Bessi",
-    "summary_bg": "Тракийският град върху трите хълма се оформя между II и I хилядолетие пр.н.е. Той е крепост на бесите — независимо местно тракийско племе, с укрепено ядро на Небет тепе.",
-    "summary_en": "The Thracian town on the three hills took shape between the 2nd and 1st millennium BC. It was a stronghold of the Bessi, an independent local Thracian tribe, with a fortified core on Nebet Tepe.",
+    "title_bg": "Беси и одриси в Пловдивското поле",
+    "title_en": "Bessi and Odrysians in the Plovdiv plain",
+    "summary_bg": "През VI и първата половина на V в. пр.н.е. политическото средище на бесите е в западната част на Пловдивското поле, а източната е обитавана от одрисите. С възхода на Одриското царство в средата на V в. пр.н.е. то започва да доминира в областта и поглъща съюза на бесите.",
+    "summary_en": "In the 6th and early 5th centuries BC, the Bessi’s political centre lay in the western part of the Plovdiv plain, while the eastern part was inhabited by the Odrysians. With the rise of the Odrysian kingdom in the mid-5th century BC, it came to dominate the area and absorbed the Bessi union.",
     "conflict_notes_bg": null,
     "conflict_notes_en": null,
     "theme_tags": [
@@ -198,22 +197,21 @@
     ],
     "person_ids": [],
     "place_ids": [
-      "place-nebet-tepe",
-      "place-seven-hills"
+      "place-plovdiv-city"
     ],
     "organization_ids": [],
     "source_ids": [
-      "source-wikipedia-plovdiv"
+      "source-visit-plovdiv-antiquity"
     ],
     "provenance": [
       {
-        "source_id": "source-wikipedia-plovdiv",
+        "source_id": "source-visit-plovdiv-antiquity",
         "evidence_type": "public_source",
-        "claim_bg": "Датиране и обобщение за хронологичния запис \"Тракийският град и племето беси\".",
-        "claim_en": "Dating and summary for timeline record \"The Thracian town and the Bessi\".",
-        "url": "https://en.wikipedia.org/wiki/Plovdiv",
-        "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Беси и одриси в Пловдивското поле\".",
+        "claim_en": "Dating and summary for timeline record \"Bessi and Odrysians in the Plovdiv plain\".",
+        "url": "https://www.visitplovdiv.com/en/node/145",
+        "accessed_at": "2026-07-09",
+        "license_status": "public_reference_terms_unverified"
       }
     ],
     "editorial": {
@@ -287,9 +285,9 @@
       "display_en": "5th century BC"
     },
     "title_bg": "Тракийският град Евмолпия",
-    "title_en": "The Thracian town of Eumolpias",
-    "summary_bg": "Селището става част от Одриското царство като тракийски град, известен като Евмолпия (Пулпудева), с укрепено ядро на хълма Небет тепе.",
-    "summary_en": "The settlement became part of the Odrysian kingdom as a Thracian town known as Eumolpias (Pulpudeva), with a fortified core on Nebet Tepe hill.",
+    "title_en": "The Thracian town of Eumolpia",
+    "summary_bg": "Общинската историческа справка описва тракийското укрепено селище на Трихълмието като Евмолпия или Евмолпеида. С възхода на Одриското царство през V в. пр.н.е. селището и околностите му попадат в неговата политическа орбита.",
+    "summary_en": "The municipality’s historical overview describes the fortified Thracian settlement on the Three Hills as Eumolpia or Eumolpeida. With the rise of the Odrysian kingdom in the 5th century BC, the settlement and its surroundings entered its political orbit.",
     "conflict_notes_bg": null,
     "conflict_notes_en": null,
     "theme_tags": [
@@ -297,31 +295,32 @@
     ],
     "person_ids": [],
     "place_ids": [
-      "place-nebet-tepe",
       "place-seven-hills"
     ],
-    "organization_ids": [],
+    "organization_ids": [
+      "org-plovdiv-municipality"
+    ],
     "source_ids": [
-      "source-wikipedia-plovdiv",
-      "source-visit-plovdiv-the-antique-plovdiv"
+      "source-plovdiv-municipality-history",
+      "source-visit-plovdiv-antiquity"
     ],
     "provenance": [
       {
-        "source_id": "source-wikipedia-plovdiv",
+        "source_id": "source-plovdiv-municipality-history",
         "evidence_type": "public_source",
         "claim_bg": "Датиране и обобщение за хронологичния запис \"Тракийският град Евмолпия\".",
-        "claim_en": "Dating and summary for timeline record \"The Thracian town of Eumolpias\".",
-        "url": "https://en.wikipedia.org/wiki/Plovdiv",
-        "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "claim_en": "Dating and summary for timeline record \"The Thracian town of Eumolpia\".",
+        "url": "https://www.plovdiv.bg/en/about-plovdiv/history/",
+        "accessed_at": "2026-07-09",
+        "license_status": "public_reference_terms_unverified"
       },
       {
-        "source_id": "source-visit-plovdiv-the-antique-plovdiv",
+        "source_id": "source-visit-plovdiv-antiquity",
         "evidence_type": "public_source",
         "claim_bg": "Датиране и обобщение за хронологичния запис \"Тракийският град Евмолпия\".",
-        "claim_en": "Dating and summary for timeline record \"The Thracian town of Eumolpias\".",
-        "url": "https://www.visitplovdiv.com/en/node/520",
-        "accessed_at": "2026-06-19",
+        "claim_en": "Dating and summary for timeline record \"The Thracian town of Eumolpia\".",
+        "url": "https://www.visitplovdiv.com/en/node/145",
+        "accessed_at": "2026-07-09",
         "license_status": "public_reference_terms_unverified"
       }
     ],
@@ -349,8 +348,8 @@
     },
     "title_bg": "Филип II и Филипопол",
     "title_en": "Philip II and Philippopolis",
-    "summary_bg": "Филип II Македонски завладява града и го преименува на Филипопол, заселвайки в него траки и 2000 македонци.",
-    "summary_en": "Philip II of Macedon captured the town and renamed it Philippopolis, settling there both Thracians and 2,000 Macedonians.",
+    "summary_bg": "През 342 г. пр.н.е. Филип II Македонски или неговите войски завладяват града. Общинската историческа справка свързва с това завоевание името Филипопол, а туристическата историческа справка — укрепването на селището като опора за по-нататъшната македонска експанзия.",
+    "summary_en": "In 342 BC Philip II of Macedon, or his troops, captured the city. The municipal historical overview links that conquest to the name Philippopolis, while the visitor history describes the fortified settlement as a base for further Macedonian expansion.",
     "conflict_notes_bg": null,
     "conflict_notes_en": null,
     "theme_tags": [
@@ -360,26 +359,26 @@
     "place_ids": [],
     "organization_ids": [],
     "source_ids": [
-      "source-wikipedia-plovdiv",
-      "source-visit-plovdiv-the-antique-plovdiv"
+      "source-plovdiv-municipality-history",
+      "source-visit-plovdiv-antiquity"
     ],
     "provenance": [
       {
-        "source_id": "source-wikipedia-plovdiv",
+        "source_id": "source-plovdiv-municipality-history",
         "evidence_type": "public_source",
         "claim_bg": "Датиране и обобщение за хронологичния запис \"Филип II и Филипопол\".",
         "claim_en": "Dating and summary for timeline record \"Philip II and Philippopolis\".",
-        "url": "https://en.wikipedia.org/wiki/Plovdiv",
-        "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "url": "https://www.plovdiv.bg/en/about-plovdiv/history/",
+        "accessed_at": "2026-07-09",
+        "license_status": "public_reference_terms_unverified"
       },
       {
-        "source_id": "source-visit-plovdiv-the-antique-plovdiv",
+        "source_id": "source-visit-plovdiv-antiquity",
         "evidence_type": "public_source",
         "claim_bg": "Датиране и обобщение за хронологичния запис \"Филип II и Филипопол\".",
         "claim_en": "Dating and summary for timeline record \"Philip II and Philippopolis\".",
-        "url": "https://www.visitplovdiv.com/en/node/520",
-        "accessed_at": "2026-06-19",
+        "url": "https://www.visitplovdiv.com/en/node/145",
+        "accessed_at": "2026-07-09",
         "license_status": "public_reference_terms_unverified"
       }
     ],
@@ -709,8 +708,8 @@
     },
     "title_bg": "Изграждане на Античния театър",
     "title_en": "The Roman theatre is built",
-    "summary_bg": "През 90-те години на I в. е изграден римският театър; надписи сочат, че е побирал около 7000 зрители. Днес той е сред най-добре запазените в света и още се използва.",
-    "summary_en": "In the 90s of the 1st century AD the Roman theatre was built; inscriptions indicate it could hold about 7,000 spectators. Today it is among the best preserved in the world and still in use.",
+    "summary_bg": "Разчетен надпис свързва изграждането на Античния театър с 90-те години на I в. сл.н.е. Общинската археологическа справка посочва около 6000 зрителски места; обектът остава действаща сцена за съвременния културен живот.",
+    "summary_en": "A deciphered inscription dates the construction of the Ancient Theatre to the 90s of the 1st century AD. The municipality’s archaeological overview gives it about 6,000 seats; the site remains an active contemporary cultural venue.",
     "conflict_notes_bg": null,
     "conflict_notes_en": null,
     "theme_tags": [
@@ -721,21 +720,22 @@
       "place-ancient-theatre"
     ],
     "organization_ids": [
-      "org-regional-history-museum-plovdiv"
+      "org-plovdiv-municipality",
+      "org-plovdiv-2019-foundation"
     ],
     "source_ids": [
-      "source-wikipedia-plovdiv",
+      "source-plovdiv-municipality-archaeological-sight-seeing",
       "source-visit-plovdiv-ancient-theatre"
     ],
     "provenance": [
       {
-        "source_id": "source-wikipedia-plovdiv",
+        "source_id": "source-plovdiv-municipality-archaeological-sight-seeing",
         "evidence_type": "public_source",
         "claim_bg": "Датиране и обобщение за хронологичния запис \"Изграждане на Античния театър\".",
         "claim_en": "Dating and summary for timeline record \"The Roman theatre is built\".",
-        "url": "https://en.wikipedia.org/wiki/Plovdiv",
-        "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "url": "https://www.plovdiv.bg/en/tourists/sight-seeing/archaeological-sight-seeing/",
+        "accessed_at": "2026-07-09",
+        "license_status": "public_reference_terms_unverified"
       },
       {
         "source_id": "source-visit-plovdiv-ancient-theatre",
@@ -743,7 +743,7 @@
         "claim_bg": "Датиране и обобщение за хронологичния запис \"Изграждане на Античния театър\".",
         "claim_en": "Dating and summary for timeline record \"The Roman theatre is built\".",
         "url": "https://www.visitplovdiv.com/en/node/522",
-        "accessed_at": "2026-06-19",
+        "accessed_at": "2026-07-09",
         "license_status": "public_reference_terms_unverified"
       }
     ],
@@ -1315,32 +1315,32 @@
       "display_bg": "1363–1364 г.",
       "display_en": "1363–1364"
     },
-    "title_bg": "Османско завладяване — Филибе",
-    "title_en": "Ottoman conquest — Filibe",
-    "summary_bg": "Османците завладяват града и го наричат Филибе. Започват около 500 години османско управление, през които Пловдив е важен търговски и транспортен възел на Балканите.",
-    "summary_en": "The Ottomans conquered the city and renamed it Filibe. Some 500 years of Ottoman rule began, during which Plovdiv was an important commercial and transport hub in the Balkans.",
+    "title_bg": "Османско завладяване",
+    "title_en": "Ottoman conquest",
+    "summary_bg": "Общинската туристическа справка датира османското завладяване на града в 1363–1364 г. То поставя началото на векове османско управление.",
+    "summary_en": "The municipality’s visitor record dates the Ottoman conquest of the city to 1363–1364. It began centuries of Ottoman rule.",
     "conflict_notes_bg": null,
     "conflict_notes_en": null,
     "theme_tags": [
       "ottoman"
     ],
     "person_ids": [],
-    "place_ids": [
-      "place-plovdiv-city"
+    "place_ids": [],
+    "organization_ids": [
+      "org-plovdiv-municipality"
     ],
-    "organization_ids": [],
     "source_ids": [
-      "source-wikipedia-plovdiv"
+      "source-visit-plovdiv-dzhumaya-mosque"
     ],
     "provenance": [
       {
-        "source_id": "source-wikipedia-plovdiv",
+        "source_id": "source-visit-plovdiv-dzhumaya-mosque",
         "evidence_type": "public_source",
-        "claim_bg": "Датиране и обобщение за хронологичния запис \"Османско завладяване — Филибе\".",
-        "claim_en": "Dating and summary for timeline record \"Ottoman conquest — Filibe\".",
-        "url": "https://en.wikipedia.org/wiki/Plovdiv",
-        "accessed_at": "2026-06-18",
-        "license_status": "open_license"
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Османско завладяване\".",
+        "claim_en": "Dating and summary for timeline record \"Ottoman conquest\".",
+        "url": "https://www.visitplovdiv.com/en/node/598",
+        "accessed_at": "2026-07-09",
+        "license_status": "public_reference_terms_unverified"
       }
     ],
     "editorial": {
@@ -2478,44 +2478,46 @@
       "year": 1878,
       "year_end": null,
       "month": 1,
-      "day": 17,
+      "day": 16,
       "precision": "day",
-      "display_bg": "17 януари 1878 г.",
-      "display_en": "17 January 1878"
+      "display_bg": "16 януари 1878 г.",
+      "display_en": "16 January 1878"
     },
     "title_bg": "Освобождение",
     "title_en": "Liberation",
-    "summary_bg": "По време на Руско-турската война руски части под командването на Александър Бураго освобождават града; за кратко той е седалище на Временното руско управление.",
-    "summary_en": "During the Russo-Turkish War, Russian units under Aleksandr Burago captured the city; for a time it was the seat of the Provisional Russian Administration.",
-    "conflict_notes_bg": "Датата изисква редакторски преглед: основният обобщаващ запис използва 17 януари 1878 г., а Регионалният исторически музей - Пловдив представя освобождението като 16 януари 1878 г.",
-    "conflict_notes_en": "The date needs editorial review: the primary summary record uses 17 January 1878, while the Regional History Museum Plovdiv presents the liberation as 16 January 1878.",
+    "summary_bg": "През нощта на 15 срещу 16 януари 1878 г. отрядът на капитан Александър Бураго влиза в града, а в ранната сутрин на 16 януари Пловдив е освободен; генерал Йосиф Гурко пристига с щаба си по обяд.",
+    "summary_en": "On the night of 15–16 January 1878, Captain Aleksandr Burago’s detachment entered the city; by the early morning of 16 January Plovdiv was liberated, and General Iosif Gurko arrived with his staff at midday.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
     "theme_tags": [
       "liberation"
     ],
     "person_ids": [],
-    "place_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
     "organization_ids": [],
     "source_ids": [
-      "source-wikipedia-plovdiv",
-      "source-regional-history-museum-plovdiv-the-liberation-of-plovdiv"
+      "source-regional-history-museum-plovdiv-the-liberation-of-plovdiv",
+      "source-plovdiv-municipality-148th-anniversary-of-the-liberation"
     ],
     "provenance": [
-      {
-        "source_id": "source-wikipedia-plovdiv",
-        "evidence_type": "public_source",
-        "claim_bg": "Датиране и обобщение за хронологичния запис \"Освобождение\".",
-        "claim_en": "Dating and summary for timeline record \"Liberation\".",
-        "url": "https://en.wikipedia.org/wiki/Plovdiv",
-        "accessed_at": "2026-06-18",
-        "license_status": "open_license"
-      },
       {
         "source_id": "source-regional-history-museum-plovdiv-the-liberation-of-plovdiv",
         "evidence_type": "public_source",
         "claim_bg": "Датиране и обобщение за хронологичния запис \"Освобождение\".",
         "claim_en": "Dating and summary for timeline record \"Liberation\".",
         "url": "https://rimplovdiv.com/en/2026/01/16/the-liberation-of-plovdiv-16-january-1878/",
-        "accessed_at": "2026-06-19",
+        "accessed_at": "2026-07-09",
+        "license_status": "public_reference_terms_unverified"
+      },
+      {
+        "source_id": "source-plovdiv-municipality-148th-anniversary-of-the-liberation",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Освобождение\".",
+        "claim_en": "Dating and summary for timeline record \"Liberation\".",
+        "url": "https://www.plovdiv.bg/s-vazpomenatelno-chestvane-v-plovdiv-be-otbelyazana-148-ta-godishnina-ot-osvobozhdenieto-na-grada-ot-osmansko-vladichestvo/",
+        "accessed_at": "2026-07-09",
         "license_status": "public_reference_terms_unverified"
       }
     ],
@@ -2595,7 +2597,7 @@
     },
     "title_bg": "Кмет: Атанас Самоковлиев",
     "title_en": "Mayor: Atanas Samokovliev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 24 януари – 12 март 1878 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 24 януари – 12 март 1878 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 24 January – 12 March 1878.",
     "theme_tags": [
       "mayor_term",
@@ -2650,7 +2652,7 @@
     },
     "title_bg": "Кмет: Костаки Пеев",
     "title_en": "Mayor: Kostaki Peev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 12 март 1878 – 17 ноември 1880 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 12 март 1878 – 17 ноември 1880 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 12 March 1878 – 17 November 1880.",
     "theme_tags": [
       "mayor_term",
@@ -2808,7 +2810,7 @@
     },
     "title_bg": "Кмет: Иван Стефанов Гешов",
     "title_en": "Mayor: Ivan Stefanov Geshov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 17 ноември 1880 – 26 януари 1883 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 17 ноември 1880 – 26 януари 1883 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 17 November 1880 – 26 January 1883.",
     "theme_tags": [
       "mayor_term",
@@ -3022,7 +3024,7 @@
     },
     "title_bg": "Кмет: д-р Сотир Антониади",
     "title_en": "Mayor: Dr. Sotir Antoniadi",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: и.д. кмет 26 януари 1883 – 21 април 1883 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: и.д. кмет 26 януари 1883 – 21 април 1883 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: acting mayor 26 January 1883 – 21 April 1883.",
     "theme_tags": [
       "mayor_term",
@@ -3077,7 +3079,7 @@
     },
     "title_bg": "Кмет: Петко Каравелов",
     "title_en": "Mayor: Petko Karavelov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 21 април 1883 – 13 януари 1884 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 21 април 1883 – 13 януари 1884 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 21 April 1883 – 13 January 1884.",
     "theme_tags": [
       "mayor_term",
@@ -3185,7 +3187,7 @@
     },
     "title_bg": "Кмет: Хафуз Ахмед ефенди",
     "title_en": "Mayor: Hafuz Ahmed Efendi",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: и.д. кмет 13 януари – 8 май 1884 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: и.д. кмет 13 януари – 8 май 1884 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: acting mayor 13 January – 8 May 1884.",
     "theme_tags": [
       "mayor_term",
@@ -3240,7 +3242,7 @@
     },
     "title_bg": "Кмет: Костаки Пеев",
     "title_en": "Mayor: Kostaki Peev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 8 май 1884 – 13 ноември 1887 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 8 май 1884 – 13 ноември 1887 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 8 May 1884 – 13 November 1887.",
     "theme_tags": [
       "mayor_term",
@@ -3405,7 +3407,7 @@
     },
     "title_bg": "Кмет: Христо Дюкмеджиев",
     "title_en": "Mayor: Hristo Dyukmedzhiev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 13 ноември 1887 – 17 септември 1890 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 13 ноември 1887 – 17 септември 1890 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 13 November 1887 – 17 September 1890.",
     "theme_tags": [
       "mayor_term",
@@ -3773,7 +3775,7 @@
     },
     "title_bg": "Кмет: Димитър Свещаров",
     "title_en": "Mayor: Dimitar Sveshtarov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 17 септември 1890 – 6 февруари 1893 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 17 септември 1890 – 6 февруари 1893 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 17 September 1890 – 6 February 1893.",
     "theme_tags": [
       "mayor_term",
@@ -3994,7 +3996,7 @@
     },
     "title_bg": "Кмет: Стефан Калчев",
     "title_en": "Mayor: Stefan Kalchev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 6 февруари – 31 март 1893 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 6 февруари – 31 март 1893 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 6 February – 31 March 1893.",
     "theme_tags": [
       "mayor_term",
@@ -4049,7 +4051,7 @@
     },
     "title_bg": "Кмет: Ангел Семерджиев",
     "title_en": "Mayor: Angel Semerdzhiev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 1 април – 1 юни 1893 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 1 април – 1 юни 1893 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 1 April – 1 June 1893.",
     "theme_tags": [
       "mayor_term",
@@ -4104,7 +4106,7 @@
     },
     "title_bg": "Кмет: Константин Хаджикалчов",
     "title_en": "Mayor: Konstantin Hadzhikalchov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 1 юни – 30 октомври 1893 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 1 юни – 30 октомври 1893 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 1 June – 30 October 1893.",
     "theme_tags": [
       "mayor_term",
@@ -4159,7 +4161,7 @@
     },
     "title_bg": "Кмет: Манчо Манев",
     "title_en": "Mayor: Mancho Manev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 30 октомври 1893 – 7 юли 1894 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 30 октомври 1893 – 7 юли 1894 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 30 October 1893 – 7 July 1894.",
     "theme_tags": [
       "mayor_term",
@@ -4267,7 +4269,7 @@
     },
     "title_bg": "Кмет: Никола Чалъков",
     "title_en": "Mayor: Nikola Chalakov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 7 юли – 5 октомври 1894 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 7 юли – 5 октомври 1894 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 7 July – 5 October 1894.",
     "theme_tags": [
       "mayor_term",
@@ -4322,7 +4324,7 @@
     },
     "title_bg": "Кмет: Михаил Маджаров",
     "title_en": "Mayor: Mihail Madzharov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 5 октомври – 17 ноември 1894 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 5 октомври – 17 ноември 1894 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 5 October – 17 November 1894.",
     "theme_tags": [
       "mayor_term",
@@ -4377,7 +4379,7 @@
     },
     "title_bg": "Кмет: Данаил Юруков",
     "title_en": "Mayor: Danail Yurukov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 17 ноември 1894 – 2 ноември 1896 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 17 ноември 1894 – 2 ноември 1896 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 17 November 1894 – 2 November 1896.",
     "theme_tags": [
       "mayor_term",
@@ -4537,7 +4539,7 @@
     },
     "title_bg": "Кмет: Христо Г. Данов",
     "title_en": "Mayor: Hristo G. Danov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 2 ноември 1896 – 13 април 1899 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 2 ноември 1896 – 13 април 1899 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 2 November 1896 – 13 April 1899.",
     "theme_tags": [
       "mayor_term",
@@ -4800,7 +4802,7 @@
     },
     "title_bg": "Кмет: Никола Чалъков",
     "title_en": "Mayor: Nikola Chalakov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 13 април 1899 – 23 март 1901 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 13 април 1899 – 23 март 1901 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 13 April 1899 – 23 March 1901.",
     "theme_tags": [
       "mayor_term",
@@ -4855,7 +4857,7 @@
     },
     "title_bg": "Кмет: Драган Манчов",
     "title_en": "Mayor: Dragan Manchov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 7 април – 24 май 1901 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 7 април – 24 май 1901 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 7 April – 24 May 1901.",
     "theme_tags": [
       "mayor_term",
@@ -4910,7 +4912,7 @@
     },
     "title_bg": "Кмет: д-р Христо Танчев",
     "title_en": "Mayor: Dr. Hristo Tanchev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 24 май 1901 – 6 февруари 1902 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 24 май 1901 – 6 февруари 1902 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 24 May 1901 – 6 February 1902.",
     "theme_tags": [
       "mayor_term",
@@ -4965,7 +4967,7 @@
     },
     "title_bg": "Кмет: Георги Джевизов",
     "title_en": "Mayor: Georgi Dzhevizov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 6 февруари 1902 – 7 октомври 1903 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 6 февруари 1902 – 7 октомври 1903 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 6 February 1902 – 7 October 1903.",
     "theme_tags": [
       "mayor_term",
@@ -5020,7 +5022,7 @@
     },
     "title_bg": "Кмет: Христо Милев",
     "title_en": "Mayor: Hristo Milev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 октомври 1903 – 19 септември 1905 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 октомври 1903 – 19 септември 1905 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 9 October 1903 – 19 September 1905.",
     "theme_tags": [
       "mayor_term",
@@ -5127,7 +5129,7 @@
     },
     "title_bg": "Кмет: Никола Чалъков",
     "title_en": "Mayor: Nikola Chalakov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 19 септември 1905 – 27 май 1906 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 19 септември 1905 – 27 май 1906 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 19 September 1905 – 27 May 1906.",
     "theme_tags": [
       "mayor_term",
@@ -5235,7 +5237,7 @@
     },
     "title_bg": "Кмет: Вълко Шопов",
     "title_en": "Mayor: Valko Shopov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 27 май 1906 – 2 април 1908 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 27 май 1906 – 2 април 1908 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 27 May 1906 – 2 April 1908.",
     "theme_tags": [
       "mayor_term",
@@ -5343,7 +5345,7 @@
     },
     "title_bg": "Кмет: д-р Иван Кесяков",
     "title_en": "Mayor: Dr. Ivan Kesyakov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 2 април 1908 – 5 април 1912 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 2 април 1908 – 5 април 1912 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 2 April 1908 – 5 April 1912.",
     "theme_tags": [
       "mayor_term",
@@ -5557,7 +5559,7 @@
     },
     "title_bg": "Кмет: Георги Джевизов",
     "title_en": "Mayor: Georgi Dzhevizov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 5 април – 26 април 1912 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 5 април – 26 април 1912 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 5 April – 26 April 1912.",
     "theme_tags": [
       "mayor_term",
@@ -5612,7 +5614,7 @@
     },
     "title_bg": "Кмет: Никола Козарев",
     "title_en": "Mayor: Nikola Kozarev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 май 1912 – 9 януари 1914 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 май 1912 – 9 януари 1914 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 9 May 1912 – 9 January 1914.",
     "theme_tags": [
       "mayor_term",
@@ -5825,7 +5827,7 @@
     },
     "title_bg": "Кмет: Деньо Манев",
     "title_en": "Mayor: Denyo Manev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 януари 1914 – 4 юли 1918 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 януари 1914 – 4 юли 1918 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 9 January 1914 – 4 July 1918.",
     "theme_tags": [
       "mayor_term",
@@ -5985,7 +5987,7 @@
     },
     "title_bg": "Кмет: Милош Данов",
     "title_en": "Mayor: Milosh Danov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 6 юли 1918 – 29 май 1919 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 6 юли 1918 – 29 май 1919 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 6 July 1918 – 29 May 1919.",
     "theme_tags": [
       "mayor_term",
@@ -6148,7 +6150,7 @@
     },
     "title_bg": "Кмет: Христо Павлов",
     "title_en": "Mayor: Hristo Pavlov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 26 септември – 11 ноември 1919 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 26 септември – 11 ноември 1919 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 26 September – 11 November 1919.",
     "theme_tags": [
       "mayor_term",
@@ -6203,7 +6205,7 @@
     },
     "title_bg": "Кмет: Харитон Куев",
     "title_en": "Mayor: Hariton Kuev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 11 ноември – 30 декември 1919 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 11 ноември – 30 декември 1919 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 11 November – 30 December 1919.",
     "theme_tags": [
       "mayor_term",
@@ -6258,7 +6260,7 @@
     },
     "title_bg": "Кмет: Никола Гълъбов",
     "title_en": "Mayor: Nikola Galabov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 30 декември 1919 – 16 март 1920 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 30 декември 1919 – 16 март 1920 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 30 December 1919 – 16 March 1920.",
     "theme_tags": [
       "mayor_term",
@@ -6366,7 +6368,7 @@
     },
     "title_bg": "Кмет: Панайот Мутафчиев",
     "title_en": "Mayor: Panayot Mutafchiev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 16 март – 6 юли 1920 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 16 март – 6 юли 1920 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 16 March – 6 July 1920.",
     "theme_tags": [
       "mayor_term",
@@ -6421,7 +6423,7 @@
     },
     "title_bg": "Кмет: Петър Шилев",
     "title_en": "Mayor: Petar Shilev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 6 юли 1920 – 1 март 1921 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 6 юли 1920 – 1 март 1921 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 6 July 1920 – 1 March 1921.",
     "theme_tags": [
       "mayor_term",
@@ -6476,7 +6478,7 @@
     },
     "title_bg": "Кмет: д-р Иван Кесяков",
     "title_en": "Mayor: Dr. Ivan Kesyakov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 1 март 1921 – 28 септември 1922 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 1 март 1921 – 28 септември 1922 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 1 March 1921 – 28 September 1922.",
     "theme_tags": [
       "mayor_term",
@@ -6585,7 +6587,7 @@
     },
     "title_bg": "Кмет: Петър Янъков",
     "title_en": "Mayor: Petar Yankov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 31 октомври 1922 – 11 януари 1923 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 31 октомври 1922 – 11 януари 1923 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 31 October 1922 – 11 January 1923.",
     "theme_tags": [
       "mayor_term",
@@ -6693,7 +6695,7 @@
     },
     "title_bg": "Кмет: Иван Станчев",
     "title_en": "Mayor: Ivan Stanchev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 11 януари – 9 юни 1923 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 11 януари – 9 юни 1923 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 11 January – 9 June 1923.",
     "theme_tags": [
       "mayor_term",
@@ -6748,7 +6750,7 @@
     },
     "title_bg": "Кмет: Петър Дренски",
     "title_en": "Mayor: Petar Drenski",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 юни 1923 – 29 юни 1927 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 юни 1923 – 29 юни 1927 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 9 June 1923 – 29 June 1927.",
     "theme_tags": [
       "mayor_term",
@@ -7012,7 +7014,7 @@
     },
     "title_bg": "Кмет: д-р Панайот Костов",
     "title_en": "Mayor: Dr. Panayot Kostov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 29 юни 1927 – 6 октомври 1928 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 29 юни 1927 – 6 октомври 1928 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 29 June 1927 – 6 October 1928.",
     "theme_tags": [
       "mayor_term",
@@ -7181,7 +7183,7 @@
     },
     "title_bg": "Кмет: Милош Данов",
     "title_en": "Mayor: Milosh Danov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 6 октомври 1928 – 18 април 1929 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 6 октомври 1928 – 18 април 1929 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 6 October 1928 – 18 April 1929.",
     "theme_tags": [
       "mayor_term",
@@ -7289,7 +7291,7 @@
     },
     "title_bg": "Кмет: Еню Манолов",
     "title_en": "Mayor: Enyu Manolov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 18 април 1929 – 5 април 1932 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 18 април 1929 – 5 април 1932 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 18 April 1929 – 5 April 1932.",
     "theme_tags": [
       "mayor_term",
@@ -7501,7 +7503,7 @@
     },
     "title_bg": "Кмет: Божидар Здравков",
     "title_en": "Mayor: Bozhidar Zdravkov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 5 април 1932 – 12 март 1935 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 5 април 1932 – 12 март 1935 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 5 April 1932 – 12 March 1935.",
     "theme_tags": [
       "mayor_term",
@@ -7979,7 +7981,7 @@
     },
     "title_bg": "Кмет: Георги Тодоров",
     "title_en": "Mayor: Georgi Todorov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 12 март 1935 – 8 октомври 1936 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 12 март 1935 – 8 октомври 1936 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 12 March 1935 – 8 October 1936.",
     "theme_tags": [
       "mayor_term",
@@ -8138,7 +8140,7 @@
     },
     "title_bg": "Кмет: Божидар Здравков",
     "title_en": "Mayor: Bozhidar Zdravkov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 8 октомври 1936 – 12 ноември 1939 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 8 октомври 1936 – 12 ноември 1939 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 8 October 1936 – 12 November 1939.",
     "theme_tags": [
       "mayor_term",
@@ -8404,7 +8406,7 @@
     },
     "title_bg": "Кмет: Петър Малчев",
     "title_en": "Mayor: Petar Malchev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 12 ноември 1939 – 26 ноември 1943 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 12 ноември 1939 – 26 ноември 1943 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 12 November 1939 – 26 November 1943.",
     "theme_tags": [
       "mayor_term",
@@ -8833,7 +8835,7 @@
     },
     "title_bg": "Кмет: Димитър Костов",
     "title_en": "Mayor: Dimitar Kostov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 26 ноември 1943 – 9 септември 1944 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 26 ноември 1943 – 9 септември 1944 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 26 November 1943 – 9 September 1944.",
     "theme_tags": [
       "mayor_term",
@@ -9148,7 +9150,7 @@
     },
     "title_bg": "Кмет: д-р Асен Кожухаров",
     "title_en": "Mayor: Dr. Asen Kozhuharov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 септември 1944 – 22 март 1945 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 септември 1944 – 22 март 1945 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 9 September 1944 – 22 March 1945.",
     "theme_tags": [
       "mayor_term",
@@ -9413,7 +9415,7 @@
     },
     "title_bg": "Кмет: Иван Перпелиев",
     "title_en": "Mayor: Ivan Perpeliev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 23 март 1945 – 19 ноември 1949 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 23 март 1945 – 19 ноември 1949 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 23 March 1945 – 19 November 1949.",
     "theme_tags": [
       "mayor_term",
@@ -10157,7 +10159,7 @@
     },
     "title_bg": "Кмет: Никола Балканджиев",
     "title_en": "Mayor: Nikola Balkandzhiev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 19 ноември 1949 – 23 януари 1959 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 19 ноември 1949 – 23 януари 1959 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 19 November 1949 – 23 January 1959.",
     "theme_tags": [
       "mayor_term",
@@ -11425,7 +11427,7 @@
     },
     "title_bg": "Кмет: Атанас Костов",
     "title_en": "Mayor: Atanas Kostov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 23 януари 1959 – 1 март 1963 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 23 януари 1959 – 1 март 1963 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 23 January 1959 – 1 March 1963.",
     "theme_tags": [
       "mayor_term",
@@ -12110,7 +12112,7 @@
     },
     "title_bg": "Кмет: Иван Димитров",
     "title_en": "Mayor: Ivan Dimitrov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 1 март 1963 – 9 януари 1965 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 1 март 1963 – 9 януари 1965 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 1 March 1963 – 9 January 1965.",
     "theme_tags": [
       "mayor_term",
@@ -12481,7 +12483,7 @@
     },
     "title_bg": "Кмет: Иван Панев",
     "title_en": "Mayor: Ivan Panev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 януари 1965 – 17 януари 1968 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 януари 1965 – 17 януари 1968 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 9 January 1965 – 17 January 1968.",
     "theme_tags": [
       "mayor_term",
@@ -13221,7 +13223,7 @@
     },
     "title_bg": "Кмет: Коста Куманов",
     "title_en": "Mayor: Kosta Kumanov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 17 януари 1968 – 2 юли 1971 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 17 януари 1968 – 2 юли 1971 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 17 January 1968 – 2 July 1971.",
     "theme_tags": [
       "mayor_term",
@@ -14016,7 +14018,7 @@
     },
     "title_bg": "Кмет: Диран Парикян",
     "title_en": "Mayor: Diran Parikyan",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 2 юли 1971 – 3 април 1979 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 2 юли 1971 – 3 април 1979 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 2 July 1971 – 3 April 1979.",
     "theme_tags": [
       "mayor_term",
@@ -15231,7 +15233,7 @@
     },
     "title_bg": "Кмет: Христо Мишев",
     "title_en": "Mayor: Hristo Mishev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 3 април 1979 – 19 юни 1986 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 3 април 1979 – 19 юни 1986 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 3 April 1979 – 19 June 1986.",
     "theme_tags": [
       "mayor_term",
@@ -16025,7 +16027,7 @@
     },
     "title_bg": "Кмет: Димитър Бакалов",
     "title_en": "Mayor: Dimitar Bakalov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 19 юни 1986 – 9 март 1988 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 19 юни 1986 – 9 март 1988 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 19 June 1986 – 9 March 1988.",
     "theme_tags": [
       "mayor_term",
@@ -16237,7 +16239,7 @@
     },
     "title_bg": "Кмет: Тодор Петков",
     "title_en": "Mayor: Todor Petkov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 март 1988 – 23 октомври 1990 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 9 март 1988 – 23 октомври 1990 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 9 March 1988 – 23 October 1990.",
     "theme_tags": [
       "mayor_term",
@@ -16554,7 +16556,7 @@
     },
     "title_bg": "Кмет: Николай Сомлев",
     "title_en": "Mayor: Nikolay Somlev",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 23 октомври 1990 – 16 октомври 1991 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 23 октомври 1990 – 16 октомври 1991 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 23 October 1990 – 16 October 1991.",
     "theme_tags": [
       "mayor_term",
@@ -16715,7 +16717,7 @@
     },
     "title_bg": "Кмет: д-р Гарабед Томасян",
     "title_en": "Mayor: Dr. Garabed Tomasyan",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 16 октомври 1991 – 1 ноември 1995 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 16 октомври 1991 – 1 ноември 1995 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 16 October 1991 – 1 November 1995.",
     "theme_tags": [
       "mayor_term",
@@ -17087,7 +17089,7 @@
     },
     "title_bg": "Кмет: Спас Гърневски",
     "title_en": "Mayor: Spas Garnevski",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 1 ноември 1995 – 1 ноември 1999 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 1 ноември 1995 – 1 ноември 1999 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 1 November 1995 – 1 November 1999.",
     "theme_tags": [
       "mayor_term",
@@ -18025,7 +18027,7 @@
     },
     "title_bg": "Кмет: Славчо Атанасов",
     "title_en": "Mayor: Slavcho Atanasov",
-    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 28 октомври 2007 – 30 октомври 2011 г..",
+    "summary_bg": "Официално посочен мандат в списъка на кметовете на Пловдив: 28 октомври 2007 – 30 октомври 2011 г.",
     "summary_en": "Officially listed mayoral term in Plovdiv Municipality's mayor archive: 28 October 2007 – 30 October 2011.",
     "theme_tags": [
       "mayor_term",
@@ -19121,8 +19123,8 @@
       "month": 11,
       "day": 8,
       "precision": "day",
-      "display_bg": "8 ноември 2023 г. - действащ към 18 юни 2026 г.",
-      "display_en": "8 November 2023 - incumbent as of 18 June 2026"
+      "display_bg": "8 ноември 2023 г. – действащ към 9 юли 2026 г.",
+      "display_en": "8 November 2023 – incumbent as of 9 July 2026"
     },
     "title_bg": "Кмет: Костадин Димитров",
     "title_en": "Mayor: Kostadin Dimitrov",

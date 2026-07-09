@@ -685,6 +685,13 @@ img {
 /* ---- Mobile nav ---------------------------------------------------------- */
 
 @media (max-width: 1240px) {
+  /* Keep the header actions comfortably touchable after the compact desktop
+     breakpoint reduces their visual chrome. */
+  .nav-right .icon-btn {
+    min-width: 44px;
+    height: 44px;
+  }
+
   .nav-toggle {
     display: inline-flex;
   }
@@ -2054,6 +2061,62 @@ a.stat:focus-visible {
   display: grid;
   gap: 14px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.history-toolbar {
+  display: grid;
+  gap: 12px;
+}
+
+.history-primary-filters {
+  grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 1fr));
+}
+
+.history-advanced-filters {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+.history-advanced-filters summary {
+  align-items: center;
+  color: var(--ink-2);
+  cursor: pointer;
+  display: flex;
+  font-size: 0.88rem;
+  font-weight: 720;
+  justify-content: space-between;
+  list-style: none;
+  min-height: 38px;
+  user-select: none;
+}
+
+.history-advanced-filters summary::-webkit-details-marker {
+  display: none;
+}
+
+.history-advanced-filters summary::after {
+  color: var(--brand);
+  content: "+";
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.history-advanced-filters[open] summary::after {
+  content: "−";
+}
+
+.history-advanced-filters.has-active-filter summary::before {
+  background: var(--brand);
+  border-radius: 50%;
+  content: "";
+  height: 7px;
+  margin-right: 8px;
+  width: 7px;
+}
+
+.history-advanced-filter-grid {
+  margin-top: 12px;
 }
 
 .field {
@@ -4203,6 +4266,21 @@ code {
 .archive-card p,
 .then-now-card p {
   margin: 0;
+}
+
+.editorial-caveat {
+  background: color-mix(in srgb, var(--gold) 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--gold-deep) 38%, var(--line));
+  border-radius: var(--r-sm);
+  color: var(--ink-2);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  margin: 0;
+  padding: 10px 12px;
+}
+
+.editorial-caveat strong {
+  color: var(--ink);
 }
 
 .then-now-evidence {
@@ -8745,6 +8823,23 @@ details[open] > .htree-event-sum .htree-caret::after {
     bottom: calc(84px + env(safe-area-inset-bottom));
   }
 
+  .leaflet-control a {
+    height: 44px;
+    width: 44px;
+    font-size: 1.25rem;
+  }
+
+  .map-sheet-close {
+    height: 44px;
+    width: 44px;
+  }
+
+  .map-cluster {
+    height: 44px;
+    width: 44px;
+    font-size: 0.92rem;
+  }
+
   .places-map {
     height: min(46vh, 360px);
   }
@@ -8774,6 +8869,20 @@ details[open] > .htree-event-sum .htree-caret::after {
   .places-toolbar .field:first-child,
   .places-toolbar .field:last-child {
     grid-column: 1 / -1;
+  }
+
+  .history-primary-filters,
+  .history-advanced-filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .history-primary-filters .field:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .history-advanced-filters {
+    padding-top: 8px;
   }
 
   .route-picker {

@@ -4,10 +4,10 @@
   "acceptance_requirement": "Independent editorial sign-off must be logged for 100% of published content before the history platform is complete.",
   "status": "incomplete",
   "summary": {
-    "total_tracked_records": 1002,
+    "total_tracked_records": 1000,
     "signed_off_records": 0,
-    "records_needing_review": 1002,
-    "records_with_blockers": 1002,
+    "records_needing_review": 1000,
+    "records_with_blockers": 1000,
     "signed_off_percent": 0,
     "tracking_gap_collections": 0
   },
@@ -70,10 +70,10 @@
       "label_bg": "Двойки тогава/сега",
       "label_en": "Then/now pairs",
       "role": "supporting_archive",
-      "total_records": 29,
+      "total_records": 27,
       "signed_off_records": 0,
-      "records_needing_review": 29,
-      "records_with_blockers": 29
+      "records_needing_review": 27,
+      "records_with_blockers": 27
     },
     "primary_documents": {
       "label_bg": "Първични документи",
@@ -109,8 +109,8 @@
       "id": "event-prehistory-settlement",
       "collection": "events",
       "role": "primary_entity",
-      "title_bg": "Едно от най-старите селища в света",
-      "title_en": "One of the world's oldest settlements",
+      "title_bg": "Раннонеолитни селища",
+      "title_en": "Early Neolithic settlements",
       "editorial_status": "needs_editorial_signoff",
       "reviewed_by": null,
       "reviewed_at": null,
@@ -125,42 +125,41 @@
       "api_url": "/api/history/events.json",
       "review_sources": [
         {
-          "source_id": "source-wikipedia-plovdiv",
-          "title_bg": "Wikipedia — Plovdiv",
-          "title_en": "Wikipedia — Plovdiv",
-          "url": "https://en.wikipedia.org/wiki/Plovdiv",
-          "accessed_at": "2026-06-18",
-          "license_status": "open_license",
-          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-          "evidence_type": "public_source",
-          "claim_bg": "Датиране и обобщение за хронологичния запис \"Едно от най-старите селища в света\".",
-          "claim_en": "Dating and summary for timeline record \"One of the world's oldest settlements\"."
-        },
-        {
-          "source_id": "source-visit-plovdiv-the-antique-plovdiv",
-          "title_bg": "Visit Plovdiv — The Antique Plovdiv",
-          "title_en": "Visit Plovdiv — The Antique Plovdiv",
-          "url": "https://www.visitplovdiv.com/en/node/520",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-visit-plovdiv-prehistory",
+          "title_bg": "Visit Plovdiv — Prehistory",
+          "title_en": "Visit Plovdiv — Prehistory",
+          "url": "https://www.visitplovdiv.com/en/node/293",
+          "accessed_at": "2026-07-09",
           "license_status": "public_reference_terms_unverified",
           "license_label": "Public web reference; reuse terms not verified",
-          "license_url": "https://www.visitplovdiv.com/en/node/520",
+          "license_url": "https://www.visitplovdiv.com/en/node/293",
           "evidence_type": "public_source",
-          "claim_bg": "Датиране и обобщение за хронологичния запис \"Едно от най-старите селища в света\".",
-          "claim_en": "Dating and summary for timeline record \"One of the world's oldest settlements\"."
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Раннонеолитни селища\".",
+          "claim_en": "Dating and summary for timeline record \"Early Neolithic settlements\"."
+        },
+        {
+          "source_id": "source-plovdiv-municipality-ancient-plovdiv",
+          "title_bg": "Plovdiv Municipality — Ancient Plovdiv",
+          "title_en": "Plovdiv Municipality — Ancient Plovdiv",
+          "url": "https://www.plovdiv.bg/en/tourists/sight-seeing/ancient-plovdiv/",
+          "accessed_at": "2026-07-09",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.plovdiv.bg/en/tourists/sight-seeing/ancient-plovdiv/",
+          "evidence_type": "public_source",
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Раннонеолитни селища\".",
+          "claim_en": "Dating and summary for timeline record \"Early Neolithic settlements\"."
         }
       ],
       "source_ids": [
-        "source-wikipedia-plovdiv",
-        "source-visit-plovdiv-the-antique-plovdiv"
+        "source-visit-plovdiv-prehistory",
+        "source-plovdiv-municipality-ancient-plovdiv"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
-        "https://www.visitplovdiv.com/en/node/520"
+        "https://www.visitplovdiv.com/en/node/293",
+        "https://www.plovdiv.bg/en/tourists/sight-seeing/ancient-plovdiv/"
       ],
       "license_statuses": [
-        "open_license",
         "public_reference_terms_unverified"
       ],
       "source_count": 2,
@@ -173,8 +172,8 @@
       "id": "event-prehistory-nebet-tepe",
       "collection": "events",
       "role": "primary_entity",
-      "title_bg": "Постоянно селище на Небет тепе",
-      "title_en": "A lasting settlement on Nebet Tepe",
+      "title_bg": "Дългата селищна последователност на Небет тепе",
+      "title_en": "Nebet Tepe’s long settlement sequence",
       "editorial_status": "needs_editorial_signoff",
       "reviewed_by": null,
       "reviewed_at": null,
@@ -189,42 +188,42 @@
       "api_url": "/api/history/events.json",
       "review_sources": [
         {
-          "source_id": "source-wikipedia-plovdiv",
-          "title_bg": "Wikipedia — Plovdiv",
-          "title_en": "Wikipedia — Plovdiv",
-          "url": "https://en.wikipedia.org/wiki/Plovdiv",
-          "accessed_at": "2026-06-18",
-          "license_status": "open_license",
-          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "source_id": "source-visit-plovdiv-archaeological-complex-nebet-tepe",
+          "title_bg": "Visit Plovdiv — Archaeological Complex Nebet Tepe",
+          "title_en": "Visit Plovdiv — Archaeological Complex Nebet Tepe",
+          "url": "https://www.visitplovdiv.com/en/node/521",
+          "accessed_at": "2026-07-09",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.visitplovdiv.com/en/node/521",
           "evidence_type": "public_source",
-          "claim_bg": "Датиране и обобщение за хронологичния запис \"Постоянно селище на Небет тепе\".",
-          "claim_en": "Dating and summary for timeline record \"A lasting settlement on Nebet Tepe\"."
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Дългата селищна последователност на Небет тепе\".",
+          "claim_en": "Dating and summary for timeline record \"Nebet Tepe’s long settlement sequence\"."
         },
         {
-          "source_id": "source-wikipedia-nebet-tepe",
-          "title_bg": "Wikipedia — Nebet Tepe",
-          "title_en": "Wikipedia — Nebet Tepe",
-          "url": "https://en.wikipedia.org/wiki/Nebet_Tepe",
-          "accessed_at": "2026-06-18",
-          "license_status": "open_license",
-          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "source_id": "source-visit-plovdiv-discover-plovdiv-brochure",
+          "title_bg": "Visit Plovdiv — Discover Plovdiv brochure",
+          "title_en": "Visit Plovdiv — Discover Plovdiv brochure",
+          "url": "https://www.visitplovdiv.com/sites/default/files/2026-05-11_visitplovdiv_brochure_discoverplovdiv_EN_DIGITAL.pdf",
+          "accessed_at": "2026-07-09",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.visitplovdiv.com/sites/default/files/2026-05-11_visitplovdiv_brochure_discoverplovdiv_EN_DIGITAL.pdf",
           "evidence_type": "public_source",
-          "claim_bg": "Датиране и обобщение за хронологичния запис \"Постоянно селище на Небет тепе\".",
-          "claim_en": "Dating and summary for timeline record \"A lasting settlement on Nebet Tepe\"."
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Дългата селищна последователност на Небет тепе\".",
+          "claim_en": "Dating and summary for timeline record \"Nebet Tepe’s long settlement sequence\"."
         }
       ],
       "source_ids": [
-        "source-wikipedia-plovdiv",
-        "source-wikipedia-nebet-tepe"
+        "source-visit-plovdiv-archaeological-complex-nebet-tepe",
+        "source-visit-plovdiv-discover-plovdiv-brochure"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
-        "https://en.wikipedia.org/wiki/Nebet_Tepe"
+        "https://www.visitplovdiv.com/en/node/521",
+        "https://www.visitplovdiv.com/sites/default/files/2026-05-11_visitplovdiv_brochure_discoverplovdiv_EN_DIGITAL.pdf"
       ],
       "license_statuses": [
-        "open_license"
+        "public_reference_terms_unverified"
       ],
       "source_count": 2,
       "has_license_or_reuse_status": true,
@@ -284,8 +283,8 @@
       "id": "event-thracian-town-bessi",
       "collection": "events",
       "role": "primary_entity",
-      "title_bg": "Тракийският град и племето беси",
-      "title_en": "The Thracian town and the Bessi",
+      "title_bg": "Беси и одриси в Пловдивското поле",
+      "title_en": "Bessi and Odrysians in the Plovdiv plain",
       "editorial_status": "needs_editorial_signoff",
       "reviewed_by": null,
       "reviewed_at": null,
@@ -300,27 +299,27 @@
       "api_url": "/api/history/events.json",
       "review_sources": [
         {
-          "source_id": "source-wikipedia-plovdiv",
-          "title_bg": "Wikipedia — Plovdiv",
-          "title_en": "Wikipedia — Plovdiv",
-          "url": "https://en.wikipedia.org/wiki/Plovdiv",
-          "accessed_at": "2026-06-18",
-          "license_status": "open_license",
-          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "source_id": "source-visit-plovdiv-antiquity",
+          "title_bg": "Visit Plovdiv — Antiquity",
+          "title_en": "Visit Plovdiv — Antiquity",
+          "url": "https://www.visitplovdiv.com/en/node/145",
+          "accessed_at": "2026-07-09",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.visitplovdiv.com/en/node/145",
           "evidence_type": "public_source",
-          "claim_bg": "Датиране и обобщение за хронологичния запис \"Тракийският град и племето беси\".",
-          "claim_en": "Dating and summary for timeline record \"The Thracian town and the Bessi\"."
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Беси и одриси в Пловдивското поле\".",
+          "claim_en": "Dating and summary for timeline record \"Bessi and Odrysians in the Plovdiv plain\"."
         }
       ],
       "source_ids": [
-        "source-wikipedia-plovdiv"
+        "source-visit-plovdiv-antiquity"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv"
+        "https://www.visitplovdiv.com/en/node/145"
       ],
       "license_statuses": [
-        "open_license"
+        "public_reference_terms_unverified"
       ],
       "source_count": 1,
       "has_license_or_reuse_status": true,
@@ -381,7 +380,7 @@
       "collection": "events",
       "role": "primary_entity",
       "title_bg": "Тракийският град Евмолпия",
-      "title_en": "The Thracian town of Eumolpias",
+      "title_en": "The Thracian town of Eumolpia",
       "editorial_status": "needs_editorial_signoff",
       "reviewed_by": null,
       "reviewed_at": null,
@@ -396,42 +395,41 @@
       "api_url": "/api/history/events.json",
       "review_sources": [
         {
-          "source_id": "source-wikipedia-plovdiv",
-          "title_bg": "Wikipedia — Plovdiv",
-          "title_en": "Wikipedia — Plovdiv",
-          "url": "https://en.wikipedia.org/wiki/Plovdiv",
-          "accessed_at": "2026-06-18",
-          "license_status": "open_license",
-          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-          "evidence_type": "public_source",
-          "claim_bg": "Датиране и обобщение за хронологичния запис \"Тракийският град Евмолпия\".",
-          "claim_en": "Dating and summary for timeline record \"The Thracian town of Eumolpias\"."
-        },
-        {
-          "source_id": "source-visit-plovdiv-the-antique-plovdiv",
-          "title_bg": "Visit Plovdiv — The Antique Plovdiv",
-          "title_en": "Visit Plovdiv — The Antique Plovdiv",
-          "url": "https://www.visitplovdiv.com/en/node/520",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-plovdiv-municipality-history",
+          "title_bg": "Plovdiv Municipality — History",
+          "title_en": "Plovdiv Municipality — History",
+          "url": "https://www.plovdiv.bg/en/about-plovdiv/history/",
+          "accessed_at": "2026-07-09",
           "license_status": "public_reference_terms_unverified",
           "license_label": "Public web reference; reuse terms not verified",
-          "license_url": "https://www.visitplovdiv.com/en/node/520",
+          "license_url": "https://www.plovdiv.bg/en/about-plovdiv/history/",
           "evidence_type": "public_source",
           "claim_bg": "Датиране и обобщение за хронологичния запис \"Тракийският град Евмолпия\".",
-          "claim_en": "Dating and summary for timeline record \"The Thracian town of Eumolpias\"."
+          "claim_en": "Dating and summary for timeline record \"The Thracian town of Eumolpia\"."
+        },
+        {
+          "source_id": "source-visit-plovdiv-antiquity",
+          "title_bg": "Visit Plovdiv — Antiquity",
+          "title_en": "Visit Plovdiv — Antiquity",
+          "url": "https://www.visitplovdiv.com/en/node/145",
+          "accessed_at": "2026-07-09",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.visitplovdiv.com/en/node/145",
+          "evidence_type": "public_source",
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Тракийският град Евмолпия\".",
+          "claim_en": "Dating and summary for timeline record \"The Thracian town of Eumolpia\"."
         }
       ],
       "source_ids": [
-        "source-wikipedia-plovdiv",
-        "source-visit-plovdiv-the-antique-plovdiv"
+        "source-plovdiv-municipality-history",
+        "source-visit-plovdiv-antiquity"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
-        "https://www.visitplovdiv.com/en/node/520"
+        "https://www.plovdiv.bg/en/about-plovdiv/history/",
+        "https://www.visitplovdiv.com/en/node/145"
       ],
       "license_statuses": [
-        "open_license",
         "public_reference_terms_unverified"
       ],
       "source_count": 2,
@@ -460,42 +458,41 @@
       "api_url": "/api/history/events.json",
       "review_sources": [
         {
-          "source_id": "source-wikipedia-plovdiv",
-          "title_bg": "Wikipedia — Plovdiv",
-          "title_en": "Wikipedia — Plovdiv",
-          "url": "https://en.wikipedia.org/wiki/Plovdiv",
-          "accessed_at": "2026-06-18",
-          "license_status": "open_license",
-          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "source_id": "source-plovdiv-municipality-history",
+          "title_bg": "Plovdiv Municipality — History",
+          "title_en": "Plovdiv Municipality — History",
+          "url": "https://www.plovdiv.bg/en/about-plovdiv/history/",
+          "accessed_at": "2026-07-09",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.plovdiv.bg/en/about-plovdiv/history/",
           "evidence_type": "public_source",
           "claim_bg": "Датиране и обобщение за хронологичния запис \"Филип II и Филипопол\".",
           "claim_en": "Dating and summary for timeline record \"Philip II and Philippopolis\"."
         },
         {
-          "source_id": "source-visit-plovdiv-the-antique-plovdiv",
-          "title_bg": "Visit Plovdiv — The Antique Plovdiv",
-          "title_en": "Visit Plovdiv — The Antique Plovdiv",
-          "url": "https://www.visitplovdiv.com/en/node/520",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-visit-plovdiv-antiquity",
+          "title_bg": "Visit Plovdiv — Antiquity",
+          "title_en": "Visit Plovdiv — Antiquity",
+          "url": "https://www.visitplovdiv.com/en/node/145",
+          "accessed_at": "2026-07-09",
           "license_status": "public_reference_terms_unverified",
           "license_label": "Public web reference; reuse terms not verified",
-          "license_url": "https://www.visitplovdiv.com/en/node/520",
+          "license_url": "https://www.visitplovdiv.com/en/node/145",
           "evidence_type": "public_source",
           "claim_bg": "Датиране и обобщение за хронологичния запис \"Филип II и Филипопол\".",
           "claim_en": "Dating and summary for timeline record \"Philip II and Philippopolis\"."
         }
       ],
       "source_ids": [
-        "source-wikipedia-plovdiv",
-        "source-visit-plovdiv-the-antique-plovdiv"
+        "source-plovdiv-municipality-history",
+        "source-visit-plovdiv-antiquity"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
-        "https://www.visitplovdiv.com/en/node/520"
+        "https://www.plovdiv.bg/en/about-plovdiv/history/",
+        "https://www.visitplovdiv.com/en/node/145"
       ],
       "license_statuses": [
-        "open_license",
         "public_reference_terms_unverified"
       ],
       "source_count": 2,
@@ -812,14 +809,14 @@
       "api_url": "/api/history/events.json",
       "review_sources": [
         {
-          "source_id": "source-wikipedia-plovdiv",
-          "title_bg": "Wikipedia — Plovdiv",
-          "title_en": "Wikipedia — Plovdiv",
-          "url": "https://en.wikipedia.org/wiki/Plovdiv",
-          "accessed_at": "2026-06-18",
-          "license_status": "open_license",
-          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "source_id": "source-plovdiv-municipality-archaeological-sight-seeing",
+          "title_bg": "Plovdiv Municipality — Archaeological sight-seeing",
+          "title_en": "Plovdiv Municipality — Archaeological sight-seeing",
+          "url": "https://www.plovdiv.bg/en/tourists/sight-seeing/archaeological-sight-seeing/",
+          "accessed_at": "2026-07-09",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.plovdiv.bg/en/tourists/sight-seeing/archaeological-sight-seeing/",
           "evidence_type": "public_source",
           "claim_bg": "Датиране и обобщение за хронологичния запис \"Изграждане на Античния театър\".",
           "claim_en": "Dating and summary for timeline record \"The Roman theatre is built\"."
@@ -829,7 +826,7 @@
           "title_bg": "Visit Plovdiv — Ancient Theatre",
           "title_en": "Visit Plovdiv — Ancient Theatre",
           "url": "https://www.visitplovdiv.com/en/node/522",
-          "accessed_at": "2026-06-19",
+          "accessed_at": "2026-07-09",
           "license_status": "public_reference_terms_unverified",
           "license_label": "Public web reference; reuse terms not verified",
           "license_url": "https://www.visitplovdiv.com/en/node/522",
@@ -839,15 +836,14 @@
         }
       ],
       "source_ids": [
-        "source-wikipedia-plovdiv",
+        "source-plovdiv-municipality-archaeological-sight-seeing",
         "source-visit-plovdiv-ancient-theatre"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://www.plovdiv.bg/en/tourists/sight-seeing/archaeological-sight-seeing/",
         "https://www.visitplovdiv.com/en/node/522"
       ],
       "license_statuses": [
-        "open_license",
         "public_reference_terms_unverified"
       ],
       "source_count": 2,
@@ -1404,8 +1400,8 @@
       "id": "event-ottoman-1364",
       "collection": "events",
       "role": "primary_entity",
-      "title_bg": "Османско завладяване — Филибе",
-      "title_en": "Ottoman conquest — Filibe",
+      "title_bg": "Османско завладяване",
+      "title_en": "Ottoman conquest",
       "editorial_status": "needs_editorial_signoff",
       "reviewed_by": null,
       "reviewed_at": null,
@@ -1420,27 +1416,27 @@
       "api_url": "/api/history/events.json",
       "review_sources": [
         {
-          "source_id": "source-wikipedia-plovdiv",
-          "title_bg": "Wikipedia — Plovdiv",
-          "title_en": "Wikipedia — Plovdiv",
-          "url": "https://en.wikipedia.org/wiki/Plovdiv",
-          "accessed_at": "2026-06-18",
-          "license_status": "open_license",
-          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "source_id": "source-visit-plovdiv-dzhumaya-mosque",
+          "title_bg": "Visit Plovdiv — Dzhumaya Mosque",
+          "title_en": "Visit Plovdiv — Dzhumaya Mosque",
+          "url": "https://www.visitplovdiv.com/en/node/598",
+          "accessed_at": "2026-07-09",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.visitplovdiv.com/en/node/598",
           "evidence_type": "public_source",
-          "claim_bg": "Датиране и обобщение за хронологичния запис \"Османско завладяване — Филибе\".",
-          "claim_en": "Dating and summary for timeline record \"Ottoman conquest — Filibe\"."
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Османско завладяване\".",
+          "claim_en": "Dating and summary for timeline record \"Ottoman conquest\"."
         }
       ],
       "source_ids": [
-        "source-wikipedia-plovdiv"
+        "source-visit-plovdiv-dzhumaya-mosque"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv"
+        "https://www.visitplovdiv.com/en/node/598"
       ],
       "license_statuses": [
-        "open_license"
+        "public_reference_terms_unverified"
       ],
       "source_count": 1,
       "has_license_or_reuse_status": true,
@@ -2524,42 +2520,41 @@
       "api_url": "/api/history/events.json",
       "review_sources": [
         {
-          "source_id": "source-wikipedia-plovdiv",
-          "title_bg": "Wikipedia — Plovdiv",
-          "title_en": "Wikipedia — Plovdiv",
-          "url": "https://en.wikipedia.org/wiki/Plovdiv",
-          "accessed_at": "2026-06-18",
-          "license_status": "open_license",
-          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-          "evidence_type": "public_source",
-          "claim_bg": "Датиране и обобщение за хронологичния запис \"Освобождение\".",
-          "claim_en": "Dating and summary for timeline record \"Liberation\"."
-        },
-        {
           "source_id": "source-regional-history-museum-plovdiv-the-liberation-of-plovdiv",
           "title_bg": "Regional History Museum Plovdiv — The Liberation of Plovdiv",
           "title_en": "Regional History Museum Plovdiv — The Liberation of Plovdiv",
           "url": "https://rimplovdiv.com/en/2026/01/16/the-liberation-of-plovdiv-16-january-1878/",
-          "accessed_at": "2026-06-19",
+          "accessed_at": "2026-07-09",
           "license_status": "public_reference_terms_unverified",
           "license_label": "Public web reference; reuse terms not verified",
           "license_url": "https://rimplovdiv.com/en/2026/01/16/the-liberation-of-plovdiv-16-january-1878/",
           "evidence_type": "public_source",
           "claim_bg": "Датиране и обобщение за хронологичния запис \"Освобождение\".",
           "claim_en": "Dating and summary for timeline record \"Liberation\"."
+        },
+        {
+          "source_id": "source-plovdiv-municipality-148th-anniversary-of-the-liberation",
+          "title_bg": "Plovdiv Municipality — 148th anniversary of the Liberation",
+          "title_en": "Plovdiv Municipality — 148th anniversary of the Liberation",
+          "url": "https://www.plovdiv.bg/s-vazpomenatelno-chestvane-v-plovdiv-be-otbelyazana-148-ta-godishnina-ot-osvobozhdenieto-na-grada-ot-osmansko-vladichestvo/",
+          "accessed_at": "2026-07-09",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://www.plovdiv.bg/s-vazpomenatelno-chestvane-v-plovdiv-be-otbelyazana-148-ta-godishnina-ot-osvobozhdenieto-na-grada-ot-osmansko-vladichestvo/",
+          "evidence_type": "public_source",
+          "claim_bg": "Датиране и обобщение за хронологичния запис \"Освобождение\".",
+          "claim_en": "Dating and summary for timeline record \"Liberation\"."
         }
       ],
       "source_ids": [
-        "source-wikipedia-plovdiv",
-        "source-regional-history-museum-plovdiv-the-liberation-of-plovdiv"
+        "source-regional-history-museum-plovdiv-the-liberation-of-plovdiv",
+        "source-plovdiv-municipality-148th-anniversary-of-the-liberation"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
-        "https://rimplovdiv.com/en/2026/01/16/the-liberation-of-plovdiv-16-january-1878/"
+        "https://rimplovdiv.com/en/2026/01/16/the-liberation-of-plovdiv-16-january-1878/",
+        "https://www.plovdiv.bg/s-vazpomenatelno-chestvane-v-plovdiv-be-otbelyazana-148-ta-godishnina-ot-osvobozhdenieto-na-grada-ot-osmansko-vladichestvo/"
       ],
       "license_statuses": [
-        "open_license",
         "public_reference_terms_unverified"
       ],
       "source_count": 2,
@@ -18233,7 +18228,7 @@
           "title_bg": "Wikipedia — Ангел Семерджиев",
           "title_en": "Wikipedia — Ангел Семерджиев",
           "url": "https://bg.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%B5%D0%BB_%D0%A1%D0%B5%D0%BC%D0%B5%D1%80%D0%B4%D0%B6%D0%B8%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -18873,7 +18868,7 @@
           "title_bg": "Wikipedia — Атанас Костов",
           "title_en": "Wikipedia — Атанас Костов",
           "url": "https://bg.wikipedia.org/wiki/%D0%90%D1%82%D0%B0%D0%BD%D0%B0%D1%81_%D0%9A%D0%BE%D1%81%D1%82%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -18985,7 +18980,7 @@
           "title_bg": "Wikipedia — Атанас Самоковлиев",
           "title_en": "Wikipedia — Атанас Самоковлиев",
           "url": "https://bg.wikipedia.org/wiki/%D0%90%D1%82%D0%B0%D0%BD%D0%B0%D1%81_%D0%A1%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%BB%D0%B8%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -19385,7 +19380,7 @@
           "title_bg": "Wikipedia — Божидар Здравков",
           "title_en": "Wikipedia — Божидар Здравков",
           "url": "https://bg.wikipedia.org/wiki/%D0%91%D0%BE%D0%B6%D0%B8%D0%B4%D0%B0%D1%80_%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D0%BA%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -20121,7 +20116,7 @@
           "title_bg": "Wikipedia — Вълко Шопов",
           "title_en": "Wikipedia — Вълко Шопов",
           "url": "https://bg.wikipedia.org/wiki/%D0%92%D1%8A%D0%BB%D0%BA%D0%BE_%D0%A8%D0%BE%D0%BF%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -20377,7 +20372,7 @@
           "title_bg": "Wikipedia — Георги Джевизов",
           "title_en": "Wikipedia — Георги Джевизов",
           "url": "https://bg.wikipedia.org/wiki/%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B8_%D0%94%D0%B6%D0%B5%D0%B2%D0%B8%D0%B7%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -20681,7 +20676,7 @@
           "title_bg": "Wikipedia — Георги Тодоров",
           "title_en": "Wikipedia — Георги Тодоров",
           "url": "https://bg.wikipedia.org/wiki/%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B8_%D0%A2%D0%BE%D0%B4%D0%BE%D1%80%D0%BE%D0%B2_(%D0%BA%D0%BC%D0%B5%D1%82_%D0%BD%D0%B0_%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2)",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -20985,7 +20980,7 @@
           "title_bg": "Wikipedia — д-р Асен Кожухаров",
           "title_en": "Wikipedia — д-р Асен Кожухаров",
           "url": "https://bg.wikipedia.org/wiki/%D0%90%D1%81%D0%B5%D0%BD_%D0%9A%D0%BE%D0%B6%D1%83%D1%85%D0%B0%D1%80%D0%BE%D0%B2_(%D0%B2%D0%B5%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B0%D1%80%D0%B5%D0%BD_%D0%BB%D0%B5%D0%BA%D0%B0%D1%80)",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -21049,7 +21044,7 @@
           "title_bg": "Wikipedia — д-р Гарабед Томасян",
           "title_en": "Wikipedia — д-р Гарабед Томасян",
           "url": "https://bg.wikipedia.org/wiki/%D0%93%D0%B0%D1%80%D0%B0%D0%B1%D0%B5%D0%B4_%D0%A2%D0%BE%D0%BC%D0%B0%D1%81%D1%8F%D0%BD",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -21113,7 +21108,7 @@
           "title_bg": "Wikipedia — д-р Иван Кесяков",
           "title_en": "Wikipedia — д-р Иван Кесяков",
           "url": "https://bg.wikipedia.org/wiki/%D0%98%D0%B2%D0%B0%D0%BD_%D0%9A%D0%B5%D1%81%D1%8F%D0%BA%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -21177,7 +21172,7 @@
           "title_bg": "Wikipedia — Д-р Иван Чомаков",
           "title_en": "Wikipedia — Д-р Иван Чомаков",
           "url": "https://bg.wikipedia.org/wiki/%D0%98%D0%B2%D0%B0%D0%BD_%D0%A7%D0%BE%D0%BC%D0%B0%D0%BA%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -21241,7 +21236,7 @@
           "title_bg": "Wikipedia — д-р Панайот Костов",
           "title_en": "Wikipedia — д-р Панайот Костов",
           "url": "https://bg.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BD%D0%B0%D0%B9%D0%BE%D1%82_%D0%9A%D0%BE%D1%81%D1%82%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -21305,7 +21300,7 @@
           "title_bg": "Wikipedia — д-р Сотир Антониади",
           "title_en": "Wikipedia — д-р Сотир Антониади",
           "url": "https://bg.wikipedia.org/wiki/%D0%A1%D0%BE%D1%82%D0%B8%D1%80_%D0%90%D0%BD%D1%82%D0%BE%D0%BD%D0%B8%D0%B0%D0%B4%D0%B8",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -21369,7 +21364,7 @@
           "title_bg": "Wikipedia — д-р Христо Танчев",
           "title_en": "Wikipedia — д-р Христо Танчев",
           "url": "https://bg.wikipedia.org/wiki/%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%BE_%D0%A2%D0%B0%D0%BD%D1%87%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -21433,7 +21428,7 @@
           "title_bg": "Wikipedia — Данаил Юруков",
           "title_en": "Wikipedia — Данаил Юруков",
           "url": "https://bg.wikipedia.org/wiki/%D0%94%D0%B0%D0%BD%D0%B0%D0%B8%D0%BB_%D0%AE%D1%80%D1%83%D0%BA%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -21545,7 +21540,7 @@
           "title_bg": "Wikipedia — Деньо Манев",
           "title_en": "Wikipedia — Деньо Манев",
           "url": "https://bg.wikipedia.org/wiki/%D0%94%D0%B5%D0%BD%D1%8C%D0%BE_%D0%9C%D0%B0%D0%BD%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -21705,7 +21700,7 @@
           "title_bg": "Wikipedia — Димитър Бакалов",
           "title_en": "Wikipedia — Димитър Бакалов",
           "url": "https://bg.wikipedia.org/wiki/%D0%94%D0%B8%D0%BC%D0%B8%D1%82%D1%8A%D1%80_%D0%91%D0%B0%D0%BA%D0%B0%D0%BB%D0%BE%D0%B2_%28%D0%BA%D0%BC%D0%B5%D1%82%29",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -21913,7 +21908,7 @@
           "title_bg": "Wikipedia — Димитър Костов",
           "title_en": "Wikipedia — Димитър Костов",
           "url": "https://bg.wikipedia.org/wiki/%D0%94%D0%B8%D0%BC%D0%B8%D1%82%D1%8A%D1%80_%D0%9A%D0%BE%D1%81%D1%82%D0%BE%D0%B2_%28%D0%BA%D0%BC%D0%B5%D1%82%29",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -22217,7 +22212,7 @@
           "title_bg": "Wikipedia — Димитър Свещаров",
           "title_en": "Wikipedia — Димитър Свещаров",
           "url": "https://bg.wikipedia.org/wiki/%D0%94%D0%B8%D0%BC%D0%B8%D1%82%D1%8A%D1%80_%D0%A1%D0%B2%D0%B5%D1%89%D0%B0%D1%80%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -22329,7 +22324,7 @@
           "title_bg": "Wikipedia — Диран Парикян",
           "title_en": "Wikipedia — Диран Парикян",
           "url": "https://bg.wikipedia.org/wiki/%D0%94%D0%B8%D1%80%D0%B0%D0%BD_%D0%9F%D0%B0%D1%80%D0%B8%D0%BA%D1%8F%D0%BD",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -22489,7 +22484,7 @@
           "title_bg": "Wikipedia — Драган Манчов",
           "title_en": "Wikipedia — Драган Манчов",
           "url": "https://bg.wikipedia.org/wiki/%D0%94%D1%80%D0%B0%D0%B3%D0%B0%D0%BD_%D0%9C%D0%B0%D0%BD%D1%87%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -22952,7 +22947,7 @@
           "title_bg": "Wikipedia — Еню Манолов",
           "title_en": "Wikipedia — Еню Манолов",
           "url": "https://www.parvomai.bg/%D0%B7%D0%B0-%D0%BE%D0%B1%D1%89%D0%B8%D0%BD%D0%B0%D1%82%D0%B0/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F-%D0%BD%D0%B0-%D0%B3%D1%80%D0%B0%D0%B4%D0%B0",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "public_reference_terms_unverified",
           "license_label": "Public web reference; reuse terms not verified",
           "license_url": "https://www.parvomai.bg/%D0%B7%D0%B0-%D0%BE%D0%B1%D1%89%D0%B8%D0%BD%D0%B0%D1%82%D0%B0/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F-%D0%BD%D0%B0-%D0%B3%D1%80%D0%B0%D0%B4%D0%B0",
@@ -23207,7 +23202,7 @@
           "title_bg": "Wikipedia — Здравко Димитров",
           "title_en": "Wikipedia — Здравко Димитров",
           "url": "https://bg.wikipedia.org/wiki/%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D0%BA%D0%BE_%D0%94%D0%B8%D0%BC%D0%B8%D1%82%D1%80%D0%BE%D0%B2_(%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA)",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -23415,7 +23410,7 @@
           "title_bg": "Wikipedia — Иван Димитров",
           "title_en": "Wikipedia — Иван Димитров",
           "url": "https://bg.wikipedia.org/wiki/%D0%98%D0%B2%D0%B0%D0%BD_%D0%94%D0%B8%D0%BC%D0%B8%D1%82%D1%80%D0%BE%D0%B2_%28%D0%BA%D0%BC%D0%B5%D1%82_%D0%BD%D0%B0_%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2%29",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -23575,7 +23570,7 @@
           "title_bg": "Wikipedia — Иван Панев",
           "title_en": "Wikipedia — Иван Панев",
           "url": "https://bg.wikipedia.org/wiki/%D0%98%D0%B2%D0%B0%D0%BD_%D0%9F%D0%B0%D0%BD%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -23639,7 +23634,7 @@
           "title_bg": "Wikipedia — Иван Перпелиев",
           "title_en": "Wikipedia — Иван Перпелиев",
           "url": "https://bg.wikipedia.org/wiki/%D0%98%D0%B2%D0%B0%D0%BD_%D0%9F%D0%B5%D1%80%D0%BF%D0%B5%D0%BB%D0%B8%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -23703,7 +23698,7 @@
           "title_bg": "Wikipedia — Иван Станчев",
           "title_en": "Wikipedia — Иван Станчев",
           "url": "https://bg.wikipedia.org/wiki/%D0%98%D0%B2%D0%B0%D0%BD_%D0%A1%D1%82%D0%B0%D0%BD%D1%87%D0%B5%D0%B2_(%D0%BE%D1%84%D0%B8%D1%86%D0%B5%D1%80)",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -23767,7 +23762,7 @@
           "title_bg": "Wikipedia — Иван Стефанов Гешов",
           "title_en": "Wikipedia — Иван Стефанов Гешов",
           "url": "https://bg.wikipedia.org/wiki/%D0%98%D0%B2%D0%B0%D0%BD_%D0%A1%D1%82%D0%B5%D1%84%D0%B0%D0%BD%D0%BE%D0%B2_%D0%93%D0%B5%D1%88%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -24119,7 +24114,7 @@
           "title_bg": "Wikipedia — инж. Иван Тотев",
           "title_en": "Wikipedia — инж. Иван Тотев",
           "url": "https://bg.wikipedia.org/wiki/%D0%98%D0%B2%D0%B0%D0%BD_%D0%A2%D0%BE%D1%82%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -24837,7 +24832,7 @@
           "title_bg": "Wikipedia — Константин Хаджикалчов",
           "title_en": "Wikipedia — Константин Хаджикалчов",
           "url": "https://bg.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD_%D0%A5%D0%B0%D0%B4%D0%B6%D0%B8%D0%BA%D0%B0%D0%BB%D1%87%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -24901,7 +24896,7 @@
           "title_bg": "Wikipedia — Коста Куманов",
           "title_en": "Wikipedia — Коста Куманов",
           "url": "https://bg.wikipedia.org/wiki/%D0%9A%D0%BE%D1%81%D1%82%D0%B0_%D0%9A%D1%83%D0%BC%D0%B0%D0%BD%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -24965,7 +24960,7 @@
           "title_bg": "Wikipedia — Костадин Димитров",
           "title_en": "Wikipedia — Костадин Димитров",
           "url": "https://bg.wikipedia.org/wiki/%D0%9A%D0%BE%D1%81%D1%82%D0%B0%D0%B4%D0%B8%D0%BD_%D0%94%D0%B8%D0%BC%D0%B8%D1%82%D1%80%D0%BE%D0%B2",
-          "accessed_at": "2026-06-18",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -25077,7 +25072,7 @@
           "title_bg": "Wikipedia — Костаки Пеев",
           "title_en": "Wikipedia — Костаки Пеев",
           "url": "https://bg.wikipedia.org/wiki/%D0%9A%D0%BE%D1%81%D1%82%D0%B0%D0%BA%D0%B8_%D0%9F%D0%B5%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -25636,7 +25631,7 @@
           "title_bg": "Wikipedia — Манчо Манев",
           "title_en": "Wikipedia — Манчо Манев",
           "url": "https://bg.wikipedia.org/wiki/%D0%9C%D0%B0%D0%BD%D1%87%D0%BE_%D0%9C%D0%B0%D0%BD%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -26420,7 +26415,7 @@
           "title_bg": "Wikipedia — Милош Данов",
           "title_en": "Wikipedia — Милош Данов",
           "url": "https://bg.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BB%D0%BE%D1%88_%D0%94%D0%B0%D0%BD%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -26595,7 +26590,7 @@
           "title_bg": "Wikipedia — Михаил Маджаров",
           "title_en": "Wikipedia — Михаил Маджаров",
           "url": "https://bg.wikipedia.org/wiki/%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB_%D0%9C%D0%B0%D0%B4%D0%B6%D0%B0%D1%80%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -27010,7 +27005,7 @@
           "title_bg": "Wikipedia — Никола Балканджиев",
           "title_en": "Wikipedia — Никола Балканджиев",
           "url": "https://bg.wikipedia.org/wiki/%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0_%D0%91%D0%B0%D0%BB%D0%BA%D0%B0%D0%BD%D0%B4%D0%B6%D0%B8%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -27074,7 +27069,7 @@
           "title_bg": "Wikipedia — Никола Гълъбов",
           "title_en": "Wikipedia — Никола Гълъбов",
           "url": "https://bg.wikipedia.org/wiki/%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0_%D0%93%D1%8A%D0%BB%D1%8A%D0%B1%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -27138,7 +27133,7 @@
           "title_bg": "Wikipedia — Никола Козарев",
           "title_en": "Wikipedia — Никола Козарев",
           "url": "https://bg.wikipedia.org/wiki/%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0_%D0%9A%D0%BE%D0%B7%D0%B0%D1%80%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -27250,7 +27245,7 @@
           "title_bg": "Wikipedia — Никола Чалъков",
           "title_en": "Wikipedia — Никола Чалъков",
           "url": "https://bg.wikipedia.org/wiki/%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0_%D0%A7%D0%B0%D0%BB%D1%8A%D0%BA%D0%BE%D0%B2_(%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA)",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -27554,7 +27549,7 @@
           "title_bg": "Wikipedia — Николай Сомлев",
           "title_en": "Wikipedia — Николай Сомлев",
           "url": "https://bg.wikipedia.org/wiki/%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%A1%D0%BE%D0%BC%D0%BB%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -27954,7 +27949,7 @@
           "title_bg": "Wikipedia — Панайот Мутафчиев",
           "title_en": "Wikipedia — Панайот Мутафчиев",
           "url": "https://bg.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BD%D0%B0%D0%B9%D0%BE%D1%82_%D0%9C%D1%83%D1%82%D0%B0%D1%84%D1%87%D0%B8%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -28162,7 +28157,7 @@
           "title_bg": "Wikipedia — Петко Каравелов",
           "title_en": "Wikipedia — Петко Каравелов",
           "url": "https://bg.wikipedia.org/wiki/%D0%9F%D0%B5%D1%82%D0%BA%D0%BE_%D0%9A%D0%B0%D1%80%D0%B0%D0%B2%D0%B5%D0%BB%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -28322,7 +28317,7 @@
           "title_bg": "Wikipedia — Петър Дренски",
           "title_en": "Wikipedia — Петър Дренски",
           "url": "https://bg.wikipedia.org/wiki/%D0%9F%D0%B5%D1%82%D1%8A%D1%80_%D0%94%D1%80%D0%B5%D0%BD%D1%81%D0%BA%D0%B8",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -28482,7 +28477,7 @@
           "title_bg": "Wikipedia — Петър Малчев",
           "title_en": "Wikipedia — Петър Малчев",
           "url": "https://bg.wikipedia.org/wiki/%D0%9F%D0%B5%D1%82%D1%8A%D1%80_%D0%9C%D0%B0%D0%BB%D1%87%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -28705,7 +28700,7 @@
           "title_bg": "Wikipedia — Петър Шилев",
           "title_en": "Wikipedia — Петър Шилев",
           "url": "https://bg.wikipedia.org/wiki/%D0%9F%D0%B5%D1%82%D1%8A%D1%80_%D0%A8%D0%B8%D0%BB%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -28769,7 +28764,7 @@
           "title_bg": "Wikipedia — Петър Янъков",
           "title_en": "Wikipedia — Петър Янъков",
           "url": "https://bg.wikipedia.org/wiki/%D0%9F%D0%B5%D1%82%D1%8A%D1%80_%D0%AF%D0%BD%D1%8A%D0%BA%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -29265,7 +29260,7 @@
           "title_bg": "Wikipedia — Славчо Атанасов",
           "title_en": "Wikipedia — Славчо Атанасов",
           "url": "https://bg.wikipedia.org/wiki/%D0%A1%D0%BB%D0%B0%D0%B2%D1%87%D0%BE_%D0%90%D1%82%D0%B0%D0%BD%D0%B0%D1%81%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -29488,7 +29483,7 @@
           "title_bg": "Wikipedia — Спас Гърневски",
           "title_en": "Wikipedia — Спас Гърневски",
           "url": "https://bg.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81_%D0%93%D1%8A%D1%80%D0%BD%D0%B5%D0%B2%D1%81%D0%BA%D0%B8",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -29600,7 +29595,7 @@
           "title_bg": "Wikipedia — Стефан Гевгалов",
           "title_en": "Wikipedia — Стефан Гевгалов",
           "url": "https://bg.wikipedia.org/wiki/%D0%A1%D1%82%D0%B5%D1%84%D0%B0%D0%BD_%D0%93%D0%B5%D0%B2%D0%B3%D0%B0%D0%BB%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -29664,7 +29659,7 @@
           "title_bg": "Wikipedia — Стефан Калчев",
           "title_en": "Wikipedia — Стефан Калчев",
           "url": "https://bg.wikipedia.org/wiki/%D0%A1%D1%82%D0%B5%D1%84%D0%B0%D0%BD_%D0%9A%D0%B0%D0%BB%D1%87%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -30064,7 +30059,7 @@
           "title_bg": "Wikipedia — Тодор Петков",
           "title_en": "Wikipedia — Тодор Петков",
           "url": "https://www.bta.bg/bg/news/bulgaria/1030417-todor-petkov-be-udostoen-s-otlichieto-pocheten-grazhdanin-na-grad-plovdiv-",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "public_reference_terms_unverified",
           "license_label": "Public web reference; reuse terms not verified",
           "license_url": "https://www.bta.bg/bg/news/bulgaria/1030417-todor-petkov-be-udostoen-s-otlichieto-pocheten-grazhdanin-na-grad-plovdiv-",
@@ -30127,7 +30122,7 @@
           "title_bg": "Wikipedia — Харитон Куев",
           "title_en": "Wikipedia — Харитон Куев",
           "url": "https://bg.wikipedia.org/wiki/%D0%A5%D0%B0%D1%80%D0%B8%D1%82%D0%BE%D0%BD_%D0%9A%D1%83%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -30191,7 +30186,7 @@
           "title_bg": "Wikipedia — Хафуз Ахмед ефенди",
           "title_en": "Wikipedia — Хафуз Ахмед ефенди",
           "url": "https://bg.wikipedia.org/wiki/%D0%A5%D0%B0%D1%84%D1%83%D0%B7_%D0%90%D1%85%D0%BC%D0%B5%D0%B4_%D0%95%D1%84%D0%B5%D0%BD%D0%B4%D0%B8",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -30351,7 +30346,7 @@
           "title_bg": "Wikipedia — Христо Г. Данов",
           "title_en": "Wikipedia — Христо Г. Данов",
           "url": "https://bg.wikipedia.org/wiki/%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%BE_%D0%93._%D0%94%D0%B0%D0%BD%D0%BE%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -30463,7 +30458,7 @@
           "title_bg": "Wikipedia — Христо Дюкмеджиев",
           "title_en": "Wikipedia — Христо Дюкмеджиев",
           "url": "https://bg.wikipedia.org/wiki/%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%BE_%D0%94%D1%8E%D0%BA%D0%BC%D0%B5%D0%B4%D0%B6%D0%B8%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -30623,7 +30618,7 @@
           "title_bg": "Wikipedia — Христо Милев",
           "title_en": "Wikipedia — Христо Милев",
           "url": "https://bg.wikipedia.org/wiki/%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%BE_%D0%9C%D0%B8%D0%BB%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -30687,7 +30682,7 @@
           "title_bg": "Wikipedia — Христо Мишев",
           "title_en": "Wikipedia — Христо Мишев",
           "url": "https://bg.wikipedia.org/wiki/%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%BE_%D0%9C%D0%B8%D1%88%D0%B5%D0%B2",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -30751,7 +30746,7 @@
           "title_bg": "Wikipedia — Христо Павлов",
           "title_en": "Wikipedia — Христо Павлов",
           "url": "https://podtepeto.com/gradat/pensionerka-zaplni-unikalna-kolekciya-ot-fotosi-na-kmetovete-na-plovdiv/",
-          "accessed_at": "2026-06-17",
+          "accessed_at": "2026-07-09",
           "license_status": "public_reference_terms_unverified",
           "license_label": "Public web reference; reuse terms not verified",
           "license_url": "https://podtepeto.com/gradat/pensionerka-zaplni-unikalna-kolekciya-ot-fotosi-na-kmetovete-na-plovdiv/",
@@ -44785,7 +44780,7 @@
           "accessed_at": "2026-06-19",
           "license_status": "open_license",
           "license_label": "CC BY-SA 3.0",
-          "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+          "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
           "evidence_type": "media_reference",
           "claim_bg": "Медия и лиценз за Сахат тепе: Tower from old town plovdiv.JPG.",
           "claim_en": "Media and license for Sahat hill in Plovdiv: Tower from old town plovdiv.JPG."
@@ -50152,14 +50147,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Plovdiv railway station around 1880 — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-plovdiv-central-railway-station-platform-side-2007-jpg",
-          "title_bg": "Wikimedia Commons — Plovdiv Central railway station platform side, 2007.JPG",
-          "title_en": "Wikimedia Commons — Plovdiv Central railway station platform side, 2007.JPG",
-          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_Central_railway_station_platform_side%2C_2007.JPG",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-plovdiv-train-station-2021-from-train-window-jpg",
+          "title_bg": "Plovdiv train station 2021 from train window.jpg",
+          "title_en": "Plovdiv train station 2021 from train window.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_train_station_2021_from_train_window.jpg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 4.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "license_label": "CC BY 2.0",
+          "license_url": "https://creativecommons.org/licenses/by/2.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Железопътната гара на Пловдив около 1880 г. — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Plovdiv railway station around 1880 — then/now\"."
@@ -50167,11 +50162,11 @@
       ],
       "source_ids": [
         "source-plovdiv-train-station-around-1880-jpg",
-        "source-wikimedia-commons-plovdiv-central-railway-station-platform-side-2007-jpg"
+        "source-plovdiv-train-station-2021-from-train-window-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Plovdiv_Train_Station_Around_1880.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_Central_railway_station_platform_side%2C_2007.JPG"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_train_station_2021_from_train_window.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -50215,14 +50210,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Postcard: Bahnhof von Plowdiw — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-plovdiv-central-railway-station-platform-side-2007-jpg",
-          "title_bg": "Wikimedia Commons — Plovdiv Central railway station platform side, 2007.JPG",
-          "title_en": "Wikimedia Commons — Plovdiv Central railway station platform side, 2007.JPG",
-          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_Central_railway_station_platform_side%2C_2007.JPG",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-plovdiv-train-station-2021-from-train-window-jpg",
+          "title_bg": "Plovdiv train station 2021 from train window.jpg",
+          "title_en": "Plovdiv train station 2021 from train window.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_train_station_2021_from_train_window.jpg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 4.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "license_label": "CC BY 2.0",
+          "license_url": "https://creativecommons.org/licenses/by/2.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Пощенска картичка „Bahnhof von Plowdiw“ — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Postcard: Bahnhof von Plowdiw — then/now\"."
@@ -50230,11 +50225,11 @@
       ],
       "source_ids": [
         "source-bahnhof-von-plowdiw-jpg",
-        "source-wikimedia-commons-plovdiv-central-railway-station-platform-side-2007-jpg"
+        "source-plovdiv-train-station-2021-from-train-window-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Bahnhof_von_Plowdiw.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_Central_railway_station_platform_side%2C_2007.JPG"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_train_station_2021_from_train_window.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -50278,14 +50273,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Plovdiv photographed by Ivan Karastoyanov — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-plovdiv-view-jpg",
-          "title_bg": "Wikimedia Commons — Plovdiv view.jpg",
-          "title_en": "Wikimedia Commons — Plovdiv view.jpg",
-          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_view.jpg",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-view-from-nebet-tepe-54118748660-jpg",
+          "title_bg": "View from Nebet Tepe (54118748660).jpg",
+          "title_en": "View from Nebet Tepe (54118748660).jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_Nebet_Tepe_(54118748660).jpg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
           "license_label": "CC BY-SA 2.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Пловдив във фотография на Иван Карастоянов — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Plovdiv photographed by Ivan Karastoyanov — then/now\"."
@@ -50293,11 +50288,11 @@
       ],
       "source_ids": [
         "source-plovdiv-ivan-karastoyanov-jpg",
-        "source-wikimedia-commons-plovdiv-view-jpg"
+        "source-view-from-nebet-tepe-54118748660-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Plovdiv_Ivan_Karastoyanov.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_view.jpg"
+        "https://commons.wikimedia.org/wiki/File:View_from_Nebet_Tepe_(54118748660).jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -50339,18 +50334,33 @@
           "evidence_type": "then_now_historical_media",
           "claim_bg": "Архивен образ, лиценз и източникова страница за двойката \"Джамбаз тепе през 1892 г. — тогава/сега\".",
           "claim_en": "Historical image, license and source page for then/now pair \"Dzhambaz Tepe in 1892 — then/now\"."
+        },
+        {
+          "source_id": "source-dzhambaztepe-2023-jpg",
+          "title_bg": "Dzhambaztepe 2023.jpg",
+          "title_en": "Dzhambaztepe 2023.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Dzhambaztepe_2023.jpg",
+          "accessed_at": "2026-07-09",
+          "license_status": "open_license",
+          "license_label": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "then_now_current_media",
+          "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Джамбаз тепе през 1892 г. — тогава/сега\".",
+          "claim_en": "Current comparison image, license and source page for then/now pair \"Dzhambaz Tepe in 1892 — then/now\"."
         }
       ],
       "source_ids": [
-        "source-wikimedia-commons-dzhambaztepe-1892-jpg"
+        "source-wikimedia-commons-dzhambaztepe-1892-jpg",
+        "source-dzhambaztepe-2023-jpg"
       ],
       "source_urls": [
-        "https://commons.wikimedia.org/wiki/File:Dzhambaztepe_1892.jpg"
+        "https://commons.wikimedia.org/wiki/File:Dzhambaztepe_1892.jpg",
+        "https://commons.wikimedia.org/wiki/File:Dzhambaztepe_2023.jpg"
       ],
       "license_statuses": [
         "open_license"
       ],
-      "source_count": 1,
+      "source_count": 2,
       "has_license_or_reuse_status": true,
       "blockers": [
         "needs_independent_editorial_signoff"
@@ -50396,7 +50406,7 @@
           "accessed_at": "2026-06-19",
           "license_status": "open_license",
           "license_label": "CC BY-SA 3.0",
-          "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+          "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Османската часовникова кула на Сахат тепе — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Ottoman clock tower on Sahat Tepe — then/now\"."
@@ -50459,7 +50469,7 @@
           "accessed_at": "2026-06-19",
           "license_status": "open_license",
           "license_label": "CC BY-SA 3.0",
-          "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+          "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Пощенска картичка с часовниковата кула — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Postcard of the clock tower — then/now\"."
@@ -50522,7 +50532,7 @@
           "accessed_at": "2026-06-19",
           "license_status": "open_license",
           "license_label": "CC BY-SA 3.0",
-          "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+          "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Сахат тепе на стара пощенска картичка — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Sahat Hill on an old postcard — then/now\"."
@@ -50578,14 +50588,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Dzhumaya Square on an old postcard — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-plovdiv-bulgarien-019-jpg",
-          "title_bg": "Wikimedia Commons — Plovdiv - Bulgarien 019.JPG",
-          "title_en": "Wikimedia Commons — Plovdiv - Bulgarien 019.JPG",
-          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_-_Bulgarien_019.JPG",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-plovdiv-feb-2020-17-07-46-897000-jpeg",
+          "title_bg": "Plovdiv Feb 2020 17 07 46 897000.jpeg",
+          "title_en": "Plovdiv Feb 2020 17 07 46 897000.jpeg",
+          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 3.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "license_label": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Площад Джумая на стара картичка — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Dzhumaya Square on an old postcard — then/now\"."
@@ -50593,11 +50603,11 @@
       ],
       "source_ids": [
         "source-dzhumaya-square-on-old-postcard-jpg",
-        "source-wikimedia-commons-plovdiv-bulgarien-019-jpg"
+        "source-plovdiv-feb-2020-17-07-46-897000-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Dzhumaya_square_on_old_postcard.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_-_Bulgarien_019.JPG"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg"
       ],
       "license_statuses": [
         "open_license"
@@ -50641,14 +50651,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Dzhumaya Square - postcard 2 — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-plovdiv-bulgarien-019-jpg",
-          "title_bg": "Wikimedia Commons — Plovdiv - Bulgarien 019.JPG",
-          "title_en": "Wikimedia Commons — Plovdiv - Bulgarien 019.JPG",
-          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_-_Bulgarien_019.JPG",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-plovdiv-feb-2020-17-07-46-897000-jpeg",
+          "title_bg": "Plovdiv Feb 2020 17 07 46 897000.jpeg",
+          "title_en": "Plovdiv Feb 2020 17 07 46 897000.jpeg",
+          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 3.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "license_label": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Площад Джумая - картичка 2 — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Dzhumaya Square - postcard 2 — then/now\"."
@@ -50656,11 +50666,11 @@
       ],
       "source_ids": [
         "source-dzhumaya-square-on-old-postcard-2-jpg",
-        "source-wikimedia-commons-plovdiv-bulgarien-019-jpg"
+        "source-plovdiv-feb-2020-17-07-46-897000-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Dzhumaya_square_on_old_postcard_2.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_-_Bulgarien_019.JPG"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg"
       ],
       "license_statuses": [
         "open_license"
@@ -50704,14 +50714,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Dzhumaya Square - postcard 3 — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-plovdiv-bulgarien-019-jpg",
-          "title_bg": "Wikimedia Commons — Plovdiv - Bulgarien 019.JPG",
-          "title_en": "Wikimedia Commons — Plovdiv - Bulgarien 019.JPG",
-          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_-_Bulgarien_019.JPG",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-plovdiv-feb-2020-17-07-46-897000-jpeg",
+          "title_bg": "Plovdiv Feb 2020 17 07 46 897000.jpeg",
+          "title_en": "Plovdiv Feb 2020 17 07 46 897000.jpeg",
+          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 3.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "license_label": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Площад Джумая - картичка 3 — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Dzhumaya Square - postcard 3 — then/now\"."
@@ -50719,11 +50729,11 @@
       ],
       "source_ids": [
         "source-dzhumaya-square-on-old-postcard-3-jpg",
-        "source-wikimedia-commons-plovdiv-bulgarien-019-jpg"
+        "source-plovdiv-feb-2020-17-07-46-897000-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Dzhumaya_square_on_old_postcard_3.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_-_Bulgarien_019.JPG"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg"
       ],
       "license_statuses": [
         "open_license"
@@ -50767,14 +50777,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Gerdzhika in 1931 — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-maritza-river-panoramio-jpg",
-          "title_bg": "Wikimedia Commons — Maritza river - panoramio.jpg",
-          "title_en": "Wikimedia Commons — Maritza river - panoramio.jpg",
-          "url": "https://commons.wikimedia.org/wiki/File:Maritza_river_-_panoramio.jpg",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-bridge-of-gerdjika-in-plovdiv-jpg",
+          "title_bg": "Bridge of Gerdjika in Plovdiv.jpg",
+          "title_en": "Bridge of Gerdjika in Plovdiv.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Bridge_of_Gerdjika_in_Plovdiv.jpg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 3.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "license_label": "Public domain",
+          "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Герджика през 1931 г. — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Gerdzhika in 1931 — then/now\"."
@@ -50782,11 +50792,11 @@
       ],
       "source_ids": [
         "source-gerdjica-1931-jpg",
-        "source-wikimedia-commons-maritza-river-panoramio-jpg"
+        "source-bridge-of-gerdjika-in-plovdiv-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Gerdjica_1931.jpg",
-        "https://commons.wikimedia.org/wiki/File:Maritza_river_-_panoramio.jpg"
+        "https://commons.wikimedia.org/wiki/File:Bridge_of_Gerdjika_in_Plovdiv.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -50830,14 +50840,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Old Bridge and Gerdzhika Bridge in the 1930s — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-maritza-river-panoramio-jpg",
-          "title_bg": "Wikimedia Commons — Maritza river - panoramio.jpg",
-          "title_en": "Wikimedia Commons — Maritza river - panoramio.jpg",
-          "url": "https://commons.wikimedia.org/wiki/File:Maritza_river_-_panoramio.jpg",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-bridge-of-gerdjika-in-plovdiv-jpg",
+          "title_bg": "Bridge of Gerdjika in Plovdiv.jpg",
+          "title_en": "Bridge of Gerdjika in Plovdiv.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Bridge_of_Gerdjika_in_Plovdiv.jpg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 3.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "license_label": "Public domain",
+          "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Старият мост и Герджика през 1930-те — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Old Bridge and Gerdzhika Bridge in the 1930s — then/now\"."
@@ -50845,11 +50855,11 @@
       ],
       "source_ids": [
         "source-plovdiv-old-bridge-and-gerdjika-bridge-1930s-jpg",
-        "source-wikimedia-commons-maritza-river-panoramio-jpg"
+        "source-bridge-of-gerdjika-in-plovdiv-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Plovdiv%2C_Old_Bridge_and_Gerdjika_Bridge%2C_1930s.jpg",
-        "https://commons.wikimedia.org/wiki/File:Maritza_river_-_panoramio.jpg"
+        "https://commons.wikimedia.org/wiki/File:Bridge_of_Gerdjika_in_Plovdiv.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -50924,54 +50934,6 @@
       ]
     },
     {
-      "id": "then-now-german-school-1928",
-      "collection": "then_now_pairs",
-      "role": "supporting_archive",
-      "title_bg": "Немското училище в Пловдив през 1928 г. — тогава/сега",
-      "title_en": "The German school in Plovdiv, 1928 — then/now",
-      "editorial_status": "needs_editorial_signoff",
-      "reviewed_by": null,
-      "reviewed_at": null,
-      "signoff_id": null,
-      "reviewer_affiliation": null,
-      "review_scope": [],
-      "review_artifact_url": null,
-      "review_notes_bg": null,
-      "review_notes_en": null,
-      "review_url_bg": "/history#then-now",
-      "review_url_en": "/en/history#then-now",
-      "api_url": "/api/history/then-now-pairs.json",
-      "review_sources": [
-        {
-          "source_id": "source-wikimedia-commons-the-german-school-plovdiv-1928-jpg",
-          "title_bg": "Wikimedia Commons — The German school, Plovdiv, 1928.jpg",
-          "title_en": "Wikimedia Commons — The German school, Plovdiv, 1928.jpg",
-          "url": "https://commons.wikimedia.org/wiki/File:The_German_school%2C_Plovdiv%2C_1928.jpg",
-          "accessed_at": "2026-06-19",
-          "license_status": "open_license",
-          "license_label": "Public domain",
-          "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-          "evidence_type": "then_now_historical_media",
-          "claim_bg": "Архивен образ, лиценз и източникова страница за двойката \"Немското училище в Пловдив през 1928 г. — тогава/сега\".",
-          "claim_en": "Historical image, license and source page for then/now pair \"The German school in Plovdiv, 1928 — then/now\"."
-        }
-      ],
-      "source_ids": [
-        "source-wikimedia-commons-the-german-school-plovdiv-1928-jpg"
-      ],
-      "source_urls": [
-        "https://commons.wikimedia.org/wiki/File:The_German_school%2C_Plovdiv%2C_1928.jpg"
-      ],
-      "license_statuses": [
-        "open_license"
-      ],
-      "source_count": 1,
-      "has_license_or_reuse_status": true,
-      "blockers": [
-        "needs_independent_editorial_signoff"
-      ]
-    },
-    {
       "id": "then-now-tsar-simeon-garden-1915",
       "collection": "then_now_pairs",
       "role": "supporting_archive",
@@ -51004,14 +50966,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Tsar Simeon Garden in 1915 — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-tzar-simeon-garden-plovdiv-2012-04-jpg",
-          "title_bg": "Wikimedia Commons — Tzar Simeon Garden, Plovdiv 2012 04.JPG",
-          "title_en": "Wikimedia Commons — Tzar Simeon Garden, Plovdiv 2012 04.JPG",
-          "url": "https://commons.wikimedia.org/wiki/File:Tzar_Simeon_Garden%2C_Plovdiv_2012_04.JPG",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-tsar-simeon-public-garden-48916046738-jpg",
+          "title_bg": "Tsar Simeon Public Garden (48916046738).jpg",
+          "title_en": "Tsar Simeon Public Garden (48916046738).jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Tsar_Simeon_Public_Garden_(48916046738).jpg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 3.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "license_label": "CC BY 2.0",
+          "license_url": "https://creativecommons.org/licenses/by/2.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Цар-Симеоновата градина през 1915 г. — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Tsar Simeon Garden in 1915 — then/now\"."
@@ -51019,11 +50981,11 @@
       ],
       "source_ids": [
         "source-basa-1735k-1-345-24-tsar-simeon-garden-plovdiv-bulgaria-1915-jpg",
-        "source-wikimedia-commons-tzar-simeon-garden-plovdiv-2012-04-jpg"
+        "source-tsar-simeon-public-garden-48916046738-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:BASA-1735K-1-345-24-Tsar_Simeon_Garden%2C_Plovdiv%2C_Bulgaria%2C_1915.jpg",
-        "https://commons.wikimedia.org/wiki/File:Tzar_Simeon_Garden%2C_Plovdiv_2012_04.JPG"
+        "https://commons.wikimedia.org/wiki/File:Tsar_Simeon_Public_Garden_(48916046738).jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -51067,14 +51029,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Prince’s Garden in Plovdiv — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-tzar-simeon-garden-plovdiv-2012-04-jpg",
-          "title_bg": "Wikimedia Commons — Tzar Simeon Garden, Plovdiv 2012 04.JPG",
-          "title_en": "Wikimedia Commons — Tzar Simeon Garden, Plovdiv 2012 04.JPG",
-          "url": "https://commons.wikimedia.org/wiki/File:Tzar_Simeon_Garden%2C_Plovdiv_2012_04.JPG",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-tsar-simeon-public-garden-48916046738-jpg",
+          "title_bg": "Tsar Simeon Public Garden (48916046738).jpg",
+          "title_en": "Tsar Simeon Public Garden (48916046738).jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Tsar_Simeon_Public_Garden_(48916046738).jpg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 3.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "license_label": "CC BY 2.0",
+          "license_url": "https://creativecommons.org/licenses/by/2.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Княжеската градина в Пловдив — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Prince’s Garden in Plovdiv — then/now\"."
@@ -51082,11 +51044,11 @@
       ],
       "source_ids": [
         "source-prince-s-garden-plovdiv-jpg",
-        "source-wikimedia-commons-tzar-simeon-garden-plovdiv-2012-04-jpg"
+        "source-tsar-simeon-public-garden-48916046738-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Prince's_Garden_Plovdiv.jpg",
-        "https://commons.wikimedia.org/wiki/File:Tzar_Simeon_Garden%2C_Plovdiv_2012_04.JPG"
+        "https://commons.wikimedia.org/wiki/File:Tsar_Simeon_Public_Garden_(48916046738).jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -51319,14 +51281,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Uncovering the Ancient Theatre - image 1 — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-antique-theater-plovdiv-jpg",
-          "title_bg": "Wikimedia Commons — Antique-theater-plovdiv.jpg",
-          "title_en": "Wikimedia Commons — Antique-theater-plovdiv.jpg",
-          "url": "https://commons.wikimedia.org/wiki/File:Antique-theater-plovdiv.jpg",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-ancient-theatre-of-plovdiv-bulgaria-jpg",
+          "title_bg": "Ancient theatre of Plovdiv, Bulgaria.jpg",
+          "title_en": "Ancient theatre of Plovdiv, Bulgaria.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Ancient_theatre_of_Plovdiv,_Bulgaria.jpg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 3.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "license_label": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Разкриване на Античния театър - кадър 1 — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Uncovering the Ancient Theatre - image 1 — then/now\"."
@@ -51334,11 +51296,11 @@
       ],
       "source_ids": [
         "source-razkrivane-antichen-teatur-jpg",
-        "source-wikimedia-commons-antique-theater-plovdiv-jpg"
+        "source-ancient-theatre-of-plovdiv-bulgaria-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Razkrivane_antichen_teatur.jpg",
-        "https://commons.wikimedia.org/wiki/File:Antique-theater-plovdiv.jpg"
+        "https://commons.wikimedia.org/wiki/File:Ancient_theatre_of_Plovdiv,_Bulgaria.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -51382,14 +51344,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Uncovering the Ancient Theatre - image 2 — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-antique-theater-plovdiv-jpg",
-          "title_bg": "Wikimedia Commons — Antique-theater-plovdiv.jpg",
-          "title_en": "Wikimedia Commons — Antique-theater-plovdiv.jpg",
-          "url": "https://commons.wikimedia.org/wiki/File:Antique-theater-plovdiv.jpg",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-ancient-theatre-of-plovdiv-bulgaria-jpg",
+          "title_bg": "Ancient theatre of Plovdiv, Bulgaria.jpg",
+          "title_en": "Ancient theatre of Plovdiv, Bulgaria.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Ancient_theatre_of_Plovdiv,_Bulgaria.jpg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 3.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "license_label": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Разкриване на Античния театър - кадър 2 — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Uncovering the Ancient Theatre - image 2 — then/now\"."
@@ -51397,11 +51359,11 @@
       ],
       "source_ids": [
         "source-razkrivane-antichen-teatur1-jpg",
-        "source-wikimedia-commons-antique-theater-plovdiv-jpg"
+        "source-ancient-theatre-of-plovdiv-bulgaria-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Razkrivane_antichen_teatur1.jpg",
-        "https://commons.wikimedia.org/wiki/File:Antique-theater-plovdiv.jpg"
+        "https://commons.wikimedia.org/wiki/File:Ancient_theatre_of_Plovdiv,_Bulgaria.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -51445,14 +51407,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Uncovering the Ancient Stadium - image 1 — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-stadio-romano-jpg",
-          "title_bg": "Wikimedia Commons — Stadio romano.jpg",
-          "title_en": "Wikimedia Commons — Stadio romano.jpg",
-          "url": "https://commons.wikimedia.org/wiki/File:Stadio_romano.jpg",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-plovdiv-feb-2020-17-07-46-897000-jpeg",
+          "title_bg": "Plovdiv Feb 2020 17 07 46 897000.jpeg",
+          "title_en": "Plovdiv Feb 2020 17 07 46 897000.jpeg",
+          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 3.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "license_label": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Разкриване на Античния стадион - кадър 1 — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Uncovering the Ancient Stadium - image 1 — then/now\"."
@@ -51460,11 +51422,11 @@
       ],
       "source_ids": [
         "source-razkrivane-stadion-jpg",
-        "source-wikimedia-commons-stadio-romano-jpg"
+        "source-plovdiv-feb-2020-17-07-46-897000-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Razkrivane_stadion.jpg",
-        "https://commons.wikimedia.org/wiki/File:Stadio_romano.jpg"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg"
       ],
       "license_statuses": [
         "open_license"
@@ -51508,14 +51470,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Uncovering the Ancient Stadium - image 2 — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-stadio-romano-jpg",
-          "title_bg": "Wikimedia Commons — Stadio romano.jpg",
-          "title_en": "Wikimedia Commons — Stadio romano.jpg",
-          "url": "https://commons.wikimedia.org/wiki/File:Stadio_romano.jpg",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-plovdiv-feb-2020-17-07-46-897000-jpeg",
+          "title_bg": "Plovdiv Feb 2020 17 07 46 897000.jpeg",
+          "title_en": "Plovdiv Feb 2020 17 07 46 897000.jpeg",
+          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 3.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "license_label": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Разкриване на Античния стадион - кадър 2 — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Uncovering the Ancient Stadium - image 2 — then/now\"."
@@ -51523,74 +51485,11 @@
       ],
       "source_ids": [
         "source-razkrivane-stadion2-jpg",
-        "source-wikimedia-commons-stadio-romano-jpg"
+        "source-plovdiv-feb-2020-17-07-46-897000-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Razkrivane_stadion2.jpg",
-        "https://commons.wikimedia.org/wiki/File:Stadio_romano.jpg"
-      ],
-      "license_statuses": [
-        "open_license"
-      ],
-      "source_count": 2,
-      "has_license_or_reuse_status": true,
-      "blockers": [
-        "needs_independent_editorial_signoff"
-      ]
-    },
-    {
-      "id": "then-now-chirpan-earthquake-st-josif-1928",
-      "collection": "then_now_pairs",
-      "role": "supporting_archive",
-      "title_bg": "Щети от Чирпанското земетресение при „Св. Йосиф“ — тогава/сега",
-      "title_en": "Chirpan earthquake damage near St Josif — then/now",
-      "editorial_status": "needs_editorial_signoff",
-      "reviewed_by": null,
-      "reviewed_at": null,
-      "signoff_id": null,
-      "reviewer_affiliation": null,
-      "review_scope": [],
-      "review_artifact_url": null,
-      "review_notes_bg": null,
-      "review_notes_en": null,
-      "review_url_bg": "/history#then-now",
-      "review_url_en": "/en/history#then-now",
-      "api_url": "/api/history/then-now-pairs.json",
-      "review_sources": [
-        {
-          "source_id": "source-chirpan-earthquake-plovdiv-jpg",
-          "title_bg": "Chirpan Earthquake - Plovdiv.jpg",
-          "title_en": "Chirpan Earthquake - Plovdiv.jpg",
-          "url": "https://commons.wikimedia.org/wiki/File:Chirpan_Earthquake_-_Plovdiv.jpg",
-          "accessed_at": "2026-06-19",
-          "license_status": "open_license",
-          "license_label": "Public domain",
-          "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-          "evidence_type": "then_now_historical_media",
-          "claim_bg": "Архивен образ, лиценз и източникова страница за двойката \"Щети от Чирпанското земетресение при „Св. Йосиф“ — тогава/сега\".",
-          "claim_en": "Historical image, license and source page for then/now pair \"Chirpan earthquake damage near St Josif — then/now\"."
-        },
-        {
-          "source_id": "source-wikimedia-commons-hospital-st-josif-plovdiv-jpg",
-          "title_bg": "Wikimedia Commons — Hospital St Josif, Plovdiv.jpg",
-          "title_en": "Wikimedia Commons — Hospital St Josif, Plovdiv.jpg",
-          "url": "https://commons.wikimedia.org/wiki/File:Hospital_St_Josif%2C_Plovdiv.jpg",
-          "accessed_at": "2026-06-19",
-          "license_status": "open_license",
-          "license_label": "Public domain",
-          "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-          "evidence_type": "then_now_current_media",
-          "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Щети от Чирпанското земетресение при „Св. Йосиф“ — тогава/сега\".",
-          "claim_en": "Current comparison image, license and source page for then/now pair \"Chirpan earthquake damage near St Josif — then/now\"."
-        }
-      ],
-      "source_ids": [
-        "source-chirpan-earthquake-plovdiv-jpg",
-        "source-wikimedia-commons-hospital-st-josif-plovdiv-jpg"
-      ],
-      "source_urls": [
-        "https://commons.wikimedia.org/wiki/File:Chirpan_Earthquake_-_Plovdiv.jpg",
-        "https://commons.wikimedia.org/wiki/File:Hospital_St_Josif%2C_Plovdiv.jpg"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg"
       ],
       "license_statuses": [
         "open_license"
@@ -51697,14 +51596,14 @@
           "claim_en": "Historical image, license and source page for then/now pair \"Balkan cinema in Plovdiv — then/now\"."
         },
         {
-          "source_id": "source-wikimedia-commons-plovdiv-2021-02-kinobalkan01-jpg",
-          "title_bg": "Wikimedia Commons — Plovdiv-2021-02-KinoBalkan01.jpg",
-          "title_en": "Wikimedia Commons — Plovdiv-2021-02-KinoBalkan01.jpg",
-          "url": "https://commons.wikimedia.org/wiki/File:Plovdiv-2021-02-KinoBalkan01.jpg",
-          "accessed_at": "2026-06-19",
+          "source_id": "source-left-former-movie-theater-balkan-right-hotel-bulgaria-158046439-jpeg",
+          "title_bg": "Left Former Movie Theater Balkan Right Hotel Bulgaria (158046439).jpeg",
+          "title_en": "Left Former Movie Theater Balkan Right Hotel Bulgaria (158046439).jpeg",
+          "url": "https://commons.wikimedia.org/wiki/File:Left_Former_Movie_Theater_Balkan_Right_Hotel_Bulgaria_(158046439).jpeg",
+          "accessed_at": "2026-07-09",
           "license_status": "open_license",
-          "license_label": "CC BY-SA 4.0",
-          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "license_label": "CC0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
           "evidence_type": "then_now_current_media",
           "claim_bg": "Съвременен образ, лиценз и източникова страница за двойката \"Кино „Балкан“ в Пловдив — тогава/сега\".",
           "claim_en": "Current comparison image, license and source page for then/now pair \"Balkan cinema in Plovdiv — then/now\"."
@@ -51712,11 +51611,11 @@
       ],
       "source_ids": [
         "source-basa-1625k-1-22-5-balkan-cinema-plovdiv-bulgaria-jpg",
-        "source-wikimedia-commons-plovdiv-2021-02-kinobalkan01-jpg"
+        "source-left-former-movie-theater-balkan-right-hotel-bulgaria-158046439-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:BASA-1625K-1-22-5-Balkan_cinema%2C_Plovdiv%2C_Bulgaria.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv-2021-02-KinoBalkan01.jpg"
+        "https://commons.wikimedia.org/wiki/File:Left_Former_Movie_Theater_Balkan_Right_Hotel_Bulgaria_(158046439).jpeg"
       ],
       "license_statuses": [
         "open_license"

@@ -3,7 +3,7 @@ import path from "node:path";
 import process from "node:process";
 
 const root = process.cwd();
-const checkedAt = "2026-06-30";
+const checkedAt = "2026-07-09";
 const localizedRouteLanguages = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
 const translationTargetLanguages = localizedRouteLanguages.filter((lang) => lang !== "bg" && lang !== "en");
 

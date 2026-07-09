@@ -90,11 +90,41 @@ function assertCountAtLeast(label, actual, target) {
   }
 }
 
-function hasWikidataPanel(record) {
+const visibleWikidataClaimKeys = new Set([
+  "instance_of",
+  "heritage_designation",
+  "inception",
+  "start_time",
+  "architect",
+  "creator",
+  "owned_by",
+  "operator",
+  "location",
+  "street_address"
+]);
+
+function hasVisibleWikidataValue(value, lang) {
+  if (!value || typeof value !== "object") return false;
+  if (value.type === "item") return Boolean(value.labels?.[lang]);
+  // Dates are formatted through Intl and source text values (for example a
+  // street address) are deliberately retained as source-language facts.
+  if (value.type === "time" || value.type === "text") return Boolean(value.time ?? value.text);
+  return false;
+}
+
+function hasWikidataPanel(record, lang) {
   if (!record) return false;
-  if (Object.keys(record.descriptions ?? {}).length > 0) return true;
-  if (Object.keys(record.sitelinks ?? {}).length > 0) return true;
-  return Object.values(record.claims ?? {}).some((values) => Array.isArray(values) && values.length > 0);
+  // PlaceDetail intentionally avoids an English/Bulgarian fallback for a
+  // visitor-facing Wikidata description, Wikipedia link, or item label.
+  // Mirror that policy here so the validator requires a panel only when the
+  // locale can render at least one useful, visible row.
+  if (record.descriptions?.[lang] || record.sitelinks?.[lang]) return true;
+  return Object.entries(record.claims ?? {}).some(
+    ([key, values]) =>
+      visibleWikidataClaimKeys.has(key) &&
+      Array.isArray(values) &&
+      values.some((value) => hasVisibleWikidataValue(value, lang))
+  );
 }
 
 const corePagePairs = [
@@ -243,13 +273,32 @@ if (!historyAssetScripts.includes("history-conflict-note")) {
   fail("history timeline bundle is missing conflict-note rendering");
 }
 
-const localePrefixes = ["", "/en", "/de", "/fr", "/it", "/tr", "/es", "/el", "/ja"];
+const localePrefixes = ["", "/en", "/de", "/fr", "/it", "/tr", "/es", "/el", "/ja", "/uk", "/tl", "/ru"];
+const localeByPrefix = new Map([
+  ["", "bg"],
+  ["/en", "en"],
+  ["/de", "de"],
+  ["/fr", "fr"],
+  ["/it", "it"],
+  ["/tr", "tr"],
+  ["/es", "es"],
+  ["/el", "el"],
+  ["/ja", "ja"],
+  ["/uk", "uk"],
+  ["/tl", "tl"],
+  ["/ru", "ru"]
+]);
 const placeWikidataEnrichment = readSourceJson("data/curated/place-wikidata-enrichment.json");
 const places = collectionFromPayload(readJson("/api/history/places.json"), "places") ?? [];
 for (const place of places) {
   for (const prefix of localePrefixes) {
     const url = `${prefix}/places/${place.id}/`;
     const html = readBuilt(url);
+    const lang = localeByPrefix.get(prefix);
+    if (!lang) {
+      fail(`${url} has no locale mapping in history surface validation`);
+      continue;
+    }
     const hooks = [
       `data-place-story="${place.id}"`,
       `data-place-history-atlas="${place.id}"`,
@@ -257,8 +306,11 @@ for (const place of places) {
       'class="place-story-prose"',
       'class="place-evidence-list"'
     ];
-    if (hasWikidataPanel(placeWikidataEnrichment[place.id])) {
-      hooks.push(`data-place-wikidata="${place.id}"`);
+    const wikidataHook = `data-place-wikidata="${place.id}"`;
+    if (hasWikidataPanel(placeWikidataEnrichment[place.id], lang)) {
+      hooks.push(wikidataHook);
+    } else if (html.includes(wikidataHook)) {
+      fail(`${url} exposes an empty or untranslated Wikidata panel`);
     }
     assertContains(url, html, hooks);
   }

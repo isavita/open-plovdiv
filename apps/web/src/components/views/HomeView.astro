@@ -4,7 +4,7 @@ import Ornament from "@components/Ornament.astro";
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
-import { commonsImageUrl } from "@lib/commons";
+import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { bustGlyph, sectionMotifs } from "@lib/motifs";
 import {
   plovdivLandmarks,
@@ -413,7 +413,11 @@ const initialsOf = (name: string): string =>
 const placeMedia = (id: string) => {
   const media = historyKnowledgePlaces.find((p) => p.id === id)?.media?.[0];
   return media
-    ? { src: commonsImageUrl(media.url, 640), credit: `${media.credit} · ${media.license}` }
+    ? {
+        src: commonsImageUrl(media.url, 640),
+        credit: `${media.credit} · ${media.license}`,
+        isCommonsUpload: isCommonsUploadImageUrl(media.url)
+      }
     : null;
 };
 
@@ -561,6 +565,8 @@ const moreLinks = [
                   decoding="async"
                   width="640"
                   height="400"
+                  crossorigin={place.media.isCommonsUpload ? "anonymous" : undefined}
+                  referrerpolicy={place.media.isCommonsUpload ? "no-referrer" : undefined}
                 />
                 <figcaption>{place.media.credit}</figcaption>
               </figure>

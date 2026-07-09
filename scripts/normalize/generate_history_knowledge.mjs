@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { normalizePublishedEditorialNotices } from "./editorial_notices.mjs";
 
 const root = process.cwd();
 const outDir = path.join(root, "data/generated/history-knowledge");
@@ -14,8 +15,11 @@ const landmarks = readJson("data/curated/plovdiv-landmarks.json");
 const notablePeople = readJson("data/curated/notable-people.json");
 const personRelationships = readJson("data/curated/person-relationships.json");
 const cityArchive = readJson("data/curated/city-archive.json");
-const historicalArchiveItems = readJson("data/curated/historical-archive-items.json");
-const thenNowPairs = readJson("data/curated/then-now-pairs.json");
+const historicalArchiveItems = normalizePublishedEditorialNotices(
+  readJson("data/curated/historical-archive-items.json"),
+  "archive"
+);
+const thenNowPairs = normalizePublishedEditorialNotices(readJson("data/curated/then-now-pairs.json"), "pair");
 const primaryDocuments = readJson("data/curated/primary-documents.json");
 const educationResources = readJson("data/curated/education-resources.json");
 const storyLongreads = readJson("data/curated/story-longreads.json");

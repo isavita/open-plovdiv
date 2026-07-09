@@ -7847,7 +7847,7 @@
     "name_bg": "Тунел под Трихълмието",
     "name_en": "Three Hills tunnel, Plovdiv",
     "summary_bg": "Пътен тунел в Пловдив.",
-    "summary_en": "Пътен тунел в Пловдив.",
+    "summary_en": "A road tunnel in Plovdiv.",
     "wikidata_id": "Q70882697",
     "built_year": 1960,
     "coordinates": {
@@ -8075,7 +8075,7 @@
         "page_url": "https://commons.wikimedia.org/wiki/File:Tower_from_old_town_plovdiv.JPG",
         "credit": "Psy guy",
         "license": "CC BY-SA 3.0",
-        "license_url": "http://creativecommons.org/licenses/by-sa/3.0/"
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0/"
       }
     ],
     "source": {
@@ -8119,7 +8119,7 @@
     "name_bg": "Хълм на освободителите",
     "name_en": "Хълм на освободителите",
     "summary_bg": "Природна забележителност в България.",
-    "summary_en": "Природна забележителност в България.",
+    "summary_en": "A natural landmark in Bulgaria.",
     "wikidata_id": "Q58079069",
     "built_year": 1996,
     "coordinates": {
@@ -8877,7 +8877,7 @@
     "name_bg": "Постоянна експозиция „Народен художник Златю Бояджиев“",
     "name_en": "Zlatyu Boyadzhiev Exposition",
     "summary_bg": "Художествена галерия в Пловдив.",
-    "summary_en": "Художествена галерия в Пловдив.",
+    "summary_en": "An art gallery in Plovdiv.",
     "wikidata_id": "Q12291130",
     "built_year": 1984,
     "coordinates": {
@@ -10096,7 +10096,7 @@
     "name_bg": "Панаир хан",
     "name_en": "Панаир хан",
     "summary_bg": "Странноприемница в Пловдив.",
-    "summary_en": "Странноприемница в Пловдив.",
+    "summary_en": "A caravanserai in Plovdiv.",
     "wikidata_id": "Q60394704",
     "built_year": 1500,
     "coordinates": {
@@ -10170,7 +10170,7 @@
     "name_bg": "Орта мезар",
     "name_en": "Orta mezar",
     "summary_bg": "Баня в Пловдив, България.",
-    "summary_en": "Баня в Пловдив, България.",
+    "summary_en": "A bath in Plovdiv, Bulgaria.",
     "wikidata_id": "Q37813975",
     "built_year": null,
     "coordinates": {
@@ -11643,7 +11643,7 @@
     "name_bg": "Зала Строител",
     "name_en": "Зала Строител",
     "summary_bg": "Спортна зала в Пловдив.",
-    "summary_en": "Спортна зала в Пловдив.",
+    "summary_en": "A sports hall in Plovdiv.",
     "wikidata_id": "Q61115940",
     "built_year": null,
     "coordinates": {
@@ -11677,19 +11677,19 @@
     },
     "data_quality": "public_source",
     "history": {
-      "lede_bg": "Зала Строител е сред културните институции на Пловдив.",
-      "lede_en": "Зала Строител is one of Plovdiv's cultural institutions.",
+      "lede_bg": "Зала Строител е спортна база в Пловдив, използвана от спортен клуб „Строител“.",
+      "lede_en": "Zala Stroitel is a sports venue in Plovdiv, used by Sport Club Stroitel.",
       "sections": [
         {
           "id": "origins",
-          "heading_bg": "Култура в града",
-          "heading_en": "Culture in the city",
-          "body_bg": "Зала Строител е културна институция в Пловдив. Тя е част от живата сцена на града — театър, музика и изобразително изкуство.",
-          "body_en": "Зала Строител is a cultural institution in Plovdiv. It is part of the city's living scene of theatre, music and the visual arts.",
+          "heading_bg": "Спортна база",
+          "heading_en": "Sports venue",
+          "body_bg": "Зала Строител е спортна база в Пловдив. Спортен клуб „Строител“ я посочва като своя база със зрителски места, фитнес и ресторант.",
+          "body_en": "Zala Stroitel is a sports venue in Plovdiv. Sport Club Stroitel lists it as its base, with spectator seating, a fitness room and a restaurant.",
           "source": {
-            "title": "Wikidata — Зала Строител",
-            "url": "https://www.wikidata.org/wiki/Q61115940",
-            "accessed_at": "2026-06-30"
+            "title": "СК Строител — спортна база",
+            "url": "https://www.bulsport.bg/sport/view?spcid=11027",
+            "accessed_at": "2026-07-09"
           }
         }
       ],
@@ -11697,8 +11697,8 @@
         {
           "label_bg": "Тип",
           "label_en": "Type",
-          "value_bg": "култура",
-          "value_en": "culture"
+          "value_bg": "спортна зала",
+          "value_en": "sports hall"
         }
       ]
     }

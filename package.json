@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "npm --workspace apps/web run dev -- --host 0.0.0.0",
     "build": "npm run data && npm --workspace apps/web run build",
-    "start": "NODE_ENV=production node apps/web/dist/server/entry.mjs",
+    "start": "NODE_ENV=production npm --workspace apps/web run start",
     "preview": "npm --workspace apps/web run preview",
     "data": "node scripts/normalize/generate_public_data.mjs",
     "validate:a11y": "node scripts/validate/validate_static_accessibility.mjs",
@@ -17,6 +17,8 @@
     "validate:history-surface": "node scripts/validate/validate_history_surface.mjs",
     "validate:story-enrichment": "node scripts/validate/validate_story_enrichment_checklist.mjs",
     "validate:lighthouse": "node scripts/validate/validate_lighthouse_mobile.mjs",
+    "audit:media": "node scripts/audit/audit_media_rights.mjs",
+    "audit:media:strict": "node scripts/audit/audit_media_rights.mjs --strict",
     "export:reports": "node scripts/export/export_approved_reports.mjs",
     "validate": "node scripts/validate/validate_data.mjs",
     "test": "npm run validate && npm run validate:story-enrichment && npm --workspace apps/web run test"

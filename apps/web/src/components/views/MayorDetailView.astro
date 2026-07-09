@@ -137,7 +137,7 @@ const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filt
 <Layout lang={lang} path={`/mayors/${mayor.id}`} title={name} description={field(mayor, "summary", lang)}>
   <section class="page-head">
     <div class="container">
-      <nav class="breadcrumb" aria-label="breadcrumb">
+      <nav class="breadcrumb" aria-label={t.common.breadcrumb}>
         <a href={localizePath("/", lang)}>{t.nav.home}</a>
         <span class="sep" aria-hidden="true">/</span>
         <a href={localizePath("/mayors", lang)}>{t.nav.mayors}</a>

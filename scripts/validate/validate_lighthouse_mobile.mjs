@@ -3,15 +3,17 @@ import http from "node:http";
 import net from "node:net";
 import path from "node:path";
 import process from "node:process";
+import { pathToFileURL } from "node:url";
 import { spawn } from "node:child_process";
 import lighthouse from "lighthouse";
 import * as chromeLauncher from "chrome-launcher";
 
 const root = process.cwd();
 const serverEntry = path.join(root, "apps/web/dist/server/entry.mjs");
+const productionServer = path.join(root, "apps/web/server/production-server.mjs");
 const outputPath = path.join(root, "apps/web/dist/lighthouse-mobile-summary.json");
 const minimumScore = Number.parseFloat(process.env.LIGHTHOUSE_MIN_SCORE ?? "0.95");
-const routes = (process.env.LIGHTHOUSE_ROUTES ?? "/,/history/,/en/history/,/people/,/places/,/stories/,/education/")
+const routes = (process.env.LIGHTHOUSE_ROUTES ?? "/,/history/,/en/history/,/people/,/places/,/stories/,/routes/")
   .split(",")
   .map((route) => route.trim())
   .filter(Boolean);
@@ -19,6 +21,10 @@ const categories = ["performance", "accessibility", "best-practices", "seo"];
 
 if (!fs.existsSync(serverEntry)) {
   throw new Error("lighthouse mobile: apps/web/dist/server/entry.mjs is missing; run npm run build first");
+}
+
+if (!fs.existsSync(productionServer)) {
+  throw new Error("lighthouse mobile: apps/web/server/production-server.mjs is missing");
 }
 
 function candidateChromePaths() {
@@ -73,8 +79,122 @@ async function waitForServer(origin, timeoutMs = 30000) {
   throw new Error(`lighthouse mobile: production server did not become ready at ${origin}`);
 }
 
+function requestRaw(origin, route, headers = {}) {
+  const url = new URL(route, origin);
+  return new Promise((resolve, reject) => {
+    const request = http.request(
+      {
+        hostname: url.hostname,
+        port: url.port,
+        path: `${url.pathname}${url.search}`,
+        headers
+      },
+      (response) => {
+        const chunks = [];
+        response.on("data", (chunk) => chunks.push(chunk));
+        response.on("error", reject);
+        response.on("end", () => {
+          resolve({
+            statusCode: response.statusCode ?? 0,
+            headers: response.headers,
+            body: Buffer.concat(chunks)
+          });
+        });
+      }
+    );
+    request.once("error", reject);
+    request.end();
+  });
+}
+
+function headerIncludes(headers, name, expectedToken) {
+  const value = headers[name.toLowerCase()];
+  return String(Array.isArray(value) ? value.join(",") : value ?? "")
+    .split(",")
+    .map((token) => token.trim().toLowerCase())
+    .includes(expectedToken.toLowerCase());
+}
+
+async function assertCompressedRepresentation(origin, route, label) {
+  const identity = await requestRaw(origin, route);
+  const coded = await requestRaw(origin, route, { "Accept-Encoding": "br, gzip" });
+  const contentEncoding = String(coded.headers["content-encoding"] ?? "").toLowerCase();
+
+  if (identity.statusCode !== 200 || coded.statusCode !== 200) {
+    throw new Error(`lighthouse mobile: ${label} compression check expected 200 responses`);
+  }
+  if (!new Set(["br", "gzip"]).has(contentEncoding)) {
+    throw new Error(`lighthouse mobile: ${label} was not Brotli/gzip encoded for an accepting client`);
+  }
+  if (!headerIncludes(coded.headers, "vary", "accept-encoding")) {
+    throw new Error(`lighthouse mobile: ${label} is encoded without Vary: Accept-Encoding`);
+  }
+  if (coded.body.byteLength >= identity.body.byteLength) {
+    throw new Error(
+      `lighthouse mobile: ${label} coded payload (${coded.body.byteLength} B) is not smaller than identity (${identity.body.byteLength} B)`
+    );
+  }
+
+  return identity.body.toString("utf8");
+}
+
+async function validateCompression(origin) {
+  const html = await assertCompressedRepresentation(origin, "/routes/", "visitor routes HTML");
+  const stylesheetMatch = html.match(/<link[^>]+href=["']([^"']+\.css(?:\?[^"']*)?)["']/i);
+  if (!stylesheetMatch) {
+    throw new Error("lighthouse mobile: could not find a stylesheet to verify production compression");
+  }
+  const stylesheet = new URL(stylesheetMatch[1], origin);
+  if (stylesheet.origin !== origin) {
+    throw new Error("lighthouse mobile: first visitor-routes stylesheet is not same-origin");
+  }
+  await assertCompressedRepresentation(origin, `${stylesheet.pathname}${stylesheet.search}`, "visitor routes CSS");
+  console.log("lighthouse mobile: verified Brotli/gzip negotiation for visitor routes HTML and CSS");
+}
+
+async function validateCompressionSafety() {
+  const compressionModule = pathToFileURL(path.join(root, "apps/web/server/compression.mjs")).href;
+  const { applyCompression } = await import(compressionModule);
+  const safetyServer = http.createServer((request, response) => {
+    applyCompression(request, response);
+    if (request.url === "/redirect") {
+      response.writeHead(302, { Location: "/routes/", "Content-Type": "text/html; charset=utf-8" });
+      response.end();
+      return;
+    }
+    response.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    response.end();
+  });
+
+  await new Promise((resolve, reject) => {
+    safetyServer.once("error", reject);
+    safetyServer.listen(0, "127.0.0.1", resolve);
+  });
+  const address = safetyServer.address();
+  const origin = `http://127.0.0.1:${typeof address === "object" && address ? address.port : 0}`;
+
+  try {
+    const headers = { "Accept-Encoding": "br, gzip" };
+    const [redirect, empty] = await Promise.all([
+      requestRaw(origin, "/redirect", headers),
+      requestRaw(origin, "/empty", headers)
+    ]);
+    const isCoded = (result) => Boolean(result.headers["content-encoding"]);
+    if (redirect.statusCode !== 302 || redirect.body.byteLength !== 0 || isCoded(redirect)) {
+      throw new Error("lighthouse mobile: redirect response was changed by compression");
+    }
+    if (empty.statusCode !== 200 || empty.body.byteLength !== 0 || isCoded(empty)) {
+      throw new Error("lighthouse mobile: empty writeHead/end response was changed by compression");
+    }
+  } finally {
+    await new Promise((resolve, reject) => safetyServer.close((error) => (error ? reject(error) : resolve())));
+  }
+
+  console.log("lighthouse mobile: verified redirect and explicitly empty responses remain identity responses");
+}
+
 async function startServer(port) {
-  const server = spawn(process.execPath, [serverEntry], {
+  const server = spawn(process.execPath, [productionServer], {
     cwd: root,
     env: {
       ...process.env,
@@ -187,6 +307,8 @@ const { server, getOutput } = await startServer(port);
 let chrome;
 
 try {
+  await validateCompressionSafety();
+  await validateCompression(origin);
   chrome = await chromeLauncher.launch({
     chromePath,
     chromeFlags: ["--headless=new", "--no-sandbox", "--disable-gpu"]

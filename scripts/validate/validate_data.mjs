@@ -296,24 +296,77 @@ function assertCommunityProjectLinks(initiatives, projects) {
 }
 
 function assertMayorArchiveCompleteness(cityArchive) {
+  const municipalityMayorListUrl =
+    "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/";
+  const administrativeRegisterUrl =
+    "https://iisda.government.bg/ras/governing_bodies/governing_body/4700";
   const mayors = cityArchive
     .filter((record) => record.kind === "mayor_term")
     .sort((a, b) => a.year_start - b.year_start || (a.year_end ?? 9999) - (b.year_end ?? 9999));
-  const officialHistoricalTerms = mayors.filter((record) =>
-    record.source_document.url.includes("/administration/mayor/mayors-of-plovdiv/")
+  const normalizedMunicipalityTerms = mayors.filter((record) =>
+    record.source_document.url === municipalityMayorListUrl
   );
   const current = mayors.find(
     (record) => record.actor_bg === "Костадин Димитров" && record.year_start === 2023 && record.year_end == null
   );
+  const splitTermGroups = [
+    {
+      actor: "Д-р Иван Чомаков",
+      ids: [
+        "archive-plovdiv-mayor-62-d-r-ivan-chomakov",
+        "archive-plovdiv-mayor-62-d-r-ivan-chomakov-2"
+      ],
+      periods: [
+        [1999, 2003],
+        [2003, 2007]
+      ]
+    },
+    {
+      actor: "инж. Иван Тотев",
+      ids: [
+        "archive-plovdiv-mayor-64-inzh-ivan-totev",
+        "archive-plovdiv-mayor-64-inzh-ivan-totev-2"
+      ],
+      periods: [
+        [2011, 2015],
+        [2015, 2019]
+      ]
+    }
+  ];
+  const normalizedSplitIds = new Set(splitTermGroups.flatMap((group) => group.ids));
+  const verbatimMunicipalityRows = normalizedMunicipalityTerms.filter(
+    (record) => !normalizedSplitIds.has(record.id)
+  );
 
-  // 67 = the 65 entries on the official Община Пловдив list, plus the two
-  // democratic-era mayors (Chomakov 1999–2007, Totev 2011–2019) whose two
-  // consecutive 4-year mandates the list collapses into one span and which we
-  // store as separate terms so the "multi-term mayors" views reflect them.
-  if (officialHistoricalTerms.length !== 67) {
+  // The municipality publishes 65 historical rows. Its two consolidated
+  // democratic-era spans are normalized into four elected terms for the
+  // multi-term views, so the local chronology contains 67 historical terms.
+  if (normalizedMunicipalityTerms.length !== 67) {
     throw new Error(
-      `city archive: expected 67 official historical mayor terms, got ${officialHistoricalTerms.length}`
+      `city archive: expected 67 normalized municipality mayor terms, got ${normalizedMunicipalityTerms.length}`
     );
+  }
+  if (verbatimMunicipalityRows.length !== 63 || verbatimMunicipalityRows.length + splitTermGroups.length !== 65) {
+    throw new Error(
+      `city archive: expected 63 verbatim municipality rows plus 2 consolidated spans, got ${verbatimMunicipalityRows.length} rows`
+    );
+  }
+  for (const group of splitTermGroups) {
+    const terms = group.ids.map((id) => mayors.find((record) => record.id === id));
+    if (terms.some((term) => !term)) {
+      throw new Error(`city archive: missing normalized term for ${group.actor}`);
+    }
+    terms.forEach((term, index) => {
+      const [yearStart, yearEnd] = group.periods[index];
+      if (
+        term.actor_bg !== group.actor ||
+        term.year_start !== yearStart ||
+        term.year_end !== yearEnd ||
+        term.source_document.url !== municipalityMayorListUrl
+      ) {
+        throw new Error(`city archive: invalid normalized municipality term ${term.id}`);
+      }
+    });
   }
   if (mayors.length !== 68) {
     throw new Error(`city archive: expected 68 mayor terms including incumbent, got ${mayors.length}`);
@@ -321,11 +374,103 @@ function assertMayorArchiveCompleteness(cityArchive) {
   if (mayors[0]?.actor_bg !== "Атанас Самоковлиев" || mayors[0]?.year_start !== 1878) {
     throw new Error("city archive: first mayor term must be Атанас Самоковлиев in 1878");
   }
-  if (officialHistoricalTerms.at(-1)?.actor_bg !== "Здравко Димитров") {
+  if (verbatimMunicipalityRows.at(-1)?.actor_bg !== "Здравко Димитров") {
     throw new Error("city archive: official municipality list should end with Здравко Димитров");
   }
   if (!current) {
     throw new Error("city archive: missing incumbent mayor term for Костадин Димитров from 2023");
+  }
+  if (current.source_document.url !== administrativeRegisterUrl) {
+    throw new Error("city archive: incumbent mayor must be sourced to the Bulgarian Administrative Register");
+  }
+  const dateMatch = current.source_document.accessed_at.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!dateMatch) {
+    throw new Error("city archive: incumbent source must have an ISO access date");
+  }
+  const [, year, month, day] = dateMatch;
+  const bgMonthNames = [
+    "януари",
+    "февруари",
+    "март",
+    "април",
+    "май",
+    "юни",
+    "юли",
+    "август",
+    "септември",
+    "октомври",
+    "ноември",
+    "декември"
+  ];
+  const enMonthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  const accessDateBg = `${Number(day)} ${bgMonthNames[Number(month) - 1]} ${year} г.`;
+  const accessDateEn = `${Number(day)} ${enMonthNames[Number(month) - 1]} ${year}`;
+  if (
+    !current.period_bg.endsWith(`действащ към ${accessDateBg}`) ||
+    !current.period_en.endsWith(`incumbent as of ${accessDateEn}`)
+  ) {
+    throw new Error("city archive: incumbent display date must match its Administrative Register access date");
+  }
+  for (const mayor of mayors) {
+    if (mayor.summary_bg?.includes("г..")) {
+      throw new Error(`city archive: ${mayor.id} has duplicate terminal punctuation in Bulgarian`);
+    }
+  }
+}
+
+function assertReviewedTimelineFacts(historyTimeline) {
+  const byId = new Map(historyTimeline.map((record) => [record.id, record]));
+  const liberation = byId.get("history-liberation-1878");
+  if (
+    !liberation ||
+    liberation.date_month !== 1 ||
+    liberation.date_day !== 16 ||
+    liberation.source?.url !==
+      "https://rimplovdiv.com/en/2026/01/16/the-liberation-of-plovdiv-16-january-1878/" ||
+    liberation.data_quality !== "manual_reviewed" ||
+    liberation.conflict_notes_bg ||
+    liberation.conflict_notes_en
+  ) {
+    throw new Error(
+      "history timeline: Liberation of Plovdiv must use the reviewed 16 January 1878 Regional History Museum record"
+    );
+  }
+
+  const bessiContext = byId.get("history-thracian-town-bessi");
+  if (
+    !bessiContext ||
+    bessiContext.year !== -600 ||
+    bessiContext.source?.url !== "https://www.visitplovdiv.com/en/node/145"
+  ) {
+    throw new Error(
+      "history timeline: Bessi/Odrysian context must retain the reviewed 6th-to-early-5th-century source"
+    );
+  }
+
+  const nebetTepe = byId.get("history-prehistory-nebet-tepe");
+  if (
+    !nebetTepe ||
+    nebetTepe.year !== -5000 ||
+    !nebetTepe.conflict_notes_bg ||
+    !nebetTepe.conflict_notes_en ||
+    nebetTepe.source?.url !== "https://www.visitplovdiv.com/en/node/521"
+  ) {
+    throw new Error(
+      "history timeline: Nebet Tepe must preserve the reviewed source range and bilingual date uncertainty note"
+    );
   }
 }
 
@@ -723,6 +868,27 @@ function assertOpenMedia(label, record, media, field) {
   if (!openMediaLicensePattern.test(media.license)) {
     throw new Error(`${label}: ${record.id} has non-open ${field} license "${media.license}"`);
   }
+  for (const key of ["url", "page_url", "license_url"]) {
+    try {
+      if (new URL(media[key]).protocol !== "https:") {
+        throw new Error(`${label}: ${record.id} ${field}.${key} must use HTTPS`);
+      }
+    } catch (error) {
+      if (error instanceof TypeError) {
+        throw new Error(`${label}: ${record.id} ${field}.${key} is not a valid URL`);
+      }
+      throw error;
+    }
+  }
+}
+
+function mediaUrlKey(value) {
+  try {
+    const url = new URL(value);
+    return `${url.hostname}${decodeURIComponent(url.pathname)}`.toLocaleLowerCase("en");
+  } catch {
+    return String(value ?? "").trim().toLocaleLowerCase("en");
+  }
 }
 
 function assertPlaceMediaLicensing(loaded) {
@@ -751,6 +917,7 @@ function assertPlaceMediaLicensing(loaded) {
 function assertArchiveLayer(loaded) {
   const places = new Set(loaded.get("knowledge places").map((record) => record.id));
   const archiveItems = loaded.get("historical archive items");
+  const publishedArchiveItems = loaded.get("knowledge archive items");
   const thenNowPairs = loaded.get("knowledge then-now pairs");
   const archiveIds = new Set(archiveItems.map((record) => record.id));
   const sourceIds = new Set(loaded.get("knowledge sources").map((record) => record.id));
@@ -764,6 +931,19 @@ function assertArchiveLayer(loaded) {
 
   if (thenNowPairs.length < 20) {
     throw new Error(`then-now pairs: expected at least 20 pairs, got ${thenNowPairs.length}`);
+  }
+
+  for (const [label, records] of [
+    ["published archive items", publishedArchiveItems],
+    ["published then-now pairs", thenNowPairs]
+  ]) {
+    for (const record of records) {
+      if (record.editorial?.status !== "needs_editorial_signoff") continue;
+      const note = record.editorial.notes_en ?? "";
+      if (!note.includes("provisional reference") || note.includes("before final publication")) {
+        throw new Error(`${label}: ${record.id} must expose an accurate published editorial-review notice`);
+      }
+    }
   }
 
   for (const record of archiveItems) {
@@ -811,6 +991,9 @@ function assertArchiveLayer(loaded) {
       throw new Error(
         `then-now pairs: ${pair.id} place ${pair.place_id} does not match archive item ${archiveItem?.place_id}`
       );
+    }
+    if (mediaUrlKey(pair.then_media?.url) === mediaUrlKey(pair.now_media?.url)) {
+      throw new Error(`then-now pairs: ${pair.id} uses the same file for then_media and now_media`);
     }
     for (const [field, media] of [
       ["then_media", pair.then_media],
@@ -1398,6 +1581,22 @@ function assertTranslatedStrings(label, records) {
   return englishStrings.size;
 }
 
+function assertLandmarkEnglishSummaryIntegrity(landmarks) {
+  const cyrillic = /[\u0400-\u04ff]/u;
+  for (const landmark of landmarks) {
+    const summary = String(landmark.summary_en ?? "").trim();
+    if (!summary) throw new Error(`landmarks: ${landmark.id} is missing summary_en`);
+    if (cyrillic.test(summary)) {
+      throw new Error(`landmarks: ${landmark.id} summary_en must be English, not Cyrillic source text`);
+    }
+    for (const [lang, map] of translationsByLangMap()) {
+      if (!map[summary]) {
+        throw new Error(`landmarks: ${landmark.id} summary_en is missing a ${lang} translation`);
+      }
+    }
+  }
+}
+
 function assertWalkingRoutes(loaded) {
   const routes = loaded.get("walking routes");
   const placesById = new Map(loaded.get("knowledge places").map((record) => [record.id, record]));
@@ -1585,7 +1784,9 @@ assertNoPrivateFixFields(loaded.get("fix reports"));
 assertProjectBudgetLinks(loaded.get("projects"), loaded.get("budget items"));
 assertCommunityProjectLinks(loaded.get("community initiatives"), loaded.get("projects"));
 assertMayorArchiveCompleteness(loaded.get("city archive"));
+assertReviewedTimelineFacts(loaded.get("history timeline"));
 assertEnglishArchiveDateParity(loaded.get("city archive"));
+assertLandmarkEnglishSummaryIntegrity(loaded.get("landmarks"));
 assertKnowledgeLinks(loaded);
 assertTimelineExactDateCoverage(loaded);
 assertTimelineSourceRigor(loaded);

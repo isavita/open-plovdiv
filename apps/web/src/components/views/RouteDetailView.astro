@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { field, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
-import { commonsImageUrl } from "@lib/commons";
+import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { distanceMeters } from "@lib/geo";
 import { sourceTitle } from "@lib/format";
 import { publicThenNowPairs } from "@lib/thenNow";
@@ -402,6 +402,7 @@ const structuredData = {
                           alt=""
                           loading="lazy"
                           decoding="async"
+                          crossorigin={isCommonsUploadImageUrl(entry.media.url) ? "anonymous" : undefined}
                           referrerpolicy="no-referrer"
                         />
                       </a>

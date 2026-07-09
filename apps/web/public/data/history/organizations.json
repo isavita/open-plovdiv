@@ -8,6 +8,9 @@
     "summary_bg": "Нормализиран организационен запис, използван за връзки в историческата база: Община Пловдив.",
     "summary_en": "Normalized organization record used for links in the historical knowledge base: Plovdiv Municipality.",
     "event_ids": [
+      "event-thracian-eumolpias",
+      "event-roman-theatre",
+      "event-ottoman-1364",
       "event-mayor-01-atanas-samokovliev",
       "event-mayor-02-kostaki-peev",
       "event-mayor-03-ivan-stefanov-geshov",
@@ -169,8 +172,10 @@
       "person-hristo-pavlov"
     ],
     "place_ids": [
+      "place-ancient-theatre",
       "place-ancient-stadium",
       "place-old-town",
+      "place-seven-hills",
       "place-plovdiv-city"
     ],
     "source_ids": [
@@ -342,7 +347,6 @@
       "event-thracian-lucullus",
       "event-roman-trimontium",
       "event-roman-forum",
-      "event-roman-theatre",
       "event-finance-1897-bnb-refinance-loan",
       "event-finance-1898-actual-revenue",
       "event-finance-1898-planned-budget",
@@ -365,7 +369,6 @@
     ],
     "person_ids": [],
     "place_ids": [
-      "place-ancient-theatre",
       "place-old-town",
       "place-seven-hills",
       "place-plovdiv-city",
@@ -524,6 +527,7 @@
     "summary_bg": "Нормализиран организационен запис, използван за връзки в историческата база: Фондация Пловдив 2019.",
     "summary_en": "Normalized organization record used for links in the historical knowledge base: Plovdiv 2019 Foundation.",
     "event_ids": [
+      "event-roman-theatre",
       "event-event-1999-month-of-culture",
       "event-event-1999-month-of-culture-scale",
       "event-programme-2009-state-beautification-subsidy",

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { execFileSync } from "node:child_process";
+import { normalizePublishedEditorialNotices } from "./editorial_notices.mjs";
 
 const root = process.cwd();
 const publicDir = path.join(root, "apps/web/public/data");
@@ -104,7 +105,12 @@ fs.mkdirSync(publicDir, { recursive: true });
 for (const file of files) {
   const source = path.join(root, "data/curated", file);
   const target = path.join(publicDir, file);
-  const json = JSON.parse(fs.readFileSync(source, "utf8"));
+  let json = JSON.parse(fs.readFileSync(source, "utf8"));
+  if (file === "historical-archive-items.json") {
+    json = normalizePublishedEditorialNotices(json, "archive");
+  } else if (file === "then-now-pairs.json") {
+    json = normalizePublishedEditorialNotices(json, "pair");
+  }
   writeJson(target, json);
   console.log(`generated apps/web/public/data/${file}`);
 }

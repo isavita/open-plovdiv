@@ -50,6 +50,9 @@
       "$ref": "https://openplovdiv.example/schemas/historical-archive-item.schema.json#/definitions/editorial"
     }
   },
+  "patternProperties": {
+    "^(title|caption)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+  },
   "definitions": {
     "generated_media": {
       "type": "object",
@@ -75,6 +78,9 @@
         "license_url": { "type": "string", "format": "uri" },
         "accessed_at": { "type": "string", "format": "date" },
         "source_id": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
+      },
+      "patternProperties": {
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
       }
     },
     "provenance": {
@@ -92,6 +98,9 @@
         "url": { "type": "string", "format": "uri" },
         "accessed_at": { "type": "string", "format": "date" },
         "license_status": { "type": "string", "minLength": 3 }
+      },
+      "patternProperties": {
+        "^claim_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 10 }
       }
     }
   }

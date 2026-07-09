@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
-import { commonsImageUrl } from "@lib/commons";
+import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { sectionMotifs } from "@lib/motifs";
 import { fallbackPlaceColor, placeColors } from "@lib/placeCategories";
 import { distanceMeters } from "@lib/geo";
@@ -531,7 +531,8 @@ const placeCards = places.map((place) => {
       ? {
           src: commonsImageUrl(place.media[0].url, 500),
           credit: `${place.media[0].credit} · ${place.media[0].license}`,
-          licenseUrl: place.media[0].license_url
+          licenseUrl: place.media[0].license_url,
+          isCommonsUpload: isCommonsUploadImageUrl(place.media[0].url)
         }
       : null,
     source: source
@@ -930,7 +931,7 @@ const placesMapConfig = {
             <span class="meta" id="places-route-active-stats"></span>
           </span>
           <a class="text-link" id="places-route-active-open" href="#">{sheetL.openRoute} →</a>
-          <button type="button" class="route-active-clear route-active-toggle" id="places-route-nearby" aria-pressed="false" hidden></button>
+          <button type="button" class="route-active-clear route-active-toggle" id="places-route-nearby" aria-label={sheetL.nearRoute} aria-pressed="false" hidden></button>
           <button type="button" class="route-active-clear" id="places-route-clear">{sheetL.clearRoute} ✕</button>
         </div>
       </div>
@@ -1027,6 +1028,7 @@ const placesMapConfig = {
                     height="313"
                     loading="lazy"
                     decoding="async"
+                    crossorigin={card.media.isCommonsUpload ? "anonymous" : undefined}
                     referrerpolicy="no-referrer"
                   />
                   <figcaption class="place-card-credit">
@@ -1116,6 +1118,7 @@ const placesMapConfig = {
               height="313"
               loading="lazy"
               decoding="async"
+              ${card.media.isCommonsUpload ? 'crossorigin="anonymous"' : ""}
               referrerpolicy="no-referrer"
             />
             <figcaption class="place-card-credit">
@@ -1505,8 +1508,10 @@ const placesMapConfig = {
             icon: L.divIcon({
               className: "",
               html: `<span class="map-cluster">${group.length}</span>`,
-              iconSize: [34, 34],
-              iconAnchor: [17, 17]
+              // Keep a 44px hit target even though the desktop bubble is
+              // visually smaller; mobile expands the bubble to fill it.
+              iconSize: [44, 44],
+              iconAnchor: [22, 22]
             })
           });
           cluster.on("click", () => map.fitBounds(bounds, { padding: [46, 46], maxZoom: 17 }));
@@ -1597,6 +1602,7 @@ const placesMapConfig = {
         nearbyToggle.textContent = on
           ? `${mapCfg.words.hideNear} ✕`
           : `+${overlay.nearbyIds.length} ${contextWord}`;
+        nearbyToggle.setAttribute("aria-label", nearbyToggle.textContent);
         nearbyToggle.setAttribute("aria-pressed", String(on));
       }
 

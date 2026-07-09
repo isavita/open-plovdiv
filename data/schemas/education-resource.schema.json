@@ -82,6 +82,9 @@
           "phase_en": { "type": "string", "minLength": 3 },
           "activity_bg": { "type": "string", "minLength": 20 },
           "activity_en": { "type": "string", "minLength": 20 }
+        },
+        "patternProperties": {
+          "^(phase|activity)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
         }
       }
     },
@@ -118,6 +121,9 @@
           "correct_answer_index": { "type": "integer", "minimum": 0, "maximum": 3 },
           "explanation_bg": { "type": "string", "minLength": 10 },
           "explanation_en": { "type": "string", "minLength": 10 }
+        },
+        "patternProperties": {
+          "^(question|explanation)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
         }
       }
     },
@@ -138,6 +144,9 @@
           "minItems": 3,
           "items": { "type": "string", "minLength": 10 }
         }
+      },
+      "patternProperties": {
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 5 }
       }
     },
     "audio_tour": {
@@ -161,9 +170,15 @@
               "title_en": { "type": "string", "minLength": 3 },
               "narration_bg": { "type": "string", "minLength": 30 },
               "narration_en": { "type": "string", "minLength": 30 }
+            },
+            "patternProperties": {
+              "^(title|narration)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
             }
           }
         }
+      },
+      "patternProperties": {
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 5 }
       }
     },
     "linked_event_ids": {
@@ -192,5 +207,8 @@
     "provenance": { "$ref": "knowledge-event.schema.json#/definitions/provenance" },
     "data_quality": { "type": "string", "enum": ["public_source", "manual_reviewed", "provisional"] },
     "editorial": { "$ref": "historical-archive-item.schema.json#/definitions/editorial" }
+  },
+  "patternProperties": {
+    "^(audience|title|summary|driving_question|preparation)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
   }
 }

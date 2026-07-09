@@ -42,5 +42,8 @@
     "source_ids": { "type": "array", "items": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }, "minItems": 1 },
     "provenance": { "$ref": "knowledge-event.schema.json#/definitions/provenance" },
     "editorial": { "$ref": "knowledge-event.schema.json#/definitions/editorial" }
+  },
+  "patternProperties": {
+    "^(name|summary)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
   }
 }

@@ -71,6 +71,9 @@
         "confidence": { "type": "string", "enum": ["place_level", "city_context", "control_point_verified"] },
         "notes_bg": { "type": "string", "minLength": 10 },
         "notes_en": { "type": "string", "minLength": 10 }
+      },
+      "patternProperties": {
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 10 }
       }
     },
     "overlay_bounds": { "$ref": "#/definitions/overlay_bounds" },
@@ -93,11 +96,17 @@
             "url": { "type": "string", "format": "uri" }
           }
         }
+      },
+      "patternProperties": {
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
       }
     },
     "commons_categories": { "type": "array", "items": { "type": "string", "minLength": 2 } },
     "data_quality": { "type": "string", "enum": ["public_source", "manual_reviewed", "provisional"] },
     "editorial": { "$ref": "#/definitions/editorial" }
+  },
+  "patternProperties": {
+    "^(title|description|date_display)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
   },
   "definitions": {
     "overlay_bounds": {
@@ -112,6 +121,9 @@
         "method": { "type": "string", "enum": ["approximate_extent", "manual_control_points"] },
         "notes_bg": { "type": "string", "minLength": 20 },
         "notes_en": { "type": "string", "minLength": 20 }
+      },
+      "patternProperties": {
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 20 }
       }
     },
     "media": {
@@ -136,6 +148,9 @@
         "license": { "type": "string", "minLength": 2 },
         "license_url": { "type": "string", "format": "uri" },
         "accessed_at": { "type": "string", "format": "date" }
+      },
+      "patternProperties": {
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
       }
     },
     "editorial": {
@@ -162,6 +177,9 @@
         "reviewed_at": { "type": ["string", "null"], "format": "date" },
         "notes_bg": { "type": "string", "minLength": 10 },
         "notes_en": { "type": "string", "minLength": 10 }
+      },
+      "patternProperties": {
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 10 }
       }
     }
   }

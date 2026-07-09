@@ -7,6 +7,7 @@ import { createHash } from "node:crypto";
 import { roleLabels, ui, type Lang } from "@i18n/ui";
 import { localeForLang, localizePath } from "@i18n/utils";
 import { publicArchiveItems } from "@lib/archive";
+import { editorialReviewStatusLabel, pendingEditorialReviewNote } from "@lib/editorial";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import { publicThenNowPairs } from "@lib/thenNow";
 import { neighbourhoodLabels } from "@lib/neighbourhoodLabels";
@@ -92,6 +93,7 @@ const labels = ({
         person: "Личност",
         place: "Място",
         linked: "Връзки",
+        advancedFilters: "Още филтри",
         allEras: "Всички епохи",
         allCategories: "Всички типове",
         allThemes: "Всички теми",
@@ -114,7 +116,7 @@ const labels = ({
         conflictNote: "Бележка за конфликт",
         mapTitle: "Историческа карта",
         mapLead:
-          "Първите места са поставени на картата с приблизителни координати и отделен източник за контекст.",
+          "Документираните места са показани на картата с приблизителни координати и отделен източник за контекст.",
         mapLayer: "Слой по епоха",
         allMapEras: "Всички епохи",
         mapRoutes: "Тематични маршрути",
@@ -158,7 +160,7 @@ const labels = ({
         thenNowLead:
           "Плъзгачите сравняват архивния образ със съвременна свободно лицензирана снимка на същото място или най-близкия проверим градски контекст.",
         thenLabel: "Тогава",
-        nowLabel: "Сега",
+        nowLabel: "Референтна снимка",
         peopleTitle: "Връзки между хората",
         peopleLead:
           "Мрежата обхваща всички личности, а приемствеността между кметовете е отделен слой в нея.",
@@ -190,6 +192,7 @@ const labels = ({
         person: "Person",
         place: "Place",
         linked: "Links",
+        advancedFilters: "More filters",
         allEras: "All eras",
         allCategories: "All types",
         allThemes: "All themes",
@@ -212,7 +215,7 @@ const labels = ({
         conflictNote: "Conflict note",
         mapTitle: "Historical Map",
         mapLead:
-          "The first places are placed on the map with approximate coordinates and a separate source for context.",
+          "Documented places are shown with approximate coordinates and a separate source for context.",
         mapLayer: "Era layer",
         allMapEras: "All eras",
         mapRoutes: "Themed walking routes",
@@ -256,7 +259,7 @@ const labels = ({
         thenNowLead:
           "The sliders compare an archive image with a modern open-licensed photo of the same place or the nearest verifiable urban context.",
         thenLabel: "Then",
-        nowLabel: "Now",
+        nowLabel: "Reference photo",
         peopleTitle: "People Connections",
         peopleLead:
           "The network includes every person, while mayoral succession is a separate layer within it.",
@@ -288,6 +291,7 @@ const labels = ({
         person: "Person",
         place: "Ort",
         linked: "Verknüpfungen",
+        advancedFilters: "Weitere Filter",
         allEras: "Alle Epochen",
         allCategories: "Alle Typen",
         allThemes: "Alle Themen",
@@ -310,7 +314,7 @@ const labels = ({
         conflictNote: "Konflikthinweis",
         mapTitle: "Historische Karte",
         mapLead:
-          "Die ersten Orte sind mit ungefähren Koordinaten und einer separaten Quelle zur Einordnung auf der Karte verzeichnet.",
+          "Dokumentierte Orte sind mit ungefähren Koordinaten und einer separaten Kontextquelle auf der Karte verzeichnet.",
         mapLayer: "Epochen-Ebene",
         allMapEras: "Alle Epochen",
         mapRoutes: "Thematische Spazierrouten",
@@ -354,7 +358,7 @@ const labels = ({
         thenNowLead:
           "Die Schieberegler vergleichen ein Archivbild mit einem modernen, frei lizenzierten Foto desselben Ortes oder des nächsten überprüfbaren städtischen Kontexts.",
         thenLabel: "Damals",
-        nowLabel: "Heute",
+        nowLabel: "Referenzfoto",
         peopleTitle: "Verbindungen zwischen Personen",
         peopleLead:
           "Das Netzwerk umfasst alle Personen, während die Bürgermeister-Nachfolge eine eigene Ebene darin ist.",
@@ -386,6 +390,7 @@ const labels = ({
         person: "Personne",
         place: "Lieu",
         linked: "Liens",
+        advancedFilters: "Plus de filtres",
         allEras: "Toutes les époques",
         allCategories: "Tous les types",
         allThemes: "Tous les thèmes",
@@ -408,7 +413,7 @@ const labels = ({
         conflictNote: "Note de conflit",
         mapTitle: "Carte historique",
         mapLead:
-          "Les premiers lieux sont placés sur la carte avec des coordonnées approximatives et une source distincte pour le contexte.",
+          "Les lieux documentés sont placés sur la carte avec des coordonnées approximatives et une source distincte pour le contexte.",
         mapLayer: "Couche par époque",
         allMapEras: "Toutes les époques",
         mapRoutes: "Parcours thématiques à pied",
@@ -452,7 +457,7 @@ const labels = ({
         thenNowLead:
           "Les curseurs comparent une image d'archives à une photo moderne sous licence ouverte du même lieu ou du contexte urbain vérifiable le plus proche.",
         thenLabel: "Avant",
-        nowLabel: "Après",
+        nowLabel: "Photo de référence",
         peopleTitle: "Liens entre personnalités",
         peopleLead:
           "Le réseau inclut toutes les personnes, la succession des maires en étant une couche distincte.",
@@ -484,6 +489,7 @@ const labels = ({
         person: "Persona",
         place: "Luogo",
         linked: "Legami",
+        advancedFilters: "Altri filtri",
         allEras: "Tutte le epoche",
         allCategories: "Tutti i tipi",
         allThemes: "Tutti i temi",
@@ -506,7 +512,7 @@ const labels = ({
         conflictNote: "Nota di conflitto",
         mapTitle: "Mappa storica",
         mapLead:
-          "I primi luoghi sono collocati sulla mappa con coordinate approssimative e una fonte distinta per il contesto.",
+          "I luoghi documentati sono riportati sulla mappa con coordinate approssimative e una fonte distinta per il contesto.",
         mapLayer: "Strato per epoca",
         allMapEras: "Tutte le epoche",
         mapRoutes: "Percorsi tematici a piedi",
@@ -550,7 +556,7 @@ const labels = ({
         thenNowLead:
           "I cursori confrontano un'immagine d'archivio con una foto moderna a licenza aperta dello stesso luogo o del contesto urbano verificabile più vicino.",
         thenLabel: "Prima",
-        nowLabel: "Dopo",
+        nowLabel: "Foto di riferimento",
         peopleTitle: "Legami tra le personalità",
         peopleLead:
           "La rete include tutte le persone, con la successione dei sindaci come strato distinto al suo interno.",
@@ -582,6 +588,7 @@ const labels = ({
         person: "Kişi",
         place: "Yer",
         linked: "Bağlar",
+        advancedFilters: "Daha fazla filtre",
         allEras: "Tüm dönemler",
         allCategories: "Tüm türler",
         allThemes: "Tüm temalar",
@@ -604,7 +611,7 @@ const labels = ({
         conflictNote: "Çelişki notu",
         mapTitle: "Tarihsel harita",
         mapLead:
-          "İlk yerler haritaya yaklaşık koordinatlarla ve bağlam için ayrı bir kaynakla yerleştirilmiştir.",
+          "Belgelenmiş yerler, yaklaşık koordinatlar ve bağlam için ayrı bir kaynakla haritada gösterilir.",
         mapLayer: "Döneme göre katman",
         allMapEras: "Tüm dönemler",
         mapRoutes: "Tematik yürüyüş güzergâhları",
@@ -648,7 +655,7 @@ const labels = ({
         thenNowLead:
           "Kaydırıcılar, bir arşiv görselini aynı yerin veya en yakın doğrulanabilir kentsel bağlamın modern, açık lisanslı bir fotoğrafıyla karşılaştırır.",
         thenLabel: "Önce",
-        nowLabel: "Sonra",
+        nowLabel: "Referans fotoğrafı",
         peopleTitle: "Kişiler arasındaki bağlar",
         peopleLead:
           "Ağ tüm kişileri içerir; belediye başkanlığı ardıllığı bunun içinde ayrı bir katmandır.",
@@ -680,6 +687,7 @@ const labels = ({
         person: "Persona",
         place: "Lugar",
         linked: "Vínculos",
+        advancedFilters: "Más filtros",
         allEras: "Todas las épocas",
         allCategories: "Todos los tipos",
         allThemes: "Todos los temas",
@@ -702,7 +710,7 @@ const labels = ({
         conflictNote: "Nota de conflicto",
         mapTitle: "Mapa histórico",
         mapLead:
-          "Los primeros lugares se sitúan en el mapa con coordenadas aproximadas y una fuente aparte para el contexto.",
+          "Los lugares documentados se muestran en el mapa con coordenadas aproximadas y una fuente aparte para el contexto.",
         mapLayer: "Capa por época",
         allMapEras: "Todas las épocas",
         mapRoutes: "Recorridos temáticos a pie",
@@ -746,7 +754,7 @@ const labels = ({
         thenNowLead:
           "Los controles deslizantes comparan una imagen de archivo con una foto moderna de licencia abierta del mismo lugar o del contexto urbano verificable más cercano.",
         thenLabel: "Antes",
-        nowLabel: "Después",
+        nowLabel: "Foto de referencia",
         peopleTitle: "Conexiones entre las personas",
         peopleLead:
           "La red incluye a todas las personas, con la sucesión de alcaldes como una capa aparte dentro de ella.",
@@ -778,6 +786,7 @@ const labels = ({
         person: "Πρόσωπο",
         place: "Τοποθεσία",
         linked: "Δεσμοί",
+        advancedFilters: "Περισσότερα φίλτρα",
         allEras: "Όλες οι εποχές",
         allCategories: "Όλοι οι τύποι",
         allThemes: "Όλα τα θέματα",
@@ -800,7 +809,7 @@ const labels = ({
         conflictNote: "Σημείωση αντίφασης",
         mapTitle: "Ιστορικός χάρτης",
         mapLead:
-          "Οι πρώτες τοποθεσίες τοποθετούνται στον χάρτη με κατά προσέγγιση συντεταγμένες και ξεχωριστή πηγή για το πλαίσιο.",
+          "Οι τεκμηριωμένοι τόποι εμφανίζονται στον χάρτη με κατά προσέγγιση συντεταγμένες και ξεχωριστή πηγή για το πλαίσιο.",
         mapLayer: "Στρώμα ανά εποχή",
         allMapEras: "Όλες οι εποχές",
         mapRoutes: "Θεματικές διαδρομές περιπάτου",
@@ -844,7 +853,7 @@ const labels = ({
         thenNowLead:
           "Οι ολισθητήρες συγκρίνουν μια εικόνα αρχείου με μια σύγχρονη φωτογραφία ανοιχτής άδειας του ίδιου σημείου ή του πλησιέστερου επαληθεύσιμου αστικού πλαισίου.",
         thenLabel: "Πριν",
-        nowLabel: "Μετά",
+        nowLabel: "Φωτογραφία αναφοράς",
         peopleTitle: "Συνδέσεις μεταξύ των προσώπων",
         peopleLead:
           "Το δίκτυο περιλαμβάνει όλα τα πρόσωπα, με τη διαδοχή των δημάρχων ως ξεχωριστό στρώμα μέσα του.",
@@ -876,6 +885,7 @@ const labels = ({
         person: "人物",
         place: "場所",
         linked: "関連",
+        advancedFilters: "その他の絞り込み",
         allEras: "すべての時代",
         allCategories: "すべての種類",
         allThemes: "すべてのテーマ",
@@ -898,7 +908,7 @@ const labels = ({
         conflictNote: "矛盾に関する注記",
         mapTitle: "歴史地図",
         mapLead:
-          "最初の場所は、おおよその座標と文脈を示す別出典とともに地図へ配置されています。",
+          "記録で裏付けられた場所を、おおよその座標と文脈を示す別個の出典とともに地図に表示しています。",
         mapLayer: "時代レイヤー",
         allMapEras: "すべての時代",
         mapRoutes: "テーマ別散策ルート",
@@ -942,7 +952,7 @@ const labels = ({
         thenNowLead:
           "スライダーで、アーカイブ画像と同じ場所または確認可能な最寄りの都市文脈を示す現代のオープンライセンス写真を比較します。",
         thenLabel: "昔",
-        nowLabel: "今",
+        nowLabel: "参照写真",
         peopleTitle: "人物のつながり",
         peopleLead:
           "ネットワークにはすべての人物を含め、市長の継承関係はその中の別レイヤーとして示します。",
@@ -974,6 +984,7 @@ const labels = ({
         person: "Tao",
         place: "Lugar",
         linked: "Mga Koneksyon",
+        advancedFilters: "Higit pang filter",
         allEras: "Lahat ng yugto",
         allCategories: "Lahat ng uri",
         allThemes: "Lahat ng tema",
@@ -996,7 +1007,7 @@ const labels = ({
         conflictNote: "Tala ng hidwaan",
         mapTitle: "Makasaysayang Mapa",
         mapLead:
-          "Ang mga unang lugar ay inilagay sa mapa na may tinatayang mga coordinate at hiwalay na pinagmulan para sa konteksto.",
+          "Ang mga naitalang lugar ay ipinapakita sa mapa gamit ang tinatayang mga coordinate at hiwalay na pinagmulan para sa konteksto.",
         mapLayer: "Layer ayon sa yugto",
         allMapEras: "Lahat ng yugto",
         mapRoutes: "Mga temang ruta na lakad",
@@ -1040,7 +1051,7 @@ const labels = ({
         thenNowLead:
           "Inihahambing ng mga slider ang larawan mula sa arkibo sa isang modernong larawang bukas ang lisensya ng parehong lugar o ng pinakamalapit na mapapatunayang konteksto ng lungsod.",
         thenLabel: "Noon",
-        nowLabel: "Ngayon",
+        nowLabel: "Larawang sanggunian",
         peopleTitle: "Mga Koneksyon ng Tao",
         peopleLead:
           "Kasama sa network ang bawat tao, habang ang pagkakasunod-sunod ng mga alkalde ay hiwalay na layer sa loob nito.",
@@ -1072,6 +1083,7 @@ const labels = ({
         person: "Особа",
         place: "Місце",
         linked: "Зв'язки",
+        advancedFilters: "Більше фільтрів",
         allEras: "Усі епохи",
         allCategories: "Усі типи",
         allThemes: "Усі теми",
@@ -1094,7 +1106,7 @@ const labels = ({
         conflictNote: "Примітка про розбіжність",
         mapTitle: "Історична карта",
         mapLead:
-          "Перші місця розміщені на карті з приблизними координатами та окремим джерелом для контексту.",
+          "Задокументовані місця показано на карті з приблизними координатами та окремим джерелом для контексту.",
         mapLayer: "Шар за епохою",
         allMapEras: "Усі епохи",
         mapRoutes: "Тематичні пішохідні маршрути",
@@ -1138,7 +1150,7 @@ const labels = ({
         thenNowLead:
           "Повзунки порівнюють архівне зображення із сучасним фото з відкритою ліцензією того самого місця або найближчого перевірюваного міського контексту.",
         thenLabel: "Тоді",
-        nowLabel: "Тепер",
+        nowLabel: "Довідкове фото",
         peopleTitle: "Зв'язки між людьми",
         peopleLead:
           "Мережа охоплює всіх осіб, а спадкоємність мерів становить у ній окремий шар.",
@@ -1170,6 +1182,7 @@ const labels = ({
         person: "Персона",
         place: "Место",
         linked: "Связи",
+        advancedFilters: "Больше фильтров",
         allEras: "Все эпохи",
         allCategories: "Все типы",
         allThemes: "Все темы",
@@ -1192,7 +1205,7 @@ const labels = ({
         conflictNote: "Примечание о расхождении",
         mapTitle: "Историческая карта",
         mapLead:
-          "Первые места размещены на карте с приблизительными координатами и отдельным источником для контекста.",
+          "Документированные места показаны на карте с приблизительными координатами и отдельным источником для контекста.",
         mapLayer: "Слой по эпохе",
         allMapEras: "Все эпохи",
         mapRoutes: "Тематические пешеходные маршруты",
@@ -1236,7 +1249,7 @@ const labels = ({
         thenNowLead:
           "Ползунки сравнивают архивное изображение с современной свободно лицензированной фотографией того же места или ближайшего проверяемого городского контекста.",
         thenLabel: "Тогда",
-        nowLabel: "Сейчас",
+        nowLabel: "Справочное фото",
         peopleTitle: "Связи между людьми",
         peopleLead:
           "Сеть охватывает всех персон, а преемственность мэров образует в ней отдельный слой.",
@@ -1843,6 +1856,7 @@ const archiveItemsForView = publicArchiveItems(historicalArchiveItems).sort(
 const thenNowPairsForView = publicThenNowPairs(thenNowPairs).sort((a, b) =>
   localized(a, "title").localeCompare(localized(b, "title"), locale)
 );
+const editorialReviewLabel = editorialReviewStatusLabel(lang);
 // date of the historical ("then") photo, taken from its linked archive item
 const archiveById = new Map(historicalArchiveItems.map((it) => [it.id, it]));
 function thenPhotoDate(pair: { historical_archive_item_id?: string }): string {
@@ -2651,7 +2665,7 @@ const geo = ({
       ja: {
         title: "地理と気候",
         lead:
-          "PlovdivはUpper Thracian Plainの閃長岩の丘陵上に位置し、Maritsa川の両岸に広がっています。",
+          "Plovdivは上トラキア平原の閃長岩の丘陵上に位置し、マリツァ川の両岸に広がっています。",
         geographyTitle: "地理",
         climateTitle: "気候",
         chartQ: "年間の気候はどう変化するか",
@@ -2662,8 +2676,8 @@ const geo = ({
         facts: [
           { label: "座標", value: "42°09′N, 24°45′E" },
           { label: "標高", value: "164 m" },
-          { label: "川", value: "Maritsa" },
-          { label: "平野", value: "Upper Thracian Plain" },
+          { label: "川", value: "マリツァ川" },
+          { label: "平野", value: "上トラキア平原" },
           { label: "丘", value: "現存する6つの丘（歴史的には7つ）" },
           { label: "面積", value: "101.98 km²" }
         ],
@@ -2678,7 +2692,7 @@ const geo = ({
       tl: {
         title: "Heograpiya at Klima",
         lead:
-          "Ang Plovdiv ay nakatayo sa mga burol na syenite sa Upper Thracian Plain, sa magkabilang pampang ng ilog Maritsa.",
+          "Ang Plovdiv ay nakatayo sa mga burol na syenite sa Kapatagan ng Itaas na Trakya, sa magkabilang pampang ng Ilog Maritsa.",
         geographyTitle: "Heograpiya",
         climateTitle: "Klima",
         chartQ: "Ano ang klima sa buong taon?",
@@ -2687,15 +2701,15 @@ const geo = ({
         legendPrecip: "Pag-ulan",
         months: ["Ene", "Peb", "Mar", "Abr", "May", "Hun", "Hul", "Ago", "Set", "Okt", "Nob", "Dis"],
         facts: [
-          { label: "Coordinates", value: "42°09′N, 24°45′E" },
+          { label: "Mga koordinado", value: "42°09′N, 24°45′E" },
           { label: "Taas mula sa dagat", value: "164 m" },
           { label: "Ilog", value: "Maritsa" },
-          { label: "Kapatagan", value: "Upper Thracian Plain" },
+          { label: "Kapatagan", value: "Kapatagan ng Itaas na Trakya" },
           { label: "Mga burol", value: "6 natitirang burol (7 sa kasaysayan)" },
           { label: "Sukat", value: "101.98 km²" }
         ],
         stats: [
-          { label: "Uri ng klima", value: "Humid subtropical" },
+          { label: "Uri ng klima", value: "Mahalumigmig na subtropikal" },
           { label: "Taunang karaniwang mataas/mababa", value: "18.9 / 7.3 °C" },
           { label: "Record na mataas/mababa", value: "45.0 / −31.5 °C" },
           { label: "Taunang pag-ulan", value: "502 mm" }
@@ -2915,8 +2929,8 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         <p id="history-on-this-day-empty" class="meta" aria-live="polite"></p>
       </div>
 
-      <div class="toolbar">
-        <div class="filters">
+      <div class="toolbar history-toolbar">
+        <div class="filters history-primary-filters">
           <div class="field">
             <label for="history-search">{labels.search}</label>
             <input id="history-search" type="search" placeholder={labels.searchPlaceholder} />
@@ -2935,6 +2949,10 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
               {categories.map((category) => <option value={category}>{labelCategory(category)}</option>)}
             </select>
           </div>
+        </div>
+        <details class="history-advanced-filters" id="history-advanced-filters">
+          <summary>{labels.advancedFilters}</summary>
+          <div class="filters history-advanced-filter-grid">
           <div class="field">
             <label for="history-theme">{labels.theme}</label>
             <select id="history-theme">
@@ -2965,7 +2983,8 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
               <option value="organizations">{labels.withOrganizations}</option>
             </select>
           </div>
-        </div>
+          </div>
+        </details>
       </div>
 
       <div class="results-bar">
@@ -3131,6 +3150,9 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                 <dt>{labels.license}</dt>
                 <dd>{item.media.license}</dd>
               </dl>
+              {pendingEditorialReviewNote(item.editorial, lang) && (
+                <p class="editorial-caveat"><strong>{editorialReviewLabel}:</strong> {pendingEditorialReviewNote(item.editorial, lang)}</p>
+              )}
               <a class="src-link" href={item.source.url} target="_blank" rel="noreferrer">
                 {`${labels.source}: ${sourceTitle(item.source.title, lang)} ↗`}
               </a>
@@ -3185,6 +3207,9 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
             </div>
             <h3>{localized(pair, "title")}</h3>
             <p>{localized(pair, "caption")}</p>
+            {pendingEditorialReviewNote(pair.editorial, lang) && (
+              <p class="editorial-caveat"><strong>{editorialReviewLabel}:</strong> {pendingEditorialReviewNote(pair.editorial, lang)}</p>
+            )}
             <p class="meta">
               {`${labels.thenLabel}${thenPhotoDate(pair) ? ` (${thenPhotoDate(pair)})` : ""}: ${pair.then_media.credit} · ${pair.then_media.license}`}
               <br />
@@ -3535,6 +3560,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     const person = document.querySelector<HTMLSelectElement>("#history-person")!;
     const place = document.querySelector<HTMLSelectElement>("#history-place")!;
     const linked = document.querySelector<HTMLSelectElement>("#history-linked")!;
+    const advancedFilterPanel = document.querySelector<HTMLDetailsElement>("#history-advanced-filters");
     const count = document.querySelector<HTMLElement>("#history-count")!;
     const reset = document.querySelector<HTMLButtonElement>("#history-reset")!;
     const empty = document.querySelector<HTMLElement>("#history-empty")!;
@@ -3764,6 +3790,17 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       });
     }
 
+    function syncAdvancedFilterPanel() {
+      if (!advancedFilterPanel) return;
+      const hasActiveAdvancedFilter =
+        theme.value !== "all" ||
+        person.value !== "all" ||
+        place.value !== "all" ||
+        linked.value !== "all";
+      advancedFilterPanel.classList.toggle("has-active-filter", hasActiveAdvancedFilter);
+      if (hasActiveAdvancedFilter) advancedFilterPanel.open = true;
+    }
+
     function applyHistoryFilters() {
       const visibleItems = items.filter(matchesHistoryItem);
       list.innerHTML = visibleItems.map(renderTimelineItem).join("");
@@ -3779,6 +3816,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         linked.value !== "all"
       );
       syncEraButtons();
+      syncAdvancedFilterPanel();
       updateAtlas(visibleItems.length);
     }
 
@@ -4438,7 +4476,8 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         attribution: "&copy; OpenStreetMap contributors"
       }).addTo(map);
       const bounds = L.latLngBounds([]);
-      const markerByPlaceId = new Map<string, any>();
+      const placeMarkerLayer = L.layerGroup().addTo(map);
+      const markerByPlaceId = new Map<string, { marker: any; place: any }>();
       const placeById = new Map<string, any>(places.map((place: any) => [place.id, place]));
       const archiveMarkerById = new Map<string, any>();
       const archiveOverlayById = new Map<string, any>();
@@ -4456,7 +4495,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
             iconAnchor: [14, 28]
           })
         }).on("click", () => renderPlace(place));
-        markerByPlaceId.set(place.id, marker);
+        markerByPlaceId.set(place.id, { marker, place });
       }
       for (const item of archiveItems) {
         const coords = item.coordinates;
@@ -4513,17 +4552,64 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         return archiveItems.filter((item: any) => item.kind === selectedArchive);
       }
 
+      // Historical places are concentrated around the old town. Grouping
+      // nearby pins until a street-level zoom keeps the map readable on a
+      // phone while preserving the individual marker interaction when it is
+      // useful. The groups deliberately follow the same deterministic grid
+      // clustering pattern used by the public Places map.
+      let renderedVisiblePlaces: any[] = [];
+      const CLUSTER_MAX_ZOOM = 16;
+      function renderPlaceMarkers(visible = renderedVisiblePlaces) {
+        placeMarkerLayer.clearLayers();
+        if (map.getZoom() >= CLUSTER_MAX_ZOOM) {
+          for (const place of visible) markerByPlaceId.get(place.id)?.marker.addTo(placeMarkerLayer);
+          return;
+        }
+
+        const cell = 56;
+        const groups = new Map<string, any[]>();
+        for (const place of visible) {
+          const point = map.project([place.coordinates.lat, place.coordinates.lng], map.getZoom());
+          const key = `${Math.floor(point.x / cell)}:${Math.floor(point.y / cell)}`;
+          const group = groups.get(key) ?? [];
+          if (group.length === 0) groups.set(key, group);
+          group.push(place);
+        }
+        for (const group of groups.values()) {
+          if (group.length === 1) {
+            markerByPlaceId.get(group[0].id)?.marker.addTo(placeMarkerLayer);
+            continue;
+          }
+          const lat = group.reduce((sum, place) => sum + place.coordinates.lat, 0) / group.length;
+          const lng = group.reduce((sum, place) => sum + place.coordinates.lng, 0) / group.length;
+          const cluster = L.marker([lat, lng], {
+            icon: L.divIcon({
+              className: "",
+              html: `<span class="map-cluster">${group.length}</span>`,
+              // The element reserves a 44px touch target; CSS keeps the
+              // desktop bubble compact and expands it on phones.
+              iconSize: [44, 44],
+              iconAnchor: [22, 22]
+            })
+          });
+          cluster.on("click", () =>
+            map.fitBounds(
+              group.map((place) => [place.coordinates.lat, place.coordinates.lng]),
+              { padding: [46, 46], maxZoom: 17 }
+            )
+          );
+          cluster.addTo(placeMarkerLayer);
+        }
+      }
+      map.on("zoomend", () => renderPlaceMarkers());
+
       function syncMapLayers() {
         const visible = visiblePlaces();
         const visibleIds = new Set(visible.map((place: any) => place.id));
         const visibleArchive = visibleArchiveItems();
         const visibleArchiveIds = new Set(visibleArchive.map((item: any) => item.id));
-        for (const [placeId, marker] of markerByPlaceId.entries()) {
-          const shouldShow = visibleIds.has(placeId);
-          const isShown = map.hasLayer(marker);
-          if (shouldShow && !isShown) marker.addTo(map);
-          if (!shouldShow && isShown) marker.removeFrom(map);
-        }
+        renderedVisiblePlaces = visible;
+        renderPlaceMarkers();
         for (const [itemId, marker] of archiveMarkerById.entries()) {
           const shouldShow = visibleArchiveIds.has(itemId);
           const isShown = map.hasLayer(marker);

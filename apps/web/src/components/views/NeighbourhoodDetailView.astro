@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { field, localeForLang, localizePath, type Lang } from "@i18n/utils";
-import { commonsImageUrl } from "@lib/commons";
+import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { districtLabel, sourceTitle } from "@lib/format";
 import { publicThenNowPairs } from "@lib/thenNow";
 import {
@@ -330,6 +330,7 @@ const structuredData = {
                           alt=""
                           loading="lazy"
                           decoding="async"
+                          crossorigin={isCommonsUploadImageUrl(entry.media.url) ? "anonymous" : undefined}
                           referrerpolicy="no-referrer"
                         />
                       </a>
@@ -353,11 +354,11 @@ const structuredData = {
                     <a href={pair.href} aria-label={pair.title}>
                       <span class="nb-tn-frames">
                         <span class="nb-tn-frame">
-                          <img src={commonsImageUrl(pair.thenUrl, 420)} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                          <img src={commonsImageUrl(pair.thenUrl, 420)} alt="" loading="lazy" decoding="async" crossorigin={isCommonsUploadImageUrl(pair.thenUrl) ? "anonymous" : undefined} referrerpolicy="no-referrer" />
                           <span class="nb-tn-tag">{t.tnThen}</span>
                         </span>
                         <span class="nb-tn-frame">
-                          <img src={commonsImageUrl(pair.nowUrl, 420)} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                          <img src={commonsImageUrl(pair.nowUrl, 420)} alt="" loading="lazy" decoding="async" crossorigin={isCommonsUploadImageUrl(pair.nowUrl) ? "anonymous" : undefined} referrerpolicy="no-referrer" />
                           <span class="nb-tn-tag">{t.tnNow}</span>
                         </span>
                       </span>

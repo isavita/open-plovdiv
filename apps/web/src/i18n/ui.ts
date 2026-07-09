@@ -94,7 +94,7 @@ const bg = {
     methodology: "Методология",
     sources: "Източници",
     note: "Open Plovdiv · обществени данни за Пловдив",
-    dataNote: "Данни от публични източници · актуални към юни 2026 г.",
+    dataNote: "Данни от публични източници · проверявайте източника и датата за всеки запис.",
     rights: "Обществени данни"
   },
   common: {
@@ -104,7 +104,10 @@ const bg = {
     loading: "Зареждане…",
     error: "Възникна грешка.",
     backHome: "Към началото",
-    noSource: "Няма публичен източник."
+    noSource: "Няма публичен източник.",
+    breadcrumb: "Навигационна пътека",
+    zoomIn: "Приближи",
+    zoomOut: "Отдалечи"
   },
   home: {
     eyebrow: "Един от най-старите градове в света",
@@ -741,7 +744,7 @@ const en: typeof bg = {
     methodology: "Methodology",
     sources: "Sources",
     note: "Open Plovdiv · public data for Plovdiv",
-    dataNote: "Data from public sources · updated June 2026.",
+    dataNote: "Data from public sources · check the source and date for each record.",
     rights: "Public data"
   },
   common: {
@@ -751,7 +754,10 @@ const en: typeof bg = {
     loading: "Loading…",
     error: "Something went wrong.",
     backHome: "Back to home",
-    noSource: "No public source."
+    noSource: "No public source.",
+    breadcrumb: "Breadcrumb",
+    zoomIn: "Zoom in",
+    zoomOut: "Zoom out"
   },
   home: {
     eyebrow: "One of the oldest cities in the world",
@@ -1424,7 +1430,7 @@ const de: typeof bg = {
     methodology: "Methodik",
     sources: "Quellen",
     note: "Open Plovdiv · öffentliche Daten für Plovdiv",
-    dataNote: "Daten aus öffentlichen Quellen · aktualisiert Juni 2026.",
+    dataNote: "Daten aus öffentlichen Quellen · prüfen Sie Quelle und Datum bei jedem Eintrag.",
     rights: "Öffentliche Daten"
   },
   common: {
@@ -1434,7 +1440,10 @@ const de: typeof bg = {
     loading: "Wird geladen…",
     error: "Etwas ist schiefgelaufen.",
     backHome: "Zurück zur Startseite",
-    noSource: "Keine öffentliche Quelle."
+    noSource: "Keine öffentliche Quelle.",
+    breadcrumb: "Navigationspfad",
+    zoomIn: "Vergrößern",
+    zoomOut: "Verkleinern"
   },
   home: {
     eyebrow: "Eine der ältesten Städte der Welt",
@@ -2067,7 +2076,7 @@ const fr: typeof bg = {
     methodology: "Méthodologie",
     sources: "Sources",
     note: "Open Plovdiv · données publiques pour Plovdiv",
-    dataNote: "Données issues de sources publiques · mises à jour en juin 2026.",
+    dataNote: "Données issues de sources publiques · vérifiez la source et la date de chaque fiche.",
     rights: "Données publiques"
   },
   common: {
@@ -2077,7 +2086,10 @@ const fr: typeof bg = {
     loading: "Chargement…",
     error: "Une erreur est survenue.",
     backHome: "Retour à l'accueil",
-    noSource: "Aucune source publique."
+    noSource: "Aucune source publique.",
+    breadcrumb: "Fil d’Ariane",
+    zoomIn: "Agrandir",
+    zoomOut: "Réduire"
   },
   home: {
     eyebrow: "L'une des plus anciennes villes du monde",
@@ -2710,7 +2722,7 @@ const it: typeof bg = {
     methodology: "Metodologia",
     sources: "Fonti",
     note: "Open Plovdiv · dati pubblici per Plovdiv",
-    dataNote: "Dati da fonti pubbliche · aggiornati a giugno 2026.",
+    dataNote: "Dati da fonti pubbliche · verifica la fonte e la data di ogni scheda.",
     rights: "Dati pubblici"
   },
   common: {
@@ -2720,7 +2732,10 @@ const it: typeof bg = {
     loading: "Caricamento…",
     error: "Si è verificato un errore.",
     backHome: "Torna alla home",
-    noSource: "Nessuna fonte pubblica."
+    noSource: "Nessuna fonte pubblica.",
+    breadcrumb: "Percorso di navigazione",
+    zoomIn: "Ingrandisci",
+    zoomOut: "Riduci"
   },
   home: {
     eyebrow: "Una delle città più antiche del mondo",
@@ -3353,7 +3368,7 @@ const tr: typeof bg = {
     methodology: "Yöntem",
     sources: "Kaynaklar",
     note: "Open Plovdiv · Plovdiv için kamu verileri",
-    dataNote: "Kamuya açık kaynaklardan veriler · Haziran 2026'da güncellendi.",
+    dataNote: "Kamuya açık kaynaklardan veriler · her kaydın kaynağını ve tarihini kontrol edin.",
     rights: "Kamu verileri"
   },
   common: {
@@ -3363,7 +3378,10 @@ const tr: typeof bg = {
     loading: "Yükleniyor…",
     error: "Bir hata oluştu.",
     backHome: "Ana sayfaya dön",
-    noSource: "Kamuya açık kaynak yok."
+    noSource: "Kamuya açık kaynak yok.",
+    breadcrumb: "İçerik yolu",
+    zoomIn: "Yakınlaştır",
+    zoomOut: "Uzaklaştır"
   },
   home: {
     eyebrow: "Dünyanın en eski şehirlerinden biri",
@@ -3996,7 +4014,7 @@ const es: typeof bg = {
     methodology: "Metodología",
     sources: "Fuentes",
     note: "Open Plovdiv · datos públicos para Plovdiv",
-    dataNote: "Datos de fuentes públicas · actualizado en junio de 2026.",
+    dataNote: "Datos de fuentes públicas · consulte la fuente y la fecha de cada registro.",
     rights: "Datos públicos"
   },
   common: {
@@ -4006,7 +4024,10 @@ const es: typeof bg = {
     loading: "Cargando…",
     error: "Algo salió mal.",
     backHome: "Volver al inicio",
-    noSource: "Sin fuente pública."
+    noSource: "Sin fuente pública.",
+    breadcrumb: "Migas de pan",
+    zoomIn: "Acercar",
+    zoomOut: "Alejar"
   },
   home: {
     eyebrow: "Una de las ciudades más antiguas del mundo",
@@ -4639,7 +4660,7 @@ const el: typeof bg = {
     methodology: "Μεθοδολογία",
     sources: "Πηγές",
     note: "Open Plovdiv · δημόσια δεδομένα για το Plovdiv",
-    dataNote: "Δεδομένα από δημόσιες πηγές · ενημερώθηκε τον Ιούνιο 2026.",
+    dataNote: "Δεδομένα από δημόσιες πηγές · ελέγξτε την πηγή και την ημερομηνία κάθε εγγραφής.",
     rights: "Δημόσια δεδομένα"
   },
   common: {
@@ -4649,7 +4670,10 @@ const el: typeof bg = {
     loading: "Φόρτωση…",
     error: "Κάτι πήγε στραβά.",
     backHome: "Επιστροφή στην αρχική",
-    noSource: "Δεν υπάρχει δημόσια πηγή."
+    noSource: "Δεν υπάρχει δημόσια πηγή.",
+    breadcrumb: "Διαδρομή πλοήγησης",
+    zoomIn: "Μεγέθυνση",
+    zoomOut: "Σμίκρυνση"
   },
   home: {
     eyebrow: "Μία από τις αρχαιότερες πόλεις του κόσμου",
@@ -5282,7 +5306,7 @@ const tl: typeof bg = {
     methodology: "Metodolohiya",
     sources: "Mga Pinagmulan",
     note: "Open Plovdiv · pampublikong datos tungkol sa Plovdiv",
-    dataNote: "Datos mula sa mga pampublikong pinagmulan · napapanahon hanggang Hunyo 2026",
+    dataNote: "Datos mula sa mga pampublikong pinagmulan · tingnan ang pinagmulan at petsa ng bawat talaan.",
     rights: "Pampublikong Datos"
   },
   common: {
@@ -5292,7 +5316,10 @@ const tl: typeof bg = {
     loading: "Naglo-load…",
     error: "May naganap na error.",
     backHome: "Bumalik sa simula",
-    noSource: "Walang pampublikong pinagmulan."
+    noSource: "Walang pampublikong pinagmulan.",
+    breadcrumb: "Landas ng nabigasyon",
+    zoomIn: "Palakihin",
+    zoomOut: "Paliitin"
   },
   home: {
     eyebrow: "Isa sa mga pinakamatandang lungsod sa mundo",
@@ -5925,7 +5952,7 @@ const uk: typeof bg = {
     methodology: "Методологія",
     sources: "Джерела",
     note: "Open Plovdiv · публічні дані про Пловдив",
-    dataNote: "Дані з публічних джерел · оновлено станом на червень 2026 р.",
+    dataNote: "Дані з публічних джерел · перевіряйте джерело й дату для кожного запису.",
     rights: "Публічні дані"
   },
   common: {
@@ -5935,7 +5962,10 @@ const uk: typeof bg = {
     loading: "Завантаження…",
     error: "Сталася помилка.",
     backHome: "На головну",
-    noSource: "Немає публічного джерела."
+    noSource: "Немає публічного джерела.",
+    breadcrumb: "Навігаційний шлях",
+    zoomIn: "Наблизити",
+    zoomOut: "Віддалити"
   },
   home: {
     eyebrow: "Одне з найдавніших міст світу",
@@ -6568,7 +6598,7 @@ const ru: typeof bg = {
     methodology: "Методология",
     sources: "Источники",
     note: "Open Plovdiv · публичные данные о Пловдиве",
-    dataNote: "Данные из публичных источников · обновлено по состоянию на июнь 2026 г.",
+    dataNote: "Данные из публичных источников · проверяйте источник и дату для каждой записи.",
     rights: "Публичные данные"
   },
   common: {
@@ -6578,7 +6608,10 @@ const ru: typeof bg = {
     loading: "Загрузка…",
     error: "Произошла ошибка.",
     backHome: "На главную",
-    noSource: "Нет публичного источника."
+    noSource: "Нет публичного источника.",
+    breadcrumb: "Навигационная цепочка",
+    zoomIn: "Приблизить",
+    zoomOut: "Отдалить"
   },
   home: {
     eyebrow: "Один из старейших городов мира",

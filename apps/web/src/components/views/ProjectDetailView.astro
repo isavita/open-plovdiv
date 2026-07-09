@@ -47,7 +47,7 @@ const note = field(project, "note", lang);
 <Layout lang={lang} path={`/projects/${project.id}`} title={title} description={field(project, "summary", lang)}>
   <section class="page-head">
     <div class="container">
-      <nav class="breadcrumb" aria-label="breadcrumb">
+      <nav class="breadcrumb" aria-label={t.common.breadcrumb}>
         <a href={localizePath("/", lang)}>{t.nav.home}</a>
         <span class="sep" aria-hidden="true">/</span>
         <a href={localizePath("/projects", lang)}>{t.project.breadcrumb}</a>

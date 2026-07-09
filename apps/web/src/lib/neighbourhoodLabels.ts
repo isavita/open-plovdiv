@@ -481,7 +481,7 @@ const labelTable = {
     "Исторический контекст — мало отмеченных мест"
   ),
   tnThen: tr("Тогава", "Then", "Damals", "Hier", "Ieri", "Dün", "Antes", "Τότε", "昔", "Noon", "Тоді", "Тогда"),
-  tnNow: tr("Сега", "Now", "Heute", "Aujourd'hui", "Oggi", "Bugün", "Ahora", "Τώρα", "今", "Ngayon", "Тепер", "Сейчас"),
+  tnNow: tr("Референтна снимка", "Reference photo", "Referenzfoto", "Photo de référence", "Foto di riferimento", "Referans fotoğrafı", "Foto de referencia", "Φωτογραφία αναφοράς", "参照写真", "Larawang sanggunian", "Довідкове фото", "Справочное фото"),
   dataBoundary: tr(
     "Кварталните записи преизползват съществуващи места, разкази и източници; където документацията е откъслечна, това е казано изрично.",
     "Quarter records reuse existing places, stories and sources; where documentation is fragmentary, this is said explicitly.",

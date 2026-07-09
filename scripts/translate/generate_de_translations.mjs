@@ -185,9 +185,6 @@ const manualTranslationsByLang = {
       "Plovdiv市議会 — 才能ある児童の支援に関する規則",
     "Общински съвет — Пловдив, Решение №58 за отчет на бюджет 2010":
       "Plovdiv市議会 — 2010年度予算決算に関する決議第58号",
-    // Bulgarian-only Wikimedia image captions that the machine left untranslated.
-    "Природна забележителност в България.": "ブルガリアの自然記念物。",
-    "Баня в Пловдив, България.": "Plovdivの公衆浴場、ブルガリア。"
   },
   tl: {
     "Public web reference; reuse terms not verified":
@@ -249,8 +246,6 @@ const manualTranslationsByLang = {
     "Zdravko Dimitrov Dimitrov (born 22 May 1963 in Plovdiv) is a Bulgarian politician, sports administrator and former basketball player who was mayor of Plovdiv from 2019 to 2023. He graduated from Vasil Levski Secondary School in Plovdiv, earned a bachelor's degree in sports pedagogy from Plovdiv University, master's degrees in psychology and public administration from the same university, and financial-management training from the D. A. Tsenov Academy of Economics in Svishtov. As a player he competed for CSKA and SSK Akademik Plovdiv and played for Bulgaria's national basketball team; later he served as president of BC Akademik. In politics he was a GERB founding member, mayor of Zapaden District (2007-2011), regional governor of Plovdiv, MP in the 42nd and 43rd National Assemblies, and in 2019 won the mayoral election for Plovdiv Municipality.":
       "Si Zdravko Dimitrov Dimitrov (ipinanganak noong 22 Mayo 1963 sa Plovdiv) ay isang Bulgarong politiko, tagapangasiwa sa palakasan, at dating manlalaro ng basketball na naging alkalde ng Plovdiv mula 2019 hanggang 2023. Nagtapos siya sa Vasil Levski Secondary School sa Plovdiv, kumuha ng digring bachelor sa sports pedagogy mula sa Plovdiv University, mga masterado sa sikolohiya at pampublikong administrasyon mula sa parehong unibersidad, at pagsasanay sa pamamahalang pinansyal mula sa D. A. Tsenov Academy of Economics sa Svishtov. Bilang manlalaro, lumaban siya para sa CSKA at SSK Akademik Plovdiv at naglaro para sa pambansang koponan ng basketball ng Bulgaria; kalaunan naging pangulo siya ng BC Akademik. Sa pulitika, isa siya sa mga tagapagtatag ng GERB, naging alkalde ng distrito ng Zapaden (2007-2011), gobernador ng rehiyon ng Plovdiv, kinatawan sa ika-42 at ika-43 na Pambansang Asamblea, at noong 2019 nanalo sa halalan sa pagkaalkalde ng Munisipalidad ng Plovdiv.",
     // Machine translation lowercased the "Chirpan" place name mid-sentence.
-    "Chirpan earthquake damage near St Josif — then/now":
-      "Pinsala mula sa lindol sa Chirpan malapit sa St Josif — noon/ngayon",
     "Chirpan earthquake damage near St Josif":
       "Pinsala mula sa lindol sa Chirpan malapit sa St Josif",
     // Machine translation split into two inconsistent templates and, for two of the
@@ -364,6 +359,188 @@ const manualTranslationsByLang = {
     "Mayoral term(s) for Atanas Samokovliev.": "Мэрский срок: Atanas Samokovliev."
   }
 };
+
+// These six landmark summaries were imported in Bulgarian into their `_en`
+// fields. Keep their reviewed translations alongside the generator rather
+// than repairing the emitted locale JSON by hand, so a regeneration cannot
+// reintroduce mixed-script or factually wrong descriptions.
+const reviewedLandmarkSummaryTranslationsByLang = {
+  de: {
+    "A road tunnel in Plovdiv.": "Ein Straßentunnel in Plovdiv.",
+    "A natural landmark in Bulgaria.": "Ein Naturdenkmal in Bulgarien.",
+    "An art gallery in Plovdiv.": "Eine Kunstgalerie in Plovdiv.",
+    "A caravanserai in Plovdiv.": "Eine Karawanserei in Plovdiv.",
+    "A bath in Plovdiv, Bulgaria.": "Ein Bad in Plovdiv, Bulgarien.",
+    "A sports hall in Plovdiv.": "Eine Sporthalle in Plovdiv."
+  },
+  fr: {
+    "A road tunnel in Plovdiv.": "Un tunnel routier à Plovdiv.",
+    "A natural landmark in Bulgaria.": "Un monument naturel en Bulgarie.",
+    "An art gallery in Plovdiv.": "Une galerie d'art à Plovdiv.",
+    "A caravanserai in Plovdiv.": "Un caravansérail à Plovdiv.",
+    "A bath in Plovdiv, Bulgaria.": "Un bain à Plovdiv, en Bulgarie.",
+    "A sports hall in Plovdiv.": "Une salle de sport à Plovdiv."
+  },
+  it: {
+    "A road tunnel in Plovdiv.": "Un tunnel stradale a Plovdiv.",
+    "A natural landmark in Bulgaria.": "Un monumento naturale in Bulgaria.",
+    "An art gallery in Plovdiv.": "Una galleria d'arte a Plovdiv.",
+    "A caravanserai in Plovdiv.": "Un caravanserraglio a Plovdiv.",
+    "A bath in Plovdiv, Bulgaria.": "Un bagno a Plovdiv, in Bulgaria.",
+    "A sports hall in Plovdiv.": "Un palazzetto dello sport a Plovdiv."
+  },
+  tr: {
+    "A road tunnel in Plovdiv.": "Plovdiv'de bir karayolu tüneli.",
+    "A natural landmark in Bulgaria.": "Bulgaristan'da bir doğal anıt.",
+    "An art gallery in Plovdiv.": "Plovdiv'de bir sanat galerisi.",
+    "A caravanserai in Plovdiv.": "Plovdiv'de bir kervansaray.",
+    "A bath in Plovdiv, Bulgaria.": "Bulgaristan'ın Plovdiv kentinde bir hamam.",
+    "A sports hall in Plovdiv.": "Plovdiv'de bir spor salonu."
+  },
+  es: {
+    "A road tunnel in Plovdiv.": "Un túnel de carretera en Plovdiv.",
+    "A natural landmark in Bulgaria.": "Un monumento natural en Bulgaria.",
+    "An art gallery in Plovdiv.": "Una galería de arte en Plovdiv.",
+    "A caravanserai in Plovdiv.": "Un caravasar en Plovdiv.",
+    "A bath in Plovdiv, Bulgaria.": "Una casa de baños en Plovdiv, Bulgaria.",
+    "A sports hall in Plovdiv.": "Un pabellón deportivo en Plovdiv."
+  },
+  el: {
+    "A road tunnel in Plovdiv.": "Οδική σήραγγα στο Plovdiv.",
+    "A natural landmark in Bulgaria.": "Φυσικό μνημείο στη Βουλγαρία.",
+    "An art gallery in Plovdiv.": "Πινακοθήκη στο Plovdiv.",
+    "A caravanserai in Plovdiv.": "Καραβανσεράι στο Plovdiv.",
+    "A bath in Plovdiv, Bulgaria.": "Λουτρό στο Plovdiv, Βουλγαρία.",
+    "A sports hall in Plovdiv.": "Αθλητική αίθουσα στο Plovdiv."
+  },
+  ja: {
+    "A road tunnel in Plovdiv.": "Plovdivの道路トンネル。",
+    "A natural landmark in Bulgaria.": "ブルガリアの自然記念物。",
+    "An art gallery in Plovdiv.": "Plovdivの美術館。",
+    "A caravanserai in Plovdiv.": "Plovdivのキャラバンサライ。",
+    "A bath in Plovdiv, Bulgaria.": "ブルガリア、Plovdivの浴場。",
+    "A sports hall in Plovdiv.": "Plovdivのスポーツホール。"
+  },
+  tl: {
+    "A road tunnel in Plovdiv.": "Isang lagusan ng kalsada sa Plovdiv.",
+    "A natural landmark in Bulgaria.": "Isang likas na palatandaan sa Bulgaria.",
+    "An art gallery in Plovdiv.": "Isang galeriya ng sining sa Plovdiv.",
+    "A caravanserai in Plovdiv.": "Isang karabansaray sa Plovdiv.",
+    "A bath in Plovdiv, Bulgaria.": "Isang paliguan sa Plovdiv, Bulgaria.",
+    "A sports hall in Plovdiv.": "Isang bulwagang pampalakasan sa Plovdiv."
+  },
+  uk: {
+    "A road tunnel in Plovdiv.": "Автодорожній тунель у Пловдиві.",
+    "A natural landmark in Bulgaria.": "Природна пам'ятка в Болгарії.",
+    "An art gallery in Plovdiv.": "Художня галерея в Пловдиві.",
+    "A caravanserai in Plovdiv.": "Караван-сарай у Пловдиві.",
+    "A bath in Plovdiv, Bulgaria.": "Лазня в Пловдиві, Болгарія.",
+    "A sports hall in Plovdiv.": "Спортивна зала в Пловдиві."
+  },
+  ru: {
+    "A road tunnel in Plovdiv.": "Автодорожный туннель в Пловдиве.",
+    "A natural landmark in Bulgaria.": "Природная достопримечательность в Болгарии.",
+    "An art gallery in Plovdiv.": "Художественная галерея в Пловдиве.",
+    "A caravanserai in Plovdiv.": "Караван-сарай в Пловдиве.",
+    "A bath in Plovdiv, Bulgaria.": "Баня в Пловдиве, Болгария.",
+    "A sports hall in Plovdiv.": "Спортивный зал в Пловдиве."
+  }
+};
+
+for (const [lang, translations] of Object.entries(reviewedLandmarkSummaryTranslationsByLang)) {
+  Object.assign(manualTranslationsByLang[lang], translations);
+}
+
+// Automated archive intake records are already published as provisional
+// references. Preserve that distinction in every locale: the work still
+// awaiting sign-off is contextual/editorial, not an implied sports "match" or
+// a future publication date.
+const reviewedEditorialNoticeTranslationsByLang = {
+  de: {
+    "This archive record was automatically prepared from Wikimedia Commons and is shown as a provisional reference; independent editorial review and more precise georeferencing are still pending.":
+      "Dieser automatisch aus Wikimedia Commons erstellte Archivdatensatz wird als vorläufige Referenz angezeigt; eine unabhängige redaktionelle Prüfung und eine präzisere Georeferenzierung stehen noch aus.",
+    "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
+      "Diese automatisch erstellte Zuordnung eines historischen Bildes und eines Referenzfotos wird als vorläufige Referenz angezeigt; eine unabhängige redaktionelle Prüfung der visuellen Übereinstimmung, der Lizenz- und Urheberangaben sowie des Kontexts steht noch aus."
+  },
+  fr: {
+    "This archive record was automatically prepared from Wikimedia Commons and is shown as a provisional reference; independent editorial review and more precise georeferencing are still pending.":
+      "Cette fiche d’archive, générée automatiquement depuis Wikimedia Commons, est affichée comme référence provisoire ; une vérification éditoriale indépendante et un géoréférencement plus précis restent à réaliser.",
+    "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
+      "Cette association, générée automatiquement, d’une image historique et d’une photo de référence est affichée comme référence provisoire ; une vérification éditoriale indépendante de la correspondance visuelle, des informations de licence et d’attribution, ainsi que du contexte, reste à réaliser."
+  },
+  it: {
+    "This archive record was automatically prepared from Wikimedia Commons and is shown as a provisional reference; independent editorial review and more precise georeferencing are still pending.":
+      "Questa scheda d’archivio, generata automaticamente da Wikimedia Commons, è mostrata come riferimento provvisorio; restano da completare una revisione editoriale indipendente e una georeferenziazione più precisa.",
+    "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
+      "Questo abbinamento automatico tra immagine storica e foto di riferimento è mostrato come riferimento provvisorio; restano da completare una revisione editoriale indipendente della corrispondenza visiva, delle informazioni sulla licenza e sull’attribuzione e del contesto."
+  },
+  tr: {
+    "This archive record was automatically prepared from Wikimedia Commons and is shown as a provisional reference; independent editorial review and more precise georeferencing are still pending.":
+      "Wikimedia Commons’tan otomatik oluşturulan bu arşiv kaydı geçici bir referans olarak gösterilmektedir; bağımsız editoryal inceleme ve daha hassas coğrafi referanslama henüz tamamlanmamıştır.",
+    "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
+      "Tarihî görsel ile referans fotoğrafın otomatik eşleştirmesi geçici bir referans olarak gösterilmektedir; görsel eşleşme, lisans ve atıf bilgileri ile bağlamın bağımsız editoryal incelemesi henüz tamamlanmamıştır."
+  },
+  es: {
+    "This archive record was automatically prepared from Wikimedia Commons and is shown as a provisional reference; independent editorial review and more precise georeferencing are still pending.":
+      "Este registro de archivo, generado automáticamente a partir de Wikimedia Commons, se muestra como referencia provisional; quedan pendientes una revisión editorial independiente y una georreferenciación más precisa.",
+    "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
+      "Esta asociación automática de una imagen histórica y una foto de referencia se muestra como referencia provisional; está pendiente una revisión editorial independiente de la correspondencia visual, de la información de licencia y atribución y del contexto."
+  },
+  el: {
+    "This archive record was automatically prepared from Wikimedia Commons and is shown as a provisional reference; independent editorial review and more precise georeferencing are still pending.":
+      "Αυτή η αρχειακή εγγραφή, που δημιουργήθηκε αυτόματα από το Wikimedia Commons, εμφανίζεται ως προσωρινή αναφορά· εκκρεμούν ανεξάρτητος συντακτικός έλεγχος και ακριβέστερη γεωαναφορά.",
+    "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
+      "Αυτή η αυτόματα δημιουργημένη αντιστοίχιση ιστορικής εικόνας και φωτογραφίας αναφοράς εμφανίζεται ως προσωρινή αναφορά· εκκρεμεί ανεξάρτητος συντακτικός έλεγχος της οπτικής αντιστοίχισης, των στοιχείων άδειας χρήσης και απόδοσης και του πλαισίου."
+  },
+  ja: {
+    "This archive record was automatically prepared from Wikimedia Commons and is shown as a provisional reference; independent editorial review and more precise georeferencing are still pending.":
+      "このアーカイブ項目はWikimedia Commonsから自動生成され、暫定的な参照情報として表示されています。独立した編集確認と、より正確な地理参照が未完了です。",
+    "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
+      "この歴史資料画像と参照写真の対応付けは自動生成され、暫定的な参照情報として表示されています。画像の対応関係、ライセンス・クレジット情報、背景情報についての独立した編集確認が未完了です。"
+  },
+  tl: {
+    "This archive record was automatically prepared from Wikimedia Commons and is shown as a provisional reference; independent editorial review and more precise georeferencing are still pending.":
+      "Ang talaang arkibo na ito ay awtomatikong inihanda mula sa Wikimedia Commons at ipinapakita bilang pansamantalang sanggunian; nakabinbin pa ang independiyenteng pagsusuring editoryal at mas tumpak na georeferencing.",
+    "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
+      "Ang pagtutugma ng makasaysayang larawan at larawang sanggunian na ito ay awtomatikong inihanda at ipinapakita bilang pansamantalang sanggunian; nakabinbin pa ang independiyenteng pagsusuring editoryal sa biswal na pagtutugma, impormasyon sa lisensya at pagkilala, at konteksto."
+  },
+  uk: {
+    "This archive record was automatically prepared from Wikimedia Commons and is shown as a provisional reference; independent editorial review and more precise georeferencing are still pending.":
+      "Цей архівний запис автоматично підготовлено з Wikimedia Commons і показано як попередню довідку; незалежна редакційна перевірка та точніше геоприв’язування ще очікуються.",
+    "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
+      "Це зіставлення історичного зображення і довідкового фото автоматично підготовлено та показано як попередню довідку; незалежна редакційна перевірка візуальної відповідності, відомостей про ліцензію й авторство та контексту ще очікується."
+  },
+  ru: {
+    "This archive record was automatically prepared from Wikimedia Commons and is shown as a provisional reference; independent editorial review and more precise georeferencing are still pending.":
+      "Эта архивная запись автоматически подготовлена на основе Wikimedia Commons и показана как предварительный справочный материал; независимая редакционная проверка и более точная геопривязка ещё ожидаются.",
+    "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
+      "Это сопоставление исторического изображения и справочной фотографии подготовлено автоматически и показано как предварительный справочный материал; независимая редакционная проверка визуального соответствия, сведений о лицензии и авторстве, а также контекста ещё ожидается."
+  }
+};
+for (const [lang, translations] of Object.entries(reviewedEditorialNoticeTranslationsByLang)) {
+  Object.assign(manualTranslationsByLang[lang], translations);
+}
+
+// "As of" is a verification date, not the start of a term. Pin this
+// time-sensitive mayoral label in every locale so a machine translation cannot
+// change its historical meaning to "in office since 9 July 2026".
+const reviewedCurrentMayoralTermTranslationsByLang = {
+  de: "8. November 2023 – im Amt, Stand: 9. Juli 2026",
+  fr: "8 novembre 2023 – en fonction au 9 juillet 2026",
+  it: "8 novembre 2023 – in carica al 9 luglio 2026",
+  tr: "8 Kasım 2023 – 9 Temmuz 2026 itibarıyla görevde",
+  es: "8 de noviembre de 2023 – en funciones al 9 de julio de 2026",
+  el: "8 Νοεμβρίου 2023 – εν ενεργεία στις 9 Ιουλίου 2026",
+  ja: "2023年11月8日 – 2026年7月9日現在、現職",
+  tl: "8 Nobyembre 2023 – nanunungkulan noong 9 Hulyo 2026",
+  uk: "8 листопада 2023 року — чинний станом на 9 липня 2026 року",
+  ru: "8 ноября 2023 года — действующий по состоянию на 9 июля 2026 года"
+};
+for (const [lang, translation] of Object.entries(reviewedCurrentMayoralTermTranslationsByLang)) {
+  manualTranslationsByLang[lang]["8 November 2023 – incumbent as of 9 July 2026"] = translation;
+}
+manualTranslationsByLang.tl["Plovdiv Municipality — Archaeological sight-seeing"] =
+  "Munisipalidad ng Plovdiv — Mga arkeolohikal na tanawin";
 
 // Extra [machineForm, originalName] fixups for protected names that the generic
 // inference cannot recover (non-templated transliterations inside longer strings).

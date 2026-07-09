@@ -96,6 +96,9 @@
         "signed_off_records": { "type": "integer", "minimum": 0 },
         "records_needing_review": { "type": "integer", "minimum": 0 },
         "records_with_blockers": { "type": "integer", "minimum": 0 }
+      },
+      "patternProperties": {
+        "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 2 }
       }
     },
     "record": {
@@ -214,6 +217,9 @@
             ]
           }
         }
+      },
+      "patternProperties": {
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 1 }
       }
     },
     "review_source": {
@@ -244,6 +250,9 @@
         "evidence_type": { "type": ["string", "null"], "minLength": 3 },
         "claim_bg": { "type": "string" },
         "claim_en": { "type": "string" }
+      },
+      "patternProperties": {
+        "^(title|claim)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
       }
     }
   }

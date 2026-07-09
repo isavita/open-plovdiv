@@ -45,6 +45,7 @@ export const jaUiTranslations: Record<string, string> = {
     "All statuses": "すべてのステータス",
     "All values have public sources.": "すべての値には公開ソースがあります。",
     "All": "すべて",
+    "Breadcrumb": "パンくずリスト",
     "Amount not published.": "金額は非公表。",
     "Amount": "金額",
     "Amounts in euro (€)": "ユーロ (€) での金額",
@@ -97,7 +98,7 @@ export const jaUiTranslations: Record<string, string> = {
     "Data and sources": "データとソース",
     "Data as of June 2026": "2026年6月時点のデータ",
     "Data failed to load": "データのロードに失敗しました",
-    "Data from public sources · updated June 2026.": "公的情報源からのデータ · 2026 年 6 月更新。",
+    "Data from public sources · check the source and date for each record.": "公的情報源のデータ · 各記録で出典と日付をご確認ください。",
     "Data is current as of June 2026. The 2025 budget is adopted, while the 2026 capital programme is provisional. Every record links to a public source.": "データは 2026 年 6 月現在のものです。2025 年の予算が採択されますが、2026 年の資本プログラムは暫定的なものです。すべての記録は公開ソースにリンクしています。",
     "Data sources": "データソース",
     "Describe a public city problem and mark its place on the map. An editor reviews each report before it appears on the map.": "公共都市の問題を説明し、地図上のその場所をマークします。編集者は、各レポートをマップに表示する前にレビューします。",
@@ -471,5 +472,7 @@ export const jaUiTranslations: Record<string, string> = {
     "within 2 km": "2km以内",
     "within 500 m": "500m以内",
     "years covered": "対象年数",
-    "years of history": "長年の歴史"
+    "years of history": "長年の歴史",
+    "Zoom in": "拡大",
+    "Zoom out": "縮小"
 };

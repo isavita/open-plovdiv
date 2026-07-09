@@ -37,11 +37,17 @@
         },
         "label": { "type": "string", "minLength": 3 },
         "url": { "type": "string", "format": "uri" }
+      },
+      "patternProperties": {
+        "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
       }
     },
     "used_for_bg": { "type": "string" },
     "used_for_en": { "type": "string" },
     "limitations_bg": { "type": "string", "minLength": 5 },
     "limitations_en": { "type": "string", "minLength": 5 }
+  },
+  "patternProperties": {
+    "^(title|used_for|limitations)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
   }
 }

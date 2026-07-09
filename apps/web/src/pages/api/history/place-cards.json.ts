@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { commonsImageUrl } from "@lib/commons";
+import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import { json } from "@lib/server/http";
 import { thenNowCountByPlace } from "@lib/thenNow";
@@ -169,7 +169,8 @@ function placeCards(lang: Lang) {
           ? {
               src: commonsImageUrl(place.media[0].url, 500),
               credit: `${place.media[0].credit} · ${place.media[0].license}`,
-              licenseUrl: place.media[0].license_url
+              licenseUrl: place.media[0].license_url,
+              isCommonsUpload: isCommonsUploadImageUrl(place.media[0].url)
             }
           : null,
         source: source

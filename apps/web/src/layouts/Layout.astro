@@ -278,7 +278,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
       })();
     </script>
   </head>
-  <body>
+  <body data-map-zoom-in={t.common.zoomIn} data-map-zoom-out={t.common.zoomOut}>
     <div class="site-shell">
       <a class="skip-link" href="#main" data-skip-link>{t.site.skip}</a>
 
@@ -541,6 +541,44 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
           window.addEventListener("resize", updateChartFade);
           updateChartFade();
         });
+
+        // Leaflet ships English-only defaults for its zoom controls. Maps are
+        // initialized lazily across several pages, so localize the controls
+        // centrally whenever their buttons enter the page rather than letting
+        // every map implementation drift from the current locale.
+        var mapZoomIn = document.body.getAttribute("data-map-zoom-in") || "Zoom in";
+        var mapZoomOut = document.body.getAttribute("data-map-zoom-out") || "Zoom out";
+        var localizeMapZoomControl = function (control, label) {
+          if (!control) return;
+          control.setAttribute("title", label);
+          control.setAttribute("aria-label", label);
+        };
+        var localizeMapZoomControls = function (root) {
+          if (!root || root.nodeType !== 1 && root.nodeType !== 9) return;
+          if (root.nodeType === 1 && root.matches && root.matches(".leaflet-control-zoom-in")) {
+            localizeMapZoomControl(root, mapZoomIn);
+          }
+          if (root.nodeType === 1 && root.matches && root.matches(".leaflet-control-zoom-out")) {
+            localizeMapZoomControl(root, mapZoomOut);
+          }
+          if (root.querySelectorAll) {
+            root.querySelectorAll(".leaflet-control-zoom-in").forEach(function (control) {
+              localizeMapZoomControl(control, mapZoomIn);
+            });
+            root.querySelectorAll(".leaflet-control-zoom-out").forEach(function (control) {
+              localizeMapZoomControl(control, mapZoomOut);
+            });
+          }
+        };
+        localizeMapZoomControls(document);
+        var mapZoomObserver = new MutationObserver(function (records) {
+          records.forEach(function (record) {
+            record.addedNodes.forEach(function (node) {
+              localizeMapZoomControls(node);
+            });
+          });
+        });
+        mapZoomObserver.observe(document.body, { childList: true, subtree: true });
       })();
     </script>
 

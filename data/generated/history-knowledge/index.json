@@ -11,19 +11,19 @@
     "places_with_media": 151,
     "place_media_items": 151,
     "organizations": 12,
-    "sources": 707,
+    "sources": 722,
     "georeferenced_archive_items": 30,
-    "then_now_pairs": 29,
+    "then_now_pairs": 27,
     "primary_documents": 3,
     "story_longreads": 11,
     "lesson_plans": 5,
     "audio_tour_scripts": 5,
-    "editorial_tracked_records": 1002,
+    "editorial_tracked_records": 1000,
     "editorial_signed_off_records": 0,
     "editorial_signoff_logs": 0,
-    "editorial_records_needing_review": 1002,
-    "editorial_records_with_blockers": 1002,
-    "source_coverage_records": 1002
+    "editorial_records_needing_review": 1000,
+    "editorial_records_with_blockers": 1000,
+    "source_coverage_records": 1000
   },
   "targets": {
     "events": 300,
@@ -86,23 +86,23 @@
     "source_coverage_csv": "/data/history/csv/source-coverage.csv"
   },
   "editorial_review": {
-    "total_tracked_records": 1002,
+    "total_tracked_records": 1000,
     "signed_off_records": 0,
-    "records_needing_review": 1002,
-    "records_with_blockers": 1002,
+    "records_needing_review": 1000,
+    "records_with_blockers": 1000,
     "signed_off_percent": 0,
     "tracking_gap_collections": 0
   },
   "source_coverage": {
-    "total_records": 1002,
-    "records_with_sources": 1002,
+    "total_records": 1000,
+    "records_with_sources": 1000,
     "records_without_sources": 0,
-    "records_with_license_or_reuse_status": 1002,
+    "records_with_license_or_reuse_status": 1000,
     "records_missing_license_or_reuse_status": 0,
-    "single_source_records": 726,
+    "single_source_records": 724,
     "multi_source_records": 276,
-    "needs_multi_source_review_records": 726,
-    "open_license_records": 738,
-    "public_reference_terms_records": 334
+    "needs_multi_source_review_records": 724,
+    "open_license_records": 728,
+    "public_reference_terms_records": 337
   }
 }

@@ -5,16 +5,16 @@
   "source_traceability_status": "complete",
   "multi_source_review_status": "needs_review",
   "summary": {
-    "total_records": 1002,
-    "records_with_sources": 1002,
+    "total_records": 1000,
+    "records_with_sources": 1000,
     "records_without_sources": 0,
-    "records_with_license_or_reuse_status": 1002,
+    "records_with_license_or_reuse_status": 1000,
     "records_missing_license_or_reuse_status": 0,
-    "single_source_records": 726,
+    "single_source_records": 724,
     "multi_source_records": 276,
-    "needs_multi_source_review_records": 726,
-    "open_license_records": 738,
-    "public_reference_terms_records": 334
+    "needs_multi_source_review_records": 724,
+    "open_license_records": 728,
+    "public_reference_terms_records": 337
   },
   "collections": {
     "events": {
@@ -29,8 +29,8 @@
       "single_source_records": 350,
       "multi_source_records": 12,
       "needs_multi_source_review_records": 350,
-      "open_license_records": 247,
-      "public_reference_terms_records": 122,
+      "open_license_records": 239,
+      "public_reference_terms_records": 125,
       "label_de": "Veranstaltungen",
       "label_fr": "Événements",
       "label_it": "Eventi",
@@ -171,15 +171,15 @@
       "label_bg": "Двойки тогава/сега",
       "label_en": "Then/now pairs",
       "role": "supporting_archive",
-      "total_records": 29,
-      "records_with_sources": 29,
+      "total_records": 27,
+      "records_with_sources": 27,
       "records_without_sources": 0,
-      "records_with_license_or_reuse_status": 29,
+      "records_with_license_or_reuse_status": 27,
       "records_missing_license_or_reuse_status": 0,
-      "single_source_records": 2,
+      "single_source_records": 0,
       "multi_source_records": 27,
-      "needs_multi_source_review_records": 2,
-      "open_license_records": 29,
+      "needs_multi_source_review_records": 0,
+      "open_license_records": 27,
       "public_reference_terms_records": 0,
       "label_de": "Damals/heute-Paare",
       "label_fr": "Paires hier/maintenant",
@@ -269,33 +269,32 @@
     }
   },
   "license_statuses": {
-    "open_license": 738,
-    "public_reference_terms_unverified": 334
+    "public_reference_terms_unverified": 337,
+    "open_license": 728
   },
   "records": [
     {
       "id": "event-prehistory-settlement",
       "collection": "events",
       "role": "primary_entity",
-      "title_bg": "Едно от най-старите селища в света",
-      "title_en": "One of the world's oldest settlements",
+      "title_bg": "Раннонеолитни селища",
+      "title_en": "Early Neolithic settlements",
       "review_url_bg": "/history#event-prehistory-settlement",
       "review_url_en": "/en/history#event-prehistory-settlement",
       "api_url": "/api/history/events.json",
       "source_count": 2,
       "source_ids": [
-        "source-wikipedia-plovdiv",
-        "source-visit-plovdiv-the-antique-plovdiv"
+        "source-visit-plovdiv-prehistory",
+        "source-plovdiv-municipality-ancient-plovdiv"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
-        "https://www.visitplovdiv.com/en/node/520"
+        "https://www.visitplovdiv.com/en/node/293",
+        "https://www.plovdiv.bg/en/tourists/sight-seeing/ancient-plovdiv/"
       ],
       "license_statuses": [
-        "open_license",
         "public_reference_terms_unverified"
       ],
-      "has_open_license": true,
+      "has_open_license": false,
       "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
@@ -303,56 +302,56 @@
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Eine der ältesten Siedlungen der Welt",
-      "title_fr": "L'une des plus anciennes colonies du monde",
-      "title_it": "Uno degli insediamenti più antichi del mondo",
-      "title_tr": "Dünyanın en eski yerleşim yerlerinden biri",
-      "title_es": "Uno de los asentamientos más antiguos del mundo.",
-      "title_el": "Ένας από τους παλαιότερους οικισμούς του κόσμου",
-      "title_ja": "世界最古の集落の一つ",
-      "title_tl": "Isa sa pinakamatandang pamayanan sa mundo",
-      "title_uk": "Одне з найстаріших поселень світу",
-      "title_ru": "Одно из древнейших поселений мира"
+      "title_de": "Frühneolithische Siedlungen",
+      "title_fr": "Premiers établissements néolithiques",
+      "title_it": "Insediamenti del Neolitico antico",
+      "title_tr": "Erken Neolitik yerleşimler",
+      "title_es": "Asentamientos del Neolítico temprano",
+      "title_el": "Οικισμοί της πρώιμης νεολιθικής εποχής",
+      "title_ja": "新石器時代初期の居住地",
+      "title_tl": "Maagang Neolithic settlements",
+      "title_uk": "Поселення раннього неоліту",
+      "title_ru": "Поселения раннего неолита"
     },
     {
       "id": "event-prehistory-nebet-tepe",
       "collection": "events",
       "role": "primary_entity",
-      "title_bg": "Постоянно селище на Небет тепе",
-      "title_en": "A lasting settlement on Nebet Tepe",
+      "title_bg": "Дългата селищна последователност на Небет тепе",
+      "title_en": "Nebet Tepe’s long settlement sequence",
       "review_url_bg": "/history#event-prehistory-nebet-tepe",
       "review_url_en": "/en/history#event-prehistory-nebet-tepe",
       "api_url": "/api/history/events.json",
       "source_count": 2,
       "source_ids": [
-        "source-wikipedia-plovdiv",
-        "source-wikipedia-nebet-tepe"
+        "source-visit-plovdiv-archaeological-complex-nebet-tepe",
+        "source-visit-plovdiv-discover-plovdiv-brochure"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
-        "https://en.wikipedia.org/wiki/Nebet_Tepe"
+        "https://www.visitplovdiv.com/en/node/521",
+        "https://www.visitplovdiv.com/sites/default/files/2026-05-11_visitplovdiv_brochure_discoverplovdiv_EN_DIGITAL.pdf"
       ],
       "license_statuses": [
-        "open_license"
+        "public_reference_terms_unverified"
       ],
-      "has_open_license": true,
-      "has_public_reference_terms": false,
+      "has_open_license": false,
+      "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Eine dauerhafte Siedlung auf Nebet Tepe",
-      "title_fr": "Un règlement durable sur Nebet Tepe",
-      "title_it": "Un insediamento duraturo su Nebet Tepe",
-      "title_tr": "Nebet Tepe'de kalıcı yerleşim",
-      "title_es": "Un acuerdo duradero sobre Nebet Tepe",
-      "title_el": "Ένας διαρκής οικισμός στο Nebet Tepe",
-      "title_ja": "ネベト・テペの永続的な和解",
-      "title_tl": "Isang pangmatagalang kasunduan sa Nebet Tepe",
-      "title_uk": "Тривале поселення на Небет-Тепе",
-      "title_ru": "Прочное поселение на Небет-Тепе"
+      "title_de": "Nebet Tepes lange Siedlungssequenz",
+      "title_fr": "La longue séquence de règlement de Nebet Tepe",
+      "title_it": "La lunga sequenza di insediamenti di Nebet Tepe",
+      "title_tr": "Nebet Tepe'nin uzun yerleşim sırası",
+      "title_es": "La larga secuencia de asentamientos en Nebet Tepe",
+      "title_el": "Η μακρά ακολουθία διευθέτησης του Nebet Tepe",
+      "title_ja": "ネベト・テペ氏の長い和解の流れ",
+      "title_tl": "Ang mahabang pagkakasunud-sunod ng settlement ni Nebet Tepe",
+      "title_uk": "Довга послідовність поселень Небет-Тепе",
+      "title_ru": "Длительная последовательность заселения Небет-Тепе"
     },
     {
       "id": "event-prehistory-bronze-age",
@@ -396,39 +395,39 @@
       "id": "event-thracian-town-bessi",
       "collection": "events",
       "role": "primary_entity",
-      "title_bg": "Тракийският град и племето беси",
-      "title_en": "The Thracian town and the Bessi",
+      "title_bg": "Беси и одриси в Пловдивското поле",
+      "title_en": "Bessi and Odrysians in the Plovdiv plain",
       "review_url_bg": "/history#event-thracian-town-bessi",
       "review_url_en": "/en/history#event-thracian-town-bessi",
       "api_url": "/api/history/events.json",
       "source_count": 1,
       "source_ids": [
-        "source-wikipedia-plovdiv"
+        "source-visit-plovdiv-antiquity"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv"
+        "https://www.visitplovdiv.com/en/node/145"
       ],
       "license_statuses": [
-        "open_license"
+        "public_reference_terms_unverified"
       ],
-      "has_open_license": true,
-      "has_public_reference_terms": false,
+      "has_open_license": false,
+      "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": true,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Die thrakische Stadt und die Bessi",
-      "title_fr": "La ville thrace et les Bessi",
-      "title_it": "La città tracia e i Bessi",
-      "title_tr": "Trakya kenti ve Bessi",
-      "title_es": "La ciudad tracia y el Bessi",
-      "title_el": "Η Θρακική πόλη και το Μπέσι",
-      "title_ja": "トラキアの町とベッシ",
-      "title_tl": "Ang bayan ng Trakiano at ang Bessi",
-      "title_uk": "Фракійське місто і Бесі",
-      "title_ru": "Фракийский город и Бесси"
+      "title_de": "Bessi und Odrysen in der Plovdiv-Ebene",
+      "title_fr": "Bessi et Odrysiens dans la plaine de Plovdiv",
+      "title_it": "Bessi e Odrisi nella pianura di Plovdiv",
+      "title_tr": "Plovdiv ovasındaki Bessi ve Odrisliler",
+      "title_es": "Bessi y Odrisios en la llanura de Plovdiv",
+      "title_el": "Μπέσυ και Οδρυσιανοί στην πεδιάδα της Plovdiv",
+      "title_ja": "Plovdiv平原のベッシとオドリシア人",
+      "title_tl": "Bessi at Odrysians sa Plovdiv plain",
+      "title_uk": "Беси й одриси на пловдивській рівнині",
+      "title_ru": "Бесси и одрисы на пловдивской равнине"
     },
     {
       "id": "event-thracian-persian-rule",
@@ -473,24 +472,23 @@
       "collection": "events",
       "role": "primary_entity",
       "title_bg": "Тракийският град Евмолпия",
-      "title_en": "The Thracian town of Eumolpias",
+      "title_en": "The Thracian town of Eumolpia",
       "review_url_bg": "/history#event-thracian-eumolpias",
       "review_url_en": "/en/history#event-thracian-eumolpias",
       "api_url": "/api/history/events.json",
       "source_count": 2,
       "source_ids": [
-        "source-wikipedia-plovdiv",
-        "source-visit-plovdiv-the-antique-plovdiv"
+        "source-plovdiv-municipality-history",
+        "source-visit-plovdiv-antiquity"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
-        "https://www.visitplovdiv.com/en/node/520"
+        "https://www.plovdiv.bg/en/about-plovdiv/history/",
+        "https://www.visitplovdiv.com/en/node/145"
       ],
       "license_statuses": [
-        "open_license",
         "public_reference_terms_unverified"
       ],
-      "has_open_license": true,
+      "has_open_license": false,
       "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
@@ -498,16 +496,16 @@
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Die thrakische Stadt Eumolpias",
-      "title_fr": "La ville thrace d'Eumolpias",
-      "title_it": "La città tracia di Eumolpias",
-      "title_tr": "Trakya kenti Eumolpias",
-      "title_es": "La ciudad tracia de Eumolpias",
-      "title_el": "Η Θρακική πόλη Ευμολπίας",
-      "title_ja": "トラキアの町エウモルピアス",
-      "title_tl": "Ang bayan ng Trakiano ng Eumolpias",
+      "title_de": "Die thrakische Stadt Eumolpia",
+      "title_fr": "La ville thrace d'Eumolpia",
+      "title_it": "La città tracia di Eumolpia",
+      "title_tr": "Trakya'nın Eumolpia kasabası",
+      "title_es": "La ciudad tracia de Eumolpia",
+      "title_el": "Η Θρακική πόλη Ευμολπία",
+      "title_ja": "トラキアの町ユーモルピア",
+      "title_tl": "Ang bayan ng Trakiano ng Eumolpia",
       "title_uk": "Фракійське місто Евмолпія",
-      "title_ru": "Фракийский город Эвмолпиас."
+      "title_ru": "Фракийский город Эвмолпия."
     },
     {
       "id": "event-philip-philippopolis",
@@ -520,18 +518,17 @@
       "api_url": "/api/history/events.json",
       "source_count": 2,
       "source_ids": [
-        "source-wikipedia-plovdiv",
-        "source-visit-plovdiv-the-antique-plovdiv"
+        "source-plovdiv-municipality-history",
+        "source-visit-plovdiv-antiquity"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
-        "https://www.visitplovdiv.com/en/node/520"
+        "https://www.plovdiv.bg/en/about-plovdiv/history/",
+        "https://www.visitplovdiv.com/en/node/145"
       ],
       "license_statuses": [
-        "open_license",
         "public_reference_terms_unverified"
       ],
-      "has_open_license": true,
+      "has_open_license": false,
       "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
@@ -789,18 +786,17 @@
       "api_url": "/api/history/events.json",
       "source_count": 2,
       "source_ids": [
-        "source-wikipedia-plovdiv",
+        "source-plovdiv-municipality-archaeological-sight-seeing",
         "source-visit-plovdiv-ancient-theatre"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://www.plovdiv.bg/en/tourists/sight-seeing/archaeological-sight-seeing/",
         "https://www.visitplovdiv.com/en/node/522"
       ],
       "license_statuses": [
-        "open_license",
         "public_reference_terms_unverified"
       ],
-      "has_open_license": true,
+      "has_open_license": false,
       "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
@@ -1244,39 +1240,39 @@
       "id": "event-ottoman-1364",
       "collection": "events",
       "role": "primary_entity",
-      "title_bg": "Османско завладяване — Филибе",
-      "title_en": "Ottoman conquest — Filibe",
+      "title_bg": "Османско завладяване",
+      "title_en": "Ottoman conquest",
       "review_url_bg": "/history#event-ottoman-1364",
       "review_url_en": "/en/history#event-ottoman-1364",
       "api_url": "/api/history/events.json",
       "source_count": 1,
       "source_ids": [
-        "source-wikipedia-plovdiv"
+        "source-visit-plovdiv-dzhumaya-mosque"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv"
+        "https://www.visitplovdiv.com/en/node/598"
       ],
       "license_statuses": [
-        "open_license"
+        "public_reference_terms_unverified"
       ],
-      "has_open_license": true,
-      "has_public_reference_terms": false,
+      "has_open_license": false,
+      "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": true,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Osmanische Eroberung – Filibe",
-      "title_fr": "Conquête ottomane — Filibe",
-      "title_it": "Conquista ottomana: Filibe",
-      "title_tr": "Osmanlı fethi — Plovdiv",
-      "title_es": "Conquista otomana - Filibe",
-      "title_el": "Οθωμανική κατάκτηση — Φιλίμπε",
-      "title_ja": "オスマン帝国の征服 — フィリベ",
-      "title_tl": "pananakop ng Osmanli — Filibe",
-      "title_uk": "Османське завоювання — Філібе",
-      "title_ru": "Османское завоевание — Филибе"
+      "title_de": "Osmanische Eroberung",
+      "title_fr": "Conquête ottomane",
+      "title_it": "Conquista ottomana",
+      "title_tr": "Osmanlı fethi",
+      "title_es": "Conquista otomana",
+      "title_el": "οθωμανική κατάκτηση",
+      "title_ja": "オスマン帝国の征服",
+      "title_tl": "pananakop ng Osmanli",
+      "title_uk": "Османське завоювання",
+      "title_ru": "Османское завоевание"
     },
     {
       "id": "event-ottoman-maritsa",
@@ -2125,18 +2121,17 @@
       "api_url": "/api/history/events.json",
       "source_count": 2,
       "source_ids": [
-        "source-wikipedia-plovdiv",
-        "source-regional-history-museum-plovdiv-the-liberation-of-plovdiv"
+        "source-regional-history-museum-plovdiv-the-liberation-of-plovdiv",
+        "source-plovdiv-municipality-148th-anniversary-of-the-liberation"
       ],
       "source_urls": [
-        "https://en.wikipedia.org/wiki/Plovdiv",
-        "https://rimplovdiv.com/en/2026/01/16/the-liberation-of-plovdiv-16-january-1878/"
+        "https://rimplovdiv.com/en/2026/01/16/the-liberation-of-plovdiv-16-january-1878/",
+        "https://www.plovdiv.bg/s-vazpomenatelno-chestvane-v-plovdiv-be-otbelyazana-148-ta-godishnina-ot-osvobozhdenieto-na-grada-ot-osmansko-vladichestvo/"
       ],
       "license_statuses": [
-        "open_license",
         "public_reference_terms_unverified"
       ],
-      "has_open_license": true,
+      "has_open_license": false,
       "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
@@ -34515,11 +34510,11 @@
       "source_count": 2,
       "source_ids": [
         "source-plovdiv-train-station-around-1880-jpg",
-        "source-wikimedia-commons-plovdiv-central-railway-station-platform-side-2007-jpg"
+        "source-plovdiv-train-station-2021-from-train-window-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Plovdiv_Train_Station_Around_1880.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_Central_railway_station_platform_side%2C_2007.JPG"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_train_station_2021_from_train_window.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -34555,11 +34550,11 @@
       "source_count": 2,
       "source_ids": [
         "source-bahnhof-von-plowdiw-jpg",
-        "source-wikimedia-commons-plovdiv-central-railway-station-platform-side-2007-jpg"
+        "source-plovdiv-train-station-2021-from-train-window-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Bahnhof_von_Plowdiw.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_Central_railway_station_platform_side%2C_2007.JPG"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_train_station_2021_from_train_window.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -34595,11 +34590,11 @@
       "source_count": 2,
       "source_ids": [
         "source-plovdiv-ivan-karastoyanov-jpg",
-        "source-wikimedia-commons-plovdiv-view-jpg"
+        "source-view-from-nebet-tepe-54118748660-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Plovdiv_Ivan_Karastoyanov.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_view.jpg"
+        "https://commons.wikimedia.org/wiki/File:View_from_Nebet_Tepe_(54118748660).jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -34632,12 +34627,14 @@
       "review_url_bg": "/history#then-now",
       "review_url_en": "/en/history#then-now",
       "api_url": "/api/history/then-now-pairs.json",
-      "source_count": 1,
+      "source_count": 2,
       "source_ids": [
-        "source-wikimedia-commons-dzhambaztepe-1892-jpg"
+        "source-wikimedia-commons-dzhambaztepe-1892-jpg",
+        "source-dzhambaztepe-2023-jpg"
       ],
       "source_urls": [
-        "https://commons.wikimedia.org/wiki/File:Dzhambaztepe_1892.jpg"
+        "https://commons.wikimedia.org/wiki/File:Dzhambaztepe_1892.jpg",
+        "https://commons.wikimedia.org/wiki/File:Dzhambaztepe_2023.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -34645,7 +34642,7 @@
       "has_open_license": true,
       "has_public_reference_terms": false,
       "has_license_or_reuse_status": true,
-      "needs_multi_source_review": true,
+      "needs_multi_source_review": false,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
@@ -34793,11 +34790,11 @@
       "source_count": 2,
       "source_ids": [
         "source-dzhumaya-square-on-old-postcard-jpg",
-        "source-wikimedia-commons-plovdiv-bulgarien-019-jpg"
+        "source-plovdiv-feb-2020-17-07-46-897000-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Dzhumaya_square_on_old_postcard.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_-_Bulgarien_019.JPG"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg"
       ],
       "license_statuses": [
         "open_license"
@@ -34833,11 +34830,11 @@
       "source_count": 2,
       "source_ids": [
         "source-dzhumaya-square-on-old-postcard-2-jpg",
-        "source-wikimedia-commons-plovdiv-bulgarien-019-jpg"
+        "source-plovdiv-feb-2020-17-07-46-897000-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Dzhumaya_square_on_old_postcard_2.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_-_Bulgarien_019.JPG"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg"
       ],
       "license_statuses": [
         "open_license"
@@ -34873,11 +34870,11 @@
       "source_count": 2,
       "source_ids": [
         "source-dzhumaya-square-on-old-postcard-3-jpg",
-        "source-wikimedia-commons-plovdiv-bulgarien-019-jpg"
+        "source-plovdiv-feb-2020-17-07-46-897000-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Dzhumaya_square_on_old_postcard_3.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv_-_Bulgarien_019.JPG"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg"
       ],
       "license_statuses": [
         "open_license"
@@ -34913,11 +34910,11 @@
       "source_count": 2,
       "source_ids": [
         "source-gerdjica-1931-jpg",
-        "source-wikimedia-commons-maritza-river-panoramio-jpg"
+        "source-bridge-of-gerdjika-in-plovdiv-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Gerdjica_1931.jpg",
-        "https://commons.wikimedia.org/wiki/File:Maritza_river_-_panoramio.jpg"
+        "https://commons.wikimedia.org/wiki/File:Bridge_of_Gerdjika_in_Plovdiv.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -34953,11 +34950,11 @@
       "source_count": 2,
       "source_ids": [
         "source-plovdiv-old-bridge-and-gerdjika-bridge-1930s-jpg",
-        "source-wikimedia-commons-maritza-river-panoramio-jpg"
+        "source-bridge-of-gerdjika-in-plovdiv-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Plovdiv%2C_Old_Bridge_and_Gerdjika_Bridge%2C_1930s.jpg",
-        "https://commons.wikimedia.org/wiki/File:Maritza_river_-_panoramio.jpg"
+        "https://commons.wikimedia.org/wiki/File:Bridge_of_Gerdjika_in_Plovdiv.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -35022,44 +35019,6 @@
       "title_ru": "Греческая средняя школа в Plovdiv — тогда/сейчас"
     },
     {
-      "id": "then-now-german-school-1928",
-      "collection": "then_now_pairs",
-      "role": "supporting_archive",
-      "title_bg": "Немското училище в Пловдив през 1928 г. — тогава/сега",
-      "title_en": "The German school in Plovdiv, 1928 — then/now",
-      "review_url_bg": "/history#then-now",
-      "review_url_en": "/en/history#then-now",
-      "api_url": "/api/history/then-now-pairs.json",
-      "source_count": 1,
-      "source_ids": [
-        "source-wikimedia-commons-the-german-school-plovdiv-1928-jpg"
-      ],
-      "source_urls": [
-        "https://commons.wikimedia.org/wiki/File:The_German_school%2C_Plovdiv%2C_1928.jpg"
-      ],
-      "license_statuses": [
-        "open_license"
-      ],
-      "has_open_license": true,
-      "has_public_reference_terms": false,
-      "has_license_or_reuse_status": true,
-      "needs_multi_source_review": true,
-      "editorial_status": "needs_editorial_signoff",
-      "blockers": [
-        "needs_independent_editorial_signoff"
-      ],
-      "title_de": "Die deutsche Schule in Plovdiv, 1928 – damals/heute",
-      "title_fr": "L'école allemande de Plovdiv, 1928 - hier et aujourd'hui",
-      "title_it": "La scuola tedesca di Plovdiv, 1928 – allora/oggi",
-      "title_tr": "Plovdiv'deki Alman okulu, 1928 — o zaman/şimdi",
-      "title_es": "La escuela alemana de Plovdiv, 1928: entonces/ahora",
-      "title_el": "Το γερμανικό σχολείο στο Plovdiv, 1928 — τότε/τώρα",
-      "title_ja": "1928年のPlovdivドイツ学校 — 今昔比較",
-      "title_tl": "Ang paaralang Aleman sa Plovdiv, 1928 — noon/ngayon",
-      "title_uk": "Німецька школа в Plovdiv, 1928 — тоді/нині",
-      "title_ru": "Немецкая школа в Plovdiv, 1928 год — тогда/сейчас"
-    },
-    {
       "id": "then-now-tsar-simeon-garden-1915",
       "collection": "then_now_pairs",
       "role": "supporting_archive",
@@ -35071,11 +35030,11 @@
       "source_count": 2,
       "source_ids": [
         "source-basa-1735k-1-345-24-tsar-simeon-garden-plovdiv-bulgaria-1915-jpg",
-        "source-wikimedia-commons-tzar-simeon-garden-plovdiv-2012-04-jpg"
+        "source-tsar-simeon-public-garden-48916046738-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:BASA-1735K-1-345-24-Tsar_Simeon_Garden%2C_Plovdiv%2C_Bulgaria%2C_1915.jpg",
-        "https://commons.wikimedia.org/wiki/File:Tzar_Simeon_Garden%2C_Plovdiv_2012_04.JPG"
+        "https://commons.wikimedia.org/wiki/File:Tsar_Simeon_Public_Garden_(48916046738).jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -35111,11 +35070,11 @@
       "source_count": 2,
       "source_ids": [
         "source-prince-s-garden-plovdiv-jpg",
-        "source-wikimedia-commons-tzar-simeon-garden-plovdiv-2012-04-jpg"
+        "source-tsar-simeon-public-garden-48916046738-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Prince's_Garden_Plovdiv.jpg",
-        "https://commons.wikimedia.org/wiki/File:Tzar_Simeon_Garden%2C_Plovdiv_2012_04.JPG"
+        "https://commons.wikimedia.org/wiki/File:Tsar_Simeon_Public_Garden_(48916046738).jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -35271,11 +35230,11 @@
       "source_count": 2,
       "source_ids": [
         "source-razkrivane-antichen-teatur-jpg",
-        "source-wikimedia-commons-antique-theater-plovdiv-jpg"
+        "source-ancient-theatre-of-plovdiv-bulgaria-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Razkrivane_antichen_teatur.jpg",
-        "https://commons.wikimedia.org/wiki/File:Antique-theater-plovdiv.jpg"
+        "https://commons.wikimedia.org/wiki/File:Ancient_theatre_of_Plovdiv,_Bulgaria.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -35311,11 +35270,11 @@
       "source_count": 2,
       "source_ids": [
         "source-razkrivane-antichen-teatur1-jpg",
-        "source-wikimedia-commons-antique-theater-plovdiv-jpg"
+        "source-ancient-theatre-of-plovdiv-bulgaria-jpg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Razkrivane_antichen_teatur1.jpg",
-        "https://commons.wikimedia.org/wiki/File:Antique-theater-plovdiv.jpg"
+        "https://commons.wikimedia.org/wiki/File:Ancient_theatre_of_Plovdiv,_Bulgaria.jpg"
       ],
       "license_statuses": [
         "open_license"
@@ -35351,11 +35310,11 @@
       "source_count": 2,
       "source_ids": [
         "source-razkrivane-stadion-jpg",
-        "source-wikimedia-commons-stadio-romano-jpg"
+        "source-plovdiv-feb-2020-17-07-46-897000-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Razkrivane_stadion.jpg",
-        "https://commons.wikimedia.org/wiki/File:Stadio_romano.jpg"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg"
       ],
       "license_statuses": [
         "open_license"
@@ -35391,11 +35350,11 @@
       "source_count": 2,
       "source_ids": [
         "source-razkrivane-stadion2-jpg",
-        "source-wikimedia-commons-stadio-romano-jpg"
+        "source-plovdiv-feb-2020-17-07-46-897000-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:Razkrivane_stadion2.jpg",
-        "https://commons.wikimedia.org/wiki/File:Stadio_romano.jpg"
+        "https://commons.wikimedia.org/wiki/File:Plovdiv_Feb_2020_17_07_46_897000.jpeg"
       ],
       "license_statuses": [
         "open_license"
@@ -35418,46 +35377,6 @@
       "title_tl": "Uncovering the Ancient Stadium - image 2 — noon/ngayon",
       "title_uk": "Розкриття стародавнього стадіону - зображення 2 — тоді/зараз",
       "title_ru": "Открытие древнего стадиона — изображение 2 — тогда/сейчас"
-    },
-    {
-      "id": "then-now-chirpan-earthquake-st-josif-1928",
-      "collection": "then_now_pairs",
-      "role": "supporting_archive",
-      "title_bg": "Щети от Чирпанското земетресение при „Св. Йосиф“ — тогава/сега",
-      "title_en": "Chirpan earthquake damage near St Josif — then/now",
-      "review_url_bg": "/history#then-now",
-      "review_url_en": "/en/history#then-now",
-      "api_url": "/api/history/then-now-pairs.json",
-      "source_count": 2,
-      "source_ids": [
-        "source-chirpan-earthquake-plovdiv-jpg",
-        "source-wikimedia-commons-hospital-st-josif-plovdiv-jpg"
-      ],
-      "source_urls": [
-        "https://commons.wikimedia.org/wiki/File:Chirpan_Earthquake_-_Plovdiv.jpg",
-        "https://commons.wikimedia.org/wiki/File:Hospital_St_Josif%2C_Plovdiv.jpg"
-      ],
-      "license_statuses": [
-        "open_license"
-      ],
-      "has_open_license": true,
-      "has_public_reference_terms": false,
-      "has_license_or_reuse_status": true,
-      "needs_multi_source_review": false,
-      "editorial_status": "needs_editorial_signoff",
-      "blockers": [
-        "needs_independent_editorial_signoff"
-      ],
-      "title_de": "Tschirpan-Erdbebenschäden in der Nähe von St. Josif – damals/heute",
-      "title_fr": "Dommages causés par le tremblement de terre de Chirpan près de St Josif – hier/aujourd'hui",
-      "title_it": "Danni del terremoto di Chirpan vicino a St Josif - allora/oggi",
-      "title_tr": "St Josif yakınlarındaki Chirpan depremi hasarı — o zaman/şimdi",
-      "title_es": "Daños del terremoto de Chirpan cerca de St Josif: entonces/ahora",
-      "title_el": "Ζημιά από τον σεισμό Chirpan κοντά στο St Josif — τότε/τώρα",
-      "title_ja": "St Josif付近のChirpan地震被害 — 今昔比較",
-      "title_tl": "Pinsala mula sa lindol sa Chirpan malapit sa St Josif — noon/ngayon",
-      "title_uk": "Пошкодження від Chirpan землетрусу біля Св. Йосифа — тоді/зараз",
-      "title_ru": "Ущерб от Chirpan землетрясения возле Святого Иосифа — тогда/сейчас"
     },
     {
       "id": "then-now-ivan-vazov-library-earthquake-1928",
@@ -35511,11 +35430,11 @@
       "source_count": 2,
       "source_ids": [
         "source-basa-1625k-1-22-5-balkan-cinema-plovdiv-bulgaria-jpg",
-        "source-wikimedia-commons-plovdiv-2021-02-kinobalkan01-jpg"
+        "source-left-former-movie-theater-balkan-right-hotel-bulgaria-158046439-jpeg"
       ],
       "source_urls": [
         "https://commons.wikimedia.org/wiki/File:BASA-1625K-1-22-5-Balkan_cinema%2C_Plovdiv%2C_Bulgaria.jpg",
-        "https://commons.wikimedia.org/wiki/File:Plovdiv-2021-02-KinoBalkan01.jpg"
+        "https://commons.wikimedia.org/wiki/File:Left_Former_Movie_Theater_Balkan_Right_Hotel_Bulgaria_(158046439).jpeg"
       ],
       "license_statuses": [
         "open_license"

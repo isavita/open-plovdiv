@@ -59,6 +59,9 @@
         "display_bg": { "type": "string", "minLength": 2 },
         "display_en": { "type": "string", "minLength": 2 },
         "source_id": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
+      },
+      "patternProperties": {
+        "^display_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 2 }
       }
     },
     "architect_bg": { "type": ["string", "null"], "minLength": 2 },
@@ -74,6 +77,9 @@
         "display_bg": { "type": "string", "minLength": 2 },
         "display_en": { "type": "string", "minLength": 2 },
         "source_id": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
+      },
+      "patternProperties": {
+        "^display_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 2 }
       }
     },
     "coordinates": {
@@ -116,6 +122,9 @@
           "license_url": { "type": "string", "format": "uri" },
           "accessed_at": { "type": "string", "format": "date" },
           "source_id": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
+        },
+        "patternProperties": {
+          "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
         }
       }
     },
@@ -170,8 +179,14 @@
                   "title": { "type": "string", "minLength": 3 },
                   "url": { "type": "string", "format": "uri" },
                   "accessed_at": { "type": "string", "format": "date" }
+                },
+                "patternProperties": {
+                  "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
                 }
               }
+            },
+            "patternProperties": {
+              "^(heading|body)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
             }
           }
         },
@@ -186,10 +201,19 @@
               "label_en": { "type": "string", "minLength": 2 },
               "value_bg": { "type": "string", "minLength": 1 },
               "value_en": { "type": "string", "minLength": 1 }
+            },
+            "patternProperties": {
+              "^(label|value)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
             }
           }
         }
+      },
+      "patternProperties": {
+        "^lede_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 20 }
       }
     }
+  },
+  "patternProperties": {
+    "^(era|name|summary|current_status)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
   }
 }

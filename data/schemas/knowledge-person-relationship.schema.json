@@ -57,5 +57,8 @@
     },
     "provenance": { "$ref": "knowledge-event.schema.json#/definitions/provenance" },
     "editorial": { "$ref": "knowledge-event.schema.json#/definitions/editorial" }
+  },
+  "patternProperties": {
+    "^(title|summary)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
   }
 }

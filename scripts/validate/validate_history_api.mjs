@@ -48,9 +48,17 @@ function readJson(url) {
 }
 
 function formatErrors(errors = []) {
-  return errors
-    .map((error) => `${error.instancePath || "/"} ${error.message}`)
-    .join("; ");
+  return [
+    ...new Set(
+      errors.map((error) => {
+        const instancePath = error.instancePath || "/";
+        if (error.keyword === "additionalProperties") {
+          return `${instancePath} unexpected property ${JSON.stringify(error.params?.additionalProperty)}`;
+        }
+        return `${instancePath} ${error.message}`;
+      })
+    )
+  ].join("; ");
 }
 
 function loadSchemas() {

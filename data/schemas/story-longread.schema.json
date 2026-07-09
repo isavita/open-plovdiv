@@ -52,6 +52,9 @@
         "ref_id": { "type": "string", "minLength": 3 },
         "caption_bg": { "type": "string", "minLength": 10 },
         "caption_en": { "type": "string", "minLength": 10 }
+      },
+      "patternProperties": {
+        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 10 }
       }
     },
     "sections": {
@@ -87,6 +90,9 @@
             "type": "array",
             "items": { "type": "string", "pattern": "^place-[0-9a-z-]+$" }
           }
+        },
+        "patternProperties": {
+          "^(heading|body)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
         }
       }
     },
@@ -115,5 +121,8 @@
     "provenance": { "$ref": "knowledge-event.schema.json#/definitions/provenance" },
     "data_quality": { "type": "string", "enum": ["public_source", "manual_reviewed", "provisional"] },
     "editorial": { "$ref": "historical-archive-item.schema.json#/definitions/editorial" }
+  },
+  "patternProperties": {
+    "^(title|dek)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
   }
 }

@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { field, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
+import { editorialReviewStatusLabel, pendingEditorialReviewNote } from "@lib/editorial";
 import { publicThenNowPairs } from "@lib/thenNow";
 import {
   historicalArchiveItems,
@@ -49,7 +50,7 @@ const labels =
         archiveTitle: "Архив за мястото",
         thenNowTitle: "Тогава/сега",
         thenLabel: "Тогава",
-        nowLabel: "Сега",
+        nowLabel: "Референтна снимка",
         eventsTitle: "Свързани събития",
         storiesTitle: "Свързани разкази",
         noArchive:
@@ -76,7 +77,7 @@ const labels =
         archiveTitle: "Archiv zu diesem Ort",
         thenNowTitle: "Damals/heute",
         thenLabel: "Damals",
-        nowLabel: "Heute",
+        nowLabel: "Referenzfoto",
         eventsTitle: "Verknüpfte Ereignisse",
         storiesTitle: "Verknüpfte Geschichten",
         noArchive:
@@ -103,7 +104,7 @@ const labels =
         archiveTitle: "Archives de ce lieu",
         thenNowTitle: "Avant/après",
         thenLabel: "Avant",
-        nowLabel: "Après",
+        nowLabel: "Photo de référence",
         eventsTitle: "Événements liés",
         storiesTitle: "Récits liés",
         noArchive:
@@ -130,7 +131,7 @@ const labels =
         archiveTitle: "Archivio di questo luogo",
         thenNowTitle: "Prima/dopo",
         thenLabel: "Prima",
-        nowLabel: "Dopo",
+        nowLabel: "Foto di riferimento",
         eventsTitle: "Eventi collegati",
         storiesTitle: "Racconti collegati",
         noArchive:
@@ -157,7 +158,7 @@ const labels =
         archiveTitle: "Bu yerin arşivi",
         thenNowTitle: "Önce/sonra",
         thenLabel: "Önce",
-        nowLabel: "Sonra",
+        nowLabel: "Referans fotoğrafı",
         eventsTitle: "Bağlantılı etkinlikler",
         storiesTitle: "Bağlantılı anlatılar",
         noArchive:
@@ -184,7 +185,7 @@ const labels =
         archiveTitle: "Archivo de este lugar",
         thenNowTitle: "Antes/después",
         thenLabel: "Antes",
-        nowLabel: "Después",
+        nowLabel: "Foto de referencia",
         eventsTitle: "Eventos vinculados",
         storiesTitle: "Relatos vinculados",
         noArchive:
@@ -211,7 +212,7 @@ const labels =
         archiveTitle: "Αρχείο αυτής της τοποθεσίας",
         thenNowTitle: "Πριν/μετά",
         thenLabel: "Πριν",
-        nowLabel: "Μετά",
+        nowLabel: "Φωτογραφία αναφοράς",
         eventsTitle: "Συνδεδεμένα γεγονότα",
         storiesTitle: "Συνδεδεμένες αφηγήσεις",
         noArchive:
@@ -238,7 +239,7 @@ const labels =
         archiveTitle: "この場所のアーカイブ",
         thenNowTitle: "今昔比較",
         thenLabel: "昔",
-        nowLabel: "今",
+        nowLabel: "参照写真",
         eventsTitle: "関連する出来事",
         storiesTitle: "関連ストーリー",
         noArchive:
@@ -265,7 +266,7 @@ const labels =
         archiveTitle: "Архів для цього місця",
         thenNowTitle: "Тоді/тепер",
         thenLabel: "Тоді",
-        nowLabel: "Тепер",
+        nowLabel: "Довідкове фото",
         eventsTitle: "Пов'язані події",
         storiesTitle: "Пов'язані розповіді",
         noArchive:
@@ -292,7 +293,7 @@ const labels =
         archiveTitle: "Arkibo para sa lugar na ito",
         thenNowTitle: "Noon/Ngayon",
         thenLabel: "Noon",
-        nowLabel: "Ngayon",
+        nowLabel: "Larawang sanggunian",
         eventsTitle: "Kaugnay na Pangyayari",
         storiesTitle: "Kaugnay na Kuwento",
         noArchive:
@@ -319,7 +320,7 @@ const labels =
         archiveTitle: "Архив по этому месту",
         thenNowTitle: "Тогда/сейчас",
         thenLabel: "Тогда",
-        nowLabel: "Сейчас",
+        nowLabel: "Справочное фото",
         eventsTitle: "Связанные события",
         storiesTitle: "Связанные рассказы",
         noArchive:
@@ -345,7 +346,7 @@ const labels =
         archiveTitle: "Archive for this place",
         thenNowTitle: "Then/now",
         thenLabel: "Then",
-        nowLabel: "Now",
+        nowLabel: "Reference photo",
         eventsTitle: "Linked events",
         storiesTitle: "Linked stories",
         noArchive:
@@ -1571,13 +1572,15 @@ function formatList(items: string[], max = 4): string {
   return `${listFormatter.format(clean.slice(0, max))} +${clean.length - max}`;
 }
 
-function localizedText(values: Partial<Record<Lang, string>> | undefined): string {
-  if (!values) return "";
-  return values[lang] ?? values.en ?? values.bg ?? Object.values(values).find(Boolean) ?? "";
+function localizedPublicRecordItemLabel(values: Partial<Record<Lang, string>> | undefined): string {
+  // Unlike a proper name, a Wikidata item label is visitor-facing prose.
+  // Leave the individual row out when its locale is unavailable instead of
+  // mixing English/Bulgarian into an otherwise localized public record.
+  return values?.[lang] ?? "";
 }
 
 function wikidataValueLabel(value: PlaceWikidataClaimValue): string {
-  if (value.type === "item") return localizedText(value.labels);
+  if (value.type === "item") return localizedPublicRecordItemLabel(value.labels);
   if (value.type === "text") return value.text;
   if (value.type === "time") {
     if (value.year == null) return value.time;
@@ -1605,6 +1608,7 @@ const archiveItems = historicalArchiveItems
   .sort((a, b) => a.date_year - b.date_year || a.id.localeCompare(b.id));
 const pairs = publicThenNowPairs(thenNowPairs.filter((pair) => pair.place_id === place.id))
   .sort((a, b) => localized(a, "title").localeCompare(localized(b, "title"), locale));
+const editorialReviewLabel = editorialReviewStatusLabel(lang);
 const directEvents = place.event_ids.map((eventId) => eventById.get(eventId)).filter(Boolean);
 const reverseLinkedEvents = historyKnowledgeEvents.filter((event) => event.place_ids.includes(place.id));
 const relatedEvents = [...new Map([...directEvents, ...reverseLinkedEvents].map((event) => [event!.id, event!])).values()].sort(
@@ -1685,8 +1689,11 @@ const facts = placeFacts(place);
 const image = place.media[0];
 const sourceRecords = place.source_ids.map((sourceId) => sourceById.get(sourceId)).filter(Boolean);
 const wikidataRecord = placeWikidataEnrichment[place.id] ?? null;
-const wikidataDescription = localizedText(wikidataRecord?.descriptions);
-const wikidataArticle = wikidataRecord?.sitelinks[lang] ?? wikidataRecord?.sitelinks.en ?? wikidataRecord?.sitelinks.bg ?? null;
+// A public-record description is prose, not a proper name. Do not present an
+// English or Bulgarian fallback under another locale: hiding an unavailable
+// description is more honest than a visibly untranslated detail panel.
+const wikidataDescription = wikidataRecord?.descriptions?.[lang] ?? "";
+const wikidataArticle = wikidataRecord?.sitelinks[lang] ?? null;
 const linkedPeople = place.person_ids.map((personId) => peopleById.get(personId)).filter(Boolean);
 const linkedOrganizations = place.organization_ids.map((organizationId) => organizationById.get(organizationId)).filter(Boolean);
 const relatedPlaceIds = [
@@ -1807,32 +1814,34 @@ const mapHref = place.coordinates
             <p class="eyebrow">{storyLabels.storyEyebrow}</p>
             <h2>{storyLabels.storyTitle}</h2>
             {placeHistory ? (
-              <div class="place-history">
-                {historyLede && <p class="place-history-lede" data-reveal>{historyLede}</p>}
-                {historyHighlights.length > 0 && (
-                  <dl class="place-history-highlights" data-reveal-stagger>
-                    {historyHighlights.map((highlight) => (
-                      <div>
-                        <dt>{field(highlight, "label", lang)}</dt>
-                        <dd>{field(highlight, "value", lang)}</dd>
-                      </div>
+              <div class="place-story-prose">
+                <div class="place-history">
+                  {historyLede && <p class="place-history-lede" data-reveal>{historyLede}</p>}
+                  {historyHighlights.length > 0 && (
+                    <dl class="place-history-highlights" data-reveal-stagger>
+                      {historyHighlights.map((highlight) => (
+                        <div>
+                          <dt>{field(highlight, "label", lang)}</dt>
+                          <dd>{field(highlight, "value", lang)}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
+                  <div class="place-history-article">
+                    {historySections.map((section) => (
+                      <section class={`place-history-section is-${section.id}`} data-reveal>
+                        <h3>{field(section, "heading", lang)}</h3>
+                        {field(section, "body", lang)
+                          .split(/\n\n+/)
+                          .map((para) => <p>{para}</p>)}
+                        {section.source && (
+                          <a class="src-link" href={section.source.url} target="_blank" rel="noreferrer">
+                            {storyLabels.sourceLabel}: {sourceTitle(section.source.title, lang)} ↗
+                          </a>
+                        )}
+                      </section>
                     ))}
-                  </dl>
-                )}
-                <div class="place-history-article">
-                  {historySections.map((section) => (
-                    <section class={`place-history-section is-${section.id}`} data-reveal>
-                      <h3>{field(section, "heading", lang)}</h3>
-                      {field(section, "body", lang)
-                        .split(/\n\n+/)
-                        .map((para) => <p>{para}</p>)}
-                      {section.source && (
-                        <a class="src-link" href={section.source.url} target="_blank" rel="noreferrer">
-                          {storyLabels.sourceLabel}: {sourceTitle(section.source.title, lang)} ↗
-                        </a>
-                      )}
-                    </section>
-                  ))}
+                  </div>
                 </div>
               </div>
             ) : (
@@ -2072,6 +2081,9 @@ const mapHref = place.coordinates
                     </div>
                     <h3>{localized(pair, "title")}</h3>
                     <p>{localized(pair, "caption")}</p>
+                    {pendingEditorialReviewNote(pair.editorial, lang) && (
+                      <p class="editorial-caveat"><strong>{editorialReviewLabel}:</strong> {pendingEditorialReviewNote(pair.editorial, lang)}</p>
+                    )}
                     <dl class="then-now-evidence">
                       <div>
                         <dt>{labels.matchQuality}</dt>
@@ -2115,6 +2127,9 @@ const mapHref = place.coordinates
                     <p class="eyebrow">{localized(item, "date_display")}</p>
                     <h3>{localized(item, "title")}</h3>
                     <p>{localized(item, "description")}</p>
+                    {pendingEditorialReviewNote(item.editorial, lang) && (
+                      <p class="editorial-caveat"><strong>{editorialReviewLabel}:</strong> {pendingEditorialReviewNote(item.editorial, lang)}</p>
+                    )}
                     <a class="src-link" href={item.source.url} target="_blank" rel="noreferrer">
                       {labels.source}: {sourceTitle(item.source.title, lang)} ↗
                     </a>

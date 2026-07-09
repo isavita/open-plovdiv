@@ -47,6 +47,9 @@
         },
         "display_bg": { "type": "string", "minLength": 1 },
         "display_en": { "type": "string", "minLength": 1 }
+      },
+      "patternProperties": {
+        "^display_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 1 }
       }
     },
     "title_bg": { "type": "string", "minLength": 3 },
@@ -62,6 +65,9 @@
     "source_ids": { "type": "array", "items": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }, "minItems": 1 },
     "provenance": { "$ref": "#/definitions/provenance" },
     "editorial": { "$ref": "#/definitions/editorial" }
+  },
+  "patternProperties": {
+    "^(title|summary|conflict_notes)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
   },
   "definitions": {
     "provenance": {
@@ -79,6 +85,9 @@
           "url": { "type": "string", "format": "uri" },
           "accessed_at": { "type": "string", "format": "date" },
           "license_status": { "type": "string", "minLength": 3 }
+        },
+        "patternProperties": {
+          "^claim_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 5 }
         }
       }
     },
@@ -106,6 +115,9 @@
         "reviewed_at": { "type": ["string", "null"], "format": "date" },
         "notes_bg": { "type": "string", "minLength": 5 },
         "notes_en": { "type": "string", "minLength": 5 }
+      },
+      "patternProperties": {
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 5 }
       }
     }
   }
