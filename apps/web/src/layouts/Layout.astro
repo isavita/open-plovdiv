@@ -1,5 +1,4 @@
 ---
-import "@fontsource-variable/playfair-display/index.css";
 import "../styles/global.css";
 import PlovdivSkyline from "@components/PlovdivSkyline.astro";
 import Ornament from "@components/Ornament.astro";
@@ -237,8 +236,8 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
     <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#f2ead8" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#16120c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#efeee9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#141b1a" media="(prefers-color-scheme: dark)" />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={t.site.name} />
@@ -295,6 +294,25 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
               </a>
             ))}
 
+            <details class="nav-more" id="nav-more">
+              <summary>
+                <span>{t.footer.explore}</span>
+                <span class="nav-more-caret" aria-hidden="true">▾</span>
+              </summary>
+              <div class="nav-more-panel">
+                {menuGroups.map((group) => (
+                  <div class="nav-more-group">
+                    <span class="nav-group-label">{group.label}</span>
+                    {group.items.map((item) => (
+                      <a href={item.href} aria-current={isActive(item.base) ? "page" : undefined}>
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </details>
+
             <div class="nav-groups" aria-label={t.footer.explore} data-nav-groups-aria>
               {menuGroups.map((group) => (
                 <div class="nav-group">
@@ -311,7 +329,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
 
           <div class="nav-right">
             <details class="lang-menu" id="lang-menu">
-              <summary class="icon-btn lang-switch" aria-label={t.site.langSwitch} title={t.site.langSwitch} data-lang-switch-aria>
+              <summary class="icon-btn lang-switch" aria-label={`${lang.toUpperCase()} · ${t.site.langSwitch}`} title={t.site.langSwitch} data-lang-switch-aria>
                 <span class="flag" aria-hidden="true" data-flag>{lang.toUpperCase()}</span>
                 <span class="lang-caret" aria-hidden="true">▾</span>
               </summary>
@@ -394,7 +412,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
               <p class="footer-motto" data-footer-motto>{ailyakMotto}</p>
             </div>
             <div class="footer-col">
-              <h4 data-footer-group="explore">{t.footer.explore}</h4>
+              <h2 data-footer-group="explore">{t.footer.explore}</h2>
               <ul>
                 {footerHistory.map((item) => (
                   <li><a href={item.href} data-footer-key={item.key}>{item.label}</a></li>
@@ -402,7 +420,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
               </ul>
             </div>
             <div class="footer-col">
-              <h4 data-footer-group="civic">{t.footer.civic}</h4>
+              <h2 data-footer-group="civic">{t.footer.civic}</h2>
               <ul>
                 {footerCivic.map((item) => (
                   <li><a href={item.href} data-footer-key={item.key}>{item.label}</a></li>
@@ -410,7 +428,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
               </ul>
             </div>
             <div class="footer-col">
-              <h4 data-footer-group="about">{t.footer.about}</h4>
+              <h2 data-footer-group="about">{t.footer.about}</h2>
               <ul>
                 {footerAbout.map((item) => (
                   <li><a href={item.href} data-footer-key={item.key}>{item.label}</a></li>
@@ -433,6 +451,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
         var navToggles = document.querySelectorAll("[data-nav-toggle]");
         var themeToggle = document.getElementById("theme-toggle");
         var langMenu = document.getElementById("lang-menu");
+        var navMore = document.getElementById("nav-more");
 
         function setNavOpen(open) {
           if (!header) return;
@@ -447,6 +466,9 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
           document.addEventListener("click", function (e) {
             if (langMenu.open && !langMenu.contains(e.target)) {
               langMenu.open = false;
+            }
+            if (navMore && navMore.open && !navMore.contains(e.target)) {
+              navMore.open = false;
             }
           });
         }
@@ -470,6 +492,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
               setNavOpen(false);
             }
             if (langMenu && langMenu.open) langMenu.open = false;
+            if (navMore && navMore.open) navMore.open = false;
           }
         });
 
@@ -617,7 +640,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
             document.querySelectorAll("[data-nav-aria]").forEach(function (el) { el.setAttribute("aria-label", c.homeAria); });
             document.querySelectorAll("[data-nav-groups-aria]").forEach(function (el) { el.setAttribute("aria-label", c.groups.explore); });
             document.querySelectorAll("[data-lang-switch-aria]").forEach(function (el) {
-              el.setAttribute("aria-label", c.langSwitchAria);
+              el.setAttribute("aria-label", loc.toUpperCase() + " · " + c.langSwitchAria);
               el.setAttribute("title", c.langSwitchAria);
             });
             document.querySelectorAll("[data-theme-aria]").forEach(function (el) {

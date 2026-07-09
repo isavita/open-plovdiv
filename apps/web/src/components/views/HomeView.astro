@@ -6,41 +6,15 @@ import { ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
 import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { bustGlyph, sectionMotifs } from "@lib/motifs";
-import {
-  plovdivLandmarks,
-  cityArchive,
-  historyKnowledgePlaces,
-  sourceRegistry,
-  type HistoryEra
-} from "@lib/data";
+import { cityArchive, historyKnowledgePlaces } from "@lib/data";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
 
-const eraOrder: HistoryEra[] = [
-  "prehistory",
-  "thracian",
-  "roman",
-  "medieval",
-  "ottoman",
-  "revival",
-  "liberation",
-  "modern"
-];
-
 const mayorTerms = cityArchive
   .filter((r) => r.kind === "mayor_term")
   .sort((a, b) => a.year_start - b.year_start);
-const mayorCount = mayorTerms.length;
-
-// Each hero stat doubles as a quiet link into the catalogue it counts.
-const stats = [
-  { value: t.home.statYearsValue, label: t.home.statYears, href: localizePath("/history", lang) },
-  { value: String(eraOrder.length), label: t.home.statEras, href: localizePath("/history", lang) + "#timeline" },
-  { value: String(mayorCount), label: t.home.statMayors, href: localizePath("/mayors", lang) },
-  { value: String(plovdivLandmarks.length), label: t.home.statLandmarks, href: localizePath("/places", lang) }
-];
 
 const tr = (
   bg: string,
@@ -510,11 +484,6 @@ const moreLinks = [
         </a>
         <a class="button secondary" href={localizePath("/routes", lang)}>{labels.routesPath}</a>
       </div>
-      <div class="stat-row" aria-label={t.history.title}>
-        {stats.map((s) => (
-          <a class="stat" href={s.href}><strong>{s.value}</strong><span>{s.label}</span></a>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -642,21 +611,18 @@ const moreLinks = [
           <p class="eyebrow">{labels.openGovernance}</p>
           <h3>{labels.govCardTitle}</h3>
           <p>{labels.govCardText}</p>
-          <span class="badge no-dot">{t.nav.projects}</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
         <a class="card card-link" href={localizePath("/community", lang)}>
           <p class="eyebrow">{t.nav.community}</p>
           <h3>{labels.helpPath}</h3>
           <p>{labels.helpPathText}</p>
-          <span class="badge no-dot">{t.home.statReportsValue} · {t.home.statReports}</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
         <a class="card card-link" href={localizePath("/data-sources", lang)}>
           <p class="eyebrow">{t.footer.sources}</p>
           <h3>{labels.sourcesCardTitle}</h3>
           <p>{labels.sourcesCardText}</p>
-          <span class="badge no-dot">{sourceRegistry.length} {labels.sourcesCount}</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
       </div>
