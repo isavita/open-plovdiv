@@ -17,6 +17,7 @@
     "validate:history-surface": "node scripts/validate/validate_history_surface.mjs",
     "validate:story-enrichment": "node scripts/validate/validate_story_enrichment_checklist.mjs",
     "validate:lighthouse": "node scripts/validate/validate_lighthouse_mobile.mjs",
+    "brand:icons": "node scripts/brand/generate_icons.mjs",
     "audit:media": "node scripts/audit/audit_media_rights.mjs",
     "audit:media:strict": "node scripts/audit/audit_media_rights.mjs --strict",
     "export:reports": "node scripts/export/export_approved_reports.mjs",

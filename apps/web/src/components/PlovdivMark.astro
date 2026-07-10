@@ -4,9 +4,9 @@ const { class: className = "" } = Astro.props;
 ---
 
 <!--
-  A compact city mark: seven rising hill points sit behind a three-arch Roman
-  arcade, while the outer uprights quietly form the Cyrillic letter П. The
-  flat facade colours keep it legible at favicon and phone-navigation sizes.
+  The Plovdiv ailyak mark: a late-afternoon sun over the city's seven soft
+  hills, held by the curved terraces of the Ancient Theatre. The theatre also
+  reads as a relaxed smile when the mark is reduced to favicon size.
 -->
 <svg
   class={`plovdiv-mark ${className}`.trim()}
@@ -15,12 +15,10 @@ const { class: className = "" } = Astro.props;
   focusable="false"
   xmlns="http://www.w3.org/2000/svg"
 >
-  <rect class="plovdiv-mark-field" x="2" y="2" width="60" height="60" rx="12" />
-  <path
-    class="plovdiv-mark-hills"
-    d="M6 31 12 23l6 6 7-13 7 12 7-17 7 16 7-9 5 13v8H6Z"
-  />
-  <path class="plovdiv-mark-frame" d="M13 49V25h38v24" />
-  <path class="plovdiv-mark-arcade" d="M16 49v-7a5 5 0 0 1 10 0v7m3 0v-9a5 5 0 0 1 10 0v9m3 0v-7a5 5 0 0 1 10 0v7" />
-  <path class="plovdiv-mark-ground" d="M10 51h44" />
+  <rect class="plovdiv-mark-field" x="2" y="2" width="60" height="60" rx="14" />
+  <circle class="plovdiv-mark-sun" cx="46" cy="17" r="7" />
+  <path class="plovdiv-mark-hills" d="M3 36Q7 27 11 36Q15 24 19 36Q23 28 27 36Q31 22 35 36Q39 27 43 36Q47 24 51 36Q56 28 61 36V42H3Z" />
+  <path class="plovdiv-mark-theatre" d="M11 35C14 47 21 54 32 54S50 47 53 35" />
+  <path class="plovdiv-mark-terraces" d="M16 39C20 47 25 50 32 50S44 47 48 39M22 43C25 46 28 47 32 47S39 46 42 43" />
+  <path class="plovdiv-mark-aisle" d="M32 36v17" />
 </svg>
