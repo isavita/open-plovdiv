@@ -2063,62 +2063,6 @@ a.stat:focus-visible {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.history-toolbar {
-  display: grid;
-  gap: 12px;
-}
-
-.history-primary-filters {
-  grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 1fr));
-}
-
-.history-advanced-filters {
-  border-top: 1px solid var(--line);
-  padding-top: 10px;
-}
-
-.history-advanced-filters summary {
-  align-items: center;
-  color: var(--ink-2);
-  cursor: pointer;
-  display: flex;
-  font-size: 0.88rem;
-  font-weight: 720;
-  justify-content: space-between;
-  list-style: none;
-  min-height: 38px;
-  user-select: none;
-}
-
-.history-advanced-filters summary::-webkit-details-marker {
-  display: none;
-}
-
-.history-advanced-filters summary::after {
-  color: var(--brand);
-  content: "+";
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 1;
-}
-
-.history-advanced-filters[open] summary::after {
-  content: "−";
-}
-
-.history-advanced-filters.has-active-filter summary::before {
-  background: var(--brand);
-  border-radius: 50%;
-  content: "";
-  height: 7px;
-  margin-right: 8px;
-  width: 7px;
-}
-
-.history-advanced-filter-grid {
-  margin-top: 12px;
-}
-
 .field {
   display: grid;
   gap: 6px;
@@ -3821,39 +3765,6 @@ code {
 .era-revival    { --era-color: #b4632a; }
 .era-liberation { --era-color: #8a2f3b; }
 .era-modern     { --era-color: #15657f; }
-
-/* era navigation chips */
-.era-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.era-pill {
-  appearance: none;
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 14px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink-2);
-  font-size: 0.86rem;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-}
-.era-pill:hover,
-.era-pill:focus-visible {
-  background: var(--brand-soft);
-  border-color: var(--brand);
-  color: var(--brand-strong);
-}
-.era-pill[aria-pressed="true"] {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-}
 
 /* timeline */
 .history-timeline {
@@ -7101,7 +7012,6 @@ h3 {
 
 .badge,
 .route-badge,
-.era-pill,
 .pill-row a.meta,
 .route-chip,
 .map-legend-chip {
@@ -9060,71 +8970,9 @@ details[open] > .htree-event-sum .htree-caret::after {
   flex-shrink: 0;
 }
 
-/* ---- History atlas ---------------------------------------------------------
-   Sticky selection bar under the page subnav: chips for the active era /
-   person / place facets, a live event count, and cross-section jump buttons.
-   The history tree mirrors the era selection (match opens, rest dims). */
-.history-atlas-bar {
-  position: sticky;
-  top: 118px;
-  z-index: 25;
-  background: color-mix(in srgb, var(--surface) 92%, var(--gold-soft));
-  border-block: 1px solid var(--line-strong);
-  box-shadow: var(--shadow-sm);
-}
-
-.history-atlas-inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 12px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
-.history-atlas-label {
-  font-size: 0.72rem;
-  font-weight: 750;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-}
-
-.history-atlas-chips {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.history-atlas-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 3px 10px;
-  min-height: 28px;
-  border-radius: var(--r-pill);
-  background: var(--surface);
-  border: 1px solid var(--line-strong);
-  color: var(--ink);
-  font-size: 0.8rem;
-  font-weight: 650;
-  cursor: pointer;
-  transition: border-color 0.15s ease, color 0.15s ease;
-}
-
-.history-atlas-chip:hover,
-.history-atlas-chip:focus-visible {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.history-atlas-links {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 4px 14px;
-  margin-left: auto;
-}
-
+/* ---- History query highlight ----------------------------------------------
+   The timeline search mirrors an exact era-name query into the history tree
+   (match opens, rest dims). */
 .atlas-person-link {
   margin-left: 10px;
 }
@@ -9137,16 +8985,6 @@ details[open] > .htree-event-sum .htree-caret::after {
 .htree-era.atlas-match {
   border-color: color-mix(in srgb, var(--era-color, var(--accent)) 55%, var(--line));
   box-shadow: var(--shadow-sm);
-}
-
-@media (max-width: 760px) {
-  .history-atlas-bar {
-    top: 110px;
-  }
-
-  .history-atlas-links {
-    margin-left: 0;
-  }
 }
 
 /* ---- Source registry (/data-sources) --------------------------------------
@@ -9650,20 +9488,6 @@ details[open] > .htree-event-sum .htree-caret::after {
   .places-toolbar .field:first-child,
   .places-toolbar .field:last-child {
     grid-column: 1 / -1;
-  }
-
-  .history-primary-filters,
-  .history-advanced-filter-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .history-primary-filters .field:first-child {
-    grid-column: 1 / -1;
-  }
-
-  .history-advanced-filters {
-    padding-top: 8px;
   }
 
   .route-picker {

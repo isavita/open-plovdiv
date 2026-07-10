@@ -1104,7 +1104,6 @@ small {
 
 .badge,
 .route-badge,
-.era-pill,
 .pill-row a.meta,
 .route-chip,
 .nb-chip,
@@ -1113,6 +1112,72 @@ small {
   min-height: 42px;
   border-radius: var(--r-pill);
   font-family: var(--font-ui);
+}
+
+/* ---- History universal search ----------------------------------------- */
+.history-search-card {
+  display: grid;
+  gap: 12px;
+  padding: clamp(18px, 3vw, 26px);
+}
+
+.history-search-card > label {
+  color: var(--ink-2);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.history-search-card input[type="search"] {
+  width: 100%;
+  min-height: 54px;
+  padding: 12px 18px;
+  background: var(--surface);
+  border: 2px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+}
+
+.history-search-card input[type="search"]:focus-visible {
+  border-color: var(--section-accent, var(--brand));
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+.history-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-suggest {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 8px 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-pill);
+  color: var(--ink-2);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.history-suggest:hover,
+.history-suggest:focus-visible {
+  border-color: var(--section-accent, var(--brand));
+  color: var(--ink-deep);
+}
+
+.history-suggest[aria-pressed="true"] {
+  background: var(--section-accent, var(--brand));
+  border-color: var(--section-accent, var(--brand));
+  color: var(--brand-ink);
 }
 
 .page-subnav {
@@ -1443,7 +1508,6 @@ th {
 .chart-card,
 .chart-figure,
 .people-graph,
-.history-atlas,
 .place-history-atlas {
   background: var(--surface);
   border-color: var(--line);
