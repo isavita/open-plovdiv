@@ -1,0 +1,218 @@
+/* ==========================================================================
+   Ailyak rhythm
+
+   Plovdiv's relaxed identity should help people choose how to experience the
+   city. This layer turns that idea into an unhurried, route-backed homepage
+   interaction while keeping the surrounding historical system disciplined.
+   ========================================================================== */
+
+:root {
+  --ailyak-panel: #173733;
+  --ailyak-panel-2: #1f4540;
+  --ailyak-ink: #f6f2e9;
+  --ailyak-muted: #c9d4cf;
+  --ailyak-gold: #d0b77f;
+}
+
+.ailyak-paces {
+  background: var(--ailyak-panel);
+  border-bottom: 1px solid color-mix(in srgb, var(--ailyak-gold) 42%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--ailyak-gold) 42%, transparent);
+  color: var(--ailyak-ink);
+  overflow: hidden;
+  padding: clamp(34px, 4.5vw, 58px) 0;
+  position: relative;
+}
+
+.ailyak-paces::before {
+  background:
+    radial-gradient(circle at 50% 100%, transparent 0 58%, rgb(208 183 127 / 12%) 58.4% 58.7%, transparent 59.1%)
+      0 0 / 210px 105px repeat-x;
+  bottom: -42px;
+  content: "";
+  height: 105px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+.ailyak-paces-inner {
+  align-items: start;
+  display: grid;
+  gap: clamp(28px, 5vw, 64px);
+  grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.6fr);
+  position: relative;
+  z-index: 1;
+}
+
+.ailyak-paces-intro {
+  max-width: 42ch;
+}
+
+.ailyak-paces .eyebrow {
+  color: var(--ailyak-gold);
+  margin-bottom: 10px;
+}
+
+.ailyak-paces h2 {
+  color: var(--ailyak-ink);
+  font-size: clamp(1.9rem, 3vw, 2.7rem);
+  margin: 0;
+}
+
+.ailyak-paces-intro > p:last-child {
+  color: var(--ailyak-muted);
+  line-height: 1.62;
+  margin: 16px 0 0;
+}
+
+.ailyak-pace-list {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ailyak-pace-card {
+  background: color-mix(in srgb, var(--ailyak-panel-2) 76%, transparent);
+  border: 1px solid rgb(246 242 233 / 14%);
+  border-top: 3px solid var(--pace-accent, var(--ailyak-gold));
+  color: var(--ailyak-ink);
+  display: grid;
+  gap: 10px;
+  min-height: 210px;
+  padding: 18px;
+  position: relative;
+  text-decoration: none;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.ailyak-pace-card:hover,
+.ailyak-pace-card:focus-visible {
+  background: color-mix(in srgb, var(--ailyak-panel-2) 94%, var(--pace-accent));
+  border-color: color-mix(in srgb, var(--pace-accent) 58%, var(--ailyak-ink));
+  color: var(--ailyak-ink);
+  transform: translateY(-3px);
+}
+
+.ailyak-pace-time {
+  color: var(--ailyak-gold);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ailyak-pace-card strong {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.ailyak-pace-card small {
+  color: var(--ailyak-muted);
+  font-size: 0.82rem;
+  line-height: 1.48;
+}
+
+.ailyak-pace-arrow {
+  align-self: end;
+  color: var(--ailyak-gold);
+  font-size: 1.15rem;
+  justify-self: end;
+}
+
+/* Slightly more relaxed movement on the visitor-facing image cards, without
+   changing the sharper civic and research surfaces. */
+@media (hover: hover) and (pointer: fine) {
+  .essential-card,
+  .route-card,
+  .story-card,
+  .place-card {
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  .essential-card:hover,
+  .route-card:hover,
+  .story-card:hover,
+  .place-card:hover {
+    box-shadow: 0 16px 38px rgb(16 22 21 / 10%);
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 900px) {
+  .ailyak-paces-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .ailyak-paces-intro {
+    max-width: 62ch;
+  }
+}
+
+@media (max-width: 1240px) {
+  .site-header[data-open="true"] .nav-group-label {
+    color: var(--heritage-brass);
+    font-family: var(--font-editorial);
+    font-size: 0.98rem;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding-bottom: 5px;
+    text-transform: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .ailyak-paces {
+    padding: 34px 0 38px;
+  }
+
+  .ailyak-paces-inner {
+    gap: 24px;
+  }
+
+  .ailyak-paces h2 {
+    font-size: clamp(1.85rem, 8.5vw, 2.35rem);
+  }
+
+  .ailyak-paces-intro > p:last-child {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .ailyak-pace-list {
+    display: flex;
+    gap: 10px;
+    margin-inline: calc(var(--gutter) * -1);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding: 0 var(--gutter) 8px;
+    scroll-padding-inline: var(--gutter);
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .ailyak-pace-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ailyak-pace-card {
+    flex: 0 0 min(78vw, 300px);
+    min-height: 190px;
+    scroll-snap-align: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ailyak-pace-card,
+  .essential-card,
+  .route-card,
+  .story-card,
+  .place-card {
+    transition: none;
+  }
+}

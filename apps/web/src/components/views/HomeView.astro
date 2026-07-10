@@ -7,10 +7,13 @@ import { field, localizePath } from "@i18n/utils";
 import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { bustGlyph, sectionMotifs } from "@lib/motifs";
 import { cityArchive, historyKnowledgePlaces } from "@lib/data";
+import { walkingRoutes } from "@lib/routes";
+import { routeLabels } from "@lib/routeLabels";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const routeT = routeLabels(lang);
 
 const mayorTerms = cityArchive
   .filter((r) => r.kind === "mayor_term")
@@ -45,6 +48,48 @@ const labels = {
     "Ang “Ailyak” ay ang payapang pakiramdam ng Plovdiv. Tuklasin ang lungsod nang walang pagmamadali — paunti-unti, bawat patong ng kasaysayan.",
     "«Айляк» — це спокійний настрій Пловдива. Пізнавайте місто без поспіху — пласт за пластом.",
     "«Айляк» — это спокойное настроение Пловдива. Знакомьтесь с городом без спешки — пласт за пластом."
+  ),
+  paceEyebrow: tr(
+    "Вашият айляк",
+    "Your ailyak pace",
+    "Ihr Ailyak-Rhythmus",
+    "Votre rythme aïlyak",
+    "Il vostro ritmo ailyak",
+    "Aylak ritminiz",
+    "Su ritmo ailyak",
+    "Ο δικός σας ρυθμός αϊλιάκ",
+    "自分らしいアイリャク",
+    "Sarili mong ailyak",
+    "Ваш ритм айляк",
+    "Ваш ритм айляк"
+  ),
+  paceTitle: tr(
+    "Дайте на града времето, с което разполагате",
+    "Give the city the time you have",
+    "Geben Sie der Stadt die Zeit, die Sie haben",
+    "Donnez à la ville le temps dont vous disposez",
+    "Dedicate alla città il tempo che avete",
+    "Şehre ayırabildiğiniz kadar zaman verin",
+    "Dedique a la ciudad el tiempo que tenga",
+    "Δώστε στην πόλη τον χρόνο που έχετε",
+    "街に、いま持っている時間を",
+    "Ilaan sa lungsod ang oras na mayroon ka",
+    "Віддайте місту стільки часу, скільки маєте",
+    "Подарите городу столько времени, сколько у вас есть"
+  ),
+  paceLead: tr(
+    "Без списък за отметки. Изберете ритъм и оставете място за кафе, сянка и неочаквана отбивка.",
+    "No checklist. Choose a rhythm and leave room for coffee, shade and an unexpected turn.",
+    "Keine Checkliste. Wählen Sie Ihren Rhythmus und lassen Sie Raum für Kaffee, Schatten und einen ungeplanten Abstecher.",
+    "Pas de liste à cocher. Choisissez un rythme et gardez du temps pour un café, un coin d'ombre et un détour imprévu.",
+    "Niente lista da spuntare. Scegliete un ritmo e lasciate spazio a un caffè, un po' d'ombra e una deviazione inattesa.",
+    "Kontrol listesi yok. Bir ritim seçin; kahveye, gölgeye ve beklenmedik bir sapmaya yer bırakın.",
+    "Sin lista de tareas. Elija un ritmo y deje espacio para un café, un poco de sombra y un desvío inesperado.",
+    "Χωρίς λίστα. Διαλέξτε ρυθμό και αφήστε χώρο για καφέ, σκιά και μια απρόσμενη παράκαμψη.",
+    "チェックリストは不要。自分のペースを選び、コーヒーや木陰、思いがけない寄り道の時間も残しておきましょう。",
+    "Walang checklist. Pumili ng ritmo at maglaan ng oras para sa kape, lilim, at biglaang pagliko.",
+    "Без списку справ. Оберіть ритм і залиште час на каву, затінок та несподіваний поворот.",
+    "Без списка дел. Выберите ритм и оставьте время на кофе, тень и неожиданный поворот."
   ),
   startTitle: tr("Започнете оттук", "Start here", "Hier beginnen", "Commencer ici", "Da dove iniziare", "Buradan başlayın", "Empiece aquí", "Ξεκινήστε από εδώ", "ここから始める", "Magsimula rito", "Почніть звідси", "Начните отсюда"),
   startLead: tr(
@@ -461,6 +506,21 @@ const essentials = [
   }
 ];
 
+// Three real routes arranged by time rather than by theme. This is the
+// homepage's practical expression of ailyak: visitors choose a comfortable
+// pace first and can let the city supply the detours.
+const ailyakRouteIds = ["kapana-creative-hour", "roman-plovdiv-90", "hills-and-sunsets"];
+const ailyakRoutes = ailyakRouteIds
+  .map((id) => walkingRoutes.find((route) => route.id === id))
+  .filter((route): route is (typeof walkingRoutes)[number] => Boolean(route))
+  .map((route) => ({
+    href: localizePath(`/routes/${route.id}`, lang),
+    title: field(route as unknown as Record<string, unknown>, "short_title", lang),
+    bestTime: field(route as unknown as Record<string, unknown>, "best_time", lang),
+    minutes: route.duration_minutes,
+    accent: route.accent
+  }));
+
 // Quiet secondary destinations under the civic section.
 const moreLinks = [
   { href: localizePath("/people", lang), label: t.nav.people },
@@ -484,6 +544,26 @@ const moreLinks = [
         </a>
         <a class="button secondary" href={localizePath("/routes", lang)}>{labels.routesPath}</a>
       </div>
+    </div>
+  </section>
+
+  <section class="ailyak-paces" aria-labelledby="ailyak-paces-title">
+    <div class="container ailyak-paces-inner">
+      <div class="ailyak-paces-intro">
+        <p class="eyebrow">{labels.paceEyebrow}</p>
+        <h2 id="ailyak-paces-title">{labels.paceTitle}</h2>
+        <p>{labels.paceLead}</p>
+      </div>
+      <nav class="ailyak-pace-list" aria-label={labels.paceTitle}>
+        {ailyakRoutes.map((route) => (
+          <a class="ailyak-pace-card" href={route.href} style={`--pace-accent:${route.accent}`}>
+            <span class="ailyak-pace-time">{route.minutes} {routeT.minutes}</span>
+            <strong>{route.title}</strong>
+            <small>{route.bestTime}</small>
+            <span class="ailyak-pace-arrow" aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </nav>
     </div>
   </section>
 
