@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
+import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { sourceTitle } from "@lib/format";
 import { publicThenNowPairs } from "@lib/thenNow";
 import { storyThemeTagLabel } from "@lib/storyTags";
@@ -269,8 +270,9 @@ const archiveLinkCount = storyLongreads.reduce(
       </div>
 
       <div class="story-grid">
-        {storyLongreads.map((story) => {
+        {storyLongreads.map((story, index) => {
           const media = heroMedia(story);
+          const commonsMedia = media ? isCommonsUploadImageUrl(media.url) : false;
           const sourceRecords = story.source_ids
             .map((sourceId) => sourceById.get(sourceId))
             .filter(Boolean)
@@ -279,14 +281,22 @@ const archiveLinkCount = storyLongreads.reduce(
             <article class="story-card" data-story-card>
               {media && (
                 <a class="story-card-media" href={localizePath(`/stories/${story.id}`, lang)} aria-label={localized(story, "title")}>
-                  <img
-                    src={media.url}
-                    alt={localized(story.hero, "caption")}
-                    loading="lazy"
-                    decoding="async"
-                    crossorigin="anonymous"
-                    referrerpolicy="no-referrer"
-                  />
+                  <picture>
+                    {commonsMedia && <source media="(max-width: 760px)" srcset={commonsImageUrl(media.url, 500)} />}
+                    <img
+                      src={commonsImageUrl(media.url, 960)}
+                      srcset={commonsMedia ? `${commonsImageUrl(media.url, 960)} 960w, ${commonsImageUrl(media.url, 1280)} 1280w` : undefined}
+                      sizes="(max-width: 1180px) 50vw, 560px"
+                      alt={localized(story.hero, "caption")}
+                      width="960"
+                      height="600"
+                      loading={index === 0 ? "eager" : "lazy"}
+                      fetchpriority={index === 0 ? "high" : undefined}
+                      decoding="async"
+                      crossorigin={commonsMedia ? "anonymous" : undefined}
+                      referrerpolicy="no-referrer"
+                    />
+                  </picture>
                 </a>
               )}
               <div class="story-card-body">

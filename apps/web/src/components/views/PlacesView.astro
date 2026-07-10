@@ -9,6 +9,7 @@ import { formatKm, routeCategoryOrder, routeGeometry, walkingRoutes } from "@lib
 import { routeCategoryLabels } from "@lib/routeLabels";
 import { sourceTitle } from "@lib/format";
 import { sortPlacesForDiscovery } from "@lib/placeDiscovery";
+import { siteSearchUi } from "@lib/siteSearchI18n";
 import { publicThenNowPairs, thenNowCountByPlace } from "@lib/thenNow";
 import {
   historicalArchiveItems,
@@ -23,6 +24,7 @@ import {
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const searchUi = siteSearchUi[lang];
 const locale = localeForLang(lang);
 
 const labels =
@@ -969,33 +971,38 @@ const placesMapConfig = {
       </div>
 
       <div class="toolbar places-toolbar">
-        <div class="filters">
+        <div class="catalog-search-layout">
           <div class="field">
             <label for="places-search">{labels.search}</label>
             <input id="places-search" type="search" placeholder={labels.searchPlaceholder} />
           </div>
-          <div class="field">
-            <label for="places-era">{labels.era}</label>
-            <select id="places-era">
-              <option value="all">{labels.allEras}</option>
-              {eras.map((era) => <option value={era}>{t.history.eraLabels[era]}</option>)}
-            </select>
-          </div>
-          <div class="field">
-            <label for="places-category">{labels.category}</label>
-            <select id="places-category">
-              <option value="all">{labels.allCategories}</option>
-              {categories.map((category) => <option value={category}>{categoryLabel(category)}</option>)}
-            </select>
-          </div>
-          <div class="field">
-            <label for="places-evidence">{labels.evidence}</label>
-            <select id="places-evidence">
-              <option value="all">{labels.allEvidence}</option>
-              <option value="then-now">{labels.withThenNow}</option>
-              <option value="archive">{labels.withArchive}</option>
-            </select>
-          </div>
+          <details class="catalog-filter-disclosure">
+            <summary>{searchUi.filters}</summary>
+            <div class="catalog-filter-grid">
+              <div class="field">
+                <label for="places-era">{labels.era}</label>
+                <select id="places-era">
+                  <option value="all">{labels.allEras}</option>
+                  {eras.map((era) => <option value={era}>{t.history.eraLabels[era]}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="places-category">{labels.category}</label>
+                <select id="places-category">
+                  <option value="all">{labels.allCategories}</option>
+                  {categories.map((category) => <option value={category}>{categoryLabel(category)}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="places-evidence">{labels.evidence}</label>
+                <select id="places-evidence">
+                  <option value="all">{labels.allEvidence}</option>
+                  <option value="then-now">{labels.withThenNow}</option>
+                  <option value="archive">{labels.withArchive}</option>
+                </select>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
 
@@ -1073,6 +1080,8 @@ const placesMapConfig = {
 
   <script type="application/json" id="places-config" set:html={JSON.stringify(config)}></script>
   <script>
+    import { matchesSearchText } from "@lib/searchCore";
+
     const config = JSON.parse(document.getElementById("places-config")?.textContent ?? "{}");
     const placeholderImage = config.placeholderImage ?? "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
     const totalCards = Number(config.total) || 0;
@@ -1187,7 +1196,7 @@ const placesMapConfig = {
      */
     function readPlacesState() {
       return {
-        query: search.value.trim().toLocaleLowerCase(),
+        query: search.value.trim(),
         era: era.value,
         category: category.value,
         evidence: evidence.value,
@@ -1217,7 +1226,7 @@ const placesMapConfig = {
       for (const card of cards) {
         const show =
           (!focus || focus.has(cardPlaceId(card))) &&
-          (!state.query || (card.dataset.search ?? "").includes(state.query)) &&
+          matchesSearchText(card.dataset.search ?? "", state.query) &&
           (state.era === "all" || card.dataset.era === state.era) &&
           (state.category === "all" || card.dataset.category === state.category) &&
           (state.evidence === "all" ||
@@ -1374,6 +1383,8 @@ const placesMapConfig = {
 
   <script type="application/json" id="places-map-config" set:html={JSON.stringify(placesMapConfig)}></script>
   <script>
+    import { matchesSearchText } from "@lib/searchCore";
+
     const mapCfg = JSON.parse(document.getElementById("places-map-config")?.textContent ?? "{}");
     const mapEl = document.getElementById("places-map");
     type PlaceMapItem = {
@@ -1656,7 +1667,7 @@ const placesMapConfig = {
       });
 
       function applyMap(refit: boolean) {
-        const q = (fSearch?.value ?? "").trim().toLowerCase();
+        const q = (fSearch?.value ?? "").trim();
         const era = fEra?.value ?? "all";
         const cat = fCat?.value ?? "all";
         const evi = fEvi?.value ?? "all";
@@ -1667,7 +1678,7 @@ const placesMapConfig = {
         const nearbyOn = fRoute?.dataset.nearby === "1";
         const focusNearby = overlay ? new Set(nearbyOn ? overlay.data.nearbyIds : []) : null;
         const matchesSubfilters = (it: PlaceMapItem) =>
-          (!q || it.search.includes(q)) &&
+          matchesSearchText(it.search, q) &&
           (era === "all" || it.era === era) &&
           (cat === "all" || it.category === cat) &&
           (evi === "all" || (evi === "archive" ? it.archive : evi === "then-now" ? it.thenNow : true));

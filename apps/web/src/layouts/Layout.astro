@@ -6,7 +6,9 @@ import "../styles/global.css";
 import "../styles/identity.css";
 import PlovdivMark from "@components/PlovdivMark.astro";
 import PlovdivSkyline from "@components/PlovdivSkyline.astro";
+import SiteSearch from "@components/SiteSearch.astro";
 import { languages, localeCodes, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
+import { siteSearchUi } from "@lib/siteSearchI18n";
 import {
   absoluteUrl,
   buildPageStructuredData,
@@ -38,6 +40,7 @@ type Props = {
 
 const { lang, path, title, description, image, imageAlt, robots, structuredData, localeDetect } = Astro.props;
 const t = ui[lang];
+const searchT = siteSearchUi[lang];
 
 const pageTitle = title ? `${title} · ${t.site.name}` : t.site.name;
 const pageDescription = description ?? t.site.tagline;
@@ -344,6 +347,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
           </div>
 
           <div class="nav-right">
+            <SiteSearch lang={lang} />
             <details class="lang-menu" id="lang-menu">
               <summary class="icon-btn lang-switch" aria-label={`${lang.toUpperCase()} · ${t.site.langSwitch}`} title={t.site.langSwitch} data-lang-switch-aria>
                 <span class="flag" aria-hidden="true" data-flag>{lang.toUpperCase()}</span>
@@ -410,6 +414,10 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z" /><path d="M9 3v15M15 6v15" /></svg>
           <span>{t.nav.places}</span>
         </a>
+        <button type="button" aria-label={searchT.open} title={searchT.shortcut} data-site-search-open>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
+          <span data-search-copy="open">{searchT.open}</span>
+        </button>
         <button type="button" aria-controls="nav-links" aria-expanded="false" aria-label={t.site.menu} data-nav-toggle>
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
           <span>{t.site.menu}</span>

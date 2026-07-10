@@ -11,10 +11,12 @@ import {
   type KnowledgePerson
 } from "@lib/data";
 import { bustGlyph, sectionMotifs } from "@lib/motifs";
+import { siteSearchUi } from "@lib/siteSearchI18n";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const searchUi = siteSearchUi[lang];
 const locale = localeForLang(lang);
 
 const labels = ({
@@ -1319,33 +1321,38 @@ const nodeConfig = {
       </div>
 
       <div class="toolbar people-toolbar">
-        <div class="filters">
+        <div class="catalog-search-layout">
           <div class="field">
             <label for="people-search">{labels.search}</label>
             <input id="people-search" type="search" placeholder={labels.searchPlaceholder} />
           </div>
-          <div class="field">
-            <label for="people-group">{labels.group}</label>
-            <select id="people-group">
-              <option value="all">{labels.allGroups}</option>
-              {groupOrder.map((group) => <option value={group}>{groupLabels[group]}</option>)}
-            </select>
-          </div>
-          <div class="field">
-            <label for="people-century">{labels.century}</label>
-            <select id="people-century">
-              <option value="all">{labels.allCenturies}</option>
-              {centuries.map((century) => <option value={century}>{century}</option>)}
-            </select>
-          </div>
-          <div class="field">
-            <label for="people-relationship">{labels.relationship}</label>
-            <select id="people-relationship">
-              <option value="all">{labels.allRelationships}</option>
-              <option value="with">{labels.withRelationships}</option>
-              <option value="without">{labels.withoutRelationships}</option>
-            </select>
-          </div>
+          <details class="catalog-filter-disclosure">
+            <summary>{searchUi.filters}</summary>
+            <div class="catalog-filter-grid">
+              <div class="field">
+                <label for="people-group">{labels.group}</label>
+                <select id="people-group">
+                  <option value="all">{labels.allGroups}</option>
+                  {groupOrder.map((group) => <option value={group}>{groupLabels[group]}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="people-century">{labels.century}</label>
+                <select id="people-century">
+                  <option value="all">{labels.allCenturies}</option>
+                  {centuries.map((century) => <option value={century}>{century}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="people-relationship">{labels.relationship}</label>
+                <select id="people-relationship">
+                  <option value="all">{labels.allRelationships}</option>
+                  <option value="with">{labels.withRelationships}</option>
+                  <option value="without">{labels.withoutRelationships}</option>
+                </select>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
 
@@ -1432,6 +1439,8 @@ const nodeConfig = {
 
   <script type="application/json" id="people-config" set:html={JSON.stringify(nodeConfig)}></script>
   <script>
+    import { matchesSearchText } from "@lib/searchCore";
+
     const config = JSON.parse(document.getElementById("people-config")?.textContent ?? "{}");
     const search = document.querySelector<HTMLInputElement>("#people-search")!;
     const group = document.querySelector<HTMLSelectElement>("#people-group")!;
@@ -1732,9 +1741,9 @@ const nodeConfig = {
     }
 
     function matches(card: any) {
-      const q = search.value.trim().toLocaleLowerCase();
+      const q = search.value.trim();
       return (
-        (!q || (card.search ?? "").includes(q)) &&
+        matchesSearchText(card.search ?? "", q) &&
         (group.value === "all" || card.group === group.value) &&
         (century.value === "all" || String(card.century) === century.value) &&
         (relationship.value === "all" || card.relationshipsMode === relationship.value)

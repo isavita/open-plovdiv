@@ -70,6 +70,13 @@ function assertContains(url, html, patterns) {
   }
 }
 
+function assertNotContains(url, html, patterns) {
+  for (const pattern of patterns) {
+    const matches = pattern instanceof RegExp ? pattern.test(html) : html.includes(pattern);
+    if (matches) fail(`${url} still contains retired hook ${String(pattern)}`);
+  }
+}
+
 function assertAlternateLinks(url, html, bgHref, enHref) {
   if (!html.includes(`hreflang="bg" href="${bgHref}"`)) {
     fail(`${url} missing bg alternate ${bgHref}`);
@@ -134,8 +141,10 @@ const corePagePairs = [
     en: "/en/history/",
     hooks: [
       'id="history-search"',
+      'id="history-search-hints"',
+      "data-history-suggest",
+      'id="history-count"',
       'id="history-event-list"',
-      'id="history-on-this-day-date"',
       'id="history-map-canvas"',
       'id="history-timeline-config"',
       'id="history-map-config"'
@@ -198,6 +207,18 @@ for (const pair of corePagePairs) {
   assertContains(pair.bg, bgHtml, pair.hooks);
   assertContains(pair.en, enHtml, pair.hooks);
 }
+
+const retiredHistoryControls = [
+  'id="history-era"',
+  'id="history-category"',
+  'id="history-theme"',
+  'id="history-person"',
+  'id="history-place"',
+  'id="history-linked"',
+  'id="history-on-this-day-date"'
+];
+assertNotContains("/history/", readBuilt("/history/"), retiredHistoryControls);
+assertNotContains("/en/history/", readBuilt("/en/history/"), retiredHistoryControls);
 
 const historyIndex = readJson("/api/history/index.json");
 if (historyIndex) {

@@ -6,10 +6,12 @@ import { field, localeForLang, localizePath } from "@i18n/utils";
 import { cityArchive } from "@lib/data";
 import { sourceTitle } from "@lib/format";
 import { bustGlyph, sectionMotifs } from "@lib/motifs";
+import { siteSearchUi } from "@lib/siteSearchI18n";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const searchUi = siteSearchUi[lang];
 const locale = localeForLang(lang);
 
 const currentYear = new Date().getFullYear();
@@ -501,30 +503,35 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
   <section class="section" id="all-mayors" data-subnav-target>
     <div class="container">
       <div class="toolbar">
-        <div class="filters" style="grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));">
+        <div class="catalog-search-layout">
           <div class="field">
             <label for="mayor-search">{t.mayors.search}</label>
             <input id="mayor-search" type="search" placeholder={t.mayors.searchPlaceholder} />
           </div>
-          <div class="field">
-            <label for="mayor-century">{t.mayors.century}</label>
-            <select id="mayor-century">
-              <option value="all">{t.mayors.allCenturies}</option>
-              {centuries.map((century) => (
-                <option value={century}>
-                  {t.mayors.centuryLabel(century)} ({centuryCounts.get(century)})
-                </option>
-              ))}
-            </select>
-          </div>
-          <div class="field">
-            <label for="mayor-status">{t.mayors.status}</label>
-            <select id="mayor-status">
-              <option value="all">{t.mayors.allStatuses}</option>
-              <option value="current">{t.mayors.currentOnly}</option>
-              <option value="acting">{t.mayors.actingOnly}</option>
-            </select>
-          </div>
+          <details class="catalog-filter-disclosure">
+            <summary>{searchUi.filters}</summary>
+            <div class="catalog-filter-grid catalog-filter-grid-2">
+              <div class="field">
+                <label for="mayor-century">{t.mayors.century}</label>
+                <select id="mayor-century">
+                  <option value="all">{t.mayors.allCenturies}</option>
+                  {centuries.map((century) => (
+                    <option value={century}>
+                      {t.mayors.centuryLabel(century)} ({centuryCounts.get(century)})
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div class="field">
+                <label for="mayor-status">{t.mayors.status}</label>
+                <select id="mayor-status">
+                  <option value="all">{t.mayors.allStatuses}</option>
+                  <option value="current">{t.mayors.currentOnly}</option>
+                  <option value="acting">{t.mayors.actingOnly}</option>
+                </select>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
 
@@ -654,6 +661,8 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
 
   <script type="application/json" id="mayor-config" set:html={JSON.stringify(config)}></script>
   <script>
+    import { matchesSearchText } from "@lib/searchCore";
+
     const config = JSON.parse(document.getElementById("mayor-config")?.textContent ?? "{}");
     const search = document.querySelector<HTMLInputElement>("#mayor-search")!;
     const century = document.querySelector<HTMLSelectElement>("#mayor-century")!;
@@ -663,13 +672,13 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
     const empty = document.querySelector<HTMLElement>("#mayor-empty")!;
 
     function applyFilters() {
-      const query = search.value.trim().toLocaleLowerCase();
+      const query = search.value.trim();
       const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-mayor-card]"));
       const chips = Array.from(document.querySelectorAll<HTMLElement>("[data-mayor-chip]"));
       let visible = 0;
 
       const matches = (item: HTMLElement) =>
-        (!query || (item.dataset.search ?? "").includes(query)) &&
+        matchesSearchText(item.dataset.search ?? "", query) &&
         (century.value === "all" || item.dataset.century === century.value) &&
         (status.value === "all" || item.dataset.status === status.value);
 

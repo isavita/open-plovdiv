@@ -212,6 +212,7 @@ const mapConfig = {
   <script type="application/json" id="nb-map-config" set:html={JSON.stringify(mapConfig)}></script>
   <script>
     import "leaflet/dist/leaflet.css";
+    import { matchesSearchText } from "@lib/searchCore";
 
     // --- filters: search + era + area over the server-rendered cards -------
     const cards = [...document.querySelectorAll<HTMLElement>("[data-nb-card]")];
@@ -221,14 +222,14 @@ const mapConfig = {
     const state = { era: "", area: "", q: "" };
 
     function applyFilters(): void {
-      const query = state.q.trim().toLocaleLowerCase();
+      const query = state.q.trim();
       let visible = 0;
       for (const card of cards) {
         const eras = (card.dataset.era ?? "").split(" ");
         const matches =
           (!state.era || eras.includes(state.era)) &&
           (!state.area || card.dataset.area === state.area) &&
-          (!query || (card.dataset.name ?? "").includes(query));
+          matchesSearchText(card.dataset.name ?? "", query);
         card.hidden = !matches;
         if (matches) visible += 1;
       }

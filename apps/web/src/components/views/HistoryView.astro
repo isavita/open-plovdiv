@@ -1525,15 +1525,16 @@ const topCategoryLabels = [...eventCountByCategory.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 2)
   .map(([category]) => labelCategory(category));
-// A handful of always-productive suggestions: notable eras, the two biggest
-// record types and the most-linked specific place. Labels arrive localized.
+// Four always-productive suggestions: two useful eras, the mayoral chronology
+// and one specific, well-linked place. More than this starts to look like the
+// filter forest this search deliberately replaced.
 const searchSuggestions = [
   ...new Set([
-    ...(["roman", "revival", "ottoman"] as const).filter((era) => erasPresent.includes(era)).map((era) => t.history.eraLabels[era]),
-    ...topCategoryLabels,
+    ...(["roman", "revival"] as const).filter((era) => erasPresent.includes(era)).map((era) => t.history.eraLabels[era]),
+    eventCountByCategory.has("mayor_term") ? labelCategory("mayor_term") : topCategoryLabels[0],
     ...suggestablePlaceNames.slice(0, 1)
   ])
-].slice(0, 6);
+].filter((value): value is string => Boolean(value)).slice(0, 4);
 // Native type-ahead hints for the search box (datalist).
 const searchHints = [
   ...new Set([
@@ -3248,6 +3249,8 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
   <script type="application/json" id="history-map-config" set:html={JSON.stringify(historyMapConfig)}></script>
 
   <script>
+    import { normalizeSearchText } from "@lib/searchCore";
+
     const timelineConfig = JSON.parse(
       document.getElementById("history-timeline-config")?.textContent ?? "{}"
     );
@@ -3357,7 +3360,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
             peopleCount: event.person_ids.length,
             placesCount: event.place_ids.length,
             organizationCount: event.organization_ids.length,
-            search: [
+            search: normalizeSearchText([
               localizedApi(event, "title"),
               localizedApi(event, "summary"),
               localizedApi(event, "conflict_notes"),
@@ -3366,7 +3369,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
               labelApiCategory(event.category),
               ...(event.theme_tags ?? []).map(labelApiTheme),
               ...linkedNames
-            ].join(" ").toLocaleLowerCase(timelineConfig.locale),
+            ].join(" ")),
             date: dateApiLabel(event),
             title: localizedApi(event, "title"),
             summary: localizedApi(event, "summary"),
@@ -3441,8 +3444,8 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     }
 
     function matchesHistoryItem(item: any) {
-      const q = search.value.trim().toLocaleLowerCase(timelineConfig.locale);
-      return !q || (item.search ?? "").includes(q);
+      const words = normalizeSearchText(search.value).split(" ").filter(Boolean);
+      return words.length === 0 || words.every((word) => (item.search ?? "").includes(word));
     }
 
     function applyHistoryFilters() {
@@ -3465,19 +3468,19 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     const queryTreeEras = [...document.querySelectorAll<HTMLElement>("[data-tree-era]")];
     const eraKeyByLabel = new Map(
       Object.entries(timelineConfig.eraLabels ?? {}).map(([key, label]) => [
-        String(label).toLocaleLowerCase(timelineConfig.locale),
+        normalizeSearchText(label),
         key
       ])
     );
 
     function activeQueryEra() {
-      return eraKeyByLabel.get(search.value.trim().toLocaleLowerCase(timelineConfig.locale)) ?? "";
+      return eraKeyByLabel.get(normalizeSearchText(search.value)) ?? "";
     }
 
     function syncSuggestionButtons() {
-      const q = search.value.trim().toLocaleLowerCase(timelineConfig.locale);
+      const q = normalizeSearchText(search.value);
       suggestionButtons.forEach((button) => {
-        const value = (button.dataset.historySuggest ?? "").toLocaleLowerCase(timelineConfig.locale);
+        const value = normalizeSearchText(button.dataset.historySuggest ?? "");
         button.setAttribute("aria-pressed", q !== "" && value === q ? "true" : "false");
       });
     }
@@ -3622,6 +3625,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     reset.addEventListener("click", () => {
       search.value = "";
       refreshHistoryTimeline();
+      search.focus();
     });
     suggestionButtons.forEach((button) => {
       button.addEventListener("click", () => {

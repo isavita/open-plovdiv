@@ -10,10 +10,12 @@ import {
 import { field, localeForLang, localizePath } from "@i18n/utils";
 import { communityInitiatives, projects } from "@lib/data";
 import { sectionMotifs } from "@lib/motifs";
+import { siteSearchUi } from "@lib/siteSearchI18n";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const searchUi = siteSearchUi[lang];
 
 const categories = Array.from(new Set(communityInitiatives.map((item) => item.category))).sort();
 const statuses = Object.keys(communityStatusLabels[lang]);
@@ -84,35 +86,42 @@ const config = {
       </div>
 
       <div class="toolbar">
-        <div class="filters" style="grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));">
+        <div class="catalog-search-layout">
           <div class="field">
             <label for="community-search">{t.community.search}</label>
             <input id="community-search" type="search" placeholder={t.community.searchPlaceholder} />
           </div>
-          <div class="field">
-            <label for="community-category">{t.community.category}</label>
-            <select id="community-category">
-              <option value="all">{t.common.all}</option>
-              {categories.map((category) => <option value={category}>{categoryLabels[lang][category] ?? category}</option>)}
-            </select>
-          </div>
-          <div class="field">
-            <label for="community-status">{t.community.status}</label>
-            <select id="community-status">
-              <option value="all">{t.common.all}</option>
-              {statuses.map((status) => <option value={status}>{communityStatusLabels[lang][status] ?? status}</option>)}
-            </select>
-          </div>
+          <details class="catalog-filter-disclosure">
+            <summary>{searchUi.filters}</summary>
+            <div class="catalog-filter-grid">
+              <div class="field">
+                <label for="community-category">{t.community.category}</label>
+                <select id="community-category">
+                  <option value="all">{t.common.all}</option>
+                  {categories.map((category) => <option value={category}>{categoryLabels[lang][category] ?? category}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="community-status">{t.community.status}</label>
+                <select id="community-status">
+                  <option value="all">{t.common.all}</option>
+                  {statuses.map((status) => <option value={status}>{communityStatusLabels[lang][status] ?? status}</option>)}
+                </select>
+              </div>
+              <div class="field catalog-checkbox-field">
+                <label for="community-donations">
+                  <input type="checkbox" id="community-donations" />
+                  {t.community.donationsFilter}
+                </label>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
 
       <div class="results-bar">
         <p id="community-count" class="meta">{t.community.count(communityInitiatives.length)}</p>
         <div class="pill-row">
-          <label class="meta" style="display:inline-flex;align-items:center;gap:8px;cursor:pointer">
-            <input type="checkbox" id="community-donations" style="width:16px;height:16px" />
-            {t.community.donationsFilter}
-          </label>
           <a class="link-button" href={localizePath("/admin/community", lang)}>{t.community.adminCta}</a>
           <button type="button" id="community-reset" class="link-button" hidden>{t.community.reset}</button>
         </div>
@@ -129,6 +138,8 @@ const config = {
   <script type="application/json" id="community-config" set:html={JSON.stringify(config)}></script>
 
   <script>
+    import { matchesSearchText } from "@lib/searchCore";
+
     type Source = {
       title: string;
       title_de?: string;
@@ -174,6 +185,8 @@ const config = {
     const count = document.querySelector<HTMLElement>("#community-count")!;
     const empty = document.querySelector<HTMLElement>("#community-empty")!;
     let initiatives: Initiative[] = Array.isArray(config.initial) ? config.initial : [];
+    const initialQuery = new URLSearchParams(window.location.search).get("q")?.trim() ?? "";
+    if (initialQuery) search.value = initialQuery;
 
     function escapeHtml(value: unknown): string {
       return String(value ?? "").replace(/[&<>"']/g, (char) => {
@@ -318,12 +331,12 @@ const config = {
     const donationsOnly = document.querySelector<HTMLInputElement>("#community-donations")!;
 
     function applyFilters() {
-      const query = search.value.trim().toLocaleLowerCase(config.locale);
+      const query = search.value.trim();
       let visible = 0;
 
       document.querySelectorAll<HTMLElement>("[data-community-card]").forEach((item) => {
         const matches =
-          (!query || (item.dataset.search ?? "").includes(query)) &&
+          matchesSearchText(item.dataset.search ?? "", query) &&
           (category.value === "all" || item.dataset.category === category.value) &&
           (status.value === "all" || item.dataset.status === status.value) &&
           (!donationsOnly.checked || item.dataset.donations === "1");

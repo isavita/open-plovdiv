@@ -1,0 +1,282 @@
+---
+import { siteSearchUi } from "@lib/siteSearchI18n";
+import type { Lang } from "@i18n/utils";
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const labels = siteSearchUi[lang];
+const searchUiJson = JSON.stringify(siteSearchUi);
+---
+
+<button
+  type="button"
+  class="icon-btn site-search-trigger"
+  aria-label={labels.open}
+  title={labels.shortcut}
+  aria-haspopup="dialog"
+  data-site-search-open
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <circle cx="11" cy="11" r="6.5"></circle>
+    <path d="m16 16 4 4"></path>
+  </svg>
+</button>
+
+<dialog class="site-search-dialog" id="site-search-dialog" aria-labelledby="site-search-title">
+  <div class="site-search-shell">
+    <header class="site-search-head">
+      <div>
+        <p class="eyebrow" data-search-copy="open">{labels.open}</p>
+        <h2 id="site-search-title" data-search-copy="title">{labels.title}</h2>
+        <p class="meta" data-search-copy="lead">{labels.lead}</p>
+      </div>
+      <button type="button" class="icon-btn site-search-close" data-site-search-close aria-label={labels.close} title={labels.close}>
+        <span aria-hidden="true">×</span>
+      </button>
+    </header>
+
+    <form class="site-search-form" role="search" data-site-search-form>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="11" cy="11" r="6.5"></circle>
+        <path d="m16 16 4 4"></path>
+      </svg>
+      <input
+        id="site-search-input"
+        type="search"
+        autocomplete="off"
+        enterkeyhint="search"
+        placeholder={labels.placeholder}
+        aria-label={labels.open}
+        aria-controls="site-search-results"
+        aria-describedby="site-search-status"
+      />
+      <kbd aria-hidden="true">/</kbd>
+    </form>
+
+    <div class="site-search-suggestion-block" data-site-search-suggestion-block>
+      <span class="site-search-section-label" data-search-copy="suggestions">{labels.suggestions}</span>
+      <div class="site-search-suggestions" data-site-search-suggestions></div>
+    </div>
+
+    <div class="site-search-result-head">
+      <span class="site-search-section-label" data-search-copy="results">{labels.results}</span>
+      <span class="meta" id="site-search-status" role="status" aria-live="polite"></span>
+    </div>
+    <div class="site-search-results" id="site-search-results" role="list" data-site-search-results></div>
+    <div class="site-search-empty" data-site-search-empty hidden>
+      <strong data-search-copy="noResults">{labels.noResults}</strong>
+      <span class="meta" data-search-copy="noResultsHint">{labels.noResultsHint}</span>
+    </div>
+  </div>
+</dialog>
+
+<script type="application/json" id="site-search-ui" set:html={searchUiJson}></script>
+
+<script>
+  import { rankSiteSearch, type SiteSearchItem } from "@lib/searchCore";
+  import type { Lang } from "@i18n/utils";
+  import type { SiteSearchUi } from "@lib/siteSearchI18n";
+
+  type SearchPayload = { count: number; suggestions: string[]; items: SiteSearchItem[] };
+
+  const supportedLocales: Lang[] = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
+  const pathLocale = window.location.pathname.split("/").filter(Boolean)[0] as Lang | undefined;
+  const documentLocale = document.documentElement.lang as Lang;
+  const searchLang: Lang = supportedLocales.includes(pathLocale as Lang)
+    ? (pathLocale as Lang)
+    : supportedLocales.includes(documentLocale)
+      ? documentLocale
+      : "bg";
+  const uiByLocale = JSON.parse(document.getElementById("site-search-ui")?.textContent ?? "{}") as Record<Lang, SiteSearchUi>;
+  const searchLabels = uiByLocale[searchLang] ?? uiByLocale.bg;
+  const searchDialog = document.querySelector<HTMLDialogElement>("#site-search-dialog")!;
+  const searchInput = document.querySelector<HTMLInputElement>("#site-search-input")!;
+  const searchResults = document.querySelector<HTMLElement>("[data-site-search-results]")!;
+  const searchEmpty = document.querySelector<HTMLElement>("[data-site-search-empty]")!;
+  const searchStatus = document.querySelector<HTMLElement>("#site-search-status")!;
+  const searchSuggestionBlock = document.querySelector<HTMLElement>("[data-site-search-suggestion-block]")!;
+  const searchSuggestionList = document.querySelector<HTMLElement>("[data-site-search-suggestions]")!;
+  const searchForm = document.querySelector<HTMLFormElement>("[data-site-search-form]")!;
+  let searchPayload: SearchPayload | null = null;
+  let searchRequest: Promise<SearchPayload> | null = null;
+  let currentResults: SiteSearchItem[] = [];
+
+  function localizeSearchChrome() {
+    document.querySelectorAll<HTMLElement>("[data-search-copy]").forEach((element) => {
+      const key = element.dataset.searchCopy as keyof SiteSearchUi;
+      if (typeof searchLabels[key] === "string") element.textContent = searchLabels[key];
+    });
+    document.querySelectorAll<HTMLElement>("[data-site-search-open]").forEach((button) => {
+      button.setAttribute("aria-label", searchLabels.open);
+      button.setAttribute("title", searchLabels.shortcut);
+    });
+    const close = document.querySelector<HTMLElement>("[data-site-search-close]");
+    close?.setAttribute("aria-label", searchLabels.close);
+    close?.setAttribute("title", searchLabels.close);
+    searchInput.placeholder = searchLabels.placeholder;
+    searchInput.setAttribute("aria-label", searchLabels.open);
+  }
+
+  function makeSuggestion(label: string) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "site-search-suggestion";
+    button.textContent = label;
+    button.dataset.siteSearchSuggestion = label;
+    button.addEventListener("click", () => {
+      searchInput.value = label;
+      renderSearchResults();
+      searchInput.focus();
+    });
+    return button;
+  }
+
+  function renderSuggestions() {
+    searchSuggestionList.replaceChildren(
+      ...(searchPayload?.suggestions ?? []).map(makeSuggestion)
+    );
+    searchSuggestionBlock.hidden = (searchPayload?.suggestions.length ?? 0) === 0;
+  }
+
+  function createResult(item: SiteSearchItem) {
+    const link = document.createElement("a");
+    link.className = "site-search-result";
+    link.href = item.href;
+    link.setAttribute("role", "listitem");
+
+    const top = document.createElement("span");
+    top.className = "site-search-result-top";
+    const kind = document.createElement("span");
+    kind.className = `site-search-kind site-search-kind-${item.kind}`;
+    kind.textContent = item.typeLabel;
+    const title = document.createElement("strong");
+    title.textContent = item.title;
+    const arrow = document.createElement("span");
+    arrow.className = "site-search-result-arrow";
+    arrow.setAttribute("aria-hidden", "true");
+    arrow.textContent = "→";
+    top.append(kind, title, arrow);
+    link.append(top);
+
+    if (item.description) {
+      const description = document.createElement("span");
+      description.className = "site-search-result-description";
+      description.textContent = item.description;
+      link.append(description);
+    }
+    if (item.meta) {
+      const meta = document.createElement("span");
+      meta.className = "site-search-result-meta";
+      meta.textContent = item.meta;
+      link.append(meta);
+    }
+    link.addEventListener("click", () => searchDialog.close());
+    return link;
+  }
+
+  const searchPluralRules = new Intl.PluralRules(searchLang);
+
+  function formatResultCount(count: number) {
+    const forms = searchLabels.resultCount;
+    const template = forms[searchPluralRules.select(count)] ?? forms.other;
+    return template.replace("{count}", String(count));
+  }
+
+  function renderSearchResults() {
+    const query = searchInput.value.trim();
+    currentResults = query && searchPayload
+      ? rankSiteSearch(searchPayload.items, query, 12)
+      : [];
+    searchResults.replaceChildren(...currentResults.map(createResult));
+    searchEmpty.hidden = !query || currentResults.length > 0;
+    searchSuggestionBlock.hidden =
+      (searchPayload?.suggestions.length ?? 0) === 0 || Boolean(query && currentResults.length > 0);
+    searchStatus.textContent = query ? formatResultCount(currentResults.length) : "";
+  }
+
+  async function loadSearchIndex() {
+    if (searchPayload) return searchPayload;
+    if (!searchRequest) {
+      searchStatus.textContent = searchLabels.loading;
+      searchRequest = fetch(`/api/search/${searchLang}.json`)
+        .then((response) => {
+          if (!response.ok) throw new Error("Search index unavailable");
+          return response.json() as Promise<SearchPayload>;
+        })
+        .then((payload) => {
+          searchPayload = payload;
+          renderSuggestions();
+          renderSearchResults();
+          return payload;
+        })
+        .catch((error) => {
+          searchRequest = null;
+          searchStatus.textContent = searchLabels.noResults;
+          throw error;
+        });
+    }
+    return searchRequest;
+  }
+
+  function openSiteSearch() {
+    if (!searchDialog.open) searchDialog.showModal();
+    void loadSearchIndex().catch(() => {
+      /* The localized status already explains the failure and a later open retries. */
+    });
+    window.requestAnimationFrame(() => searchInput.focus());
+  }
+
+  localizeSearchChrome();
+  document.querySelectorAll<HTMLElement>("[data-site-search-open]").forEach((button) => {
+    button.addEventListener("click", openSiteSearch);
+  });
+  document.querySelector<HTMLElement>("[data-site-search-close]")?.addEventListener("click", () => searchDialog.close());
+  searchInput.addEventListener("input", renderSearchResults);
+  searchInput.addEventListener("keydown", (event) => {
+    // An Enter that commits an IME composition (ja and other CJK input) must
+    // never be read as "open the first result".
+    if (event.isComposing) return;
+    if (event.key === "Enter" && currentResults[0]) {
+      event.preventDefault();
+      window.location.assign(currentResults[0].href);
+    }
+    if (event.key === "ArrowDown") {
+      const firstResult = searchResults.querySelector<HTMLAnchorElement>(".site-search-result");
+      if (firstResult) {
+        event.preventDefault();
+        firstResult.focus();
+      }
+    }
+  });
+  searchResults.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+    const links = [...searchResults.querySelectorAll<HTMLAnchorElement>(".site-search-result")];
+    const index = links.indexOf(document.activeElement as HTMLAnchorElement);
+    if (index === -1) return;
+    event.preventDefault();
+    if (event.key === "ArrowDown") links[Math.min(index + 1, links.length - 1)]?.focus();
+    else if (index === 0) searchInput.focus();
+    else links[index - 1]?.focus();
+  });
+  searchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (currentResults[0]) window.location.href = currentResults[0].href;
+  });
+  searchDialog.addEventListener("click", (event) => {
+    if (event.target === searchDialog) searchDialog.close();
+  });
+  searchDialog.addEventListener("close", () => {
+    searchInput.value = "";
+    currentResults = [];
+    renderSearchResults();
+  });
+  document.addEventListener("keydown", (event) => {
+    const target = event.target;
+    const isTyping =
+      target instanceof Element && target.matches("input, textarea, select, [contenteditable='true']");
+    if ((event.key === "k" && (event.metaKey || event.ctrlKey)) || (event.key === "/" && !isTyping)) {
+      event.preventDefault();
+      openSiteSearch();
+    }
+  });
+</script>

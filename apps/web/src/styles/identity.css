@@ -1045,6 +1045,10 @@ small {
   box-shadow: none;
 }
 
+.story-card-media picture {
+  display: block;
+}
+
 .essential-media img,
 .story-card img,
 .place-card img,
@@ -1112,6 +1116,441 @@ small {
   min-height: 42px;
   border-radius: var(--r-pill);
   font-family: var(--font-ui);
+}
+
+/* ---- Universal site search --------------------------------------------- */
+.site-search-trigger svg,
+.site-search-form > svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.site-search-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(720px, calc(100vw - 32px));
+  max-width: none;
+  max-height: min(820px, calc(100dvh - 40px));
+  margin: clamp(20px, 8vh, 88px) auto auto;
+  padding: 0;
+  overflow: visible;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+}
+
+.site-search-dialog::backdrop {
+  background: color-mix(in srgb, #07131c 62%, transparent);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.site-search-shell {
+  display: grid;
+  gap: 16px;
+  max-height: min(820px, calc(100dvh - 40px));
+  padding: clamp(20px, 4vw, 32px);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--gold) 38%, var(--line));
+  border-radius: 22px;
+  box-shadow: 0 28px 90px rgb(8 19 27 / 38%), 0 4px 18px rgb(8 19 27 / 18%);
+}
+
+.site-search-shell > *,
+.site-search-head > div,
+.site-search-form {
+  min-width: 0;
+}
+
+.site-search-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.site-search-head h2 {
+  margin: 2px 0 4px;
+  font-size: clamp(1.55rem, 4vw, 2.2rem);
+}
+
+.site-search-head .meta {
+  max-width: 60ch;
+}
+
+.site-search-close {
+  flex: none;
+  color: var(--ink);
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.site-search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-search-form > svg {
+  position: absolute;
+  left: 17px;
+  z-index: 1;
+  color: var(--brand);
+  pointer-events: none;
+}
+
+.site-search-form input[type="search"] {
+  width: 100%;
+  min-height: 58px;
+  padding: 12px 54px 12px 50px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 2px solid var(--line-strong);
+  border-radius: 15px;
+  font: inherit;
+  font-size: 1.06rem;
+}
+
+.site-search-form input[type="search"]:focus {
+  border-color: var(--brand);
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+.site-search-form kbd {
+  position: absolute;
+  right: 14px;
+  display: inline-grid;
+  min-width: 28px;
+  min-height: 28px;
+  place-items: center;
+  color: var(--muted);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+}
+
+.site-search-suggestion-block {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.site-search-section-label {
+  color: var(--ink-2);
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-search-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.site-search-suggestion {
+  min-height: 38px;
+  padding: 7px 13px;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.site-search-suggestion:hover,
+.site-search-suggestion:focus-visible {
+  color: var(--brand-strong);
+  border-color: var(--brand);
+  outline: none;
+}
+
+.site-search-result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 22px;
+  padding-top: 2px;
+  border-top: 1px solid var(--line);
+}
+
+.site-search-results {
+  display: grid;
+  gap: 7px;
+  max-height: min(50vh, 470px);
+  margin: -6px;
+  padding: 6px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.site-search-result {
+  display: grid;
+  gap: 4px;
+  padding: 13px 14px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  text-decoration: none;
+  transition: border-color 0.14s ease, background-color 0.14s ease, transform 0.14s ease;
+}
+
+.site-search-result:hover,
+.site-search-result:focus-visible {
+  color: var(--ink-deep);
+  background: var(--surface-2);
+  border-color: var(--brand);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.site-search-result-top {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-search-result-top strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.site-search-kind {
+  display: inline-flex;
+  align-items: center;
+  min-height: 25px;
+  padding: 3px 8px;
+  color: var(--brand-strong);
+  background: var(--brand-soft);
+  border-radius: var(--r-pill);
+  font-size: 0.7rem;
+  font-weight: 760;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.site-search-kind-route,
+.site-search-kind-place,
+.site-search-kind-story,
+.site-search-kind-neighbourhood {
+  color: var(--gold-deep);
+  background: var(--gold-soft);
+}
+
+.site-search-result-arrow {
+  color: var(--brand);
+  font-weight: 750;
+}
+
+.site-search-result-description,
+.site-search-result-meta {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.38;
+}
+
+.site-search-result-meta {
+  font-size: 0.76rem;
+}
+
+.site-search-empty {
+  display: grid;
+  gap: 4px;
+  padding: 22px;
+  text-align: center;
+  background: var(--surface-2);
+  border: 1px dashed var(--line-strong);
+  border-radius: 13px;
+}
+
+.site-search-empty[hidden] {
+  display: none;
+}
+
+/* Catalogue pages keep the universal text field visible. Secondary facets
+   stay available behind one calm disclosure instead of filling the page with
+   selects before a visitor has even searched. */
+.catalog-search-layout {
+  display: grid;
+  gap: 12px;
+}
+
+.catalog-search-layout > .field input[type="search"] {
+  min-height: 54px;
+  font-size: 1rem;
+}
+
+.catalog-filter-disclosure {
+  border-top: 1px solid var(--line);
+}
+
+.catalog-filter-disclosure > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 8px 2px;
+  color: var(--ink-2);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  font-weight: 720;
+  list-style: none;
+}
+
+.catalog-filter-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.catalog-filter-disclosure > summary::after {
+  color: var(--brand);
+  content: "+";
+  font-size: 1.2rem;
+  font-weight: 520;
+  line-height: 1;
+}
+
+.catalog-filter-disclosure[open] > summary::after {
+  content: "−";
+}
+
+.catalog-filter-disclosure > summary:hover,
+.catalog-filter-disclosure > summary:focus-visible {
+  color: var(--brand-strong);
+  outline: none;
+}
+
+.catalog-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  padding-top: 8px;
+}
+
+.catalog-filter-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.catalog-checkbox-field {
+  align-content: end;
+}
+
+.catalog-checkbox-field > label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 12px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.catalog-checkbox-field input[type="checkbox"] {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+@media (max-width: 620px) {
+  .site-search-dialog {
+    width: 100vw;
+    max-height: 92dvh;
+    margin: auto 0 0;
+  }
+
+  .site-search-shell {
+    gap: 13px;
+    max-height: 92dvh;
+    padding: 20px 16px calc(18px + env(safe-area-inset-bottom));
+    border-inline: 0;
+    border-bottom: 0;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .site-search-head .meta {
+    display: none;
+  }
+
+  .site-search-form input[type="search"] {
+    min-height: 56px;
+    padding-right: 18px;
+  }
+
+  .site-search-form kbd {
+    display: none;
+  }
+
+  .site-search-suggestion-block {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-search-suggestions {
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .site-search-suggestions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-search-suggestion {
+    flex: 0 0 auto;
+    min-height: 42px;
+  }
+
+  .site-search-results {
+    max-height: 53dvh;
+  }
+
+  .site-search-result-description {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  /* Narrow screens trade the single-line ellipsis for two full lines —
+     truncated titles are worse than a taller card on a phone. */
+  .site-search-result-top strong {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    white-space: normal;
+  }
+
+  .catalog-filter-grid,
+  .catalog-filter-grid-2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---- History universal search ----------------------------------------- */
@@ -1999,7 +2438,7 @@ th {
     left: 0;
     z-index: 58;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 2px;
     padding: 5px max(7px, env(safe-area-inset-right)) calc(5px + env(safe-area-inset-bottom)) max(7px, env(safe-area-inset-left));
     background: var(--surface);

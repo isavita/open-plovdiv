@@ -6,10 +6,12 @@ import { field, localeForLang, localizePath } from "@i18n/utils";
 import { projects } from "@lib/data";
 import { categoryLabel, formatMoney, projectStatusLabel } from "@lib/format";
 import { sectionMotifs } from "@lib/motifs";
+import { siteSearchUi } from "@lib/siteSearchI18n";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const searchUi = siteSearchUi[lang];
 const locale = localeForLang(lang);
 
 const categories = Array.from(new Set(projects.map((p) => p.category))).sort();
@@ -49,32 +51,37 @@ function searchable(p: (typeof projects)[number]): string {
         <span>{t.projects.dataNotice}</span>
       </div>
       <div class="toolbar">
-        <div class="filters">
+        <div class="catalog-search-layout">
           <div class="field">
             <label for="project-search">{t.projects.search}</label>
             <input id="project-search" type="search" placeholder={t.projects.searchPlaceholder} />
           </div>
-          <div class="field">
-            <label for="project-category">{t.projects.category}</label>
-            <select id="project-category">
-              <option value="all">{t.common.all}</option>
-              {categories.map((c) => <option value={c}>{categoryLabel(c, lang)}</option>)}
-            </select>
-          </div>
-          <div class="field">
-            <label for="project-status">{t.projects.status}</label>
-            <select id="project-status">
-              <option value="all">{t.common.all}</option>
-              {statuses.map((s) => <option value={s}>{projectStatusLabel(s, lang)}</option>)}
-            </select>
-          </div>
-          <div class="field">
-            <label for="project-year">{t.projects.year}</label>
-            <select id="project-year">
-              <option value="all">{t.common.all}</option>
-              {years.map((y) => <option value={y}>{y}</option>)}
-            </select>
-          </div>
+          <details class="catalog-filter-disclosure">
+            <summary>{searchUi.filters}</summary>
+            <div class="catalog-filter-grid">
+              <div class="field">
+                <label for="project-category">{t.projects.category}</label>
+                <select id="project-category">
+                  <option value="all">{t.common.all}</option>
+                  {categories.map((c) => <option value={c}>{categoryLabel(c, lang)}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="project-status">{t.projects.status}</label>
+                <select id="project-status">
+                  <option value="all">{t.common.all}</option>
+                  {statuses.map((s) => <option value={s}>{projectStatusLabel(s, lang)}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="project-year">{t.projects.year}</label>
+                <select id="project-year">
+                  <option value="all">{t.common.all}</option>
+                  {years.map((y) => <option value={y}>{y}</option>)}
+                </select>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
 
@@ -128,6 +135,8 @@ function searchable(p: (typeof projects)[number]): string {
   <script type="application/json" id="projects-config" set:html={JSON.stringify(config)}></script>
 
   <script>
+    import { matchesSearchText } from "@lib/searchCore";
+
     const config = JSON.parse(
       document.getElementById("projects-config")?.textContent ?? "{}"
     );
@@ -147,12 +156,12 @@ function searchable(p: (typeof projects)[number]): string {
     }
 
     function applyFilters() {
-      const query = search.value.trim().toLowerCase();
+      const query = search.value.trim();
       let visible = 0;
 
       cards.forEach((card) => {
         const matches =
-          (!query || (card.dataset.search ?? "").includes(query)) &&
+          matchesSearchText(card.dataset.search ?? "", query) &&
           (category.value === "all" || card.dataset.category === category.value) &&
           (status.value === "all" || card.dataset.status === status.value) &&
           (year.value === "all" || card.dataset.year === year.value);
