@@ -64,7 +64,7 @@ const maxCategory = Math.max(...categoryCounts.map(([, c]) => c), 1);
 ---
 
 <Layout lang={lang} path="/overview" title={t.overview.title} description={t.overview.lead}>
-  <section class="page-head">
+  <section class="page-head" data-section="overview">
     <div class="container">
       <p class="eyebrow">{t.overview.eyebrow}</p>
       <h1>{t.overview.title}</h1>

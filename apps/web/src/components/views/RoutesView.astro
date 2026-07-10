@@ -393,6 +393,11 @@ const filterConfig = {
   </script>
 
   <style>
+    .routes-picker {
+      --section-accent: var(--data-geo);
+      --section-soft: var(--brand-soft);
+    }
+
     .stats-grid.routes-stats {
       grid-template-columns: repeat(4, minmax(0, 1fr));
       max-width: 880px;
@@ -411,24 +416,27 @@ const filterConfig = {
 
     .route-filters {
       display: grid;
-      gap: 14px;
-      margin: 18px 0 22px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      gap: 16px;
+      margin: 20px 0 24px;
+      padding: clamp(16px, 2.5vw, 22px);
       background: var(--surface);
-      box-shadow: var(--shadow-sm);
-      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--section-accent);
+      border-radius: var(--r);
+      box-shadow: none;
     }
 
     .summer-routes {
       display: grid;
       grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.5fr);
-      gap: 18px;
-      margin: 18px 0 22px;
-      padding: 18px;
-      border: 1px solid color-mix(in srgb, var(--gold) 48%, var(--line));
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--gold-soft), var(--surface) 52%);
+      gap: clamp(18px, 3vw, 28px);
+      margin: 20px 0 24px;
+      padding: clamp(18px, 3vw, 24px);
+      background: linear-gradient(135deg, var(--gold-soft), var(--surface) 58%);
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--gold);
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-card);
     }
 
     .summer-routes-copy h3,
@@ -444,25 +452,25 @@ const filterConfig = {
     .summer-route-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
+      gap: 12px;
     }
 
     .summer-route-card {
       min-width: 0;
       overflow: hidden;
-      border: 1px solid var(--line);
-      border-top: 3px solid var(--route-accent);
-      border-radius: 9px;
       background: var(--surface);
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--route-accent);
+      border-radius: var(--r-sm);
+      box-shadow: var(--shadow-sm);
       color: inherit;
       text-decoration: none;
-      box-shadow: var(--shadow-sm);
     }
 
     .summer-route-card img {
       display: block;
       width: 100%;
-      height: 86px;
+      height: 96px;
       object-fit: cover;
     }
 
@@ -473,12 +481,30 @@ const filterConfig = {
     }
 
     .summer-route-card strong {
-      line-height: 1.2;
+      color: var(--ink-deep);
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      line-height: 1.1;
     }
 
     .summer-route-card small {
       color: var(--muted);
+      font-family: var(--font-ui);
       line-height: 1.35;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .summer-route-card {
+        transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+      }
+
+      .summer-route-card:hover,
+      .summer-route-card:focus-visible {
+        background: color-mix(in srgb, var(--surface) 90%, var(--gold-soft));
+        box-shadow: var(--shadow-card-hover);
+        color: var(--ink);
+        transform: translateY(-3px);
+      }
     }
 
     .route-filter-group {
@@ -490,9 +516,10 @@ const filterConfig = {
 
     .route-filter-group legend {
       color: var(--muted);
+      font-family: var(--font-ui);
       font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      font-weight: 780;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       margin-bottom: 8px;
       padding: 0;
@@ -506,28 +533,36 @@ const filterConfig = {
 
     .route-chip {
       appearance: none;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
+      min-height: 44px;
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 14px;
       background: var(--surface);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--r-pill);
       color: var(--ink);
       cursor: pointer;
-      font: inherit;
+      font-family: var(--font-ui);
       font-size: 0.88rem;
-      line-height: 1;
-      padding: 8px 13px;
+      font-weight: 680;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+      text-align: center;
       transition: border-color 0.14s ease, background 0.14s ease, color 0.14s ease;
     }
 
     .route-chip:hover,
     .route-chip:focus-visible {
-      border-color: var(--brand);
-      color: var(--brand);
-      outline: none;
+      background: var(--section-soft);
+      border-color: var(--section-accent);
+      color: var(--section-accent);
     }
 
     .route-chip[aria-pressed="true"] {
-      background: var(--brand);
-      border-color: var(--brand);
+      background: var(--section-accent);
+      border-color: var(--section-accent);
       color: var(--brand-ink);
     }
 
@@ -543,13 +578,20 @@ const filterConfig = {
 
     .route-reset-inline {
       appearance: none;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 4px;
       border: 0;
+      border-radius: var(--r-xs);
       background: none;
       color: var(--brand);
       cursor: pointer;
-      font: inherit;
-      padding: 0;
+      font-family: var(--font-ui);
+      font-size: inherit;
+      font-weight: 700;
       text-decoration: underline;
+      text-underline-offset: 0.18em;
     }
 
     .route-card-grid {
@@ -557,18 +599,18 @@ const filterConfig = {
       /* min(100%, …) keeps single-column cards inside containers narrower
          than the ideal card width (320px phones minus gutters). */
       grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-      gap: 18px;
+      gap: clamp(16px, 2.5vw, 22px);
     }
 
     .route-card {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      border-top: 4px solid var(--route-accent);
-      background: var(--surface);
-      box-shadow: var(--shadow-sm);
-      overflow: hidden;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--route-accent);
+      border-radius: var(--r);
+      box-shadow: var(--shadow-card);
     }
 
     .route-card-media {
@@ -579,16 +621,16 @@ const filterConfig = {
     .route-card-media img {
       display: block;
       width: 100%;
-      height: 172px;
+      height: 184px;
       object-fit: cover;
     }
 
     .route-card-body {
-      padding: 18px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
       flex: 1;
+      gap: 12px;
+      padding: 20px;
     }
 
     .route-card-kicker {
@@ -597,14 +639,15 @@ const filterConfig = {
       align-items: center;
       gap: 8px;
       margin: 0;
+      font-family: var(--font-ui);
       font-size: 0.78rem;
-      letter-spacing: 0.02em;
+      font-weight: 780;
+      letter-spacing: 0.055em;
       text-transform: uppercase;
-      font-weight: 700;
     }
 
     .route-card-cat {
-      color: var(--route-accent);
+      color: var(--section-accent);
     }
 
     .route-card-band::before {
@@ -619,8 +662,8 @@ const filterConfig = {
 
     .route-card h3 {
       margin: 0;
-      line-height: 1.2;
-      font-size: 1.24rem;
+      font-size: clamp(1.34rem, 2vw, 1.56rem);
+      line-height: 1.08;
     }
 
     .route-card h3 a {
@@ -635,18 +678,19 @@ const filterConfig = {
 
     .route-card-tagline {
       margin: 0;
-      color: var(--muted);
+      color: var(--ink-2);
+      font-size: 0.96rem;
       font-style: italic;
-      font-size: 0.94rem;
+      line-height: 1.45;
     }
 
     .route-card-summary {
-      margin: 0;
-      color: var(--muted);
       display: -webkit-box;
+      margin: 0;
+      overflow: hidden;
+      color: var(--ink-2);
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
-      overflow: hidden;
     }
 
     .route-quick-facts {
@@ -654,6 +698,8 @@ const filterConfig = {
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
       margin: 4px 0 0;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
     }
 
     .route-quick-facts div {
@@ -662,9 +708,11 @@ const filterConfig = {
 
     .route-quick-facts dt {
       color: var(--muted);
+      font-family: var(--font-ui);
       font-size: 0.72rem;
+      font-weight: 680;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
     }
 
     .route-quick-facts dd {
@@ -680,22 +728,26 @@ const filterConfig = {
     }
 
     .route-badge {
-      border: 1px solid color-mix(in srgb, var(--route-accent) 46%, var(--line));
-      border-radius: 999px;
-      color: color-mix(in srgb, var(--route-accent) 72%, var(--ink));
-      background: color-mix(in srgb, var(--route-accent) 8%, var(--surface));
+      background: var(--badge-ok-bg);
+      border: 1px solid color-mix(in srgb, var(--badge-ok-fg) 28%, var(--line));
+      border-radius: var(--r-pill);
+      color: var(--badge-ok-fg);
+      font-family: var(--font-ui);
       font-size: 0.78rem;
-      padding: 3px 9px;
+      font-weight: 680;
+      padding: 7px 11px;
     }
 
     .route-badge-muted {
+      background: var(--badge-neutral-bg);
       border-color: var(--line);
-      background: var(--surface-2);
-      color: var(--muted);
+      color: var(--badge-neutral-fg);
     }
 
     .route-card-itinerary {
       margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.45;
     }
 
     .route-card-actions {
@@ -713,40 +765,39 @@ const filterConfig = {
       }
 
       .route-filters {
-        padding: 14px;
+        padding: 16px;
       }
 
       .summer-routes {
         grid-template-columns: 1fr;
-        margin-inline: -4px;
-        padding: 15px;
+        padding: 16px;
       }
 
       .summer-route-grid {
         display: flex;
         overflow-x: auto;
+        overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
         padding-bottom: 6px;
+        scrollbar-width: none;
+      }
+
+      .summer-route-grid::-webkit-scrollbar {
+        display: none;
       }
 
       .summer-route-card {
-        flex: 0 0 min(78vw, 260px);
+        flex: 0 0 min(78vw, 270px);
         scroll-snap-align: start;
       }
 
       .route-card-media img {
-        height: 132px;
+        height: 152px;
       }
 
       .route-card-body {
-        padding: 14px;
-        gap: 7px;
-      }
-
-      .route-card-summary,
-      .route-card-itinerary,
-      .route-card-badges .route-badge:nth-child(n + 3) {
-        display: none;
+        gap: 10px;
+        padding: 16px;
       }
 
       .route-quick-facts {
@@ -757,6 +808,22 @@ const filterConfig = {
       .route-card-actions .button {
         width: 100%;
         justify-content: center;
+      }
+    }
+
+    @media (max-width: 370px) {
+      .route-filters,
+      .summer-routes,
+      .route-card-body {
+        padding: 14px;
+      }
+
+      .route-filter-chips {
+        gap: 7px;
+      }
+
+      .route-chip {
+        padding-inline: 12px;
       }
     }
   </style>

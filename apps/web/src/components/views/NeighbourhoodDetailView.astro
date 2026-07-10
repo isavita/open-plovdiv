@@ -548,22 +548,44 @@ const structuredData = {
   </script>
 
   <style>
-    .nb-page {
-      --nb-accent-soft: color-mix(in srgb, var(--nb-accent) 9%, var(--surface));
+    .nb-hero {
+      position: relative;
+      overflow: hidden;
+      border-top: 6px solid var(--nb-accent);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(155deg, var(--surface) 0 62%, var(--surface-2) 100%);
+      padding-block: clamp(34px, 6vw, 72px);
     }
 
-    .nb-hero {
-      border-top: 4px solid var(--nb-accent);
-      background: linear-gradient(180deg, var(--nb-accent-soft), transparent 82%);
-      padding-bottom: 8px;
+    .nb-hero::after {
+      position: absolute;
+      right: -8%;
+      bottom: 0;
+      width: min(58vw, 520px);
+      height: 48%;
+      background: var(--surface-3);
+      clip-path: polygon(0 100%, 0 70%, 18% 70%, 18% 45%, 37% 45%, 37% 76%, 58% 76%, 58% 28%, 78% 28%, 78% 58%, 100% 58%, 100% 100%);
+      content: "";
+      opacity: 0.56;
+      pointer-events: none;
+    }
+
+    .nb-hero > .container {
+      position: relative;
+      z-index: 1;
     }
 
     .nb-breadcrumb {
-      margin: 0 0 14px;
+      margin: 0 0 16px;
     }
 
     .nb-breadcrumb a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
       color: var(--muted);
+      font-family: var(--font-ui);
+      font-weight: 650;
       text-decoration: none;
     }
 
@@ -574,60 +596,69 @@ const structuredData = {
 
     .nb-hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
-      gap: 28px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 22px;
       align-items: start;
     }
 
     .nb-hero-main h1 {
-      margin: 6px 0 4px;
+      margin: 8px 0 10px;
       overflow-wrap: break-word;
     }
 
     .nb-tagline {
-      color: var(--muted);
-      font-style: italic;
-      margin: 0 0 10px;
-      font-size: 1.04rem;
+      max-width: 38ch;
+      color: var(--ink-2);
+      font-family: var(--font-display);
+      font-size: clamp(1.18rem, 4.8vw, 1.48rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0 0 14px;
     }
 
     .nb-lead {
       max-width: 66ch;
+      margin-bottom: 0;
     }
 
     .nb-glance {
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-top: 5px solid var(--nb-accent);
+      border-radius: var(--r-md);
       background: var(--surface);
-      box-shadow: var(--shadow-sm);
-      padding: 18px;
+      box-shadow: var(--shadow-card);
+      padding: 17px;
     }
 
     .nb-glance h2 {
-      font-size: 0.82rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
       color: var(--muted);
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      font-weight: 780;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
       margin: 0 0 12px;
     }
 
     .nb-glance dl {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px 14px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
       margin: 0;
     }
 
     .nb-glance dt {
       color: var(--muted);
+      font-family: var(--font-ui);
       font-size: 0.74rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.05em;
     }
 
     .nb-glance dd {
       margin: 3px 0 0;
-      font-weight: 800;
+      font-weight: 760;
       color: var(--ink);
       overflow-wrap: break-word;
     }
@@ -650,14 +681,14 @@ const structuredData = {
 
     .nb-body {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
-      gap: 28px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 30px;
       align-items: start;
     }
 
     .nb-main {
       display: grid;
-      gap: 24px;
+      gap: 30px;
       min-width: 0;
     }
 
@@ -667,24 +698,27 @@ const structuredData = {
 
     .nb-callouts {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-      gap: 14px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
     }
 
     .nb-callout {
       border: 1px solid var(--line);
       border-left: 4px solid var(--nb-accent);
-      border-radius: 8px;
+      border-radius: var(--r);
       background: var(--surface);
-      padding: 14px 16px;
+      box-shadow: var(--shadow-sm);
+      padding: 16px;
     }
 
     .nb-callout h3 {
+      color: var(--muted);
+      font-family: var(--font-ui);
       margin: 0 0 6px;
       font-size: 0.82rem;
-      letter-spacing: 0.04em;
+      font-weight: 760;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--muted);
     }
 
     .nb-callout p {
@@ -693,11 +727,20 @@ const structuredData = {
 
     .nb-map-card {
       margin: 0;
+      overflow: hidden;
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-card);
     }
 
     .nb-detail-map {
-      height: 360px;
-      background: var(--surface-2);
+      height: clamp(278px, 76vw, 360px);
+      background: var(--surface-3);
+    }
+
+    .nb-map-card figcaption {
+      padding: 11px 14px;
+      background: var(--surface);
+      border-top: 1px solid var(--line);
     }
 
     .nb-timeline-section h2,
@@ -715,17 +758,17 @@ const structuredData = {
 
     .nb-timeline li {
       display: grid;
-      grid-template-columns: minmax(84px, 130px) minmax(0, 1fr);
-      gap: 16px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 5px;
       position: relative;
-      padding: 0 0 22px 0;
+      padding: 0 0 24px 24px;
     }
 
     .nb-timeline li::before {
       content: "";
       position: absolute;
-      left: calc(min(130px, max(84px, 22%)) + 7px);
-      top: 8px;
+      left: 5px;
+      top: 7px;
       bottom: -2px;
       width: 2px;
       background: color-mix(in srgb, var(--nb-accent) 34%, var(--line));
@@ -737,36 +780,35 @@ const structuredData = {
 
     .nb-timeline-year {
       margin: 0;
-      text-align: right;
-      color: var(--nb-accent);
-      font-weight: 800;
+      color: var(--ink-deep);
+      font-family: var(--font-ui);
+      font-weight: 780;
       font-size: 0.92rem;
-      padding-right: 22px;
       position: relative;
     }
 
     .nb-timeline-year::after {
       content: "";
       position: absolute;
-      right: -12px;
+      left: -19px;
       top: 5px;
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background: var(--nb-accent);
       border: 2px solid var(--surface);
-      box-shadow: 0 0 0 1px color-mix(in srgb, var(--nb-accent) 45%, transparent);
+      box-shadow: 0 0 0 1px var(--line-strong);
     }
 
     .nb-timeline-body h3 {
       margin: 0 0 6px;
-      font-size: 1.05rem;
-      line-height: 1.3;
+      font-size: clamp(1.18rem, 4.6vw, 1.42rem);
+      line-height: 1.16;
     }
 
     .nb-timeline-body p {
       margin: 0;
-      color: var(--muted);
+      color: var(--ink-2);
     }
 
     .nb-place-grid {
@@ -774,38 +816,43 @@ const structuredData = {
       margin: 0;
       padding: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
-      gap: 14px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
     }
 
     .nb-place-card {
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-top: 4px solid var(--nb-accent);
+      border-radius: var(--r);
       background: var(--surface);
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-card);
       overflow: hidden;
     }
 
     .nb-place-media {
       display: block;
-      background: var(--surface-2);
+      overflow: hidden;
+      background: var(--surface-3);
     }
 
     .nb-place-media img {
       display: block;
       width: 100%;
-      height: 120px;
+      height: auto;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
+      filter: none;
+      mix-blend-mode: normal;
     }
 
     .nb-place-body {
-      padding: 12px 14px;
+      padding: 14px 15px 16px;
     }
 
     .nb-place-body h3 {
-      margin: 0 0 6px;
-      font-size: 1rem;
-      line-height: 1.3;
+      margin: 0 0 7px;
+      font-size: 1.2rem;
+      line-height: 1.15;
     }
 
     .nb-place-body h3 a {
@@ -831,12 +878,17 @@ const structuredData = {
     }
 
     .nb-route-list a {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 60px;
+      box-sizing: border-box;
       border: 1px solid var(--line);
       border-left: 4px solid var(--nb-accent);
-      border-radius: 8px;
+      border-radius: var(--r);
       background: var(--surface);
-      padding: 12px 16px;
+      box-shadow: var(--shadow-sm);
+      padding: 11px 15px;
       text-decoration: none;
       color: inherit;
     }
@@ -857,14 +909,13 @@ const structuredData = {
 
     .nb-side {
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-top: 5px solid var(--nb-accent);
+      border-radius: var(--r-md);
       background: var(--surface);
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-card);
       display: grid;
       gap: 18px;
-      padding: 18px;
-      position: sticky;
-      top: 96px;
+      padding: 17px;
     }
 
     .nb-side section + section {
@@ -873,7 +924,8 @@ const structuredData = {
     }
 
     .nb-side h3 {
-      margin: 0 0 10px;
+      margin: 0 0 8px;
+      font-size: 1.22rem;
     }
 
     .nb-side-list {
@@ -885,7 +937,17 @@ const structuredData = {
     }
 
     .nb-side-list a {
-      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-weight: 720;
+    }
+
+    .nb-side .source-list a,
+    .nb-side .text-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
     }
 
     .nb-side-list .meta {
@@ -904,23 +966,25 @@ const structuredData = {
       margin: 0;
       max-width: 72ch;
       font-size: 1.06rem;
-      line-height: 1.6;
+      line-height: 1.62;
     }
 
     .nb-visit {
       border: 1px solid var(--line);
-      border-radius: 8px;
       border-left: 4px solid var(--nb-accent);
+      border-radius: var(--r-md);
       background: var(--surface);
-      box-shadow: var(--shadow-sm);
-      padding: 16px 18px;
+      box-shadow: var(--shadow-card);
+      padding: 17px;
     }
 
     .nb-visit h2 {
-      font-size: 0.82rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
       color: var(--muted);
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      font-weight: 780;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
       margin: 0 0 12px;
     }
 
@@ -933,9 +997,11 @@ const structuredData = {
 
     .nb-visit dt {
       color: var(--muted);
+      font-family: var(--font-ui);
       font-size: 0.74rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.05em;
     }
 
     .nb-visit dd {
@@ -958,28 +1024,30 @@ const structuredData = {
       margin: 0;
       padding: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
-      gap: 14px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
     }
 
     .nb-fabric-card {
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-left: 4px solid var(--nb-accent);
+      border-radius: var(--r);
       background: var(--surface);
-      box-shadow: var(--shadow-sm);
-      padding: 14px 16px;
+      box-shadow: var(--shadow-card);
+      padding: 15px 16px;
     }
 
     .nb-fabric-kind {
       display: inline-block;
       border: 1px solid var(--line-strong);
-      border-radius: 999px;
+      border-radius: var(--r-pill);
       color: var(--muted);
+      font-family: var(--font-ui);
       font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      font-weight: 760;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 2px 9px;
+      padding: 3px 9px;
       margin: 0 0 8px;
       background: var(--surface-2);
     }
@@ -1003,16 +1071,17 @@ const structuredData = {
       margin: 0;
       padding: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-      gap: 14px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
     }
 
     .nb-tn-pair a {
       display: block;
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-top: 4px solid var(--nb-accent);
+      border-radius: var(--r);
       background: var(--surface);
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-card);
       overflow: hidden;
       text-decoration: none;
       color: inherit;
@@ -1031,26 +1100,33 @@ const structuredData = {
     .nb-tn-frame img {
       display: block;
       width: 100%;
-      height: 130px;
+      height: auto;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
+      filter: none;
+      mix-blend-mode: normal;
     }
 
     .nb-tn-tag {
       position: absolute;
       left: 8px;
       bottom: 8px;
-      background: color-mix(in srgb, var(--ink) 72%, transparent);
+      background: var(--ink-deep);
       color: var(--surface);
-      border-radius: 4px;
+      border-radius: var(--r-xs);
+      font-family: var(--font-ui);
       font-size: 0.72rem;
-      font-weight: 700;
-      padding: 2px 7px;
+      font-weight: 760;
+      padding: 3px 7px;
     }
 
     .nb-tn-title {
-      display: block;
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      box-sizing: border-box;
       padding: 10px 14px;
-      font-weight: 700;
+      font-weight: 720;
     }
 
     .nb-updated {
@@ -1059,56 +1135,125 @@ const structuredData = {
       padding-top: 12px;
     }
 
-    @media (max-width: 920px) {
-      .nb-hero-grid,
-      .nb-body {
-        grid-template-columns: 1fr;
-      }
-
-      .nb-side {
-        position: static;
+    @media (min-width: 460px) {
+      .nb-glance dl {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 680px) {
-      .nb-detail-map {
-        height: 300px;
+    @media (min-width: 560px) {
+      .nb-place-grid,
+      .nb-fabric-grid {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
       }
 
+      .nb-tn-list {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      }
+    }
+
+    @media (min-width: 620px) {
+      .nb-callouts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 681px) {
       .nb-timeline li {
-        grid-template-columns: 1fr;
-        gap: 4px;
-        padding-left: 22px;
+        --timeline-label: clamp(96px, 16vw, 136px);
+        grid-template-columns: var(--timeline-label) minmax(0, 1fr);
+        gap: 18px;
+        padding: 0 0 24px;
       }
 
       .nb-timeline li::before {
-        left: 4px;
-        top: 6px;
+        left: calc(var(--timeline-label) + 8px);
+        top: 8px;
       }
 
       .nb-timeline-year {
-        text-align: left;
-        padding-right: 0;
+        text-align: right;
+        padding-right: 24px;
       }
 
       .nb-timeline-year::after {
-        left: -18px;
-        right: auto;
+        right: -13px;
+        left: auto;
+      }
+    }
+
+    @media (min-width: 921px) {
+      .nb-hero-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 310px);
+        gap: 32px;
+      }
+
+      .nb-body {
+        grid-template-columns: minmax(0, 1fr) minmax(270px, 320px);
+        gap: 32px;
+      }
+
+      .nb-side {
+        position: sticky;
+        top: 96px;
       }
     }
   </style>
 
   <style is:global>
-    /* Key-place pin on the neighbourhood context map (Leaflet divIcon). */
+    /* Quarter and key-place pins on the neighbourhood context map. */
+    .nb-map-marker,
     .nb-place-pin {
+      position: relative;
       display: block;
+      box-sizing: border-box;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .nb-map-marker {
+      width: 16px;
+      height: 16px;
+      background: var(--nb-era, var(--brand));
+      border: 3px solid var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .nb-place-pin {
       width: 11px;
       height: 11px;
-      border-radius: 50%;
       background: var(--surface);
       border: 3px solid var(--nb-era, var(--brand));
-      box-sizing: border-box;
-      cursor: pointer;
+    }
+
+    .nb-map-marker::after,
+    .nb-place-pin::after {
+      position: absolute;
+      content: "";
+    }
+
+    .nb-map-marker::after {
+      inset: -17px;
+    }
+
+    .nb-place-pin::after {
+      inset: -19px;
+    }
+
+    .nb-detail-map .leaflet-control-zoom a {
+      width: 44px;
+      height: 44px;
+      border-color: var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      font-family: var(--font-ui);
+      line-height: 44px;
+    }
+
+    .nb-detail-map .leaflet-control-zoom a:hover,
+    .nb-detail-map .leaflet-control-zoom a:focus-visible {
+      background: var(--surface-2);
+      color: var(--brand-strong);
     }
   </style>
 </Layout>

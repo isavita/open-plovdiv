@@ -1,0 +1,26 @@
+---
+type Props = { class?: string };
+const { class: className = "" } = Astro.props;
+---
+
+<!--
+  A compact city mark: seven rising hill points sit behind a three-arch Roman
+  arcade, while the outer uprights quietly form the Cyrillic letter П. The
+  flat facade colours keep it legible at favicon and phone-navigation sizes.
+-->
+<svg
+  class={`plovdiv-mark ${className}`.trim()}
+  viewBox="0 0 64 64"
+  aria-hidden="true"
+  focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect class="plovdiv-mark-field" x="2" y="2" width="60" height="60" rx="12" />
+  <path
+    class="plovdiv-mark-hills"
+    d="M6 31 12 23l6 6 7-13 7 12 7-17 7 16 7-9 5 13v8H6Z"
+  />
+  <path class="plovdiv-mark-frame" d="M13 49V25h38v24" />
+  <path class="plovdiv-mark-arcade" d="M16 49v-7a5 5 0 0 1 10 0v7m3 0v-9a5 5 0 0 1 10 0v9m3 0v-7a5 5 0 0 1 10 0v7" />
+  <path class="plovdiv-mark-ground" d="M10 51h44" />
+</svg>

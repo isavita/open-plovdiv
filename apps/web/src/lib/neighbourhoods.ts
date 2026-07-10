@@ -109,10 +109,10 @@ export const neighbourhoodEraOrder: NeighbourhoodEraTag[] = [
 
 /** Era accent colours shared with the /history city-growth map. */
 export const neighbourhoodEraColors: Record<NeighbourhoodEraTag, string> = {
-  ottoman: "#2f7d6b",
-  revival: "#b4632a",
-  modern: "#15657f",
-  socialist: "#8a6d3b"
+  ottoman: "#1e6a62",
+  revival: "#a95524",
+  modern: "#205f7d",
+  socialist: "#6a3f72"
 };
 
 /** Display order of the area filter chips. */

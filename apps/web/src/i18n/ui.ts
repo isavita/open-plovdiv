@@ -7449,25 +7449,25 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
 
 // Accent colour per category, used for map pins and category dots.
 export const categoryColors: Record<string, string> = {
-  roads: "#3f6f9f",
-  pavement: "#8a6d3b",
-  street_lighting: "#b07d1a",
-  parks: "#3f8a5b",
-  waste: "#6b8f3d",
-  public_transport: "#5b6bb0",
-  accessibility: "#1f8a8a",
-  drainage: "#2f7fb0",
-  culture: "#9a5b8f",
-  education: "#a85a4a",
-  civic: "#a45f2a",
-  environment: "#3f8a5b",
-  social: "#7a5ca8",
-  sport: "#2f7fb0",
-  historic_photo: "#8a6d3b",
-  oral_memory: "#7a5ca8",
-  source_tip: "#2f7d6b",
-  history_correction: "#a23b2d",
-  other: "#6b7280"
+  roads: "#2e5e8b",
+  pavement: "#875510",
+  street_lighting: "#9a580b",
+  parks: "#1e6a62",
+  waste: "#4f6f3d",
+  public_transport: "#4d477a",
+  accessibility: "#126d78",
+  drainage: "#2e5e8b",
+  culture: "#6a3f72",
+  education: "#8e3043",
+  civic: "#a95524",
+  environment: "#1e6a62",
+  social: "#6a3f72",
+  sport: "#205f7d",
+  historic_photo: "#875510",
+  oral_memory: "#6a3f72",
+  source_tip: "#1e6a62",
+  history_correction: "#8e3043",
+  other: "#586a6e"
 };
 
 // Civic-action track per problem category: whether a problem typically needs

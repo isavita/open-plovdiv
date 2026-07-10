@@ -1016,12 +1016,12 @@ const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, s
 // `.people-group-*` card accents, counts derived with the client's
 // primary-group rule (first role wins, "civic" as fallback).
 const groupColors: Record<string, string> = {
-  governance: "#15657f",
-  culture: "#b4632a",
-  science: "#5d6b8a",
-  faith: "#2f7d6b",
-  sport: "#8a2f3b",
-  civic: "#7d8471"
+  governance: "#205f7d",
+  culture: "#a95524",
+  science: "#4d477a",
+  faith: "#1e6a62",
+  sport: "#8e3043",
+  civic: "#586a6e"
 };
 const groupCounts = new Map<string, number>();
 for (const person of historyKnowledgePeople) {
@@ -2140,15 +2140,17 @@ const nodeConfig = {
         const cyModule = await import("cytoscape");
         const cytoscape = cyModule.default ?? cyModule;
         const isDark = graphIsDark();
-        const nodeText = isDark ? "#f4ead6" : "#20180d";
-        const edgeSucc = isDark ? "#7fb6a8" : "#2f7d6b";
-        const edgeFamily = isDark ? "#d8ad63" : "#b4632a";
-        const labelBg = isDark ? "#16120c" : "#fdf8ec";
+        const nodeText = isDark ? "#f7f4eb" : "#172329";
+        const edgeSucc = isDark ? "#75cabc" : "#1e6a62";
+        const edgeFamily = isDark ? "#e8b35f" : "#875510";
+        const labelBg = isDark ? "#14252c" : "#fffdf8";
         const groupStyles = (config.groupOrder ?? []).map((groupKey: string) => ({
           selector: `node[group='${groupKey}']`,
           style: {
-            "background-color": graphColors[groupKey] ?? "#7d8471",
-            "border-color": shadeColor(graphColors[groupKey] ?? "#7d8471", isDark ? 30 : -45)
+            "background-color": isDark
+              ? shadeColor(graphColors[groupKey] ?? "#586a6e", 28)
+              : graphColors[groupKey] ?? "#586a6e",
+            "border-color": shadeColor(graphColors[groupKey] ?? "#586a6e", isDark ? 42 : -45)
           }
         }));
         cyInstance = cytoscape({
@@ -2164,7 +2166,7 @@ const nodeConfig = {
             {
               selector: "node",
               style: {
-                "background-color": "#7d8471",
+                "background-color": isDark ? "#94a8ab" : "#586a6e",
                 label: "data(name)",
                 color: nodeText,
                 "text-valign": "bottom",
@@ -2215,7 +2217,7 @@ const nodeConfig = {
             { selector: ".hidden-edge", style: { display: "none" } },
             {
               selector: "node:selected",
-              style: { "border-width": 4, "border-color": isDark ? "#e0b25e" : "#8a5a12", "min-zoomed-font-size": 0 }
+              style: { "border-width": 4, "border-color": isDark ? "#e8b35f" : "#875510", "min-zoomed-font-size": 0 }
             }
           ],
           layout: { name: "preset", fit: true, padding: 34 }

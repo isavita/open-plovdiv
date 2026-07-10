@@ -1,9 +1,11 @@
 ---
+import "@fontsource-variable/source-sans-3/wght.css";
+import "@fontsource-variable/source-sans-3/wght-italic.css";
+import notoSansJpCssUrl from "@fontsource-variable/noto-sans-jp/wght.css?url";
 import "../styles/global.css";
-import "../styles/heritage.css";
-import "../styles/ailyak.css";
+import "../styles/identity.css";
+import PlovdivMark from "@components/PlovdivMark.astro";
 import PlovdivSkyline from "@components/PlovdivSkyline.astro";
-import Ornament from "@components/Ornament.astro";
 import { languages, localeCodes, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import {
   absoluteUrl,
@@ -238,8 +240,19 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
     <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#efeee9" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#141b1a" media="(prefers-color-scheme: dark)" />
+    {lang === "ja" && <link rel="stylesheet" href={notoSansJpCssUrl} />}
+    {localeDetect && (
+      <script is:inline define:vars={{ notoSansJpCssUrl }}>
+        if ((window.location.pathname || "/").split("/").filter(Boolean)[0] === "ja") {
+          var jaFont = document.createElement("link");
+          jaFont.rel = "stylesheet";
+          jaFont.href = notoSansJpCssUrl;
+          document.head.appendChild(jaFont);
+        }
+      </script>
+    )}
+    <meta name="theme-color" content="#173f62" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1820" media="(prefers-color-scheme: dark)" />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={t.site.name} />
@@ -286,6 +299,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
       <header class="site-header" id="site-header">
         <nav class="nav" aria-label={t.nav.home} data-nav-aria>
           <a class="brand" href={localizePath("/", lang)} aria-label={`${t.site.name} — ${t.nav.home}`} data-brand data-brand-aria>
+            <PlovdivMark />
             <span data-brand-name>{t.site.name}</span>
           </a>
 
@@ -408,6 +422,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
           <div class="footer-top">
             <div class="footer-brand">
               <a class="brand" href={localizePath("/", lang)} data-brand>
+                <PlovdivMark />
                 <span data-brand-name>{t.site.name}</span>
               </a>
               <p data-footer-blurb>{t.footer.blurb}</p>
@@ -438,7 +453,6 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
               </ul>
             </div>
           </div>
-          <Ornament />
           <div class="footer-bottom">
             <span data-footer-note>{t.footer.note}</span>
             <span class="meta" data-footer-data-note>{t.footer.dataNote}</span>

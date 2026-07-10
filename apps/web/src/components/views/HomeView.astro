@@ -1,6 +1,5 @@
 ---
 import HeroBackdrop from "@components/HeroBackdrop.astro";
-import Ornament from "@components/Ornament.astro";
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
@@ -531,7 +530,7 @@ const moreLinks = [
 ---
 
 <Layout lang={lang} path="/" description={t.home.lead}>
-  <section class="hero">
+  <section class="hero" data-section="home">
     <HeroBackdrop />
     <div class="container">
       <p class="eyebrow">{t.home.eyebrow}</p>
@@ -591,8 +590,6 @@ const moreLinks = [
     </div>
   </section>
 
-  <Ornament />
-
   <section class="section section-tint">
     <div class="container">
       <div class="section-head">
@@ -631,8 +628,6 @@ const moreLinks = [
       </div>
     </div>
   </section>
-
-  <Ornament />
 
   <section class="section">
     <div class="container">
@@ -675,8 +670,6 @@ const moreLinks = [
       </div>
     </div>
   </section>
-
-  <Ornament />
 
   <section class="section section-tint">
     <div class="container">

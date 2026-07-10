@@ -3,15 +3,15 @@
  * place-map API payload and the places-page legend so they can never drift.
  */
 export const placeColors: Record<string, string> = {
-  thracian: "#9c6b3f",
-  roman: "#a23b2d",
-  medieval: "#5d6b8a",
-  ottoman: "#2f7d6b",
-  revival: "#b4632a",
-  religious: "#7d5a9c",
-  hill: "#7d8471",
-  civic: "#15657f",
-  monument: "#8a6d3b"
+  thracian: "#875510",
+  roman: "#8e3043",
+  medieval: "#4d477a",
+  ottoman: "#1e6a62",
+  revival: "#a95524",
+  religious: "#6a3f72",
+  hill: "#52705f",
+  civic: "#205f7d",
+  monument: "#6d5345"
 };
 
-export const fallbackPlaceColor = "#6b7280";
+export const fallbackPlaceColor = "#586a6e";
