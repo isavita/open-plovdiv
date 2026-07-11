@@ -1131,6 +1131,29 @@ small {
   font-weight: 700;
 }
 
+/* In-section artwork/archival figures inside story longreads. */
+.story-section-figure {
+  margin: 4px 0 6px;
+}
+
+.story-section-figure img {
+  display: block;
+  width: 100%;
+  max-height: 540px;
+  object-fit: contain;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.story-section-figure figcaption {
+  max-width: 70ch;
+  margin-top: 9px;
+  color: var(--ink-2);
+  font-size: 0.87rem;
+  line-height: 1.45;
+}
+
 .badge,
 .route-badge,
 .pill-row a.meta,

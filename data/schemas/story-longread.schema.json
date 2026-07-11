@@ -24,37 +24,92 @@
     "editorial"
   ],
   "properties": {
-    "id": { "type": "string", "pattern": "^story-[0-9a-z-]+$" },
-    "title_bg": { "type": "string", "minLength": 5 },
-    "title_en": { "type": "string", "minLength": 5 },
-    "dek_bg": { "type": "string", "minLength": 30 },
-    "dek_en": { "type": "string", "minLength": 30 },
-    "reading_minutes": { "type": "integer", "minimum": 3, "maximum": 30 },
+    "id": {
+      "type": "string",
+      "pattern": "^story-[0-9a-z-]+$"
+    },
+    "title_bg": {
+      "type": "string",
+      "minLength": 5
+    },
+    "title_en": {
+      "type": "string",
+      "minLength": 5
+    },
+    "dek_bg": {
+      "type": "string",
+      "minLength": 30
+    },
+    "dek_en": {
+      "type": "string",
+      "minLength": 30
+    },
+    "reading_minutes": {
+      "type": "integer",
+      "minimum": 3,
+      "maximum": 30
+    },
     "era_tags": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "string",
-        "enum": ["prehistory", "thracian", "roman", "medieval", "ottoman", "revival", "liberation", "modern"]
+        "enum": [
+          "prehistory",
+          "thracian",
+          "roman",
+          "medieval",
+          "ottoman",
+          "revival",
+          "liberation",
+          "modern"
+        ]
       }
     },
     "theme_tags": {
       "type": "array",
       "minItems": 1,
-      "items": { "type": "string", "pattern": "^[0-9a-z_]+$" }
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-z_]+$"
+      }
     },
     "hero": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["kind", "ref_id", "caption_bg", "caption_en"],
+      "required": [
+        "kind",
+        "ref_id",
+        "caption_bg",
+        "caption_en"
+      ],
       "properties": {
-        "kind": { "type": "string", "enum": ["archive_item", "then_now_pair", "place_media"] },
-        "ref_id": { "type": "string", "minLength": 3 },
-        "caption_bg": { "type": "string", "minLength": 10 },
-        "caption_en": { "type": "string", "minLength": 10 }
+        "kind": {
+          "type": "string",
+          "enum": [
+            "archive_item",
+            "then_now_pair",
+            "place_media"
+          ]
+        },
+        "ref_id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "caption_bg": {
+          "type": "string",
+          "minLength": 10
+        },
+        "caption_en": {
+          "type": "string",
+          "minLength": 10
+        }
       },
       "patternProperties": {
-        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 10 }
+        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+          "type": "string",
+          "minLength": 10
+        }
       }
     },
     "sections": {
@@ -73,56 +128,140 @@
           "linked_place_ids"
         ],
         "properties": {
-          "heading_bg": { "type": "string", "minLength": 3 },
-          "heading_en": { "type": "string", "minLength": 3 },
-          "body_bg": { "type": "string", "minLength": 80 },
-          "body_en": { "type": "string", "minLength": 80 },
+          "heading_bg": {
+            "type": "string",
+            "minLength": 3
+          },
+          "heading_en": {
+            "type": "string",
+            "minLength": 3
+          },
+          "body_bg": {
+            "type": "string",
+            "minLength": 80
+          },
+          "body_en": {
+            "type": "string",
+            "minLength": 80
+          },
           "source_ids": {
             "type": "array",
             "minItems": 1,
-            "items": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
+            "items": {
+              "type": "string",
+              "pattern": "^source-[0-9a-z-]+$"
+            }
           },
           "linked_event_ids": {
             "type": "array",
-            "items": { "type": "string", "pattern": "^event-[0-9a-z-]+$" }
+            "items": {
+              "type": "string",
+              "pattern": "^event-[0-9a-z-]+$"
+            }
           },
           "linked_place_ids": {
             "type": "array",
-            "items": { "type": "string", "pattern": "^place-[0-9a-z-]+$" }
+            "items": {
+              "type": "string",
+              "pattern": "^place-[0-9a-z-]+$"
+            }
+          },
+          "media": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url",
+              "caption_bg",
+              "caption_en",
+              "credit"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "pattern": "^https://upload\\.wikimedia\\.org/"
+              },
+              "caption_bg": {
+                "type": "string",
+                "minLength": 10
+              },
+              "caption_en": {
+                "type": "string",
+                "minLength": 10
+              },
+              "credit": {
+                "type": "string",
+                "minLength": 5
+              }
+            },
+            "patternProperties": {
+              "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+                "type": "string"
+              }
+            }
           }
         },
         "patternProperties": {
-          "^(heading|body)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+          "^(heading|body)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+            "type": "string"
+          }
         }
       }
     },
     "linked_event_ids": {
       "type": "array",
-      "items": { "type": "string", "pattern": "^event-[0-9a-z-]+$" }
+      "items": {
+        "type": "string",
+        "pattern": "^event-[0-9a-z-]+$"
+      }
     },
     "linked_place_ids": {
       "type": "array",
       "minItems": 1,
-      "items": { "type": "string", "pattern": "^place-[0-9a-z-]+$" }
+      "items": {
+        "type": "string",
+        "pattern": "^place-[0-9a-z-]+$"
+      }
     },
     "linked_archive_item_ids": {
       "type": "array",
-      "items": { "type": "string", "pattern": "^archive-[0-9a-z-]+$" }
+      "items": {
+        "type": "string",
+        "pattern": "^archive-[0-9a-z-]+$"
+      }
     },
     "linked_then_now_pair_ids": {
       "type": "array",
-      "items": { "type": "string", "pattern": "^then-now-[0-9a-z-]+$" }
+      "items": {
+        "type": "string",
+        "pattern": "^then-now-[0-9a-z-]+$"
+      }
     },
     "source_ids": {
       "type": "array",
       "minItems": 1,
-      "items": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
+      "items": {
+        "type": "string",
+        "pattern": "^source-[0-9a-z-]+$"
+      }
     },
-    "provenance": { "$ref": "knowledge-event.schema.json#/definitions/provenance" },
-    "data_quality": { "type": "string", "enum": ["public_source", "manual_reviewed", "provisional"] },
-    "editorial": { "$ref": "historical-archive-item.schema.json#/definitions/editorial" }
+    "provenance": {
+      "$ref": "knowledge-event.schema.json#/definitions/provenance"
+    },
+    "data_quality": {
+      "type": "string",
+      "enum": [
+        "public_source",
+        "manual_reviewed",
+        "provisional"
+      ]
+    },
+    "editorial": {
+      "$ref": "historical-archive-item.schema.json#/definitions/editorial"
+    }
   },
   "patternProperties": {
-    "^(title|dek)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+    "^(title|dek)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+      "type": "string"
+    }
   }
 }

@@ -4,10 +4,10 @@
   "acceptance_requirement": "Independent editorial sign-off must be logged for 100% of published content before the history platform is complete.",
   "status": "incomplete",
   "summary": {
-    "total_tracked_records": 1003,
+    "total_tracked_records": 1010,
     "signed_off_records": 0,
-    "records_needing_review": 1003,
-    "records_with_blockers": 1003,
+    "records_needing_review": 1010,
+    "records_with_blockers": 1010,
     "signed_off_percent": 0,
     "tracking_gap_collections": 0
   },
@@ -16,19 +16,19 @@
       "label_bg": "Събития",
       "label_en": "Events",
       "role": "primary_entity",
-      "total_records": 362,
+      "total_records": 365,
       "signed_off_records": 0,
-      "records_needing_review": 362,
-      "records_with_blockers": 362
+      "records_needing_review": 365,
+      "records_with_blockers": 365
     },
     "people": {
       "label_bg": "Хора",
       "label_en": "People",
       "role": "primary_entity",
-      "total_records": 261,
+      "total_records": 264,
       "signed_off_records": 0,
-      "records_needing_review": 261,
-      "records_with_blockers": 261
+      "records_needing_review": 264,
+      "records_with_blockers": 264
     },
     "person_relationships": {
       "label_bg": "Връзки между личности",
@@ -88,10 +88,10 @@
       "label_bg": "Дълги разкази",
       "label_en": "Story longreads",
       "role": "editorial_feature",
-      "total_records": 14,
+      "total_records": 15,
       "signed_off_records": 0,
-      "records_needing_review": 14,
-      "records_with_blockers": 14
+      "records_needing_review": 15,
+      "records_with_blockers": 15
     },
     "education_resources": {
       "label_bg": "Образователни ресурси",
@@ -1781,6 +1781,54 @@
       ]
     },
     {
+      "id": "event-birth-stanislav-dospevski-q7598986",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Раждане на Станислав Доспевски",
+      "title_en": "Birth of Stanislav Dospevski",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-birth-stanislav-dospevski-q7598986",
+      "review_url_en": "/en/history#event-birth-stanislav-dospevski-q7598986",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-stanislav-dospevski",
+          "title_bg": "Wikipedia — Stanislav Dospevski",
+          "title_en": "Wikipedia — Stanislav Dospevski",
+          "url": "https://en.wikipedia.org/wiki/Stanislav_Dospevski",
+          "accessed_at": "2026-07-12",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Година и място на раждане за Станислав Доспевски.",
+          "claim_en": "Birth year and birthplace for Stanislav Dospevski."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-stanislav-dospevski"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Stanislav_Dospevski"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-first-school-1836",
       "collection": "events",
       "role": "primary_entity",
@@ -1962,6 +2010,54 @@
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Konstantin_Stoilov"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-birth-ivan-mrkvichka-q4309439",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Раждане на Иван Мърквичка",
+      "title_en": "Birth of Ivan Mrkvichka",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-birth-ivan-mrkvichka-q4309439",
+      "review_url_en": "/en/history#event-birth-ivan-mrkvichka-q4309439",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-ivan-mrkvichka",
+          "title_bg": "Wikipedia — Ivan Mrkvichka",
+          "title_en": "Wikipedia — Ivan Mrkvichka",
+          "url": "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka",
+          "accessed_at": "2026-07-12",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Година и място на раждане за Иван Мърквичка.",
+          "claim_en": "Birth year and birthplace for Ivan Mrkvichka."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-ivan-mrkvichka"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka"
       ],
       "license_statuses": [
         "open_license"
@@ -4795,6 +4891,54 @@
       ],
       "license_statuses": [
         "public_reference_terms_unverified"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-birth-zlatyu-boyadzhiev-q2006747",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Раждане на Златю Бояджиев",
+      "title_en": "Birth of Zlatyu Boyadzhiev",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/history#event-birth-zlatyu-boyadzhiev-q2006747",
+      "review_url_en": "/en/history#event-birth-zlatyu-boyadzhiev-q2006747",
+      "api_url": "/api/history/events.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-zlatyu-boyadzhiev",
+          "title_bg": "Wikipedia — Zlatyu Boyadzhiev",
+          "title_en": "Wikipedia — Zlatyu Boyadzhiev",
+          "url": "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev",
+          "accessed_at": "2026-07-12",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Година и място на раждане за Златю Бояджиев.",
+          "claim_en": "Birth year and birthplace for Zlatyu Boyadzhiev."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-zlatyu-boyadzhiev"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev"
+      ],
+      "license_statuses": [
+        "open_license"
       ],
       "source_count": 1,
       "has_license_or_reuse_status": true,
@@ -23230,6 +23374,54 @@
       ]
     },
     {
+      "id": "person-zlatyu-boyadzhiev-q2006747",
+      "collection": "people",
+      "role": "primary_entity",
+      "title_bg": "Златю Бояджиев",
+      "title_en": "Zlatyu Boyadzhiev",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/people/person-zlatyu-boyadzhiev-q2006747/",
+      "review_url_en": "/en/people/person-zlatyu-boyadzhiev-q2006747/",
+      "api_url": "/api/history/people.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-zlatyu-boyadzhiev",
+          "title_bg": "Wikipedia — Zlatyu Boyadzhiev",
+          "title_en": "Wikipedia — Zlatyu Boyadzhiev",
+          "url": "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev",
+          "accessed_at": "2026-07-12",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Биографични данни и връзка с Пловдив за Златю Бояджиев.",
+          "claim_en": "Biographical data and Plovdiv birthplace link for Zlatyu Boyadzhiev."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-zlatyu-boyadzhiev"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "person-iva-prandzheva-q263942",
       "collection": "people",
       "role": "primary_entity",
@@ -23523,6 +23715,54 @@
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Ivan_Kostov_Nikolov"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "person-ivan-mrkvichka-q4309439",
+      "collection": "people",
+      "role": "primary_entity",
+      "title_bg": "Иван Мърквичка",
+      "title_en": "Ivan Mrkvichka",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/people/person-ivan-mrkvichka-q4309439/",
+      "review_url_en": "/en/people/person-ivan-mrkvichka-q4309439/",
+      "api_url": "/api/history/people.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-ivan-mrkvichka",
+          "title_bg": "Wikipedia — Ivan Mrkvichka",
+          "title_en": "Wikipedia — Ivan Mrkvichka",
+          "url": "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka",
+          "accessed_at": "2026-07-12",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Биографични данни и връзка с Пловдив за Иван Мърквичка.",
+          "claim_en": "Biographical data and Plovdiv birthplace link for Ivan Mrkvichka."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-ivan-mrkvichka"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka"
       ],
       "license_statuses": [
         "open_license"
@@ -29505,6 +29745,54 @@
         "open_license"
       ],
       "source_count": 2,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "person-stanislav-dospevski-q7598986",
+      "collection": "people",
+      "role": "primary_entity",
+      "title_bg": "Станислав Доспевски",
+      "title_en": "Stanislav Dospevski",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/people/person-stanislav-dospevski-q7598986/",
+      "review_url_en": "/en/people/person-stanislav-dospevski-q7598986/",
+      "api_url": "/api/history/people.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-stanislav-dospevski",
+          "title_bg": "Wikipedia — Stanislav Dospevski",
+          "title_en": "Wikipedia — Stanislav Dospevski",
+          "url": "https://en.wikipedia.org/wiki/Stanislav_Dospevski",
+          "accessed_at": "2026-07-12",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "public_source",
+          "claim_bg": "Биографични данни и връзка с Пловдив за Станислав Доспевски.",
+          "claim_en": "Biographical data and Plovdiv birthplace link for Stanislav Dospevski."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-stanislav-dospevski"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Stanislav_Dospevski"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 1,
       "has_license_or_reuse_status": true,
       "blockers": [
         "needs_independent_editorial_signoff"
@@ -52770,6 +53058,174 @@
         "open_license"
       ],
       "source_count": 5,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "story-plovdiv-painters",
+      "collection": "story_longreads",
+      "role": "editorial_feature",
+      "title_bg": "Художниците на Пловдив: градът върху платно",
+      "title_en": "The Painters of Plovdiv: The City on Canvas",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/stories/story-plovdiv-painters/",
+      "review_url_en": "/en/stories/story-plovdiv-painters/",
+      "api_url": "/api/history/story-longreads.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-stanislav-dospevski",
+          "title_bg": "Wikipedia — Stanislav Dospevski",
+          "title_en": "Wikipedia — Stanislav Dospevski",
+          "url": "https://en.wikipedia.org/wiki/Stanislav_Dospevski",
+          "accessed_at": "2026-07-12",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Художниците на Пловдив: градът върху платно\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Painters of Plovdiv: The City on Canvas\"."
+        },
+        {
+          "source_id": "source-wikipedia-atanas-samokovliev",
+          "title_bg": "Wikipedia — Атанас Самоковлиев",
+          "title_en": "Wikipedia — Атанас Самоковлиев",
+          "url": "https://bg.wikipedia.org/wiki/%D0%90%D1%82%D0%B0%D0%BD%D0%B0%D1%81_%D0%A1%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%BB%D0%B8%D0%B5%D0%B2",
+          "accessed_at": "2026-07-09",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Художниците на Пловдив: градът върху платно\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Painters of Plovdiv: The City on Canvas\"."
+        },
+        {
+          "source_id": "source-wikipedia-ivan-mrkvichka",
+          "title_bg": "Wikipedia — Ivan Mrkvichka",
+          "title_en": "Wikipedia — Ivan Mrkvichka",
+          "url": "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka",
+          "accessed_at": "2026-07-12",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Художниците на Пловдив: градът върху платно\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Painters of Plovdiv: The City on Canvas\"."
+        },
+        {
+          "source_id": "source-wikipedia-tsanko-lavrenov",
+          "title_bg": "Wikipedia — Tsanko Lavrenov",
+          "title_en": "Wikipedia — Tsanko Lavrenov",
+          "url": "https://en.wikipedia.org/wiki/Tsanko_Lavrenov",
+          "accessed_at": "2026-06-19",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Художниците на Пловдив: градът върху платно\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Painters of Plovdiv: The City on Canvas\"."
+        },
+        {
+          "source_id": "source-wikipedia-zlatyu-boyadzhiev",
+          "title_bg": "Wikipedia — Zlatyu Boyadzhiev",
+          "title_en": "Wikipedia — Zlatyu Boyadzhiev",
+          "url": "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev",
+          "accessed_at": "2026-07-12",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Художниците на Пловдив: градът върху платно\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Painters of Plovdiv: The City on Canvas\"."
+        },
+        {
+          "source_id": "source-wikidata-zlatyu-boyadzhiev-exposition",
+          "title_bg": "Wikidata — Zlatyu Boyadzhiev Exposition",
+          "title_en": "Wikidata — Zlatyu Boyadzhiev Exposition",
+          "url": "https://www.wikidata.org/wiki/Q12291130",
+          "accessed_at": "2026-06-19",
+          "license_status": "open_license",
+          "license_label": "Creative Commons CC0 1.0 Universal",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Художниците на Пловдив: градът върху платно\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Painters of Plovdiv: The City on Canvas\"."
+        },
+        {
+          "source_id": "source-wikidata-encho-pironkov-gallery",
+          "title_bg": "Wikidata — Encho Pironkov Gallery",
+          "title_en": "Wikidata — Encho Pironkov Gallery",
+          "url": "https://www.wikidata.org/wiki/Q12287461",
+          "accessed_at": "2026-06-19",
+          "license_status": "open_license",
+          "license_label": "Creative Commons CC0 1.0 Universal",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Художниците на Пловдив: градът върху платно\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Painters of Plovdiv: The City on Canvas\"."
+        },
+        {
+          "source_id": "source-wikipedia-yoan-leviev",
+          "title_bg": "Wikipedia — Yoan Leviev",
+          "title_en": "Wikipedia — Yoan Leviev",
+          "url": "https://en.wikipedia.org/wiki/Yoan_Leviev",
+          "accessed_at": "2026-06-19",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Художниците на Пловдив: градът върху платно\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Painters of Plovdiv: The City on Canvas\"."
+        },
+        {
+          "source_id": "source-wikipedia-luba-lukova",
+          "title_bg": "Wikipedia — Luba Lukova",
+          "title_en": "Wikipedia — Luba Lukova",
+          "url": "https://en.wikipedia.org/wiki/Luba_Lukova",
+          "accessed_at": "2026-06-19",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Художниците на Пловдив: градът върху платно\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Painters of Plovdiv: The City on Canvas\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-stanislav-dospevski",
+        "source-wikipedia-atanas-samokovliev",
+        "source-wikipedia-ivan-mrkvichka",
+        "source-wikipedia-tsanko-lavrenov",
+        "source-wikipedia-zlatyu-boyadzhiev",
+        "source-wikidata-zlatyu-boyadzhiev-exposition",
+        "source-wikidata-encho-pironkov-gallery",
+        "source-wikipedia-yoan-leviev",
+        "source-wikipedia-luba-lukova"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Stanislav_Dospevski",
+        "https://bg.wikipedia.org/wiki/%D0%90%D1%82%D0%B0%D0%BD%D0%B0%D1%81_%D0%A1%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%BB%D0%B8%D0%B5%D0%B2",
+        "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka",
+        "https://en.wikipedia.org/wiki/Tsanko_Lavrenov",
+        "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev",
+        "https://www.wikidata.org/wiki/Q12291130",
+        "https://www.wikidata.org/wiki/Q12287461",
+        "https://en.wikipedia.org/wiki/Yoan_Leviev",
+        "https://en.wikipedia.org/wiki/Luba_Lukova"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 9,
       "has_license_or_reuse_status": true,
       "blockers": [
         "needs_independent_editorial_signoff"

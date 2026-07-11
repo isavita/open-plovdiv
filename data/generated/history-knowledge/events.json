@@ -1710,6 +1710,59 @@
     }
   },
   {
+    "id": "event-birth-stanislav-dospevski-q7598986",
+    "type": "event",
+    "category": "notable_person_birth",
+    "era": "revival",
+    "date": {
+      "year": 1823,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "year",
+      "display_bg": "1823 г.",
+      "display_en": "1823"
+    },
+    "title_bg": "Раждане на Станислав Доспевски",
+    "title_en": "Birth of Stanislav Dospevski",
+    "summary_bg": "Родното място на Станислав Доспевски е Пловдив; годината на раждане е 1823 г.",
+    "summary_en": "Stanislav Dospevski's birthplace is Plovdiv; the recorded birth year is 1823.",
+    "theme_tags": [
+      "people",
+      "birth",
+      "artist",
+      "painter"
+    ],
+    "person_ids": [
+      "person-stanislav-dospevski-q7598986"
+    ],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-stanislav-dospevski"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-stanislav-dospevski",
+        "evidence_type": "public_source",
+        "claim_bg": "Година и място на раждане за Станислав Доспевски.",
+        "claim_en": "Birth year and birthplace for Stanislav Dospevski.",
+        "url": "https://en.wikipedia.org/wiki/Stanislav_Dospevski",
+        "accessed_at": "2026-07-12",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "event-first-school-1836",
     "type": "event",
     "category": "historical_timeline",
@@ -1898,6 +1951,59 @@
         "claim_en": "Birth year and birthplace for Konstantin Stoilov.",
         "url": "https://en.wikipedia.org/wiki/Konstantin_Stoilov",
         "accessed_at": "2026-06-19",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-birth-ivan-mrkvichka-q4309439",
+    "type": "event",
+    "category": "notable_person_birth",
+    "era": "revival",
+    "date": {
+      "year": 1856,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "year",
+      "display_bg": "1856 г.",
+      "display_en": "1856"
+    },
+    "title_bg": "Раждане на Иван Мърквичка",
+    "title_en": "Birth of Ivan Mrkvichka",
+    "summary_bg": "Родното място на Иван Мърквичка е Пловдив; годината на раждане е 1856 г.",
+    "summary_en": "Ivan Mrkvichka's birthplace is Plovdiv; the recorded birth year is 1856.",
+    "theme_tags": [
+      "people",
+      "birth",
+      "artist",
+      "painter"
+    ],
+    "person_ids": [
+      "person-ivan-mrkvichka-q4309439"
+    ],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-ivan-mrkvichka"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-ivan-mrkvichka",
+        "evidence_type": "public_source",
+        "claim_bg": "Година и място на раждане за Иван Мърквичка.",
+        "claim_en": "Birth year and birthplace for Ivan Mrkvichka.",
+        "url": "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka",
+        "accessed_at": "2026-07-12",
         "license_status": "open_license"
       }
     ],
@@ -4994,6 +5100,59 @@
         "url": "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/",
         "accessed_at": "2026-06-17",
         "license_status": "public_reference_terms_unverified"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-birth-zlatyu-boyadzhiev-q2006747",
+    "type": "event",
+    "category": "notable_person_birth",
+    "era": "modern",
+    "date": {
+      "year": 1903,
+      "year_end": null,
+      "month": null,
+      "day": null,
+      "precision": "year",
+      "display_bg": "1903 г.",
+      "display_en": "1903"
+    },
+    "title_bg": "Раждане на Златю Бояджиев",
+    "title_en": "Birth of Zlatyu Boyadzhiev",
+    "summary_bg": "Родното място на Златю Бояджиев е Пловдив; годината на раждане е 1903 г.",
+    "summary_en": "Zlatyu Boyadzhiev's birthplace is Plovdiv; the recorded birth year is 1903.",
+    "theme_tags": [
+      "people",
+      "birth",
+      "artist",
+      "painter"
+    ],
+    "person_ids": [
+      "person-zlatyu-boyadzhiev-q2006747"
+    ],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-zlatyu-boyadzhiev"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-zlatyu-boyadzhiev",
+        "evidence_type": "public_source",
+        "claim_bg": "Година и място на раждане за Златю Бояджиев.",
+        "claim_en": "Birth year and birthplace for Zlatyu Boyadzhiev.",
+        "url": "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev",
+        "accessed_at": "2026-07-12",
+        "license_status": "open_license"
       }
     ],
     "editorial": {

@@ -5483,6 +5483,53 @@
     }
   },
   {
+    "id": "person-zlatyu-boyadzhiev-q2006747",
+    "type": "person",
+    "wikidata_id": "Q2006747",
+    "name_bg": "Златю Бояджиев",
+    "name_en": "Zlatyu Boyadzhiev",
+    "summary_bg": "Златю Бояджиев (1903–1976) — български живописец.",
+    "summary_en": "Zlatyu Boyadzhiev (1903–1976) — Bulgarian painter.",
+    "roles": [
+      "artist",
+      "painter"
+    ],
+    "birth_year": 1903,
+    "death_year": 1976,
+    "image": null,
+    "image_credit": null,
+    "term_events": [],
+    "event_ids": [
+      "event-birth-zlatyu-boyadzhiev-q2006747"
+    ],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-zlatyu-boyadzhiev"
+    ],
+    "relationships": [],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-zlatyu-boyadzhiev",
+        "evidence_type": "public_source",
+        "claim_bg": "Биографични данни и връзка с Пловдив за Златю Бояджиев.",
+        "claim_en": "Biographical data and Plovdiv birthplace link for Zlatyu Boyadzhiev.",
+        "url": "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev",
+        "accessed_at": "2026-07-12",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
     "id": "person-iva-prandzheva-q263942",
     "type": "person",
     "wikidata_id": "Q263942",
@@ -5768,6 +5815,53 @@
         "claim_en": "Biographical data and Plovdiv birthplace link for Ivan Kostov Nikolov.",
         "url": "https://en.wikipedia.org/wiki/Ivan_Kostov_Nikolov",
         "accessed_at": "2026-06-19",
+        "license_status": "open_license"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "person-ivan-mrkvichka-q4309439",
+    "type": "person",
+    "wikidata_id": "Q4309439",
+    "name_bg": "Иван Мърквичка",
+    "name_en": "Ivan Mrkvichka",
+    "summary_bg": "Иван Мърквичка (1856–1938) — чешко-български художник, работил в Пловдив.",
+    "summary_en": "Ivan Mrkvichka (1856–1938) — Czech-Bulgarian painter who worked in Plovdiv.",
+    "roles": [
+      "artist",
+      "painter"
+    ],
+    "birth_year": 1856,
+    "death_year": 1938,
+    "image": null,
+    "image_credit": null,
+    "term_events": [],
+    "event_ids": [
+      "event-birth-ivan-mrkvichka-q4309439"
+    ],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-ivan-mrkvichka"
+    ],
+    "relationships": [],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-ivan-mrkvichka",
+        "evidence_type": "public_source",
+        "claim_bg": "Биографични данни и връзка с Пловдив за Иван Мърквичка.",
+        "claim_en": "Biographical data and Plovdiv birthplace link for Ivan Mrkvichka.",
+        "url": "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka",
+        "accessed_at": "2026-07-12",
         "license_status": "open_license"
       }
     ],
@@ -11653,6 +11747,53 @@
         "url": "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/",
         "accessed_at": "2026-06-17",
         "license_status": "public_reference_terms_unverified"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "person-stanislav-dospevski-q7598986",
+    "type": "person",
+    "wikidata_id": "Q7598986",
+    "name_bg": "Станислав Доспевски",
+    "name_en": "Stanislav Dospevski",
+    "summary_bg": "Станислав Доспевски (1823–1877) — български възрожденски художник.",
+    "summary_en": "Stanislav Dospevski (1823–1877) — Bulgarian National Revival painter.",
+    "roles": [
+      "artist",
+      "painter"
+    ],
+    "birth_year": 1823,
+    "death_year": 1877,
+    "image": null,
+    "image_credit": null,
+    "term_events": [],
+    "event_ids": [
+      "event-birth-stanislav-dospevski-q7598986"
+    ],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-wikipedia-stanislav-dospevski"
+    ],
+    "relationships": [],
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-stanislav-dospevski",
+        "evidence_type": "public_source",
+        "claim_bg": "Биографични данни и връзка с Пловдив за Станислав Доспевски.",
+        "claim_en": "Biographical data and Plovdiv birthplace link for Stanislav Dospevski.",
+        "url": "https://en.wikipedia.org/wiki/Stanislav_Dospevski",
+        "accessed_at": "2026-07-12",
+        "license_status": "open_license"
       }
     ],
     "editorial": {

@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
+import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { sourceTitle } from "@lib/format";
 import { storyThemeTagLabel } from "@lib/storyTags";
 import { publicThenNowPairs } from "@lib/thenNow";
@@ -215,10 +216,28 @@ const relatedStories = storyLongreads
         <div class="story-sections">
           {story.sections.map((section, index) => {
             const sectionSources = section.source_ids.map((sourceId) => sourceById.get(sourceId)).filter(Boolean);
+            const media = section.media;
+            const mediaCommons = media ? isCommonsUploadImageUrl(media.url) : false;
             return (
               <section class="story-section">
                 <p class="eyebrow">{String(index + 1).padStart(2, "0")}</p>
                 <h2>{localized(section, "heading")}</h2>
+                {media && (
+                  <figure class="story-section-figure">
+                    <img
+                      src={mediaCommons ? commonsImageUrl(media.url, 960) : media.url}
+                      alt={localized(media, "caption")}
+                      loading="lazy"
+                      decoding="async"
+                      crossorigin={mediaCommons ? "anonymous" : undefined}
+                      referrerpolicy="no-referrer"
+                    />
+                    <figcaption>
+                      {localized(media, "caption")}
+                      <span class="meta"> · {media.credit}</span>
+                    </figcaption>
+                  </figure>
+                )}
                 <p>{localized(section, "body")}</p>
                 <div class="story-section-sources">
                   <h3>{labels.sources}</h3>

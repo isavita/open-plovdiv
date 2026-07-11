@@ -1427,5 +1427,163 @@
       "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
       "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
     }
+  },
+  {
+    "id": "story-plovdiv-painters",
+    "title_bg": "Художниците на Пловдив: градът върху платно",
+    "title_en": "The Painters of Plovdiv: The City on Canvas",
+    "dek_bg": "От зографския род на първия кмет до къщите-галерии в Стария град: как Пловдив стана град, който не спира да се рисува.",
+    "dek_en": "From the first mayor's icon-painting family to the gallery houses of the Old Town: how Plovdiv became a city that never stops painting itself.",
+    "reading_minutes": 9,
+    "era_tags": [
+      "revival",
+      "modern"
+    ],
+    "theme_tags": [
+      "culture",
+      "old_town",
+      "civic_memory"
+    ],
+    "hero": {
+      "kind": "place_media",
+      "ref_id": "place-zlatyu-boyadzhiev-exposition-q12291130",
+      "caption_bg": "Постоянната експозиция „Народен художник Златю Бояджиев“ в Стария град — възрожденска къща, станала дом на живописта.",
+      "caption_en": "The permanent exposition 'People's Artist Zlatyu Boyadzhiev' in the Old Town — a Revival house turned home of painting."
+    },
+    "source_ids": [
+      "source-wikipedia-stanislav-dospevski",
+      "source-wikipedia-atanas-samokovliev",
+      "source-wikipedia-ivan-mrkvichka",
+      "source-wikipedia-tsanko-lavrenov",
+      "source-wikipedia-zlatyu-boyadzhiev",
+      "source-wikidata-zlatyu-boyadzhiev-exposition",
+      "source-wikidata-encho-pironkov-gallery",
+      "source-wikipedia-yoan-leviev",
+      "source-wikipedia-luba-lukova"
+    ],
+    "linked_event_ids": [
+      "event-mayor-01-atanas-samokovliev",
+      "event-birth-tsanko-lavrenov-q7849377"
+    ],
+    "linked_place_ids": [
+      "place-zlatyu-boyadzhiev-exposition-q12291130",
+      "place-encho-pironkov-gallery-q12287461",
+      "place-tsanko-lavrenov-national-high-school-of-art-plovdiv-q12287929",
+      "place-dzhumaya-square-q59368698"
+    ],
+    "linked_archive_item_ids": [],
+    "linked_then_now_pair_ids": [],
+    "data_quality": "public_source",
+    "sections": [
+      {
+        "heading_bg": "Родът на зографите",
+        "heading_en": "The Family of Icon Painters",
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Dimitar-Zograf-portrait-by-Stanislav-Dospevski-c.1860.jpg",
+          "caption_bg": "Станислав Доспевски, портрет на баща му — иконописеца Димитър Зограф, около 1860 г.",
+          "caption_en": "Stanislav Dospevski's portrait of his father, the icon painter Dimitar Zograf, circa 1860.",
+          "credit": "Wikimedia Commons · Public domain"
+        },
+        "body_bg": "Пловдивската живопис започва като семеен занаят. Станислав Доспевски (1823–1877) е роден в Самоков в най-прочутия зографски род на Възраждането: син на иконописеца Димитър Зограф и племенник на Захарий Зограф. След обучение в художествената академия в Санкт Петербург той пренася академичния портрет в българските земи — и рисува собствения си баща с маслени бои, както Европа рисува своите граждани. Родът стига и до кметството: неговият брат Атанас Самоковлиев става първият избран кмет на Пловдив през 1878 г. Четката и управата на града тръгват от една и съща къща.",
+        "body_en": "Painting in Plovdiv begins as a family trade. Stanislav Dospevski (1823–1877) was born in Samokov into the most famous icon-painting family of the National Revival: son of the icon painter Dimitar Zograf and nephew of Zahari Zograf. Trained at the academy of arts in Saint Petersburg, he carried the academic portrait into the Bulgarian lands — and painted his own father in oils, the way Europe painted its citizens. The family reached city hall too: his brother Atanas Samokovliev became Plovdiv's first elected mayor in 1878. The brush and the city's government set out from the same house.",
+        "source_ids": [
+          "source-wikipedia-stanislav-dospevski",
+          "source-wikipedia-atanas-samokovliev"
+        ],
+        "linked_event_ids": [
+          "event-mayor-01-atanas-samokovliev"
+        ],
+        "linked_place_ids": []
+      },
+      {
+        "heading_bg": "Чехът с триножника на пазара",
+        "heading_en": "The Czech with an Easel at the Market",
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Plovdiv_Mrkvicka.jpg",
+          "caption_bg": "Иван Мърквичка, „Пазар в Пловдив“ (1888) — пъстрият площад, който художникът е гледал всеки ден.",
+          "caption_en": "Ivan Mrkvichka, 'Market in Plovdiv' (1888) — the motley square the painter watched every day.",
+          "credit": "Wikimedia Commons · Public domain"
+        },
+        "body_bg": "През 1881 г. младият чешки художник Иван Мърквичка (1856–1938) пристига в Пловдив, поканен да преподава рисуване в гимназията на Източна Румелия. Осем години той живее сред тепетата и пренася града върху платно: пазари, носии, лица от всички общности на пъстрия следосвобожденски Пловдив. „Пазар в Пловдив“ от 1888 г. е може би най-обичаният резултат — цяла улична сцена, уловена с топлотата на човек, който вече не е гост. Когато през 1889 г. се мести в София, Мърквичка отнася със себе си тема, която пловдивските улици са му дали.",
+        "body_en": "The young Czech painter Ivan Mrkvichka (1856–1938) arrived in Plovdiv in 1881, invited to teach drawing at the gymnasium of Eastern Rumelia. For eight years he lived among the hills and moved the city onto canvas: markets, folk costumes, faces from every community of motley post-Liberation Plovdiv. 'Market in Plovdiv' of 1888 is perhaps the best-loved result — a whole street scene caught with the warmth of someone who was no longer a guest. When he moved to Sofia in 1889, Mrkvichka took with him a theme the streets of Plovdiv had given him.",
+        "source_ids": [
+          "source-wikipedia-ivan-mrkvichka"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": [
+          "place-dzhumaya-square-q59368698"
+        ]
+      },
+      {
+        "heading_bg": "„Ръченица“: най-познатата картина",
+        "heading_en": "'Rachenitsa': The Best-Known Painting",
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Ivan_Mrkvi%C4%8Dka_-_Rachenitsa.jpg",
+          "caption_bg": "Иван Мърквичка, „Ръченица“ (1894) — сцената, израснала от фолклорните му наблюдения около Пловдив.",
+          "caption_en": "Ivan Mrkvichka, 'Rachenitsa' (1894) — the scene that grew out of his folk observations around Plovdiv.",
+          "credit": "Wikimedia Commons · Public domain"
+        },
+        "body_bg": "Ако една българска картина се познава от пръв поглед, това е „Ръченица“ (1894): кръчма, две ръце във въздуха, цяло хоро в едно тяло. Мърквичка я рисува вече в София, но нейните корени са в пловдивските му години — в селата и панаирите край града, където за пръв път застава с триножника пред българския танц. По-късно той става един от основателите и пръв ръководител на Държавното рисувално училище, от което израства Художествената академия. Пътят му към това начало минава през Пловдив.",
+        "body_en": "'Rachenitsa' (1894) is the Bulgarian painting people recognise at first sight: a tavern, two hands in the air, an entire dance held in one body. Mrkvichka painted it after his move to Sofia, but its roots lie in his Plovdiv years — in the villages and fairs around the city where he first set up his easel before the Bulgarian dance. He later became one of the founders and the first head of the State Drawing School, the future Academy of Arts. His road to that beginning ran through Plovdiv.",
+        "source_ids": [
+          "source-wikipedia-ivan-mrkvichka"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": []
+      },
+      {
+        "heading_bg": "Цанко Лавренов: старият град на платно",
+        "heading_en": "Tsanko Lavrenov: The Old Town on Canvas",
+        "body_bg": "Роденият в Пловдив Цанко Лавренов (1896–1978) прави от родния си град тема на цял творчески живот. Неговите платна със старинни къщи, манастирски дворове и калдъръми — гъсти, топли, почти приказни — оформят начина, по който България си представя стария Пловдив и до днес: когато затворим очи и кажем „Старият град“, често виждаме именно картина на Лавренов. Градът му връща жеста — Националната художествена гимназия в Пловдив носи неговото име и всяка година изпраща нови випуски художници по същите улици, които той е рисувал.",
+        "body_en": "Tsanko Lavrenov (1896–1978), born in Plovdiv, made his home town the theme of a creative lifetime. His canvases of old houses, monastery courtyards and cobbled lanes — dense, warm, almost fairy-tale — still shape the way Bulgaria pictures old Plovdiv: close your eyes and say 'the Old Town', and you are often seeing a Lavrenov. The city returned the gesture — the National School of Art in Plovdiv bears his name and each year sends new classes of painters down the very streets he painted.",
+        "source_ids": [
+          "source-wikipedia-tsanko-lavrenov",
+          "source-wikidata-tsanko-lavrenov-national-high-school-of-art-plovdiv"
+        ],
+        "linked_event_ids": [
+          "event-birth-tsanko-lavrenov-q7849377"
+        ],
+        "linked_place_ids": [
+          "place-tsanko-lavrenov-national-high-school-of-art-plovdiv-q12287929"
+        ]
+      },
+      {
+        "heading_bg": "Златю Бояджиев: двата живота на една четка",
+        "heading_en": "Zlatyu Boyadzhiev: The Two Lives of One Brush",
+        "body_bg": "Роденият в Брезово Златю Бояджиев (1903–1976) има две художнически биографии в едно тяло. До 1951 г. той рисува меки, класически селски сцени. Тогава тежък инсулт парализира дясната му ръка — и вместо да остави четката, Бояджиев се научава да рисува с лявата. Късните му платна са по-едри, по-цветни, по-диви, и точно те го превръщат в легенда. Днес двата му живота висят един до друг в постоянната експозиция „Народен художник Златю Бояджиев“ във възрожденска къща в Стария град, а съседната музейна експозиция „Енчо Пиронков“ продължава разказа на пловдивската живопис към съвременността.",
+        "body_en": "Zlatyu Boyadzhiev (1903–1976), born in Brezovo, carried two painters' biographies in one body. Until 1951 he painted soft, classical village scenes. Then a severe stroke paralysed his right hand — and instead of putting the brush down, Boyadzhiev taught himself to paint with his left. His late canvases are bigger, brighter, wilder, and it is precisely these that made him a legend. Today his two lives hang side by side in the permanent exposition 'People's Artist Zlatyu Boyadzhiev' in a Revival house in the Old Town, while the neighbouring 'Encho Pironkov' museum exposition carries the story of Plovdiv painting into the present.",
+        "source_ids": [
+          "source-wikipedia-zlatyu-boyadzhiev",
+          "source-wikidata-zlatyu-boyadzhiev-exposition",
+          "source-wikidata-encho-pironkov-gallery"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": [
+          "place-zlatyu-boyadzhiev-exposition-q12291130",
+          "place-encho-pironkov-gallery-q12287461"
+        ]
+      },
+      {
+        "heading_bg": "Градът продължава да рисува",
+        "heading_en": "The City Keeps Painting",
+        "body_bg": "Списъкът не свършва с класиците. Елисавета Консулова-Вазова (1881–1965) е сред първите български художнички; Йоан Левиев (1934–1994) оставя монументални творби из целия град; Румен Гашаров (р. 1936) продължава пловдивската живописна линия, а родената в Пловдив Люба Лукова (р. 1960) носи графичния език на града по световните галерии. Между зографите от XIX век и днешните ателиета в Капана нишката не е прекъсвала — Пловдив просто сменя платната.",
+        "body_en": "The list does not end with the classics. Elisaveta Konsulova-Vazova (1881–1965) was among Bulgaria's first women painters; Yoan Leviev (1934–1994) left monumental works across the city; Rumen Gasharov (b. 1936) carries Plovdiv's painterly line onward, and Plovdiv-born Luba Lukova (b. 1960) has taken the city's graphic language to galleries worldwide. Between the nineteenth-century icon painters and today's studios in Kapana the thread has never broken — Plovdiv simply changes canvases.",
+        "source_ids": [
+          "source-wikipedia-elisaveta-konsulova-vazova",
+          "source-wikipedia-yoan-leviev",
+          "source-wikipedia-rumen-gasharov",
+          "source-wikipedia-luba-lukova"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": []
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review."
+    }
   }
 ]

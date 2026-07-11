@@ -5,15 +5,15 @@
   "source_traceability_status": "complete",
   "multi_source_review_status": "needs_review",
   "summary": {
-    "total_records": 1003,
-    "records_with_sources": 1003,
+    "total_records": 1010,
+    "records_with_sources": 1010,
     "records_without_sources": 0,
-    "records_with_license_or_reuse_status": 1003,
+    "records_with_license_or_reuse_status": 1010,
     "records_missing_license_or_reuse_status": 0,
-    "single_source_records": 724,
-    "multi_source_records": 279,
-    "needs_multi_source_review_records": 724,
-    "open_license_records": 731,
+    "single_source_records": 730,
+    "multi_source_records": 280,
+    "needs_multi_source_review_records": 730,
+    "open_license_records": 738,
     "public_reference_terms_records": 338
   },
   "collections": {
@@ -21,15 +21,15 @@
       "label_bg": "Събития",
       "label_en": "Events",
       "role": "primary_entity",
-      "total_records": 362,
-      "records_with_sources": 362,
+      "total_records": 365,
+      "records_with_sources": 365,
       "records_without_sources": 0,
-      "records_with_license_or_reuse_status": 362,
+      "records_with_license_or_reuse_status": 365,
       "records_missing_license_or_reuse_status": 0,
-      "single_source_records": 350,
+      "single_source_records": 353,
       "multi_source_records": 12,
-      "needs_multi_source_review_records": 350,
-      "open_license_records": 239,
+      "needs_multi_source_review_records": 353,
+      "open_license_records": 242,
       "public_reference_terms_records": 125,
       "label_de": "Veranstaltungen",
       "label_fr": "Événements",
@@ -46,15 +46,15 @@
       "label_bg": "Хора",
       "label_en": "People",
       "role": "primary_entity",
-      "total_records": 261,
-      "records_with_sources": 261,
+      "total_records": 264,
+      "records_with_sources": 264,
       "records_without_sources": 0,
-      "records_with_license_or_reuse_status": 261,
+      "records_with_license_or_reuse_status": 264,
       "records_missing_license_or_reuse_status": 0,
-      "single_source_records": 194,
+      "single_source_records": 197,
       "multi_source_records": 67,
-      "needs_multi_source_review_records": 194,
-      "open_license_records": 258,
+      "needs_multi_source_review_records": 197,
+      "open_license_records": 261,
       "public_reference_terms_records": 59,
       "label_de": "Menschen",
       "label_fr": "Les gens",
@@ -221,15 +221,15 @@
       "label_bg": "Дълги разкази",
       "label_en": "Story longreads",
       "role": "editorial_feature",
-      "total_records": 14,
-      "records_with_sources": 14,
+      "total_records": 15,
+      "records_with_sources": 15,
       "records_without_sources": 0,
-      "records_with_license_or_reuse_status": 14,
+      "records_with_license_or_reuse_status": 15,
       "records_missing_license_or_reuse_status": 0,
       "single_source_records": 0,
-      "multi_source_records": 14,
+      "multi_source_records": 15,
       "needs_multi_source_review_records": 0,
-      "open_license_records": 13,
+      "open_license_records": 14,
       "public_reference_terms_records": 6,
       "label_de": "Story-Longreads",
       "label_fr": "Lectures longues d'histoires",
@@ -270,7 +270,7 @@
   },
   "license_statuses": {
     "public_reference_terms_unverified": 338,
-    "open_license": 731
+    "open_license": 738
   },
   "records": [
     {
@@ -1541,6 +1541,44 @@
       "title_ru": "Рождение: Georgios Kleovoulos"
     },
     {
+      "id": "event-birth-stanislav-dospevski-q7598986",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Раждане на Станислав Доспевски",
+      "title_en": "Birth of Stanislav Dospevski",
+      "review_url_bg": "/history#event-birth-stanislav-dospevski-q7598986",
+      "review_url_en": "/en/history#event-birth-stanislav-dospevski-q7598986",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-stanislav-dospevski"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Stanislav_Dospevski"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ],
+      "title_de": "Geburt von Stanislav Dospevski",
+      "title_fr": "Naissance de Stanislav Dospevski",
+      "title_it": "Nascita di Stanislav Dospevski",
+      "title_tr": "Stanislav Dospevski'nin Doğuşu",
+      "title_es": "Nacimiento de Stanislav Dospevski",
+      "title_el": "Γέννηση: Stanislav Dospevski",
+      "title_ja": "Stanislav Dospevski の誕生",
+      "title_tl": "Kapanganakan: Stanislav Dospevski",
+      "title_uk": "Народження: Stanislav Dospevski",
+      "title_ru": "Рождение: Stanislav Dospevski"
+    },
+    {
       "id": "event-first-school-1836",
       "collection": "events",
       "role": "primary_entity",
@@ -1691,6 +1729,44 @@
       "title_tl": "Kapanganakan: Konstantin Stoilov",
       "title_uk": "Народження: Konstantin Stoilov",
       "title_ru": "Рождение: Konstantin Stoilov"
+    },
+    {
+      "id": "event-birth-ivan-mrkvichka-q4309439",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Раждане на Иван Мърквичка",
+      "title_en": "Birth of Ivan Mrkvichka",
+      "review_url_bg": "/history#event-birth-ivan-mrkvichka-q4309439",
+      "review_url_en": "/en/history#event-birth-ivan-mrkvichka-q4309439",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-ivan-mrkvichka"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ],
+      "title_de": "Geburt von Ivan Mrkwitschka",
+      "title_fr": "Naissance d'Ivan Mrkvichka",
+      "title_it": "Nascita di Ivan Mrkvichka",
+      "title_tr": "Ivan Mrkvichka'nın Doğuşu",
+      "title_es": "Nacimiento de Ivan Mrkvichka",
+      "title_el": "Γέννηση: Ivan Mrkvichka",
+      "title_ja": "Ivan Mrkvichka の誕生",
+      "title_tl": "Kapanganakan: Ivan Mrkvichka",
+      "title_uk": "Народження: Ivan Mrkvichka",
+      "title_ru": "Рождение: Ivan Mrkvichka"
     },
     {
       "id": "event-bulgarian-liturgy-1858",
@@ -3902,6 +3978,44 @@
       "title_tl": "Alkalde: Georgi Dzhevizov",
       "title_uk": "Мер: Georgi Dzhevizov",
       "title_ru": "Мэр: Georgi Dzhevizov"
+    },
+    {
+      "id": "event-birth-zlatyu-boyadzhiev-q2006747",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Раждане на Златю Бояджиев",
+      "title_en": "Birth of Zlatyu Boyadzhiev",
+      "review_url_bg": "/history#event-birth-zlatyu-boyadzhiev-q2006747",
+      "review_url_en": "/en/history#event-birth-zlatyu-boyadzhiev-q2006747",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-zlatyu-boyadzhiev"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ],
+      "title_de": "Geburt von Zlatyu Boyadzhiev",
+      "title_fr": "Naissance de Zlatyu Boyadzhiev",
+      "title_it": "Nascita di Zlatyu Boyadzhiev",
+      "title_tr": "Zlatyu Boyadzhiev'in doğuşu",
+      "title_es": "Nacimiento de Zlatyu Boyadzhiev",
+      "title_el": "Γέννηση: Zlatyu Boyadzhiev",
+      "title_ja": "Zlatyu Boyadzhiev の誕生",
+      "title_tl": "Kapanganakan: Zlatyu Boyadzhiev",
+      "title_uk": "Народження: Zlatyu Boyadzhiev",
+      "title_ru": "Рождение: Zlatyu Boyadzhiev"
     },
     {
       "id": "event-mayor-22-hristo-milev",
@@ -17150,6 +17264,34 @@
       ]
     },
     {
+      "id": "person-zlatyu-boyadzhiev-q2006747",
+      "collection": "people",
+      "role": "primary_entity",
+      "title_bg": "Златю Бояджиев",
+      "title_en": "Zlatyu Boyadzhiev",
+      "review_url_bg": "/people/person-zlatyu-boyadzhiev-q2006747/",
+      "review_url_en": "/en/people/person-zlatyu-boyadzhiev-q2006747/",
+      "api_url": "/api/history/people.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-zlatyu-boyadzhiev"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "person-iva-prandzheva-q263942",
       "collection": "people",
       "role": "primary_entity",
@@ -17307,6 +17449,34 @@
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Ivan_Kostov_Nikolov"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "person-ivan-mrkvichka-q4309439",
+      "collection": "people",
+      "role": "primary_entity",
+      "title_bg": "Иван Мърквичка",
+      "title_en": "Ivan Mrkvichka",
+      "review_url_bg": "/people/person-ivan-mrkvichka-q4309439/",
+      "review_url_en": "/en/people/person-ivan-mrkvichka-q4309439/",
+      "api_url": "/api/history/people.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-ivan-mrkvichka"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka"
       ],
       "license_statuses": [
         "open_license"
@@ -20596,6 +20766,34 @@
       "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "person-stanislav-dospevski-q7598986",
+      "collection": "people",
+      "role": "primary_entity",
+      "title_bg": "Станислав Доспевски",
+      "title_en": "Stanislav Dospevski",
+      "review_url_bg": "/people/person-stanislav-dospevski-q7598986/",
+      "review_url_en": "/en/people/person-stanislav-dospevski-q7598986/",
+      "api_url": "/api/history/people.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-stanislav-dospevski"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Stanislav_Dospevski"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
@@ -31314,10 +31512,10 @@
       "title_tr": "Zlatyu Boyadzhiev Sergisi",
       "title_es": "Exposición de Zlatyu Boyadzhiev",
       "title_el": "Έκθεση Zlatyu Boyadzhiev",
-      "title_ja": "ズラトゥ・ボヤジエフ博覧会",
+      "title_ja": "Zlatyu Boyadzhiev博覧会",
       "title_tl": "Zlatyu Boyadzhiev Exposition",
-      "title_uk": "Златю Бояджиєв Експозиція",
-      "title_ru": "Экспозиция Златю Бояджиева"
+      "title_uk": "Zlatyu Boyadzhiev Експозиція",
+      "title_ru": "Экспозиция Zlatyu Boyadzhiev"
     },
     {
       "id": "place-drama-theatre-n-o-masalitinov-q12279120",
@@ -35862,7 +36060,17 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Kapana: die „Falle“, die das Handwerk baute und die Kultur wiederbelebte",
+      "title_fr": "Kapana : le « piège » bâti par l'artisanat et ranimé par la culture",
+      "title_it": "Kapana: la «trappola» costruita dall'artigianato e riportata in vita dalla cultura",
+      "title_tr": "Kapana: zanaatların kurduğu ve kültürün geri getirdiği 'tuzak'",
+      "title_es": "Kapana: la «trampa» que construyeron los oficios y revivió la cultura",
+      "title_el": "Καπανά: η «παγίδα» που έχτισαν τα επαγγέλματα και επανέφερε ο πολιτισμός",
+      "title_ja": "カパナ：職人が築き、文化がよみがえらせた「罠」",
+      "title_tl": "Kapana: Ang 'Bitag' na Ginawa ng mga Craft at Ibinalik ng Kultura",
+      "title_uk": "Капана: «пастка», яку звели ремесла й повернула до життя культура",
+      "title_ru": "Капана: «ловушка», которую построили ремёсла и вернула к жизни культура"
     },
     {
       "id": "story-maritsa-bridges",
@@ -35896,7 +36104,17 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Die Maritsa und ihre Brücken: Eine Stadt, die lernt, mit ihrem Fluss zu leben",
+      "title_fr": "La Maritsa et ses ponts : une ville qui apprend à vivre avec son fleuve",
+      "title_it": "La Maritsa e i suoi ponti: una città che impara a convivere con il suo fiume",
+      "title_tr": "Meriç ve Köprüleri: Nehri ile Yaşamayı Öğrenen Bir Şehir",
+      "title_es": "La Maritsa y sus puentes: una ciudad que aprende a vivir con su río",
+      "title_el": "Η Μαρίτσα και οι γέφυρες της: Μια πόλη που μαθαίνει να ζει με το ποτάμι της",
+      "title_ja": "マリツァとその橋: 川とともに生きることを学ぶ都市",
+      "title_tl": "Ang Maritsa at ang mga Tulay Nito: Isang Lungsod na Natutong Mamuhay Kasama ang Ilog Nito",
+      "title_uk": "Маріца та її мости: місто, яке вчиться жити зі своєю річкою",
+      "title_ru": "Марица и ее мосты: город, который учится жить со своей рекой"
     },
     {
       "id": "story-medieval-crossroads",
@@ -36032,6 +36250,60 @@
       "title_ru": "Османские филибе: площади, священные места и городские ремесла"
     },
     {
+      "id": "story-plovdiv-painters",
+      "collection": "story_longreads",
+      "role": "editorial_feature",
+      "title_bg": "Художниците на Пловдив: градът върху платно",
+      "title_en": "The Painters of Plovdiv: The City on Canvas",
+      "review_url_bg": "/stories/story-plovdiv-painters/",
+      "review_url_en": "/en/stories/story-plovdiv-painters/",
+      "api_url": "/api/history/story-longreads.json",
+      "source_count": 9,
+      "source_ids": [
+        "source-wikipedia-stanislav-dospevski",
+        "source-wikipedia-atanas-samokovliev",
+        "source-wikipedia-ivan-mrkvichka",
+        "source-wikipedia-tsanko-lavrenov",
+        "source-wikipedia-zlatyu-boyadzhiev",
+        "source-wikidata-zlatyu-boyadzhiev-exposition",
+        "source-wikidata-encho-pironkov-gallery",
+        "source-wikipedia-yoan-leviev",
+        "source-wikipedia-luba-lukova"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Stanislav_Dospevski",
+        "https://bg.wikipedia.org/wiki/%D0%90%D1%82%D0%B0%D0%BD%D0%B0%D1%81_%D0%A1%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%BB%D0%B8%D0%B5%D0%B2",
+        "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka",
+        "https://en.wikipedia.org/wiki/Tsanko_Lavrenov",
+        "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev",
+        "https://www.wikidata.org/wiki/Q12291130",
+        "https://www.wikidata.org/wiki/Q12287461",
+        "https://en.wikipedia.org/wiki/Yoan_Leviev",
+        "https://en.wikipedia.org/wiki/Luba_Lukova"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": false,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ],
+      "title_de": "Die Maler von Plovdiv: Die Stadt auf Leinwand",
+      "title_fr": "Les Peintres de Plovdiv : La ville sur toile",
+      "title_it": "I pittori di Plovdiv: la città su tela",
+      "title_tr": "Plovdiv Ressamları: Tuval Üzerine Şehir",
+      "title_es": "Los pintores de Plovdiv: la ciudad sobre lienzo",
+      "title_el": "Οι ζωγράφοι του Plovdiv: η πόλη στον καμβά",
+      "title_ja": "Plovdivの画家たち：カンヴァスの上の街",
+      "title_tl": "The Painters of Plovdiv: The City on Canvas",
+      "title_uk": "Художники Пловдива: місто на полотні",
+      "title_ru": "Художники Пловдива: город на холсте"
+    },
+    {
       "id": "story-railway-1873",
       "collection": "story_longreads",
       "role": "editorial_feature",
@@ -36059,7 +36331,17 @@
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
-      ]
+      ],
+      "title_de": "Der Zug von 1873: die Eisenbahn, die die Stadt der Ebene zuwandte",
+      "title_fr": "Le train de 1873 : le chemin de fer qui tourna la ville vers la plaine",
+      "title_it": "Il treno del 1873: la ferrovia che orientò la città verso la pianura",
+      "title_tr": "1873 Treni: Şehri Ovaya Çeviren Demiryolu",
+      "title_es": "El tren de 1873: el ferrocarril que giró la ciudad hacia la llanura",
+      "title_el": "Το τρένο του 1873: Ο σιδηρόδρομος που γύρισε την πόλη προς την πεδιάδα",
+      "title_ja": "1873年の列車：街を平原へ向けた鉄道",
+      "title_tl": "Ang Tren ng 1873: Ang Riles na Nagpaikot sa Lungsod Patungo sa Kapatagan",
+      "title_uk": "Поїзд 1873 року: залізниця, що повернула місто обличчям до рівнини",
+      "title_ru": "Поезд 1873 года: железная дорога, которая повернула город к равнине"
     },
     {
       "id": "story-revival-houses-schools",

@@ -733,6 +733,13 @@ export type StoryLongread = {
     heading_en: string;
     body_bg: string;
     body_en: string;
+    /** Optional public-domain artwork or archival image shown with the section. */
+    media?: {
+      url: string;
+      caption_bg: string;
+      caption_en: string;
+      credit: string;
+    };
     source_ids: string[];
     linked_event_ids: string[];
     linked_place_ids: string[];

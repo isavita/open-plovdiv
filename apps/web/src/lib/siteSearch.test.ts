@@ -16,7 +16,7 @@ describe("universal site search", () => {
     expect(index.items.some((item) => item.id === "neighbourhood:kapana")).toBe(true);
     expect(index.items.some((item) => item.kind === "project")).toBe(true);
     expect(index.items.some((item) => item.kind === "initiative")).toBe(true);
-    expect(index.items.filter((item) => item.kind === "event")).toHaveLength(362);
+    expect(index.items.filter((item) => item.kind === "event")).toHaveLength(365);
   });
 
   it("makes every suggested query productive in every locale", () => {

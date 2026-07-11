@@ -5,15 +5,15 @@
   "source_traceability_status": "complete",
   "multi_source_review_status": "needs_review",
   "summary": {
-    "total_records": 1003,
-    "records_with_sources": 1003,
+    "total_records": 1010,
+    "records_with_sources": 1010,
     "records_without_sources": 0,
-    "records_with_license_or_reuse_status": 1003,
+    "records_with_license_or_reuse_status": 1010,
     "records_missing_license_or_reuse_status": 0,
-    "single_source_records": 724,
-    "multi_source_records": 279,
-    "needs_multi_source_review_records": 724,
-    "open_license_records": 731,
+    "single_source_records": 730,
+    "multi_source_records": 280,
+    "needs_multi_source_review_records": 730,
+    "open_license_records": 738,
     "public_reference_terms_records": 338
   },
   "collections": {
@@ -21,30 +21,30 @@
       "label_bg": "Събития",
       "label_en": "Events",
       "role": "primary_entity",
-      "total_records": 362,
-      "records_with_sources": 362,
+      "total_records": 365,
+      "records_with_sources": 365,
       "records_without_sources": 0,
-      "records_with_license_or_reuse_status": 362,
+      "records_with_license_or_reuse_status": 365,
       "records_missing_license_or_reuse_status": 0,
-      "single_source_records": 350,
+      "single_source_records": 353,
       "multi_source_records": 12,
-      "needs_multi_source_review_records": 350,
-      "open_license_records": 239,
+      "needs_multi_source_review_records": 353,
+      "open_license_records": 242,
       "public_reference_terms_records": 125
     },
     "people": {
       "label_bg": "Хора",
       "label_en": "People",
       "role": "primary_entity",
-      "total_records": 261,
-      "records_with_sources": 261,
+      "total_records": 264,
+      "records_with_sources": 264,
       "records_without_sources": 0,
-      "records_with_license_or_reuse_status": 261,
+      "records_with_license_or_reuse_status": 264,
       "records_missing_license_or_reuse_status": 0,
-      "single_source_records": 194,
+      "single_source_records": 197,
       "multi_source_records": 67,
-      "needs_multi_source_review_records": 194,
-      "open_license_records": 258,
+      "needs_multi_source_review_records": 197,
+      "open_license_records": 261,
       "public_reference_terms_records": 59
     },
     "person_relationships": {
@@ -141,15 +141,15 @@
       "label_bg": "Дълги разкази",
       "label_en": "Story longreads",
       "role": "editorial_feature",
-      "total_records": 14,
-      "records_with_sources": 14,
+      "total_records": 15,
+      "records_with_sources": 15,
       "records_without_sources": 0,
-      "records_with_license_or_reuse_status": 14,
+      "records_with_license_or_reuse_status": 15,
       "records_missing_license_or_reuse_status": 0,
       "single_source_records": 0,
-      "multi_source_records": 14,
+      "multi_source_records": 15,
       "needs_multi_source_review_records": 0,
-      "open_license_records": 13,
+      "open_license_records": 14,
       "public_reference_terms_records": 6
     },
     "education_resources": {
@@ -170,7 +170,7 @@
   },
   "license_statuses": {
     "public_reference_terms_unverified": 338,
-    "open_license": 731
+    "open_license": 738
   },
   "records": [
     {
@@ -1111,6 +1111,34 @@
       ]
     },
     {
+      "id": "event-birth-stanislav-dospevski-q7598986",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Раждане на Станислав Доспевски",
+      "title_en": "Birth of Stanislav Dospevski",
+      "review_url_bg": "/history#event-birth-stanislav-dospevski-q7598986",
+      "review_url_en": "/en/history#event-birth-stanislav-dospevski-q7598986",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-stanislav-dospevski"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Stanislav_Dospevski"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "event-first-school-1836",
       "collection": "events",
       "role": "primary_entity",
@@ -1209,6 +1237,34 @@
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Konstantin_Stoilov"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-birth-ivan-mrkvichka-q4309439",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Раждане на Иван Мърквичка",
+      "title_en": "Birth of Ivan Mrkvichka",
+      "review_url_bg": "/history#event-birth-ivan-mrkvichka-q4309439",
+      "review_url_en": "/en/history#event-birth-ivan-mrkvichka-q4309439",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-ivan-mrkvichka"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka"
       ],
       "license_statuses": [
         "open_license"
@@ -2846,6 +2902,34 @@
       ],
       "has_open_license": false,
       "has_public_reference_terms": true,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "event-birth-zlatyu-boyadzhiev-q2006747",
+      "collection": "events",
+      "role": "primary_entity",
+      "title_bg": "Раждане на Златю Бояджиев",
+      "title_en": "Birth of Zlatyu Boyadzhiev",
+      "review_url_bg": "/history#event-birth-zlatyu-boyadzhiev-q2006747",
+      "review_url_en": "/en/history#event-birth-zlatyu-boyadzhiev-q2006747",
+      "api_url": "/api/history/events.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-zlatyu-boyadzhiev"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": true,
       "editorial_status": "needs_editorial_signoff",
@@ -13430,6 +13514,34 @@
       ]
     },
     {
+      "id": "person-zlatyu-boyadzhiev-q2006747",
+      "collection": "people",
+      "role": "primary_entity",
+      "title_bg": "Златю Бояджиев",
+      "title_en": "Zlatyu Boyadzhiev",
+      "review_url_bg": "/people/person-zlatyu-boyadzhiev-q2006747/",
+      "review_url_en": "/en/people/person-zlatyu-boyadzhiev-q2006747/",
+      "api_url": "/api/history/people.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-zlatyu-boyadzhiev"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "person-iva-prandzheva-q263942",
       "collection": "people",
       "role": "primary_entity",
@@ -13587,6 +13699,34 @@
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Ivan_Kostov_Nikolov"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "person-ivan-mrkvichka-q4309439",
+      "collection": "people",
+      "role": "primary_entity",
+      "title_bg": "Иван Мърквичка",
+      "title_en": "Ivan Mrkvichka",
+      "review_url_bg": "/people/person-ivan-mrkvichka-q4309439/",
+      "review_url_en": "/en/people/person-ivan-mrkvichka-q4309439/",
+      "api_url": "/api/history/people.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-ivan-mrkvichka"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka"
       ],
       "license_statuses": [
         "open_license"
@@ -16876,6 +17016,34 @@
       "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "person-stanislav-dospevski-q7598986",
+      "collection": "people",
+      "role": "primary_entity",
+      "title_bg": "Станислав Доспевски",
+      "title_en": "Stanislav Dospevski",
+      "review_url_bg": "/people/person-stanislav-dospevski-q7598986/",
+      "review_url_en": "/en/people/person-stanislav-dospevski-q7598986/",
+      "api_url": "/api/history/people.json",
+      "source_count": 1,
+      "source_ids": [
+        "source-wikipedia-stanislav-dospevski"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Stanislav_Dospevski"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": true,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
@@ -28628,6 +28796,50 @@
         "https://www.wikidata.org/wiki/Q60169037",
         "https://www.wikidata.org/wiki/Q37813757",
         "https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": false,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "story-plovdiv-painters",
+      "collection": "story_longreads",
+      "role": "editorial_feature",
+      "title_bg": "Художниците на Пловдив: градът върху платно",
+      "title_en": "The Painters of Plovdiv: The City on Canvas",
+      "review_url_bg": "/stories/story-plovdiv-painters/",
+      "review_url_en": "/en/stories/story-plovdiv-painters/",
+      "api_url": "/api/history/story-longreads.json",
+      "source_count": 9,
+      "source_ids": [
+        "source-wikipedia-stanislav-dospevski",
+        "source-wikipedia-atanas-samokovliev",
+        "source-wikipedia-ivan-mrkvichka",
+        "source-wikipedia-tsanko-lavrenov",
+        "source-wikipedia-zlatyu-boyadzhiev",
+        "source-wikidata-zlatyu-boyadzhiev-exposition",
+        "source-wikidata-encho-pironkov-gallery",
+        "source-wikipedia-yoan-leviev",
+        "source-wikipedia-luba-lukova"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Stanislav_Dospevski",
+        "https://bg.wikipedia.org/wiki/%D0%90%D1%82%D0%B0%D0%BD%D0%B0%D1%81_%D0%A1%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%BB%D0%B8%D0%B5%D0%B2",
+        "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka",
+        "https://en.wikipedia.org/wiki/Tsanko_Lavrenov",
+        "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev",
+        "https://www.wikidata.org/wiki/Q12291130",
+        "https://www.wikidata.org/wiki/Q12287461",
+        "https://en.wikipedia.org/wiki/Yoan_Leviev",
+        "https://en.wikipedia.org/wiki/Luba_Lukova"
       ],
       "license_statuses": [
         "open_license"
