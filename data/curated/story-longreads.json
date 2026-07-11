@@ -123,7 +123,7 @@
     "title_en": "Roman Philippopolis: A City of Stages, Games and Forums",
     "dek_bg": "Античният театър, стадионът и форумът показват как Филипопол/Тримонциум функционира като римски град с публични пространства, зрелища и градска инфраструктура.",
     "dek_en": "The Ancient Theatre, Stadium and Forum show how Philippopolis/Trimontium worked as a Roman city of public spaces, spectacle and urban infrastructure.",
-    "reading_minutes": 9,
+    "reading_minutes": 10,
     "era_tags": [
       "roman"
     ],
@@ -142,8 +142,8 @@
       {
         "heading_bg": "Тримонциум в имперския ред",
         "heading_en": "Trimontium in the Imperial Order",
-        "body_bg": "Записът за включването на Тримонциум в Римската империя поставя Филипопол в по-широка политическа рамка. Разказът не се опира само на едно име: той свързва датировка, градско пространство и по-късните археологически следи, които днес правят античния град четим за посетители и ученици.",
-        "body_en": "The record on Trimontium joining the Roman Empire places Philippopolis in a wider political frame. The story does not rest on a name alone: it connects dating, urban space and later archaeological traces that make the ancient city readable today for visitors and students.",
+        "body_bg": "Записът за включването на Тримонциум в Римската империя поставя Филипопол в по-широка политическа рамка. Разказът не се опира само на едно име: той свързва датировка, градско пространство и по-късните археологически следи, които днес правят античния град четим за посетители и ученици. Показателно е, че градът не е бил колония на ветерани, а заварен елински център, въздигнат в имперската пътна мрежа: по Виа Милитарис Тримонциум е бил спирката, на която императори и легиони са слизали в Тракия.",
+        "body_en": "The record on Trimontium joining the Roman Empire places Philippopolis in a wider political frame. The story does not rest on a name alone: it connects dating, urban space and later archaeological traces that make the ancient city readable today for visitors and students. Tellingly, the city was no veterans' colony but an existing Hellenic centre elevated within the imperial road network: on the Via Militaris, Trimontium was the stop where emperors and legions stepped down into Thrace.",
         "source_ids": [
           "source-wikipedia-plovdiv"
         ],
@@ -169,7 +169,13 @@
         ],
         "linked_place_ids": [
           "place-ancient-theatre"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Razkrivane_antichen_teatur.jpg",
+          "caption_bg": "Разкриването на Античния театър: до 60-те години на XX век сцената на Тримонциум лежи под квартала.",
+          "caption_en": "Uncovering the Ancient Theatre: until the 1960s the stage of Trimontium lay hidden beneath the neighbourhood above it.",
+          "credit": "Wikimedia Commons · CC BY 4.0 · Realsteel007"
+        }
       },
       {
         "heading_bg": "Стадион, форум и градска система",
@@ -187,7 +193,13 @@
         "linked_place_ids": [
           "place-ancient-stadium",
           "place-forum-philippopolis"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Razkrivane_stadion.jpg",
+          "caption_bg": "Разкопките на Античния стадион — извивката на пистата излиза изпод главната улица на модерния град.",
+          "caption_en": "Excavating the Ancient Stadium — the curve of the track emerging from beneath the modern city's main street.",
+          "credit": "Wikimedia Commons · CC BY 4.0 · Realsteel007"
+        }
       }
     ],
     "linked_event_ids": [
