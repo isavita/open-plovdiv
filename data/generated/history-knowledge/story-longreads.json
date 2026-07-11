@@ -1731,7 +1731,7 @@
     "title_en": "Revival Plovdiv: Houses, Schools and Urban Communities",
     "dek_bg": "Старият град, училищните сгради и храмовете разказват как възрожденската архитектура и образованието променят градската памет.",
     "dek_en": "The Old Town, school buildings and churches show how Revival architecture and education reshaped urban memory.",
-    "reading_minutes": 9,
+    "reading_minutes": 10,
     "era_tags": [
       "revival",
       "modern"
@@ -1777,13 +1777,19 @@
         "linked_place_ids": [
           "place-old-town",
           "place-humanitarian-high-school-saints-cyril-and-methodius-plovdiv-q12290859"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/The_German_school%2C_Plovdiv%2C_1928.jpg",
+          "caption_bg": "Немското училище на картичка от 1928 г. — училищните сгради са сред първите „обществени лица“ на възрожденския град.",
+          "caption_en": "The German School on a 1928 postcard — school buildings were among the first public faces of the Revival-era city.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       },
       {
         "heading_bg": "Общностите зад фасадите",
         "heading_en": "The Communities Behind the Facades",
-        "body_bg": "Храмове, училища и къщи оформят мрежа от общности. Света Богородица, Ламартиновата къща и училищните записи показват, че градската памет не се изчерпва с един стил. Тя е резултат от език, вяра, обучение, семейства и институции, които трябва да бъдат представени без да се губи произходът на данните.",
-        "body_en": "Churches, schools and houses form a network of communities. Holy Mother of God, Lamartine House and school records show that urban memory is not exhausted by one style. It is the result of language, faith, education, families and institutions, all of which must be presented without losing data provenance.",
+        "body_bg": "Храмове, училища и къщи оформят мрежа от общности. Света Богородица, Ламартиновата къща и училищните записи показват, че градската памет не се изчерпва с един стил. Тя е резултат от език, вяра, обучение, семейства и институции, които трябва да бъдат представени без да се губи произходът на данните. Затова разходката из Стария град е и урок по социална история: всяка къща издава с ширината на еркерите и броя на стаите какво е можела и какво е искала да покаже една търговска фамилия от XIX век.",
+        "body_en": "Churches, schools and houses form a network of communities. Holy Mother of God, Lamartine House and school records show that urban memory is not exhausted by one style. It is the result of language, faith, education, families and institutions, all of which must be presented without losing data provenance. A walk through the Old Town is therefore also a lesson in social history: with the width of its bay windows and the number of its rooms, each house discloses what a nineteenth-century merchant family could afford — and wished to display.",
         "source_ids": [
           "source-wikidata-church-of-the-holy-mother-of-god-q966311",
           "source-wikidata-lamartine-house-q12284656",
@@ -1794,7 +1800,13 @@
           "place-holy-mother-of-god",
           "place-lamartine-house",
           "place-geo-milev-school"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Old_town3.jpg",
+          "caption_bg": "Ламартиновата къща в Стария град: домът като визитна картичка на общността, която го е издигнала.",
+          "caption_en": "The Lamartine House in the Old Town: the home as the calling card of the community that raised it.",
+          "credit": "Wikimedia Commons · CC BY 2.0 · Juan Antonio F. Segal, Wikimedia Commons"
+        }
       }
     ],
     "linked_event_ids": [
