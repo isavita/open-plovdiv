@@ -360,7 +360,7 @@
     "title_en": "Ottoman Filibe: Squares, Sacred Places and Urban Crafts",
     "dek_bg": "Джумая джамия, хамами, текета и часовникови следи показват как османският пласт остава част от градската топография на Пловдив.",
     "dek_en": "Dzhumaya Mosque, baths, dervish spaces and clock-tower traces show how the Ottoman layer remains part of Plovdiv's urban topography.",
-    "reading_minutes": 8,
+    "reading_minutes": 9,
     "era_tags": [
       "ottoman",
       "revival"
@@ -380,8 +380,8 @@
       {
         "heading_bg": "Филибе като име на градски пласт",
         "heading_en": "Filibe as the Name of an Urban Layer",
-        "body_bg": "След османското завоевание Пловдив влиза в нов политически и градски ред. Името Филибе не е просто превод на старо име, а знак за институционална и културна промяна. Разказът тук свързва хронологичния запис с видими места, които помагат на читателя да различи пластовете без да ги противопоставя механично.",
-        "body_en": "After the Ottoman conquest, Plovdiv entered a new political and urban order. The name Filibe is not merely a translation of an older name, but a sign of institutional and cultural change. This story links the chronological record with visible places that help readers distinguish layers without forcing them into opposition.",
+        "body_bg": "След османското завоевание Пловдив влиза в нов политически и градски ред. Името Филибе не е просто превод на старо име, а знак за институционална и културна промяна. Разказът тук свързва хронологичния запис с видими места, които помагат на читателя да различи пластовете без да ги противопоставя механично. Пет века градът живее под това име и то не е бележка под линия, а цял пласт: улична мрежа, чешми, бани и часовникова кула, които модерният Пловдив наследява наготово и продължава да ползва.",
+        "body_en": "After the Ottoman conquest, Plovdiv entered a new political and urban order. The name Filibe is not merely a translation of an older name, but a sign of institutional and cultural change. This story links the chronological record with visible places that help readers distinguish layers without forcing them into opposition. For five centuries the city lived under this name, and it is no footnote but an entire layer: a street grid, fountains, baths and a clock tower that modern Plovdiv inherited ready-made and still uses.",
         "source_ids": [
           "source-wikipedia-plovdiv"
         ],
@@ -406,7 +406,13 @@
         "linked_place_ids": [
           "place-dzhumaya-mosque",
           "place-dzhumaya-square-q59368698"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Dzhumaya_square_on_old_postcard_2.jpg",
+          "caption_bg": "Площадът при Джумаята на стара картичка: петъчната джамия, пазарът и уличната мрежа на Филибе в един възел.",
+          "caption_en": "The square by the Dzhumaya on an old postcard: Friday mosque, market and Filibe's street grid tied into one knot.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       },
       {
         "heading_bg": "Религиозни и обществени пространства",
@@ -423,7 +429,13 @@
           "place-chifte-hamam",
           "place-mevlevi-hane",
           "place-sahat-hill-in-plovdiv-q12293012"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Ottoman_clock_tower_in_Plovdiv_on_old_postcard.jpg",
+          "caption_bg": "Часовниковата кула на Сахат тепе — сред най-ранните обществени часовници в Османската империя, времето като градска услуга.",
+          "caption_en": "The clock tower on Sahat Tepe — among the earliest public clocks of the Ottoman Empire, time as a civic service.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       }
     ],
     "linked_event_ids": [
