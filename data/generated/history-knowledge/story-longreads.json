@@ -1505,7 +1505,7 @@
     "title_en": "The Train of 1873: The Railway That Turned the City Toward the Plain",
     "dek_bg": "Как линията на барон Хирш и гарата на юг от тепетата изместиха тежестта на Пловдив от хълмовете към равнината — и подготвиха модерния град.",
     "dek_en": "How Baron Hirsch's line and the station south of the hills shifted Plovdiv's weight from the hilltops to the plain — and prepared the modern city.",
-    "reading_minutes": 6,
+    "reading_minutes": 7,
     "era_tags": [
       "ottoman",
       "liberation"
@@ -1551,7 +1551,13 @@
         "linked_event_ids": [
           "event-modern-railways"
         ],
-        "linked_place_ids": []
+        "linked_place_ids": [],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/43/Bahnhof_von_Plowdiw.jpg",
+          "caption_bg": "Пощенска картичка „Bahnhof von Plowdiw“ — новата гара бързо става символ, който градът изпраща по света.",
+          "caption_en": "A postcard titled 'Bahnhof von Plowdiw' — the new station quickly became an emblem the city mailed out to the world.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       },
       {
         "heading_bg": "Гарата на юг от тепетата",
@@ -1577,6 +1583,26 @@
         "linked_event_ids": [],
         "linked_place_ids": [
           "place-international-fair-plovdiv-q1667383"
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/BASA-3K-7-334-14-Map_of_Plovdiv_-_Stanimaka_railway.jpeg",
+          "caption_bg": "Карта на железницата Пловдив – Станимака от 1928 г.: половин век след първия влак релсите вече рисуват целия регион.",
+          "caption_en": "A 1928 map of the Plovdiv–Stanimaka railway: half a century after the first train, the rails were already drawing the whole region.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
+      },
+      {
+        "heading_bg": "Какво остана от 1873-та",
+        "heading_en": "What Remains of 1873",
+        "body_bg": "Осевата линия, начертана от железницата, още държи града. Булевардът от Централна гара към центъра остава един от главните входове на Пловдив, панаирните влакове и днес стоварват гости на същия перон, а теснолинейките към Родопите тръгваха оттук чак до втората половина на XX век. Сто и петдесет години по-късно решението на инженерите на Хирш — гарата да легне в равнината, а не под тепетата — се чете във всяка карта на града: модерният Пловдив е построен около нея.",
+        "body_en": "The axis drawn by the railway still holds the city. The boulevard from the Central Station toward the centre remains one of Plovdiv's main gateways, fair-bound trains still deliver visitors to the same platform, and the narrow-gauge lines toward the Rhodope Mountains departed from here well into the second half of the twentieth century. A century and a half later, the decision of Hirsch's engineers — to lay the station on the plain rather than under the hills — can be read on every map of the city: modern Plovdiv was built around it.",
+        "source_ids": [
+          "source-wikipedia-plovdiv-central-railway-station",
+          "source-wikipedia-plovdiv"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": [
+          "place-plovdiv-central-railway-station-q7205164"
         ]
       }
     ],
