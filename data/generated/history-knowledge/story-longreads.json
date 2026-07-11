@@ -732,7 +732,7 @@
     "title_en": "The Maritsa and Its Bridges: A City Learning to Live With Its River",
     "dek_bg": "Реката е давала име на битка, поминък и посоки. Разказ за бродовете, Герджика и бетонните мостове, които направиха от двата бряга един град.",
     "dek_en": "The river has lent its name to a battle, to livelihoods and to directions. A story of fords, the Gerdzhika, and the concrete bridges that made two banks one city.",
-    "reading_minutes": 6,
+    "reading_minutes": 7,
     "era_tags": [
       "medieval",
       "modern"
@@ -792,7 +792,13 @@
         "linked_event_ids": [],
         "linked_place_ids": [
           "place-gerdzhika-bridge-q56636017"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Gerdjica_1931.jpg",
+          "caption_bg": "Герджика на картичка от 1931 г. — мостът е пълен с минувачи, реката е част от работния ден.",
+          "caption_en": "The Gerdzhika on a 1931 postcard — the bridge is full of passers-by, the river part of the working day.",
+          "credit": "Wikimedia Commons · CC BY 4.0 · Realsteel007"
+        }
       },
       {
         "heading_bg": "Бетонните посоки на XX век",
@@ -807,6 +813,28 @@
         "linked_place_ids": [
           "place-fairground-bridge-q56613441",
           "place-green-bridge-in-plovdiv-q56632059"
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/%D0%9C%D0%B0%D1%80%D0%B8%D1%86%D0%B0_-_panoramio.jpg",
+          "caption_bg": "Марица при Панаирния мост днес: реката вече минава през средата на града, не покрай него.",
+          "caption_en": "The Maritsa at the Fairground Bridge today: the river now runs through the middle of the city, not past it.",
+          "credit": "Wikimedia Commons · CC BY 3.0 · Alkhimov Maxim"
+        }
+      },
+      {
+        "heading_bg": "Реката като всекидневие",
+        "heading_en": "The River as Daily Life",
+        "body_bg": "За пловдивчани мостовете отдавна не са събитие, а маршрут: сутрин на юг към центъра и гарата, вечер на север към Кършияка и панаира. Точно това е тихата победа на строителите от два века насам — реката, която е била граница и заплаха, днес е просто част от пътя до работа, с чайки над водата и тепета в дъното на кадъра. Градовете рядко печелят по-хубава награда от това една опасност да стане пейзаж.",
+        "body_en": "For the people of Plovdiv the bridges long ago stopped being an event and became a route: south in the morning toward the centre and the station, north in the evening toward Karshiyaka and the fairground. That is the quiet victory of two centuries of builders — the river that was once a border and a threat is now simply part of the way to work, with gulls over the water and the hills at the back of the frame. Cities rarely win a finer prize than a danger turned into scenery.",
+        "source_ids": [
+          "source-wikidata-fairground-bridge",
+          "source-wikidata-gerdzhika-bridge",
+          "source-wikipedia-plovdiv"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": [
+          "place-fairground-bridge-q56613441",
+          "place-gerdzhika-bridge-q56636017"
         ]
       }
     ],
