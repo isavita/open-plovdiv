@@ -6,18 +6,15 @@ import { field, localeForLang, localizePath } from "@i18n/utils";
 import {
   cityArchive,
   projects,
-  sourceRegistry,
   type CityArchiveRecord,
   type Project
 } from "@lib/data";
 import {
   categoryLabel,
   formatMoney,
-  formatPlainNumber,
   projectStatusLabel,
   sourceTitle
 } from "@lib/format";
-import { sectionMotifs } from "@lib/motifs";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
@@ -79,7 +76,7 @@ const copy = {
     currentTitle: "Текущо управление",
     currentMeta: "изведено от активния кметски запис",
     sectionNavLabel: "Раздели на страницата",
-    navWho: "Кой управлява",
+    navWho: "Кметове",
     navArchive: "Архивни промени",
     navMoney: "Проекти",
     navRoutes: "По-дълбоко",
@@ -87,23 +84,23 @@ const copy = {
     statMayors: "различими кметски имена",
     statArchive: "архивни записи извън мандатите",
     statSources: "източника в регистъра",
-    whoTitle: "Кой управлява: ранни, текущи и последни мандати",
+    whoTitle: "Кметове през времето",
     whoLead:
-      "Тук имената не са декоративни. Всеки кметски запис е свързан с периода си и с архивни събития, които се застъпват с него, когато такива има.",
+      "Кратък преглед на първите общински мандати и последните администрации. Пълната хронология включва всички кметове; архивни връзки се показват само когато има запис от същия период.",
     currentGroup: "Текущ кмет",
     earlyGroup: "Първи общински мандати",
     recentGroup: "Последни администрации",
     officeTerm: "мандат",
-    linkedArchive: "застъпващи се архивни записи",
+    linkedArchive: "От същия период",
     noLinkedArchive: "няма застъпващ се архивен запис в избрания набор",
     detail: "профил",
     source: "източник",
-    archiveTitle: "Какво се променя: архивен гръбнак на управлението",
+    archiveTitle: "Ключови промени в градското управление",
     archiveLead:
       "Избрани записи от градския архив показват управленски промени, общински програми, финанси и културни решения. Връзката с кметове е само времево застъпване.",
     mayorOverlap: "застъпване с мандат",
     amountLabel: "стойност",
-    projectsTitle: "Текущи проектни записи",
+    projectsTitle: "Текущи общински проекти",
     projectLead: "Активни, договорени или финансирани проекти от публичния проектен регистър.",
     projectYear: "година",
     noAmount: "няма сума",
@@ -126,7 +123,7 @@ const copy = {
     currentTitle: "Current administration",
     currentMeta: "derived from the active mayoral record",
     sectionNavLabel: "Page sections",
-    navWho: "Who governed",
+    navWho: "Mayors",
     navArchive: "Archive changes",
     navMoney: "Projects",
     navRoutes: "Go deeper",
@@ -134,23 +131,23 @@ const copy = {
     statMayors: "distinct mayor names",
     statArchive: "non-term archive records",
     statSources: "sources in the registry",
-    whoTitle: "Who governed: early, current and recent terms",
+    whoTitle: "Mayors across time",
     whoLead:
-      "The names are not decoration. Each mayoral record stays tied to its period and to overlapping archive events where the curated data supports that link.",
+      "A focused view of the first municipal terms and recent administrations. Open the full chronology for every mayor; archive links appear only when a record falls within the same period.",
     currentGroup: "Current mayor",
     earlyGroup: "First municipal terms",
     recentGroup: "Recent administrations",
     officeTerm: "term",
-    linkedArchive: "overlapping archive records",
+    linkedArchive: "From the same period",
     noLinkedArchive: "no overlapping archive record in this selected set",
     detail: "profile",
     source: "source",
-    archiveTitle: "What changed: an archive backbone for governance",
+    archiveTitle: "Key changes in city government",
     archiveLead:
       "Selected city archive records surface governance changes, municipal programmes, finance and cultural decisions. The mayor link is a time overlap only.",
     mayorOverlap: "term overlap",
     amountLabel: "amount",
-    projectsTitle: "Current project records",
+    projectsTitle: "Municipal projects now",
     projectLead: "Active, contracted or funded projects from the public project registry.",
     projectYear: "year",
     noAmount: "no amount",
@@ -173,7 +170,7 @@ const copy = {
     currentTitle: "Aktuelle Verwaltung",
     currentMeta: "aus dem aktiven Bürgermeisterdatensatz abgeleitet",
     sectionNavLabel: "Seitenabschnitte",
-    navWho: "Wer regierte",
+    navWho: "Bürgermeister",
     navArchive: "Archivänderungen",
     navMoney: "Projekte",
     navRoutes: "Vertiefen",
@@ -181,23 +178,23 @@ const copy = {
     statMayors: "unterschiedliche Bürgermeister-Namen",
     statArchive: "Archivdatensätze außerhalb der Mandate",
     statSources: "Quellen im Register",
-    whoTitle: "Wer regierte: frühe, aktuelle und jüngste Mandate",
+    whoTitle: "Bürgermeister im Wandel der Zeit",
     whoLead:
-      "Die Namen sind keine Dekoration. Jeder Bürgermeisterdatensatz bleibt mit seinem Zeitraum und, wo belegt, mit überlappenden Archivereignissen verbunden.",
+      "Eine kompakte Auswahl der ersten kommunalen Mandate und jüngsten Verwaltungen. Die vollständige Chronologie enthält alle Bürgermeister; Archivlinks erscheinen nur, wenn ein Eintrag in denselben Zeitraum fällt.",
     currentGroup: "Aktueller Bürgermeister",
     earlyGroup: "Erste kommunale Mandate",
     recentGroup: "Jüngste Verwaltungen",
     officeTerm: "Mandat",
-    linkedArchive: "überlappende Archivdatensätze",
+    linkedArchive: "Aus demselben Zeitraum",
     noLinkedArchive: "kein überlappender Archivdatensatz in dieser Auswahl",
     detail: "Profil",
     source: "Quelle",
-    archiveTitle: "Was sich änderte: Archiv-Rückgrat der Verwaltung",
+    archiveTitle: "Wichtige Veränderungen in der Stadtverwaltung",
     archiveLead:
       "Ausgewählte Stadtarchivdatensätze zeigen Verwaltungswechsel, kommunale Programme, Finanzen und Kulturentscheidungen. Die Bürgermeisterverknüpfung ist nur eine zeitliche Überlappung.",
     mayorOverlap: "Mandatsüberlappung",
     amountLabel: "Betrag",
-    projectsTitle: "Aktuelle Projektdatensätze",
+    projectsTitle: "Aktuelle kommunale Projekte",
     projectLead: "Aktive, vergebene oder finanzierte Projekte aus dem öffentlichen Projektregister.",
     projectYear: "Jahr",
     noAmount: "kein Betrag",
@@ -220,7 +217,7 @@ const copy = {
     currentTitle: "Administration actuelle",
     currentMeta: "dérivée du dossier actif du maire",
     sectionNavLabel: "Sections de la page",
-    navWho: "Qui gouvernait",
+    navWho: "Maires",
     navArchive: "Changements d'archives",
     navMoney: "Projets",
     navRoutes: "Approfondir",
@@ -228,23 +225,23 @@ const copy = {
     statMayors: "noms de maires distincts",
     statArchive: "dossiers d'archives hors mandats",
     statSources: "sources dans le registre",
-    whoTitle: "Qui gouvernait : mandats anciens, actuel et récents",
+    whoTitle: "Les maires au fil du temps",
     whoLead:
-      "Les noms ne sont pas décoratifs. Chaque dossier de maire reste lié à sa période et aux événements d'archives qui la recoupent lorsque les données le permettent.",
+      "Une sélection concise des premiers mandats municipaux et des administrations récentes. La chronologie complète réunit tous les maires ; les liens d’archives n’apparaissent que lorsqu’un dossier appartient à la même période.",
     currentGroup: "Maire actuel",
     earlyGroup: "Premiers mandats municipaux",
     recentGroup: "Administrations récentes",
     officeTerm: "mandat",
-    linkedArchive: "dossiers d'archives qui se recoupent",
+    linkedArchive: "De la même période",
     noLinkedArchive: "aucun dossier d'archives recoupé dans cette sélection",
     detail: "profil",
     source: "source",
-    archiveTitle: "Ce qui a changé : colonne vertébrale archivistique de la gouvernance",
+    archiveTitle: "Évolutions clés de l’administration municipale",
     archiveLead:
       "Des dossiers choisis des archives urbaines montrent changements de gouvernance, programmes municipaux, finances et décisions culturelles. Le lien avec les maires est seulement temporel.",
     mayorOverlap: "recoupement de mandat",
     amountLabel: "montant",
-    projectsTitle: "Dossiers de projets actuels",
+    projectsTitle: "Projets municipaux en cours",
     projectLead: "Projets actifs, attribués ou financés du registre public des projets.",
     projectYear: "année",
     noAmount: "aucun montant",
@@ -267,7 +264,7 @@ const copy = {
     currentTitle: "Amministrazione attuale",
     currentMeta: "ricavata dal mandato in corso del sindaco",
     sectionNavLabel: "Sezioni della pagina",
-    navWho: "Chi governava",
+    navWho: "Sindaci",
     navArchive: "Cambiamenti d'archivio",
     navMoney: "Progetti",
     navRoutes: "Approfondisci",
@@ -275,23 +272,23 @@ const copy = {
     statMayors: "nomi distinti di sindaci",
     statArchive: "schede d'archivio esterne ai mandati",
     statSources: "fonti nel registro",
-    whoTitle: "Chi governava: mandati iniziali, attuale e recenti",
+    whoTitle: "I sindaci nel tempo",
     whoLead:
-      "I nomi non sono un elenco decorativo. Ogni scheda del sindaco resta legata al proprio periodo e agli eventi d'archivio che si sovrappongono, quando i dati lo confermano.",
+      "Una selezione essenziale dei primi mandati comunali e delle amministrazioni recenti. La cronologia completa raccoglie tutti i sindaci; i collegamenti d’archivio compaiono solo quando una scheda rientra nello stesso periodo.",
     currentGroup: "Sindaco attuale",
     earlyGroup: "Primi mandati municipali",
     recentGroup: "Amministrazioni recenti",
     officeTerm: "mandato",
-    linkedArchive: "schede d'archivio sovrapposte",
+    linkedArchive: "Dello stesso periodo",
     noLinkedArchive: "nessuna scheda d'archivio sovrapposta in questa selezione",
     detail: "profilo",
     source: "fonte",
-    archiveTitle: "Cosa cambiò: una dorsale d'archivio per il governo",
+    archiveTitle: "Cambiamenti chiave nel governo della città",
     archiveLead:
       "Una selezione di schede dell'archivio cittadino mostra cambiamenti di governo, programmi municipali, finanze e decisioni culturali. Il collegamento con i sindaci è solo temporale.",
     mayorOverlap: "sovrapposizione di mandato",
     amountLabel: "importo",
-    projectsTitle: "Progetti attuali",
+    projectsTitle: "Progetti comunali in corso",
     projectLead: "Progetti attivi, affidati o finanziati dal registro pubblico dei progetti.",
     projectYear: "anno",
     noAmount: "nessun importo",
@@ -314,7 +311,7 @@ const copy = {
     currentTitle: "Mevcut yönetim",
     currentMeta: "aktif belediye başkanı kaydından türetildi",
     sectionNavLabel: "Sayfa bölümleri",
-    navWho: "Kim yönetti",
+    navWho: "Belediye başkanları",
     navArchive: "Arşiv değişiklikleri",
     navMoney: "Projeler",
     navRoutes: "Derinleş",
@@ -322,23 +319,23 @@ const copy = {
     statMayors: "ayrı belediye başkanı adları",
     statArchive: "dönem dışı arşiv kayıtları",
     statSources: "kayıt defterindeki kaynaklar",
-    whoTitle: "Kim yönetti: erken, mevcut ve yakın dönemler",
+    whoTitle: "Zaman içinde belediye başkanları",
     whoLead:
-      "Adlar dekorasyon değildir. Her belediye başkanı kaydı dönemine ve veriler desteklediğinde çakışan arşiv olaylarına bağlı kalır.",
+      "İlk belediye dönemleri ile yakın dönem yönetimlerinden odaklı bir seçki. Tam kronoloji tüm belediye başkanlarını içerir; arşiv bağlantıları yalnızca aynı döneme ait bir kayıt varsa görünür.",
     currentGroup: "Mevcut belediye başkanı",
     earlyGroup: "İlk belediye dönemleri",
     recentGroup: "Yakın dönem yönetimleri",
     officeTerm: "dönem",
-    linkedArchive: "çakışan arşiv kayıtları",
+    linkedArchive: "Aynı dönemden",
     noLinkedArchive: "bu seçkide çakışan arşiv kaydı yok",
     detail: "profil",
     source: "kaynak",
-    archiveTitle: "Ne değişti: yönetim için arşiv omurgası",
+    archiveTitle: "Kent yönetimindeki önemli değişimler",
     archiveLead:
       "Seçilmiş şehir arşivi kayıtları yönetim değişikliklerini, belediye programlarını, finansmanı ve kültürel kararları gösterir. Belediye başkanı bağlantısı yalnızca zamansal çakışmadır.",
     mayorOverlap: "dönem çakışması",
     amountLabel: "tutar",
-    projectsTitle: "Güncel proje kayıtları",
+    projectsTitle: "Güncel belediye projeleri",
     projectLead: "Kamu proje kayıtlarından aktif, sözleşmeli veya finanse edilen projeler.",
     projectYear: "yıl",
     noAmount: "tutar yok",
@@ -361,7 +358,7 @@ const copy = {
     currentTitle: "Administración actual",
     currentMeta: "derivada del registro activo del alcalde",
     sectionNavLabel: "Secciones de la página",
-    navWho: "Quién gobernó",
+    navWho: "Alcaldes",
     navArchive: "Cambios de archivo",
     navMoney: "Proyectos",
     navRoutes: "Profundizar",
@@ -369,23 +366,23 @@ const copy = {
     statMayors: "nombres de alcaldes distintos",
     statArchive: "registros de archivo fuera de mandatos",
     statSources: "fuentes en el registro",
-    whoTitle: "Quién gobernó: mandatos tempranos, actual y recientes",
+    whoTitle: "Alcaldes a lo largo del tiempo",
     whoLead:
-      "Los nombres no son decoración. Cada registro de alcalde permanece unido a su periodo y a los eventos de archivo superpuestos cuando los datos lo respaldan.",
+      "Una selección concisa de los primeros mandatos municipales y las administraciones recientes. La cronología completa reúne a todos los alcaldes; los enlaces al archivo solo aparecen cuando hay un registro del mismo periodo.",
     currentGroup: "Alcalde actual",
     earlyGroup: "Primeros mandatos municipales",
     recentGroup: "Administraciones recientes",
     officeTerm: "mandato",
-    linkedArchive: "registros de archivo superpuestos",
+    linkedArchive: "Del mismo periodo",
     noLinkedArchive: "no hay registro de archivo superpuesto en esta selección",
     detail: "perfil",
     source: "fuente",
-    archiveTitle: "Qué cambió: una columna de archivo para la gobernanza",
+    archiveTitle: "Cambios clave en el gobierno de la ciudad",
     archiveLead:
       "Registros seleccionados del archivo de la ciudad muestran cambios de gobernanza, programas municipales, finanzas y decisiones culturales. El vínculo con alcaldes es solo temporal.",
     mayorOverlap: "superposición de mandato",
     amountLabel: "importe",
-    projectsTitle: "Registros de proyectos actuales",
+    projectsTitle: "Proyectos municipales en curso",
     projectLead: "Proyectos activos, contratados o financiados del registro público de proyectos.",
     projectYear: "año",
     noAmount: "sin importe",
@@ -408,7 +405,7 @@ const copy = {
     currentTitle: "Τρέχουσα διοίκηση",
     currentMeta: "προκύπτει από την ενεργή εγγραφή δημάρχου",
     sectionNavLabel: "Ενότητες σελίδας",
-    navWho: "Ποιος κυβέρνησε",
+    navWho: "Δήμαρχοι",
     navArchive: "Αρχειακές αλλαγές",
     navMoney: "Έργα",
     navRoutes: "Περισσότερα",
@@ -416,23 +413,23 @@ const copy = {
     statMayors: "διακριτά ονόματα δημάρχων",
     statArchive: "αρχειακές εγγραφές εκτός θητειών",
     statSources: "πηγές στο μητρώο",
-    whoTitle: "Ποιος κυβέρνησε: πρώιμες, τρέχουσα και πρόσφατες θητείες",
+    whoTitle: "Οι δήμαρχοι στον χρόνο",
     whoLead:
-      "Τα ονόματα δεν είναι διακόσμηση. Κάθε εγγραφή δημάρχου μένει δεμένη με την περίοδό της και με επικαλυπτόμενα αρχειακά γεγονότα όταν τα δεδομένα το υποστηρίζουν.",
+      "Μια σύντομη επιλογή από τις πρώτες δημοτικές θητείες και τις πρόσφατες διοικήσεις. Η πλήρης χρονολογία περιλαμβάνει όλους τους δημάρχους· οι σύνδεσμοι αρχείου εμφανίζονται μόνο όταν υπάρχει εγγραφή από την ίδια περίοδο.",
     currentGroup: "Τρέχων δήμαρχος",
     earlyGroup: "Πρώτες δημοτικές θητείες",
     recentGroup: "Πρόσφατες διοικήσεις",
     officeTerm: "θητεία",
-    linkedArchive: "επικαλυπτόμενες αρχειακές εγγραφές",
+    linkedArchive: "Από την ίδια περίοδο",
     noLinkedArchive: "καμία επικαλυπτόμενη αρχειακή εγγραφή σε αυτή την επιλογή",
     detail: "προφίλ",
     source: "πηγή",
-    archiveTitle: "Τι άλλαξε: αρχειακός κορμός της διακυβέρνησης",
+    archiveTitle: "Κομβικές αλλαγές στη διοίκηση της πόλης",
     archiveLead:
       "Επιλεγμένες εγγραφές του αρχείου της πόλης δείχνουν αλλαγές διακυβέρνησης, δημοτικά προγράμματα, οικονομικά και πολιτιστικές αποφάσεις. Ο σύνδεσμος με δημάρχους είναι μόνο χρονική επικάλυψη.",
     mayorOverlap: "επικάλυψη θητείας",
     amountLabel: "ποσό",
-    projectsTitle: "Τρέχουσες εγγραφές έργων",
+    projectsTitle: "Τρέχοντα δημοτικά έργα",
     projectLead: "Ενεργά, συμβασιοποιημένα ή χρηματοδοτημένα έργα από το δημόσιο μητρώο έργων.",
     projectYear: "έτος",
     noAmount: "χωρίς ποσό",
@@ -455,7 +452,7 @@ const copy = {
     currentTitle: "現在の行政",
     currentMeta: "有効な市長記録から作成",
     sectionNavLabel: "ページ内セクション",
-    navWho: "誰が統治したか",
+    navWho: "市長",
     navArchive: "アーカイブ上の変化",
     navMoney: "プロジェクト",
     navRoutes: "さらに見る",
@@ -463,23 +460,23 @@ const copy = {
     statMayors: "識別できる市長名",
     statArchive: "任期以外のアーカイブ記録",
     statSources: "登録された出典",
-    whoTitle: "誰が統治したか: 初期、現在、近年の任期",
+    whoTitle: "時代をたどる市長",
     whoLead:
-      "名前は飾りではありません。各市長記録はその期間に結び付き、データが支える場合は重なるアーカイブ出来事にも結び付きます。",
+      "初期の市政任期と近年の行政を絞って紹介します。すべての市長は完全な年表で確認でき、同じ時期の記録がある場合にだけアーカイブへのリンクを表示します。",
     currentGroup: "現在の市長",
     earlyGroup: "最初期の市政任期",
     recentGroup: "近年の行政",
     officeTerm: "任期",
-    linkedArchive: "重なるアーカイブ記録",
+    linkedArchive: "同じ時期の記録",
     noLinkedArchive: "この選択内に重なるアーカイブ記録はありません",
     detail: "プロフィール",
     source: "出典",
-    archiveTitle: "何が変わったか: 統治を読むアーカイブの骨格",
+    archiveTitle: "市政の主な変化",
     archiveLead:
       "選択した都市アーカイブ記録は、統治変更、市政プログラム、財政、文化決定を示します。市長との関連は時間上の重なりのみです。",
     mayorOverlap: "任期との重なり",
     amountLabel: "金額",
-    projectsTitle: "現在のプロジェクト記録",
+    projectsTitle: "進行中の市政プロジェクト",
     projectLead: "公開プロジェクト登録から、進行中、契約済み、または資金確保済みのプロジェクト。",
     projectYear: "年",
     noAmount: "金額なし",
@@ -502,7 +499,7 @@ const copy = {
     currentTitle: "Kasalukuyang Pamamahala",
     currentMeta: "hango sa aktibong talaan ng alkalde",
     sectionNavLabel: "Mga Seksyon ng Pahina",
-    navWho: "Sino ang namahala",
+    navWho: "Mga alkalde",
     navArchive: "Pagbabago sa arkibo",
     navMoney: "Mga Proyekto",
     navRoutes: "Tingnan pa nang mas malalim",
@@ -510,23 +507,23 @@ const copy = {
     statMayors: "natatanging pangalan ng alkalde",
     statArchive: "talaan sa arkibo na wala sa termino",
     statSources: "pinagmulan sa rehistro",
-    whoTitle: "Sino ang namahala: unang, kasalukuyan, at kamakailang termino",
+    whoTitle: "Mga alkalde sa paglipas ng panahon",
     whoLead:
-      "Hindi palamuti lamang ang mga pangalan. Nananatiling konektado ang bawat talaan ng alkalde sa kanyang panahon at sa mga kaugnay na pangyayari sa arkibo kung sinusuportahan ito ng datos.",
+      "Isang maikling pagpili mula sa mga unang termino ng munisipalidad at mga kamakailang pamamahala. Nasa buong kronolohiya ang lahat ng alkalde; lumilitaw lamang ang mga link sa arkibo kapag may tala mula sa parehong panahon.",
     currentGroup: "Kasalukuyang alkalde",
     earlyGroup: "Unang termino ng munisipalidad",
     recentGroup: "Kamakailang pamamahala",
     officeTerm: "termino",
-    linkedArchive: "kaugnay na talaan sa arkibo",
+    linkedArchive: "Mula sa parehong panahon",
     noLinkedArchive: "walang kaugnay na talaan sa arkibo sa napiling grupong ito",
     detail: "detalye",
     source: "pinagmulan",
-    archiveTitle: "Ano ang nagbago: ang arkibo bilang gulugod ng pamamahala",
+    archiveTitle: "Mahahalagang pagbabago sa pamamahala ng lungsod",
     archiveLead:
       "Ipinapakita ng piling talaan sa arkibo ng lungsod ang pagbabago sa pamamahala, mga programa ng munisipalidad, pananalapi, at desisyong pangkultura. Ang koneksyon sa alkalde ay batay lamang sa magkatapat na panahon.",
     mayorOverlap: "magkatapat na termino",
     amountLabel: "halaga",
-    projectsTitle: "Kasalukuyang Talaan ng Proyekto",
+    projectsTitle: "Mga kasalukuyang proyekto ng munisipalidad",
     projectLead: "Aktibo, nakontrata, o pinondohang proyekto mula sa pampublikong rehistro ng proyekto.",
     projectYear: "taon",
     noAmount: "walang halaga",
@@ -549,7 +546,7 @@ const copy = {
     currentTitle: "Поточне управління",
     currentMeta: "походить з активного запису мера",
     sectionNavLabel: "Розділи сторінки",
-    navWho: "Хто керував",
+    navWho: "Мери",
     navArchive: "Зміни в архіві",
     navMoney: "Проєкти",
     navRoutes: "Дізнатися більше",
@@ -557,23 +554,23 @@ const copy = {
     statMayors: "унікальних імен мерів",
     statArchive: "архівних записів поза термінами",
     statSources: "джерел у реєстрі",
-    whoTitle: "Хто керував: перші, поточний і останні терміни",
+    whoTitle: "Мери крізь час",
     whoLead:
-      "Імена — не прикраса. Кожен запис мера залишається пов'язаним з його періодом і з відповідними архівними подіями, коли це підтверджують дані.",
+      "Стислий вибір перших муніципальних каденцій і нещодавніх адміністрацій. Повна хронологія містить усіх мерів; посилання на архів з’являються лише тоді, коли є запис за той самий період.",
     currentGroup: "Поточний мер",
     earlyGroup: "Перші муніципальні терміни",
     recentGroup: "Останні керівництва",
     officeTerm: "термін",
-    linkedArchive: "пов'язані архівні записи",
+    linkedArchive: "За той самий період",
     noLinkedArchive: "немає пов'язаних архівних записів у цьому виборі",
     detail: "профіль",
     source: "джерело",
-    archiveTitle: "Що змінилося: архівний стрижень управління",
+    archiveTitle: "Ключові зміни в управлінні містом",
     archiveLead:
       "Вибрані записи міського архіву показують зміни управління, муніципальні програми, фінанси та культурні рішення. Зв'язок з мерами — лише за часовим збігом.",
     mayorOverlap: "збіг з терміном",
     amountLabel: "сума",
-    projectsTitle: "Поточні записи проєктів",
+    projectsTitle: "Поточні муніципальні проєкти",
     projectLead: "Активні, законтрактовані або профінансовані проєкти з публічного реєстру проєктів.",
     projectYear: "рік",
     noAmount: "без суми",
@@ -596,7 +593,7 @@ const copy = {
     currentTitle: "Текущее управление",
     currentMeta: "на основе действующей записи о мэре",
     sectionNavLabel: "Разделы страницы",
-    navWho: "Кто управлял",
+    navWho: "Мэры",
     navArchive: "Изменения в архиве",
     navMoney: "Проекты",
     navRoutes: "Узнать больше",
@@ -604,23 +601,23 @@ const copy = {
     statMayors: "уникальных имён мэров",
     statArchive: "архивных записей вне сроков полномочий",
     statSources: "источников в реестре",
-    whoTitle: "Кто управлял: первые, текущий и последние сроки",
+    whoTitle: "Мэры сквозь время",
     whoLead:
-      "Имена — не украшение. Каждая запись о мэре остаётся связанной со своим периодом и с архивными событиями, которые с ним пересекаются, если это подтверждают данные.",
+      "Краткая подборка первых муниципальных сроков и недавних администраций. Полная хронология включает всех мэров; ссылки на архив появляются только при наличии записи за тот же период.",
     currentGroup: "Действующий мэр",
     earlyGroup: "Первые муниципальные сроки",
     recentGroup: "Последние администрации",
     officeTerm: "срок",
-    linkedArchive: "связанные архивные записи",
+    linkedArchive: "За тот же период",
     noLinkedArchive: "нет связанных архивных записей в этой выборке",
     detail: "профиль",
     source: "источник",
-    archiveTitle: "Что изменилось: архивный костяк управления",
+    archiveTitle: "Ключевые изменения в управлении городом",
     archiveLead:
       "Отобранные записи городского архива показывают изменения в управлении, муниципальные программы, финансы и культурные решения. Связь с мэрами — лишь временное совпадение.",
     mayorOverlap: "совпадение со сроком",
     amountLabel: "сумма",
-    projectsTitle: "Текущие проектные записи",
+    projectsTitle: "Текущие муниципальные проекты",
     projectLead: "Активные, законтрактованные или профинансированные проекты из публичного реестра проектов.",
     projectYear: "год",
     noAmount: "без суммы",
@@ -751,28 +748,18 @@ const l = copy[lang];
 const sectionNav = [
   { id: "who-governed", label: l.navWho },
   { id: "archive-changes", label: l.navArchive },
-  { id: "money-projects", label: l.navMoney },
-  { id: "go-deeper", label: l.navRoutes }
+  { id: "money-projects", label: l.navMoney }
 ];
 
 const mayorTerms = cityArchive
   .filter((record) => record.kind === "mayor_term")
   .sort((a, b) => a.year_start - b.year_start || (a.year_end ?? currentYear) - (b.year_end ?? currentYear));
 const currentMayor = mayorTerms.find((record) => record.year_end == null) ?? mayorTerms[mayorTerms.length - 1];
-const earlyMayors = mayorTerms.slice(0, 5);
+const earlyMayors = mayorTerms.slice(0, 3);
 const recentMayors = [...mayorTerms]
   .filter((record) => record.id !== currentMayor?.id)
   .sort((a, b) => b.year_start - a.year_start || (b.year_end ?? currentYear) - (a.year_end ?? currentYear))
-  .slice(0, 6);
-
-function normalizeMayorName(record: CityArchiveRecord): string {
-  return field(record, "actor", lang)
-    .replace(/^(д-р|Д-р|инж\.|Mayor:)\s*/u, "")
-    .trim()
-    .toLocaleLowerCase(locale);
-}
-
-const uniqueMayorCount = new Set(mayorTerms.map((record) => normalizeMayorName(record))).size;
+  .slice(0, 3);
 const nonMayorArchive = cityArchive
   .filter((record) => record.kind !== "mayor_term")
   .sort((a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start));
@@ -793,7 +780,7 @@ function pickEvenly<T>(items: T[], max: number): T[] {
   return selected;
 }
 
-const archiveHighlights = [...governanceChanges, ...pickEvenly(programmeAndFinance, 8)].sort(
+const archiveHighlights = [...governanceChanges, ...pickEvenly(programmeAndFinance, 4)].sort(
   (a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start)
 );
 
@@ -812,7 +799,7 @@ const currentProjects = [...projects]
       (statusRank[a.status] ?? 99) - (statusRank[b.status] ?? 99) ||
       field(a, "title", lang).localeCompare(field(b, "title", lang), locale)
   )
-  .slice(0, 6);
+  .slice(0, 3);
 
 function termEnd(term: CityArchiveRecord): number {
   return term.year_end ?? currentYear;
@@ -824,7 +811,7 @@ function overlapsTerm(record: CityArchiveRecord, term: CityArchiveRecord): boole
 }
 
 function linkedArchiveForTerm(term: CityArchiveRecord): CityArchiveRecord[] {
-  return archiveHighlights.filter((record) => overlapsTerm(record, term)).slice(0, 3);
+  return nonMayorArchive.filter((record) => overlapsTerm(record, term)).slice(0, 2);
 }
 
 function mayorOverlapLabel(record: CityArchiveRecord): string {
@@ -854,15 +841,8 @@ function sourceLabel(source: { title: string } | null | undefined): string {
 }
 
 const mayorGroups = [
-  { title: l.currentGroup, terms: currentMayor ? [currentMayor] : [] },
   { title: l.earlyGroup, terms: earlyMayors },
   { title: l.recentGroup, terms: recentMayors }
-];
-
-const ctas = [
-  { href: "/mayors", title: l.ctaMayors, text: l.ctaMayorsText },
-  { href: "/projects", title: l.ctaProjects, text: l.ctaProjectsText },
-  { href: "/archive", title: l.ctaArchive, text: l.ctaArchiveText }
 ];
 ---
 
@@ -870,13 +850,18 @@ const ctas = [
   <section class="page-head governance-hero" data-section="governance">
     <div class="container governance-hero-grid">
       <div class="governance-intro">
-        <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.governance} />
         <p class="eyebrow">{l.eyebrow}</p>
         <h1>{l.title}</h1>
         <p class="lead">{l.lead}</p>
         <div class="hero-actions">
-          <a class="button" href={localizePath("/mayors", lang)}>{l.ctaMayors}<span class="arrow">→</span></a>
-          <a class="button secondary" href={localizePath("/archive", lang)}>{l.ctaArchive}<span class="arrow">→</span></a>
+          <a class="hero-route" href={localizePath("/mayors", lang)}>
+            <span><strong>{l.ctaMayors}</strong><small>{l.ctaMayorsText}</small></span>
+            <b aria-hidden="true">→</b>
+          </a>
+          <a class="hero-route" href={localizePath("/archive", lang)}>
+            <span><strong>{l.ctaArchive}</strong><small>{l.ctaArchiveText}</small></span>
+            <b aria-hidden="true">→</b>
+          </a>
         </div>
       </div>
       {currentMayor && (
@@ -888,8 +873,10 @@ const ctas = [
             <p class="eyebrow">{l.currentTitle}</p>
             <h2>{field(currentMayor, "actor", lang)}</h2>
             <p class="meta">{field(currentMayor, "period", lang)}</p>
-            <p>{field(currentMayor, "summary", lang)}</p>
-            <a href={localizePath(`/mayors/${currentMayor.id}`, lang)}>{l.detail} →</a>
+            <a
+              href={localizePath(`/mayors/${currentMayor.id}`, lang)}
+              aria-label={`${l.detail}: ${field(currentMayor, "actor", lang)}`}
+            >{l.detail} →</a>
           </div>
         </aside>
       )}
@@ -898,36 +885,14 @@ const ctas = [
 
   <SectionNav items={sectionNav} label={l.sectionNavLabel} />
 
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="stat-row governance-stats">
-        <div class="stat" data-cat="people" style="--cat:var(--data-people)">
-          <strong>{formatPlainNumber(mayorTerms.length, lang)}</strong>
-          <span>{l.statTerms}</span>
-        </div>
-        <div class="stat" data-cat="people" style="--cat:var(--data-people)">
-          <strong>{formatPlainNumber(uniqueMayorCount, lang)}</strong>
-          <span>{l.statMayors}</span>
-        </div>
-        <div class="stat" data-cat="events" style="--cat:var(--data-events)">
-          <strong>{formatPlainNumber(nonMayorArchive.length, lang)}</strong>
-          <span>{l.statArchive}</span>
-        </div>
-        <div class="stat" data-cat="sources" style="--cat:var(--data-sources)">
-          <strong>{formatPlainNumber(sourceRegistry.length, lang)}</strong>
-          <span>{l.statSources}</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="who-governed" data-subnav-target>
+  <section class="section governance-people" id="who-governed" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>
           <h2>{l.whoTitle}</h2>
           <p class="meta">{l.whoLead}</p>
         </div>
+        <a href={localizePath("/mayors", lang)}>{l.ctaMayors} →</a>
       </div>
 
       <div class="mayor-board">
@@ -940,31 +905,41 @@ const ctas = [
                 return (
                   <article class="term-card">
                     <header>
-                      <p class="eyebrow">{l.officeTerm}</p>
                       <h4><a href={localizePath(`/mayors/${term.id}`, lang)}>{field(term, "actor", lang)}</a></h4>
-                      <p class="meta">{field(term, "period", lang)}</p>
+                      <p class="term-period">{field(term, "period", lang)}</p>
                     </header>
-                    <p>{field(term, "summary", lang)}</p>
-                    <div class="term-evidence">
-                      <p class="eyebrow">{l.linkedArchive}</p>
-                      {linked.length > 0 ? (
+                    {linked.length > 0 && (
+                      <div class="term-evidence">
+                        <p>{l.linkedArchive}</p>
                         <ul>
                           {linked.map((record) => (
                             <li>
-                              <span>{record.year_start}</span>
-                              <strong>{field(record, "title", lang)}</strong>
+                              <a
+                                href={record.source_document.url}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={`${field(record, "title", lang)}: ${sourceLabel(record.source_document)}`}
+                              >
+                                <span>{record.year_start}</span>
+                                <strong>{field(record, "title", lang)}</strong>
+                              </a>
                             </li>
                           ))}
                         </ul>
-                      ) : (
-                        <p class="meta">{l.noLinkedArchive}</p>
-                      )}
-                    </div>
-                    <div class="pill-row">
-                      <a class="meta" href={term.source_document.url} target="_blank" rel="noreferrer">
-                        {sourceLabel(term.source_document)}
-                      </a>
-                      <a class="meta" href={localizePath(`/mayors/${term.id}`, lang)}>{l.detail}</a>
+                      </div>
+                    )}
+                    <div class="term-actions">
+                      <a
+                        href={localizePath(`/mayors/${term.id}`, lang)}
+                        aria-label={`${l.detail}: ${field(term, "actor", lang)}`}
+                      >{l.detail} →</a>
+                      <a
+                        class="meta"
+                        href={term.source_document.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${l.source}: ${sourceLabel(term.source_document)}`}
+                      >{l.source} ↗</a>
                     </div>
                   </article>
                 );
@@ -1047,59 +1022,111 @@ const ctas = [
     </div>
   </section>
 
-  <section class="section section-tint" id="go-deeper" data-subnav-target>
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>{l.deepTitle}</h2>
-          <p class="meta">{l.deepLead}</p>
-        </div>
-      </div>
-      <div class="cta-grid">
-        {ctas.map((cta) => (
-          <a class="governance-cta" href={localizePath(cta.href, lang)}>
-            <span>{cta.title}</span>
-            <strong>{cta.text}</strong>
-            <em>{l.open} →</em>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
 </Layout>
 
 <style>
   .governance-hero {
-    --governance-accent: var(--data-sources);
-    padding-bottom: clamp(34px, 6vw, 72px);
+    --governance-accent: var(--data-people);
+    padding-bottom: clamp(28px, 4vw, 48px);
   }
 
   .governance-hero-grid {
     align-items: center;
     display: grid;
-    gap: clamp(24px, 5vw, 58px);
-    grid-template-columns: minmax(0, 1.15fr) minmax(290px, 0.85fr);
+    gap: clamp(30px, 6vw, 72px);
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.72fr);
+  }
+
+  .governance-intro h1 {
+    font-size: clamp(2.8rem, 5vw, 4.25rem);
+    max-width: 13ch;
   }
 
   .governance-intro .lead {
-    max-width: 72ch;
+    max-width: 58ch;
+  }
+
+  .hero-actions {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 26px;
+    max-width: 680px;
+  }
+
+  .hero-route {
+    --route-accent: var(--data-people);
+    align-items: center;
+    background: color-mix(in srgb, var(--route-accent) 5%, var(--surface));
+    border: 1px solid var(--line-strong);
+    border-inline-start: 4px solid var(--route-accent);
+    border-radius: var(--r);
+    color: var(--ink);
+    display: grid;
+    gap: 12px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 78px;
+    padding: 13px 15px;
+    text-decoration: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  }
+
+  .hero-route:nth-child(2) {
+    --route-accent: var(--data-growth);
+  }
+
+  .hero-route:hover,
+  .hero-route:focus-visible {
+    border-color: var(--route-accent);
+    box-shadow: var(--shadow-card);
+    color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  .hero-route > span {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .hero-route strong {
+    color: var(--route-accent);
+    font-size: 0.96rem;
+    font-weight: 800;
+  }
+
+  .hero-route small {
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.3;
+  }
+
+  .hero-route b {
+    color: var(--route-accent);
+    font-size: 1.15rem;
   }
 
   .current-panel {
     background: linear-gradient(
       145deg,
-      color-mix(in srgb, var(--section-soft) 38%, var(--surface)) 0%,
-      var(--surface) 62%
+      color-mix(in srgb, var(--governance-accent) 7%, var(--surface)) 0%,
+      var(--surface) 68%
     );
     border: 1px solid var(--line);
-    border-top: 6px solid var(--governance-accent);
+    border-inline-start: 5px solid var(--governance-accent);
     border-radius: var(--r-md);
     box-shadow: var(--shadow-card);
     display: grid;
-    grid-template-columns: 116px minmax(0, 1fr);
     gap: 18px;
+    grid-template-columns: 104px minmax(0, 1fr);
     overflow: hidden;
-    padding: 18px;
+    padding: 16px;
+  }
+
+  .current-panel > div {
+    align-content: center;
+    display: grid;
+    min-width: 0;
   }
 
   .current-panel img {
@@ -1122,90 +1149,80 @@ const ctas = [
   }
 
   .current-panel h2 {
-    font-family: var(--font-display);
-    font-size: clamp(1.3rem, 2vw, 1.65rem);
-    line-height: 1.1;
+    font-size: clamp(1.28rem, 2vw, 1.62rem);
+    line-height: 1.08;
     margin-bottom: 6px;
-  }
-
-  .current-panel p:not(.eyebrow):not(.meta) {
-    color: var(--ink-2);
-    font-size: 0.95rem;
-    margin-top: 10px;
   }
 
   .current-panel a {
     align-items: center;
     display: inline-flex;
-    font-weight: 700;
-    margin-top: 10px;
+    font-weight: 750;
+    margin-top: 4px;
     min-height: 44px;
     text-decoration: none;
+    width: fit-content;
   }
 
-  .governance-stats {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .governance-people {
+    padding-top: clamp(34px, 4vw, 52px);
   }
 
-  .governance-stats .stat {
-    box-shadow: inset 0 5px 0 var(--cat, var(--section-accent));
-    padding-top: 21px;
+  .governance-people .section-head > div {
+    max-width: 78ch;
+  }
+
+  .governance-people .section-head .meta {
+    line-height: 1.55;
+    max-width: 74ch;
   }
 
   .mayor-board {
+    align-items: start;
     display: grid;
-    gap: clamp(18px, 2.5vw, 28px);
-    grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 64px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .mayor-column {
-    border: 1px solid var(--line);
-    border-top: 5px solid var(--column-accent, var(--governance-accent));
-    border-radius: var(--r-md);
-    box-shadow: var(--shadow-card);
+    background: transparent;
+    border: 0;
+    border-top: 4px solid var(--column-accent);
+    border-radius: 0;
+    box-shadow: none;
     min-width: 0;
-    padding: clamp(15px, 2vw, 20px);
+    padding: 16px 0 0;
   }
 
   .mayor-column:nth-child(1) {
-    --column-accent: var(--data-people);
-  }
-
-  .mayor-column:nth-child(2) {
     --column-accent: var(--data-growth);
   }
 
-  .mayor-column:nth-child(3) {
+  .mayor-column:nth-child(2) {
     --column-accent: var(--data-events);
   }
 
   .mayor-column h3 {
-    border-bottom: 1px solid var(--line-strong);
-    color: var(--column-accent, var(--governance-accent));
-    font-family: var(--font-ui);
-    font-size: 0.84rem;
-    font-weight: 780;
-    letter-spacing: 0.075em;
-    margin: 0 0 16px;
-    padding-bottom: 12px;
-    text-transform: uppercase;
+    color: var(--column-accent);
+    font-size: 1.08rem;
+    margin: 0 0 14px;
   }
 
   .term-list {
+    border-bottom: 1px solid var(--line);
     display: grid;
-    gap: 12px;
   }
 
   .term-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-inline-start: 5px solid var(--column-accent, var(--data-people));
-    border-radius: var(--r-sm);
+    background: transparent;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
     box-shadow: none;
     display: grid;
-    gap: 12px;
+    gap: 9px;
     min-width: 0;
-    padding: 16px;
+    padding: 17px 0;
   }
 
   .term-card h4,
@@ -1214,8 +1231,8 @@ const ctas = [
   }
 
   .term-card h4 {
-    font-size: 1.08rem;
-    line-height: 1.2;
+    font-size: 1.12rem;
+    line-height: 1.16;
   }
 
   .term-card h4 a {
@@ -1226,20 +1243,31 @@ const ctas = [
     text-decoration: none;
   }
 
-  .term-card h4 a:hover {
+  .term-card h4 a:hover,
+  .term-card h4 a:focus-visible {
     color: var(--brand);
   }
 
-  .term-card > p {
+  .term-period {
     color: var(--ink-2);
-    font-size: 0.94rem;
+    font-size: 0.88rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.45;
   }
 
   .term-evidence {
-    background: color-mix(in srgb, var(--column-accent, var(--data-people)) 7%, var(--surface-2));
-    border: 1px solid var(--line);
-    border-radius: var(--r-sm);
-    padding: 11px;
+    border-inline-start: 2px solid var(--column-accent);
+    margin-top: 2px;
+    padding-inline-start: 12px;
+  }
+
+  .term-evidence > p {
+    color: var(--column-accent);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
   }
 
   .term-evidence ul {
@@ -1250,23 +1278,48 @@ const ctas = [
     padding: 0;
   }
 
-  .term-evidence li {
+  .term-evidence li a {
+    align-items: center;
+    color: var(--ink-2);
     display: grid;
     gap: 8px;
-    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-columns: 42px minmax(0, 1fr);
+    min-height: 44px;
+    text-decoration: none;
+  }
+
+  .term-evidence li a:hover,
+  .term-evidence li a:focus-visible {
+    color: var(--brand);
   }
 
   .term-evidence li span {
     color: var(--muted);
+    font-size: 0.78rem;
     font-variant-numeric: tabular-nums;
-    font-size: 0.82rem;
   }
 
   .term-evidence li strong {
-    color: var(--ink-2);
-    font-size: 0.88rem;
+    color: inherit;
+    font-size: 0.84rem;
     font-weight: 650;
     overflow-wrap: anywhere;
+  }
+
+  .term-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+
+  .term-actions a {
+    align-items: center;
+    display: inline-flex;
+    font-size: 0.86rem;
+    font-weight: 720;
+    min-height: 44px;
+    text-decoration: none;
   }
 
   .archive-spine {
@@ -1310,7 +1363,6 @@ const ctas = [
   }
 
   .node-year strong {
-    font-family: var(--font-display);
     font-size: 1.45rem;
   }
 
@@ -1322,7 +1374,7 @@ const ctas = [
   .node-body {
     background: var(--surface);
     border: 1px solid var(--line);
-    border-inline-start: 5px solid var(--data-events);
+    border-inline-start: 4px solid var(--data-events);
     border-radius: var(--r-md);
     box-shadow: var(--shadow-card);
     display: grid;
@@ -1357,7 +1409,6 @@ const ctas = [
     white-space: normal;
   }
 
-  .term-card .pill-row a,
   .node-body .pill-row a,
   .governance-projects .pill-row a {
     align-items: center;
@@ -1381,127 +1432,48 @@ const ctas = [
     min-height: 44px;
   }
 
-  .cta-grid {
-    display: grid;
-    gap: 14px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .governance-cta {
-    --cta-accent: var(--governance-accent);
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-top: 6px solid var(--cta-accent);
-    border-radius: var(--r-md);
-    box-shadow: var(--shadow-card);
-    color: var(--ink);
-    display: grid;
-    gap: 8px;
-    min-height: 150px;
-    padding: 18px;
-    text-decoration: none;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
-  }
-
-  .governance-cta:nth-child(1) {
-    --cta-accent: var(--data-events);
-  }
-
-  .governance-cta:nth-child(2) {
-    --cta-accent: var(--data-geo);
-  }
-
-  .governance-cta:nth-child(3) {
-    --cta-accent: var(--data-growth);
-  }
-
-  .governance-cta:hover,
-  .governance-cta:focus-visible {
-    border-color: var(--brand);
-    box-shadow: var(--shadow);
-    color: var(--ink);
-    transform: translateY(-2px);
-  }
-
-  .governance-cta span {
-    color: var(--cta-accent);
-    font-weight: 800;
-  }
-
-  .governance-cta strong {
-    font-family: var(--font-display);
-    font-size: clamp(1.2rem, 2vw, 1.42rem);
-    font-weight: 700;
-    line-height: 1.12;
-  }
-
-  .governance-cta em {
-    align-self: end;
-    color: var(--muted);
-    font-style: normal;
-    font-weight: 700;
-  }
-
   @media (max-width: 980px) {
-    .governance-hero-grid,
-    .mayor-board {
+    .governance-hero-grid {
       grid-template-columns: 1fr;
     }
 
-    .cta-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .current-panel {
+      max-width: 680px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .mayor-board {
+      grid-template-columns: 1fr;
     }
   }
 
   @media (max-width: 700px) {
-    .current-panel {
-      gap: 7px 12px;
-      grid-template-columns: 82px minmax(0, 1fr);
-      padding: 14px;
+    .governance-hero {
+      padding-bottom: 30px;
     }
 
-    .current-panel > div {
-      display: contents;
-    }
-
-    .current-panel img {
-      grid-column: 1;
-      grid-row: 1 / span 3;
-    }
-
-    .current-panel .eyebrow,
-    .current-panel h2,
-    .current-panel .meta {
-      grid-column: 2;
-    }
-
-    .current-panel .eyebrow {
-      align-self: end;
-    }
-
-    .current-panel p:not(.eyebrow):not(.meta),
-    .current-panel a {
-      grid-column: 1 / -1;
-    }
-
-    .current-panel a {
-      margin-top: 2px;
-      width: fit-content;
+    .governance-intro h1 {
+      font-size: clamp(2.25rem, 10vw, 3rem);
     }
 
     .hero-actions {
-      display: grid;
       grid-template-columns: 1fr;
       margin-top: 22px;
     }
 
-    .hero-actions .button {
-      justify-content: center;
-      width: 100%;
+    .hero-route {
+      min-height: 72px;
     }
 
-    .governance-stats {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .current-panel {
+      gap: 12px;
+      grid-template-columns: 82px minmax(0, 1fr);
+      padding: 13px;
+    }
+
+    .governance-people {
+      padding-top: 32px;
     }
 
     .archive-spine::before {
@@ -1529,20 +1501,11 @@ const ctas = [
     .node-body {
       padding: 14px;
     }
-
-    .cta-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .governance-cta {
-      min-height: 132px;
-    }
   }
 
   :global([data-theme="dark"]) .current-panel,
-  :global([data-theme="dark"]) .mayor-column,
-  :global([data-theme="dark"]) .node-body,
-  :global([data-theme="dark"]) .governance-cta {
+  :global([data-theme="dark"]) .hero-route,
+  :global([data-theme="dark"]) .node-body {
     background: linear-gradient(
       145deg,
       color-mix(in srgb, var(--section-soft) 34%, var(--surface)) 0%,
@@ -1552,9 +1515,8 @@ const ctas = [
 
   @media (prefers-color-scheme: dark) {
     :global(:root:not([data-theme="light"])) .current-panel,
-    :global(:root:not([data-theme="light"])) .mayor-column,
-    :global(:root:not([data-theme="light"])) .node-body,
-    :global(:root:not([data-theme="light"])) .governance-cta {
+    :global(:root:not([data-theme="light"])) .hero-route,
+    :global(:root:not([data-theme="light"])) .node-body {
       background: linear-gradient(
         145deg,
         color-mix(in srgb, var(--section-soft) 34%, var(--surface)) 0%,
