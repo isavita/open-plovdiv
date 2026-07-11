@@ -5,7 +5,7 @@ import { ui, type Lang } from "@i18n/ui";
 import { field, localeForLang, localizePath } from "@i18n/utils";
 import { cityArchive } from "@lib/data";
 import { sourceTitle } from "@lib/format";
-import { bustGlyph, sectionMotifs } from "@lib/motifs";
+import { bustGlyph } from "@lib/motifs";
 import { siteSearchUi } from "@lib/siteSearchI18n";
 
 type Props = { lang: Lang };
@@ -161,6 +161,20 @@ const periodBands = [
       "Pagkatapos ng Paglaya",
       "Після Визволення",
       "После Освобождения"
+    ),
+    blurb: tr(
+      "Изборни кметове градят модерния град — улици, водопровод, гимназии и паркове — между войни и стопански кризи.",
+      "Elected mayors build the modern city — streets, waterworks, schools and parks — between wars and economic crises.",
+      "Gewählte Bürgermeister bauen die moderne Stadt — Straßen, Wasserleitungen, Schulen und Parks — zwischen Kriegen und Wirtschaftskrisen.",
+      "Des maires élus bâtissent la ville moderne — rues, adduction d'eau, écoles et parcs — entre guerres et crises économiques.",
+      "Sindaci eletti costruiscono la città moderna — strade, acquedotti, scuole e parchi — tra guerre e crisi economiche.",
+      "Seçilmiş başkanlar modern şehri kurar — sokaklar, su şebekesi, okullar ve parklar — savaşlar ve ekonomik krizler arasında.",
+      "Alcaldes electos construyen la ciudad moderna — calles, acueductos, escuelas y parques — entre guerras y crisis económicas.",
+      "Εκλεγμένοι δήμαρχοι χτίζουν τη σύγχρονη πόλη — δρόμους, υδραγωγεία, σχολεία και πάρκα — ανάμεσα σε πολέμους και οικονομικές κρίσεις.",
+      "選挙で選ばれた市長たちが、戦争と経済危機の合間に、道路・水道・学校・公園と近代都市を築いた時代。",
+      "Ang mga inihalal na alkalde ang nagtayo ng makabagong lungsod — mga kalye, patubig, paaralan at parke — sa pagitan ng mga digmaan at krisis.",
+      "Виборні мери будують модерне місто — вулиці, водогін, гімназії та парки — поміж війнами та економічними кризами.",
+      "Выборные мэры строят современный город — улицы, водопровод, гимназии и парки — между войнами и экономическими кризисами."
     )
   },
   {
@@ -180,6 +194,20 @@ const periodBands = [
       "Panahon ng Sosyalismo",
       "Соціалістичний період",
       "Социалистический период"
+    ),
+    blurb: tr(
+      "Председатели на Градския народен съвет, излъчвани от партията-държава; градът се разраства с новите жилищни комплекси.",
+      "Chairmen of the city people's council, put forward by the party-state; the city expands with the new housing estates.",
+      "Vorsitzende des städtischen Volksrats, bestimmt vom Parteistaat; die Stadt wächst mit den neuen Wohnkomplexen.",
+      "Présidents du conseil populaire municipal, désignés par l'État-parti ; la ville s'étend avec les nouveaux ensembles résidentiels.",
+      "Presidenti del consiglio popolare cittadino, designati dallo Stato-partito; la città si espande con i nuovi complessi residenziali.",
+      "Parti-devlet tarafından belirlenen şehir halk konseyi başkanları; şehir yeni konut siteleriyle büyür.",
+      "Presidentes del consejo popular municipal, designados por el Estado-partido; la ciudad se expande con los nuevos complejos de viviendas.",
+      "Πρόεδροι του δημοτικού λαϊκού συμβουλίου, ορισμένοι από το κράτος-κόμμα· η πόλη επεκτείνεται με τα νέα συγκροτήματα κατοικιών.",
+      "党国家が任命する市人民評議会議長の時代。団地建設で市域が拡大した。",
+      "Mga tagapangulo ng people's council ng lungsod, itinalaga ng partido-estado; lumawak ang lungsod sa mga bagong housing estate.",
+      "Голови міської народної ради, висунуті партією-державою; місто розростається новими житловими масивами.",
+      "Председатели городского народного совета, выдвигаемые партией-государством; город растёт новыми жилыми комплексами."
     )
   },
   {
@@ -199,6 +227,20 @@ const periodBands = [
       "Panahon ng Demokrasya",
       "Демократичний період",
       "Демократический период"
+    ),
+    blurb: tr(
+      "Свободните местни избори се завръщат през 1991 г.; кметовете отново се избират пряко от пловдивчани.",
+      "Free local elections return in 1991; mayors are once again chosen directly by the people of Plovdiv.",
+      "1991 kehren freie Kommunalwahlen zurück; die Bürgermeister werden wieder direkt von den Plovdivern gewählt.",
+      "Les élections locales libres reviennent en 1991 ; les maires sont de nouveau élus directement par les Plovdiviens.",
+      "Le libere elezioni locali tornano nel 1991; i sindaci sono di nuovo scelti direttamente dagli abitanti di Plovdiv.",
+      "1991'de serbest yerel seçimler geri döner; başkanlar yeniden doğrudan Plovdivliler tarafından seçilir.",
+      "Las elecciones locales libres regresan en 1991; los alcaldes vuelven a ser elegidos directamente por los plovdivenses.",
+      "Οι ελεύθερες δημοτικές εκλογές επιστρέφουν το 1991· οι δήμαρχοι εκλέγονται ξανά απευθείας από τους κατοίκους.",
+      "1991年に自由な地方選挙が復活し、市長は再び市民の直接選挙で選ばれるようになった。",
+      "Bumalik ang malayang lokal na halalan noong 1991; muling direktang inihahalal ng mga taga-Plovdiv ang kanilang alkalde.",
+      "1991 року повертаються вільні місцеві вибори; мерів знову обирають безпосередньо мешканці Пловдива.",
+      "В 1991 году возвращаются свободные местные выборы; мэров снова напрямую избирают жители Пловдива."
     )
   },
   {
@@ -218,6 +260,20 @@ const periodBands = [
       "Kasalukuyang Termino",
       "Чинна каденція",
       "Текущий срок полномочий"
+    ),
+    blurb: tr(
+      "Мандат 2023–2027 на действащия кмет на Пловдив.",
+      "The 2023–2027 term of Plovdiv's incumbent mayor.",
+      "Die Amtszeit 2023–2027 des amtierenden Bürgermeisters von Plovdiv.",
+      "Le mandat 2023–2027 du maire en exercice de Plovdiv.",
+      "Il mandato 2023–2027 del sindaco in carica di Plovdiv.",
+      "Plovdiv'in görevdeki başkanının 2023–2027 dönemi.",
+      "El mandato 2023–2027 del alcalde en ejercicio de Plovdiv.",
+      "Η θητεία 2023–2027 του εν ενεργεία δημάρχου της Φιλιππούπολης.",
+      "現職市長の2023–2027年の任期。",
+      "Ang terminong 2023–2027 ng kasalukuyang alkalde ng Plovdiv.",
+      "Каденція 2023–2027 чинного мера Пловдива.",
+      "Срок полномочий 2023–2027 действующего мэра Пловдива."
     )
   }
 ];
@@ -230,6 +286,133 @@ const periodGroups = periodBands
   .filter((band) => band.mayors.length > 0);
 
 const timelineEyebrow = tr("Хронология по епохи", "Chronology by era", "Chronologie nach Epochen", "Chronologie par époque", "Cronologia per epoca", "Çağa göre kronoloji", "Cronología por época", "Χρονολόγιο ανά εποχή", "時代別年表", "Kronolohiya ayon sa Panahon", "Хронологія за епохами", "Хронология по эпохам");
+
+// --- chronicle: records and curiosities computed from the archive ------
+// Term lengths come from the exact dates in the Bulgarian period strings
+// (the source language), ages from the vital years documented in the bios.
+const bgMonths: Record<string, number> = {
+  "януари": 1, "февруари": 2, "март": 3, "април": 4, "май": 5, "юни": 6,
+  "юли": 7, "август": 8, "септември": 9, "октомври": 10, "ноември": 11, "декември": 12
+};
+
+function periodDays(term: (typeof mayorTerms)[number]): number | null {
+  const period = term.period_bg ?? "";
+  const found = [...period.matchAll(/(\d{1,2})\s+(януари|февруари|март|април|май|юни|юли|август|септември|октомври|ноември|декември)(?:\s+(\d{4}))?/gu)];
+  if (found.length < 2) return null;
+  const years = period.match(/\d{4}/gu) ?? [];
+  const first = found[0];
+  const last = found[found.length - 1];
+  const startYear = first[3] ?? years[0];
+  const endYear = last[3] ?? years[years.length - 1];
+  if (!startYear || !endYear) return null;
+  const days = Math.round(
+    (Date.UTC(Number(endYear), bgMonths[last[2]] - 1, Number(last[1])) -
+      Date.UTC(Number(startYear), bgMonths[first[2]] - 1, Number(first[1]))) / 86400000
+  );
+  return days > 0 ? days : null;
+}
+
+const completedTerms = mayorTerms.filter((term) => term.year_end != null);
+const termsWithDays = completedTerms.map((term) => ({ term, days: periodDays(term) }));
+const shortestTerm = termsWithDays
+  .filter((entry): entry is { term: (typeof mayorTerms)[number]; days: number } => entry.days != null)
+  .sort((a, b) => a.days - b.days)[0];
+const longestTerm = termsWithDays
+  .map((entry) => ({
+    term: entry.term,
+    days: entry.days ?? Math.round(Math.max(1, entry.term.year_end! - entry.term.year_start) * 365.25)
+  }))
+  .sort((a, b) => b.days - a.days)[0];
+
+function birthYearOf(term: (typeof mayorTerms)[number]): number | null {
+  const bio = (term.bio_bg ?? "").slice(0, 220);
+  const match = bio.match(/\((\d{4})\s*[-–—]\s*(?:\d{4})\)/u) ?? bio.match(/\(р\.\s*(\d{4})\)/u);
+  return match ? Number(match[1]) : null;
+}
+
+const termsWithAge = mayorTerms
+  .map((term) => ({ term, age: birthYearOf(term) == null ? null : term.year_start - birthYearOf(term)! }))
+  .filter((entry): entry is { term: (typeof mayorTerms)[number]; age: number } =>
+    entry.age != null && entry.age >= 20 && entry.age <= 80)
+  .sort((a, b) => a.age - b.age);
+const youngestTerm = termsWithAge[0];
+const oldestTerm = termsWithAge[termsWithAge.length - 1];
+
+const mostTermsGroup = multiTerm[0];
+const personsWithBirthplace = [...birthPersons.values()];
+const plovdivBornCount = personsWithBirthplace.filter((person) =>
+  (person.birthplace_bg ?? "").startsWith("Пловдив")).length;
+
+function daysWord(n: number): string {
+  if (lang === "uk" || lang === "ru") {
+    const mod10 = n % 10;
+    const mod100 = n % 100;
+    const form = mod10 === 1 && mod100 !== 11 ? 0 : mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14) ? 1 : 2;
+    return (lang === "uk" ? ["день", "дні", "днів"] : ["день", "дня", "дней"])[form];
+  }
+  if (n === 1) return tr("ден", "day", "Tag", "jour", "giorno", "gün", "día", "ημέρα", "日", "araw", "день", "день");
+  return tr("дни", "days", "Tage", "jours", "giorni", "gün", "días", "ημέρες", "日間", "araw", "дні", "дней");
+}
+
+const ageWord = tr("г.", "yrs", "J.", "ans", "anni", "yaş", "años", "ετών", "歳", "taon", "р.", "лет");
+const ofWord = tr("от", "of", "von", "sur", "di", "/", "de", "από", "／", "sa", "з", "из");
+// Japanese counters attach directly to the numeral (21日, 68歳), no space.
+const withUnit = (value: number | string, unit: string) => (lang === "ja" ? `${value}${unit}` : `${value} ${unit}`);
+
+const chronicleL = {
+  eyebrow: tr("Из архива", "From the archive", "Aus dem Archiv", "Tiré des archives", "Dall'archivio", "Arşivden", "Del archivo", "Από το αρχείο", "アーカイブから", "Mula sa archive", "З архіву", "Из архива"),
+  title: tr("Рекорди и любопитни факти", "Records and curiosities", "Rekorde und Kurioses", "Records et curiosités", "Record e curiosità", "Rekorlar ve ilginç bilgiler", "Récords y curiosidades", "Ρεκόρ και αξιοπερίεργα", "記録と豆知識", "Mga rekord at kakaibang detalye", "Рекорди та цікавинки", "Рекорды и любопытные факты"),
+  lead: tr(
+    "Изчислено от датите и биографиите в архива — всяка плочка води към съответния мандат.",
+    "Computed from the dates and biographies in the archive — every tile links to its term.",
+    "Berechnet aus den Daten und Biografien des Archivs — jede Kachel führt zur jeweiligen Amtszeit.",
+    "Calculé à partir des dates et biographies des archives — chaque tuile mène au mandat correspondant.",
+    "Calcolato dalle date e dalle biografie dell'archivio — ogni riquadro porta al mandato corrispondente.",
+    "Arşivdeki tarihlerden ve biyografilerden hesaplandı — her kutucuk ilgili göreve gider.",
+    "Calculado a partir de las fechas y biografías del archivo — cada ficha lleva a su mandato.",
+    "Υπολογισμένο από τις ημερομηνίες και τις βιογραφίες του αρχείου — κάθε πλακίδιο οδηγεί στη θητεία του.",
+    "アーカイブの日付と伝記から算出。各タイルは該当する任期のページへつながっています。",
+    "Kinalkula mula sa mga petsa at talambuhay sa archive — bawat tile ay tumuturo sa kaukulang termino.",
+    "Обчислено з дат і біографій архіву — кожна плитка веде до відповідної каденції.",
+    "Вычислено по датам и биографиям архива — каждая плитка ведёт к соответствующему сроку."
+  ),
+  shortest: tr("Най-кратък мандат", "Shortest term", "Kürzeste Amtszeit", "Mandat le plus court", "Mandato più breve", "En kısa görev", "Mandato más corto", "Συντομότερη θητεία", "最短の任期", "Pinakamaikling termino", "Найкоротша каденція", "Самый короткий срок"),
+  longest: tr("Най-дълъг мандат", "Longest term", "Längste Amtszeit", "Mandat le plus long", "Mandato più lungo", "En uzun görev", "Mandato más largo", "Μακροβιότερη θητεία", "最長の任期", "Pinakamahabang termino", "Найдовша каденція", "Самый долгий срок"),
+  most: tr("Най-много мандати", "Most terms", "Meiste Amtszeiten", "Plus de mandats", "Più mandati", "En çok görev", "Más mandatos", "Περισσότερες θητείες", "最多の任期数", "Pinakamaraming termino", "Найбільше каденцій", "Больше всего сроков"),
+  youngest: tr("Най-млад при встъпване", "Youngest on taking office", "Jüngster beim Amtsantritt", "Le plus jeune à l'entrée en fonction", "Il più giovane all'insediamento", "Göreve gelen en genç", "El más joven al asumir", "Νεότερος κατά την ανάληψη", "就任時最年少", "Pinakabata sa pag-upo", "Наймолодший на початку каденції", "Самый молодой при вступлении"),
+  oldest: tr("Най-възрастен при встъпване", "Oldest on taking office", "Ältester beim Amtsantritt", "Le plus âgé à l'entrée en fonction", "Il più anziano all'insediamento", "Göreve gelen en yaşlı", "El más mayor al asumir", "Γηραιότερος κατά την ανάληψη", "就任時最年長", "Pinakamatanda sa pag-upo", "Найстарший на початку каденції", "Самый старший при вступлении"),
+  bornInCity: tr("Родени в Пловдив", "Born in Plovdiv", "In Plovdiv geboren", "Nés à Plovdiv", "Nati a Plovdiv", "Plovdiv doğumlu", "Nacidos en Plovdiv", "Γεννημένοι στη Φιλιππούπολη", "プロヴディフ生まれ", "Ipinanganak sa Plovdiv", "Народжені в Пловдиві", "Родившиеся в Пловдиве"),
+  bornInCityNote: tr("личности с известно родно място", "people with a documented birthplace", "Personen mit belegtem Geburtsort", "personnes au lieu de naissance documenté", "persone con luogo di nascita documentato", "doğum yeri belgeli kişiler", "personas con lugar de nacimiento documentado", "πρόσωπα με τεκμηριωμένο τόπο γέννησης", "出生地が記録されている人物", "mga taong may dokumentadong lugar ng kapanganakan", "особи з відомим місцем народження", "люди с документированным местом рождения"),
+  ailyak: tr(
+    "Айляк бележка: най-краткият мандат трая {daysText} — тъкмо колкото да се научиш да не бързаш.",
+    "Ailyak note: the shortest term lasted {daysText} — just long enough to learn not to hurry.",
+    "Ailyak-Notiz: Die kürzeste Amtszeit dauerte {daysText} — gerade lang genug, um zu lernen, nicht zu eilen.",
+    "Note aïlyak : le mandat le plus court a duré {daysText} — juste le temps d'apprendre à ne pas se presser.",
+    "Nota ailyak: il mandato più breve durò {daysText} — giusto il tempo di imparare a non avere fretta.",
+    "Aylyak notu: en kısa görev {daysText} sürdü — acele etmemeyi öğrenmeye tam yetecek kadar.",
+    "Nota ailyak: el mandato más corto duró {daysText} — justo lo suficiente para aprender a no tener prisa.",
+    "Σημείωση αϊλιάκ: η συντομότερη θητεία κράτησε {daysText} — ίσα ίσα για να μάθεις να μη βιάζεσαι.",
+    "アイリャクのひとこと：最短の任期はわずか{daysText}。急がないことを学ぶには、ちょうどよい長さでした。",
+    "Tala ng ailyak: tumagal ng {daysText} ang pinakamaikling termino — sapat lang para matutong huwag magmadali.",
+    "Айляк-нотатка: найкоротша каденція тривала {daysText} — якраз стільки, щоб навчитися не поспішати.",
+    "Айляк-заметка: самый короткий срок длился {daysText} — как раз достаточно, чтобы научиться не спешить."
+  )
+};
+
+// --- portrait frieze in the page head -----------------------------------
+// One tile per person (first term with a portrait), in chronological order.
+const friezePersons = (() => {
+  const seen = new Map<string, (typeof mayorTerms)[number]>();
+  for (const term of mayorTerms) {
+    const key = term.more_url ?? term.actor_bg;
+    const current = seen.get(key);
+    if (!current) seen.set(key, term);
+    else if (!current.image && term.image) seen.set(key, term);
+  }
+  return [...seen.values()].filter((term) => term.image);
+})();
+const friezeShown = friezePersons.slice(0, 18);
+const friezeMore = Math.max(0, uniqueMayors.size - friezeShown.length);
 
 const sectionNav = ({
       bg: [
@@ -317,7 +500,32 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
         <p class="lead">{t.mayors.lead}</p>
         <p class="meta" style="margin-top:10px">{t.mayors.sourceNote}</p>
       </div>
-      <div class="section-plate" aria-hidden="true" set:html={sectionMotifs.mayors} />
+      {friezeShown.length > 0 && (
+        <div class="mayor-frieze" role="list">
+          {friezeShown.map((term) => (
+            <a
+              role="listitem"
+              href={localizePath(`/mayors/${term.id}`, lang)}
+              title={field(term, "actor", lang)}
+              data-current={term.year_end == null ? "true" : undefined}
+            >
+              <img
+                src={term.image}
+                alt={t.mayors.portraitAlt(field(term, "actor", lang))}
+                width="52"
+                height="66"
+                loading="eager"
+                fetchpriority="low"
+              />
+            </a>
+          ))}
+          {friezeMore > 0 && (
+            <a class="mayor-frieze-more" href="#all-mayors" aria-label={t.mayors.detailsTitle}>
+              +{friezeMore}
+            </a>
+          )}
+        </div>
+      )}
     </div>
   </section>
 
@@ -331,6 +539,80 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
         <div class="stat"><strong>{coveredYears}</strong><span>{t.mayors.statYears}</span></div>
         {currentMayor && <div class="stat"><strong>{field(currentMayor, "actor", lang)}</strong><span>{t.mayors.statCurrent}</span></div>}
       </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" id="chronicle">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">{chronicleL.eyebrow}</p>
+          <h2>{chronicleL.title}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{chronicleL.lead}</p>
+        </div>
+      </div>
+      <div class="chronicle-grid">
+        {shortestTerm && (
+          <article class="chronicle-tile">
+            <span class="chronicle-label">{chronicleL.shortest}</span>
+            <strong>{withUnit(shortestTerm.days, daysWord(shortestTerm.days))}</strong>
+            <a href={localizePath(`/mayors/${shortestTerm.term.id}`, lang)}>
+              {field(shortestTerm.term, "actor", lang)} · {shortestTerm.term.year_start}
+            </a>
+          </article>
+        )}
+        {longestTerm && (
+          <article class="chronicle-tile">
+            <span class="chronicle-label">{chronicleL.longest}</span>
+            <strong>{t.mayors.yearsApprox(Math.round(longestTerm.days / 365.25))}</strong>
+            <a href={localizePath(`/mayors/${longestTerm.term.id}`, lang)}>
+              {field(longestTerm.term, "actor", lang)} · {longestTerm.term.year_start}–{longestTerm.term.year_end}
+            </a>
+          </article>
+        )}
+        {mostTermsGroup && (
+          <article class="chronicle-tile">
+            <span class="chronicle-label">{chronicleL.most}</span>
+            <strong>{mostTermsGroup.length}×</strong>
+            <a href={localizePath(`/mayors/${mostTermsGroup[0].id}`, lang)}>
+              {field(mostTermsGroup[0], "actor", lang)}
+            </a>
+          </article>
+        )}
+        {youngestTerm && (
+          <article class="chronicle-tile">
+            <span class="chronicle-label">{chronicleL.youngest}</span>
+            <strong>{withUnit(youngestTerm.age, ageWord)}</strong>
+            <a href={localizePath(`/mayors/${youngestTerm.term.id}`, lang)}>
+              {field(youngestTerm.term, "actor", lang)} · {youngestTerm.term.year_start}
+            </a>
+          </article>
+        )}
+        {oldestTerm && oldestTerm !== youngestTerm && (
+          <article class="chronicle-tile">
+            <span class="chronicle-label">{chronicleL.oldest}</span>
+            <strong>{withUnit(oldestTerm.age, ageWord)}</strong>
+            <a href={localizePath(`/mayors/${oldestTerm.term.id}`, lang)}>
+              {field(oldestTerm.term, "actor", lang)} · {oldestTerm.term.year_start}
+            </a>
+          </article>
+        )}
+        {personsWithBirthplace.length > 0 && (
+          <article class="chronicle-tile">
+            <span class="chronicle-label">{chronicleL.bornInCity}</span>
+            <strong>{withUnit(plovdivBornCount, `${ofWord} ${personsWithBirthplace.length}`.replace(/\s+/gu, lang === "ja" ? "" : " "))}</strong>
+            <a href="#birthplaces">{chronicleL.bornInCityNote}</a>
+          </article>
+        )}
+      </div>
+      {shortestTerm && (
+        <p class="chronicle-ailyak">
+          {chronicleL.ailyak.replace(
+            "{daysText}",
+            withUnit(shortestTerm.days, lang === "ja" ? "日" : daysWord(shortestTerm.days))
+          )}
+        </p>
+      )}
     </div>
   </section>
 
@@ -444,6 +726,7 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
               <h3>{band.label}</h3>
               <p class="meta">{t.mayors.count(band.mayors.length)}</p>
             </header>
+            {band.blurb && <p class="mt-period-blurb">{band.blurb}</p>}
             <ol class="mt-rail">
               {band.mayors.map((term) => {
                 const isCurrent = term.year_end == null;
