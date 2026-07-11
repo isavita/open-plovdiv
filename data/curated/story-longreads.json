@@ -711,7 +711,7 @@
     "title_en": "1928: The Earthquake, Damage and Visual Memory",
     "dek_bg": "Архивните изображения от земетресението край Чирпан и щетите в Пловдив показват как бедствието се превръща в източник за градска уязвимост и възстановяване.",
     "dek_en": "Archive images from the Chirpan earthquake and damage in Plovdiv show how disaster becomes evidence for urban vulnerability and recovery.",
-    "reading_minutes": 7,
+    "reading_minutes": 8,
     "era_tags": [
       "modern"
     ],
@@ -754,13 +754,19 @@
         "linked_place_ids": [
           "place-ivan-vazov-national-library-q630839",
           "place-hospital-st-josif-plovdiv-q27048499"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Chirpan_Earthquake_-_Plovdiv.jpg",
+          "caption_bg": "Болницата „Св. Йосиф“ след труса от 1928 г. — кадърът показва защо фотографията станала инструмент на помощта, не само на новините.",
+          "caption_en": "The St Josif hospital after the 1928 quake — the frame shows why photography became a tool of relief work, not just of news.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       },
       {
         "heading_bg": "Възстановяването като непълен архив",
         "heading_en": "Recovery as an Incomplete Archive",
-        "body_bg": "Този разказ умишлено не измисля бюджет или пълна програма за възстановяване, ако такава не е налична в текущата база. Вместо това той маркира какво е доказано чрез изображенията и къде са нужни следващи първични документи: решения, протоколи, отчети и периодичен печат.",
-        "body_en": "This story deliberately does not invent a recovery budget or complete programme when none is present in the current base. Instead it marks what the images prove and where further primary documents are needed: decisions, minutes, reports and period press.",
+        "body_bg": "Този разказ умишлено не измисля бюджет или пълна програма за възстановяване, ако такава не е налична в текущата база. Вместо това той маркира какво е доказано чрез изображенията и къде са нужни следващи първични документи: решения, протоколи, отчети и периодичен печат. И все пак именно тези снимки държат града честен: без тях възстановяването щеше да се помни като дата в справочник, а не като усилие на хора, разчиствали тухла по тухла. Архивът е непълен, но не е ням.",
+        "body_en": "This story deliberately does not invent a recovery budget or complete programme when none is present in the current base. Instead it marks what the images prove and where further primary documents are needed: decisions, minutes, reports and period press. Yet it is precisely these photographs that keep the city honest: without them the recovery would be remembered as a date in a reference book rather than the effort of people clearing brick after brick. The archive is incomplete, but it is not silent.",
         "source_ids": [
           "source-wikimedia-commons-historical-images-plovdiv",
           "source-wikimedia-commons-bulgarian-archives-state-agency"
