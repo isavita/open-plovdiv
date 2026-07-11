@@ -4,10 +4,10 @@
   "acceptance_requirement": "Independent editorial sign-off must be logged for 100% of published content before the history platform is complete.",
   "status": "incomplete",
   "summary": {
-    "total_tracked_records": 1000,
+    "total_tracked_records": 1003,
     "signed_off_records": 0,
-    "records_needing_review": 1000,
-    "records_with_blockers": 1000,
+    "records_needing_review": 1003,
+    "records_with_blockers": 1003,
     "signed_off_percent": 0,
     "tracking_gap_collections": 0
   },
@@ -88,10 +88,10 @@
       "label_bg": "Дълги разкази",
       "label_en": "Story longreads",
       "role": "editorial_feature",
-      "total_records": 11,
+      "total_records": 14,
       "signed_off_records": 0,
-      "records_needing_review": 11,
-      "records_with_blockers": 11
+      "records_needing_review": 14,
+      "records_with_blockers": 14
     },
     "education_resources": {
       "label_bg": "Образователни ресурси",
@@ -52324,6 +52324,178 @@
       ]
     },
     {
+      "id": "story-kapana-crafts-creative",
+      "collection": "story_longreads",
+      "role": "editorial_feature",
+      "title_bg": "Капана: кварталът-капан, който занаятите построиха, а културата съживи",
+      "title_en": "Kapana: The 'Trap' the Crafts Built and Culture Brought Back",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/stories/story-kapana-crafts-creative/",
+      "review_url_en": "/en/stories/story-kapana-crafts-creative/",
+      "api_url": "/api/history/story-longreads.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikidata-kapana",
+          "title_bg": "Wikidata — Kapana",
+          "title_en": "Wikidata — Kapana",
+          "url": "https://www.wikidata.org/wiki/Q12282547",
+          "accessed_at": "2026-06-19",
+          "license_status": "open_license",
+          "license_label": "Creative Commons CC0 1.0 Universal",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Капана: кварталът-капан, който занаятите построиха, а културата съживи\".",
+          "claim_en": "Sources and editorial claims for story longread \"Kapana: The 'Trap' the Crafts Built and Culture Brought Back\"."
+        },
+        {
+          "source_id": "source-european-commission-ecoc-2019",
+          "title_bg": "Европейска комисия — Европейски столици на културата 2019",
+          "title_en": "European Commission — 2019 European Capitals of Culture",
+          "url": "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera",
+          "accessed_at": "2026-06-17",
+          "license_status": "public_reference_terms_unverified",
+          "license_label": "Public web reference; reuse terms not verified",
+          "license_url": "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Капана: кварталът-капан, който занаятите построиха, а културата съживи\".",
+          "claim_en": "Sources and editorial claims for story longread \"Kapana: The 'Trap' the Crafts Built and Culture Brought Back\"."
+        },
+        {
+          "source_id": "source-wikipedia-plovdiv",
+          "title_bg": "Wikipedia — Plovdiv",
+          "title_en": "Wikipedia — Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "accessed_at": "2026-06-18",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Капана: кварталът-капан, който занаятите построиха, а културата съживи\".",
+          "claim_en": "Sources and editorial claims for story longread \"Kapana: The 'Trap' the Crafts Built and Culture Brought Back\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikidata-kapana",
+        "source-european-commission-ecoc-2019",
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://www.wikidata.org/wiki/Q12282547",
+        "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera",
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license",
+        "public_reference_terms_unverified"
+      ],
+      "source_count": 3,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "story-maritsa-bridges",
+      "collection": "story_longreads",
+      "role": "editorial_feature",
+      "title_bg": "Марица и мостовете: градът, който се учи да живее с реката",
+      "title_en": "The Maritsa and Its Bridges: A City Learning to Live With Its River",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/stories/story-maritsa-bridges/",
+      "review_url_en": "/en/stories/story-maritsa-bridges/",
+      "api_url": "/api/history/story-longreads.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-plovdiv",
+          "title_bg": "Wikipedia — Plovdiv",
+          "title_en": "Wikipedia — Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "accessed_at": "2026-06-18",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Марица и мостовете: градът, който се учи да живее с реката\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Maritsa and Its Bridges: A City Learning to Live With Its River\"."
+        },
+        {
+          "source_id": "source-wikidata-gerdzhika-bridge",
+          "title_bg": "Wikidata — Gerdzhika Bridge",
+          "title_en": "Wikidata — Gerdzhika Bridge",
+          "url": "https://www.wikidata.org/wiki/Q56636017",
+          "accessed_at": "2026-06-19",
+          "license_status": "open_license",
+          "license_label": "Creative Commons CC0 1.0 Universal",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Марица и мостовете: градът, който се учи да живее с реката\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Maritsa and Its Bridges: A City Learning to Live With Its River\"."
+        },
+        {
+          "source_id": "source-wikidata-fairground-bridge",
+          "title_bg": "Wikidata — Fairground Bridge",
+          "title_en": "Wikidata — Fairground Bridge",
+          "url": "https://www.wikidata.org/wiki/Q56613441",
+          "accessed_at": "2026-06-19",
+          "license_status": "open_license",
+          "license_label": "Creative Commons CC0 1.0 Universal",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Марица и мостовете: градът, който се учи да живее с реката\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Maritsa and Its Bridges: A City Learning to Live With Its River\"."
+        },
+        {
+          "source_id": "source-wikidata-green-bridge-in-plovdiv",
+          "title_bg": "Wikidata — Green Bridge in Plovdiv",
+          "title_en": "Wikidata — Green Bridge in Plovdiv",
+          "url": "https://www.wikidata.org/wiki/Q56632059",
+          "accessed_at": "2026-06-19",
+          "license_status": "open_license",
+          "license_label": "Creative Commons CC0 1.0 Universal",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Марица и мостовете: градът, който се учи да живее с реката\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Maritsa and Its Bridges: A City Learning to Live With Its River\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-plovdiv",
+        "source-wikidata-gerdzhika-bridge",
+        "source-wikidata-fairground-bridge",
+        "source-wikidata-green-bridge-in-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://www.wikidata.org/wiki/Q56636017",
+        "https://www.wikidata.org/wiki/Q56613441",
+        "https://www.wikidata.org/wiki/Q56632059"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 4,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "story-medieval-crossroads",
       "collection": "story_longreads",
       "role": "editorial_feature",
@@ -52598,6 +52770,69 @@
         "open_license"
       ],
       "source_count": 5,
+      "has_license_or_reuse_status": true,
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "story-railway-1873",
+      "collection": "story_longreads",
+      "role": "editorial_feature",
+      "title_bg": "Влакът от 1873: железницата, която обърна града към равнината",
+      "title_en": "The Train of 1873: The Railway That Turned the City Toward the Plain",
+      "editorial_status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "signoff_id": null,
+      "reviewer_affiliation": null,
+      "review_scope": [],
+      "review_artifact_url": null,
+      "review_notes_bg": null,
+      "review_notes_en": null,
+      "review_url_bg": "/stories/story-railway-1873/",
+      "review_url_en": "/en/stories/story-railway-1873/",
+      "api_url": "/api/history/story-longreads.json",
+      "review_sources": [
+        {
+          "source_id": "source-wikipedia-plovdiv",
+          "title_bg": "Wikipedia — Plovdiv",
+          "title_en": "Wikipedia — Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "accessed_at": "2026-06-18",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Влакът от 1873: железницата, която обърна града към равнината\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Train of 1873: The Railway That Turned the City Toward the Plain\"."
+        },
+        {
+          "source_id": "source-wikipedia-plovdiv-central-railway-station",
+          "title_bg": "Wikipedia — Plovdiv Central railway station",
+          "title_en": "Wikipedia — Plovdiv Central railway station",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv_Central_railway_station",
+          "accessed_at": "2026-06-19",
+          "license_status": "open_license",
+          "license_label": "Creative Commons Attribution-ShareAlike 4.0 International",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "evidence_type": "story_longread_source",
+          "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Влакът от 1873: железницата, която обърна града към равнината\".",
+          "claim_en": "Sources and editorial claims for story longread \"The Train of 1873: The Railway That Turned the City Toward the Plain\"."
+        }
+      ],
+      "source_ids": [
+        "source-wikipedia-plovdiv",
+        "source-wikipedia-plovdiv-central-railway-station"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://en.wikipedia.org/wiki/Plovdiv_Central_railway_station"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "source_count": 2,
       "has_license_or_reuse_status": true,
       "blockers": [
         "needs_independent_editorial_signoff"

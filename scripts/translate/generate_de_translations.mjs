@@ -21,6 +21,11 @@ let protectedNameFixups = [];
 
 const manualTranslationsByLang = {
   de: {
+    // New-stories titles/deks: hand-corrected over the raw MT output.
+    "The Train of 1873: The Railway That Turned the City Toward the Plain":
+      "Der Zug von 1873: die Eisenbahn, die die Stadt der Ebene zuwandte",
+    "Kapana: The 'Trap' the Crafts Built and Culture Brought Back":
+      "Kapana: die „Falle“, die das Handwerk baute und die Kultur wiederbelebte",
     // Mini-route title: "Tafelstadt" reads as dining-table city; Plattenbau
     // is the German term for panel construction.
     "Trakiya: the panel city": "Trakiya: die Plattenbaustadt",
@@ -40,6 +45,9 @@ const manualTranslationsByLang = {
     "Open Database License 1.0": "Open Database License 1.0"
   },
   fr: {
+    // New-stories titles/deks: hand-corrected over the raw MT output.
+    "Kapana: The 'Trap' the Crafts Built and Culture Brought Back":
+      "Kapana : le « piège » bâti par l'artisanat et ranimé par la culture",
     "Public web reference; reuse terms not verified":
       "Référence web publique ; conditions de réutilisation non vérifiées",
     "Wikimedia Commons file license, verify per file":
@@ -52,6 +60,11 @@ const manualTranslationsByLang = {
     "Open Database License 1.0": "Open Database License 1.0"
   },
   it: {
+    // New-stories titles/deks: hand-corrected over the raw MT output.
+    "The Train of 1873: The Railway That Turned the City Toward the Plain":
+      "Il treno del 1873: la ferrovia che orientò la città verso la pianura",
+    "Kapana: The 'Trap' the Crafts Built and Culture Brought Back":
+      "Kapana: la «trappola» costruita dall'artigianato e riportata in vita dalla cultura",
     "Public web reference; reuse terms not verified":
       "Riferimento web pubblico; condizioni di riutilizzo non verificate",
     "Wikimedia Commons file license, verify per file":
@@ -64,6 +77,9 @@ const manualTranslationsByLang = {
     "Open Database License 1.0": "Open Database License 1.0"
   },
   tr: {
+    // New-stories titles/deks: hand-corrected over the raw MT output.
+    "Kapana: The 'Trap' the Crafts Built and Culture Brought Back":
+      "Kapana: zanaatların kurduğu ve kültürün geri getirdiği 'tuzak'",
     // Mini-route title: keep Parizh (the machine writes "Parish" again).
     "Kyuchuk Parizh: the Little Paris of the south": "Kyuchuk Parizh: güneyin Küçük Paris'i",
     // Neighbourhood names: real Turkish forms (the machine produced
@@ -95,6 +111,9 @@ const manualTranslationsByLang = {
       "Eng. Ivan Totev için belediye başkanlığı dönemleri."
   },
   es: {
+    // New-stories titles/deks: hand-corrected over the raw MT output.
+    "Kapana: The 'Trap' the Crafts Built and Culture Brought Back":
+      "Kapana: la «trampa» que construyeron los oficios y revivió la cultura",
     // Route title: drop the machine's trailing period and Roman-numeral quirk.
     "Modern Plovdiv of the 20th century": "Plovdiv moderno del siglo XX",
     "Public web reference; reuse terms not verified":
@@ -109,6 +128,11 @@ const manualTranslationsByLang = {
     "Open Database License 1.0": "Open Database License 1.0"
   },
   el: {
+    // New-stories titles/deks: hand-corrected over the raw MT output.
+    "Kapana: The 'Trap' the Crafts Built and Culture Brought Back":
+      "Καπανά: η «παγίδα» που έχτισαν τα επαγγέλματα και επανέφερε ο πολιτισμός",
+    "From the artisan lanes below the Dzhumaya to the creative-industries district: how a web of trading streets became a stage for Plovdiv 2019.":
+      "Από τα σοκάκια των τεχνιτών κάτω από το Τζουμάγια έως τη συνοικία των δημιουργικών βιομηχανιών: πώς ένα πλέγμα εμπορικών δρόμων έγινε σκηνή του Plovdiv 2019.",
     // Mini-route titles: Greek transliterations for name consistency and a
     // correct "from the hill to the water".
     "Karshiyaka: the opposite shore": "Καρσιγιάκα: η απέναντι όχθη",
@@ -149,6 +173,13 @@ const manualTranslationsByLang = {
       "Ο Sotir Antoniadi (1843-1928) ήταν γιατρός και πολιτικός ελληνικής καταγωγής, γεννημένος στη Στανιμάκα, σήμερα Asenovgrad. Αρχικά σπούδασε στο κεντρικό ελληνικό σχολείο του Plovdiv, στη συνέχεια σε γυμνάσιο της Αθήνας και αργότερα ιατρική στη Βιέννη, πριν εργαστεί για δύο χρόνια στο Παρίσι. Ο Antoniadi ήταν βουλευτής στην Περιφερειακή Συνέλευση της Ανατολικής Ρωμυλίας και το 1885 στην Εθνοσυνέλευση του Πριγκιπάτου της Βουλγαρίας. Από τις 26 Ιανουαρίου έως τις 21 Απριλίου 1883 υπηρέτησε σύντομα ως αναπληρωτής δήμαρχος του Plovdiv. Το 1915 μετακόμισε στην Ελλάδα· το σπίτι του και το φαρμακείο που χτίστηκε το 1872 αποτελούν μέρος του αρχιτεκτονικού και ιστορικού αποθέματος του Παλαιού Plovdiv."
   },
   ja: {
+    // New-stories titles/deks: hand-corrected over the raw MT output.
+    "The Train of 1873: The Railway That Turned the City Toward the Plain":
+      "1873年の列車：街を平原へ向けた鉄道",
+    "Kapana: The 'Trap' the Crafts Built and Culture Brought Back":
+      "カパナ：職人が築き、文化がよみがえらせた「罠」",
+    "From the artisan lanes below the Dzhumaya to the creative-industries district: how a web of trading streets became a stage for Plovdiv 2019.":
+      "ジュマヤ モスクのふもとの職人の路地から創造産業地区へ——絡み合う商いの小路がPlovdiv 2019の舞台になるまで。",
     // Half-translated by the machine ("Named after the poet ... にちなんで");
     // keep the recorded Latin name per the protected-name convention.
     "Named after the poet Hristo Smirnenski (1898–1923).":
@@ -261,6 +292,13 @@ const manualTranslationsByLang = {
       "Ang kronolohiya ng alkalde ay nag-uugnay kay Zdravko Dimitrov kay Eng. Ivan Totev sa pamamagitan ng relasyong \"nagtagumpay\"."
   },
   uk: {
+    // New-stories titles/deks: hand-corrected over the raw MT output.
+    "The Train of 1873: The Railway That Turned the City Toward the Plain":
+      "Поїзд 1873 року: залізниця, що повернула місто обличчям до рівнини",
+    "Kapana: The 'Trap' the Crafts Built and Culture Brought Back":
+      "Капана: «пастка», яку звели ремесла й повернула до життя культура",
+    "From the artisan lanes below the Dzhumaya to the creative-industries district: how a web of trading streets became a stage for Plovdiv 2019.":
+      "Від ремісничих провулків під Джумаєю до кварталу креативних індустрій: як мереживо торгових вуличок стало сценою «Пловдив 2019».",
     // Mini-route titles: keep the Bulgarian quarter names transliterated and
     // fix the literal "hill to water".
     "Kamenitsa: the brewery and the east city": "Каменица: пивоварня і східне місто",
@@ -312,6 +350,9 @@ const manualTranslationsByLang = {
       "Мерська хронологія пов'язує Kostaki Peev з Atanas Samokovliev через стосунки «наступник»."
   },
   ru: {
+    // New-stories titles/deks: hand-corrected over the raw MT output.
+    "Kapana: The 'Trap' the Crafts Built and Culture Brought Back":
+      "Капана: «ловушка», которую построили ремёсла и вернула к жизни культура",
     // Full identity from the machine; ru transliterates famous names.
     "Named after the poet Hristo Smirnenski (1898–1923).":
       "Назван в честь поэта Христо Смирненски (1898–1923).",

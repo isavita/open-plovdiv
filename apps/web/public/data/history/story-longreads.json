@@ -1147,6 +1147,280 @@
     "dek_ru": "От первой сельскохозяйственной и промышленной выставки в 1892 году до послевоенного возрождения ярмарки Plovdiv создал себе имидж города обмена и экономики."
   },
   {
+    "id": "story-kapana-crafts-creative",
+    "title_bg": "Капана: кварталът-капан, който занаятите построиха, а културата съживи",
+    "title_en": "Kapana: The 'Trap' the Crafts Built and Culture Brought Back",
+    "dek_bg": "От занаятчийските сокаци под Джумаята до квартала на творческите индустрии: как една търговска мрежа от улички стана сцена на Пловдив 2019.",
+    "dek_en": "From the artisan lanes below the Dzhumaya to the creative-industries district: how a web of trading streets became a stage for Plovdiv 2019.",
+    "reading_minutes": 6,
+    "era_tags": [
+      "ottoman",
+      "modern"
+    ],
+    "theme_tags": [
+      "culture",
+      "urbanism",
+      "community"
+    ],
+    "hero": {
+      "kind": "archive_item",
+      "ref_id": "archive-postcard-dzhumaya-square-1",
+      "caption_bg": "Площад Джумая на стара пощенска картичка — входът към уличната мрежа на Капана.",
+      "caption_en": "Dzhumaya Square on an old postcard — the doorway into Kapana's web of lanes."
+    },
+    "source_ids": [
+      "source-wikidata-kapana",
+      "source-european-commission-ecoc-2019",
+      "source-wikipedia-plovdiv"
+    ],
+    "linked_event_ids": [
+      "event-capital-of-culture-2019"
+    ],
+    "linked_place_ids": [
+      "place-kapana-q12282547",
+      "place-dzhumaya-mosque",
+      "place-dzhumaya-square-q59368698"
+    ],
+    "linked_archive_item_ids": [
+      "archive-postcard-dzhumaya-square-1",
+      "archive-postcard-dzhumaya-square-2"
+    ],
+    "linked_then_now_pair_ids": [],
+    "data_quality": "public_source",
+    "sections": [
+      {
+        "heading_bg": "Мрежа от улички под Джумаята",
+        "heading_en": "A Web of Lanes Below the Dzhumaya",
+        "body_bg": "Името казва всичко: „Капана“ — защото тесните търговски улички се заплитат така, че веднъж влязъл, трудно излизаш. Кварталът израства до Джумая джамия и едноименния площад като занаятчийско сърце на османския пазарен град — улици на кожари, златари и абаджии, чиито имена и днес стоят по табелите. Записът за Капана в Open Plovdiv стъпва на публичните описания на квартала като исторически занаятчийски район.",
+        "body_en": "The name says it all: 'Kapana' means 'the trap' — the narrow trading lanes tangle so tightly that, once in, you struggle to find your way out. The quarter grew beside the Dzhumaya Mosque and the square of the same name as the artisan heart of the Ottoman market town — streets of leatherworkers, goldsmiths and braid-makers whose names still hang on the signs. Open Plovdiv's record of Kapana rests on public descriptions of the quarter as a historic crafts district.",
+        "source_ids": [
+          "source-wikidata-kapana",
+          "source-wikipedia-plovdiv"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": [
+          "place-kapana-q12282547",
+          "place-dzhumaya-mosque",
+          "place-dzhumaya-square-q59368698"
+        ]
+      },
+      {
+        "heading_bg": "Когато работилниците замлъкнаха",
+        "heading_en": "When the Workshops Fell Silent",
+        "body_bg": "През XX век занаятите бавно се изтеглят от уличките: индустрията, а по-късно и промените след 1989 г., оставят Капана със затворени партери и несигурно бъдеще. Планове за събаряне и „санитарни“ намеси кръжат около квартала десетилетия наред, но плетеницата от улички оцелява — достатъчно цяла, за да може следващото поколение да я прочете наново.",
+        "body_en": "Through the twentieth century the crafts slowly withdrew from the lanes: industrialisation, and later the changes after 1989, left Kapana with shuttered ground floors and an uncertain future. Plans for demolition and 'sanitary' interventions circled the quarter for decades, yet the tangle of streets survived — intact enough for the next generation to read it anew.",
+        "source_ids": [
+          "source-wikidata-kapana"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": [
+          "place-kapana-q12282547"
+        ]
+      },
+      {
+        "heading_bg": "Сцена на 2019-а",
+        "heading_en": "A Stage for 2019",
+        "body_bg": "Кандидатурата и програмата на „Пловдив — Европейска столица на културата 2019“ превръщат Капана в емблема: „квартал на творческите индустрии“ с галерии, ателиета и фестивали в същите улички, които някога са били капан за купувачи. Отвъд фестивалната година остава по-важното — че градът показа как занаятчийска тъкан от XV век може да носи съвременен живот, без да бъде разрушена.",
+        "body_en": "The bid and programme of 'Plovdiv — European Capital of Culture 2019' turned Kapana into an emblem: a 'creative industries district' of galleries, studios and festivals in the same lanes that once trapped shoppers. What outlasts the festival year matters more — the city showed how a fifteenth-century artisan fabric can carry contemporary life without being torn down.",
+        "source_ids": [
+          "source-european-commission-ecoc-2019"
+        ],
+        "linked_event_ids": [
+          "event-capital-of-culture-2019"
+        ],
+        "linked_place_ids": [
+          "place-kapana-q12282547"
+        ]
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung.",
+      "notes_fr": "Le longread est structuré à partir de documents existants soutenus par des sources et nécessite une révision éditoriale indépendante.",
+      "notes_it": "La lettura lunga è strutturata a partire da documenti esistenti supportati da fonti e richiede una revisione editoriale indipendente.",
+      "notes_tr": "Uzun okuma, mevcut kaynak destekli kayıtlardan yapılandırılmıştır ve bağımsız editoryal inceleme gerektirir.",
+      "notes_es": "La lectura larga está estructurada a partir de registros respaldados por fuentes existentes y requiere una revisión editorial independiente.",
+      "notes_el": "Το longread είναι δομημένο από υπάρχουσες εγγραφές που υποστηρίζονται από πηγές και απαιτεί ανεξάρτητη εκδοτική αναθεώρηση.",
+      "notes_ja": "ロングリードは、ソースに裏付けされた既存の記録から構成されており、独立した編集レビューが必要です。",
+      "notes_tl": "Ang longread ay nakabalangkas mula sa mga kasalukuyang pinanggalingan na talaan at nangangailangan ng hiwalay na pagsusuring editoryal.",
+      "notes_uk": "Лонгрід структурований на основі наявних джерельних записів і потребує незалежного редакційного перегляду.",
+      "notes_ru": "Лонгрид структурирован на основе существующих записей, подтвержденных источниками, и требует независимой редакционной проверки."
+    },
+    "provenance": [
+      {
+        "source_id": "source-wikidata-kapana",
+        "evidence_type": "story_longread_source",
+        "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Капана: кварталът-капан, който занаятите построиха, а културата съживи\".",
+        "claim_en": "Sources and editorial claims for story longread \"Kapana: The 'Trap' the Crafts Built and Culture Brought Back\".",
+        "url": "https://www.wikidata.org/wiki/Q12282547",
+        "accessed_at": "2026-06-19",
+        "license_status": "open_license"
+      },
+      {
+        "source_id": "source-european-commission-ecoc-2019",
+        "evidence_type": "story_longread_source",
+        "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Капана: кварталът-капан, който занаятите построиха, а културата съживи\".",
+        "claim_en": "Sources and editorial claims for story longread \"Kapana: The 'Trap' the Crafts Built and Culture Brought Back\".",
+        "url": "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera",
+        "accessed_at": "2026-06-17",
+        "license_status": "public_reference_terms_unverified"
+      },
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "story_longread_source",
+        "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Капана: кварталът-капан, който занаятите построиха, а културата съживи\".",
+        "claim_en": "Sources and editorial claims for story longread \"Kapana: The 'Trap' the Crafts Built and Culture Brought Back\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      }
+    ]
+  },
+  {
+    "id": "story-maritsa-bridges",
+    "title_bg": "Марица и мостовете: градът, който се учи да живее с реката",
+    "title_en": "The Maritsa and Its Bridges: A City Learning to Live With Its River",
+    "dek_bg": "Реката е давала име на битка, поминък и посоки. Разказ за бродовете, Герджика и бетонните мостове, които направиха от двата бряга един град.",
+    "dek_en": "The river has lent its name to a battle, to livelihoods and to directions. A story of fords, the Gerdzhika, and the concrete bridges that made two banks one city.",
+    "reading_minutes": 6,
+    "era_tags": [
+      "medieval",
+      "modern"
+    ],
+    "theme_tags": [
+      "infrastructure",
+      "urban_memory",
+      "public_space"
+    ],
+    "hero": {
+      "kind": "archive_item",
+      "ref_id": "archive-postcard-old-bridge-gerdjika-1930s",
+      "caption_bg": "Старият мост и Герджика през 1930-те — реката като всекидневие, а не като декор.",
+      "caption_en": "The old bridge and the Gerdzhika in the 1930s — the river as daily life, not scenery."
+    },
+    "source_ids": [
+      "source-wikipedia-plovdiv",
+      "source-wikidata-gerdzhika-bridge",
+      "source-wikidata-fairground-bridge",
+      "source-wikidata-green-bridge-in-plovdiv"
+    ],
+    "linked_event_ids": [
+      "event-ottoman-maritsa"
+    ],
+    "linked_place_ids": [
+      "place-gerdzhika-bridge-q56636017",
+      "place-fairground-bridge-q56613441",
+      "place-green-bridge-in-plovdiv-q56632059"
+    ],
+    "linked_archive_item_ids": [
+      "archive-postcard-old-bridge-gerdjika-1930s"
+    ],
+    "linked_then_now_pair_ids": [],
+    "data_quality": "public_source",
+    "sections": [
+      {
+        "heading_bg": "Реката преди мостовете",
+        "heading_en": "The River Before the Bridges",
+        "body_bg": "Марица е по-стара от всички имена на града и дълго време е неговата северна граница: пресича се на брод, със салове и с малко дървени мостове, които пороите редовно отнасят. Реката влиза и в голямата история — битката при Марица през 1371 г., отбелязана в хронологията на Open Plovdiv, решава съдбата на региона за векове напред. Градът на тепетата гледа реката отдалеч.",
+        "body_en": "The Maritsa is older than all of the city's names, and for a long time it was its northern boundary: crossed at fords, by rafts and over a few wooden bridges that the floods regularly carried away. The river enters grand history too — the Battle of the Maritsa in 1371, recorded in Open Plovdiv's timeline, decided the region's fate for centuries. The city of the hills watched its river from a distance.",
+        "source_ids": [
+          "source-wikipedia-plovdiv"
+        ],
+        "linked_event_ids": [
+          "event-ottoman-maritsa"
+        ],
+        "linked_place_ids": []
+      },
+      {
+        "heading_bg": "Герджика и дървените предшественици",
+        "heading_en": "The Gerdzhika and Its Wooden Ancestors",
+        "body_bg": "Мостът, който пловдивчани наричат Герджика, наследява дълга поредица дървени и покрити мостове на същото място — най-краткия път между чаршията и отсрещния бряг. Пощенската картичка от 1930-те го показва като част от всекидневието: хора, коли и сергии до самата вода. Записът за Герджика в Open Plovdiv стъпва на публичните данни за моста и мястото му в градската мрежа.",
+        "body_en": "The bridge Plovdivians call the Gerdzhika inherits a long line of wooden and covered bridges on the same spot — the shortest path between the market streets and the far bank. The 1930s postcard shows it as part of daily life: people, carts and stalls right at the water. Open Plovdiv's record of the Gerdzhika rests on the public data about the bridge and its place in the city's street network.",
+        "source_ids": [
+          "source-wikidata-gerdzhika-bridge"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": [
+          "place-gerdzhika-bridge-q56636017"
+        ]
+      },
+      {
+        "heading_bg": "Бетонните посоки на XX век",
+        "heading_en": "The Concrete Directions of the Twentieth Century",
+        "body_bg": "Модерният град престава да се страхува от реката и започва да строи през нея: Панаирният мост свързва центъра с изложбения град на северния бряг, а по-късно и другите бетонни мостове наместват Марица в средата на градската карта, вместо в края ѝ. Кичук Париж, Кършияка и панаирът вече не са „отвъд реката“ — те са просто Пловдив.",
+        "body_en": "The modern city stopped fearing the river and started building across it: the Fairground Bridge tied the centre to the exhibition city on the northern bank, and later the other concrete bridges settled the Maritsa into the middle of the city map instead of its edge. Kyuchuk Parizh, Karshiyaka and the fairground are no longer 'beyond the river' — they are simply Plovdiv.",
+        "source_ids": [
+          "source-wikidata-fairground-bridge",
+          "source-wikidata-green-bridge-in-plovdiv"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": [
+          "place-fairground-bridge-q56613441",
+          "place-green-bridge-in-plovdiv-q56632059"
+        ]
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung.",
+      "notes_fr": "Le longread est structuré à partir de documents existants soutenus par des sources et nécessite une révision éditoriale indépendante.",
+      "notes_it": "La lettura lunga è strutturata a partire da documenti esistenti supportati da fonti e richiede una revisione editoriale indipendente.",
+      "notes_tr": "Uzun okuma, mevcut kaynak destekli kayıtlardan yapılandırılmıştır ve bağımsız editoryal inceleme gerektirir.",
+      "notes_es": "La lectura larga está estructurada a partir de registros respaldados por fuentes existentes y requiere una revisión editorial independiente.",
+      "notes_el": "Το longread είναι δομημένο από υπάρχουσες εγγραφές που υποστηρίζονται από πηγές και απαιτεί ανεξάρτητη εκδοτική αναθεώρηση.",
+      "notes_ja": "ロングリードは、ソースに裏付けされた既存の記録から構成されており、独立した編集レビューが必要です。",
+      "notes_tl": "Ang longread ay nakabalangkas mula sa mga kasalukuyang pinanggalingan na talaan at nangangailangan ng hiwalay na pagsusuring editoryal.",
+      "notes_uk": "Лонгрід структурований на основі наявних джерельних записів і потребує незалежного редакційного перегляду.",
+      "notes_ru": "Лонгрид структурирован на основе существующих записей, подтвержденных источниками, и требует независимой редакционной проверки."
+    },
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "story_longread_source",
+        "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Марица и мостовете: градът, който се учи да живее с реката\".",
+        "claim_en": "Sources and editorial claims for story longread \"The Maritsa and Its Bridges: A City Learning to Live With Its River\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      },
+      {
+        "source_id": "source-wikidata-gerdzhika-bridge",
+        "evidence_type": "story_longread_source",
+        "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Марица и мостовете: градът, който се учи да живее с реката\".",
+        "claim_en": "Sources and editorial claims for story longread \"The Maritsa and Its Bridges: A City Learning to Live With Its River\".",
+        "url": "https://www.wikidata.org/wiki/Q56636017",
+        "accessed_at": "2026-06-19",
+        "license_status": "open_license"
+      },
+      {
+        "source_id": "source-wikidata-fairground-bridge",
+        "evidence_type": "story_longread_source",
+        "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Марица и мостовете: градът, който се учи да живее с реката\".",
+        "claim_en": "Sources and editorial claims for story longread \"The Maritsa and Its Bridges: A City Learning to Live With Its River\".",
+        "url": "https://www.wikidata.org/wiki/Q56613441",
+        "accessed_at": "2026-06-19",
+        "license_status": "open_license"
+      },
+      {
+        "source_id": "source-wikidata-green-bridge-in-plovdiv",
+        "evidence_type": "story_longread_source",
+        "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Марица и мостовете: градът, който се учи да живее с реката\".",
+        "claim_en": "Sources and editorial claims for story longread \"The Maritsa and Its Bridges: A City Learning to Live With Its River\".",
+        "url": "https://www.wikidata.org/wiki/Q56632059",
+        "accessed_at": "2026-06-19",
+        "license_status": "open_license"
+      }
+    ]
+  },
+  {
     "id": "story-medieval-crossroads",
     "title_bg": "Средновековният кръстопът: от хан Крум до османското Филибе",
     "title_en": "The Medieval Crossroads: From Khan Krum to Ottoman Filibe",
@@ -1993,6 +2267,125 @@
     "dek_tl": "Ang Dzhumaya Mosque, mga paliguan, dervish space at clock-tower traces ay nagpapakita kung paano nananatiling bahagi ang Osmanli patong ng topograpiyang panglungsod ng Plovdiv.",
     "dek_uk": "Мечеть Джумая, лазні, місця для дервішів і сліди годинникової вежі показують, що османський шар залишається частиною міської топографії Plovdiv.",
     "dek_ru": "Мечеть Джумая, бани, помещения дервишей и следы часовой башни показывают, что османский слой остается частью городской топографии Plovdiv."
+  },
+  {
+    "id": "story-railway-1873",
+    "title_bg": "Влакът от 1873: железницата, която обърна града към равнината",
+    "title_en": "The Train of 1873: The Railway That Turned the City Toward the Plain",
+    "dek_bg": "Как линията на барон Хирш и гарата на юг от тепетата изместиха тежестта на Пловдив от хълмовете към равнината — и подготвиха модерния град.",
+    "dek_en": "How Baron Hirsch's line and the station south of the hills shifted Plovdiv's weight from the hilltops to the plain — and prepared the modern city.",
+    "reading_minutes": 6,
+    "era_tags": [
+      "ottoman",
+      "liberation"
+    ],
+    "theme_tags": [
+      "infrastructure",
+      "modern_city",
+      "economy"
+    ],
+    "hero": {
+      "kind": "archive_item",
+      "ref_id": "archive-photo-plovdiv-station-around-1880",
+      "caption_bg": "Железопътната гара на Пловдив около 1880 г. — само няколко години след пристигането на първия влак.",
+      "caption_en": "Plovdiv's railway station around 1880 — just a few years after the first train arrived."
+    },
+    "source_ids": [
+      "source-wikipedia-plovdiv",
+      "source-wikipedia-plovdiv-central-railway-station"
+    ],
+    "linked_event_ids": [
+      "event-modern-railways"
+    ],
+    "linked_place_ids": [
+      "place-plovdiv-central-railway-station-q7205164",
+      "place-international-fair-plovdiv-q1667383"
+    ],
+    "linked_archive_item_ids": [
+      "archive-photo-plovdiv-station-around-1880",
+      "archive-postcard-bahnhof-von-plowdiw",
+      "archive-map-plovdiv-stanimaka-railway-1928"
+    ],
+    "linked_then_now_pair_ids": [],
+    "data_quality": "public_source",
+    "sections": [
+      {
+        "heading_bg": "Линията на Хирш",
+        "heading_en": "Hirsch's Line",
+        "body_bg": "През 1873 г. по османска концесия, свързвана с името на барон Морис фон Хирш, железницата от Цариград достига Пловдив. За град, живял от кервани, реката и панаирните пътища, това е ново измерение: разписание, скорост и пряка връзка с империята и с Европа. Записът за идването на железницата в хронологията на Open Plovdiv стъпва на публични източници и бележи една от границите между стария и модерния Пловдив.",
+        "body_en": "In 1873, under an Ottoman concession associated with the name of Baron Maurice von Hirsch, the railway from Constantinople reached Plovdiv. For a city that had lived off caravans, the river and fair-bound roads, this was a new dimension: timetables, speed and a direct link to the empire and to Europe. The record of the railway's arrival in Open Plovdiv's timeline rests on public sources and marks one of the boundaries between old and modern Plovdiv.",
+        "source_ids": [
+          "source-wikipedia-plovdiv"
+        ],
+        "linked_event_ids": [
+          "event-modern-railways"
+        ],
+        "linked_place_ids": []
+      },
+      {
+        "heading_bg": "Гарата на юг от тепетата",
+        "heading_en": "The Station South of the Hills",
+        "body_bg": "Гарата е построена в равнината, на юг от трите хълма на стария град — решение, което тихо пренарежда географията на Пловдив. Улиците започват да се протягат към перона, а търговията и новите квартали следват релсите. Архивната фотография от около 1880 г. показва още самотна сграда в полето; днешната Централна гара стои на същата ос, около която е израснал долният град.",
+        "body_en": "The station was built on the plain, south of the old town's three hills — a decision that quietly rearranged Plovdiv's geography. Streets began stretching toward the platform, and trade and new quarters followed the rails. The archive photograph from around 1880 still shows a solitary building in open fields; today's Central Station stands on the same axis around which the lower city grew.",
+        "source_ids": [
+          "source-wikipedia-plovdiv-central-railway-station"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": [
+          "place-plovdiv-central-railway-station-q7205164"
+        ]
+      },
+      {
+        "heading_bg": "От перона към панаира",
+        "heading_en": "From the Platform to the Fairground",
+        "body_bg": "Железницата не само вози пътници — тя прави възможен града на изложенията. Първото българско земеделско-промишлено изложение през 1892 г. и по-късният Международен панаир разчитат на релсите, по които пристигат машини, стоки и гости. Така влакът от 1873 г. се оказва първата брънка от веригата, която превръща Пловдив в панаирния град на България.",
+        "body_en": "The railway did more than carry passengers — it made the city of exhibitions possible. The first Bulgarian agricultural-industrial exhibition of 1892 and the later International Fair depended on the rails that brought in machines, goods and visitors. The train of 1873 thus turned out to be the first link in the chain that made Plovdiv Bulgaria's fair city.",
+        "source_ids": [
+          "source-wikipedia-plovdiv"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": [
+          "place-international-fair-plovdiv-q1667383"
+        ]
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Дългият разказ е структуриран от съществуващи източникови записи и изисква независим редакторски преглед.",
+      "notes_en": "The longread is structured from existing source-backed records and requires independent editorial review.",
+      "notes_de": "Der Longread basiert auf vorhandenen, quellengestützten Datensätzen und bedarf einer unabhängigen redaktionellen Überprüfung.",
+      "notes_fr": "Le longread est structuré à partir de documents existants soutenus par des sources et nécessite une révision éditoriale indépendante.",
+      "notes_it": "La lettura lunga è strutturata a partire da documenti esistenti supportati da fonti e richiede una revisione editoriale indipendente.",
+      "notes_tr": "Uzun okuma, mevcut kaynak destekli kayıtlardan yapılandırılmıştır ve bağımsız editoryal inceleme gerektirir.",
+      "notes_es": "La lectura larga está estructurada a partir de registros respaldados por fuentes existentes y requiere una revisión editorial independiente.",
+      "notes_el": "Το longread είναι δομημένο από υπάρχουσες εγγραφές που υποστηρίζονται από πηγές και απαιτεί ανεξάρτητη εκδοτική αναθεώρηση.",
+      "notes_ja": "ロングリードは、ソースに裏付けされた既存の記録から構成されており、独立した編集レビューが必要です。",
+      "notes_tl": "Ang longread ay nakabalangkas mula sa mga kasalukuyang pinanggalingan na talaan at nangangailangan ng hiwalay na pagsusuring editoryal.",
+      "notes_uk": "Лонгрід структурований на основі наявних джерельних записів і потребує незалежного редакційного перегляду.",
+      "notes_ru": "Лонгрид структурирован на основе существующих записей, подтвержденных источниками, и требует независимой редакционной проверки."
+    },
+    "provenance": [
+      {
+        "source_id": "source-wikipedia-plovdiv",
+        "evidence_type": "story_longread_source",
+        "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Влакът от 1873: железницата, която обърна града към равнината\".",
+        "claim_en": "Sources and editorial claims for story longread \"The Train of 1873: The Railway That Turned the City Toward the Plain\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv",
+        "accessed_at": "2026-06-18",
+        "license_status": "open_license"
+      },
+      {
+        "source_id": "source-wikipedia-plovdiv-central-railway-station",
+        "evidence_type": "story_longread_source",
+        "claim_bg": "Източници и редакционни твърдения за дългия разказ \"Влакът от 1873: железницата, която обърна града към равнината\".",
+        "claim_en": "Sources and editorial claims for story longread \"The Train of 1873: The Railway That Turned the City Toward the Plain\".",
+        "url": "https://en.wikipedia.org/wiki/Plovdiv_Central_railway_station",
+        "accessed_at": "2026-06-19",
+        "license_status": "open_license"
+      }
+    ]
   },
   {
     "id": "story-revival-houses-schools",

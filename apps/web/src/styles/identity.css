@@ -1107,6 +1107,30 @@ small {
   color: var(--brand-strong);
 }
 
+/* Story index cards: cover, reading time, title and a two-line dek — the
+   tags, evidence counts and source links live on the story page itself. */
+.story-card h2 {
+  font-size: clamp(1.24rem, 1.05rem + 0.8vw, 1.56rem);
+  line-height: 1.14;
+  hyphens: none;
+}
+
+.story-card-dek,
+.story-card .story-card-dek {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: var(--ink-2);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.story-card-body .text-link {
+  justify-self: start;
+  font-weight: 700;
+}
+
 .badge,
 .route-badge,
 .pill-row a.meta,

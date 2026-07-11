@@ -5,16 +5,16 @@
   "source_traceability_status": "complete",
   "multi_source_review_status": "needs_review",
   "summary": {
-    "total_records": 1000,
-    "records_with_sources": 1000,
+    "total_records": 1003,
+    "records_with_sources": 1003,
     "records_without_sources": 0,
-    "records_with_license_or_reuse_status": 1000,
+    "records_with_license_or_reuse_status": 1003,
     "records_missing_license_or_reuse_status": 0,
     "single_source_records": 724,
-    "multi_source_records": 276,
+    "multi_source_records": 279,
     "needs_multi_source_review_records": 724,
-    "open_license_records": 728,
-    "public_reference_terms_records": 337
+    "open_license_records": 731,
+    "public_reference_terms_records": 338
   },
   "collections": {
     "events": {
@@ -221,16 +221,16 @@
       "label_bg": "Дълги разкази",
       "label_en": "Story longreads",
       "role": "editorial_feature",
-      "total_records": 11,
-      "records_with_sources": 11,
+      "total_records": 14,
+      "records_with_sources": 14,
       "records_without_sources": 0,
-      "records_with_license_or_reuse_status": 11,
+      "records_with_license_or_reuse_status": 14,
       "records_missing_license_or_reuse_status": 0,
       "single_source_records": 0,
-      "multi_source_records": 11,
+      "multi_source_records": 14,
       "needs_multi_source_review_records": 0,
-      "open_license_records": 10,
-      "public_reference_terms_records": 5,
+      "open_license_records": 13,
+      "public_reference_terms_records": 6,
       "label_de": "Story-Longreads",
       "label_fr": "Lectures longues d'histoires",
       "label_it": "La storia si legge a lungo",
@@ -269,8 +269,8 @@
     }
   },
   "license_statuses": {
-    "public_reference_terms_unverified": 337,
-    "open_license": 728
+    "public_reference_terms_unverified": 338,
+    "open_license": 731
   },
   "records": [
     {
@@ -35832,6 +35832,73 @@
       "title_ru": "Ярмарочный город: выставка, промышленность и современность"
     },
     {
+      "id": "story-kapana-crafts-creative",
+      "collection": "story_longreads",
+      "role": "editorial_feature",
+      "title_bg": "Капана: кварталът-капан, който занаятите построиха, а културата съживи",
+      "title_en": "Kapana: The 'Trap' the Crafts Built and Culture Brought Back",
+      "review_url_bg": "/stories/story-kapana-crafts-creative/",
+      "review_url_en": "/en/stories/story-kapana-crafts-creative/",
+      "api_url": "/api/history/story-longreads.json",
+      "source_count": 3,
+      "source_ids": [
+        "source-wikidata-kapana",
+        "source-european-commission-ecoc-2019",
+        "source-wikipedia-plovdiv"
+      ],
+      "source_urls": [
+        "https://www.wikidata.org/wiki/Q12282547",
+        "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera",
+        "https://en.wikipedia.org/wiki/Plovdiv"
+      ],
+      "license_statuses": [
+        "open_license",
+        "public_reference_terms_unverified"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": true,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": false,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
+      "id": "story-maritsa-bridges",
+      "collection": "story_longreads",
+      "role": "editorial_feature",
+      "title_bg": "Марица и мостовете: градът, който се учи да живее с реката",
+      "title_en": "The Maritsa and Its Bridges: A City Learning to Live With Its River",
+      "review_url_bg": "/stories/story-maritsa-bridges/",
+      "review_url_en": "/en/stories/story-maritsa-bridges/",
+      "api_url": "/api/history/story-longreads.json",
+      "source_count": 4,
+      "source_ids": [
+        "source-wikipedia-plovdiv",
+        "source-wikidata-gerdzhika-bridge",
+        "source-wikidata-fairground-bridge",
+        "source-wikidata-green-bridge-in-plovdiv"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://www.wikidata.org/wiki/Q56636017",
+        "https://www.wikidata.org/wiki/Q56613441",
+        "https://www.wikidata.org/wiki/Q56632059"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": false,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
+    },
+    {
       "id": "story-medieval-crossroads",
       "collection": "story_longreads",
       "role": "editorial_feature",
@@ -35963,6 +36030,36 @@
       "title_tl": "Filibe noong panahong Osmanli: mga plaza, sagradong lugar at gawaing-bayan",
       "title_uk": "Османський Філібе: площі, священні місця та міські ремесла",
       "title_ru": "Османские филибе: площади, священные места и городские ремесла"
+    },
+    {
+      "id": "story-railway-1873",
+      "collection": "story_longreads",
+      "role": "editorial_feature",
+      "title_bg": "Влакът от 1873: железницата, която обърна града към равнината",
+      "title_en": "The Train of 1873: The Railway That Turned the City Toward the Plain",
+      "review_url_bg": "/stories/story-railway-1873/",
+      "review_url_en": "/en/stories/story-railway-1873/",
+      "api_url": "/api/history/story-longreads.json",
+      "source_count": 2,
+      "source_ids": [
+        "source-wikipedia-plovdiv",
+        "source-wikipedia-plovdiv-central-railway-station"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://en.wikipedia.org/wiki/Plovdiv_Central_railway_station"
+      ],
+      "license_statuses": [
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": false,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": false,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ]
     },
     {
       "id": "story-revival-houses-schools",
