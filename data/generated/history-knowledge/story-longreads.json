@@ -2189,7 +2189,7 @@
     "title_en": "The City of the Unification: Event, Institution, Square",
     "dek_bg": "Съединението от 1885 г., ранните кметски мандати и площад Съединение показват как едно политическо събитие става част от градската идентичност.",
     "dek_en": "The 1885 Unification, early mayoral terms and Unification Square show how a political event becomes part of civic identity.",
-    "reading_minutes": 8,
+    "reading_minutes": 9,
     "era_tags": [
       "liberation",
       "modern"
@@ -2220,7 +2220,13 @@
         "linked_place_ids": [
           "place-plovdiv-city",
           "place-unification-square-plovdiv-q58885892"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/BASA-1599K-1-811-4-Manifesto_of_proclaiming_the_unification_of_the_Principality_of_Bulgaria_with_Eastern_Rumelia.jpg",
+          "caption_bg": "Манифестът за провъзгласяване на Съединението, 1885 г. — актът, който тръгва именно от Пловдив.",
+          "caption_en": "The manifesto proclaiming the Unification, 1885 — the act that set out from Plovdiv itself.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       },
       {
         "heading_bg": "Институциите след освобождението",
@@ -2236,13 +2242,19 @@
         ],
         "linked_place_ids": [
           "place-plovdiv-city"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/0530_%D0%92%D0%B8%D0%B4_%D0%BD%D0%B0_%D0%BE%D0%B4%D0%BD%D1%83_%D0%B8%D0%B7_%D1%83%D0%BB%D0%B8%D1%86_%D0%A4%D0%B8%D0%BB%D0%B8%D0%BF%D0%BF%D0%BE%D0%BF%D0%BE%D0%BB%D1%8F_%28%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2%D0%B0%29%2C_%D1%8F%D0%BD%D0%B2%D0%B0%D1%80%D1%8C_1878.jpg",
+          "caption_bg": "Улица във Филипопол през 1878 г. — градът, който само седем години по-късно ще поведе Съединението.",
+          "caption_en": "A street in Philippopolis in 1878 — the city that would lead the Unification just seven years later.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       },
       {
         "heading_bg": "Площадът като памет",
         "heading_en": "The Square as Memory",
-        "body_bg": "Площад Съединение и паметникът не заменят архивите, но показват как градът избира да помни. В една отворена историческа платформа площадът е свързан с данни, образи и източници, за да не се превърне паметта в лозунг без проверима основа.",
-        "body_en": "Unification Square and its monument do not replace archives, but they show how the city chooses to remember. In an open history platform the square is linked to data, images and sources so memory does not become a slogan without verifiable ground.",
+        "body_bg": "Площад Съединение и паметникът не заменят архивите, но показват как градът избира да помни. В една отворена историческа платформа площадът е свързан с данни, образи и източници, за да не се превърне паметта в лозунг без проверима основа. Малко градове носят такава дата в календара си: 6 септември е едновременно национален празник и личен спомен на Пловдив — денят, в който един град с акт от няколко изречения промени картата на Европа.",
+        "body_en": "Unification Square and its monument do not replace archives, but they show how the city chooses to remember. In an open history platform the square is linked to data, images and sources so memory does not become a slogan without verifiable ground. Few cities carry such a date in their calendar: the sixth of September is at once a national holiday and Plovdiv's private memory — the day a single city, with an act a few sentences long, redrew the map of Europe.",
         "source_ids": [
           "source-wikidata-unification-square-plovdiv",
           "source-wikimedia-commons-monument-of-the-unification-jpg"
