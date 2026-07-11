@@ -268,6 +268,8 @@ const manualTranslationsByLang = {
       "Plovdiv市議会 — 2010年度予算決算に関する決議第58号",
   },
   tl: {
+    "Plovdiv Before the City: The Hills as Deep-Time Memory":
+      "Ang Plovdiv Bago ang Lungsod: Ang mga Burol bilang Alaala ng Malalim na Panahon",
     "Ivan Mrkvichka, 'Market in Plovdiv' (1888) — the motley square the painter watched every day.":
       "Ivan Mrkvichka, 'Palengke sa Plovdiv' (1888) — ang makulay na plaza na pinagmamasdan ng pintor araw-araw.",
     "Ivan Mrkvichka, 'Rachenitsa' (1894) — the scene that grew out of his folk observations around Plovdiv.":

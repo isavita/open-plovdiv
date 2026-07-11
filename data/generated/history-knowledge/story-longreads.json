@@ -127,7 +127,7 @@
     "title_en": "Plovdiv Before the City: The Hills as Deep-Time Memory",
     "dek_bg": "Разказ за най-ранните пластове на Пловдив, в който релефът, Небет тепе и имената Евмолпия/Филипопол помагат да се проследи преходът от селище към град.",
     "dek_en": "A story on Plovdiv's earliest layers, where terrain, Nebet Tepe and the names Eumolpias/Philippopolis help trace the shift from settlement to city.",
-    "reading_minutes": 8,
+    "reading_minutes": 9,
     "era_tags": [
       "prehistory",
       "thracian"
@@ -158,7 +158,13 @@
         "linked_place_ids": [
           "place-old-town",
           "place-seven-hills"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Plovdiv_Ivan_Karastoyanov.jpg",
+          "caption_bg": "Панорама на Пловдив от около 1908 г.: каквото и да строи градът, тепетата остават рамката на кадъра.",
+          "caption_en": "A panorama of Plovdiv from around 1908: whatever the city builds, the hills remain the frame of the picture.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       },
       {
         "heading_bg": "Евмолпия и градското ядро",
@@ -175,13 +181,19 @@
         ],
         "linked_place_ids": [
           "place-nebet-tepe"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/72/View_from_Nebet_hill%2C_Plovdiv%2C_Bulgaria.jpg",
+          "caption_bg": "Изглед от Небет тепе — от най-стария обитаван хълм градът и равнината се четат като една карта.",
+          "caption_en": "The view from Nebet Tepe — from the oldest inhabited hill, the city and the plain read as a single map.",
+          "credit": "Wikimedia Commons · CC BY-SA 3.0 · VladislavNedelev"
+        }
       },
       {
         "heading_bg": "Филипопол като име и преход",
         "heading_en": "Philippopolis as Name and Transition",
-        "body_bg": "Записът за Филип II и Филипопол показва как името на града се превръща в исторически маркер. В дългия разказ името не е украса: то е начин да се проследи политическа промяна, културен слой и по-късна памет. Затова историята тук се чете през събития, места и проверими източници едновременно.",
-        "body_en": "The record on Philip II and Philippopolis shows how the city's name becomes a historical marker. In the long story, the name is not decoration: it tracks political change, cultural layering and later memory. That is why history here is read through events, places and verifiable sources at the same time.",
+        "body_bg": "Записът за Филип II и Филипопол показва как името на града се превръща в исторически маркер. В дългия разказ името не е украса: то е начин да се проследи политическа промяна, културен слой и по-късна памет. Затова историята тук се чете през събития, места и проверими източници едновременно. Веригата от имена — Евмолпия, Филипопол, Тримонциум, Пулпудева, Филибе, Пловдив — е може би най-краткият учебник по история на града: шест думи, зад които стоят шест власти и шест езика, изговарящи едно и също място.",
+        "body_en": "The record on Philip II and Philippopolis shows how the city's name becomes a historical marker. In the long story, the name is not decoration: it tracks political change, cultural layering and later memory. That is why history here is read through events, places and verifiable sources at the same time. The chain of names — Eumolpias, Philippopolis, Trimontium, Pulpudeva, Filibe, Plovdiv — may be the shortest textbook of the city's history: six words, behind which stand six powers and six languages pronouncing the same place.",
         "source_ids": [
           "source-wikipedia-plovdiv",
           "source-wikipedia-philippopolis"

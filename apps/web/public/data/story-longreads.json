@@ -5,7 +5,7 @@
     "title_en": "Plovdiv Before the City: The Hills as Deep-Time Memory",
     "dek_bg": "Разказ за най-ранните пластове на Пловдив, в който релефът, Небет тепе и имената Евмолпия/Филипопол помагат да се проследи преходът от селище към град.",
     "dek_en": "A story on Plovdiv's earliest layers, where terrain, Nebet Tepe and the names Eumolpias/Philippopolis help trace the shift from settlement to city.",
-    "reading_minutes": 8,
+    "reading_minutes": 9,
     "era_tags": [
       "prehistory",
       "thracian"
@@ -47,6 +47,12 @@
           "place-old-town",
           "place-seven-hills"
         ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Plovdiv_Ivan_Karastoyanov.jpg",
+          "caption_bg": "Панорама на Пловдив от около 1908 г.: каквото и да строи градът, тепетата остават рамката на кадъра.",
+          "caption_en": "A panorama of Plovdiv from around 1908: whatever the city builds, the hills remain the frame of the picture.",
+          "credit": "Wikimedia Commons · Public domain"
+        },
         "heading_de": "Gelände als erstes Archiv",
         "heading_fr": "Le terrain comme première archive",
         "heading_it": "Il terreno come primo archivio",
@@ -84,6 +90,12 @@
         "linked_place_ids": [
           "place-nebet-tepe"
         ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/72/View_from_Nebet_hill%2C_Plovdiv%2C_Bulgaria.jpg",
+          "caption_bg": "Изглед от Небет тепе — от най-стария обитаван хълм градът и равнината се четат като една карта.",
+          "caption_en": "The view from Nebet Tepe — from the oldest inhabited hill, the city and the plain read as a single map.",
+          "credit": "Wikimedia Commons · CC BY-SA 3.0 · VladislavNedelev"
+        },
         "heading_de": "Eumolpias und der städtische Kern",
         "heading_fr": "Eumolpias et le noyau urbain",
         "heading_it": "Eumolpias e il nucleo urbano",
@@ -108,8 +120,8 @@
       {
         "heading_bg": "Филипопол като име и преход",
         "heading_en": "Philippopolis as Name and Transition",
-        "body_bg": "Записът за Филип II и Филипопол показва как името на града се превръща в исторически маркер. В дългия разказ името не е украса: то е начин да се проследи политическа промяна, културен слой и по-късна памет. Затова историята тук се чете през събития, места и проверими източници едновременно.",
-        "body_en": "The record on Philip II and Philippopolis shows how the city's name becomes a historical marker. In the long story, the name is not decoration: it tracks political change, cultural layering and later memory. That is why history here is read through events, places and verifiable sources at the same time.",
+        "body_bg": "Записът за Филип II и Филипопол показва как името на града се превръща в исторически маркер. В дългия разказ името не е украса: то е начин да се проследи политическа промяна, културен слой и по-късна памет. Затова историята тук се чете през събития, места и проверими източници едновременно. Веригата от имена — Евмолпия, Филипопол, Тримонциум, Пулпудева, Филибе, Пловдив — е може би най-краткият учебник по история на града: шест думи, зад които стоят шест власти и шест езика, изговарящи едно и също място.",
+        "body_en": "The record on Philip II and Philippopolis shows how the city's name becomes a historical marker. In the long story, the name is not decoration: it tracks political change, cultural layering and later memory. That is why history here is read through events, places and verifiable sources at the same time. The chain of names — Eumolpias, Philippopolis, Trimontium, Pulpudeva, Filibe, Plovdiv — may be the shortest textbook of the city's history: six words, behind which stand six powers and six languages pronouncing the same place.",
         "source_ids": [
           "source-wikipedia-plovdiv",
           "source-wikipedia-philippopolis"
@@ -129,17 +141,7 @@
         "heading_ja": "フィリポポリスの名前と変遷",
         "heading_tl": "Philippopolis bilang Pangalan at Transisyon",
         "heading_uk": "Філіппополь як назва та перехід",
-        "heading_ru": "Филиппополь как имя и переход",
-        "body_de": "Die Aufzeichnungen über Philipp II. und Philippopolis zeigen, wie der Name der Stadt zu einem historischen Marker wird. Lang gesagt ist der Name keine Dekoration: Er spiegelt politische Veränderungen, kulturelle Schichten und spätere Erinnerungen wider. Deshalb wird Geschichte hier gleichzeitig anhand von Ereignissen, Orten und nachweisbaren Quellen gelesen.",
-        "body_fr": "Les archives sur Philippe II et Philippopolis montrent comment le nom de la ville devient un marqueur historique. Dans la longue histoire, le nom n’est pas une décoration : il traque le changement politique, la stratification culturelle et la mémoire ultérieure. C’est pourquoi l’histoire est ici lue à la fois à travers des événements, des lieux et des sources vérifiables.",
-        "body_it": "La documentazione su Filippo II e Filippopoli mostra come il nome della città diventi un segno storico. Nella lunga storia, il nome non è una decorazione: traccia il cambiamento politico, la stratificazione culturale e la memoria successiva. Ecco perché la storia qui viene letta attraverso eventi, luoghi e fonti verificabili allo stesso tempo.",
-        "body_tr": "Philip II ve Philippopolis ile ilgili kayıt, şehrin adının nasıl tarihi bir işaret haline geldiğini gösteriyor. Uzun hikayede, isim dekorasyon değil; siyasi değişimin, kültürel katmanlaşmanın ve daha sonraki hafızanın izini sürüyor. Onun için burada tarih aynı anda olaylar, mekanlar ve doğrulanabilir kaynaklar üzerinden okunuyor.",
-        "body_es": "El registro sobre Felipe II y Filipópolis muestra cómo el nombre de la ciudad se convierte en un hito histórico. En la larga historia, el nombre no es un adorno: rastrea el cambio político, las capas culturales y la memoria posterior. Es por eso que aquí la historia se lee a través de eventos, lugares y fuentes verificables al mismo tiempo.",
-        "body_el": "Η καταγραφή για τον Φίλιππο Β' και τη Φιλιππούπολη δείχνει πώς το όνομα της πόλης γίνεται ιστορικός δείκτης. Στη μεγάλη ιστορία, το όνομα δεν είναι διακόσμηση: παρακολουθεί την πολιτική αλλαγή, την πολιτιστική διαστρωμάτωση και τη μεταγενέστερη μνήμη. Γι' αυτό η ιστορία εδώ διαβάζεται μέσα από γεγονότα, τόπους και επαληθεύσιμες πηγές ταυτόχρονα.",
-        "body_ja": "フェリペ 2 世とフィリポポリスに関する記録は、この都市の名前がどのように歴史的な目印となったかを示しています。長い物語の中で、名前は飾りではありません。それは政治的変化、文化の階層化、そしてその後の記憶を追跡します。だからこそ、ここでの歴史は、出来事、場所、検証可能な情報源を通じて同時に読み取られます。",
-        "body_tl": "Ang tala sa Philip II at Philippopolis ay nagpapakita kung paano ang pangalan ng lungsod ay naging isang makasaysayang marker. Sa mahabang kuwento, ang pangalan ay hindi palamuti: sinusubaybayan nito ang pagbabago sa pulitika, cultural layering at mamaya memorya. Iyon ang dahilan kung bakit ang kasaysayan dito ay binabasa sa pamamagitan ng mga kaganapan, lugar at napapatunayang mga mapagkukunan nang sabay-sabay.",
-        "body_uk": "Запис про Філіпа II і Філіппополь показує, як назва міста стає історичним маркером. Загалом, назва не є прикрасою: вона відстежує політичні зміни, культурні шари та пізнішу пам’ять. Тому історія тут читається через події, місця та перевірені джерела водночас.",
-        "body_ru": "Записи о Филиппе II и Филиппополе показывают, как название города становится историческим маркером. В конечном счете, название не является украшением: оно отражает политические изменения, культурные слои и более поздние воспоминания. Поэтому история здесь читается через события, места и проверяемые источники одновременно."
+        "heading_ru": "Филиппополь как имя и переход"
       }
     ],
     "linked_event_ids": [
@@ -2869,7 +2871,17 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Gerdjica_1931.jpg",
           "caption_bg": "Герджика на картичка от 1931 г. — мостът е пълен с минувачи, реката е част от работния ден.",
           "caption_en": "The Gerdzhika on a 1931 postcard — the bridge is full of passers-by, the river part of the working day.",
-          "credit": "Wikimedia Commons · CC BY 4.0 · Realsteel007"
+          "credit": "Wikimedia Commons · CC BY 4.0 · Realsteel007",
+          "caption_de": "Die Gerdschika auf einer Postkarte von 1931 – die Brücke ist voller Passanten, der Fluss Teil des Arbeitstages.",
+          "caption_fr": "Gerdjika sur une carte postale de 1931 : le pont est plein de passants, la rivière fait partie de la journée de travail.",
+          "caption_it": "La Gerdzhika su una cartolina del 1931: il ponte è pieno di passanti, il fiume è parte della giornata lavorativa.",
+          "caption_tr": "1931 tarihli bir kartpostaldaki Gerdzhika: Köprü yoldan geçenlerle dolu, çalışma gününün nehir kısmı.",
+          "caption_es": "Gerdzhika en una postal de 1931: el puente está lleno de transeúntes, el río forma parte de la jornada laboral.",
+          "caption_el": "Το Gerdzhika σε μια καρτ ποστάλ του 1931 — η γέφυρα είναι γεμάτη περαστικούς, το ποτάμι μέρος της εργάσιμης ημέρας.",
+          "caption_ja": "1931 年の絵葉書に描かれたゲルジカ - 橋は通行人でいっぱいで、営業日の川の一部です。",
+          "caption_tl": "Ang Gerdzhika sa isang postkard noong 1931 — ang tulay ay puno ng mga dumadaan, ang bahagi ng ilog ng araw ng trabaho.",
+          "caption_uk": "Герджика на листівці 1931 року — міст забитий перехожими, річка частина робочого дня.",
+          "caption_ru": "Герджика на открытке 1931 года — мост полон прохожих, река, часть рабочего дня."
         },
         "heading_de": "Die Gerdschika und ihre hölzernen Vorfahren",
         "heading_fr": "Le Gerdzhika et ses ancêtres en bois",
@@ -2910,7 +2922,17 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/%D0%9C%D0%B0%D1%80%D0%B8%D1%86%D0%B0_-_panoramio.jpg",
           "caption_bg": "Марица при Панаирния мост днес: реката вече минава през средата на града, не покрай него.",
           "caption_en": "The Maritsa at the Fairground Bridge today: the river now runs through the middle of the city, not past it.",
-          "credit": "Wikimedia Commons · CC BY 3.0 · Alkhimov Maxim"
+          "credit": "Wikimedia Commons · CC BY 3.0 · Alkhimov Maxim",
+          "caption_de": "Die Maritsa an der Fairground Bridge heute: Der Fluss fließt jetzt mitten durch die Stadt, nicht daran vorbei.",
+          "caption_fr": "La Maritsa au pont du parc des expositions aujourd'hui : la rivière traverse désormais le milieu de la ville et non plus.",
+          "caption_it": "La Maritsa al Fairground Bridge oggi: il fiume ora attraversa il centro della città, non oltre.",
+          "caption_tr": "Bugün Fuar Alanı Köprüsü'ndeki Maritsa: nehir artık şehrin içinden değil, ortasından geçiyor.",
+          "caption_es": "La Maritsa en el puente del recinto ferial hoy: el río ahora pasa por el centro de la ciudad, no más allá.",
+          "caption_el": "Η Maritsa στη γέφυρα Fairground σήμερα: το ποτάμι διασχίζει τώρα τη μέση της πόλης, όχι μετά από αυτήν.",
+          "caption_ja": "今日のフェアグラウンド橋のマリツァ: 川は現在、市の中心を流れており、市を過ぎていません。",
+          "caption_tl": "Ang Maritsa sa Fairground Bridge ngayon: ang ilog ngayon ay dumadaloy sa gitna ng lungsod, hindi lampas dito.",
+          "caption_uk": "Сьогодні Маріца біля Ярмаркового мосту: річка тепер протікає посередині міста, а не повз нього.",
+          "caption_ru": "Марица у Ярмарочного моста сегодня: река теперь протекает через центр города, а не мимо него."
         },
         "heading_de": "Die konkreten Richtungen des 20. Jahrhunderts",
         "heading_fr": "Les orientations concrètes du XXe siècle",
@@ -2947,7 +2969,27 @@
         "linked_place_ids": [
           "place-fairground-bridge-q56613441",
           "place-gerdzhika-bridge-q56636017"
-        ]
+        ],
+        "heading_de": "Der Fluss als Alltag",
+        "heading_fr": "La rivière comme vie quotidienne",
+        "heading_it": "Il fiume come vita quotidiana",
+        "heading_tr": "Günlük Yaşam Olarak Nehir",
+        "heading_es": "El río como vida cotidiana",
+        "heading_el": "Το ποτάμι ως καθημερινή ζωή",
+        "heading_ja": "日常生活としての川",
+        "heading_tl": "Ang Ilog bilang Pang-araw-araw na Buhay",
+        "heading_uk": "Річка як повсякденне життя",
+        "heading_ru": "Река как повседневная жизнь",
+        "body_de": "Für die Menschen in Plovdiv sind die Brücken schon lange kein Ereignis mehr, sondern eine Route: morgens nach Süden in Richtung Zentrum und Bahnhof, abends nach Norden in Richtung Karshiyaka und zum Messegelände. Das ist der stille Sieg von zwei Jahrhunderten Baumeistern – der Fluss, der einst eine Grenze und eine Bedrohung war, ist jetzt einfach Teil des Weges zur Arbeit, mit Möwen über dem Wasser und den Hügeln im Hintergrund. Städte gewinnen selten einen größeren Preis als eine in eine Landschaft verwandelte Gefahr.",
+        "body_fr": "Pour les habitants de Plovdiv, les ponts ont depuis longtemps cessé d'être un événement et sont devenus un itinéraire : vers le sud le matin vers le centre et la gare, vers le nord le soir vers Karshiyaka et le parc des expositions. C’est la victoire tranquille de deux siècles de bâtisseurs : la rivière qui était autrefois une frontière et une menace fait désormais simplement partie du chemin de travail, avec les mouettes au-dessus de l’eau et les collines à l’arrière du cadre. Les villes remportent rarement une plus belle récompense qu’un danger transformé en décor.",
+        "body_it": "Per gli abitanti di Plovdiv i ponti da tempo hanno smesso di essere un evento e sono diventati un percorso: a sud la mattina verso il centro e la stazione, a nord la sera verso Karshiyaka e la fiera. Questa è la vittoria silenziosa di due secoli di costruttori: il fiume che una volta era un confine e una minaccia ora è semplicemente parte del percorso di lavoro, con i gabbiani sull’acqua e le colline sullo sfondo della cornice. Raramente le città vincono un premio più bello di un pericolo trasformato in scenario.",
+        "body_tr": "Plovdiv halkı için köprüler uzun zaman önce bir olay olmaktan çıkıp bir rota haline geldi: sabahları güneye, merkeze ve istasyona doğru, akşamları kuzeye, Karşıyaka'ya ve fuar alanına doğru. Bu, iki asırlık inşaatçıların sessiz zaferidir; bir zamanlar sınır ve tehdit oluşturan nehir, suyun üzerindeki martılarla ve çerçevenin arkasındaki tepelerle artık sadece çalışma yolunun bir parçası haline gelmiştir. Şehirler nadiren manzaraya dönüşen bir tehlikeden daha iyi bir ödül kazanır.",
+        "body_es": "Para los habitantes de Plovdiv, los puentes hace tiempo que dejaron de ser un acontecimiento y se convirtieron en una ruta: por la mañana hacia el sur hacia el centro y la estación, por la tarde hacia el norte hacia Karshiyaka y el recinto ferial. Esa es la victoria silenciosa de dos siglos de constructores: el río que alguna vez fue una frontera y una amenaza ahora es simplemente parte del camino al trabajo, con gaviotas sobre el agua y las colinas en la parte posterior del marco. Las ciudades rara vez obtienen un premio mejor que un peligro convertido en paisaje.",
+        "body_el": "Για τους κατοίκους της Plovdiv οι γέφυρες έπαψαν εδώ και πολύ καιρό να είναι γεγονός και έγιναν μια διαδρομή: νότια το πρωί προς το κέντρο και τον σταθμό, βόρεια το βράδυ προς την Καρσιγιάκα και τον εκθεσιακό χώρο. Αυτή είναι η ήσυχη νίκη δύο αιώνων οικοδόμων — το ποτάμι που κάποτε αποτελούσε σύνορο και απειλή είναι τώρα απλώς μέρος του δρόμου προς τη δουλειά, με γλάρους πάνω από το νερό και τους λόφους στο πίσω μέρος του πλαισίου. Οι πόλεις σπάνια κερδίζουν ένα καλύτερο έπαθλο από έναν κίνδυνο που μετατρέπεται σε τοπίο.",
+        "body_ja": "Plovdivの人々にとって、橋はとうの昔にイベントではなくなり、朝は南に中心部と駅に向かい、夕方には北にカルシヤカと遊園地に向かうルートとなった。それは 2 世紀にわたる建設業者たちの静かな勝利です。かつては国境であり脅威であった川は、今では単に仕事に行く道の一部になっており、水面とフレームの後ろの丘にはカモメがいます。都市が、危険が風景に変わったこと以上に素晴らしい賞を受賞することはめったにありません。",
+        "body_tl": "Para sa mga tao ng Plovdiv ang mga tulay matagal na ang nakalipas ay tumigil sa pagiging isang kaganapan at naging isang ruta: timog sa umaga patungo sa gitna at istasyon, hilaga sa gabi patungo sa Karshiyaka at ang fairground. Iyon ang tahimik na tagumpay ng dalawang siglo ng mga tagabuo — ang ilog na dating hangganan at isang banta ay bahagi na ngayon ng daan patungo sa trabaho, na may mga gull sa ibabaw ng tubig at mga burol sa likod ng frame. Ang mga lungsod ay bihirang manalo ng mas pinong premyo kaysa sa panganib na naging tanawin.",
+        "body_uk": "Для жителів Plovdiv мости давно перестали бути подією, а стали маршрутом: вранці на південь до центру та вокзалу, увечері на північ до Каршіяки та виставкової площі. Це тиха перемога двох століть будівельників — річка, яка колись була кордоном і загрозою, тепер є просто частиною шляху до роботи, з чайками над водою та пагорбами позаду кадру. Міста рідко виграють кращий приз, ніж небезпека, перетворена на декорації.",
+        "body_ru": "Для пловдивцев мосты давно перестали быть событием и стали маршрутом: утром на юг в сторону центра и вокзала, вечером на север в сторону Каршияки и ярмарочной площади. Это тихая победа двух столетий строителей: река, которая когда-то была границей и угрозой, теперь стала просто частью пути к работе, с чайками над водой и холмами позади кадра. Города редко получают более ценный приз, чем опасность, превращенная в пейзаж."
       }
     ],
     "editorial": {
