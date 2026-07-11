@@ -1044,7 +1044,7 @@
     "title_en": "The Postwar City: Infrastructure, Housing and Municipal Programmes",
     "dek_bg": "След 1944 г. Пловдив се описва през програми за благоустройство, висше образование, панаира и петгодишни градски планове, но старите левови стойности трябва да се четат внимателно.",
     "dek_en": "After 1944, Plovdiv is described through public works, higher education, the fair and five-year city plans, but older lev figures must be read carefully.",
-    "reading_minutes": 8,
+    "reading_minutes": 9,
     "era_tags": [
       "modern"
     ],
@@ -1063,8 +1063,8 @@
       {
         "heading_bg": "Смяна на власт и градска програма",
         "heading_en": "Power Transfer and Urban Programme",
-        "body_bg": "Записът за 9 септември 1944 г. и последвалата следвоенна програма показват как политическата промяна влиза в градската администрация. Това не е само списък от дати; то е рамка за разбиране на публични работи, общинско планиране и нови институционални приоритети.",
-        "body_en": "The record on 9 September 1944 and the following postwar public-works programme show political change entering municipal administration. This is not only a list of dates; it frames public works, municipal planning and new institutional priorities.",
+        "body_bg": "Записът за 9 септември 1944 г. и последвалата следвоенна програма показват как политическата промяна влиза в градската администрация. Това не е само списък от дати; то е рамка за разбиране на публични работи, общинско планиране и нови институционални приоритети. Затова и наследството на периода се чете двояко: то е едновременно бетонна намеса в стария град и инфраструктурата — водопроводи, училища, зали — върху която стъпва всекидневието на съвременния Пловдив.",
+        "body_en": "The record on 9 September 1944 and the following postwar public-works programme show political change entering municipal administration. This is not only a list of dates; it frames public works, municipal planning and new institutional priorities. The period's legacy therefore reads two ways at once: as concrete intervention in the old city, and as the infrastructure — water mains, schools, halls — on which everyday life in today's Plovdiv still stands.",
         "source_ids": [
           "source-rim-plovdiv-infrastructure-1944-1990"
         ],
@@ -1091,7 +1091,13 @@
         "linked_place_ids": [
           "place-plovdiv-city",
           "place-international-fair-plovdiv-q1667383"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/58/BASA-1625K-1-22-5-Balkan_cinema%2C_Plovdiv%2C_Bulgaria.jpg",
+          "caption_bg": "Кино „Балкан“ — киносалоните, читалищата и домовете на културата са витрината на новата обществена програма.",
+          "caption_en": "The Balkan cinema — picture houses, chitalishta and houses of culture were the shop window of the new public programme.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       },
       {
         "heading_bg": "Петгодишен план и видимият град",
@@ -1108,7 +1114,13 @@
         "linked_place_ids": [
           "place-plovdiv-city",
           "place-trimontsium-hotel-in-plovdiv-q60318638"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Plovdiv-princess-road-imagesfrombulgaria.JPG",
+          "caption_bg": "Хотел „Тримонциум“ на централния площад — парадната архитектура на 50-те, строена да представя града пред гости и делегации.",
+          "caption_en": "The Trimontsium hotel on the central square — the parade architecture of the 1950s, built to present the city to guests and delegations.",
+          "credit": "Wikimedia Commons · CC BY 2.5 · Nenko Lazarov"
+        }
       }
     ],
     "linked_event_ids": [
