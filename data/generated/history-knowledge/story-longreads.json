@@ -456,7 +456,7 @@
     "title_en": "The Fair City: Exhibition, Industry and Modernity",
     "dek_bg": "От първото земеделско-промишлено изложение през 1892 г. до следвоенното възстановяване на панаира, Пловдив изгражда публичен образ на град на обмен и икономика.",
     "dek_en": "From the first agricultural and industrial exhibition in 1892 to the postwar revival of the fair, Plovdiv built a public image as a city of exchange and economy.",
-    "reading_minutes": 8,
+    "reading_minutes": 9,
     "era_tags": [
       "modern"
     ],
@@ -488,7 +488,13 @@
         ],
         "linked_place_ids": [
           "place-international-fair-plovdiv-q1667383"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/BASA-3K-7-327-10-International_Fair_Plovdiv%2C_1892.jpg",
+          "caption_bg": "Павилионите на Първото българско земеделско-промишлено изложение, 1892 г. — младата държава се показва на света.",
+          "caption_en": "Pavilions of the First Bulgarian agricultural-industrial exhibition, 1892 — the young state presenting itself to the world.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       },
       {
         "heading_bg": "Институция и градски образ",
@@ -505,13 +511,19 @@
         ],
         "linked_place_ids": [
           "place-international-fair-plovdiv-q1667383"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/BASA_1318K-1-5896-2_Opening_of_1939_Plovdiv_fair.jpg",
+          "caption_bg": "Откриването на Пловдивския панаир през 1939 г. — от еднократно изложение към ежегодна институция.",
+          "caption_en": "The opening of the Plovdiv Fair in 1939 — from a one-off exhibition to an annual institution.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       },
       {
         "heading_bg": "Следвоенно възстановяване",
         "heading_en": "Postwar Revival",
-        "body_bg": "Следвоенният запис за възстановяването на панаира показва как градската икономика и общинската политика се преплитат. Тук източникът е историческо изследване за инфраструктурата и общината, затова разказът остава внимателен: той използва панаира като контекст за модерния град, не като самостоятелна бюджетна таблица.",
-        "body_en": "The postwar record on the revival of the fair shows how urban economy and municipal policy intertwine. The source is a historical study on infrastructure and the municipality, so the story stays careful: it uses the fair as context for the modern city, not as a standalone budget table.",
+        "body_bg": "Следвоенният запис за възстановяването на панаира показва как градската икономика и общинската политика се преплитат. Тук източникът е историческо изследване за инфраструктурата и общината, затова разказът остава внимателен: той използва панаира като контекст за модерния град, не като самостоятелна бюджетна таблица. Панаирът е и календар: два пъти в годината хотелите се пълнят, наемите подскачат и целият град засича времето си по изложбените броеве — навик, който пловдивчани поддържат вече повече от век.",
+        "body_en": "The postwar record on the revival of the fair shows how urban economy and municipal policy intertwine. The source is a historical study on infrastructure and the municipality, so the story stays careful: it uses the fair as context for the modern city, not as a standalone budget table. The fair is also a calendar: twice a year the hotels fill, rents jump and the whole city sets its clock by the exhibition editions — a habit the people of Plovdiv have kept for more than a century.",
         "source_ids": [
           "source-rim-plovdiv-infrastructure-1944-1990"
         ],

@@ -268,6 +268,8 @@ const manualTranslationsByLang = {
       "Plovdiv市議会 — 2010年度予算決算に関する決議第58号",
   },
   tl: {
+    "The Fair City: Exhibition, Industry and Modernity":
+      "Ang Lungsod ng Perya: Eksibisyon, Industriya at Modernidad",
     "Plovdiv Before the City: The Hills as Deep-Time Memory":
       "Ang Plovdiv Bago ang Lungsod: Ang mga Burol bilang Alaala ng Malalim na Panahon",
     "Ivan Mrkvichka, 'Market in Plovdiv' (1888) — the motley square the painter watched every day.":
@@ -348,6 +350,8 @@ const manualTranslationsByLang = {
       "Ang kronolohiya ng alkalde ay nag-uugnay kay Zdravko Dimitrov kay Eng. Ivan Totev sa pamamagitan ng relasyong \"nagtagumpay\"."
   },
   uk: {
+    "Postwar Revival":
+      "Повоєнне відродження",
     "Tsanko Lavrenov: The Old Town on Canvas":
       "Цанко Лавренов: старе місто на полотні",
     "Zlatyu Boyadzhiev: The Two Lives of One Brush":
