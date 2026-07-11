@@ -902,7 +902,7 @@
     "title_en": "The Medieval Crossroads: From Khan Krum to Ottoman Filibe",
     "dek_bg": "Средновековната история на Пловдив е история на смяна на власт, имена и граници. Този разказ пази несигурността видима и стъпва върху съществуващите хронологични записи.",
     "dek_en": "Plovdiv's medieval history is a story of changing rule, names and borders. This story keeps uncertainty visible and rests on existing chronological records.",
-    "reading_minutes": 7,
+    "reading_minutes": 8,
     "era_tags": [
       "medieval",
       "ottoman"
@@ -933,14 +933,21 @@
         ],
         "linked_place_ids": [
           "place-plovdiv-city",
-          "place-seven-hills"
-        ]
+          "place-seven-hills",
+          "place-hisar-kapia"
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/2b/PLI-HisarKapija001.jpg",
+          "caption_bg": "Хисар капия — средновековната порта, зидана върху римска основа: кръстопътният град в един кадър.",
+          "caption_en": "Hisar Kapia — the medieval gate built on a Roman footing: the crossroads city in a single frame.",
+          "credit": "Wikimedia Commons · CC BY-SA 4.0 · Michal Valach, Wikimedia Commons"
+        }
       },
       {
         "heading_bg": "Граници, имена и памет",
         "heading_en": "Borders, Names and Memory",
-        "body_bg": "Средновековните пластове често са по-трудни за визуализиране от римските паметници или възрожденските къщи. Затова платформата ги представя през последователни събития и ясно обозначени източници. Когато липсва богата локална илюстрация, това също е данна точка, а не повод за измислена сигурност.",
-        "body_en": "Medieval layers are often harder to visualize than Roman monuments or Revival houses. The platform therefore presents them through sequenced events and clearly marked sources. When rich local illustration is missing, that too is a data point, not a reason to invent certainty.",
+        "body_bg": "Средновековните пластове често са по-трудни за визуализиране от римските паметници или възрожденските къщи. Затова платформата ги представя през последователни събития и ясно обозначени източници. Когато липсва богата локална илюстрация, това също е данна точка, а не повод за измислена сигурност. Средновековният Пловдив рядко избира сам страната си: византийски, български и отново византийски, той сменя короните по-често от стените си — и точно затова портите и крепостните зидове са най-честният му летопис.",
+        "body_en": "Medieval layers are often harder to visualize than Roman monuments or Revival houses. The platform therefore presents them through sequenced events and clearly marked sources. When rich local illustration is missing, that too is a data point, not a reason to invent certainty. Medieval Plovdiv rarely chose its own side: Byzantine, Bulgarian, then Byzantine again, it changed crowns more often than walls — which is precisely why its gates and fortifications are its most honest chronicle.",
         "source_ids": [
           "source-wikipedia-plovdiv"
         ],
@@ -967,7 +974,13 @@
         "linked_place_ids": [
           "place-dzhumaya-mosque",
           "place-plovdiv-city"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Dzhumayata.jpg",
+          "caption_bg": "Джумая джамия — новият пласт на завоеванието, положен в самия център на стария град.",
+          "caption_en": "The Dzhumaya Mosque — the conquest's new layer, laid at the very centre of the older town.",
+          "credit": "Wikimedia Commons · CC BY-SA 3.0 · Ivelin Vraykov"
+        }
       }
     ],
     "linked_event_ids": [
