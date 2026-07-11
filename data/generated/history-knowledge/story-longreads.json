@@ -1066,7 +1066,7 @@
     "title_en": "Old Plovdiv as Project: Restoration, Administration and Memory",
     "dek_bg": "Разказ за специализираното управление Старинен Пловдив, Ламартиновата къща и начина, по който реставрацията превръща квартала в публична историческа сцена.",
     "dek_en": "A story on the specialized Old Plovdiv administration, Lamartine House and how restoration turned the quarter into a public historical stage.",
-    "reading_minutes": 8,
+    "reading_minutes": 9,
     "era_tags": [
       "revival",
       "modern"
@@ -1097,7 +1097,13 @@
         "linked_place_ids": [
           "place-old-town",
           "place-plovdiv-city"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/PLOVDIV%2C_Blick_vom_Zimmer_im_Trimontium_-_58_-_046.44.jpg",
+          "caption_bg": "Изглед към Трихълмието през 1958 г. — годините, в които старите къщи спират да са „вехтории“ и стават задача на държавата.",
+          "caption_en": "A view of the Three Hills in 1958 — the years when the old houses stopped being 'clutter' and became a task of the state.",
+          "credit": "Wikimedia Commons · CC BY-SA 4.0 · Peter H. Feist"
+        }
       },
       {
         "heading_bg": "Ламартиновата къща и видимата реставрация",
@@ -1118,8 +1124,8 @@
       {
         "heading_bg": "От къщи към мрежа",
         "heading_en": "From Houses to Network",
-        "body_bg": "Старинен Пловдив не е една къща, а мрежа от улици, дворове, религиозни места, училища и музеи. В платформата това означава, че всяка история трябва да сочи към отделни места и източници. Така кварталът се чете не като декор, а като система от доказуеми градски пластове.",
-        "body_en": "Old Plovdiv is not one house, but a network of streets, courtyards, religious places, schools and museums. In the platform, that means every story should point to individual places and sources. The quarter is read not as scenery, but as a system of evidenced urban layers.",
+        "body_bg": "Старинен Пловдив не е една къща, а мрежа от улици, дворове, религиозни места, училища и музеи. В платформата това означава, че всяка история трябва да сочи към отделни места и източници. Така кварталът се чете не като декор, а като система от доказуеми градски пластове. Равносметката се вижда с просто око: кварталът, който през 50-те е грозял събаряне, днес е причината туристите изобщо да слизат от влака в Пловдив.",
+        "body_en": "Old Plovdiv is not one house, but a network of streets, courtyards, religious places, schools and museums. In the platform, that means every story should point to individual places and sources. The quarter is read not as scenery, but as a system of evidenced urban layers. The balance sheet is visible to the naked eye: the quarter that in the 1950s faced demolition is today the reason travellers get off the train in Plovdiv at all.",
         "source_ids": [
           "source-wikipedia-old-town-plovdiv",
           "source-wikidata-the-old-town-old-plovdiv-coordinates"
@@ -1129,7 +1135,13 @@
           "place-old-town",
           "place-holy-mother-of-god",
           "place-lamartine-house"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/36/St._Bogoroditza_plovdiv.jpg",
+          "caption_bg": "Църквата „Св. Богородица“ в Стария град — реставрираният ансамбъл работи като жив квартал, не като музейна витрина.",
+          "caption_en": "The Holy Mother of God church in the Old Town — the restored ensemble works as a living quarter, not a museum case.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       }
     ],
     "linked_event_ids": [
