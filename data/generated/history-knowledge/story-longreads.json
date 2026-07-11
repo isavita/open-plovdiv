@@ -582,7 +582,7 @@
     "title_en": "Kapana: The 'Trap' the Crafts Built and Culture Brought Back",
     "dek_bg": "От занаятчийските сокаци под Джумаята до квартала на творческите индустрии: как една търговска мрежа от улички стана сцена на Пловдив 2019.",
     "dek_en": "From the artisan lanes below the Dzhumaya to the creative-industries district: how a web of trading streets became a stage for Plovdiv 2019.",
-    "reading_minutes": 6,
+    "reading_minutes": 7,
     "era_tags": [
       "ottoman",
       "modern"
@@ -632,7 +632,13 @@
           "place-kapana-q12282547",
           "place-dzhumaya-mosque",
           "place-dzhumaya-square-q59368698"
-        ]
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Dzhumaya_square_on_old_postcard_3.jpg",
+          "caption_bg": "Площад Джумая на стара картичка — оттук търговците и купувачите влизали в „капана“ на уличките.",
+          "caption_en": "An old postcard of Dzhumaya Square — from here traders and shoppers stepped into the 'trap' of the lanes.",
+          "credit": "Wikimedia Commons · Public domain"
+        }
       },
       {
         "heading_bg": "Когато работилниците замлъкнаха",
@@ -658,6 +664,26 @@
         "linked_event_ids": [
           "event-capital-of-culture-2019"
         ],
+        "linked_place_ids": [
+          "place-kapana-q12282547"
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Plovdiv119.jpg",
+          "caption_bg": "Уличка в Капана днес: същият план от XV век, нов живот на партерите.",
+          "caption_en": "A lane in Kapana today: the same fifteenth-century plan, new life on the ground floors.",
+          "credit": "Wikimedia Commons · CC BY-SA 4.0 · Realsteel007"
+        }
+      },
+      {
+        "heading_bg": "Улиците помнят занаятите",
+        "heading_en": "The Streets Remember the Crafts",
+        "body_bg": "Табелите в Капана са малък исторически речник: „Железарска“, „Кожухарска“, „Златарска“, „Абаджийска“ — всяка улица носи името на занаята, който някога е работил по нея. Днес по същите улици има ателиета, кафенета и галерии, но адресите продължават да разказват стария град на търговците. Достатъчно е да четеш табелите, за да минеш през пет века стопанска история за десет минути пеша.",
+        "body_en": "The street signs of Kapana form a small historical dictionary: Ironmongers', Furriers', Goldsmiths', Braid-makers' — each lane carries the name of the craft that once worked along it. Today the same lanes hold studios, cafés and galleries, but the addresses keep telling the old traders' town. Reading the signs is enough to walk through five centuries of economic history in ten minutes.",
+        "source_ids": [
+          "source-wikidata-kapana",
+          "source-wikipedia-plovdiv"
+        ],
+        "linked_event_ids": [],
         "linked_place_ids": [
           "place-kapana-q12282547"
         ]
