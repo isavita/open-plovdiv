@@ -1173,6 +1173,12 @@ function assertStoryLongreads(loaded) {
         }
       }
 
+      for (const artwork of section.gallery ?? []) {
+        if (!artwork.page_url) {
+          throw new Error(`story longreads: ${story.id} section ${index + 1} gallery artwork is missing its source page URL`);
+        }
+      }
+
       if (!section.body_en.includes("\n\n") || !section.body_bg.includes("\n\n")) {
         throw new Error(`story longreads: ${story.id} section ${index + 1} must contain at least two real paragraphs in BG and EN`);
       }
@@ -1216,7 +1222,10 @@ function assertStoryLongreads(loaded) {
         throw new Error(`story longreads: ${story.id} still contains editorial/process language (${pattern})`);
       }
     }
-    const displayedCaptions = [story.hero, ...story.sections.map((section) => section.media).filter(Boolean)];
+    const displayedCaptions = [
+      story.hero,
+      ...story.sections.flatMap((section) => [section.media, ...(section.gallery ?? [])]).filter(Boolean)
+    ];
     for (const caption of displayedCaptions) {
       for (const pattern of editorialCaptionLanguage) {
         if (pattern.test(caption.caption_en) || pattern.test(caption.caption_bg)) {

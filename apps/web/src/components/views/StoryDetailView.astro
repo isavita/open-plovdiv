@@ -30,6 +30,7 @@ const labels = ({
     minutes: "мин четене",
     contents: "В този разказ",
     chapter: "Глава",
+    gallery: "Галерия от творби",
     sources: "Източници",
     linkedEvidence: "По следите на разказа",
     furtherReading: "Източници и още",
@@ -44,6 +45,7 @@ const labels = ({
     minutes: "min read",
     contents: "In this story",
     chapter: "Chapter",
+    gallery: "Gallery of works",
     sources: "Sources",
     linkedEvidence: "Follow the story",
     furtherReading: "Sources and further reading",
@@ -58,6 +60,7 @@ const labels = ({
     minutes: "Min. Lesezeit",
     contents: "In dieser Geschichte",
     chapter: "Kapitel",
+    gallery: "Werksgalerie",
     sources: "Quellen",
     linkedEvidence: "Der Geschichte folgen",
     furtherReading: "Quellen und weiterführende Lektüre",
@@ -72,6 +75,7 @@ const labels = ({
     minutes: "min de lecture",
     contents: "Dans ce récit",
     chapter: "Chapitre",
+    gallery: "Galerie d’œuvres",
     sources: "Sources",
     linkedEvidence: "Suivre le récit",
     furtherReading: "Sources et pour aller plus loin",
@@ -86,6 +90,7 @@ const labels = ({
     minutes: "min di lettura",
     contents: "In questo racconto",
     chapter: "Capitolo",
+    gallery: "Galleria di opere",
     sources: "Fonti",
     linkedEvidence: "Segui il racconto",
     furtherReading: "Fonti e approfondimenti",
@@ -100,6 +105,7 @@ const labels = ({
     minutes: "dk okuma",
     contents: "Bu anlatıda",
     chapter: "Bölüm",
+    gallery: "Eserler galerisi",
     sources: "Kaynaklar",
     linkedEvidence: "Hikâyenin izinde",
     furtherReading: "Kaynaklar ve ek okumalar",
@@ -114,6 +120,7 @@ const labels = ({
     minutes: "min de lectura",
     contents: "En este relato",
     chapter: "Capítulo",
+    gallery: "Galería de obras",
     sources: "Fuentes",
     linkedEvidence: "Sigue el relato",
     furtherReading: "Fuentes y lecturas adicionales",
@@ -128,6 +135,7 @@ const labels = ({
     minutes: "λεπτά ανάγνωσης",
     contents: "Σε αυτή την αφήγηση",
     chapter: "Κεφάλαιο",
+    gallery: "Πινακοθήκη έργων",
     sources: "Πηγές",
     linkedEvidence: "Ακολουθήστε την ιστορία",
     furtherReading: "Πηγές και περαιτέρω ανάγνωση",
@@ -142,6 +150,7 @@ const labels = ({
     minutes: "分で読める",
     contents: "この物語の中で",
     chapter: "章",
+    gallery: "作品ギャラリー",
     sources: "出典",
     linkedEvidence: "物語をたどる",
     furtherReading: "出典と参考資料",
@@ -156,6 +165,7 @@ const labels = ({
     minutes: "хв читання",
     contents: "У цій розповіді",
     chapter: "Розділ",
+    gallery: "Галерея творів",
     sources: "Джерела",
     linkedEvidence: "Простежити розповідь",
     furtherReading: "Джерела та додаткове читання",
@@ -170,6 +180,7 @@ const labels = ({
     minutes: "мин чтения",
     contents: "В этом рассказе",
     chapter: "Глава",
+    gallery: "Галерея работ",
     sources: "Источники",
     linkedEvidence: "Проследить историю",
     furtherReading: "Источники и дополнительное чтение",
@@ -184,6 +195,7 @@ const labels = ({
     minutes: "minutong babasahin",
     contents: "Sa kuwentong ito",
     chapter: "Kabanata",
+    gallery: "Galeriya ng mga obra",
     sources: "Mga Pinagmulan",
     linkedEvidence: "Sundan ang kuwento",
     furtherReading: "Mga sanggunian at karagdagang babasahin",
@@ -305,6 +317,7 @@ const relatedStories = storyLongreads
           {story.sections.map((section, index) => {
             const media = section.media;
             const mediaCommons = media ? isCommonsUploadImageUrl(media.url) : false;
+            const gallery = section.gallery ?? [];
             return (
               <section class="story-chapter" id={`chapter-${index + 1}`}>
                 <header class="story-chapter-head">
@@ -325,13 +338,64 @@ const relatedStories = storyLongreads
                     />
                     <figcaption>
                       {localized(media, "caption")}
-                      <span class="meta"> · {media.credit}</span>
+                      {media.page_url ? (
+                        <a href={media.page_url} target="_blank" rel="noreferrer">{media.credit} ↗</a>
+                      ) : (
+                        <span class="meta"> · {media.credit}</span>
+                      )}
                     </figcaption>
                   </figure>
                 )}
                 <div class="story-prose">
                   {paragraphs(section).map((paragraph) => <p>{paragraph}</p>)}
                 </div>
+                {gallery.length > 0 && (
+                  <section class="story-art-gallery-block" aria-label={localized(section, "gallery_label") || labels.gallery}>
+                    <header class="story-art-gallery-head">
+                      <p class="eyebrow">{localized(section, "gallery_label") || labels.gallery}</p>
+                    </header>
+                    <div class="story-art-gallery">
+                      {gallery.map((artwork) => {
+                        const artworkCommons = isCommonsUploadImageUrl(artwork.url);
+                        return (
+                          <figure class="story-artwork">
+                            <img
+                              src={artworkCommons ? commonsImageUrl(artwork.url, 960) : artwork.url}
+                              srcset={artworkCommons ? `${commonsImageUrl(artwork.url, 640)} 640w, ${commonsImageUrl(artwork.url, 960)} 960w` : undefined}
+                              sizes="(max-width: 760px) 100vw, 360px"
+                              alt={localized(artwork, "caption")}
+                              width={artwork.width}
+                              height={artwork.height}
+                              loading="lazy"
+                              decoding="async"
+                              crossorigin={artworkCommons ? "anonymous" : undefined}
+                              referrerpolicy="no-referrer"
+                            />
+                            <figcaption>
+                              <span>{localized(artwork, "caption")}</span>
+                              {artwork.page_url ? (
+                                <a href={artwork.page_url} target="_blank" rel="noreferrer">{artwork.credit} ↗</a>
+                              ) : (
+                                <span class="meta">{artwork.credit}</span>
+                              )}
+                            </figcaption>
+                          </figure>
+                        );
+                      })}
+                    </div>
+                  </section>
+                )}
+                {section.gallery_link && (
+                  <a
+                    class="story-gallery-link"
+                    href={section.gallery_link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span>{localized(section.gallery_link, "label")}</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
               </section>
             );
           })}

@@ -167,51 +167,55 @@
             }
           },
           "media": {
+            "$ref": "#/definitions/storyMedia"
+          },
+          "gallery": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 12,
+            "items": {
+              "$ref": "#/definitions/storyMedia"
+            }
+          },
+          "gallery_label_bg": {
+            "type": "string",
+            "minLength": 8
+          },
+          "gallery_label_en": {
+            "type": "string",
+            "minLength": 8
+          },
+          "gallery_link": {
             "type": "object",
             "additionalProperties": false,
             "required": [
               "url",
-              "caption_bg",
-              "caption_en",
-              "credit",
-              "width",
-              "height"
+              "label_bg",
+              "label_en"
             ],
             "properties": {
               "url": {
                 "type": "string",
-                "pattern": "^https://upload\\.wikimedia\\.org/"
+                "format": "uri"
               },
-              "caption_bg": {
+              "label_bg": {
                 "type": "string",
-                "minLength": 10
+                "minLength": 8
               },
-              "caption_en": {
+              "label_en": {
                 "type": "string",
-                "minLength": 10
-              },
-              "credit": {
-                "type": "string",
-                "minLength": 5
-              },
-              "width": {
-                "type": "integer",
-                "minimum": 1
-              },
-              "height": {
-                "type": "integer",
-                "minimum": 1
+                "minLength": 8
               }
             },
             "patternProperties": {
-              "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+              "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
                 "type": "string"
               }
             }
           }
         },
         "patternProperties": {
-          "^(heading|body)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+          "^(heading|body|gallery_label)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
             "type": "string"
           }
         }
@@ -267,6 +271,55 @@
     },
     "editorial": {
       "$ref": "historical-archive-item.schema.json#/definitions/editorial"
+    }
+  },
+  "definitions": {
+    "storyMedia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "caption_bg",
+        "caption_en",
+        "credit",
+        "width",
+        "height"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://upload\\.wikimedia\\.org/"
+        },
+        "page_url": {
+          "type": "string",
+          "pattern": "^https://commons\\.wikimedia\\.org/wiki/File"
+        },
+        "caption_bg": {
+          "type": "string",
+          "minLength": 10
+        },
+        "caption_en": {
+          "type": "string",
+          "minLength": 10
+        },
+        "credit": {
+          "type": "string",
+          "minLength": 5
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "patternProperties": {
+        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+          "type": "string"
+        }
+      }
     }
   },
   "patternProperties": {

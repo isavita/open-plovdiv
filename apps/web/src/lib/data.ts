@@ -713,6 +713,16 @@ export type EducationResource = {
   editorial: KnowledgeEditorial;
 };
 
+export type StoryMedia = {
+  url: string;
+  page_url?: string;
+  caption_bg: string;
+  caption_en: string;
+  credit: string;
+  width: number;
+  height: number;
+};
+
 export type StoryLongread = {
   id: string;
   title_bg: string;
@@ -734,13 +744,17 @@ export type StoryLongread = {
     body_bg: string;
     body_en: string;
     /** Optional public-domain artwork or archival image shown with the section. */
-    media?: {
+    media?: StoryMedia;
+    /** Optional salon-style group of sourced artworks or exhibition views. */
+    gallery?: StoryMedia[];
+    /** Optional localized label when the gallery shows city context rather than artworks. */
+    gallery_label_bg?: string;
+    gallery_label_en?: string;
+    /** Optional route to an official museum or collection with more works. */
+    gallery_link?: {
       url: string;
-      caption_bg: string;
-      caption_en: string;
-      credit: string;
-      width: number;
-      height: number;
+      label_bg: string;
+      label_en: string;
     };
     source_ids: string[];
     linked_event_ids: string[];

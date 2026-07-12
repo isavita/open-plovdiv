@@ -150,6 +150,10 @@ const manualTranslationsByLang = {
     "Open Database License 1.0": "Open Database License 1.0"
   },
   el: {
+    "Stanislav Dospevski, Portrait of Hadzhi Salcho Chomakov (1857). The Plovdiv merchant and civic patron is given the individual presence Dospevski brought to secular portraiture.":
+      "Stanislav Dospevski, Πορτρέτο του Hadzhi Salcho Chomakov (1857). Ο έμπορος και κοινωνικός ευεργέτης του Plovdiv αποδίδεται με την ατομικότητα που έφερε ο Dospevski στην κοσμική προσωπογραφία.",
+    "Stanislav Dospevski, Portrait of Elisaveta V. Chalakova (1857). The pale dress and steady gaze make the named sitter an individual rather than a decorative type.":
+      "Stanislav Dospevski, Πορτρέτο της Elisaveta V. Chalakova (1857). Το ανοιχτόχρωμο φόρεμα και το σταθερό βλέμμα κάνουν την επώνυμη εικονιζόμενη ξεχωριστή προσωπικότητα και όχι διακοσμητικό τύπο.",
     "Tsanko Lavrenov: The Old Town on Canvas":
       "Tsanko Lavrenov: η Παλιά Πόλη στον καμβά",
     "Zlatyu Boyadzhiev: The Two Lives of One Brush":
@@ -201,6 +205,12 @@ const manualTranslationsByLang = {
       "Ο Sotir Antoniadi (1843-1928) ήταν γιατρός και πολιτικός ελληνικής καταγωγής, γεννημένος στη Στανιμάκα, σήμερα Asenovgrad. Αρχικά σπούδασε στο κεντρικό ελληνικό σχολείο του Plovdiv, στη συνέχεια σε γυμνάσιο της Αθήνας και αργότερα ιατρική στη Βιέννη, πριν εργαστεί για δύο χρόνια στο Παρίσι. Ο Antoniadi ήταν βουλευτής στην Περιφερειακή Συνέλευση της Ανατολικής Ρωμυλίας και το 1885 στην Εθνοσυνέλευση του Πριγκιπάτου της Βουλγαρίας. Από τις 26 Ιανουαρίου έως τις 21 Απριλίου 1883 υπηρέτησε σύντομα ως αναπληρωτής δήμαρχος του Plovdiv. Το 1915 μετακόμισε στην Ελλάδα· το σπίτι του και το φαρμακείο που χτίστηκε το 1872 αποτελούν μέρος του αρχιτεκτονικού και ιστορικού αποθέματος του Παλαιού Plovdiv."
   },
   ja: {
+    "Ivan Mrkvichka, Radka Hadzhinikolova in Macedonian Costume (1880). A year before Plovdiv, the portrait already shows his attention to clothing as a marker of identity and origin.":
+      "Ivan Mrkvichka、「マケドニアの衣装を着た Radka Hadzhinikolova」（1880）。Plovdivへ移る一年前のこの肖像画には、衣装を個性と出自のしるしとして捉える画家の視線がすでに表れています。",
+    "Stanislav Dospevski, Portrait of Hadzhi Salcho Chomakov (1857). The Plovdiv merchant and civic patron is given the individual presence Dospevski brought to secular portraiture.":
+      "Stanislav Dospevski、「Hadzhi Salcho Chomakov の肖像」（1857）。Plovdivの商人で市民活動の支援者だった人物に、Dospevskiが世俗肖像画にもたらした確かな個性が与えられています。",
+    "Stanislav Dospevski, Portrait of Elisaveta V. Chalakova (1857). The pale dress and steady gaze make the named sitter an individual rather than a decorative type.":
+      "Stanislav Dospevski、「Elisaveta V. Chalakova の肖像」（1857）。淡い色のドレスとまっすぐな視線が、名を持つモデルを装飾的な類型ではなく一人の人物として描き出しています。",
     "The Family of Icon Painters":
       "イコン画家の一族",
     "Painting in Plovdiv begins as a family trade. Stanislav Dospevski (1823–1877) was born in Samokov into the most famous icon-painting family of the National Revival: son of the icon painter Dimitar Zograf and nephew of Zahari Zograf. Trained at the academy of arts in Saint Petersburg, he carried the academic portrait into the Bulgarian lands — and painted his own father in oils, the way Europe painted its citizens. The family reached city hall too: his brother Atanas Samokovliev became Plovdiv's first elected mayor in 1878. The brush and the city's government set out from the same house.":
@@ -350,6 +360,12 @@ const manualTranslationsByLang = {
       "Ang kronolohiya ng alkalde ay nag-uugnay kay Zdravko Dimitrov kay Eng. Ivan Totev sa pamamagitan ng relasyong \"nagtagumpay\"."
   },
   uk: {
+    "Ivan Mrkvichka, Radka Hadzhinikolova in Macedonian Costume (1880). A year before Plovdiv, the portrait already shows his attention to clothing as a marker of identity and origin.":
+      "Ivan Mrkvichka, «Radka Hadzhinikolova в македонському вбранні» (1880). За рік до переїзду в Plovdiv портрет уже показує його увагу до одягу як ознаки особистості та походження.",
+    "Stanislav Dospevski, Portrait of Hadzhi Salcho Chomakov (1857). The Plovdiv merchant and civic patron is given the individual presence Dospevski brought to secular portraiture.":
+      "Stanislav Dospevski, «Портрет Hadzhi Salcho Chomakov» (1857). Купця й громадського мецената з Plovdiv показано з тією індивідуальністю, яку Dospevski привніс у світський портрет.",
+    "Stanislav Dospevski, Portrait of Elisaveta V. Chalakova (1857). The pale dress and steady gaze make the named sitter an individual rather than a decorative type.":
+      "Stanislav Dospevski, «Портрет Elisaveta V. Chalakova» (1857). Світла сукня й спокійний погляд перетворюють названу жінку на особистість, а не на декоративний тип.",
     "Postwar Revival":
       "Повоєнне відродження",
     "Tsanko Lavrenov: The Old Town on Canvas":
@@ -438,6 +454,12 @@ const manualTranslationsByLang = {
       "Мерська хронологія пов'язує Kostaki Peev з Atanas Samokovliev через стосунки «наступник»."
   },
   ru: {
+    "Ivan Mrkvichka, Radka Hadzhinikolova in Macedonian Costume (1880). A year before Plovdiv, the portrait already shows his attention to clothing as a marker of identity and origin.":
+      "Ivan Mrkvichka, «Radka Hadzhinikolova в македонском костюме» (1880). За год до переезда в Plovdiv портрет уже показывает его внимание к одежде как признаку личности и происхождения.",
+    "Stanislav Dospevski, Portrait of Hadzhi Salcho Chomakov (1857). The Plovdiv merchant and civic patron is given the individual presence Dospevski brought to secular portraiture.":
+      "Stanislav Dospevski, «Портрет Hadzhi Salcho Chomakov» (1857). Купец и общественный меценат из Plovdiv показан с той индивидуальностью, которую Dospevski привнес в светский портрет.",
+    "Stanislav Dospevski, Portrait of Elisaveta V. Chalakova (1857). The pale dress and steady gaze make the named sitter an individual rather than a decorative type.":
+      "Stanislav Dospevski, «Портрет Elisaveta V. Chalakova» (1857). Светлое платье и спокойный взгляд превращают названную женщину в личность, а не в декоративный тип.",
     "Tsanko Lavrenov: The Old Town on Canvas":
       "Цанко Лавренов: Старый город на холсте",
     "Zlatyu Boyadzhiev: The Two Lives of One Brush":

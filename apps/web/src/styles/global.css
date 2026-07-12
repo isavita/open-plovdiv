@@ -5250,6 +5250,107 @@ code {
   padding-left: 12px;
 }
 
+.story-section-figure figcaption a {
+  align-items: center;
+  display: inline-flex;
+  margin-left: 6px;
+  min-height: 44px;
+}
+
+.story-art-gallery-block {
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--data-sources) 7%, var(--surface-2)), var(--surface-2));
+  border-top: 5px solid var(--data-sources);
+  margin-top: clamp(36px, 6vw, 58px);
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.story-art-gallery-head {
+  border-bottom: 1px solid var(--line-strong);
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+}
+
+.story-art-gallery-head .eyebrow {
+  color: var(--data-sources);
+  margin: 0;
+}
+
+.story-art-gallery {
+  column-count: 2;
+  column-gap: 18px;
+}
+
+.story-artwork {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  break-inside: avoid;
+  display: inline-block;
+  margin: 0 0 18px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.story-artwork img {
+  background: color-mix(in srgb, var(--surface-3) 85%, var(--ink));
+  display: block;
+  height: auto;
+  max-height: 620px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.story-artwork figcaption {
+  color: var(--ink-2);
+  display: grid;
+  font-size: 0.84rem;
+  gap: 7px;
+  line-height: 1.5;
+  padding: 12px 14px 9px;
+}
+
+.story-artwork figcaption a,
+.story-artwork figcaption .meta {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.story-artwork figcaption a {
+  align-items: center;
+  display: inline-flex;
+  min-height: 44px;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.story-artwork figcaption a:hover,
+.story-artwork figcaption a:focus-visible {
+  color: var(--brand);
+}
+
+.story-gallery-link {
+  align-items: center;
+  background: color-mix(in srgb, var(--brand) 8%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--brand) 34%, var(--line));
+  color: var(--brand-strong);
+  display: flex;
+  font-weight: 850;
+  gap: 18px;
+  justify-content: space-between;
+  line-height: 1.35;
+  margin-top: 18px;
+  min-height: 52px;
+  padding: 13px 16px;
+  text-decoration: none;
+}
+
+.story-gallery-link:hover,
+.story-gallery-link:focus-visible {
+  background: color-mix(in srgb, var(--brand) 15%, var(--surface));
+  border-color: var(--brand);
+}
+
 .story-endnotes {
   background: color-mix(in srgb, var(--surface-2) 82%, var(--surface));
   border-top: 5px solid var(--accent);
@@ -6590,6 +6691,15 @@ code {
   .story-chapter + .story-chapter {
     margin-top: 58px;
     padding-top: 52px;
+  }
+
+  .story-art-gallery {
+    column-count: 1;
+  }
+
+  .story-art-gallery-block {
+    margin-inline: calc(var(--gutter) * -0.45);
+    padding-inline: var(--gutter);
   }
 
   .story-trail-grid {
