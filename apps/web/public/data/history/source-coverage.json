@@ -13,8 +13,8 @@
     "single_source_records": 730,
     "multi_source_records": 280,
     "needs_multi_source_review_records": 730,
-    "open_license_records": 738,
-    "public_reference_terms_records": 338
+    "open_license_records": 739,
+    "public_reference_terms_records": 345
   },
   "collections": {
     "events": {
@@ -229,8 +229,8 @@
       "single_source_records": 0,
       "multi_source_records": 15,
       "needs_multi_source_review_records": 0,
-      "open_license_records": 14,
-      "public_reference_terms_records": 6,
+      "open_license_records": 15,
+      "public_reference_terms_records": 13,
       "label_de": "Story-Longreads",
       "label_fr": "Lectures longues d'histoires",
       "label_it": "La storia si legge a lungo",
@@ -269,8 +269,8 @@
     }
   },
   "license_statuses": {
-    "public_reference_terms_unverified": 338,
-    "open_license": 738
+    "public_reference_terms_unverified": 345,
+    "open_license": 739
   },
   "records": [
     {
@@ -35859,22 +35859,27 @@
       "review_url_bg": "/stories/story-1928-earthquake/",
       "review_url_en": "/en/stories/story-1928-earthquake/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 3,
+      "source_count": 5,
       "source_ids": [
+        "source-noaa-ncei-1928-bulgaria-earthquake-information",
+        "source-journal-of-geophysical-research-paleoseismologic-investigation-of-the-14-april-1",
         "source-wikimedia-commons-historical-images-plovdiv",
         "source-wikimedia-commons-bulgarian-archives-state-agency",
-        "source-wikidata-ivan-vazov-national-library-coordinates"
+        "source-ivan-vazov-library-building"
       ],
       "source_urls": [
+        "https://www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-more-info/3363",
+        "https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2005JB003814",
         "https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv",
         "https://commons.wikimedia.org/wiki/Commons:Bulgarian_Archives_State_Agency",
-        "https://www.wikidata.org/wiki/Q630839"
+        "https://www.libplovdiv.com/index.php/en/sgradata-en"
       ],
       "license_statuses": [
+        "public_reference_terms_unverified",
         "open_license"
       ],
       "has_open_license": true,
-      "has_public_reference_terms": false,
+      "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
       "editorial_status": "needs_editorial_signoff",
@@ -35896,76 +35901,41 @@
       "id": "story-deep-time-seven-hills",
       "collection": "story_longreads",
       "role": "editorial_feature",
-      "title_bg": "Пловдив преди градът: тепетата като памет на дългото време",
-      "title_en": "Plovdiv Before the City: The Hills as Deep-Time Memory",
+      "title_bg": "Преди Пловдив: как селището се изкачва към тепетата",
+      "title_en": "Before Plovdiv: How a Settlement Climbed to the Hills",
       "review_url_bg": "/stories/story-deep-time-seven-hills/",
       "review_url_en": "/en/stories/story-deep-time-seven-hills/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 5,
+      "source_count": 10,
       "source_ids": [
         "source-wikipedia-plovdiv",
+        "source-visit-plovdiv-prehistory",
+        "source-plovdiv-municipality-ancient-plovdiv",
+        "source-plovdiv-municipality-history",
+        "source-visit-plovdiv-antiquity",
         "source-wikipedia-nebet-tepe",
+        "source-wikipedia-old-town-plovdiv",
         "source-wikipedia-philippopolis",
         "source-wikidata-nebet-tepe-coordinates",
         "source-wikimedia-commons-dzhambaztepe-1892-jpg"
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://www.visitplovdiv.com/en/node/293",
+        "https://www.plovdiv.bg/en/tourists/sight-seeing/ancient-plovdiv/",
+        "https://www.plovdiv.bg/en/about-plovdiv/history/",
+        "https://www.visitplovdiv.com/en/node/145",
         "https://en.wikipedia.org/wiki/Nebet_Tepe",
+        "https://en.wikipedia.org/wiki/Old_Town_(Plovdiv)",
         "https://en.wikipedia.org/wiki/Philippopolis_(Thrace)",
         "https://www.wikidata.org/wiki/Q12288006",
         "https://commons.wikimedia.org/wiki/File:Dzhambaztepe_1892.jpg"
       ],
       "license_statuses": [
-        "open_license"
-      ],
-      "has_open_license": true,
-      "has_public_reference_terms": false,
-      "has_license_or_reuse_status": true,
-      "needs_multi_source_review": false,
-      "editorial_status": "needs_editorial_signoff",
-      "blockers": [
-        "needs_independent_editorial_signoff"
-      ],
-      "title_de": "Plovdiv vor der Stadt: Die Hügel als tiefe Zeiterinnerung",
-      "title_fr": "Plovdiv avant la ville : les collines comme mémoire profonde",
-      "title_it": "Plovdiv prima della città: le colline come memoria profonda",
-      "title_tr": "Şehirden Önce Plovdiv: Derin Zaman Belleği Olarak Tepeler",
-      "title_es": "Plovdiv ante la ciudad: las colinas como memoria en el tiempo profundo",
-      "title_el": "Το Plovdiv πριν από την πόλη: οι λόφοι ως μνήμη του βαθέος χρόνου",
-      "title_ja": "都市の前のPlovdiv: 深い時間の記憶としての丘",
-      "title_tl": "Ang Plovdiv Bago ang Lungsod: Ang mga Burol bilang Alaala ng Malalim na Panahon",
-      "title_uk": "Plovdiv перед містом: пагорби як глибока пам'ять",
-      "title_ru": "Plovdiv перед городом: Холмы как память о далеких временах"
-    },
-    {
-      "id": "story-european-capital-culture",
-      "collection": "story_longreads",
-      "role": "editorial_feature",
-      "title_bg": "От Европейски месец на културата до Европейска столица на културата",
-      "title_en": "From European Month of Culture to European Capital of Culture",
-      "review_url_bg": "/stories/story-european-capital-culture/",
-      "review_url_en": "/en/stories/story-european-capital-culture/",
-      "api_url": "/api/history/story-longreads.json",
-      "source_count": 5,
-      "source_ids": [
-        "source-plovdiv-2019-official",
-        "source-podtepeto-plovdiv-1999-month-culture-archive",
-        "source-european-commission-ecoc-2019",
-        "source-obshtinski-savet-plovdiv-reshenie-o4-za-byudzhet-2014",
-        "source-obshtinski-savet-plovdiv-reshenie-33-za-byudzhet-2018"
-      ],
-      "source_urls": [
-        "https://plovdiv2019.eu/en",
-        "https://podtepeto.com/aktualno/arhivite-razkazvat-plovdiv-99-evropejski-mesec-na-kulturata/",
-        "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera",
-        "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-4-3/",
-        "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-33-7/"
-      ],
-      "license_statuses": [
+        "open_license",
         "public_reference_terms_unverified"
       ],
-      "has_open_license": false,
+      "has_open_license": true,
       "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
@@ -35973,16 +35943,67 @@
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Vom Europäischen Kulturmonat zur Kulturhauptstadt Europas",
-      "title_fr": "Du Mois européen de la culture à la Capitale européenne de la culture",
-      "title_it": "Da Mese Europeo della Cultura a Capitale Europea della Cultura",
-      "title_tr": "Avrupa Kültür Ayı'ndan Avrupa Kültür Başkenti'ne",
-      "title_es": "De Mes Europeo de la Cultura a Capital Europea de la Cultura",
-      "title_el": "Από τον Ευρωπαϊκό Μήνα Πολιτισμού στην Πολιτιστική Πρωτεύουσα της Ευρώπης",
-      "title_ja": "欧州文化月間から欧州文化首都へ",
-      "title_tl": "Mula sa European Month of Culture hanggang sa Kapital ng Kultura sa Europa",
-      "title_uk": "Від Європейського місяця культури до Європейської культурної столиці",
-      "title_ru": "От Европейского месяца культуры к культурной столице Европы"
+      "title_de": "Vor Plovdiv: Wie eine Siedlung die Hügel erklomm",
+      "title_fr": "Avant Plovdiv : comment une colonie a grimpé jusqu'aux collines",
+      "title_it": "Prima di Plovdiv: come un insediamento salì sulle colline",
+      "title_tr": "Plovdiv'den Önce: Bir Yerleşim Tepelere Nasıl Tırmandı?",
+      "title_es": "Antes de Plovdiv: cómo un asentamiento subió a las colinas",
+      "title_el": "Πριν από τη Plovdiv: Πώς ένας οικισμός σκαρφάλωσε στους λόφους",
+      "title_ja": "Plovdiv以前: 集落はどのようにして丘に登ったのか",
+      "title_tl": "Bago ang Plovdiv: Paano Umakyat ang Isang Paninirahan sa mga Burol",
+      "title_uk": "Перед Plovdiv: як поселення піднялося на пагорби",
+      "title_ru": "Перед Plovdiv: как поселение поднялось в горы"
+    },
+    {
+      "id": "story-european-capital-culture",
+      "collection": "story_longreads",
+      "role": "editorial_feature",
+      "title_bg": "Двайсет години на сцена: от Пловдив '99 до Европейска столица на културата",
+      "title_en": "Twenty Years on Stage: From Plovdiv '99 to European Capital of Culture",
+      "review_url_bg": "/stories/story-european-capital-culture/",
+      "review_url_en": "/en/stories/story-european-capital-culture/",
+      "api_url": "/api/history/story-longreads.json",
+      "source_count": 7,
+      "source_ids": [
+        "source-plovdiv-2019-official",
+        "source-podtepeto-plovdiv-1999-month-culture-archive",
+        "source-european-commission-ecoc-2019",
+        "source-obshtinski-savet-plovdiv-reshenie-o4-za-byudzhet-2014",
+        "source-obshtinski-savet-plovdiv-reshenie-33-za-byudzhet-2018",
+        "source-wikidata-kapana",
+        "source-plovdiv-2019-kapana-creative-district"
+      ],
+      "source_urls": [
+        "https://plovdiv2019.eu/en",
+        "https://podtepeto.com/aktualno/arhivite-razkazvat-plovdiv-99-evropejski-mesec-na-kulturata/",
+        "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera",
+        "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-4-3/",
+        "https://plovdiv.bg/obs/%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%89%D0%B8-%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%D0%B5/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-33-7/",
+        "https://www.wikidata.org/wiki/Q12282547",
+        "https://plovdiv2019.eu/en/platform/transforms/130-urban-dreams/418-kapana-creative-district"
+      ],
+      "license_statuses": [
+        "public_reference_terms_unverified",
+        "open_license"
+      ],
+      "has_open_license": true,
+      "has_public_reference_terms": true,
+      "has_license_or_reuse_status": true,
+      "needs_multi_source_review": false,
+      "editorial_status": "needs_editorial_signoff",
+      "blockers": [
+        "needs_independent_editorial_signoff"
+      ],
+      "title_de": "Zwanzig Jahre auf der Bühne: Von Plovdiv 1999 zur Kulturhauptstadt Europas",
+      "title_fr": "Vingt ans sur scène : de Plovdiv 1999 à capitale européenne de la culture",
+      "title_it": "Vent'anni di scena: da Plovdiv '99 a Capitale Europea della Cultura",
+      "title_tr": "Sahnede Yirmi Yıl: Plovdiv '99'dan Avrupa Kültür Başkentine",
+      "title_es": "Veinte años en escena: de Plovdiv 1999 a Capital Europea de la Cultura",
+      "title_el": "Είκοσι χρόνια στη σκηνή: Από το Plovdiv '99 στην Πολιτιστική Πρωτεύουσα της Ευρώπης",
+      "title_ja": "舞台での 20 年: Plovdiv '99 から欧州文化首都まで",
+      "title_tl": "Dalawampung Taon sa Entablado: Mula Plovdiv '99 hanggang Kapital ng Kultura sa Europa",
+      "title_uk": "Двадцять років на сцені: від Plovdiv '99 до культурної столиці Європи",
+      "title_ru": "Двадцать лет на сцене: от Plovdiv-99 до культурной столицы Европы"
     },
     {
       "id": "story-international-fair-modernity",
@@ -35993,18 +36014,24 @@
       "review_url_bg": "/stories/story-international-fair-modernity/",
       "review_url_en": "/en/stories/story-international-fair-modernity/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 4,
+      "source_count": 7,
       "source_ids": [
         "source-international-fair-plovdiv-1892",
+        "source-visit-plovdiv-tsar-simeon-garden-history",
+        "source-basa-3k-7-327-1-international-fair-plovdiv-1892-jpg",
+        "source-basa-3k-7-327-10-international-fair-plovdiv-1892-jpg",
         "source-wikipedia-international-fair-plovdiv",
-        "source-rim-plovdiv-infrastructure-1944-1990",
-        "source-wikimedia-commons-basa-3k-7-327-27-international-fair-plovdiv-1892-jpg"
+        "source-basa-1318k-1-5896-2-opening-of-1939-plovdiv-fair-jpg",
+        "source-rim-plovdiv-infrastructure-1944-1990"
       ],
       "source_urls": [
         "https://www.fair.bg/uploads/event/form/file/5d15dd4f521c7017390091.pdf",
+        "https://www.visitplovdiv.com/en/node/3118",
+        "https://commons.wikimedia.org/wiki/File:BASA-3K-7-327-1-International_Fair_Plovdiv%2C_1892.jpg",
+        "https://commons.wikimedia.org/wiki/File:BASA-3K-7-327-10-International_Fair_Plovdiv%2C_1892.jpg",
         "https://en.wikipedia.org/wiki/International_Fair_Plovdiv",
-        "https://rimplovdiv.com/wp-content/uploads/2025/12/infrastruktura.pdf",
-        "https://commons.wikimedia.org/wiki/File:BASA-3K-7-327-27-International_Fair_Plovdiv%2C_1892.jpg"
+        "https://commons.wikimedia.org/wiki/File:BASA_1318K-1-5896-2_Opening_of_1939_Plovdiv_fair.jpg",
+        "https://rimplovdiv.com/wp-content/uploads/2025/12/infrastruktura.pdf"
       ],
       "license_statuses": [
         "public_reference_terms_unverified",
@@ -36033,21 +36060,29 @@
       "id": "story-kapana-crafts-creative",
       "collection": "story_longreads",
       "role": "editorial_feature",
-      "title_bg": "Капана: кварталът-капан, който занаятите построиха, а културата съживи",
-      "title_en": "Kapana: The 'Trap' the Crafts Built and Culture Brought Back",
+      "title_bg": "Капана: уличната мрежа, която оцеля два пъти",
+      "title_en": "Kapana: The Street Grid That Survived Twice",
       "review_url_bg": "/stories/story-kapana-crafts-creative/",
       "review_url_en": "/en/stories/story-kapana-crafts-creative/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 3,
+      "source_count": 7,
       "source_ids": [
         "source-wikidata-kapana",
         "source-european-commission-ecoc-2019",
-        "source-wikipedia-plovdiv"
+        "source-plovdiv-2019-official",
+        "source-wikipedia-plovdiv",
+        "source-wikipedia-bg-kapana",
+        "source-visit-kapana-history-1890-1995",
+        "source-plovdiv-2019-kapana-creative-district"
       ],
       "source_urls": [
         "https://www.wikidata.org/wiki/Q12282547",
         "https://culture.ec.europa.eu/whats-new/news/2019-european-capitals-of-culture-plovdiv-and-matera",
-        "https://en.wikipedia.org/wiki/Plovdiv"
+        "https://plovdiv2019.eu/en",
+        "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://bg.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BF%D0%B0%D0%BD%D0%B0",
+        "https://visitkapana.bg/2017/04/10/%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%D1%82%D0%BE-%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BF%D0%B0%D0%BD%D0%B0-1890-1995/",
+        "https://plovdiv2019.eu/en/platform/transforms/130-urban-dreams/418-kapana-creative-district"
       ],
       "license_statuses": [
         "open_license",
@@ -36061,102 +36096,128 @@
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Kapana: die „Falle“, die das Handwerk baute und die Kultur wiederbelebte",
-      "title_fr": "Kapana : le « piège » bâti par l'artisanat et ranimé par la culture",
-      "title_it": "Kapana: la «trappola» costruita dall'artigianato e riportata in vita dalla cultura",
-      "title_tr": "Kapana: zanaatların kurduğu ve kültürün geri getirdiği 'tuzak'",
-      "title_es": "Kapana: la «trampa» que construyeron los oficios y revivió la cultura",
-      "title_el": "Καπανά: η «παγίδα» που έχτισαν τα επαγγέλματα και επανέφερε ο πολιτισμός",
-      "title_ja": "カパナ：職人が築き、文化がよみがえらせた「罠」",
-      "title_tl": "Kapana: Ang 'Bitag' na Ginawa ng mga Craft at Ibinalik ng Kultura",
-      "title_uk": "Капана: «пастка», яку звели ремесла й повернула до життя культура",
-      "title_ru": "Капана: «ловушка», которую построили ремёсла и вернула к жизни культура"
+      "title_de": "Kapana: Das Straßennetz, das zweimal überlebte",
+      "title_fr": "Kapana : le réseau de rues qui a survécu deux fois",
+      "title_it": "Kapana: la griglia stradale che è sopravvissuta due volte",
+      "title_tr": "Kapana: İki Kez Hayatta Kalan Sokak Izgarası",
+      "title_es": "Kapana: la red urbana que sobrevivió dos veces",
+      "title_el": "Καπάνα: Το οδικό πλέγμα που επέζησε δύο φορές",
+      "title_ja": "カパナ: 二度生き残った街路網",
+      "title_tl": "Kapana: Ang Street Grid na Dalawang beses na Nabuhay",
+      "title_uk": "Капана: вулична мережа, що вціліла двічі",
+      "title_ru": "Капана: уличная сеть, которая выжила дважды"
     },
     {
       "id": "story-maritsa-bridges",
       "collection": "story_longreads",
       "role": "editorial_feature",
-      "title_bg": "Марица и мостовете: градът, който се учи да живее с реката",
-      "title_en": "The Maritsa and Its Bridges: A City Learning to Live With Its River",
+      "title_bg": "Марица след потопа: мостове към „отсрещния бряг“",
+      "title_en": "The Maritsa After the Flood: Bridges to the 'Opposite Shore'",
       "review_url_bg": "/stories/story-maritsa-bridges/",
       "review_url_en": "/en/stories/story-maritsa-bridges/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 4,
+      "source_count": 12,
       "source_ids": [
         "source-wikipedia-plovdiv",
+        "source-wikipedia-eastern-district",
+        "source-wikipedia-northern-district",
         "source-wikidata-gerdzhika-bridge",
         "source-wikidata-fairground-bridge",
-        "source-wikidata-green-bridge-in-plovdiv"
+        "source-wikidata-green-bridge-in-plovdiv",
+        "source-rim-plovdiv-infrastructure-1944-1990",
+        "source-gerdjica-1931-jpg",
+        "source-plovdiv-old-bridge-and-gerdjika-bridge-1930s-jpg",
+        "source-wikimedia-commons-maritsa-panoramio-jpg",
+        "source-pod-tepeto-plovdiv-1957-flood",
+        "source-pod-tepeto-stolipinovo-history"
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://en.wikipedia.org/wiki/Eastern_district,_Plovdiv",
+        "https://en.wikipedia.org/wiki/Northern_district,_Plovdiv",
         "https://www.wikidata.org/wiki/Q56636017",
         "https://www.wikidata.org/wiki/Q56613441",
-        "https://www.wikidata.org/wiki/Q56632059"
+        "https://www.wikidata.org/wiki/Q56632059",
+        "https://rimplovdiv.com/wp-content/uploads/2025/12/infrastruktura.pdf",
+        "https://commons.wikimedia.org/wiki/File:Gerdjica_1931.jpg",
+        "https://commons.wikimedia.org/wiki/File:Plovdiv%2C_Old_Bridge_and_Gerdjika_Bridge%2C_1930s.jpg",
+        "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B0%D1%80%D0%B8%D1%86%D0%B0_-_panoramio.jpg",
+        "https://podtepeto.com/besedka-za-grada/navodnenieto-prez-1957-g-ostavilo-10500-plovdivchani-bez-pokriv/",
+        "https://podtepeto.com/aktualno/kak-se-e-rodilo-stolipinovo/"
       ],
       "license_statuses": [
-        "open_license"
+        "open_license",
+        "public_reference_terms_unverified"
       ],
       "has_open_license": true,
-      "has_public_reference_terms": false,
+      "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Die Maritsa und ihre Brücken: Eine Stadt, die lernt, mit ihrem Fluss zu leben",
-      "title_fr": "La Maritsa et ses ponts : une ville qui apprend à vivre avec son fleuve",
-      "title_it": "La Maritsa e i suoi ponti: una città che impara a convivere con il suo fiume",
-      "title_tr": "Meriç ve Köprüleri: Nehri ile Yaşamayı Öğrenen Bir Şehir",
-      "title_es": "La Maritsa y sus puentes: una ciudad que aprende a vivir con su río",
-      "title_el": "Η Μαρίτσα και οι γέφυρες της: Μια πόλη που μαθαίνει να ζει με το ποτάμι της",
-      "title_ja": "マリツァとその橋: 川とともに生きることを学ぶ都市",
-      "title_tl": "Ang Maritsa at ang mga Tulay Nito: Isang Lungsod na Natutong Mamuhay Kasama ang Ilog Nito",
-      "title_uk": "Маріца та її мости: місто, яке вчиться жити зі своєю річкою",
-      "title_ru": "Марица и ее мосты: город, который учится жить со своей рекой"
+      "title_de": "Die Maritsa nach der Sintflut: Brücken zum „entgegengesetzten Ufer“",
+      "title_fr": "La Maritsa après le déluge : des ponts vers la « rive opposée »",
+      "title_it": "La Maritsa dopo il diluvio: ponti verso la \"sponda opposta\"",
+      "title_tr": "Tufan Sonrası Meriç: 'Karşı Kıyıya' Köprüler",
+      "title_es": "La Maritsa después del diluvio: puentes hacia la 'orilla opuesta'",
+      "title_el": "Η Μαρίτσα μετά την πλημμύρα: Γέφυρες προς την «απέναντι όχθη»",
+      "title_ja": "洪水後のマリツァ: 「対岸」への橋",
+      "title_tl": "Ang Maritsa Pagkatapos ng Baha: Mga Tulay sa 'Katapat na Pampang'",
+      "title_uk": "Мариця після потопу: мости до «протилежного берега»",
+      "title_ru": "Марица после потопа: мосты на «противоположный берег»"
     },
     {
       "id": "story-medieval-crossroads",
       "collection": "story_longreads",
       "role": "editorial_feature",
-      "title_bg": "Средновековният кръстопът: от хан Крум до османското Филибе",
-      "title_en": "The Medieval Crossroads: From Khan Krum to Ottoman Filibe",
+      "title_bg": "Средновековният Пловдив: градът зад Хисар капия",
+      "title_en": "Medieval Plovdiv: The City Behind Hisar Kapia",
       "review_url_bg": "/stories/story-medieval-crossroads/",
       "review_url_en": "/en/stories/story-medieval-crossroads/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 3,
+      "source_count": 7,
       "source_ids": [
         "source-wikipedia-plovdiv",
+        "source-wikipedia-hisar-kapia",
+        "source-wikimedia-commons-file-pli-hisarkapija001-jpg",
+        "source-wikipedia-old-town-plovdiv",
+        "source-visit-plovdiv-dzhumaya-mosque",
         "source-wikipedia-dzhumaya-mosque",
         "source-wikimedia-commons-plovdiv-hills-jpg"
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://en.wikipedia.org/wiki/Hisar_Kapia",
+        "https://commons.wikimedia.org/wiki/File:PLI-HisarKapija001.jpg",
+        "https://en.wikipedia.org/wiki/Old_Town_(Plovdiv)",
+        "https://www.visitplovdiv.com/en/node/598",
         "https://en.wikipedia.org/wiki/Dzhumaya_Mosque",
         "https://commons.wikimedia.org/wiki/File:Plovdiv_Hills.jpg"
       ],
       "license_statuses": [
-        "open_license"
+        "open_license",
+        "public_reference_terms_unverified"
       ],
       "has_open_license": true,
-      "has_public_reference_terms": false,
+      "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Der mittelalterliche Scheideweg: Von Khan Krum zum osmanischen Filibe",
-      "title_fr": "Le carrefour médiéval : de Khan Krum à la Filibe ottomane",
-      "title_it": "Il crocevia medievale: da Khan Krum a Filibe ottomano",
-      "title_tr": "Ortaçağ Kavşağı: Han Krum'dan Osmanlı Plovdiv'ye",
-      "title_es": "La encrucijada medieval: de Khan Krum a Filibe otomano",
-      "title_el": "Το μεσαιωνικό σταυροδρόμι: Από το Khan Krum στο Ottoman Filibe",
-      "title_ja": "中世の岐路: カーン・クルムからオスマン帝国のフィリベまで",
-      "title_tl": "Ang Medieval Crossroads: Mula sa Khan Krum hanggang Osmanli Filibe",
-      "title_uk": "Середньовічне перехрестя: від хана Крума до османського Філібе",
-      "title_ru": "Средневековый перекресток: от Хана Крума до Османской филибе"
+      "title_de": "Mittelalterliches Plovdiv: Die Stadt hinter Hisar Kapia",
+      "title_fr": "Plovdiv médiévale : la ville derrière Hisar Kapia",
+      "title_it": "Plovdiv medievale: la città dietro Hisar Kapia",
+      "title_tr": "Ortaçağ Plovdiv: Hisar Kapia'nın Arkasındaki Şehir",
+      "title_es": "Plovdiv medieval: la ciudad detrás de Hisar Kapia",
+      "title_el": "Μεσαιωνική Plovdiv: Η πόλη πίσω από το Hisar Kapia",
+      "title_ja": "中世Plovdiv: ヒサル・カピアの背後にある都市",
+      "title_tl": "Medieval Plovdiv: Ang Lungsod sa Likod ng Hisar Kapia",
+      "title_uk": "Середньовічний Plovdiv: місто за Гісар-Капія",
+      "title_ru": "Средневековый Plovdiv: город за Хисар Капией"
     },
     {
       "id": "story-old-plovdiv-restoration",
@@ -36167,18 +36228,20 @@
       "review_url_bg": "/stories/story-old-plovdiv-restoration/",
       "review_url_en": "/en/stories/story-old-plovdiv-restoration/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 4,
+      "source_count": 5,
       "source_ids": [
         "source-rim-plovdiv-infrastructure-1944-1990",
         "source-wikipedia-old-town-plovdiv",
         "source-wikidata-lamartine-house-q12284656",
-        "source-wikimedia-commons-historical-images-plovdiv"
+        "source-wikimedia-commons-historical-images-plovdiv",
+        "source-plovdiv-blick-vom-zimmer-im-trimontium-58-046-44-jpg"
       ],
       "source_urls": [
         "https://rimplovdiv.com/wp-content/uploads/2025/12/infrastruktura.pdf",
         "https://en.wikipedia.org/wiki/Old_Town_(Plovdiv)",
         "https://www.wikidata.org/wiki/Q12284656",
-        "https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv"
+        "https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv",
+        "https://commons.wikimedia.org/wiki/File:PLOVDIV%2C_Blick_vom_Zimmer_im_Trimontium_-_58_-_046.44.jpg"
       ],
       "license_statuses": [
         "public_reference_terms_unverified",
@@ -36207,108 +36270,124 @@
       "id": "story-ottoman-filibe-city",
       "collection": "story_longreads",
       "role": "editorial_feature",
-      "title_bg": "Османското Филибе: площади, храмове и градски занаяти",
-      "title_en": "Ottoman Filibe: Squares, Sacred Places and Urban Crafts",
+      "title_bg": "Османското Филибе: град на молитва, вода и споделено време",
+      "title_en": "Ottoman Filibe: A City of Worship, Water and Shared Time",
       "review_url_bg": "/stories/story-ottoman-filibe-city/",
       "review_url_en": "/en/stories/story-ottoman-filibe-city/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 5,
+      "source_count": 11,
       "source_ids": [
         "source-wikipedia-plovdiv",
+        "source-visit-plovdiv-dzhumaya-mosque",
         "source-wikipedia-dzhumaya-mosque",
+        "source-wikidata-dzhumaya-square",
+        "source-dzhumaya-square-on-old-postcard-2-jpg",
         "source-wikidata-chifte-hamam-q60169037",
         "source-wikidata-dervish-monastery-plovdiv-q37813757",
+        "source-wikidata-sahat-hill-in-plovdiv",
+        "source-ottoman-clock-tower-in-plovdiv-on-old-photo-jpg",
+        "source-wikimedia-commons-tower-from-old-town-plovdiv-jpg",
         "source-wikimedia-commons-historical-images-plovdiv"
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://www.visitplovdiv.com/en/node/598",
         "https://en.wikipedia.org/wiki/Dzhumaya_Mosque",
+        "https://www.wikidata.org/wiki/Q59368698",
+        "https://commons.wikimedia.org/wiki/File:Dzhumaya_square_on_old_postcard_2.jpg",
         "https://www.wikidata.org/wiki/Q60169037",
         "https://www.wikidata.org/wiki/Q37813757",
+        "https://www.wikidata.org/wiki/Q12293012",
+        "https://commons.wikimedia.org/wiki/File:Ottoman_clock_tower_in_Plovdiv_on_old_photo.jpg",
+        "https://commons.wikimedia.org/wiki/File:Tower_from_old_town_plovdiv.JPG",
         "https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv"
       ],
       "license_statuses": [
-        "open_license"
+        "open_license",
+        "public_reference_terms_unverified"
       ],
       "has_open_license": true,
-      "has_public_reference_terms": false,
+      "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Osmanisches Filibe: Plätze, heilige Orte und städtisches Handwerk",
-      "title_fr": "Filibe ottoman : places, lieux sacrés et artisanat urbain",
-      "title_it": "Filibe Ottomana: Piazze, Luoghi Sacri e Mestieri Urbani",
-      "title_tr": "Osmanlı Plovdiv: Meydanlar, Kutsal Mekanlar ve Kent Zanaatları",
-      "title_es": "Filibe otomano: plazas, lugares sagrados y artesanías urbanas",
-      "title_el": "Ottoman Filibe: Πλατείες, Ιεροί Τόποι και Αστικές Τέχνες",
-      "title_ja": "オスマン帝国のフィリベ: 広場、神聖な場所、都市工芸品",
-      "title_tl": "Filibe noong panahong Osmanli: mga plaza, sagradong lugar at gawaing-bayan",
-      "title_uk": "Османський Філібе: площі, священні місця та міські ремесла",
-      "title_ru": "Османские филибе: площади, священные места и городские ремесла"
+      "title_de": "Osmanisches Filibe: Eine Stadt der Anbetung, des Wassers und der gemeinsamen Zeit",
+      "title_fr": "Filibe ottomane : une ville de culte, d’eau et de temps partagé",
+      "title_it": "Filibe ottomana: una città di culto, acqua e tempo condiviso",
+      "title_tr": "Osmanlı Plovdiv: İbadet, Su ve Paylaşılan Zaman Şehri",
+      "title_es": "Filibe otomana: una ciudad de culto, agua y tiempo compartido",
+      "title_el": "Ottoman Filibe: Μια πόλη λατρείας, νερού και κοινόχρηστου χρόνου",
+      "title_ja": "オスマン帝国のフィリベ: 崇拝、水、そして時間を共有する都市",
+      "title_tl": "Osmanli Filibe: Isang Lunsod ng Pagsamba, Tubig at Nakabahaging Oras",
+      "title_uk": "Османське Філібе: місто поклоніння, води та спільного часу",
+      "title_ru": "Османская Филибе: город поклонения, воды и совместного времени"
     },
     {
       "id": "story-plovdiv-painters",
       "collection": "story_longreads",
       "role": "editorial_feature",
-      "title_bg": "Художниците на Пловдив: градът върху платно",
-      "title_en": "The Painters of Plovdiv: The City on Canvas",
+      "title_bg": "Пловдив върху платно: как картините се върнаха у дома",
+      "title_en": "Plovdiv on Canvas: How the Paintings Came Home",
       "review_url_bg": "/stories/story-plovdiv-painters/",
       "review_url_en": "/en/stories/story-plovdiv-painters/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 9,
+      "source_count": 10,
       "source_ids": [
         "source-wikipedia-stanislav-dospevski",
         "source-wikipedia-atanas-samokovliev",
         "source-wikipedia-ivan-mrkvichka",
         "source-wikipedia-tsanko-lavrenov",
+        "source-wikidata-tsanko-lavrenov-national-high-school-of-art-plovdiv",
         "source-wikipedia-zlatyu-boyadzhiev",
         "source-wikidata-zlatyu-boyadzhiev-exposition",
         "source-wikidata-encho-pironkov-gallery",
-        "source-wikipedia-yoan-leviev",
-        "source-wikipedia-luba-lukova"
+        "source-wikipedia-old-town-plovdiv",
+        "source-old-plovdiv-zlatyu-boyadzhiev-exposition"
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Stanislav_Dospevski",
         "https://bg.wikipedia.org/wiki/%D0%90%D1%82%D0%B0%D0%BD%D0%B0%D1%81_%D0%A1%D0%B0%D0%BC%D0%BE%D0%BA%D0%BE%D0%B2%D0%BB%D0%B8%D0%B5%D0%B2",
         "https://en.wikipedia.org/wiki/Ivan_Mrkvi%C4%8Dka",
         "https://en.wikipedia.org/wiki/Tsanko_Lavrenov",
+        "https://www.wikidata.org/wiki/Q12287929",
         "https://en.wikipedia.org/wiki/Zlatyu_Boyadzhiev",
         "https://www.wikidata.org/wiki/Q12291130",
         "https://www.wikidata.org/wiki/Q12287461",
-        "https://en.wikipedia.org/wiki/Yoan_Leviev",
-        "https://en.wikipedia.org/wiki/Luba_Lukova"
+        "https://en.wikipedia.org/wiki/Old_Town_(Plovdiv)",
+        "https://oldplovdiv.bg/en/sights/10"
       ],
       "license_statuses": [
-        "open_license"
+        "open_license",
+        "public_reference_terms_unverified"
       ],
       "has_open_license": true,
-      "has_public_reference_terms": false,
+      "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Die Maler von Plovdiv: Die Stadt auf Leinwand",
-      "title_fr": "Les Peintres de Plovdiv : La ville sur toile",
-      "title_it": "I pittori di Plovdiv: la città su tela",
-      "title_tr": "Plovdiv Ressamları: Tuval Üzerine Şehir",
-      "title_es": "Los pintores de Plovdiv: la ciudad sobre lienzo",
-      "title_el": "Οι ζωγράφοι του Plovdiv: η πόλη στον καμβά",
-      "title_ja": "Plovdivの画家たち：カンヴァスの上の街",
-      "title_tl": "The Painters of Plovdiv: The City on Canvas",
-      "title_uk": "Художники Пловдива: місто на полотні",
-      "title_ru": "Художники Пловдива: город на холсте"
+      "title_de": "Plovdiv auf Leinwand: Wie die Gemälde nach Hause kamen",
+      "title_fr": "Plovdiv sur toile : comment les peintures sont rentrées à la maison",
+      "title_it": "Plovdiv su tela: come i dipinti tornarono a casa",
+      "title_tr": "Tuval Üzerine Plovdiv: Resimler Eve Nasıl Geldi?",
+      "title_es": "Plovdiv sobre lienzo: cómo llegaron las pinturas a casa",
+      "title_el": "Το Plovdiv στον καμβά: Πώς οι πίνακες επέστρεψαν στο σπίτι τους",
+      "title_ja": "キャンバス上のPlovdiv: 絵画はどのようにして家に帰ってきたのか",
+      "title_tl": "Plovdiv sa Canvas: Paano Umuwi ang Mga Pinta",
+      "title_uk": "Plovdiv на полотні: як картини прийшли додому",
+      "title_ru": "Plovdiv на холсте: как картины вернулись домой"
     },
     {
       "id": "story-railway-1873",
       "collection": "story_longreads",
       "role": "editorial_feature",
-      "title_bg": "Влакът от 1873: железницата, която обърна града към равнината",
-      "title_en": "The Train of 1873: The Railway That Turned the City Toward the Plain",
+      "title_bg": "Влакът от 1874: новият вход към Пловдив",
+      "title_en": "The Train of 1874: Plovdiv's New Gateway",
       "review_url_bg": "/stories/story-railway-1873/",
       "review_url_en": "/en/stories/story-railway-1873/",
       "api_url": "/api/history/story-longreads.json",
@@ -36332,39 +36411,45 @@
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Der Zug von 1873: die Eisenbahn, die die Stadt der Ebene zuwandte",
-      "title_fr": "Le train de 1873 : le chemin de fer qui tourna la ville vers la plaine",
-      "title_it": "Il treno del 1873: la ferrovia che orientò la città verso la pianura",
-      "title_tr": "1873 Treni: Şehri Ovaya Çeviren Demiryolu",
-      "title_es": "El tren de 1873: el ferrocarril que giró la ciudad hacia la llanura",
-      "title_el": "Το τρένο του 1873: Ο σιδηρόδρομος που γύρισε την πόλη προς την πεδιάδα",
-      "title_ja": "1873年の列車：街を平原へ向けた鉄道",
-      "title_tl": "Ang Tren ng 1873: Ang Riles na Nagpaikot sa Lungsod Patungo sa Kapatagan",
-      "title_uk": "Поїзд 1873 року: залізниця, що повернула місто обличчям до рівнини",
-      "title_ru": "Поезд 1873 года: железная дорога, которая повернула город к равнине"
+      "title_de": "Der Zug von 1874: Plovdivs neues Tor",
+      "title_fr": "Le train de 1874 : la nouvelle porte d'entrée de Plovdiv",
+      "title_it": "Il treno del 1874: la nuova porta di Plovdiv",
+      "title_tr": "1874 Treni: Plovdiv'nin Yeni Geçidi",
+      "title_es": "El tren de 1874: la nueva puerta de entrada a Plovdiv",
+      "title_el": "Το τρένο του 1874: Η νέα πύλη του Plovdiv",
+      "title_ja": "1874 年の列車: Plovdivの新しい玄関口",
+      "title_tl": "Ang Tren ng 1874: Ang Bagong Gateway ng Plovdiv",
+      "title_uk": "Поїзд 1874 року: нові ворота Plovdiv",
+      "title_ru": "Поезд 1874 года: Новые ворота Plovdiv"
     },
     {
       "id": "story-revival-houses-schools",
       "collection": "story_longreads",
       "role": "editorial_feature",
-      "title_bg": "Възрожденският Пловдив: къщи, училища и градски общности",
-      "title_en": "Revival Plovdiv: Houses, Schools and Urban Communities",
+      "title_bg": "Възрожденският Пловдив: когато домовете, училищата и храмовете променят града",
+      "title_en": "Revival Plovdiv: When Homes, Schools and Churches Changed the City",
       "review_url_bg": "/stories/story-revival-houses-schools/",
       "review_url_en": "/en/stories/story-revival-houses-schools/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 5,
+      "source_count": 8,
       "source_ids": [
         "source-wikipedia-plovdiv",
         "source-wikipedia-old-town-plovdiv",
-        "source-wikipedia-humanitarian-high-school-saints-cyril-and-methodius-plovdiv",
+        "source-wikipedia-church-of-the-holy-mother-of-god-plovdiv",
+        "source-wikidata-church-of-the-holy-mother-of-god-q966311",
         "source-wikidata-lamartine-house-q12284656",
+        "source-wikimedia-commons-file-old-town3-jpg",
+        "source-1972feb-150-lamartine-ffloor-jpeg",
         "source-wikimedia-commons-historical-images-plovdiv"
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Plovdiv",
         "https://en.wikipedia.org/wiki/Old_Town_(Plovdiv)",
-        "https://en.wikipedia.org/wiki/Sts._Cyril_and_Methodius_High_School_of_Humanities,_Plovdiv",
+        "https://en.wikipedia.org/wiki/Church_of_the_Holy_Mother_of_God,_Plovdiv",
+        "https://www.wikidata.org/wiki/Q966311",
         "https://www.wikidata.org/wiki/Q12284656",
+        "https://commons.wikimedia.org/wiki/File:Old_town3.jpg",
+        "https://commons.wikimedia.org/wiki/File:1972Feb_150*_Lamartine_FFloor.jpeg",
         "https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv"
       ],
       "license_statuses": [
@@ -36378,62 +36463,73 @@
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Plovdiv der Wiedergeburtszeit: Häuser, Schulen und städtische Gemeinschaften",
-      "title_fr": "Renaissance Plovdiv : maisons, écoles et communautés urbaines",
-      "title_it": "La Plovdiv della Rinascita: case, scuole e comunità urbane",
-      "title_tr": "Diriliş Plovdiv: Evler, Okullar ve Kent Toplulukları",
-      "title_es": "Plovdiv del Renacimiento: casas, escuelas y comunidades urbanas",
-      "title_el": "Η Plovdiv της Εθνικής Αναγέννησης: Σπίτια, σχολεία και αστικές κοινότητες",
-      "title_ja": "Plovdivの復興: 住宅、学校、都市コミュニティ",
-      "title_tl": "Pambansang Muling Pagsilang Plovdiv: Mga Bahay, Mga Paaralan at Pamayanang Urban",
-      "title_uk": "Відродження Plovdiv: будинки, школи та міські спільноти",
-      "title_ru": "Возрождение Plovdiv: дома, школы и городские поселки"
+      "title_de": "Revival Plovdiv: Als Häuser, Schulen und Kirchen die Stadt veränderten",
+      "title_fr": "Revival Plovdiv : Quand les maisons, les écoles et les églises ont changé la ville",
+      "title_it": "Revival Plovdiv: quando case, scuole e chiese cambiarono la città",
+      "title_tr": "Diriliş Plovdiv: Evler, Okullar ve Kiliseler Şehri Değiştirdiğinde",
+      "title_es": "Revival Plovdiv: cuando los hogares, las escuelas y las iglesias cambiaron la ciudad",
+      "title_el": "Revival Plovdiv: Όταν τα σπίτια, τα σχολεία και οι εκκλησίες άλλαξαν την πόλη",
+      "title_ja": "Plovdivの復興: 家、学校、教会が街を変えたとき",
+      "title_tl": "Pambansang Muling Pagsilang Plovdiv: Nang Binago ng mga Tahanan, Paaralan at Simbahan ang Lungsod",
+      "title_uk": "Відродження Plovdiv: коли будинки, школи та церкви змінили місто",
+      "title_ru": "Возрождение Plovdiv: когда дома, школы и церкви изменили город"
     },
     {
       "id": "story-roman-philippopolis",
       "collection": "story_longreads",
       "role": "editorial_feature",
-      "title_bg": "Римският Филипопол: град на сцени, игри и форуми",
-      "title_en": "Roman Philippopolis: A City of Stages, Games and Forums",
+      "title_bg": "Римският Филипопол: как работи една провинциална столица",
+      "title_en": "Roman Philippopolis: How a Provincial Capital Worked",
       "review_url_bg": "/stories/story-roman-philippopolis/",
       "review_url_en": "/en/stories/story-roman-philippopolis/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 5,
+      "source_count": 10,
       "source_ids": [
         "source-wikipedia-plovdiv",
+        "source-wikipedia-philippopolis",
         "source-wikipedia-roman-forum-of-philippopolis",
+        "source-plovdiv-municipality-archaeological-sight-seeing",
+        "source-visit-plovdiv-ancient-theatre",
+        "source-ancient-stadium-of-philippopolis-site-history",
+        "source-wikidata-dzhumaya-square",
         "source-wikidata-ancient-theatre-coordinates",
         "source-wikidata-ancient-stadium-coordinates",
         "source-wikimedia-commons-antique-theater-plovdiv-jpg"
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://en.wikipedia.org/wiki/Philippopolis_(Thrace)",
         "https://en.wikipedia.org/wiki/Roman_forum_of_Philippopolis",
+        "https://www.plovdiv.bg/en/tourists/sight-seeing/archaeological-sight-seeing/",
+        "https://www.visitplovdiv.com/en/node/522",
+        "https://ancient-stadium-plovdiv.eu/?l=2&p=12",
+        "https://www.wikidata.org/wiki/Q59368698",
         "https://www.wikidata.org/wiki/Q1363208",
         "https://www.wikidata.org/wiki/Q7205170",
         "https://commons.wikimedia.org/wiki/File:Antique-theater-plovdiv.jpg"
       ],
       "license_statuses": [
-        "open_license"
+        "open_license",
+        "public_reference_terms_unverified"
       ],
       "has_open_license": true,
-      "has_public_reference_terms": false,
+      "has_public_reference_terms": true,
       "has_license_or_reuse_status": true,
       "needs_multi_source_review": false,
       "editorial_status": "needs_editorial_signoff",
       "blockers": [
         "needs_independent_editorial_signoff"
       ],
-      "title_de": "Römisches Philippopolis: Eine Stadt der Bühnen, Spiele und Foren",
-      "title_fr": "Philippopolis romaine : une ville de scènes, de jeux et de forums",
-      "title_it": "Filippopoli romana: una città di palcoscenici, giochi e fori",
-      "title_tr": "Roman Philippopolis: Sahnelerin, Oyunların ve Forumların Şehri",
-      "title_es": "Filipópolis romana: una ciudad de escenarios, juegos y foros",
-      "title_el": "Ρωμαϊκή Φιλιππούπολη: πόλη σκηνών, αγώνων και αγορών",
-      "title_ja": "ローマのフィリポポリス: 舞台、ゲーム、フォーラムの街",
-      "title_tl": "Romano Philippopolis: Isang Lungsod ng mga Yugto, Mga Laro at Mga Forum",
-      "title_uk": "Римський Філіппополь: місто сцен, ігор та форумів",
-      "title_ru": "Римский Филиппополис: город сцен, игр и форумов"
+      "title_de": "Römisches Philippopolis: Wie eine Provinzhauptstadt funktionierte",
+      "title_fr": "Philippopolis romaine : comment fonctionnait une capitale provinciale",
+      "title_it": "Filippopoli romana: come funzionava una capitale di provincia",
+      "title_tr": "Roman Philippopolis: Eyalet Başkenti Nasıl Çalıştı?",
+      "title_es": "Filipópolis romana: cómo funcionaba una capital provincial",
+      "title_el": "Ρωμαϊκή Φιλιππούπολη: Πώς λειτουργούσε μια πρωτεύουσα της επαρχίας",
+      "title_ja": "ローマ時代のフィリポポリス: 州都の仕組み",
+      "title_tl": "Romano Philippopolis: Paano Nagtrabaho ang isang Provincial Capital",
+      "title_uk": "Римський Філіппополь: як працювала столиця провінції",
+      "title_ru": "Римский Филиппополь: как работала столица провинции"
     },
     {
       "id": "story-socialist-infrastructure",
@@ -36485,15 +36581,17 @@
       "review_url_bg": "/stories/story-unification-civic-memory/",
       "review_url_en": "/en/stories/story-unification-civic-memory/",
       "api_url": "/api/history/story-longreads.json",
-      "source_count": 4,
+      "source_count": 5,
       "source_ids": [
         "source-wikipedia-plovdiv",
+        "source-museu-ms-the-unification-of-bulgaria-of-1885",
         "source-plovdiv-mayor-archive",
         "source-wikidata-unification-square-plovdiv",
         "source-wikimedia-commons-monument-of-the-unification-jpg"
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Plovdiv",
+        "https://museu.ms/museum/details/16378/the-unification-of-bulgaria-of-1885",
         "https://www.plovdiv.bg/administration/mayor/mayors-of-plovdiv/",
         "https://www.wikidata.org/wiki/Q58885892",
         "https://commons.wikimedia.org/wiki/File:Monument-of-the-Unification.jpg"

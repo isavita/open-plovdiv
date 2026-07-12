@@ -739,6 +739,8 @@ export type StoryLongread = {
       caption_bg: string;
       caption_en: string;
       credit: string;
+      width: number;
+      height: number;
     };
     source_ids: string[];
     linked_event_ids: string[];

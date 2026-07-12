@@ -26,9 +26,13 @@ const t = ui[lang];
 const labels = ({
   bg: {
     back: "Всички разкази",
+    related: "Продължи с друг разказ",
     minutes: "мин четене",
+    contents: "В този разказ",
+    chapter: "Глава",
     sources: "Източници",
-    linkedEvidence: "Свързани записи",
+    linkedEvidence: "По следите на разказа",
+    furtherReading: "Източници и още",
     events: "Събития",
     places: "Места",
     archive: "Архив",
@@ -36,9 +40,13 @@ const labels = ({
   },
   en: {
     back: "All stories",
+    related: "Continue with another story",
     minutes: "min read",
+    contents: "In this story",
+    chapter: "Chapter",
     sources: "Sources",
-    linkedEvidence: "Linked records",
+    linkedEvidence: "Follow the story",
+    furtherReading: "Sources and further reading",
     events: "Events",
     places: "Places",
     archive: "Archive",
@@ -46,9 +54,13 @@ const labels = ({
   },
   de: {
     back: "Alle Geschichten",
+    related: "Mit einer weiteren Geschichte fortfahren",
     minutes: "Min. Lesezeit",
+    contents: "In dieser Geschichte",
+    chapter: "Kapitel",
     sources: "Quellen",
-    linkedEvidence: "Verknüpfte Datensätze",
+    linkedEvidence: "Der Geschichte folgen",
+    furtherReading: "Quellen und weiterführende Lektüre",
     events: "Ereignisse",
     places: "Orte",
     archive: "Archiv",
@@ -56,9 +68,13 @@ const labels = ({
   },
   fr: {
     back: "Tous les récits",
+    related: "Poursuivre avec un autre récit",
     minutes: "min de lecture",
+    contents: "Dans ce récit",
+    chapter: "Chapitre",
     sources: "Sources",
-    linkedEvidence: "Fiches liées",
+    linkedEvidence: "Suivre le récit",
+    furtherReading: "Sources et pour aller plus loin",
     events: "Événements",
     places: "Lieux",
     archive: "Archives",
@@ -66,9 +82,13 @@ const labels = ({
   },
   it: {
     back: "Tutti i racconti",
+    related: "Continua con un altro racconto",
     minutes: "min di lettura",
+    contents: "In questo racconto",
+    chapter: "Capitolo",
     sources: "Fonti",
-    linkedEvidence: "Schede collegate",
+    linkedEvidence: "Segui il racconto",
+    furtherReading: "Fonti e approfondimenti",
     events: "Eventi",
     places: "Luoghi",
     archive: "Archivio",
@@ -76,9 +96,13 @@ const labels = ({
   },
   tr: {
     back: "Tüm anlatılar",
+    related: "Başka bir anlatıyla devam et",
     minutes: "dk okuma",
+    contents: "Bu anlatıda",
+    chapter: "Bölüm",
     sources: "Kaynaklar",
-    linkedEvidence: "Bağlantılı kayıtlar",
+    linkedEvidence: "Hikâyenin izinde",
+    furtherReading: "Kaynaklar ve ek okumalar",
     events: "Etkinlikler",
     places: "Yerler",
     archive: "Arşiv",
@@ -86,9 +110,13 @@ const labels = ({
   },
   es: {
     back: "Todos los relatos",
+    related: "Continúa con otro relato",
     minutes: "min de lectura",
+    contents: "En este relato",
+    chapter: "Capítulo",
     sources: "Fuentes",
-    linkedEvidence: "Registros relacionados",
+    linkedEvidence: "Sigue el relato",
+    furtherReading: "Fuentes y lecturas adicionales",
     events: "Eventos",
     places: "Lugares",
     archive: "Archivo",
@@ -96,9 +124,13 @@ const labels = ({
   },
   el: {
     back: "Όλες οι αφηγήσεις",
+    related: "Συνεχίστε με μια άλλη αφήγηση",
     minutes: "λεπτά ανάγνωσης",
+    contents: "Σε αυτή την αφήγηση",
+    chapter: "Κεφάλαιο",
     sources: "Πηγές",
-    linkedEvidence: "Συνδεδεμένες καρτέλες",
+    linkedEvidence: "Ακολουθήστε την ιστορία",
+    furtherReading: "Πηγές και περαιτέρω ανάγνωση",
     events: "Γεγονότα",
     places: "Τοποθεσίες",
     archive: "Αρχείο",
@@ -106,9 +138,13 @@ const labels = ({
   },
   ja: {
     back: "すべてのストーリー",
+    related: "別の物語を読む",
     minutes: "分で読める",
+    contents: "この物語の中で",
+    chapter: "章",
     sources: "出典",
-    linkedEvidence: "関連記録",
+    linkedEvidence: "物語をたどる",
+    furtherReading: "出典と参考資料",
     events: "出来事",
     places: "場所",
     archive: "アーカイブ",
@@ -116,9 +152,13 @@ const labels = ({
   },
   uk: {
     back: "Усі розповіді",
+    related: "Продовжити іншою розповіддю",
     minutes: "хв читання",
+    contents: "У цій розповіді",
+    chapter: "Розділ",
     sources: "Джерела",
-    linkedEvidence: "Пов'язані записи",
+    linkedEvidence: "Простежити розповідь",
+    furtherReading: "Джерела та додаткове читання",
     events: "Події",
     places: "Місця",
     archive: "Архів",
@@ -126,9 +166,13 @@ const labels = ({
   },
   ru: {
     back: "Все рассказы",
+    related: "Продолжить другим рассказом",
     minutes: "мин чтения",
+    contents: "В этом рассказе",
+    chapter: "Глава",
     sources: "Источники",
-    linkedEvidence: "Связанные записи",
+    linkedEvidence: "Проследить историю",
+    furtherReading: "Источники и дополнительное чтение",
     events: "События",
     places: "Места",
     archive: "Архив",
@@ -136,9 +180,13 @@ const labels = ({
   },
   tl: {
     back: "Lahat ng Kuwento",
+    related: "Magpatuloy sa isa pang kuwento",
     minutes: "minutong babasahin",
+    contents: "Sa kuwentong ito",
+    chapter: "Kabanata",
     sources: "Mga Pinagmulan",
-    linkedEvidence: "Kaugnay na Talaan",
+    linkedEvidence: "Sundan ang kuwento",
+    furtherReading: "Mga sanggunian at karagdagang babasahin",
     events: "Mga Pangyayari",
     places: "Mga Lugar",
     archive: "Arkibo",
@@ -168,20 +216,34 @@ function heroMedia(item: StoryLongread) {
   return placeById.get(item.hero.ref_id)?.media[0];
 }
 
-function titles(ids: string[], map: Map<string, Record<string, unknown>>, field: "title" | "name") {
-  return ids
-    .map((id) => localized((map.get(id) ?? { id }) as Record<string, unknown>, field))
+function paragraphs(record: Record<string, unknown>): string[] {
+  return localized(record, "body")
+    .split(/\n\s*\n/)
+    .map((paragraph) => paragraph.trim())
     .filter(Boolean);
 }
 
 const media = heroMedia(story);
+const mediaCommons = media ? isCommonsUploadImageUrl(media.url) : false;
 const storyThenNowPairs = publicThenNowPairs(
   story.linked_then_now_pair_ids.map((id) => pairById.get(id)).filter(Boolean),
   { preferredPairIds: new Set(story.linked_then_now_pair_ids) }
 );
-const sourceRecords = story.source_ids.map((sourceId) => sourceById.get(sourceId)).filter(Boolean);
+const sourceRecords = story.source_ids
+  .map((sourceId) => sourceById.get(sourceId))
+  .filter((source) => source && !source.id.endsWith("-coordinates"));
 const relatedStories = storyLongreads
-  .filter((item) => item.id !== story.id && item.era_tags.some((tag) => story.era_tags.includes(tag)))
+  .filter((item) => item.id !== story.id)
+  .map((item) => ({
+    item,
+    score:
+      item.theme_tags.filter((tag) => story.theme_tags.includes(tag)).length * 4 +
+      item.linked_place_ids.filter((id) => story.linked_place_ids.includes(id)).length * 3 +
+      item.era_tags.filter((tag) => story.era_tags.includes(tag)).length * 2 +
+      item.linked_event_ids.filter((id) => story.linked_event_ids.includes(id)).length * 2
+  }))
+  .filter(({ score }) => score > 0)
+  .sort((a, b) => b.score - a.score || a.item.id.localeCompare(b.item.id))
   .slice(0, 3);
 ---
 
@@ -201,7 +263,19 @@ const relatedStories = storyLongreads
         </div>
         {media && (
           <figure class="story-detail-media">
-            <img src={media.url} alt={localized(story.hero, "caption")} />
+            <img
+              src={mediaCommons ? commonsImageUrl(media.url, 1280) : media.url}
+              srcset={mediaCommons ? `${commonsImageUrl(media.url, 800)} 800w, ${commonsImageUrl(media.url, 1280)} 1280w` : undefined}
+              sizes="(max-width: 760px) 100vw, 42vw"
+              alt={localized(story.hero, "caption")}
+              width="1280"
+              height="1600"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              crossorigin={mediaCommons ? "anonymous" : undefined}
+              referrerpolicy="no-referrer"
+            />
             <figcaption>
               {localized(story.hero, "caption")}
               <a href={media.page_url} target="_blank" rel="noreferrer">{media.credit}</a>
@@ -213,20 +287,37 @@ const relatedStories = storyLongreads
 
     <section class="section">
       <div class="container story-detail-layout">
-        <div class="story-sections">
+        <aside class="story-contents" aria-label={labels.contents}>
+          <p class="eyebrow">{labels.contents}</p>
+          <ol>
+            {story.sections.map((section, index) => (
+              <li>
+                <a href={`#chapter-${index + 1}`}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  {localized(section, "heading")}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </aside>
+
+        <div class="story-narrative">
           {story.sections.map((section, index) => {
-            const sectionSources = section.source_ids.map((sourceId) => sourceById.get(sourceId)).filter(Boolean);
             const media = section.media;
             const mediaCommons = media ? isCommonsUploadImageUrl(media.url) : false;
             return (
-              <section class="story-section">
-                <p class="eyebrow">{String(index + 1).padStart(2, "0")}</p>
-                <h2>{localized(section, "heading")}</h2>
+              <section class="story-chapter" id={`chapter-${index + 1}`}>
+                <header class="story-chapter-head">
+                  <p class="eyebrow">{`${labels.chapter} ${String(index + 1).padStart(2, "0")}`}</p>
+                  <h2>{localized(section, "heading")}</h2>
+                </header>
                 {media && (
                   <figure class="story-section-figure">
                     <img
                       src={mediaCommons ? commonsImageUrl(media.url, 960) : media.url}
                       alt={localized(media, "caption")}
+                      width={media.width}
+                      height={media.height}
                       loading="lazy"
                       decoding="async"
                       crossorigin={mediaCommons ? "anonymous" : undefined}
@@ -238,45 +329,88 @@ const relatedStories = storyLongreads
                     </figcaption>
                   </figure>
                 )}
-                <p>{localized(section, "body")}</p>
-                <div class="story-section-sources">
-                  <h3>{labels.sources}</h3>
-                  <ul class="source-list compact">
-                    {sectionSources.map((source) => (
-                      <li>
-                        <a href={source!.url} target="_blank" rel="noreferrer">{sourceLabel(source!)}</a>
-                      </li>
-                    ))}
-                  </ul>
+                <div class="story-prose">
+                  {paragraphs(section).map((paragraph) => <p>{paragraph}</p>)}
                 </div>
               </section>
             );
           })}
+
+          <footer class="story-endnotes" aria-label={labels.linkedEvidence}>
+            <div class="story-endnotes-head">
+              <p class="eyebrow">{labels.linkedEvidence}</p>
+              <h2>{labels.furtherReading}</h2>
+            </div>
+
+            <div class="story-trail-grid">
+              {story.linked_event_ids.length > 0 && (
+                <section>
+                  <h3>{labels.events}</h3>
+                  <ul>
+                    {story.linked_event_ids.map((id) => {
+                      const event = eventById.get(id);
+                      if (!event) return null;
+                      const title = localized(event, "title");
+                      return <li><a href={`${localizePath("/history", lang)}?q=${encodeURIComponent(title)}#timeline`}>{title}</a></li>;
+                    })}
+                  </ul>
+                </section>
+              )}
+              {story.linked_place_ids.length > 0 && (
+                <section>
+                  <h3>{labels.places}</h3>
+                  <ul>
+                    {story.linked_place_ids.map((id) => {
+                      const place = placeById.get(id);
+                      if (!place) return null;
+                      return <li><a href={localizePath(`/places/${id}`, lang)}>{localized(place, "name")}</a></li>;
+                    })}
+                  </ul>
+                </section>
+              )}
+              {story.linked_archive_item_ids.length > 0 && (
+                <section>
+                  <h3>{labels.archive}</h3>
+                  <ul>
+                    {story.linked_archive_item_ids.map((id) => {
+                      const archive = archiveById.get(id);
+                      if (!archive) return null;
+                      return (
+                        <li>
+                          <a href={archive.media.page_url} target="_blank" rel="noreferrer">{localized(archive, "title")}</a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </section>
+              )}
+              {storyThenNowPairs.length > 0 && (
+                <section>
+                  <h3>{labels.thenNow}</h3>
+                  <ul>
+                    {storyThenNowPairs.map((pair) => (
+                      <li>
+                        <a href={localizePath(`/places/${pair.place_id}`, lang)}>{localized(pair, "title")}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </div>
+
+            <details class="story-source-drawer">
+              <summary>{`${labels.sources} (${sourceRecords.length})`}</summary>
+              <ol class="source-list">
+                {sourceRecords.map((source) => (
+                  <li>
+                    <a href={source!.url} target="_blank" rel="noreferrer">{sourceLabel(source!)}</a>
+                    <span class="meta"> · {`${t.common.accessed} ${source!.accessed_at}`}</span>
+                  </li>
+                ))}
+              </ol>
+            </details>
+          </footer>
         </div>
-
-        <aside class="story-evidence-panel" aria-label={labels.linkedEvidence}>
-          <h2>{labels.linkedEvidence}</h2>
-          <dl class="evidence-list">
-            <dt>{labels.events}</dt>
-            <dd>{titles(story.linked_event_ids, eventById, "title").join(" · ")}</dd>
-            <dt>{labels.places}</dt>
-            <dd>{titles(story.linked_place_ids, placeById, "name").join(" · ")}</dd>
-            <dt>{labels.archive}</dt>
-            <dd>{titles(story.linked_archive_item_ids, archiveById, "title").join(" · ")}</dd>
-            <dt>{labels.thenNow}</dt>
-            <dd>{storyThenNowPairs.map((pair) => localized(pair, "title")).join(" · ")}</dd>
-          </dl>
-
-          <h2>{labels.sources}</h2>
-          <ul class="source-list">
-            {sourceRecords.map((source) => (
-              <li>
-                <a href={source!.url} target="_blank" rel="noreferrer">{sourceLabel(source!)}</a>
-                <span class="meta"> · {`${t.common.accessed} ${source!.accessed_at}`}</span>
-              </li>
-            ))}
-          </ul>
-        </aside>
       </div>
     </section>
 
@@ -284,10 +418,10 @@ const relatedStories = storyLongreads
       <section class="section section-muted">
         <div class="container">
           <div class="section-head compact">
-            <h2>{labels.back}</h2>
+            <h2>{labels.related}</h2>
           </div>
           <div class="story-grid compact">
-            {relatedStories.map((item) => (
+            {relatedStories.map(({ item }) => (
               <article class="story-card compact">
                 <div class="story-card-body">
                   <p class="eyebrow">{`${item.reading_minutes} ${labels.minutes}`}</p>

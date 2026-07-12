@@ -1182,8 +1182,9 @@ function normalizeAllTranslations(translations) {
   }
 }
 
-function applyManualTranslations(translations) {
+function applyManualTranslations(translations, allowedStrings) {
   for (const [source, translated] of Object.entries(manualTranslations)) {
+    if (!allowedStrings.has(source)) continue;
     translations[source] = translated;
   }
 }
@@ -2760,7 +2761,7 @@ function applyTagalogTemplateFixups(translations) {
 }
 
 const existing = fs.existsSync(outputPath) ? readJson(outputPath) : {};
-const allStrings = new Set(Object.keys(manualTranslations));
+const allStrings = new Set();
 const protectedNames = new Set();
 for (const dir of sourceDirs) {
   for (const file of jsonFiles(path.join(root, dir))) {
@@ -2772,9 +2773,12 @@ for (const dir of sourceDirs) {
 for (const name of protectedNames) allStrings.delete(name);
 protectedNameFixups = await buildProtectedNameFixups(protectedNames, existing);
 
-const translations = { ...manualTranslations };
+const translations = {};
 for (const text of allStrings) {
-  if (manualTranslations[text]) continue; // manual translations are authoritative
+  if (manualTranslations[text]) {
+    translations[text] = manualTranslations[text];
+    continue; // manual translations are authoritative
+  }
   if (existing[text]) translations[text] = normalizeTranslation(existing[text]);
 }
 const pending = [...allStrings]
@@ -2861,7 +2865,7 @@ applyUkrainianTemplateFixups(translations);
 applyRussianDeclensionFixups(translations);
 applyRussianTemplateFixups(translations);
 applyTagalogTemplateFixups(translations);
-applyManualTranslations(translations);
+applyManualTranslations(translations, allStrings);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, `${JSON.stringify(Object.fromEntries(Object.entries(translations).sort()), null, 2)}\n`);

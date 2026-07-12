@@ -18,8 +18,8 @@
   "policy": "Only source-backed material is rendered. Unsupported records stay checked but are not padded with invented narrative.",
   "summary": {
     "places_total": 151,
-    "places_long_story_rendered": 35,
-    "places_structured_record_rendered": 115,
+    "places_long_story_rendered": 37,
+    "places_structured_record_rendered": 113,
     "places_checked_no_added_story": 1,
     "mayors_total": 68,
     "mayors_long_story_rendered": 68,
@@ -48,7 +48,7 @@
       ],
       "evidence": {
         "summary_words_en": 51,
-        "rendered_story_word_estimate_en": 125,
+        "rendered_story_word_estimate_en": 130,
         "source_count": 3,
         "linked_events": 1,
         "linked_longreads": 1,
@@ -106,7 +106,7 @@
       ],
       "evidence": {
         "summary_words_en": 66,
-        "rendered_story_word_estimate_en": 291,
+        "rendered_story_word_estimate_en": 299,
         "source_count": 3,
         "linked_events": 3,
         "linked_longreads": 2,
@@ -222,7 +222,7 @@
       ],
       "evidence": {
         "summary_words_en": 29,
-        "rendered_story_word_estimate_en": 124,
+        "rendered_story_word_estimate_en": 131,
         "source_count": 3,
         "linked_events": 0,
         "linked_longreads": 3,
@@ -282,10 +282,10 @@
       ],
       "evidence": {
         "summary_words_en": 35,
-        "rendered_story_word_estimate_en": 493,
+        "rendered_story_word_estimate_en": 633,
         "source_count": 3,
         "linked_events": 7,
-        "linked_longreads": 4,
+        "linked_longreads": 7,
         "archive_items": 1,
         "then_now_pairs": 1,
         "wikidata_id": "Q12295057",
@@ -337,10 +337,10 @@
       ],
       "evidence": {
         "summary_words_en": 29,
-        "rendered_story_word_estimate_en": 430,
+        "rendered_story_word_estimate_en": 466,
         "source_count": 3,
         "linked_events": 8,
-        "linked_longreads": 2,
+        "linked_longreads": 3,
         "archive_items": 0,
         "then_now_pairs": 0,
         "wikidata_id": "Q58135990",
@@ -388,10 +388,10 @@
       ],
       "evidence": {
         "summary_words_en": 25,
-        "rendered_story_word_estimate_en": 7305,
+        "rendered_story_word_estimate_en": 7572,
         "source_count": 3,
         "linked_events": 336,
-        "linked_longreads": 7,
+        "linked_longreads": 13,
         "archive_items": 2,
         "then_now_pairs": 1,
         "wikidata_id": "Q459",
@@ -496,7 +496,7 @@
       "kind": "place",
       "name_en": "Hisar Kapia",
       "checked_at": "2026-07-09",
-      "status": "structured_record_rendered",
+      "status": "long_story_rendered",
       "localized_route_languages": [
         "bg",
         "en",
@@ -513,10 +513,10 @@
       ],
       "evidence": {
         "summary_words_en": 33,
-        "rendered_story_word_estimate_en": 37,
+        "rendered_story_word_estimate_en": 70,
         "source_count": 3,
         "linked_events": 0,
-        "linked_longreads": 0,
+        "linked_longreads": 1,
         "archive_items": 0,
         "then_now_pairs": 0,
         "wikidata_id": "Q12298081",
@@ -544,7 +544,7 @@
           "ru"
         ]
       },
-      "decision": "Checked. A structured public-record panel is rendered from Wikidata, but no long free-form story was added."
+      "decision": "Checked. The detail page renders a longer source-backed story from curated summary, linked events, archive links, longreads or Wikidata context."
     },
     {
       "id": "place-st-louis-cathedral",
@@ -627,7 +627,7 @@
       ],
       "evidence": {
         "summary_words_en": 28,
-        "rendered_story_word_estimate_en": 84,
+        "rendered_story_word_estimate_en": 100,
         "source_count": 3,
         "linked_events": 0,
         "linked_longreads": 2,
@@ -739,7 +739,7 @@
       ],
       "evidence": {
         "summary_words_en": 26,
-        "rendered_story_word_estimate_en": 82,
+        "rendered_story_word_estimate_en": 98,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 2,
@@ -901,7 +901,7 @@
       ],
       "evidence": {
         "summary_words_en": 25,
-        "rendered_story_word_estimate_en": 55,
+        "rendered_story_word_estimate_en": 65,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -1010,7 +1010,7 @@
       ],
       "evidence": {
         "summary_words_en": 28,
-        "rendered_story_word_estimate_en": 58,
+        "rendered_story_word_estimate_en": 68,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -1063,10 +1063,10 @@
       ],
       "evidence": {
         "summary_words_en": 23,
-        "rendered_story_word_estimate_en": 49,
+        "rendered_story_word_estimate_en": 26,
         "source_count": 2,
         "linked_events": 0,
-        "linked_longreads": 1,
+        "linked_longreads": 0,
         "archive_items": 1,
         "then_now_pairs": 1,
         "wikidata_id": "Q58071657",
@@ -1614,7 +1614,7 @@
       "kind": "place",
       "name_en": "Humanitarian High School \"Saints Cyril and Methodius\" Plovdiv",
       "checked_at": "2026-07-09",
-      "status": "long_story_rendered",
+      "status": "structured_record_rendered",
       "localized_route_languages": [
         "bg",
         "en",
@@ -1631,10 +1631,10 @@
       ],
       "evidence": {
         "summary_words_en": 10,
-        "rendered_story_word_estimate_en": 35,
+        "rendered_story_word_estimate_en": 12,
         "source_count": 3,
         "linked_events": 0,
-        "linked_longreads": 1,
+        "linked_longreads": 0,
         "archive_items": 0,
         "then_now_pairs": 0,
         "wikidata_id": "Q12290859",
@@ -1663,7 +1663,7 @@
           "ru"
         ]
       },
-      "decision": "Checked. The detail page renders a longer source-backed story from curated summary, linked events, archive links, longreads or Wikidata context."
+      "decision": "Checked. A structured public-record panel is rendered from Wikidata, but no long free-form story was added."
     },
     {
       "id": "place-international-fair-plovdiv-q1667383",
@@ -1687,10 +1687,10 @@
       ],
       "evidence": {
         "summary_words_en": 7,
-        "rendered_story_word_estimate_en": 120,
+        "rendered_story_word_estimate_en": 87,
         "source_count": 3,
         "linked_events": 0,
-        "linked_longreads": 3,
+        "linked_longreads": 2,
         "archive_items": 3,
         "then_now_pairs": 3,
         "wikidata_id": "Q1667383",
@@ -1742,7 +1742,7 @@
       ],
       "evidence": {
         "summary_words_en": 3,
-        "rendered_story_word_estimate_en": 33,
+        "rendered_story_word_estimate_en": 39,
         "source_count": 3,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -2070,7 +2070,7 @@
       "kind": "place",
       "name_en": "Northern district",
       "checked_at": "2026-07-09",
-      "status": "structured_record_rendered",
+      "status": "long_story_rendered",
       "localized_route_languages": [
         "bg",
         "en",
@@ -2087,10 +2087,10 @@
       ],
       "evidence": {
         "summary_words_en": 3,
-        "rendered_story_word_estimate_en": 6,
+        "rendered_story_word_estimate_en": 48,
         "source_count": 3,
         "linked_events": 0,
-        "linked_longreads": 0,
+        "linked_longreads": 1,
         "archive_items": 0,
         "then_now_pairs": 0,
         "wikidata_id": "Q7059194",
@@ -2117,7 +2117,7 @@
           "ru"
         ]
       },
-      "decision": "Checked. A structured public-record panel is rendered from Wikidata, but no long free-form story was added."
+      "decision": "Checked. The detail page renders a longer source-backed story from curated summary, linked events, archive links, longreads or Wikidata context."
     },
     {
       "id": "place-novotel-plovdiv-q7065087",
@@ -2251,7 +2251,7 @@
       ],
       "evidence": {
         "summary_words_en": 4,
-        "rendered_story_word_estimate_en": 69,
+        "rendered_story_word_estimate_en": 74,
         "source_count": 3,
         "linked_events": 0,
         "linked_longreads": 2,
@@ -2309,7 +2309,7 @@
       ],
       "evidence": {
         "summary_words_en": 4,
-        "rendered_story_word_estimate_en": 47,
+        "rendered_story_word_estimate_en": 51,
         "source_count": 3,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -2983,7 +2983,7 @@
       "kind": "place",
       "name_en": "Eastern district",
       "checked_at": "2026-07-09",
-      "status": "structured_record_rendered",
+      "status": "long_story_rendered",
       "localized_route_languages": [
         "bg",
         "en",
@@ -3000,10 +3000,10 @@
       ],
       "evidence": {
         "summary_words_en": 6,
-        "rendered_story_word_estimate_en": 10,
+        "rendered_story_word_estimate_en": 52,
         "source_count": 3,
         "linked_events": 0,
-        "linked_longreads": 0,
+        "linked_longreads": 1,
         "archive_items": 0,
         "then_now_pairs": 0,
         "wikidata_id": "Q12281496",
@@ -3031,7 +3031,7 @@
           "ru"
         ]
       },
-      "decision": "Checked. A structured public-record panel is rendered from Wikidata, but no long free-form story was added."
+      "decision": "Checked. The detail page renders a longer source-backed story from curated summary, linked events, archive links, longreads or Wikidata context."
     },
     {
       "id": "place-western-district-q7988480",
@@ -5358,10 +5358,10 @@
       ],
       "evidence": {
         "summary_words_en": 9,
-        "rendered_story_word_estimate_en": 12,
+        "rendered_story_word_estimate_en": 48,
         "source_count": 2,
         "linked_events": 0,
-        "linked_longreads": 0,
+        "linked_longreads": 1,
         "archive_items": 1,
         "then_now_pairs": 1,
         "wikidata_id": "Q12277962",
@@ -5411,7 +5411,7 @@
       ],
       "evidence": {
         "summary_words_en": 9,
-        "rendered_story_word_estimate_en": 39,
+        "rendered_story_word_estimate_en": 49,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -5739,7 +5739,7 @@
       ],
       "evidence": {
         "summary_words_en": 4,
-        "rendered_story_word_estimate_en": 40,
+        "rendered_story_word_estimate_en": 47,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -6006,10 +6006,10 @@
       ],
       "evidence": {
         "summary_words_en": 17,
-        "rendered_story_word_estimate_en": 112,
+        "rendered_story_word_estimate_en": 159,
         "source_count": 2,
         "linked_events": 0,
-        "linked_longreads": 3,
+        "linked_longreads": 4,
         "archive_items": 3,
         "then_now_pairs": 3,
         "wikidata_id": "Q59368698",
@@ -6060,7 +6060,7 @@
       ],
       "evidence": {
         "summary_words_en": 5,
-        "rendered_story_word_estimate_en": 41,
+        "rendered_story_word_estimate_en": 48,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -6114,7 +6114,7 @@
       ],
       "evidence": {
         "summary_words_en": 8,
-        "rendered_story_word_estimate_en": 43,
+        "rendered_story_word_estimate_en": 51,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -6387,10 +6387,10 @@
       ],
       "evidence": {
         "summary_words_en": 20,
-        "rendered_story_word_estimate_en": 56,
+        "rendered_story_word_estimate_en": 91,
         "source_count": 2,
         "linked_events": 0,
-        "linked_longreads": 1,
+        "linked_longreads": 2,
         "archive_items": 0,
         "then_now_pairs": 0,
         "wikidata_id": "Q12282547",
@@ -6703,10 +6703,10 @@
       ],
       "evidence": {
         "summary_words_en": 11,
-        "rendered_story_word_estimate_en": 14,
+        "rendered_story_word_estimate_en": 95,
         "source_count": 2,
         "linked_events": 0,
-        "linked_longreads": 0,
+        "linked_longreads": 2,
         "archive_items": 2,
         "then_now_pairs": 2,
         "wikidata_id": "Q12298697",
@@ -6756,7 +6756,7 @@
       ],
       "evidence": {
         "summary_words_en": 11,
-        "rendered_story_word_estimate_en": 46,
+        "rendered_story_word_estimate_en": 49,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -6865,7 +6865,7 @@
       ],
       "evidence": {
         "summary_words_en": 11,
-        "rendered_story_word_estimate_en": 41,
+        "rendered_story_word_estimate_en": 51,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -7133,7 +7133,7 @@
       ],
       "evidence": {
         "summary_words_en": 11,
-        "rendered_story_word_estimate_en": 58,
+        "rendered_story_word_estimate_en": 57,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -7189,7 +7189,7 @@
       ],
       "evidence": {
         "summary_words_en": 4,
-        "rendered_story_word_estimate_en": 40,
+        "rendered_story_word_estimate_en": 47,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -7458,7 +7458,7 @@
       ],
       "evidence": {
         "summary_words_en": 3,
-        "rendered_story_word_estimate_en": 33,
+        "rendered_story_word_estimate_en": 39,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -7513,7 +7513,7 @@
       ],
       "evidence": {
         "summary_words_en": 8,
-        "rendered_story_word_estimate_en": 55,
+        "rendered_story_word_estimate_en": 54,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,
@@ -8050,7 +8050,7 @@
       ],
       "evidence": {
         "summary_words_en": 11,
-        "rendered_story_word_estimate_en": 58,
+        "rendered_story_word_estimate_en": 57,
         "source_count": 2,
         "linked_events": 0,
         "linked_longreads": 1,

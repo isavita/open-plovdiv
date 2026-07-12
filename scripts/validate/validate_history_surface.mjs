@@ -356,8 +356,17 @@ assertCountAtLeast("person profile pages", people.length, 200);
 
 const stories = collectionFromPayload(readJson("/api/history/story-longreads.json"), "story_longreads") ?? [];
 for (const story of stories) {
-  assertFile(`/stories/${story.id}/`);
-  assertFile(`/en/stories/${story.id}/`);
+  for (const prefix of localePrefixes) {
+    const url = `${prefix}/stories/${story.id}/`;
+    const html = readBuilt(url);
+    assertContains(url, html, [
+      "data-story-detail",
+      'class="story-contents"',
+      'class="story-chapter"',
+      'class="story-endnotes"'
+    ]);
+    assertNotContains(url, html, ['class="story-section-sources"', 'class="story-evidence-panel"']);
+  }
 }
 
 const cityArchive = collectionFromPayload(readJson("/data/city-archive.json")) ?? [];
@@ -382,5 +391,5 @@ if (issues.length > 0) {
 }
 
 console.log(
-  `history surface validation passed: ${corePagePairs.length * 2} core pages, ${people.length * 2} person pages, ${places.length * localePrefixes.length} place pages, ${stories.length * 2} story pages, ${mayorTerms.length * localePrefixes.length} mayor pages`
+  `history surface validation passed: ${corePagePairs.length * 2} core pages, ${people.length * 2} person pages, ${places.length * localePrefixes.length} place pages, ${stories.length * localePrefixes.length} story pages, ${mayorTerms.length * localePrefixes.length} mayor pages`
 );

@@ -114,7 +114,7 @@
     },
     "sections": {
       "type": "array",
-      "minItems": 3,
+      "minItems": 5,
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -173,7 +173,9 @@
               "url",
               "caption_bg",
               "caption_en",
-              "credit"
+              "credit",
+              "width",
+              "height"
             ],
             "properties": {
               "url": {
@@ -191,6 +193,14 @@
               "credit": {
                 "type": "string",
                 "minLength": 5
+              },
+              "width": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "height": {
+                "type": "integer",
+                "minimum": 1
               }
             },
             "patternProperties": {

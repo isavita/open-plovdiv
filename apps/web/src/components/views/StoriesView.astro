@@ -2,7 +2,6 @@
 import Layout from "@layouts/Layout.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
 import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
-import { publicThenNowPairs } from "@lib/thenNow";
 import {
   historicalArchiveItems,
   historyKnowledgePlaces,
@@ -22,9 +21,9 @@ const t = ui[lang];
 const labels = ({
   bg: {
     title: "Исторически разкази",
-    eyebrow: "Илюстрирани дълги четива",
+    eyebrow: "Пловдив, разказ след разказ",
     lead:
-      "Разкази за Пловдив, изградени върху събитията, местата, архивните изображения и публичните източници в Open Plovdiv.",
+      "Слезте под римските улици, минете през следите на земетресението и влезте в ателиетата на пловдивските художници. Това е историята на един град, който никога не спира да се променя.",
     stories: "разказа",
     sources: "източника",
     archive: "архивни образа",
@@ -36,9 +35,9 @@ const labels = ({
   },
   en: {
     title: "Historical Stories",
-    eyebrow: "Illustrated longreads",
+    eyebrow: "Plovdiv, one story at a time",
     lead:
-      "Stories on Plovdiv, built from the events, places, archive images and public sources in Open Plovdiv.",
+      "Step beneath Roman streets, follow the traces of an earthquake and enter the studios of Plovdiv’s painters. This is the history of a city that never stops remaking itself.",
     stories: "stories",
     sources: "sources",
     archive: "archive visuals",
@@ -50,9 +49,9 @@ const labels = ({
   },
   de: {
     title: "Historische Geschichten",
-    eyebrow: "Illustrierte Langtexte",
+    eyebrow: "Plovdiv, Geschichte für Geschichte",
     lead:
-      "Geschichten über Plovdiv, aufgebaut aus den Ereignissen, Orten, Archivbildern und öffentlichen Quellen in Open Plovdiv.",
+      "Steigen Sie hinab unter römische Straßen, folgen Sie den Spuren eines Erdbebens und betreten Sie die Ateliers der Plovdiver Maler. Dies ist die Geschichte einer Stadt, die sich immer wieder neu erfindet.",
     stories: "Geschichten",
     sources: "Quellen",
     archive: "Archivbilder",
@@ -64,9 +63,9 @@ const labels = ({
   },
   fr: {
     title: "Récits historiques",
-    eyebrow: "Longs formats illustrés",
+    eyebrow: "Plovdiv, un récit à la fois",
     lead:
-      "Des récits sur Plovdiv, construits à partir des événements, lieux, images d'archives et sources publiques d'Open Plovdiv.",
+      "Descendez sous les rues romaines, suivez les traces d’un séisme et entrez dans les ateliers des peintres de Plovdiv. Voici l’histoire d’une ville qui ne cesse de se réinventer.",
     stories: "récits",
     sources: "sources",
     archive: "visuels d'archives",
@@ -78,9 +77,9 @@ const labels = ({
   },
   it: {
     title: "Racconti storici",
-    eyebrow: "Approfondimenti illustrati",
+    eyebrow: "Plovdiv, un racconto alla volta",
     lead:
-      "Racconti su Plovdiv, costruiti a partire da eventi, luoghi, immagini d'archivio e fonti pubbliche di Open Plovdiv.",
+      "Scendete sotto le strade romane, seguite le tracce di un terremoto ed entrate negli studi dei pittori di Plovdiv. Questa è la storia di una città che continua a reinventarsi.",
     stories: "racconti",
     sources: "fonti",
     archive: "immagini d'archivio",
@@ -92,9 +91,9 @@ const labels = ({
   },
   tr: {
     title: "Tarihsel anlatılar",
-    eyebrow: "Resimli uzun okumalar",
+    eyebrow: "Hikâye hikâye Plovdiv",
     lead:
-      "Open Plovdiv'deki etkinliklerden, yerlerden, arşiv görsellerinden ve kamuya açık kaynaklardan oluşturulmuş, Plovdiv üzerine anlatılar.",
+      "Roma sokaklarının altına inin, bir depremin izlerini takip edin ve Plovdivli ressamların atölyelerine girin. Bu, kendini durmadan yeniden kuran bir şehrin tarihidir.",
     stories: "anlatı",
     sources: "kaynak",
     archive: "arşiv görseli",
@@ -106,9 +105,9 @@ const labels = ({
   },
   es: {
     title: "Relatos históricos",
-    eyebrow: "Lecturas largas ilustradas",
+    eyebrow: "Plovdiv, relato a relato",
     lead:
-      "Relatos sobre Plovdiv, construidos a partir de los eventos, lugares, imágenes de archivo y fuentes públicas de Open Plovdiv.",
+      "Baje bajo las calles romanas, siga las huellas de un terremoto y entre en los talleres de los pintores de Plovdiv. Esta es la historia de una ciudad que nunca deja de reinventarse.",
     stories: "relatos",
     sources: "fuentes",
     archive: "imágenes de archivo",
@@ -120,9 +119,9 @@ const labels = ({
   },
   el: {
     title: "Ιστορικές αφηγήσεις",
-    eyebrow: "Εικονογραφημένα εκτενή κείμενα",
+    eyebrow: "Το Plovdiv, μία ιστορία τη φορά",
     lead:
-      "Αφηγήσεις για το Plovdiv, βασισμένες στα γεγονότα, τις τοποθεσίες, τις εικόνες αρχείου και τις δημόσιες πηγές του Open Plovdiv.",
+      "Κατεβείτε κάτω από τους ρωμαϊκούς δρόμους, ακολουθήστε τα ίχνη ενός σεισμού και μπείτε στα εργαστήρια των ζωγράφων του Plovdiv. Αυτή είναι η ιστορία μιας πόλης που δεν σταματά να ξαναφτιάχνει τον εαυτό της.",
     stories: "αφηγήσεις",
     sources: "πηγές",
     archive: "εικόνες αρχείου",
@@ -134,9 +133,9 @@ const labels = ({
   },
   ja: {
     title: "歴史ストーリー",
-    eyebrow: "図解付きロングリード",
+    eyebrow: "物語でたどるPlovdiv",
     lead:
-      "Open Plovdivの出来事、場所、アーカイブ画像、公開情報源にもとづくPlovdivの物語です。",
+      "ローマ時代の通りの下へ降り、地震の痕跡をたどり、Plovdivの画家たちのアトリエを訪ねます。これは、変わり続ける都市の物語です。",
     stories: "ストーリー",
     sources: "出典",
     archive: "アーカイブ画像",
@@ -148,9 +147,9 @@ const labels = ({
   },
   uk: {
     title: "Історичні розповіді",
-    eyebrow: "Ілюстровані лонгріди",
+    eyebrow: "Plovdiv, розповідь за розповіддю",
     lead:
-      "Розповіді про Plovdiv, побудовані на подіях, місцях, архівних зображеннях і публічних джерелах Open Plovdiv.",
+      "Спустіться під римські вулиці, простежте сліди землетрусу й увійдіть до майстерень художників Plovdiv. Це історія міста, яке ніколи не перестає змінювати себе.",
     stories: "розповідей",
     sources: "джерел",
     archive: "архівних зображень",
@@ -162,9 +161,9 @@ const labels = ({
   },
   ru: {
     title: "Исторические рассказы",
-    eyebrow: "Иллюстрированные лонгриды",
+    eyebrow: "Plovdiv, рассказ за рассказом",
     lead:
-      "Рассказы о Пловдиве, построенные на событиях, местах, архивных изображениях и публичных источниках Open Plovdiv.",
+      "Спуститесь под римские улицы, проследите следы землетрясения и загляните в мастерские художников Plovdiv. Это история города, который никогда не перестаёт меняться.",
     stories: "рассказов",
     sources: "источников",
     archive: "архивных изображений",
@@ -176,9 +175,9 @@ const labels = ({
   },
   tl: {
     title: "Mga Makasaysayang Kuwento",
-    eyebrow: "May-larawang mahahabang artikulo",
+    eyebrow: "Plovdiv, kuwento sa bawat hakbang",
     lead:
-      "Mga kuwento tungkol sa Plovdiv, hango sa mga pangyayari, lugar, larawan mula sa arkibo, at pampublikong pinagmulan sa Open Plovdiv.",
+      "Bumaba sa ilalim ng mga lansangang Romano, sundan ang mga bakas ng lindol, at pumasok sa mga atelier ng mga pintor ng Plovdiv. Ito ang kasaysayan ng lungsod na hindi tumitigil sa pagbabago.",
     stories: "kuwento",
     sources: "pinagmulan",
     archive: "larawan mula sa arkibo",
@@ -194,6 +193,28 @@ const archiveById = new Map(historicalArchiveItems.map((item) => [item.id, item]
 const pairById = new Map(thenNowPairs.map((pair) => [pair.id, pair]));
 const placeById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
 
+const storyOrder = [
+  "story-deep-time-seven-hills",
+  "story-roman-philippopolis",
+  "story-medieval-crossroads",
+  "story-ottoman-filibe-city",
+  "story-revival-houses-schools",
+  "story-unification-civic-memory",
+  "story-railway-1873",
+  "story-international-fair-modernity",
+  "story-1928-earthquake",
+  "story-socialist-infrastructure",
+  "story-old-plovdiv-restoration",
+  "story-kapana-crafts-creative",
+  "story-european-capital-culture",
+  "story-maritsa-bridges",
+  "story-plovdiv-painters"
+];
+const storyOrderById = new Map(storyOrder.map((id, index) => [id, index]));
+const stories = [...storyLongreads].sort(
+  (a, b) => (storyOrderById.get(a.id) ?? Number.MAX_SAFE_INTEGER) - (storyOrderById.get(b.id) ?? Number.MAX_SAFE_INTEGER)
+);
+
 function localized(record: Record<string, unknown>, field: string): string {
   return String(
     record[`${field}_${lang}`] ?? record[`${field}_en`] ?? record[`${field}_bg`] ?? ""
@@ -206,18 +227,6 @@ function heroMedia(story: StoryLongread) {
   return placeById.get(story.hero.ref_id)?.media[0];
 }
 
-function storyThenNowPairs(story: StoryLongread) {
-  return publicThenNowPairs(
-    story.linked_then_now_pair_ids.map((id) => pairById.get(id)).filter(Boolean),
-    { preferredPairIds: new Set(story.linked_then_now_pair_ids) }
-  );
-}
-
-const sourceCount = new Set(storyLongreads.flatMap((story) => story.source_ids)).size;
-const archiveLinkCount = storyLongreads.reduce(
-  (sum, story) => sum + story.linked_archive_item_ids.length + storyThenNowPairs(story).length,
-  0
-);
 ---
 
 <Layout lang={lang} path="/stories" title={labels.title} description={labels.lead}>
@@ -229,35 +238,17 @@ const archiveLinkCount = storyLongreads.reduce(
         <h1>{labels.title}</h1>
         <p class="lead">{labels.lead}</p>
       </div>
-      <dl class="stats-grid stories-stats" aria-label={labels.title}>
-        <div class="stat-card">
-          <dt>{labels.stories}</dt>
-          <dd>{storyLongreads.length}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{labels.sources}</dt>
-          <dd>{sourceCount}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{labels.archive}</dt>
-          <dd>{archiveLinkCount}</dd>
-        </div>
-      </dl>
     </div>
   </section>
 
   <section class="section" id="stories">
     <div class="container">
-      <div class="stories-toolbar">
-        <p class="meta">{labels.editorialNote}</p>
-      </div>
-
       <div class="story-grid">
-        {storyLongreads.map((story, index) => {
+        {stories.map((story, index) => {
           const media = heroMedia(story);
           const commonsMedia = media ? isCommonsUploadImageUrl(media.url) : false;
           return (
-            <article class="story-card" data-story-card>
+            <article class={`story-card${index === 0 ? " featured" : ""}`} data-story-card>
               {media && (
                 <a class="story-card-media" href={localizePath(`/stories/${story.id}`, lang)} aria-label={localized(story, "title")}>
                   <picture>

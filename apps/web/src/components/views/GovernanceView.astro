@@ -27,24 +27,15 @@ type Copy = {
   description: string;
   lead: string;
   currentTitle: string;
-  currentMeta: string;
   sectionNavLabel: string;
   navWho: string;
   navArchive: string;
   navMoney: string;
-  navRoutes: string;
-  statTerms: string;
-  statMayors: string;
-  statArchive: string;
-  statSources: string;
   whoTitle: string;
   whoLead: string;
-  currentGroup: string;
   earlyGroup: string;
   recentGroup: string;
-  officeTerm: string;
   linkedArchive: string;
-  noLinkedArchive: string;
   detail: string;
   source: string;
   archiveTitle: string;
@@ -55,15 +46,10 @@ type Copy = {
   projectLead: string;
   projectYear: string;
   noAmount: string;
-  deepTitle: string;
-  deepLead: string;
   ctaMayors: string;
   ctaMayorsText: string;
   ctaProjects: string;
-  ctaProjectsText: string;
   ctaArchive: string;
-  ctaArchiveText: string;
-  open: string;
 };
 
 const copy = {
@@ -72,564 +58,396 @@ const copy = {
     title: "Управление и политическа история",
     description: "Кой е управлявал Пловдив и кои архивни и проектни записи стоят около тези мандати.",
     lead:
-      "Как е бил управляван Пловдив през годините: кметски мандати, архивни промени и проектни записи, подредени като проверими доказателства.",
+      "Проследете хората, заемали кметския пост, решенията, променили управлението на града, и проектите, които общината изпълнява днес.",
     currentTitle: "Текущо управление",
-    currentMeta: "изведено от активния кметски запис",
     sectionNavLabel: "Раздели на страницата",
-    navWho: "Кметове",
-    navArchive: "Архивни промени",
-    navMoney: "Проекти",
-    navRoutes: "По-дълбоко",
-    statTerms: "кметски мандата в архива",
-    statMayors: "различими кметски имена",
-    statArchive: "архивни записи извън мандатите",
-    statSources: "източника в регистъра",
+    navWho: "Кметове и мандати",
+    navArchive: "Повратни моменти",
+    navMoney: "Текущи проекти",
     whoTitle: "Кметове през времето",
     whoLead:
       "Кратък преглед на първите общински мандати и последните администрации. Пълната хронология включва всички кметове; архивни връзки се показват само когато има запис от същия период.",
-    currentGroup: "Текущ кмет",
     earlyGroup: "Първи общински мандати",
     recentGroup: "Последни администрации",
-    officeTerm: "мандат",
     linkedArchive: "От същия период",
-    noLinkedArchive: "няма застъпващ се архивен запис в избрания набор",
     detail: "профил",
     source: "източник",
-    archiveTitle: "Ключови промени в градското управление",
+    archiveTitle: "Повратни моменти в управлението на града",
     archiveLead:
-      "Избрани записи от градския архив показват управленски промени, общински програми, финанси и културни решения. Връзката с кметове е само времево застъпване.",
+      "Четири документирани промени в начина, по който е управляван градът. Имената на кметове показват само кои мандати се застъпват във времето.",
     mayorOverlap: "застъпване с мандат",
     amountLabel: "стойност",
     projectsTitle: "Текущи общински проекти",
     projectLead: "Активни, договорени или финансирани проекти от публичния проектен регистър.",
     projectYear: "година",
     noAmount: "няма сума",
-    deepTitle: "Отворете пълните раздели",
-    deepLead: "Тази страница е навигационен политически слой. Подробните списъци остават в специализираните раздели.",
     ctaMayors: "Всички кметове",
     ctaMayorsText: "пълна хронология и профили",
     ctaProjects: "Проекти",
-    ctaProjectsText: "карти и статуси на проектите",
-    ctaArchive: "Архив",
-    ctaArchiveText: "първични документи и градски записи",
-    open: "отвори"
+    ctaArchive: "Архив"
   },
   en: {
     eyebrow: "Political history",
     title: "Governance and political history",
     description: "Who governed Plovdiv and which archive and project records sit around those terms.",
     lead:
-      "How Plovdiv has been governed over time: mayoral terms, archive changes and project records, arranged as verifiable evidence.",
+      "Follow the people who held office, the decisions that changed city government and the projects being delivered today.",
     currentTitle: "Current administration",
-    currentMeta: "derived from the active mayoral record",
     sectionNavLabel: "Page sections",
-    navWho: "Mayors",
-    navArchive: "Archive changes",
-    navMoney: "Projects",
-    navRoutes: "Go deeper",
-    statTerms: "mayoral terms in the archive",
-    statMayors: "distinct mayor names",
-    statArchive: "non-term archive records",
-    statSources: "sources in the registry",
+    navWho: "Mayors & terms",
+    navArchive: "Turning points",
+    navMoney: "Current projects",
     whoTitle: "Mayors across time",
     whoLead:
       "A focused view of the first municipal terms and recent administrations. Open the full chronology for every mayor; archive links appear only when a record falls within the same period.",
-    currentGroup: "Current mayor",
     earlyGroup: "First municipal terms",
     recentGroup: "Recent administrations",
-    officeTerm: "term",
     linkedArchive: "From the same period",
-    noLinkedArchive: "no overlapping archive record in this selected set",
     detail: "profile",
     source: "source",
-    archiveTitle: "Key changes in city government",
+    archiveTitle: "Turning points in city government",
     archiveLead:
-      "Selected city archive records surface governance changes, municipal programmes, finance and cultural decisions. The mayor link is a time overlap only.",
+      "Four documented changes in the way the city was governed. Mayor names show only which terms overlap in time.",
     mayorOverlap: "term overlap",
     amountLabel: "amount",
     projectsTitle: "Municipal projects now",
     projectLead: "Active, contracted or funded projects from the public project registry.",
     projectYear: "year",
     noAmount: "no amount",
-    deepTitle: "Open the full sections",
-    deepLead: "This page is a political navigation layer. The complete lists remain in the specialist sections.",
     ctaMayors: "All mayors",
     ctaMayorsText: "full chronology and profiles",
     ctaProjects: "Projects",
-    ctaProjectsText: "project maps and statuses",
-    ctaArchive: "Archive",
-    ctaArchiveText: "primary documents and city records",
-    open: "open"
+    ctaArchive: "Archive"
   },
   de: {
     eyebrow: "Politische Geschichte",
     title: "Verwaltung und politische Geschichte",
     description: "Wer Plovdiv regierte und welche Archiv- und Projektdatensätze diese Amtszeiten rahmen.",
     lead:
-      "Wie Plovdiv im Lauf der Zeit regiert wurde: Bürgermeistermandate, Archivänderungen und Projektdatensätze, geordnet als nachprüfbare Belege.",
+      "Folgen Sie den Menschen im Bürgermeisteramt, den Entscheidungen, die die Stadtverwaltung veränderten, und den Projekten, die heute umgesetzt werden.",
     currentTitle: "Aktuelle Verwaltung",
-    currentMeta: "aus dem aktiven Bürgermeisterdatensatz abgeleitet",
     sectionNavLabel: "Seitenabschnitte",
-    navWho: "Bürgermeister",
-    navArchive: "Archivänderungen",
-    navMoney: "Projekte",
-    navRoutes: "Vertiefen",
-    statTerms: "Bürgermeistermandate im Archiv",
-    statMayors: "unterschiedliche Bürgermeister-Namen",
-    statArchive: "Archivdatensätze außerhalb der Mandate",
-    statSources: "Quellen im Register",
+    navWho: "Bürgermeister & Amtszeiten",
+    navArchive: "Wendepunkte",
+    navMoney: "Aktuelle Projekte",
     whoTitle: "Bürgermeister im Wandel der Zeit",
     whoLead:
       "Eine kompakte Auswahl der ersten kommunalen Mandate und jüngsten Verwaltungen. Die vollständige Chronologie enthält alle Bürgermeister; Archivlinks erscheinen nur, wenn ein Eintrag in denselben Zeitraum fällt.",
-    currentGroup: "Aktueller Bürgermeister",
     earlyGroup: "Erste kommunale Mandate",
     recentGroup: "Jüngste Verwaltungen",
-    officeTerm: "Mandat",
     linkedArchive: "Aus demselben Zeitraum",
-    noLinkedArchive: "kein überlappender Archivdatensatz in dieser Auswahl",
     detail: "Profil",
     source: "Quelle",
-    archiveTitle: "Wichtige Veränderungen in der Stadtverwaltung",
+    archiveTitle: "Wendepunkte in der Stadtverwaltung",
     archiveLead:
-      "Ausgewählte Stadtarchivdatensätze zeigen Verwaltungswechsel, kommunale Programme, Finanzen und Kulturentscheidungen. Die Bürgermeisterverknüpfung ist nur eine zeitliche Überlappung.",
+      "Vier dokumentierte Veränderungen in der Art, wie die Stadt verwaltet wurde. Bürgermeister-Namen zeigen nur, welche Amtszeiten sich zeitlich überschneiden.",
     mayorOverlap: "Mandatsüberlappung",
     amountLabel: "Betrag",
     projectsTitle: "Aktuelle kommunale Projekte",
     projectLead: "Aktive, vergebene oder finanzierte Projekte aus dem öffentlichen Projektregister.",
     projectYear: "Jahr",
     noAmount: "kein Betrag",
-    deepTitle: "Vollständige Bereiche öffnen",
-    deepLead: "Diese Seite ist eine politische Navigationsschicht. Die vollständigen Listen bleiben in den Fachbereichen.",
     ctaMayors: "Alle Bürgermeister",
     ctaMayorsText: "vollständige Chronologie und Profile",
     ctaProjects: "Projekte",
-    ctaProjectsText: "Projektkarten und Status",
-    ctaArchive: "Archiv",
-    ctaArchiveText: "Primärdokumente und Stadtdatensätze",
-    open: "öffnen"
+    ctaArchive: "Archiv"
   },
   fr: {
     eyebrow: "Histoire politique",
     title: "Gouvernance et histoire politique",
     description: "Qui a gouverné Plovdiv et quels dossiers d'archives et de projets entourent ces mandats.",
     lead:
-      "Comment Plovdiv a été gouvernée au fil du temps : mandats des maires, changements d'archives et dossiers de projets, présentés comme des preuves vérifiables.",
+      "Suivez les personnes qui ont exercé la fonction de maire, les décisions qui ont transformé l’administration municipale et les projets menés aujourd’hui.",
     currentTitle: "Administration actuelle",
-    currentMeta: "dérivée du dossier actif du maire",
     sectionNavLabel: "Sections de la page",
-    navWho: "Maires",
-    navArchive: "Changements d'archives",
-    navMoney: "Projets",
-    navRoutes: "Approfondir",
-    statTerms: "mandats de maire dans l'archive",
-    statMayors: "noms de maires distincts",
-    statArchive: "dossiers d'archives hors mandats",
-    statSources: "sources dans le registre",
+    navWho: "Maires et mandats",
+    navArchive: "Tournants",
+    navMoney: "Projets en cours",
     whoTitle: "Les maires au fil du temps",
     whoLead:
       "Une sélection concise des premiers mandats municipaux et des administrations récentes. La chronologie complète réunit tous les maires ; les liens d’archives n’apparaissent que lorsqu’un dossier appartient à la même période.",
-    currentGroup: "Maire actuel",
     earlyGroup: "Premiers mandats municipaux",
     recentGroup: "Administrations récentes",
-    officeTerm: "mandat",
     linkedArchive: "De la même période",
-    noLinkedArchive: "aucun dossier d'archives recoupé dans cette sélection",
     detail: "profil",
     source: "source",
-    archiveTitle: "Évolutions clés de l’administration municipale",
+    archiveTitle: "Tournants de l’administration municipale",
     archiveLead:
-      "Des dossiers choisis des archives urbaines montrent changements de gouvernance, programmes municipaux, finances et décisions culturelles. Le lien avec les maires est seulement temporel.",
+      "Quatre changements documentés dans la manière de gouverner la ville. Les noms des maires indiquent uniquement les mandats qui se chevauchent dans le temps.",
     mayorOverlap: "recoupement de mandat",
     amountLabel: "montant",
     projectsTitle: "Projets municipaux en cours",
     projectLead: "Projets actifs, attribués ou financés du registre public des projets.",
     projectYear: "année",
     noAmount: "aucun montant",
-    deepTitle: "Ouvrir les sections complètes",
-    deepLead: "Cette page est une couche de navigation politique. Les listes complètes restent dans les sections spécialisées.",
     ctaMayors: "Tous les maires",
     ctaMayorsText: "chronologie complète et profils",
     ctaProjects: "Projets",
-    ctaProjectsText: "cartes et statuts des projets",
-    ctaArchive: "Archives",
-    ctaArchiveText: "documents primaires et dossiers urbains",
-    open: "ouvrir"
+    ctaArchive: "Archives"
   },
   it: {
     eyebrow: "Storia politica",
     title: "Governo e storia politica",
     description: "Chi ha governato Plovdiv e quali documenti d'archivio e schede di progetto ruotano attorno a quei mandati.",
     lead:
-      "Come Plovdiv è stata governata nel tempo: mandati dei sindaci, cambiamenti d'archivio e schede di progetto, ordinati come prove verificabili.",
+      "Segui le persone che hanno ricoperto la carica di sindaco, le decisioni che hanno cambiato il governo della città e i progetti in corso oggi.",
     currentTitle: "Amministrazione attuale",
-    currentMeta: "ricavata dal mandato in corso del sindaco",
     sectionNavLabel: "Sezioni della pagina",
-    navWho: "Sindaci",
-    navArchive: "Cambiamenti d'archivio",
-    navMoney: "Progetti",
-    navRoutes: "Approfondisci",
-    statTerms: "mandati di sindaco nell'archivio",
-    statMayors: "nomi distinti di sindaci",
-    statArchive: "schede d'archivio esterne ai mandati",
-    statSources: "fonti nel registro",
+    navWho: "Sindaci e mandati",
+    navArchive: "Svolte",
+    navMoney: "Progetti in corso",
     whoTitle: "I sindaci nel tempo",
     whoLead:
       "Una selezione essenziale dei primi mandati comunali e delle amministrazioni recenti. La cronologia completa raccoglie tutti i sindaci; i collegamenti d’archivio compaiono solo quando una scheda rientra nello stesso periodo.",
-    currentGroup: "Sindaco attuale",
     earlyGroup: "Primi mandati municipali",
     recentGroup: "Amministrazioni recenti",
-    officeTerm: "mandato",
     linkedArchive: "Dello stesso periodo",
-    noLinkedArchive: "nessuna scheda d'archivio sovrapposta in questa selezione",
     detail: "profilo",
     source: "fonte",
-    archiveTitle: "Cambiamenti chiave nel governo della città",
+    archiveTitle: "Svolte nel governo della città",
     archiveLead:
-      "Una selezione di schede dell'archivio cittadino mostra cambiamenti di governo, programmi municipali, finanze e decisioni culturali. Il collegamento con i sindaci è solo temporale.",
+      "Quattro cambiamenti documentati nel modo in cui è stata governata la città. I nomi dei sindaci indicano solo i mandati che si sovrappongono nel tempo.",
     mayorOverlap: "sovrapposizione di mandato",
     amountLabel: "importo",
     projectsTitle: "Progetti comunali in corso",
     projectLead: "Progetti attivi, affidati o finanziati dal registro pubblico dei progetti.",
     projectYear: "anno",
     noAmount: "nessun importo",
-    deepTitle: "Apri le sezioni complete",
-    deepLead: "Questa pagina è un livello di navigazione politica. Gli elenchi completi restano nelle sezioni specialistiche.",
     ctaMayors: "Tutti i sindaci",
     ctaMayorsText: "cronologia completa e profili",
     ctaProjects: "Progetti",
-    ctaProjectsText: "mappe e stati dei progetti",
-    ctaArchive: "Archivio",
-    ctaArchiveText: "documenti primari e schede della città",
-    open: "apri"
+    ctaArchive: "Archivio"
   },
   tr: {
     eyebrow: "Siyasi tarih",
     title: "Yönetim ve siyasi tarih",
     description: "Plovdiv'i kim yönetti ve bu görev dönemlerinin etrafında hangi arşiv ve proje kayıtları var.",
     lead:
-      "Plovdiv'in zaman içinde nasıl yönetildiği: belediye başkanı dönemleri, arşiv değişiklikleri ve proje kayıtları, doğrulanabilir kanıtlar olarak düzenlenmiştir.",
+      "Belediye başkanlığı görevini üstlenen kişileri, kent yönetimini değiştiren kararları ve bugün yürütülen projeleri izleyin.",
     currentTitle: "Mevcut yönetim",
-    currentMeta: "aktif belediye başkanı kaydından türetildi",
     sectionNavLabel: "Sayfa bölümleri",
-    navWho: "Belediye başkanları",
-    navArchive: "Arşiv değişiklikleri",
-    navMoney: "Projeler",
-    navRoutes: "Derinleş",
-    statTerms: "arşivdeki başkanlık dönemleri",
-    statMayors: "ayrı belediye başkanı adları",
-    statArchive: "dönem dışı arşiv kayıtları",
-    statSources: "kayıt defterindeki kaynaklar",
+    navWho: "Başkanlar ve dönemler",
+    navArchive: "Dönüm noktaları",
+    navMoney: "Güncel projeler",
     whoTitle: "Zaman içinde belediye başkanları",
     whoLead:
       "İlk belediye dönemleri ile yakın dönem yönetimlerinden odaklı bir seçki. Tam kronoloji tüm belediye başkanlarını içerir; arşiv bağlantıları yalnızca aynı döneme ait bir kayıt varsa görünür.",
-    currentGroup: "Mevcut belediye başkanı",
     earlyGroup: "İlk belediye dönemleri",
     recentGroup: "Yakın dönem yönetimleri",
-    officeTerm: "dönem",
     linkedArchive: "Aynı dönemden",
-    noLinkedArchive: "bu seçkide çakışan arşiv kaydı yok",
     detail: "profil",
     source: "kaynak",
-    archiveTitle: "Kent yönetimindeki önemli değişimler",
+    archiveTitle: "Kent yönetimindeki dönüm noktaları",
     archiveLead:
-      "Seçilmiş şehir arşivi kayıtları yönetim değişikliklerini, belediye programlarını, finansmanı ve kültürel kararları gösterir. Belediye başkanı bağlantısı yalnızca zamansal çakışmadır.",
+      "Kentin yönetilme biçimindeki belgelenmiş dört değişim. Belediye başkanı adları yalnızca zaman bakımından çakışan dönemleri gösterir.",
     mayorOverlap: "dönem çakışması",
     amountLabel: "tutar",
     projectsTitle: "Güncel belediye projeleri",
     projectLead: "Kamu proje kayıtlarından aktif, sözleşmeli veya finanse edilen projeler.",
     projectYear: "yıl",
     noAmount: "tutar yok",
-    deepTitle: "Tüm bölümleri aç",
-    deepLead: "Bu sayfa siyasi bir gezinme katmanıdır. Tam listeler uzman bölümlerde kalır.",
     ctaMayors: "Tüm belediye başkanları",
     ctaMayorsText: "tam kronoloji ve profiller",
     ctaProjects: "Projeler",
-    ctaProjectsText: "proje haritaları ve durumları",
-    ctaArchive: "Arşiv",
-    ctaArchiveText: "birincil belgeler ve şehir kayıtları",
-    open: "aç"
+    ctaArchive: "Arşiv"
   },
   es: {
     eyebrow: "Historia política",
     title: "Gobernanza e historia política",
     description: "Quién gobernó Plovdiv y qué registros de archivo y proyectos rodean esos mandatos.",
     lead:
-      "Cómo se ha gobernado Plovdiv a lo largo del tiempo: mandatos de alcaldes, cambios de archivo y registros de proyectos, ordenados como pruebas verificables.",
+      "Sigue a quienes ocuparon la alcaldía, las decisiones que cambiaron el gobierno de la ciudad y los proyectos que se ejecutan hoy.",
     currentTitle: "Administración actual",
-    currentMeta: "derivada del registro activo del alcalde",
     sectionNavLabel: "Secciones de la página",
-    navWho: "Alcaldes",
-    navArchive: "Cambios de archivo",
-    navMoney: "Proyectos",
-    navRoutes: "Profundizar",
-    statTerms: "mandatos de alcalde en el archivo",
-    statMayors: "nombres de alcaldes distintos",
-    statArchive: "registros de archivo fuera de mandatos",
-    statSources: "fuentes en el registro",
+    navWho: "Alcaldes y mandatos",
+    navArchive: "Puntos de inflexión",
+    navMoney: "Proyectos en curso",
     whoTitle: "Alcaldes a lo largo del tiempo",
     whoLead:
       "Una selección concisa de los primeros mandatos municipales y las administraciones recientes. La cronología completa reúne a todos los alcaldes; los enlaces al archivo solo aparecen cuando hay un registro del mismo periodo.",
-    currentGroup: "Alcalde actual",
     earlyGroup: "Primeros mandatos municipales",
     recentGroup: "Administraciones recientes",
-    officeTerm: "mandato",
     linkedArchive: "Del mismo periodo",
-    noLinkedArchive: "no hay registro de archivo superpuesto en esta selección",
     detail: "perfil",
     source: "fuente",
-    archiveTitle: "Cambios clave en el gobierno de la ciudad",
+    archiveTitle: "Puntos de inflexión en el gobierno de la ciudad",
     archiveLead:
-      "Registros seleccionados del archivo de la ciudad muestran cambios de gobernanza, programas municipales, finanzas y decisiones culturales. El vínculo con alcaldes es solo temporal.",
+      "Cuatro cambios documentados en la forma de gobernar la ciudad. Los nombres de los alcaldes solo indican qué mandatos coinciden en el tiempo.",
     mayorOverlap: "superposición de mandato",
     amountLabel: "importe",
     projectsTitle: "Proyectos municipales en curso",
     projectLead: "Proyectos activos, contratados o financiados del registro público de proyectos.",
     projectYear: "año",
     noAmount: "sin importe",
-    deepTitle: "Abrir las secciones completas",
-    deepLead: "Esta página es una capa de navegación política. Las listas completas permanecen en las secciones especializadas.",
     ctaMayors: "Todos los alcaldes",
     ctaMayorsText: "cronología completa y perfiles",
     ctaProjects: "Proyectos",
-    ctaProjectsText: "mapas y estados de proyectos",
-    ctaArchive: "Archivo",
-    ctaArchiveText: "documentos primarios y registros urbanos",
-    open: "abrir"
+    ctaArchive: "Archivo"
   },
   el: {
     eyebrow: "Πολιτική ιστορία",
     title: "Διακυβέρνηση και πολιτική ιστορία",
     description: "Ποιος κυβέρνησε το Plovdiv και ποια αρχειακά και έργα πλαισιώνουν αυτές τις θητείες.",
     lead:
-      "Πώς διοικήθηκε η πόλη στο πέρασμα του χρόνου: θητείες δημάρχων, αρχειακές αλλαγές και εγγραφές έργων, ταξινομημένα ως επαληθεύσιμα τεκμήρια.",
+      "Ακολουθήστε τους ανθρώπους που κατείχαν το αξίωμα του δημάρχου, τις αποφάσεις που άλλαξαν τη διοίκηση της πόλης και τα έργα που υλοποιούνται σήμερα.",
     currentTitle: "Τρέχουσα διοίκηση",
-    currentMeta: "προκύπτει από την ενεργή εγγραφή δημάρχου",
     sectionNavLabel: "Ενότητες σελίδας",
-    navWho: "Δήμαρχοι",
-    navArchive: "Αρχειακές αλλαγές",
-    navMoney: "Έργα",
-    navRoutes: "Περισσότερα",
-    statTerms: "θητείες δημάρχων στο αρχείο",
-    statMayors: "διακριτά ονόματα δημάρχων",
-    statArchive: "αρχειακές εγγραφές εκτός θητειών",
-    statSources: "πηγές στο μητρώο",
+    navWho: "Δήμαρχοι και θητείες",
+    navArchive: "Κομβικές αλλαγές",
+    navMoney: "Τρέχοντα έργα",
     whoTitle: "Οι δήμαρχοι στον χρόνο",
     whoLead:
       "Μια σύντομη επιλογή από τις πρώτες δημοτικές θητείες και τις πρόσφατες διοικήσεις. Η πλήρης χρονολογία περιλαμβάνει όλους τους δημάρχους· οι σύνδεσμοι αρχείου εμφανίζονται μόνο όταν υπάρχει εγγραφή από την ίδια περίοδο.",
-    currentGroup: "Τρέχων δήμαρχος",
     earlyGroup: "Πρώτες δημοτικές θητείες",
     recentGroup: "Πρόσφατες διοικήσεις",
-    officeTerm: "θητεία",
     linkedArchive: "Από την ίδια περίοδο",
-    noLinkedArchive: "καμία επικαλυπτόμενη αρχειακή εγγραφή σε αυτή την επιλογή",
     detail: "προφίλ",
     source: "πηγή",
     archiveTitle: "Κομβικές αλλαγές στη διοίκηση της πόλης",
     archiveLead:
-      "Επιλεγμένες εγγραφές του αρχείου της πόλης δείχνουν αλλαγές διακυβέρνησης, δημοτικά προγράμματα, οικονομικά και πολιτιστικές αποφάσεις. Ο σύνδεσμος με δημάρχους είναι μόνο χρονική επικάλυψη.",
+      "Τέσσερις τεκμηριωμένες αλλαγές στον τρόπο διοίκησης της πόλης. Τα ονόματα των δημάρχων δείχνουν μόνο ποιες θητείες συμπίπτουν χρονικά.",
     mayorOverlap: "επικάλυψη θητείας",
     amountLabel: "ποσό",
     projectsTitle: "Τρέχοντα δημοτικά έργα",
     projectLead: "Ενεργά, συμβασιοποιημένα ή χρηματοδοτημένα έργα από το δημόσιο μητρώο έργων.",
     projectYear: "έτος",
     noAmount: "χωρίς ποσό",
-    deepTitle: "Άνοιγμα πλήρων ενοτήτων",
-    deepLead: "Αυτή η σελίδα είναι πολιτικό επίπεδο πλοήγησης. Οι πλήρεις λίστες μένουν στις ειδικές ενότητες.",
     ctaMayors: "Όλοι οι δήμαρχοι",
     ctaMayorsText: "πλήρης χρονολογία και προφίλ",
     ctaProjects: "Έργα",
-    ctaProjectsText: "χάρτες και καταστάσεις έργων",
-    ctaArchive: "Αρχείο",
-    ctaArchiveText: "πρωτογενή έγγραφα και εγγραφές πόλης",
-    open: "άνοιγμα"
+    ctaArchive: "Αρχείο"
   },
   ja: {
     eyebrow: "政治史",
     title: "統治と政治史",
     description: "Plovdivを誰が統治し、その任期の周辺にどのアーカイブとプロジェクト記録があるか。",
     lead:
-      "Plovdivが時代とともにどのように統治されてきたか。市長任期、アーカイブ上の変化、プロジェクト記録を、検証可能な根拠として並べています。",
+      "市長を務めた人々、市政を変えた決定、そして現在進められている事業をたどります。",
     currentTitle: "現在の行政",
-    currentMeta: "有効な市長記録から作成",
     sectionNavLabel: "ページ内セクション",
-    navWho: "市長",
-    navArchive: "アーカイブ上の変化",
-    navMoney: "プロジェクト",
-    navRoutes: "さらに見る",
-    statTerms: "アーカイブ内の市長任期",
-    statMayors: "識別できる市長名",
-    statArchive: "任期以外のアーカイブ記録",
-    statSources: "登録された出典",
+    navWho: "市長と任期",
+    navArchive: "転換点",
+    navMoney: "進行中の事業",
     whoTitle: "時代をたどる市長",
     whoLead:
       "初期の市政任期と近年の行政を絞って紹介します。すべての市長は完全な年表で確認でき、同じ時期の記録がある場合にだけアーカイブへのリンクを表示します。",
-    currentGroup: "現在の市長",
     earlyGroup: "最初期の市政任期",
     recentGroup: "近年の行政",
-    officeTerm: "任期",
     linkedArchive: "同じ時期の記録",
-    noLinkedArchive: "この選択内に重なるアーカイブ記録はありません",
     detail: "プロフィール",
     source: "出典",
-    archiveTitle: "市政の主な変化",
+    archiveTitle: "市政の転換点",
     archiveLead:
-      "選択した都市アーカイブ記録は、統治変更、市政プログラム、財政、文化決定を示します。市長との関連は時間上の重なりのみです。",
+      "市政のあり方が変わった四つの記録です。市長名は、任期が時間的に重なることだけを示します。",
     mayorOverlap: "任期との重なり",
     amountLabel: "金額",
     projectsTitle: "進行中の市政プロジェクト",
     projectLead: "公開プロジェクト登録から、進行中、契約済み、または資金確保済みのプロジェクト。",
     projectYear: "年",
     noAmount: "金額なし",
-    deepTitle: "詳細セクションを開く",
-    deepLead: "このページは政治史のナビゲーション層です。完全な一覧は専門セクションにあります。",
     ctaMayors: "すべての市長",
     ctaMayorsText: "完全な年表とプロフィール",
     ctaProjects: "プロジェクト",
-    ctaProjectsText: "プロジェクトの地図と状態",
-    ctaArchive: "アーカイブ",
-    ctaArchiveText: "一次資料と都市記録",
-    open: "開く"
+    ctaArchive: "アーカイブ"
   },
   tl: {
     eyebrow: "Kasaysayang Pampulitika",
     title: "Pamamahala at Kasaysayang Pampulitika",
     description: "Sino ang namahala sa Plovdiv at kung anong mga talaan sa arkibo at proyekto ang nakapaligid sa mga terminong iyon.",
     lead:
-      "Kung paano pinamahalaan ang Plovdiv sa paglipas ng panahon: termino ng mga alkalde, pagbabago sa arkibo, at talaan ng proyekto, inayos bilang mapapatunayang ebidensya.",
+      "Sundan ang mga taong nanungkulan bilang alkalde, ang mga desisyong nagbago sa pamamahala ng lungsod, at ang mga proyektong isinasagawa ngayon.",
     currentTitle: "Kasalukuyang Pamamahala",
-    currentMeta: "hango sa aktibong talaan ng alkalde",
     sectionNavLabel: "Mga Seksyon ng Pahina",
-    navWho: "Mga alkalde",
-    navArchive: "Pagbabago sa arkibo",
-    navMoney: "Mga Proyekto",
-    navRoutes: "Tingnan pa nang mas malalim",
-    statTerms: "termino ng alkalde sa arkibo",
-    statMayors: "natatanging pangalan ng alkalde",
-    statArchive: "talaan sa arkibo na wala sa termino",
-    statSources: "pinagmulan sa rehistro",
+    navWho: "Mga alkalde at termino",
+    navArchive: "Mahahalagang pagbabago",
+    navMoney: "Mga kasalukuyang proyekto",
     whoTitle: "Mga alkalde sa paglipas ng panahon",
     whoLead:
       "Isang maikling pagpili mula sa mga unang termino ng munisipalidad at mga kamakailang pamamahala. Nasa buong kronolohiya ang lahat ng alkalde; lumilitaw lamang ang mga link sa arkibo kapag may tala mula sa parehong panahon.",
-    currentGroup: "Kasalukuyang alkalde",
     earlyGroup: "Unang termino ng munisipalidad",
     recentGroup: "Kamakailang pamamahala",
-    officeTerm: "termino",
     linkedArchive: "Mula sa parehong panahon",
-    noLinkedArchive: "walang kaugnay na talaan sa arkibo sa napiling grupong ito",
     detail: "detalye",
     source: "pinagmulan",
     archiveTitle: "Mahahalagang pagbabago sa pamamahala ng lungsod",
     archiveLead:
-      "Ipinapakita ng piling talaan sa arkibo ng lungsod ang pagbabago sa pamamahala, mga programa ng munisipalidad, pananalapi, at desisyong pangkultura. Ang koneksyon sa alkalde ay batay lamang sa magkatapat na panahon.",
+      "Apat na dokumentadong pagbabago sa paraan ng pamamahala sa lungsod. Ipinapakita lamang ng mga pangalan ng alkalde kung aling mga termino ang magkakasabay sa panahon.",
     mayorOverlap: "magkatapat na termino",
     amountLabel: "halaga",
     projectsTitle: "Mga kasalukuyang proyekto ng munisipalidad",
     projectLead: "Aktibo, nakontrata, o pinondohang proyekto mula sa pampublikong rehistro ng proyekto.",
     projectYear: "taon",
     noAmount: "walang halaga",
-    deepTitle: "Buksan ang Buong Seksyon",
-    deepLead: "Ang pahinang ito ay isang gabay lamang sa pulitika. Nananatili ang kumpletong talaan sa mga tanging seksyon.",
     ctaMayors: "Lahat ng Alkalde",
     ctaMayorsText: "kumpletong kronolohiya at mga detalye",
     ctaProjects: "Mga Proyekto",
-    ctaProjectsText: "mapa at katayuan ng proyekto",
-    ctaArchive: "Arkibo",
-    ctaArchiveText: "pangunahing dokumento at talaan ng lungsod",
-    open: "buksan"
+    ctaArchive: "Arkibo"
   },
   uk: {
     eyebrow: "Політична історія",
     title: "Управління та політична історія",
     description: "Хто керував Пловдивом і які архівні та проєктні записи оточують ці терміни.",
     lead:
-      "Як містом керували з часом: терміни мерів, зміни в архіві та записи проєктів, впорядковані як докази, що піддаються перевірці.",
+      "Простежте за людьми, які обіймали посаду мера, рішеннями, що змінювали міське управління, і проєктами, які реалізують сьогодні.",
     currentTitle: "Поточне управління",
-    currentMeta: "походить з активного запису мера",
     sectionNavLabel: "Розділи сторінки",
-    navWho: "Мери",
-    navArchive: "Зміни в архіві",
-    navMoney: "Проєкти",
-    navRoutes: "Дізнатися більше",
-    statTerms: "мерських термінів в архіві",
-    statMayors: "унікальних імен мерів",
-    statArchive: "архівних записів поза термінами",
-    statSources: "джерел у реєстрі",
+    navWho: "Мери та каденції",
+    navArchive: "Поворотні моменти",
+    navMoney: "Поточні проєкти",
     whoTitle: "Мери крізь час",
     whoLead:
       "Стислий вибір перших муніципальних каденцій і нещодавніх адміністрацій. Повна хронологія містить усіх мерів; посилання на архів з’являються лише тоді, коли є запис за той самий період.",
-    currentGroup: "Поточний мер",
     earlyGroup: "Перші муніципальні терміни",
     recentGroup: "Останні керівництва",
-    officeTerm: "термін",
     linkedArchive: "За той самий період",
-    noLinkedArchive: "немає пов'язаних архівних записів у цьому виборі",
     detail: "профіль",
     source: "джерело",
-    archiveTitle: "Ключові зміни в управлінні містом",
+    archiveTitle: "Поворотні моменти в управлінні містом",
     archiveLead:
-      "Вибрані записи міського архіву показують зміни управління, муніципальні програми, фінанси та культурні рішення. Зв'язок з мерами — лише за часовим збігом.",
+      "Чотири задокументовані зміни в способі управління містом. Імена мерів показують лише, які каденції збігаються в часі.",
     mayorOverlap: "збіг з терміном",
     amountLabel: "сума",
     projectsTitle: "Поточні муніципальні проєкти",
     projectLead: "Активні, законтрактовані або профінансовані проєкти з публічного реєстру проєктів.",
     projectYear: "рік",
     noAmount: "без суми",
-    deepTitle: "Відкрити повні розділи",
-    deepLead: "Ця сторінка — рівень навігації в політичній історії. Повні списки залишаються у спеціалізованих розділах.",
     ctaMayors: "Усі мери",
     ctaMayorsText: "повна хронологія та профілі",
     ctaProjects: "Проєкти",
-    ctaProjectsText: "карти та статуси проєктів",
-    ctaArchive: "Архів",
-    ctaArchiveText: "першоджерела та міські записи",
-    open: "відкрити"
+    ctaArchive: "Архів"
   },
   ru: {
     eyebrow: "Политическая история",
     title: "Управление и политическая история",
     description: "Кто управлял Пловдивом и какие архивные и проектные записи связаны с этими сроками полномочий.",
     lead:
-      "Как городом управляли с течением времени: мэрские сроки, изменения в архиве и проектные записи, представленные как проверяемые свидетельства.",
+      "Проследите за людьми, занимавшими пост мэра, решениями, изменившими управление городом, и проектами, которые реализуются сегодня.",
     currentTitle: "Текущее управление",
-    currentMeta: "на основе действующей записи о мэре",
     sectionNavLabel: "Разделы страницы",
-    navWho: "Мэры",
-    navArchive: "Изменения в архиве",
-    navMoney: "Проекты",
-    navRoutes: "Узнать больше",
-    statTerms: "мэрских сроков в архиве",
-    statMayors: "уникальных имён мэров",
-    statArchive: "архивных записей вне сроков полномочий",
-    statSources: "источников в реестре",
+    navWho: "Мэры и сроки",
+    navArchive: "Поворотные моменты",
+    navMoney: "Текущие проекты",
     whoTitle: "Мэры сквозь время",
     whoLead:
       "Краткая подборка первых муниципальных сроков и недавних администраций. Полная хронология включает всех мэров; ссылки на архив появляются только при наличии записи за тот же период.",
-    currentGroup: "Действующий мэр",
     earlyGroup: "Первые муниципальные сроки",
     recentGroup: "Последние администрации",
-    officeTerm: "срок",
     linkedArchive: "За тот же период",
-    noLinkedArchive: "нет связанных архивных записей в этой выборке",
     detail: "профиль",
     source: "источник",
-    archiveTitle: "Ключевые изменения в управлении городом",
+    archiveTitle: "Поворотные моменты в управлении городом",
     archiveLead:
-      "Отобранные записи городского архива показывают изменения в управлении, муниципальные программы, финансы и культурные решения. Связь с мэрами — лишь временное совпадение.",
+      "Четыре задокументированных изменения в управлении городом. Имена мэров показывают только, какие сроки совпадают по времени.",
     mayorOverlap: "совпадение со сроком",
     amountLabel: "сумма",
     projectsTitle: "Текущие муниципальные проекты",
     projectLead: "Активные, законтрактованные или профинансированные проекты из публичного реестра проектов.",
     projectYear: "год",
     noAmount: "без суммы",
-    deepTitle: "Открыть полные разделы",
-    deepLead: "Эта страница — уровень навигации по политической истории. Полные списки остаются в специализированных разделах.",
     ctaMayors: "Все мэры",
     ctaMayorsText: "полная хронология и профили",
     ctaProjects: "Проекты",
-    ctaProjectsText: "карты и статусы проектов",
-    ctaArchive: "Архив",
-    ctaArchiveText: "первоисточники и городские записи",
-    open: "открыть"
+    ctaArchive: "Архив"
   }
 } satisfies Record<Lang, Copy>;
 
@@ -764,23 +582,7 @@ const nonMayorArchive = cityArchive
   .filter((record) => record.kind !== "mayor_term")
   .sort((a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start));
 const governanceChanges = nonMayorArchive.filter((record) => record.kind === "governance_change");
-const programmeAndFinance = nonMayorArchive.filter((record) => record.kind !== "governance_change");
-
-function pickEvenly<T>(items: T[], max: number): T[] {
-  if (items.length <= max) return items;
-  const selected: T[] = [];
-  const used = new Set<number>();
-  for (let i = 0; i < max; i += 1) {
-    const index = Math.round((i * (items.length - 1)) / Math.max(1, max - 1));
-    if (!used.has(index)) {
-      selected.push(items[index]);
-      used.add(index);
-    }
-  }
-  return selected;
-}
-
-const archiveHighlights = [...governanceChanges, ...pickEvenly(programmeAndFinance, 4)].sort(
+const archiveHighlights = [...governanceChanges].sort(
   (a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start)
 );
 
@@ -858,16 +660,18 @@ const mayorGroups = [
             <span><strong>{l.ctaMayors}</strong><small>{l.ctaMayorsText}</small></span>
             <b aria-hidden="true">→</b>
           </a>
-          <a class="hero-route" href={localizePath("/archive", lang)}>
-            <span><strong>{l.ctaArchive}</strong><small>{l.ctaArchiveText}</small></span>
-            <b aria-hidden="true">→</b>
-          </a>
         </div>
       </div>
       {currentMayor && (
         <aside class="current-panel" aria-label={l.currentTitle}>
           {currentMayor.image && (
-            <img src={currentMayor.image} alt={field(currentMayor, "actor", lang)} loading="eager" />
+            <img
+              src={currentMayor.image}
+              alt={field(currentMayor, "actor", lang)}
+              width="233"
+              height="300"
+              loading="eager"
+            />
           )}
           <div>
             <p class="eyebrow">{l.currentTitle}</p>
@@ -883,7 +687,9 @@ const mayorGroups = [
     </div>
   </section>
 
-  <SectionNav items={sectionNav} label={l.sectionNavLabel} />
+  <div class="governance-subnav">
+    <SectionNav items={sectionNav} label={l.sectionNavLabel} />
+  </div>
 
   <section class="section governance-people" id="who-governed" data-subnav-target>
     <div class="container">
@@ -933,13 +739,6 @@ const mayorGroups = [
                         href={localizePath(`/mayors/${term.id}`, lang)}
                         aria-label={`${l.detail}: ${field(term, "actor", lang)}`}
                       >{l.detail} →</a>
-                      <a
-                        class="meta"
-                        href={term.source_document.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`${l.source}: ${sourceLabel(term.source_document)}`}
-                      >{l.source} ↗</a>
                     </div>
                   </article>
                 );
@@ -1027,7 +826,7 @@ const mayorGroups = [
 <style>
   .governance-hero {
     --governance-accent: var(--data-people);
-    padding-bottom: clamp(28px, 4vw, 48px);
+    padding-bottom: clamp(22px, 3vw, 36px);
   }
 
   .governance-hero-grid {
@@ -1047,11 +846,8 @@ const mayorGroups = [
   }
 
   .hero-actions {
-    display: grid;
-    gap: 12px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 26px;
-    max-width: 680px;
+    margin-top: 24px;
+    max-width: 340px;
   }
 
   .hero-route {
@@ -1069,10 +865,6 @@ const mayorGroups = [
     padding: 13px 15px;
     text-decoration: none;
     transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
-  }
-
-  .hero-route:nth-child(2) {
-    --route-accent: var(--data-growth);
   }
 
   .hero-route:hover,
@@ -1166,6 +958,13 @@ const mayorGroups = [
 
   .governance-people {
     padding-top: clamp(34px, 4vw, 52px);
+  }
+
+  .governance-subnav :global(.page-subnav a),
+  .section-head > a {
+    align-items: center;
+    display: inline-flex;
+    min-height: 44px;
   }
 
   .governance-people .section-head > div {
@@ -1324,42 +1123,29 @@ const mayorGroups = [
 
   .archive-spine {
     display: grid;
-    gap: 14px;
-    position: relative;
-  }
-
-  .archive-spine::before {
-    background: color-mix(in srgb, var(--data-events) 60%, var(--line));
-    content: "";
-    inset: 0 auto 0 54px;
-    position: absolute;
-    width: 2px;
+    gap: clamp(28px, 4vw, 52px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .archive-node {
-    align-items: stretch;
+    align-items: start;
+    border-top: 4px solid var(--data-events);
     display: grid;
-    gap: 18px;
-    grid-template-columns: 110px minmax(0, 1fr);
-    position: relative;
+    gap: 16px;
+    grid-template-columns: 76px minmax(0, 1fr);
+    min-width: 0;
+    padding-top: 18px;
   }
 
   .node-year {
     align-self: start;
-    background: var(--surface);
-    border: 1px solid var(--line-strong);
-    border-top: 5px solid var(--plovdiv-ochre-bright);
-    border-radius: var(--r-sm);
-    box-shadow: var(--shadow-card);
     color: var(--data-events);
     display: grid;
     font-variant-numeric: tabular-nums;
     gap: 0;
-    justify-items: center;
+    justify-items: start;
     line-height: 1.05;
-    padding: 12px 8px;
-    position: relative;
-    z-index: 1;
+    padding-top: 2px;
   }
 
   .node-year strong {
@@ -1372,16 +1158,10 @@ const mayorGroups = [
   }
 
   .node-body {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-inline-start: 4px solid var(--data-events);
-    border-radius: var(--r-md);
-    box-shadow: var(--shadow-card);
     display: grid;
     gap: 10px;
     min-width: 0;
     overflow-wrap: anywhere;
-    padding: clamp(15px, 2vw, 20px);
   }
 
   .node-body > * {
@@ -1432,6 +1212,16 @@ const mayorGroups = [
     min-height: 44px;
   }
 
+  .governance-projects .project-card header {
+    align-items: start;
+  }
+
+  .governance-projects .project-card header > .badge {
+    flex-shrink: 0;
+    max-width: 42%;
+    white-space: normal;
+  }
+
   @media (max-width: 980px) {
     .governance-hero-grid {
       grid-template-columns: 1fr;
@@ -1446,11 +1236,15 @@ const mayorGroups = [
     .mayor-board {
       grid-template-columns: 1fr;
     }
+
+    .archive-spine {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 700px) {
     .governance-hero {
-      padding-bottom: 30px;
+      padding-bottom: 22px;
     }
 
     .governance-intro h1 {
@@ -1458,8 +1252,7 @@ const mayorGroups = [
     }
 
     .hero-actions {
-      grid-template-columns: 1fr;
-      margin-top: 22px;
+      margin-top: 20px;
     }
 
     .hero-route {
@@ -1476,17 +1269,13 @@ const mayorGroups = [
       padding-top: 32px;
     }
 
-    .archive-spine::before {
-      inset-inline-start: 26px;
-    }
-
     .archive-node {
       gap: 10px;
-      grid-template-columns: 54px minmax(0, 1fr);
+      grid-template-columns: 60px minmax(0, 1fr);
     }
 
     .node-year {
-      padding: 10px 4px;
+      padding-top: 2px;
     }
 
     .node-year strong {
@@ -1498,14 +1287,19 @@ const mayorGroups = [
       font-size: 0.72rem;
     }
 
-    .node-body {
-      padding: 14px;
+    .governance-projects .project-card header {
+      display: grid;
+      gap: 10px;
+    }
+
+    .governance-projects .project-card header > .badge {
+      max-width: 100%;
+      width: fit-content;
     }
   }
 
   :global([data-theme="dark"]) .current-panel,
-  :global([data-theme="dark"]) .hero-route,
-  :global([data-theme="dark"]) .node-body {
+  :global([data-theme="dark"]) .hero-route {
     background: linear-gradient(
       145deg,
       color-mix(in srgb, var(--section-soft) 34%, var(--surface)) 0%,
@@ -1515,8 +1309,7 @@ const mayorGroups = [
 
   @media (prefers-color-scheme: dark) {
     :global(:root:not([data-theme="light"])) .current-panel,
-    :global(:root:not([data-theme="light"])) .hero-route,
-    :global(:root:not([data-theme="light"])) .node-body {
+    :global(:root:not([data-theme="light"])) .hero-route {
       background: linear-gradient(
         145deg,
         color-mix(in srgb, var(--section-soft) 34%, var(--surface)) 0%,

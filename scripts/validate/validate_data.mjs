@@ -1087,7 +1087,38 @@ function assertStoryLongreads(loaded) {
     }
   };
 
-  for (const story of loaded.get("knowledge story longreads")) {
+  const stories = loaded.get("knowledge story longreads");
+  const processLanguage = [
+    /\bOpen Plovdiv\b/i,
+    /\bthis story\b/i,
+    /\bthe platform\b/i,
+    /\bthe record (?:shows|on|for)\b/i,
+    /\bmetadata\b/i,
+    /\bdata provenance\b/i,
+    /\bcurrent base\b/i,
+    /\bmanually checked\b/i,
+    /\bsource-backed\b/i,
+    /\bverifiable sources?\b/i,
+    /\bcoordinates?\b/i,
+    /този разказ/i,
+    /платформата/i,
+    /записът (?:показва|за)/i,
+    /метаданн/i,
+    /произхода на данните/i,
+    /текущата база/i,
+    /координат/i
+  ];
+  const editorialCaptionLanguage = [
+    /\bused as (?:a|the) visual/i,
+    /\bvisual (?:entry|evidence)\b/i,
+    /\bintroduces? (?:the|this)\b/i,
+    /използван[ао]? като визуал/i,
+    /визуал(?:ен|но) (?:вход|доказателство)/i,
+    /въвежда (?:в|разказа)/i
+  ];
+
+  let totalEnglishWords = 0;
+  for (const story of stories) {
     assertGeneratedProvenance("story longreads", story);
     for (const sourceId of story.source_ids) assertKnown(story, "source", sourceId, sources);
     for (const eventId of story.linked_event_ids) assertKnown(story, "event", eventId, events);
@@ -1125,8 +1156,92 @@ function assertStoryLongreads(loaded) {
       for (const sourceId of section.source_ids) assertKnown(story, `section ${index + 1} source`, sourceId, sources);
       for (const eventId of section.linked_event_ids) assertKnown(story, `section ${index + 1} event`, eventId, events);
       for (const placeId of section.linked_place_ids) assertKnown(story, `section ${index + 1} place`, placeId, placeIds);
+
+      for (const sourceId of section.source_ids) {
+        if (!story.source_ids.includes(sourceId)) {
+          throw new Error(`story longreads: ${story.id} section ${index + 1} source ${sourceId} is missing from story source_ids`);
+        }
+      }
+      for (const eventId of section.linked_event_ids) {
+        if (!story.linked_event_ids.includes(eventId)) {
+          throw new Error(`story longreads: ${story.id} section ${index + 1} event ${eventId} is missing from story linked_event_ids`);
+        }
+      }
+      for (const placeId of section.linked_place_ids) {
+        if (!story.linked_place_ids.includes(placeId)) {
+          throw new Error(`story longreads: ${story.id} section ${index + 1} place ${placeId} is missing from story linked_place_ids`);
+        }
+      }
+
+      if (!section.body_en.includes("\n\n") || !section.body_bg.includes("\n\n")) {
+        throw new Error(`story longreads: ${story.id} section ${index + 1} must contain at least two real paragraphs in BG and EN`);
+      }
+    }
+
+    if (story.sections.length < 5) {
+      throw new Error(`story longreads: ${story.id} needs at least 5 narrative chapters, got ${story.sections.length}`);
+    }
+
+    const narrativeEn = [
+      story.title_en,
+      story.dek_en,
+      ...story.sections.flatMap((section) => [section.heading_en, section.body_en])
+    ].join(" ");
+    const narrativeBg = [
+      story.title_bg,
+      story.dek_bg,
+      ...story.sections.flatMap((section) => [section.heading_bg, section.body_bg])
+    ].join(" ");
+    const englishWords = narrativeEn.match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu)?.length ?? 0;
+    totalEnglishWords += englishWords;
+    if (englishWords < 600) {
+      throw new Error(`story longreads: ${story.id} is still a thin outline (${englishWords} English words; minimum 600)`);
+    }
+    const bilingualLengthRatio = narrativeBg.length / narrativeEn.length;
+    if (bilingualLengthRatio < 0.72 || bilingualLengthRatio > 1.45) {
+      throw new Error(
+        `story longreads: ${story.id} BG/EN narrative length ratio ${bilingualLengthRatio.toFixed(2)} suggests an incomplete locale`
+      );
+    }
+
+    const expectedMinutes = Math.max(4, Math.ceil(englishWords / 200));
+    if (story.reading_minutes !== expectedMinutes) {
+      throw new Error(
+        `story longreads: ${story.id} reading_minutes must be ${expectedMinutes} for ${englishWords} English words, got ${story.reading_minutes}`
+      );
+    }
+
+    for (const pattern of processLanguage) {
+      if (pattern.test(narrativeEn) || pattern.test(narrativeBg)) {
+        throw new Error(`story longreads: ${story.id} still contains editorial/process language (${pattern})`);
+      }
+    }
+    const displayedCaptions = [story.hero, ...story.sections.map((section) => section.media).filter(Boolean)];
+    for (const caption of displayedCaptions) {
+      for (const pattern of editorialCaptionLanguage) {
+        if (pattern.test(caption.caption_en) || pattern.test(caption.caption_bg)) {
+          throw new Error(`story longreads: ${story.id} caption describes editorial purpose instead of the image (${pattern})`);
+        }
+      }
     }
   }
+
+  const translatedCount = assertTranslatedStrings("story longreads", stories);
+  for (const story of stories) {
+    story.sections.forEach((section, index) => {
+      for (const [lang, map] of translationsByLangMap()) {
+        const translatedBody = map[section.body_en.trim()];
+        if (!translatedBody?.includes("\n\n")) {
+          throw new Error(
+            `story longreads: ${story.id} section ${index + 1} ${lang} translation lost its paragraph break`
+          );
+        }
+      }
+    });
+  }
+  console.log(
+    `story longread checks passed: ${stories.length} stories, ${totalEnglishWords} English words, ${translatedCount} translated strings`
+  );
 }
 
 function assertEditorialReviewReport(loaded) {
