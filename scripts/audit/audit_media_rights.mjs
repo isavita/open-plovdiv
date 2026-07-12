@@ -72,6 +72,7 @@ function collectRecords() {
   const landmarks = readJson("data/curated/plovdiv-landmarks.json");
   const archiveItems = readJson("data/curated/historical-archive-items.json");
   const thenNowPairs = readJson("data/curated/then-now-pairs.json");
+  const storyGalleries = readJson("data/curated/story-galleries.json");
   const cityArchive = readJson("data/curated/city-archive.json");
   const mayorCredits = readJson("data/curated/mayor-image-credits.json");
 
@@ -88,6 +89,16 @@ function collectRecords() {
   for (const pair of thenNowPairs) {
     addMediaRecord(records, `then-now:${pair.id}:then`, pair.then_media);
     addMediaRecord(records, `then-now:${pair.id}:now`, pair.now_media);
+  }
+
+  for (const profile of storyGalleries) {
+    for (const section of profile.sections) {
+      for (const item of section.gallery) {
+        if (item.media) {
+          addMediaRecord(records, `story-gallery:${profile.id}:${section.section_index}`, item.media);
+        }
+      }
+    }
   }
 
   for (const credit of mayorCredits) {

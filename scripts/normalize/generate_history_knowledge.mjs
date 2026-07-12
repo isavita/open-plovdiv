@@ -23,6 +23,7 @@ const thenNowPairs = normalizePublishedEditorialNotices(readJson("data/curated/t
 const primaryDocuments = readJson("data/curated/primary-documents.json");
 const educationResources = readJson("data/curated/education-resources.json");
 const storyLongreads = readJson("data/curated/story-longreads.json");
+const storyGalleries = readJson("data/curated/story-galleries.json");
 const editorialSignoffs = readJson("data/curated/editorial-signoffs.json");
 const communityInitiatives = readJson("data/curated/community-initiatives.json");
 const sourceRegistry = readJson("data/curated/sources.json");
@@ -1362,7 +1363,116 @@ function provenanceForSourceIds(sourceIds, claimBg, claimEn, evidenceType) {
   });
 }
 
+const storyGalleryByStoryId = new Map();
+for (const profile of storyGalleries) {
+  if (storyGalleryByStoryId.has(profile.id)) {
+    throw new Error(`story galleries: duplicate profile for ${profile.id}`);
+  }
+  storyGalleryByStoryId.set(profile.id, profile);
+}
+
+const storyByIdForGalleries = new Map(storyLongreads.map((story) => [story.id, story]));
+const placeByIdForGalleries = new Map(places.map((place) => [place.id, place]));
+const archiveByIdForGalleries = new Map(historicalArchiveItems.map((item) => [item.id, item]));
+const pairByIdForGalleries = new Map(thenNowPairs.map((pair) => [pair.id, pair]));
+
+for (const storyId of storyGalleryByStoryId.keys()) {
+  if (!storyByIdForGalleries.has(storyId)) {
+    throw new Error(`story galleries: profile references missing story ${storyId}`);
+  }
+}
+
+const storiesWithoutInlineGalleries = storyLongreads.filter(
+  (story) => !story.sections.some((section) => (section.gallery?.length ?? 0) > 0)
+);
+for (const story of storiesWithoutInlineGalleries) {
+  if (!storyGalleryByStoryId.has(story.id)) {
+    throw new Error(`story galleries: ${story.id} has no gallery profile`);
+  }
+}
+
+function mediaForStoryGallery(reference) {
+  const index = reference.media_index ?? 0;
+  if (reference.kind === "place") {
+    const media = placeByIdForGalleries.get(reference.id)?.media?.[index];
+    if (!media) throw new Error(`story galleries: missing place media ${reference.id}[${index}]`);
+    return media;
+  }
+  if (reference.kind === "archive_item") {
+    const media = archiveByIdForGalleries.get(reference.id)?.media;
+    if (!media) throw new Error(`story galleries: missing archive media ${reference.id}`);
+    return media;
+  }
+  const pair = pairByIdForGalleries.get(reference.id);
+  if (!pair) throw new Error(`story galleries: missing then/now pair ${reference.id}`);
+  if (reference.kind === "then_now_then") return pair.then_media;
+  if (reference.kind === "then_now_now") return pair.now_media;
+  throw new Error(`story galleries: unsupported media reference kind ${reference.kind}`);
+}
+
+function mergeStoryGalleryProfile(story) {
+  const profile = storyGalleryByStoryId.get(story.id);
+  if (!profile) return story;
+
+  const sectionProfiles = new Map();
+  for (const sectionProfile of profile.sections) {
+    if (sectionProfiles.has(sectionProfile.section_index)) {
+      throw new Error(
+        `story galleries: ${story.id} repeats section index ${sectionProfile.section_index}`
+      );
+    }
+    if (!story.sections[sectionProfile.section_index]) {
+      throw new Error(
+        `story galleries: ${story.id} has no section at index ${sectionProfile.section_index}`
+      );
+    }
+    if ((story.sections[sectionProfile.section_index].gallery?.length ?? 0) > 0) {
+      throw new Error(
+        `story galleries: ${story.id} section ${sectionProfile.section_index + 1} already has an inline gallery`
+      );
+    }
+    sectionProfiles.set(sectionProfile.section_index, sectionProfile);
+  }
+
+  return {
+    ...story,
+    sections: story.sections.map((section, sectionIndex) => {
+      const sectionProfile = sectionProfiles.get(sectionIndex);
+      if (!sectionProfile) return section;
+      const gallery = sectionProfile.gallery.map((item) => {
+        const media = item.media ?? mediaForStoryGallery(item.media_ref);
+        if (!media.url || !media.page_url || !media.credit || !media.license) {
+          throw new Error(
+            `story galleries: incomplete media rights metadata for ${story.id} section ${sectionIndex + 1}`
+          );
+        }
+        return {
+          url: media.url,
+          page_url: media.page_url,
+          caption_bg: item.caption_bg,
+          caption_en: item.caption_en,
+          credit: `${media.credit} · ${media.license}`,
+          width: item.width,
+          height: item.height
+        };
+      });
+      return {
+        ...section,
+        ...(sectionProfile.gallery_label_bg
+          ? {
+              gallery_label_bg: sectionProfile.gallery_label_bg,
+              gallery_label_en: sectionProfile.gallery_label_en
+            }
+          : {}),
+        gallery,
+        ...(sectionProfile.gallery_link ? { gallery_link: sectionProfile.gallery_link } : {})
+      };
+    })
+  };
+}
+
 const storyLongreadRecords = storyLongreads
+  .map((story) => mergeStoryGalleryProfile(story))
   .map((story) => ({
     ...story,
     provenance: provenanceForSourceIds(

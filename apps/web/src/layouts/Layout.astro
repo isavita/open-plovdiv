@@ -27,6 +27,8 @@ type Props = {
   imageAlt?: string;
   robots?: string;
   structuredData?: JsonLdObject | JsonLdObject[];
+  /** Long Japanese editorial pages can opt into the native CJK stack to avoid loading dozens of font subsets. */
+  loadJapaneseWebfont?: boolean;
   /**
    * Opt-in for pages that are a single static file shared by every locale
    * (only the global 404.html today — Astro has no per-locale fallback
@@ -38,7 +40,18 @@ type Props = {
   localeDetect?: boolean;
 };
 
-const { lang, path, title, description, image, imageAlt, robots, structuredData, localeDetect } = Astro.props;
+const {
+  lang,
+  path,
+  title,
+  description,
+  image,
+  imageAlt,
+  robots,
+  structuredData,
+  localeDetect,
+  loadJapaneseWebfont = true
+} = Astro.props;
 const t = ui[lang];
 const searchT = siteSearchUi[lang];
 
@@ -252,7 +265,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
     <meta name="apple-mobile-web-app-title" content={t.site.name} />
     <meta name="msapplication-TileColor" content="#173f62" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
-    {lang === "ja" && <link rel="stylesheet" href={notoSansJpCssUrl} />}
+    {lang === "ja" && loadJapaneseWebfont && <link rel="stylesheet" href={notoSansJpCssUrl} />}
     {localeDetect && (
       <script is:inline define:vars={{ notoSansJpCssUrl }}>
         if ((window.location.pathname || "/").split("/").filter(Boolean)[0] === "ja") {

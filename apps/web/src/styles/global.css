@@ -5038,6 +5038,16 @@ code {
   justify-self: start;
 }
 
+html:lang(ja) .story-detail {
+  --font-display: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Hiragino Sans", "Yu Gothic UI", Meiryo, sans-serif;
+  --font-text: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Hiragino Sans", "Yu Gothic UI", Meiryo, sans-serif;
+  --font-ui: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Hiragino Sans", "Yu Gothic UI", Meiryo, sans-serif;
+  font-family: var(--font-text);
+}
+
 .story-detail-hero {
   background:
     radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--brand-soft) 72%, transparent), transparent 34%),
@@ -5277,17 +5287,17 @@ code {
 }
 
 .story-art-gallery {
-  column-count: 2;
-  column-gap: 18px;
+  align-items: start;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .story-artwork {
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
-  break-inside: avoid;
-  display: inline-block;
-  margin: 0 0 18px;
+  margin: 0;
   overflow: hidden;
   width: 100%;
 }
@@ -5299,6 +5309,10 @@ code {
   max-height: 620px;
   object-fit: contain;
   width: 100%;
+}
+
+html:not(.js) .story-artwork [data-story-gallery-image] {
+  display: none;
 }
 
 .story-artwork figcaption {
@@ -6694,7 +6708,7 @@ code {
   }
 
   .story-art-gallery {
-    column-count: 1;
+    grid-template-columns: 1fr;
   }
 
   .story-art-gallery-block {

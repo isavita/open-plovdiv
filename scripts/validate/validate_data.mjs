@@ -100,6 +100,12 @@ const datasets = [
     minRecords: 10
   },
   {
+    label: "story galleries",
+    dataPath: "data/curated/story-galleries.json",
+    schemaPath: "data/schemas/story-gallery.schema.json",
+    minRecords: 14
+  },
+  {
     label: "notable people",
     dataPath: "data/curated/notable-people.json",
     schemaPath: "data/schemas/notable-person.schema.json",
@@ -1186,6 +1192,29 @@ function assertStoryLongreads(loaded) {
 
     if (story.sections.length < 5) {
       throw new Error(`story longreads: ${story.id} needs at least 5 narrative chapters, got ${story.sections.length}`);
+    }
+
+    const gallerySectionCount = story.sections.filter((section) => (section.gallery?.length ?? 0) > 0).length;
+    const sectionVisuals = story.sections.flatMap((section) => [
+      ...(section.media ? [section.media] : []),
+      ...(section.gallery ?? [])
+    ]);
+    const visualCount = 1 + sectionVisuals.length;
+    if (gallerySectionCount < 2) {
+      throw new Error(
+        `story longreads: ${story.id} needs galleries in at least 2 chapters, got ${gallerySectionCount}`
+      );
+    }
+    if (visualCount < 8) {
+      throw new Error(`story longreads: ${story.id} needs at least 8 visual frames, got ${visualCount}`);
+    }
+    const repeatedVisualUrl = sectionVisuals.find(
+      (visual, visualIndex) => sectionVisuals.findIndex((candidate) => candidate.url === visual.url) !== visualIndex
+    );
+    if (repeatedVisualUrl) {
+      throw new Error(
+        `story longreads: ${story.id} repeats visual ${repeatedVisualUrl.url} across its chapters`
+      );
     }
 
     const narrativeEn = [

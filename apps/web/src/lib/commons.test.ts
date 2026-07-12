@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { commonsImageUrl, isCommonsUploadImageUrl } from "./commons";
 
 describe("commons image URLs", () => {
-  it("uses direct Wikimedia upload thumbnails for original Commons upload URLs", () => {
+  it("rounds non-standard requests up to a supported Commons thumbnail width", () => {
     expect(
       commonsImageUrl(
         "https://upload.wikimedia.org/wikipedia/commons/7/72/View_from_Nebet_hill%2C_Plovdiv%2C_Bulgaria.jpg",
@@ -11,6 +11,13 @@ describe("commons image URLs", () => {
     ).toBe(
       "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/View_from_Nebet_hill%2C_Plovdiv%2C_Bulgaria.jpg/960px-View_from_Nebet_hill%2C_Plovdiv%2C_Bulgaria.jpg"
     );
+  });
+
+  it("keeps supported Commons thumbnail widths exact", () => {
+    const url = "https://upload.wikimedia.org/wikipedia/commons/7/72/View_from_Nebet_hill%2C_Plovdiv%2C_Bulgaria.jpg";
+
+    expect(commonsImageUrl(url, 500)).toContain("/500px-View_from_Nebet_hill%2C_Plovdiv%2C_Bulgaria.jpg");
+    expect(commonsImageUrl(url, 960)).toContain("/960px-View_from_Nebet_hill%2C_Plovdiv%2C_Bulgaria.jpg");
   });
 
   it("extracts the original file from an existing Commons thumb URL", () => {

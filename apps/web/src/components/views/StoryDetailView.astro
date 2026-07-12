@@ -259,7 +259,13 @@ const relatedStories = storyLongreads
   .slice(0, 3);
 ---
 
-<Layout lang={lang} path={`/stories/${story.id}`} title={localized(story, "title")} description={localized(story, "dek")}>
+<Layout
+  lang={lang}
+  path={`/stories/${story.id}`}
+  title={localized(story, "title")}
+  description={localized(story, "dek")}
+  loadJapaneseWebfont={false}
+>
   <article class="story-detail" data-story-detail data-section="stories">
     <header class="section story-detail-hero">
       <div class="container story-detail-grid">
@@ -275,19 +281,22 @@ const relatedStories = storyLongreads
         </div>
         {media && (
           <figure class="story-detail-media">
-            <img
-              src={mediaCommons ? commonsImageUrl(media.url, 1280) : media.url}
-              srcset={mediaCommons ? `${commonsImageUrl(media.url, 800)} 800w, ${commonsImageUrl(media.url, 1280)} 1280w` : undefined}
-              sizes="(max-width: 760px) 100vw, 42vw"
-              alt={localized(story.hero, "caption")}
-              width="1280"
-              height="1600"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-              crossorigin={mediaCommons ? "anonymous" : undefined}
-              referrerpolicy="no-referrer"
-            />
+            <picture>
+              {mediaCommons && <source media="(max-width: 760px)" srcset={commonsImageUrl(media.url, 960)} />}
+              <img
+                src={mediaCommons ? commonsImageUrl(media.url, 1280) : media.url}
+                srcset={mediaCommons ? `${commonsImageUrl(media.url, 960)} 960w, ${commonsImageUrl(media.url, 1280)} 1280w` : undefined}
+                sizes="(max-width: 760px) calc(100vw - 36px), 42vw"
+                alt={localized(story.hero, "caption")}
+                width="1280"
+                height="1600"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                crossorigin={mediaCommons ? "anonymous" : undefined}
+                referrerpolicy="no-referrer"
+              />
+            </picture>
             <figcaption>
               {localized(story.hero, "caption")}
               <a href={media.page_url} target="_blank" rel="noreferrer">{media.credit}</a>
@@ -326,16 +335,20 @@ const relatedStories = storyLongreads
                 </header>
                 {media && (
                   <figure class="story-section-figure">
-                    <img
-                      src={mediaCommons ? commonsImageUrl(media.url, 960) : media.url}
-                      alt={localized(media, "caption")}
-                      width={media.width}
-                      height={media.height}
-                      loading="lazy"
-                      decoding="async"
-                      crossorigin={mediaCommons ? "anonymous" : undefined}
-                      referrerpolicy="no-referrer"
-                    />
+                    <picture>
+                      {mediaCommons && <source media="(max-width: 760px)" srcset={commonsImageUrl(media.url, 500)} />}
+                      <img
+                        src={mediaCommons ? commonsImageUrl(media.url, 960) : media.url}
+                        alt={localized(media, "caption")}
+                        width={media.width}
+                        height={media.height}
+                        loading="lazy"
+                        fetchpriority="low"
+                        decoding="async"
+                        crossorigin={mediaCommons ? "anonymous" : undefined}
+                        referrerpolicy="no-referrer"
+                      />
+                    </picture>
                     <figcaption>
                       {localized(media, "caption")}
                       {media.page_url ? (
@@ -359,18 +372,43 @@ const relatedStories = storyLongreads
                         const artworkCommons = isCommonsUploadImageUrl(artwork.url);
                         return (
                           <figure class="story-artwork">
-                            <img
-                              src={artworkCommons ? commonsImageUrl(artwork.url, 960) : artwork.url}
-                              srcset={artworkCommons ? `${commonsImageUrl(artwork.url, 640)} 640w, ${commonsImageUrl(artwork.url, 960)} 960w` : undefined}
-                              sizes="(max-width: 760px) 100vw, 360px"
-                              alt={localized(artwork, "caption")}
-                              width={artwork.width}
-                              height={artwork.height}
-                              loading="lazy"
-                              decoding="async"
-                              crossorigin={artworkCommons ? "anonymous" : undefined}
-                              referrerpolicy="no-referrer"
-                            />
+                            <picture>
+                              {artworkCommons && (
+                                <source
+                                  media="(max-width: 760px)"
+                                  data-story-gallery-source
+                                  data-srcset={commonsImageUrl(artwork.url, 500)}
+                                />
+                              )}
+                              <img
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                                data-story-gallery-image
+                                data-src={artworkCommons ? commonsImageUrl(artwork.url, 960) : artwork.url}
+                                data-srcset={artworkCommons ? `${commonsImageUrl(artwork.url, 500)} 500w, ${commonsImageUrl(artwork.url, 960)} 960w` : undefined}
+                                sizes="(max-width: 760px) calc(100vw - 58px), 347px"
+                                alt={localized(artwork, "caption")}
+                                width={artwork.width}
+                                height={artwork.height}
+                                style={`aspect-ratio: ${artwork.width} / ${artwork.height}`}
+                                loading="lazy"
+                                fetchpriority="low"
+                                decoding="async"
+                                crossorigin={artworkCommons ? "anonymous" : undefined}
+                                referrerpolicy="no-referrer"
+                              />
+                            </picture>
+                            <noscript>
+                              <img
+                                src={artworkCommons ? commonsImageUrl(artwork.url, 960) : artwork.url}
+                                alt={localized(artwork, "caption")}
+                                width={artwork.width}
+                                height={artwork.height}
+                                loading="lazy"
+                                decoding="async"
+                                crossorigin={artworkCommons ? "anonymous" : undefined}
+                                referrerpolicy="no-referrer"
+                              />
+                            </noscript>
                             <figcaption>
                               <span>{localized(artwork, "caption")}</span>
                               {artwork.page_url ? (
@@ -499,4 +537,44 @@ const relatedStories = storyLongreads
       </section>
     )}
   </article>
+
+  <script>
+    const galleryImages = Array.from(
+      document.querySelectorAll<HTMLImageElement>("[data-story-gallery-image]")
+    );
+
+    function loadGalleryImage(image: HTMLImageElement) {
+      const picture = image.closest("picture");
+      const source = picture?.querySelector<HTMLSourceElement>("[data-story-gallery-source]");
+      if (source?.dataset.srcset) {
+        source.srcset = source.dataset.srcset;
+        delete source.dataset.srcset;
+      }
+      if (image.dataset.srcset) {
+        image.srcset = image.dataset.srcset;
+        delete image.dataset.srcset;
+      }
+      if (image.dataset.src) {
+        image.src = image.dataset.src;
+        delete image.dataset.src;
+      }
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      galleryImages.forEach(loadGalleryImage);
+    } else {
+      const galleryObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            const image = entry.target as HTMLImageElement;
+            loadGalleryImage(image);
+            galleryObserver.unobserve(image);
+          }
+        },
+        { rootMargin: "320px 0px" }
+      );
+      galleryImages.forEach((image) => galleryObserver.observe(image));
+    }
+  </script>
 </Layout>
