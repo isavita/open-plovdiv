@@ -2,11 +2,11 @@
 import Layout from "@layouts/Layout.astro";
 import HeroBackdrop from "@components/HeroBackdrop.astro";
 import SectionNav from "@components/SectionNav.astro";
-import LandmarkMotif from "@components/LandmarkMotif.astro";
 import { createHash } from "node:crypto";
 import { roleLabels, ui, type Lang } from "@i18n/ui";
 import { localeForLang, localizePath } from "@i18n/utils";
 import { publicArchiveItems } from "@lib/archive";
+import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { editorialReviewStatusLabel, pendingEditorialReviewNote } from "@lib/editorial";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import { publicThenNowPairs } from "@lib/thenNow";
@@ -67,13 +67,6 @@ const mayorEvents = entries.filter((event) => event.category === "mayor_term");
 
 const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string, ell: string, ja: string, tl: string, uk: string, ru: string): string =>
   ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell, ja, tl, uk, ru } satisfies Record<Lang, string>)[lang];
-
-const stats = [
-  { value: t.home.statYearsValue, label: t.history.statYears },
-  { value: String(historyKnowledgeEvents.length), label: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα", "出来事", "kaganapan", "подій", "событий") },
-  { value: String(historyKnowledgePeople.length), label: tr("хора", "people", "Personen", "personnalités", "personalità", "kişi", "personas", "πρόσωπα", "人物", "tao", "осіб", "человек") },
-  { value: String(historyKnowledgeSources.length), label: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "出典", "pinagmulan", "джерел", "источников") }
-];
 
 const labels = ({
       bg: {
@@ -1309,38 +1302,43 @@ const peopleById = new Map(historyKnowledgePeople.map((person) => [person.id, pe
 const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
 const orgsById = new Map(historyKnowledgeOrganizations.map((org) => [org.id, org]));
 
-// --- history tree: eras -> key events -> linked people/places ----------
-// A mobile-first expandable overview of the city's layered history. Each era
-// opens to a handful of key events; each event opens to the people and places
-// it links to in the curated knowledge graph. Built entirely from existing
-// data — no hardcoded demo content.
-const eraMotif: Record<HistoryEra, "nebet-tepe" | "ancient-theatre" | "dzhumaya-mosque" | "revival-houses" | "sahath-tepe"> = {
-  prehistory: "nebet-tepe",
-  thracian: "nebet-tepe",
-  roman: "ancient-theatre",
-  medieval: "revival-houses",
-  ottoman: "dzhumaya-mosque",
-  revival: "revival-houses",
-  liberation: "sahath-tepe",
-  modern: "sahath-tepe"
-};
-
 const treeLabels = {
   eyebrow: tr("Епохи и събития", "Eras & events", "Epochen & Ereignisse", "Époques & événements", "Epoche & eventi", "Çağlar ve olaylar", "Eras y eventos", "Εποχές & γεγονότα", "時代と出来事", "Mga yugto at kaganapan", "Епохи та події", "Эпохи и события"),
-  title: tr("Дърво на историята", "History tree", "Geschichtsbaum", "Arbre de l'histoire", "Albero della storia", "Tarih ağacı", "Árbol de la historia", "Δέντρο ιστορίας", "歴史ツリー", "Puno ng kasaysayan", "Дерево історії", "Дерево истории"),
+  title: tr("Осем глави, един град", "Eight chapters, one city", "Acht Kapitel, eine Stadt", "Huit chapitres, une ville", "Otto capitoli, una città", "Sekiz bölüm, tek şehir", "Ocho capítulos, una ciudad", "Οκτώ κεφάλαια, μία πόλη", "8つの章、ひとつの街", "Walong kabanata, iisang lungsod", "Вісім розділів, одне місто", "Восемь глав, один город"),
   lead: tr(
-    "Епохите на Пловдив като разгъващо се дърво: ключови събития и свързаните личности и места. Докоснете епоха, за да я отворите.",
-    "Plovdiv's eras as an expanding tree: key events and the people and places linked to them. Tap an era to open it.",
-    "Plovdivs Epochen als entfaltbarer Baum: Schlüsselereignisse und die damit verbundenen Personen und Orte. Tippen Sie auf eine Epoche, um sie zu öffnen.",
-    "Les époques de Plovdiv sous forme d'arbre dépliable : événements clés et personnes et lieux liés. Touchez une époque pour l'ouvrir.",
-    "Le ere di Plovdiv come albero espandibile: eventi chiave e le persone e i luoghi collegati. Tocca un'era per aprirla.",
-    "Plovdiv'in çağları açılır bir ağaç: önemli olaylar ve bunlara bağlı kişiler ve yerler. Açmak için bir çağa dokunun.",
-    "Las eras de Plovdiv como un árbol expandible: eventos clave y las personas y lugares vinculados. Toca una era para abrirla.",
-    "Οι εποχές της Φιλιππούπολης ως εκπτυσσόμενο δέντρο: βασικά γεγονότα και συνδεδεμένα πρόσωπα και μέρη. Πατήστε μια εποχή για να ανοίξει.",
-    "プロヴディフの時代を展開式ツリーで：主要事件と関連する人物・場所。タップで時代を開く。",
-    "Ang mga yugto ng Plovdiv bilang isang lumalawak na puno: mahahalagang kaganapan at ang mga taong at lugar na kaugnay nito. Pindutin ang isang yugto para buksan ito.",
-    "Епохи Пловдива у вигляді дерева, що розгортається: ключові події та пов'язані з ними особи й місця. Торкніться епохи, щоб відкрити її.",
-    "Эпохи Пловдива в виде разворачивающегося дерева: ключевые события и связанные с ними люди и места. Нажмите на эпоху, чтобы открыть её."
+    "Следвайте града от първите селища по тепетата до съвременния Пловдив. Всяка глава съчетава образ, кратък разказ и проверими събития.",
+    "Follow the city from its first hilltop settlements to present-day Plovdiv. Each chapter pairs a visual story with concise, verifiable events.",
+    "Folgen Sie der Stadt von den ersten Siedlungen auf den Hügeln bis zum heutigen Plovdiv. Jedes Kapitel verbindet Bilder, Erzählung und belegte Ereignisse.",
+    "Suivez la ville des premiers habitats sur les collines au Plovdiv actuel. Chaque chapitre associe images, récit concis et faits vérifiables.",
+    "Segui la città dai primi insediamenti sui colli alla Plovdiv di oggi. Ogni capitolo unisce immagini, racconto e fatti verificabili.",
+    "Tepelerdeki ilk yerleşimlerden günümüz Plovdiv'ine uzanan şehri izleyin. Her bölüm görsel anlatıyı doğrulanabilir olaylarla birleştirir.",
+    "Sigue la ciudad desde los primeros asentamientos en las colinas hasta el Plovdiv actual. Cada capítulo une imágenes, relato y hechos verificables.",
+    "Ακολουθήστε την πόλη από τους πρώτους οικισμούς στους λόφους έως τη σημερινή Φιλιππούπολη. Κάθε κεφάλαιο συνδυάζει εικόνα, αφήγηση και τεκμηριωμένα γεγονότα.",
+    "丘の上の最初の集落から現在のプロヴディフまでをたどります。各章はビジュアル、短い物語、検証可能な出来事を結びます。",
+    "Sundan ang lungsod mula sa mga unang pamayanan sa mga burol hanggang sa Plovdiv ngayon. Pinag-uugnay ng bawat kabanata ang larawan, salaysay, at napapatunayang pangyayari.",
+    "Пройдіть шлях міста від перших поселень на пагорбах до сучасного Пловдива. Кожен розділ поєднує образ, стислу оповідь і перевірені події.",
+    "Проследите путь города от первых поселений на холмах до современного Пловдива. Каждая глава соединяет образы, краткий рассказ и проверяемые события."
+  ),
+  chapter: tr("Глава", "Chapter", "Kapitel", "Chapitre", "Capitolo", "Bölüm", "Capítulo", "Κεφάλαιο", "章", "Kabanata", "Розділ", "Глава"),
+  contextImage: tr("Съвременен контекст", "Present-day context", "Heutiger Kontext", "Contexte actuel", "Contesto attuale", "Günümüz bağlamı", "Contexto actual", "Σύγχρονο πλαίσιο", "現在の文脈", "Kasalukuyang konteksto", "Сучасний контекст", "Современный контекст"),
+  archiveImage: tr("Архивна справка", "Archive reference", "Archivreferenz", "Référence d’archive", "Riferimento d’archivio", "Arşiv kaydı", "Referencia de archivo", "Αρχειακή αναφορά", "アーカイブ資料", "Sanggunian sa arkibo", "Архівна довідка", "Архивная справка"),
+  exploreEvents: tr("Разгледайте ключовите събития", "Explore key events", "Schlüsselereignisse ansehen", "Explorer les événements clés", "Esplora gli eventi chiave", "Önemli olayları keşfedin", "Explorar hechos clave", "Εξερευνήστε βασικά γεγονότα", "主な出来事を見る", "Tingnan ang mahahalagang pangyayari", "Переглянути ключові події", "Изучить ключевые события"),
+  highlights: tr("акцента", "highlights", "Höhepunkte", "temps forts", "momenti chiave", "öne çıkan", "destacados", "σημεία", "ハイライト", "tampok", "головних подій", "ключевых событий"),
+  exploreEra: tr("Цялата епоха в хронологията", "Open this era in the timeline", "Diese Epoche in der Zeitleiste", "Voir cette époque dans la chronologie", "Apri l’epoca nella cronologia", "Bu dönemi zaman çizelgesinde aç", "Abrir esta era en la cronología", "Άνοιγμα της εποχής στο χρονολόγιο", "年表でこの時代を見る", "Buksan ang yugtong ito sa talaan", "Відкрити епоху в хронології", "Открыть эпоху в хронологии"),
+  imageSource: tr("Източник на образа", "Image source", "Bildquelle", "Source de l’image", "Fonte dell’immagine", "Görsel kaynağı", "Fuente de la imagen", "Πηγή εικόνας", "画像の出典", "Pinagmulan ng larawan", "Джерело зображення", "Источник изображения"),
+  imageNote: tr(
+    "Снимките показват съвременен контекст или архивни справки — не възстановки на всяка епоха. Архивните записи очакват независима редакторска проверка.",
+    "Images show present-day context or archival references—not reconstructions of every era. Archive records remain pending independent editorial review.",
+    "Die Bilder zeigen heutigen Kontext oder Archivreferenzen, keine Rekonstruktionen jeder Epoche. Archivdatensätze warten auf eine unabhängige redaktionelle Prüfung.",
+    "Les images montrent un contexte actuel ou des références d’archives, pas des reconstitutions de chaque époque. Les archives restent en attente d’une vérification éditoriale indépendante.",
+    "Le immagini mostrano contesti attuali o riferimenti d’archivio, non ricostruzioni di ogni epoca. I documenti d’archivio attendono una verifica editoriale indipendente.",
+    "Görseller günümüz bağlamını veya arşiv kayıtlarını gösterir; dönem canlandırması değildir. Arşiv kayıtları bağımsız editoryal inceleme beklemektedir.",
+    "Las imágenes muestran contexto actual o referencias de archivo, no reconstrucciones de cada época. Los registros de archivo esperan una revisión editorial independiente.",
+    "Οι εικόνες δείχνουν σύγχρονο πλαίσιο ή αρχειακές αναφορές, όχι αναπαραστάσεις κάθε εποχής. Τα αρχειακά αρχεία αναμένουν ανεξάρτητο συντακτικό έλεγχο.",
+    "画像は現在の文脈またはアーカイブ資料であり、各時代の復元図ではありません。アーカイブ記録は独立した編集確認を待っています。",
+    "Ang mga larawan ay kasalukuyang konteksto o sangguniang arkibo, hindi muling pagbuo ng bawat panahon. Hinihintay pa ng mga rekord ang malayang editoryal na pagsusuri.",
+    "Зображення показують сучасний контекст або архівні довідки, а не реконструкції кожної епохи. Архівні записи очікують незалежної редакторської перевірки.",
+    "Изображения показывают современный контекст или архивные справки, а не реконструкции каждой эпохи. Архивные записи ожидают независимой редакторской проверки."
   ),
   people: tr("Личности", "People", "Personen", "Personnes", "Persone", "Kişiler", "Personas", "Πρόσωπα", "人物", "Mga Tao", "Особи", "Личности"),
   places: tr("Места", "Places", "Orte", "Lieux", "Luoghi", "Yerler", "Lugares", "Τόποι", "場所", "Mga Lugar", "Місця", "Места"),
@@ -1348,12 +1346,150 @@ const treeLabels = {
   noLinks: tr("Без посочени връзки", "No recorded links", "Keine Verknüpfungen", "Aucun lien enregistré", "Nessun legame registrato", "Kayıtlı bağ yok", "Sin vínculos registrados", "Χωρίς καταχωρημένες συνδέσεις", "記録されたリンクなし", "Walang naitalang koneksyon", "Без зафіксованих зв'язків", "Нет зафиксированных связей")
 };
 
-function pickKeyEvents(eraEvents: KnowledgeEvent[], max = 6): KnowledgeEvent[] {
+const historyHeroLabels = {
+  startJourney: tr("Започнете с осемте епохи", "Start with the eight eras", "Mit den acht Epochen beginnen", "Commencer par les huit époques", "Inizia dalle otto epoche", "Sekiz dönemle başlayın", "Comenzar por las ocho eras", "Ξεκινήστε με τις οκτώ εποχές", "8つの時代から始める", "Magsimula sa walong yugto", "Почати з восьми епох", "Начать с восьми эпох"),
+  galleryLabel: tr("Пловдив през времето", "Plovdiv across time", "Plovdiv im Lauf der Zeit", "Plovdiv à travers le temps", "Plovdiv nel tempo", "Zaman içinde Plovdiv", "Plovdiv a través del tiempo", "Η Φιλιππούπολη στον χρόνο", "時を重ねるプロヴディフ", "Plovdiv sa paglipas ng panahon", "Пловдив крізь час", "Пловдив сквозь время")
+};
+
+type HistoryChapterVisual = {
+  url: string;
+  pageUrl: string;
+  credit: string;
+  license: string;
+  title: string;
+  kind: "context" | "archive";
+  date: string;
+};
+
+function cleanMediaCredit(value: string): string {
+  return value.replace(/\s*\(\s*talk\s*\)\s*/i, "").trim();
+}
+
+function placeChapterVisual(id: string, titleOverride?: string): HistoryChapterVisual {
+  const place = placesById.get(id) as Record<string, any> | undefined;
+  const media = place?.media?.[0];
+  if (!place || !media) throw new Error(`Missing history chapter place media: ${id}`);
+  return {
+    url: media.url,
+    pageUrl: media.page_url ?? media.url,
+    credit: cleanMediaCredit(media.credit),
+    license: media.license,
+    title: titleOverride ?? localized(place, "name"),
+    kind: "context",
+    date: ""
+  };
+}
+
+function archiveChapterVisual(id: string): HistoryChapterVisual {
+  const item = historicalArchiveItems.find((candidate) => candidate.id === id) as Record<string, any> | undefined;
+  const media = item?.media;
+  if (!item || !media) throw new Error(`Missing history chapter archive media: ${id}`);
+  return {
+    url: media.url,
+    pageUrl: media.page_url ?? media.url,
+    credit: cleanMediaCredit(media.credit),
+    license: media.license,
+    title: localized(item, "title"),
+    kind: "archive",
+    date: localized(item, "date_display") || String(item.date_year ?? "")
+  };
+}
+
+const chapterVisuals: Record<HistoryEra, HistoryChapterVisual> = {
+  prehistory: placeChapterVisual("place-seven-hills"),
+  thracian: placeChapterVisual("place-nebet-tepe", tr("Гледка от Небет тепе", "View from Nebet Tepe", "Blick vom Nebet Tepe", "Vue depuis Nebet Tepe", "Vista dal Nebet Tepe", "Nebet Tepe'den görünüm", "Vista desde Nebet Tepe", "Θέα από το Νεμπέτ Τεπέ", "ネベット・テペからの眺め", "Tanawin mula sa Nebet Tepe", "Вид із Небет-Тепе", "Вид с Небет-Тепе")),
+  roman: placeChapterVisual("place-ancient-theatre"),
+  medieval: placeChapterVisual("place-hisar-kapia"),
+  ottoman: placeChapterVisual("place-dzhumaya-mosque"),
+  revival: placeChapterVisual("place-old-town"),
+  liberation: archiveChapterVisual("archive-photo-philippopolis-street-1878"),
+  modern: archiveChapterVisual("archive-photo-trimontium-view-1958")
+};
+
+const historyHeroVisuals = [
+  placeChapterVisual("place-sahat-hill-in-plovdiv-q12293012"),
+  archiveChapterVisual("archive-photo-international-fair-1892-1"),
+  archiveChapterVisual("archive-photo-ivan-vazov-library-earthquake-1928")
+];
+
+const featuredEventIdsByEra = {
+  prehistory: [
+    "event-prehistory-settlement",
+    "event-prehistory-nebet-tepe",
+    "event-prehistory-bronze-age"
+  ],
+  thracian: [
+    "event-thracian-town-bessi",
+    "event-thracian-eumolpias",
+    "event-philip-philippopolis",
+    "event-thracian-celts",
+    "event-thracian-philip-v",
+    "event-thracian-lucullus"
+  ],
+  roman: [
+    "event-roman-trimontium",
+    "event-roman-forum",
+    "event-roman-theatre",
+    "event-roman-stadium",
+    "event-goths-250",
+    "event-huns-441"
+  ],
+  medieval: [
+    "event-medieval-byzantine-fortress",
+    "event-krum-812",
+    "event-malamir-834",
+    "event-medieval-latin-empire",
+    "event-ivan-asen-1230",
+    "event-bulgaria-1323"
+  ],
+  ottoman: [
+    "event-ottoman-1364",
+    "event-ottoman-maritsa",
+    "event-ottoman-musa-celebi",
+    "event-ottoman-rumelia-centre",
+    "event-ottoman-trade-centre"
+  ],
+  revival: [
+    "event-first-school-1836",
+    "event-revival-secular-school",
+    "event-bulgarian-liturgy-1858",
+    "event-revival-cyril-methodius-day",
+    "event-revival-grammar-school",
+    "event-revival-bulgarian-church"
+  ],
+  liberation: [
+    "event-liberation-1878",
+    "event-liberation-san-stefano",
+    "event-eastern-rumelia-1878",
+    "event-liberation-september-1885",
+    "event-unification-1885"
+  ],
+  modern: [
+    "event-fair-1892",
+    "event-modern-electrification",
+    "event-1928-earthquake",
+    "event-jews-1943",
+    "event-programme-1969-old-plovdiv-restoration",
+    "event-modern-democratic-reform",
+    "event-capital-of-culture-2019"
+  ]
+} satisfies Record<HistoryEra, string[]>;
+
+function pickKeyEvents(era: HistoryEra, eraEvents: KnowledgeEvent[], max = 6): KnowledgeEvent[] {
   const sorted = [...eraEvents].sort((a, b) => a.date.year - b.date.year);
-  if (sorted.length <= max) return sorted;
-  // Prefer events that carry people/place links, then spread across the era.
-  const linked = sorted.filter((e) => e.person_ids.length || e.place_ids.length);
-  const pool = linked.length >= max ? linked : sorted;
+  const byId = new Map(sorted.map((event) => [event.id, event]));
+  const curated = featuredEventIdsByEra[era]
+    .map((id) => byId.get(id))
+    .filter((event): event is KnowledgeEvent => Boolean(event));
+  if (curated.length > 0) return curated;
+  // The chapter journey tells the city's story. Birth records, mayoral terms,
+  // and finance rows remain searchable in the complete timeline below.
+  const narrative = sorted.filter(
+    (event) => !["notable_person_birth", "mayor_term", "historical_finance"].includes(event.category)
+  );
+  const pool = narrative.length > 0 ? narrative : sorted;
+  if (pool.length <= max) return pool;
+  // Spread the selection across the era instead of clustering at its start.
   const step = pool.length / max;
   const picked: KnowledgeEvent[] = [];
   const seen = new Set<string>();
@@ -1367,10 +1503,10 @@ function pickKeyEvents(eraEvents: KnowledgeEvent[], max = 6): KnowledgeEvent[] {
   return picked;
 }
 
-const historyTree = erasPresent.map((era) => {
+const historyTree = erasPresent.map((era, eraIndex) => {
   const eraEvents = entries.filter((e) => e.era === era);
   const years = eraEvents.map((e) => e.date.year);
-  const keyEvents = pickKeyEvents(eraEvents, 6).map((ev) => {
+  const keyEvents = pickKeyEvents(era, eraEvents, 6).map((ev) => {
     const people = (ev.person_ids.slice(0, 4).map((id) => peopleById.get(id)).filter(Boolean) as any[]).map((p) => ({
       id: p.id,
       name: localized(p, "name")
@@ -1379,14 +1515,23 @@ const historyTree = erasPresent.map((era) => {
       id: p.id,
       name: localized(p, "name")
     }));
-    return { id: ev.id, date: dateLabel(ev), title: localized(ev, "title"), people, places };
+    return {
+      id: ev.id,
+      date: dateLabel(ev),
+      title: localized(ev, "title"),
+      summary: localized(ev, "summary"),
+      people,
+      places
+    };
   });
   return {
     era,
-    motif: eraMotif[era],
+    chapter: String(eraIndex + 1).padStart(2, "0"),
     label: t.history.eraLabels[era],
+    blurb: t.history.eraBlurbs[era],
     yearRange: eraEvents.length ? fmtYearRange(Math.min(...years), Math.max(...years)) : "",
     count: eraEvents.length,
+    visual: chapterVisuals[era],
     keyEvents
   };
 });
@@ -1627,12 +1772,32 @@ const timelineConfig = {
 const archiveItemsForView = publicArchiveItems(historicalArchiveItems).sort(
   (a, b) => a.date_year - b.date_year || a.id.localeCompare(b.id)
 );
-const thenNowPairsForView = publicThenNowPairs(thenNowPairs).sort((a, b) =>
-  localized(a, "title").localeCompare(localized(b, "title"), locale)
-);
+const archiveGalleryIds = [
+  "archive-photo-plovdiv-station-around-1880",
+  "archive-photo-dzhambaztepe-1892",
+  "archive-photo-international-fair-1892-1",
+  "archive-postcard-dzhumaya-square-1",
+  "archive-photo-plovdiv-karastoyanov-c1908",
+  "archive-postcard-tsar-simeon-garden-1915",
+  "archive-photo-ivan-vazov-library-earthquake-1928",
+  "archive-postcard-gerdjica-1931",
+  "archive-photo-opening-1939-plovdiv-fair",
+  "archive-photo-balkan-cinema-plovdiv",
+  "archive-photo-ancient-theatre-uncovered-1",
+  "archive-photo-lamartine-house-restoration-1972"
+];
+const publicArchiveById = new Map(archiveItemsForView.map((item) => [item.id, item]));
+const archiveGalleryItems = archiveGalleryIds
+  .map((id) => publicArchiveById.get(id))
+  .filter((item): item is (typeof archiveItemsForView)[number] => Boolean(item));
+const archiveById = new Map(historicalArchiveItems.map((it) => [it.id, it]));
+const thenNowPairsForView = publicThenNowPairs(thenNowPairs).sort((a, b) => {
+  const aYear = archiveById.get(a.historical_archive_item_id)?.date_year ?? Number.MAX_SAFE_INTEGER;
+  const bYear = archiveById.get(b.historical_archive_item_id)?.date_year ?? Number.MAX_SAFE_INTEGER;
+  return aYear - bYear || localized(a, "title").localeCompare(localized(b, "title"), locale);
+});
 const editorialReviewLabel = editorialReviewStatusLabel(lang);
 // date of the historical ("then") photo, taken from its linked archive item
-const archiveById = new Map(historicalArchiveItems.map((it) => [it.id, it]));
 function thenPhotoDate(pair: { historical_archive_item_id?: string }): string {
   const item = pair.historical_archive_item_id ? archiveById.get(pair.historical_archive_item_id) : null;
   if (!item) return "";
@@ -2020,120 +2185,120 @@ const nbEraLabels: Record<NeighbourhoodEra, string> = ({
 // sticky in-page section navigation
 const sectionNav = ({
       bg: [
-        { id: "history-tree", label: "Дърво" },
-        { id: "timeline", label: "Хронология" },
+        { id: "history-tree", label: "Разказ" },
         { id: "landmarks", label: "Места" },
         { id: "archive-layer", label: "Архив" },
+        { id: "timeline", label: "Хронология" },
         { id: "people", label: "Хора" },
         { id: "geography", label: "Геогр./климат" },
         { id: "city-growth", label: "Растеж" },
         { id: "data", label: "Данни" }
       ],
       en: [
-        { id: "history-tree", label: "Tree" },
-        { id: "timeline", label: "Timeline" },
+        { id: "history-tree", label: "Story" },
         { id: "landmarks", label: "Landmarks" },
         { id: "archive-layer", label: "Archive" },
+        { id: "timeline", label: "Timeline" },
         { id: "people", label: "People" },
         { id: "geography", label: "Geography" },
         { id: "city-growth", label: "Growth" },
         { id: "data", label: "Data" }
       ],
       de: [
-        { id: "history-tree", label: "Baum" },
-        { id: "timeline", label: "Zeitleiste" },
+        { id: "history-tree", label: "Geschichte" },
         { id: "landmarks", label: "Orte" },
         { id: "archive-layer", label: "Archiv" },
+        { id: "timeline", label: "Zeitleiste" },
         { id: "people", label: "Personen" },
         { id: "geography", label: "Geogr./Klima" },
         { id: "city-growth", label: "Wachstum" },
         { id: "data", label: "Daten" }
       ],
       fr: [
-        { id: "history-tree", label: "Arbre" },
-        { id: "timeline", label: "Chronologie" },
+        { id: "history-tree", label: "Récit" },
         { id: "landmarks", label: "Lieux" },
         { id: "archive-layer", label: "Archives" },
+        { id: "timeline", label: "Chronologie" },
         { id: "people", label: "Personnes" },
         { id: "geography", label: "Géogr./climat" },
         { id: "city-growth", label: "Croissance" },
         { id: "data", label: "Données" }
       ],
       it: [
-        { id: "history-tree", label: "Albero" },
-        { id: "timeline", label: "Cronologia" },
+        { id: "history-tree", label: "Racconto" },
         { id: "landmarks", label: "Luoghi" },
         { id: "archive-layer", label: "Archivio" },
+        { id: "timeline", label: "Cronologia" },
         { id: "people", label: "Persone" },
         { id: "geography", label: "Geogr./clima" },
         { id: "city-growth", label: "Crescita" },
         { id: "data", label: "Dati" }
       ],
       tr: [
-        { id: "history-tree", label: "Ağaç" },
-        { id: "timeline", label: "Zaman çizelgesi" },
+        { id: "history-tree", label: "Hikâye" },
         { id: "landmarks", label: "Yerler" },
         { id: "archive-layer", label: "Arşiv" },
+        { id: "timeline", label: "Zaman çizelgesi" },
         { id: "people", label: "Kişiler" },
         { id: "geography", label: "Coğr./iklim" },
         { id: "city-growth", label: "Büyüme" },
         { id: "data", label: "Veriler" }
       ],
       es: [
-        { id: "history-tree", label: "Árbol" },
-        { id: "timeline", label: "Cronología" },
+        { id: "history-tree", label: "Historia" },
         { id: "landmarks", label: "Lugares" },
         { id: "archive-layer", label: "Archivo" },
+        { id: "timeline", label: "Cronología" },
         { id: "people", label: "Personas" },
         { id: "geography", label: "Geogr./clima" },
         { id: "city-growth", label: "Crecimiento" },
         { id: "data", label: "Datos" }
       ],
       el: [
-        { id: "history-tree", label: "Δέντρο" },
-        { id: "timeline", label: "Χρονολόγιο" },
+        { id: "history-tree", label: "Ιστορία" },
         { id: "landmarks", label: "Τοποθεσίες" },
         { id: "archive-layer", label: "Αρχείο" },
+        { id: "timeline", label: "Χρονολόγιο" },
         { id: "people", label: "Πρόσωπα" },
         { id: "geography", label: "Γεωγρ./κλίμα" },
         { id: "city-growth", label: "Ανάπτυξη" },
         { id: "data", label: "Δεδομένα" }
       ],
       ja: [
-        { id: "history-tree", label: "ツリー" },
-        { id: "timeline", label: "年表" },
+        { id: "history-tree", label: "物語" },
         { id: "landmarks", label: "場所" },
         { id: "archive-layer", label: "アーカイブ" },
+        { id: "timeline", label: "年表" },
         { id: "people", label: "人物" },
         { id: "geography", label: "地理・気候" },
         { id: "city-growth", label: "成長" },
         { id: "data", label: "データ" }
       ],
       tl: [
-        { id: "history-tree", label: "Puno" },
-        { id: "timeline", label: "Talaan" },
+        { id: "history-tree", label: "Salaysay" },
         { id: "landmarks", label: "Mga Lugar" },
         { id: "archive-layer", label: "Arkibo" },
+        { id: "timeline", label: "Talaan" },
         { id: "people", label: "Mga Tao" },
         { id: "geography", label: "Heograpiya/Klima" },
         { id: "city-growth", label: "Paglago" },
         { id: "data", label: "Datos" }
       ],
       uk: [
-        { id: "history-tree", label: "Дерево" },
-        { id: "timeline", label: "Хронологія" },
+        { id: "history-tree", label: "Оповідь" },
         { id: "landmarks", label: "Місця" },
         { id: "archive-layer", label: "Архів" },
+        { id: "timeline", label: "Хронологія" },
         { id: "people", label: "Люди" },
         { id: "geography", label: "Геогр./клімат" },
         { id: "city-growth", label: "Зростання" },
         { id: "data", label: "Дані" }
       ],
       ru: [
-        { id: "history-tree", label: "Дерево" },
-        { id: "timeline", label: "Хронология" },
+        { id: "history-tree", label: "История" },
         { id: "landmarks", label: "Места" },
         { id: "archive-layer", label: "Архив" },
+        { id: "timeline", label: "Хронология" },
         { id: "people", label: "Люди" },
         { id: "geography", label: "Геогр./климат" },
         { id: "city-growth", label: "Рост" },
@@ -2563,18 +2728,45 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 ---
 
 <Layout lang={lang} path="/history" title={t.history.title} description={t.history.lead}>
-  <section class="hero hero-compact" data-section="history">
+  <section class="hero hero-compact history-hero" data-section="history">
     <HeroBackdrop />
-    <div class="container">
-      <p class="eyebrow">{t.history.eyebrow}</p>
-      <h1>{t.history.title}</h1>
-      <p class="lead">{t.history.lead}</p>
-      <div class="button-row" style="margin-top:18px">
-        <a class="button secondary" href={localizePath("/history/contribute", lang)}>{labels.contribute}</a>
+    <div class="container history-hero-layout">
+      <div class="history-hero-copy">
+        <p class="eyebrow">{t.history.eyebrow}</p>
+        <h1>{t.history.title}</h1>
+        <p class="lead">{t.history.lead}</p>
+        <div class="button-row history-hero-actions">
+          <a class="button" href="#history-tree">{historyHeroLabels.startJourney} ↓</a>
+          <a class="button secondary" href={localizePath("/history/contribute", lang)}>{labels.contribute}</a>
+        </div>
       </div>
-      <div class="stat-row" style="margin-top:22px">
-        {stats.map((s) => (
-          <div class="stat"><strong>{s.value}</strong><span>{s.label}</span></div>
+      <div class="history-hero-mosaic" role="group" aria-label={historyHeroLabels.galleryLabel}>
+        {historyHeroVisuals.map((visual, visualIndex) => (
+          <a
+            class={`history-hero-tile history-hero-tile-${visualIndex + 1}`}
+            href={visual.pageUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src={commonsImageUrl(visual.url, visualIndex === 0 ? 960 : 640)}
+              srcset={isCommonsUploadImageUrl(visual.url) ? `${commonsImageUrl(visual.url, 480)} 480w, ${commonsImageUrl(visual.url, 960)} 960w` : undefined}
+              sizes={visualIndex === 0 ? "(max-width: 760px) 62vw, 34vw" : "(max-width: 760px) 38vw, 18vw"}
+              alt=""
+              loading={visualIndex === 0 ? "eager" : "lazy"}
+              decoding="async"
+              crossorigin={isCommonsUploadImageUrl(visual.url) ? "anonymous" : undefined}
+              referrerpolicy="no-referrer"
+            />
+            <span class="history-hero-kind">
+              {visual.kind === "archive" ? treeLabels.archiveImage : treeLabels.contextImage}
+              {visual.date && ` · ${visual.date}`}
+            </span>
+            <span class="history-hero-credit">
+              <strong>{visual.title}</strong>
+              <small>{visual.credit} · {visual.license} ↗</small>
+            </span>
+          </a>
         ))}
       </div>
     </div>
@@ -2582,7 +2774,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
   <SectionNav items={sectionNav} label={sectionNavLabel} />
 
-  <section class="section" id="history-tree" data-subnav-target>
+  <section class="section history-story-section" id="history-tree" data-subnav-target>
     <div class="container">
       <div class="section-head">
         <div>
@@ -2591,110 +2783,80 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           <p class="meta" style="margin-top:8px;max-width:76ch">{treeLabels.lead}</p>
         </div>
       </div>
+      <p class="history-image-note" role="note">{treeLabels.imageNote}</p>
 
-      <div class="htree" role="list" aria-label={treeLabels.title}>
-        {historyTree.map((era, eraIndex) => (
-          <details class={`htree-era era-${era.era}`} data-tree-era={era.era} role="listitem" open={eraIndex === 0}>
-            <summary class="htree-era-sum">
-              <span class="htree-era-mark" aria-hidden="true">
-                <LandmarkMotif name={era.motif} />
+      <div class="history-chapters">
+        {historyTree.map((era) => (
+          <details class={`history-chapter era-${era.era}`} data-tree-era={era.era}>
+            <summary
+              class="history-chapter-summary"
+              aria-label={`${era.label}. ${era.keyEvents.length} ${treeLabels.highlights}. ${treeLabels.exploreEvents}.`}
+            >
+              <span class="history-chapter-media">
+                <img
+                  src={commonsImageUrl(era.visual.url, 960)}
+                  srcset={isCommonsUploadImageUrl(era.visual.url) ? `${commonsImageUrl(era.visual.url, 480)} 480w, ${commonsImageUrl(era.visual.url, 960)} 960w` : undefined}
+                  sizes="(max-width: 760px) 100vw, 42vw"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  crossorigin={isCommonsUploadImageUrl(era.visual.url) ? "anonymous" : undefined}
+                  referrerpolicy="no-referrer"
+                />
+                <span class="history-chapter-image-kind" aria-hidden="true">
+                  {era.visual.kind === "archive" ? treeLabels.archiveImage : treeLabels.contextImage}
+                  {era.visual.date && ` · ${era.visual.date}`}
+                </span>
+                <span class="history-chapter-credit" aria-hidden="true">{era.visual.credit} · {era.visual.license}</span>
               </span>
-              <span class="htree-era-name">{era.label}</span>
-              <span class="htree-era-range">{era.yearRange}</span>
-              <span class="htree-era-count">{era.count} {treeLabels.events}</span>
-              <span class="htree-caret" aria-hidden="true"></span>
+              <span class="history-chapter-copy">
+                <span class="history-chapter-kicker">
+                  <span>{treeLabels.chapter} {era.chapter}</span>
+                  <span>{era.yearRange}</span>
+                </span>
+                <span class="history-chapter-title" role="heading" aria-level="3">{era.label}</span>
+                <span class="history-chapter-blurb">{era.blurb}</span>
+                <span class="history-chapter-disclosure">
+                  <span>{treeLabels.exploreEvents}</span>
+                  <span>{era.keyEvents.length} {treeLabels.highlights} · {era.count} {treeLabels.events}</span>
+                  <span class="history-chapter-caret" aria-hidden="true"></span>
+                </span>
+              </span>
             </summary>
-            <ol class="htree-events">
+            <div class="history-chapter-panel">
+              <ol class="history-chapter-events">
               {era.keyEvents.map((ev) => (
-                <li class="htree-event" role="listitem">
-                  <details class="htree-event-details">
-                    <summary class="htree-event-sum">
-                      <span class="htree-event-year">{ev.date}</span>
-                      <span class="htree-event-title">{ev.title}</span>
-                      <span class="htree-caret" aria-hidden="true"></span>
-                    </summary>
-                    <div class="htree-event-links">
-                      {ev.people.length > 0 || ev.places.length > 0 ? (
-                        <>
-                          {ev.people.length > 0 && (
-                            <div class="htree-link-group">
-                              <h4 class="htree-link-head">{treeLabels.people}</h4>
-                              <ul class="htree-link-list">
-                                {ev.people.map((person) => (
-                                  <li>
-                                    <a href={localizePath(`/people/${person.id}`, lang)}>{person.name}</a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-                          {ev.places.length > 0 && (
-                            <div class="htree-link-group">
-                              <h4 class="htree-link-head">{treeLabels.places}</h4>
-                              <ul class="htree-link-list">
-                                {ev.places.map((place) => (
-                                  <li>
-                                    <a href={localizePath(`/places/${place.id}`, lang)}>{place.name}</a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-                        </>
-                      ) : (
-                        <p class="meta htree-no-links">{treeLabels.noLinks}</p>
-                      )}
-                    </div>
-                  </details>
+                <li class="history-chapter-event" role="listitem">
+                  <span class="history-chapter-event-date">{ev.date}</span>
+                  <div>
+                    <h3>{ev.title}</h3>
+                    {ev.summary && <p>{ev.summary}</p>}
+                    {(ev.people.length > 0 || ev.places.length > 0) && (
+                      <div class="history-chapter-event-links">
+                        {ev.people.slice(0, 2).map((person) => (
+                          <a href={localizePath(`/people/${person.id}`, lang)}>{person.name}</a>
+                        ))}
+                        {ev.places.slice(0, 2).map((place) => (
+                          <a href={localizePath(`/places/${place.id}`, lang)}>{place.name}</a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </li>
               ))}
-            </ol>
+              </ol>
+              <div class="history-chapter-actions">
+                <a href={`${localizePath("/history", lang)}?q=${encodeURIComponent(era.label)}#timeline`}>
+                  {treeLabels.exploreEra} →
+                </a>
+                <a href={era.visual.pageUrl} target="_blank" rel="noreferrer">
+                  {treeLabels.imageSource}: {era.visual.credit} · {era.visual.license} ↗
+                </a>
+              </div>
+            </div>
           </details>
         ))}
       </div>
-    </div>
-  </section>
-
-  <section class="section section-tint" id="timeline" data-subnav-target>
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>{labels.timelineTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.timelineLead}</p>
-        </div>
-      </div>
-
-      <div class="history-search-card card" role="search">
-        <label for="history-search">{labels.search}</label>
-        <input
-          id="history-search"
-          type="search"
-          placeholder={labels.searchPlaceholder}
-          list="history-search-hints"
-          autocomplete="off"
-        />
-        <datalist id="history-search-hints">
-          {searchHints.map((hint) => <option value={hint} />)}
-        </datalist>
-        <div class="history-suggestions">
-          <span class="meta">{searchL.suggestions}</span>
-          {searchSuggestions.map((suggestion) => (
-            <button type="button" class="history-suggest" data-history-suggest={suggestion} aria-pressed="false">
-              {suggestion}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div class="results-bar">
-        <p id="history-count" class="meta" aria-live="polite">
-          {entries.length} {labels.records}
-        </p>
-        <button type="button" id="history-reset" class="link-button" hidden>{searchL.reset}</button>
-      </div>
-
-      <ol class="timeline history-deep-list" id="history-event-list" aria-live="polite"></ol>
-      <p id="history-empty" class="empty" hidden>{searchL.noResults}</p>
     </div>
   </section>
 
@@ -2753,7 +2915,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           <p class="meta">{mapPlaces[0] ? localized(mapPlaces[0], "name") : ""}</p>
         </aside>
       </div>
-      <div class="grid grid-3" style="margin-top:22px">
+      <div class="grid grid-3 history-landmark-grid" style="margin-top:22px">
         {historyKnowledgePlaces.slice(0, 12).map((place) => {
           const source = sourceById.get(place.source_ids[0]);
           const image = place.media[0];
@@ -2763,7 +2925,9 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
               {image && (
                 <figure class="landmark-media">
                   <img
-                    src={image.url}
+                    src={commonsImageUrl(image.url, 640)}
+                    srcset={isCommonsUploadImageUrl(image.url) ? `${commonsImageUrl(image.url, 360)} 360w, ${commonsImageUrl(image.url, 640)} 640w` : undefined}
+                    sizes="(max-width: 860px) 100vw, 33vw"
                     alt={localized(place, "name")}
                     loading="lazy"
                     decoding="async"
@@ -2774,7 +2938,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                 </figure>
               )}
               <p class="eyebrow">{localized(place, "era")}</p>
-              <h3>{localized(place, "name")}</h3>
+              <h3><a class="landmark-title-link" href={localizePath(`/places/${place.id}`, lang)}>{localized(place, "name")}</a></h3>
               {facts.length > 0 && (
                 <dl class="place-facts">
                   {facts.map((fact) => (
@@ -2807,29 +2971,22 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         </div>
       </div>
 
-      <div class="stat-row budget-summary-stats" style="margin-top:0">
-        <div class="stat">
-          <strong>{historicalArchiveItems.length}</strong>
-          <span>{labels.georeferencedItems}</span>
-        </div>
-        <div class="stat">
-          <strong>{thenNowPairsForView.length}</strong>
-          <span>{labels.thenNowPairs}</span>
-        </div>
-        <div class="stat">
-          <strong>{new Set(historicalArchiveItems.map((item) => item.place_id)).size}</strong>
-          <span>{labels.places}</span>
-        </div>
-      </div>
+      <dl class="history-evidence-strip">
+        <div><dt>{labels.georeferencedItems}</dt><dd>{historicalArchiveItems.length}</dd></div>
+        <div><dt>{labels.thenNowPairs}</dt><dd>{thenNowPairsForView.length}</dd></div>
+        <div><dt>{labels.places}</dt><dd>{new Set(historicalArchiveItems.map((item) => item.place_id)).size}</dd></div>
+      </dl>
 
       <div class="archive-grid">
-        {archiveItemsForView.slice(0, 12).map((item) => {
+        {archiveGalleryItems.map((item) => {
           const place = placesById.get(item.place_id);
           return (
             <article class="card archive-card" data-archive-item>
               <figure class="archive-media">
                 <img
-                  src={item.media.url}
+                  src={commonsImageUrl(item.media.url, 640)}
+                  srcset={isCommonsUploadImageUrl(item.media.url) ? `${commonsImageUrl(item.media.url, 360)} 360w, ${commonsImageUrl(item.media.url, 640)} 640w` : undefined}
+                  sizes="(max-width: 760px) 100vw, 33vw"
                   alt={localized(item, "title")}
                   loading="lazy"
                   decoding="async"
@@ -2873,7 +3030,9 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
             <div class="compare-frame" style="--split:50%">
               <img
                 class="compare-now"
-                src={pair.now_media.url}
+                src={commonsImageUrl(pair.now_media.url, 640)}
+                srcset={isCommonsUploadImageUrl(pair.now_media.url) ? `${commonsImageUrl(pair.now_media.url, 360)} 360w, ${commonsImageUrl(pair.now_media.url, 640)} 640w` : undefined}
+                sizes="(max-width: 760px) 100vw, 50vw"
                 alt={`${labels.nowLabel}: ${localized(pair, "title")}`}
                 loading="lazy"
                 decoding="async"
@@ -2882,7 +3041,9 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
               />
               <div class="compare-then" aria-hidden="true">
                 <img
-                  src={pair.then_media.url}
+                  src={commonsImageUrl(pair.then_media.url, 640)}
+                  srcset={isCommonsUploadImageUrl(pair.then_media.url) ? `${commonsImageUrl(pair.then_media.url, 360)} 360w, ${commonsImageUrl(pair.then_media.url, 640)} 640w` : undefined}
+                  sizes="(max-width: 760px) 100vw, 50vw"
                   alt=""
                   loading="lazy"
                   decoding="async"
@@ -2901,7 +3062,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                 min="0"
                 max="100"
                 value="50"
-                aria-label={localized(pair, "title")}
+                aria-label={`${labels.thenNowTitle}: ${localized(pair, "title")}`}
               />
             </div>
             <h3>{localized(pair, "title")}</h3>
@@ -2917,6 +3078,59 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           </article>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="section section-tint history-timeline-section" id="timeline" data-subnav-target>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">{entries.length} {labels.records}</p>
+          <h2>{labels.timelineTitle}</h2>
+          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.timelineLead}</p>
+        </div>
+      </div>
+
+      <div class="history-search-card card" role="search">
+        <label for="history-search">{labels.search}</label>
+        <input
+          id="history-search"
+          type="search"
+          placeholder={labels.searchPlaceholder}
+          list="history-search-hints"
+          autocomplete="off"
+        />
+        <datalist id="history-search-hints">
+          {searchHints.map((hint) => <option value={hint} />)}
+        </datalist>
+        <div class="history-suggestions">
+          <span class="meta">{searchL.suggestions}</span>
+          {searchSuggestions.map((suggestion) => (
+            <button type="button" class="history-suggest" data-history-suggest={suggestion} aria-pressed="false">
+              {suggestion}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <details class="history-timeline-results" id="history-timeline-results" open={Astro.url.searchParams.has("q")}>
+        <summary>
+          <span>{labels.timelineTitle}</span>
+          <span>{entries.length} {labels.records}</span>
+          <span class="history-chapter-caret" aria-hidden="true"></span>
+        </summary>
+        <div class="history-timeline-result-body">
+          <div class="results-bar">
+            <p id="history-count" class="meta" aria-live="polite">
+              {entries.length} {labels.records}
+            </p>
+            <button type="button" id="history-reset" class="link-button" hidden>{searchL.reset}</button>
+          </div>
+
+          <ol class="timeline history-deep-list" id="history-event-list"></ol>
+          <p id="history-empty" class="empty" hidden>{searchL.noResults}</p>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -3255,6 +3469,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       document.getElementById("history-timeline-config")?.textContent ?? "{}"
     );
     const search = document.querySelector<HTMLInputElement>("#history-search")!;
+    const timelineResults = document.querySelector<HTMLDetailsElement>("#history-timeline-results")!;
     const count = document.querySelector<HTMLElement>("#history-count")!;
     const reset = document.querySelector<HTMLButtonElement>("#history-reset")!;
     const empty = document.querySelector<HTMLElement>("#history-empty")!;
@@ -3506,6 +3721,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     }
 
     function refreshHistoryTimeline() {
+      if (search.value.trim()) timelineResults.open = true;
       loadTimelineItems()
         .then(() => {
           applyHistoryFilters();
@@ -3515,9 +3731,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           empty.textContent = timelineConfig.labels.noResults;
         });
     }
-
-    const stableTimelineJumpTargets = new Set(["city-growth", "landmarks", "archive-layer", "people", "data"]);
-    let pendingStableJumpTarget: string | null = null;
 
     function alignHistoryElement(target: HTMLElement) {
       const root = document.documentElement;
@@ -3534,59 +3747,11 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       alignHistoryElement(target);
     }
 
-    async function waitForStableHistoryLayout(id: string) {
-      const target = document.getElementById(id);
-      if (!target) return;
-      const startedAt = performance.now();
-      let stableSamples = 0;
-      let previousHeight = -1;
-      let previousTargetTop = -1;
-      for (let sample = 0; sample < 10; sample += 1) {
-        await new Promise<void>((resolve) => {
-          window.setTimeout(() => requestAnimationFrame(() => resolve()), 80);
-        });
-        if (pendingStableJumpTarget !== id && window.location.hash.slice(1) !== id) return;
-        const height = document.documentElement.scrollHeight;
-        const targetTop = Math.round(target.getBoundingClientRect().top + window.scrollY);
-        if (Math.abs(height - previousHeight) <= 2 && Math.abs(targetTop - previousTargetTop) <= 2) {
-          stableSamples += 1;
-          if (stableSamples >= 2 && performance.now() - startedAt >= 480) return;
-        } else {
-          stableSamples = 0;
-        }
-        previousHeight = height;
-        previousTargetTop = targetTop;
-      }
-    }
-
-    function scrollToHistorySection(id: string) {
-      const alignIfCurrent = () => {
-        if (pendingStableJumpTarget !== id && window.location.hash.slice(1) !== id) return;
-        alignHistorySection(id);
-      };
-      requestAnimationFrame(() => requestAnimationFrame(alignIfCurrent));
-      [240, 600].forEach((delay) => {
-        window.setTimeout(() => requestAnimationFrame(alignIfCurrent), delay);
-      });
-    }
-
-    async function prepareAndJumpToHistorySection(id: string, updateHash = true) {
-      pendingStableJumpTarget = id;
-      if (updateHash) history.pushState(null, "", `#${id}`);
-      try {
-        await loadTimelineItems();
-        applyHistoryFilters();
-        await waitForStableHistoryLayout(id);
-        if (pendingStableJumpTarget === id) scrollToHistorySection(id);
-      } catch {
-        scrollToHistorySection(id);
-      }
-    }
-
     async function selectTimelineEra(eraKey: string, updateHash = true) {
       const eraLabel = timelineConfig.eraLabels?.[eraKey];
       if (!eraLabel) return;
       search.value = eraLabel;
+      timelineResults.open = true;
       if (updateHash) history.pushState(null, "", `#era-${eraKey}`);
       try {
         await loadTimelineItems();
@@ -3604,23 +3769,12 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     }
 
     function scheduleInitialTimelineRender() {
-      const timelineSection = document.getElementById("timeline");
-      if (timelineSection && "IntersectionObserver" in window) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            if (entries.some((entry) => entry.isIntersecting)) {
-              observer.disconnect();
-              refreshHistoryTimeline();
-            }
-          },
-          { rootMargin: "180px 0px" }
-        );
-        observer.observe(timelineSection);
-      } else {
-        window.setTimeout(refreshHistoryTimeline, 900);
-      }
+      if (timelineResults.open) refreshHistoryTimeline();
     }
 
+    timelineResults.addEventListener("toggle", () => {
+      if (timelineResults.open) refreshHistoryTimeline();
+    });
     search.addEventListener("input", refreshHistoryTimeline);
     reset.addEventListener("click", () => {
       search.value = "";
@@ -3632,15 +3786,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         const value = button.dataset.historySuggest ?? "";
         search.value = search.value.trim() === value ? "" : value;
         refreshHistoryTimeline();
-      });
-    });
-
-    document.querySelectorAll<HTMLAnchorElement>("[data-subnav-link]").forEach((link) => {
-      const id = link.getAttribute("data-subnav-link") ?? "";
-      if (!stableTimelineJumpTargets.has(id)) return;
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        void prepareAndJumpToHistorySection(id);
       });
     });
 
@@ -3688,8 +3833,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       const target = window.location.hash.slice(1);
       if (target.startsWith("era-")) {
         void selectTimelineEra(target.replace(/^era-/, ""), false);
-      } else if (stableTimelineJumpTargets.has(target)) {
-        void prepareAndJumpToHistorySection(target, false);
       }
     }
 
@@ -4358,6 +4501,808 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 </Layout>
 
 <style is:global>
+  /* The history landing page opens as an editorial story, while the complete
+     research tools remain available further down the page. */
+  section.hero.history-hero {
+    overflow: hidden;
+    padding-block: clamp(40px, 4vw, 56px);
+    background:
+      radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 30%),
+      linear-gradient(135deg, var(--surface) 0%, color-mix(in srgb, var(--surface-2) 82%, var(--gold-soft)) 100%);
+  }
+
+  .history-hero > .history-hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(460px, 1.12fr);
+    gap: clamp(36px, 5vw, 76px);
+    align-items: center;
+  }
+
+  .history-hero > .container > .history-hero-copy,
+  .history-hero > .container > .history-hero-mosaic {
+    max-width: none;
+  }
+
+  .history-hero-copy h1 {
+    max-width: 8ch;
+    font-size: clamp(3.8rem, 6vw, 6.5rem);
+    line-height: 0.88;
+    text-wrap: balance;
+  }
+
+  .history-hero-copy .lead {
+    max-width: 54ch;
+    margin-top: 24px;
+  }
+
+  .history-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .history-hero-mosaic {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.85fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    height: clamp(420px, 34vw, 470px);
+    min-height: 0;
+    padding: 8px;
+    border: 1px solid color-mix(in srgb, var(--line-strong) 75%, transparent);
+    border-radius: var(--r-xl);
+    background: var(--surface);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .history-hero-tile {
+    position: relative;
+    display: block;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    color: #fff;
+    border-radius: calc(var(--r-xl) - 8px);
+    background: var(--ink-deep);
+    text-decoration: none;
+    isolation: isolate;
+  }
+
+  .history-hero-tile-1 {
+    grid-row: 1 / -1;
+  }
+
+  .history-hero-tile img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 420ms ease;
+  }
+
+  .history-hero-tile::after {
+    content: "";
+    position: absolute;
+    inset: 30% 0 0;
+    z-index: 1;
+    background: linear-gradient(180deg, transparent, rgb(7 17 22 / 84%));
+    pointer-events: none;
+  }
+
+  .history-hero-tile:hover img,
+  .history-hero-tile:focus-visible img {
+    transform: scale(1.025);
+  }
+
+  .history-hero-tile:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .history-hero-kind {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    max-width: calc(100% - 24px);
+    padding: 6px 9px;
+    border-radius: var(--r-pill);
+    background: rgb(10 21 27 / 78%);
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 750;
+    letter-spacing: 0.07em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .history-hero-credit {
+    position: absolute;
+    inset: auto 0 0;
+    z-index: 2;
+    display: grid;
+    gap: 3px;
+    min-height: 58px;
+    padding: 16px;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .history-hero-credit strong {
+    font-family: var(--font-ui);
+    font-size: 0.84rem;
+  }
+
+  .history-hero-credit small {
+    color: rgb(255 255 255 / 78%);
+    font-size: 0.68rem;
+  }
+
+  .history-story-section {
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface-2) 78%, transparent), transparent 14%),
+      var(--surface);
+  }
+
+  .history-image-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    max-width: 80ch;
+    margin: 18px 0 30px;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .history-image-note::before {
+    content: "i";
+    display: inline-grid;
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+    place-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    color: var(--section-accent, var(--brand));
+    font-family: Georgia, serif;
+    font-weight: 700;
+  }
+
+  .history-chapters {
+    display: grid;
+    gap: clamp(22px, 3vw, 34px);
+  }
+
+  .history-chapter {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--era-color, var(--section-accent, var(--brand)));
+    border-radius: var(--r-xl);
+    background: var(--surface);
+    box-shadow: var(--shadow-card);
+    transition: border-color 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+  }
+
+  .history-chapter:hover,
+  .history-chapter[open] {
+    border-color: color-mix(in srgb, var(--era-color, var(--brand)) 52%, var(--line));
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .history-chapter.atlas-dim {
+    border-color: var(--line);
+    box-shadow: none;
+  }
+
+  .history-chapter.atlas-dim .history-chapter-media {
+    filter: saturate(0.38) brightness(0.9);
+  }
+
+  .history-chapter.atlas-match {
+    border-color: var(--era-color, var(--brand));
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--era-color, var(--brand)) 20%, transparent), var(--shadow-card-hover);
+  }
+
+  .history-chapter summary {
+    list-style: none;
+  }
+
+  .history-chapter summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .history-chapter-summary {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.88fr) minmax(0, 1.12fr);
+    min-height: 292px;
+    cursor: pointer;
+  }
+
+  .history-chapter-summary:focus-visible {
+    outline: 3px solid var(--era-color, var(--brand));
+    outline-offset: -3px;
+  }
+
+  .history-chapter:nth-child(even) .history-chapter-media {
+    order: 2;
+  }
+
+  .history-chapter-media {
+    position: relative;
+    display: block;
+    min-width: 0;
+    min-height: 292px;
+    overflow: hidden;
+    background: var(--surface-2);
+    isolation: isolate;
+  }
+
+  .history-chapter-media::after {
+    content: "";
+    position: absolute;
+    inset: 45% 0 0;
+    z-index: 1;
+    background: linear-gradient(180deg, transparent, rgb(8 18 23 / 78%));
+    pointer-events: none;
+  }
+
+  .history-chapter-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    display: block;
+    object-fit: cover;
+  }
+
+  .history-chapter-image-kind {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    padding: 7px 10px;
+    border-radius: var(--r-pill);
+    background: rgb(10 21 27 / 82%);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .history-chapter-credit {
+    position: absolute;
+    inset: auto 14px 12px;
+    z-index: 2;
+    color: rgb(255 255 255 / 82%);
+    font-size: 0.7rem;
+    line-height: 1.35;
+  }
+
+  .history-chapter-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(26px, 4vw, 52px);
+  }
+
+  .history-chapter-kicker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 18px;
+    color: var(--era-color, var(--brand));
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .history-chapter-title {
+    display: block;
+    margin-top: 15px;
+    color: var(--ink-deep);
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .history-chapter-blurb {
+    display: block;
+    max-width: 48ch;
+    margin-top: 16px;
+    color: var(--ink-2);
+    font-size: clamp(1rem, 1.35vw, 1.16rem);
+    line-height: 1.55;
+  }
+
+  .history-chapter-disclosure {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto 18px;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    margin-top: 24px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .history-chapter-disclosure > :nth-child(2) {
+    color: var(--muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .history-chapter-caret {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--era-color, var(--brand)) 13%, transparent);
+  }
+
+  .history-chapter-caret::before,
+  .history-chapter-caret::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 9px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--era-color, var(--brand));
+    transform: translate(-50%, -50%);
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .history-chapter-caret::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .history-chapter[open] .history-chapter-caret::after {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  .history-chapter-panel {
+    padding: clamp(22px, 3vw, 38px);
+    border-top: 1px solid var(--line);
+    background: color-mix(in srgb, var(--surface-2) 64%, var(--surface));
+  }
+
+  .history-chapter-events {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .history-chapter-event {
+    display: grid;
+    grid-template-columns: minmax(72px, auto) minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: var(--surface);
+  }
+
+  .history-chapter-event-date {
+    color: var(--era-color, var(--brand));
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.35;
+  }
+
+  .history-chapter-event h3 {
+    margin: 0;
+    color: var(--ink-deep);
+    font-family: var(--font-ui);
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+
+  .history-chapter-event p {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.45;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .history-chapter-event-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .history-chapter-event-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 7px 11px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-pill);
+    background: var(--surface-2);
+    color: var(--ink-2);
+    font-size: 0.78rem;
+    font-weight: 650;
+    line-height: 1.2;
+    text-decoration: none;
+  }
+
+  .history-chapter-event-links a:hover,
+  .history-chapter-event-links a:focus-visible {
+    border-color: var(--era-color, var(--brand));
+    color: var(--ink-deep);
+  }
+
+  .history-chapter-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 20px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  .history-chapter-actions a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ink-2);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .history-chapter-actions a:hover,
+  .history-chapter-actions a:focus-visible {
+    color: var(--era-color, var(--brand));
+    text-decoration: underline;
+  }
+
+  .history-evidence-strip {
+    display: flex;
+    align-items: stretch;
+    max-width: 920px;
+    margin: 0 0 24px;
+    overflow-x: auto;
+    border-block: 1px solid var(--line);
+    scrollbar-width: thin;
+  }
+
+  .history-evidence-strip > div {
+    display: flex;
+    flex: 1 0 190px;
+    align-items: baseline;
+    gap: 9px;
+    padding: 13px 18px;
+    border-right: 1px solid var(--line);
+  }
+
+  .history-evidence-strip > div:last-child {
+    border-right: 0;
+  }
+
+  .history-evidence-strip dt {
+    color: var(--muted);
+    font-size: 0.76rem;
+    line-height: 1.25;
+  }
+
+  .history-evidence-strip dd {
+    order: -1;
+    margin: 0;
+    color: var(--ink-deep);
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .landmark-title-link {
+    color: inherit;
+    text-decoration-color: color-mix(in srgb, var(--era-color, var(--brand)) 45%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  .landmark-title-link:hover,
+  .landmark-title-link:focus-visible {
+    color: var(--era-color, var(--brand));
+    text-decoration-thickness: 2px;
+  }
+
+  #landmarks .route-button {
+    min-height: 44px;
+  }
+
+  .history-timeline-section {
+    border-top: 1px solid var(--line);
+  }
+
+  .history-timeline-section .history-suggest,
+  .history-timeline-section .link-button,
+  .history-timeline-section .history-search-card input {
+    min-height: 44px;
+  }
+
+  .history-timeline-results {
+    margin-top: 18px;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-lg);
+    background: var(--surface);
+  }
+
+  .history-timeline-results > summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto 18px;
+    align-items: center;
+    gap: 12px;
+    min-height: 58px;
+    padding: 12px 18px;
+    color: var(--ink-deep);
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-weight: 750;
+    list-style: none;
+  }
+
+  .history-timeline-results > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .history-timeline-results > summary > :nth-child(2) {
+    color: var(--muted);
+    font-size: 0.76rem;
+    font-weight: 650;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .history-timeline-results > summary:hover {
+    background: var(--surface-2);
+  }
+
+  .history-timeline-results > summary:focus-visible {
+    outline: 3px solid var(--section-accent, var(--brand));
+    outline-offset: -3px;
+  }
+
+  .history-timeline-results[open] > summary {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .history-timeline-results[open] .history-chapter-caret::after {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  .history-timeline-result-body {
+    padding: 4px 18px 24px;
+  }
+
+  .compare-range {
+    height: 44px;
+  }
+
+  .compare-range::-webkit-slider-thumb {
+    width: 26px;
+    height: 26px;
+    margin-top: -11px;
+  }
+
+  .compare-range::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 920px) {
+    .history-hero > .history-hero-layout {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .history-hero-copy h1 {
+      max-width: 10ch;
+    }
+
+    .history-hero-mosaic {
+      height: clamp(300px, 43vw, 340px);
+    }
+
+    .history-chapter-summary {
+      grid-template-columns: minmax(250px, 0.9fr) minmax(0, 1.1fr);
+    }
+
+    .history-chapter-copy {
+      padding: 28px;
+    }
+
+    .history-chapter-events {
+      grid-template-columns: 1fr;
+    }
+
+    .history-landmark-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    section.hero.history-hero {
+      padding-block: 32px 38px;
+    }
+
+    .history-hero-copy h1 {
+      max-width: 8ch;
+      font-size: clamp(3.2rem, 16vw, 4.7rem);
+    }
+
+    .history-hero-copy .lead {
+      margin-top: 18px;
+      font-size: 1rem;
+    }
+
+    .history-hero-actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .history-hero-actions .button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .history-hero-mosaic {
+      grid-template-columns: minmax(0, 1.42fr) minmax(0, 0.9fr);
+      height: 285px;
+      padding: 6px;
+      gap: 6px;
+    }
+
+    .history-hero-credit {
+      min-height: 48px;
+      padding: 10px;
+    }
+
+    .history-hero-tile:not(.history-hero-tile-1) .history-hero-credit strong {
+      display: none;
+    }
+
+    .history-hero-tile:not(.history-hero-tile-1) .history-hero-credit small {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .history-image-note {
+      align-items: flex-start;
+      margin-bottom: 22px;
+    }
+
+    .history-chapters {
+      gap: 18px;
+    }
+
+    .history-chapter-summary {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    .history-chapter:nth-child(even) .history-chapter-media {
+      order: 0;
+    }
+
+    .history-chapter-media {
+      min-height: 198px;
+      height: 198px;
+    }
+
+    .history-chapter-copy {
+      padding: 20px;
+    }
+
+    .history-chapter-title {
+      font-size: clamp(2rem, 11vw, 2.8rem);
+    }
+
+    .history-chapter-blurb {
+      display: -webkit-box;
+      overflow: hidden;
+      margin-top: 12px;
+      font-size: 0.98rem;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .history-chapter-disclosure {
+      grid-template-columns: minmax(0, 1fr) auto 18px;
+      margin-top: 18px;
+      padding-top: 12px;
+    }
+
+    .history-chapter-disclosure > :first-child {
+      max-width: 18ch;
+    }
+
+    .history-chapter-panel {
+      padding: 14px;
+    }
+
+    .history-chapter-event {
+      grid-template-columns: 1fr;
+      gap: 5px;
+      padding: 14px;
+    }
+
+    .history-chapter-event-links a {
+      min-height: 44px;
+    }
+
+    .history-chapter-actions {
+      display: grid;
+    }
+
+    .history-evidence-strip {
+      margin-inline: -16px;
+      padding-inline: 16px;
+    }
+
+    .history-evidence-strip > div {
+      flex-basis: 165px;
+      padding-inline: 12px;
+    }
+
+    .history-timeline-results > summary {
+      padding-inline: 14px;
+    }
+
+    .history-timeline-result-body {
+      padding-inline: 12px;
+    }
+
+    .history-landmark-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .history-hero-tile img,
+    .history-chapter,
+    .history-chapter-caret::before,
+    .history-chapter-caret::after {
+      transition: none;
+    }
+  }
+
   .on-this-day-card {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(190px, 260px);
