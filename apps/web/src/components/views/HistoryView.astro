@@ -1357,6 +1357,7 @@ type HistoryChapterVisual = {
   title: string;
   kind: "context" | "archive";
   date: string;
+  badge?: string;
 };
 
 function cleanMediaCredit(value: string): string {
@@ -1393,6 +1394,32 @@ function archiveChapterVisual(id: string): HistoryChapterVisual {
   };
 }
 
+function modernCultureChapterVisual(): HistoryChapterVisual {
+  return {
+    url: "https://upload.wikimedia.org/wikipedia/commons/f/f7/Kapana.jpg",
+    pageUrl: "https://commons.wikimedia.org/wiki/File:Kapana.jpg",
+    credit: "Plovdiv Municipality",
+    license: "CC BY-SA 4.0",
+    title: tr(
+      "Капана по пътя към Пловдив 2019",
+      "Kapana on the road to Plovdiv 2019",
+      "Kapana auf dem Weg zu Plovdiv 2019",
+      "Kapana sur la route de Plovdiv 2019",
+      "Kapana verso Plovdiv 2019",
+      "Plovdiv 2019 yolunda Kapana",
+      "Kapana camino a Plovdiv 2019",
+      "Η Καπάνα στον δρόμο προς το Plovdiv 2019",
+      "プロヴディフ2019へ向かうカパナ",
+      "Kapana patungo sa Plovdiv 2019",
+      "Капана на шляху до Пловдива 2019",
+      "Капана на пути к Пловдиву 2019"
+    ),
+    kind: "context",
+    date: "",
+    badge: "PLOVDIV 2019"
+  };
+}
+
 const chapterVisuals: Record<HistoryEra, HistoryChapterVisual> = {
   prehistory: placeChapterVisual("place-seven-hills"),
   thracian: placeChapterVisual("place-nebet-tepe", tr("Гледка от Небет тепе", "View from Nebet Tepe", "Blick vom Nebet Tepe", "Vue depuis Nebet Tepe", "Vista dal Nebet Tepe", "Nebet Tepe'den görünüm", "Vista desde Nebet Tepe", "Θέα από το Νεμπέτ Τεπέ", "ネベット・テペからの眺め", "Tanawin mula sa Nebet Tepe", "Вид із Небет-Тепе", "Вид с Небет-Тепе")),
@@ -1401,7 +1428,7 @@ const chapterVisuals: Record<HistoryEra, HistoryChapterVisual> = {
   ottoman: placeChapterVisual("place-dzhumaya-mosque"),
   revival: placeChapterVisual("place-old-town"),
   liberation: archiveChapterVisual("archive-photo-philippopolis-street-1878"),
-  modern: archiveChapterVisual("archive-photo-trimontium-view-1958")
+  modern: modernCultureChapterVisual()
 };
 
 const historyHeroVisuals = [
@@ -2798,7 +2825,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                   referrerpolicy="no-referrer"
                 />
                 <span class="history-chapter-image-kind" aria-hidden="true">
-                  {era.visual.kind === "archive" ? treeLabels.archiveImage : treeLabels.contextImage}
+                  {era.visual.badge ?? (era.visual.kind === "archive" ? treeLabels.archiveImage : treeLabels.contextImage)}
                   {era.visual.date && ` · ${era.visual.date}`}
                 </span>
                 <span class="history-chapter-credit" aria-hidden="true">{era.visual.credit} · {era.visual.license}</span>

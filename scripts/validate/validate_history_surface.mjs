@@ -147,7 +147,9 @@ const corePagePairs = [
       'id="history-event-list"',
       'id="history-map-canvas"',
       'id="history-timeline-config"',
-      'id="history-map-config"'
+      'id="history-map-config"',
+      "PLOVDIV 2019",
+      "Kapana.jpg"
     ]
   },
   {
