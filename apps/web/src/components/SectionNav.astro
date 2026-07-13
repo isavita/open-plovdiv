@@ -24,22 +24,31 @@ const { items, label } = Astro.props;
       .map((a) => a.getAttribute("data-subnav-link"))
       .filter((id): id is string => Boolean(id));
     if (!ids.length) return;
+    const scroller = document.querySelector<HTMLElement>("[data-subnav-scroller]");
     let activeId = "";
     const setActive = (id: string) => {
       if (id === activeId) return;
       activeId = id;
+      let activeLink: HTMLAnchorElement | undefined;
       for (const link of links) {
-        link.setAttribute(
-          "aria-current",
-          link.getAttribute("data-subnav-link") === id ? "true" : "false"
-        );
+        const active = link.getAttribute("data-subnav-link") === id;
+        link.setAttribute("aria-current", active ? "true" : "false");
+        if (active) activeLink = link;
+      }
+      if (scroller && activeLink) {
+        const left = activeLink.offsetLeft - (scroller.clientWidth - activeLink.offsetWidth) / 2;
+        scroller.scrollTo({
+          left: Math.max(0, left),
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+        });
       }
     };
     // Active = the last target whose top has scrolled above the sticky-bar line.
     let ticking = false;
     const update = () => {
       ticking = false;
-      const line = 140;
+      const stickyNav = links[0]?.closest<HTMLElement>(".page-subnav");
+      const line = (stickyNav?.getBoundingClientRect().bottom ?? 124) + 16;
       let current = ids[0];
       for (const id of ids) {
         const el = document.getElementById(id);
@@ -63,7 +72,6 @@ const { items, label } = Astro.props;
     // side actually has hidden content, so the cue disappears once you've
     // scrolled a side fully into view instead of sitting there as noise.
     const fadeNav = document.querySelector<HTMLElement>("[data-subnav-fade]");
-    const scroller = document.querySelector<HTMLElement>("[data-subnav-scroller]");
     if (fadeNav && scroller) {
       const updateFade = () => {
         const overflows = scroller.scrollWidth > scroller.clientWidth + 1;

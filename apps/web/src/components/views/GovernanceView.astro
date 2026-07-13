@@ -3,9 +3,13 @@ import SectionNav from "@components/SectionNav.astro";
 import Layout from "@layouts/Layout.astro";
 import { type Lang } from "@i18n/ui";
 import { field, localeForLang, localizePath } from "@i18n/utils";
+import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import {
   cityArchive,
+  historicalArchiveItems,
+  historyKnowledgePlaces,
   projects,
+  storyLongreads,
   type CityArchiveRecord,
   type Project
 } from "@lib/data";
@@ -45,9 +49,8 @@ type Copy = {
   projectsTitle: string;
   projectLead: string;
   projectYear: string;
-  noAmount: string;
+  projectDetail: string;
   ctaMayors: string;
-  ctaMayorsText: string;
   ctaProjects: string;
   ctaArchive: string;
 };
@@ -74,15 +77,14 @@ const copy = {
     source: "източник",
     archiveTitle: "Повратни моменти в управлението на града",
     archiveLead:
-      "Четири документирани промени в начина, по който е управляван градът. Имената на кметове показват само кои мандати се застъпват във времето.",
+      "Четири документирани промени в назначаването на кмета, вземането на решения и управлението на общинската собственост.",
     mayorOverlap: "застъпване с мандат",
     amountLabel: "стойност",
     projectsTitle: "Текущи общински проекти",
-    projectLead: "Активни, договорени или финансирани проекти от публичния проектен регистър.",
+    projectLead: "Визуална селекция от регистъра на проекти в изпълнение, договорени или с осигурено финансиране.",
     projectYear: "година",
-    noAmount: "няма сума",
+    projectDetail: "Виж проекта",
     ctaMayors: "Всички кметове",
-    ctaMayorsText: "пълна хронология и профили",
     ctaProjects: "Проекти",
     ctaArchive: "Архив"
   },
@@ -107,15 +109,14 @@ const copy = {
     source: "source",
     archiveTitle: "Turning points in city government",
     archiveLead:
-      "Four documented changes in the way the city was governed. Mayor names show only which terms overlap in time.",
+      "Four documented changes in mayoral appointments, decision-making and the management of municipal property.",
     mayorOverlap: "term overlap",
     amountLabel: "amount",
     projectsTitle: "Municipal projects now",
-    projectLead: "Active, contracted or funded projects from the public project registry.",
+    projectLead: "A visual registry selection of projects in progress, contracted or funded.",
     projectYear: "year",
-    noAmount: "no amount",
+    projectDetail: "View project",
     ctaMayors: "All mayors",
-    ctaMayorsText: "full chronology and profiles",
     ctaProjects: "Projects",
     ctaArchive: "Archive"
   },
@@ -140,15 +141,14 @@ const copy = {
     source: "Quelle",
     archiveTitle: "Wendepunkte in der Stadtverwaltung",
     archiveLead:
-      "Vier dokumentierte Veränderungen in der Art, wie die Stadt verwaltet wurde. Bürgermeister-Namen zeigen nur, welche Amtszeiten sich zeitlich überschneiden.",
+      "Vier dokumentierte Veränderungen bei Bürgermeisterernennungen, Entscheidungsprozessen und der Verwaltung kommunalen Eigentums.",
     mayorOverlap: "Mandatsüberlappung",
     amountLabel: "Betrag",
     projectsTitle: "Aktuelle kommunale Projekte",
-    projectLead: "Aktive, vergebene oder finanzierte Projekte aus dem öffentlichen Projektregister.",
+    projectLead: "Eine visuelle Auswahl aus dem Register: laufende, vergebene oder finanzierte Projekte.",
     projectYear: "Jahr",
-    noAmount: "kein Betrag",
+    projectDetail: "Projekt ansehen",
     ctaMayors: "Alle Bürgermeister",
-    ctaMayorsText: "vollständige Chronologie und Profile",
     ctaProjects: "Projekte",
     ctaArchive: "Archiv"
   },
@@ -173,15 +173,14 @@ const copy = {
     source: "source",
     archiveTitle: "Tournants de l’administration municipale",
     archiveLead:
-      "Quatre changements documentés dans la manière de gouverner la ville. Les noms des maires indiquent uniquement les mandats qui se chevauchent dans le temps.",
+      "Quatre changements documentés concernant la nomination du maire, la prise de décision et la gestion du patrimoine municipal.",
     mayorOverlap: "recoupement de mandat",
     amountLabel: "montant",
     projectsTitle: "Projets municipaux en cours",
-    projectLead: "Projets actifs, attribués ou financés du registre public des projets.",
+    projectLead: "Une sélection visuelle du registre : projets en cours, attribués ou financés.",
     projectYear: "année",
-    noAmount: "aucun montant",
+    projectDetail: "Voir le projet",
     ctaMayors: "Tous les maires",
-    ctaMayorsText: "chronologie complète et profils",
     ctaProjects: "Projets",
     ctaArchive: "Archives"
   },
@@ -206,15 +205,14 @@ const copy = {
     source: "fonte",
     archiveTitle: "Svolte nel governo della città",
     archiveLead:
-      "Quattro cambiamenti documentati nel modo in cui è stata governata la città. I nomi dei sindaci indicano solo i mandati che si sovrappongono nel tempo.",
+      "Quattro cambiamenti documentati nella nomina del sindaco, nei processi decisionali e nella gestione del patrimonio comunale.",
     mayorOverlap: "sovrapposizione di mandato",
     amountLabel: "importo",
     projectsTitle: "Progetti comunali in corso",
-    projectLead: "Progetti attivi, affidati o finanziati dal registro pubblico dei progetti.",
+    projectLead: "Una selezione visiva dal registro: progetti in corso, affidati o finanziati.",
     projectYear: "anno",
-    noAmount: "nessun importo",
+    projectDetail: "Vedi il progetto",
     ctaMayors: "Tutti i sindaci",
-    ctaMayorsText: "cronologia completa e profili",
     ctaProjects: "Progetti",
     ctaArchive: "Archivio"
   },
@@ -239,15 +237,14 @@ const copy = {
     source: "kaynak",
     archiveTitle: "Kent yönetimindeki dönüm noktaları",
     archiveLead:
-      "Kentin yönetilme biçimindeki belgelenmiş dört değişim. Belediye başkanı adları yalnızca zaman bakımından çakışan dönemleri gösterir.",
+      "Belediye başkanı atamaları, karar alma ve belediye mülklerinin yönetimindeki dört belgeli değişim.",
     mayorOverlap: "dönem çakışması",
     amountLabel: "tutar",
     projectsTitle: "Güncel belediye projeleri",
-    projectLead: "Kamu proje kayıtlarından aktif, sözleşmeli veya finanse edilen projeler.",
+    projectLead: "Kayıttan yapım aşamasındaki, sözleşmeli veya finanse edilen projelerin görsel bir seçkisi.",
     projectYear: "yıl",
-    noAmount: "tutar yok",
+    projectDetail: "Projeyi gör",
     ctaMayors: "Tüm belediye başkanları",
-    ctaMayorsText: "tam kronoloji ve profiller",
     ctaProjects: "Projeler",
     ctaArchive: "Arşiv"
   },
@@ -272,15 +269,14 @@ const copy = {
     source: "fuente",
     archiveTitle: "Puntos de inflexión en el gobierno de la ciudad",
     archiveLead:
-      "Cuatro cambios documentados en la forma de gobernar la ciudad. Los nombres de los alcaldes solo indican qué mandatos coinciden en el tiempo.",
+      "Cuatro cambios documentados en el nombramiento del alcalde, la toma de decisiones y la gestión del patrimonio municipal.",
     mayorOverlap: "superposición de mandato",
     amountLabel: "importe",
     projectsTitle: "Proyectos municipales en curso",
-    projectLead: "Proyectos activos, contratados o financiados del registro público de proyectos.",
+    projectLead: "Una selección visual del registro: proyectos en curso, contratados o financiados.",
     projectYear: "año",
-    noAmount: "sin importe",
+    projectDetail: "Ver proyecto",
     ctaMayors: "Todos los alcaldes",
-    ctaMayorsText: "cronología completa y perfiles",
     ctaProjects: "Proyectos",
     ctaArchive: "Archivo"
   },
@@ -305,15 +301,14 @@ const copy = {
     source: "πηγή",
     archiveTitle: "Κομβικές αλλαγές στη διοίκηση της πόλης",
     archiveLead:
-      "Τέσσερις τεκμηριωμένες αλλαγές στον τρόπο διοίκησης της πόλης. Τα ονόματα των δημάρχων δείχνουν μόνο ποιες θητείες συμπίπτουν χρονικά.",
+      "Τέσσερις τεκμηριωμένες αλλαγές στον διορισμό του δημάρχου, τη λήψη αποφάσεων και τη διαχείριση της δημοτικής περιουσίας.",
     mayorOverlap: "επικάλυψη θητείας",
     amountLabel: "ποσό",
     projectsTitle: "Τρέχοντα δημοτικά έργα",
-    projectLead: "Ενεργά, συμβασιοποιημένα ή χρηματοδοτημένα έργα από το δημόσιο μητρώο έργων.",
+    projectLead: "Μια οπτική επιλογή από το μητρώο: έργα σε εξέλιξη, με σύμβαση ή χρηματοδότηση.",
     projectYear: "έτος",
-    noAmount: "χωρίς ποσό",
+    projectDetail: "Προβολή έργου",
     ctaMayors: "Όλοι οι δήμαρχοι",
-    ctaMayorsText: "πλήρης χρονολογία και προφίλ",
     ctaProjects: "Έργα",
     ctaArchive: "Αρχείο"
   },
@@ -338,15 +333,14 @@ const copy = {
     source: "出典",
     archiveTitle: "市政の転換点",
     archiveLead:
-      "市政のあり方が変わった四つの記録です。市長名は、任期が時間的に重なることだけを示します。",
+      "市長の任命、意思決定、市有財産の管理に関する四つの記録された変化をたどります。",
     mayorOverlap: "任期との重なり",
     amountLabel: "金額",
     projectsTitle: "進行中の市政プロジェクト",
-    projectLead: "公開プロジェクト登録から、進行中、契約済み、または資金確保済みのプロジェクト。",
+    projectLead: "登録簿から、進行中・契約済み・資金確保済みの事業を写真で紹介します。",
     projectYear: "年",
-    noAmount: "金額なし",
+    projectDetail: "事業を見る",
     ctaMayors: "すべての市長",
-    ctaMayorsText: "完全な年表とプロフィール",
     ctaProjects: "プロジェクト",
     ctaArchive: "アーカイブ"
   },
@@ -371,15 +365,14 @@ const copy = {
     source: "pinagmulan",
     archiveTitle: "Mahahalagang pagbabago sa pamamahala ng lungsod",
     archiveLead:
-      "Apat na dokumentadong pagbabago sa paraan ng pamamahala sa lungsod. Ipinapakita lamang ng mga pangalan ng alkalde kung aling mga termino ang magkakasabay sa panahon.",
+      "Apat na dokumentadong pagbabago sa paghirang ng alkalde, pagdedesisyon, at pamamahala ng ari-arian ng lungsod.",
     mayorOverlap: "magkatapat na termino",
     amountLabel: "halaga",
     projectsTitle: "Mga kasalukuyang proyekto ng munisipalidad",
-    projectLead: "Aktibo, nakontrata, o pinondohang proyekto mula sa pampublikong rehistro ng proyekto.",
+    projectLead: "Biswal na seleksiyon mula sa rehistro: mga proyektong ginagawa, nakontrata, o pinondohan.",
     projectYear: "taon",
-    noAmount: "walang halaga",
+    projectDetail: "Tingnan ang proyekto",
     ctaMayors: "Lahat ng Alkalde",
-    ctaMayorsText: "kumpletong kronolohiya at mga detalye",
     ctaProjects: "Mga Proyekto",
     ctaArchive: "Arkibo"
   },
@@ -404,15 +397,14 @@ const copy = {
     source: "джерело",
     archiveTitle: "Поворотні моменти в управлінні містом",
     archiveLead:
-      "Чотири задокументовані зміни в способі управління містом. Імена мерів показують лише, які каденції збігаються в часі.",
+      "Чотири задокументовані зміни у призначенні мера, ухваленні рішень і управлінні комунальною власністю.",
     mayorOverlap: "збіг з терміном",
     amountLabel: "сума",
     projectsTitle: "Поточні муніципальні проєкти",
-    projectLead: "Активні, законтрактовані або профінансовані проєкти з публічного реєстру проєктів.",
+    projectLead: "Візуальна добірка з реєстру: проєкти в роботі, за контрактом або з фінансуванням.",
     projectYear: "рік",
-    noAmount: "без суми",
+    projectDetail: "Переглянути проєкт",
     ctaMayors: "Усі мери",
-    ctaMayorsText: "повна хронологія та профілі",
     ctaProjects: "Проєкти",
     ctaArchive: "Архів"
   },
@@ -437,19 +429,126 @@ const copy = {
     source: "источник",
     archiveTitle: "Поворотные моменты в управлении городом",
     archiveLead:
-      "Четыре задокументированных изменения в управлении городом. Имена мэров показывают только, какие сроки совпадают по времени.",
+      "Четыре документированных изменения в назначении мэра, принятии решений и управлении муниципальной собственностью.",
     mayorOverlap: "совпадение со сроком",
     amountLabel: "сумма",
     projectsTitle: "Текущие муниципальные проекты",
-    projectLead: "Активные, законтрактованные или профинансированные проекты из публичного реестра проектов.",
+    projectLead: "Визуальная подборка из реестра: проекты в работе, по контракту или с финансированием.",
     projectYear: "год",
-    noAmount: "без суммы",
+    projectDetail: "Открыть проект",
     ctaMayors: "Все мэры",
-    ctaMayorsText: "полная хронология и профили",
     ctaProjects: "Проекты",
     ctaArchive: "Архив"
   }
 } satisfies Record<Lang, Copy>;
+
+type VisualCopy = {
+  contextImage: string;
+  referenceImage: string;
+  archivePostcard: string;
+  projectVisualNote: string;
+  provisionalRecord: string;
+  listedFunding: string;
+};
+
+const visualCopy = {
+  bg: {
+    contextImage: "Контекстно изображение",
+    referenceImage: "Справочна снимка",
+    archivePostcard: "Архивна картичка",
+    projectVisualNote: "Снимките показват мястото или историята му, а не напредъка на строителството.",
+    provisionalRecord: "предварителен запис",
+    listedFunding: "посочено финансиране"
+  },
+  en: {
+    contextImage: "Context image",
+    referenceImage: "Reference image",
+    archivePostcard: "Archive postcard",
+    projectVisualNote: "Images show the place or its history, not construction progress.",
+    provisionalRecord: "provisional registry record",
+    listedFunding: "listed funding"
+  },
+  de: {
+    contextImage: "Kontextbild",
+    referenceImage: "Referenzbild",
+    archivePostcard: "Archivpostkarte",
+    projectVisualNote: "Die Bilder zeigen den Ort oder seine Geschichte, nicht den Baufortschritt.",
+    provisionalRecord: "vorläufiger Registereintrag",
+    listedFunding: "ausgewiesene Finanzierung"
+  },
+  fr: {
+    contextImage: "Image de contexte",
+    referenceImage: "Image de référence",
+    archivePostcard: "Carte postale d’archive",
+    projectVisualNote: "Les images montrent le lieu ou son histoire, pas l’avancement des travaux.",
+    provisionalRecord: "fiche provisoire du registre",
+    listedFunding: "financement indiqué"
+  },
+  it: {
+    contextImage: "Immagine di contesto",
+    referenceImage: "Immagine di riferimento",
+    archivePostcard: "Cartolina d’archivio",
+    projectVisualNote: "Le immagini mostrano il luogo o la sua storia, non l’avanzamento dei lavori.",
+    provisionalRecord: "scheda provvisoria del registro",
+    listedFunding: "finanziamento indicato"
+  },
+  tr: {
+    contextImage: "Bağlam görseli",
+    referenceImage: "Referans görseli",
+    archivePostcard: "Arşiv kartpostalı",
+    projectVisualNote: "Görseller inşaat ilerlemesini değil, yeri veya geçmişini gösterir.",
+    provisionalRecord: "geçici kayıt",
+    listedFunding: "belirtilen finansman"
+  },
+  es: {
+    contextImage: "Imagen de contexto",
+    referenceImage: "Imagen de referencia",
+    archivePostcard: "Postal de archivo",
+    projectVisualNote: "Las imágenes muestran el lugar o su historia, no el avance de las obras.",
+    provisionalRecord: "registro provisional",
+    listedFunding: "financiación indicada"
+  },
+  el: {
+    contextImage: "Εικόνα αναφοράς",
+    referenceImage: "Εικόνα αναφοράς",
+    archivePostcard: "Αρχειακή καρτ ποστάλ",
+    projectVisualNote: "Οι εικόνες δείχνουν τον χώρο ή την ιστορία του, όχι την πρόοδο των έργων.",
+    provisionalRecord: "προσωρινή εγγραφή μητρώου",
+    listedFunding: "αναγραφόμενη χρηματοδότηση"
+  },
+  ja: {
+    contextImage: "参考画像",
+    referenceImage: "参考画像",
+    archivePostcard: "アーカイブ絵はがき",
+    projectVisualNote: "画像は場所やその歴史を示すもので、工事の進捗写真ではありません。",
+    provisionalRecord: "暫定登録情報",
+    listedFunding: "記載された資金"
+  },
+  tl: {
+    contextImage: "Larawang pangkonteksto",
+    referenceImage: "Larawang sanggunian",
+    archivePostcard: "Postkard mula sa arkibo",
+    projectVisualNote: "Ipinapakita ng mga larawan ang lugar o kasaysayan nito, hindi ang progreso ng konstruksyon.",
+    provisionalRecord: "pansamantalang tala sa rehistro",
+    listedFunding: "nakalistang pondo"
+  },
+  uk: {
+    contextImage: "Контекстне зображення",
+    referenceImage: "Довідкове зображення",
+    archivePostcard: "Архівна листівка",
+    projectVisualNote: "Зображення показують місце або його історію, а не хід будівельних робіт.",
+    provisionalRecord: "попередній запис реєстру",
+    listedFunding: "зазначене фінансування"
+  },
+  ru: {
+    contextImage: "Контекстное изображение",
+    referenceImage: "Справочное изображение",
+    archivePostcard: "Архивная открытка",
+    projectVisualNote: "Изображения показывают место или его историю, а не ход строительных работ.",
+    provisionalRecord: "предварительная запись реестра",
+    listedFunding: "указанное финансирование"
+  }
+} satisfies Record<Lang, VisualCopy>;
 
 const kindLabels = {
   bg: {
@@ -563,6 +662,7 @@ const kindLabels = {
 } satisfies Record<Lang, Record<CityArchiveRecord["kind"], string>>;
 
 const l = copy[lang];
+const v = visualCopy[lang];
 const sectionNav = [
   { id: "who-governed", label: l.navWho },
   { id: "archive-changes", label: l.navArchive },
@@ -586,6 +686,76 @@ const archiveHighlights = [...governanceChanges].sort(
   (a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start)
 );
 
+type GovernanceVisual = {
+  url: string;
+  pageUrl: string;
+  alt: string;
+  credit: string;
+  license: string;
+  width: number;
+  height: number;
+};
+
+type MediaLike = {
+  url: string;
+  page_url?: string;
+  credit: string;
+  license?: string;
+  width?: number;
+  height?: number;
+};
+
+function governanceVisual(media: MediaLike | null | undefined, alt: string): GovernanceVisual | null {
+  if (!media) return null;
+  return {
+    url: media.url,
+    pageUrl: media.page_url ?? media.url,
+    alt,
+    credit: media.credit.replace(/^(Unknown author){2,}$/, "Unknown author"),
+    license: media.license ?? "",
+    width: media.width ?? 1200,
+    height: media.height ?? 800
+  };
+}
+
+function archiveItemVisual(id: string): GovernanceVisual | null {
+  const item = historicalArchiveItems.find((candidate) => candidate.id === id);
+  return item ? governanceVisual(item.media, field(item, "title", lang)) : null;
+}
+
+function placeVisual(id: string): GovernanceVisual | null {
+  const place = historyKnowledgePlaces.find((candidate) => candidate.id === id);
+  return place ? governanceVisual(place.media[0], field(place, "name", lang)) : null;
+}
+
+const cityHallMedia = storyLongreads
+  .find((story) => story.id === "story-socialist-infrastructure")
+  ?.sections.flatMap((section) => section.gallery ?? [])
+  .find((media) => media.url.includes("City_Hall_-_Plovdiv"));
+
+const turningVisuals: Record<string, GovernanceVisual | null> = {
+  "archive-plovdiv-governance-1934-municipal-reform": archiveItemVisual(
+    "archive-photo-ottoman-clock-tower-1936"
+  ),
+  "archive-plovdiv-governance-1944-front-transition": archiveItemVisual(
+    "archive-photo-balkan-cinema-plovdiv"
+  ),
+  "archive-plovdiv-governance-2001-development-plans": governanceVisual(
+    cityHallMedia,
+    cityHallMedia ? field(cityHallMedia, "caption", lang) : ""
+  ),
+  "archive-plovdiv-governance-2010-property-management-programme": placeVisual(
+    "place-stefan-stambolov-square-plovdiv-q59441964"
+  )
+};
+
+const turningImageLabels: Record<string, string> = {
+  "archive-plovdiv-governance-1934-municipal-reform": `${v.contextImage} · 1936`,
+  "archive-plovdiv-governance-1944-front-transition": `${v.contextImage} · c. 1942`,
+  "archive-plovdiv-governance-2001-development-plans": v.contextImage,
+  "archive-plovdiv-governance-2010-property-management-programme": v.contextImage
+};
+
 const statusRank: Record<string, number> = {
   in_progress: 0,
   contracted: 1,
@@ -593,15 +763,39 @@ const statusRank: Record<string, number> = {
   planned: 3,
   postponed: 4
 };
-const currentProjects = [...projects]
+const activeProjects = [...projects]
   .filter((project) => ["in_progress", "contracted", "funded"].includes(project.status))
   .sort(
     (a, b) =>
       b.budget.year - a.budget.year ||
       (statusRank[a.status] ?? 99) - (statusRank[b.status] ?? 99) ||
       field(a, "title", lang).localeCompare(field(b, "title", lang), locale)
-  )
-  .slice(0, 3);
+  );
+const featuredProjectIds = [
+  "plovdiv-pavement-ivan-vazov",
+  "plovdiv-education-kiril-metodii",
+  "plovdiv-stadium-lokomotiv"
+];
+const currentProjects = [
+  ...featuredProjectIds
+    .map((id) => activeProjects.find((project) => project.id === id))
+    .filter((project): project is Project => Boolean(project)),
+  ...activeProjects.filter((project) => !featuredProjectIds.includes(project.id))
+].slice(0, 3);
+
+const projectVisuals: Record<string, GovernanceVisual | null> = {
+  "plovdiv-pavement-ivan-vazov": placeVisual("place-ivan-vazov-street-q58177011"),
+  "plovdiv-education-kiril-metodii": placeVisual(
+    "place-humanitarian-high-school-saints-cyril-and-methodius-plovdiv-q12290859"
+  ),
+  "plovdiv-stadium-lokomotiv": placeVisual("place-lokomotiv-stadium-q3623331")
+};
+
+const projectImageLabels: Record<string, string> = {
+  "plovdiv-pavement-ivan-vazov": `${v.referenceImage} · 2011`,
+  "plovdiv-education-kiril-metodii": `${v.archivePostcard} · 1900`,
+  "plovdiv-stadium-lokomotiv": `${v.referenceImage} · 2013`
+};
 
 function termEnd(term: CityArchiveRecord): number {
   return term.year_end ?? currentYear;
@@ -622,20 +816,18 @@ function mayorOverlapLabel(record: CityArchiveRecord): string {
     (term) => term.year_start <= recordEnd && termEnd(term) >= record.year_start
   );
   if (!overlaps.length) return "";
-  const names = overlaps.slice(0, 2).map((term) => field(term, "actor", lang));
-  return `${names.join(" · ")}${overlaps.length > 2 ? ` +${overlaps.length - 2}` : ""}`;
+  const names = [...new Set(overlaps.map((term) => field(term, "actor", lang)))];
+  return `${names.slice(0, 2).join(" · ")}${names.length > 2 ? ` +${names.length - 2}` : ""}`;
 }
 
-function amountForArchive(record: CityArchiveRecord): string | null {
-  if (record.amount_bgn != null) return formatMoney(record.amount_bgn, lang, "BGN");
-  if (record.amount_eur != null) return formatMoney(record.amount_eur, lang, "EUR");
+function amountForProject(project: Project): string | null {
+  if (project.budget.amount_eur != null) return formatMoney(project.budget.amount_eur, lang, "EUR");
+  if (project.budget.amount_bgn != null) return formatMoney(project.budget.amount_bgn, lang, "BGN");
   return null;
 }
 
-function amountForProject(project: Project): string {
-  if (project.budget.amount_eur != null) return formatMoney(project.budget.amount_eur, lang, "EUR");
-  if (project.budget.amount_bgn != null) return formatMoney(project.budget.amount_bgn, lang, "BGN");
-  return l.noAmount;
+function visualCredit(visual: GovernanceVisual): string {
+  return [visual.credit, visual.license].filter(Boolean).join(" · ");
 }
 
 function sourceLabel(source: { title: string } | null | undefined): string {
@@ -655,12 +847,6 @@ const mayorGroups = [
         <p class="eyebrow">{l.eyebrow}</p>
         <h1>{l.title}</h1>
         <p class="lead">{l.lead}</p>
-        <div class="hero-actions">
-          <a class="hero-route" href={localizePath("/mayors", lang)}>
-            <span><strong>{l.ctaMayors}</strong><small>{l.ctaMayorsText}</small></span>
-            <b aria-hidden="true">→</b>
-          </a>
-        </div>
       </div>
       {currentMayor && (
         <aside class="current-panel" aria-label={l.currentTitle}>
@@ -693,7 +879,7 @@ const mayorGroups = [
 
   <section class="section governance-people" id="who-governed" data-subnav-target>
     <div class="container">
-      <div class="section-head">
+      <div class="section-head governance-section-head">
         <div>
           <h2>{l.whoTitle}</h2>
           <p class="meta">{l.whoLead}</p>
@@ -711,7 +897,11 @@ const mayorGroups = [
                 return (
                   <article class="term-card">
                     <header>
-                      <h4><a href={localizePath(`/mayors/${term.id}`, lang)}>{field(term, "actor", lang)}</a></h4>
+                      <h4>
+                        <a href={localizePath(`/mayors/${term.id}`, lang)}>
+                          {field(term, "actor", lang)} <span aria-hidden="true">→</span>
+                        </a>
+                      </h4>
                       <p class="term-period">{field(term, "period", lang)}</p>
                     </header>
                     {linked.length > 0 && (
@@ -727,19 +917,13 @@ const mayorGroups = [
                                 aria-label={`${field(record, "title", lang)}: ${sourceLabel(record.source_document)}`}
                               >
                                 <span>{record.year_start}</span>
-                                <strong>{field(record, "title", lang)}</strong>
+                                <strong>{field(record, "title", lang)} <span aria-hidden="true">↗</span></strong>
                               </a>
                             </li>
                           ))}
                         </ul>
                       </div>
                     )}
-                    <div class="term-actions">
-                      <a
-                        href={localizePath(`/mayors/${term.id}`, lang)}
-                        aria-label={`${l.detail}: ${field(term, "actor", lang)}`}
-                      >{l.detail} →</a>
-                    </div>
                   </article>
                 );
               })}
@@ -752,7 +936,7 @@ const mayorGroups = [
 
   <section class="section section-tint" id="archive-changes" data-subnav-target>
     <div class="container">
-      <div class="section-head">
+      <div class="section-head governance-section-head">
         <div>
           <h2>{l.archiveTitle}</h2>
           <p class="meta">{l.archiveLead}</p>
@@ -760,25 +944,66 @@ const mayorGroups = [
         <a href={localizePath("/archive", lang)}>{l.ctaArchive} →</a>
       </div>
 
-      <div class="archive-spine">
-        {archiveHighlights.map((record) => {
-          const amount = amountForArchive(record);
+      <div class="turning-grid">
+        {archiveHighlights.map((record, index) => {
           const overlap = mayorOverlapLabel(record);
+          const visual = turningVisuals[record.id];
           return (
-            <article class="archive-node">
-              <div class="node-year">
-                <strong>{record.year_start}</strong>
-                {record.year_end && record.year_end !== record.year_start && <span>{record.year_end}</span>}
-              </div>
-              <div class="node-body">
-                <p class="eyebrow">{kindLabels[lang][record.kind]}</p>
+            <article class="turning-card">
+              {visual && (
+                <figure class="turning-visual">
+                  <picture>
+                    {isCommonsUploadImageUrl(visual.url) && (
+                      <source media="(max-width: 760px)" srcset={commonsImageUrl(visual.url, 500)} />
+                    )}
+                    <img
+                      src={isCommonsUploadImageUrl(visual.url) ? commonsImageUrl(visual.url, 960) : visual.url}
+                      srcset={isCommonsUploadImageUrl(visual.url)
+                        ? `${commonsImageUrl(visual.url, 500)} 500w, ${commonsImageUrl(visual.url, 960)} 960w`
+                        : undefined}
+                      sizes="(max-width: 760px) 100vw, 50vw"
+                      alt={visual.alt}
+                      width={visual.width}
+                      height={visual.height}
+                      loading="lazy"
+                      decoding="async"
+                      crossorigin={isCommonsUploadImageUrl(visual.url) ? "anonymous" : undefined}
+                      referrerpolicy="no-referrer"
+                    />
+                  </picture>
+                  <span class="turning-sequence" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                  <span class="visual-context">{turningImageLabels[record.id] ?? v.contextImage}</span>
+                  <figcaption>
+                    <a href={visual.pageUrl} target="_blank" rel="noreferrer">{visualCredit(visual)} ↗</a>
+                  </figcaption>
+                </figure>
+              )}
+              <div class="turning-body">
+                <div class="turning-period">
+                  <p class="eyebrow">{kindLabels[lang][record.kind]}</p>
+                  <p class="turning-years">
+                    <strong>{record.year_start}</strong>
+                    {record.year_end && record.year_end !== record.year_start && <span>–{record.year_end}</span>}
+                  </p>
+                </div>
                 <h3>{field(record, "title", lang)}</h3>
-                <p>{field(record, "summary", lang)}</p>
-                <div class="pill-row">
-                  {overlap && <span class="badge no-dot">{l.mayorOverlap}: {overlap}</span>}
-                  {amount && <span class="badge no-dot">{l.amountLabel}: {amount}</span>}
-                  <a class="meta" href={record.source_document.url} target="_blank" rel="noreferrer">
-                    {sourceLabel(record.source_document)}
+                <p class="turning-summary">{field(record, "summary", lang)}</p>
+                {overlap && (
+                  <div class="turning-overlap">
+                    <span>{l.mayorOverlap}</span>
+                    <strong>{overlap}</strong>
+                  </div>
+                )}
+                <div class="turning-footer">
+                  <a
+                    class="source-link"
+                    href={record.source_document.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    title={sourceLabel(record.source_document)}
+                    aria-label={`${l.source}: ${sourceLabel(record.source_document)}`}
+                  >
+                    {l.source} <span aria-hidden="true">↗</span>
                   </a>
                 </div>
               </div>
@@ -789,34 +1014,84 @@ const mayorGroups = [
     </div>
   </section>
 
-  <section class="section" id="money-projects" data-subnav-target>
+  <section class="section governance-project-section" id="money-projects" data-subnav-target>
     <div class="container">
-      <div class="section-head">
+      <div class="section-head governance-section-head">
         <div>
           <h2>{l.projectsTitle}</h2>
           <p class="meta">{l.projectLead}</p>
+          <p class="project-visual-note">{v.projectVisualNote}</p>
         </div>
         <a href={localizePath("/projects", lang)}>{l.ctaProjects} →</a>
       </div>
 
-      <div class="grid grid-3 governance-projects">
-        {currentProjects.map((project) => (
-          <article class="card project-card">
-            <header>
-              <div>
-                <p class="eyebrow">{l.projectYear} {project.budget.year}</p>
+      <div class="governance-projects">
+        {currentProjects.map((project) => {
+          const visual = projectVisuals[project.id];
+          const amount = amountForProject(project);
+          const amountLabel = project.budget.funding_source === "state_subsidy" ? v.listedFunding : l.amountLabel;
+          return (
+            <article class="project-feature">
+              {visual && (
+                <figure class="project-visual">
+                  <a
+                    class="project-image-link"
+                    href={localizePath(`/projects/${project.id}`, lang)}
+                    aria-label={`${l.projectDetail}: ${field(project, "title", lang)}`}
+                  >
+                    <picture>
+                      {isCommonsUploadImageUrl(visual.url) && (
+                        <source media="(max-width: 760px)" srcset={commonsImageUrl(visual.url, 500)} />
+                      )}
+                      <img
+                        src={isCommonsUploadImageUrl(visual.url) ? commonsImageUrl(visual.url, 960) : visual.url}
+                        srcset={isCommonsUploadImageUrl(visual.url)
+                          ? `${commonsImageUrl(visual.url, 500)} 500w, ${commonsImageUrl(visual.url, 960)} 960w`
+                          : undefined}
+                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                        alt={visual.alt}
+                        width={visual.width}
+                        height={visual.height}
+                        loading="lazy"
+                        decoding="async"
+                        crossorigin={isCommonsUploadImageUrl(visual.url) ? "anonymous" : undefined}
+                        referrerpolicy="no-referrer"
+                      />
+                    </picture>
+                  </a>
+                  <span class="visual-context">{projectImageLabels[project.id] ?? v.referenceImage}</span>
+                  <figcaption>
+                    <a href={visual.pageUrl} target="_blank" rel="noreferrer">{visualCredit(visual)} ↗</a>
+                  </figcaption>
+                </figure>
+              )}
+              {!visual && (
+                <div class="project-visual project-visual-placeholder" aria-hidden="true">
+                  <span>⌖</span>
+                </div>
+              )}
+              <div class="project-body">
+                <div class="project-kicker">
+                  <p class="eyebrow">{categoryLabel(project.category, lang)}</p>
+                  <span class={`project-status status-${project.status}`}>{projectStatusLabel(project.status, lang)}</span>
+                </div>
                 <h3><a href={localizePath(`/projects/${project.id}`, lang)}>{field(project, "title", lang)}</a></h3>
-                <p class="meta">{categoryLabel(project.category, lang)}</p>
+                <p class="project-location"><span aria-hidden="true">⌖</span> {field(project.location, "address", lang)}</p>
+                {project.data_quality === "provisional" && (
+                  <p class="project-quality">{v.provisionalRecord}</p>
+                )}
+                <p class="project-summary">{field(project, "summary", lang)}</p>
+                <div class="project-facts">
+                  <span><small>{l.projectYear}</small><strong>{project.budget.year}</strong></span>
+                  {amount && <span><small>{amountLabel}</small><strong>{amount}</strong></span>}
+                </div>
+                <a class="project-detail" href={localizePath(`/projects/${project.id}`, lang)}>
+                  {l.projectDetail} <span aria-hidden="true">→</span>
+                </a>
               </div>
-              <span class="badge no-dot">{projectStatusLabel(project.status, lang)}</span>
-            </header>
-            <p>{field(project, "summary", lang)}</p>
-            <div class="pill-row">
-              <span class="money">{amountForProject(project)}</span>
-              <a class="meta" href={localizePath(`/projects/${project.id}`, lang)}>{l.detail}</a>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -826,93 +1101,55 @@ const mayorGroups = [
 <style>
   .governance-hero {
     --governance-accent: var(--data-people);
-    padding-bottom: clamp(22px, 3vw, 36px);
+    overflow: hidden;
+    padding-bottom: clamp(28px, 4vw, 48px);
+    position: relative;
+  }
+
+  .governance-hero::after {
+    background:
+      radial-gradient(circle, color-mix(in srgb, var(--governance-accent) 20%, transparent) 0 2px, transparent 3px)
+      0 0 / 22px 22px;
+    content: "";
+    height: 220px;
+    inset-block-end: -90px;
+    inset-inline-end: -40px;
+    opacity: 0.28;
+    pointer-events: none;
+    position: absolute;
+    transform: rotate(-8deg);
+    width: min(38vw, 440px);
   }
 
   .governance-hero-grid {
-    align-items: center;
+    align-items: start;
     display: grid;
-    gap: clamp(30px, 6vw, 72px);
-    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.72fr);
+    gap: clamp(24px, 4vw, 52px);
+    grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
+    position: relative;
+    z-index: 1;
   }
 
   .governance-intro h1 {
     font-size: clamp(2.8rem, 5vw, 4.25rem);
-    max-width: 13ch;
+    max-width: none;
   }
 
   .governance-intro .lead {
     max-width: 58ch;
   }
 
-  .hero-actions {
-    margin-top: 24px;
-    max-width: 340px;
-  }
-
-  .hero-route {
-    --route-accent: var(--data-people);
-    align-items: center;
-    background: color-mix(in srgb, var(--route-accent) 5%, var(--surface));
-    border: 1px solid var(--line-strong);
-    border-inline-start: 4px solid var(--route-accent);
-    border-radius: var(--r);
-    color: var(--ink);
-    display: grid;
-    gap: 12px;
-    grid-template-columns: minmax(0, 1fr) auto;
-    min-height: 78px;
-    padding: 13px 15px;
-    text-decoration: none;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
-  }
-
-  .hero-route:hover,
-  .hero-route:focus-visible {
-    border-color: var(--route-accent);
-    box-shadow: var(--shadow-card);
-    color: var(--ink);
-    transform: translateY(-2px);
-  }
-
-  .hero-route > span {
-    display: grid;
-    gap: 3px;
-    min-width: 0;
-  }
-
-  .hero-route strong {
-    color: var(--route-accent);
-    font-size: 0.96rem;
-    font-weight: 800;
-  }
-
-  .hero-route small {
-    color: var(--muted);
-    font-size: 0.78rem;
-    line-height: 1.3;
-  }
-
-  .hero-route b {
-    color: var(--route-accent);
-    font-size: 1.15rem;
-  }
-
   .current-panel {
-    background: linear-gradient(
-      145deg,
-      color-mix(in srgb, var(--governance-accent) 7%, var(--surface)) 0%,
-      var(--surface) 68%
-    );
+    background: color-mix(in srgb, var(--governance-accent) 6%, var(--surface));
     border: 1px solid var(--line);
-    border-inline-start: 5px solid var(--governance-accent);
+    border-inline-start: 4px solid var(--governance-accent);
     border-radius: var(--r-md);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-sm);
     display: grid;
-    gap: 18px;
-    grid-template-columns: 104px minmax(0, 1fr);
+    gap: 15px;
+    grid-template-columns: 88px minmax(0, 1fr);
     overflow: hidden;
-    padding: 16px;
+    padding: 14px;
   }
 
   .current-panel > div {
@@ -925,7 +1162,6 @@ const mayorGroups = [
     aspect-ratio: 1;
     border: 1px solid var(--line-strong);
     border-radius: var(--r-sm);
-    box-shadow: var(--shadow-sm);
     height: auto;
     object-fit: cover;
     width: 100%;
@@ -941,39 +1177,89 @@ const mayorGroups = [
   }
 
   .current-panel h2 {
-    font-size: clamp(1.28rem, 2vw, 1.62rem);
+    font-size: clamp(1.22rem, 2vw, 1.52rem);
     line-height: 1.08;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
 
   .current-panel a {
     align-items: center;
     display: inline-flex;
     font-weight: 750;
-    margin-top: 4px;
+    margin-top: 2px;
     min-height: 44px;
     text-decoration: none;
     width: fit-content;
   }
 
+  .governance-subnav {
+    display: contents;
+  }
+
+  .governance-subnav :global(.page-subnav-inner) {
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: visible;
+    padding-block: 0;
+  }
+
+  .governance-subnav :global(.page-subnav a) {
+    border-block-end: 3px solid transparent;
+    border-radius: 0;
+    justify-content: center;
+    min-height: 50px;
+    padding: 10px 14px 8px;
+  }
+
+  .governance-subnav :global(.page-subnav a:hover) {
+    background: color-mix(in srgb, var(--data-people) 6%, transparent);
+  }
+
+  .governance-subnav :global(.page-subnav a[aria-current="true"]) {
+    background: transparent;
+    border-block-end-color: var(--data-people);
+    box-shadow: none;
+    color: var(--data-people);
+  }
+
   .governance-people {
-    padding-top: clamp(34px, 4vw, 52px);
+    padding-top: clamp(38px, 5vw, 62px);
   }
 
-  .governance-subnav :global(.page-subnav a),
-  .section-head > a {
-    align-items: center;
-    display: inline-flex;
-    min-height: 44px;
+  .governance-section-head {
+    border: 0;
+    margin-bottom: clamp(24px, 3vw, 36px);
+    padding-bottom: 0;
   }
 
-  .governance-people .section-head > div {
-    max-width: 78ch;
+  .governance-section-head > div {
+    max-width: 72ch;
   }
 
-  .governance-people .section-head .meta {
+  .governance-section-head h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 0.98;
+    margin-bottom: 10px;
+    text-wrap: balance;
+  }
+
+  .governance-section-head .meta {
+    font-size: clamp(0.98rem, 1.5vw, 1.12rem);
     line-height: 1.55;
-    max-width: 74ch;
+    max-width: 66ch;
+  }
+
+  .governance-section-head > a {
+    align-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-pill);
+    display: inline-flex;
+    font-size: 0.88rem;
+    font-weight: 760;
+    min-height: 44px;
+    padding: 8px 15px;
+    text-decoration: none;
   }
 
   .mayor-board {
@@ -984,27 +1270,20 @@ const mayorGroups = [
   }
 
   .mayor-column {
+    --column-accent: var(--data-people);
     background: transparent;
     border: 0;
-    border-top: 4px solid var(--column-accent);
+    border-top: 3px solid var(--column-accent);
     border-radius: 0;
     box-shadow: none;
     min-width: 0;
-    padding: 16px 0 0;
-  }
-
-  .mayor-column:nth-child(1) {
-    --column-accent: var(--data-growth);
-  }
-
-  .mayor-column:nth-child(2) {
-    --column-accent: var(--data-events);
+    padding: 15px 0 0;
   }
 
   .mayor-column h3 {
     color: var(--column-accent);
-    font-size: 1.08rem;
-    margin: 0 0 14px;
+    font-size: 1.04rem;
+    margin: 0 0 12px;
   }
 
   .term-list {
@@ -1019,9 +1298,9 @@ const mayorGroups = [
     border-radius: 0;
     box-shadow: none;
     display: grid;
-    gap: 9px;
+    gap: 8px;
     min-width: 0;
-    padding: 17px 0;
+    padding: 15px 0;
   }
 
   .term-card h4,
@@ -1030,7 +1309,7 @@ const mayorGroups = [
   }
 
   .term-card h4 {
-    font-size: 1.12rem;
+    font-size: 1.08rem;
     line-height: 1.16;
   }
 
@@ -1038,8 +1317,14 @@ const mayorGroups = [
     align-items: center;
     color: var(--ink);
     display: inline-flex;
+    gap: 7px;
     min-height: 44px;
     text-decoration: none;
+  }
+
+  .term-card h4 a span {
+    color: var(--column-accent);
+    transition: transform 0.15s ease;
   }
 
   .term-card h4 a:hover,
@@ -1047,31 +1332,36 @@ const mayorGroups = [
     color: var(--brand);
   }
 
+  .term-card h4 a:hover span,
+  .term-card h4 a:focus-visible span {
+    transform: translateX(3px);
+  }
+
   .term-period {
     color: var(--ink-2);
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     font-variant-numeric: tabular-nums;
     line-height: 1.45;
   }
 
   .term-evidence {
-    border-inline-start: 2px solid var(--column-accent);
+    border-inline-start: 2px solid color-mix(in srgb, var(--column-accent) 62%, var(--line));
     margin-top: 2px;
-    padding-inline-start: 12px;
+    padding-inline-start: 11px;
   }
 
   .term-evidence > p {
     color: var(--column-accent);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 800;
     letter-spacing: 0.08em;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     text-transform: uppercase;
   }
 
   .term-evidence ul {
     display: grid;
-    gap: 7px;
+    gap: 4px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -1094,132 +1384,488 @@ const mayorGroups = [
 
   .term-evidence li span {
     color: var(--muted);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-variant-numeric: tabular-nums;
   }
 
   .term-evidence li strong {
     color: inherit;
-    font-size: 0.84rem;
+    font-size: 0.82rem;
     font-weight: 650;
     overflow-wrap: anywhere;
   }
 
-  .term-actions {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 16px;
+  .turning-grid {
+    display: grid;
+    gap: clamp(18px, 2.5vw, 28px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .term-actions a {
+  .turning-card {
+    --turning-accent: var(--data-events);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .turning-visual,
+  .project-visual {
+    background: var(--surface-3);
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .turning-visual {
+    aspect-ratio: 16 / 9;
+  }
+
+  .turning-visual::after,
+  .project-visual::after {
+    background: linear-gradient(to top, rgb(7 19 25 / 0.76), transparent 42%);
+    content: "";
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .turning-visual picture,
+  .turning-visual img,
+  .project-visual picture,
+  .project-visual img,
+  .project-image-link {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  .turning-visual img,
+  .project-visual img {
+    object-fit: cover;
+    transition: transform 0.45s ease;
+  }
+
+  .project-feature:hover .project-visual img {
+    transform: scale(1.025);
+  }
+
+  .turning-sequence {
+    align-items: center;
+    background: color-mix(in srgb, var(--turning-accent) 90%, #111);
+    border-radius: var(--r-pill);
+    color: #fff;
+    display: inline-flex;
+    font-size: 0.72rem;
+    font-weight: 850;
+    inset-block-start: 13px;
+    inset-inline-start: 13px;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    min-height: 32px;
+    min-width: 44px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .visual-context {
+    align-items: center;
+    backdrop-filter: blur(7px);
+    background: rgb(7 24 31 / 0.82);
+    border: 1px solid rgb(255 255 255 / 0.28);
+    border-radius: var(--r-pill);
+    color: #fff;
+    display: inline-flex;
+    font-size: 0.64rem;
+    font-weight: 780;
+    inset-block-start: 13px;
+    inset-inline-end: 13px;
+    letter-spacing: 0.035em;
+    line-height: 1.2;
+    max-width: calc(100% - 86px);
+    min-height: 32px;
+    padding: 6px 10px;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .project-visual .visual-context {
+    inset-inline-end: auto;
+    inset-inline-start: 12px;
+    max-width: calc(100% - 24px);
+  }
+
+  .turning-visual figcaption,
+  .project-visual figcaption {
+    inset-block-end: 0;
+    inset-inline: 0;
+    line-height: 1.25;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .turning-visual figcaption a,
+  .project-visual figcaption a {
+    align-items: end;
+    color: rgb(255 255 255 / 0.88);
+    display: flex;
+    font-size: 0.64rem;
+    min-height: 44px;
+    padding: 9px 12px;
+    text-decoration-color: rgb(255 255 255 / 0.38);
+    text-shadow: 0 1px 3px rgb(0 0 0 / 0.76);
+  }
+
+  .turning-visual figcaption a:focus-visible,
+  .project-visual figcaption a:focus-visible,
+  .project-image-link:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: -4px;
+  }
+
+  .turning-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    padding: clamp(18px, 2.5vw, 26px);
+  }
+
+  .turning-period {
+    align-items: start;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .turning-period .eyebrow,
+  .turning-years,
+  .turning-card h3,
+  .turning-summary {
+    margin: 0;
+  }
+
+  .turning-period .eyebrow {
+    color: var(--turning-accent);
+    padding-top: 6px;
+  }
+
+  .turning-years {
+    color: var(--turning-accent);
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+
+  .turning-years strong,
+  .turning-years span {
+    font-size: clamp(1.32rem, 2.2vw, 1.7rem);
+  }
+
+  .turning-years span {
+    font-weight: 650;
+  }
+
+  .turning-card h3 {
+    font-size: clamp(1.3rem, 2.2vw, 1.72rem);
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .turning-summary {
+    color: var(--ink-2);
+    font-size: 0.98rem;
+    line-height: 1.58;
+    margin-top: 12px;
+  }
+
+  .turning-overlap {
+    background: color-mix(in srgb, var(--turning-accent) 6%, var(--surface-2));
+    border-inline-start: 3px solid color-mix(in srgb, var(--turning-accent) 72%, var(--line));
+    display: grid;
+    gap: 3px;
+    margin-top: 16px;
+    padding: 10px 12px;
+  }
+
+  .turning-overlap span {
+    color: var(--muted);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .turning-overlap strong {
+    color: var(--ink-2);
+    font-size: 0.84rem;
+    font-weight: 680;
+    line-height: 1.35;
+  }
+
+  .turning-footer {
+    border-top: 1px solid var(--line);
+    margin-top: auto;
+    padding-top: 10px;
+  }
+
+  .source-link {
     align-items: center;
     display: inline-flex;
-    font-size: 0.86rem;
-    font-weight: 720;
+    font-size: 0.85rem;
+    font-weight: 760;
+    gap: 7px;
     min-height: 44px;
     text-decoration: none;
   }
 
-  .archive-spine {
-    display: grid;
-    gap: clamp(28px, 4vw, 52px);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .source-link span {
+    color: var(--turning-accent);
   }
 
-  .archive-node {
-    align-items: start;
-    border-top: 4px solid var(--data-events);
-    display: grid;
-    gap: 16px;
-    grid-template-columns: 76px minmax(0, 1fr);
-    min-width: 0;
-    padding-top: 18px;
+  .governance-project-section {
+    background:
+      linear-gradient(180deg, transparent, color-mix(in srgb, var(--data-geo) 4%, transparent) 26%, transparent 100%);
   }
 
-  .node-year {
-    align-self: start;
-    color: var(--data-events);
-    display: grid;
-    font-variant-numeric: tabular-nums;
-    gap: 0;
-    justify-items: start;
-    line-height: 1.05;
-    padding-top: 2px;
-  }
-
-  .node-year strong {
-    font-size: 1.45rem;
-  }
-
-  .node-year span {
+  .project-visual-note {
     color: var(--muted);
-    font-size: 0.82rem;
-  }
-
-  .node-body {
-    display: grid;
-    gap: 10px;
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-
-  .node-body > * {
-    min-width: 0;
-  }
-
-  .node-body h3,
-  .node-body p {
-    margin: 0;
-  }
-
-  .node-body h3 {
-    font-size: clamp(1.08rem, 1.6vw, 1.28rem);
-  }
-
-  .node-body > p:not(.eyebrow) {
-    color: var(--ink-2);
-  }
-
-  .node-body .badge,
-  .node-body .meta {
-    max-width: 100%;
-    min-width: 0;
-    overflow-wrap: anywhere;
-    white-space: normal;
-  }
-
-  .node-body .pill-row a,
-  .governance-projects .pill-row a {
-    align-items: center;
-    display: inline-flex;
-    min-height: 44px;
+    font-size: 0.78rem;
+    font-weight: 630;
+    line-height: 1.45;
+    margin: 8px 0 0;
   }
 
   .governance-projects {
     align-items: stretch;
+    display: grid;
+    gap: clamp(18px, 2.4vw, 26px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .governance-projects .project-card {
-    border-top: 5px solid var(--data-geo);
+  .project-feature {
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: var(--r-md);
     box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
   }
 
-  .governance-projects .project-card h3 a {
+  .project-feature:hover {
+    border-color: color-mix(in srgb, var(--data-geo) 52%, var(--line));
+    box-shadow: 0 16px 34px color-mix(in srgb, var(--ink) 12%, transparent);
+    transform: translateY(-3px);
+  }
+
+  .project-visual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .project-visual-placeholder {
+    align-items: center;
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--data-geo) 10%, var(--surface-2)), var(--surface-3)),
+      repeating-linear-gradient(45deg, transparent 0 18px, color-mix(in srgb, var(--line) 46%, transparent) 18px 19px);
+    display: flex;
+    justify-content: center;
+  }
+
+  .project-visual-placeholder span {
+    color: color-mix(in srgb, var(--data-geo) 55%, var(--muted));
+    font-size: 3rem;
+  }
+
+  .project-image-link {
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-status {
+    align-items: center;
+    backdrop-filter: blur(7px);
+    background: rgb(255 255 255 / 0.92);
+    border: 1px solid rgb(255 255 255 / 0.7);
+    border-radius: var(--r-pill);
+    color: #173742;
+    display: inline-flex;
+    font-size: 0.68rem;
+    font-weight: 820;
+    min-height: 32px;
+    padding: 5px 10px;
+    text-align: center;
+  }
+
+  .project-status.status-in_progress {
+    background: rgb(220 241 249 / 0.96);
+    color: #16566e;
+  }
+
+  .project-status.status-funded {
+    background: rgb(225 246 236 / 0.94);
+    color: #165e42;
+  }
+
+  .project-status.status-contracted {
+    background: rgb(255 240 203 / 0.94);
+    color: #74500b;
+  }
+
+  .project-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    padding: clamp(17px, 2vw, 22px);
+  }
+
+  .project-kicker {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  .project-body .eyebrow,
+  .project-body h3,
+  .project-location,
+  .project-summary {
+    margin: 0;
+  }
+
+  .project-quality {
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 740;
+    letter-spacing: 0.04em;
+    margin: 7px 0 0;
+    text-transform: uppercase;
+  }
+
+  .project-body .eyebrow {
+    color: var(--data-geo);
+  }
+
+  .project-body h3 {
+    font-size: clamp(1.18rem, 1.8vw, 1.45rem);
+    line-height: 1.12;
+    margin-top: 7px;
+    text-wrap: balance;
+  }
+
+  .project-body h3 a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .project-body h3 a:hover,
+  .project-body h3 a:focus-visible {
+    color: var(--brand);
+  }
+
+  .project-location {
+    align-items: start;
+    color: var(--muted);
+    display: flex;
+    font-size: 0.78rem;
+    gap: 5px;
+    line-height: 1.4;
+    margin-top: 9px;
+  }
+
+  .project-location span {
+    color: var(--data-geo);
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .project-summary {
+    color: var(--ink-2);
+    display: -webkit-box;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-top: 12px;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .project-facts {
+    border-block: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-top: 17px;
+    padding-block: 12px;
+  }
+
+  .project-facts > span {
+    display: grid;
+    gap: 2px;
+  }
+
+  .project-facts small {
+    color: var(--muted);
+    font-size: 0.65rem;
+    font-weight: 780;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .project-facts strong {
+    color: var(--ink);
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .project-detail {
     align-items: center;
     display: inline-flex;
-    min-height: 44px;
+    font-size: 0.88rem;
+    font-weight: 780;
+    gap: 8px;
+    margin-top: auto;
+    min-height: 48px;
+    padding-top: 8px;
+    text-decoration: none;
+    width: fit-content;
   }
 
-  .governance-projects .project-card header {
-    align-items: start;
+  .project-detail span {
+    transition: transform 0.15s ease;
   }
 
-  .governance-projects .project-card header > .badge {
-    flex-shrink: 0;
-    max-width: 42%;
-    white-space: normal;
+  .project-detail:hover span,
+  .project-detail:focus-visible span {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 1100px) {
+    .governance-projects {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-feature:last-child:nth-child(odd) {
+      display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+    }
+
+    .project-feature:last-child:nth-child(odd) .project-visual {
+      aspect-ratio: auto;
+      min-height: 310px;
+    }
   }
 
   @media (max-width: 980px) {
@@ -1228,93 +1874,130 @@ const mayorGroups = [
     }
 
     .current-panel {
-      max-width: 680px;
+      max-width: none;
+      width: 100%;
     }
   }
 
-  @media (max-width: 760px) {
-    .mayor-board {
+  @media (max-width: 820px) {
+    .mayor-board,
+    .turning-grid {
       grid-template-columns: 1fr;
     }
 
-    .archive-spine {
-      grid-template-columns: 1fr;
+    .governance-subnav :global(.page-subnav-inner) {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+    }
+
+    .governance-subnav :global(.page-subnav a) {
+      flex: 0 0 auto;
+      min-height: 48px;
+      scroll-snap-align: start;
     }
   }
 
   @media (max-width: 700px) {
     .governance-hero {
-      padding-bottom: 22px;
+      padding-bottom: 24px;
+    }
+
+    .governance-hero::after {
+      display: none;
     }
 
     .governance-intro h1 {
-      font-size: clamp(2.25rem, 10vw, 3rem);
-    }
-
-    .hero-actions {
-      margin-top: 20px;
-    }
-
-    .hero-route {
-      min-height: 72px;
+      font-size: clamp(2.15rem, 10.6vw, 2.85rem);
     }
 
     .current-panel {
       gap: 12px;
-      grid-template-columns: 82px minmax(0, 1fr);
-      padding: 13px;
+      grid-template-columns: 72px minmax(0, 1fr);
+      padding: 12px;
     }
 
     .governance-people {
-      padding-top: 32px;
+      padding-top: 34px;
     }
 
-    .archive-node {
-      gap: 10px;
-      grid-template-columns: 60px minmax(0, 1fr);
-    }
-
-    .node-year {
-      padding-top: 2px;
-    }
-
-    .node-year strong {
-      font-size: 0.94rem;
-      letter-spacing: -0.025em;
-    }
-
-    .node-year span {
-      font-size: 0.72rem;
-    }
-
-    .governance-projects .project-card header {
+    .governance-section-head {
+      align-items: start;
       display: grid;
       gap: 10px;
     }
 
-    .governance-projects .project-card header > .badge {
-      max-width: 100%;
-      width: fit-content;
+    .governance-section-head > a {
+      justify-self: start;
+    }
+
+    .project-feature:hover {
+      transform: none;
+    }
+
+    .turning-period {
+      align-items: end;
+    }
+
+    .governance-projects {
+      grid-template-columns: 1fr;
+    }
+
+    .project-feature:last-child:nth-child(odd) {
+      display: flex;
+      grid-column: auto;
+    }
+
+    .project-feature:last-child:nth-child(odd) .project-visual {
+      aspect-ratio: 4 / 3;
+      min-height: 0;
     }
   }
 
-  :global([data-theme="dark"]) .current-panel,
-  :global([data-theme="dark"]) .hero-route {
-    background: linear-gradient(
-      145deg,
-      color-mix(in srgb, var(--section-soft) 34%, var(--surface)) 0%,
-      var(--surface) 70%
-    );
+  @media (max-width: 430px) {
+    .governance-section-head h2 {
+      font-size: clamp(1.9rem, 10vw, 2.45rem);
+    }
+
+    .turning-body {
+      padding: 17px;
+    }
+
+    .turning-period {
+      align-items: start;
+      display: grid;
+      gap: 6px;
+    }
+
+    .turning-years {
+      grid-row: 1;
+    }
+
+    .turning-period .eyebrow {
+      padding-top: 0;
+    }
+
+    .turning-card h3 {
+      font-size: 1.28rem;
+    }
+
+    .turning-footer,
+    .source-link {
+      width: 100%;
+    }
+
+    .project-body {
+      padding: 16px;
+    }
   }
 
-  @media (prefers-color-scheme: dark) {
-    :global(:root:not([data-theme="light"])) .current-panel,
-    :global(:root:not([data-theme="light"])) .hero-route {
-      background: linear-gradient(
-        145deg,
-        color-mix(in srgb, var(--section-soft) 34%, var(--surface)) 0%,
-        var(--surface) 70%
-      );
+  @media (prefers-reduced-motion: reduce) {
+    .turning-card,
+    .turning-visual img,
+    .project-feature,
+    .project-visual img {
+      transition: none;
     }
   }
 </style>
