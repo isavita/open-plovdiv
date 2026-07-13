@@ -71,18 +71,6 @@ const summerCards = summerRouteIds
   .map((id) => cards.find(({ route }) => route.id === id))
   .filter((card): card is (typeof cards)[number] => Boolean(card));
 
-const totalStops = walkingRoutes.reduce((sum, route) => sum + route.stops.length, 0);
-const totalMeters = walkingRoutes.reduce(
-  (sum, route) => sum + (routeGeometry(route.id)?.distance_m ?? 0),
-  0
-);
-const totalKm = Math.round(totalMeters / 1000);
-const totalSources = new Set(
-  walkingRoutes.flatMap((route) =>
-    route.stops.flatMap((stop) => placesById.get(stop.place_id)?.source_ids ?? [])
-  )
-).size;
-
 const categoryCounts = new Map<RouteCategory, number>();
 for (const route of walkingRoutes) {
   categoryCounts.set(route.category, (categoryCounts.get(route.category) ?? 0) + 1);
@@ -96,31 +84,11 @@ const filterConfig = {
 
 <Layout lang={lang} path="/routes" title={t.indexTitle} description={t.indexLead}>
   <section class="section hero hero-compact routes-hero" data-section="routes">
-    <div class="container hero-grid">
-      <div>
-        <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.routes} />
-        <p class="eyebrow">{t.indexEyebrow}</p>
-        <h1>{t.indexTitle}</h1>
-        <p class="lead">{t.indexLead}</p>
-      </div>
-      <dl class="stats-grid routes-stats" aria-label={t.indexTitle}>
-        <div class="stat-card">
-          <dt>{t.routes}</dt>
-          <dd>{walkingRoutes.length}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{t.stops}</dt>
-          <dd>{totalStops}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{t.totalKm}</dt>
-          <dd>{totalKm}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{t.sources}</dt>
-          <dd>{totalSources}</dd>
-        </div>
-      </dl>
+    <div class="container">
+      <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.routes} />
+      <p class="eyebrow">{t.indexEyebrow}</p>
+      <h1>{t.indexTitle}</h1>
+      <p class="lead">{t.indexLead}</p>
     </div>
   </section>
 
@@ -396,17 +364,6 @@ const filterConfig = {
     .routes-picker {
       --section-accent: var(--data-geo);
       --section-soft: var(--brand-soft);
-    }
-
-    .stats-grid.routes-stats {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      max-width: 880px;
-      width: 100%;
-    }
-
-    .routes-stats .stat-card {
-      box-sizing: border-box;
-      min-width: 0;
     }
 
     .routes-section-head .meta {
@@ -760,10 +717,6 @@ const filterConfig = {
     }
 
     @media (max-width: 680px) {
-      .stats-grid.routes-stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
       .route-filters {
         padding: 16px;
       }

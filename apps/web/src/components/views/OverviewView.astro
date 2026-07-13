@@ -33,8 +33,6 @@ function countBy<T>(items: T[], key: (item: T) => string): Map<string, number> {
 const statusCounts = [...countBy(projects, (p) => p.status).entries()].sort((a, b) => b[1] - a[1]);
 const categoryCounts = [...countBy(projects, (p) => p.category).entries()].sort((a, b) => b[1] - a[1]);
 
-const postponedCount = projects.filter((p) => p.status === "postponed").length;
-
 // ---- Donut helper ----------------------------------------------------------
 const R = 68;
 const CIRC = 2 * Math.PI * R;
@@ -75,12 +73,7 @@ const maxCategory = Math.max(...categoryCounts.map(([, c]) => c), 1);
 
   <section class="section" style="padding-top:0">
     <div class="container">
-      <div class="stat-row">
-        <div class="stat"><strong>{projects.length}</strong><span>{t.overview.statProjects}</span></div>
-        <div class="stat"><strong>{postponedCount}</strong><span>{t.overview.statPostponed}</span></div>
-      </div>
-
-      <div class="chart-grid" style="margin-top:24px">
+      <div class="chart-grid">
         <!-- Projects by status (donut) -->
         <div class="chart-card">
           <h3>{t.overview.byStatusTitle}</h3>

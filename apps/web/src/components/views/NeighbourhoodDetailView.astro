@@ -206,12 +206,7 @@ const structuredData = {
                   <dd>{earliest}</dd>
                 </div>
               )}
-              {keyPlaces.length > 0 ? (
-                <div>
-                  <dt>{t.keyPlaces}</dt>
-                  <dd>{keyPlaces.length}</dd>
-                </div>
-              ) : (
+              {keyPlaces.length === 0 && (
                 <div class="nb-glance-context">
                   <dt>{t.keyPlaces}</dt>
                   <dd class="nb-glance-context-badge">{t.contextBadge}</dd>

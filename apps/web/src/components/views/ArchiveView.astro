@@ -19,7 +19,6 @@ const t = ui[lang];
 const mayorTerms = cityArchive
   .filter((record) => record.kind === "mayor_term")
   .sort((a, b) => b.year_start - a.year_start);
-const currentMayor = mayorTerms.find((record) => record.year_end == null) ?? mayorTerms[0];
 const mayorChronology = [...mayorTerms].sort(
   (a, b) => a.year_start - b.year_start || (a.year_end ?? a.year_start) - (b.year_end ?? b.year_start)
 );
@@ -74,20 +73,6 @@ function transcriptionText(
         <p class="lead">{t.archive.lead}</p>
       </div>
       <div class="section-plate" aria-hidden="true" set:html={sectionMotifs.archive} />
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="stat-row">
-        <div class="stat"><strong>{mayorTerms.length}</strong><span>{t.archive.statMayors}</span></div>
-        <div class="stat"><strong>{financeRecords.length}</strong><span>{t.archive.statFinance}</span></div>
-        <div class="stat"><strong>{programmeRecords.length}</strong><span>{t.archive.statProgrammes}</span></div>
-        <div class="stat"><strong>{documentRecords.length}</strong><span>{t.archive.statDocuments}</span></div>
-        {currentMayor && (
-          <div class="stat"><strong>{field(currentMayor, "actor", lang)}</strong><span>{t.archive.currentMayor}</span></div>
-        )}
-      </div>
     </div>
   </section>
 
@@ -258,21 +243,6 @@ function transcriptionText(
 </Layout>
 
 <style>
-  .stat-row {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
-  .stat-row .stat {
-    box-shadow: inset 0 5px 0 var(--stat-accent, var(--data-growth));
-    padding-top: 21px;
-  }
-
-  .stat-row .stat:nth-child(1) { --stat-accent: var(--data-people); }
-  .stat-row .stat:nth-child(2) { --stat-accent: var(--plovdiv-ochre); }
-  .stat-row .stat:nth-child(3) { --stat-accent: var(--plovdiv-oxblood); }
-  .stat-row .stat:nth-child(4) { --stat-accent: var(--data-sources); }
-  .stat-row .stat:nth-child(5) { --stat-accent: var(--data-growth); }
-
   .document-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
@@ -383,14 +353,6 @@ function transcriptionText(
   }
 
   @media (max-width: 760px) {
-    .stat-row {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .stat-row .stat:last-child {
-      grid-column: 1 / -1;
-    }
-
     .document-grid {
       grid-template-columns: 1fr;
     }

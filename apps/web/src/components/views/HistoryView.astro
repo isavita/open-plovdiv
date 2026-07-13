@@ -63,8 +63,6 @@ const historyDataVersion = createHash("sha1")
   .digest("hex")
   .slice(0, 12);
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
-const mayorEvents = entries.filter((event) => event.category === "mayor_term");
-
 const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string, ell: string, ja: string, tl: string, uk: string, ru: string): string =>
   ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell, ja, tl, uk, ru } satisfies Record<Lang, string>)[lang];
 
@@ -1689,10 +1687,6 @@ const searchHints = [
     ...topPersonNames.slice(0, 10)
   ])
 ];
-const successionCount = historyKnowledgePeople.reduce(
-  (sum, person) => sum + person.relationships.filter((relationship) => relationship.type === "succeeded_by").length,
-  0
-);
 const knownHistoryKeys = [
   "wikidata_coordinate",
   "approximate_site",
@@ -2971,12 +2965,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         </div>
       </div>
 
-      <dl class="history-evidence-strip">
-        <div><dt>{labels.georeferencedItems}</dt><dd>{historicalArchiveItems.length}</dd></div>
-        <div><dt>{labels.thenNowPairs}</dt><dd>{thenNowPairsForView.length}</dd></div>
-        <div><dt>{labels.places}</dt><dd>{new Set(historicalArchiveItems.map((item) => item.place_id)).size}</dd></div>
-      </dl>
-
       <div class="archive-grid">
         {archiveGalleryItems.map((item) => {
           const place = placesById.get(item.place_id);
@@ -3144,13 +3132,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         <a href={localizePath("/people", lang)}>{labels.openMayors} →</a>
       </div>
 
-      <div class="stat-row budget-summary-stats" style="margin-top:0">
-        <div class="stat"><strong>{historyKnowledgePeople.length}</strong><span>{labels.people}</span></div>
-        <div class="stat"><strong>{mayorEvents.length}</strong><span>{t.mayors.statTerms}</span></div>
-        <div class="stat"><strong>{repeatedPeople.length}</strong><span>{labels.repeatTerms}</span></div>
-        <div class="stat"><strong>{successionCount}</strong><span>{labels.successionLinks}</span></div>
-      </div>
-      <article class="card" style="margin-top:18px">
+      <article class="card">
         <h3 style="margin:0 0 4px">{labels.repeatTerms}</h3>
         <ul class="connect-list">
           {repeatedPeople.slice(0, 8).map((person) => (
@@ -4986,45 +4968,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     text-decoration: underline;
   }
 
-  .history-evidence-strip {
-    display: flex;
-    align-items: stretch;
-    max-width: 920px;
-    margin: 0 0 24px;
-    overflow-x: auto;
-    border-block: 1px solid var(--line);
-    scrollbar-width: thin;
-  }
-
-  .history-evidence-strip > div {
-    display: flex;
-    flex: 1 0 190px;
-    align-items: baseline;
-    gap: 9px;
-    padding: 13px 18px;
-    border-right: 1px solid var(--line);
-  }
-
-  .history-evidence-strip > div:last-child {
-    border-right: 0;
-  }
-
-  .history-evidence-strip dt {
-    color: var(--muted);
-    font-size: 0.76rem;
-    line-height: 1.25;
-  }
-
-  .history-evidence-strip dd {
-    order: -1;
-    margin: 0;
-    color: var(--ink-deep);
-    font-family: var(--font-display);
-    font-size: 1.45rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-
   .landmark-title-link {
     color: inherit;
     text-decoration-color: color-mix(in srgb, var(--era-color, var(--brand)) 45%, transparent);
@@ -5269,16 +5212,6 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
     .history-chapter-actions {
       display: grid;
-    }
-
-    .history-evidence-strip {
-      margin-inline: -16px;
-      padding-inline: 16px;
-    }
-
-    .history-evidence-strip > div {
-      flex-basis: 165px;
-      padding-inline: 12px;
     }
 
     .history-timeline-results > summary {

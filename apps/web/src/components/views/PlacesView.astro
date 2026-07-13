@@ -7,16 +7,12 @@ import { fallbackPlaceColor, placeColors } from "@lib/placeCategories";
 import { distanceMeters } from "@lib/geo";
 import { formatKm, routeCategoryOrder, routeGeometry, walkingRoutes } from "@lib/routes";
 import { routeCategoryLabels } from "@lib/routeLabels";
-import { sourceTitle } from "@lib/format";
 import { sortPlacesForDiscovery } from "@lib/placeDiscovery";
 import { siteSearchUi } from "@lib/siteSearchI18n";
-import { publicThenNowPairs, thenNowCountByPlace } from "@lib/thenNow";
+import { thenNowCountByPlace } from "@lib/thenNow";
 import {
   historicalArchiveItems,
-  historyKnowledgeEvents,
-  historyKnowledgeIndex,
   historyKnowledgePlaces,
-  historyKnowledgeSources,
   thenNowPairs,
   type KnowledgePlace
 } from "@lib/data";
@@ -482,15 +478,9 @@ function placeFacts(place: KnowledgePlace, options: { includeCreatorFallback?: b
 }
 
 const places = sortPlacesForDiscovery(historyKnowledgePlaces, (place) => localized(place, "name"), locale);
-const sourceById = new Map(historyKnowledgeSources.map((source) => [source.id, source]));
 const archiveCountByPlace = new Map<string, number>();
 const pairCountByPlace = thenNowCountByPlace(thenNowPairs);
-const publicPairCount = publicThenNowPairs(thenNowPairs).length;
-const eventCountByPlace = new Map<string, number>();
 for (const item of historicalArchiveItems) archiveCountByPlace.set(item.place_id, (archiveCountByPlace.get(item.place_id) ?? 0) + 1);
-for (const event of historyKnowledgeEvents) {
-  for (const placeId of event.place_ids) eventCountByPlace.set(placeId, (eventCountByPlace.get(placeId) ?? 0) + 1);
-}
 
 const eras = [...new Set(places.map((place) => place.era))].sort();
 const categories = [...new Set(places.map((place) => place.category))].sort((a, b) =>
@@ -499,11 +489,9 @@ const categories = [...new Set(places.map((place) => place.category))].sort((a, 
 const placeholderImage = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
 const initialPlaceCount = 24;
 const placeCards = places.map((place) => {
-  const source = sourceById.get(place.source_ids[0]);
   const facts = placeFacts(place, { includeCreatorFallback: false });
   const archiveCount = archiveCountByPlace.get(place.id) ?? 0;
   const pairCount = pairCountByPlace.get(place.id) ?? 0;
-  const eventCount = eventCountByPlace.get(place.id) ?? 0;
   const search = [
     localized(place, "name"),
     localized(place, "summary"),
@@ -525,7 +513,6 @@ const placeCards = places.map((place) => {
     summary: localized(place, "summary"),
     search,
     facts,
-    eventCount,
     archiveCount,
     pairCount,
     media: place.media?.[0]
@@ -536,12 +523,6 @@ const placeCards = places.map((place) => {
           isCommonsUpload: isCommonsUploadImageUrl(place.media[0].url)
         }
       : null,
-    source: source
-      ? {
-          url: source.url,
-          title: sourceTitle(localized(source, "title"), lang)
-        }
-      : null
   };
 });
 const initialPlaceCards = placeCards.slice(0, initialPlaceCount);
@@ -551,10 +532,6 @@ const config = {
     of: labels.of,
     noResults: labels.noResults,
     places: labels.places,
-    events: labels.events,
-    archive: labels.archive,
-    thenNow: labels.thenNow,
-    source: labels.source,
     open: labels.open
   },
   total: placeCards.length,
@@ -880,31 +857,11 @@ const placesMapConfig = {
 
 <Layout lang={lang} path="/places" title={labels.title} description={labels.lead}>
   <section class="section hero hero-compact places-hero" data-section="places">
-    <div class="container hero-grid">
-      <div>
-        <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.places} />
-        <p class="eyebrow">{labels.eyebrow}</p>
-        <h1>{labels.title}</h1>
-        <p class="lead">{labels.lead}</p>
-      </div>
-      <dl class="stats-grid places-stats" data-cat="places" aria-label={labels.title}>
-        <div class="stat-card">
-          <dt>{labels.places}</dt>
-          <dd>{historyKnowledgeIndex.counts.places}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{labels.coordinates}</dt>
-          <dd>{places.filter((place) => place.coordinates).length}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{labels.images}</dt>
-          <dd>{places.filter((place) => place.media.length).length}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{labels.thenNow}</dt>
-          <dd>{publicPairCount}</dd>
-        </div>
-      </dl>
+    <div class="container">
+      <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.places} />
+      <p class="eyebrow">{labels.eyebrow}</p>
+      <h1>{labels.title}</h1>
+      <p class="lead">{labels.lead}</p>
     </div>
   </section>
 
@@ -1058,13 +1015,6 @@ const placesMapConfig = {
                     ))}
                   </dl>
                 )}
-                {card.eventCount + card.archiveCount + card.pairCount > 0 && (
-                  <dl class="place-evidence-counts">
-                    <div><dt>{labels.events}</dt><dd>{card.eventCount}</dd></div>
-                    <div><dt>{labels.archive}</dt><dd>{card.archiveCount}</dd></div>
-                    <div><dt>{labels.thenNow}</dt><dd>{card.pairCount}</dd></div>
-                  </dl>
-                )}
                 <a class="text-link" href={card.href}>{labels.open}</a>
               </div>
             </article>
@@ -1137,14 +1087,6 @@ const placesMapConfig = {
             )
             .join("")}</dl>`
         : "";
-      const hasEvidence = Number(card.eventCount) + Number(card.archiveCount) + Number(card.pairCount) > 0;
-      const evidenceCounts = hasEvidence
-        ? `<dl class="place-evidence-counts">
-            <div><dt>${escapePlacesHtml(config.labels.events)}</dt><dd>${escapePlacesHtml(card.eventCount)}</dd></div>
-            <div><dt>${escapePlacesHtml(config.labels.archive)}</dt><dd>${escapePlacesHtml(card.archiveCount)}</dd></div>
-            <div><dt>${escapePlacesHtml(config.labels.thenNow)}</dt><dd>${escapePlacesHtml(card.pairCount)}</dd></div>
-          </dl>`
-        : "";
       return `<article
           class="${escapePlacesHtml(card.className)}"
           data-place-card
@@ -1160,7 +1102,6 @@ const placesMapConfig = {
             <h2><a href="${escapePlacesHtml(card.href)}">${escapePlacesHtml(card.name)}</a></h2>
             <p>${escapePlacesHtml(card.summary)}</p>
             ${facts}
-            ${evidenceCounts}
             <a class="text-link" href="${escapePlacesHtml(card.href)}">${escapePlacesHtml(config.labels.open)}</a>
           </div>
         </article>`;

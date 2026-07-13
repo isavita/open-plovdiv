@@ -322,11 +322,11 @@ for (const place of places) {
     }
     const hooks = [
       `data-place-story="${place.id}"`,
-      `data-place-history-atlas="${place.id}"`,
       `data-place-event-browser="${place.id}"`,
       'class="place-story-prose"',
       'class="place-evidence-list"'
     ];
+    assertNotContains(url, html, [`data-place-history-atlas="${place.id}"`]);
     const wikidataHook = `data-place-wikidata="${place.id}"`;
     if (hasWikidataPanel(placeWikidataEnrichment[place.id], lang)) {
       hooks.push(wikidataHook);

@@ -1704,12 +1704,6 @@ const relatedPlaceIds = [
   )
 ];
 const relatedPlaces = relatedPlaceIds.map((placeId) => placeById.get(placeId)).filter(Boolean).slice(0, 8);
-const evidenceSourceIds = new Set([
-  ...place.source_ids,
-  ...relatedEvents.flatMap((event) => event.source_ids),
-  ...archiveItems.flatMap((item) => item.source_ids ?? []),
-  ...pairs.flatMap((pair) => pair.source_ids ?? [])
-]);
 const dateSource = place.date_context?.source_id ? sourceById.get(place.date_context.source_id) : null;
 const creatorSource = place.creator_context?.source_id ? sourceById.get(place.creator_context.source_id) : null;
 const creatorFact = facts.find((fact) => fact.label === labels.architect || fact.label === labels.builder);
@@ -1754,17 +1748,6 @@ const wikidataFactRows = wikidataRecord
       claimRow("street_address", wikidataRecord.claims.street_address)
     ].filter(Boolean)
   : [];
-const publicRecordCount = wikidataRecord ? wikidataFactRows.length + (wikidataDescription ? 1 : 0) + (wikidataArticle ? 1 : 0) : 0;
-const contextNodes = [
-  { key: "events", label: historyAtlasLabels.eventsNode, value: relatedEvents.length, accent: "brand" },
-  { key: "stories", label: historyAtlasLabels.storiesNode, value: relatedStories.length, accent: "gold" },
-  { key: "people", label: historyAtlasLabels.peopleNode, value: linkedPeople.length, accent: "accent" },
-  { key: "organizations", label: historyAtlasLabels.organizationsNode, value: linkedOrganizations.length, accent: "data" },
-  { key: "archive", label: historyAtlasLabels.archiveNode, value: archiveItems.length, accent: "archive" },
-  { key: "then-now", label: historyAtlasLabels.thenNowNode, value: pairs.length, accent: "then-now" },
-  { key: "public-record", label: historyAtlasLabels.publicRecordNode, value: publicRecordCount, accent: "record" },
-  { key: "sources", label: historyAtlasLabels.sourcesNode, value: evidenceSourceIds.size, accent: "sources" }
-].filter((node) => node.value > 0);
 const eventGroups = Object.values(
   relatedEvents.reduce<Record<string, { key: string; label: string; events: typeof relatedEvents }>>((groups, event) => {
     const key = event.category || "historical_event";
@@ -1878,45 +1861,6 @@ const mapHref = place.coordinates
               <p>{localized(place, "current_status")}</p>
               {mapHref && <a class="src-link" href={mapHref} target="_blank" rel="noreferrer">{labels.openMap} ↗</a>}
             </article>
-          </section>
-
-          <section class="place-history-atlas" data-place-history-atlas={place.id}>
-            <div class="place-atlas-head">
-              <p class="eyebrow">{historyAtlasLabels.eyebrow}</p>
-              <h2>{historyAtlasLabels.title}</h2>
-              <p>{historyAtlasLabels.lead(relatedEvents.length, relatedStories.length, evidenceSourceIds.size)}</p>
-            </div>
-            <div class="place-atlas-layout">
-              <div class="place-atlas-thread" aria-label={storyLabels.evidenceTitle}>
-                <div>
-                  <span>{storyLabels.dateLabel}</span>
-                  <strong>{localized(place.date_context, "display") || localized(place, "era")}</strong>
-                </div>
-                <div>
-                  <span>{storyLabels.creatorLabel}</span>
-                  <strong>{creatorDetail}</strong>
-                </div>
-                <div>
-                  <span>{storyLabels.statusLabel}</span>
-                  <strong>{localized(place, "current_status")}</strong>
-                </div>
-              </div>
-              <div class="place-context-web" aria-label={historyAtlasLabels.contextTitle}>
-                <div class="place-context-root">
-                  <span>{historyAtlasLabels.rootNode}</span>
-                  <strong>{localized(place, "name")}</strong>
-                </div>
-                <div class="place-context-branches">
-                  {contextNodes.map((node) => (
-                    <div class={`place-context-node is-${node.accent}`}>
-                      <span>{node.label}</span>
-                      <strong>{node.value}</strong>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <p class="place-atlas-note">{historyAtlasLabels.contextLead}</p>
           </section>
 
           {wikidataRecord && (wikidataDescription || wikidataFactRows.length > 0 || wikidataArticle) && (

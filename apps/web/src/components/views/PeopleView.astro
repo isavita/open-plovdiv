@@ -1092,8 +1092,6 @@ const people = [...historyKnowledgePeople].sort((a, b) =>
 );
 const personById = new Map(people.map((person) => [person.id, person]));
 const uniqueRoles = new Set(people.flatMap((person) => person.roles));
-const relationCount = people.reduce((sum, person) => sum + person.relationships.length, 0);
-const peopleEventCount = historyKnowledgeEvents.filter((event) => event.person_ids.length > 0).length;
 
 const personIndex = people.map((person) => ({
   id: person.id,
@@ -1201,7 +1199,6 @@ const nodeConfig = {
   lang,
   locale,
   api: {
-    events: historyKnowledgeIndex.endpoints.events,
     people: historyKnowledgeIndex.endpoints.people,
     personRelationships: historyKnowledgeIndex.endpoints.person_relationships,
     sources: historyKnowledgeIndex.endpoints.sources
@@ -1223,8 +1220,6 @@ const nodeConfig = {
     source: labels.source,
     profile: labels.profile,
     relationshipSources: labels.relationshipSources,
-    linkedEvents: labels.linkedEvents,
-    relationshipCount: labels.relationshipCount,
     from: labels.from,
     to: labels.to,
     type: labels.type,
@@ -1239,31 +1234,11 @@ const nodeConfig = {
 
 <Layout lang={lang} path="/people" title={labels.title} description={labels.lead}>
   <section class="section hero hero-compact people-hero" data-section="people">
-    <div class="container hero-grid">
-      <div>
-        <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.people} />
-        <p class="eyebrow">{labels.eyebrow}</p>
-        <h1>{labels.title}</h1>
-        <p class="lead">{labels.lead}</p>
-      </div>
-      <dl class="stats-grid people-stats" aria-label={labels.title}>
-        <div class="stat-card">
-          <dt>{labels.people}</dt>
-          <dd>{historyKnowledgeIndex.counts.people}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{labels.roles}</dt>
-          <dd>{uniqueRoles.size}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{labels.links}</dt>
-          <dd>{relationCount}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{labels.events}</dt>
-          <dd>{peopleEventCount}</dd>
-        </div>
-      </dl>
+    <div class="container">
+      <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.people} />
+      <p class="eyebrow">{labels.eyebrow}</p>
+      <h1>{labels.title}</h1>
+      <p class="lead">{labels.lead}</p>
     </div>
   </section>
 
@@ -1517,20 +1492,13 @@ const nodeConfig = {
     async function loadPeopleCards() {
       if (cards.length > 0) return cards;
       const api = config.api ?? {};
-      const [peoplePayload, sourcePayload, eventPayload] = await Promise.all([
+      const [peoplePayload, sourcePayload] = await Promise.all([
         fetchPeopleJson(api.people),
-        fetchPeopleJson(api.sources),
-        fetchPeopleJson(api.events)
+        fetchPeopleJson(api.sources)
       ]);
       const people = collectionFromPayload(peoplePayload, "people");
       const personById = new Map(people.map((person: any) => [person.id, person]));
       const sourceById = new Map(collectionFromPayload(sourcePayload, "sources").map((source: any) => [source.id, source]));
-      const eventCountByPerson = new Map<string, number>();
-      for (const event of collectionFromPayload(eventPayload, "events")) {
-        for (const personId of event.person_ids ?? []) {
-          eventCountByPerson.set(personId, (eventCountByPerson.get(personId) ?? 0) + 1);
-        }
-      }
       cards = people
         .sort((a: any, b: any) =>
           localizedPerson(a, "name").localeCompare(localizedPerson(b, "name"), config.locale)
@@ -1570,8 +1538,6 @@ const nodeConfig = {
             avatar: person.image,
             initials: localizedPerson(person, "name").slice(0, 2),
             roles: (person.roles ?? []).slice(0, 4).map(roleLabel),
-            eventCount: eventCountByPerson.get(person.id) ?? 0,
-            relationshipCount: (person.relationships ?? []).length,
             relationshipPreview,
             primarySource: primarySource
               ? {
@@ -1725,16 +1691,6 @@ const nodeConfig = {
           <p>${escapePeopleHtml(card.summary)}</p>
           ${roles}
           ${relationshipPreview}
-          <dl class="person-metrics">
-            <div>
-              <dt>${escapePeopleHtml(config.labels.linkedEvents)}</dt>
-              <dd>${escapePeopleHtml(card.eventCount)}</dd>
-            </div>
-            <div>
-              <dt>${escapePeopleHtml(config.labels.relationshipCount)}</dt>
-              <dd>${escapePeopleHtml(card.relationshipCount)}</dd>
-            </div>
-          </dl>
           <a class="text-link" href="${escapePeopleHtml(profileHref)}">${escapePeopleHtml(config.labels.profile)}</a>
           ${source}
         </article>`;

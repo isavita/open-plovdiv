@@ -780,8 +780,7 @@ small {
   max-width: 880px;
 }
 
-.hero .stats-grid,
-.hero > .container > .stat-row {
+.hero.review-hero .review-stats {
   display: grid;
 }
 
@@ -1784,7 +1783,6 @@ th {
 }
 
 /* Evidence remains visible; trust should not disappear for visual tidiness. */
-.place-card .place-evidence-counts,
 .place-card .src-link,
 .person-card .src-link {
   display: inline-flex;
@@ -2139,8 +2137,7 @@ a.mayor-frieze-more:focus-visible {
 
 .chart-card,
 .chart-figure,
-.people-graph,
-.place-history-atlas {
+.people-graph {
   background: var(--surface);
   border-color: var(--line);
   border-radius: var(--r);

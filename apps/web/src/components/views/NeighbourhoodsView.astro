@@ -50,10 +50,6 @@ const cards = neighbourhoodHistories.map((neighbourhood) => {
 });
 const sortedCards = [...cards].sort((a, b) => a.name.localeCompare(b.name, locale));
 
-const totalPlaces = new Set(neighbourhoodHistories.flatMap((n) => n.place_ids)).size;
-const totalTimeline = neighbourhoodHistories.reduce((sum, n) => sum + n.timeline.length, 0);
-const totalSources = new Set(neighbourhoodHistories.flatMap((n) => n.sources.map((s) => s.url))).size;
-
 // Map config: era-coloured approximate markers, one per quarter.
 const mapConfig = {
   approxNote: t.approxNote,
@@ -71,31 +67,11 @@ const mapConfig = {
 
 <Layout lang={lang} path="/neighbourhoods" title={t.indexTitle} description={t.indexLead}>
   <section class="section hero hero-compact nb-hero" data-section="neighbourhoods">
-    <div class="container hero-grid">
-      <div>
-        <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.neighbourhoods} />
-        <p class="eyebrow">{t.indexEyebrow}</p>
-        <h1>{t.indexTitle}</h1>
-        <p class="lead">{t.indexLead}</p>
-      </div>
-      <dl class="stats-grid nb-stats" aria-label={t.indexTitle}>
-        <div class="stat-card">
-          <dt>{t.quarters}</dt>
-          <dd>{neighbourhoodHistories.length}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{t.placesStat}</dt>
-          <dd>{totalPlaces}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{t.timelineStat}</dt>
-          <dd>{totalTimeline}</dd>
-        </div>
-        <div class="stat-card">
-          <dt>{t.sourcesStat}</dt>
-          <dd>{totalSources}</dd>
-        </div>
-      </dl>
+    <div class="container">
+      <div class="section-plate compact" aria-hidden="true" set:html={sectionMotifs.neighbourhoods} />
+      <p class="eyebrow">{t.indexEyebrow}</p>
+      <h1>{t.indexTitle}</h1>
+      <p class="lead">{t.indexLead}</p>
     </div>
   </section>
 
@@ -186,14 +162,12 @@ const mapConfig = {
               <h3><a href={href}>{name}</a></h3>
               <p class="nb-card-tagline">{tagline}</p>
               <p class="nb-card-summary">{summary}</p>
-              <p class="nb-card-facts meta">
-                {earliest && <span>{t.firstRecord}: {earliest}</span>}
-                {neighbourhood.place_ids.length > 0 ? (
-                  <span>{neighbourhood.place_ids.length} {t.placesStat}</span>
-                ) : (
-                  <span class="nb-context-badge">{t.contextBadge}</span>
-                )}
-              </p>
+              {(earliest || neighbourhood.place_ids.length === 0) && (
+                <p class="nb-card-facts meta">
+                  {earliest && <span>{t.firstRecord}: {earliest}</span>}
+                  {neighbourhood.place_ids.length === 0 && <span class="nb-context-badge">{t.contextBadge}</span>}
+                </p>
+              )}
               <div class="nb-card-actions">
                 <a class="button" href={href}>{t.openQuarter}</a>
               </div>
@@ -332,18 +306,6 @@ const mapConfig = {
   </script>
 
   <style>
-    .stats-grid.nb-stats {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      max-width: 880px;
-      width: 100%;
-      margin-top: clamp(22px, 5vw, 36px);
-    }
-
-    .nb-stats .stat-card {
-      box-sizing: border-box;
-      min-width: 0;
-    }
-
     .nb-map-card {
       margin: 0 0 20px;
       overflow: hidden;
@@ -636,10 +598,6 @@ const mapConfig = {
     }
 
     @media (min-width: 681px) {
-      .stats-grid.nb-stats {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
       .nb-index-map {
         height: 380px;
       }

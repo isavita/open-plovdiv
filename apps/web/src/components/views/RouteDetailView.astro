@@ -7,7 +7,6 @@ import { sourceTitle } from "@lib/format";
 import { publicThenNowPairs } from "@lib/thenNow";
 import {
   educationResources,
-  historicalArchiveItems,
   historyKnowledgeEvents,
   historyKnowledgePlaces,
   historyKnowledgeSources,
@@ -126,13 +125,11 @@ const stopPlaces = stops.map((entry) => entry.place);
 const routeEvents = (story?.linked_event_ids ?? [])
   .map((id) => eventsById.get(id))
   .filter((event): event is NonNullable<typeof event> => Boolean(event));
-const routeArchiveItems = historicalArchiveItems.filter((item) => routePlaceIds.has(item.place_id));
 const routePairs = publicThenNowPairs(
   thenNowPairs.filter((pair) => routePlaceIds.has(pair.place_id))
 );
-// Everything the sidebar counts (stops, events, then/now) contributes its
-// source ids; archive items carry no source ids — their provenance is the
-// Commons file page linked from the place record itself.
+// Every route stop, linked event and then/now comparison contributes source
+// ids to the readable evidence list below.
 const sourceIds = [
   ...new Set([
     ...(story?.source_ids ?? []),
@@ -478,13 +475,6 @@ const structuredData = {
 
           <section>
             <h3>{t.evidenceTitle}</h3>
-            <dl class="route-evidence-counts">
-              <div><dt>{t.stops}</dt><dd>{stops.length}</dd></div>
-              <div><dt>{t.events}</dt><dd>{routeEvents.length}</dd></div>
-              <div><dt>{t.archive}</dt><dd>{routeArchiveItems.length}</dd></div>
-              <div><dt>{t.thenNow}</dt><dd>{routePairs.length}</dd></div>
-              <div><dt>{t.sources}</dt><dd>{sources.length}</dd></div>
-            </dl>
             <ul class="source-list compact route-source-list">
               {sources.slice(0, 8).map((source) => (
                 <li>
@@ -1091,28 +1081,6 @@ const structuredData = {
     .route-side h3 {
       margin: 0 0 10px;
       line-height: 1.08;
-    }
-
-    .route-evidence-counts {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin: 0 0 12px;
-    }
-
-    .route-evidence-counts dt {
-      color: var(--muted);
-      font-family: var(--font-ui);
-      font-size: 0.76rem;
-      font-weight: 680;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .route-evidence-counts dd {
-      margin: 3px 0 0;
-      font-weight: 800;
-      color: var(--ink);
     }
 
     .route-evidence-list {

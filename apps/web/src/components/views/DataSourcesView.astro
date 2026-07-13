@@ -135,9 +135,7 @@ const groupMeta: Record<SourceGroup, { label: string; blurb: string }> = {
 };
 
 const labels = {
-  statSources: trs("източника в регистъра", "sources in the register", "Quellen im Register", "sources au registre", "fonti nel registro", "kayıtlı kaynak", "fuentes en el registro", "πηγές στο μητρώο", "件の出典", "pinagmulan sa rehistro", "джерел у реєстрі", "источников в реестре"),
-  statHosts: trs("домейна", "domains", "Domains", "domaines", "domini", "alan adı", "dominios", "τομείς", "ドメイン", "domain", "доменів", "доменов"),
-  statChecked: trs("последна проверка", "last checked", "zuletzt geprüft", "dernière vérification", "ultima verifica", "son kontrol", "última comprobación", "τελευταίος έλεγχος", "最終確認", "huling sinuri", "остання перевірка", "последняя проверка"),
+  statChecked: trs("Последна проверка", "Last checked", "Zuletzt geprüft", "Dernière vérification", "Ultima verifica", "Son kontrol", "Última comprobación", "Τελευταίος έλεγχος", "最終確認", "Huling sinuri", "Остання перевірка", "Последняя проверка"),
   usedFor: trs("Използва се за", "Used for", "Verwendet für", "Utilisée pour", "Usata per", "Kullanım amacı", "Se usa para", "Χρησιμοποιείται για", "用途", "Ginagamit para sa", "Використовується для", "Используется для"),
   limits: trs("Ограничения", "Limitations", "Einschränkungen", "Limites", "Limiti", "Sınırlamalar", "Limitaciones", "Περιορισμοί", "限界", "Limitasyon", "Обмеження", "Ограничения"),
   accessed: t.common.accessed
@@ -153,7 +151,6 @@ for (const source of sourceRegistry) {
   grouped.get(group)!.push(source);
 }
 
-const hostCount = new Set(sourceRegistry.map((source) => hostOf(source.url))).size;
 const lastChecked = sourceRegistry
   .map((source) => source.accessed_at)
   .sort()
@@ -168,19 +165,14 @@ const groupOrder: SourceGroup[] = ["official", "media", "open"];
         <p class="eyebrow">{t.sources.eyebrow}</p>
         <h1>{t.sources.title}</h1>
         <p class="lead">{t.sources.lead}</p>
+        {lastChecked && <p class="meta" style="margin-top:12px">{labels.statChecked}: {lastChecked}</p>}
       </div>
       <div class="section-plate" aria-hidden="true" set:html={sectionMotifs["data-sources"]} />
     </div>
   </section>
 
-  <section class="section" style="padding-top:0" data-section="data-sources">
+  <section class="section" data-section="data-sources">
     <div class="container">
-      <div class="stat-row source-stat-row">
-        <div class="stat"><strong>{sourceRegistry.length}</strong><span>{labels.statSources}</span></div>
-        <div class="stat"><strong>{hostCount}</strong><span>{labels.statHosts}</span></div>
-        {lastChecked && <div class="stat"><strong>{lastChecked}</strong><span>{labels.statChecked}</span></div>}
-      </div>
-
       {groupOrder.map((group) => {
         const sources = grouped.get(group)!;
         if (sources.length === 0) return null;
@@ -188,7 +180,7 @@ const groupOrder: SourceGroup[] = ["official", "media", "open"];
           <div class="source-group">
             <div class="section-head">
               <div>
-                <h2>{groupMeta[group].label} <span class="source-group-count">{sources.length}</span></h2>
+                <h2>{groupMeta[group].label}</h2>
                 <p class="meta" style="margin-top:8px;max-width:74ch">{groupMeta[group].blurb}</p>
               </div>
             </div>

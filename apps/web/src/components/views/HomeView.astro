@@ -411,7 +411,7 @@ const mayorPeriods = [
     const terms = mayorTerms.filter(
       (m) => m.year_start >= band.start && (band.end == null || m.year_start <= band.end)
     );
-    return { ...band, count: terms.length, mayor: terms[0] };
+    return { ...band, mayor: terms[0] };
   })
   .filter((band) => band.mayor);
 
@@ -662,7 +662,7 @@ const moreLinks = [
             <h3>{field(band.mayor, "actor", lang)}</h3>
             <p class="mayor-era-years">{termYears(band.mayor)}</p>
             <span class="badge no-dot">
-              {band.end == null ? t.archive.currentMayor : `${band.start}–${band.end} · ${t.mayors.count(band.count)}`}
+              {band.end == null ? t.archive.currentMayor : `${band.start}–${band.end}`}
             </span>
             <span class="arrow" aria-hidden="true">→</span>
           </a>
