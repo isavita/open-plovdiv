@@ -97,6 +97,10 @@ function assertCountAtLeast(label, actual, target) {
   }
 }
 
+function occurrenceCount(value, needle) {
+  return value.split(needle).length - 1;
+}
+
 const visibleWikidataClaimKeys = new Set([
   "instance_of",
   "heritage_designation",
@@ -195,6 +199,11 @@ const corePagePairs = [
     hooks: ['id="mayor-search"', 'id="mayor-config"', "data-mayor-card"]
   },
   {
+    bg: "/neighbourhoods/",
+    en: "/en/neighbourhoods/",
+    hooks: ['id="nb-card-grid"', 'class="nb-card-media"', 'id="nb-index-map"']
+  },
+  {
     bg: "/fix-map/report/",
     en: "/en/fix-map/report/",
     hooks: ['id="report-form"', 'id="rf-photos"', 'id="rf-confirm-personal"']
@@ -208,6 +217,27 @@ for (const pair of corePagePairs) {
   assertAlternateLinks(pair.en, enHtml, absolutePageHref(pair.bg), absolutePageHref(pair.en));
   assertContains(pair.bg, bgHtml, pair.hooks);
   assertContains(pair.en, enHtml, pair.hooks);
+}
+
+const neighbourhoods = readSourceJson("data/curated/neighbourhood-histories.json");
+const neighbourhoodLocalePrefixes = ["", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
+for (const prefix of neighbourhoodLocalePrefixes) {
+  const localeRoot = prefix ? `/${prefix}` : "";
+  const indexUrl = `${localeRoot}/neighbourhoods/`;
+  const indexHtml = readBuilt(indexUrl);
+  const mediaCount = occurrenceCount(indexHtml, 'class="nb-card-media"');
+  if (mediaCount !== neighbourhoods.length) {
+    fail(`${indexUrl} must render ${neighbourhoods.length} photographed cards, got ${mediaCount}`);
+  }
+
+  for (const neighbourhood of neighbourhoods) {
+    const detailUrl = `${localeRoot}/neighbourhoods/${neighbourhood.id}/`;
+    const detailHtml = readBuilt(detailUrl);
+    assertContains(detailUrl, detailHtml, [
+      'class="nb-hero-media"',
+      'class="nb-hero-media-link"'
+    ]);
+  }
 }
 
 const retiredHistoryControls = [

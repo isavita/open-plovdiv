@@ -1844,7 +1844,9 @@ function assertWalkingRoutes(loaded) {
  */
 function assertNeighbourhoodHistories(loaded) {
   const neighbourhoods = loaded.get("neighbourhood histories");
-  const placeIds = new Set(loaded.get("knowledge places").map((record) => record.id));
+  const knowledgePlaces = loaded.get("knowledge places");
+  const placesById = new Map(knowledgePlaces.map((record) => [record.id, record]));
+  const placeIds = new Set(placesById.keys());
   const storyIds = new Set(loaded.get("knowledge story longreads").map((record) => record.id));
   const routeIds = new Set(loaded.get("walking routes").map((record) => record.id));
   const projectDistricts = new Set(loaded.get("projects").map((record) => record.district).filter(Boolean));
@@ -1860,6 +1862,24 @@ function assertNeighbourhoodHistories(loaded) {
     }
     if (neighbourhood.anchor_place_id && !placeIds.has(neighbourhood.anchor_place_id)) {
       throw new Error(`${label} references missing anchor place ${neighbourhood.anchor_place_id}`);
+    }
+
+    const mediaPlaceIds = [
+      ...neighbourhood.place_ids,
+      ...(neighbourhood.anchor_place_id && !neighbourhood.place_ids.includes(neighbourhood.anchor_place_id)
+        ? [neighbourhood.anchor_place_id]
+        : [])
+    ];
+    const leadMedia =
+      neighbourhood.hero_media ??
+      mediaPlaceIds.map((placeId) => placesById.get(placeId)).find((place) => place?.media?.length)?.media[0];
+    if (!leadMedia) {
+      throw new Error(`${label} has no rights-cleared lead photo for its card and detail hero`);
+    }
+    for (const key of ["url", "page_url", "credit", "license", "license_url", "accessed_at"]) {
+      if (!String(leadMedia[key] ?? "").trim()) {
+        throw new Error(`${label} lead photo is missing ${key}`);
+      }
     }
     for (const storyId of neighbourhood.story_ids) {
       if (!storyIds.has(storyId)) throw new Error(`${label} references missing story ${storyId}`);

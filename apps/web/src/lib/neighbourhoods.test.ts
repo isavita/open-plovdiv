@@ -6,11 +6,13 @@ import {
   neighbourhoodAreaOrder,
   neighbourhoodEraColors,
   neighbourhoodHistories,
+  neighbourhoodLeadPhoto,
   neighbourhoodRoutes,
   neighbourhoodsOfPlace
 } from "./neighbourhoods";
 
 const placeIds = new Set(historyKnowledgePlaces.map((place) => place.id));
+const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, place]));
 const storyIds = new Set(storyLongreads.map((story) => story.id));
 
 describe("neighbourhood histories registry", () => {
@@ -53,6 +55,19 @@ describe("neighbourhood histories registry", () => {
         expect(neighbourhoodEraColors[era], `${neighbourhood.id} era ${era}`).toMatch(/^#/);
       }
       expect(neighbourhoodAreaOrder).toContain(neighbourhood.area);
+    }
+  });
+
+  it("provides a rights-cleared lead photo for every quarter", () => {
+    for (const neighbourhood of neighbourhoodHistories) {
+      const media = neighbourhoodLeadPhoto(neighbourhood, placesById);
+      expect(media, `${neighbourhood.id} lead photo`).not.toBeNull();
+      expect(media?.type, `${neighbourhood.id} media type`).toBe("image");
+      expect(media?.url, `${neighbourhood.id} direct image`).toMatch(/^https:\/\//);
+      expect(media?.page_url, `${neighbourhood.id} source page`).toMatch(/^https:\/\//);
+      expect(media?.credit.trim(), `${neighbourhood.id} credit`).not.toBe("");
+      expect(media?.license.trim(), `${neighbourhood.id} licence`).not.toBe("");
+      expect(media?.license_url, `${neighbourhood.id} licence URL`).toMatch(/^https:\/\//);
     }
   });
 

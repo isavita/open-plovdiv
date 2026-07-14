@@ -13,6 +13,7 @@ import {
 } from "@lib/data";
 import {
   neighbourhoodEraColors,
+  neighbourhoodLeadPhoto,
   neighbourhoodRoutes,
   type NeighbourhoodHistory
 } from "@lib/neighbourhoods";
@@ -123,7 +124,7 @@ const thenNowMedia = pairs.slice(0, 2).map((pair) => ({
   nowUrl: pair.now_media.url
 }));
 
-const heroMedia = keyPlaces.find((entry) => entry.media)?.media ?? null;
+const heroMedia = neighbourhoodLeadPhoto(neighbourhood, placesById);
 
 // Map: approximate quarter anchor + key place pins.
 const mapConfig = {
@@ -189,32 +190,65 @@ const structuredData = {
             <p class="nb-tagline">{tagline}</p>
             <p class="lead nb-lead">{summary}</p>
           </div>
-          <aside class="nb-glance" aria-label={t.atGlance}>
-            <h2>{t.atGlance}</h2>
-            <dl>
-              <div>
-                <dt>{t.areaLabel}</dt>
-                <dd>{areaLabels[neighbourhood.area]}</dd>
-              </div>
-              <div>
-                <dt>{t.districtLabel}</dt>
-                <dd>{districtLabel(neighbourhood.district_bg, lang)}</dd>
-              </div>
-              {earliest && (
+          <div class="nb-hero-side">
+            {heroMedia && (
+              <figure class="nb-hero-media">
+                <a
+                  class="nb-hero-media-link"
+                  href={heroMedia.page_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${name} — ${t.sourcesTitle}`}
+                >
+                  <img
+                    src={commonsImageUrl(heroMedia.url, 960)}
+                    alt={heroMedia.scope === "district_context" ? `${t.districtContextPhoto}: ${name}` : name}
+                    width="960"
+                    height="540"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                    crossorigin={isCommonsUploadImageUrl(heroMedia.url) ? "anonymous" : undefined}
+                    referrerpolicy="no-referrer"
+                  />
+                  {heroMedia.scope === "district_context" && (
+                    <span class="nb-hero-media-context">{t.districtContextPhoto}</span>
+                  )}
+                </a>
+                <figcaption>
+                  <a href={heroMedia.page_url} target="_blank" rel="noreferrer">{heroMedia.credit}</a>
+                  <span aria-hidden="true">·</span>
+                  <a href={heroMedia.license_url} target="_blank" rel="noreferrer">{heroMedia.license}</a>
+                </figcaption>
+              </figure>
+            )}
+            <aside class="nb-glance" aria-label={t.atGlance}>
+              <h2>{t.atGlance}</h2>
+              <dl>
                 <div>
-                  <dt>{t.firstRecord}</dt>
-                  <dd>{earliest}</dd>
+                  <dt>{t.areaLabel}</dt>
+                  <dd>{areaLabels[neighbourhood.area]}</dd>
                 </div>
-              )}
-              {keyPlaces.length === 0 && (
-                <div class="nb-glance-context">
-                  <dt>{t.keyPlaces}</dt>
-                  <dd class="nb-glance-context-badge">{t.contextBadge}</dd>
+                <div>
+                  <dt>{t.districtLabel}</dt>
+                  <dd>{districtLabel(neighbourhood.district_bg, lang)}</dd>
                 </div>
-              )}
-            </dl>
-            <p class="meta nb-glance-note">{t.approxNote}</p>
-          </aside>
+                {earliest && (
+                  <div>
+                    <dt>{t.firstRecord}</dt>
+                    <dd>{earliest}</dd>
+                  </div>
+                )}
+                {keyPlaces.length === 0 && (
+                  <div class="nb-glance-context">
+                    <dt>{t.keyPlaces}</dt>
+                    <dd class="nb-glance-context-badge">{t.contextBadge}</dd>
+                  </div>
+                )}
+              </dl>
+              <p class="meta nb-glance-note">{t.approxNote}</p>
+            </aside>
+          </div>
         </div>
       </div>
     </header>
@@ -594,6 +628,79 @@ const structuredData = {
       grid-template-columns: minmax(0, 1fr);
       gap: 22px;
       align-items: start;
+    }
+
+    .nb-hero-side {
+      display: grid;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .nb-hero-media {
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      background: var(--surface);
+      box-shadow: var(--shadow-card);
+    }
+
+    .nb-hero-media-link {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      background: var(--surface-3);
+    }
+
+    .nb-hero-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      filter: none;
+      mix-blend-mode: normal;
+    }
+
+    .nb-hero-media-context {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      max-width: calc(100% - 24px);
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: var(--r-pill);
+      background: rgba(8, 24, 31, 0.78);
+      backdrop-filter: blur(6px);
+      color: #fff;
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 760;
+      letter-spacing: 0.04em;
+      line-height: 1.25;
+      padding: 6px 9px;
+      text-transform: uppercase;
+    }
+
+    .nb-hero-media figcaption {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px 6px;
+      padding: 9px 12px 10px;
+      color: var(--muted);
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      line-height: 1.35;
+    }
+
+    .nb-hero-media figcaption a {
+      color: inherit;
+      text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+      text-underline-offset: 0.16em;
+    }
+
+    .nb-hero-media figcaption a:hover,
+    .nb-hero-media figcaption a:focus-visible {
+      color: var(--brand);
     }
 
     .nb-hero-main h1 {

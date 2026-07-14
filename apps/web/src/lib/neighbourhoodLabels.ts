@@ -466,6 +466,20 @@ const labelTable = {
     "Тоді й тепер",
     "Тогда и сейчас"
   ),
+  districtContextPhoto: tr(
+    "Контекст от по-широкия район",
+    "Wider district context",
+    "Kontext des weiteren Stadtbezirks",
+    "Contexte du quartier élargi",
+    "Contesto del distretto più ampio",
+    "Daha geniş ilçe bağlamı",
+    "Contexto del distrito más amplio",
+    "Ευρύτερο πλαίσιο της περιοχής",
+    "周辺地区の風景",
+    "Mas malawak na tanawin ng distrito",
+    "Контекст ширшого району",
+    "Контекст более широкого района"
+  ),
   contextBadge: tr(
     "Исторически контекст — малко картирани места",
     "Historical context — few mapped stops",

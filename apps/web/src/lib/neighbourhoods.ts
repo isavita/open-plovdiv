@@ -16,6 +16,26 @@ import { walkingRoutes, type WalkingRoute } from "./routes";
 export type NeighbourhoodEraTag = "ottoman" | "revival" | "modern" | "socialist";
 export type NeighbourhoodArea = "centre" | "north" | "east" | "south" | "west";
 
+export type NeighbourhoodPhotoScope = "neighbourhood" | "district_context";
+
+/**
+ * Rights-complete lead photography for quarters that do not yet have a
+ * suitable KnowledgePlace. `district_context` is deliberately explicit: it
+ * prevents a wider district panorama being presented as an exact street view.
+ */
+export type NeighbourhoodPhoto = {
+  type: "image";
+  title: string;
+  url: string;
+  page_url: string;
+  credit: string;
+  license: string;
+  license_url: string;
+  accessed_at: string;
+  source_id?: string;
+  scope?: NeighbourhoodPhotoScope;
+};
+
 export type NeighbourhoodTimelineEntry = {
   year: number;
   display_bg: string;
@@ -76,6 +96,7 @@ export type NeighbourhoodHistory = {
   center: { lat: number; lng: number };
   approximate: true;
   anchor_place_id?: string | null;
+  hero_media?: NeighbourhoodPhoto;
   name_origin_bg: string;
   name_origin_en: string;
   coverage_note_bg?: string;
@@ -123,6 +144,30 @@ export const neighbourhoodAreaOrder: NeighbourhoodArea[] = [
   "south",
   "west"
 ];
+
+/**
+ * One shared image-selection rule for index cards, detail heroes and tests.
+ * Directly curated imagery wins; otherwise retain the established first-place
+ * ordering and finally consider the optional anchor place.
+ */
+export function neighbourhoodLeadPhoto<T extends { media: NeighbourhoodPhoto[] }>(
+  neighbourhood: NeighbourhoodHistory,
+  placesById: ReadonlyMap<string, T>
+): NeighbourhoodPhoto | null {
+  if (neighbourhood.hero_media) return neighbourhood.hero_media;
+
+  const ids = [
+    ...neighbourhood.place_ids,
+    ...(neighbourhood.anchor_place_id && !neighbourhood.place_ids.includes(neighbourhood.anchor_place_id)
+      ? [neighbourhood.anchor_place_id]
+      : [])
+  ];
+  for (const id of ids) {
+    const media = placesById.get(id)?.media[0];
+    if (media) return { ...media, scope: media.scope ?? "neighbourhood" };
+  }
+  return null;
+}
 
 /**
  * Walking routes connected to a neighbourhood: the explicitly curated

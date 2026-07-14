@@ -127,6 +127,64 @@
       ],
       "pattern": "^place-[0-9a-z-]+$"
     },
+    "hero_media": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title",
+        "url",
+        "page_url",
+        "credit",
+        "license",
+        "license_url",
+        "accessed_at",
+        "scope"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "image"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "page_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "credit": {
+          "type": "string",
+          "minLength": 2
+        },
+        "license": {
+          "type": "string",
+          "minLength": 2
+        },
+        "license_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "accessed_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "neighbourhood",
+            "district_context"
+          ]
+        }
+      }
+    },
     "name_origin_bg": {
       "type": "string",
       "minLength": 20

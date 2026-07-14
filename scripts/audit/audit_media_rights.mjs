@@ -73,6 +73,7 @@ function collectRecords() {
   const archiveItems = readJson("data/curated/historical-archive-items.json");
   const thenNowPairs = readJson("data/curated/then-now-pairs.json");
   const storyGalleries = readJson("data/curated/story-galleries.json");
+  const neighbourhoods = readJson("data/curated/neighbourhood-histories.json");
   const cityArchive = readJson("data/curated/city-archive.json");
   const mayorCredits = readJson("data/curated/mayor-image-credits.json");
 
@@ -98,6 +99,12 @@ function collectRecords() {
           addMediaRecord(records, `story-gallery:${profile.id}:${section.section_index}`, item.media);
         }
       }
+    }
+  }
+
+  for (const neighbourhood of neighbourhoods) {
+    if (neighbourhood.hero_media) {
+      addMediaRecord(records, `neighbourhood:${neighbourhood.id}:hero`, neighbourhood.hero_media);
     }
   }
 
