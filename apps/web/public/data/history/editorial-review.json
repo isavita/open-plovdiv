@@ -65190,6 +65190,29 @@
           "claim_ru": "Координаты Марково-тепе."
         },
         {
+          "source_id": "source-wikimedia-commons-view-from-bunardzhik-to-mall-markovo-tepe-1-jpg",
+          "title_bg": "Wikimedia Commons — View from Bunardzhik to mall Markovo tepe 1.jpg",
+          "title_en": "Wikimedia Commons — View from Bunardzhik to mall Markovo tepe 1.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_Bunardzhik_to_mall_Markovo_tepe_1.jpg",
+          "accessed_at": "2026-07-14",
+          "license_status": "open_license",
+          "license_label": "Public domain",
+          "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "evidence_type": "media_reference",
+          "claim_bg": "Медия и лиценз за Марково тепе: View from Bunardzhik to mall Markovo tepe 1.jpg.",
+          "claim_en": "Media and license for Markovo tepe: View from Bunardzhik to mall Markovo tepe 1.jpg.",
+          "claim_de": "Medien und Lizenz für Markovo tepe: View from Bunardzhik to mall Markovo tepe 1.jpg.",
+          "claim_fr": "Média et licence pour Markovo tepe : View from Bunardzhik to mall Markovo tepe 1.jpg.",
+          "claim_it": "Media e licenza per Markovo tepe: View from Bunardzhik to mall Markovo tepe 1.jpg.",
+          "claim_tr": "Markovo tepe için medya ve lisans: View from Bunardzhik to mall Markovo tepe 1.jpg.",
+          "claim_es": "Medios y licencia para Markovo tepe: View from Bunardzhik to mall Markovo tepe 1.jpg.",
+          "claim_el": "Μέσα και άδεια για το Markovo tepe: View from Bunardzhik to mall Markovo tepe 1.jpg.",
+          "claim_ja": "Markovo tepe のメディアとライセンス: View from Bunardzhik to mall Markovo tepe 1.jpg。",
+          "claim_tl": "Media at lisensya para sa Markovo tepe: View from Bunardzhik to mall Markovo tepe 1.jpg.",
+          "claim_uk": "Носії та ліцензія на Марково тепе: View from Bunardzhik to mall Markovo tepe 1.jpg.",
+          "claim_ru": "Медиа и лицензия: Марково-тепе — View from Bunardzhik to mall Markovo tepe 1.jpg."
+        },
+        {
           "source_id": "source-wikimedia-commons-bulgaria-fortepan-8381-jpg",
           "title_bg": "Wikimedia Commons — Bulgaria Fortepan 8381.jpg",
           "title_en": "Wikimedia Commons — Bulgaria Fortepan 8381.jpg",
@@ -65226,17 +65249,19 @@
       "source_ids": [
         "source-wikipedia-markovo-tepe",
         "source-wikidata-markovo-tepe-coordinates",
+        "source-wikimedia-commons-view-from-bunardzhik-to-mall-markovo-tepe-1-jpg",
         "source-wikimedia-commons-bulgaria-fortepan-8381-jpg"
       ],
       "source_urls": [
         "https://en.wikipedia.org/wiki/Markovo_Tepe",
         "https://www.wikidata.org/wiki/Q6771348",
+        "https://commons.wikimedia.org/wiki/File:View_from_Bunardzhik_to_mall_Markovo_tepe_1.jpg",
         "https://commons.wikimedia.org/wiki/File:Bulgaria_Fortepan_8381.jpg"
       ],
       "license_statuses": [
         "open_license"
       ],
-      "source_count": 3,
+      "source_count": 4,
       "has_license_or_reuse_status": true,
       "blockers": [
         "needs_independent_editorial_signoff"
