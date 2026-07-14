@@ -4,6 +4,7 @@ import { roleLabels as sharedRoleLabels } from "@i18n/ui";
 import { localeForLang, localizePath, type Lang } from "@i18n/utils";
 import { knownHistoryLabel } from "@lib/format";
 import { bustGlyph } from "@lib/motifs";
+import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import {
   historyKnowledgeEvents,
   historyKnowledgePeople,
@@ -638,6 +639,11 @@ const personById = new Map(historyKnowledgePeople.map((item) => [item.id, item])
 const group = primaryGroup(person);
 const roleList = person.roles.map(roleLabel).join(" · ");
 const imageCredit = person.image_credit ?? "";
+const imagePageUrl = person.image_page_url ?? "";
+const imageLicense = person.image_license ?? "";
+const imageLicenseUrl = person.image_license_url ?? "";
+const portraitImage = person.image ?? "";
+const imageIsCommons = isCommonsUploadImageUrl(portraitImage);
 const wikidataHref = person.wikidata_id ? `https://www.wikidata.org/wiki/${person.wikidata_id}` : "";
 
 const eventIds = new Set([
@@ -704,15 +710,44 @@ const sourceRecords = [...sourceIds]
           <p class="lead">{localized(person, "summary")}</p>
         </div>
         <figure class="person-profile-media">
-          {person.image ? (
-            <img src={person.image} alt={localized(person, "name")} loading="eager" decoding="async" />
+          {portraitImage ? (
+            <img
+              src={imageIsCommons ? commonsImageUrl(portraitImage, 500) : portraitImage}
+              srcset={imageIsCommons ? `${commonsImageUrl(portraitImage, 500)} 500w, ${commonsImageUrl(portraitImage, 960)} 960w` : undefined}
+              sizes="(max-width: 760px) min(72vw, 280px), 280px"
+              alt={localized(person, "name")}
+              loading="eager"
+              decoding="async"
+              crossorigin={imageIsCommons ? "anonymous" : undefined}
+              referrerpolicy={imageIsCommons ? "no-referrer" : undefined}
+            />
           ) : (
             <div class="person-profile-initials bust-fallback" aria-hidden="true">
               <Fragment set:html={bustGlyph} />
               <span class="bust-mono">{localized(person, "name").slice(0, 2)}</span>
             </div>
           )}
-          {imageCredit && <figcaption>{labels.imageCredit}: {imageCredit}</figcaption>}
+          {(imageCredit || imagePageUrl || imageLicense) && (
+            <figcaption data-person-portrait-source>
+              {imageCredit && <span>{labels.imageCredit}: {imageCredit}</span>}
+              {imagePageUrl && (
+                <span>
+                  {imageCredit && " · "}
+                  <a href={imagePageUrl} target="_blank" rel="noreferrer">{labels.source}</a>
+                </span>
+              )}
+              {imageLicense && (
+                <span>
+                  {(imageCredit || imagePageUrl) && " · "}
+                  {imageLicenseUrl ? (
+                    <a href={imageLicenseUrl} target="_blank" rel="noreferrer">{imageLicense}</a>
+                  ) : (
+                    <Fragment>{labels.license}: {imageLicense}</Fragment>
+                  )}
+                </span>
+              )}
+            </figcaption>
+          )}
         </figure>
       </div>
     </header>

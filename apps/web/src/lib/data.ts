@@ -346,6 +346,10 @@ export type KnowledgePerson = {
   death_year: number | null;
   image: string | null;
   image_credit: string | null;
+  image_page_url: string | null;
+  image_license: string | null;
+  image_license_url: string | null;
+  image_accessed_at: string | null;
   term_events: string[];
   event_ids: string[];
   place_ids: string[];

@@ -5428,8 +5428,248 @@ html:not(.js) .story-artwork [data-story-gallery-image] {
   align-items: stretch;
 }
 
+.people-featured {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--brand) 8%, transparent), transparent 54%),
+    var(--surface-2);
+  border-block: 1px solid var(--line);
+}
+
+.people-featured-head .meta {
+  margin: 8px 0 0;
+  max-width: 72ch;
+}
+
+.featured-people {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.featured-person {
+  --person-color: var(--brand);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--person-color);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.featured-person-media {
+  background: var(--surface-3);
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.featured-person-media img {
+  aspect-ratio: 4 / 5;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 24%;
+  transition: transform 240ms ease;
+  width: 100%;
+}
+
+.featured-person:hover .featured-person-media img {
+  transform: scale(1.025);
+}
+
+.featured-person-group {
+  background: color-mix(in srgb, var(--surface) 91%, transparent);
+  border: 1px solid color-mix(in srgb, var(--person-color) 34%, var(--line));
+  border-radius: var(--r-pill);
+  bottom: 10px;
+  color: var(--person-color);
+  font-size: 0.68rem;
+  font-weight: 850;
+  left: 10px;
+  letter-spacing: 0.08em;
+  padding: 5px 9px;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.featured-person-copy {
+  display: grid;
+  gap: 9px;
+  padding: 15px 16px 16px;
+}
+
+.featured-person-copy h3 {
+  font-size: clamp(1.08rem, 1.7vw, 1.34rem);
+  line-height: 1.12;
+  margin: 0;
+}
+
+.featured-person-copy h3 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.featured-person-copy > p {
+  color: var(--ink-2);
+  display: -webkit-box;
+  font-size: 0.88rem;
+  line-height: 1.48;
+  margin: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.featured-person-footer {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.featured-person-credit {
+  color: var(--muted);
+  font-size: 0.68rem;
+  text-decoration: none;
+}
+
+.people-connections {
+  background: var(--bg);
+}
+
+.relationship-preview {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.relationship-preview-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 13px;
+  min-width: 0;
+  padding: 15px;
+}
+
+.relationship-preview-card.relationship-preview-family {
+  border-top: 4px solid var(--accent);
+}
+
+.relationship-preview-card.relationship-preview-succession {
+  border-top: 4px solid var(--data-places);
+}
+
+.relationship-preview-meta {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-size: 0.7rem;
+  font-weight: 850;
+  justify-content: space-between;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.relationship-preview-meta time {
+  color: var(--brand-strong);
+}
+
+.relationship-preview-people {
+  align-items: start;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) minmax(64px, 0.68fr) minmax(0, 1fr);
+}
+
+.relationship-preview-person {
+  align-items: center;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  text-align: center;
+  text-decoration: none;
+}
+
+.relationship-preview-person img,
+.relationship-preview-fallback {
+  aspect-ratio: 1;
+  border: 2px solid color-mix(in srgb, var(--person-color, var(--brand)) 45%, var(--line));
+  border-radius: 50%;
+  height: 68px;
+  object-fit: cover;
+  object-position: 50% 24%;
+  width: 68px;
+}
+
+.relationship-preview-fallback {
+  align-items: center;
+  background: color-mix(in srgb, var(--person-color, var(--brand)) 12%, var(--surface));
+  color: var(--person-color, var(--brand));
+  display: inline-flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.relationship-preview-fallback svg {
+  height: 50px;
+  opacity: 0.82;
+  width: 50px;
+}
+
+.relationship-preview-person strong {
+  display: -webkit-box;
+  font-size: 0.82rem;
+  line-height: 1.28;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.relationship-preview-link {
+  align-items: center;
+  align-self: center;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.64rem;
+  gap: 2px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.relationship-preview-link i {
+  color: var(--accent-strong);
+  font-size: 1.2rem;
+  font-style: normal;
+}
+
+.relationship-preview-source {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  display: block;
+  font-size: 0.7rem;
+  overflow: hidden;
+  padding-top: 9px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .people-toolbar {
   margin-bottom: 18px;
+}
+
+.people-catalog-controls {
+  margin-bottom: 22px;
 }
 
 .people-group-governance { --person-color: #15657f; }
@@ -5440,26 +5680,64 @@ html:not(.js) .story-artwork [data-story-gallery-image] {
 .people-group-civic { --person-color: #7d8471; }
 
 .relationship-ledger {
-  display: grid;
-  gap: 14px;
-  margin-top: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  margin-top: 18px;
+  overflow: hidden;
 }
 
 .relationship-ledger-head {
-  align-items: end;
+  align-items: center;
+  cursor: pointer;
   display: flex;
   gap: 16px;
   justify-content: space-between;
+  list-style: none;
+  min-height: 64px;
+  padding: 12px 16px;
 }
 
-.relationship-ledger-head h3 {
-  font-size: clamp(1.08rem, 2vw, 1.34rem);
-  margin: 0 0 6px;
+.relationship-ledger-head::-webkit-details-marker {
+  display: none;
+}
+
+.relationship-ledger-head > span:first-child {
+  display: grid;
+  gap: 3px;
+}
+
+.relationship-ledger-head strong {
+  color: var(--ink);
+  font-size: 0.96rem;
+}
+
+.relationship-ledger-head small {
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.4;
+  max-width: 78ch;
+}
+
+.relationship-ledger-head::after {
+  color: var(--brand);
+  content: "+";
+  flex: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.relationship-ledger[open] .relationship-ledger-head::after {
+  content: "−";
 }
 
 .relationship-list {
+  border-top: 1px solid var(--line);
   display: grid;
   gap: 10px;
+  max-height: min(760px, 72vh);
+  overflow: auto;
+  padding: 14px;
 }
 
 .relationship-row {
@@ -5516,7 +5794,7 @@ html:not(.js) .story-artwork [data-story-gallery-image] {
 .person-grid {
   display: grid;
   gap: 18px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .person-card {
@@ -5556,12 +5834,14 @@ html:not(.js) .story-artwork [data-story-gallery-image] {
 }
 
 .person-avatar {
-  aspect-ratio: 1;
-  border-radius: 50%;
+  aspect-ratio: 4 / 5;
+  border: 1px solid color-mix(in srgb, var(--person-color, var(--brand)) 32%, var(--line));
+  border-radius: calc(var(--r) - 5px);
   flex: none;
-  height: 52px;
+  height: 78px;
   object-fit: cover;
-  width: 52px;
+  object-position: 50% 22%;
+  width: 64px;
 }
 
 .person-avatar-fallback {
@@ -5629,20 +5909,24 @@ html:not(.js) .story-artwork [data-story-gallery-image] {
 
 .person-profile-media img,
 .person-profile-initials {
-  aspect-ratio: 1;
-  border-radius: 50%;
   box-shadow: var(--shadow);
   width: min(100%, 280px);
 }
 
 .person-profile-media img {
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
   object-fit: cover;
+  object-position: 50% 18%;
 }
 
 .person-profile-initials {
+  aspect-ratio: 1;
   align-items: center;
   background: color-mix(in srgb, var(--person-color, var(--brand)) 16%, var(--surface));
   border: 1px solid color-mix(in srgb, var(--person-color, var(--brand)) 36%, var(--line));
+  border-radius: 50%;
   color: var(--person-color, var(--brand));
   display: inline-flex;
   font-family: var(--font-display);
@@ -6392,6 +6676,16 @@ html:not(.js) .story-artwork [data-story-gallery-image] {
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 }
 
+@media (max-width: 1100px) {
+  .featured-people {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .relationship-preview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 760px) {
   .education-toolbar,
   .stories-toolbar,
@@ -6500,6 +6794,56 @@ html:not(.js) .story-artwork [data-story-gallery-image] {
     grid-template-columns: 1fr;
   }
 
+  .featured-people {
+    display: grid;
+    gap: 12px;
+    grid-auto-columns: min(76vw, 282px);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    margin-inline: calc(var(--gutter) * -1);
+    overflow-x: auto;
+    padding: 0 var(--gutter) 10px;
+    scroll-padding-inline: var(--gutter);
+    scroll-snap-type: x mandatory;
+  }
+
+  .featured-person {
+    scroll-snap-align: start;
+  }
+
+  .featured-person-media img {
+    aspect-ratio: 4 / 4.25;
+  }
+
+  .relationship-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .relationship-preview-card:nth-child(n + 5) {
+    display: none;
+  }
+
+  .relationship-preview-person img,
+  .relationship-preview-fallback {
+    height: 76px;
+    width: 76px;
+  }
+
+  .people-catalog-controls .people-legend {
+    flex-wrap: nowrap;
+    margin-inline: calc(var(--gutter) * -1);
+    overflow-x: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .person-card {
+    padding: 16px;
+  }
+
+  .person-card header {
+    align-items: flex-start;
+  }
+
   .person-profile-media img,
   .person-profile-initials {
     max-width: 220px;
@@ -6509,6 +6853,14 @@ html:not(.js) .story-artwork [data-story-gallery-image] {
   .relationship-row {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .relationship-ledger-head {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .relationship-ledger-head > .meta {
+    display: none;
   }
 
   .place-grid,
@@ -8392,20 +8744,39 @@ details[open] > .htree-event-sum .htree-caret::after {
 
 /* ---- People relationship graph (on-demand Cytoscape panel) ----------- */
 .graph-opener {
+  align-items: center;
+  background:
+    linear-gradient(115deg, color-mix(in srgb, var(--brand) 18%, transparent), transparent 58%),
+    var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 18px;
+  gap: 16px 24px;
+  justify-content: space-between;
   margin-top: 18px;
+  padding: 18px;
+}
+.graph-opener > div {
+  display: grid;
+  gap: 5px;
+  max-width: 72ch;
+}
+.graph-opener .eyebrow {
+  margin: 0;
 }
 .graph-opener .meta {
   margin: 0;
-  max-width: 60ch;
-  font-size: 0.85rem;
+  max-width: 68ch;
+  font-size: 0.86rem;
+}
+.graph-opener .button {
+  flex: none;
+  gap: 10px;
 }
 
 .graph-panel {
-  margin-top: 16px;
+  margin-top: 18px;
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   background: var(--surface);
@@ -8418,13 +8789,18 @@ details[open] > .htree-event-sum .htree-caret::after {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px 16px;
+  min-height: 58px;
+  padding: 10px 16px;
   border-bottom: 1px solid var(--line);
   background: var(--surface-2);
 }
 .graph-panel-head h3 {
   margin: 0;
   font-size: 1rem;
+}
+
+.graph-panel-head .link-button {
+  min-height: 44px;
 }
 
 /* Graph toolbar: edge filters, notable-path group chips, zoom controls. */
@@ -8459,10 +8835,15 @@ details[open] > .htree-event-sum .htree-caret::after {
 }
 
 .graph-zoomgroup .icon-btn {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   font-size: 1.2rem;
   line-height: 1;
+}
+
+.graph-zoomgroup .link-button {
+  min-height: 44px;
+  padding-inline: 10px;
 }
 
 .graph-toggle,
@@ -8470,8 +8851,8 @@ details[open] > .htree-event-sum .htree-caret::after {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 4px 11px;
-  min-height: 30px;
+  padding: 7px 12px;
+  min-height: 44px;
   border-radius: var(--r-pill);
   border: 1px solid var(--line-strong);
   background: var(--surface);
@@ -8530,15 +8911,18 @@ details[open] > .htree-event-sum .htree-caret::after {
 .graph-stage {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 270px;
+  grid-template-columns: minmax(0, 1fr) 300px;
 }
 
 .people-graph {
   width: 100%;
-  height: clamp(380px, 64vh, 580px);
+  height: clamp(420px, 66vh, 620px);
   background:
-    radial-gradient(circle at 30% 18%, color-mix(in srgb, var(--gold-soft) 26%, transparent), transparent 62%),
+    linear-gradient(color-mix(in srgb, var(--line) 35%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--line) 35%, transparent) 1px, transparent 1px),
+    radial-gradient(circle at 30% 18%, color-mix(in srgb, var(--gold-soft) 20%, transparent), transparent 58%),
     var(--bg-tint);
+  background-size: 32px 32px, 32px 32px, auto, auto;
   position: relative;
   touch-action: none;
 }
@@ -8548,14 +8932,14 @@ details[open] > .htree-event-sum .htree-caret::after {
   background: var(--surface);
   padding: 16px;
   overflow-y: auto;
-  max-height: clamp(380px, 64vh, 580px);
+  max-height: clamp(420px, 66vh, 620px);
 }
 
 .graph-detail-hint {
   position: absolute;
   left: 16px;
   bottom: 14px;
-  right: 286px;
+  right: 316px;
   margin: 0;
   padding: 7px 12px;
   border-radius: var(--r-pill);
@@ -8565,7 +8949,19 @@ details[open] > .htree-event-sum .htree-caret::after {
   font-size: 0.78rem;
   pointer-events: none;
   width: max-content;
-  max-width: calc(100% - 302px);
+  max-width: calc(100% - 332px);
+}
+
+.graph-detail-portrait {
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--r) - 5px);
+  display: block;
+  height: 122px;
+  margin-bottom: 12px;
+  object-fit: cover;
+  object-position: 50% 22%;
+  width: 98px;
 }
 
 .graph-detail-group {
@@ -8649,19 +9045,13 @@ details[open] > .htree-event-sum .htree-caret::after {
     grid-template-columns: 1fr;
   }
   .people-graph {
-    height: clamp(300px, 52vh, 440px);
+    height: clamp(390px, 58vh, 500px);
   }
-  /* Detail panel becomes a bottom sheet over the canvas. */
   .graph-detail {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
     border-left: none;
     border-top: 1px solid var(--line-strong);
-    border-radius: var(--r-lg) var(--r-lg) 0 0;
-    max-height: 62%;
-    box-shadow: 0 -8px 24px rgb(0 0 0 / 18%);
+    max-height: none;
+    position: static;
   }
   .graph-detail-hint {
     right: 16px;

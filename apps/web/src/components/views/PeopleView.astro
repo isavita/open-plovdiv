@@ -10,6 +10,7 @@ import {
   historyKnowledgeSources,
   type KnowledgePerson
 } from "@lib/data";
+import { commonsImageUrl } from "@lib/commons";
 import { bustGlyph, sectionMotifs } from "@lib/motifs";
 import { siteSearchUi } from "@lib/siteSearchI18n";
 
@@ -817,6 +818,81 @@ const graphLabels = ({
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
+const editorialLabels = ({
+  bg: {
+    featuredNav: "Личности",
+    featuredTitle: "Лица, които разказват града",
+    featuredLead: "Разпознаваеми пловдивчани от културата, спорта, науката и обществения живот — с проверени портрети и профили.",
+    imageSource: "Източник на снимката"
+  },
+  en: {
+    featuredNav: "Featured",
+    featuredTitle: "Faces that tell the city’s story",
+    featuredLead: "Recognisable Plovdivians from culture, sport, science and public life — with verified portraits and profiles.",
+    imageSource: "Image source"
+  },
+  de: {
+    featuredNav: "Porträts",
+    featuredTitle: "Gesichter, die die Stadt erzählen",
+    featuredLead: "Bekannte Plovdiver aus Kultur, Sport, Wissenschaft und öffentlichem Leben — mit geprüften Porträts und Profilen.",
+    imageSource: "Bildquelle"
+  },
+  fr: {
+    featuredNav: "Portraits",
+    featuredTitle: "Des visages qui racontent la ville",
+    featuredLead: "Des Plovdiviens connus de la culture, du sport, des sciences et de la vie publique — avec portraits et profils vérifiés.",
+    imageSource: "Source de l’image"
+  },
+  it: {
+    featuredNav: "Ritratti",
+    featuredTitle: "Volti che raccontano la città",
+    featuredLead: "Plovdiviani noti della cultura, dello sport, della scienza e della vita pubblica — con ritratti e profili verificati.",
+    imageSource: "Fonte dell’immagine"
+  },
+  tr: {
+    featuredNav: "Portreler",
+    featuredTitle: "Şehrin hikâyesini anlatan yüzler",
+    featuredLead: "Kültür, spor, bilim ve kamusal yaşamdan tanınmış Filibeliler — doğrulanmış portreler ve profillerle.",
+    imageSource: "Görsel kaynağı"
+  },
+  es: {
+    featuredNav: "Retratos",
+    featuredTitle: "Rostros que cuentan la ciudad",
+    featuredLead: "Personas conocidas de Plovdiv en la cultura, el deporte, la ciencia y la vida pública — con retratos y perfiles verificados.",
+    imageSource: "Fuente de la imagen"
+  },
+  el: {
+    featuredNav: "Πρόσωπα",
+    featuredTitle: "Πρόσωπα που αφηγούνται την πόλη",
+    featuredLead: "Αναγνωρίσιμοι άνθρωποι του Πλόβντιβ από τον πολιτισμό, τον αθλητισμό, την επιστήμη και τη δημόσια ζωή — με επαληθευμένα πορτρέτα και προφίλ.",
+    imageSource: "Πηγή εικόνας"
+  },
+  ja: {
+    featuredNav: "人物",
+    featuredTitle: "街の物語を伝える顔",
+    featuredLead: "文化、スポーツ、科学、公共の分野で知られるプロヴディフゆかりの人物を、確認済みの肖像とプロフィールで紹介します。",
+    imageSource: "画像出典"
+  },
+  tl: {
+    featuredNav: "Mga Tampok",
+    featuredTitle: "Mga mukhang nagsasalaysay ng lungsod",
+    featuredLead: "Mga kilalang taga-Plovdiv mula sa kultura, isports, agham at buhay-publiko — may beripikadong larawan at profile.",
+    imageSource: "Pinagmulan ng larawan"
+  },
+  uk: {
+    featuredNav: "Постаті",
+    featuredTitle: "Обличчя, що розповідають історію міста",
+    featuredLead: "Відомі пловдивці зі сфер культури, спорту, науки та громадського життя — з перевіреними портретами й профілями.",
+    imageSource: "Джерело зображення"
+  },
+  ru: {
+    featuredNav: "Личности",
+    featuredTitle: "Лица, рассказывающие историю города",
+    featuredLead: "Известные пловдивцы из культуры, спорта, науки и общественной жизни — с проверенными портретами и профилями.",
+    imageSource: "Источник изображения"
+  }
+} satisfies Record<Lang, Record<string, string>>)[lang];
+
 const groupLabels = ({
   bg: {
     governance: "Управление",
@@ -1092,6 +1168,24 @@ const people = [...historyKnowledgePeople].sort((a, b) =>
 );
 const personById = new Map(people.map((person) => [person.id, person]));
 const uniqueRoles = new Set(people.flatMap((person) => person.roles));
+const languagePrefix = lang === "bg" ? "" : `/${lang}`;
+const featuredPortraitIds = [
+  "person-hristo-stoichkov-q187125",
+  "person-sonya-yoncheva-q3490781",
+  "person-boris-christoff-q362106",
+  "person-yordan-yovchev-q887271",
+  "person-petar-stoyanov-q81215",
+  "person-hristo-bonev-q706715",
+  "person-tsanko-lavrenov-q7849377",
+  "person-stanislav-dospevski-q7598986",
+  "person-solomon-passy-q1371792",
+  "person-christo-grozev-q104420787",
+  "person-moni-ovadia-q741709",
+  "person-maria-petrova-q2629523"
+];
+const featuredPeople = featuredPortraitIds
+  .map((id) => personById.get(id))
+  .filter((person): person is KnowledgePerson => Boolean(person?.image));
 
 const personIndex = people.map((person) => ({
   id: person.id,
@@ -1155,6 +1249,22 @@ for (const person of people) {
   }
 }
 const relationEdges = [...edgeByKey.values()];
+const graphPersonIds = new Set(relationEdges.flatMap((edge) => [edge.from, edge.to]));
+const graphGroupCounts = new Map<string, number>();
+for (const id of graphPersonIds) {
+  const person = personById.get(id);
+  if (!person) continue;
+  const group = roleGroups[person.roles?.[0] ?? ""] ?? "civic";
+  graphGroupCounts.set(group, (graphGroupCounts.get(group) ?? 0) + 1);
+}
+const graphGroupLegend = groupOrder
+  .map((group) => ({
+    group,
+    label: groupLabels[group],
+    color: groupColors[group],
+    count: graphGroupCounts.get(group) ?? 0
+  }))
+  .filter((item) => item.count > 0);
 const relationshipRows = relationEdges
   .map((edge, index) => {
     const from = personById.get(edge.from);
@@ -1189,6 +1299,10 @@ const relationshipRows = relationEdges
   })
   .filter((row) => row.from && row.to)
   .sort((a, b) => a.year - b.year || localized(a.from!, "name").localeCompare(localized(b.from!, "name"), locale));
+const relationshipPreviewRows = [
+  ...relationshipRows.filter((row) => row.edge.category === "family").slice(0, 3),
+  ...relationshipRows.filter((row) => row.edge.category === "succession").slice(-3).reverse()
+];
 
 const centuries = [...new Set(personIndex.map((person) => person.century))].sort((a, b) => a - b);
 const clientRoleLabels = Object.fromEntries([...uniqueRoles].map((role) => [role, roleLabel(role)]));
@@ -1201,7 +1315,8 @@ const nodeConfig = {
   api: {
     people: historyKnowledgeIndex.endpoints.people,
     personRelationships: historyKnowledgeIndex.endpoints.person_relationships,
-    sources: historyKnowledgeIndex.endpoints.sources
+    sources: historyKnowledgeIndex.endpoints.sources,
+    events: historyKnowledgeIndex.endpoints.events
   },
   groupLabels,
   groupColors,
@@ -1242,8 +1357,8 @@ const nodeConfig = {
     </div>
   </section>
 
-    <SectionNav
-    items={lang === "bg"
+  <SectionNav
+    items={[{ id: "people-featured", label: editorialLabels.featuredNav }, ...(lang === "bg"
       ? [{ id: "people-connections", label: "Връзки" }, { id: "people-catalog", label: "Каталог" }]
       : lang === "de"
         ? [{ id: "people-connections", label: "Verbindungen" }, { id: "people-catalog", label: "Katalog" }]
@@ -1263,11 +1378,65 @@ const nodeConfig = {
         ? [{ id: "people-connections", label: "Mga Koneksyon" }, { id: "people-catalog", label: "Katalogo" }]
         : lang === "uk"
         ? [{ id: "people-connections", label: "Зв'язки" }, { id: "people-catalog", label: "Каталог" }]
-        : lang === "ru"
+      : lang === "ru"
         ? [{ id: "people-connections", label: "Связи" }, { id: "people-catalog", label: "Каталог" }]
-        : [{ id: "people-connections", label: "Connections" }, { id: "people-catalog", label: "Catalog" }]}
+        : [{ id: "people-connections", label: "Connections" }, { id: "people-catalog", label: "Catalog" }])]}
     label={lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : lang === "tl" ? "Mga Seksyon ng Pahina" : lang === "uk" ? "Розділи сторінки" : lang === "ru" ? "Разделы страницы" : "Page sections"}
   />
+
+  {featuredPeople.length > 0 && (
+    <section class="section people-featured" id="people-featured" data-subnav-target>
+      <div class="container">
+        <div class="section-head people-featured-head">
+          <div>
+            <p class="eyebrow">{labels.eyebrow}</p>
+            <h2>{editorialLabels.featuredTitle}</h2>
+            <p class="meta">{editorialLabels.featuredLead}</p>
+          </div>
+        </div>
+        <div class="featured-people" id="featured-people" aria-label={editorialLabels.featuredTitle}>
+          {featuredPeople.map((person, index) => {
+            const media = person as KnowledgePerson & {
+              image_page_url?: string | null;
+              image_license?: string | null;
+            };
+            const group = roleGroups[person.roles?.[0] ?? ""] ?? "civic";
+            return (
+              <article class={`featured-person people-group-${group}`}>
+                <a class="featured-person-media" href={`${languagePrefix}/people/${person.id}/`}>
+                  <img
+                    src={commonsImageUrl(person.image!, 500)}
+                    alt={localized(person, "name")}
+                    loading={index < 4 ? "eager" : "lazy"}
+                    decoding="async"
+                  />
+                  <span class="featured-person-group">{groupLabels[group]}</span>
+                </a>
+                <div class="featured-person-copy">
+                  <h3><a href={`${languagePrefix}/people/${person.id}/`}>{localized(person, "name")}</a></h3>
+                  <p>{localized(person, "summary")}</p>
+                  <div class="featured-person-footer">
+                    <a class="text-link" href={`${languagePrefix}/people/${person.id}/`}>{labels.profile} →</a>
+                    {media.image_page_url && (
+                      <a
+                        class="featured-person-credit"
+                        href={media.image_page_url}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${editorialLabels.imageSource}: ${localized(person, "name")}`}
+                      >
+                        {media.image_license ?? editorialLabels.imageSource} ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="section people-connections" id="people-connections" data-subnav-target>
     <div class="container">
@@ -1278,69 +1447,59 @@ const nodeConfig = {
         </div>
       </div>
 
-      <div class="map-legend people-legend" role="group" aria-label={legendLabel}>
-        {groupLegend.map((item) => (
-          <button
-            type="button"
-            class="map-legend-chip"
-            data-group-chip={item.group}
-            aria-pressed="false"
-            title={legendLabel}
-            style={`--dot:${item.color}`}
-          >
-            <span class="map-legend-dot" aria-hidden="true"></span>
-            {item.label}
-            <span class="map-legend-count">{item.count}</span>
-          </button>
-        ))}
-      </div>
-
-      <div class="toolbar people-toolbar">
-        <div class="catalog-search-layout">
-          <div class="field">
-            <label for="people-search">{labels.search}</label>
-            <input id="people-search" type="search" placeholder={labels.searchPlaceholder} />
-          </div>
-          <details class="catalog-filter-disclosure">
-            <summary>{searchUi.filters}</summary>
-            <div class="catalog-filter-grid">
-              <div class="field">
-                <label for="people-group">{labels.group}</label>
-                <select id="people-group">
-                  <option value="all">{labels.allGroups}</option>
-                  {groupOrder.map((group) => <option value={group}>{groupLabels[group]}</option>)}
-                </select>
+      <div class="relationship-preview" id="relationship-preview">
+        {relationshipPreviewRows.map((row) => {
+          const from = row.from!;
+          const to = row.to!;
+          const source = sourceById.get(row.sourceIds[0]);
+          const fromGroup = roleGroups[from.roles?.[0] ?? ""] ?? "civic";
+          const toGroup = roleGroups[to.roles?.[0] ?? ""] ?? "civic";
+          return (
+            <article class={`relationship-preview-card relationship-preview-${row.edge.category}`}>
+              <div class="relationship-preview-meta">
+                <span>{row.edge.category === "family" ? graphLabels.family : graphLabels.succession}</span>
+                {row.edge.category === "succession" && <time>{row.year}</time>}
               </div>
-              <div class="field">
-                <label for="people-century">{labels.century}</label>
-                <select id="people-century">
-                  <option value="all">{labels.allCenturies}</option>
-                  {centuries.map((century) => <option value={century}>{century}</option>)}
-                </select>
+              <div class="relationship-preview-people">
+                <a class="relationship-preview-person" href={`${languagePrefix}/people/${from.id}/`}>
+                  {from.image ? (
+                    <img src={commonsImageUrl(from.image, 330)} alt="" loading="lazy" decoding="async" />
+                  ) : (
+                    <span class={`relationship-preview-fallback people-group-${fromGroup}`} aria-hidden="true" set:html={bustGlyph} />
+                  )}
+                  <strong>{localized(from, "name")}</strong>
+                </a>
+                <div class="relationship-preview-link" aria-label={row.typeLabels.join(" / ")}>
+                  <span>{row.typeLabels.join(" / ")}</span>
+                  <i aria-hidden="true">{row.edge.category === "succession" ? "→" : "—"}</i>
+                </div>
+                <a class="relationship-preview-person" href={`${languagePrefix}/people/${to.id}/`}>
+                  {to.image ? (
+                    <img src={commonsImageUrl(to.image, 330)} alt="" loading="lazy" decoding="async" />
+                  ) : (
+                    <span class={`relationship-preview-fallback people-group-${toGroup}`} aria-hidden="true" set:html={bustGlyph} />
+                  )}
+                  <strong>{localized(to, "name")}</strong>
+                </a>
               </div>
-              <div class="field">
-                <label for="people-relationship">{labels.relationship}</label>
-                <select id="people-relationship">
-                  <option value="all">{labels.allRelationships}</option>
-                  <option value="with">{labels.withRelationships}</option>
-                  <option value="without">{labels.withoutRelationships}</option>
-                </select>
-              </div>
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="results-bar">
-        <p id="people-count" class="meta">{personIndex.length} {labels.people}</p>
-        <button type="button" id="people-reset" class="link-button" hidden>{labels.reset}</button>
+              {source && (
+                <a class="relationship-preview-source" href={source.url} target="_blank" rel="noreferrer">
+                  {labels.source}: {localized(source, "title")} ↗
+                </a>
+              )}
+            </article>
+          );
+        })}
       </div>
 
       <div class="graph-opener" data-graph-closed>
-        <button type="button" id="people-graph-toggle" class="button secondary" aria-expanded="false" aria-controls="people-graph-panel">
-          <span data-graph-toggle-text>{graphLabels.open}</span>
+        <div>
+          <p class="eyebrow">{graphLabels.links}</p>
+          <p class="meta">{graphLabels.lead}</p>
+        </div>
+        <button type="button" id="people-graph-toggle" class="button" aria-expanded="false" aria-controls="people-graph-panel">
+          <span data-graph-toggle-text>{graphLabels.open}</span><span aria-hidden="true">↗</span>
         </button>
-        <p class="meta">{graphLabels.lead}</p>
       </div>
 
       <section class="graph-panel" id="people-graph-panel" hidden aria-live="polite">
@@ -1361,7 +1520,7 @@ const nodeConfig = {
           </div>
           <div class="graph-toolgroup" role="group" aria-label={graphLabels.highlightPaths}>
             <span class="graph-toolgroup-label">{graphLabels.highlightPaths}</span>
-            {groupLegend.map((item) => (
+            {graphGroupLegend.map((item) => (
               <button type="button" class="graph-group-chip" data-group-highlight={item.group} aria-pressed="false" style={`--dot:${item.color}`}>
                 <span class="graph-toggle-swatch" aria-hidden="true"></span>{item.label}
                 <span class="graph-group-count">{item.count}</span>
@@ -1384,18 +1543,18 @@ const nodeConfig = {
         <p id="people-graph-status" class="meta" hidden>{graphLabels.loading}</p>
       </section>
 
-      <section class="relationship-ledger" aria-labelledby="relationship-ledger-title">
-        <div class="relationship-ledger-head">
-          <div>
-            <h3 id="relationship-ledger-title">{labels.ledgerTitle}</h3>
-            <p class="meta">{labels.ledgerLead}</p>
-          </div>
-          <p id="people-relationship-count" class="meta">
+      <details class="relationship-ledger" aria-labelledby="relationship-ledger-title">
+        <summary class="relationship-ledger-head">
+          <span>
+            <strong id="relationship-ledger-title">{labels.ledgerTitle}</strong>
+            <small>{labels.ledgerLead}</small>
+          </span>
+          <span id="people-relationship-count" class="meta">
             {relationshipRows.length} {labels.ledgerRows}
-          </p>
-        </div>
+          </span>
+        </summary>
         <div class="relationship-list" id="people-relationship-list" aria-live="polite"></div>
-      </section>
+      </details>
     </div>
   </section>
 
@@ -1407,6 +1566,66 @@ const nodeConfig = {
         </div>
       </div>
 
+      <div id="people-catalog-controls" class="people-catalog-controls">
+        <div class="map-legend people-legend" role="group" aria-label={legendLabel}>
+          {groupLegend.map((item) => (
+            <button
+              type="button"
+              class="map-legend-chip"
+              data-group-chip={item.group}
+              aria-pressed="false"
+              title={legendLabel}
+              style={`--dot:${item.color}`}
+            >
+              <span class="map-legend-dot" aria-hidden="true"></span>
+              {item.label}
+              <span class="map-legend-count">{item.count}</span>
+            </button>
+          ))}
+        </div>
+
+        <div class="toolbar people-toolbar">
+          <div class="catalog-search-layout">
+            <div class="field">
+              <label for="people-search">{labels.search}</label>
+              <input id="people-search" type="search" placeholder={labels.searchPlaceholder} />
+            </div>
+            <details class="catalog-filter-disclosure">
+              <summary>{searchUi.filters}</summary>
+              <div class="catalog-filter-grid">
+                <div class="field">
+                  <label for="people-group">{labels.group}</label>
+                  <select id="people-group">
+                    <option value="all">{labels.allGroups}</option>
+                    {groupOrder.map((group) => <option value={group}>{groupLabels[group]}</option>)}
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="people-century">{labels.century}</label>
+                  <select id="people-century">
+                    <option value="all">{labels.allCenturies}</option>
+                    {centuries.map((century) => <option value={century}>{century}</option>)}
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="people-relationship">{labels.relationship}</label>
+                  <select id="people-relationship">
+                    <option value="all">{labels.allRelationships}</option>
+                    <option value="with">{labels.withRelationships}</option>
+                    <option value="without">{labels.withoutRelationships}</option>
+                  </select>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="results-bar">
+          <p id="people-count" class="meta">{personIndex.length} {labels.people}</p>
+          <button type="button" id="people-reset" class="link-button" hidden>{labels.reset}</button>
+        </div>
+      </div>
+
       <div class="person-grid" id="people-list" aria-live="polite"></div>
       <p id="people-empty" class="empty" hidden>{labels.noResults}</p>
     </div>
@@ -1414,6 +1633,7 @@ const nodeConfig = {
 
   <script type="application/json" id="people-config" set:html={JSON.stringify(nodeConfig)}></script>
   <script>
+    import { commonsImageUrl } from "@lib/commons";
     import { matchesSearchText } from "@lib/searchCore";
 
     const config = JSON.parse(document.getElementById("people-config")?.textContent ?? "{}");
@@ -1604,7 +1824,21 @@ const nodeConfig = {
       const peopleById = new Map(collectionFromPayload(peoplePayload, "people").map((person: any) => [person.id, person]));
       const sourcesById = new Map(collectionFromPayload(sourcePayload, "sources").map((source: any) => [source.id, source]));
       const eventsById = new Map(collectionFromPayload(eventPayload, "events").map((event: any) => [event.id, event]));
-      const rows = collectionFromPayload(relationshipPayload, "person_relationships").map((relationship: any) => {
+      const dedupedRelationships: any[] = [];
+      const seenRelationships = new Set<string>();
+      for (const item of collectionFromPayload(relationshipPayload, "person_relationships")) {
+        const relationship = item as any;
+        if (relationship.relationship_type === "succeeds") continue;
+        const category = relationship.relationship_type === "succeeded_by" ? "succession" : "family";
+        const pair = category === "family"
+          ? [relationship.from_person_id, relationship.to_person_id].sort().join("|")
+          : `${relationship.from_person_id}|${relationship.to_person_id}|${relationship.event_id ?? ""}`;
+        const key = `${category}|${pair}`;
+        if (seenRelationships.has(key)) continue;
+        seenRelationships.add(key);
+        dedupedRelationships.push(relationship);
+      }
+      const rows = dedupedRelationships.map((relationship: any) => {
         const from = peopleById.get(relationship.from_person_id) as any;
         const to = peopleById.get(relationship.to_person_id) as any;
         const event = relationship.event_id ? (eventsById.get(relationship.event_id) as any) : null;
@@ -1655,7 +1889,7 @@ const nodeConfig = {
       const prefix = config.lang === "bg" ? "" : `/${config.lang}`;
       const profileHref = `${prefix}/people/${encodeURIComponent(card.id)}/`;
       const avatar = card.avatar
-        ? `<img class="person-avatar" src="${escapePeopleHtml(card.avatar)}" alt="${escapePeopleHtml(card.name)}" loading="lazy" decoding="async" />`
+        ? `<img class="person-avatar" src="${escapePeopleHtml(commonsImageUrl(card.avatar, 330))}" alt="${escapePeopleHtml(card.name)}" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" />`
         : `<span class="person-avatar person-avatar-fallback bust-fallback" aria-hidden="true">${config.bustGlyph ?? ""}<span class="bust-mono">${escapePeopleHtml(card.initials)}</span></span>`;
       const roles = Array.isArray(card.roles)
         ? `<div class="tag-row">${card.roles.map((role: string) => `<span>${escapePeopleHtml(role)}</span>`).join("")}</div>`
@@ -1674,7 +1908,7 @@ const nodeConfig = {
 
       return `
         <article
-          class="person-card people-group-${escapePeopleHtml(card.group)}"
+          class="person-card people-group-${escapePeopleHtml(card.group)}${card.avatar ? " has-portrait" : ""}"
           data-person-card="${escapePeopleHtml(card.id)}"
           data-group="${escapePeopleHtml(card.group)}"
           data-century="${escapePeopleHtml(card.century)}"
@@ -1708,28 +1942,12 @@ const nodeConfig = {
 
     function applyPeopleFilters() {
       const visibleCards = cards.filter(matches);
-      const visibleIds = new Set<string>(visibleCards.map((card: any) => card.id));
       list.innerHTML = visibleCards.map(renderPersonCard).join("");
-
-      let visibleRelationshipRows = 0;
-      for (const row of relationshipRows) {
-        const show =
-          visibleIds.has(row.dataset.edgeFrom ?? "") ||
-          visibleIds.has(row.dataset.edgeTo ?? "");
-        row.hidden = !show;
-        if (show) visibleRelationshipRows += 1;
-      }
 
       count.textContent =
         visibleCards.length === cards.length
           ? `${cards.length} ${config.labels.people}`
           : `${config.labels.visible}: ${visibleCards.length} ${config.labels.of} ${cards.length}`;
-      if (relationshipCount) {
-        relationshipCount.textContent =
-          visibleRelationshipRows === relationshipRows.length
-            ? `${relationshipRows.length} ${config.labels.ledgerRows}`
-            : `${config.labels.visible}: ${visibleRelationshipRows} ${config.labels.of} ${relationshipRows.length} ${config.labels.ledgerRows}`;
-      }
       empty.hidden = visibleCards.length !== 0;
       reset.hidden = !(
         search.value ||
@@ -1742,7 +1960,8 @@ const nodeConfig = {
     function refreshPeopleCatalogue() {
       loadPeopleCards()
         .then(() => applyPeopleFilters())
-        .catch(() => {
+        .catch((error) => {
+          console.error("people catalogue load failed", error);
           empty.hidden = false;
           empty.textContent = config.labels.noResults;
         });
@@ -1797,27 +2016,14 @@ const nodeConfig = {
       window.setTimeout(refreshPeopleCatalogue, 900);
     }
 
-    const ledgerSection = document.querySelector<HTMLElement>(".relationship-ledger");
-    if (ledgerSection && "IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries.some((entry) => entry.isIntersecting)) {
-            observer.disconnect();
-            loadRelationshipRows()
-              .then(() => {
-                if (cards.length > 0) applyPeopleFilters();
-              })
-              .catch(() => {});
-          }
-        },
-        { rootMargin: "220px 0px" }
-      );
-      observer.observe(ledgerSection);
-    } else {
-      window.setTimeout(() => {
-        loadRelationshipRows().catch(() => {});
-      }, 900);
-    }
+    const ledgerSection = document.querySelector<HTMLDetailsElement>(".relationship-ledger");
+    ledgerSection?.addEventListener("toggle", () => {
+      if (!ledgerSection.open) return;
+      loadRelationshipRows().catch((error) => {
+        console.error("relationship ledger load failed", error);
+        relationshipList.innerHTML = `<p class="empty">${escapePeopleHtml(config.labels.noResults)}</p>`;
+      });
+    });
 
     // ---- On-demand relationship network graph (Cytoscape.js) ----------
     // Cytoscape is lazy-loaded only when the user opens the graph, so it
@@ -1831,6 +2037,7 @@ const nodeConfig = {
     const graphToggleText = document.querySelector<HTMLElement>("[data-graph-toggle-text]");
     let cyInstance: any = null;
     let graphLoaded = false;
+    let graphFitDefault: (() => void) | null = null;
 
     const graphDetail = document.querySelector<HTMLElement>("#graph-detail");
     const graphDetailHint = document.querySelector<HTMLElement>("#graph-detail-hint");
@@ -1861,22 +2068,27 @@ const nodeConfig = {
       graphPanel.hidden = !open;
       graphToggle.setAttribute("aria-expanded", String(open));
       graphToggleText.textContent = open ? config.graph?.close : config.graph?.open;
-      if (!open && cyInstance) {
-        cyInstance.destroy();
-        cyInstance = null;
-        graphLoaded = false;
-        clearGraphDetail();
+      if (open && cyInstance) {
+        window.requestAnimationFrame(() => {
+          cyInstance.resize();
+          graphFitDefault?.();
+        });
       }
     }
 
     async function buildGraphData() {
       const api = config.api ?? {};
-      const [peoplePayload, relPayload] = await Promise.all([
+      const [peoplePayload, relPayload, eventPayload] = await Promise.all([
         fetchPeopleJson(api.people),
-        fetchPeopleJson(api.personRelationships)
+        fetchPeopleJson(api.personRelationships),
+        fetchPeopleJson(config.api.events)
       ]);
       const peopleArr = collectionFromPayload(peoplePayload, "people");
       const rels = collectionFromPayload(relPayload, "person_relationships");
+      const events = collectionFromPayload(eventPayload, "events");
+      const eventYearById = new Map(
+        events.map((event: any) => [event.id, Number(event?.date?.year) || null])
+      );
       graphPeopleById = new Map(peopleArr.map((p: any) => [p.id, p]));
       const involved = new Set<string>();
       const edgeByKey = new Map<string, any>();
@@ -1927,57 +2139,49 @@ const nodeConfig = {
         .filter((p: any) => involved.has(p.id))
         .map((p: any) => {
           const deg = degree.get(p.id) ?? 0;
+          const termYears = (p.term_events ?? [])
+            .map((id: string) => eventYearById.get(id))
+            .filter((year: unknown): year is number => typeof year === "number")
+            .sort((a: number, b: number) => a - b);
+          const year = termYears[0] ?? p.birth_year ?? 1900;
+          const name = localizedPerson(p, "name");
           return {
             data: {
               id: p.id,
-              name: localizedPerson(p, "name"),
+              name,
+              displayLabel: deg >= 3 || p.image ? name : "",
               group: config.roleGroups?.[p.roles?.[0]] ?? "civic",
               degree: deg,
-              // Multi-term mayors and hubs stay labelled at any zoom.
-              important: deg >= 3 ? 1 : 0
+              year,
+              image: p.image ? commonsImageUrl(p.image, 330) : "",
+              important: deg >= 3 || p.image ? 1 : 0
             }
           };
         });
       return { nodes, edges: rawEdges };
     }
 
-    // Serpentine chronological layout: the succession chain is a near-linear
-    // sequence, so a Kahn topological order over succession edges laid out as
-    // a wrapping ribbon (row-by-row, alternating direction) reads as a real
-    // timeline instead of a force-directed hairball. Family-only nodes sit in
-    // a separate band beneath the ribbon.
+    // Sort by the first documented mayoral-term year instead of topologically
+    // sorting person-to-person links. Repeat terms create cycles, so a pure
+    // graph sort cannot reliably represent chronology.
     function computeGraphPositions(nodes: any[], edges: any[], width: number) {
       const succEdges = edges.filter((e) => e.data.category === "succession");
       const inSucc = new Set<string>();
-      const indeg = new Map<string, number>();
-      const adj = new Map<string, string[]>();
-      for (const n of nodes) {
-        indeg.set(n.data.id, 0);
-        adj.set(n.data.id, []);
-      }
       for (const e of succEdges) {
         inSucc.add(e.data.source);
         inSucc.add(e.data.target);
-        adj.get(e.data.source)!.push(e.data.target);
-        indeg.set(e.data.target, (indeg.get(e.data.target) ?? 0) + 1);
       }
-      const queue = [...inSucc].filter((id) => (indeg.get(id) ?? 0) === 0).sort();
-      const order: string[] = [];
-      const local = new Map(indeg);
-      while (queue.length) {
-        const id = queue.shift()!;
-        order.push(id);
-        for (const m of adj.get(id) ?? []) {
-          local.set(m, (local.get(m) ?? 0) - 1);
-          if ((local.get(m) ?? 0) === 0) queue.push(m);
-        }
-      }
-      for (const id of inSucc) if (!order.includes(id)) order.push(id);
+      const nodeById = new Map(nodes.map((node) => [node.data.id, node]));
+      const order = [...inSucc].sort((a, b) => {
+        const left = nodeById.get(a)?.data;
+        const right = nodeById.get(b)?.data;
+        return (left?.year ?? 1900) - (right?.year ?? 1900) || String(left?.name ?? "").localeCompare(String(right?.name ?? ""));
+      });
 
       const positions = new Map<string, { x: number; y: number }>();
-      const cols = Math.max(4, Math.min(9, Math.round(width / 150)));
-      const gapX = 150;
-      const gapY = 128;
+      const cols = width < 520 ? 4 : width < 900 ? 8 : 10;
+      const gapX = width < 520 ? 132 : 146;
+      const gapY = width < 520 ? 112 : 118;
       order.forEach((id, i) => {
         const row = Math.floor(i / cols);
         let col = i % cols;
@@ -1987,7 +2191,10 @@ const nodeConfig = {
 
       // Family-only / isolated components below the succession ribbon.
       const succRows = Math.max(1, Math.ceil(order.length / cols));
-      const others = nodes.map((n) => n.data.id).filter((id) => !inSucc.has(id));
+      const others = nodes
+        .filter((node) => !inSucc.has(node.data.id))
+        .sort((a, b) => a.data.year - b.data.year || a.data.name.localeCompare(b.data.name))
+        .map((node) => node.data.id);
       const bandY = succRows * gapY + 96;
       others.forEach((id, i) => {
         positions.set(id, { x: (i % cols) * gapX, y: bandY + Math.floor(i / cols) * gapY });
@@ -2032,6 +2239,9 @@ const nodeConfig = {
         .slice(0, 8)
         .join("");
       const prefix = config.lang === "bg" ? "" : `/${config.lang}`;
+      const portrait = person?.image
+        ? `<img class="graph-detail-portrait" src="${escapePeopleHtml(commonsImageUrl(person.image, 330))}" alt="" crossorigin="anonymous" referrerpolicy="no-referrer" />`
+        : "";
       const roleRow = roles.length
         ? `<p class="graph-detail-roles"><span class="graph-detail-key">${escapePeopleHtml(config.graph.roles)}</span> ${escapePeopleHtml(roles.join(" · "))}</p>`
         : "";
@@ -2039,6 +2249,7 @@ const nodeConfig = {
         ? `<p class="graph-detail-roles"><span class="graph-detail-key">${escapePeopleHtml(config.graph.life)}</span> ${escapePeopleHtml(life)}</p>`
         : "";
       graphDetail.innerHTML = `
+        ${portrait}
         <p class="graph-detail-group" style="--dot:${escapePeopleHtml(color)}"><span></span>${escapePeopleHtml(groupLabel)}</p>
         <h4>${escapePeopleHtml(name)}</h4>
         ${lifeRow}
@@ -2132,16 +2343,16 @@ const nodeConfig = {
               selector: "node",
               style: {
                 "background-color": isDark ? "#94a8ab" : "#586a6e",
-                label: "data(name)",
+                label: "data(displayLabel)",
                 color: nodeText,
                 "text-valign": "bottom",
                 "text-halign": "center",
                 "text-margin-y": 5,
                 "font-size": 11,
                 "font-weight": 600,
-                width: 22,
-                height: 22,
-                "border-width": 2,
+                width: 36,
+                height: 36,
+                "border-width": 3,
                 "text-wrap": "wrap",
                 "text-max-width": 96,
                 "text-background-color": labelBg,
@@ -2153,7 +2364,19 @@ const nodeConfig = {
               }
             },
             ...groupStyles,
-            { selector: "node[important = 1]", style: { width: 30, height: 30, "min-zoomed-font-size": 0 } },
+            {
+              selector: "node[image != '']",
+              style: {
+                "background-image": "data(image)",
+                "background-fit": "cover",
+                "background-clip": "node",
+                "background-image-crossorigin": "anonymous",
+                width: 48,
+                height: 48
+              }
+            },
+            { selector: "node[important = 1]", style: { width: 44, height: 44, "min-zoomed-font-size": 0 } },
+            { selector: "node[image != ''][important = 1]", style: { width: 52, height: 52 } },
             {
               selector: "edge",
               style: {
@@ -2175,14 +2398,14 @@ const nodeConfig = {
               }
             },
             { selector: "edge[category='family']", style: { "line-style": "dashed", width: 2.2 } },
-            { selector: "node.hl-label", style: { "min-zoomed-font-size": 0, "z-index": 30 } },
+            { selector: "node.hl-label", style: { label: "data(name)", "min-zoomed-font-size": 0, "z-index": 30 } },
             { selector: ".faded", style: { opacity: 0.12, "text-opacity": 0 } },
             { selector: "node.group-dim", style: { opacity: 0.18, "text-opacity": 0 } },
-            { selector: "node.group-hot", style: { "border-width": 4, "min-zoomed-font-size": 0, "z-index": 30 } },
+            { selector: "node.group-hot", style: { label: "data(name)", "border-width": 4, "min-zoomed-font-size": 0, "z-index": 30 } },
             { selector: ".hidden-edge", style: { display: "none" } },
             {
               selector: "node:selected",
-              style: { "border-width": 4, "border-color": isDark ? "#e8b35f" : "#875510", "min-zoomed-font-size": 0 }
+              style: { label: "data(name)", "border-width": 4, "border-color": isDark ? "#e8b35f" : "#875510", "min-zoomed-font-size": 0 }
             }
           ],
           layout: { name: "preset", fit: true, padding: 34 }
@@ -2199,11 +2422,27 @@ const nodeConfig = {
           }
         });
 
-        const fit = () => cyInstance && cyInstance.fit(undefined, 34);
+        const recentIds = nodes
+          .slice()
+          .sort((a: any, b: any) => b.data.year - a.data.year)
+          .slice(0, 18)
+          .map((node: any) => node.data.id);
+        graphFitDefault = () => {
+          if (!cyInstance) return;
+          if (window.matchMedia("(max-width: 760px)").matches) {
+            let recentCollection = cyInstance.collection();
+            for (const id of recentIds) recentCollection = recentCollection.union(cyInstance.getElementById(id));
+            recentCollection = recentCollection.union(recentCollection.connectedEdges());
+            cyInstance.fit(recentCollection, 28);
+          } else {
+            cyInstance.fit(undefined, 34);
+          }
+        };
+        const fit = () => graphFitDefault?.();
         window.addEventListener("resize", fit);
         cyInstance.on("destroy", () => window.removeEventListener("resize", fit));
         applyEdgeVisibility();
-        cyInstance.fit(undefined, 34);
+        graphFitDefault();
       } catch (err) {
         graphStatus.textContent = config.labels?.noResults ?? "";
         console.error("graph load failed", err);

@@ -76,6 +76,7 @@ function collectRecords() {
   const neighbourhoods = readJson("data/curated/neighbourhood-histories.json");
   const cityArchive = readJson("data/curated/city-archive.json");
   const mayorCredits = readJson("data/curated/mayor-image-credits.json");
+  const notablePeople = readJson("data/curated/notable-people.json");
 
   for (const landmark of landmarks) {
     for (const [index, media] of (landmark.media ?? []).entries()) {
@@ -105,6 +106,12 @@ function collectRecords() {
   for (const neighbourhood of neighbourhoods) {
     if (neighbourhood.hero_media) {
       addMediaRecord(records, `neighbourhood:${neighbourhood.id}:hero`, neighbourhood.hero_media);
+    }
+  }
+
+  for (const person of notablePeople) {
+    if (person.portrait) {
+      addMediaRecord(records, `notable-person:${person.id}:portrait`, person.portrait);
     }
   }
 

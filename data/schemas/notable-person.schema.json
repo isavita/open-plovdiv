@@ -51,6 +51,19 @@
         "accessed_at": { "type": "string", "format": "date" }
       }
     },
+    "portrait": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "page_url", "credit", "license", "license_url", "accessed_at"],
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "page_url": { "type": "string", "format": "uri" },
+        "credit": { "type": "string", "minLength": 1 },
+        "license": { "type": "string", "minLength": 2 },
+        "license_url": { "type": "string", "format": "uri" },
+        "accessed_at": { "type": "string", "format": "date" }
+      }
+    },
     "data_quality": {
       "type": "string",
       "enum": ["public_source", "manual_reviewed", "provisional"]

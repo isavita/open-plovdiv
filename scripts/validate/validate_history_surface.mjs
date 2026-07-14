@@ -181,7 +181,16 @@ const corePagePairs = [
   {
     bg: "/people/",
     en: "/en/people/",
-    hooks: ['id="people-graph"', 'class="people-graph"', 'id="people-list"', 'id="people-config"']
+    hooks: [
+      'id="people-graph"',
+      'class="people-graph"',
+      'id="people-list"',
+      'id="people-config"',
+      'id="featured-people"',
+      'id="relationship-preview"',
+      'id="people-catalog-controls"',
+      '"events":"/api/history/events.json"'
+    ]
   },
   {
     bg: "/places/",
@@ -370,19 +379,45 @@ for (const place of places) {
 }
 
 const people = collectionFromPayload(readJson("/api/history/people.json"), "people") ?? [];
+const peopleViewSource = fs.readFileSync(
+  path.join(root, "apps/web/src/components/views/PeopleView.astro"),
+  "utf8"
+);
+assertContains("PeopleView.astro", peopleViewSource, [
+  'id="featured-people"',
+  'id="relationship-preview"',
+  'id="people-catalog-controls"',
+  "events: historyKnowledgeIndex.endpoints.events",
+  "config.api.events"
+]);
+for (const prefix of localePrefixes) {
+  const url = `${prefix}/people/`;
+  assertContains(url, readBuilt(url), [
+    'id="featured-people"',
+    'id="relationship-preview"',
+    'id="people-catalog-controls"',
+    '"events":"/api/history/events.json"'
+  ]);
+}
 for (const person of people) {
-  const bgHtml = readBuilt(`/people/${person.id}/`);
-  const enHtml = readBuilt(`/en/people/${person.id}/`);
-  assertContains(`/people/${person.id}/`, bgHtml, [
+  const hooks = [
     `data-person-profile="${person.id}"`,
     'class="profile-event-list"',
     'class="profile-source-list"'
-  ]);
-  assertContains(`/en/people/${person.id}/`, enHtml, [
-    `data-person-profile="${person.id}"`,
-    'class="profile-event-list"',
-    'class="profile-source-list"'
-  ]);
+  ];
+  if (person.image_page_url || person.image_license || person.image_license_url) {
+    hooks.push("data-person-portrait-source");
+  }
+  if (person.image_page_url) {
+    hooks.push(`href="${person.image_page_url}"`);
+  }
+  if (person.image_license_url) {
+    hooks.push(`href="${person.image_license_url}"`);
+  }
+  for (const prefix of localePrefixes) {
+    const url = `${prefix}/people/${person.id}/`;
+    assertContains(url, readBuilt(url), hooks);
+  }
 }
 assertCountAtLeast("person profile pages", people.length, 200);
 
@@ -423,5 +458,5 @@ if (issues.length > 0) {
 }
 
 console.log(
-  `history surface validation passed: ${corePagePairs.length * 2} core pages, ${people.length * 2} person pages, ${places.length * localePrefixes.length} place pages, ${stories.length * localePrefixes.length} story pages, ${mayorTerms.length * localePrefixes.length} mayor pages`
+  `history surface validation passed: ${corePagePairs.length * 2} core pages, ${people.length * localePrefixes.length} person pages, ${places.length * localePrefixes.length} place pages, ${stories.length * localePrefixes.length} story pages, ${mayorTerms.length * localePrefixes.length} mayor pages`
 );
