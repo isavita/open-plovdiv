@@ -1,20 +1,18 @@
 # Open Plovdiv
 
-Open Plovdiv is a civic-transparency website for Plovdiv. It helps people browse current public projects, the city budget and capital programme, and reviewed citizen-submitted city-fix reports without accounts or comments.
+Open Plovdiv is an informational, source-backed website about Plovdiv: its history, places, people, neighbourhoods, walking routes, governance, public projects and community initiatives.
 
-The project and budget data is drawn from public sources (Plovdiv Municipality's budget and capital programme, municipal-council decisions and local media) and every record links to its source. Data is current as of June 2026: the 2025 budget is adopted, while the 2026 capital programme is provisional. The fix map is driven by moderated citizen submissions, not demo records. Always verify against the linked originals before relying on a figure.
+The public site is deliberately read-only. It has no user accounts, comments, complaint forms, initiative submissions, moderation dashboard or public administration area. Community pages are an editorial directory of existing initiatives and link visitors directly to organisers and public sources.
 
 ## Stack
 
-- Astro + TypeScript for the static website
-- Bilingual interface: Bulgarian at the root, English under `/en/`, with a language switcher and light/dark themes
-- JSON files as the source of truth (each record carries Bulgarian and English text)
-- Node scripts for validation and public data generation
-- Existing project and budget data remains static JSON
-- Citizen reports use a dynamic layer with Redis when configured, or a local file store in development
-- No user accounts and no contact details in report submissions
+- Astro + TypeScript
+- Bulgarian at the root plus English, German, French, Italian, Turkish, Spanish, Greek, Japanese, Filipino, Ukrainian and Russian locale routes
+- Reviewed JSON as the source of truth
+- Node scripts for validation, normalization and public-data generation
+- Public source links and visible media attribution
 
-## Run Locally
+## Run locally
 
 ```bash
 npm install
@@ -26,86 +24,35 @@ The development server starts the website from `apps/web`.
 
 ## Deploy on Railway
 
-This repository is an npm workspace monorepo. Deploy it from the repository
-root, not from `apps/web`, so the root data-generation step runs before the
-Astro build.
+This repository is an npm workspace monorepo. Deploy it from the repository root so data generation runs before the Astro build. `railway.json` defines the build, start command and health check.
 
-If Railway's monorepo import stages a service for `apps/web`, open that
-service's settings and keep Root Directory as `/` (or blank/default). If you
-need to point Railway at the config file manually, use `/railway.json`.
+The only site-specific production variable is optional:
 
-Railway can read `railway.json`, which sets:
+- `PUBLIC_SITE_URL`: the canonical public URL, for example the Railway domain
 
-- Build command: `npm run build`
-- Start command: `npm start`
-- Healthcheck path: `/`
-
-Set production variables in Railway before opening moderation publicly:
-
-- `ADMIN_TOKEN`: required for `/admin/reports`
-- `IP_HASH_SALT`: stable random salt for rate-limit hashes
-- `PUBLIC_SITE_URL`: optional canonical URL, for example your Railway domain
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`: optional SMTP
-  settings for agent email notifications. For Hostinger, use
-  `smtp.hostinger.com`, port `465`, SSL, and a mailbox app password.
-- `AGENT_EMAIL_TO`: mailbox that receives new-report signals, for example
-  `agent@openplovdiv.com`
-- `AGENT_SIGNAL_TOKEN`: optional signal-only bearer token for
-  `POST /api/agent/signal`; `ADMIN_TOKEN` also authorizes that endpoint
-- `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`: recommended for
-  persistent reports across redeploys
-- `REPORT_IMAGE_*`: recommended S3/R2-backed public image storage for approved
-  photos
-
-Without Redis or external image storage, the app falls back to Railway's
-container filesystem, which is useful for smoke tests but not durable across
-redeploys.
-
-## Common Commands
+## Common commands
 
 ```bash
 make dev       # start the Astro development server
-make build     # regenerate public JSON and build the static site
+make build     # regenerate public JSON and build the site
 make data      # copy curated JSON into apps/web/public/data
 make validate  # validate curated data against JSON schemas
-make export-reports # export approved citizen reports to public JSON
 make test      # run validation and unit tests
 ```
 
-## Citizen Reports
-
-The report layer adds:
-
-- `/fix-map/report` for citizen submissions
-- `/admin/reports` for moderation
-- `POST /api/reports` for submission
-- `GET /api/reports/public` for approved map reports
-- `GET /api/reports/stream` for Server-Sent Events
-- admin-only approve, reject, edit details, hide-photo, and status update endpoints
-- `POST /api/agent/signal` for authenticated operational/test signals to the
-  agent mailbox
-
-Set `ADMIN_TOKEN` before using the admin dashboard outside local development. With no Redis environment variables, reports are stored locally under `apps/web/.data/`. With `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`, metadata is stored in Redis. Moderators can update report text, category, coordinates, address, public status, and photo visibility. Uploaded photos are converted to WebP with metadata stripped, kept private until approval, and then copied to the configured public uploads directory.
-
-When SMTP is configured, every accepted report submission sends a best-effort
-email signal to `AGENT_EMAIL_TO`. The email includes the report ID, public-safe
-submission text, coordinates, the admin panel URL, and the admin API endpoints.
-The agent can manage the request by calling the existing admin APIs with
-`Authorization: Bearer <ADMIN_TOKEN>`, or by opening `/admin/reports` and using
-the same token. Notification failure does not reject the citizen submission.
-
-## Repository Layout
+## Repository layout
 
 ```text
-apps/web/              Astro static website
+apps/web/              Astro website
 data/curated/          reviewed source JSON used by the site
-data/schemas/          JSON schemas for public data records
+data/generated/        normalized history knowledge exports
+data/schemas/          JSON schemas for curated records
 scripts/normalize/     deterministic public JSON generation
-scripts/validate/      data validation checks
-docs/                  methodology, privacy, sources, moderation docs
-tests/                 shared test fixtures or future integration tests
+scripts/validate/      data and surface checks
+docs/                  methodology, privacy and source documentation
+tests/                 shared test fixtures
 ```
 
-## Data Safety
+## Editorial model
 
-The MVP avoids private contact data. Citizen reports reject text that looks like email or phone details, store only a temporary salted IP hash for rate limiting, and never publish reports or photos before moderation.
+Open Plovdiv does not accept public submissions. Changes are made in the curated source files, must retain a public source where possible, and must pass validation and the production build before publication. Community initiatives remain external: Open Plovdiv neither operates them nor processes their donations.

@@ -20,7 +20,6 @@
     "brand:icons": "node scripts/brand/generate_icons.mjs",
     "audit:media": "node scripts/audit/audit_media_rights.mjs",
     "audit:media:strict": "node scripts/audit/audit_media_rights.mjs --strict",
-    "export:reports": "node scripts/export/export_approved_reports.mjs",
     "validate": "node scripts/validate/validate_data.mjs",
     "test": "npm run validate && npm run validate:story-enrichment && npm --workspace apps/web run test"
   },

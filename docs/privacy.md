@@ -1,22 +1,22 @@
 # Privacy
 
-Open Plovdiv is designed to work without collecting personal data.
+Open Plovdiv is an informational, read-only website designed to work without collecting personal data from visitors.
 
-## MVP Rules
+## Public-site rules
 
 - no user accounts
-- no public comments
-- no voting profiles
-- no names, emails, phone numbers, raw IP addresses, or account IDs in public reports
-- no exact private addresses for citizen-submitted issues
-- no photos containing faces, children, car plates, or private interiors without moderation
+- no public comments or voting profiles
+- no complaint or report forms
+- no historical contribution forms
+- no submissions for new community initiatives
+- no public administration or moderation dashboard
 
-## Data Stored
+The site does not request names, email addresses, phone numbers, private addresses, uploads or account identifiers.
 
-The first version stores public project records, budget items, and source links in JSON files. The seed fix-report JSON is intentionally empty. Citizen reports and historical photo/memory contributions are stored separately as dynamic report metadata in Redis when configured, or in a local development file store.
+## External links
 
-Citizen report and history contribution submissions collect category, title, description, approximate map coordinates, optional photos, optional source/provenance context, and two privacy confirmations. They do not collect name, email, phone, or account details. Rate limiting uses a temporary salted hash of the requester IP rather than storing the raw IP.
+Links to initiative organisers, donation pages, municipal sites, archives and other public sources open external websites. Those sites have their own privacy practices. Open Plovdiv does not receive information a visitor chooses to share on an external site.
 
-## Photos
+## Curated records
 
-Uploaded photos are re-encoded to WebP, which strips EXIF/GPS metadata. Pending photos are kept outside public storage. Photos become public only when a moderator approves the report and has not hidden the photo.
+Project, history, place, people, route and community-initiative records are maintained in reviewed JSON files. Records use public institutional or organisational information and retain links to their sources.

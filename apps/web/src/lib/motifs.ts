@@ -187,21 +187,6 @@ export const sectionMotifs: Record<string, string> = {
     ${personGlyphSmall(131.5, 32.7)}`
   ),
 
-  // Street lines with an alert pin (and a smaller secondary report).
-  "fix-map": svg(
-    `<path class="motif-contour" d="M0 60C60 52 120 58 320 40" fill="none"/>
-    <path class="motif-contour dim" d="M96 88C120 56 160 34 220 8" fill="none"/>
-    <g class="motif-pin">
-      <path d="M140 64c4.8-7.2 12-15.4 12-23.7a12 12 0 1 0 -24 0c0 8.3 7.2 16.5 12 23.7z"/>
-      <line class="motif-pin-mark" x1="140" y1="33.5" x2="140" y2="42"/>
-      <circle class="motif-pin-hole" cx="140" cy="46.5" r="1.9"/>
-    </g>
-    <g class="motif-pin">
-      <path d="M238 60c2.8-4.2 7-8.9 7-13.8a7 7 0 1 0 -14 0c0 4.9 4.2 9.6 7 13.8z"/>
-      <circle class="motif-pin-hole" cx="238" cy="46.4" r="2.6"/>
-    </g>`
-  ),
-
   // A ledger with ruled rows, verified with a check seal.
   "data-sources": svg(
     `<rect class="motif-sheet" x="78" y="16" width="124" height="56" rx="3"/>

@@ -1,22 +1,13 @@
 import type { APIRoute } from "astro";
-import { localeCodes, localizePath } from "@i18n/utils";
 
 export const prerender = true;
 
 export const GET: APIRoute = ({ site }) => {
   const base = site ?? new URL("https://openplovdiv.example");
-  const disallowedPaths = Array.from(
-    new Set([
-      "/admin",
-      "/api",
-      ...localeCodes.map((lang) => localizePath("/admin", lang))
-    ])
-  ).sort();
-
   const body = [
     "User-agent: *",
     "Allow: /",
-    ...disallowedPaths.map((path) => `Disallow: ${path}`),
+    "Disallow: /api",
     "",
     `Sitemap: ${new URL("/sitemap.xml", base).href}`,
     ""

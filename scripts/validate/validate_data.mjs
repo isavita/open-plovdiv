@@ -124,12 +124,6 @@ const datasets = [
     minRecords: 0
   },
   {
-    label: "fix reports",
-    dataPath: "data/curated/fix-reports.json",
-    schemaPath: "data/schemas/fix-report.schema.json",
-    minRecords: 0
-  },
-  {
     label: "knowledge sources",
     dataPath: "data/generated/history-knowledge/sources.json",
     schemaPath: "data/schemas/knowledge-source.schema.json",
@@ -233,17 +227,6 @@ const datasets = [
   }
 ];
 
-const forbiddenFixKeys = new Set([
-  "name",
-  "email",
-  "phone",
-  "ip",
-  "ip_address",
-  "user_id",
-  "account_id",
-  "submitted_by"
-]);
-
 const openMediaLicensePattern = /\b(CC BY(?:-SA)?|CC0|Creative Commons|Public Domain|PD-(?:OLD|US|ART))\b/i;
 
 function readJson(relativePath) {
@@ -263,16 +246,6 @@ function assertUniqueIds(records, label) {
       throw new Error(`${label}: duplicate id ${record.id}`);
     }
     seen.add(record.id);
-  }
-}
-
-function assertNoPrivateFixFields(records) {
-  for (const record of records) {
-    for (const key of Object.keys(record)) {
-      if (forbiddenFixKeys.has(key.toLowerCase())) {
-        throw new Error(`fix reports: private field "${key}" is not allowed`);
-      }
-    }
   }
 }
 
@@ -1953,7 +1926,6 @@ function assertNeighbourhoodHistories(loaded) {
   );
 }
 
-assertNoPrivateFixFields(loaded.get("fix reports"));
 assertProjectBudgetLinks(loaded.get("projects"), loaded.get("budget items"));
 assertCommunityProjectLinks(loaded.get("community initiatives"), loaded.get("projects"));
 assertMayorArchiveCompleteness(loaded.get("city archive"));

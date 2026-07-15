@@ -5,6 +5,81 @@ import { ui, type Lang } from "@i18n/utils";
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const readOnlyCopy = {
+  bg: {
+    firstTitle: "Само за четене по замисъл",
+    firstText: "Open Plovdiv не предлага профили, коментари, сигнали, формуляри или предложения за нови инициативи. Сайтът не събира имена, имейли или телефони чрез потребителски форми.",
+    secondTitle: "Външни връзки",
+    secondText: "Връзките към организации, дарителски страници и публични източници отварят външни сайтове със собствени правила за поверителност. Open Plovdiv не получава данните, които споделяте там."
+  },
+  en: {
+    firstTitle: "Read-only by design",
+    firstText: "Open Plovdiv has no accounts, comments, reports, forms or proposals for new initiatives. The site does not collect names, email addresses or phone numbers through user forms.",
+    secondTitle: "External links",
+    secondText: "Links to organisations, donation pages and public sources open external sites with their own privacy rules. Open Plovdiv does not receive information you share there."
+  },
+  de: {
+    firstTitle: "Bewusst nur zur Ansicht",
+    firstText: "Open Plovdiv bietet keine Konten, Kommentare, Meldungen, Formulare oder Vorschläge für neue Initiativen. Die Website erhebt über Nutzerformulare weder Namen noch E-Mail-Adressen oder Telefonnummern.",
+    secondTitle: "Externe Links",
+    secondText: "Links zu Organisationen, Spendenseiten und öffentlichen Quellen öffnen externe Websites mit eigenen Datenschutzregeln. Open Plovdiv erhält keine Daten, die Sie dort angeben."
+  },
+  fr: {
+    firstTitle: "Conçu pour la consultation",
+    firstText: "Open Plovdiv ne propose ni comptes, ni commentaires, ni signalements, ni formulaires, ni propositions de nouvelles initiatives. Le site ne collecte aucun nom, e-mail ou téléphone par formulaire.",
+    secondTitle: "Liens externes",
+    secondText: "Les liens vers des organisations, des pages de dons et des sources publiques ouvrent des sites externes soumis à leurs propres règles de confidentialité. Open Plovdiv ne reçoit pas les données que vous y partagez."
+  },
+  it: {
+    firstTitle: "Sola lettura per scelta",
+    firstText: "Open Plovdiv non offre account, commenti, segnalazioni, moduli o proposte di nuove iniziative. Il sito non raccoglie nomi, e-mail o numeri di telefono tramite moduli utente.",
+    secondTitle: "Link esterni",
+    secondText: "I link a organizzazioni, pagine per donazioni e fonti pubbliche aprono siti esterni con proprie regole sulla privacy. Open Plovdiv non riceve i dati che condividete lì."
+  },
+  tr: {
+    firstTitle: "Tasarım gereği salt okunur",
+    firstText: "Open Plovdiv'de hesap, yorum, bildirim, form veya yeni girişim önerisi yoktur. Site kullanıcı formlarıyla ad, e-posta ya da telefon numarası toplamaz.",
+    secondTitle: "Harici bağlantılar",
+    secondText: "Kuruluşlara, bağış sayfalarına ve kamu kaynaklarına verilen bağlantılar kendi gizlilik kuralları olan harici siteleri açar. Open Plovdiv orada paylaştığınız bilgileri almaz."
+  },
+  es: {
+    firstTitle: "Solo lectura por diseño",
+    firstText: "Open Plovdiv no ofrece cuentas, comentarios, avisos, formularios ni propuestas de nuevas iniciativas. El sitio no recopila nombres, correos electrónicos ni teléfonos mediante formularios de usuario.",
+    secondTitle: "Enlaces externos",
+    secondText: "Los enlaces a organizaciones, páginas de donación y fuentes públicas abren sitios externos con sus propias normas de privacidad. Open Plovdiv no recibe la información que comparta allí."
+  },
+  el: {
+    firstTitle: "Μόνο για ανάγνωση από σχεδιασμό",
+    firstText: "Το Open Plovdiv δεν διαθέτει λογαριασμούς, σχόλια, αναφορές, φόρμες ή προτάσεις νέων πρωτοβουλιών. Ο ιστότοπος δεν συλλέγει ονόματα, email ή τηλέφωνα μέσω φορμών χρηστών.",
+    secondTitle: "Εξωτερικοί σύνδεσμοι",
+    secondText: "Οι σύνδεσμοι προς οργανώσεις, σελίδες δωρεών και δημόσιες πηγές ανοίγουν εξωτερικούς ιστότοπους με δικούς τους κανόνες απορρήτου. Το Open Plovdiv δεν λαμβάνει στοιχεία που μοιράζεστε εκεί."
+  },
+  ja: {
+    firstTitle: "閲覧専用の設計",
+    firstText: "Open Plovdiv にはアカウント、コメント、通報、入力フォーム、新しい取り組みの提案機能はありません。利用者フォームを通じて氏名、メールアドレス、電話番号を収集しません。",
+    secondTitle: "外部リンク",
+    secondText: "団体、寄付ページ、公開情報源へのリンクは、それぞれのプライバシールールを持つ外部サイトを開きます。そこで共有した情報を Open Plovdiv が受け取ることはありません。"
+  },
+  tl: {
+    firstTitle: "Dinisenyong para basahin lamang",
+    firstText: "Walang account, komento, reklamo, form o panukala para sa bagong inisyatiba sa Open Plovdiv. Hindi nangongolekta ang site ng pangalan, email o numero ng telepono sa pamamagitan ng user form.",
+    secondTitle: "Mga panlabas na link",
+    secondText: "Ang mga link sa organisasyon, pahina ng donasyon at pampublikong sanggunian ay nagbubukas ng ibang site na may sariling patakaran sa privacy. Hindi natatanggap ng Open Plovdiv ang impormasyong ibinabahagi mo roon."
+  },
+  uk: {
+    firstTitle: "Лише для читання за задумом",
+    firstText: "Open Plovdiv не має облікових записів, коментарів, повідомлень, форм або пропозицій нових ініціатив. Сайт не збирає імена, електронні адреси чи телефони через користувацькі форми.",
+    secondTitle: "Зовнішні посилання",
+    secondText: "Посилання на організації, сторінки пожертв і відкриті джерела ведуть на зовнішні сайти з власними правилами конфіденційності. Open Plovdiv не отримує інформацію, яку ви надаєте там."
+  },
+  ru: {
+    firstTitle: "Только для чтения по замыслу",
+    firstText: "В Open Plovdiv нет учётных записей, комментариев, сообщений, форм или предложений новых инициатив. Сайт не собирает имена, электронные адреса или телефоны через пользовательские формы.",
+    secondTitle: "Внешние ссылки",
+    secondText: "Ссылки на организации, страницы пожертвований и открытые источники ведут на внешние сайты с собственными правилами конфиденциальности. Open Plovdiv не получает информацию, которую вы сообщаете там."
+  }
+} satisfies Record<Lang, { firstTitle: string; firstText: string; secondTitle: string; secondText: string }>;
+const copy = readOnlyCopy[lang];
 ---
 
 <Layout lang={lang} path="/privacy" title={t.privacy.title} description={t.privacy.lead}>
@@ -19,12 +94,12 @@ const t = ui[lang];
   <section class="section" style="padding-top:0">
     <div class="container grid grid-2">
       <article class="card">
-        <h2 style="font-size:1.3rem">{t.privacy.notCollectTitle}</h2>
-        <p class="meta">{t.privacy.notCollectText}</p>
+        <h2 style="font-size:1.3rem">{copy.firstTitle}</h2>
+        <p class="meta">{copy.firstText}</p>
       </article>
       <article class="card">
-        <h2 style="font-size:1.3rem">{t.privacy.beforeTitle}</h2>
-        <p class="meta">{t.privacy.beforeText}</p>
+        <h2 style="font-size:1.3rem">{copy.secondTitle}</h2>
+        <p class="meta">{copy.secondText}</p>
       </article>
     </div>
   </section>

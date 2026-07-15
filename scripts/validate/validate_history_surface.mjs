@@ -169,16 +169,6 @@ const corePagePairs = [
     ]
   },
   {
-    bg: "/history/contribute/",
-    en: "/en/history/contribute/",
-    hooks: [
-      'id="history-contribution-form"',
-      'name="kind" value="history_contribution"',
-      'id="hc-photos"',
-      'id="hc-confirm-personal"'
-    ]
-  },
-  {
     bg: "/people/",
     en: "/en/people/",
     hooks: [
@@ -211,11 +201,6 @@ const corePagePairs = [
     bg: "/neighbourhoods/",
     en: "/en/neighbourhoods/",
     hooks: ['id="nb-card-grid"', 'class="nb-card-media"', 'id="nb-index-map"']
-  },
-  {
-    bg: "/fix-map/report/",
-    en: "/en/fix-map/report/",
-    hooks: ['id="report-form"', 'id="rf-photos"', 'id="rf-confirm-personal"']
   }
 ];
 

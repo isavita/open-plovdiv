@@ -137,10 +137,8 @@ const structuredDataJson = serializeJsonLd(
       overview: t.nav.overview,
       projects: t.nav.projects,
       community: t.nav.community,
-      "fix-map": t.nav.fixMap,
       "data-sources": t.footer.sources,
-      privacy: t.footer.privacy,
-      moderation: t.footer.moderation
+      privacy: t.footer.privacy
     }
   })
 );
@@ -159,13 +157,11 @@ const footerHistory = [
 const footerCivic = [
   { href: localizePath("/overview", lang), label: t.nav.overview, key: "overview" },
   { href: localizePath("/projects", lang), label: t.nav.projects, key: "projects" },
-  { href: localizePath("/fix-map", lang), label: t.nav.fixMap, key: "fix-map" },
   { href: localizePath("/community", lang), label: t.footer.community, key: "community" }
 ];
 const footerAbout = [
   { href: localizePath("/data-sources", lang), label: t.footer.sources, key: "data-sources" },
-  { href: localizePath("/privacy", lang), label: t.footer.privacy, key: "privacy" },
-  { href: localizePath("/moderation", lang), label: t.footer.moderation, key: "moderation" }
+  { href: localizePath("/privacy", lang), label: t.footer.privacy, key: "privacy" }
 ];
 
 // Secondary destinations shown only inside the mobile menu, grouped so the
@@ -179,13 +175,11 @@ const menuExplore = [
 const menuCivic = [
   { href: localizePath("/overview", lang), base: "/overview", label: t.nav.overview },
   { href: localizePath("/projects", lang), base: "/projects", label: t.nav.projects },
-  { href: localizePath("/fix-map", lang), base: "/fix-map", label: t.nav.fixMap },
   { href: localizePath("/community", lang), base: "/community", label: t.footer.community }
 ];
 const menuAbout = [
   { href: localizePath("/data-sources", lang), base: "/data-sources", label: t.footer.sources },
-  { href: localizePath("/privacy", lang), base: "/privacy", label: t.footer.privacy },
-  { href: localizePath("/moderation", lang), base: "/moderation", label: t.footer.moderation }
+  { href: localizePath("/privacy", lang), base: "/privacy", label: t.footer.privacy }
 ];
 const menuGroups = [
   { key: "explore", label: t.footer.explore, items: menuExplore },
@@ -225,11 +219,9 @@ const chromeI18n = localeDetect
               archive: l.nav.archive,
               overview: l.nav.overview,
               projects: l.nav.projects,
-              "fix-map": l.nav.fixMap,
               community: l.footer.community,
               "data-sources": l.footer.sources,
-              privacy: l.footer.privacy,
-              moderation: l.footer.moderation
+              privacy: l.footer.privacy
             },
             groups: { explore: l.footer.explore, civic: l.footer.civic, about: l.footer.about },
             footer: { blurb: l.footer.blurb, motto: ailyakMottos[code], note: l.footer.note, dataNote: l.footer.dataNote }

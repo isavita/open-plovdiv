@@ -26,7 +26,6 @@ const files = [
   "community-initiatives.json",
   "budget-items.json",
   "city-archive.json",
-  "fix-reports.json",
   "sources.json",
   "plovdiv-history.json",
   "plovdiv-landmarks.json",

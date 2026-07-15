@@ -431,8 +431,7 @@ small {
 }
 
 [data-section="home"],
-[data-section="history"],
-[data-section="fix-map"] {
+[data-section="history"] {
   --section-accent: var(--data-events);
   --section-soft: var(--accent-soft);
 }

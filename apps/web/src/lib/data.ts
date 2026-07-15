@@ -1,7 +1,6 @@
 import budgetItemsJson from "../../../../data/curated/budget-items.json";
 import cityArchiveJson from "../../../../data/curated/city-archive.json";
 import communityInitiativesJson from "../../../../data/curated/community-initiatives.json";
-import fixReportsJson from "../../../../data/curated/fix-reports.json";
 import projectsJson from "../../../../data/curated/projects.json";
 import sourcesJson from "../../../../data/curated/sources.json";
 import historyJson from "../../../../data/curated/plovdiv-history.json";
@@ -72,23 +71,6 @@ export type Project = {
   }>;
   sources: Source[];
   data_quality: string;
-  updated_at: string;
-};
-
-export type FixReport = {
-  id: string;
-  title_bg: string;
-  title_en?: string;
-  description_bg: string;
-  description_en?: string;
-  category: string;
-  status: string;
-  location: Location;
-  photo_url: string | null;
-  submitted_source: string;
-  sources: Source[];
-  data_quality: string;
-  created_at: string;
   updated_at: string;
 };
 
@@ -919,7 +901,6 @@ export type HistorySourceCoverage = {
 
 export const projects = withGermanFields(projectsJson) as Project[];
 export const communityInitiatives = withGermanFields(communityInitiativesJson) as CommunityInitiative[];
-export const fixReports = withGermanFields(fixReportsJson) as FixReport[];
 export const budgetItems = withGermanFields(budgetItemsJson) as BudgetItem[];
 export const cityArchive = withGermanFields(cityArchiveJson) as CityArchiveRecord[];
 export const plovdivHistory = withGermanFields(historyJson) as HistoryEntry[];

@@ -18,15 +18,11 @@ const PUBLIC_STATIC_PATHS = [
   "/mayors",
   "/history",
   "/history/editorial-review",
-  "/history/contribute",
   "/stories",
   "/archive",
   "/data-sources",
-  "/fix-map",
-  "/fix-map/report",
   "/community",
-  "/privacy",
-  "/moderation"
+  "/privacy"
 ] as const;
 
 export const GET: APIRoute = ({ site }) => {
@@ -102,7 +98,8 @@ function sortLogicalPaths(a: string, b: string): number {
 }
 
 function changeFrequency(path: string): "daily" | "weekly" | "monthly" {
-  if (path === "/" || path === "/fix-map" || path === "/community") return "daily";
+  if (path === "/") return "daily";
+  if (path === "/community") return "weekly";
   if (path.startsWith("/projects/") || path.startsWith("/stories/")) return "weekly";
   return "monthly";
 }

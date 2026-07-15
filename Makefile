@@ -1,4 +1,4 @@
-.PHONY: dev build data validate export-reports test
+.PHONY: dev build data validate test
 
 dev:
 	npm run dev
@@ -11,9 +11,6 @@ data:
 
 validate:
 	npm run validate
-
-export-reports:
-	npm run export:reports
 
 test:
 	npm test

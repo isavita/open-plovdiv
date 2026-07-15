@@ -195,7 +195,6 @@ function buildPageItems(lang: Lang): SiteSearchItem[] {
     ["/governance", governanceTitles[lang], t.history?.governanceLead ?? fallback],
     ["/overview", t.nav.overview, t.overview.lead],
     ["/projects", t.nav.projects, t.projects.lead],
-    ["/fix-map", t.nav.fixMap, t.fixMap.lead],
     ["/community", t.nav.community, t.community.lead],
     ["/archive", t.nav.archive, t.archive?.lead ?? fallback],
     ["/data-sources", t.footer.sources, t.footer.dataNote]

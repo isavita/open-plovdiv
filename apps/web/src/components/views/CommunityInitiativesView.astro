@@ -8,17 +8,202 @@ import {
   type Lang
 } from "@i18n/ui";
 import { field, localeForLang, localizePath } from "@i18n/utils";
+import { commonsImageUrl } from "@lib/commons";
 import { communityInitiatives, projects } from "@lib/data";
-import { sectionMotifs } from "@lib/motifs";
-import { siteSearchUi } from "@lib/siteSearchI18n";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
-const searchUi = siteSearchUi[lang];
 
+const editorialCopy: Record<
+  Lang,
+  {
+    readOnly: string;
+    trust: string;
+    explore: string;
+    visualContext: string;
+    directoryTitle: string;
+    directoryLead: string;
+    visitOrganizer: string;
+    evidence: string;
+    location: string;
+    related: string;
+    external: string;
+    checked: string;
+  }
+> = {
+  bg: {
+    readOnly: "Редакционен каталог · само за четене",
+    trust: "Open Plovdiv представя проверими инициативи от публични източници. Сайтът не приема сигнали или предложения за нови инициативи.",
+    explore: "Разгледай инициативите",
+    visualContext: "Контекст от Пловдив",
+    directoryTitle: "Групи, каузи и следващи стъпки",
+    directoryLead: "Изберете тема или потърсете място. За актуална дата и участие проверете директно страницата на организатора.",
+    visitOrganizer: "Към организатора",
+    evidence: "Източници и проверка",
+    location: "Място",
+    related: "Свързан публичен проект",
+    external: "Външна страница",
+    checked: "Проверено"
+  },
+  en: {
+    readOnly: "Editorial directory · read only",
+    trust: "Open Plovdiv presents verifiable initiatives from public sources. The site does not accept reports or proposals for new initiatives.",
+    explore: "Explore the initiatives",
+    visualContext: "Plovdiv context",
+    directoryTitle: "Groups, causes and ways to follow",
+    directoryLead: "Choose a theme or search for a place. Check the organiser directly for current dates and ways to take part.",
+    visitOrganizer: "Visit the organiser",
+    evidence: "Sources and verification",
+    location: "Location",
+    related: "Related public project",
+    external: "External page",
+    checked: "Checked"
+  },
+  de: {
+    readOnly: "Redaktionelles Verzeichnis · nur zur Ansicht",
+    trust: "Open Plovdiv zeigt überprüfbare Initiativen aus öffentlichen Quellen. Die Website nimmt keine Meldungen oder Vorschläge für neue Initiativen an.",
+    explore: "Initiativen entdecken",
+    visualContext: "Kontext aus Plovdiv",
+    directoryTitle: "Gruppen, Anliegen und nächste Schritte",
+    directoryLead: "Wählen Sie ein Thema oder suchen Sie einen Ort. Aktuelle Termine und Möglichkeiten zur Teilnahme finden Sie direkt beim Veranstalter.",
+    visitOrganizer: "Zum Veranstalter",
+    evidence: "Quellen und Prüfung",
+    location: "Ort",
+    related: "Verwandtes öffentliches Projekt",
+    external: "Externe Seite",
+    checked: "Geprüft"
+  },
+  fr: {
+    readOnly: "Répertoire éditorial · lecture seule",
+    trust: "Open Plovdiv présente des initiatives vérifiables issues de sources publiques. Le site n’accepte ni signalements ni propositions de nouvelles initiatives.",
+    explore: "Découvrir les initiatives",
+    visualContext: "Contexte à Plovdiv",
+    directoryTitle: "Groupes, causes et pistes à suivre",
+    directoryLead: "Choisissez un thème ou recherchez un lieu. Consultez directement l’organisateur pour les dates et les modalités de participation.",
+    visitOrganizer: "Voir l’organisateur",
+    evidence: "Sources et vérification",
+    location: "Lieu",
+    related: "Projet public lié",
+    external: "Page externe",
+    checked: "Vérifié"
+  },
+  it: {
+    readOnly: "Repertorio editoriale · sola lettura",
+    trust: "Open Plovdiv presenta iniziative verificabili da fonti pubbliche. Il sito non accetta segnalazioni o proposte di nuove iniziative.",
+    explore: "Esplora le iniziative",
+    visualContext: "Contesto di Plovdiv",
+    directoryTitle: "Gruppi, cause e modi per seguirli",
+    directoryLead: "Scegli un tema o cerca un luogo. Per date aggiornate e modalità di partecipazione, consulta direttamente l’organizzatore.",
+    visitOrganizer: "Vai all’organizzatore",
+    evidence: "Fonti e verifica",
+    location: "Luogo",
+    related: "Progetto pubblico collegato",
+    external: "Pagina esterna",
+    checked: "Verificato"
+  },
+  tr: {
+    readOnly: "Editoryal rehber · salt okunur",
+    trust: "Open Plovdiv, kamuya açık kaynaklardan doğrulanabilir girişimleri sunar. Site yeni girişimlere ilişkin bildirim veya öneri kabul etmez.",
+    explore: "Girişimleri keşfet",
+    visualContext: "Plovdiv bağlamı",
+    directoryTitle: "Gruplar, amaçlar ve takip yolları",
+    directoryLead: "Bir konu seçin veya yer arayın. Güncel tarih ve katılım bilgileri için doğrudan düzenleyiciyi kontrol edin.",
+    visitOrganizer: "Düzenleyiciye git",
+    evidence: "Kaynaklar ve doğrulama",
+    location: "Konum",
+    related: "İlgili kamu projesi",
+    external: "Harici sayfa",
+    checked: "Kontrol edildi"
+  },
+  es: {
+    readOnly: "Directorio editorial · solo lectura",
+    trust: "Open Plovdiv presenta iniciativas verificables a partir de fuentes públicas. El sitio no acepta avisos ni propuestas de nuevas iniciativas.",
+    explore: "Explorar las iniciativas",
+    visualContext: "Contexto de Plovdiv",
+    directoryTitle: "Grupos, causas y formas de seguirlos",
+    directoryLead: "Elige un tema o busca un lugar. Consulta directamente al organizador para conocer fechas y formas de participar.",
+    visitOrganizer: "Visitar al organizador",
+    evidence: "Fuentes y verificación",
+    location: "Lugar",
+    related: "Proyecto público relacionado",
+    external: "Página externa",
+    checked: "Verificado"
+  },
+  el: {
+    readOnly: "Συντακτικός κατάλογος · μόνο για ανάγνωση",
+    trust: "Το Open Plovdiv παρουσιάζει επαληθεύσιμες πρωτοβουλίες από δημόσιες πηγές. Ο ιστότοπος δεν δέχεται αναφορές ή προτάσεις για νέες πρωτοβουλίες.",
+    explore: "Εξερεύνηση πρωτοβουλιών",
+    visualContext: "Πλαίσιο του Πλόβντιβ",
+    directoryTitle: "Ομάδες, σκοποί και τρόποι ενημέρωσης",
+    directoryLead: "Επιλέξτε θέμα ή αναζητήστε τοποθεσία. Για τρέχουσες ημερομηνίες και συμμετοχή, ελέγξτε απευθείας τον διοργανωτή.",
+    visitOrganizer: "Στον διοργανωτή",
+    evidence: "Πηγές και επαλήθευση",
+    location: "Τοποθεσία",
+    related: "Σχετικό δημόσιο έργο",
+    external: "Εξωτερική σελίδα",
+    checked: "Ελέγχθηκε"
+  },
+  ja: {
+    readOnly: "編集ディレクトリ・閲覧専用",
+    trust: "Open Plovdiv は公開情報源で確認できる取り組みを紹介します。通報や新しい取り組みの提案は受け付けていません。",
+    explore: "取り組みを見る",
+    visualContext: "プロヴディフの風景",
+    directoryTitle: "団体、活動、最新情報への入口",
+    directoryLead: "テーマまたは場所で探せます。現在の日程や参加方法は、主催団体のページで直接ご確認ください。",
+    visitOrganizer: "主催団体を見る",
+    evidence: "情報源と確認",
+    location: "場所",
+    related: "関連する公共事業",
+    external: "外部ページ",
+    checked: "確認日"
+  },
+  tl: {
+    readOnly: "Editoryal na direktoryo · para basahin lamang",
+    trust: "Ipinapakita ng Open Plovdiv ang mga mapapatunayang inisyatiba mula sa pampublikong sanggunian. Hindi tumatanggap ang site ng mga reklamo o mungkahi para sa bagong inisyatiba.",
+    explore: "Tuklasin ang mga inisyatiba",
+    visualContext: "Konteksto ng Plovdiv",
+    directoryTitle: "Mga grupo, adhikain at paraan ng pagsubaybay",
+    directoryLead: "Pumili ng paksa o maghanap ng lugar. Tingnan mismo ang organizer para sa kasalukuyang petsa at paraan ng pakikilahok.",
+    visitOrganizer: "Bisitahin ang organizer",
+    evidence: "Mga sanggunian at beripikasyon",
+    location: "Lugar",
+    related: "Kaugnay na pampublikong proyekto",
+    external: "Panlabas na pahina",
+    checked: "Sinuri"
+  },
+  uk: {
+    readOnly: "Редакційний каталог · лише для читання",
+    trust: "Open Plovdiv показує перевірені ініціативи з відкритих джерел. Сайт не приймає повідомлень або пропозицій щодо нових ініціатив.",
+    explore: "Переглянути ініціативи",
+    visualContext: "Контекст Пловдива",
+    directoryTitle: "Групи, справи та способи стежити",
+    directoryLead: "Оберіть тему або знайдіть місце. Актуальні дати й умови участі перевіряйте безпосередньо в організатора.",
+    visitOrganizer: "До організатора",
+    evidence: "Джерела й перевірка",
+    location: "Місце",
+    related: "Пов’язаний публічний проєкт",
+    external: "Зовнішня сторінка",
+    checked: "Перевірено"
+  },
+  ru: {
+    readOnly: "Редакционный каталог · только для чтения",
+    trust: "Open Plovdiv показывает проверяемые инициативы из открытых источников. Сайт не принимает сообщения или предложения о новых инициативах.",
+    explore: "Посмотреть инициативы",
+    visualContext: "Контекст Пловдива",
+    directoryTitle: "Группы, дела и способы следить",
+    directoryLead: "Выберите тему или найдите место. Актуальные даты и условия участия проверяйте напрямую у организатора.",
+    visitOrganizer: "К организатору",
+    evidence: "Источники и проверка",
+    location: "Место",
+    related: "Связанный общественный проект",
+    external: "Внешняя страница",
+    checked: "Проверено"
+  }
+};
+
+const copy = editorialCopy[lang];
 const categories = Array.from(new Set(communityInitiatives.map((item) => item.category))).sort();
-const statuses = Object.keys(communityStatusLabels[lang]);
 const projectLinks = Object.fromEntries(
   projects.map((project) => [
     project.id,
@@ -29,363 +214,1156 @@ const projectLinks = Object.fromEntries(
   ])
 );
 
-const config = {
-  lang,
-  locale: localeForLang(lang),
-  endpoint: "/api/community-initiatives/public",
-  initial: communityInitiatives,
-  categoryLabels: categoryLabels[lang],
-  statusLabels: communityStatusLabels[lang],
-  categoryColors,
-  projectLinks,
-  labels: {
-    all: t.common.all,
-    accessed: t.common.accessed,
-    source: t.common.source,
-    empty: t.community.empty,
-    organizer: t.community.organizer,
-    links: t.community.links,
-    sources: t.community.sources,
-    relatedProjects: t.community.relatedProjects,
-    noRelatedProjects: t.community.noRelatedProjects,
-    discovered: t.community.discovered,
-    lastChecked: t.community.lastChecked,
-    contact: t.community.contact,
-    donate: t.community.donate,
-    acceptsDonations: t.community.acceptsDonations,
-    of: lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : lang === "ja" ? "/" : lang === "tl" ? "sa" : lang === "uk" ? "з" : lang === "ru" ? "из" : "of",
-    one: lang === "bg" ? "инициатива" : lang === "de" ? "Initiative" : lang === "fr" ? "initiative" : lang === "it" ? "iniziativa" : lang === "tr" ? "girişim" : lang === "es" ? "iniciativa" : lang === "el" ? "πρωτοβουλία" : lang === "ja" ? "取り組み" : lang === "tl" ? "inisyatiba" : lang === "uk" ? "ініціатива" : lang === "ru" ? "инициатива" : "initiative",
-    many: lang === "bg" ? "инициативи" : lang === "de" ? "Initiativen" : lang === "fr" ? "initiatives" : lang === "it" ? "iniziative" : lang === "tr" ? "girişim" : lang === "es" ? "iniciativas" : lang === "el" ? "πρωτοβουλίες" : lang === "ja" ? "取り組み" : lang === "tl" ? "inisyatiba" : lang === "uk" ? "ініціатив" : lang === "ru" ? "инициатив" : "initiatives"
+const categoryGlyphs: Record<string, string> = {
+  civic: "✳",
+  environment: "≈",
+  parks: "♧",
+  public_transport: "↗",
+  social: "●"
+};
+
+type Visual = {
+  url: string;
+  pageUrl: string;
+  credit: string;
+  license: string;
+  position?: string;
+};
+
+const initiativeVisuals: Record<string, Visual> = {
+  "community-plovdiv-bg-be-active-green-mile": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/1/18/Maritsa_in_Plovdiv_01.jpg",
+    pageUrl: "https://commons.wikimedia.org/wiki/File:Maritsa_in_Plovdiv_01.jpg",
+    credit: "Kritzolina",
+    license: "CC BY-SA 4.0"
+  },
+  "community-plovdiv-krasiv-plovdiv-cleanups": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/7/71/Alley_in_Dondukova_Garden%2C_Plovdiv%2C_Bulgaria_05.jpg",
+    pageUrl: "https://commons.wikimedia.org/wiki/File:Alley_in_Dondukova_Garden%2C_Plovdiv%2C_Bulgaria_05.jpg",
+    credit: "VladislavNedelev",
+    license: "CC BY-SA 3.0"
+  },
+  "community-plovdiv-mission-lauta": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Dsc01891a.jpg",
+    pageUrl: "https://commons.wikimedia.org/wiki/File:Dsc01891a.jpg",
+    credit: "Realsteel007",
+    license: "CC BY-SA 3.0"
+  },
+  "community-plovdiv-stolipinovo-cleanup": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/0/02/View_to_District_East_in_Plovdiv_1.jpg",
+    pageUrl: "https://commons.wikimedia.org/wiki/File:View_to_District_East_in_Plovdiv_1.jpg",
+    credit: "Isip2 westboro",
+    license: "Public domain"
+  },
+  "community-plovdiv-zeleni-balkani": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/0/08/Maritsa_River_-_Aerial_%28_drone_%29_photography_-_Nature.jpg",
+    pageUrl: "https://commons.wikimedia.org/wiki/File:Maritsa_River_-_Aerial_(_drone_)_photography_-_Nature.jpg",
+    credit: "Pipetko",
+    license: "CC BY-SA 4.0"
+  },
+  "community-plovdiv-cyclists": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/c/c1/Grebna_baza_Plovdiv.jpg",
+    pageUrl: "https://commons.wikimedia.org/wiki/File:Grebna_baza_Plovdiv.jpg",
+    credit: "Plovdiv Municipality",
+    license: "CC BY-SA 4.0"
   }
+};
+
+const heroItems = [
+  communityInitiatives.find((item) => item.id === "community-plovdiv-bg-be-active-green-mile"),
+  communityInitiatives.find((item) => item.id === "community-plovdiv-krasiv-plovdiv-cleanups"),
+  communityInitiatives.find((item) => item.id === "community-plovdiv-cyclists")
+].filter(Boolean);
+
+const searchable = (item: (typeof communityInitiatives)[number]) =>
+  [
+    field(item, "title", lang),
+    field(item, "summary", lang),
+    field(item.organizer, "name", lang),
+    field(item.location, "address", lang),
+    item.tags?.join(" ") ?? ""
+  ]
+    .join(" ")
+    .toLocaleLowerCase(localeForLang(lang));
+
+const clientConfig = {
+  locale: localeForLang(lang),
+  total: communityInitiatives.length
 };
 ---
 
 <Layout lang={lang} path="/community" title={t.community.title} description={t.community.lead}>
-  <section class="page-head" data-section="community">
-    <div class="container page-head-grid">
-      <div>
+  <section class="community-hero" data-section="community">
+    <div class="container community-hero-layout">
+      <div class="community-hero-copy">
         <p class="eyebrow">{t.community.eyebrow}</p>
         <h1>{t.community.title}</h1>
         <p class="lead">{t.community.lead}</p>
-        <div class="actions">
-          <a class="button secondary" href={`${localizePath("/fix-map", lang)}#how-to-help`}>
-            {t.community.seeProblems}<span class="arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-        <p class="meta" style="margin-top:14px;max-width:70ch">{t.community.donationDisclaimer}</p>
-      </div>
-      <div class="section-plate" aria-hidden="true" set:html={sectionMotifs.community} />
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="notice" style="margin-bottom:22px">
-        <span class="notice-icon" aria-hidden="true">ⓘ</span>
-        <span>{t.community.dataNotice}</span>
-      </div>
-
-      <div class="toolbar">
-        <div class="catalog-search-layout">
-          <div class="field">
-            <label for="community-search">{t.community.search}</label>
-            <input id="community-search" type="search" placeholder={t.community.searchPlaceholder} />
+        <div class="community-trust">
+          <span class="community-trust-mark" aria-hidden="true">i</span>
+          <div>
+            <strong>{copy.readOnly}</strong>
+            <p>{copy.trust}</p>
           </div>
-          <details class="catalog-filter-disclosure">
-            <summary>{searchUi.filters}</summary>
-            <div class="catalog-filter-grid">
-              <div class="field">
-                <label for="community-category">{t.community.category}</label>
-                <select id="community-category">
-                  <option value="all">{t.common.all}</option>
-                  {categories.map((category) => <option value={category}>{categoryLabels[lang][category] ?? category}</option>)}
-                </select>
-              </div>
-              <div class="field">
-                <label for="community-status">{t.community.status}</label>
-                <select id="community-status">
-                  <option value="all">{t.common.all}</option>
-                  {statuses.map((status) => <option value={status}>{communityStatusLabels[lang][status] ?? status}</option>)}
-                </select>
-              </div>
-              <div class="field catalog-checkbox-field">
-                <label for="community-donations">
-                  <input type="checkbox" id="community-donations" />
-                  {t.community.donationsFilter}
-                </label>
-              </div>
-            </div>
-          </details>
         </div>
+        <a class="button" href="#initiatives-directory">
+          {copy.explore}<span class="arrow" aria-hidden="true">↓</span>
+        </a>
       </div>
 
-      <div class="results-bar">
-        <p id="community-count" class="meta">{t.community.count(communityInitiatives.length)}</p>
-        <div class="pill-row">
-          <a class="link-button" href={localizePath("/admin/community", lang)}>{t.community.adminCta}</a>
-          <button type="button" id="community-reset" class="link-button" hidden>{t.community.reset}</button>
-        </div>
-      </div>
-
-      <div id="community-list" class="grid grid-2" aria-live="polite"></div>
-      <div id="community-empty" class="empty empty-state" hidden>
-        <p>{t.community.empty}</p>
-        <button type="button" id="community-empty-reset" class="link-button">{t.community.reset}</button>
+      <div class="community-hero-mosaic" aria-label={copy.visualContext}>
+        {heroItems.map((item, index) => {
+          if (!item) return null;
+          const visual = initiativeVisuals[item.id];
+          return (
+            <figure class:list={["community-hero-tile", `tile-${index + 1}`]}>
+              <a href={`#${item.id}`} aria-label={field(item, "title", lang)}>
+                <img
+                  src={commonsImageUrl(visual.url, index === 0 ? 960 : 500)}
+                  srcset={`${commonsImageUrl(visual.url, 500)} 500w, ${commonsImageUrl(visual.url, 960)} 960w`}
+                  sizes={index === 0 ? "(max-width: 620px) 100vw, 36vw" : "(max-width: 620px) 50vw, 20vw"}
+                  alt=""
+                  width="1200"
+                  height="800"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+                <span class="community-hero-caption">
+                  <small>{copy.visualContext}</small>
+                  <strong>{field(item, "title", lang)}</strong>
+                </span>
+              </a>
+              <figcaption>
+                <a href={visual.pageUrl} target="_blank" rel="noreferrer">
+                  {visual.credit} · {visual.license}
+                </a>
+              </figcaption>
+            </figure>
+          );
+        })}
       </div>
     </div>
   </section>
 
-  <script type="application/json" id="community-config" set:html={JSON.stringify(config)}></script>
+  <section class="community-directory" id="initiatives-directory">
+    <div class="container">
+      <header class="community-directory-head">
+        <div>
+          <p class="eyebrow">{t.community.eyebrow}</p>
+          <h2>{copy.directoryTitle}</h2>
+          <p>{copy.directoryLead}</p>
+        </div>
+        <p class="community-results" id="community-count" aria-live="polite">
+          {t.community.count(communityInitiatives.length)}
+        </p>
+      </header>
 
+      <div class="community-filter-panel" aria-label={t.community.search}>
+        <div class="community-search-field">
+          <label for="community-search">{t.community.search}</label>
+          <div class="community-search-control">
+            <span aria-hidden="true">⌕</span>
+            <input
+              id="community-search"
+              type="search"
+              placeholder={t.community.searchPlaceholder}
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <div class="community-category-filter">
+          <span class="community-filter-label">{t.community.category}</span>
+          <div class="community-filter-chips" role="group" aria-label={t.community.category}>
+            <button type="button" class="community-filter-chip is-active" data-community-category="all" aria-pressed="true">
+              {t.common.all}
+            </button>
+            {categories.map((category) => (
+              <button
+                type="button"
+                class="community-filter-chip"
+                data-community-category={category}
+                aria-pressed="false"
+              >
+                <span aria-hidden="true">{categoryGlyphs[category] ?? "•"}</span>
+                {categoryLabels[lang][category] ?? category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="community-card-grid" id="community-list">
+        {communityInitiatives.map((item) => {
+          const visual = initiativeVisuals[item.id];
+          const contact = item.contact_links?.[0];
+          const contactUrl = contact?.url ?? item.organizer.website_url ?? item.organizer.facebook_url;
+          const relatedProjects = (item.related_project_ids ?? [])
+            .map((id) => projectLinks[id])
+            .filter(Boolean);
+          const color = categoryColors[item.category] ?? "var(--brand)";
+          const categoryLabel = categoryLabels[lang][item.category] ?? item.category;
+          const statusLabel = communityStatusLabels[lang][item.status] ?? item.status;
+          const callToAction = field(item, "call_to_action", lang);
+
+          return (
+            <article
+              class="community-card"
+              id={item.id}
+              data-community-card
+              data-search={searchable(item)}
+              data-category={item.category}
+              style={`--category-color:${color}`}
+            >
+              <div class:list={["community-card-media", !visual && "is-fallback"]}>
+                {visual ? (
+                  <>
+                    <img
+                      src={commonsImageUrl(visual.url, 500)}
+                      srcset={`${commonsImageUrl(visual.url, 330)} 330w, ${commonsImageUrl(visual.url, 500)} 500w, ${commonsImageUrl(visual.url, 960)} 960w`}
+                      sizes="(max-width: 620px) 100vw, (max-width: 1040px) 50vw, 33vw"
+                      alt=""
+                      width="1200"
+                      height="800"
+                      loading="lazy"
+                      decoding="async"
+                      style={visual.position ? `object-position:${visual.position}` : undefined}
+                    />
+                    <span class="community-media-context">{copy.visualContext}</span>
+                    <a class="community-media-credit" href={visual.pageUrl} target="_blank" rel="noreferrer">
+                      {visual.credit} · {visual.license}
+                    </a>
+                  </>
+                ) : (
+                  <div class="community-card-pattern" aria-hidden="true">
+                    <span>{categoryGlyphs[item.category] ?? "•"}</span>
+                    <i></i><i></i><i></i>
+                  </div>
+                )}
+              </div>
+
+              <div class="community-card-body">
+                <div class="community-card-kicker">
+                  <span class="community-category">
+                    <i aria-hidden="true"></i>{categoryLabel}
+                  </span>
+                  <span class="community-status">{statusLabel}</span>
+                </div>
+                <h3>{field(item, "title", lang)}</h3>
+                <p class="community-summary">{field(item, "summary", lang)}</p>
+
+                <dl class="community-card-facts">
+                  <div>
+                    <dt>{t.community.organizer}</dt>
+                    <dd>{field(item.organizer, "name", lang)}</dd>
+                  </div>
+                  <div>
+                    <dt>{copy.location}</dt>
+                    <dd>{field(item.location, "address", lang)}</dd>
+                  </div>
+                </dl>
+
+                {callToAction && <p class="community-follow-note">{callToAction}</p>}
+
+                <div class="community-card-actions">
+                  {contactUrl && (
+                    <a
+                      class="button"
+                      href={contactUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${copy.visitOrganizer} · ${copy.external}`}
+                    >
+                      {copy.visitOrganizer}<span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                  {item.donation_url && (
+                    <a class="community-donation-link" href={item.donation_url} target="_blank" rel="noreferrer">
+                      {t.community.donate} ↗
+                    </a>
+                  )}
+                </div>
+
+                <details class="community-evidence">
+                  <summary>
+                    <span>{copy.evidence}</span>
+                    <span aria-hidden="true">+</span>
+                  </summary>
+                  <div class="community-evidence-body">
+                    <p class="community-checked">
+                      <strong>{copy.checked}</strong> {item.discovery.last_checked_at}
+                    </p>
+                    {relatedProjects.length > 0 && (
+                      <div class="community-related">
+                        <strong>{copy.related}</strong>
+                        <ul>
+                          {relatedProjects.map((project) => (
+                            <li><a href={project.href}>{project.title}</a></li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    <ol class="community-source-list">
+                      {item.sources.map((source) => (
+                        <li>
+                          <a href={source.url} target="_blank" rel="noreferrer">
+                            {field(source, "title", lang)}
+                          </a>
+                          <small>{t.common.accessed} {source.accessed_at}</small>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                </details>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <div id="community-empty" class="community-empty" hidden>
+        <p>{t.community.empty}</p>
+        <button type="button" class="link-button" data-community-reset>{t.community.reset}</button>
+      </div>
+
+      <aside class="community-disclaimer">
+        <span aria-hidden="true">↗</span>
+        <p>{t.community.donationDisclaimer}</p>
+      </aside>
+    </div>
+  </section>
+
+  <script type="application/json" id="community-config" set:html={JSON.stringify(clientConfig)}></script>
   <script>
     import { matchesSearchText } from "@lib/searchCore";
 
-    type Source = {
-      title: string;
-      title_de?: string;
-      title_en?: string;
-      title_bg?: string;
-      url: string;
-      accessed_at: string;
-    };
-    type Link = { label_bg: string; label_en?: string; url: string; type: string };
-    type Initiative = {
-      id: string;
-      title_bg: string;
-      title_en?: string;
-      summary_bg: string;
-      summary_en?: string;
-      category: string;
-      status: string;
-      organizer: {
-        name_bg: string;
-        name_en?: string;
-        website_url?: string;
-        facebook_url?: string;
-      };
-      call_to_action_bg?: string;
-      call_to_action_en?: string;
-      donation_url?: string;
-      location: { address_bg: string; address_en?: string };
-      related_project_ids?: string[];
-      tags?: string[];
-      contact_links?: Link[];
-      sources: Source[];
-      discovery: { method: string; last_checked_at: string };
-    };
+    const config = JSON.parse(document.getElementById("community-config")?.textContent ?? "{}");
+    const search = document.querySelector<HTMLInputElement>("#community-search");
+    const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-community-card]"));
+    const chips = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-community-category]"));
+    const count = document.querySelector<HTMLElement>("#community-count");
+    const empty = document.querySelector<HTMLElement>("#community-empty");
+    let selectedCategory = "all";
 
-    const config = JSON.parse(
-      document.getElementById("community-config")?.textContent ?? "{}"
-    );
-    const search = document.querySelector<HTMLInputElement>("#community-search")!;
-    const category = document.querySelector<HTMLSelectElement>("#community-category")!;
-    const status = document.querySelector<HTMLSelectElement>("#community-status")!;
-    const reset = document.querySelector<HTMLButtonElement>("#community-reset")!;
-    const list = document.querySelector<HTMLElement>("#community-list")!;
-    const count = document.querySelector<HTMLElement>("#community-count")!;
-    const empty = document.querySelector<HTMLElement>("#community-empty")!;
-    let initiatives: Initiative[] = Array.isArray(config.initial) ? config.initial : [];
     const initialQuery = new URLSearchParams(window.location.search).get("q")?.trim() ?? "";
-    if (initialQuery) search.value = initialQuery;
-
-    function escapeHtml(value: unknown): string {
-      return String(value ?? "").replace(/[&<>"']/g, (char) => {
-        const map: Record<string, string> = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          "\"": "&quot;",
-          "'": "&#039;"
-        };
-        return map[char] ?? char;
-      });
-    }
-
-    function field(record: Record<string, unknown> | undefined, base: string): string {
-      if (!record) return "";
-      const localized = record[`${base}_${config.lang}`];
-      if (typeof localized === "string" && localized.length > 0) return localized;
-      const english = record[`${base}_en`];
-      if (typeof english === "string" && english.length > 0) return english;
-      const fallback = record[`${base}_bg`];
-      if (typeof fallback === "string" && fallback.length > 0) return fallback;
-      const legacy = record[base];
-      return typeof legacy === "string" ? legacy : "";
-    }
-
-    function label(map: Record<string, string>, value: string): string {
-      return map[value] ?? value;
-    }
-
-    function noun(n: number): string {
-      return n === 1 ? config.labels.one : config.labels.many;
-    }
-
-    function searchable(item: Initiative): string {
-      return [
-        field(item, "title"),
-        field(item, "summary"),
-        field(item.organizer, "name"),
-        field(item.location, "address"),
-        item.tags?.join(" ") ?? ""
-      ]
-        .join(" ")
-        .toLocaleLowerCase(config.locale);
-    }
-
-    function sourceList(sources: Source[]): string {
-      if (!sources.length) return "";
-      return `
-        <section class="stack-sm">
-          <h3>${escapeHtml(config.labels.sources)}</h3>
-          <ul class="source-list">
-            ${sources
-              .map(
-                (source) => `
-                  <li>
-                    <a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(field(source, "title"))}</a>
-                    <span class="meta"> · ${escapeHtml(config.labels.accessed)} ${escapeHtml(source.accessed_at)}</span>
-                  </li>
-                `
-              )
-              .join("")}
-          </ul>
-        </section>
-      `;
-    }
-
-    function linkButtons(links: Link[] = []): string {
-      if (!links.length) return "";
-      return `
-        <div class="pill-row" aria-label="${escapeHtml(config.labels.links)}">
-          ${links
-            .map(
-              (link) => `
-                <a class="button secondary" href="${escapeHtml(link.url)}" target="_blank" rel="noreferrer">
-                  ${escapeHtml(field(link, "label") || config.labels.contact)}
-                </a>
-              `
-            )
-            .join("")}
-        </div>
-      `;
-    }
-
-    function relatedProjects(ids: string[] = []): string {
-      const links = ids
-        .map((id) => config.projectLinks[id])
-        .filter(Boolean)
-        .map(
-          (project: { href: string; title: string }) =>
-            `<li><a href="${escapeHtml(project.href)}">${escapeHtml(project.title)}</a></li>`
-        )
-        .join("");
-      if (!links) return `<p class="meta">${escapeHtml(config.labels.noRelatedProjects)}</p>`;
-      return `<ul class="source-list">${links}</ul>`;
-    }
-
-    function card(item: Initiative): string {
-      const title = field(item, "title");
-      const summary = field(item, "summary");
-      const address = field(item.location, "address");
-      const organizer = field(item.organizer, "name");
-      const color = config.categoryColors[item.category] ?? "var(--brand)";
-      const cta = field(item, "call_to_action");
-      const statusLabel = label(config.statusLabels, item.status);
-      const categoryLabel = label(config.categoryLabels, item.category);
-
-      return `
-        <article class="card project-card" data-community-card data-search="${escapeHtml(searchable(item))}" data-category="${escapeHtml(item.category)}" data-status="${escapeHtml(item.status)}" data-donations="${item.donation_url ? "1" : "0"}">
-          <header>
-            <div>
-              <h2>${escapeHtml(title)}</h2>
-              <p class="meta">
-                <span class="cat-dot" style="--dot:${escapeHtml(color)}"></span>
-                ${escapeHtml(categoryLabel)} · ${escapeHtml(address)}
-              </p>
-            </div>
-            <span class="badge status-${escapeHtml(item.status)}">${escapeHtml(statusLabel)}</span>
-          </header>
-          <p>${escapeHtml(summary)}</p>
-          <div class="pill-row">
-            <span class="badge no-dot">${escapeHtml(config.labels.organizer)}: ${escapeHtml(organizer)}</span>
-            ${item.donation_url ? `<span class="badge no-dot" style="background:var(--badge-ok-bg);color:var(--badge-ok-fg)">${escapeHtml(config.labels.acceptsDonations)}</span>` : ""}
-            <span class="meta">${escapeHtml(config.labels.lastChecked)} ${escapeHtml(item.discovery?.last_checked_at ?? "")}</span>
-          </div>
-          ${cta ? `<p class="meta">${escapeHtml(cta)}</p>` : ""}
-          ${
-            item.donation_url
-              ? `<div class="pill-row"><a class="button secondary" href="${escapeHtml(item.donation_url)}" target="_blank" rel="noreferrer">${escapeHtml(config.labels.donate)} ↗</a></div>`
-              : ""
-          }
-          ${linkButtons(item.contact_links ?? [])}
-          <section class="stack-sm">
-            <h3>${escapeHtml(config.labels.relatedProjects)}</h3>
-            ${relatedProjects(item.related_project_ids ?? [])}
-          </section>
-          ${sourceList(item.sources ?? [])}
-        </article>
-      `;
-    }
-
-    const donationsOnly = document.querySelector<HTMLInputElement>("#community-donations")!;
+    if (search && initialQuery) search.value = initialQuery;
 
     function applyFilters() {
-      const query = search.value.trim();
+      const query = search?.value.trim() ?? "";
       let visible = 0;
-
-      document.querySelectorAll<HTMLElement>("[data-community-card]").forEach((item) => {
+      cards.forEach((card) => {
         const matches =
-          matchesSearchText(item.dataset.search ?? "", query) &&
-          (category.value === "all" || item.dataset.category === category.value) &&
-          (status.value === "all" || item.dataset.status === status.value) &&
-          (!donationsOnly.checked || item.dataset.donations === "1");
-        item.hidden = !matches;
+          matchesSearchText(card.dataset.search ?? "", query) &&
+          (selectedCategory === "all" || card.dataset.category === selectedCategory);
+        card.hidden = !matches;
         if (matches) visible += 1;
       });
-
-      const filtering =
-        Boolean(query) || category.value !== "all" || status.value !== "all" || donationsOnly.checked;
-      count.textContent = filtering
-        ? `${visible} ${config.labels.of} ${initiatives.length} ${noun(initiatives.length)}`
-        : `${initiatives.length} ${noun(initiatives.length)}`;
-      empty.hidden = visible > 0;
-      reset.hidden = !filtering;
+      if (count) count.textContent = visible === config.total ? String(config.total) : `${visible} / ${config.total}`;
+      if (empty) empty.hidden = visible > 0;
     }
 
-    function render() {
-      list.innerHTML = initiatives.map(card).join("");
+    function chooseCategory(button: HTMLButtonElement) {
+      selectedCategory = button.dataset.communityCategory ?? "all";
+      chips.forEach((chip) => {
+        const active = chip === button;
+        chip.classList.toggle("is-active", active);
+        chip.setAttribute("aria-pressed", String(active));
+      });
       applyFilters();
     }
 
     function resetFilters() {
-      search.value = "";
-      category.value = "all";
-      status.value = "all";
-      donationsOnly.checked = false;
-      applyFilters();
-      search.focus();
+      if (search) search.value = "";
+      const all = chips.find((chip) => chip.dataset.communityCategory === "all");
+      if (all) chooseCategory(all);
+      search?.focus();
     }
 
-    search.addEventListener("input", applyFilters);
-    category.addEventListener("change", applyFilters);
-    status.addEventListener("change", applyFilters);
-    donationsOnly.addEventListener("change", applyFilters);
-    reset.addEventListener("click", resetFilters);
-    document.getElementById("community-empty-reset")?.addEventListener("click", resetFilters);
-
-    render();
-
-    fetch(config.endpoint)
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (data && Array.isArray(data.initiatives)) {
-          initiatives = data.initiatives;
-          render();
-        }
-      })
-      .catch(() => {
-        /* keep curated data */
-      });
+    search?.addEventListener("input", applyFilters);
+    chips.forEach((chip) => chip.addEventListener("click", () => chooseCategory(chip)));
+    document.querySelectorAll<HTMLButtonElement>("[data-community-reset]").forEach((button) => {
+      button.addEventListener("click", resetFilters);
+    });
+    applyFilters();
   </script>
 </Layout>
+
+<style>
+  .community-hero {
+    background:
+      radial-gradient(circle at 18% 18%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 30%),
+      linear-gradient(135deg, var(--surface) 0 54%, var(--brand-soft) 54% 100%);
+    border-bottom: 1px solid var(--line-strong);
+    overflow: hidden;
+    padding: clamp(54px, 8vw, 104px) 0;
+    position: relative;
+  }
+
+  .community-hero::after {
+    background: linear-gradient(90deg, var(--brand) 0 42%, var(--gold) 42% 62%, var(--data-places) 62% 100%);
+    bottom: 0;
+    content: "";
+    height: 7px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  .community-hero-layout {
+    align-items: center;
+    display: grid;
+    gap: clamp(38px, 6vw, 76px);
+    grid-template-columns: minmax(0, 0.86fr) minmax(460px, 1.14fr);
+  }
+
+  .community-hero-copy h1 {
+    font-size: clamp(3rem, 5.2vw, 5.2rem);
+    hyphens: auto;
+    letter-spacing: -0.045em;
+    line-height: 0.88;
+    margin: 14px 0 24px;
+    max-width: 12ch;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .community-hero-copy .lead {
+    font-size: clamp(1.08rem, 1.6vw, 1.3rem);
+    max-width: 50ch;
+  }
+
+  .community-trust {
+    align-items: flex-start;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-lg);
+    display: flex;
+    gap: 13px;
+    margin: 28px 0 22px;
+    max-width: 620px;
+    padding: 16px 18px;
+  }
+
+  .community-trust-mark {
+    align-items: center;
+    background: var(--brand);
+    border-radius: 50%;
+    color: var(--brand-ink);
+    display: inline-flex;
+    flex: 0 0 27px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    height: 27px;
+    justify-content: center;
+  }
+
+  .community-trust strong {
+    color: var(--ink-deep);
+    display: block;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .community-trust p {
+    color: var(--ink-2);
+    font-size: 0.94rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .community-hero-mosaic {
+    display: grid;
+    grid-template-columns: 1.28fr 0.72fr;
+    grid-template-rows: repeat(2, minmax(190px, 1fr));
+    min-height: 510px;
+    position: relative;
+  }
+
+  .community-hero-mosaic::before {
+    border: 1px solid color-mix(in srgb, var(--gold) 54%, transparent);
+    content: "";
+    inset: -18px 24px 18px -18px;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .community-hero-tile {
+    border: 5px solid var(--surface);
+    box-shadow: var(--shadow-lg);
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .community-hero-tile.tile-1 {
+    grid-row: 1 / 3;
+    transform: rotate(-1.5deg);
+    z-index: 2;
+  }
+
+  .community-hero-tile.tile-2 {
+    transform: translate(-8px, 12px) rotate(2deg);
+    z-index: 3;
+  }
+
+  .community-hero-tile.tile-3 {
+    transform: translate(4px, -3px) rotate(-1deg);
+    z-index: 1;
+  }
+
+  .community-hero-tile > a {
+    color: white;
+    display: block;
+    height: 100%;
+    min-height: inherit;
+    text-decoration: none;
+  }
+
+  .community-hero-tile img {
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    position: absolute;
+    transition: transform 0.35s ease;
+    width: 100%;
+  }
+
+  .community-hero-tile:hover img {
+    transform: scale(1.035);
+  }
+
+  .community-hero-caption {
+    background: linear-gradient(transparent, rgb(10 26 31 / 88%));
+    bottom: 0;
+    display: block;
+    left: 0;
+    padding: 60px 18px 30px;
+    position: absolute;
+    right: 0;
+  }
+
+  .community-hero-caption small,
+  .community-hero-caption strong {
+    display: block;
+  }
+
+  .community-hero-caption small {
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.13em;
+    opacity: 0.8;
+    text-transform: uppercase;
+  }
+
+  .community-hero-caption strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.7vw, 1.48rem);
+    line-height: 1.08;
+    margin-top: 5px;
+  }
+
+  .community-hero-tile figcaption {
+    bottom: 8px;
+    font-size: 0.58rem;
+    left: 18px;
+    position: absolute;
+    z-index: 3;
+  }
+
+  .community-hero-tile figcaption a {
+    color: rgb(255 255 255 / 72%);
+  }
+
+  .community-directory {
+    background: var(--bg);
+    padding: clamp(62px, 8vw, 108px) 0;
+    scroll-margin-top: 90px;
+  }
+
+  .community-directory-head {
+    align-items: end;
+    display: flex;
+    gap: 34px;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+
+  .community-directory-head h2 {
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    margin: 10px 0 12px;
+  }
+
+  .community-directory-head p:not(.eyebrow):not(.community-results) {
+    color: var(--ink-2);
+    margin: 0;
+    max-width: 68ch;
+  }
+
+  .community-results {
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-pill);
+    color: var(--muted);
+    flex: 0 0 auto;
+    font-size: 0.78rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    margin: 0;
+    padding: 8px 13px;
+    text-transform: uppercase;
+  }
+
+  .community-filter-panel {
+    align-items: end;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-sm);
+    display: grid;
+    gap: 22px;
+    grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
+    margin-bottom: 30px;
+    padding: 18px;
+  }
+
+  .community-search-field label,
+  .community-filter-label {
+    color: var(--muted);
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+  }
+
+  .community-search-control {
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-sm);
+    display: flex;
+    min-height: 48px;
+    padding: 0 13px;
+  }
+
+  .community-search-control > span {
+    color: var(--brand);
+    font-size: 1.4rem;
+    margin-right: 8px;
+  }
+
+  .community-search-control input {
+    background: transparent;
+    border: 0;
+    color: var(--ink);
+    font: inherit;
+    min-height: 46px;
+    min-width: 0;
+    outline: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .community-search-control:focus-within {
+    box-shadow: var(--ring);
+  }
+
+  .community-filter-chips {
+    display: flex;
+    gap: 8px;
+    min-width: 0;
+    overflow-x: auto;
+    padding: 1px 1px 5px;
+    scrollbar-width: thin;
+  }
+
+  .community-filter-chip {
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-pill);
+    color: var(--ink-2);
+    cursor: pointer;
+    display: inline-flex;
+    flex: 0 0 auto;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0 14px;
+  }
+
+  .community-filter-chip:hover,
+  .community-filter-chip:focus-visible {
+    border-color: var(--brand);
+    outline: 0;
+  }
+
+  .community-filter-chip.is-active {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: var(--brand-ink);
+  }
+
+  .community-card-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .community-card {
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-card);
+    min-width: 0;
+    overflow: hidden;
+    position: relative;
+    scroll-margin-top: 100px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .community-card::before {
+    background: var(--category-color);
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+  }
+
+  .community-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-3px);
+  }
+
+  .community-card[hidden] {
+    display: none;
+  }
+
+  .community-card-media {
+    aspect-ratio: 16 / 10;
+    background: color-mix(in srgb, var(--category-color) 16%, var(--surface-2));
+    overflow: hidden;
+    position: relative;
+  }
+
+  .community-card-media::after {
+    background: linear-gradient(transparent 58%, rgb(12 22 25 / 72%));
+    content: "";
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .community-card-media img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+    width: 100%;
+  }
+
+  .community-card:hover .community-card-media img {
+    transform: scale(1.025);
+  }
+
+  .community-media-context {
+    background: rgb(10 26 31 / 82%);
+    border-radius: var(--r-pill);
+    color: white;
+    font-size: 0.62rem;
+    font-weight: 800;
+    left: 12px;
+    letter-spacing: 0.08em;
+    padding: 6px 9px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 14px;
+    z-index: 2;
+  }
+
+  .community-media-credit {
+    bottom: 8px;
+    color: rgb(255 255 255 / 78%);
+    font-size: 0.62rem;
+    left: 12px;
+    max-width: calc(100% - 24px);
+    overflow-wrap: anywhere;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .community-card-pattern {
+    align-items: center;
+    background:
+      radial-gradient(circle at 18% 22%, color-mix(in srgb, var(--category-color) 36%, transparent) 0 7%, transparent 8%),
+      linear-gradient(135deg, color-mix(in srgb, var(--category-color) 24%, var(--surface-2)), var(--surface-3));
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .community-card-pattern > span {
+    color: var(--category-color);
+    font-family: var(--font-display);
+    font-size: 5.8rem;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+  }
+
+  .community-card-pattern i {
+    border: 2px solid color-mix(in srgb, var(--category-color) 45%, transparent);
+    border-radius: 50%;
+    height: 170px;
+    position: absolute;
+    width: 170px;
+  }
+
+  .community-card-pattern i:nth-child(2) { transform: translate(-65%, 45%); }
+  .community-card-pattern i:nth-child(3) { transform: translate(70%, -45%); }
+  .community-card-pattern i:nth-child(4) { height: 250px; width: 250px; }
+
+  .community-card-body {
+    padding: 22px;
+  }
+
+  .community-card-kicker {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  .community-category,
+  .community-status {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .community-category {
+    align-items: center;
+    color: var(--ink-2);
+    display: inline-flex;
+    gap: 7px;
+  }
+
+  .community-category i {
+    background: var(--category-color);
+    display: inline-block;
+    height: 3px;
+    width: 24px;
+  }
+
+  .community-status {
+    background: var(--badge-ok-bg);
+    border-radius: var(--r-pill);
+    color: var(--badge-ok-fg);
+    padding: 6px 9px;
+  }
+
+  .community-card h3 {
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin: 0 0 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .community-summary {
+    color: var(--ink-2);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .community-card-facts {
+    border-bottom: 1px solid var(--line);
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 20px 0 16px;
+    padding: 15px 0;
+  }
+
+  .community-card-facts div {
+    min-width: 0;
+  }
+
+  .community-card-facts dt {
+    color: var(--muted);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .community-card-facts dd {
+    color: var(--ink-deep);
+    font-size: 0.84rem;
+    font-weight: 680;
+    line-height: 1.35;
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .community-follow-note {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0 0 18px;
+  }
+
+  .community-card-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+  }
+
+  .community-card-actions .button {
+    min-height: 44px;
+    padding: 0 16px;
+  }
+
+  .community-donation-link {
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .community-evidence {
+    border-top: 1px solid var(--line);
+    margin-top: 20px;
+  }
+
+  .community-evidence summary {
+    align-items: center;
+    color: var(--brand);
+    cursor: pointer;
+    display: flex;
+    font-size: 0.78rem;
+    font-weight: 800;
+    justify-content: space-between;
+    min-height: 48px;
+  }
+
+  .community-evidence summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .community-evidence[open] summary span:last-child {
+    transform: rotate(45deg);
+  }
+
+  .community-evidence-body {
+    color: var(--ink-2);
+    font-size: 0.8rem;
+    padding: 0 0 4px;
+  }
+
+  .community-checked {
+    margin: 0 0 12px;
+  }
+
+  .community-related {
+    margin-bottom: 14px;
+  }
+
+  .community-related ul,
+  .community-source-list {
+    margin: 6px 0 0;
+    padding-left: 20px;
+  }
+
+  .community-source-list li + li {
+    margin-top: 10px;
+  }
+
+  .community-source-list a {
+    overflow-wrap: anywhere;
+  }
+
+  .community-source-list small {
+    color: var(--muted);
+    display: block;
+    margin-top: 2px;
+  }
+
+  .community-empty {
+    background: var(--surface);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--r-lg);
+    margin-top: 22px;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .community-disclaimer {
+    align-items: center;
+    border-top: 1px solid var(--line-strong);
+    color: var(--muted);
+    display: flex;
+    font-size: 0.82rem;
+    gap: 10px;
+    margin-top: 38px;
+    padding-top: 20px;
+  }
+
+  .community-disclaimer span {
+    color: var(--brand);
+    font-size: 1.1rem;
+  }
+
+  .community-disclaimer p {
+    margin: 0;
+  }
+
+  @media (max-width: 1040px) {
+    .community-hero-layout {
+      grid-template-columns: minmax(0, 0.9fr) minmax(390px, 1.1fr);
+    }
+
+    .community-hero-mosaic {
+      min-height: 440px;
+    }
+
+    .community-card-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 820px) {
+    .community-hero-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .community-hero-copy h1 {
+      max-width: 12ch;
+    }
+
+    .community-hero-mosaic {
+      min-height: 410px;
+    }
+
+    .community-filter-panel {
+      align-items: stretch;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .community-hero {
+      padding: 40px 0 58px;
+    }
+
+    .community-hero-copy h1 {
+      font-size: clamp(2.85rem, 14vw, 4.2rem);
+      line-height: 0.92;
+      margin-bottom: 18px;
+    }
+
+    .community-trust {
+      margin-top: 22px;
+      padding: 14px;
+    }
+
+    .community-hero-copy > .button {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .community-hero-mosaic {
+      gap: 7px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 220px 138px;
+      min-height: 0;
+    }
+
+    .community-hero-mosaic::before {
+      display: none;
+    }
+
+    .community-hero-tile {
+      border-width: 3px;
+      transform: none !important;
+    }
+
+    .community-hero-tile.tile-1 {
+      grid-column: 1 / 3;
+      grid-row: 1;
+    }
+
+    .community-hero-tile.tile-2,
+    .community-hero-tile.tile-3 {
+      grid-row: 2;
+    }
+
+    .community-hero-caption {
+      padding: 44px 12px 22px;
+    }
+
+    .community-hero-caption strong {
+      font-size: 1rem;
+    }
+
+    .community-hero-tile figcaption {
+      bottom: 5px;
+      left: 12px;
+    }
+
+    .community-directory {
+      padding: 54px 0 76px;
+    }
+
+    .community-directory-head {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .community-filter-panel {
+      margin-left: calc(var(--gutter) * -0.5);
+      margin-right: calc(var(--gutter) * -0.5);
+      padding: 15px;
+    }
+
+    .community-card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .community-card:hover {
+      transform: none;
+    }
+
+    .community-card-body {
+      padding: 20px;
+    }
+
+    .community-card-facts {
+      grid-template-columns: 1fr;
+    }
+
+    .community-card-actions .button {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .community-media-credit {
+      font-size: 0.58rem;
+    }
+  }
+</style>

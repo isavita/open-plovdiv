@@ -281,7 +281,7 @@ describe("route parity", () => {
 
 describe("localised routing", () => {
   it("builds the correct prefix for every locale and never an empty slug", () => {
-    for (const path of ["/", "/projects", "/history/contribute"]) {
+    for (const path of ["/", "/projects", "/community"]) {
       expect(localizePath(path, "bg")).toBe(path);
       for (const loc of locales.filter((l) => l !== "bg")) {
         const expected = path === "/" ? `/${loc}` : `/${loc}${path}`;

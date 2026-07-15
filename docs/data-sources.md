@@ -1,6 +1,6 @@
 # Data Sources
 
-Open Plovdiv uses reviewed JSON files for project and budget records, not live scraping. Every record links to a public source. Citizen problem reports are stored separately and appear publicly only after moderation.
+Open Plovdiv uses reviewed JSON files rather than visitor submissions or live scraping. Every project, history and community-initiative record links to a public source.
 
 The history platform also generates a normalized knowledge base from local curated JSON files. Its five entity exports, archive layers, primary-document excerpts, story longreads and education resources are documented in [`docs/history-api.md`](history-api.md) and published under `/api/history/*.json` plus `/data/history/` JSON/CSV downloads. Generated historical records are source-backed and schema-valid, but remain marked as needing independent editorial sign-off until reviewed. The people layer combines the official mayor archive with `data/curated/notable-people.json` and the starter relationship seed in `data/curated/person-relationships.json`.
 
@@ -49,7 +49,6 @@ The history platform also generates a normalized knowledge base from local curat
 | OpenStreetMap | https://www.openstreetmap.org/ | Map tiles and spatial context | 2026-06-14 |
 | Wikimedia Commons — historical Plovdiv media | https://commons.wikimedia.org/wiki/Category:Historical_images_of_Plovdiv | Historical photographs, postcards, maps and file-level license metadata for the archive layer and then/now pairs | 2026-06-19 |
 | Wikimedia Commons — Bulgarian Archives State Agency cooperation files | https://commons.wikimedia.org/wiki/Commons:Bulgarian_Archives_State_Agency | Public-domain archive images and maps from Bulgarian Archives State Agency uploads used in the archive layer | 2026-06-19 |
-| Citizen submissions | /fix-map/report | Public problem reports after moderator approval | 2026-06-14 |
 
 The same list is shown to visitors at `/data-sources` (and `/en/data-sources`).
 
@@ -80,4 +79,3 @@ The same list is shown to visitors at `/data-sources` (and `/en/data-sources`).
 - **Education resources are draft teaching packs.** `data/curated/education-resources.json` links lesson plans, quizzes, printable tasks and BG/EN audio-tour scripts back to source-backed knowledge records. They still require pedagogical review, recorded audio production and independent editorial sign-off before being treated as final curriculum.
 - **No per-project completion list.** The municipality does not publish a single, citable "completed in 2025" status per project. Statuses here reflect what is sourced and each project page shows a source-backed timeline where available: started/continuing, new for 2026, or postponed (frozen with BGN 0 for 2025–2026).
 - **Locations are approximate**, placed by street/district and marked as such on each project.
-- `data/curated/fix-reports.json` is intentionally empty; the live map uses approved citizen reports from the report store.
