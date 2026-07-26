@@ -288,7 +288,11 @@ const searchable = (item: (typeof communityInitiatives)[number]) =>
 
 const clientConfig = {
   locale: localeForLang(lang),
-  total: communityInitiatives.length
+  total: communityInitiatives.length,
+  // Pre-rendered plural forms: filtering rewrites this badge on every
+  // keystroke, and a bare "7" in a pill says nothing about what was counted.
+  totalLabel: t.community.count(communityInitiatives.length),
+  countLabels: Array.from({ length: communityInitiatives.length + 1 }, (_, n) => t.community.count(n))
 };
 ---
 
@@ -557,7 +561,12 @@ const clientConfig = {
         card.hidden = !matches;
         if (matches) visible += 1;
       });
-      if (count) count.textContent = visible === config.total ? String(config.total) : `${visible} / ${config.total}`;
+      if (count) {
+        count.textContent =
+          visible === config.total
+            ? config.totalLabel
+            : `${config.countLabels?.[visible] ?? visible} / ${config.total}`;
+      }
       if (empty) empty.hidden = visible > 0;
     }
 
@@ -830,6 +839,14 @@ const clientConfig = {
     padding: 18px;
   }
 
+  /* Grid items default to a min-content minimum, so the category chips —
+     a horizontal scroller — were sizing the whole column to the width of
+     every chip laid end to end and pushing the page sideways on phones. */
+  .community-search-field,
+  .community-category-filter {
+    min-width: 0;
+  }
+
   .community-search-field label,
   .community-filter-label {
     color: var(--muted);
@@ -873,13 +890,21 @@ const clientConfig = {
     box-shadow: var(--ring);
   }
 
+  /* The half-visible next chip is the scroll affordance, as on the homepage
+     pace list — a thin scrollbar under the row just adds noise on touch. */
   .community-filter-chips {
     display: flex;
     gap: 8px;
     min-width: 0;
     overflow-x: auto;
-    padding: 1px 1px 5px;
-    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+    padding: 1px 1px 3px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .community-filter-chips::-webkit-scrollbar {
+    display: none;
   }
 
   .community-filter-chip {
@@ -897,6 +922,7 @@ const clientConfig = {
     gap: 6px;
     min-height: 44px;
     padding: 0 14px;
+    scroll-snap-align: start;
   }
 
   .community-filter-chip:hover,

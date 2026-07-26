@@ -4531,8 +4531,12 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     max-width: none;
   }
 
+  /* The stacked title reads best around eight characters per line, but the
+     cap must never be narrower than the longest word or it splits mid-word
+     ("Историят|а на Пловдив"). `min-content` keeps one word on one line. */
   .history-hero-copy h1 {
     max-width: 8ch;
+    min-width: min-content;
     font-size: clamp(3.8rem, 6vw, 6.5rem);
     line-height: 0.88;
     text-wrap: balance;

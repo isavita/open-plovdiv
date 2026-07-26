@@ -345,7 +345,10 @@ h4,
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 700;
-  hyphens: auto;
+  /* Display headings are set solid: never auto-hyphenate them. Across twelve
+     locales the browser's dictionaries break titles in places an editor never
+     would, so words only break when one genuinely cannot fit its column. */
+  hyphens: manual;
   letter-spacing: -0.025em;
   overflow-wrap: break-word;
   text-wrap: balance;
@@ -1042,6 +1045,13 @@ small {
   background: var(--surface-3);
   border: 0;
   box-shadow: none;
+}
+
+/* …except the engraved plate, which keeps its category wash (see global.css). */
+.place-card-media.place-card-plate {
+  background:
+    radial-gradient(circle at 30% 22%, color-mix(in srgb, var(--era-color, var(--brand)) 18%, transparent), transparent 62%),
+    var(--surface-2);
 }
 
 .story-card-media picture {
@@ -2560,10 +2570,18 @@ a.mayor-frieze-more:focus-visible {
     display: none;
   }
 
+  /* Narrower than a screen so the next card always peeks — the edge is the
+     only affordance a horizontal scroller gets on touch. The taller desktop
+     min-height would leave a dead band above the arrow at this width. */
   .ailyak-pace-card {
-    flex: 0 0 min(82vw, 306px);
-    min-height: 212px;
+    flex: 0 0 min(76vw, 288px);
+    min-height: 0;
+    padding: 17px;
     scroll-snap-align: start;
+  }
+
+  .ailyak-pace-card .ailyak-pace-arrow {
+    margin-top: 2px;
   }
 
   .stat-row,

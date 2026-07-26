@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
-import { sectionMotifs } from "@lib/motifs";
+import { placeCategoryPlates, placeFallbackPlate, sectionMotifs } from "@lib/motifs";
 import { fallbackPlaceColor, placeColors } from "@lib/placeCategories";
 import { distanceMeters } from "@lib/geo";
 import { formatKm, routeCategoryOrder, routeGeometry, walkingRoutes } from "@lib/routes";
@@ -488,6 +488,12 @@ const categories = [...new Set(places.map((place) => place.category))].sort((a, 
 );
 const placeholderImage = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
 const initialPlaceCount = 24;
+
+/** Every card gets a visual: the licensed photo, or its category's plate. */
+function plateFor(category: string): string {
+  return placeCategoryPlates[category] ?? placeFallbackPlate;
+}
+
 const placeCards = places.map((place) => {
   const facts = placeFacts(place, { includeCreatorFallback: false });
   const archiveCount = archiveCountByPlace.get(place.id) ?? 0;
@@ -513,6 +519,7 @@ const placeCards = places.map((place) => {
     summary: localized(place, "summary"),
     search,
     facts,
+    plate: plateFor(place.category),
     archiveCount,
     pairCount,
     media: place.media?.[0]
@@ -538,6 +545,10 @@ const config = {
   batchSize: initialPlaceCount,
   placeholderImage,
   lang,
+  // The lazily-fetched cards carry only a category, so the client renderer
+  // needs the same plate drawings the server used for the first batch.
+  plates: placeCategoryPlates,
+  fallbackPlate: placeFallbackPlate,
   cardsEndpoint: "/api/history/place-cards.json"
 };
 
@@ -980,7 +991,7 @@ const placesMapConfig = {
               data-archive={card.archiveCount}
               data-then-now={card.pairCount}
             >
-              {card.media && (
+              {card.media ? (
                 <figure class="place-card-media">
                   <img
                     src={placeholderImage}
@@ -1000,22 +1011,22 @@ const placesMapConfig = {
                     </a>
                   </figcaption>
                 </figure>
+              ) : (
+                <div class="place-card-media place-card-plate" aria-hidden="true" set:html={card.plate} />
               )}
               <div class="place-card-body">
-                <p class="eyebrow">{card.eraLabel} · {card.categoryLabel}</p>
+                <p class="place-card-tags">
+                  <span class="place-chip">{card.categoryLabel}</span>
+                </p>
                 <h2><a href={card.href}>{card.name}</a></h2>
-                <p>{card.summary}</p>
-                {card.facts.length > 0 && (
-                  <dl class="place-facts">
-                    {card.facts.map((fact) => (
-                      <>
-                        <dt>{fact.label}</dt>
-                        <dd>{fact.value}</dd>
-                      </>
-                    ))}
-                  </dl>
-                )}
-                <a class="text-link" href={card.href}>{labels.open}</a>
+                <p class="place-card-summary">{card.summary}</p>
+                <p class="place-card-foot">
+                  <span class="place-card-built">{card.facts[0]?.value ?? card.eraLabel}</span>
+                  <span class="place-card-go">
+                    {labels.open}
+                    <span aria-hidden="true">→</span>
+                  </span>
+                </p>
               </div>
             </article>
           );
@@ -1078,15 +1089,10 @@ const placesMapConfig = {
               <a href="${escapePlacesHtml(card.media.licenseUrl)}" target="_blank" rel="noreferrer">${escapePlacesHtml(card.media.credit)}</a>
             </figcaption>
           </figure>`
-        : "";
-      const facts = Array.isArray(card.facts) && card.facts.length
-        ? `<dl class="place-facts">${card.facts
-            .map(
-              (fact: any) =>
-                `<dt>${escapePlacesHtml(fact.label)}</dt><dd>${escapePlacesHtml(fact.value)}</dd>`
-            )
-            .join("")}</dl>`
-        : "";
+        : placePlateMarkup(card.category);
+      const built = `<span class="place-card-built">${escapePlacesHtml(
+        (Array.isArray(card.facts) && card.facts.length ? card.facts[0].value : card.eraLabel) ?? ""
+      )}</span>`;
       return `<article
           class="${escapePlacesHtml(card.className)}"
           data-place-card
@@ -1098,11 +1104,15 @@ const placesMapConfig = {
         >
           ${media}
           <div class="place-card-body">
-            <p class="eyebrow">${escapePlacesHtml(card.eraLabel)} · ${escapePlacesHtml(card.categoryLabel)}</p>
+            <p class="place-card-tags">
+              <span class="place-chip">${escapePlacesHtml(card.categoryLabel)}</span>
+            </p>
             <h2><a href="${escapePlacesHtml(card.href)}">${escapePlacesHtml(card.name)}</a></h2>
-            <p>${escapePlacesHtml(card.summary)}</p>
-            ${facts}
-            <a class="text-link" href="${escapePlacesHtml(card.href)}">${escapePlacesHtml(config.labels.open)}</a>
+            <p class="place-card-summary">${escapePlacesHtml(card.summary)}</p>
+            <p class="place-card-foot">
+              ${built}
+              <span class="place-card-go">${escapePlacesHtml(config.labels.open)}<span aria-hidden="true">→</span></span>
+            </p>
           </div>
         </article>`;
     }
@@ -1194,10 +1204,29 @@ const placesMapConfig = {
       );
     }
 
+    /** The engraved plate for a category, used when there is no photo. */
+    function placePlateMarkup(category: string): string {
+      return `<div class="place-card-media place-card-plate" aria-hidden="true">${
+        config.plates?.[category] ?? config.fallbackPlate ?? ""
+      }</div>`;
+    }
+
     function loadPlaceImage(image: HTMLImageElement) {
       const source = image.dataset.src;
       if (!source) return;
       image.addEventListener("load", () => image.removeAttribute("data-src"), { once: true });
+      // Every photo is hotlinked from Commons. When one fails the card used to
+      // keep a blank grey band forever; swap in the category plate instead so
+      // the tile still reads as finished.
+      image.addEventListener(
+        "error",
+        () => {
+          const figure = image.closest("figure.place-card-media");
+          const category = image.closest<HTMLElement>("[data-place-card]")?.dataset.category ?? "";
+          if (figure) figure.outerHTML = placePlateMarkup(category);
+        },
+        { once: true }
+      );
       image.src = source;
     }
 

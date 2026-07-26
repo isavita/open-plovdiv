@@ -47,6 +47,135 @@ export const bustGlyph =
   `<path class="motif-bust" d="M11 45c3-12 31-12 34 0"/>` +
   `</svg>`;
 
+/**
+ * Engraved category plates for places that carry no licensed photograph.
+ * Drawn on a 160×100 field in `currentColor` with the same primitives as the
+ * section motifs, so a card without an image still reads as a deliberate
+ * plate — and the drawing itself tells you what kind of place it is.
+ * Styled by `.place-plate` in global.css; keys match `placeColors`.
+ */
+const plate = (body: string): string =>
+  `<svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">${body}</svg>`;
+
+export const placeCategoryPlates: Record<string, string> = {
+  // Burial mound on the plain, with a low sun behind it.
+  thracian: plate(
+    `<circle class="motif-fill soft" cx="112" cy="42" r="17"/>
+    <path class="motif-glyph" d="M26 74c10-26 26-38 38-38s28 12 38 38"/>
+    <path class="motif-contour" d="M8 74h144"/>
+    <path class="motif-contour dim" d="M8 84h144"/>`
+  ),
+
+  // A colonnade: four columns under an architrave — the antique theatre.
+  roman: plate(
+    `<path class="motif-glyph" d="M28 34h104"/>
+    <path class="motif-line" d="M32 42h96"/>
+    ${[42, 68, 94, 120]
+      .map(
+        (x) =>
+          `<rect class="motif-sheet" x="${x - 6}" y="42" width="12" height="30" rx="1"/>`
+      )
+      .join("\n    ")}
+    <path class="motif-glyph" d="M24 74h112"/>
+    <path class="motif-contour dim" d="M8 84h144"/>`
+  ),
+
+  // Crenellated wall with a gate tower.
+  medieval: plate(
+    `<rect class="motif-sheet" x="26" y="48" width="46" height="26"/>
+    <rect class="motif-sheet" x="72" y="34" width="34" height="40"/>
+    <rect class="motif-sheet" x="106" y="48" width="28" height="26"/>
+    ${[28, 38, 48, 58, 110, 120, 130]
+      .map((x) => `<rect class="motif-fill" x="${x}" y="42" width="6" height="6"/>`)
+      .join("\n    ")}
+    ${[74, 84, 94]
+      .map((x) => `<rect class="motif-fill" x="${x}" y="28" width="6" height="6"/>`)
+      .join("\n    ")}
+    <path class="motif-glyph" d="M83 74V60a6 6 0 0 1 12 0v14"/>
+    <path class="motif-contour dim" d="M8 84h144"/>`
+  ),
+
+  // Dome and minaret — the Ottoman skyline.
+  ottoman: plate(
+    `<path class="motif-glyph" d="M46 62a26 26 0 0 1 52 0"/>
+    <rect class="motif-sheet" x="42" y="62" width="60" height="12"/>
+    <path class="motif-line" d="M72 36v-8"/>
+    <circle class="motif-node" cx="72" cy="26" r="3"/>
+    <rect class="motif-sheet" x="112" y="30" width="12" height="44"/>
+    <path class="motif-glyph" d="M112 30l6-10 6 10"/>
+    <path class="motif-line" d="M112 44h12"/>
+    <path class="motif-contour dim" d="M8 84h144"/>`
+  ),
+
+  // Revival house: the overhanging upper storey over a stone base.
+  revival: plate(
+    `<rect class="motif-sheet" x="48" y="52" width="48" height="22"/>
+    <rect class="motif-sheet" x="38" y="34" width="68" height="18"/>
+    <path class="motif-glyph" d="M32 34l40-14 40 14"/>
+    ${[48, 62, 76, 90]
+      .map((x) => `<rect class="motif-fill" x="${x}" y="38" width="8" height="10"/>`)
+      .join("\n    ")}
+    <path class="motif-line" d="M118 74V44"/>
+    <path class="motif-contour dim" d="M8 84h144"/>`
+  ),
+
+  // An apse with a cross above the arched window.
+  religious: plate(
+    `<path class="motif-glyph" d="M54 74V48a20 20 0 0 1 40 0v26"/>
+    <path class="motif-line" d="M74 28v-10M69 22h10"/>
+    <path class="motif-glyph" d="M66 74V58a8 8 0 0 1 16 0v16"/>
+    <rect class="motif-sheet" x="104" y="56" width="20" height="18"/>
+    <path class="motif-glyph" d="M100 56l14-10 14 10"/>
+    <path class="motif-contour dim" d="M8 84h144"/>`
+  ),
+
+  // The tepeta: three rounded humps behind contour lines.
+  hill: plate(
+    `<path class="motif-glyph" d="M14 72c16-30 34-30 50 0"/>
+    <path class="motif-glyph" d="M56 72c18-38 40-38 58 0"/>
+    <path class="motif-line" d="M104 72c12-22 26-22 38 0"/>
+    <circle class="motif-node" cx="85" cy="36" r="3.5"/>
+    <path class="motif-contour" d="M8 78h144"/>
+    <path class="motif-contour dim" d="M8 88h144"/>`
+  ),
+
+  // A street: facades either side of a lamp-lit way.
+  civic: plate(
+    `<rect class="motif-sheet" x="24" y="40" width="30" height="34"/>
+    <rect class="motif-sheet" x="106" y="34" width="30" height="40"/>
+    ${[28, 40]
+      .map((x) => `<rect class="motif-fill" x="${x}" y="48" width="8" height="9"/>`)
+      .join("\n    ")}
+    ${[110, 122]
+      .map((x) => `<rect class="motif-fill" x="${x}" y="42" width="8" height="9"/>`)
+      .join("\n    ")}
+    <path class="motif-line" d="M80 74V38"/>
+    <circle class="motif-node" cx="80" cy="34" r="4.5"/>
+    <path class="motif-contour" d="M8 74h144"/>
+    <path class="motif-contour dim" d="M8 84h144"/>`
+  ),
+
+  // An obelisk on its plinth.
+  monument: plate(
+    `<path class="motif-glyph" d="M74 60l6-30 6 30z"/>
+    <rect class="motif-sheet" x="70" y="60" width="20" height="8"/>
+    <rect class="motif-sheet" x="62" y="68" width="36" height="8"/>
+    <path class="motif-line" d="M40 76h80"/>
+    <circle class="motif-node" cx="80" cy="22" r="3"/>
+    <path class="motif-contour dim" d="M8 86h144"/>`
+  )
+};
+
+/** Fallback plate for a category with no drawing of its own. */
+export const placeFallbackPlate = plate(
+  `<path class="motif-contour" d="M8 62C40 52 68 62 100 52c22-7 40-2 52 4"/>
+  <path class="motif-contour dim" d="M8 76C48 68 92 74 152 64"/>
+  <g class="motif-pin">
+    <path d="M80 56c5-7.5 12.5-16 12.5-24.6a12.5 12.5 0 1 0 -25 0C67.5 40 75 48.5 80 56z"/>
+    <circle class="motif-pin-hole" cx="80" cy="31.4" r="4.8"/>
+  </g>`
+);
+
 export const sectionMotifs: Record<string, string> = {
   // Chronology of eras: dots alternate above/below a baseline with an arrow.
   history: svg(
