@@ -66,6 +66,23 @@
   --data-sources: #4d477a;
   --data-growth: #875510;
   --data-geo: #2e5e8b;
+
+  /* Chart series slot 1 — a chart with one series uses this and nothing else;
+     the marks' labels carry identity, so bars are never tinted by their value. */
+  --chart-series-1: #2e5e8b;
+
+  /* Project status: five pipeline stages as one hue in monotone lightness
+     steps (planned → completed), plus three reserved states outside it.
+     Steps validated for monotone lightness, ≥0.06 ΔL between neighbours and
+     a light end above 2:1 on --surface; the dark theme re-steps them below. */
+  --status-planned: #86b5cb;
+  --status-contracted: #5896b6;
+  --status-funded: #357ea1;
+  --status-in-progress: #1d5d83;
+  --status-completed: #113a55;
+  --status-postponed: #b07d1a;
+  --status-delayed: #a63a26;
+  --status-unknown: #9a8f80;
   --era-prehistory: #52705f;
   --era-thracian: #875510;
   --era-roman: #8e3043;
@@ -162,6 +179,19 @@
   --data-sources: #b5b8f1;
   --data-growth: #e8b35f;
   --data-geo: #8abbe5;
+
+  /* Dark theme re-steps the ramp instead of reusing the light one: the
+     progression runs dim → bright as a project advances, so the darkest
+     stage is not the one that disappears into the surface. */
+  --chart-series-1: #8abbe5;
+  --status-planned: #325f78;
+  --status-contracted: #43799a;
+  --status-funded: #5f9dba;
+  --status-in-progress: #89bfd6;
+  --status-completed: #b6dbea;
+  --status-postponed: #e8b35f;
+  --status-delayed: #e8927c;
+  --status-unknown: #9a9184;
   --era-prehistory: #9fbea9;
   --era-thracian: #e8b35f;
   --era-roman: #f18b99;
@@ -225,6 +255,15 @@
     --data-sources: #b5b8f1;
     --data-growth: #e8b35f;
     --data-geo: #8abbe5;
+    --chart-series-1: #8abbe5;
+    --status-planned: #325f78;
+    --status-contracted: #43799a;
+    --status-funded: #5f9dba;
+    --status-in-progress: #89bfd6;
+    --status-completed: #b6dbea;
+    --status-postponed: #e8b35f;
+    --status-delayed: #e8927c;
+    --status-unknown: #9a9184;
     --era-prehistory: #9fbea9;
     --era-thracian: #e8b35f;
     --era-roman: #f18b99;

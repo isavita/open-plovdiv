@@ -4613,6 +4613,17 @@ code {
   flex-shrink: 0;
 }
 
+/* The two connection panels stack rather than sitting side by side: the
+   multi-term list runs to eight entries while the family-ties list has one,
+   so as columns the short panel left a card-height hole beside the long one.
+   Stacked, the long list tiles across the full width instead of running deep. */
+.connect-board {
+  display: grid;
+  gap: clamp(18px, 2.4vw, 26px);
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 4px;
+}
+
 .connect-list {
   list-style: none;
   margin: 12px 0 0;
@@ -4621,6 +4632,13 @@ code {
   flex-direction: column;
   gap: 9px;
 }
+
+.connect-list-wide {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
+  column-gap: clamp(20px, 3vw, 44px);
+}
+
 .connect-list li {
   display: flex;
   justify-content: space-between;
@@ -4632,6 +4650,14 @@ code {
 .connect-list li:last-child {
   border-bottom: none;
   padding-bottom: 0;
+}
+
+/* In a tiled list the DOM-last row is not the visually last one in every
+   column, so every entry keeps its rule and the block reads as a ledger.
+   Must follow the `:last-child` reset above — same specificity, later wins. */
+.connect-list-wide li:last-child {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 9px;
 }
 .connect-name {
   display: inline-flex;

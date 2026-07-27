@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { categoryColors, ui, type Lang } from "@i18n/ui";
+import { ui, type Lang } from "@i18n/ui";
 import { localizePath } from "@i18n/utils";
 import { projects } from "@lib/data";
 import { categoryLabel, projectStatusLabel } from "@lib/format";
@@ -10,16 +10,36 @@ const { lang } = Astro.props;
 const t = ui[lang];
 
 // ---- Projects: status, category, year -------------------------------------
-const statusColors: Record<string, string> = {
-  in_progress: "#1b5f7c",
-  funded: "#1f6b48",
-  contracted: "#1b5f7c",
-  planned: "#6a7278",
-  completed: "#1f6b48",
-  delayed: "#93412f",
-  postponed: "#b07d1a",
-  unknown: "#6a7278"
+// Status is a pipeline, not a set of unrelated labels, so the five stages take
+// one hue in monotone lightness steps and the ring reads as progress. The three
+// states that sit outside the pipeline keep reserved hues of their own. The
+// previous map gave in_progress and contracted the same hex (and funded the
+// same as completed), which made two arcs of one donut indistinguishable.
+// Values are CSS variables so the dark theme can re-step the ramp rather than
+// reuse light-surface colours; the `--status-*` steps live in identity.css
+// beside the other palette tokens.
+const statusVars: Record<string, string> = {
+  planned: "var(--status-planned)",
+  contracted: "var(--status-contracted)",
+  funded: "var(--status-funded)",
+  in_progress: "var(--status-in-progress)",
+  completed: "var(--status-completed)",
+  postponed: "var(--status-postponed)",
+  delayed: "var(--status-delayed)",
+  unknown: "var(--status-unknown)"
 };
+
+/** Pipeline order first, then the out-of-pipeline states. */
+const statusOrder = [
+  "planned",
+  "contracted",
+  "funded",
+  "in_progress",
+  "completed",
+  "postponed",
+  "delayed",
+  "unknown"
+];
 
 function countBy<T>(items: T[], key: (item: T) => string): Map<string, number> {
   const map = new Map<string, number>();
@@ -30,7 +50,13 @@ function countBy<T>(items: T[], key: (item: T) => string): Map<string, number> {
   return map;
 }
 
-const statusCounts = [...countBy(projects, (p) => p.status).entries()].sort((a, b) => b[1] - a[1]);
+// Ordered by pipeline stage, not by size: with a lightness ramp the ring only
+// reads as a progression if the arcs follow the stages around it.
+const statusCounts = [...countBy(projects, (p) => p.status).entries()].sort((a, b) => {
+  const ai = statusOrder.indexOf(a[0]);
+  const bi = statusOrder.indexOf(b[0]);
+  return (ai < 0 ? statusOrder.length : ai) - (bi < 0 ? statusOrder.length : bi);
+});
 const categoryCounts = [...countBy(projects, (p) => p.category).entries()].sort((a, b) => b[1] - a[1]);
 
 // ---- Donut helper ----------------------------------------------------------
@@ -54,7 +80,7 @@ const statusSegs = donut(
   statusCounts.map(([status, count]) => ({
     label: projectStatusLabel(status, lang),
     value: count,
-    color: statusColors[status] ?? "#6a7278"
+    color: statusVars[status] ?? "var(--status-unknown)"
   }))
 );
 
@@ -114,14 +140,15 @@ const maxCategory = Math.max(...categoryCounts.map(([, c]) => c), 1);
         <div class="chart-card">
           <h3>{t.overview.byCategoryTitle}</h3>
           <div class="chart">
+            {/* One series, one hue. Each bar is already named beside it, so
+                tinting bars by category spent the identity channel re-encoding
+                what the bar length shows — and put near-identical blues on
+                "roads" and "sport", the two that sit next to each other. */}
             {categoryCounts.map(([category, count]) => (
               <div class="bar-row">
-                <span class="bar-label">
-                  <span class="cat-dot" style={`--dot:${categoryColors[category] ?? "var(--muted)"}`}></span>
-                  {categoryLabel(category, lang)}
-                </span>
+                <span class="bar-label">{categoryLabel(category, lang)}</span>
                 <div class="bar-track" aria-hidden="true">
-                  <div class="bar-fill" data-flat style={`width:${Math.max(6, (count / maxCategory) * 100)}%;--fill:${categoryColors[category] ?? "var(--brand)"}`}></div>
+                  <div class="bar-fill" data-flat style={`width:${Math.max(6, (count / maxCategory) * 100)}%;--fill:var(--chart-series-1)`}></div>
                 </div>
                 <span class="money">{count}</span>
               </div>

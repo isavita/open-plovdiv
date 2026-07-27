@@ -1262,11 +1262,14 @@ const mayorGroups = [
     text-decoration: none;
   }
 
+  /* The two groups sit one above the other rather than side by side: only
+     the recent terms carry linked archive records, so as columns the early
+     group ran out halfway down and left a column-height hole beside it.
+     Stacked, each group is a full-width band and its terms tile across. */
   .mayor-board {
-    align-items: start;
     display: grid;
-    gap: clamp(28px, 5vw, 64px);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(26px, 4vw, 44px);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .mayor-column {
@@ -1289,6 +1292,8 @@ const mayorGroups = [
   .term-list {
     border-bottom: 1px solid var(--line);
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 268px), 1fr));
+    column-gap: clamp(20px, 3vw, 40px);
   }
 
   .term-card {
