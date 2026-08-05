@@ -214,7 +214,7 @@ for (const pair of corePagePairs) {
 }
 
 const neighbourhoods = readSourceJson("data/curated/neighbourhood-histories.json");
-const neighbourhoodLocalePrefixes = ["", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
+const neighbourhoodLocalePrefixes = ["", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"];
 for (const prefix of neighbourhoodLocalePrefixes) {
   const localeRoot = prefix ? `/${prefix}` : "";
   const indexUrl = `${localeRoot}/neighbourhoods/`;
@@ -333,7 +333,8 @@ const localeByPrefix = new Map([
   ["/ja", "ja"],
   ["/uk", "uk"],
   ["/tl", "tl"],
-  ["/ru", "ru"]
+  ["/ru", "ru"],
+  ["/pl", "pl"]
 ]);
 const placeWikidataEnrichment = readSourceJson("data/curated/place-wikidata-enrichment.json");
 const places = collectionFromPayload(readJson("/api/history/places.json"), "places") ?? [];

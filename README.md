@@ -7,7 +7,7 @@ The public site is deliberately read-only. It has no user accounts, comments, co
 ## Stack
 
 - Astro + TypeScript
-- Bulgarian at the root plus English, German, French, Italian, Turkish, Spanish, Greek, Japanese, Filipino, Ukrainian and Russian locale routes
+- Bulgarian at the root plus English, German, French, Italian, Turkish, Spanish, Greek, Japanese, Filipino, Ukrainian, Russian and Polish locale routes
 - Reviewed JSON as the source of truth
 - Node scripts for validation, normalization and public-data generation
 - Public source links and visible media attribution

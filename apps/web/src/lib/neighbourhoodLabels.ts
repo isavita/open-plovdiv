@@ -20,8 +20,9 @@ const tr = (
   ja: string,
   tl: string,
   uk: string,
-  ru: string
-): Record<Lang, string> => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru });
+  ru: string,
+  pl: string
+): Record<Lang, string> => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl });
 
 const pick = (table: Record<string, Record<Lang, string>>, lang: Lang): Record<string, string> =>
   Object.fromEntries(Object.entries(table).map(([key, values]) => [key, values[lang]]));
@@ -39,7 +40,8 @@ const eraTable: Record<NeighbourhoodEraTag, Record<Lang, string>> = {
     "オスマン時代",
     "Panahong Ottoman",
     "Османська доба",
-    "Османская эпоха"
+    "Османская эпоха",
+    "Epoka osmańska"
   ),
   revival: tr(
     "Възраждане",
@@ -53,7 +55,8 @@ const eraTable: Record<NeighbourhoodEraTag, Record<Lang, string>> = {
     "民族復興期",
     "Muling Pagsilang",
     "Відродження",
-    "Возрождение"
+    "Возрождение",
+    "Odrodzenie"
   ),
   modern: tr(
     "Модерна епоха",
@@ -67,7 +70,8 @@ const eraTable: Record<NeighbourhoodEraTag, Record<Lang, string>> = {
     "近代",
     "Makabagong panahon",
     "Модерна доба",
-    "Новое время"
+    "Новое время",
+    "Epoka nowoczesna"
   ),
   socialist: tr(
     "Социалистическа епоха",
@@ -81,24 +85,25 @@ const eraTable: Record<NeighbourhoodEraTag, Record<Lang, string>> = {
     "社会主義期",
     "Panahong sosyalista",
     "Соціалістична доба",
-    "Социалистическая эпоха"
+    "Социалистическая эпоха",
+    "Epoka socjalistyczna"
   )
 };
 
 const areaTable: Record<NeighbourhoodArea, Record<Lang, string>> = {
-  centre: tr("Център", "Centre", "Zentrum", "Centre", "Centro", "Merkez", "Centro", "Κέντρο", "中心部", "Sentro", "Центр", "Центр"),
-  north: tr("Север", "North", "Norden", "Nord", "Nord", "Kuzey", "Norte", "Βόρεια", "北部", "Hilaga", "Північ", "Север"),
-  east: tr("Изток", "East", "Osten", "Est", "Est", "Doğu", "Este", "Ανατολικά", "東部", "Silangan", "Схід", "Восток"),
-  south: tr("Юг", "South", "Süden", "Sud", "Sud", "Güney", "Sur", "Νότια", "南部", "Timog", "Південь", "Юг"),
-  west: tr("Запад", "West", "Westen", "Ouest", "Ovest", "Batı", "Oeste", "Δυτικά", "西部", "Kanluran", "Захід", "Запад")
+  centre: tr("Център", "Centre", "Zentrum", "Centre", "Centro", "Merkez", "Centro", "Κέντρο", "中心部", "Sentro", "Центр", "Центр", "Centrum"),
+  north: tr("Север", "North", "Norden", "Nord", "Nord", "Kuzey", "Norte", "Βόρεια", "北部", "Hilaga", "Північ", "Север", "Północ"),
+  east: tr("Изток", "East", "Osten", "Est", "Est", "Doğu", "Este", "Ανατολικά", "東部", "Silangan", "Схід", "Восток", "Wschód"),
+  south: tr("Юг", "South", "Süden", "Sud", "Sud", "Güney", "Sur", "Νότια", "南部", "Timog", "Південь", "Юг", "Południe"),
+  west: tr("Запад", "West", "Westen", "Ouest", "Ovest", "Batı", "Oeste", "Δυτικά", "西部", "Kanluran", "Захід", "Запад", "Zachód")
 };
 
 const fabricKindTable: Record<string, Record<Lang, string>> = {
-  people: tr("Личности", "People", "Personen", "Personnalités", "Persone", "Kişiler", "Personas", "Πρόσωπα", "人物", "Mga tao", "Постаті", "Личности"),
-  community: tr("Общност", "Community", "Gemeinschaft", "Communauté", "Comunità", "Topluluk", "Comunidad", "Κοινότητα", "コミュニティ", "Komunidad", "Громада", "Община"),
-  industry: tr("Индустрия", "Industry", "Industrie", "Industrie", "Industria", "Sanayi", "Industria", "Βιομηχανία", "産業", "Industriya", "Промисловість", "Промышленность"),
-  institution: tr("Институция", "Institution", "Institution", "Institution", "Istituzione", "Kurum", "Institución", "Θεσμός", "施設・機関", "Institusyon", "Установа", "Учреждение"),
-  faith: tr("Вяра", "Faith", "Glaube", "Religion", "Fede", "İnanç", "Fe", "Πίστη", "信仰", "Pananampalataya", "Віра", "Вера")
+  people: tr("Личности", "People", "Personen", "Personnalités", "Persone", "Kişiler", "Personas", "Πρόσωπα", "人物", "Mga tao", "Постаті", "Личности", "Postacie"),
+  community: tr("Общност", "Community", "Gemeinschaft", "Communauté", "Comunità", "Topluluk", "Comunidad", "Κοινότητα", "コミュニティ", "Komunidad", "Громада", "Община", "Społeczność"),
+  industry: tr("Индустрия", "Industry", "Industrie", "Industrie", "Industria", "Sanayi", "Industria", "Βιομηχανία", "産業", "Industriya", "Промисловість", "Промышленность", "Przemysł"),
+  institution: tr("Институция", "Institution", "Institution", "Institution", "Istituzione", "Kurum", "Institución", "Θεσμός", "施設・機関", "Institusyon", "Установа", "Учреждение", "Instytucja"),
+  faith: tr("Вяра", "Faith", "Glaube", "Religion", "Fede", "İnanç", "Fe", "Πίστη", "信仰", "Pananampalataya", "Віра", "Вера", "Wiara")
 };
 
 const labelTable = {
@@ -114,7 +119,8 @@ const labelTable = {
     "Plovdivの街区の歴史",
     "Mga kasaysayan ng mga purok ng Plovdiv",
     "Історії кварталів Пловдива",
-    "Истории кварталов Пловдива"
+    "Истории кварталов Пловдива",
+    "Historie dzielnic Plovdivu"
   ),
   indexEyebrow: tr(
     "Градът по квартали",
@@ -128,7 +134,8 @@ const labelTable = {
     "街区ごとのプロヴディフ",
     "Ang lungsod ayon sa purok",
     "Місто за кварталами",
-    "Город по кварталам"
+    "Город по кварталам",
+    "Miasto dzielnica po dzielnicy"
   ),
   indexLead: tr(
     "Кварталите на града като живи исторически пластове: от махалите на Филибе до панелна „Тракия“. Всяко твърдение стъпва на посочен източник, а празнините са назовани честно.",
@@ -142,12 +149,13 @@ const labelTable = {
     "生きた歴史の層としての街区。フィリベのマハレからパネル造のトラキヤまで。すべての記述は出典に基づき、資料の空白も正直に示します。",
     "Ang mga purok ng lungsod bilang buhay na yugto ng kasaysayan: mula sa mga mahala ng Filibe hanggang sa panel na Trakiya. Bawat pahayag ay nakabatay sa binanggit na pinagmulan, at tapat na sinasabi ang mga puwang.",
     "Квартали міста як живі історичні шари: від махаль Філібе до панельної Тракії. Кожне твердження спирається на вказане джерело, а прогалини названі чесно.",
-    "Кварталы города как живые исторические слои: от махалей Филибе до панельной Тракии. Каждое утверждение опирается на указанный источник, а пробелы названы честно."
+    "Кварталы города как живые исторические слои: от махалей Филибе до панельной Тракии. Каждое утверждение опирается на указанный источник, а пробелы названы честно.",
+    "Dzielnice miasta jako żywe warstwy historyczne: od mahali Filibe po wielkopłytową Trakiyę. Każde twierdzenie opiera się na wskazanym źródle, a luki są nazwane wprost."
   ),
-  quarters: tr("квартала", "quarters", "Viertel", "quartiers", "quartieri", "mahalle", "barrios", "συνοικίες", "街区", "purok", "квартали", "кварталов"),
-  placesStat: tr("свързани места", "linked places", "verknüpfte Orte", "lieux liés", "luoghi collegati", "bağlı yerler", "lugares vinculados", "συνδεδεμένες τοποθεσίες", "関連する場所", "kaugnay na lugar", "пов'язані місця", "связанные места"),
-  timelineStat: tr("датирани събития", "dated events", "datierte Ereignisse", "événements datés", "eventi datati", "tarihli olaylar", "eventos fechados", "χρονολογημένα γεγονότα", "年代付きの出来事", "may petsang pangyayari", "датовані події", "датированные события"),
-  sourcesStat: tr("източници", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "出典", "pinagmulan", "джерела", "источники"),
+  quarters: tr("квартала", "quarters", "Viertel", "quartiers", "quartieri", "mahalle", "barrios", "συνοικίες", "街区", "purok", "квартали", "кварталов", "dzielnic"),
+  placesStat: tr("свързани места", "linked places", "verknüpfte Orte", "lieux liés", "luoghi collegati", "bağlı yerler", "lugares vinculados", "συνδεδεμένες τοποθεσίες", "関連する場所", "kaugnay na lugar", "пов'язані місця", "связанные места", "powiązanych miejsc"),
+  timelineStat: tr("датирани събития", "dated events", "datierte Ereignisse", "événements datés", "eventi datati", "tarihli olaylar", "eventos fechados", "χρονολογημένα γεγονότα", "年代付きの出来事", "may petsang pangyayari", "датовані події", "датированные события", "datowanych wydarzeń"),
+  sourcesStat: tr("източници", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "出典", "pinagmulan", "джерела", "источники", "źródeł"),
   searchLabel: tr(
     "Търсене на квартал",
     "Search quarters",
@@ -160,11 +168,12 @@ const labelTable = {
     "街区を検索",
     "Maghanap ng purok",
     "Пошук кварталу",
-    "Поиск квартала"
+    "Поиск квартала",
+    "Szukaj dzielnicy"
   ),
-  filterEra: tr("Епоха", "Era", "Epoche", "Époque", "Epoca", "Dönem", "Época", "Εποχή", "時代", "Panahon", "Доба", "Эпоха"),
-  filterArea: tr("Част от града", "Part of the city", "Stadtteil", "Partie de la ville", "Parte della città", "Şehrin bölgesi", "Parte de la ciudad", "Μέρος της πόλης", "エリア", "Bahagi ng lungsod", "Частина міста", "Часть города"),
-  filterAll: tr("Всички", "All", "Alle", "Tous", "Tutti", "Tümü", "Todos", "Όλες", "すべて", "Lahat", "Усі", "Все"),
+  filterEra: tr("Епоха", "Era", "Epoche", "Époque", "Epoca", "Dönem", "Época", "Εποχή", "時代", "Panahon", "Доба", "Эпоха", "Epoka"),
+  filterArea: tr("Част от града", "Part of the city", "Stadtteil", "Partie de la ville", "Parte della città", "Şehrin bölgesi", "Parte de la ciudad", "Μέρος της πόλης", "エリア", "Bahagi ng lungsod", "Частина міста", "Часть города", "Część miasta"),
+  filterAll: tr("Всички", "All", "Alle", "Tous", "Tutti", "Tümü", "Todos", "Όλες", "すべて", "Lahat", "Усі", "Все", "Wszystkie"),
   noMatches: tr(
     "Няма квартал по тези критерии — изчистете търсенето или филтрите.",
     "No quarter matches — clear the search or filters.",
@@ -177,9 +186,10 @@ const labelTable = {
     "条件に合う街区がありません。検索やフィルターをクリアしてください。",
     "Walang tumutugmang purok — burahin ang paghahanap o mga filter.",
     "Жоден квартал не відповідає — очистіть пошук або фільтри.",
-    "Ни один квартал не подходит — очистите поиск или фильтры."
+    "Ни один квартал не подходит — очистите поиск или фильтры.",
+    "Żadna dzielnica nie pasuje — wyczyść wyszukiwanie lub filtry."
   ),
-  resetFilters: tr("Изчисти", "Reset", "Zurücksetzen", "Réinitialiser", "Azzera", "Sıfırla", "Restablecer", "Επαναφορά", "リセット", "I-reset", "Скинути", "Сбросить"),
+  resetFilters: tr("Изчисти", "Reset", "Zurücksetzen", "Réinitialiser", "Azzera", "Sıfırla", "Restablecer", "Επαναφορά", "リセット", "I-reset", "Скинути", "Сбросить", "Wyczyść"),
   openQuarter: tr(
     "Отвори квартала",
     "Open quarter",
@@ -192,7 +202,8 @@ const labelTable = {
     "街区を開く",
     "Buksan ang purok",
     "Відкрити квартал",
-    "Открыть квартал"
+    "Открыть квартал",
+    "Otwórz dzielnicę"
   ),
   mapTitle: tr(
     "Кварталите на картата",
@@ -206,7 +217,8 @@ const labelTable = {
     "地図で見る街区",
     "Mga purok sa mapa",
     "Квартали на карті",
-    "Кварталы на карте"
+    "Кварталы на карте",
+    "Dzielnice na mapie"
   ),
   approxNote: tr(
     "Точките показват приблизително разположение, а не официални граници.",
@@ -220,7 +232,8 @@ const labelTable = {
     "マーカーはおおよその位置を示すもので、公式な境界ではありません。",
     "Ipinapakita ng mga marker ang tinatayang lokasyon, hindi opisyal na hangganan.",
     "Позначки показують приблизне розташування, а не офіційні межі.",
-    "Метки показывают примерное расположение, а не официальные границы."
+    "Метки показывают примерное расположение, а не официальные границы.",
+    "Znaczniki pokazują przybliżone położenie, a nie oficjalne granice."
   ),
   backToIndex: tr(
     "Всички квартали",
@@ -234,13 +247,14 @@ const labelTable = {
     "すべての街区",
     "Lahat ng purok",
     "Усі квартали",
-    "Все кварталы"
+    "Все кварталы",
+    "Wszystkie dzielnice"
   ),
-  atGlance: tr("Накратко", "At a glance", "Auf einen Blick", "En un coup d'œil", "In breve", "Bir bakışta", "De un vistazo", "Με μια ματιά", "ひと目でわかる", "Sa isang tingin", "Стисло", "Кратко"),
-  areaLabel: tr("Част от града", "Part of the city", "Stadtteil", "Partie de la ville", "Parte della città", "Şehrin bölgesi", "Parte de la ciudad", "Μέρος της πόλης", "エリア", "Bahagi ng lungsod", "Частина міста", "Часть города"),
-  districtLabel: tr("Район", "District", "Bezirk", "Arrondissement", "Distretto", "İlçe", "Distrito", "Δήμος-διαμέρισμα", "行政区", "Distrito", "Район", "Район"),
-  erasLabel: tr("Формиращи епохи", "Formative eras", "Prägende Epochen", "Époques formatrices", "Epoche formative", "Belirleyici dönemler", "Épocas formativas", "Διαμορφωτικές εποχές", "形成期", "Mga bumuo na panahon", "Формувальні доби", "Формирующие эпохи"),
-  firstRecord: tr("Най-ранна дата", "Earliest date", "Frühestes Datum", "Date la plus ancienne", "Data più antica", "En erken tarih", "Fecha más antigua", "Παλαιότερη χρονολογία", "最も古い記録", "Pinakamaagang petsa", "Найдавніша дата", "Самая ранняя дата"),
+  atGlance: tr("Накратко", "At a glance", "Auf einen Blick", "En un coup d'œil", "In breve", "Bir bakışta", "De un vistazo", "Με μια ματιά", "ひと目でわかる", "Sa isang tingin", "Стисло", "Кратко", "W skrócie"),
+  areaLabel: tr("Част от града", "Part of the city", "Stadtteil", "Partie de la ville", "Parte della città", "Şehrin bölgesi", "Parte de la ciudad", "Μέρος της πόλης", "エリア", "Bahagi ng lungsod", "Частина міста", "Часть города", "Część miasta"),
+  districtLabel: tr("Район", "District", "Bezirk", "Arrondissement", "Distretto", "İlçe", "Distrito", "Δήμος-διαμέρισμα", "行政区", "Distrito", "Район", "Район", "Rejon"),
+  erasLabel: tr("Формиращи епохи", "Formative eras", "Prägende Epochen", "Époques formatrices", "Epoche formative", "Belirleyici dönemler", "Épocas formativas", "Διαμορφωτικές εποχές", "形成期", "Mga bumuo na panahon", "Формувальні доби", "Формирующие эпохи", "Epoki kształtujące"),
+  firstRecord: tr("Най-ранна дата", "Earliest date", "Frühestes Datum", "Date la plus ancienne", "Data più antica", "En erken tarih", "Fecha más antigua", "Παλαιότερη χρονολογία", "最も古い記録", "Pinakamaagang petsa", "Найдавніша дата", "Самая ранняя дата", "Najwcześniejsza data"),
   nameOriginTitle: tr(
     "Откъде идва името",
     "Where the name comes from",
@@ -253,7 +267,8 @@ const labelTable = {
     "名前の由来",
     "Saan nagmula ang pangalan",
     "Звідки походить назва",
-    "Откуда происходит название"
+    "Откуда происходит название",
+    "Skąd pochodzi nazwa"
   ),
   timelineTitle: tr(
     "Хронология на квартала",
@@ -267,7 +282,8 @@ const labelTable = {
     "街区の年表",
     "Kronolohiya ng purok",
     "Хронологія кварталу",
-    "Хронология квартала"
+    "Хронология квартала",
+    "Chronologia dzielnicy"
   ),
   keyPlaces: tr(
     "Ключови места",
@@ -281,7 +297,8 @@ const labelTable = {
     "主要スポット",
     "Mahahalagang lugar",
     "Ключові місця",
-    "Ключевые места"
+    "Ключевые места",
+    "Kluczowe miejsca"
   ),
   linkedStories: tr(
     "Свързани разкази",
@@ -295,7 +312,8 @@ const labelTable = {
     "関連ストーリー",
     "Kaugnay na kuwento",
     "Пов'язані розповіді",
-    "Связанные истории"
+    "Связанные истории",
+    "Powiązane opowieści"
   ),
   archiveTitle: tr(
     "Архив и тогава/сега",
@@ -309,7 +327,8 @@ const labelTable = {
     "アーカイブと今昔比較",
     "Arkibo at noon/ngayon",
     "Архів і тоді/тепер",
-    "Архив и тогда/сейчас"
+    "Архив и тогда/сейчас",
+    "Archiwum oraz kiedyś/dziś"
   ),
   civicTitle: tr(
     "Общински проекти в района",
@@ -323,7 +342,8 @@ const labelTable = {
     "行政区の市の事業",
     "Mga proyektong munisipal sa distrito",
     "Муніципальні проєкти району",
-    "Муниципальные проекты района"
+    "Муниципальные проекты района",
+    "Projekty gminne w rejonie"
   ),
   gettingThereTitle: tr(
     "Как да стигнете",
@@ -337,7 +357,8 @@ const labelTable = {
     "アクセス",
     "Papaano pumunta",
     "Як дістатися",
-    "Как добраться"
+    "Как добраться",
+    "Jak dotrzeć"
   ),
   routesTitle: tr(
     "Маршрути през квартала",
@@ -351,9 +372,10 @@ const labelTable = {
     "街区を通るルート",
     "Mga rutang dumadaan sa purok",
     "Маршрути кварталом",
-    "Маршруты по кварталу"
+    "Маршруты по кварталу",
+    "Trasy przez dzielnicę"
   ),
-  sourcesTitle: tr("Източници", "Sources", "Quellen", "Sources", "Fonti", "Kaynaklar", "Fuentes", "Πηγές", "出典", "Mga pinagmulan", "Джерела", "Источники"),
+  sourcesTitle: tr("Източници", "Sources", "Quellen", "Sources", "Fonti", "Kaynaklar", "Fuentes", "Πηγές", "出典", "Mga pinagmulan", "Джерела", "Источники", "Źródła"),
   coverageTitle: tr(
     "Какво още не е документирано",
     "What is not yet documented",
@@ -366,18 +388,19 @@ const labelTable = {
     "まだ記録されていないこと",
     "Ang hindi pa nadodokumento",
     "Що ще не задокументовано",
-    "Что ещё не задокументировано"
+    "Что ещё не задокументировано",
+    "Czego jeszcze nie udokumentowano"
   ),
-  minutes: tr("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "min", "хв", "мин"),
-  km: tr("км", "km", "km", "km", "km", "km", "km", "χλμ.", "km", "km", "км", "км"),
-  stops: tr("спирки", "stops", "Stationen", "étapes", "tappe", "durak", "paradas", "στάσεις", "地点", "hintuan", "зупинки", "остановки"),
-  openPlace: tr("Отвори мястото", "Open place", "Ort öffnen", "Ouvrir le lieu", "Apri il luogo", "Yeri aç", "Abrir lugar", "Άνοιγμα τοποθεσίας", "場所を開く", "Buksan ang lugar", "Відкрити місце", "Открыть место"),
-  openStory: tr("Отвори разказа", "Open story", "Geschichte öffnen", "Ouvrir le récit", "Apri il racconto", "Anlatıyı aç", "Abrir relato", "Άνοιγμα αφήγησης", "ストーリーを開く", "Buksan ang kuwento", "Відкрити розповідь", "Открыть историю"),
-  openRoute: tr("Отвори маршрута", "Open route", "Route öffnen", "Ouvrir le parcours", "Apri il percorso", "Rotayı aç", "Abrir la ruta", "Άνοιγμα διαδρομής", "ルートを開く", "Buksan ang ruta", "Відкрити маршрут", "Открыть маршрут"),
-  allProjects: tr("Всички проекти", "All projects", "Alle Projekte", "Tous les projets", "Tutti i progetti", "Tüm projeler", "Todos los proyectos", "Όλα τα έργα", "すべての事業", "Lahat ng proyekto", "Усі проєкти", "Все проекты"),
-  thenNow: tr("тогава/сега", "then/now", "damals/heute", "avant/après", "prima/dopo", "önce/sonra", "antes/después", "πριν/μετά", "今昔比較", "noon/ngayon", "тоді/тепер", "тогда/сейчас"),
-  archiveWord: tr("архив", "archive", "Archiv", "archives", "archivio", "arşiv", "archivo", "αρχείο", "アーカイブ", "arkibo", "архів", "архив"),
-  updatedWord: tr("Обновено", "Updated", "Aktualisiert", "Mis à jour", "Aggiornato", "Güncellendi", "Actualizado", "Ενημερώθηκε", "更新日", "Na-update", "Оновлено", "Обновлено"),
+  minutes: tr("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "min", "хв", "мин", "min"),
+  km: tr("км", "km", "km", "km", "km", "km", "km", "χλμ.", "km", "km", "км", "км", "km"),
+  stops: tr("спирки", "stops", "Stationen", "étapes", "tappe", "durak", "paradas", "στάσεις", "地点", "hintuan", "зупинки", "остановки", "przystanków"),
+  openPlace: tr("Отвори мястото", "Open place", "Ort öffnen", "Ouvrir le lieu", "Apri il luogo", "Yeri aç", "Abrir lugar", "Άνοιγμα τοποθεσίας", "場所を開く", "Buksan ang lugar", "Відкрити місце", "Открыть место", "Otwórz miejsce"),
+  openStory: tr("Отвори разказа", "Open story", "Geschichte öffnen", "Ouvrir le récit", "Apri il racconto", "Anlatıyı aç", "Abrir relato", "Άνοιγμα αφήγησης", "ストーリーを開く", "Buksan ang kuwento", "Відкрити розповідь", "Открыть историю", "Otwórz opowieść"),
+  openRoute: tr("Отвори маршрута", "Open route", "Route öffnen", "Ouvrir le parcours", "Apri il percorso", "Rotayı aç", "Abrir la ruta", "Άνοιγμα διαδρομής", "ルートを開く", "Buksan ang ruta", "Відкрити маршрут", "Открыть маршрут", "Otwórz trasę"),
+  allProjects: tr("Всички проекти", "All projects", "Alle Projekte", "Tous les projets", "Tutti i progetti", "Tüm projeler", "Todos los proyectos", "Όλα τα έργα", "すべての事業", "Lahat ng proyekto", "Усі проєкти", "Все проекты", "Wszystkie projekty"),
+  thenNow: tr("тогава/сега", "then/now", "damals/heute", "avant/après", "prima/dopo", "önce/sonra", "antes/después", "πριν/μετά", "今昔比較", "noon/ngayon", "тоді/тепер", "тогда/сейчас", "kiedyś/dziś"),
+  archiveWord: tr("архив", "archive", "Archiv", "archives", "archivio", "arşiv", "archivo", "αρχείο", "アーカイブ", "arkibo", "архів", "архив", "archiwum"),
+  updatedWord: tr("Обновено", "Updated", "Aktualisiert", "Mis à jour", "Aggiornato", "Güncellendi", "Actualizado", "Ενημερώθηκε", "更新日", "Na-update", "Оновлено", "Обновлено", "Zaktualizowano"),
   whyTitle: tr(
     "Защо този квартал е важен",
     "Why this quarter matters",
@@ -390,7 +413,8 @@ const labelTable = {
     "この街区が重要な理由",
     "Bakit mahalaga ang purok na ito",
     "Чому цей квартал важливий",
-    "Почему этот квартал важен"
+    "Почему этот квартал важен",
+    "Dlaczego ta dzielnica jest ważna"
   ),
   altNamesTitle: tr(
     "Други имена",
@@ -404,7 +428,8 @@ const labelTable = {
     "別名",
     "Iba pang tawag",
     "Інші назви",
-    "Другие названия"
+    "Другие названия",
+    "Inne nazwy"
   ),
   fabricTitle: tr(
     "Хора, общности и институции",
@@ -418,7 +443,8 @@ const labelTable = {
     "人・コミュニティ・機関",
     "Mga tao, komunidad at institusyon",
     "Люди, громади та установи",
-    "Люди, общины и учреждения"
+    "Люди, общины и учреждения",
+    "Ludzie, wspólnoty i instytucje"
   ),
   visitTitle: tr(
     "За посетителя",
@@ -432,12 +458,13 @@ const labelTable = {
     "訪れる人へ",
     "Para sa bisita",
     "Для відвідувача",
-    "Для посетителя"
+    "Для посетителя",
+    "Dla odwiedzającego"
   ),
-  visitSee: tr("Какво да видите", "What to see", "Was ansehen", "Que voir", "Cosa vedere", "Ne görmeli", "Qué ver", "Τι να δείτε", "見どころ", "Ano ang makikita", "Що подивитися", "Что посмотреть"),
-  visitTime: tr("Колко време", "How long", "Wie lange", "Combien de temps", "Quanto tempo", "Ne kadar süre", "Cuánto tiempo", "Πόσος χρόνος", "所要時間", "Gaano katagal", "Скільки часу", "Сколько времени"),
-  visitBest: tr("Кога да дойдете", "When to come", "Wann kommen", "Quand venir", "Quando venire", "Ne zaman gelmeli", "Cuándo venir", "Πότε να έρθετε", "おすすめの時間", "Kailan pupunta", "Коли приходити", "Когда приходить"),
-  visitFood: tr("Храна наблизо", "Food nearby", "Essen in der Nähe", "Où manger", "Dove mangiare", "Yakında yemek", "Comida cerca", "Φαγητό κοντά", "近くの食事", "Pagkain sa malapit", "Їжа поруч", "Еда рядом"),
+  visitSee: tr("Какво да видите", "What to see", "Was ansehen", "Que voir", "Cosa vedere", "Ne görmeli", "Qué ver", "Τι να δείτε", "見どころ", "Ano ang makikita", "Що подивитися", "Что посмотреть", "Co zobaczyć"),
+  visitTime: tr("Колко време", "How long", "Wie lange", "Combien de temps", "Quanto tempo", "Ne kadar süre", "Cuánto tiempo", "Πόσος χρόνος", "所要時間", "Gaano katagal", "Скільки часу", "Сколько времени", "Ile czasu"),
+  visitBest: tr("Кога да дойдете", "When to come", "Wann kommen", "Quand venir", "Quando venire", "Ne zaman gelmeli", "Cuándo venir", "Πότε να έρθετε", "おすすめの時間", "Kailan pupunta", "Коли приходити", "Когда приходить", "Kiedy przyjść"),
+  visitFood: tr("Храна наблизо", "Food nearby", "Essen in der Nähe", "Où manger", "Dove mangiare", "Yakında yemek", "Comida cerca", "Φαγητό κοντά", "近くの食事", "Pagkain sa malapit", "Їжа поруч", "Еда рядом", "Jedzenie w pobliżu"),
   respectTitle: tr(
     "Посещавайте с уважение",
     "Visit with respect",
@@ -450,7 +477,8 @@ const labelTable = {
     "敬意をもって訪れる",
     "Bumisita nang may paggalang",
     "Відвідуйте з повагою",
-    "Посещайте с уважением"
+    "Посещайте с уважением",
+    "Odwiedzaj z szacunkiem"
   ),
   tnTitle: tr(
     "Тогава и сега",
@@ -464,7 +492,8 @@ const labelTable = {
     "今と昔",
     "Noon at ngayon",
     "Тоді й тепер",
-    "Тогда и сейчас"
+    "Тогда и сейчас",
+    "Kiedyś i dziś"
   ),
   districtContextPhoto: tr(
     "Контекст от по-широкия район",
@@ -478,7 +507,8 @@ const labelTable = {
     "周辺地区の風景",
     "Mas malawak na tanawin ng distrito",
     "Контекст ширшого району",
-    "Контекст более широкого района"
+    "Контекст более широкого района",
+    "Kontekst szerszego rejonu"
   ),
   contextBadge: tr(
     "Исторически контекст — малко картирани места",
@@ -492,10 +522,11 @@ const labelTable = {
     "歴史的背景ページ — 地図上のスポットは少なめ",
     "Kontekstong pangkasaysayan — kaunting naka-mapang lugar",
     "Історичний контекст — мало картованих місць",
-    "Исторический контекст — мало отмеченных мест"
+    "Исторический контекст — мало отмеченных мест",
+    "Kontekst historyczny — niewiele naniesionych miejsc"
   ),
-  tnThen: tr("Тогава", "Then", "Damals", "Hier", "Ieri", "Dün", "Antes", "Τότε", "昔", "Noon", "Тоді", "Тогда"),
-  tnNow: tr("Референтна снимка", "Reference photo", "Referenzfoto", "Photo de référence", "Foto di riferimento", "Referans fotoğrafı", "Foto de referencia", "Φωτογραφία αναφοράς", "参照写真", "Larawang sanggunian", "Довідкове фото", "Справочное фото"),
+  tnThen: tr("Тогава", "Then", "Damals", "Hier", "Ieri", "Dün", "Antes", "Τότε", "昔", "Noon", "Тоді", "Тогда", "Kiedyś"),
+  tnNow: tr("Референтна снимка", "Reference photo", "Referenzfoto", "Photo de référence", "Foto di riferimento", "Referans fotoğrafı", "Foto de referencia", "Φωτογραφία αναφοράς", "参照写真", "Larawang sanggunian", "Довідкове фото", "Справочное фото", "Zdjęcie referencyjne"),
   dataBoundary: tr(
     "Кварталните записи преизползват съществуващи места, разкази и източници; където документацията е откъслечна, това е казано изрично.",
     "Quarter records reuse existing places, stories and sources; where documentation is fragmentary, this is said explicitly.",
@@ -508,7 +539,8 @@ const labelTable = {
     "街区の記録は既存の場所・ストーリー・出典を再利用しています。資料が断片的な箇所は、その旨を明記しています。",
     "Muling ginagamit ng mga talaan ng purok ang umiiral na mga lugar, kuwento at pinagmulan; kung saan pira-piraso ang dokumentasyon, tahasang sinasabi ito.",
     "Записи кварталів повторно використовують наявні місця, розповіді та джерела; де документація фрагментарна, це сказано прямо.",
-    "Записи кварталов используют существующие места, истории и источники; где документация фрагментарна, это сказано прямо."
+    "Записи кварталов используют существующие места, истории и источники; где документация фрагментарна, это сказано прямо.",
+    "Wpisy dzielnicowe korzystają z istniejących miejsc, opowieści i źródeł; tam gdzie dokumentacja jest fragmentaryczna, powiedziano to wprost."
   )
 } satisfies Record<string, Record<Lang, string>>;
 

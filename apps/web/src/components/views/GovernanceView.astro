@@ -439,6 +439,38 @@ const copy = {
     ctaMayors: "Все мэры",
     ctaProjects: "Проекты",
     ctaArchive: "Архив"
+  },
+  pl: {
+    eyebrow: "Historia polityczna",
+    title: "Zarządzanie i historia polityczna",
+    description: "Kto rządził Plovdivem i jakie wpisy archiwalne oraz projektowe wiążą się z tymi kadencjami.",
+    lead:
+      "Prześledź osoby, które piastowały urząd burmistrza, decyzje, które zmieniły zarządzanie miastem, i projekty realizowane dzisiaj.",
+    currentTitle: "Obecne władze",
+    sectionNavLabel: "Sekcje strony",
+    navWho: "Burmistrzowie i kadencje",
+    navArchive: "Punkty zwrotne",
+    navMoney: "Bieżące projekty",
+    whoTitle: "Burmistrzowie na przestrzeni lat",
+    whoLead:
+      "Krótki wybór pierwszych kadencji gminnych i ostatnich administracji. Pełna chronologia obejmuje wszystkich burmistrzów; odsyłacze do archiwum pojawiają się tylko wtedy, gdy istnieje wpis z tego samego okresu.",
+    earlyGroup: "Pierwsze kadencje gminne",
+    recentGroup: "Ostatnie administracje",
+    linkedArchive: "Z tego samego okresu",
+    detail: "profil",
+    source: "źródło",
+    archiveTitle: "Punkty zwrotne w zarządzaniu miastem",
+    archiveLead:
+      "Cztery udokumentowane zmiany w powoływaniu burmistrza, podejmowaniu decyzji i zarządzaniu majątkiem gminy.",
+    mayorOverlap: "pokrywa się z kadencją",
+    amountLabel: "kwota",
+    projectsTitle: "Bieżące projekty gminne",
+    projectLead: "Wizualny wybór z rejestru: projekty w realizacji, zakontraktowane lub z zapewnionym finansowaniem.",
+    projectYear: "rok",
+    projectDetail: "Otwórz projekt",
+    ctaMayors: "Wszyscy burmistrzowie",
+    ctaProjects: "Projekty",
+    ctaArchive: "Archiwum"
   }
 } satisfies Record<Lang, Copy>;
 
@@ -547,6 +579,14 @@ const visualCopy = {
     projectVisualNote: "Изображения показывают место или его историю, а не ход строительных работ.",
     provisionalRecord: "предварительная запись реестра",
     listedFunding: "указанное финансирование"
+  },
+  pl: {
+    contextImage: "Zdjęcie kontekstowe",
+    referenceImage: "Zdjęcie referencyjne",
+    archivePostcard: "Pocztówka archiwalna",
+    projectVisualNote: "Zdjęcia pokazują miejsce lub jego historię, a nie postęp prac budowlanych.",
+    provisionalRecord: "wstępny wpis rejestru",
+    listedFunding: "wskazane finansowanie"
   }
 } satisfies Record<Lang, VisualCopy>;
 
@@ -658,6 +698,15 @@ const kindLabels = {
     municipal_programme: "муниципальная программа",
     governance_change: "смена управления",
     archive_source: "архивный источник"
+  },
+  pl: {
+    mayor_term: "kadencja burmistrza",
+    historical_event: "wydarzenie historyczne",
+    cultural_programme: "program kulturalny",
+    historical_finance: "finanse historyczne",
+    municipal_programme: "program gminny",
+    governance_change: "zmiana w zarządzaniu",
+    archive_source: "źródło archiwalne"
   }
 } satisfies Record<Lang, Record<CityArchiveRecord["kind"], string>>;
 

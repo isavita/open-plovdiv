@@ -113,7 +113,7 @@
         "public_reference_terms_records": { "type": "integer", "minimum": 0 }
       },
       "patternProperties": {
-        "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 2 }
+        "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 2 }
       }
     },
     "coverage_record": {
@@ -203,7 +203,7 @@
         }
       },
       "patternProperties": {
-        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 1 }
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 1 }
       }
     }
   }

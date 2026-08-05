@@ -49,7 +49,7 @@
         "display_en": { "type": "string", "minLength": 1 }
       },
       "patternProperties": {
-        "^display_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 1 }
+        "^display_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 1 }
       }
     },
     "title_bg": { "type": "string", "minLength": 3 },
@@ -67,7 +67,7 @@
     "editorial": { "$ref": "#/definitions/editorial" }
   },
   "patternProperties": {
-    "^(title|summary|conflict_notes)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+    "^(title|summary|conflict_notes)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
   },
   "definitions": {
     "provenance": {
@@ -87,7 +87,7 @@
           "license_status": { "type": "string", "minLength": 3 }
         },
         "patternProperties": {
-          "^claim_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 5 }
+          "^claim_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 5 }
         }
       }
     },
@@ -117,7 +117,7 @@
         "notes_en": { "type": "string", "minLength": 5 }
       },
       "patternProperties": {
-        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 5 }
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 5 }
       }
     }
   }

@@ -7,7 +7,7 @@ import { normalizePublishedEditorialNotices } from "./editorial_notices.mjs";
 const root = process.cwd();
 const publicDir = path.join(root, "apps/web/public/data");
 const historyPublicDir = path.join(publicDir, "history");
-const translationLangs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
+const translationLangs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"];
 const translationsByLang = Object.fromEntries(
   translationLangs.map((lang) => {
     const translationsPath = path.join(root, `data/translations/${lang}.json`);

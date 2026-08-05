@@ -59,11 +59,11 @@ const pageTitle = title ? `${title} · ${t.site.name}` : t.site.name;
 const pageDescription = description ?? t.site.tagline;
 const structuredTitle = title ?? t.site.name;
 
-const ogLocales: Record<Lang, string> = { bg: "bg_BG", en: "en_GB", de: "de_DE", fr: "fr_FR", it: "it_IT", tr: "tr_TR", es: "es_ES", el: "el_GR", ja: "ja_JP", tl: "fil_PH", uk: "uk_UA", ru: "ru_RU" };
+const ogLocales: Record<Lang, string> = { bg: "bg_BG", en: "en_GB", de: "de_DE", fr: "fr_FR", it: "it_IT", tr: "tr_TR", es: "es_ES", el: "el_GR", ja: "ja_JP", tl: "fil_PH", uk: "uk_UA", ru: "ru_RU", pl: "pl_PL" };
 const ogLocale = ogLocales[lang];
-const routesLabel = ({ bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути", ru: "Маршруты" } satisfies Record<Lang, string>)[lang];
-const governanceLabel = ({ bg: "Управление", en: "Governance", de: "Verwaltung", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління", ru: "Управление" } satisfies Record<Lang, string>)[lang];
-const neighbourhoodsLabels = { bg: "Квартали", en: "Neighbourhoods", de: "Viertel", fr: "Quartiers", it: "Quartieri", tr: "Mahalleler", es: "Barrios", el: "Συνοικίες", ja: "街区", tl: "Mga Purok", uk: "Квартали", ru: "Кварталы" } satisfies Record<Lang, string>;
+const routesLabel = ({ bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути", ru: "Маршруты", pl: "Trasy" } satisfies Record<Lang, string>)[lang];
+const governanceLabel = ({ bg: "Управление", en: "Governance", de: "Verwaltung", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління", ru: "Управление", pl: "Zarządzanie" } satisfies Record<Lang, string>)[lang];
+const neighbourhoodsLabels = { bg: "Квартали", en: "Neighbourhoods", de: "Viertel", fr: "Quartiers", it: "Quartieri", tr: "Mahalleler", es: "Barrios", el: "Συνοικίες", ja: "街区", tl: "Mga Purok", uk: "Квартали", ru: "Кварталы", pl: "Dzielnice" } satisfies Record<Lang, string>;
 const neighbourhoodsLabel = neighbourhoodsLabels[lang];
 
 // The city's own word for its easygoing rhythm — a quiet signature repeated
@@ -80,7 +80,8 @@ const ailyakMottos = {
   ja: "アイリャク — プロヴディフらしい穏やかな時間。",
   tl: "Ailyak — ang payapang pakiramdam ng Plovdiv.",
   uk: "Айляк — спокійний настрій Пловдива.",
-  ru: "Айляк — спокойное настроение Пловдива."
+  ru: "Айляк — спокойное настроение Пловдива.",
+  pl: "Ajlak — spokojny nastrój Plovdivu."
 } satisfies Record<Lang, string>;
 const ailyakMotto = ailyakMottos[lang];
 
@@ -192,8 +193,8 @@ const menuGroups = [
 // by the bottom script to re-localize the header/footer after detecting the
 // visited locale from the URL, using the same stable keys as the
 // data-nav-key/data-menu-key/data-footer-key hooks rendered below.
-const routesLabels = { bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути", ru: "Маршруты" } satisfies Record<Lang, string>;
-const governanceLabels = { bg: "Управление", en: "Governance", de: "Verwaltung", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління", ru: "Управление" } satisfies Record<Lang, string>;
+const routesLabels = { bg: "Маршрути", en: "Routes", de: "Routen", fr: "Parcours", it: "Percorsi", tr: "Rotalar", es: "Rutas", el: "Διαδρομές", ja: "ルート", tl: "Mga Ruta", uk: "Маршрути", ru: "Маршруты", pl: "Trasy" } satisfies Record<Lang, string>;
+const governanceLabels = { bg: "Управление", en: "Governance", de: "Verwaltung", fr: "Gouvernance", it: "Governo", tr: "Yönetim", es: "Gobernanza", el: "Διακυβέρνηση", ja: "統治", tl: "Pamamahala", uk: "Управління", ru: "Управление", pl: "Zarządzanie" } satisfies Record<Lang, string>;
 const chromeI18n = localeDetect
   ? Object.fromEntries(
       localeCodes.map((code) => {
@@ -656,7 +657,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
             // above. A no-op when the detected locale is already "bg" (the
             // server-rendered default), so this never fights normal pages —
             // those never set `localeDetect` in the first place.
-            var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
+            var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"];
             var segments = (window.location.pathname || "/").split("/").filter(Boolean);
             var loc = segments.length > 0 && codes.indexOf(segments[0]) > -1 ? segments[0] : "bg";
             if (loc === "bg") return;

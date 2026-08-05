@@ -61,7 +61,8 @@ const governanceTitles: Record<Lang, string> = {
   ja: "統治",
   tl: "Pamamahala",
   uk: "Управління",
-  ru: "Управление"
+  ru: "Управление",
+  pl: "Zarządzanie"
 };
 
 function localized(record: unknown, base: string, lang: Lang): string {
@@ -95,7 +96,7 @@ function collectStrings(value: unknown, limit = 32): string[] {
   return result;
 }
 
-const localeKeySuffix = /_(bg|en|de|fr|it|tr|es|el|ja|tl|uk|ru)$/;
+const localeKeySuffix = /_(bg|en|de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$/;
 
 /**
  * Like collectStrings, but object fields carrying another locale's suffix are

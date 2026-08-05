@@ -98,7 +98,7 @@
         "records_with_blockers": { "type": "integer", "minimum": 0 }
       },
       "patternProperties": {
-        "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 2 }
+        "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 2 }
       }
     },
     "record": {
@@ -219,7 +219,7 @@
         }
       },
       "patternProperties": {
-        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 1 }
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 1 }
       }
     },
     "review_source": {
@@ -252,7 +252,7 @@
         "claim_en": { "type": "string" }
       },
       "patternProperties": {
-        "^(title|claim)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+        "^(title|claim)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
       }
     }
   }

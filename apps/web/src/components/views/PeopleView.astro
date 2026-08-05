@@ -560,6 +560,51 @@ const labels = ({
     sources: "Источники",
     source: "Источник",
     profile: "Профиль"
+  },
+  pl: {
+    title: "Ludzie Plovdivu",
+    eyebrow: "Postacie i powiązania",
+    lead:
+      "Katalog postaci Open Plovdiv: wszyscy burmistrzowie i wybór wybitnych mieszkańców Plovdivu, powiązanych z wydarzeniami, rolami i źródłami.",
+    people: "ludzie",
+    roles: "role",
+    links: "powiązania",
+    events: "wydarzenia",
+    connectionsTitle: "Powiązania między postaciami",
+    connectionsLead:
+      "Powiązania między postaciami: następstwo burmistrzów, więzi rodzinne i publiczne źródło dla każdego z nich.",
+    catalogTitle: "Katalog",
+    search: "Szukaj",
+    searchPlaceholder: "nazwisko, rola, opis…",
+    group: "Grupa",
+    allGroups: "Wszystkie grupy",
+    century: "Wiek",
+    allCenturies: "Wszystkie wieki",
+    relationship: "Powiązania",
+    allRelationships: "Wszystkie",
+    withRelationships: "z powiązaniami z innymi postaciami",
+    withoutRelationships: "bez powiązań z innymi postaciami",
+    visible: "Pokazano",
+    of: "z",
+    reset: "Wyczyść filtry",
+    noResults: "Brak osób spełniających te filtry.",
+    born: "Urodzenie",
+    life: "Lata życia",
+    linkedEvents: "powiązane wydarzenia",
+    relationshipCount: "powiązania",
+    relationshipSources: "Powiązania",
+    ledgerTitle: "Powiązania i źródła",
+    ledgerLead:
+      "Każde powiązanie pokazuje uczestników, typ, powiązane wydarzenie przy następstwie burmistrzów oraz publiczne źródło.",
+    ledgerRows: "powiązania",
+    from: "Od",
+    to: "Do",
+    type: "Typ",
+    evidence: "Potwierdzenie",
+    linkedEvent: "Wydarzenie",
+    sources: "Źródła",
+    source: "Źródło",
+    profile: "Profil"
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -815,6 +860,27 @@ const graphLabels = ({
     connectionsWord: "связи",
     noHighlight: "В этой группе нет людей.",
     allGroups: "Все группы"
+  },
+  pl: {
+    open: "Otwórz graf sieci",
+    close: "Zamknij graf",
+    loading: "Ładowanie grafu…",
+    lead: "Interaktywna sieć postaci i powiązań między nimi. Każdy punkt to postać, każda linia to udokumentowane powiązanie. Graf ładuje się dopiero po otwarciu.",
+    succession: "Następstwo burmistrzów",
+    family: "Więzi rodzinne",
+    links: "Powiązania",
+    highlightPaths: "Ciekawe ścieżki",
+    fitView: "Dopasuj",
+    zoomIn: "Przybliż",
+    zoomOut: "Oddal",
+    selectHint: "Dotknij punktu, aby zobaczyć postać i jej powiązania.",
+    roles: "Role",
+    life: "Lata życia",
+    degreeLabel: "Powiązania w sieci",
+    viewProfile: "Zobacz profil",
+    connectionsWord: "powiązania",
+    noHighlight: "W tej grupie nie ma osób.",
+    allGroups: "Wszystkie grupy"
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -890,6 +956,12 @@ const editorialLabels = ({
     featuredTitle: "Лица, рассказывающие историю города",
     featuredLead: "Известные пловдивцы из культуры, спорта, науки и общественной жизни — с проверенными портретами и профилями.",
     imageSource: "Источник изображения"
+  },
+  pl: {
+    featuredNav: "Postacie",
+    featuredTitle: "Twarze, które opowiadają historię miasta",
+    featuredLead: "Znani mieszkańcy Plovdivu z kultury, sportu, nauki i życia publicznego — ze zweryfikowanymi portretami i profilami.",
+    imageSource: "Źródło zdjęcia"
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -989,22 +1061,30 @@ const groupLabels = ({
     faith: "Духовность",
     sport: "Спорт",
     civic: "Общество"
+  },
+  pl: {
+    governance: "Zarządzanie",
+    culture: "Kultura",
+    science: "Nauka",
+    faith: "Duchowość",
+    sport: "Sport",
+    civic: "Społeczeństwo"
   }
 } satisfies Record<Lang, Record<string, string>>)[lang];
 
 const relationshipTypeLabels: Record<string, Record<Lang, string>> = {
-  succeeds: { bg: "наследява", en: "succeeds", de: "folgt auf", fr: "succède à", it: "succede a", tr: "yerine geçer", es: "sucede a", el: "διαδέχεται τον/την", ja: "前任者", tl: "humalili kay", uk: "попередник", ru: "предшественник" },
-  succeeded_by: { bg: "наследен/а от", en: "succeeded by", de: "abgelöst von", fr: "remplacé(e) par", it: "sostituito/a da", tr: "yerine geçilir", es: "sucedido/a por", el: "διαδέχθηκε από", ja: "後任者", tl: "hinalinhan ni", uk: "наступник", ru: "преемник" },
-  spouse: { bg: "съпруг/съпруга", en: "spouse", de: "Ehepartner", fr: "conjoint(e)", it: "coniuge", tr: "eş", es: "cónyuge", el: "σύζυγος", ja: "配偶者", tl: "asawa", uk: "подружжя", ru: "супруг/супруга" },
-  father: { bg: "баща", en: "father", de: "Vater", fr: "père", it: "padre", tr: "baba", es: "padre", el: "πατέρας", ja: "父", tl: "ama", uk: "батько", ru: "отец" },
-  mother: { bg: "майка", en: "mother", de: "Mutter", fr: "mère", it: "madre", tr: "anne", es: "madre", el: "μητέρα", ja: "母", tl: "ina", uk: "мати", ru: "мать" },
-  parent: { bg: "родител", en: "parent", de: "Elternteil", fr: "parent", it: "genitore", tr: "ebeveyn", es: "progenitor", el: "γονέας", ja: "親", tl: "magulang", uk: "батько/мати", ru: "родитель" },
-  child: { bg: "дете", en: "child", de: "Kind", fr: "enfant", it: "figlio/a", tr: "çocuk", es: "hijo/a", el: "παιδί", ja: "子", tl: "anak", uk: "дитина", ru: "ребёнок" },
-  sibling: { bg: "брат/сестра", en: "sibling", de: "Geschwister", fr: "frère/sœur", it: "fratello/sorella", tr: "kardeş", es: "hermano/a", el: "αδελφός/ή", ja: "きょうだい", tl: "kapatid", uk: "брат/сестра", ru: "брат/сестра" },
-  mentor: { bg: "ментор", en: "mentor", de: "Mentor", fr: "mentor", it: "mentore", tr: "akıl hocası", es: "mentor", el: "μέντορας", ja: "師", tl: "mentor", uk: "наставник", ru: "наставник" },
-  student: { bg: "ученик/студент", en: "student", de: "Schüler", fr: "élève", it: "allievo/a", tr: "öğrenci", es: "alumno/a", el: "μαθητής/τρια", ja: "弟子・学生", tl: "estudyante", uk: "учень/студент", ru: "ученик/студент" },
-  partner: { bg: "партньор", en: "partner", de: "Partner", fr: "partenaire", it: "partner", tr: "ortak", es: "pareja", el: "σύντροφος", ja: "協力者", tl: "kasosyo", uk: "партнер", ru: "партнёр" },
-  influenced_by: { bg: "повлиян/а от", en: "influenced by", de: "beeinflusst von", fr: "influencé(e) par", it: "influenzato/a da", tr: "etkilendiği", es: "influido/a por", el: "επηρεάστηκε από", ja: "影響を受けた相手", tl: "naimpluwensyahan ni", uk: "зазнав(-ла) впливу", ru: "испытал(а) влияние" }
+  succeeds: { bg: "наследява", en: "succeeds", de: "folgt auf", fr: "succède à", it: "succede a", tr: "yerine geçer", es: "sucede a", el: "διαδέχεται τον/την", ja: "前任者", tl: "humalili kay", uk: "попередник", ru: "предшественник", pl: "poprzednik" },
+  succeeded_by: { bg: "наследен/а от", en: "succeeded by", de: "abgelöst von", fr: "remplacé(e) par", it: "sostituito/a da", tr: "yerine geçilir", es: "sucedido/a por", el: "διαδέχθηκε από", ja: "後任者", tl: "hinalinhan ni", uk: "наступник", ru: "преемник", pl: "następca" },
+  spouse: { bg: "съпруг/съпруга", en: "spouse", de: "Ehepartner", fr: "conjoint(e)", it: "coniuge", tr: "eş", es: "cónyuge", el: "σύζυγος", ja: "配偶者", tl: "asawa", uk: "подружжя", ru: "супруг/супруга", pl: "małżonek/małżonka" },
+  father: { bg: "баща", en: "father", de: "Vater", fr: "père", it: "padre", tr: "baba", es: "padre", el: "πατέρας", ja: "父", tl: "ama", uk: "батько", ru: "отец", pl: "ojciec" },
+  mother: { bg: "майка", en: "mother", de: "Mutter", fr: "mère", it: "madre", tr: "anne", es: "madre", el: "μητέρα", ja: "母", tl: "ina", uk: "мати", ru: "мать", pl: "matka" },
+  parent: { bg: "родител", en: "parent", de: "Elternteil", fr: "parent", it: "genitore", tr: "ebeveyn", es: "progenitor", el: "γονέας", ja: "親", tl: "magulang", uk: "батько/мати", ru: "родитель", pl: "rodzic" },
+  child: { bg: "дете", en: "child", de: "Kind", fr: "enfant", it: "figlio/a", tr: "çocuk", es: "hijo/a", el: "παιδί", ja: "子", tl: "anak", uk: "дитина", ru: "ребёнок", pl: "dziecko" },
+  sibling: { bg: "брат/сестра", en: "sibling", de: "Geschwister", fr: "frère/sœur", it: "fratello/sorella", tr: "kardeş", es: "hermano/a", el: "αδελφός/ή", ja: "きょうだい", tl: "kapatid", uk: "брат/сестра", ru: "брат/сестра", pl: "rodzeństwo" },
+  mentor: { bg: "ментор", en: "mentor", de: "Mentor", fr: "mentor", it: "mentore", tr: "akıl hocası", es: "mentor", el: "μέντορας", ja: "師", tl: "mentor", uk: "наставник", ru: "наставник", pl: "mentor" },
+  student: { bg: "ученик/студент", en: "student", de: "Schüler", fr: "élève", it: "allievo/a", tr: "öğrenci", es: "alumno/a", el: "μαθητής/τρια", ja: "弟子・学生", tl: "estudyante", uk: "учень/студент", ru: "ученик/студент", pl: "uczeń/student" },
+  partner: { bg: "партньор", en: "partner", de: "Partner", fr: "partenaire", it: "partner", tr: "ortak", es: "pareja", el: "σύντροφος", ja: "協力者", tl: "kasosyo", uk: "партнер", ru: "партнёр", pl: "partner" },
+  influenced_by: { bg: "повлиян/а от", en: "influenced by", de: "beeinflusst von", fr: "influencé(e) par", it: "influenzato/a da", tr: "etkilendiği", es: "influido/a por", el: "επηρεάστηκε από", ja: "影響を受けた相手", tl: "naimpluwensyahan ni", uk: "зазнав(-ла) впливу", ru: "испытал(а) влияние", pl: "pod wpływem" }
 };
 
 const roleGroups: Record<string, keyof typeof groupLabels> = {
@@ -1124,7 +1204,8 @@ const legendLabel = ({
   ja: "グループ — クリックで絞り込み",
   tl: "Mga grupo — pindutin para mag-filter",
   uk: "Групи — натисніть, щоб відфільтрувати",
-  ru: "Группы — нажмите, чтобы отфильтровать"
+  ru: "Группы — нажмите, чтобы отфильтровать",
+  pl: "Grupy — kliknij, aby filtrować"
 } satisfies Record<Lang, string>)[lang];
 
 function localized(record: Record<string, any>, base: string): string {
@@ -1380,8 +1461,10 @@ const nodeConfig = {
         ? [{ id: "people-connections", label: "Зв'язки" }, { id: "people-catalog", label: "Каталог" }]
       : lang === "ru"
         ? [{ id: "people-connections", label: "Связи" }, { id: "people-catalog", label: "Каталог" }]
+      : lang === "pl"
+        ? [{ id: "people-connections", label: "Powiązania" }, { id: "people-catalog", label: "Katalog" }]
         : [{ id: "people-connections", label: "Connections" }, { id: "people-catalog", label: "Catalog" }])]}
-    label={lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : lang === "tl" ? "Mga Seksyon ng Pahina" : lang === "uk" ? "Розділи сторінки" : lang === "ru" ? "Разделы страницы" : "Page sections"}
+    label={lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : lang === "tl" ? "Mga Seksyon ng Pahina" : lang === "uk" ? "Розділи сторінки" : lang === "ru" ? "Разделы страницы" : lang === "pl" ? "Sekcje strony" : "Page sections"}
   />
 
   {featuredPeople.length > 0 && (

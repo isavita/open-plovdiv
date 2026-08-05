@@ -73,7 +73,7 @@
         "notes_en": { "type": "string", "minLength": 10 }
       },
       "patternProperties": {
-        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 10 }
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 10 }
       }
     },
     "overlay_bounds": { "$ref": "#/definitions/overlay_bounds" },
@@ -98,7 +98,7 @@
         }
       },
       "patternProperties": {
-        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 3 }
       }
     },
     "commons_categories": { "type": "array", "items": { "type": "string", "minLength": 2 } },
@@ -106,7 +106,7 @@
     "editorial": { "$ref": "#/definitions/editorial" }
   },
   "patternProperties": {
-    "^(title|description|date_display)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+    "^(title|description|date_display)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
   },
   "definitions": {
     "overlay_bounds": {
@@ -123,7 +123,7 @@
         "notes_en": { "type": "string", "minLength": 20 }
       },
       "patternProperties": {
-        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 20 }
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 20 }
       }
     },
     "media": {
@@ -150,7 +150,7 @@
         "accessed_at": { "type": "string", "format": "date" }
       },
       "patternProperties": {
-        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 3 }
       }
     },
     "editorial": {
@@ -179,7 +179,7 @@
         "notes_en": { "type": "string", "minLength": 10 }
       },
       "patternProperties": {
-        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 10 }
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 10 }
       }
     }
   }

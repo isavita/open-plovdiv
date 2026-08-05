@@ -26,8 +26,9 @@ const tr = (
   ja: string,
   tl: string,
   uk: string,
-  ru: string
-): Record<Lang, string> => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru });
+  ru: string,
+  pl: string
+): Record<Lang, string> => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl });
 
 const pick = (table: Record<string, Record<Lang, string>>, lang: Lang): Record<string, string> =>
   Object.fromEntries(Object.entries(table).map(([key, values]) => [key, values[lang]]));
@@ -45,7 +46,8 @@ const categoryTable: Record<RouteCategory, Record<Lang, string>> = {
     "初めての訪問",
     "Unang pagbisita",
     "Перший візит",
-    "Первый визит"
+    "Первый визит",
+    "Pierwsza wizyta"
   ),
   "history-layers": tr(
     "Исторически пластове",
@@ -59,7 +61,8 @@ const categoryTable: Record<RouteCategory, Record<Lang, string>> = {
     "歴史の積み重ね",
     "Mga yugto ng kasaysayan",
     "Історичні шари",
-    "Исторические слои"
+    "Исторические слои",
+    "Warstwy historyczne"
   ),
   sacred: tr(
     "Храмове и общности",
@@ -73,7 +76,8 @@ const categoryTable: Record<RouteCategory, Record<Lang, string>> = {
     "聖地とコミュニティ",
     "Sagrado at mga komunidad",
     "Святині та громади",
-    "Святыни и общины"
+    "Святыни и общины",
+    "Świątynie i wspólnoty"
   ),
   creative: tr(
     "Изкуство и музеи",
@@ -87,7 +91,8 @@ const categoryTable: Record<RouteCategory, Record<Lang, string>> = {
     "アートと博物館",
     "Sining at mga museo",
     "Творчість і музеї",
-    "Творчество и музеи"
+    "Творчество и музеи",
+    "Sztuka i muzea"
   ),
   quarters: tr(
     "Кварталски разходки",
@@ -101,7 +106,8 @@ const categoryTable: Record<RouteCategory, Record<Lang, string>> = {
     "街区さんぽ",
     "Mga lakad sa purok",
     "Прогулянки кварталами",
-    "Прогулки по кварталам"
+    "Прогулки по кварталам",
+    "Spacery po dzielnicach"
   ),
   nature: tr(
     "Тепета, паркове и река",
@@ -115,7 +121,8 @@ const categoryTable: Record<RouteCategory, Record<Lang, string>> = {
     "丘と公園と川",
     "Mga burol, parke at ilog",
     "Пагорби, парки та річка",
-    "Холмы, парки и река"
+    "Холмы, парки и река",
+    "Wzgórza, parki i rzeka"
   )
 };
 
@@ -132,7 +139,8 @@ const durationBandTable: Record<RouteDurationBand, Record<Lang, string>> = {
     "1時間前後",
     "mga isang oras",
     "близько години",
-    "около часа"
+    "около часа",
+    "około godziny"
   ),
   "half-day": tr(
     "половин ден",
@@ -146,7 +154,8 @@ const durationBandTable: Record<RouteDurationBand, Record<Lang, string>> = {
     "半日",
     "kalahating araw",
     "півдня",
-    "полдня"
+    "полдня",
+    "pół dnia"
   ),
   "full-day": tr(
     "цял ден",
@@ -160,12 +169,13 @@ const durationBandTable: Record<RouteDurationBand, Record<Lang, string>> = {
     "終日",
     "buong araw",
     "цілий день",
-    "весь день"
+    "весь день",
+    "cały dzień"
   )
 };
 
 const difficultyTable: Record<RouteDifficulty, Record<Lang, string>> = {
-  easy: tr("лек", "easy", "leicht", "facile", "facile", "kolay", "fácil", "εύκολη", "楽", "madali", "легкий", "лёгкий"),
+  easy: tr("лек", "easy", "leicht", "facile", "facile", "kolay", "fácil", "εύκολη", "楽", "madali", "легкий", "лёгкий", "łatwy"),
   moderate: tr(
     "умерен",
     "moderate",
@@ -178,7 +188,8 @@ const difficultyTable: Record<RouteDifficulty, Record<Lang, string>> = {
     "ふつう",
     "katamtaman",
     "помірний",
-    "умеренный"
+    "умеренный",
+    "umiarkowany"
   ),
   steep: tr(
     "стръмен",
@@ -192,7 +203,8 @@ const difficultyTable: Record<RouteDifficulty, Record<Lang, string>> = {
     "急坂あり",
     "matarik",
     "крутий",
-    "крутой"
+    "крутой",
+    "stromy"
   )
 };
 
@@ -209,7 +221,8 @@ const wheelchairTable: Record<RouteWheelchair, Record<Lang, string>> = {
     "平坦・段差なし",
     "patag, walang hagdan",
     "рівний, без сходинок",
-    "ровный, без ступеней"
+    "ровный, без ступеней",
+    "płasko, bez schodów"
   ),
   partial: tr(
     "частично на равно",
@@ -223,7 +236,8 @@ const wheelchairTable: Record<RouteWheelchair, Record<Lang, string>> = {
     "一部平坦",
     "bahagyang patag",
     "частково рівний",
-    "частично ровный"
+    "частично ровный",
+    "częściowo płasko"
   ),
   hard: tr(
     "калдъръм и стълби",
@@ -237,14 +251,15 @@ const wheelchairTable: Record<RouteWheelchair, Record<Lang, string>> = {
     "石畳と階段",
     "cobblestone at hagdan",
     "бруківка та сходи",
-    "булыжник и лестницы"
+    "булыжник и лестницы",
+    "bruk i schody"
   )
 };
 
 const practicalKindTable: Record<RoutePracticalKind, Record<Lang, string>> = {
-  food: tr("Храна", "Food", "Essen", "Restauration", "Cibo", "Yemek", "Comida", "Φαγητό", "食事", "Pagkain", "Їжа", "Еда"),
-  water: tr("Вода", "Water", "Wasser", "Eau", "Acqua", "Su", "Agua", "Νερό", "水分", "Tubig", "Вода", "Вода"),
-  terrain: tr("Терен", "Terrain", "Gelände", "Terrain", "Terreno", "Zemin", "Terreno", "Έδαφος", "路面", "Terrain", "Рельєф", "Рельеф"),
+  food: tr("Храна", "Food", "Essen", "Restauration", "Cibo", "Yemek", "Comida", "Φαγητό", "食事", "Pagkain", "Їжа", "Еда", "Jedzenie"),
+  water: tr("Вода", "Water", "Wasser", "Eau", "Acqua", "Su", "Agua", "Νερό", "水分", "Tubig", "Вода", "Вода", "Woda"),
+  terrain: tr("Терен", "Terrain", "Gelände", "Terrain", "Terreno", "Zemin", "Terreno", "Έδαφος", "路面", "Terrain", "Рельєф", "Рельеф", "Teren"),
   transit: tr(
     "Градски транспорт",
     "Public transport",
@@ -257,12 +272,13 @@ const practicalKindTable: Record<RoutePracticalKind, Record<Lang, string>> = {
     "公共交通",
     "Pampublikong transportasyon",
     "Громадський транспорт",
-    "Общественный транспорт"
+    "Общественный транспорт",
+    "Komunikacja miejska"
   ),
-  luggage: tr("Багаж", "Luggage", "Gepäck", "Bagages", "Bagagli", "Bagaj", "Equipaje", "Αποσκευές", "荷物", "Bagahe", "Багаж", "Багаж"),
-  toilets: tr("Тоалетни", "Toilets", "Toiletten", "Toilettes", "Servizi", "Tuvaletler", "Aseos", "Τουαλέτες", "トイレ", "Palikuran", "Туалети", "Туалеты"),
-  shade: tr("Сянка", "Shade", "Schatten", "Ombre", "Ombra", "Gölge", "Sombra", "Σκιά", "日陰", "Lilim", "Тінь", "Тень"),
-  safety: tr("Внимание", "Take care", "Beachten", "À noter", "Attenzione", "Dikkat", "Atención", "Προσοχή", "注意", "Paalala", "Зверніть увагу", "Обратите внимание")
+  luggage: tr("Багаж", "Luggage", "Gepäck", "Bagages", "Bagagli", "Bagaj", "Equipaje", "Αποσκευές", "荷物", "Bagahe", "Багаж", "Багаж", "Bagaż"),
+  toilets: tr("Тоалетни", "Toilets", "Toiletten", "Toilettes", "Servizi", "Tuvaletler", "Aseos", "Τουαλέτες", "トイレ", "Palikuran", "Туалети", "Туалеты", "Toalety"),
+  shade: tr("Сянка", "Shade", "Schatten", "Ombre", "Ombra", "Gölge", "Sombra", "Σκιά", "日陰", "Lilim", "Тінь", "Тень", "Cień"),
+  safety: tr("Внимание", "Take care", "Beachten", "À noter", "Attenzione", "Dikkat", "Atención", "Προσοχή", "注意", "Paalala", "Зверніть увагу", "Обратите внимание", "Uwaga")
 };
 
 const labelTable = {
@@ -279,7 +295,8 @@ const labelTable = {
     "Plovdivの散策ルート",
     "Mga Ruta na Lalakaran sa Plovdiv",
     "Пішохідні маршрути Пловдива",
-    "Пешеходные маршруты Пловдива"
+    "Пешеходные маршруты Пловдива",
+    "Trasy spacerowe po Plovdivie"
   ),
   indexEyebrow: tr(
     "За посетители",
@@ -293,7 +310,8 @@ const labelTable = {
     "訪問者向け",
     "Para sa mga bisita",
     "Для відвідувачів",
-    "Для гостей города"
+    "Для гостей города",
+    "Dla odwiedzających"
   ),
   indexLead: tr(
     "Самостоятелни маршрути с реална пешеходна линия, времена и практични бележки — изградени от документираните места, разкази и източници на Open Plovdiv.",
@@ -307,7 +325,8 @@ const labelTable = {
     "実際の歩行ルート・所要時間・実用メモを備えたセルフガイドルート。Open Plovdivの記録済みの場所、ストーリー、出典から組み立てています。",
     "Mga rutang self-guided na may totoong linya ng lakad, oras at praktikal na tala — hango sa mga dokumentadong lugar, kuwento at pinagmulan ng Open Plovdiv.",
     "Маршрути для самостійних прогулянок зі справжніми пішохідними лініями, часом і практичними порадами — на основі задокументованих місць, розповідей і джерел Open Plovdiv.",
-    "Самостоятельные маршруты с реальными пешеходными линиями, временем и практичными заметками — на основе задокументированных мест, историй и источников Open Plovdiv."
+    "Самостоятельные маршруты с реальными пешеходными линиями, временем и практичными заметками — на основе задокументированных мест, историй и источников Open Plovdiv.",
+    "Trasy do samodzielnego zwiedzania z prawdziwym przebiegiem pieszym, czasami przejścia i praktycznymi uwagami — zbudowane z udokumentowanych miejsc, opowieści i źródeł Open Plovdiv."
   ),
   summerEyebrow: tr(
     "Летни маршрути",
@@ -321,7 +340,8 @@ const labelTable = {
     "夏のルート",
     "Mga ruta sa tag-init",
     "Літні маршрути",
-    "Летние маршруты"
+    "Летние маршруты",
+    "Trasy letnie"
   ),
   summerTitle: tr(
     "Пловдив без обедната жега",
@@ -335,7 +355,8 @@ const labelTable = {
     "真昼の暑さを避けるプロヴディフ",
     "Plovdiv na iwas sa init ng tanghali",
     "Пловдив без полуденної спеки",
-    "Пловдив без полуденной жары"
+    "Пловдив без полуденной жары",
+    "Plovdiv poza południowym upałem"
   ),
   summerLead: tr(
     "Три по-разумни избора за горещ ден: прохладни музеи, сенчести градини или тепетата по залез. Носете вода и избягвайте откритите хълмове по обяд.",
@@ -349,12 +370,13 @@ const labelTable = {
     "暑い日は、涼しい博物館、木陰の庭園、夕暮れの丘という3つの選択肢を。水を携帯し、真昼の開けた丘は避けてください。",
     "Tatlong mas maayos na pagpipilian sa mainit na araw: malamig na museo, malilim na hardin, o mga burol sa paglubog ng araw. Magdala ng tubig at iwasan ang lantad na tuktok sa tanghali.",
     "Три розумніші варіанти для спекотного дня: прохолодні музеї, тінисті сади або пагорби на заході сонця. Беріть воду й уникайте відкритих вершин опівдні.",
-    "Три разумных варианта для жаркого дня: прохладные музеи, тенистые сады или холмы на закате. Берите воду и избегайте открытых вершин в полдень."
+    "Три разумных варианта для жаркого дня: прохладные музеи, тенистые сады или холмы на закате. Берите воду и избегайте открытых вершин в полдень.",
+    "Trzy rozsądniejsze wybory na upalny dzień: chłodne muzea, zacienione ogrody albo wzgórza o zachodzie słońca. Weź wodę i unikaj odsłoniętych szczytów w południe."
   ),
-  routes: tr("маршрута", "routes", "Routen", "parcours", "percorsi", "rota", "rutas", "διαδρομές", "ルート", "ruta", "маршрути", "маршрутов"),
-  stops: tr("спирки", "stops", "Stationen", "étapes", "tappe", "durak", "paradas", "στάσεις", "地点", "hintuan", "зупинки", "остановки"),
-  totalKm: tr("км общо", "km in total", "km insgesamt", "km au total", "km in totale", "km toplam", "km en total", "χλμ. συνολικά", "km合計", "km kabuuan", "км загалом", "км всего"),
-  sources: tr("източници", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "出典", "pinagmulan", "джерела", "источники"),
+  routes: tr("маршрута", "routes", "Routen", "parcours", "percorsi", "rota", "rutas", "διαδρομές", "ルート", "ruta", "маршрути", "маршрутов", "tras"),
+  stops: tr("спирки", "stops", "Stationen", "étapes", "tappe", "durak", "paradas", "στάσεις", "地点", "hintuan", "зупинки", "остановки", "punktów"),
+  totalKm: tr("км общо", "km in total", "km insgesamt", "km au total", "km in totale", "km toplam", "km en total", "χλμ. συνολικά", "km合計", "km kabuuan", "км загалом", "км всего", "km łącznie"),
+  sources: tr("източници", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "出典", "pinagmulan", "джерела", "источники", "źródeł"),
   filterTitle: tr(
     "Намерете своя маршрут",
     "Find your route",
@@ -367,7 +389,8 @@ const labelTable = {
     "ルートを探す",
     "Hanapin ang iyong ruta",
     "Знайдіть свій маршрут",
-    "Найдите свой маршрут"
+    "Найдите свой маршрут",
+    "Znajdź swoją trasę"
   ),
   filterLead: tr(
     "Филтрирайте по тема, продължителност и терен. Всеки маршрут показва реално изчислено разстояние и практични бележки.",
@@ -381,12 +404,13 @@ const labelTable = {
     "テーマ・所要時間・路面で絞り込めます。各ルートには実測ベースの距離と実用メモが付いています。",
     "Mag-filter ayon sa tema, haba at terrain. Bawat ruta ay may totoong kalkuladong distansya at praktikal na tala.",
     "Фільтруйте за темою, тривалістю та рельєфом. Кожен маршрут показує реально обчислену відстань і практичні поради.",
-    "Фильтруйте по теме, длительности и рельефу. Каждый маршрут показывает реально рассчитанное расстояние и практичные заметки."
+    "Фильтруйте по теме, длительности и рельефу. Каждый маршрут показывает реально рассчитанное расстояние и практичные заметки.",
+    "Filtruj według tematu, długości i terenu. Każda trasa pokazuje rzeczywiście obliczony dystans i praktyczne uwagi."
   ),
-  filterAll: tr("Всички", "All", "Alle", "Tous", "Tutti", "Tümü", "Todas", "Όλες", "すべて", "Lahat", "Усі", "Все"),
-  filterTheme: tr("Тема", "Theme", "Thema", "Thème", "Tema", "Tema", "Tema", "Θέμα", "テーマ", "Tema", "Тема", "Тема"),
-  filterLength: tr("Продължителност", "Length", "Dauer", "Durée", "Durata", "Süre", "Duración", "Διάρκεια", "所要時間", "Tagal", "Тривалість", "Длительность"),
-  filterMore: tr("Подходящи за", "Good for", "Geeignet für", "Adapté pour", "Adatto per", "Uygun", "Ideal para", "Κατάλληλη για", "こんな時に", "Angkop para sa", "Підходить для", "Подходит для"),
+  filterAll: tr("Всички", "All", "Alle", "Tous", "Tutti", "Tümü", "Todas", "Όλες", "すべて", "Lahat", "Усі", "Все", "Wszystkie"),
+  filterTheme: tr("Тема", "Theme", "Thema", "Thème", "Tema", "Tema", "Tema", "Θέμα", "テーマ", "Tema", "Тема", "Тема", "Temat"),
+  filterLength: tr("Продължителност", "Length", "Dauer", "Durée", "Durata", "Süre", "Duración", "Διάρκεια", "所要時間", "Tagal", "Тривалість", "Длительность", "Długość"),
+  filterMore: tr("Подходящи за", "Good for", "Geeignet für", "Adapté pour", "Adatto per", "Uygun", "Ideal para", "Κατάλληλη για", "こんな時に", "Angkop para sa", "Підходить для", "Подходит для", "Dobre dla"),
   toggleStepFree: tr(
     "Без стъпала",
     "Step-free",
@@ -399,10 +423,11 @@ const labelTable = {
     "段差なし",
     "Walang hagdan",
     "Без сходинок",
-    "Без ступеней"
+    "Без ступеней",
+    "Bez schodów"
   ),
-  toggleFamily: tr("С деца", "With kids", "Mit Kindern", "Avec enfants", "Con bambini", "Çocuklarla", "Con niños", "Με παιδιά", "子ども連れ", "May mga bata", "З дітьми", "С детьми"),
-  toggleRainy: tr("При дъжд", "Rainy day", "Bei Regen", "Jour de pluie", "Giorno di pioggia", "Yağmurlu gün", "Día de lluvia", "Βροχερή μέρα", "雨の日", "Maulan na araw", "У дощ", "В дождь"),
+  toggleFamily: tr("С деца", "With kids", "Mit Kindern", "Avec enfants", "Con bambini", "Çocuklarla", "Con niños", "Με παιδιά", "子ども連れ", "May mga bata", "З дітьми", "С детьми", "Z dziećmi"),
+  toggleRainy: tr("При дъжд", "Rainy day", "Bei Regen", "Jour de pluie", "Giorno di pioggia", "Yağmurlu gün", "Día de lluvia", "Βροχερή μέρα", "雨の日", "Maulan na araw", "У дощ", "В дождь", "Na deszcz"),
   toggleTransit: tr(
     "С транспорт",
     "Uses transit",
@@ -415,7 +440,8 @@ const labelTable = {
     "交通機関利用",
     "May transportasyon",
     "З транспортом",
-    "С транспортом"
+    "С транспортом",
+    "Z komunikacją"
   ),
   noMatches: tr(
     "Няма маршрут с тази комбинация от филтри — премахнете един-два.",
@@ -429,7 +455,8 @@ const labelTable = {
     "この条件に合うルートがありません。フィルターを1〜2個外してください。",
     "Walang rutang tumutugma sa kombinasyong ito — alisin ang isa o dalawa.",
     "Жоден маршрут не відповідає цій комбінації — приберіть один-два фільтри.",
-    "Ни один маршрут не подходит под эту комбинацию — уберите один-два фильтра."
+    "Ни один маршрут не подходит под эту комбинацию — уберите один-два фильтра.",
+    "Żadna trasa nie pasuje do tej kombinacji filtrów — usuń jeden lub dwa."
   ),
   resetFilters: tr(
     "Изчисти филтрите",
@@ -443,7 +470,8 @@ const labelTable = {
     "フィルターをリセット",
     "I-reset ang mga filter",
     "Скинути фільтри",
-    "Сбросить фильтры"
+    "Сбросить фильтры",
+    "Wyczyść filtry"
   ),
   openRoute: tr(
     "Отвори маршрута",
@@ -457,9 +485,10 @@ const labelTable = {
     "ルートを開く",
     "Buksan ang ruta",
     "Відкрити маршрут",
-    "Открыть маршрут"
+    "Открыть маршрут",
+    "Otwórz trasę"
   ),
-  allPlaces: tr("Всички места", "All places", "Alle Orte", "Tous les lieux", "Tutti i luoghi", "Tüm yerler", "Todos los lugares", "Όλες οι τοποθεσίες", "すべての場所", "Lahat ng lugar", "Усі місця", "Все места"),
+  allPlaces: tr("Всички места", "All places", "Alle Orte", "Tous les lieux", "Tutti i luoghi", "Tüm yerler", "Todos los lugares", "Όλες οι τοποθεσίες", "すべての場所", "Lahat ng lugar", "Усі місця", "Все места", "Wszystkie miejsca"),
   dataBoundary: tr(
     "Маршрутите използват съществуващи записи; времената са посетителска ориентация, а историческите твърдения остават в свързаните източници.",
     "Routes reuse existing records; timings are visitor guidance, while historical claims stay with the linked sources.",
@@ -472,10 +501,11 @@ const labelTable = {
     "ルートは既存の記録を再利用します。時間は目安で、歴史的記述はリンク先の出典に基づきます。",
     "Muling ginagamit ng mga ruta ang umiiral na talaan; ang oras ay gabay lamang, habang ang mga makasaysayang pahayag ay nasa kaugnay na pinagmulan.",
     "Маршрути повторно використовують наявні записи; час є орієнтиром, а історичні твердження залишаються за пов'язаними джерелами.",
-    "Маршруты используют существующие записи; время — ориентир, а исторические утверждения остаются за связанными источниками."
+    "Маршруты используют существующие записи; время — ориентир, а исторические утверждения остаются за связанными источниками.",
+    "Trasy korzystają z istniejących wpisów; czasy są wskazówką dla odwiedzających, a twierdzenia historyczne pozostają przy powiązanych źródłach."
   ),
   // shared facts --------------------------------------------------------------
-  distance: tr("Разстояние", "Distance", "Distanz", "Distance", "Distanza", "Mesafe", "Distancia", "Απόσταση", "距離", "Distansya", "Відстань", "Расстояние"),
+  distance: tr("Разстояние", "Distance", "Distanz", "Distance", "Distanza", "Mesafe", "Distancia", "Απόσταση", "距離", "Distansya", "Відстань", "Расстояние", "Dystans"),
   suggestedTime: tr(
     "Препоръчано време",
     "Suggested time",
@@ -488,7 +518,8 @@ const labelTable = {
     "目安時間",
     "Iminumungkahing oras",
     "Орієнтовний час",
-    "Рекомендуемое время"
+    "Рекомендуемое время",
+    "Sugerowany czas"
   ),
   walkingTime: tr(
     "Чисто ходене",
@@ -502,16 +533,17 @@ const labelTable = {
     "歩行時間のみ",
     "Purong lakad",
     "Чиста ходьба",
-    "Только ходьба"
+    "Только ходьба",
+    "Samo chodzenie"
   ),
-  ascent: tr("Изкачване", "Ascent", "Anstieg", "Dénivelé", "Dislivello", "Tırmanış", "Desnivel", "Ανάβαση", "上り", "Akyat", "Підйом", "Подъём"),
-  difficulty: tr("Трудност", "Difficulty", "Schwierigkeit", "Difficulté", "Difficoltà", "Zorluk", "Dificultad", "Δυσκολία", "難易度", "Hirap", "Складність", "Сложность"),
-  accessibility: tr("Достъпност", "Accessibility", "Zugänglichkeit", "Accessibilité", "Accessibilità", "Erişilebilirlik", "Accesibilidad", "Προσβασιμότητα", "アクセシビリティ", "Accessibility", "Доступність", "Доступность"),
-  minutes: tr("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "min", "хв", "мин"),
-  km: tr("км", "km", "km", "km", "km", "km", "km", "χλμ.", "km", "km", "км", "км"),
-  meters: tr("м", "m", "m", "m", "m", "m", "m", "μ.", "m", "m", "м", "м"),
-  start: tr("Начало", "Start", "Start", "Départ", "Partenza", "Başlangıç", "Inicio", "Αρχή", "スタート", "Simula", "Початок", "Начало"),
-  finish: tr("Край", "Finish", "Ziel", "Arrivée", "Arrivo", "Bitiş", "Final", "Τέλος", "ゴール", "Tapos", "Кінець", "Финиш"),
+  ascent: tr("Изкачване", "Ascent", "Anstieg", "Dénivelé", "Dislivello", "Tırmanış", "Desnivel", "Ανάβαση", "上り", "Akyat", "Підйом", "Подъём", "Podejście"),
+  difficulty: tr("Трудност", "Difficulty", "Schwierigkeit", "Difficulté", "Difficoltà", "Zorluk", "Dificultad", "Δυσκολία", "難易度", "Hirap", "Складність", "Сложность", "Trudność"),
+  accessibility: tr("Достъпност", "Accessibility", "Zugänglichkeit", "Accessibilité", "Accessibilità", "Erişilebilirlik", "Accesibilidad", "Προσβασιμότητα", "アクセシビリティ", "Accessibility", "Доступність", "Доступность", "Dostępność"),
+  minutes: tr("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "min", "хв", "мин", "min"),
+  km: tr("км", "km", "km", "km", "km", "km", "km", "χλμ.", "km", "km", "км", "км", "km"),
+  meters: tr("м", "m", "m", "m", "m", "m", "m", "μ.", "m", "m", "м", "м", "m"),
+  start: tr("Начало", "Start", "Start", "Départ", "Partenza", "Başlangıç", "Inicio", "Αρχή", "スタート", "Simula", "Початок", "Начало", "Początek"),
+  finish: tr("Край", "Finish", "Ziel", "Arrivée", "Arrivo", "Bitiş", "Final", "Τέλος", "ゴール", "Tapos", "Кінець", "Финиш", "Koniec"),
   // detail page ---------------------------------------------------------------
   backToRoutes: tr(
     "Всички маршрути",
@@ -525,9 +557,10 @@ const labelTable = {
     "すべてのルート",
     "Lahat ng ruta",
     "Усі маршрути",
-    "Все маршруты"
+    "Все маршруты",
+    "Wszystkie trasy"
   ),
-  atGlance: tr("Накратко", "At a glance", "Auf einen Blick", "En un coup d'œil", "In breve", "Bir bakışta", "De un vistazo", "Με μια ματιά", "ひと目でわかる", "Sa isang tingin", "Стисло", "Кратко"),
+  atGlance: tr("Накратко", "At a glance", "Auf einen Blick", "En un coup d'œil", "In breve", "Bir bakışta", "De un vistazo", "Με μια ματιά", "ひと目でわかる", "Sa isang tingin", "Стисло", "Кратко", "W skrócie"),
   bestTime: tr(
     "Кога да тръгнете",
     "When to go",
@@ -540,7 +573,8 @@ const labelTable = {
     "おすすめの時間帯",
     "Kailan pupunta",
     "Коли вирушати",
-    "Когда идти"
+    "Когда идти",
+    "Kiedy wyruszyć"
   ),
   gettingThere: tr(
     "Как да стигнете до старта",
@@ -554,7 +588,8 @@ const labelTable = {
     "スタート地点への行き方",
     "Papunta sa simula",
     "Як дістатися до старту",
-    "Как добраться до старта"
+    "Как добраться до старта",
+    "Jak dotrzeć na start"
   ),
   afterFinish: tr(
     "След финала",
@@ -568,7 +603,8 @@ const labelTable = {
     "ゴールしたら",
     "Pagkatapos ng ruta",
     "Після фінішу",
-    "После финиша"
+    "После финиша",
+    "Po zakończeniu"
   ),
   itinerary: tr(
     "Спирка по спирка",
@@ -582,11 +618,12 @@ const labelTable = {
     "スポットごとの行程",
     "Bawat hintuan",
     "Зупинка за зупинкою",
-    "Остановка за остановкой"
+    "Остановка за остановкой",
+    "Punkt po punkcie"
   ),
-  stopWord: tr("Спирка", "Stop", "Station", "Étape", "Tappa", "Durak", "Parada", "Στάση", "地点", "Hintuan", "Зупинка", "Остановка"),
-  ofWord: tr("от", "of", "von", "sur", "di", "/", "de", "από", "／", "ng", "з", "из"),
-  walkWord: tr("пеша", "walk", "zu Fuß", "de marche", "a piedi", "yürüyüş", "a pie", "περπάτημα", "徒歩", "lakad", "пішки", "пешком"),
+  stopWord: tr("Спирка", "Stop", "Station", "Étape", "Tappa", "Durak", "Parada", "Στάση", "地点", "Hintuan", "Зупинка", "Остановка", "Punkt"),
+  ofWord: tr("от", "of", "von", "sur", "di", "/", "de", "από", "／", "ng", "з", "из", "z"),
+  walkWord: tr("пеша", "walk", "zu Fuß", "de marche", "a piedi", "yürüyüş", "a pie", "περπάτημα", "徒歩", "lakad", "пішки", "пешком", "pieszo"),
   suggestedStay: tr(
     "престой",
     "suggested stay",
@@ -599,7 +636,8 @@ const labelTable = {
     "滞在目安",
     "mungkahing tagal",
     "рекомендована зупинка",
-    "рекомендуемая остановка"
+    "рекомендуемая остановка",
+    "sugerowany postój"
   ),
   openPlace: tr(
     "Отвори мястото",
@@ -613,7 +651,8 @@ const labelTable = {
     "場所を開く",
     "Buksan ang lugar",
     "Відкрити місце",
-    "Открыть место"
+    "Открыть место",
+    "Otwórz miejsce"
   ),
   detours: tr(
     "Струва си отбивката",
@@ -627,7 +666,8 @@ const labelTable = {
     "寄り道のすすめ",
     "Sulit na liko",
     "Варті відхилення",
-    "Стоит отклониться"
+    "Стоит отклониться",
+    "Warto zboczyć z trasy"
   ),
   nearRoute: tr(
     "Наблизо по маршрута",
@@ -641,7 +681,8 @@ const labelTable = {
     "ルート周辺",
     "Malapit sa rutang ito",
     "Поблизу маршруту",
-    "Рядом с маршрутом"
+    "Рядом с маршрутом",
+    "W pobliżu trasy"
   ),
   nearNote: tr(
     "Документирани места на до 400 м по права линия от спирка.",
@@ -655,7 +696,8 @@ const labelTable = {
     "各地点から直線距離400m以内の記録済みの場所。",
     "Mga dokumentadong lugar sa loob ng 400 m tuwid na linya mula sa hintuan.",
     "Задокументовані місця в межах 400 м по прямій від зупинки.",
-    "Задокументированные места в пределах 400 м по прямой от остановки."
+    "Задокументированные места в пределах 400 м по прямой от остановки.",
+    "Udokumentowane miejsca w promieniu 400 m w linii prostej od punktu trasy."
   ),
   practicalTitle: tr(
     "Добре е да знаете",
@@ -669,7 +711,8 @@ const labelTable = {
     "知っておくと便利",
     "Mabuting malaman",
     "Варто знати",
-    "Полезно знать"
+    "Полезно знать",
+    "Warto wiedzieć"
   ),
   caveatsTitle: tr(
     "Преди тръгване",
@@ -683,7 +726,8 @@ const labelTable = {
     "出発前に",
     "Bago umalis",
     "Перед виходом",
-    "Перед выходом"
+    "Перед выходом",
+    "Zanim wyruszysz"
   ),
   mapTitle: tr(
     "Карта на маршрута",
@@ -697,7 +741,8 @@ const labelTable = {
     "ルート地図",
     "Mapa ng ruta",
     "Карта маршруту",
-    "Карта маршрута"
+    "Карта маршрута",
+    "Mapa trasy"
   ),
   mapHint: tr(
     "Кликнете върху номерирана спирка, за да отидете на описанието ѝ. Пунктираната линия следва реални пешеходни улици.",
@@ -711,7 +756,8 @@ const labelTable = {
     "番号付き地点をクリックすると説明へ移動します。線は実際に歩ける道をたどっています。",
     "I-click ang numerong hintuan para sa deskripsyon nito. Sumusunod ang linya sa totoong dinadaanang kalye.",
     "Натисніть на пронумеровану зупинку, щоб перейти до опису. Лінія йде реальними пішохідними вулицями.",
-    "Нажмите на пронумерованную остановку, чтобы перейти к описанию. Линия проходит по реальным пешеходным улицам."
+    "Нажмите на пронумерованную остановку, чтобы перейти к описанию. Линия проходит по реальным пешеходным улицам.",
+    "Kliknij numerowany punkt, aby przejść do jego opisu. Linia biegnie po rzeczywistych ulicach dla pieszych."
   ),
   approxNote: tr(
     "Линията и времената за ходене са изчислени по OpenStreetMap и са приблизителни — теренът и затворени улици могат да ги променят.",
@@ -725,7 +771,8 @@ const labelTable = {
     "ルートの線と歩行時間はOpenStreetMapから計算した目安です。路面状況や通行止めで変わることがあります。",
     "Ang linya at oras ng lakad ay kalkulado mula sa OpenStreetMap at tinatayang halaga lamang — maaaring magbago dahil sa terrain o saradong kalye.",
     "Лінія та час ходьби обчислені за OpenStreetMap і є приблизними — рельєф і перекриття вулиць можуть їх змінити.",
-    "Линия и время ходьбы рассчитаны по OpenStreetMap и приблизительны — рельеф и перекрытия улиц могут их изменить."
+    "Линия и время ходьбы рассчитаны по OpenStreetMap и приблизительны — рельеф и перекрытия улиц могут их изменить.",
+    "Linia i czasy przejścia są obliczone na podstawie OpenStreetMap i są przybliżone — teren i zamknięte ulice mogą je zmienić."
   ),
   openInMaps: tr(
     "Отвори в приложение за карти",
@@ -739,7 +786,8 @@ const labelTable = {
     "地図アプリで開く",
     "Buksan sa map app",
     "Відкрити в застосунку карт",
-    "Открыть в приложении карт"
+    "Открыть в приложении карт",
+    "Otwórz w aplikacji map"
   ),
   mapAppShort: tr(
     "Карта",
@@ -753,7 +801,8 @@ const labelTable = {
     "地図アプリ",
     "Mapa",
     "Карти",
-    "Карты"
+    "Карты",
+    "Mapa"
   ),
   downloadGpx: tr(
     "Свали GPX",
@@ -767,7 +816,8 @@ const labelTable = {
     "GPXをダウンロード",
     "I-download ang GPX",
     "Завантажити GPX",
-    "Скачать GPX"
+    "Скачать GPX",
+    "Pobierz GPX"
   ),
   printRoute: tr(
     "Принтирай / офлайн",
@@ -781,7 +831,8 @@ const labelTable = {
     "印刷・オフライン用",
     "I-print / offline",
     "Друк / офлайн",
-    "Печать / офлайн"
+    "Печать / офлайн",
+    "Drukuj / offline"
   ),
   shareRoute: tr(
     "Сподели маршрута",
@@ -795,7 +846,8 @@ const labelTable = {
     "ルートを共有",
     "Ibahagi ang ruta",
     "Поділитися маршрутом",
-    "Поделиться маршрутом"
+    "Поделиться маршрутом",
+    "Udostępnij trasę"
   ),
   linkCopied: tr(
     "Връзката е копирана",
@@ -809,7 +861,8 @@ const labelTable = {
     "リンクをコピーしました",
     "Nakopya ang link",
     "Посилання скопійовано",
-    "Ссылка скопирована"
+    "Ссылка скопирована",
+    "Link skopiowany"
   ),
   startRoute: tr(
     "Започни маршрута",
@@ -823,7 +876,8 @@ const labelTable = {
     "このルートを開始",
     "Simulan ang ruta",
     "Почати маршрут",
-    "Начать маршрут"
+    "Начать маршрут",
+    "Rozpocznij tę trasę"
   ),
   routeStory: tr(
     "Свързан разказ",
@@ -837,7 +891,8 @@ const labelTable = {
     "関連ストーリー",
     "Kaugnay na kuwento",
     "Пов'язана розповідь",
-    "Связанная история"
+    "Связанная история",
+    "Powiązana opowieść"
   ),
   openStory: tr(
     "Отвори разказа",
@@ -851,7 +906,8 @@ const labelTable = {
     "ストーリーを開く",
     "Buksan ang kuwento",
     "Відкрити розповідь",
-    "Открыть историю"
+    "Открыть историю",
+    "Otwórz opowieść"
   ),
   evidenceTitle: tr(
     "Записи и източници",
@@ -865,11 +921,12 @@ const labelTable = {
     "記録と出典",
     "Mga talaan at pinagmulan",
     "Записи та джерела",
-    "Записи и источники"
+    "Записи и источники",
+    "Wpisy i źródła"
   ),
-  thenNow: tr("тогава/сега", "then/now", "damals/heute", "avant/après", "prima/dopo", "önce/sonra", "antes/después", "πριν/μετά", "今昔比較", "noon/ngayon", "тоді/тепер", "тогда/сейчас"),
-  archive: tr("архив", "archive", "Archiv", "archives", "archivio", "arşiv", "archivo", "αρχείο", "アーカイブ", "arkibo", "архів", "архив"),
-  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα", "出来事", "pangyayari", "події", "события"),
+  thenNow: tr("тогава/сега", "then/now", "damals/heute", "avant/après", "prima/dopo", "önce/sonra", "antes/después", "πριν/μετά", "今昔比較", "noon/ngayon", "тоді/тепер", "тогда/сейчас", "kiedyś/dziś"),
+  archive: tr("архив", "archive", "Archiv", "archives", "archivio", "arşiv", "archivo", "αρχείο", "アーカイブ", "arkibo", "архів", "архив", "archiwum"),
+  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα", "出来事", "pangyayari", "події", "события", "wydarzenia"),
   transitTitle: tr(
     "Транспорт по маршрута",
     "Transit on this route",
@@ -882,7 +939,8 @@ const labelTable = {
     "ルート内の交通",
     "Transportasyon sa ruta",
     "Транспорт на маршруті",
-    "Транспорт на маршруте"
+    "Транспорт на маршруте",
+    "Komunikacja na tej trasie"
   ),
   optionalStop: tr(
     "по избор",
@@ -896,9 +954,10 @@ const labelTable = {
     "任意",
     "opsyonal",
     "необов'язкова",
-    "по желанию"
+    "по желанию",
+    "opcjonalnie"
   ),
-  updatedWord: tr("Обновено", "Updated", "Aktualisiert", "Mis à jour", "Aggiornato", "Güncellendi", "Actualizado", "Ενημερώθηκε", "更新日", "Na-update", "Оновлено", "Обновлено")
+  updatedWord: tr("Обновено", "Updated", "Aktualisiert", "Mis à jour", "Aggiornato", "Güncellendi", "Actualizado", "Ενημερώθηκε", "更新日", "Na-update", "Оновлено", "Обновлено", "Zaktualizowano")
 } satisfies Record<string, Record<Lang, string>>;
 
 export type RouteLabelKey = keyof typeof labelTable;

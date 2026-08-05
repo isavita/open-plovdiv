@@ -10,7 +10,7 @@ import {
 } from "../i18n/ui";
 import { translateEn } from "../i18n/deTranslations";
 
-const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP", tl: "fil-PH", uk: "uk-UA", ru: "ru-RU" };
+const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP", tl: "fil-PH", uk: "uk-UA", ru: "ru-RU", pl: "pl-PL" };
 
 const knownHistoryText: Record<Lang, Record<string, string>> = {
   bg: {},
@@ -204,6 +204,25 @@ const knownHistoryText: Record<Lang, Record<string, string>> = {
       "Публично задокументированное учреждение, здание или городской объект в Пловдиве.",
     "Building or urban site from Plovdiv's Revival and early modern heritage.":
       "Здание или городской объект из наследия эпохи Возрождения и раннего нового времени Пловдива."
+  },
+  pl: {
+    "wikidata_coordinate": "Współrzędne Wikidata",
+    "approximate_site": "przybliżone miejsce",
+    "district_centroid": "środek rejonu",
+    "citywide_reference": "punkt odniesienia w skali miasta",
+    "Modern period": "Epoka nowoczesna",
+    "Bulgarian Revival": "Bułgarskie odrodzenie narodowe",
+    "Thracian era – Antiquity": "Epoka tracka – starożytność",
+    "Roman period": "Okres rzymski",
+    "Ottoman period": "Okres osmański",
+    "not identified in the current public source": "nieokreślone w dostępnym źródle publicznym",
+    "not applicable for a natural hill or terrain feature": "nie dotyczy naturalnego wzgórza ani formy terenu",
+    "Publicly documented historic site; detailed visiting status still needs verification.":
+      "Publicznie udokumentowany obiekt historyczny; szczegółowy status zwiedzania wymaga jeszcze weryfikacji.",
+    "Publicly documented institution, building, or urban site in Plovdiv.":
+      "Publicznie udokumentowana instytucja, budynek lub obiekt miejski w Plovdivie.",
+    "Building or urban site from Plovdiv's Revival and early modern heritage.":
+      "Budynek lub obiekt miejski z dziedzictwa odrodzenia i wczesnej nowoczesności Plovdivu."
   }
 };
 
@@ -284,7 +303,8 @@ export function sourceTitle(title: string, lang: Lang = "bg"): string {
       ja: "座標（Wikidata）",
       tl: "Mga coordinate (Wikidata)",
       uk: "Координати (Wikidata)",
-      ru: "Координаты (Wikidata)"
+      ru: "Координаты (Wikidata)",
+      pl: "Współrzędne (Wikidata)"
     };
     return `${coordinateLabels[lang]} · ${coordinateRecord[1]}`;
   }

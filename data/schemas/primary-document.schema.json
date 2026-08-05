@@ -49,7 +49,7 @@
         "notes_en": { "type": "string", "minLength": 10 }
       },
       "patternProperties": {
-        "^(excerpt|notes)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+        "^(excerpt|notes)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
       }
     },
     "linked_event_ids": {
@@ -89,7 +89,7 @@
         }
       },
       "patternProperties": {
-        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 3 }
       }
     },
     "source_ids": {
@@ -118,7 +118,7 @@
         "license_status": { "type": "string", "minLength": 3 }
       },
       "patternProperties": {
-        "^claim_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 10 }
+        "^claim_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 10 }
       }
     },
     "editorial": {
@@ -133,11 +133,11 @@
         "notes_en": { "type": "string", "minLength": 10 }
       },
       "patternProperties": {
-        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 10 }
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 10 }
       }
     }
   },
   "patternProperties": {
-    "^(title|summary)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+    "^(title|summary)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
   }
 }

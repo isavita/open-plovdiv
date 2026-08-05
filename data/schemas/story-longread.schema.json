@@ -106,7 +106,7 @@
         }
       },
       "patternProperties": {
-        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": {
           "type": "string",
           "minLength": 10
         }
@@ -208,14 +208,14 @@
               }
             },
             "patternProperties": {
-              "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+              "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": {
                 "type": "string"
               }
             }
           }
         },
         "patternProperties": {
-          "^(heading|body|gallery_label)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+          "^(heading|body|gallery_label)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": {
             "type": "string"
           }
         }
@@ -316,14 +316,14 @@
         }
       },
       "patternProperties": {
-        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": {
           "type": "string"
         }
       }
     }
   },
   "patternProperties": {
-    "^(title|dek)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": {
+    "^(title|dek)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": {
       "type": "string"
     }
   }

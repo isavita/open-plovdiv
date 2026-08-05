@@ -326,6 +326,33 @@ const labels =
         noArchive:
           "Для этого места пока нет отдельной архивной записи или записи «тогда/сейчас». Основное изображение, координаты и источники остаются опубликованными."
       }
+      : lang === "pl"
+      ? {
+        back: "Wszystkie miejsca",
+        facts: "Dane",
+        currentStatus: "Obecny status",
+        visit: "Zwiedzanie i orientacja",
+        coordinates: "Współrzędne",
+        openMap: "Otwórz mapę",
+        built: "Budowa/data",
+        architect: "Architekt",
+        builder: "Budowniczy",
+        creator: "Architekt/budowniczy",
+        source: "Źródło",
+        sources: "Źródła",
+        mediaLicense: "Licencja zdjęcia",
+        mediaFile: "Plik multimedialny",
+        mediaCredit: "Autor",
+        matchQuality: "Zgodność",
+        archiveTitle: "Archiwum tego miejsca",
+        thenNowTitle: "Kiedyś/dziś",
+        thenLabel: "Kiedyś",
+        nowLabel: "Zdjęcie referencyjne",
+        eventsTitle: "Powiązane wydarzenia",
+        storiesTitle: "Powiązane opowieści",
+        noArchive:
+          "Dla tego miejsca nie ma jeszcze osobnego wpisu archiwalnego ani porównania „kiedyś/dziś”. Główne zdjęcie, współrzędne i źródła pozostają opublikowane."
+      }
       : {
         back: "All places",
         facts: "Facts",
@@ -928,6 +955,54 @@ const storyLabels = ({
     relatedPlacesSentence: (items: string) =>
       `Связанные места показывают, что этот объект работает как часть более широкой городской системы: ${items}.`
   },
+  pl: {
+    storyEyebrow: "Opowieść o miejscu",
+    storyTitle: "Jak czytać to miejsce",
+    whyTitle: "Dlaczego to ważne",
+    originTitle: "Pochodzenie i warstwy",
+    useTitle: "Dziś i na co zwrócić uwagę",
+    stewardshipTitle: "Własność, opieka i instytucje",
+    timelineTitle: "Historia w czasie",
+    evidenceTitle: "Ślady i świadectwa",
+    aroundTitle: "Wokół tego miejsca",
+    peopleTitle: "Powiązane postacie",
+    organizationsTitle: "Instytucje i wspólnoty",
+    relatedPlacesTitle: "Powiązane miejsca",
+    noOwnership:
+      "Wykorzystany tu wpis publiczny nie wskazuje na możliwą do prześledzenia historię własności ani zarządzania. Dlatego strona pokazuje wyłącznie zweryfikowane powiązania instytucjonalne i źródłowe.",
+    noPeople: "W obecnej bazie wiedzy nie wskazano powiązanych postaci.",
+    noOrganizations: "W obecnej bazie wiedzy nie wskazano powiązanych instytucji.",
+    noRelatedPlaces: "Brak innych miejsc powiązanych przez te same wydarzenia.",
+    noTimeline:
+      "Poszczególne wydarzenia chronologii nie zostały jeszcze powiązane; opowieść opiera się tutaj na wpisie o miejscu, jego pochodzeniu i publicznych źródłach.",
+    sourceBacked: "faktów potwierdzonych źródłami",
+    linkedEvents: "powiązanych wydarzeń",
+    archiveSignals: "śladów archiwalnych",
+    thenNowSignals: "porównań kiedyś/dziś",
+    sourceCount: "publicznych źródeł",
+    dateLabel: "Datowanie",
+    creatorLabel: "Autorstwo",
+    statusLabel: "Obecny status",
+    sourceLabel: "Ślad źródłowy",
+    storyIntro: (name: string, era: string) =>
+      `${name} to nie tylko punkt na mapie. To wpis z epoki „${era}”, który łączy warstwy miasta, widoczne ślady, publiczne źródła i sąsiednie historie.`,
+    dateSentence: (date: string, source: string) =>
+      `Datowanie opublikowano jako ${date}${source ? `, powiązane z: ${source}` : ""}.`,
+    creatorSentence: (creator: string) =>
+      `O autorstwie obecny wpis podaje: ${creator}.`,
+    statusSentence: (status: string) =>
+      `Dzisiejszy status opisano tak: ${status}`,
+    timelineSentence: (count: number) =>
+      `Historia rozwija się przez ${count} powiązanych wydarzeń, które wpisują to miejsce w szerszą chronologię Plovdivu.`,
+    archiveSentence: (archiveCount: number, pairCount: number) =>
+      `Warstwę archiwalną odnotowano tak: wpisy archiwalne: ${archiveCount}; wizualne porównania kiedyś/dziś: ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) =>
+      `Kontekst instytucjonalny przebiega przez ${items}. Nie oznacza to automatycznie historii własności, lecz stanowi weryfikowalny ślad publicznej opieki, pamięci lub zarządzania.`,
+    peopleSentence: (items: string) =>
+      `Postacie związane z tym miejscem pomagają odczytać jego historię przez biografie, wydarzenia i pamięć miasta: ${items}.`,
+    relatedPlacesSentence: (items: string) =>
+      `Powiązane miejsca pokazują, że ten obiekt działa jako część szerszego systemu miejskiego: ${items}.`
+  },
   tl: {
     storyEyebrow: "Kuwento ng lugar",
     storyTitle: "Paano basahin ang lugar na ito",
@@ -1219,6 +1294,30 @@ const historyAtlasLabels =
                       publicRecordNode: "публичная запись",
                       sourcesNode: "источники"
                     }
+                  : lang === "pl"
+                  ? {
+                      eyebrow: "Atlas historyczny",
+                      title: "Warstwy, powiązania i ślady",
+                      lead: (events: number, stories: number, sources: number) =>
+                        `Ta mapa łączy ${events} wydarzeń, ${stories} opowieści i ${sources} publicznych źródeł, nie dodając niepotwierdzonych twierdzeń.`,
+                      contextTitle: "Sieć kontekstu",
+                      contextLead: "Powiązania pokazują, co zostało zweryfikowane dla tego miejsca: wydarzenia, opowieści, osoby, instytucje, archiwa i wpisy publiczne.",
+                      eventBrowserTitle: "Pełny strumień wydarzeń",
+                      eventBrowserLead: (count: number) =>
+                        count > 0 ? `Wszystkie ${count} powiązanych wydarzeń pogrupowano według typu wpisu.` : "Dla tego miejsca nie ma osobnych wydarzeń.",
+                      eventCount: (count: number) => `${count} wpisów`,
+                      eventSources: (count: number) => `${count} źródeł`,
+                      noEvents: "Dla tego miejsca w obecnej bazie nie ma osobnych wydarzeń; zobacz wpis publiczny, źródła i opis.",
+                      rootNode: "miejsce",
+                      eventsNode: "wydarzenia",
+                      storiesNode: "opowieści",
+                      peopleNode: "ludzie",
+                      organizationsNode: "instytucje",
+                      archiveNode: "archiwum",
+                      thenNowNode: "kiedyś/dziś",
+                      publicRecordNode: "wpis publiczny",
+                      sourcesNode: "źródła"
+                    }
                   : lang === "tl"
                   ? {
                       eyebrow: "Atlas ng Kasaysayan",
@@ -1438,6 +1537,23 @@ const wikidataLabels =
                       wikidata: "Запись Wikidata",
                       wikipedia: "Википедия"
                     }
+                  : lang === "pl"
+                  ? {
+                      title: "Wpis publiczny Wikidata",
+                      description: "Opis",
+                      instance_of: "Typ",
+                      heritage_designation: "Status/ochrona",
+                      inception: "Powstanie",
+                      start_time: "Data początkowa",
+                      architect: "Architekt",
+                      creator: "Twórca",
+                      owned_by: "Właściciel",
+                      operator: "Operator",
+                      location: "Położenie",
+                      street_address: "Adres",
+                      wikidata: "Wpis Wikidata",
+                      wikipedia: "Wikipedia"
+                    }
                   : lang === "tl"
                   ? {
                       title: "Pampublikong Talaan ng Wikidata",
@@ -1537,6 +1653,12 @@ const matchQualityLabels: Record<string, string> =
         same_place_close_viewpoint: "то же место, близкая точка обзора",
         city_context: "городской контекст"
       }
+      : lang === "pl"
+      ? {
+        same_place_approximate_viewpoint: "to samo miejsce, przybliżony punkt widzenia",
+        same_place_close_viewpoint: "to samo miejsce, zbliżony punkt widzenia",
+        city_context: "kontekst miejski"
+      }
       : lang === "tl"
       ? {
         same_place_approximate_viewpoint: "parehong lugar, tinatayang punto ng tanaw",
@@ -1629,17 +1751,18 @@ const trx = (
   ja: string,
   uk: string,
   tl: string,
-  ru: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, uk, tl, ru })[lang];
+  ru: string,
+  pl: string
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, uk, tl, ru, pl })[lang];
 
 const discoveryL = {
-  onRoute: trx("Част от маршрут", "On a walking route", "Teil einer Route", "Sur un parcours", "Su un percorso", "Bir rotanın parçası", "En una ruta", "Σε διαδρομή", "散策ルートの一部", "Частина маршруту", "Bahagi ng ruta", "Часть маршрута"),
-  stop: trx("Спирка", "Stop", "Station", "Étape", "Tappa", "Durak", "Parada", "Στάση", "地点", "Зупинка", "Hintuan", "Остановка"),
-  of: trx("от", "of", "von", "sur", "di", "/", "de", "από", "/", "з", "sa", "из"),
-  minutes: trx("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "хв", "min", "мин"),
-  nextStop: trx("Следваща спирка", "Next stop", "Nächste Station", "Étape suivante", "Prossima tappa", "Sonraki durak", "Siguiente parada", "Επόμενη στάση", "次の地点", "Наступна зупинка", "Susunod na hintuan", "Следующая остановка"),
-  openRoute: trx("Виж целия маршрут", "See the full route", "Ganze Route ansehen", "Voir tout le parcours", "Vedi tutto il percorso", "Rotanın tamamını gör", "Ver la ruta completa", "Δείτε όλη τη διαδρομή", "ルート全体を見る", "Переглянути весь маршрут", "Tingnan ang buong ruta", "Смотреть весь маршрут"),
-  nearby: trx("Наблизо", "Nearby", "In der Nähe", "À proximité", "Nelle vicinanze", "Yakınında", "Cerca", "Κοντά", "近くの場所", "Поруч", "Malapit", "Поблизости"),
+  onRoute: trx("Част от маршрут", "On a walking route", "Teil einer Route", "Sur un parcours", "Su un percorso", "Bir rotanın parçası", "En una ruta", "Σε διαδρομή", "散策ルートの一部", "Частина маршруту", "Bahagi ng ruta", "Часть маршрута", "Na trasie spacerowej"),
+  stop: trx("Спирка", "Stop", "Station", "Étape", "Tappa", "Durak", "Parada", "Στάση", "地点", "Зупинка", "Hintuan", "Остановка", "Punkt"),
+  of: trx("от", "of", "von", "sur", "di", "/", "de", "από", "/", "з", "sa", "из", "z"),
+  minutes: trx("мин", "min", "Min.", "min", "min", "dk", "min", "λεπ.", "分", "хв", "min", "мин", "min"),
+  nextStop: trx("Следваща спирка", "Next stop", "Nächste Station", "Étape suivante", "Prossima tappa", "Sonraki durak", "Siguiente parada", "Επόμενη στάση", "次の地点", "Наступна зупинка", "Susunod na hintuan", "Следующая остановка", "Następny punkt"),
+  openRoute: trx("Виж целия маршрут", "See the full route", "Ganze Route ansehen", "Voir tout le parcours", "Vedi tutto il percorso", "Rotanın tamamını gör", "Ver la ruta completa", "Δείτε όλη τη διαδρομή", "ルート全体を見る", "Переглянути весь маршрут", "Tingnan ang buong ruta", "Смотреть весь маршрут", "Zobacz całą trasę"),
+  nearby: trx("Наблизо", "Nearby", "In der Nähe", "À proximité", "Nelle vicinanze", "Yakınında", "Cerca", "Κοντά", "近くの場所", "Поруч", "Malapit", "Поблизости", "W pobliżu"),
   nearbyNote: trx(
     "Разстояния по права линия, изчислени от координатите.",
     "Straight-line distances computed from the coordinates.",
@@ -1652,9 +1775,10 @@ const discoveryL = {
     "座標から算出した直線距離です。",
     "Відстані по прямій лінії, розраховані за координатами.",
     "Mga tuwid na distansya na kinalkula mula sa mga coordinate.",
-    "Расстояния по прямой линии, рассчитанные по координатам."
+    "Расстояния по прямой линии, рассчитанные по координатам.",
+    "Odległości w linii prostej obliczone ze współrzędnych."
   ),
-  meters: trx("м", "m", "m", "m", "m", "m", "m", "μ.", "m", "м", "m", "м")
+  meters: trx("м", "m", "m", "m", "m", "m", "m", "μ.", "m", "м", "m", "м", "m")
 };
 
 const placeRoutes = routesThroughPlace(place.id).map(({ route, stopIndex }) => {

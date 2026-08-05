@@ -61,7 +61,7 @@
         "source_id": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
       },
       "patternProperties": {
-        "^display_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 2 }
+        "^display_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 2 }
       }
     },
     "architect_bg": { "type": ["string", "null"], "minLength": 2 },
@@ -79,7 +79,7 @@
         "source_id": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
       },
       "patternProperties": {
-        "^display_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 2 }
+        "^display_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 2 }
       }
     },
     "coordinates": {
@@ -124,7 +124,7 @@
           "source_id": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
         },
         "patternProperties": {
-          "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
+          "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 3 }
         }
       }
     },
@@ -181,12 +181,12 @@
                   "accessed_at": { "type": "string", "format": "date" }
                 },
                 "patternProperties": {
-                  "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
+                  "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 3 }
                 }
               }
             },
             "patternProperties": {
-              "^(heading|body)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+              "^(heading|body)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
             }
           }
         },
@@ -203,17 +203,17 @@
               "value_en": { "type": "string", "minLength": 1 }
             },
             "patternProperties": {
-              "^(label|value)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+              "^(label|value)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
             }
           }
         }
       },
       "patternProperties": {
-        "^lede_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 20 }
+        "^lede_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 20 }
       }
     }
   },
   "patternProperties": {
-    "^(era|name|summary|current_status)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+    "^(era|name|summary|current_status)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
   }
 }

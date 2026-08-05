@@ -18,7 +18,8 @@ const reviewStatusLabels: Record<Lang, string> = {
   ja: "編集レビュー",
   tl: "Pagsusuring editoryal",
   uk: "Редакційна перевірка",
-  ru: "Редакционная проверка"
+  ru: "Редакционная проверка",
+  pl: "Przegląd redakcyjny"
 };
 
 const pendingReviewLabels: Record<Lang, string> = {
@@ -33,7 +34,8 @@ const pendingReviewLabels: Record<Lang, string> = {
   ja: "独立した編集レビューを待っています。",
   tl: "Naghihintay ng independiyenteng pagsusuring editoryal.",
   uk: "Очікує незалежної редакційної перевірки.",
-  ru: "Ожидает независимой редакционной проверки."
+  ru: "Ожидает независимой редакционной проверки.",
+  pl: "Oczekuje na niezależny przegląd redakcyjny."
 };
 
 export function editorialReviewStatusLabel(lang: Lang): string {

@@ -3,7 +3,7 @@ import path from "node:path";
 import process from "node:process";
 
 const root = process.cwd();
-const langs = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
+const langs = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"];
 const checkedAt = "2026-06-30";
 const userAgent = "OpenPlovdivPlaceStoryAudit/1.0 (local source-backed curation)";
 

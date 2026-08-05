@@ -16,7 +16,8 @@ export const languages = {
   ja: "日本語",
   tl: "Filipino",
   uk: "Українська",
-  ru: "Русский"
+  ru: "Русский",
+  pl: "Polski"
 } as const;
 
 export type Lang = keyof typeof languages;
@@ -671,6 +672,18 @@ const bg = {
 
 function plural(n: number, one: string, many: string): string {
   return n === 1 ? one : many;
+}
+
+const romanNumerals = [
+  "",
+  "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
+  "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
+  "XXI", "XXII"
+];
+
+/** Roman numeral for a century, used by locales that write centuries that way. */
+function romanNumeral(value: number): string {
+  return romanNumerals[value] ?? String(value);
 }
 
 const en: typeof bg = {
@@ -7173,7 +7186,654 @@ const ru: typeof bg = {
   }
 };
 
-export const ui = { bg, en, de, fr, it, tr, es, el, ja, tl, uk, ru } as const;
+const pl: typeof bg = {
+  site: {
+    name: "Open Plovdiv",
+    short: "OP",
+    tagline:
+      "Projekty publiczne, publiczne pieniądze, problemy miasta — przedstawione zrozumiale.",
+    skip: "Przejdź do treści",
+    menu: "Menu",
+    close: "Zamknij",
+    theme: "Motyw jasny / ciemny",
+    langName: "Język",
+    langSwitch: "Wybierz język"
+  },
+  nav: {
+    home: "Start",
+    history: "Historia",
+    mayors: "Burmistrzowie",
+    people: "Ludzie",
+    places: "Miejsca",
+    stories: "Opowieści",
+    education: "Edukacja",
+    overview: "Przegląd",
+    fixMap: "Mapa",
+    projects: "Projekty",
+    community: "Wolontariusze",
+    archive: "Archiwum",
+    sources: "Źródła"
+  },
+  overview: {
+    eyebrow: "Przegląd wizualny",
+    title: "Przegląd w wykresach",
+    lead:
+      "Zbiorcze zestawienie monitorowanych projektów i publicznych pieniędzy Plovdivu — według statusu, kategorii i roku, wraz ze źródłami.",
+    asOf: "Dane na czerwiec 2026",
+    statProjects: "monitorowanych projektów",
+    statPostponed: "odłożonych projektów",
+    statCapital2025: "program inwestycyjny 2025",
+    statCapital2026: "program inwestycyjny 2026 (wstępny)",
+    unitProjects: "Liczba monitorowanych projektów",
+    unitSharePercent: "Udział w programie inwestycyjnym (%)",
+    unitEur: "Kwoty w euro (€)",
+    byStatusTitle: "Projekty według statusu",
+    byCategoryTitle: "Projekty według kategorii",
+    byYearTitle: "Projekty według roku budżetowego",
+    sector2025Title: "Program inwestycyjny 2025 według sektorów",
+    funding2026Title: "Finansowanie programu inwestycyjnego 2026",
+    capitalTrendTitle: "Program inwestycyjny według lat",
+    capitalTrendNote:
+      "Program inwestycyjny według lat (w lewach). Dane za lata 2013-2018 pochodzą z uchwał Rady Miejskiej; nowsze lata opierają się na oficjalnych stronach i publicznych raportach. Rok 2026 jest wstępny i przeliczony z około 87 mln EUR po kursie 1,95583.",
+    totalTrendTitle: "Całkowity budżet Plovdivu według lat",
+    totalTrendNote:
+      "Całkowity roczny budżet gminy Plovdiv (w lewach). Archiwum zawiera wykonane dane za 2010 rok oraz uchwalone budżety na lata 2011-2018; lata 2020, 2022 i 2024 pozostają przybliżone/zaokrąglone. Każdy rok odsyła do publicznego źródła.",
+    historyNote:
+      "Dane pochodzą ze źródeł publicznych (budżety gminy i doniesienia mediów). Przed zacytowaniem konkretnej wartości sprawdź ją w dokumentach oryginalnych.",
+    year2025: "2025",
+    year2026: "2026 (wstępny)",
+    sourcesNote: "Wszystkie wartości mają publiczne źródła.",
+    viewProjects: "Przejdź do projektów"
+  },
+  footer: {
+    blurb:
+      "Nienastawiony na zysk projekt danych publicznych dla Plovdivu. Bez kont, bez komentarzy, bez bazy danych.",
+    explore: "Odkrywaj",
+    civic: "Dane obywatelskie",
+    about: "O projekcie",
+    privacy: "Prywatność",
+    moderation: "Moderacja",
+    community: "Wolontariusze",
+    methodology: "Metodyka",
+    sources: "Źródła",
+    note: "Open Plovdiv · dane publiczne o Plovdivie",
+    dataNote: "Dane ze źródeł publicznych · przy każdym wpisie sprawdź źródło i datę.",
+    rights: "Dane publiczne"
+  },
+  common: {
+    all: "Wszystko",
+    accessed: "dostęp",
+    source: "Źródło",
+    loading: "Ładowanie…",
+    error: "Coś poszło nie tak.",
+    backHome: "Powrót na stronę główną",
+    noSource: "Brak publicznego źródła.",
+    breadcrumb: "Ścieżka nawigacji",
+    zoomIn: "Przybliż",
+    zoomOut: "Oddal"
+  },
+  home: {
+    eyebrow: "Jedno z najstarszych miast świata",
+    lead:
+      "Plovdiv jest nieprzerwanie zamieszkany od ponad 8000 lat. Jego dawne nazwy znaczą kolejnych władców i kultury — trackie Eumolpias, rzymskie Philippopolis/Trimontium i osmańskie Filibe. W 1885 roku miasto stało się centrum zjednoczenia Bułgarii, gdy Rumelia Wschodnia połączyła się z Księstwem Bułgarii.",
+    ctaHistory: "Poznaj oś czasu",
+    ctaMayors: "Burmistrzowie Plovdivu",
+    statYearsValue: "8000+",
+    statYears: "lat historii",
+    statEras: "epok",
+    statMayors: "burmistrzów",
+    statLandmarks: "zabytków",
+    featuredTitle: "Momenty z historii",
+    civicTitle: "Dane obywatelskie o dzisiejszym mieście",
+    civicLead:
+      "Poza historią Open Plovdiv gromadzi też dane publiczne o współczesnym mieście — budżet, projekty, zgłoszenia mieszkańców i wolontariat, każde z publicznym źródłem.",
+    ctaMap: "Otwórz mapę problemów",
+    statsLabel: "Monitorowane dane",
+    statProjects: "monitorowanych projektów",
+    statReportsValue: "Na żywo",
+    statReports: "moderowanych zgłoszeń",
+    statCommunity: "inicjatyw wolontariackich",
+    exploreTitle: "Od czego zacząć",
+    cardMapEyebrow: "Mapa",
+    cardMapTitle: "Mapa problemów",
+    cardMapText:
+      "Zobacz opublikowane zgłoszenia mieszkańców według kategorii i statusu, wraz z pobliskimi projektami publicznymi.",
+    cardProjectsEyebrow: "Projekty",
+    cardProjectsTitle: "Projekty publiczne",
+    cardProjectsText:
+      "Przeszukuj i filtruj wpisy projektów z budżetem, statusem i źródłami.",
+    cardCommunityEyebrow: "Wolontariusze",
+    cardCommunityTitle: "Inicjatywy obywatelskie",
+    cardCommunityText:
+      "Grupy i kampanie organizujące sprzątanie, opiekę nad przystankami, parkami i pracę w dzielnicach.",
+    cardArchiveEyebrow: "Archiwum",
+    cardArchiveTitle: "Burmistrzowie i dane historyczne",
+    cardArchiveText:
+      "Pełna wewnętrzna oś czasu kadencji burmistrzów, dawne zapisy finansowe i programy miejskie.",
+    cardMayorsEyebrow: "Burmistrzowie",
+    cardMayorsTitle: "Wszyscy burmistrzowie Plovdivu",
+    cardMayorsText:
+      "Szczegółowa chronologia od 1878 roku do obecnej kadencji, z wyszukiwarką, stuleciami i źródłami.",
+    latestProjects: "Ostatnio zaktualizowane projekty",
+    latestReports: "Ostatnio dodane zgłoszenia",
+    liveReportsTitle: "Prawdziwe zgłoszenia po moderacji",
+    liveReportsText:
+      "Mapa pokazuje teraz wyłącznie zgłoszenia mieszkańców przesłane przez formularz i zatwierdzone przez moderatora.",
+    viewAll: "Zobacz wszystko",
+    noticeTitle: "Dane i źródła",
+    notice:
+      "Dane są aktualne na czerwiec 2026. Budżet na 2025 rok został uchwalony, a program inwestycyjny na 2026 rok jest wstępny. Każdy wpis odsyła do publicznego źródła.",
+    noticeSources: "Zobacz źródła",
+    noticeMethodology: "metodykę"
+  },
+  history: {
+    eyebrow: "Oś czasu miasta",
+    title: "Historia Plovdivu",
+    lead:
+      "Ponad osiem tysiącleci na siedmiu wzgórzach — od trackiego Eumolpias i rzymskiego Trimontium, przez osmańskie Filibe i odrodzenie narodowe, po zjednoczenie i czasy współczesne.",
+    timelineTitle: "Oś czasu",
+    timelineLead:
+      "Kluczowe momenty w dziejach miasta, uporządkowane według epok. Każdy wpis odsyła do publicznego źródła.",
+    erasTitle: "Epoki Plovdivu",
+    erasNav: "Epoki",
+    landmarksTitle: "Zabytki",
+    landmarksLead:
+      "Zabytki, które opowiadają dzieje miasta — od trackiej twierdzy po starówkę z czasów odrodzenia.",
+    mayorsTitle: "Burmistrzowie Plovdivu",
+    mayorsLead:
+      "68 kadencji od wyzwolenia po dziś — szczegółowa chronologia z biografiami i publicznymi źródłami.",
+    mayorsCta: "Zobacz wszystkich burmistrzów",
+    sourceNote:
+      "Dane historyczne są streszczone ze źródeł publicznych (Wikipedia i strony oficjalne). Przed zacytowaniem konkretnego faktu sprawdź źródło oryginalne.",
+    statYears: "lat historii",
+    statEras: "epok",
+    statLandmarks: "zabytków",
+    eraLabels: {
+      prehistory: "Prehistoria",
+      thracian: "Epoka tracka",
+      roman: "Okres rzymski",
+      medieval: "Średniowiecze",
+      ottoman: "Okres osmański",
+      revival: "Odrodzenie narodowe",
+      liberation: "Wyzwolenie i zjednoczenie",
+      modern: "Epoka nowoczesna"
+    },
+    eraBlurbs: {
+      prehistory: "Osady na wzgórzach już w VI tysiącleciu p.n.e.",
+      thracian: "Trackie Eumolpias i Philippopolis Filipa II Macedońskiego.",
+      roman: "Trimontium — świetne rzymskie miasto z teatrem i stadionem.",
+      medieval: "Stulecia władzy przechodzącej między Bułgarią a Bizancjum.",
+      ottoman: "Pięć wieków jako Filibe — skrzyżowanie dróg Bałkanów.",
+      revival: "Bułgarskie przebudzenie oświatowe i cerkiewne.",
+      liberation: "Wyzwolenie, stolica Rumelii Wschodniej i zjednoczenie.",
+      modern: "Miasto targów i Europejska Stolica Kultury."
+    }
+  },
+  archive: {
+    eyebrow: "Archiwum historyczne",
+    title: "Burmistrzowie, budżety i programy miejskie",
+    lead:
+      "Wewnętrzne archiwum zarządzania Plovdivem: kadencje burmistrzów, historyczne zapisy finansowe, programy kulturalne i społeczne, z widocznymi źródłami.",
+    statMayors: "kadencji burmistrzów",
+    statFinance: "historycznych zapisów finansowych",
+    statProgrammes: "programów i wydarzeń",
+    statDocuments: "dokumentów źródłowych",
+    currentMayor: "Obecny burmistrz",
+    financeTitle: "Historyczne dane finansowe",
+    financeLead:
+      "Wartości nominalne z historycznych źródeł. Kwoty w dawnych lewach nie są bezpośrednio porównywalne ze współczesnymi lewami i są podane jako znaczniki archiwalne.",
+    programmesTitle: "Co organizowała gmina",
+    programmesLead:
+      "Wybrane wpisy o działaniach społecznych, kulturalnych i administracyjnych, które łączą władze miasta z rzeczywistymi programami publicznymi.",
+    documentsTitle: "Dokumenty źródłowe",
+    documentsLead:
+      "Początkowa warstwa krótkich transkrybowanych fragmentów aktów gminnych i Dziennika Państwowego. Każdy fragment wskazuje pełny dokument publiczny i powiązane wpisy.",
+    transcriptLabel: "Transkrybowany fragment",
+    linkedRecords: "Powiązane wpisy",
+    documentTypes: {
+      municipal_decision: "uchwała gminna",
+      state_gazette_decree: "dekret państwowy",
+      municipal_rule: "przepis gminny",
+      council_minutes: "protokół",
+      period_press: "prasa z epoki",
+      other: "dokument"
+    },
+    transcriptionTypes: {
+      excerpt: "fragment",
+      full: "pełny tekst",
+      diplomatic_excerpt: "fragment dyplomatyczny"
+    },
+    mayorsTitle: "Pełna chronologia burmistrzów",
+    mayorsLead:
+      "To wewnętrzna kopia oficjalnego archiwum gminy Plovdiv, uzupełniona o obecną kadencję z Rejestru Administracyjnego.",
+    amountLabel: "Kwota",
+    yearLabel: "Rok",
+    sourceLabel: "Źródło",
+    noAmount: "brak opublikowanej kwoty"
+  },
+  mayors: {
+    eyebrow: "Zarządzanie miastem",
+    title: "Wszyscy burmistrzowie Plovdivu",
+    lead:
+      "Pełna chronologia kadencji burmistrzów od pierwszego burmistrza po wyzwoleniu w 1878 roku do obecnego burmistrza w 2026 roku.",
+    sourceNote:
+      "Podstawą jest oficjalna strona gminy Plovdiv „Burmistrzowie Plovdivu”. Obecna kadencja została dodana z bułgarskiego Rejestru Administracyjnego, ponieważ gminna lista historyczna wciąż kończy się na kadencji 2019-2023.",
+    statTerms: "kadencji burmistrzów",
+    statPeople: "różnych osób",
+    statYears: "objętych lat",
+    statCurrent: "obecny burmistrz",
+    search: "Szukaj",
+    searchPlaceholder: "Nazwisko, rok lub okres",
+    century: "Wiek",
+    status: "Status",
+    allCenturies: "Wszystkie wieki",
+    allStatuses: "Wszystkie",
+    currentOnly: "Tylko obecny",
+    actingOnly: "Tylko pełniący obowiązki",
+    reset: "Wyczyść filtry",
+    count: (n: number) => `${n} ${plural(n, "kadencja", "kadencji")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} z ${total} ${plural(total, "kadencja", "kadencji")}`,
+    empty: "Brak kadencji spełniających wybrane filtry.",
+    timelineTitle: "Oś czasu kadencji",
+    timelineLead:
+      "Kadencje burmistrzów pogrupowane według epok politycznych. Przewijaj okresy, aby prześledzić, jak zmieniał się urząd; szczegółowa lista poniżej pozostaje filtrowalna.",
+    detailsTitle: "Lista szczegółowa",
+    sourcesTitle: "Sprawdzenie kompletności",
+    sourcesText:
+      "Lokalne archiwum zawiera wszystkie 65 kadencji z oficjalnej listy gminy oraz obecną kadencję burmistrza Kostadina Dimitrova.",
+    termNumber: "Kadencja",
+    years: "Lata",
+    duration: "Przybliżony czas trwania",
+    source: "Źródło / więcej informacji",
+    currentBadge: "Obecny",
+    actingBadge: "Pełniący obowiązki",
+    officialArchive: "Oficjalna lista",
+    currentRegistry: "Rejestr Administracyjny",
+    yearsApprox: (n: number) => `${n} ${plural(n, "rok", "lat")}`,
+    centuryLabel: (century: number) =>
+      `${romanNumeral(century)} wiek`,
+    centuryRange: (start: number, end: number) => `${start}–${end}`,
+    openSource: "Otwórz źródło",
+    profile: "Profil",
+    backToAll: "Wróć do wszystkich burmistrzów",
+    otherTerms: "Inne kadencje tej samej osoby",
+    moreInfo: "Więcej informacji",
+    biography: "Biografia",
+    imageCredit: "Źródło zdjęcia",
+    officialProfile: "Źródło oficjalne",
+    referenceSource: "Źródło dodatkowe",
+    moreInfoLink: "Więcej informacji",
+    wikipediaArticle: "Artykuł w Wikipedii",
+    wikipediaSearch: "Szukaj w Wikipedii",
+    birthplaceLabel: "Miejsce urodzenia",
+    educationLabel: "Wykształcenie",
+    rolesLabel: "Inne pełnione funkcje",
+    profileLinks: "Profil i linki",
+    connectionsTitle: "Powiązania między burmistrzami",
+    connectionsLead:
+      "Którzy burmistrzowie sprawowali urząd więcej niż raz i których łączą więzy rodzinne.",
+    multiTermTitle: "Burmistrzowie wielu kadencji",
+    familyTitle: "Rodziny i dynastie",
+    legendSame: "Ten sam burmistrz (kolejna kadencja)",
+    legendFamily: "Więź rodzinna",
+    legendKilled: "Zabity",
+    legendCurrent: "Obecny",
+    fateHeading: "Los",
+    fateLabels: {
+      killed: "Zabity",
+      executed: "Stracony",
+      assassinated: "Zamordowany",
+      died_in_office: "Zmarł podczas kadencji"
+    },
+    portraitNote: "Historyczne portrety należą do domeny publicznej.",
+    portraitAlt: (name: string) => `Portret — ${name}`,
+    birthTitle: "Gdzie urodzili się burmistrzowie",
+    birthLead:
+      "Miejsca urodzenia udokumentowanych burmistrzów na mapie. Kliknij punkt, aby zobaczyć nazwiska.",
+    birthByTown: "Miejsca urodzenia według liczby burmistrzów",
+    birthStatTowns: "miast urodzenia",
+    birthStatCountries: "krajów",
+    birthPopupMayors: "Burmistrzowie",
+    prevTerm: "Poprzednia",
+    nextTerm: "Następna"
+  },
+  projects: {
+    eyebrow: "Projekty publiczne",
+    title: "Projekty",
+    lead:
+      "Szukaj po tytule i filtruj według kategorii, statusu i roku. Każdy projekt ma własną stronę.",
+    dataNotice:
+      "Nie istnieje jedna oficjalna publiczna lista projektów zakończonych w 2025 roku. Dlatego projekty są oznaczane wyłącznie zgodnie z dostępnym źródłem: rozpoczęte/oczekiwane finansowanie w 2026 roku, nowe na 2026 rok albo odłożone z kwotą 0 lew na lata 2025-2026.",
+    search: "Szukaj",
+    searchPlaceholder: "np. chodnik, park, przystanek",
+    category: "Kategoria",
+    status: "Status",
+    year: "Rok",
+    reset: "Wyczyść filtry",
+    count: (n: number) => `${n} ${plural(n, "projekt", "projektów")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} z ${total} ${plural(total, "projekt", "projektów")}`,
+    empty: "Brak projektów spełniających wybrane filtry."
+  },
+  community: {
+    eyebrow: "Udział obywatelski",
+    title: "Inicjatywy wolontariackie",
+    lead:
+      "Prawdziwe grupy i kampanie z Plovdivu, które organizują wolontariuszy do sprzątania, odnowy i opieki nad miejscami publicznymi.",
+    dataNotice:
+      "Wpisy są odnajdywane przez wyszukiwanie AI w źródłach publicznych albo dodawane przez administratora. Każda inicjatywa musi mieć widoczne linki do grupy, strony lub publicznego wpisu, aby nie została pomylona z nieudokumentowanym oficjalnym projektem gminy.",
+    search: "Szukaj",
+    searchPlaceholder: "np. przystanki, Maritsa, Lauta",
+    category: "Kategoria",
+    status: "Status",
+    organizer: "Organizator",
+    links: "Linki",
+    sources: "Źródła",
+    relatedProjects: "Powiązane projekty publiczne",
+    noRelatedProjects: "Brak powiązanego projektu publicznego.",
+    discovered: "Odnalezione przez",
+    lastChecked: "Ostatnio sprawdzone",
+    viewSource: "Źródło",
+    contact: "Kontakt / grupa",
+    reset: "Wyczyść filtry",
+    count: (n: number) => `${n} ${plural(n, "inicjatywa", "inicjatyw")}`,
+    countFiltered: (visible: number, total: number) =>
+      `${visible} z ${total} ${plural(total, "inicjatywa", "inicjatyw")}`,
+    empty: "Brak inicjatyw spełniających wybrane filtry.",
+    adminCta: "Administrator: dodaj lub zweryfikuj inicjatywę",
+    seeProblems: "Zobacz problemy, przy których możesz pomóc",
+    donate: "Wesprzyj organizację",
+    acceptsDonations: "Przyjmuje darowizny",
+    donationsFilter: "Tylko przyjmujące darowizny",
+    donationDisclaimer: "Open Plovdiv nie przyjmuje ani nie obsługuje darowizn. Linki „Wesprzyj” prowadzą bezpośrednio na strony samych organizacji."
+  },
+  project: {
+    breadcrumb: "Projekty",
+    keyFacts: "Najważniejsze fakty",
+    budget: "Budżet",
+    year: "Rok",
+    funding: "Finansowanie",
+    status: "Status",
+    district: "Rejon",
+    location: "Lokalizacja",
+    notSpecified: "Nie podano",
+    sources: "Źródła",
+    sourcesNote:
+      "Dane o projekcie pochodzą ze źródeł publicznych. Szczegóły urzędowe sprawdź w źródle oryginalnym.",
+    noteLabel: "Uwaga",
+    noAmount: "Kwota nieopublikowana.",
+    approxLocation: "Lokalizacja przybliżona (według rejonu).",
+    provisional: "Dane wstępne",
+    relatedBudget: "Powiązana pozycja budżetowa",
+    noRelatedBudget: "Brak powiązanej pozycji budżetowej.",
+    communityInitiatives: "Inicjatywy wolontariackie",
+    communityInitiativesText:
+      "Grupy obywatelskie lub kampanie związane z tym obszarem albo tematem. To nie jest oficjalny status projektu.",
+    noCommunityInitiatives: "Brak powiązanej inicjatywy wolontariackiej.",
+    nearbyReports: "Zgłoszenia w pobliżu",
+    noNearby: "Brak opublikowanych zgłoszeń w promieniu 1 km.",
+    nearbyReportsText:
+      "Publiczna mapa pokazuje wyłącznie moderowane zgłoszenia mieszkańców. Otwórz mapę, aby zobaczyć aktualnie opublikowane zgłoszenia w tej okolicy.",
+    timeline: "Oś czasu",
+    noTimeline: "Nie dodano osi czasu.",
+    updated: "Zaktualizowano",
+    mapLabel: "Mapa projektu"
+  },
+  fixMap: {
+    eyebrow: "Mapa problemów",
+    title: "Mapa problemów miasta",
+    lead:
+      "Opublikowane zgłoszenia mieszkańców bez danych osobowych. Filtruj według kategorii i statusu, sprawdzaj szczegóły i pobliskie projekty publiczne.",
+    notice:
+      "Mapa pokazuje wyłącznie zgłoszenia przesłane przez formularz i zatwierdzone przez moderatora. Status pokazuje, czy wpis jest zweryfikowany, wysłany, w toku czy zamknięty.",
+    category: "Kategoria",
+    allCategories: "Wszystkie kategorie",
+    status: "Status",
+    allStatuses: "Wszystkie statusy",
+    radius: "Projekty w pobliżu",
+    radius500: "w promieniu 500 m",
+    radius1: "w promieniu 1 km",
+    radius2: "w promieniu 2 km",
+    visible: "Widoczne wpisy",
+    selectTitle: "Wybierz zgłoszenie",
+    selectHint:
+      "Kliknij znacznik, aby zobaczyć szczegóły, status i pobliskie projekty.",
+    emptyTitle: "Nie ma jeszcze opublikowanych zgłoszeń",
+    emptyText:
+      "Przesłane zgłoszenia pojawiają się tutaj po sprawdzeniu i zatwierdzeniu przez moderatora.",
+    noFilterResults: "Brak zgłoszeń spełniających te filtry",
+    legend: "Legenda",
+    statusesTitle: "Co oznaczają statusy",
+    officialTitle: "Zgłoszenia oficjalne",
+    officialText:
+      "W przypadku realnych problemów korzystaj z oficjalnych kanałów gminy lub administracji rejonu. Open Plovdiv przyjmuje zgłoszenia mieszkańców, które są sprawdzane przed publikacją, ale nie zastępuje zgłoszeń oficjalnych.",
+    officialLink: "Gmina Plovdiv",
+    statusLabel: "Status",
+    nearbyProjects: "Projekty w pobliżu",
+    noNearbyRadius: "Brak projektu w wybranym promieniu.",
+    loadErrorTitle: "Nie udało się wczytać danych",
+    loadErrorText:
+      "Sprawdź, czy publiczne pliki JSON zostały wygenerowane poleceniem make data.",
+    reportCta: "Zgłoś problem",
+    communityBadge: "Zgłoszenie mieszkańca",
+    lastUpdated: "Zaktualizowano",
+    justNow: "przed chwilą",
+    liveNote: "Mapa odświeża się automatycznie co 30 sekund.",
+    newReports: "Nowe zgłoszenia: {count}",
+    downloadCommunityData: "Pobierz dane zgłoszeń mieszkańców"
+  },
+  civic: {
+    title: "Jak możesz pomóc",
+    lead:
+      "Różne problemy wymagają różnych działań. Za część odpowiada gmina; inne mogą poprawić także mieszkańcy i wolontariusze.",
+    trackOfficial: "Wymaga działania urzędu",
+    trackOfficialText:
+      "Niebezpieczne drogi, oświetlenie, odwodnienie i naprawy infrastruktury muszą być realizowane przez gminę lub odpowiedzialną instytucję.",
+    trackCivic: "Otwarte na udział obywateli",
+    trackCivicText:
+      "Sprzątanie śmieci, drobne działania na rzecz zieleni, mapowanie barier dostępności i dokumentowanie mogą organizować mieszkańcy i grupy.",
+    trackBoth: "Wspólna odpowiedzialność",
+    whatYouCanDo: "Co możesz zrobić",
+    actReportOfficial: "Zgłoś to gminie",
+    actJoinGroup: "Dołącz do grupy obywatelskiej",
+    actAddReport: "Zaznacz problem na mapie",
+    actDocument: "Pomóż udokumentować to zdjęciami",
+    actFollow: "Śledź postępy",
+    groupsTitle: "Grupy, które mogą pomóc",
+    noGroups: "Do tej kategorii nie przypisano jeszcze żadnej grupy.",
+    seeAllGroups: "Zobacz wszystkie grupy wolontariackie"
+  },
+  sources: {
+    eyebrow: "Weryfikowalność",
+    title: "Źródła danych",
+    lead:
+      "Każdy wpis na stronie odsyła do publicznego źródła. Poniżej znajdują się główne wykorzystywane źródła i ich zastosowanie.",
+    colSource: "Źródło",
+    colUsedFor: "Wykorzystywane do",
+    colLimits: "Ograniczenia",
+    colAccessed: "Dostęp"
+  },
+  methodology: {
+    eyebrow: "Jak to działa",
+    title: "Metodyka",
+    lead:
+      "AI przeszukuje źródła publiczne, wydobywa wpisy o projektach i budżetach oraz sprawdza je pod kątem schematów, adresów URL, kwot i współrzędnych przed publikacją. Źródła pozostają widoczne, bo AI wciąż może się mylić.",
+    collectTitle: "Wyszukiwanie AI",
+    collectText:
+      "AI odnajduje i porównuje źródła publiczne — budżet i uchwały gminy Plovdiv, program inwestycyjny oraz media lokalne — a każdy wpis zawiera link do wykorzystanego źródła.",
+    verifyTitle: "Weryfikacja AI",
+    verifyText:
+      "AI wydobywa i sprawdza pola, statusy, adresy URL, kwoty, lata, współrzędne oraz brak danych osobowych w zgłoszeniach. Następnie schematy JSON weryfikują strukturę przed budowaniem strony.",
+    aiTitle: "AI",
+    aiText:
+      "Wyszukiwanie, streszczanie i weryfikację wykonuje AI. Gdy źródło nie podaje kwoty, statusu ani informacji o zakończeniu, strona musi pokazać to jako dane brakujące lub wstępne, zamiast je zmyślać.",
+    correctTitle: "Poprawki",
+    correctText:
+      "Poprawka musi dodać lub zmienić publiczne źródło, zaktualizować kurowany plik JSON oraz przejść automatyczną walidację i budowanie."
+  },
+  privacy: {
+    eyebrow: "Bez danych osobowych",
+    title: "Prywatność",
+    lead:
+      "Pierwsza wersja działa bez kont użytkowników, komentarzy, głosowania i publicznego zbierania danych osobowych.",
+    notCollectTitle: "Czego nie zbieramy",
+    notCollectText:
+      "Żadnych imion i nazwisk, adresów e-mail, numerów telefonu, kont ani dokładnych adresów prywatnych w zgłoszeniach.",
+    beforeTitle: "Zgłoszenia mieszkańców",
+    beforeText:
+      "Zgłoszenia zbierają kategorię, krótki tekst, przybliżony punkt na mapie i opcjonalne zdjęcia. Adresy IP są używane wyłącznie jako tymczasowy skrót do ograniczania liczby zgłoszeń i nigdy nie są przechowywane jawnie."
+  },
+  moderation: {
+    eyebrow: "Sprawdzone zgłoszenia mieszkańców",
+    title: "Moderacja",
+    lead:
+      "Mieszkańcy mogą przesyłać zgłoszenia o problemach miasta. Każde zgłoszenie sprawdza redaktor i publikuje je tylko wtedy, gdy jest bezpieczne i w interesie publicznym.",
+    notice:
+      "Moderacja jest zachowawcza: publikowane są weryfikowalne problemy miasta bez danych osobowych — a nie obelgi, oskarżenia czy agitacja polityczna. Zdjęcia są publikowane dopiero po sprawdzeniu i mogą zostać ukryte."
+  },
+  notFound: {
+    eyebrow: "Błąd 404",
+    title: "Nie znaleziono strony",
+    text: "Link może być nieaktualny lub błędnie wpisany. Wróć na stronę główną albo wybierz sekcję."
+  },
+  reportForm: {
+    eyebrow: "Zgłoszenie mieszkańca",
+    title: "Wyślij zgłoszenie",
+    lead:
+      "Opisz publiczny problem miasta i zaznacz jego miejsce na mapie. Redaktor sprawdza każde zgłoszenie, zanim pojawi się ono na mapie.",
+    notice:
+      "Nie podawaj danych osobowych — imion i nazwisk, numerów telefonu, adresów e-mail ani dokładnych adresów prywatnych. Zdjęcia są sprawdzane ręcznie i nie są publikowane przed zatwierdzeniem.",
+    category: "Kategoria",
+    titleLabel: "Krótki tytuł",
+    titlePlaceholder: "np. nierówny chodnik przy przystanku",
+    description: "Opis",
+    descriptionPlaceholder: "Opisz problem krótko i rzeczowo.",
+    photos: "Zdjęcia",
+    photoHint:
+      "Opcjonalnie, do 3 zdjęć, każde maksymalnie 5 MB. Metadane EXIF/GPS są usuwane, a zdjęcia konwertowane przed sprawdzeniem.",
+    location: "Lokalizacja",
+    locationHint: "Kliknij na mapie, aby zaznaczyć miejsce.",
+    selected: "Wybrany punkt",
+    noLocation: "Nie wybrano jeszcze punktu",
+    confirmNoPersonal: "Potwierdzam, że to zgłoszenie nie zawiera danych osobowych.",
+    confirmPublicInterest: "Potwierdzam, że sprawa dotyczy interesu publicznego.",
+    submit: "Wyślij zgłoszenie",
+    submitting: "Wysyłanie…",
+    successTitle: "Dziękujemy!",
+    successText:
+      "Twoje zgłoszenie zostało przyjęte i zostanie sprawdzone przed publikacją. Numer referencyjny:",
+    submitAnother: "Wyślij kolejne zgłoszenie",
+    backToMap: "Wróć do mapy",
+    errorGeneric: "Nie udało się wysłać zgłoszenia. Spróbuj ponownie.",
+    errRateLimited: "Zbyt wiele zgłoszeń w krótkim czasie. Spróbuj później.",
+    errCategory: "Wybierz prawidłową kategorię.",
+    errTitle: "Tytuł musi mieć od 3 do 120 znaków.",
+    errDescription: "Opis musi mieć od 10 do 1000 znaków.",
+    errPersonalData: "Tekst zawiera coś, co wygląda na dane osobowe.",
+    errLocation: "Wybierz punkt w granicach Plovdivu.",
+    errConfirmation: "Zaznacz oba potwierdzenia.",
+    errTooManyPhotos: "Prześlij najwyżej 3 zdjęcia.",
+    errPhotoLarge: "Każde zdjęcie może mieć najwyżej 5 MB.",
+    errPhotoType: "Dozwolone są tylko zdjęcia JPEG, PNG lub WebP.",
+    errPhotoInvalid: "Nie udało się przetworzyć zdjęcia."
+  },
+  admin: {
+    title: "Moderacja zgłoszeń",
+    lead: "Sprawdzaj zgłoszenia mieszkańców przed publikacją. Dostęp jest chroniony.",
+    tokenLabel: "Token administratora",
+    tokenPlaceholder: "Wpisz token",
+    signIn: "Zaloguj się",
+    signOut: "Wyloguj się",
+    authError: "Nieprawidłowy token.",
+    refresh: "Odśwież",
+    pendingTitle: "Oczekujące na sprawdzenie",
+    noPending: "Brak oczekujących zgłoszeń.",
+    publicStatus: "Status publiczny",
+    rejectReason: "Powód odrzucenia (opcjonalnie)",
+    approve: "Zatwierdź i opublikuj",
+    reject: "Odrzuć",
+    publishedTitle: "Opublikowane zgłoszenia",
+    noPublished: "Brak opublikowanych zgłoszeń mieszkańców.",
+    saveStatus: "Zapisz status",
+    editDetails: "Szczegóły zgłoszenia",
+    kind: "Typ wpisu",
+    kindFix: "Zgłoszenie problemu",
+    kindHistory: "Wkład historyczny",
+    saveDetails: "Zapisz szczegóły",
+    titleBg: "Tytuł (BG)",
+    titleEn: "Tytuł (EN, opcjonalnie)",
+    descriptionBg: "Opis (BG)",
+    descriptionEn: "Opis (EN, opcjonalnie)",
+    category: "Kategoria",
+    latitude: "Szerokość geograficzna",
+    longitude: "Długość geograficzna",
+    addressBg: "Adres/punkt orientacyjny (BG, opcjonalnie)",
+    addressEn: "Adres/punkt orientacyjny (EN, opcjonalnie)",
+    photos: "Zdjęcia",
+    hidePhoto: "Ukryj zdjęcie",
+    hiddenPhoto: "Ukryte zdjęcie",
+    moderationWarning:
+      "Publikuj zdjęcia tylko wtedy, gdy nie zawierają twarzy, dzieci, tablic rejestracyjnych, dokumentów, prywatnych wnętrz ani informacji osobowych.",
+    submitted: "Przesłano",
+    loading: "Ładowanie…",
+    actionError: "Działanie nie powiodło się."
+  },
+  adminCommunity: {
+    title: "Inicjatywy wolontariackie",
+    lead:
+      "Dodawaj i aktualizuj prawdziwe grupy obywatelskie oraz kampanie wolontariackie z publicznymi linkami.",
+    tokenLabel: "Token administratora",
+    tokenPlaceholder: "Wpisz token",
+    signIn: "Zaloguj się",
+    signOut: "Wyloguj się",
+    authError: "Nieprawidłowy token.",
+    refresh: "Odśwież",
+    discoveryTitle: "Wyszukiwanie AI/online",
+    discoveryLead:
+      "Przeszukuj publiczne strony i wpisy. Wyniki jedynie sugerują źródła; administrator decyduje, co zapisać.",
+    queryLabel: "Szukaj",
+    queryPlaceholder: "np. wolontariusze Plovdiv sprzątanie przystanków",
+    find: "Znajdź online",
+    sourceUrl: "Adres URL źródła",
+    inspectUrl: "Sprawdź URL",
+    noCandidates: "Nie znaleziono wyników.",
+    useCandidate: "Użyj jako źródła",
+    formTitle: "Dodaj lub zaktualizuj inicjatywę",
+    id: "ID (opcjonalnie)",
+    titleBg: "Tytuł (BG)",
+    titleEn: "Tytuł (EN)",
+    summaryBg: "Streszczenie (BG)",
+    summaryEn: "Streszczenie (EN, opcjonalnie)",
+    category: "Kategoria",
+    status: "Status",
+    organizerBg: "Organizator (BG)",
+    organizerEn: "Organizator (EN, opcjonalnie)",
+    organizerType: "Typ organizatora",
+    website: "Strona internetowa",
+    facebook: "Facebook",
+    donationUrl: "Link do darowizn (opcjonalnie)",
+    callToActionBg: "Wezwanie do działania (BG, opcjonalnie)",
+    callToActionEn: "Wezwanie do działania (EN, opcjonalnie)",
+    addressBg: "Adres/obszar (BG)",
+    addressEn: "Adres/obszar (EN, opcjonalnie)",
+    latitude: "Szerokość geograficzna",
+    longitude: "Długość geograficzna",
+    relatedProjects: "ID powiązanych projektów (rozdzielone przecinkami)",
+    tags: "Tagi (rozdzielone przecinkami)",
+    sourceTitle: "Tytuł źródła",
+    sourceUrlLabel: "Link do źródła",
+    save: "Zapisz inicjatywę",
+    saved: "Inicjatywa zapisana.",
+    existingTitle: "Zapisane inicjatywy",
+    noExisting: "Brak zapisanych inicjatyw.",
+    edit: "Edytuj",
+    loading: "Ładowanie…",
+    actionError: "Działanie nie powiodło się."
+  }
+};
+
+export const ui = { bg, en, de, fr, it, tr, es, el, ja, tl, uk, ru, pl } as const;
 
 export type CategoryKey =
   | "roads"
@@ -7444,6 +8104,27 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     source_tip: "Источник/архивный след",
     history_correction: "Историческое исправление",
     other: "Другое"
+  },
+  pl: {
+    roads: "Drogi",
+    pavement: "Chodniki",
+    street_lighting: "Oświetlenie",
+    parks: "Parki",
+    waste: "Odpady",
+    public_transport: "Transport",
+    accessibility: "Dostępność",
+    drainage: "Odwodnienie",
+    culture: "Kultura",
+    education: "Edukacja",
+    civic: "Inicjatywy obywatelskie",
+    environment: "Środowisko",
+    social: "Sprawy społeczne",
+    sport: "Sport",
+    historic_photo: "Zdjęcie historyczne",
+    oral_memory: "Wspomnienie ustne",
+    source_tip: "Źródło/trop archiwalny",
+    history_correction: "Korekta historyczna",
+    other: "Inne"
   }
 };
 
@@ -7621,6 +8302,16 @@ export const projectStatusLabels: Record<Lang, Record<string, string>> = {
     delayed: "Задержано",
     postponed: "Отложено",
     unknown: "Неизвестно"
+  },
+  pl: {
+    planned: "Planowany",
+    funded: "Sfinansowany",
+    contracted: "Zakontraktowany",
+    in_progress: "W trakcie",
+    completed: "Zakończony",
+    delayed: "Opóźniony",
+    postponed: "Odłożony",
+    unknown: "Nieznany"
   }
 };
 
@@ -7708,6 +8399,13 @@ export const communityStatusLabels: Record<Lang, Record<string, string>> = {
     completed: "Завершена",
     planned: "Запланирована",
     unknown: "Неизвестный статус"
+  },
+  pl: {
+    active: "Aktywna",
+    recurring: "Cykliczna",
+    completed: "Zakończona",
+    planned: "Planowana",
+    unknown: "Status nieznany"
   }
 };
 
@@ -7807,6 +8505,14 @@ export const fixStatusLabels: Record<Lang, Record<string, string>> = {
     in_progress: "В процессе",
     fixed: "Исправлено",
     closed: "Закрыто"
+  },
+  pl: {
+    unverified: "Niezweryfikowane",
+    verified: "Zweryfikowane",
+    sent_to_municipality: "Wysłane",
+    in_progress: "W trakcie",
+    fixed: "Naprawione",
+    closed: "Zamknięte"
   }
 };
 
@@ -7906,6 +8612,14 @@ export const fixStatusDescriptions: Record<Lang, Record<string, string>> = {
     in_progress: "Зафиксирован текущий ремонт или проверка.",
     fixed: "Отмечено как исправленное.",
     closed: "Закрыто без активного следующего шага."
+  },
+  pl: {
+    unverified: "Zgłoszenie jest opublikowane, ale nie zostało jeszcze niezależnie zweryfikowane.",
+    verified: "Zweryfikowane przez redaktora lub publiczne źródło.",
+    sent_to_municipality: "Oznaczone jako wysłane do instytucji.",
+    in_progress: "Odnotowano trwającą naprawę lub kontrolę.",
+    fixed: "Oznaczone jako naprawione.",
+    closed: "Zamknięte bez aktywnego kolejnego kroku."
   }
 };
 
@@ -7991,6 +8705,12 @@ export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
     municipal_capital: "Капитальная программа (муниципальная)",
     state_subsidy: "Целевая государственная субсидия",
     eu_program: "Программа ЕС"
+  },
+  pl: {
+    municipal_budget: "Budżet gminy",
+    municipal_capital: "Gminny program inwestycyjny",
+    state_subsidy: "Celowa dotacja państwowa",
+    eu_program: "Program UE"
   }
 };
 
@@ -8195,88 +8915,106 @@ export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
     "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5": "TrafficNews — рекордное число волонтёров на «Миссии Лаута» 5",
     "БНТ — почистват квартал „Столипиново“": "BNT — уборка в квартале Столипиново",
     "Радио Пловдив — доброволци чистят и облагородяват Столипиново": "Радио Пловдив — волонтёры убирают и благоустраивают Столипиново"
+  },
+  pl: {
+    "Община Пловдив — представяне на Бюджет 2025": "Gmina Plovdiv — prezentacja budżetu na 2025 rok",
+    "TrafficNews — бюджет на Пловдив за 2025 г.": "TrafficNews — budżet Plovdivu na 2025 rok",
+    "TrafficNews — проектобюджет 2026 и замразени проекти": "TrafficNews — projekt budżetu na 2026 rok i zamrożone projekty",
+    "Под тепето — капиталова програма за 2026 г.": "Pod tepeto — program inwestycyjny na 2026 rok",
+    "Община Пловдив - Кметове на Пловдив": "Gmina Plovdiv — Burmistrzowie Plovdivu",
+    "Административен регистър - кмет на Община Пловдив": "Rejestr Administracyjny — burmistrz gminy Plovdiv",
+    "Plovdiv24 — доброволци се заемат с реновирането на спирки": "Plovdiv24 — wolontariusze biorą się za remont przystanków",
+    "NOVA — доброволци реновират автобусни спирки": "NOVA — wolontariusze remontują przystanki autobusowe",
+    "Plovdiv24 — търсят се доброволци за почистване на 11 км от река Марица": "Plovdiv24 — poszukiwani wolontariusze do sprzątania 11 km rzeki Maritsy",
+    "BG Be Active — контакт": "BG Be Active — kontakt",
+    "Красив Пловдив — будни граждани с кауза": "Krasiv Plovdiv — aktywni obywatele z misją",
+    "Красив Пловдив — начало": "Krasiv Plovdiv — strona główna",
+    "Община Пловдив — „Мисия Лаута 5“": "Gmina Plovdiv — „Misja Lauta 5”",
+    "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5": "TrafficNews — rekordowa liczba wolontariuszy na „Misji Lauta” 5",
+    "БНТ — почистват квартал „Столипиново“": "BNT — sprzątanie dzielnicy Stolipinovo",
+    "Радио Пловдив — доброволци чистят и облагородяват Столипиново": "Radio Plovdiv — wolontariusze sprzątają i upiększają Stolipinovo"
   }
 };
 
 // Shared person-role tags (objective: one source of truth for People + History).
 // Adding a locale to `Lang` forces a translation here via the Record<Lang> type.
 export const roleLabels: Record<string, Record<Lang, string>> = {
-  academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien", it: "accademico", tr: "akademisyen", es: "académico", el: "ακαδημαϊκός" , ja: "学者", tl: "akademiko", uk: "академік", ru: "академик" },
-  actor: { bg: "актьор", en: "actor", de: "Schauspieler", fr: "acteur", it: "attore", tr: "aktör", es: "actor", el: "ηθοποιός" , ja: "俳優", tl: "aktor", uk: "актор", ru: "актёр" },
-  art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker", fr: "historien de l'art", it: "storico dell'arte", tr: "sanat tarihçisi", es: "historiador del arte", el: "ιστορικός τέχνης" , ja: "美術史家", tl: "istoryador ng sining", uk: "мистецтвознавець", ru: "искусствовед" },
-  artist: { bg: "художник", en: "artist", de: "Künstler", fr: "artiste", it: "artista", tr: "sanatçı", es: "artista", el: "καλλιτέχνης" , ja: "芸術家", tl: "artista", uk: "художник", ru: "художник" },
-  athlete: { bg: "спортист", en: "athlete", de: "Sportler", fr: "athlète", it: "atleta", tr: "atlet", es: "atleta", el: "αθλητής" , ja: "アスリート", tl: "atleta", uk: "спортсмен", ru: "спортсмен" },
-  basketball_player: { bg: "баскетболист", en: "basketball player", de: "Basketballspieler", fr: "basketteur", it: "cestista", tr: "basketbolcu", es: "baloncestista", el: "καλαθοσφαιριστής" , ja: "バスケットボール選手", tl: "basketbolista", uk: "баскетболіст", ru: "баскетболист" },
-  boxer: { bg: "боксьор", en: "boxer", de: "Boxer", fr: "boxeur", it: "pugile", tr: "boksör", es: "boxeador", el: "πυγμάχος" , ja: "ボクサー", tl: "boksingero", uk: "боксер", ru: "боксёр" },
-  canoeist: { bg: "кануист", en: "canoeist", de: "Kanute", fr: "canoéiste", it: "canoista", tr: "kanocu", es: "piragüista", el: "κανοϊστής" , ja: "カヌー選手", tl: "manlalaro ng kanoa", uk: "каноїст", ru: "каноист" },
-  chef: { bg: "готвач", en: "chef", de: "Koch", fr: "chef cuisinier", it: "chef", tr: "aşçı", es: "chef", el: "σεφ" , ja: "料理人", tl: "chef", uk: "шеф-кухар", ru: "шеф-повар" },
-  chess_player: { bg: "шахматист", en: "chess player", de: "Schachspieler", fr: "joueur d'échecs", it: "scacchista", tr: "satranç oyuncusu", es: "ajedrecista", el: "σκακιστής" , ja: "チェス選手", tl: "manlalaro ng ahedres", uk: "шахіст", ru: "шахматист" },
-  choreographer: { bg: "хореограф", en: "choreographer", de: "Choreograf", fr: "chorégraphe", it: "coreografo", tr: "koreograf", es: "coreógrafo", el: "χορογράφος" , ja: "振付家", tl: "koreograpo", uk: "хореограф", ru: "хореограф" },
-  clergy: { bg: "духовник", en: "clergy", de: "Geistlicher", fr: "ecclésiastique", it: "religioso", tr: "din adamı", es: "clérigo", el: "κληρικός" , ja: "聖職者", tl: "klero", uk: "духовна особа", ru: "духовное лицо" },
-  composer: { bg: "композитор", en: "composer", de: "Komponist", fr: "compositeur", it: "compositore", tr: "besteci", es: "compositor", el: "συνθέτης" , ja: "作曲家", tl: "kompositor", uk: "композитор", ru: "композитор" },
-  conductor: { bg: "диригент", en: "conductor", de: "Dirigent", fr: "chef d'orchestre", it: "direttore d'orchestra", tr: "orkestra şefi", es: "director de orquesta", el: "μαέστρος" , ja: "指揮者", tl: "konduktor", uk: "диригент", ru: "дирижёр" },
-  cultural_manager: { bg: "културен мениджър", en: "cultural manager", de: "Kulturmanager", fr: "gestionnaire culturel", it: "manager culturale", tr: "kültür yöneticisi", es: "gestor cultural", el: "πολιτιστικός διαχειριστής" , ja: "文化マネージャー", tl: "tagapamahala ng kultura", uk: "культурний менеджер", ru: "культурный менеджер" },
-  designer: { bg: "дизайнер", en: "designer", de: "Designer", fr: "designer", it: "designer", tr: "tasarımcı", es: "diseñador", el: "σχεδιαστής" , ja: "デザイナー", tl: "disenyador", uk: "дизайнер", ru: "дизайнер" },
-  diplomat: { bg: "дипломат", en: "diplomat", de: "Diplomat", fr: "diplomate", it: "diplomatico", tr: "diplomat", es: "diplomático", el: "διπλωμάτης" , ja: "外交官", tl: "diplomatiko", uk: "дипломат", ru: "дипломат" },
-  economist: { bg: "икономист", en: "economist", de: "Ökonom", fr: "économiste", it: "economista", tr: "iktisatçı", es: "economista", el: "οικονομολόγος" , ja: "経済学者", tl: "ekonomista", uk: "економіст", ru: "экономист" },
-  educator: { bg: "педагог", en: "educator", de: "Pädagoge", fr: "pédagogue", it: "pedagogo", tr: "eğitimci", es: "pedagogo", el: "παιδαγωγός" , ja: "教育者", tl: "edukador", uk: "педагог", ru: "педагог" },
-  electrical_engineer: { bg: "електроинженер", en: "electrical engineer", de: "Elektroingenieur", fr: "ingénieur électricien", it: "ingegnere elettrico", tr: "elektrik mühendisi", es: "ingeniero eléctrico", el: "ηλεκτρολόγος μηχανικός" , ja: "電気技師", tl: "inhinyerong elektrikal", uk: "інженер-електрик", ru: "инженер-электрик" },
-  engineer: { bg: "инженер", en: "engineer", de: "Ingenieur", fr: "ingénieur", it: "ingegnere", tr: "mühendis", es: "ingeniero", el: "μηχανικός" , ja: "技師", tl: "inhinyero", uk: "інженер", ru: "инженер" },
-  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler", fr: "cavalier", it: "cavaliere", tr: "binici", es: "jinete", el: "ιππέας" , ja: "馬術選手", tl: "mangangabayo", uk: "вершник", ru: "наездник" },
-  fencer: { bg: "фехтовач", en: "fencer", de: "Fechter", fr: "escrimeur", it: "schermidore", tr: "eskrimci", es: "esgrimista", el: "ξιφομάχος" , ja: "フェンシング選手", tl: "esgrimista", uk: "фехтувальник", ru: "фехтовальщик" },
-  film_director: { bg: "филмов режисьор", en: "film director", de: "Filmregisseur", fr: "réalisateur", it: "regista cinematografico", tr: "film yönetmeni", es: "director de cine", el: "σκηνοθέτης κινηματογράφου" , ja: "映画監督", tl: "direktor ng pelikula", uk: "кінорежисер", ru: "кинорежиссёр" },
-  first_lady: { bg: "първа дама", en: "first lady", de: "First Lady", fr: "première dame", it: "first lady", tr: "first lady", es: "primera dama", el: "πρώτη κυρία" , ja: "ファーストレディー", tl: "Unang Ginang", uk: "перша леді", ru: "первая леди" },
-  football_referee: { bg: "футболен съдия", en: "football referee", de: "Fußballschiedsrichter", fr: "arbitre de football", it: "arbitro di calcio", tr: "futbol hakemi", es: "árbitro de fútbol", el: "διαιτητής ποδοσφαίρου" , ja: "サッカー審判員", tl: "referi ng football", uk: "футбольний суддя", ru: "футбольный судья" },
-  footballer: { bg: "футболист", en: "footballer", de: "Fußballspieler", fr: "footballeur", it: "calciatore", tr: "futbolcu", es: "futbolista", el: "ποδοσφαιριστής" , ja: "サッカー選手", tl: "manlalaro ng football", uk: "футболіст", ru: "футболист" },
-  general: { bg: "генерал", en: "general", de: "General", fr: "général", it: "generale", tr: "general", es: "general", el: "στρατηγός" , ja: "将軍", tl: "heneral", uk: "генерал", ru: "генерал" },
-  geographer: { bg: "географ", en: "geographer", de: "Geograf", fr: "géographe", it: "geografo", tr: "coğrafyacı", es: "geógrafo", el: "γεωγράφος" , ja: "地理学者", tl: "geograpo", uk: "географ", ru: "географ" },
-  gymnast: { bg: "гимнастик", en: "gymnast", de: "Turner", fr: "gymnaste", it: "ginnasta", tr: "jimnastikçi", es: "gimnasta", el: "γυμναστής" , ja: "体操選手", tl: "jimnasta", uk: "гімнаст", ru: "гимнаст" },
-  high_jumper: { bg: "скачач на височина", en: "high jumper", de: "Hochspringer", fr: "sauteur en hauteur", it: "saltatore in alto", tr: "yüksek atlamacı", es: "saltador de altura", el: "άλτης ύψους" , ja: "走高跳選手", tl: "tumatalon nang mataas", uk: "стрибун у висоту", ru: "прыгун в высоту" },
-  illustrator: { bg: "илюстратор", en: "illustrator", de: "Illustrator", fr: "illustrateur", it: "illustratore", tr: "illüstratör", es: "ilustrador", el: "εικονογράφος" , ja: "イラストレーター", tl: "ilustrador", uk: "ілюстратор", ru: "иллюстратор" },
-  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower", de: "Speerwerfer", fr: "lanceur de javelot", it: "lanciatore di giavellotto", tr: "cirit atıcısı", es: "lanzador de jabalina", el: "ακοντιστής" , ja: "やり投げ選手", tl: "naghahagis ng habalina", uk: "метальник списа", ru: "метатель копья" },
-  journalist: { bg: "журналист", en: "journalist", de: "Journalist", fr: "journaliste", it: "giornalista", tr: "gazeteci", es: "periodista", el: "δημοσιογράφος" , ja: "ジャーナリスト", tl: "mamamahayag", uk: "журналіст", ru: "журналист" },
-  jurist: { bg: "юрист", en: "jurist", de: "Jurist", fr: "juriste", it: "giurista", tr: "hukukçu", es: "jurista", el: "νομικός" , ja: "法律家", tl: "hurista", uk: "юрист", ru: "юрист" },
-  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist", de: "Kampfsportler", fr: "artiste martial", it: "artista marziale", tr: "dövüş sanatçısı", es: "artista marcial", el: "αθλητής πολεμικών τεχνών" , ja: "武道家", tl: "mandirigma", uk: "спортсмен бойових мистецтв", ru: "спортсмен по боевым искусствам" },
-  mathematician: { bg: "математик", en: "mathematician", de: "Mathematiker", fr: "mathématicien", it: "matematico", tr: "matematikçi", es: "matemático", el: "μαθηματικός" , ja: "数学者", tl: "matematiko", uk: "математик", ru: "математик" },
-  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister", fr: "maire", it: "sindaco", tr: "belediye başkanı", es: "alcalde", el: "δήμαρχος" , ja: "市長", tl: "alkalde", uk: "мер", ru: "мэр" },
-  merchant: { bg: "търговец", en: "merchant", de: "Kaufmann", fr: "marchand", it: "mercante", tr: "tüccar", es: "comerciante", el: "έμπορος" , ja: "商人", tl: "mangangalakal", uk: "купець", ru: "купец" },
-  military_officer: { bg: "офицер", en: "military officer", de: "Offizier", fr: "officier", it: "ufficiale", tr: "subay", es: "oficial", el: "αξιωματικός" , ja: "軍人", tl: "opisyal militar", uk: "офіцер", ru: "офицер" },
-  mineralogist: { bg: "минералог", en: "mineralogist", de: "Mineraloge", fr: "minéralogiste", it: "mineralogista", tr: "mineralog", es: "mineralogista", el: "ορυκτολόγος" , ja: "鉱物学者", tl: "mineralogo", uk: "мінералог", ru: "минералог" },
-  missionary: { bg: "мисионер", en: "missionary", de: "Missionar", fr: "missionnaire", it: "missionario", tr: "misyoner", es: "misionero", el: "ιεραπόστολος" , ja: "宣教師", tl: "misyonero", uk: "місіонер", ru: "миссионер" },
-  model: { bg: "модел", en: "model", de: "Model", fr: "mannequin", it: "modella", tr: "manken", es: "modelo", el: "μοντέλο" , ja: "モデル", tl: "modelo", uk: "модель", ru: "модель" },
-  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete", de: "Moderner Fünfkämpfer", fr: "pentathlonien moderne", it: "pentatleta moderno", tr: "modern pentatlet", es: "pentatleta moderno", el: "αθλητής σύγχρονου πεντάθλου" , ja: "近代五種選手", tl: "atleta ng modernong pentahlon", uk: "спортсмен із сучасного п'ятиборства", ru: "спортсмен по современному пятиборью" },
-  musician: { bg: "музикант", en: "musician", de: "Musiker", fr: "musicien", it: "musicista", tr: "müzisyen", es: "músico", el: "μουσικός" , ja: "音楽家", tl: "musikero", uk: "музикант", ru: "музыкант" },
-  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger", fr: "chanteur d'opéra", it: "cantante lirico", tr: "opera sanatçısı", es: "cantante de ópera", el: "λυρικός τραγουδιστής" , ja: "オペラ歌手", tl: "mang-aawit ng opera", uk: "оперний співак", ru: "оперный певец" },
-  painter: { bg: "живописец", en: "painter", de: "Maler", fr: "peintre", it: "pittore", tr: "ressam", es: "pintor", el: "ζωγράφος" , ja: "画家", tl: "pintor", uk: "живописець", ru: "живописец" },
-  paleontologist: { bg: "палеонтолог", en: "paleontologist", de: "Paläontologe", fr: "paléontologue", it: "paleontologo", tr: "paleontolog", es: "paleontólogo", el: "παλαιοντολόγος" , ja: "古生物学者", tl: "paleontologo", uk: "палеонтолог", ru: "палеонтолог" },
-  patriarch: { bg: "патриарх", en: "patriarch", de: "Patriarch", fr: "patriarche", it: "patriarca", tr: "patrik", es: "patriarca", el: "πατριάρχης" , ja: "総主教", tl: "patriyarka", uk: "патріарх", ru: "патриарх" },
-  philosopher: { bg: "философ", en: "philosopher", de: "Philosoph", fr: "philosophe", it: "filosofo", tr: "filozof", es: "filósofo", el: "φιλόσοφος" , ja: "哲学者", tl: "pilosopo", uk: "філософ", ru: "философ" },
-  physicist: { bg: "физик", en: "physicist", de: "Physiker", fr: "physicien", it: "fisico", tr: "fizikçi", es: "físico", el: "φυσικός" , ja: "物理学者", tl: "pisiko", uk: "фізик", ru: "физик" },
-  pianist: { bg: "пианист", en: "pianist", de: "Pianist", fr: "pianiste", it: "pianista", tr: "piyanist", es: "pianista", el: "πιανίστας" , ja: "ピアニスト", tl: "pyanista", uk: "піаніст", ru: "пианист" },
-  poet: { bg: "поет", en: "poet", de: "Dichter", fr: "poète", it: "poeta", tr: "şair", es: "poeta", el: "ποιητής" , ja: "詩人", tl: "makata", uk: "поет", ru: "поэт" },
-  politician: { bg: "политик", en: "politician", de: "Politiker", fr: "politicien", it: "politico", tr: "siyasetçi", es: "político", el: "πολιτικός" , ja: "政治家", tl: "pulitiko", uk: "політик", ru: "политик" },
-  priest: { bg: "свещеник", en: "priest", de: "Priester", fr: "prêtre", it: "sacerdote", tr: "rahip", es: "sacerdote", el: "ιερέας" , ja: "司祭", tl: "pari", uk: "священник", ru: "священник" },
-  printmaker: { bg: "график", en: "printmaker", de: "Grafiker", fr: "graveur", it: "incisore", tr: "gravürcü", es: "grabador", el: "χαράκτης" , ja: "版画家", tl: "tagagawa ng grabado", uk: "графік", ru: "график" },
-  producer: { bg: "продуцент", en: "producer", de: "Produzent", fr: "producteur", it: "produttore", tr: "yapımcı", es: "productor", el: "παραγωγός" , ja: "プロデューサー", tl: "produser", uk: "продюсер", ru: "продюсер" },
-  public_figure: { bg: "обществена фигура", en: "public figure", de: "Person des öffentlichen Lebens", fr: "personnalité publique", it: "personaggio pubblico", tr: "kamusal figür", es: "figura pública", el: "δημόσιο πρόσωπο" , ja: "公人", tl: "pampublikong personalidad", uk: "громадський діяч", ru: "общественный деятель" },
-  racing_driver: { bg: "автомобилен състезател", en: "racing driver", de: "Rennfahrer", fr: "pilote automobile", it: "pilota automobilistico", tr: "yarış pilotu", es: "piloto de carreras", el: "οδηγός αγώνων" , ja: "レーシングドライバー", tl: "drayber ng karera", uk: "автогонщик", ru: "автогонщик" },
-  revolutionary: { bg: "революционер", en: "revolutionary", de: "Revolutionär", fr: "révolutionnaire", it: "rivoluzionario", tr: "devrimci", es: "revolucionario", el: "επαναστάτης" , ja: "革命家", tl: "rebolusyonaryo", uk: "революціонер", ru: "революционер" },
-  rower: { bg: "гребец", en: "rower", de: "Ruderer", fr: "rameur", it: "canottiere", tr: "kürekçi", es: "remero", el: "κωπηλάτης" , ja: "ボート選手", tl: "mananagwan", uk: "веслувальник", ru: "гребец" },
-  saint: { bg: "светец", en: "saint", de: "Heiliger", fr: "saint", it: "santo", tr: "aziz", es: "santo", el: "άγιος" , ja: "聖人", tl: "santo", uk: "святий", ru: "святой" },
-  scholar: { bg: "учен", en: "scholar", de: "Gelehrter", fr: "érudit", it: "studioso", tr: "âlim", es: "erudito", el: "λόγιος" , ja: "学者", tl: "iskolar", uk: "вчений", ru: "учёный" },
-  scientist: { bg: "учен", en: "scientist", de: "Wissenschaftler", fr: "scientifique", it: "scienziato", tr: "bilim insanı", es: "científico", el: "επιστήμονας" , ja: "科学者", tl: "siyentista", uk: "науковець", ru: "научный деятель" },
-  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor", fr: "scénariste", it: "sceneggiatore", tr: "senarist", es: "guionista", el: "σεναριογράφος" , ja: "脚本家", tl: "manunulat ng iskrip", uk: "сценарист", ru: "сценарист" },
-  sculptor: { bg: "скулптор", en: "sculptor", de: "Bildhauer", fr: "sculpteur", it: "scultore", tr: "heykeltıraş", es: "escultor", el: "γλύπτης" , ja: "彫刻家", tl: "eskultor", uk: "скульптор", ru: "скульптор" },
-  singer: { bg: "певец", en: "singer", de: "Sänger", fr: "chanteur", it: "cantante", tr: "şarkıcı", es: "cantante", el: "τραγουδιστής" , ja: "歌手", tl: "mang-aawit", uk: "співак", ru: "певец" },
-  sports_shooter: { bg: "спортен стрелец", en: "sport shooter", de: "Sportschütze", fr: "tireur sportif", it: "tiratore sportivo", tr: "atıcı", es: "tirador deportivo", el: "σκοπευτής" , ja: "射撃選手", tl: "mamamaril sa isports", uk: "спортивний стрілець", ru: "спортивный стрелок" },
-  swimmer: { bg: "плувец", en: "swimmer", de: "Schwimmer", fr: "nageur", it: "nuotatore", tr: "yüzücü", es: "nadador", el: "κολυμβητής" , ja: "水泳選手", tl: "manlalangoy", uk: "плавець", ru: "пловец" },
-  tennis_player: { bg: "тенисист", en: "tennis player", de: "Tennisspieler", fr: "joueur de tennis", it: "tennista", tr: "tenisçi", es: "tenista", el: "τενίστας" , ja: "テニス選手", tl: "manlalaro ng tenis", uk: "тенісист", ru: "теннисист" },
-  theatre_director: { bg: "театрален режисьор", en: "theatre director", de: "Theaterregisseur", fr: "metteur en scène", it: "regista teatrale", tr: "tiyatro yönetmeni", es: "director de teatro", el: "σκηνοθέτης θεάτρου" , ja: "演劇演出家", tl: "direktor ng dulaan", uk: "театральний режисер", ru: "театральный режиссёр" },
-  violinist: { bg: "цигулар", en: "violinist", de: "Geiger", fr: "violoniste", it: "violinista", tr: "kemancı", es: "violinista", el: "βιολιστής" , ja: "バイオリニスト", tl: "biyolinista", uk: "скрипаль", ru: "скрипач" },
-  visual_artist: { bg: "визуален художник", en: "visual artist", de: "Bildender Künstler", fr: "artiste visuel", it: "artista visivo", tr: "görsel sanatçı", es: "artista visual", el: "εικαστικός καλλιτέχνης" , ja: "ビジュアルアーティスト", tl: "biswal na artista", uk: "візуальний митець", ru: "визуальный художник" },
-  volleyball_player: { bg: "волейболист", en: "volleyball player", de: "Volleyballspieler", fr: "volleyeur", it: "pallavolista", tr: "voleybolcu", es: "voleibolista", el: "πετοσφαιριστής" , ja: "バレーボール選手", tl: "manlalaro ng volleyball", uk: "волейболіст", ru: "волейболист" },
-  weightlifter: { bg: "щангист", en: "weightlifter", de: "Gewichtheber", fr: "haltérophile", it: "sollevatore di pesi", tr: "halterci", es: "halterófilo", el: "αρσιβαρίστας" , ja: "重量挙げ選手", tl: "tagabuhat ng bigat", uk: "важкоатлет", ru: "тяжелоатлет" },
-  wrestler: { bg: "борец", en: "wrestler", de: "Ringer", fr: "lutteur", it: "lottatore", tr: "güreşçi", es: "luchador", el: "παλαιστής" , ja: "レスリング選手", tl: "mambubuno", uk: "борець", ru: "борец" },
-  writer: { bg: "писател", en: "writer", de: "Schriftsteller", fr: "écrivain", it: "scrittore", tr: "yazar", es: "escritor", el: "συγγραφέας" , ja: "作家", tl: "manunulat", uk: "письменник", ru: "писатель" },
-  zoologist: { bg: "зоолог", en: "zoologist", de: "Zoologe", fr: "zoologiste", it: "zoologo", tr: "zoolog", es: "zoólogo", el: "ζωολόγος", ja: "動物学者", tl: "zoologo", uk: "зоолог", ru: "зоолог" }
+  academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien", it: "accademico", tr: "akademisyen", es: "académico", el: "ακαδημαϊκός" , ja: "学者", tl: "akademiko", uk: "академік", ru: "академик", pl: "akademik" },
+  actor: { bg: "актьор", en: "actor", de: "Schauspieler", fr: "acteur", it: "attore", tr: "aktör", es: "actor", el: "ηθοποιός" , ja: "俳優", tl: "aktor", uk: "актор", ru: "актёр", pl: "aktor" },
+  art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker", fr: "historien de l'art", it: "storico dell'arte", tr: "sanat tarihçisi", es: "historiador del arte", el: "ιστορικός τέχνης" , ja: "美術史家", tl: "istoryador ng sining", uk: "мистецтвознавець", ru: "искусствовед", pl: "historyk sztuki" },
+  artist: { bg: "художник", en: "artist", de: "Künstler", fr: "artiste", it: "artista", tr: "sanatçı", es: "artista", el: "καλλιτέχνης" , ja: "芸術家", tl: "artista", uk: "художник", ru: "художник", pl: "artysta" },
+  athlete: { bg: "спортист", en: "athlete", de: "Sportler", fr: "athlète", it: "atleta", tr: "atlet", es: "atleta", el: "αθλητής" , ja: "アスリート", tl: "atleta", uk: "спортсмен", ru: "спортсмен", pl: "sportowiec" },
+  basketball_player: { bg: "баскетболист", en: "basketball player", de: "Basketballspieler", fr: "basketteur", it: "cestista", tr: "basketbolcu", es: "baloncestista", el: "καλαθοσφαιριστής" , ja: "バスケットボール選手", tl: "basketbolista", uk: "баскетболіст", ru: "баскетболист", pl: "koszykarz" },
+  boxer: { bg: "боксьор", en: "boxer", de: "Boxer", fr: "boxeur", it: "pugile", tr: "boksör", es: "boxeador", el: "πυγμάχος" , ja: "ボクサー", tl: "boksingero", uk: "боксер", ru: "боксёр", pl: "bokser" },
+  canoeist: { bg: "кануист", en: "canoeist", de: "Kanute", fr: "canoéiste", it: "canoista", tr: "kanocu", es: "piragüista", el: "κανοϊστής" , ja: "カヌー選手", tl: "manlalaro ng kanoa", uk: "каноїст", ru: "каноист", pl: "kajakarz" },
+  chef: { bg: "готвач", en: "chef", de: "Koch", fr: "chef cuisinier", it: "chef", tr: "aşçı", es: "chef", el: "σεφ" , ja: "料理人", tl: "chef", uk: "шеф-кухар", ru: "шеф-повар", pl: "kucharz" },
+  chess_player: { bg: "шахматист", en: "chess player", de: "Schachspieler", fr: "joueur d'échecs", it: "scacchista", tr: "satranç oyuncusu", es: "ajedrecista", el: "σκακιστής" , ja: "チェス選手", tl: "manlalaro ng ahedres", uk: "шахіст", ru: "шахматист", pl: "szachista" },
+  choreographer: { bg: "хореограф", en: "choreographer", de: "Choreograf", fr: "chorégraphe", it: "coreografo", tr: "koreograf", es: "coreógrafo", el: "χορογράφος" , ja: "振付家", tl: "koreograpo", uk: "хореограф", ru: "хореограф", pl: "choreograf" },
+  clergy: { bg: "духовник", en: "clergy", de: "Geistlicher", fr: "ecclésiastique", it: "religioso", tr: "din adamı", es: "clérigo", el: "κληρικός" , ja: "聖職者", tl: "klero", uk: "духовна особа", ru: "духовное лицо", pl: "duchowny" },
+  composer: { bg: "композитор", en: "composer", de: "Komponist", fr: "compositeur", it: "compositore", tr: "besteci", es: "compositor", el: "συνθέτης" , ja: "作曲家", tl: "kompositor", uk: "композитор", ru: "композитор", pl: "kompozytor" },
+  conductor: { bg: "диригент", en: "conductor", de: "Dirigent", fr: "chef d'orchestre", it: "direttore d'orchestra", tr: "orkestra şefi", es: "director de orquesta", el: "μαέστρος" , ja: "指揮者", tl: "konduktor", uk: "диригент", ru: "дирижёр", pl: "dyrygent" },
+  cultural_manager: { bg: "културен мениджър", en: "cultural manager", de: "Kulturmanager", fr: "gestionnaire culturel", it: "manager culturale", tr: "kültür yöneticisi", es: "gestor cultural", el: "πολιτιστικός διαχειριστής" , ja: "文化マネージャー", tl: "tagapamahala ng kultura", uk: "культурний менеджер", ru: "культурный менеджер", pl: "menedżer kultury" },
+  designer: { bg: "дизайнер", en: "designer", de: "Designer", fr: "designer", it: "designer", tr: "tasarımcı", es: "diseñador", el: "σχεδιαστής" , ja: "デザイナー", tl: "disenyador", uk: "дизайнер", ru: "дизайнер", pl: "projektant" },
+  diplomat: { bg: "дипломат", en: "diplomat", de: "Diplomat", fr: "diplomate", it: "diplomatico", tr: "diplomat", es: "diplomático", el: "διπλωμάτης" , ja: "外交官", tl: "diplomatiko", uk: "дипломат", ru: "дипломат", pl: "dyplomata" },
+  economist: { bg: "икономист", en: "economist", de: "Ökonom", fr: "économiste", it: "economista", tr: "iktisatçı", es: "economista", el: "οικονομολόγος" , ja: "経済学者", tl: "ekonomista", uk: "економіст", ru: "экономист", pl: "ekonomista" },
+  educator: { bg: "педагог", en: "educator", de: "Pädagoge", fr: "pédagogue", it: "pedagogo", tr: "eğitimci", es: "pedagogo", el: "παιδαγωγός" , ja: "教育者", tl: "edukador", uk: "педагог", ru: "педагог", pl: "pedagog" },
+  electrical_engineer: { bg: "електроинженер", en: "electrical engineer", de: "Elektroingenieur", fr: "ingénieur électricien", it: "ingegnere elettrico", tr: "elektrik mühendisi", es: "ingeniero eléctrico", el: "ηλεκτρολόγος μηχανικός" , ja: "電気技師", tl: "inhinyerong elektrikal", uk: "інженер-електрик", ru: "инженер-электрик", pl: "inżynier elektryk" },
+  engineer: { bg: "инженер", en: "engineer", de: "Ingenieur", fr: "ingénieur", it: "ingegnere", tr: "mühendis", es: "ingeniero", el: "μηχανικός" , ja: "技師", tl: "inhinyero", uk: "інженер", ru: "инженер", pl: "inżynier" },
+  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler", fr: "cavalier", it: "cavaliere", tr: "binici", es: "jinete", el: "ιππέας" , ja: "馬術選手", tl: "mangangabayo", uk: "вершник", ru: "наездник", pl: "jeździec" },
+  fencer: { bg: "фехтовач", en: "fencer", de: "Fechter", fr: "escrimeur", it: "schermidore", tr: "eskrimci", es: "esgrimista", el: "ξιφομάχος" , ja: "フェンシング選手", tl: "esgrimista", uk: "фехтувальник", ru: "фехтовальщик", pl: "szermierz" },
+  film_director: { bg: "филмов режисьор", en: "film director", de: "Filmregisseur", fr: "réalisateur", it: "regista cinematografico", tr: "film yönetmeni", es: "director de cine", el: "σκηνοθέτης κινηματογράφου" , ja: "映画監督", tl: "direktor ng pelikula", uk: "кінорежисер", ru: "кинорежиссёр", pl: "reżyser filmowy" },
+  first_lady: { bg: "първа дама", en: "first lady", de: "First Lady", fr: "première dame", it: "first lady", tr: "first lady", es: "primera dama", el: "πρώτη κυρία" , ja: "ファーストレディー", tl: "Unang Ginang", uk: "перша леді", ru: "первая леди", pl: "pierwsza dama" },
+  football_referee: { bg: "футболен съдия", en: "football referee", de: "Fußballschiedsrichter", fr: "arbitre de football", it: "arbitro di calcio", tr: "futbol hakemi", es: "árbitro de fútbol", el: "διαιτητής ποδοσφαίρου" , ja: "サッカー審判員", tl: "referi ng football", uk: "футбольний суддя", ru: "футбольный судья", pl: "sędzia piłkarski" },
+  footballer: { bg: "футболист", en: "footballer", de: "Fußballspieler", fr: "footballeur", it: "calciatore", tr: "futbolcu", es: "futbolista", el: "ποδοσφαιριστής" , ja: "サッカー選手", tl: "manlalaro ng football", uk: "футболіст", ru: "футболист", pl: "piłkarz" },
+  general: { bg: "генерал", en: "general", de: "General", fr: "général", it: "generale", tr: "general", es: "general", el: "στρατηγός" , ja: "将軍", tl: "heneral", uk: "генерал", ru: "генерал", pl: "generał" },
+  geographer: { bg: "географ", en: "geographer", de: "Geograf", fr: "géographe", it: "geografo", tr: "coğrafyacı", es: "geógrafo", el: "γεωγράφος" , ja: "地理学者", tl: "geograpo", uk: "географ", ru: "географ", pl: "geograf" },
+  gymnast: { bg: "гимнастик", en: "gymnast", de: "Turner", fr: "gymnaste", it: "ginnasta", tr: "jimnastikçi", es: "gimnasta", el: "γυμναστής" , ja: "体操選手", tl: "jimnasta", uk: "гімнаст", ru: "гимнаст", pl: "gimnastyk" },
+  high_jumper: { bg: "скачач на височина", en: "high jumper", de: "Hochspringer", fr: "sauteur en hauteur", it: "saltatore in alto", tr: "yüksek atlamacı", es: "saltador de altura", el: "άλτης ύψους" , ja: "走高跳選手", tl: "tumatalon nang mataas", uk: "стрибун у висоту", ru: "прыгун в высоту", pl: "skoczek wzwyż" },
+  illustrator: { bg: "илюстратор", en: "illustrator", de: "Illustrator", fr: "illustrateur", it: "illustratore", tr: "illüstratör", es: "ilustrador", el: "εικονογράφος" , ja: "イラストレーター", tl: "ilustrador", uk: "ілюстратор", ru: "иллюстратор", pl: "ilustrator" },
+  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower", de: "Speerwerfer", fr: "lanceur de javelot", it: "lanciatore di giavellotto", tr: "cirit atıcısı", es: "lanzador de jabalina", el: "ακοντιστής" , ja: "やり投げ選手", tl: "naghahagis ng habalina", uk: "метальник списа", ru: "метатель копья", pl: "oszczepnik" },
+  journalist: { bg: "журналист", en: "journalist", de: "Journalist", fr: "journaliste", it: "giornalista", tr: "gazeteci", es: "periodista", el: "δημοσιογράφος" , ja: "ジャーナリスト", tl: "mamamahayag", uk: "журналіст", ru: "журналист", pl: "dziennikarz" },
+  jurist: { bg: "юрист", en: "jurist", de: "Jurist", fr: "juriste", it: "giurista", tr: "hukukçu", es: "jurista", el: "νομικός" , ja: "法律家", tl: "hurista", uk: "юрист", ru: "юрист", pl: "prawnik" },
+  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist", de: "Kampfsportler", fr: "artiste martial", it: "artista marziale", tr: "dövüş sanatçısı", es: "artista marcial", el: "αθλητής πολεμικών τεχνών" , ja: "武道家", tl: "mandirigma", uk: "спортсмен бойових мистецтв", ru: "спортсмен по боевым искусствам", pl: "zawodnik sztuk walki" },
+  mathematician: { bg: "математик", en: "mathematician", de: "Mathematiker", fr: "mathématicien", it: "matematico", tr: "matematikçi", es: "matemático", el: "μαθηματικός" , ja: "数学者", tl: "matematiko", uk: "математик", ru: "математик", pl: "matematyk" },
+  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister", fr: "maire", it: "sindaco", tr: "belediye başkanı", es: "alcalde", el: "δήμαρχος" , ja: "市長", tl: "alkalde", uk: "мер", ru: "мэр", pl: "burmistrz" },
+  merchant: { bg: "търговец", en: "merchant", de: "Kaufmann", fr: "marchand", it: "mercante", tr: "tüccar", es: "comerciante", el: "έμπορος" , ja: "商人", tl: "mangangalakal", uk: "купець", ru: "купец", pl: "kupiec" },
+  military_officer: { bg: "офицер", en: "military officer", de: "Offizier", fr: "officier", it: "ufficiale", tr: "subay", es: "oficial", el: "αξιωματικός" , ja: "軍人", tl: "opisyal militar", uk: "офіцер", ru: "офицер", pl: "oficer" },
+  mineralogist: { bg: "минералог", en: "mineralogist", de: "Mineraloge", fr: "minéralogiste", it: "mineralogista", tr: "mineralog", es: "mineralogista", el: "ορυκτολόγος" , ja: "鉱物学者", tl: "mineralogo", uk: "мінералог", ru: "минералог", pl: "mineralog" },
+  missionary: { bg: "мисионер", en: "missionary", de: "Missionar", fr: "missionnaire", it: "missionario", tr: "misyoner", es: "misionero", el: "ιεραπόστολος" , ja: "宣教師", tl: "misyonero", uk: "місіонер", ru: "миссионер", pl: "misjonarz" },
+  model: { bg: "модел", en: "model", de: "Model", fr: "mannequin", it: "modella", tr: "manken", es: "modelo", el: "μοντέλο" , ja: "モデル", tl: "modelo", uk: "модель", ru: "модель", pl: "model" },
+  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete", de: "Moderner Fünfkämpfer", fr: "pentathlonien moderne", it: "pentatleta moderno", tr: "modern pentatlet", es: "pentatleta moderno", el: "αθλητής σύγχρονου πεντάθλου" , ja: "近代五種選手", tl: "atleta ng modernong pentahlon", uk: "спортсмен із сучасного п'ятиборства", ru: "спортсмен по современному пятиборью", pl: "pięcioboista nowoczesny" },
+  musician: { bg: "музикант", en: "musician", de: "Musiker", fr: "musicien", it: "musicista", tr: "müzisyen", es: "músico", el: "μουσικός" , ja: "音楽家", tl: "musikero", uk: "музикант", ru: "музыкант", pl: "muzyk" },
+  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger", fr: "chanteur d'opéra", it: "cantante lirico", tr: "opera sanatçısı", es: "cantante de ópera", el: "λυρικός τραγουδιστής" , ja: "オペラ歌手", tl: "mang-aawit ng opera", uk: "оперний співак", ru: "оперный певец", pl: "śpiewak operowy" },
+  painter: { bg: "живописец", en: "painter", de: "Maler", fr: "peintre", it: "pittore", tr: "ressam", es: "pintor", el: "ζωγράφος" , ja: "画家", tl: "pintor", uk: "живописець", ru: "живописец", pl: "malarz" },
+  paleontologist: { bg: "палеонтолог", en: "paleontologist", de: "Paläontologe", fr: "paléontologue", it: "paleontologo", tr: "paleontolog", es: "paleontólogo", el: "παλαιοντολόγος" , ja: "古生物学者", tl: "paleontologo", uk: "палеонтолог", ru: "палеонтолог", pl: "paleontolog" },
+  patriarch: { bg: "патриарх", en: "patriarch", de: "Patriarch", fr: "patriarche", it: "patriarca", tr: "patrik", es: "patriarca", el: "πατριάρχης" , ja: "総主教", tl: "patriyarka", uk: "патріарх", ru: "патриарх", pl: "patriarcha" },
+  philosopher: { bg: "философ", en: "philosopher", de: "Philosoph", fr: "philosophe", it: "filosofo", tr: "filozof", es: "filósofo", el: "φιλόσοφος" , ja: "哲学者", tl: "pilosopo", uk: "філософ", ru: "философ", pl: "filozof" },
+  physicist: { bg: "физик", en: "physicist", de: "Physiker", fr: "physicien", it: "fisico", tr: "fizikçi", es: "físico", el: "φυσικός" , ja: "物理学者", tl: "pisiko", uk: "фізик", ru: "физик", pl: "fizyk" },
+  pianist: { bg: "пианист", en: "pianist", de: "Pianist", fr: "pianiste", it: "pianista", tr: "piyanist", es: "pianista", el: "πιανίστας" , ja: "ピアニスト", tl: "pyanista", uk: "піаніст", ru: "пианист", pl: "pianista" },
+  poet: { bg: "поет", en: "poet", de: "Dichter", fr: "poète", it: "poeta", tr: "şair", es: "poeta", el: "ποιητής" , ja: "詩人", tl: "makata", uk: "поет", ru: "поэт", pl: "poeta" },
+  politician: { bg: "политик", en: "politician", de: "Politiker", fr: "politicien", it: "politico", tr: "siyasetçi", es: "político", el: "πολιτικός" , ja: "政治家", tl: "pulitiko", uk: "політик", ru: "политик", pl: "polityk" },
+  priest: { bg: "свещеник", en: "priest", de: "Priester", fr: "prêtre", it: "sacerdote", tr: "rahip", es: "sacerdote", el: "ιερέας" , ja: "司祭", tl: "pari", uk: "священник", ru: "священник", pl: "kapłan" },
+  printmaker: { bg: "график", en: "printmaker", de: "Grafiker", fr: "graveur", it: "incisore", tr: "gravürcü", es: "grabador", el: "χαράκτης" , ja: "版画家", tl: "tagagawa ng grabado", uk: "графік", ru: "график", pl: "grafik" },
+  producer: { bg: "продуцент", en: "producer", de: "Produzent", fr: "producteur", it: "produttore", tr: "yapımcı", es: "productor", el: "παραγωγός" , ja: "プロデューサー", tl: "produser", uk: "продюсер", ru: "продюсер", pl: "producent" },
+  public_figure: { bg: "обществена фигура", en: "public figure", de: "Person des öffentlichen Lebens", fr: "personnalité publique", it: "personaggio pubblico", tr: "kamusal figür", es: "figura pública", el: "δημόσιο πρόσωπο" , ja: "公人", tl: "pampublikong personalidad", uk: "громадський діяч", ru: "общественный деятель", pl: "postać publiczna" },
+  racing_driver: { bg: "автомобилен състезател", en: "racing driver", de: "Rennfahrer", fr: "pilote automobile", it: "pilota automobilistico", tr: "yarış pilotu", es: "piloto de carreras", el: "οδηγός αγώνων" , ja: "レーシングドライバー", tl: "drayber ng karera", uk: "автогонщик", ru: "автогонщик", pl: "kierowca wyścigowy" },
+  revolutionary: { bg: "революционер", en: "revolutionary", de: "Revolutionär", fr: "révolutionnaire", it: "rivoluzionario", tr: "devrimci", es: "revolucionario", el: "επαναστάτης" , ja: "革命家", tl: "rebolusyonaryo", uk: "революціонер", ru: "революционер", pl: "rewolucjonista" },
+  rower: { bg: "гребец", en: "rower", de: "Ruderer", fr: "rameur", it: "canottiere", tr: "kürekçi", es: "remero", el: "κωπηλάτης" , ja: "ボート選手", tl: "mananagwan", uk: "веслувальник", ru: "гребец", pl: "wioślarz" },
+  saint: { bg: "светец", en: "saint", de: "Heiliger", fr: "saint", it: "santo", tr: "aziz", es: "santo", el: "άγιος" , ja: "聖人", tl: "santo", uk: "святий", ru: "святой", pl: "święty" },
+  scholar: { bg: "учен", en: "scholar", de: "Gelehrter", fr: "érudit", it: "studioso", tr: "âlim", es: "erudito", el: "λόγιος" , ja: "学者", tl: "iskolar", uk: "вчений", ru: "учёный", pl: "uczony" },
+  scientist: { bg: "учен", en: "scientist", de: "Wissenschaftler", fr: "scientifique", it: "scienziato", tr: "bilim insanı", es: "científico", el: "επιστήμονας" , ja: "科学者", tl: "siyentista", uk: "науковець", ru: "научный деятель", pl: "naukowiec" },
+  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor", fr: "scénariste", it: "sceneggiatore", tr: "senarist", es: "guionista", el: "σεναριογράφος" , ja: "脚本家", tl: "manunulat ng iskrip", uk: "сценарист", ru: "сценарист", pl: "scenarzysta" },
+  sculptor: { bg: "скулптор", en: "sculptor", de: "Bildhauer", fr: "sculpteur", it: "scultore", tr: "heykeltıraş", es: "escultor", el: "γλύπτης" , ja: "彫刻家", tl: "eskultor", uk: "скульптор", ru: "скульптор", pl: "rzeźbiarz" },
+  singer: { bg: "певец", en: "singer", de: "Sänger", fr: "chanteur", it: "cantante", tr: "şarkıcı", es: "cantante", el: "τραγουδιστής" , ja: "歌手", tl: "mang-aawit", uk: "співак", ru: "певец", pl: "śpiewak" },
+  sports_shooter: { bg: "спортен стрелец", en: "sport shooter", de: "Sportschütze", fr: "tireur sportif", it: "tiratore sportivo", tr: "atıcı", es: "tirador deportivo", el: "σκοπευτής" , ja: "射撃選手", tl: "mamamaril sa isports", uk: "спортивний стрілець", ru: "спортивный стрелок", pl: "strzelec sportowy" },
+  swimmer: { bg: "плувец", en: "swimmer", de: "Schwimmer", fr: "nageur", it: "nuotatore", tr: "yüzücü", es: "nadador", el: "κολυμβητής" , ja: "水泳選手", tl: "manlalangoy", uk: "плавець", ru: "пловец", pl: "pływak" },
+  tennis_player: { bg: "тенисист", en: "tennis player", de: "Tennisspieler", fr: "joueur de tennis", it: "tennista", tr: "tenisçi", es: "tenista", el: "τενίστας" , ja: "テニス選手", tl: "manlalaro ng tenis", uk: "тенісист", ru: "теннисист", pl: "tenisista" },
+  theatre_director: { bg: "театрален режисьор", en: "theatre director", de: "Theaterregisseur", fr: "metteur en scène", it: "regista teatrale", tr: "tiyatro yönetmeni", es: "director de teatro", el: "σκηνοθέτης θεάτρου" , ja: "演劇演出家", tl: "direktor ng dulaan", uk: "театральний режисер", ru: "театральный режиссёр", pl: "reżyser teatralny" },
+  violinist: { bg: "цигулар", en: "violinist", de: "Geiger", fr: "violoniste", it: "violinista", tr: "kemancı", es: "violinista", el: "βιολιστής" , ja: "バイオリニスト", tl: "biyolinista", uk: "скрипаль", ru: "скрипач", pl: "skrzypek" },
+  visual_artist: { bg: "визуален художник", en: "visual artist", de: "Bildender Künstler", fr: "artiste visuel", it: "artista visivo", tr: "görsel sanatçı", es: "artista visual", el: "εικαστικός καλλιτέχνης" , ja: "ビジュアルアーティスト", tl: "biswal na artista", uk: "візуальний митець", ru: "визуальный художник", pl: "artysta wizualny" },
+  volleyball_player: { bg: "волейболист", en: "volleyball player", de: "Volleyballspieler", fr: "volleyeur", it: "pallavolista", tr: "voleybolcu", es: "voleibolista", el: "πετοσφαιριστής" , ja: "バレーボール選手", tl: "manlalaro ng volleyball", uk: "волейболіст", ru: "волейболист", pl: "siatkarz" },
+  weightlifter: { bg: "щангист", en: "weightlifter", de: "Gewichtheber", fr: "haltérophile", it: "sollevatore di pesi", tr: "halterci", es: "halterófilo", el: "αρσιβαρίστας" , ja: "重量挙げ選手", tl: "tagabuhat ng bigat", uk: "важкоатлет", ru: "тяжелоатлет", pl: "sztangista" },
+  wrestler: { bg: "борец", en: "wrestler", de: "Ringer", fr: "lutteur", it: "lottatore", tr: "güreşçi", es: "luchador", el: "παλαιστής" , ja: "レスリング選手", tl: "mambubuno", uk: "борець", ru: "борец", pl: "zapaśnik" },
+  writer: { bg: "писател", en: "writer", de: "Schriftsteller", fr: "écrivain", it: "scrittore", tr: "yazar", es: "escritor", el: "συγγραφέας" , ja: "作家", tl: "manunulat", uk: "письменник", ru: "писатель", pl: "pisarz" },
+  zoologist: { bg: "зоолог", en: "zoologist", de: "Zoologe", fr: "zoologiste", it: "zoologo", tr: "zoolog", es: "zoólogo", el: "ζωολόγος", ja: "動物学者", tl: "zoologo", uk: "зоолог", ru: "зоолог", pl: "zoolog" }
 };

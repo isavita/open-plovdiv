@@ -47,6 +47,7 @@
         "phase_tl": "Biswal na pagbabasa",
         "phase_uk": "Visual reading",
         "phase_ru": "Визуальное чтение",
+        "phase_pl": "Czytanie wizualne",
         "activity_de": "Die Schüler beschreiben ein Erdbebenarchivbild nur durch sichtbare Details, bevor sie Metadaten lesen.",
         "activity_fr": "Les élèves décrivent une image d'archive de tremblement de terre uniquement à travers les détails visibles avant de lire les métadonnées.",
         "activity_it": "Gli studenti descrivono un'immagine d'archivio del terremoto solo attraverso i dettagli visibili prima di leggere i metadati.",
@@ -56,7 +57,8 @@
         "activity_ja": "学生は、メタデータを読み取る前に、目に見える詳細のみを通して地震アーカイブ画像を説明します。",
         "activity_tl": "Inilalarawan ng mga mag-aaral ang isang imahe ng archive ng lindol sa pamamagitan lamang ng mga nakikitang detalye bago basahin ang metadata.",
         "activity_uk": "Учні описують зображення архіву землетрусу лише через видимі деталі перед читанням метаданих.",
-        "activity_ru": "Студенты описывают архивное изображение землетрясения только через видимые детали, прежде чем читать метаданные."
+        "activity_ru": "Студенты описывают архивное изображение землетрясения только через видимые детали, прежде чем читать метаданные.",
+        "activity_pl": "Przed zapoznaniem się z metadanymi uczniowie opisują obraz archiwalny dotyczący trzęsienia ziemi jedynie poprzez widoczne szczegóły."
       },
       {
         "minutes": 13,
@@ -74,6 +76,7 @@
         "phase_tl": "Metadata",
         "phase_uk": "Метадані",
         "phase_ru": "Метаданные",
+        "phase_pl": "Metadane",
         "activity_de": "Die Klasse prüft Datum, Ort, Quellenangabe, Lizenz und Quelle des Bildes.",
         "activity_fr": "La classe vérifie la date, le lieu, le crédit, la licence et la source de l'image.",
         "activity_it": "La classe verifica data, luogo, credito, licenza e fonte dell'immagine.",
@@ -83,7 +86,8 @@
         "activity_ja": "このクラスは、画像の日付、場所、クレジット、ライセンス、ソースをチェックします。",
         "activity_tl": "Sinusuri ng klase ang petsa, lugar, kredito, lisensya at pinagmulan para sa larawan.",
         "activity_uk": "Клас перевіряє дату, місце, авторство, ліцензію та джерело зображення.",
-        "activity_ru": "Класс проверяет дату, место, авторство, лицензию и источник изображения."
+        "activity_ru": "Класс проверяет дату, место, авторство, лицензию и источник изображения.",
+        "activity_pl": "Klasa sprawdza datę, miejsce, autorstwo, licencję i źródło obrazu."
       },
       {
         "minutes": 15,
@@ -101,6 +105,7 @@
         "phase_tl": "Programang pangkultura",
         "phase_uk": "Культурна програма",
         "phase_ru": "Культурная программа",
+        "phase_pl": "Program kulturalny",
         "activity_de": "Gruppen vergleichen Angaben zu 1999 und 2019 und markieren, welche Zahlen aus welcher Quelle stammen.",
         "activity_fr": "Les groupes comparent les affirmations concernant 1999 et 2019 et notent quels chiffres proviennent de quelle source.",
         "activity_it": "I gruppi confrontano le affermazioni relative al 1999 e al 2019 e indicano quali cifre provengono da quale fonte.",
@@ -110,7 +115,8 @@
         "activity_ja": "グループは 1999 年と 2019 年の主張を比較し、どの数字がどの情報源から来たのかをマークします。",
         "activity_tl": "Inihahambing ng mga grupo ang mga claim noong 1999 at 2019 at markahan kung aling mga numero ang nanggaling sa kung aling pinagmulan.",
         "activity_uk": "Групи порівнюють твердження про 1999 та 2019 роки та відзначають, які дані з якого джерела.",
-        "activity_ru": "Группы сравнивают утверждения за 1999 и 2019 годы и отмечают, какие цифры из какого источника."
+        "activity_ru": "Группы сравнивают утверждения за 1999 и 2019 годы и отмечают, какие цифры из какого источника.",
+        "activity_pl": "Grupy porównują wnioski dotyczące lat 1999 i 2019 i zaznaczają, które dane pochodzą z jakiego źródła."
       },
       {
         "minutes": 15,
@@ -128,6 +134,7 @@
         "phase_tl": "Makasaysayang teksto",
         "phase_uk": "Історичний текст",
         "phase_ru": "Исторический текст",
+        "phase_pl": "Tekst historyczny",
         "activity_de": "Die Studierenden schreiben einen kurzen Absatz über Genesung und kulturelles Gedächtnis mit mindestens zwei zitierten Belegen.",
         "activity_fr": "Les élèves rédigent un court paragraphe sur le rétablissement et la mémoire culturelle avec au moins deux supports cités.",
         "activity_it": "Gli studenti scrivono un breve paragrafo sul recupero e la memoria culturale citando almeno due supporti.",
@@ -137,7 +144,8 @@
         "activity_ja": "学生は、回復と文化的記憶について、少なくとも 2 つの裏付けを引用して短い段落を書きます。",
         "activity_tl": "Sumulat ang mga mag-aaral ng maikling talata sa pagbawi at memorya ng kultura na may hindi bababa sa dalawang binanggit na suporta.",
         "activity_uk": "Студенти пишуть короткий абзац про відновлення та культурну пам’ять із принаймні двома цитатами.",
-        "activity_ru": "Учащиеся пишут короткий абзац о восстановлении и культурной памяти, упоминая как минимум два аргумента."
+        "activity_ru": "Учащиеся пишут короткий абзац о восстановлении и культурной памяти, упоминая как минимум два аргумента.",
+        "activity_pl": "Uczniowie piszą krótki akapit na temat odzyskiwania i pamięci kulturowej, podając co najmniej dwa cytowane argumenty."
       }
     ],
     "quiz": [
@@ -167,6 +175,7 @@
         "question_tl": "Ano ang dapat suriin muna para sa isang makasaysayang larawan?",
         "question_uk": "Що в першу чергу потрібно перевірити для історичної фотографії?",
         "question_ru": "Что следует проверить в первую очередь на исторической фотографии?",
+        "question_pl": "Co należy sprawdzić w pierwszej kolejności przy fotografii historycznej?",
         "explanation_de": "Ein Bild benötigt nachvollziehbare Metadaten, um als Beweismittel verwendet zu werden.",
         "explanation_fr": "Une image a besoin de métadonnées traçables pour être utilisée comme preuve.",
         "explanation_it": "Un'immagine necessita di metadati tracciabili per essere utilizzata come prova.",
@@ -176,7 +185,8 @@
         "explanation_ja": "画像を証拠として使用するには、追跡可能なメタデータが必要です。",
         "explanation_tl": "Ang isang imahe ay nangangailangan ng traceable metadata upang magamit bilang ebidensya.",
         "explanation_uk": "Зображення потребує відстежуваних метаданих, щоб використовувати його як доказ.",
-        "explanation_ru": "Для использования изображения в качестве доказательства необходимы отслеживаемые метаданные."
+        "explanation_ru": "Для использования изображения в качестве доказательства необходимы отслеживаемые метаданные.",
+        "explanation_pl": "Aby obraz mógł zostać wykorzystany jako dowód, potrzebne są możliwe do prześledzenia metadane."
       },
       {
         "question_bg": "Кое твърдение за 1999 г. трябва да се пази като контекст, а не като бюджетен ред?",
@@ -204,6 +214,7 @@
         "question_tl": "Aling claim noong 1999 ang dapat manatiling konteksto, hindi linya ng badyet?",
         "question_uk": "Яка вимога 1999 року має залишатися контекстом, а не бюджетною статтею?",
         "question_ru": "Какое требование 1999 года должно оставаться контекстом, а не статьей бюджета?",
+        "question_pl": "Które twierdzenie z 1999 r. powinno pozostać kontekstem, a nie linią budżetową?",
         "explanation_de": "Bei den Archivaufzeichnungen von 1999 handelt es sich um einen Programmkontext, nicht um einen Gemeindehaushalt.",
         "explanation_fr": "Les archives de 1999 relèvent du contexte d'un programme et non d'un budget municipal.",
         "explanation_it": "La documentazione d'archivio del 1999 è un contesto di programma, non un bilancio comunale.",
@@ -213,7 +224,8 @@
         "explanation_ja": "1999 年のアーカイブ記録はプログラムの内容であり、自治体の予算ではありません。",
         "explanation_tl": "Ang talaan sa arkibo mula 1999 ay konteksto ng programa, hindi badyet ng munisipalidad.",
         "explanation_uk": "Архівний запис 1999 року є контекстом програми, а не міського бюджету.",
-        "explanation_ru": "Архивные данные за 1999 год представляют собой контекст программы, а не муниципальный бюджет."
+        "explanation_ru": "Архивные данные за 1999 год представляют собой контекст программы, а не муниципальный бюджет.",
+        "explanation_pl": "Zapis archiwalny z 1999 roku to kontekst programowy, a nie budżet gminy."
       },
       {
         "question_bg": "Кой източник потвърждава европейския контекст на 2019 г.?",
@@ -241,6 +253,7 @@
         "question_tl": "Aling pinagmulan ang nagkukumpirma sa European context ng 2019?",
         "question_uk": "Яке джерело підтверджує європейський контекст 2019 року?",
         "question_ru": "Какой источник подтверждает европейский контекст 2019 года?",
+        "question_pl": "Które źródło potwierdza europejski kontekst roku 2019?",
         "explanation_de": "Die Aufzeichnung für 2019 nutzt eine Quelle der Europäischen Kommission für den Titel „Kulturhauptstadt Europas“.",
         "explanation_fr": "La fiche 2019 utilise une source de la Commission européenne pour le titre de Capitale européenne de la culture.",
         "explanation_it": "Il record del 2019 utilizza una fonte della Commissione europea per il titolo di Capitale europea della cultura.",
@@ -250,7 +263,8 @@
         "explanation_ja": "2019 年の記録では、欧州文化首都の称号について欧州委員会の情報源を使用しています。",
         "explanation_tl": "Gumagamit ang rekord ng 2019 ng pinagmulan ng European Commission para sa pamagat ng Kapital ng Kultura sa Europa.",
         "explanation_uk": "Запис 2019 року використовує джерело Європейської комісії для титулу Європейська столиця культури.",
-        "explanation_ru": "В отчете 2019 года используется источник Европейской комиссии для названия культурной столицы Европы."
+        "explanation_ru": "В отчете 2019 года используется источник Европейской комиссии для названия культурной столицы Европы.",
+        "explanation_pl": "W rekordzie z 2019 r. wykorzystano źródło Komisji Europejskiej dotyczące tytułu Europejskiej Stolicy Kultury."
       }
     ],
     "printable_handout": {
@@ -275,7 +289,8 @@
       "title_ja": "ワークシート: 画像、プログラム、メモリ",
       "title_tl": "Worksheet: larawan, programa, memorya",
       "title_uk": "Робочий аркуш: зображення, програма, пам'ять",
-      "title_ru": "Рабочий лист: изображение, программа, память."
+      "title_ru": "Рабочий лист: изображение, программа, память.",
+      "title_pl": "Arkusz: obraz, program, pamięć"
     },
     "audio_tour": {
       "title_bg": "Маршрут за разходка: модерна памет",
@@ -298,6 +313,7 @@
           "title_tl": "Ivan Vazov Pambansang Aklatan",
           "title_uk": "Національна бібліотека імені Івана Вазова",
           "title_ru": "Национальная библиотека имени Ивана Вазова",
+          "title_pl": "Biblioteka Narodowa Iwana Wazowa",
           "narration_de": "Das Archivbild von 1928 erinnert uns daran, dass die moderne Stadt Spuren von Katastrophe und Wiederaufbau bewahrt.",
           "narration_fr": "L'image d'archive de 1928 nous rappelle que la ville moderne conserve des traces de catastrophes et de reconstruction.",
           "narration_it": "L'immagine d'archivio del 1928 ci ricorda che la città moderna conserva tracce di disastri e riprese.",
@@ -307,7 +323,8 @@
           "narration_ja": "1928 年のアーカイブ画像は、現代の都市が災害と復興の痕跡を保存していることを思い出させます。",
           "narration_tl": "Ang 1928 archive image ay nagpapaalala sa atin na ang modernong lungsod ay nagpapanatili ng mga bakas ng sakuna at pagbawi.",
           "narration_uk": "Архівне зображення 1928 року нагадує, що сучасне місто зберігає сліди катастрофи та відновлення.",
-          "narration_ru": "Архивное изображение 1928 года напоминает нам, что современный город хранит следы катастроф и восстановления."
+          "narration_ru": "Архивное изображение 1928 года напоминает нам, что современный город хранит следы катастроф и восстановления.",
+          "narration_pl": "Obraz archiwalny z 1928 roku przypomina, że ​​współczesne miasto zachowało ślady katastrofy i ożywienia."
         },
         {
           "place_id": "place-ancient-theatre",
@@ -325,6 +342,7 @@
           "title_tl": "Sinaunang Teatro",
           "title_uk": "Античний театр",
           "title_ru": "Древний театр",
+          "title_pl": "Starożytny teatr",
           "narration_de": "Im Jahr 1999 nutzte das Kulturprogramm symbolträchtige Veranstaltungsorte. Für die Geschichte ist es wichtig, den Programmumfang von den Haushaltszahlen zu unterscheiden.",
           "narration_fr": "En 1999, la programmation culturelle a utilisé des lieux emblématiques. Pour l’histoire, il est important de distinguer l’échelle du programme des chiffres budgétaires.",
           "narration_it": "Nel 1999 il programma culturale ha utilizzato luoghi emblematici. Per quanto riguarda la storia, è importante distinguere la scala del programma dalle cifre del bilancio.",
@@ -334,7 +352,8 @@
           "narration_ja": "1999 年の文化プログラムでは象徴的な会場が使用されました。歴史にとって、プログラムの規模と予算の数字を区別することが重要です。",
           "narration_tl": "Noong 1999 ang programang pangkultura ay gumamit ng mga emblematic na lugar. Para sa kasaysayan, mahalaga na makilala ang sukat ng programa mula sa mga numero ng badyet.",
           "narration_uk": "У 1999 році в культурній програмі були використані знакові майданчики. Для історії важливо відрізняти масштаб програми від цифр бюджету.",
-          "narration_ru": "В 1999 году в культурной программе использовались знаковые площадки. Для истории важно отличать масштаб программы от бюджетных цифр."
+          "narration_ru": "В 1999 году в культурной программе использовались знаковые площадки. Для истории важно отличать масштаб программы от бюджетных цифр.",
+          "narration_pl": "W 1999 roku w programie kulturalnym wykorzystano miejsca kultowe. Dla historii ważne jest odróżnienie skali programu od danych budżetowych."
         },
         {
           "place_id": "place-plovdiv-city",
@@ -352,6 +371,7 @@
           "title_tl": "Plovdiv 2019",
           "title_uk": "Plovdiv 2019",
           "title_ru": "Plovdiv 2019",
+          "title_pl": "Plovdiv 2019",
           "narration_de": "Die Kulturhauptstadt Europas stellt die Stadt in ein europäisches Netzwerk der Kulturpolitik und des öffentlichen Gedächtnisses.",
           "narration_fr": "La Capitale européenne de la culture place la ville dans un réseau européen de politique culturelle et de mémoire publique.",
           "narration_it": "La Capitale Europea della Cultura colloca la città in una rete europea di politica culturale e memoria pubblica.",
@@ -361,7 +381,8 @@
           "narration_ja": "欧州文化首都は、この都市を文化政策と公共記憶のヨーロッパのネットワークに位置づけています。",
           "narration_tl": "Inilalagay ng Kapital ng Kultura sa Europa ang lungsod sa isang European network ng patakarang pangkultura at pampublikong memorya.",
           "narration_uk": "Європейська культурна столиця поміщає місто в європейську мережу культурної політики та суспільної пам’яті.",
-          "narration_ru": "Европейская культурная столица помещает город в европейскую сеть культурной политики и общественной памяти."
+          "narration_ru": "Европейская культурная столица помещает город в европейскую сеть культурной политики и общественной памяти.",
+          "narration_pl": "Europejska Stolica Kultury umieszcza miasto w europejskiej sieci polityki kulturalnej i pamięci społecznej."
         }
       ],
       "title_de": "Wanderroute: moderne Erinnerung",
@@ -373,7 +394,8 @@
       "title_ja": "散策ルート：現代の記憶",
       "title_tl": "Ruta sa paglalakad: modernong memorya",
       "title_uk": "Пішохідний маршрут: сучасна пам'ять",
-      "title_ru": "Пешеходный маршрут: современная память"
+      "title_ru": "Пешеходный маршрут: современная память",
+      "title_pl": "Trasa spaceru: pamięć współczesna"
     },
     "linked_event_ids": [
       "event-event-1999-month-of-culture",
@@ -415,7 +437,8 @@
       "notes_ja": "教育リソースは公開知識ベースの記録から組み立てられており、正式に使用する前に教育的および編集的なレビューが必要です。",
       "notes_tl": "Ang mapagkukunang pang-edukasyon ay binuo mula sa mga pampublikong talaan ng kaalaman at kailangan pa ng pagsusuring pedagogical at editoryal bago gamitin nang pormal.",
       "notes_uk": "Освітній ресурс зібрано із загальнодоступних записів бази знань і вимагає педагогічної та редакційної перевірки перед офіційним використанням.",
-      "notes_ru": "Ресурс по образованию собирается из записей общедоступной базы знаний и требует педагогической и редакционной проверки перед официальным использованием."
+      "notes_ru": "Ресурс по образованию собирается из записей общедоступной базы знаний и требует педагогической и редакционной проверки перед официальным использованием.",
+      "notes_pl": "Zasoby edukacyjne składają się z publicznych rejestrów wiedzy i wymagają przeglądu pedagogicznego i redakcyjnego przed formalnym użyciem."
     },
     "provenance": [
       {
@@ -435,7 +458,8 @@
         "claim_ja": "レッスン「破壊、復興、文化資本」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na claim para sa aralin \"Pagsira, Pagbawi at Cultural Capital\".",
         "claim_uk": "Джерела та навчальні претензії до уроку \"Руйнування, відновлення та культурний капітал\".",
-        "claim_ru": "Источники и учебные претензии к уроку «Разрушение, восстановление и культурный капитал»."
+        "claim_ru": "Источники и учебные претензии к уроку «Разрушение, восстановление и культурный капитал».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Zniszczenie, odbudowa i kapitał kulturowy”."
       },
       {
         "source_id": "source-wikimedia-commons-bulgarian-archives-state-agency",
@@ -454,7 +478,8 @@
         "claim_ja": "レッスン「破壊、復興、文化資本」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na claim para sa aralin \"Pagsira, Pagbawi at Cultural Capital\".",
         "claim_uk": "Джерела та навчальні претензії до уроку \"Руйнування, відновлення та культурний капітал\".",
-        "claim_ru": "Источники и учебные претензии к уроку «Разрушение, восстановление и культурный капитал»."
+        "claim_ru": "Источники и учебные претензии к уроку «Разрушение, восстановление и культурный капитал».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Zniszczenie, odbudowa i kapitał kulturowy”."
       },
       {
         "source_id": "source-plovdiv-2019-official",
@@ -473,7 +498,8 @@
         "claim_ja": "レッスン「破壊、復興、文化資本」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na claim para sa aralin \"Pagsira, Pagbawi at Cultural Capital\".",
         "claim_uk": "Джерела та навчальні претензії до уроку \"Руйнування, відновлення та культурний капітал\".",
-        "claim_ru": "Источники и учебные претензии к уроку «Разрушение, восстановление и культурный капитал»."
+        "claim_ru": "Источники и учебные претензии к уроку «Разрушение, восстановление и культурный капитал».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Zniszczenie, odbudowa i kapitał kulturowy”."
       },
       {
         "source_id": "source-podtepeto-plovdiv-1999-month-culture-archive",
@@ -492,7 +518,8 @@
         "claim_ja": "レッスン「破壊、復興、文化資本」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na claim para sa aralin \"Pagsira, Pagbawi at Cultural Capital\".",
         "claim_uk": "Джерела та навчальні претензії до уроку \"Руйнування, відновлення та культурний капітал\".",
-        "claim_ru": "Источники и учебные претензии к уроку «Разрушение, восстановление и культурный капитал»."
+        "claim_ru": "Источники и учебные претензии к уроку «Разрушение, восстановление и культурный капитал».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Zniszczenie, odbudowa i kapitał kulturowy”."
       },
       {
         "source_id": "source-european-commission-ecoc-2019",
@@ -511,7 +538,8 @@
         "claim_ja": "レッスン「破壊、復興、文化資本」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na claim para sa aralin \"Pagsira, Pagbawi at Cultural Capital\".",
         "claim_uk": "Джерела та навчальні претензії до уроку \"Руйнування, відновлення та культурний капітал\".",
-        "claim_ru": "Источники и учебные претензии к уроку «Разрушение, восстановление и культурный капитал»."
+        "claim_ru": "Источники и учебные претензии к уроку «Разрушение, восстановление и культурный капитал».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Zniszczenie, odbudowa i kapitał kulturowy”."
       }
     ],
     "audience_de": "Klassen 8-11",
@@ -524,6 +552,7 @@
     "audience_tl": "Baitang 8-11",
     "audience_uk": "8-11 класи",
     "audience_ru": "8-11 классы",
+    "audience_pl": "Klasy 8-11",
     "title_de": "Zerstörung, Wiederherstellung und Kulturkapital",
     "title_fr": "Destruction, récupération et capital culturel",
     "title_it": "Distruzione, ripresa e capitale culturale",
@@ -534,6 +563,7 @@
     "title_tl": "Pagkasira, Pagbawi at Cultural Capital",
     "title_uk": "Руйнування, відновлення та культурний капітал",
     "title_ru": "Разрушение, восстановление и культурный капитал",
+    "title_pl": "Zniszczenie, odbudowa i kapitał kulturowy",
     "summary_de": "Eine Lektion über das moderne Plovdiv anhand visueller Archive: Schäden durch das Erdbeben von 1928, das Kulturprogramm von 1999 und die Kulturhauptstadt Europas 2019.",
     "summary_fr": "Une leçon sur la Plovdiv moderne à travers des archives visuelles : les dégâts du tremblement de terre de 1928, le programme culturel de 1999 et la Capitale européenne de la culture 2019.",
     "summary_it": "Una lezione sulla Plovdiv moderna attraverso gli archivi visivi: i danni del terremoto del 1928, il programma culturale del 1999 e la Capitale europea della cultura 2019.",
@@ -544,6 +574,7 @@
     "summary_tl": "Isang aralin sa modernong Plovdiv sa pamamagitan ng mga visual na archive: pinsala mula sa lindol noong 1928, programang pangkultura noong 1999 at 2019 Kapital ng Kultura sa Europa.",
     "summary_uk": "Урок про сучасний Plovdiv через візуальні архіви: збитки від землетрусу 1928 року, культурна програма 1999 року та культурна столиця Європи 2019 року.",
     "summary_ru": "Урок о современном Plovdiv через визуальные архивы: ущерб от землетрясения 1928 года, культурная программа 1999 года и культурная столица Европы 2019 года.",
+    "summary_pl": "Lekcja o współczesnym Plovdivie poprzez archiwa wizualne: zniszczenia spowodowane trzęsieniem ziemi w 1928 r., program kulturalny z 1999 r. i Europejska Stolica Kultury 2019.",
     "driving_question_de": "Wie verwandelt eine Stadt Krisen- und Kulturprogramme in öffentliches Gedächtnis?",
     "driving_question_fr": "Comment une ville transforme-t-elle la crise et la programmation culturelle en mémoire publique ?",
     "driving_question_it": "Come fa una città a trasformare la crisi e la programmazione culturale in memoria pubblica?",
@@ -554,6 +585,7 @@
     "driving_question_tl": "Paano ginagawang memorya ng publiko ang krisis at programang pangkultura ng isang lungsod?",
     "driving_question_uk": "Як місто перетворює кризу та культурне програмування на суспільну пам’ять?",
     "driving_question_ru": "Как город превращает кризисные и культурные программы в общественную память?",
+    "driving_question_pl": "Jak miasto przekształca kryzys i programy kulturalne w pamięć publiczną?",
     "preparation_de": "Öffnen Sie die Erdbebenarchivbilder von 1928, die Aufzeichnung von 1999 und das Ereignis von 2019.",
     "preparation_fr": "Ouvrez les images d'archives du tremblement de terre de 1928, la fiche de 1999 et l'événement de 2019.",
     "preparation_it": "Apri l'archivio immagini del terremoto del 1928, la documentazione del 1999 e l'evento del 2019.",
@@ -563,7 +595,8 @@
     "preparation_ja": "1928 年の地震アーカイブ画像、1999 年の記録、2019 年の地震イベントを開きます。",
     "preparation_tl": "Buksan ang 1928 earthquake archive images, ang 1999 record at ang 2019 event.",
     "preparation_uk": "Відкрийте архівні зображення землетрусу 1928 року, запис 1999 року та подію 2019 року.",
-    "preparation_ru": "Откройте архивные изображения землетрясения 1928 года, запись 1999 года и событие 2019 года."
+    "preparation_ru": "Откройте архивные изображения землетрясения 1928 года, запись 1999 года и событие 2019 года.",
+    "preparation_pl": "Otwórz obrazy archiwalne dotyczące trzęsienia ziemi w 1928 r., zapis z 1999 r. i wydarzenie z 2019 r."
   },
   {
     "id": "education-revival-houses-schools",
@@ -614,6 +647,7 @@
         "phase_tl": "Pagmamasid",
         "phase_uk": "Спостереження",
         "phase_ru": "Наблюдение",
+        "phase_pl": "Obserwacja",
         "activity_de": "Die Schüler beschreiben sichtbare Merkmale eines Wiedergeburtshauses, ohne unbegründete Schlussfolgerungen zu ziehen.",
         "activity_fr": "Les élèves décrivent les caractéristiques visibles d’une maison de la Renaissance sans tirer de conclusions sans fondement.",
         "activity_it": "Gli studenti descrivono le caratteristiche visibili di una casa della Rinascita senza trarre conclusioni non supportate.",
@@ -623,7 +657,8 @@
         "activity_ja": "生徒たちは、裏付けのない結論を下すことなく、民族復興期の邸宅の目に見える特徴を説明します。",
         "activity_tl": "Inilalarawan ng mga mag-aaral ang mga nakikitang tampok ng isang bahay ng Pambansang Muling Pagsilang nang hindi gumagawa ng mga hindi sinusuportahang konklusyon.",
         "activity_uk": "Учні описують видимі риси будинку Відродження, не роблячи необґрунтованих висновків.",
-        "activity_ru": "Студенты описывают видимые особенности дома Возрождения, не делая ничем не обоснованных выводов."
+        "activity_ru": "Студенты описывают видимые особенности дома Возрождения, не делая ничем не обоснованных выводов.",
+        "activity_pl": "Uczniowie opisują widoczne cechy domu odrodzenia, nie wyciągając niepopartych wniosków."
       },
       {
         "minutes": 12,
@@ -641,6 +676,7 @@
         "phase_tl": "Pinagmulan at pag-andar",
         "phase_uk": "Джерело і функція",
         "phase_ru": "Источник и функция",
+        "phase_pl": "Źródło i funkcja",
         "activity_de": "Die Gruppen prüfen, wie die Quelle die Funktion eines ausgewählten Gebäudes oder einer ausgewählten Schule beschreibt.",
         "activity_fr": "Les groupes vérifient comment la source décrit la fonction d'un bâtiment ou d'une école choisi.",
         "activity_it": "I gruppi controllano come la fonte descrive la funzione dell'edificio o della scuola scelta.",
@@ -650,7 +686,8 @@
         "activity_ja": "グループは、選択した建物や学校の機能が情報源にどのように記述されているかを確認します。",
         "activity_tl": "Tinitingnan ng mga grupo kung paano inilalarawan ng pinagmulan ang function ng isang napiling gusali o paaralan.",
         "activity_uk": "Групи перевіряють, як джерело описує призначення вибраної будівлі чи школи.",
-        "activity_ru": "Группы проверяют, как источник описывает функцию выбранного здания или школы."
+        "activity_ru": "Группы проверяют, как источник описывает функцию выбранного здания или школы.",
+        "activity_pl": "Grupy sprawdzają, jak źródło opisuje funkcję wybranego budynku lub szkoły."
       },
       {
         "minutes": 13,
@@ -668,6 +705,7 @@
         "phase_tl": "Komunidad",
         "phase_uk": "Спільнота",
         "phase_ru": "Сообщество",
+        "phase_pl": "Społeczność",
         "activity_de": "Die Klasse diskutiert, wie Schulen, Kirchen und Häuser ein städtisches Netzwerk von Gemeinschaften bilden.",
         "activity_fr": "La classe discute de la manière dont les écoles, les églises et les maisons forment un réseau urbain de communautés.",
         "activity_it": "La classe discute di come scuole, chiese e case formano una rete urbana di comunità.",
@@ -677,7 +715,8 @@
         "activity_ja": "このクラスでは、学校、教会、住宅が都市のコミュニティ ネットワークをどのように形成するかについて話し合います。",
         "activity_tl": "Tinatalakay ng klase kung paano ang mga paaralan, simbahan at bahay ay bumubuo ng isang panglungsod network ng mga komunidad.",
         "activity_uk": "Клас обговорює, як школи, церкви та будинки утворюють міську мережу громад.",
-        "activity_ru": "В классе обсуждается, как школы, церкви и дома образуют городскую сеть сообществ."
+        "activity_ru": "В классе обсуждается, как школы, церкви и дома образуют городскую сеть сообществ.",
+        "activity_pl": "Zajęcia omawiają, w jaki sposób szkoły, kościoły i domy tworzą miejską sieć społeczności."
       },
       {
         "minutes": 10,
@@ -695,6 +734,7 @@
         "phase_tl": "Exit ticket",
         "phase_uk": "Вихідний квиток",
         "phase_ru": "Выходной билет",
+        "phase_pl": "Bilet wyjściowy",
         "activity_de": "Jeder Schüler schreibt eine bewiesene Behauptung und eine Frage, die eine andere Quelle erfordert.",
         "activity_fr": "Chaque élève rédige une affirmation prouvée et une question nécessitant une autre source.",
         "activity_it": "Ogni studente scrive un'affermazione comprovata e una domanda che richiede un'altra fonte.",
@@ -704,7 +744,8 @@
         "activity_ja": "各生徒は、証拠のある主張を 1 つと、別の情報源を必要とする質問を 1 つ書きます。",
         "activity_tl": "Ang bawat mag-aaral ay nagsusulat ng isang ebidensiya na paghahabol at isang tanong na nangangailangan ng isa pang mapagkukunan.",
         "activity_uk": "Кожен студент пише одне підтверджене твердження та одне запитання, яке потребує іншого джерела.",
-        "activity_ru": "Каждый студент пишет одно обоснованное утверждение и один вопрос, требующий другого источника."
+        "activity_ru": "Каждый студент пишет одно обоснованное утверждение и один вопрос, требующий другого источника.",
+        "activity_pl": "Każdy uczeń zapisuje jedno potwierdzone twierdzenie i jedno pytanie wymagające innego źródła."
       }
     ],
     "quiz": [
@@ -734,6 +775,7 @@
         "question_tl": "Aling uri ng site ang maaaring magpakita ng kasaysayang pang-edukasyon?",
         "question_uk": "Який тип сайту може показувати освітню історію?",
         "question_ru": "Какой тип сайта может отображать историю образования?",
+        "question_pl": "Który typ witryny może wyświetlać historię edukacji?",
         "explanation_de": "Schulgebäude haben eine Funktion, die mit der Bildungsgeschichte der Stadt verknüpft werden kann.",
         "explanation_fr": "Les bâtiments scolaires ont une fonction qui peut être liée à l'histoire éducative de la ville.",
         "explanation_it": "Gli edifici scolastici hanno una funzione che può essere collegata alla storia educativa della città.",
@@ -743,7 +785,8 @@
         "explanation_ja": "校舎には街の教育の歴史とつながる機能があります。",
         "explanation_tl": "Ang mga gusali ng paaralan ay may function na maaaring maiugnay sa kasaysayan ng edukasyon ng lungsod.",
         "explanation_uk": "Шкільні будівлі мають функцію, яку можна пов’язати з історією освіти міста.",
-        "explanation_ru": "Школьные здания выполняют функцию, которую можно связать с историей образования города."
+        "explanation_ru": "Школьные здания выполняют функцию, которую можно связать с историей образования города.",
+        "explanation_pl": "Budynki szkolne pełnią funkcję, którą można powiązać z edukacyjną historią miasta."
       },
       {
         "question_bg": "Какво трябва да съдържа снимката, за да се използва в урок?",
@@ -771,6 +814,7 @@
         "question_tl": "Ano ang dapat isama sa isang imahe upang magamit sa isang aralin?",
         "question_uk": "Що має містити зображення, щоб використовувати його на уроці?",
         "question_ru": "Что должно включать в себя изображение, чтобы его можно было использовать на уроке?",
+        "question_pl": "Co musi zawierać obraz, aby można go było wykorzystać na lekcji?",
         "explanation_de": "Open Plovdiv verwendet Bilder mit nachvollziehbarer Herkunft und klaren Wiederverwendungsbedingungen.",
         "explanation_fr": "Open Plovdiv utilise des images dont l'origine est traçable et des conditions de réutilisation claires.",
         "explanation_it": "Open Plovdiv utilizza immagini con origine tracciabile e termini di riutilizzo chiari.",
@@ -780,7 +824,8 @@
         "explanation_ja": "Open Plovdiv では、出所が追跡可能で再利用条件が明確な画像を使用しています。",
         "explanation_tl": "Gumagamit ang Open Plovdiv ng mga larawang may nasusubaybayang pinagmulan at malinaw na mga tuntunin sa muling paggamit.",
         "explanation_uk": "Open Plovdiv використовує зображення з відстежуваним походженням і чіткими умовами повторного використання.",
-        "explanation_ru": "Open Plovdiv использует изображения с отслеживаемым происхождением и четкими условиями повторного использования."
+        "explanation_ru": "Open Plovdiv использует изображения с отслеживаемым происхождением и четкими условиями повторного использования.",
+        "explanation_pl": "Open Plovdiv wykorzystuje obrazy o możliwym do prześledzenia pochodzeniu i jasnych warunkach ponownego wykorzystania."
       },
       {
         "question_bg": "Защо Старият град се разглежда като повече от архитектурен ансамбъл?",
@@ -808,6 +853,7 @@
         "question_tl": "Bakit ang Lumang Bayan ay itinuturing na higit pa sa isang arkitektural na grupo?",
         "question_uk": "Чому Старе місто розглядається як щось більше, ніж архітектурний ансамбль?",
         "question_ru": "Почему Старый город рассматривается как нечто большее, чем просто архитектурный ансамбль?",
+        "question_pl": "Dlaczego Stare Miasto traktowane jest jak coś więcej niż zespół architektoniczny?",
         "explanation_de": "Die historische Interpretation verbindet Architektur mit Menschen, Institutionen und früheren städtischen Schichten.",
         "explanation_fr": "L’interprétation historique relie l’architecture aux personnes, aux institutions et aux couches urbaines antérieures.",
         "explanation_it": "L’interpretazione storica collega l’architettura con le persone, le istituzioni e gli strati urbani precedenti.",
@@ -817,7 +863,8 @@
         "explanation_ja": "歴史的解釈は、建築を人々、組織、初期の都市層と結びつけます。",
         "explanation_tl": "Ang makasaysayang interpretasyon ay nag-uugnay sa arkitektura sa mga tao, institusyon at mas naunang patong panglungsod.",
         "explanation_uk": "Історична інтерпретація пов’язує архітектуру з людьми, установами та попередніми міськими шарами.",
-        "explanation_ru": "Историческая интерпретация связывает архитектуру с людьми, учреждениями и более ранними городскими слоями."
+        "explanation_ru": "Историческая интерпретация связывает архитектуру с людьми, учреждениями и более ранними городскими слоями.",
+        "explanation_pl": "Interpretacja historyczna łączy architekturę z ludźmi, instytucjami i wcześniejszymi warstwami urbanistycznymi."
       }
     ],
     "printable_handout": {
@@ -842,7 +889,8 @@
       "title_ja": "ワークシート: ソースとしての建物",
       "title_tl": "Worksheet: isang gusali bilang pinagmulan",
       "title_uk": "Робочий аркуш: будівля як джерело",
-      "title_ru": "Рабочий лист: здание как источник"
+      "title_ru": "Рабочий лист: здание как источник",
+      "title_pl": "Arkusz ćwiczeń: budynek jako źródło"
     },
     "audio_tour": {
       "title_bg": "Маршрут за разходка: къщи и училища в Стария град",
@@ -865,6 +913,7 @@
           "title_tl": "Matandang Plovdiv",
           "title_uk": "Старий Plovdiv",
           "title_ru": "Старый Plovdiv",
+          "title_pl": "Stary Plovdiv",
           "narration_de": "In der Altstadt sind Fassaden nur der Anfang. Dahinter stehen Familien, Schulen, Kirchengemeinden und bürgerschaftliche Entscheidungen.",
           "narration_fr": "Dans la Vieille Ville, les façades ne sont qu’un début. Derrière eux se trouvent les familles, les écoles, les communautés ecclésiales et les décisions civiques.",
           "narration_it": "Nel centro storico le facciate sono solo l'inizio. Dietro di loro ci sono le famiglie, le scuole, le comunità ecclesiali e le decisioni civiche.",
@@ -874,7 +923,8 @@
           "narration_ja": "旧市街では、ファサードは始まりにすぎません。その背後には、家族、学校、教会コミュニティ、そして市民の決定があります。",
           "narration_tl": "Sa Lumang Bayan, ang mga facade ay simula pa lamang. Sa likod nila ay nakatayo ang mga pamilya, paaralan, komunidad ng simbahan at mga desisyong sibiko.",
           "narration_uk": "У Старому місті фасади – це лише початок. За ними стоять сім’ї, школи, церковні громади та громадянські рішення.",
-          "narration_ru": "В Старом городе фасады – это только начало. За ними стоят семьи, школы, церковные общины и гражданские решения."
+          "narration_ru": "В Старом городе фасады – это только начало. За ними стоят семьи, школы, церковные общины и гражданские решения.",
+          "narration_pl": "Na Starym Mieście fasady to dopiero początek. Za nimi stoją rodziny, szkoły, wspólnoty kościelne i decyzje obywatelskie."
         },
         {
           "place_id": "place-humanitarian-high-school-saints-cyril-and-methodius-plovdiv-q12290859",
@@ -892,6 +942,7 @@
           "title_tl": "Saints Cyril at Methodius High School of Humanities",
           "title_uk": "Гуманітарна середня школа імені Святих Кирила і Мефодія",
           "title_ru": "Высшая гуманитарная школа имени святых Кирилла и Мефодия",
+          "title_pl": "Wyższa Szkoła Humanistyczna im. Św. Cyryla i Metodego",
           "narration_de": "Die Bildungsgeschichte Plovdivs lässt sich anhand von Gebäuden, Archiven und Erinnerungen nachlesen. Trennen Sie immer Beweise von Annahmen.",
           "narration_fr": "L'histoire éducative de Plovdiv peut être lue à travers les bâtiments, les archives et les souvenirs. Séparez toujours les preuves des hypothèses.",
           "narration_it": "La storia educativa di Plovdiv può essere letta attraverso edifici, archivi e ricordi. Separare sempre le prove dalle ipotesi.",
@@ -901,7 +952,8 @@
           "narration_ja": "Plovdivの教育の歴史は、建物、アーカイブ、記憶を通して読み取ることができます。証拠と仮定を常に分離してください。",
           "narration_tl": "Ang kasaysayang pang-edukasyon ni Plovdiv ay mababasa sa pamamagitan ng mga gusali, archive at alaala. Palaging ihiwalay ang ebidensya sa palagay.",
           "narration_uk": "Історію освіти Plovdiv можна прочитати через будівлі, архіви та спогади. Завжди відокремлюйте докази від припущень.",
-          "narration_ru": "Об образовательной истории Plovdiv можно прочитать в зданиях, архивах и воспоминаниях. Всегда отделяйте доказательства от предположений."
+          "narration_ru": "Об образовательной истории Plovdiv можно прочитать в зданиях, архивах и воспоминаниях. Всегда отделяйте доказательства от предположений.",
+          "narration_pl": "Historię edukacji Plovdivu można odczytać poprzez budynki, archiwa i wspomnienia. Zawsze oddzielaj dowody od założeń."
         },
         {
           "place_id": "place-holy-mother-of-god",
@@ -919,6 +971,7 @@
           "title_tl": "Banal na Ina ng Diyos",
           "title_uk": "Пресвятої Богородиці",
           "title_ru": "Святая Богородица",
+          "title_pl": "Święta Matka Boża",
           "narration_de": "Kirchen sind Teil der Geschichte städtischer Gemeinschaften. Sie verbinden Glauben, Sprache, Schule und öffentliches Leben.",
           "narration_fr": "Les églises font partie de l’histoire des communautés urbaines. Ils relient la foi, la langue, les écoles et la vie publique.",
           "narration_it": "Le chiese fanno parte della storia delle comunità urbane. Collegano fede, lingua, scuola e vita pubblica.",
@@ -928,7 +981,8 @@
           "narration_ja": "教会は都市コミュニティの歴史の一部です。それらは信仰、言語、学校、公共生活を結びつけます。",
           "narration_tl": "Ang mga simbahan ay bahagi ng kasaysayan ng mga pamayanang panglungsod. Nag-uugnay sila ng pananampalataya, wika, paaralan at pampublikong buhay.",
           "narration_uk": "Церкви є частиною історії міських громад. Вони пов’язують віру, мову, школи та громадське життя.",
-          "narration_ru": "Церкви являются частью истории городских сообществ. Они соединяют веру, язык, школы и общественную жизнь."
+          "narration_ru": "Церкви являются частью истории городских сообществ. Они соединяют веру, язык, школы и общественную жизнь.",
+          "narration_pl": "Kościoły są częścią historii społeczności miejskich. Łączą wiarę, język, szkołę i życie publiczne."
         }
       ],
       "title_de": "Wanderroute: Häuser und Schulen in der Altstadt",
@@ -940,7 +994,8 @@
       "title_ja": "散策ルート: 旧市街の家々や学校",
       "title_tl": "Ruta sa paglalakad: mga bahay at paaralan sa Lumang Bayan",
       "title_uk": "Пішохідний маршрут: будинки та школи в Старому місті",
-      "title_ru": "Пешеходный маршрут: дома и школы в Старом городе"
+      "title_ru": "Пешеходный маршрут: дома и школы в Старом городе",
+      "title_pl": "Trasa piesza: domy i szkoły na Starym Mieście"
     },
     "linked_event_ids": [
       "event-first-school-1836"
@@ -981,7 +1036,8 @@
       "notes_ja": "教育リソースは公開知識ベースの記録から組み立てられており、正式に使用する前に教育的および編集的なレビューが必要です。",
       "notes_tl": "Ang mapagkukunang pang-edukasyon ay binuo mula sa mga pampublikong talaan ng kaalaman at kailangan pa ng pagsusuring pedagogical at editoryal bago gamitin nang pormal.",
       "notes_uk": "Освітній ресурс зібрано із загальнодоступних записів бази знань і вимагає педагогічної та редакційної перевірки перед офіційним використанням.",
-      "notes_ru": "Ресурс по образованию собирается из записей общедоступной базы знаний и требует педагогической и редакционной проверки перед официальным использованием."
+      "notes_ru": "Ресурс по образованию собирается из записей общедоступной базы знаний и требует педагогической и редакционной проверки перед официальным использованием.",
+      "notes_pl": "Zasoby edukacyjne składają się z publicznych rejestrów wiedzy i wymagają przeglądu pedagogicznego i redakcyjnego przed formalnym użyciem."
     },
     "provenance": [
       {
@@ -1001,7 +1057,8 @@
         "claim_ja": "レッスン「復興都市: 住宅、学校、コミュニティ」の情報源と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na mga claim para sa aralin \"The Pambansang Muling Pagsilang City: Houses, Schools and Communities\".",
         "claim_uk": "Джерела та навчальні претензії до уроку «Відроджене місто: будинки, школи та громади».",
-        "claim_ru": "Источники и учебные материалы к уроку «Город возрождения: Дома, школы и поселения»."
+        "claim_ru": "Источники и учебные материалы к уроку «Город возрождения: Дома, школы и поселения».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Miasto odrodzenia: domy, szkoły i społeczności”."
       },
       {
         "source_id": "source-wikipedia-old-town-plovdiv",
@@ -1020,7 +1077,8 @@
         "claim_ja": "レッスン「復興都市: 住宅、学校、コミュニティ」の情報源と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na mga claim para sa aralin \"The Pambansang Muling Pagsilang City: Houses, Schools and Communities\".",
         "claim_uk": "Джерела та навчальні претензії до уроку «Відроджене місто: будинки, школи та громади».",
-        "claim_ru": "Источники и учебные материалы к уроку «Город возрождения: Дома, школы и поселения»."
+        "claim_ru": "Источники и учебные материалы к уроку «Город возрождения: Дома, школы и поселения».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Miasto odrodzenia: domy, szkoły i społeczności”."
       },
       {
         "source_id": "source-wikipedia-humanitarian-high-school-saints-cyril-and-methodius-plovdiv",
@@ -1039,7 +1097,8 @@
         "claim_ja": "レッスン「復興都市: 住宅、学校、コミュニティ」の情報源と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na mga claim para sa aralin \"The Pambansang Muling Pagsilang City: Houses, Schools and Communities\".",
         "claim_uk": "Джерела та навчальні претензії до уроку «Відроджене місто: будинки, школи та громади».",
-        "claim_ru": "Источники и учебные материалы к уроку «Город возрождения: Дома, школы и поселения»."
+        "claim_ru": "Источники и учебные материалы к уроку «Город возрождения: Дома, школы и поселения».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Miasto odrodzenia: domy, szkoły i społeczności”."
       },
       {
         "source_id": "source-wikimedia-commons-historical-images-plovdiv",
@@ -1058,7 +1117,8 @@
         "claim_ja": "レッスン「復興都市: 住宅、学校、コミュニティ」の情報源と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na mga claim para sa aralin \"The Pambansang Muling Pagsilang City: Houses, Schools and Communities\".",
         "claim_uk": "Джерела та навчальні претензії до уроку «Відроджене місто: будинки, школи та громади».",
-        "claim_ru": "Источники и учебные материалы к уроку «Город возрождения: Дома, школы и поселения»."
+        "claim_ru": "Источники и учебные материалы к уроку «Город возрождения: Дома, школы и поселения».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Miasto odrodzenia: domy, szkoły i społeczności”."
       }
     ],
     "audience_de": "Klassen 7-9",
@@ -1071,6 +1131,7 @@
     "audience_tl": "Baitang 7-9",
     "audience_uk": "7-9 класи",
     "audience_ru": "7-9 классы",
+    "audience_pl": "Klasy 7-9",
     "title_de": "Die Stadt der Wiedergeburtszeit: Häuser, Schulen und Gemeinden",
     "title_fr": "La ville du renouveau : maisons, écoles et communautés",
     "title_it": "La città del risveglio: case, scuole e comunità",
@@ -1081,6 +1142,7 @@
     "title_tl": "The Pambansang Muling Pagsilang City: Mga Bahay, Paaralan at Komunidad",
     "title_uk": "Місто відродження: будинки, школи та громади",
     "title_ru": "Город возрождения: дома, школы и сообщества",
+    "title_pl": "Miasto odrodzenia: domy, szkoły i społeczności",
     "summary_de": "Eine Lektion über die Altstadt als einen Ort, an dem Wiedergeburtsarchitektur, Schulen, Kirchen und städtische Gemeinden die Geschichte der Modernisierung erzählen.",
     "summary_fr": "Une leçon sur la vieille ville en tant que lieu où l'architecture néo-renaissance, les écoles, les églises et les communautés urbaines racontent l'histoire de la modernisation.",
     "summary_it": "Una lezione sulla Città Vecchia come luogo in cui l'architettura della Rinascita, le scuole, le chiese e le comunità urbane raccontano la storia della modernizzazione.",
@@ -1091,6 +1153,7 @@
     "summary_tl": "Isang aral sa Lumang Bayan bilang isang lugar kung saan ang arkitektura ng Pambansang Muling Pagsilang, mga paaralan, mga simbahan at mga komunidad sa lunsod ay nagsasabi ng kuwento ng modernisasyon.",
     "summary_uk": "Урок про Старе місто як місце, де архітектура Відродження, школи, церкви та міські громади розповідають історію модернізації.",
     "summary_ru": "Урок о Старом городе как месте, где архитектура Возрождения, школы, церкви и городские сообщества рассказывают историю модернизации.",
+    "summary_pl": "Lekcja o Starym Mieście jako miejscu, w którym renesansowa architektura, szkoły, kościoły i społeczności miejskie opowiadają historię modernizacji.",
     "driving_question_de": "Wie spiegeln Gebäude den sozialen und pädagogischen Wandel in der Stadt wider?",
     "driving_question_fr": "Comment les bâtiments révèlent-ils les changements sociaux et éducatifs dans la ville ?",
     "driving_question_it": "In che modo gli edifici rivelano il cambiamento sociale ed educativo nella città?",
@@ -1101,6 +1164,7 @@
     "driving_question_tl": "Paano ipinapakita ng mga gusali ang pagbabago sa lipunan at edukasyon sa lungsod?",
     "driving_question_uk": "Як будівлі виявляють соціальні та освітні зміни в місті?",
     "driving_question_ru": "Как здания отражают социальные и образовательные изменения в городе?",
+    "driving_question_pl": "W jaki sposób budynki ujawniają zmiany społeczne i edukacyjne w mieście?",
     "preparation_de": "Wählen Sie drei Altstadtstandorte und einen Schulstandort. Bereiten Sie lizenzierte Bilder und kurze Quellenhinweise vor.",
     "preparation_fr": "Choisissez trois sites de la vieille ville et un site scolaire. Préparez des images sous licence et de courtes notes sur les sources.",
     "preparation_it": "Scegli tre siti della Città Vecchia e un sito scolastico. Preparare immagini con licenza e brevi note sulla fonte.",
@@ -1110,7 +1174,8 @@
     "preparation_ja": "旧市街用地を 3 つと学校用地を 1 つ選択します。ライセンスのある画像と短いソースメモを準備します。",
     "preparation_tl": "Pumili ng tatlong site ng Lumang Bayan at isang site ng paaralan. Maghanda ng mga lisensyadong larawan at maikling pinagmulan note.",
     "preparation_uk": "Виберіть три ділянки Старого міста та одну ділянку школи. Підготуйте ліцензовані зображення та короткі примітки до джерел.",
-    "preparation_ru": "Выберите три объекта Старого города и один школьный объект. Подготовьте лицензионные изображения и краткие примечания к источникам."
+    "preparation_ru": "Выберите три объекта Старого города и один школьный объект. Подготовьте лицензионные изображения и краткие примечания к источникам.",
+    "preparation_pl": "Wybierz trzy miejsca na Starym Mieście i jedną szkołę. Przygotuj licencjonowane obrazy i krótkie notatki źródłowe."
   },
   {
     "id": "education-roman-philippopolis",
@@ -1160,6 +1225,7 @@
         "phase_tl": "Pambungad na tanong",
         "phase_uk": "Початкове питання",
         "phase_ru": "Вступительный вопрос",
+        "phase_pl": "Pytanie otwierające",
         "activity_de": "Die Klasse listet öffentliche Räume in einer modernen Stadt auf und sucht nach römischen Analogien.",
         "activity_fr": "La classe répertorie les espaces publics d’une ville moderne et recherche des analogues romains.",
         "activity_it": "La classe elenca gli spazi pubblici in una città moderna e cerca analoghi romani.",
@@ -1169,7 +1235,8 @@
         "activity_ja": "このクラスでは、現代都市の公共スペースをリストアップし、ローマ時代の類似物を探します。",
         "activity_tl": "Inililista ng klase ang mga pampublikong espasyo sa isang modernong lungsod at naghahanap ng mga Romanong analogue.",
         "activity_uk": "Клас перелічує громадські місця в сучасному місті та шукає римські аналоги.",
-        "activity_ru": "Класс перечисляет общественные пространства современного города и ищет римские аналоги."
+        "activity_ru": "Класс перечисляет общественные пространства современного города и ищет римские аналоги.",
+        "activity_pl": "Klasa wymienia przestrzenie publiczne współczesnego miasta i szuka rzymskich odpowiedników."
       },
       {
         "minutes": 15,
@@ -1187,6 +1254,7 @@
         "phase_tl": "Trabaho sa site",
         "phase_uk": "Робота сайту",
         "phase_ru": "Работа сайта",
+        "phase_pl": "Praca w witrynie",
         "activity_de": "Gruppen erhalten einen Standort: Theater, Stadion oder Forum. Jede Gruppe extrahiert Funktion, Datum und Quelle.",
         "activity_fr": "Les groupes bénéficient d'un emplacement : théâtre, stade ou forum. Chaque groupe extrait la fonction, la date et la source.",
         "activity_it": "I gruppi ricevono un sito: teatro, stadio o forum. Ogni gruppo estrae funzione, data e fonte.",
@@ -1196,7 +1264,8 @@
         "activity_ja": "グループには、劇場、スタジアム、またはフォーラムの 1 つの会場が提供されます。各グループは機能、日付、ソースを抽出します。",
         "activity_tl": "Ang mga grupo ay tumatanggap ng isang site: teatro, stadium o forum. Ang bawat pangkat ay kumukuha ng function, petsa at pinagmulan.",
         "activity_uk": "Групи отримують одне місце: театр, стадіон або форум. Кожна група виділяє функцію, дату та джерело.",
-        "activity_ru": "Группы получают одну площадку: театр, стадион или форум. Каждая группа извлекает функцию, дату и источник."
+        "activity_ru": "Группы получают одну площадку: театр, стадион или форум. Каждая группа извлекает функцию, дату и источник.",
+        "activity_pl": "Grupy otrzymują jedno miejsce: teatr, stadion lub forum. Każda grupa wyodrębnia funkcję, datę i źródło."
       },
       {
         "minutes": 15,
@@ -1214,6 +1283,7 @@
         "phase_tl": "Visual na ebidensya",
         "phase_uk": "Візуальні докази",
         "phase_ru": "Визуальные доказательства",
+        "phase_pl": "Dowody wizualne",
         "activity_de": "Die Schüler diskutieren anhand von Bildern von damals und heute, wie Ausgrabungen und Restaurierungen die Sichtbarkeit der antiken Stadt verändern.",
         "activity_fr": "Les élèves utilisent des images d’hier et d’aujourd’hui pour discuter de la manière dont les fouilles et la restauration modifient la visibilité de la ville antique.",
         "activity_it": "Gli studenti utilizzano le immagini di allora/oggi per discutere di come gli scavi e il restauro cambiano la visibilità della città antica.",
@@ -1223,7 +1293,8 @@
         "activity_ja": "学生たちは今昔比較の画像を使用して、発掘と修復によって古代都市の可視性がどのように変化するかを話し合います。",
         "activity_tl": "Gumagamit ang mga mag-aaral ng mga larawan noon/ngayon upang talakayin kung paano binago ng paghuhukay at pagpapanumbalik ang visibility ng sinaunang lungsod.",
         "activity_uk": "Учні використовують зображення тоді/тепер, щоб обговорити, як розкопки та реставрація змінюють видимість стародавнього міста.",
-        "activity_ru": "Студенты используют изображения тогда/сейчас, чтобы обсудить, как раскопки и реставрация меняют внешний вид древнего города."
+        "activity_ru": "Студенты используют изображения тогда/сейчас, чтобы обсудить, как раскопки и реставрация меняют внешний вид древнего города.",
+        "activity_pl": "Uczniowie wykorzystują obrazy z tamtych czasów i obecnie, aby omówić, w jaki sposób wykopaliska i renowacje zmieniają widoczność starożytnego miasta."
       },
       {
         "minutes": 10,
@@ -1241,6 +1312,7 @@
         "phase_tl": "Synthesis",
         "phase_uk": "Синтез",
         "phase_ru": "Синтез",
+        "phase_pl": "Synteza",
         "activity_de": "Jede Gruppe legt einen Beweis und eine Unsicherheit vor, die sie weiter prüfen würde.",
         "activity_fr": "Chaque groupe présente un élément de preuve et une incertitude qu’il vérifierait davantage.",
         "activity_it": "Ogni gruppo presenta un elemento di prova e un'incertezza che vorrebbe verificare ulteriormente.",
@@ -1250,7 +1322,8 @@
         "activity_ja": "各グループは、証拠を 1 つと、さらに確認する不確実性を 1 つ提示します。",
         "activity_tl": "Ang bawat pangkat ay nagpapakita ng isang piraso ng ebidensya at isang kawalan ng katiyakan na susuriin pa nito.",
         "activity_uk": "Кожна група представляє один доказ і одну невизначеність, яку вона буде перевіряти далі.",
-        "activity_ru": "Каждая группа представляет одно доказательство и одну неопределенность, которую она будет проверять в дальнейшем."
+        "activity_ru": "Каждая группа представляет одно доказательство и одну неопределенность, которую она будет проверять в дальнейшем.",
+        "activity_pl": "Każda grupa przedstawia jeden dowód i jedną niepewność, którą chciałaby dokładniej sprawdzić."
       }
     ],
     "quiz": [
@@ -1280,6 +1353,7 @@
         "question_tl": "Aling site ang konektado sa mga pampublikong pagtatanghal?",
         "question_uk": "Який сайт пов'язаний з публічними виступами?",
         "question_ru": "Какой сайт связан с публичными выступлениями?",
+        "question_pl": "Która strona jest powiązana z występami publicznymi?",
         "explanation_de": "Das Antike Theater ist eine römische öffentliche Stätte, die mit Aufführungen verbunden ist.",
         "explanation_fr": "Le Théâtre Antique est un lieu public romain lié aux spectacles.",
         "explanation_it": "Il Teatro Antico è un luogo pubblico romano legato agli spettacoli.",
@@ -1289,7 +1363,8 @@
         "explanation_ja": "古代劇場は、パフォーマンスに関連したローマの公共の場です。",
         "explanation_tl": "Ang Ancient Theater ay isang pampublikong site ng Roma na konektado sa mga pagtatanghal.",
         "explanation_uk": "Античний театр — римське громадське місце, пов'язане з виставами.",
-        "explanation_ru": "Древний театр — римское общественное место, связанное с представлениями."
+        "explanation_ru": "Древний театр — римское общественное место, связанное с представлениями.",
+        "explanation_pl": "Teatr Starożytny to rzymskie miejsce publiczne połączone z przedstawieniami."
       },
       {
         "question_bg": "Кой източник е най-подходящ за координати на обект?",
@@ -1317,6 +1392,7 @@
         "question_tl": "Aling pinagmulan ang pinakaangkop para sa mga coordinate ng isang site?",
         "question_uk": "Яке джерело найкраще підходить для координат сайту?",
         "question_ru": "Какой источник лучше всего подходит для координат сайта?",
+        "question_pl": "Które źródło najlepiej nadaje się do współrzędnych miejsca?",
         "explanation_de": "Die Wissensdatenbank verknüpft Koordinaten mit einer separaten Quelle, sofern verfügbar.",
         "explanation_fr": "La base de connaissances relie les coordonnées à une source distincte lorsqu'elle est disponible.",
         "explanation_it": "La knowledge base collega le coordinate a una fonte separata quando disponibile.",
@@ -1326,7 +1402,8 @@
         "explanation_ja": "ナレッジ ベースは、利用可能な場合は別のソースに座標をリンクします。",
         "explanation_tl": "Ang knowledge base ay nagli-link ng mga coordinate sa isang hiwalay na pinagmulan kapag available.",
         "explanation_uk": "База знань зв’язує координати з окремим джерелом, якщо вони доступні.",
-        "explanation_ru": "База знаний связывает координаты с отдельным источником, если он доступен."
+        "explanation_ru": "База знаний связывает координаты с отдельным источником, если он доступен.",
+        "explanation_pl": "Baza wiedzy łączy współrzędne z oddzielnym źródłem, jeśli jest dostępne."
       },
       {
         "question_bg": "Защо тогава/сега сравнението не е достатъчно само по себе си?",
@@ -1354,6 +1431,7 @@
         "question_tl": "Bakit ang paghahambing noon/ngayon ay hindi sapat sa sarili nito?",
         "question_uk": "Чому порівняння тоді/тепер недостатньо?",
         "question_ru": "Почему сравнения тогда и сейчас недостаточно?",
+        "question_pl": "Dlaczego samo porównanie wtedy/teraz nie wystarczy?",
         "explanation_de": "Ein Bild wird erst dann zum Beweis, wenn es nachvollziehbar und richtig beschrieben ist.",
         "explanation_fr": "Une image ne devient une preuve que lorsqu’elle est traçable et correctement décrite.",
         "explanation_it": "Un'immagine diventa testimonianza solo quando è rintracciabile e adeguatamente descritta.",
@@ -1363,7 +1441,8 @@
         "explanation_ja": "画像は、追跡可能で適切に記述された場合にのみ証拠となります。",
         "explanation_tl": "Ang isang imahe ay nagiging katibayan lamang kapag ito ay nasusubaybayan at maayos na inilarawan.",
         "explanation_uk": "Зображення стає доказом лише тоді, коли його можна простежити та правильно описати.",
-        "explanation_ru": "Изображение становится доказательством только тогда, когда его можно отследить и правильно описать."
+        "explanation_ru": "Изображение становится доказательством только тогда, когда его можно отследить и правильно описать.",
+        "explanation_pl": "Obraz staje się dowodem tylko wtedy, gdy można go prześledzić i odpowiednio opisać."
       }
     ],
     "printable_handout": {
@@ -1388,7 +1467,8 @@
       "title_ja": "ワークシート: ローマの公共スペース",
       "title_tl": "Worksheet: Romanong mga pampublikong espasyo",
       "title_uk": "Робочий аркуш: Римські громадські місця",
-      "title_ru": "Рабочий лист: Римские общественные места"
+      "title_ru": "Рабочий лист: Римские общественные места",
+      "title_pl": "Arkusz ćwiczeń: Rzymskie przestrzenie publiczne"
     },
     "audio_tour": {
       "title_bg": "Маршрут за разходка: римски Филипопол",
@@ -1411,6 +1491,7 @@
           "title_tl": "Sinaunang Teatro",
           "title_uk": "Античний театр",
           "title_ru": "Древний театр",
+          "title_pl": "Starożytny teatr",
           "narration_de": "Vor Ihnen liegt eine der bekanntesten antiken Stätten Plovdivs. Betrachten Sie es als Bühne, aber auch als urbanes Dokument.",
           "narration_fr": "Devant vous se trouve l'un des sites antiques les plus reconnaissables de Plovdiv. Pensez-y comme une scène, mais aussi comme un document urbain.",
           "narration_it": "Davanti a te c'è uno dei siti antichi più riconoscibili di Plovdiv. Pensatelo come un palcoscenico, ma anche come un documento urbano.",
@@ -1420,7 +1501,8 @@
           "narration_ja": "目の前には、Plovdivで最も有名な古代遺跡の 1 つがあります。これは舞台であるだけでなく、都市のドキュメントでもあると考えてください。",
           "narration_tl": "Bago ka ay isa sa pinakakilalang sinaunang mga site ng Plovdiv. Isipin ito bilang isang yugto, ngunit bilang isang dokumento sa lungsod.",
           "narration_uk": "Перед вами одне з найбільш впізнаваних старовинних місць Plovdiv. Думайте про це як про сцену, а також як про міський документ.",
-          "narration_ru": "Перед вами один из самых узнаваемых древних памятников Plovdiv. Думайте об этом как о сцене, но также и как о городском документе."
+          "narration_ru": "Перед вами один из самых узнаваемых древних памятников Plovdiv. Думайте об этом как о сцене, но также и как о городском документе.",
+          "narration_pl": "Przed tobą jedno z najbardziej rozpoznawalnych starożytnych miejsc w Plovdivie. Pomyśl o tym jak o scenie, ale także o dokumencie miejskim."
         },
         {
           "place_id": "place-ancient-stadium",
@@ -1438,6 +1520,7 @@
           "title_tl": "Sinaunang Stadium",
           "title_uk": "Античний стадіон",
           "title_ru": "Древний стадион",
+          "title_pl": "Starożytny stadion",
           "narration_de": "Das Stadion zeigt die Ausmaße der römischen Stadt. Heute ist ein Teil davon in der Innenstadt sichtbar, während der Rest anhand von Plänen und Quellen erahnt werden muss.",
           "narration_fr": "Le stade montre l'échelle de la ville romaine. Aujourd'hui, une partie est visible en ville, tandis que le reste doit être imaginé à travers des plans et des sources.",
           "narration_it": "Lo stadio mostra le dimensioni della città romana. Oggi una parte di esso è visibile in centro, mentre il resto va immaginato attraverso planimetrie e fonti.",
@@ -1447,7 +1530,8 @@
           "narration_ja": "スタジアムはローマの都市の規模を示しています。現在、その一部はダウンタウンで見ることができますが、残りは計画や資料を通じて想像する必要があります。",
           "narration_tl": "Ipinapakita ng istadyum ang sukat ng lungsod ng Roma. Ngayon ang bahagi nito ay nakikita sa downtown, habang ang iba ay dapat isipin sa pamamagitan ng mga plano at pinagmumulan.",
           "narration_uk": "Стадіон демонструє масштаби римського міста. Сьогодні його частину видно в центрі міста, а решту треба уявити через плани та джерела.",
-          "narration_ru": "Стадион демонстрирует масштаб римского города. Сегодня часть его видна в центре города, а остальную часть необходимо представить с помощью планов и источников."
+          "narration_ru": "Стадион демонстрирует масштаб римского города. Сегодня часть его видна в центре города, а остальную часть необходимо представить с помощью планов и источников.",
+          "narration_pl": "Stadion ukazuje skalę rzymskiego miasta. Dziś jego część jest widoczna w centrum miasta, resztę trzeba sobie wyobrazić poprzez plany i źródła."
         },
         {
           "place_id": "place-forum-philippopolis",
@@ -1465,6 +1549,7 @@
           "title_tl": "Forum ng Philippopolis",
           "title_uk": "Філіппопольський форум",
           "title_ru": "Форум Филиппополя",
+          "title_pl": "Forum w Philippopolis",
           "narration_de": "Das Forum lenkt das Gespräch auf Governance, Handel und das tägliche Leben. Es hilft uns, die Stadt als ein System zu sehen, nicht nur als einzelne Denkmäler.",
           "narration_fr": "Le forum tourne la conversation vers la gouvernance, le commerce et la vie quotidienne. Cela nous aide à voir la ville comme un système, et non comme de simples monuments séparés.",
           "narration_it": "Il forum rivolge la conversazione alla governance, al commercio e alla vita quotidiana. Ci aiuta a vedere la città come un sistema, non solo come monumenti separati.",
@@ -1474,7 +1559,8 @@
           "narration_ja": "フォーラムでは、会話がガバナンス、貿易、日常生活に移ります。これは、都市を単なる個別の記念碑ではなく、システムとして見るのに役立ちます。",
           "narration_tl": "Binabalik ng forum ang pag-uusap sa pamamahala, kalakalan at pang-araw-araw na buhay. Tinutulungan tayo nitong makita ang lungsod bilang isang sistema, hindi lamang magkahiwalay na mga monumento.",
           "narration_uk": "Форум повертає розмову до управління, торгівлі та повсякденного життя. Це допомагає нам бачити місто як систему, а не просто окремі пам’ятки.",
-          "narration_ru": "Форум переводит разговор на управление, торговлю и повседневную жизнь. Это помогает нам увидеть город как систему, а не отдельные памятники."
+          "narration_ru": "Форум переводит разговор на управление, торговлю и повседневную жизнь. Это помогает нам увидеть город как систему, а не отдельные памятники.",
+          "narration_pl": "Forum zamienia dyskusję na tematy związane z zarządzaniem, handlem i życiem codziennym. Pomaga nam to spojrzeć na miasto jako na system, a nie tylko na osobne zabytki."
         }
       ],
       "title_de": "Wanderroute: Römisches Philippopolis",
@@ -1486,7 +1572,8 @@
       "title_ja": "ウォーキングルート: ローマン・フィリポポリス",
       "title_tl": "Ruta sa paglalakad: Romano Philippopolis",
       "title_uk": "Пішохідний маршрут: Римський Філіппополь",
-      "title_ru": "Пеший маршрут: Римский Филиппополис"
+      "title_ru": "Пеший маршрут: Римский Филиппополис",
+      "title_pl": "Trasa piesza: Rzymskie Filippopolis"
     },
     "linked_event_ids": [
       "event-roman-trimontium",
@@ -1530,7 +1617,8 @@
       "notes_ja": "教育リソースは公開知識ベースの記録から組み立てられており、正式に使用する前に教育的および編集的なレビューが必要です。",
       "notes_tl": "Ang mapagkukunang pang-edukasyon ay binuo mula sa mga pampublikong talaan ng kaalaman at kailangan pa ng pagsusuring pedagogical at editoryal bago gamitin nang pormal.",
       "notes_uk": "Освітній ресурс зібрано із загальнодоступних записів бази знань і вимагає педагогічної та редакційної перевірки перед офіційним використанням.",
-      "notes_ru": "Ресурс по образованию собирается из записей общедоступной базы знаний и требует педагогической и редакционной проверки перед официальным использованием."
+      "notes_ru": "Ресурс по образованию собирается из записей общедоступной базы знаний и требует педагогической и редакционной проверки перед официальным использованием.",
+      "notes_pl": "Zasoby edukacyjne składają się z publicznych rejestrów wiedzy i wymagają przeglądu pedagogicznego i redakcyjnego przed formalnym użyciem."
     },
     "provenance": [
       {
@@ -1550,7 +1638,8 @@
         "claim_ja": "レッスン「ローマの都市: 劇場、スタジアム、フォーラム」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na claim para sa aralin \"Ang Romano City: Theatre, Stadium at Forum\".",
         "claim_uk": "Джерела та навчальні твердження до уроку «Римське місто: театр, стадіон і форум».",
-        "claim_ru": "Источники и учебные пособия к уроку «Римский город: театр, стадион и форум»."
+        "claim_ru": "Источники и учебные пособия к уроку «Римский город: театр, стадион и форум».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Miasto rzymskie: teatr, stadion i forum”."
       },
       {
         "source_id": "source-wikipedia-roman-forum-of-philippopolis",
@@ -1569,7 +1658,8 @@
         "claim_ja": "レッスン「ローマの都市: 劇場、スタジアム、フォーラム」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na claim para sa aralin \"Ang Romano City: Theatre, Stadium at Forum\".",
         "claim_uk": "Джерела та навчальні твердження до уроку «Римське місто: театр, стадіон і форум».",
-        "claim_ru": "Источники и учебные пособия к уроку «Римский город: театр, стадион и форум»."
+        "claim_ru": "Источники и учебные пособия к уроку «Римский город: театр, стадион и форум».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Miasto rzymskie: teatr, stadion i forum”."
       },
       {
         "source_id": "source-wikidata-ancient-theatre-coordinates",
@@ -1588,7 +1678,8 @@
         "claim_ja": "レッスン「ローマの都市: 劇場、スタジアム、フォーラム」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na claim para sa aralin \"Ang Romano City: Theatre, Stadium at Forum\".",
         "claim_uk": "Джерела та навчальні твердження до уроку «Римське місто: театр, стадіон і форум».",
-        "claim_ru": "Источники и учебные пособия к уроку «Римский город: театр, стадион и форум»."
+        "claim_ru": "Источники и учебные пособия к уроку «Римский город: театр, стадион и форум».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Miasto rzymskie: teatr, stadion i forum”."
       },
       {
         "source_id": "source-wikidata-ancient-stadium-coordinates",
@@ -1607,7 +1698,8 @@
         "claim_ja": "レッスン「ローマの都市: 劇場、スタジアム、フォーラム」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na claim para sa aralin \"Ang Romano City: Theatre, Stadium at Forum\".",
         "claim_uk": "Джерела та навчальні твердження до уроку «Римське місто: театр, стадіон і форум».",
-        "claim_ru": "Источники и учебные пособия к уроку «Римский город: театр, стадион и форум»."
+        "claim_ru": "Источники и учебные пособия к уроку «Римский город: театр, стадион и форум».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Miasto rzymskie: teatr, stadion i forum”."
       },
       {
         "source_id": "source-wikimedia-commons-historical-images-plovdiv",
@@ -1626,7 +1718,8 @@
         "claim_ja": "レッスン「ローマの都市: 劇場、スタジアム、フォーラム」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na claim para sa aralin \"Ang Romano City: Theatre, Stadium at Forum\".",
         "claim_uk": "Джерела та навчальні твердження до уроку «Римське місто: театр, стадіон і форум».",
-        "claim_ru": "Источники и учебные пособия к уроку «Римский город: театр, стадион и форум»."
+        "claim_ru": "Источники и учебные пособия к уроку «Римский город: театр, стадион и форум».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Miasto rzymskie: teatr, stadion i forum”."
       }
     ],
     "audience_de": "Klassen 6-8",
@@ -1639,6 +1732,7 @@
     "audience_tl": "Baitang 6-8",
     "audience_uk": "6-8 класи",
     "audience_ru": "6-8 классы",
+    "audience_pl": "Klasy 6-8",
     "title_de": "Die römische Stadt: Theater, Stadion und Forum",
     "title_fr": "La ville romaine : théâtre, stade et forum",
     "title_it": "La città romana: teatro, stadio e foro",
@@ -1649,6 +1743,7 @@
     "title_tl": "Ang Lungsod ng Roma: Teatro, Istadyum at Forum",
     "title_uk": "Римське місто: театр, стадіон і форум",
     "title_ru": "Римский город: театр, стадион и форум",
+    "title_pl": "Miasto rzymskie: teatr, stadion i forum",
     "summary_de": "Eine Lektion über Philippopolis/Trimontium als römische Stadt, deren öffentliche Räume Macht, Unterhaltung, Handel und Stadtplanung offenbaren.",
     "summary_fr": "Une leçon sur Philippopolis/Trimontium en tant que ville romaine dont les espaces publics révèlent pouvoir, divertissement, commerce et urbanisme.",
     "summary_it": "Una lezione su Filippopoli/Trimontium come città romana i cui spazi pubblici rivelano potere, intrattenimento, commercio e pianificazione urbana.",
@@ -1659,6 +1754,7 @@
     "summary_tl": "Isang aral sa Philippopolis/Trimontium bilang isang Romanong lungsod na ang mga pampublikong espasyo ay nagpapakita ng kapangyarihan, libangan, komersiyo at pagpaplano ng lunsod.",
     "summary_uk": "Урок про Філіппополь/Тримонціум як римське місто, громадські простори якого розкривають владу, розваги, торгівлю та міське планування.",
     "summary_ru": "Урок о Филиппополе/Тримонтии как римском городе, общественные пространства которого демонстрируют власть, развлечения, торговлю и городское планирование.",
+    "summary_pl": "Lekcja na temat Philippopolis/Trimontium jako miasta rzymskiego, którego przestrzenie publiczne ujawniają władzę, rozrywkę, handel i urbanistykę.",
     "driving_question_de": "Wie helfen uns archäologische Stätten, das Leben in einer römischen Stadt zu rekonstruieren?",
     "driving_question_fr": "Comment les sites archéologiques nous aident-ils à reconstituer la vie dans une ville romaine ?",
     "driving_question_it": "In che modo i siti archeologici ci aiutano a ricostruire la vita in una città romana?",
@@ -1669,6 +1765,7 @@
     "driving_question_tl": "Paano tayo tinutulungan ng mga archaeological site na muling buuin ang buhay sa isang Romanong lungsod?",
     "driving_question_uk": "Як археологічні пам’ятки допомагають нам реконструювати життя в римському місті?",
     "driving_question_ru": "Как археологические памятники помогают нам восстановить жизнь римского города?",
+    "driving_question_pl": "W jaki sposób stanowiska archeologiczne pomagają nam zrekonstruować życie w rzymskim mieście?",
     "preparation_de": "Bereiten Sie eine Karte der antiken Stätten vor und öffnen Sie die Vergleiche für das antike Theater und das antike Stadion.",
     "preparation_fr": "Préparez une carte des sites antiques et ouvrez les comparaisons pour le théâtre antique et le stade antique.",
     "preparation_it": "Prepara una mappa dei siti antichi e apri i confronti per il Teatro Antico e lo Stadio Antico.",
@@ -1678,7 +1775,8 @@
     "preparation_ja": "古代遺跡の地図を準備し、古代劇場と古代スタジアムの比較を開きます。",
     "preparation_tl": "Maghanda ng mapa ng mga sinaunang site at buksan ang mga paghahambing para sa Ancient Theater at Ancient Stadium.",
     "preparation_uk": "Підготуйте карту стародавніх пам’яток і відкрийте порівняння для Античного театру та Античного стадіону.",
-    "preparation_ru": "Подготовьте карту древних мест и откройте сравнение Древнего театра и Древнего стадиона."
+    "preparation_ru": "Подготовьте карту древних мест и откройте сравнение Древнего театра и Древнего стадиона.",
+    "preparation_pl": "Przygotuj mapę starożytnych miejsc i otwórz porównania dla Starożytnego Teatru i Starożytnego Stadionu."
   },
   {
     "id": "education-seven-hills-deep-time",
@@ -1729,6 +1827,7 @@
         "phase_tl": "Oryentasyon",
         "phase_uk": "Орієнтація",
         "phase_ru": "Ориентация",
+        "phase_pl": "Orientacja",
         "activity_de": "Die Schüler finden Nebet Tepe und die Altstadt auf der Karte und notieren, welche Quellen die Koordinaten und Kurzbeschreibungen unterstützen.",
         "activity_fr": "Les élèves trouvent Nebet Tepe et la vieille ville sur la carte et notent quelles sources soutiennent les coordonnées et les brèves descriptions.",
         "activity_it": "Gli studenti trovano Nebet Tepe e la Città Vecchia sulla mappa e annotano quali fonti supportano le coordinate e le brevi descrizioni.",
@@ -1738,7 +1837,8 @@
         "activity_ja": "生徒は地図上でネベト・テペと旧市街を見つけ、その座標と簡単な説明を裏付ける情報源をメモします。",
         "activity_tl": "Hinahanap ng mga mag-aaral ang Nebet Tepe at ang Lumang Bayan sa mapa at tandaan kung aling mga mapagkukunan ang sumusuporta sa mga coordinate at maikling paglalarawan.",
         "activity_uk": "Учні знаходять на карті Небет-Тепе та Старе місто та відзначають, які джерела підтверджують координати та короткий опис.",
-        "activity_ru": "Учащиеся находят на карте Небет-Тепе и Старый город и отмечают, какие источники подтверждают их координаты и краткие описания."
+        "activity_ru": "Учащиеся находят на карте Небет-Тепе и Старый город и отмечают, какие источники подтверждают их координаты и краткие описания.",
+        "activity_pl": "Uczniowie odnajdują na mapie Nebet Tepe i Stare Miasto oraz zapisują, które źródła potwierdzają współrzędne i krótkie opisy."
       },
       {
         "minutes": 15,
@@ -1756,6 +1856,7 @@
         "phase_tl": "Gawain sa kronolohiya",
         "phase_uk": "Графік роботи",
         "phase_ru": "График работы",
+        "phase_pl": "Praca z osią czasu",
         "activity_de": "Gruppen stellen die prähistorische Siedlung Eumolpias und die Gründung von Philippopolis auf eine gemeinsame Zeitachse.",
         "activity_fr": "Les groupes placent la colonie préhistorique, Eumolpias et la fondation de Philippopolis sur une chronologie commune.",
         "activity_it": "I gruppi collocano l'insediamento preistorico, Eumolpias e la fondazione di Filippopoli su una linea temporale condivisa.",
@@ -1765,7 +1866,8 @@
         "activity_ja": "グループは、先史時代の入植地、エウモルピアス、フィリポポリスの設立を共有のタイムライン上に置きます。",
         "activity_tl": "Inilalagay ng mga grupo ang sinaunang pamayanan, ang Eumolpias at ang pagkakatatag ng Philippopolis sa isang nakabahaging kronolohiya.",
         "activity_uk": "Групи розміщують доісторичне поселення, Евмолпія та заснування Філіппополя на спільній шкалі часу.",
-        "activity_ru": "Группы помещают доисторическое поселение Эвмолпиас и основание Филиппополя на общую временную шкалу."
+        "activity_ru": "Группы помещают доисторическое поселение Эвмолпиас и основание Филиппополя на общую временную шкалу.",
+        "activity_pl": "Grupy umieszczają prehistoryczną osadę Eumolpias i założenie Philippopolis na wspólnej osi czasu."
       },
       {
         "minutes": 12,
@@ -1783,6 +1885,7 @@
         "phase_tl": "Mapa at argumento",
         "phase_uk": "Карта та аргумент",
         "phase_ru": "Карта и аргумент",
+        "phase_pl": "Mapa i argumentacja",
         "activity_de": "Jede Gruppe schreibt eine kurze Behauptung darüber, warum die Hügel wichtig sind, und nennt dabei mindestens eine Quelle.",
         "activity_fr": "Chaque groupe rédige une brève déclaration expliquant pourquoi les collines sont importantes, en citant au moins une source.",
         "activity_it": "Ogni gruppo scrive una breve affermazione sul perché le colline sono importanti, citando almeno una fonte.",
@@ -1792,7 +1895,8 @@
         "activity_ja": "各グループは、なぜ丘が重要なのかについて、少なくとも 1 つの情報源を挙げて、短い主張を 1 つ書きます。",
         "activity_tl": "Ang bawat grupo ay nagsusulat ng isang maikling pahayag tungkol sa kung bakit mahalaga ang mga burol, na pinangalanan ang hindi bababa sa isang pinagmulan.",
         "activity_uk": "Кожна група пише одне коротке твердження про те, чому пагорби важливі, називаючи принаймні одне джерело.",
-        "activity_ru": "Каждая группа пишет одно короткое заявление о том, почему холмы имеют значение, называя хотя бы один источник."
+        "activity_ru": "Каждая группа пишет одно короткое заявление о том, почему холмы имеют значение, называя хотя бы один источник.",
+        "activity_pl": "Każda grupa pisze jedno krótkie twierdzenie na temat znaczenia wzgórz, podając przynajmniej jedno źródło."
       },
       {
         "minutes": 10,
@@ -1810,6 +1914,7 @@
         "phase_tl": "Suriin",
         "phase_uk": "Перевірте",
         "phase_ru": "Проверить",
+        "phase_pl": "Sprawdź",
         "activity_de": "Die Klasse vergleicht, welche Behauptungen quellengestützt sind und welche noch einer Überprüfung bedürfen.",
         "activity_fr": "La classe compare les affirmations qui sont prises en charge par la source et celles qui nécessitent encore une vérification.",
         "activity_it": "La classe confronta quali affermazioni sono supportate dalla fonte e quali necessitano ancora di verifica.",
@@ -1819,7 +1924,8 @@
         "activity_ja": "このクラスは、どのクレームがソースでサポートされているか、どのクレームがまだ検証が必要であるかを比較します。",
         "activity_tl": "Inihahambing ng klase kung aling mga claim ang sinusuportahan ng pinagmulan at kung alin pa rin ang nangangailangan ng pag-verify.",
         "activity_uk": "Клас порівнює, які твердження підтримуються джерелом, а які ще потребують перевірки.",
-        "activity_ru": "Класс сравнивает, какие утверждения поддерживаются источниками, а какие еще нуждаются в проверке."
+        "activity_ru": "Класс сравнивает, какие утверждения поддерживаются источниками, а какие еще нуждаются в проверке.",
+        "activity_pl": "Klasa porównuje, które twierdzenia są poparte źródłami, a które nadal wymagają weryfikacji."
       }
     ],
     "quiz": [
@@ -1849,6 +1955,7 @@
         "question_tl": "Aling site ang pinakamahusay na nagbubukas ng talakayan tungkol sa mga pinakaunang patong ng lungsod?",
         "question_uk": "Який сайт найкраще відкриває дискусію про найдавніші шари міста?",
         "question_ru": "Какой сайт лучше всего открывает обсуждение ранних слоев города?",
+        "question_pl": "Która strona najlepiej otwiera dyskusję na temat najwcześniejszych warstw miasta?",
         "explanation_de": "Nebet Tepe ist direkt mit den frühesten städtischen Schichten und dem thrakischen Kontext verbunden.",
         "explanation_fr": "Nebet Tepe est directement lié aux premières couches urbaines et au contexte thrace.",
         "explanation_it": "Nebet Tepe è direttamente collegata ai primi strati urbani e al contesto tracio.",
@@ -1858,7 +1965,8 @@
         "explanation_ja": "ネベト テペは、最も初期の都市層とトラキアの文脈に直接結びついています。",
         "explanation_tl": "Ang Nebet Tepe ay direktang naka-link sa pinakamaagang patong panglungsod at sa kontekstong Trakiano.",
         "explanation_uk": "Небет-Тепе безпосередньо пов'язане з найдавнішими міськими шарами та фракійським контекстом.",
-        "explanation_ru": "Небет-Тепе напрямую связан с самыми ранними городскими слоями и фракийским контекстом."
+        "explanation_ru": "Небет-Тепе напрямую связан с самыми ранними городскими слоями и фракийским контекстом.",
+        "explanation_pl": "Nebet Tepe jest bezpośrednio powiązany z najwcześniejszymi warstwami miejskimi i kontekstem trackim."
       },
       {
         "question_bg": "Защо в урока се използва карта?",
@@ -1886,6 +1994,7 @@
         "question_tl": "Bakit gumagamit ng mapa ang aralin?",
         "question_uk": "Чому на уроці використовується карта?",
         "question_ru": "Почему на уроке используется карта?",
+        "question_pl": "Dlaczego podczas lekcji wykorzystywana jest mapa?",
         "explanation_de": "Die Karte unterstützt das räumliche Denken, ersetzt jedoch keine Quellen.",
         "explanation_fr": "La carte supporte le raisonnement spatial, mais elle ne remplace pas les sources.",
         "explanation_it": "La mappa supporta il ragionamento spaziale, ma non sostituisce le fonti.",
@@ -1895,7 +2004,8 @@
         "explanation_ja": "マップは空間推論をサポートしますが、情報源を置き換えるものではありません。",
         "explanation_tl": "Sinusuportahan ng mapa ang spatial na pangangatwiran, ngunit hindi nito pinapalitan ang mga pinagmulan.",
         "explanation_uk": "Карта підтримує просторове мислення, але не замінює джерела.",
-        "explanation_ru": "Карта поддерживает пространственное мышление, но не заменяет источники."
+        "explanation_ru": "Карта поддерживает пространственное мышление, но не заменяет источники.",
+        "explanation_pl": "Mapa wspiera rozumowanie przestrzenne, ale nie zastępuje źródeł."
       },
       {
         "question_bg": "Какво трябва да направи ученикът, ако две описания звучат различно?",
@@ -1923,6 +2033,7 @@
         "question_tl": "Ano ang dapat gawin ng isang mag-aaral kapag magkaiba ang dalawang paglalarawan?",
         "question_uk": "Що повинен робити учень, якщо два описи відрізняються?",
         "question_ru": "Что делать студенту, если два описания различаются?",
+        "question_pl": "Co powinien zrobić uczeń, gdy dwa opisy się różnią?",
         "explanation_de": "Die Plattform erfordert Rückverfolgbarkeit und eindeutige Kennzeichnung ungewisser Ansprüche.",
         "explanation_fr": "La plateforme exige une traçabilité et un marquage clair des réclamations incertaines.",
         "explanation_it": "La piattaforma richiede la tracciabilità e una chiara segnalazione delle affermazioni incerte.",
@@ -1932,7 +2043,8 @@
         "explanation_ja": "このプラットフォームでは、トレーサビリティと不確実な請求の明確なマーキングが必要です。",
         "explanation_tl": "Ang platform ay nangangailangan ng traceability at malinaw na pagmamarka ng mga hindi tiyak na claim.",
         "explanation_uk": "Платформа вимагає відстеження та чіткого маркування невизначених заяв.",
-        "explanation_ru": "Платформа требует возможности отслеживания и четкого обозначения неопределенных претензий."
+        "explanation_ru": "Платформа требует возможности отслеживания и четкого обозначения неопределенных претензий.",
+        "explanation_pl": "Platforma wymaga identyfikowalności i jasnego oznaczania niepewnych roszczeń."
       }
     ],
     "printable_handout": {
@@ -1957,7 +2069,8 @@
       "title_ja": "ワークシート: 丘、水源、時間",
       "title_tl": "Worksheet: burol, pinagmumulan, oras",
       "title_uk": "Робочий аркуш: височини, джерела, час",
-      "title_ru": "Рабочий лист: холмы, источники, время"
+      "title_ru": "Рабочий лист: холмы, источники, время",
+      "title_pl": "Arkusz ćwiczeń: wzgórza, źródła, czas"
     },
     "audio_tour": {
       "title_bg": "Кратък маршрут за разходка: Небет тепе и Старият град",
@@ -1980,6 +2093,7 @@
           "title_tl": "Nebet Tepe",
           "title_uk": "Небет Тепе",
           "title_ru": "Небет Тепе",
+          "title_pl": "Nebet Tepe",
           "narration_de": "Betrachten Sie den Hügel als ein Open-Air-Archiv. Hier werden Plovdivs frühe Schichten anhand von Ort, Gelände und archäologischen Spuren gelesen.",
           "narration_fr": "Considérez la colline comme une archive à ciel ouvert. Ici, les premières couches de Plovdiv sont lues à travers le lieu, le terrain et les traces archéologiques.",
           "narration_it": "Guarda la collina come un archivio a cielo aperto. Qui i primi strati di Plovdiv vengono letti attraverso il luogo, il terreno e le tracce archeologiche.",
@@ -1989,7 +2103,8 @@
           "narration_ja": "丘を野外アーカイブとして見てください。ここでは、Plovdivの初期の地層が、場所、地形、考古学的痕跡を通して読み取られます。",
           "narration_tl": "Tingnan ang burol bilang isang open-air archive. Dito binabasa ang mga unang patong ng Plovdiv sa lugar, terrain at mga archaeological na bakas.",
           "narration_uk": "Подивіться на пагорб як на архів під відкритим небом. Тут ранні шари Plovdiv читаються через місце, рельєф і археологічні сліди.",
-          "narration_ru": "Посмотрите на холм как на архив под открытым небом. Здесь ранние слои Plovdiv читаются через место, рельеф и археологические следы."
+          "narration_ru": "Посмотрите на холм как на архив под открытым небом. Здесь ранние слои Plovdiv читаются через место, рельеф и археологические следы.",
+          "narration_pl": "Spójrz na wzgórze jak na archiwum pod gołym niebem. Tutaj wczesne warstwy Plovdivu są odczytywane poprzez miejsce, ukształtowanie terenu i ślady archeologiczne."
         },
         {
           "place_id": "place-old-town",
@@ -2007,6 +2122,7 @@
           "title_tl": "Matandang Plovdiv",
           "title_uk": "Старий Plovdiv",
           "title_ru": "Старый Plovdiv",
+          "title_pl": "Stary Plovdiv",
           "narration_de": "Die Altstadt ist nicht nur ein Wiedergeburtsviertel. Es steht über älteren Schichten und lässt uns über Kontinuität sprechen.",
           "narration_fr": "La vieille ville n’est pas seulement un quartier de la Renaissance nationale. Il se situe au-dessus des couches plus anciennes et nous permet de parler de continuité.",
           "narration_it": "La Città Vecchia non è solo un quartiere di rinascita nazionale. Si trova sopra gli strati più vecchi e ci permette di parlare di continuità.",
@@ -2016,7 +2132,8 @@
           "narration_ja": "旧市街は単なる国家復興地区ではありません。それは古い層の上に立つものであり、継続性について話すことができます。",
           "narration_tl": "Ang Lumang Bayan ay hindi lamang kapitbahayan ng Pambansang Muling Pagsilang. Nakatayo ito sa mas matatandang patong ng kasaysayan at tumutulong ipaliwanag ang pagpapatuloy ng lungsod.",
           "narration_uk": "Старе місто – це не лише квартал національного відродження. Він стоїть над старішими шарами і дозволяє говорити про спадкоємність.",
-          "narration_ru": "Старый город – это не только квартал национального возрождения. Он стоит над более старыми слоями и позволяет нам говорить о преемственности."
+          "narration_ru": "Старый город – это не только квартал национального возрождения. Он стоит над более старыми слоями и позволяет нам говорить о преемственности.",
+          "narration_pl": "Stare Miasto to nie tylko dzielnica Odrodzenia Narodowego. Stoi nad starszymi warstwami i pozwala mówić o ciągłości."
         },
         {
           "place_id": "place-seven-hills",
@@ -2034,6 +2151,7 @@
           "title_tl": "Ang Seven Hills",
           "title_uk": "Сім пагорбів",
           "title_ru": "Семь холмов",
+          "title_pl": "Siedem wzgórz",
           "narration_de": "Die Hügel sind Naturdenkmäler. In dieser Lektion verbinden sie Geographie, Geschichte und städtisches Gedächtnis.",
           "narration_fr": "Les collines sont des repères naturels. Dans cette leçon, ils relient géographie, histoire et mémoire urbaine.",
           "narration_it": "Le colline sono punti di riferimento naturali. In questa lezione collegano geografia, storia e memoria urbana.",
@@ -2043,7 +2161,8 @@
           "narration_ja": "丘は自然のランドマークです。このレッスンでは、地理、歴史、都市の記憶を結び付けます。",
           "narration_tl": "Ang mga burol ay mga likas na palatandaan. Sa araling ito, ikinonekta nila ang heograpiya, kasaysayan at memorya ng lungsod.",
           "narration_uk": "Пагорби є природними пам’ятками. На цьому уроці вони поєднують географію, історію та міську пам'ять.",
-          "narration_ru": "Холмы являются природными достопримечательностями. На этом уроке они соединяют географию, историю и городскую память."
+          "narration_ru": "Холмы являются природными достопримечательностями. На этом уроке они соединяют географию, историю и городскую память.",
+          "narration_pl": "Wzgórza są naturalnymi punktami orientacyjnymi. Na tej lekcji łączą geografię, historię i pamięć miejską."
         }
       ],
       "title_de": "Kurzer Wanderweg: Nebet Tepe und die Altstadt",
@@ -2055,7 +2174,8 @@
       "title_ja": "短い徒歩ルート: ネベト テペと旧市街",
       "title_tl": "Maikling ruta ng paglalakad: Nebet Tepe at ang Lumang Bayan",
       "title_uk": "Короткий пішохідний маршрут: Небет Тепе і Старе місто",
-      "title_ru": "Короткий пешеходный маршрут: Небет Тепе и Старый город."
+      "title_ru": "Короткий пешеходный маршрут: Небет Тепе и Старый город.",
+      "title_pl": "Krótka trasa spacerowa: Nebet Tepe i Stare Miasto"
     },
     "linked_event_ids": [
       "event-prehistory-settlement",
@@ -2096,7 +2216,8 @@
       "notes_ja": "教育リソースは公開知識ベースの記録から組み立てられており、正式に使用する前に教育的および編集的なレビューが必要です。",
       "notes_tl": "Ang mapagkukunang pang-edukasyon ay binuo mula sa mga pampublikong talaan ng kaalaman at kailangan pa ng pagsusuring pedagogical at editoryal bago gamitin nang pormal.",
       "notes_uk": "Освітній ресурс зібрано із загальнодоступних записів бази знань і вимагає педагогічної та редакційної перевірки перед офіційним використанням.",
-      "notes_ru": "Ресурс по образованию собирается из записей общедоступной базы знаний и требует педагогической и редакционной проверки перед официальным использованием."
+      "notes_ru": "Ресурс по образованию собирается из записей общедоступной базы знаний и требует педагогической и редакционной проверки перед официальным использованием.",
+      "notes_pl": "Zasoby edukacyjne składają się z publicznych rejestrów wiedzy i wymagają przeglądu pedagogicznego i redakcyjnego przed formalnym użyciem."
     },
     "provenance": [
       {
@@ -2116,7 +2237,8 @@
         "claim_ja": "レッスン「七つの丘とPlovdivの深い時間」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na pag-angkin para sa aralin na \"The Seven Hills and ng Plovdiv Deep Time\".",
         "claim_uk": "Джерела та навчальні претензії до уроку \"Сім пагорбів і глибокий час Plovdiv\".",
-        "claim_ru": "Источники и учебные материалы к уроку «Семь холмов и глубина Plovdiv»."
+        "claim_ru": "Источники и учебные материалы к уроку «Семь холмов и глубина Plovdiv».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Siedem wzgórz i głęboki czas Plovdivu”."
       },
       {
         "source_id": "source-wikipedia-nebet-tepe",
@@ -2135,7 +2257,8 @@
         "claim_ja": "レッスン「七つの丘とPlovdivの深い時間」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na pag-angkin para sa aralin na \"The Seven Hills and ng Plovdiv Deep Time\".",
         "claim_uk": "Джерела та навчальні претензії до уроку \"Сім пагорбів і глибокий час Plovdiv\".",
-        "claim_ru": "Источники и учебные материалы к уроку «Семь холмов и глубина Plovdiv»."
+        "claim_ru": "Источники и учебные материалы к уроку «Семь холмов и глубина Plovdiv».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Siedem wzgórz i głęboki czas Plovdivu”."
       },
       {
         "source_id": "source-wikidata-nebet-tepe-coordinates",
@@ -2154,7 +2277,8 @@
         "claim_ja": "レッスン「七つの丘とPlovdivの深い時間」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na pag-angkin para sa aralin na \"The Seven Hills and ng Plovdiv Deep Time\".",
         "claim_uk": "Джерела та навчальні претензії до уроку \"Сім пагорбів і глибокий час Plovdiv\".",
-        "claim_ru": "Источники и учебные материалы к уроку «Семь холмов и глубина Plovdiv»."
+        "claim_ru": "Источники и учебные материалы к уроку «Семь холмов и глубина Plovdiv».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Siedem wzgórz i głęboki czas Plovdivu”."
       },
       {
         "source_id": "source-wikimedia-commons-historical-images-plovdiv",
@@ -2173,7 +2297,8 @@
         "claim_ja": "レッスン「七つの丘とPlovdivの深い時間」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na pag-angkin para sa aralin na \"The Seven Hills and ng Plovdiv Deep Time\".",
         "claim_uk": "Джерела та навчальні претензії до уроку \"Сім пагорбів і глибокий час Plovdiv\".",
-        "claim_ru": "Источники и учебные материалы к уроку «Семь холмов и глубина Plovdiv»."
+        "claim_ru": "Источники и учебные материалы к уроку «Семь холмов и глубина Plovdiv».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Siedem wzgórz i głęboki czas Plovdivu”."
       }
     ],
     "audience_de": "Klassen 5-7",
@@ -2186,6 +2311,7 @@
     "audience_tl": "Baitang 5-7",
     "audience_uk": "5-7 класи",
     "audience_ru": "5-7 классы",
+    "audience_pl": "Klasy 5-7",
     "title_de": "Die sieben Hügel und Plovdivs tiefe Zeit",
     "title_fr": "Les Sept Collines et les Temps Profonds de Plovdiv",
     "title_it": "I sette colli e il tempo profondo di Plovdiv",
@@ -2196,6 +2322,7 @@
     "title_tl": "The Seven Hills and ng Plovdiv Deep Time",
     "title_uk": "Сім пагорбів і глибокий час Plovdiv",
     "title_ru": "Семь холмов и глубокие времена Plovdiv",
+    "title_pl": "Siedem wzgórz i głęboki czas Plovdivu",
     "summary_de": "Eine Lektion über die frühe Besiedlung der Hügel, das thrakische Eumolpias und wie das Gelände der Stadt erklärt, warum Plovdiv so lange bewohnt blieb.",
     "summary_fr": "Une leçon sur les premiers peuplements sur les collines, les Eumolpias thraces et comment le relief de la ville contribue à expliquer pourquoi Plovdiv est restée habitée pendant si longtemps.",
     "summary_it": "Una lezione sui primi insediamenti sulle colline, sulla Tracia Eumolpias e su come il terreno della città aiuta a spiegare perché Plovdiv rimase abitata per così tanto tempo.",
@@ -2206,6 +2333,7 @@
     "summary_tl": "Isang aral sa maagang paninirahan sa mga burol, ang Trakiano Eumolpias at kung paano nakakatulong ang terrain ng lungsod na ipaliwanag kung bakit nanatili ang Plovdiv sa mahabang panahon.",
     "summary_uk": "Урок про раннє поселення на пагорбах, фракійського Евмолпія та те, як рельєф міста допомагає пояснити, чому Plovdiv так довго залишався населеним.",
     "summary_ru": "Урок о ранних поселениях на холмах, фракийском Эвмолпии и о том, как рельеф города помогает объяснить, почему Plovdiv так долго оставался заселенным.",
+    "summary_pl": "Lekcja na temat wczesnego osadnictwa na wzgórzach, trackiej Eumolpii i tego, jak ukształtowanie terenu miasta pomaga wyjaśnić, dlaczego Plovdiv był zamieszkany tak długo.",
     "driving_question_de": "Wie kann Gelände einen Ort in eine Stadt mit jahrtausendelanger Erinnerung verwandeln?",
     "driving_question_fr": "Comment le terrain peut-il transformer un lieu en une ville avec des millénaires de mémoire ?",
     "driving_question_it": "Come può il terreno trasformare un luogo in una città con millenni di memoria?",
@@ -2216,6 +2344,7 @@
     "driving_question_tl": "Paano magagawa ng terrain ang isang lugar sa isang lungsod na may millennia ng memorya?",
     "driving_question_uk": "Як ландшафт може перетворити місце на місто з тисячолітньою пам’яттю?",
     "driving_question_ru": "Как рельеф может превратить место в город с тысячелетней памятью?",
+    "driving_question_pl": "W jaki sposób teren może zmienić miejsce w miasto o pamięci tysiącleci?",
     "preparation_de": "Öffnen Sie die Zeitleiste und die Wahrzeichenkarte von Open Plovdiv. Drucken Sie die Paararbeitsaufgaben aus.",
     "preparation_fr": "Ouvrez la chronologie et la carte des monuments d'Open Plovdiv. Imprimez les tâches de travail en binôme.",
     "preparation_it": "Apri la cronologia e la mappa dei punti di riferimento di Open Plovdiv. Stampa i compiti di lavoro in coppia.",
@@ -2225,7 +2354,8 @@
     "preparation_ja": "Open Plovdiv タイムラインとランドマーク マップを開きます。ペアワークのタスクを印刷します。",
     "preparation_tl": "Buksan ang Open Plovdiv kronolohiya at landmark map. I-print ang pares-work na mga gawain.",
     "preparation_uk": "Відкрийте хронологію Open Plovdiv і карту пам’яток. Роздрукуйте завдання для роботи в парах.",
-    "preparation_ru": "Откройте хронологию и карту достопримечательностей Открытого Plovdiv. Распечатайте задания для парной работы."
+    "preparation_ru": "Откройте хронологию и карту достопримечательностей Открытого Plovdiv. Распечатайте задания для парной работы.",
+    "preparation_pl": "Otwórz oś czasu i mapę punktów orientacyjnych Open Plovdiv. Wydrukuj zadania pracy w parach."
   },
   {
     "id": "education-unification-civic-city",
@@ -2276,6 +2406,7 @@
         "phase_tl": "Alaala at lugar",
         "phase_uk": "Пам'ять і місце",
         "phase_ru": "Память и место",
+        "phase_pl": "Pamięć i miejsce",
         "activity_de": "Die Schüler beschreiben, was sie auf einem Platz erwarten, der einem historischen Ereignis gewidmet ist.",
         "activity_fr": "Les élèves décrivent ce qu'ils s'attendent à trouver sur une place dédiée à un événement historique.",
         "activity_it": "Gli studenti descrivono cosa si aspettano di trovare in una piazza dedicata ad un evento storico.",
@@ -2285,7 +2416,8 @@
         "activity_ja": "生徒たちは、歴史的出来事を記念した広場で何が見つかると期待しているかを説明します。",
         "activity_tl": "Inilalarawan ng mga mag-aaral kung ano ang inaasahan nilang makita sa isang parisukat na nakatuon sa isang makasaysayang kaganapan.",
         "activity_uk": "Учні описують, що вони очікують знайти в квадраті, присвяченому історичній події.",
-        "activity_ru": "Студенты описывают то, что они ожидают найти на площади, посвященной историческому событию."
+        "activity_ru": "Студенты описывают то, что они ожидают найти на площади, посвященной историческому событию.",
+        "activity_pl": "Uczniowie opisują, co spodziewają się znaleźć na placu poświęconym wydarzeniu historycznemu."
       },
       {
         "minutes": 15,
@@ -2303,6 +2435,7 @@
         "phase_tl": "Opisyal na pinagmulan",
         "phase_uk": "Офіційне джерело",
         "phase_ru": "Официальный источник",
+        "phase_pl": "Oficjalne źródło",
         "activity_de": "Die Gruppen überprüfen frühe Amtszeiten des Bürgermeisters und diskutieren, warum eine offizielle Liste wichtig ist, aber nicht jede biografische Frage beantwortet.",
         "activity_fr": "Les groupes vérifient les premiers mandats des maires et discutent de l'importance d'une liste officielle, mais ne répond pas à toutes les questions biographiques.",
         "activity_it": "I gruppi controllano i primi termini dei sindaci e discutono perché un elenco ufficiale è importante ma non risponde a tutte le domande biografiche.",
@@ -2312,7 +2445,8 @@
         "activity_ja": "グループは市長の初期の任期を確認し、公式リストが重要であるにもかかわらず、すべての経歴上の質問に答えられるわけではない理由について話し合います。",
         "activity_tl": "Sinusuri ng mga grupo ang mga unang termino para sa alkalde at tinatalakay kung bakit mahalaga ang isang opisyal na listahan ngunit hindi sinasagot ang bawat talambuhay na tanong.",
         "activity_uk": "Групи перевіряють попередні терміни мерів і обговорюють, чому офіційний список важливий, але не відповідає на кожне біографічне запитання.",
-        "activity_ru": "Группы проверяют первые сроки полномочий мэра и обсуждают, почему официальный список важен, но не дает ответов на все биографические вопросы."
+        "activity_ru": "Группы проверяют первые сроки полномочий мэра и обсуждают, почему официальный список важен, но не дает ответов на все биографические вопросы.",
+        "activity_pl": "Grupy sprawdzają wczesną kadencję burmistrza i dyskutują, dlaczego oficjalna lista jest ważna, ale nie zawiera odpowiedzi na wszystkie pytania biograficzne."
       },
       {
         "minutes": 17,
@@ -2330,6 +2464,7 @@
         "phase_tl": "Argumento ng pagkakakilanlan",
         "phase_uk": "Аргумент тотожності",
         "phase_ru": "Аргумент идентичности",
+        "phase_pl": "Argument tożsamości",
         "activity_de": "Die Schüler schreiben eine kurze Argumentation darüber, wie die Vereinigung Teil der Identität Plovdivs wird.",
         "activity_fr": "Les étudiants rédigent un court argument sur la façon dont l'Unification devient partie intégrante de l'identité de Plovdiv.",
         "activity_it": "Gli studenti scrivono un breve argomento su come l'Unificazione diventa parte dell'identità di Plovdiv.",
@@ -2339,7 +2474,8 @@
         "activity_ja": "学生たちは、統一がどのようにPlovdivのアイデンティティの一部となるかについて短い議論を書きます。",
         "activity_tl": "Sumulat ang mga mag-aaral ng maikling argumento kung paano naging bahagi ng pagkakakilanlan ni Plovdiv ang Pagkakaisa.",
         "activity_uk": "Учні пишуть коротку аргументацію про те, як Об’єднання стає частиною ідентичності Plovdiv.",
-        "activity_ru": "Студенты пишут короткие аргументы о том, как Объединение становится частью идентичности Plovdiv."
+        "activity_ru": "Студенты пишут короткие аргументы о том, как Объединение становится частью идентичности Plovdiv.",
+        "activity_pl": "Uczniowie piszą krótki wywód na temat tego, jak zjednoczenie staje się częścią tożsamości Plovdivu."
       },
       {
         "minutes": 10,
@@ -2357,6 +2493,7 @@
         "phase_tl": "Pagninilay",
         "phase_uk": "Рефлексія",
         "phase_ru": "Отражение",
+        "phase_pl": "Odbicie",
         "activity_de": "Die Klasse kennzeichnet, welche Behauptungen durch eine offizielle Quelle gestützt werden und für welche weitere Literatur erforderlich ist.",
         "activity_fr": "Les notes de classe dont les affirmations sont étayées par une source officielle et qui nécessitent une documentation supplémentaire.",
         "activity_it": "I voti di classe le cui affermazioni sono supportate da una fonte ufficiale e che richiedono ulteriore letteratura.",
@@ -2366,7 +2503,8 @@
         "activity_ja": "クラスは、どの主張が公式情報源によって裏付けられているか、およびさらなる文献が必要であるかをマークします。",
         "activity_tl": "Ang klase ay nagmamarka kung aling mga claim ang sinusuportahan ng isang opisyal na mapagkukunan at nangangailangan ng karagdagang literatura.",
         "activity_uk": "Клас позначає, які твердження підтверджені офіційним джерелом, а які потребують додаткової літератури.",
-        "activity_ru": "Класс отмечает утверждения, подтвержденные официальным источником и требующие дополнительной литературы."
+        "activity_ru": "Класс отмечает утверждения, подтвержденные официальным источником и требующие дополнительной литературы.",
+        "activity_pl": "Oznaczenia klas, których twierdzenia są poparte oficjalnym źródłem i które wymagają dalszej literatury."
       }
     ],
     "quiz": [
@@ -2396,6 +2534,7 @@
         "question_tl": "Aling kaganapan ang sentro sa imahe ni Plovdiv bilang lungsod ng Pagkakaisa?",
         "question_uk": "Яка подія є центральною для іміджу Plovdiv як міста об’єднання?",
         "question_ru": "Какое событие является центральным для имиджа Plovdiv как города Объединения?",
+        "question_pl": "Które wydarzenie ma kluczowe znaczenie dla wizerunku Plovdivu jako miasta Zjednoczenia?",
         "explanation_de": "Die Vereinigung von 1885 ist ein Schlüsselereignis im bürgerlichen und nationalen Gedächtnis.",
         "explanation_fr": "L'Unification de 1885 est un événement clé dans la mémoire civique et nationale.",
         "explanation_it": "L'Unità del 1885 è un evento fondamentale nella memoria civica e nazionale.",
@@ -2405,7 +2544,8 @@
         "explanation_ja": "1885 年の統一は、市民と国民の記憶に残る重要な出来事です。",
         "explanation_tl": "Ang Pagkakaisa of 1885 ay isang mahalagang kaganapan sa civic at national memory.",
         "explanation_uk": "Соборність 1885 року є ключовою подією громадянської та національної пам’яті.",
-        "explanation_ru": "Объединение 1885 года — ключевое событие гражданской и национальной памяти."
+        "explanation_ru": "Объединение 1885 года — ключевое событие гражданской и национальной памяти.",
+        "explanation_pl": "Zjednoczenie 1885 r. jest wydarzeniem kluczowym w pamięci obywatelskiej i narodowej."
       },
       {
         "question_bg": "Какво доказва официалният списък на кметовете?",
@@ -2433,6 +2573,7 @@
         "question_tl": "Ano ang pinatutunayan ng opisyal na listahan ng alkalde?",
         "question_uk": "Про що свідчить офіційний список мерів?",
         "question_ru": "Что подтверждает официальный список мэров?",
+        "question_pl": "Czego dowodzi oficjalna lista burmistrzów?",
         "explanation_de": "Die offizielle Liste ist aussagekräftig für die institutionelle Chronologie, es handelt sich jedoch nicht um eine vollständige Biografie.",
         "explanation_fr": "La liste officielle est solide en termes de chronologie institutionnelle, mais elle ne constitue pas une biographie complète.",
         "explanation_it": "L'elenco ufficiale è forte per la cronologia istituzionale, ma non è una biografia completa.",
@@ -2442,7 +2583,8 @@
         "explanation_ja": "公式リストは組織の年表としては強力ですが、完全な伝記ではありません。",
         "explanation_tl": "Malakas ang opisyal na listahan para sa kronolohiya ng institusyon, ngunit hindi ito isang buong talambuhay.",
         "explanation_uk": "Офіційний список є сильним для інституційної хронології, але це не повна біографія.",
-        "explanation_ru": "Официальный список богат институциональной хронологией, но не является полной биографией."
+        "explanation_ru": "Официальный список богат институциональной хронологией, но не является полной биографией.",
+        "explanation_pl": "Oficjalna lista zawiera silną chronologię instytucjonalną, ale nie jest to pełna biografia."
       },
       {
         "question_bg": "Защо паметниците и площадите са източници за гражданска памет?",
@@ -2470,6 +2612,7 @@
         "question_tl": "Bakit pinagmumulan ng alaalang sibiko ang mga monumento at plaza?",
         "question_uk": "Чому пам’ятники та площі є джерелами громадянської пам’яті?",
         "question_ru": "Почему памятники и площади являются источниками гражданской памяти?",
+        "question_pl": "Dlaczego pomniki i place są źródłami pamięci obywatelskiej?",
         "explanation_de": "Öffentliche Orte zeigen, wie eine Gemeinschaft Erinnerung im Raum arrangiert.",
         "explanation_fr": "Les lieux publics montrent comment une communauté agence la mémoire dans l’espace.",
         "explanation_it": "I luoghi pubblici mostrano come una comunità organizza la memoria nello spazio.",
@@ -2479,7 +2622,8 @@
         "explanation_ja": "公共の場所は、コミュニティがどのように記憶を空間に配置するかを示しています。",
         "explanation_tl": "Ang mga pampublikong lugar ay nagpapakita kung paano inaayos ng isang komunidad ang memorya sa kalawakan.",
         "explanation_uk": "Громадські місця показують, як спільнота впорядковує пам’ять у просторі.",
-        "explanation_ru": "Общественные места показывают, как сообщество организует память в пространстве."
+        "explanation_ru": "Общественные места показывают, как сообщество организует память в пространстве.",
+        "explanation_pl": "Miejsca publiczne pokazują, jak społeczność organizuje pamięć w przestrzeni."
       }
     ],
     "printable_handout": {
@@ -2504,7 +2648,8 @@
       "title_ja": "ワークシート: イベント、制度、記憶",
       "title_tl": "Worksheet: kaganapan, institusyon, memorya",
       "title_uk": "Робочий аркуш: подія, заклад, пам’ять",
-      "title_ru": "Рабочий лист: событие, учреждение, память."
+      "title_ru": "Рабочий лист: событие, учреждение, память.",
+      "title_pl": "Arkusz: wydarzenie, instytucja, pamięć"
     },
     "audio_tour": {
       "title_bg": "Маршрут за разходка: Съединение и гражданска памет",
@@ -2527,6 +2672,7 @@
           "title_tl": "Plaza ng Pagkakaisa",
           "title_uk": "Площа Об’єднання",
           "title_ru": "Площадь Объединения",
+          "title_pl": "Plac Zjednoczenia",
           "narration_de": "Hier wird der Stadtraum zur Erinnerungslektion. Der Name und das Denkmal weisen auf das Jahr 1885 und die Rolle Plovdivs hin.",
           "narration_fr": "L'espace urbain devient ici une leçon de mémoire. Le nom et le monument évoquent l'année 1885 et le rôle de Plovdiv.",
           "narration_it": "Qui lo spazio urbano diventa una lezione di memoria. Il nome e il monumento rimandano al 1885 e al ruolo di Plovdiv.",
@@ -2536,7 +2682,8 @@
           "narration_ja": "ここでは都市空間が記憶の教訓となる。名前と記念碑は 1885 年とPlovdivの役割を示しています。",
           "narration_tl": "Dito nagiging aral sa memorya ang espasyo ng kalunsuran. Ang pangalan at monumento ay tumuturo sa 1885 at sa papel ni Plovdiv.",
           "narration_uk": "Тут міський простір стає уроком пам’яті. Назва та пам'ятник вказують на 1885 рік і на роль Plovdiv.",
-          "narration_ru": "Здесь городское пространство становится уроком памяти. Название и памятник указывают на 1885 год и роль Plovdiv."
+          "narration_ru": "Здесь городское пространство становится уроком памяти. Название и памятник указывают на 1885 год и роль Plovdiv.",
+          "narration_pl": "Tutaj przestrzeń miejska staje się lekcją pamięci. Nazwa i pomnik wskazują na rok 1885 i rolę Plovdivu."
         },
         {
           "place_id": "place-plovdiv-city",
@@ -2554,6 +2701,7 @@
           "title_tl": "Munisipyo at mga alkalde",
           "title_uk": "Муніципалітет і мери",
           "title_ru": "Муниципалитет и мэры",
+          "title_pl": "Władze miasta i burmistrzowie",
           "narration_de": "Die Geschichte bürgerschaftlicher Entscheidungen wird auch anhand von Institutionen nachgezeichnet. Die offizielle Bürgermeisterliste gibt die Reihenfolge der Amtszeiten an.",
           "narration_fr": "L’histoire des décisions civiques est également retracée à travers les institutions. La liste officielle des maires donne l'ordre des mandats.",
           "narration_it": "La storia delle decisioni civiche si ripercorre anche attraverso le istituzioni. L'elenco ufficiale dei sindaci riporta l'ordine dei termini.",
@@ -2563,7 +2711,8 @@
           "narration_ja": "市民の決定の歴史も制度を通じて追跡されます。公式の市長リストには任期の順序が記載されています。",
           "narration_tl": "Ang kasaysayan ng mga desisyong sibiko ay sinusubaybayan din sa pamamagitan ng mga institusyon. Ang opisyal na listahan ng alkalde ay nagbibigay ng pagkakasunud-sunod ng mga termino.",
           "narration_uk": "Історія громадянських рішень також простежується через інституції. Офіційний список мерів містить порядок термінів.",
-          "narration_ru": "История гражданских решений также прослеживается через институты. В официальном списке мэров указан порядок сроков."
+          "narration_ru": "История гражданских решений также прослеживается через институты. В официальном списке мэров указан порядок сроков.",
+          "narration_pl": "Historię decyzji obywatelskich można prześledzić także poprzez instytucje. Oficjalna lista burmistrzów podaje kolejność terminów."
         },
         {
           "place_id": "place-old-town",
@@ -2581,6 +2730,7 @@
           "title_tl": "Memorya sa lungsod",
           "title_uk": "Міська пам'ять",
           "title_ru": "Городская память",
+          "title_pl": "Pamięć miejska",
           "narration_de": "Erinnerung wird nicht nur in Archiven aufbewahrt. Es erscheint in Namen, Routen, Museen und Jubiläen.",
           "narration_fr": "La mémoire n'est pas conservée uniquement dans les archives. Il apparaît dans les noms, les itinéraires, les musées et les anniversaires.",
           "narration_it": "La memoria non è conservata solo negli archivi. Appare nei nomi, negli itinerari, nei musei e negli anniversari.",
@@ -2590,7 +2740,8 @@
           "narration_ja": "記憶はアーカイブだけに保存されるわけではありません。それは名前、路線、博物館、記念日などに現れます。",
           "narration_tl": "Ang memorya ay hindi lamang itinatago sa mga archive. Lumilitaw ito sa mga pangalan, ruta, museo at anibersaryo.",
           "narration_uk": "Пам'ять зберігається не тільки в архівах. Він з’являється в іменах, маршрутах, музеях та ювілеях.",
-          "narration_ru": "Память хранится не только в архивах. Он появляется в названиях, маршрутах, музеях и юбилеях."
+          "narration_ru": "Память хранится не только в архивах. Он появляется в названиях, маршрутах, музеях и юбилеях.",
+          "narration_pl": "Pamięć nie jest przechowywana wyłącznie w archiwach. Pojawia się w nazwach, szlakach, muzeach i rocznicach."
         }
       ],
       "title_de": "Wanderroute: Vereinigung und bürgerliches Gedächtnis",
@@ -2602,7 +2753,8 @@
       "title_ja": "散策ルート：統一と市民の記憶",
       "title_tl": "Ruta sa paglalakad: Pagkakaisa at alaalang sibiko",
       "title_uk": "Пішохідний маршрут: Об’єднання та громадянська пам’ять",
-      "title_ru": "Пеший маршрут: Объединение и гражданская память"
+      "title_ru": "Пеший маршрут: Объединение и гражданская память",
+      "title_pl": "Trasa piesza: Zjednoczenie i pamięć obywatelska"
     },
     "linked_event_ids": [
       "event-unification-1885",
@@ -2642,7 +2794,8 @@
       "notes_ja": "教育リソースは公開知識ベースの記録から組み立てられており、正式に使用する前に教育的および編集的なレビューが必要です。",
       "notes_tl": "Ang mapagkukunang pang-edukasyon ay binuo mula sa mga pampublikong talaan ng kaalaman at kailangan pa ng pagsusuring pedagogical at editoryal bago gamitin nang pormal.",
       "notes_uk": "Освітній ресурс зібрано із загальнодоступних записів бази знань і вимагає педагогічної та редакційної перевірки перед офіційним використанням.",
-      "notes_ru": "Ресурс по образованию собирается из записей общедоступной базы знаний и требует педагогической и редакционной проверки перед официальным использованием."
+      "notes_ru": "Ресурс по образованию собирается из записей общедоступной базы знаний и требует педагогической и редакционной проверки перед официальным использованием.",
+      "notes_pl": "Zasoby edukacyjne składają się z publicznych rejestrów wiedzy i wymagają przeglądu pedagogicznego i redakcyjnego przed formalnym użyciem."
     },
     "provenance": [
       {
@@ -2662,7 +2815,8 @@
         "claim_ja": "レッスン「統一と市民決定の都市」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na pag-angkin para sa aralin na \"Ang Pag-iisa at ang Lungsod ng mga Desisyon ng Sibiko\".",
         "claim_uk": "Джерела та навчальні претензії до уроку «Об’єднання та місто громадянських рішень».",
-        "claim_ru": "Источники и учебные претензии к уроку «Объединение и город гражданских решений»."
+        "claim_ru": "Источники и учебные претензии к уроку «Объединение и город гражданских решений».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Zjednoczenie i miasto decyzji obywatelskich”."
       },
       {
         "source_id": "source-plovdiv-mayor-archive",
@@ -2681,7 +2835,8 @@
         "claim_ja": "レッスン「統一と市民決定の都市」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na pag-angkin para sa aralin na \"Ang Pag-iisa at ang Lungsod ng mga Desisyon ng Sibiko\".",
         "claim_uk": "Джерела та навчальні претензії до уроку «Об’єднання та місто громадянських рішень».",
-        "claim_ru": "Источники и учебные претензии к уроку «Объединение и город гражданских решений»."
+        "claim_ru": "Источники и учебные претензии к уроку «Объединение и город гражданских решений».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Zjednoczenie i miasto decyzji obywatelskich”."
       },
       {
         "source_id": "source-wikidata-unification-square-plovdiv",
@@ -2700,7 +2855,8 @@
         "claim_ja": "レッスン「統一と市民決定の都市」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na pag-angkin para sa aralin na \"Ang Pag-iisa at ang Lungsod ng mga Desisyon ng Sibiko\".",
         "claim_uk": "Джерела та навчальні претензії до уроку «Об’єднання та місто громадянських рішень».",
-        "claim_ru": "Источники и учебные претензии к уроку «Объединение и город гражданских решений»."
+        "claim_ru": "Источники и учебные претензии к уроку «Объединение и город гражданских решений».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Zjednoczenie i miasto decyzji obywatelskich”."
       },
       {
         "source_id": "source-wikimedia-commons-monument-of-the-unification-jpg",
@@ -2719,7 +2875,8 @@
         "claim_ja": "レッスン「統一と市民決定の都市」の出典と教育上の主張。",
         "claim_tl": "Mga mapagkukunan at pang-edukasyon na pag-angkin para sa aralin na \"Ang Pag-iisa at ang Lungsod ng mga Desisyon ng Sibiko\".",
         "claim_uk": "Джерела та навчальні претензії до уроку «Об’єднання та місто громадянських рішень».",
-        "claim_ru": "Источники и учебные претензии к уроку «Объединение и город гражданских решений»."
+        "claim_ru": "Источники и учебные претензии к уроку «Объединение и город гражданских решений».",
+        "claim_pl": "Źródła i założenia edukacyjne do lekcji „Zjednoczenie i miasto decyzji obywatelskich”."
       }
     ],
     "audience_de": "Klassen 7-10",
@@ -2732,6 +2889,7 @@
     "audience_tl": "Baitang 7-10",
     "audience_uk": "7-10 класи",
     "audience_ru": "7-10 классы",
+    "audience_pl": "Klasy 7-10",
     "title_de": "Die Vereinigung und die Stadt der bürgerlichen Entscheidungen",
     "title_fr": "L'unification et la ville des décisions civiques",
     "title_it": "L'Unità e la città delle decisioni civiche",
@@ -2742,6 +2900,7 @@
     "title_tl": "Ang Pag-iisa at ang Lungsod ng mga Pagpapasya sa Sibiko",
     "title_uk": "Об’єднання та місто громадянських рішень",
     "title_ru": "Объединение и город гражданских решений",
+    "title_pl": "Zjednoczenie i miasto decyzji obywatelskich",
     "summary_de": "Eine Lektion über Plovdiv als Stadt der Vereinigung, die frühe kommunale Verwaltung und wie offizielle Listen, Plätze und Denkmäler das öffentliche Gedächtnis prägen.",
     "summary_fr": "Une leçon sur Plovdiv en tant que ville de l'Unification, les débuts de la gouvernance municipale et la manière dont les listes officielles, les places et les monuments façonnent la mémoire publique.",
     "summary_it": "Una lezione su Plovdiv come città dell'Unificazione, sulla prima governance municipale e su come elenchi ufficiali, piazze e monumenti modellano la memoria pubblica.",
@@ -2752,6 +2911,7 @@
     "summary_tl": "Isang aral sa Plovdiv bilang lungsod ng Pagkakaisa, maagang pamamahala ng munisipyo at kung paano hinuhubog ng mga opisyal na listahan, mga parisukat at monumento ang pampublikong memorya.",
     "summary_uk": "Урок про Plovdiv як місто Об’єднання, раннє муніципальне управління та те, як офіційні списки, площі та пам’ятники формують суспільну пам’ять.",
     "summary_ru": "Урок о Plovdiv как городе Объединения, раннем муниципальном управлении и о том, как официальные списки, площади и памятники формируют общественную память.",
+    "summary_pl": "Lekcja o Plovdivie jako mieście Zjednoczenia, początkach zarządzania miejskiego oraz o tym, jak oficjalne listy, place i pomniki kształtują pamięć publiczną.",
     "driving_question_de": "Wie wird ein historisches Ereignis Teil der Identität einer Stadt?",
     "driving_question_fr": "Comment un événement historique s’inscrit-il dans l’identité d’une ville ?",
     "driving_question_it": "Come fa un evento storico a diventare parte dell'identità di una città?",
@@ -2762,6 +2922,7 @@
     "driving_question_tl": "Paano nagiging bahagi ng pagkakakilanlan ng isang lungsod ang isang makasaysayang pangyayari?",
     "driving_question_uk": "Як історична подія стає частиною ідентичності міста?",
     "driving_question_ru": "Как историческое событие становится частью идентичности города?",
+    "driving_question_pl": "W jaki sposób wydarzenie historyczne staje się częścią tożsamości miasta?",
     "preparation_de": "Öffnen Sie die Ereignisse von 1885, die Bürgermeisterseite und die Aufzeichnung für den Unification Square.",
     "preparation_fr": "Ouvrez les événements de 1885, la page des maires et le dossier de la Place de l'Unification.",
     "preparation_it": "Apre gli eventi del 1885, la pagina dei sindaci e il registro di Piazza dell'Unificazione.",
@@ -2771,6 +2932,7 @@
     "preparation_ja": "1885 年のイベント、市長のページ、統一広場の記録を開きます。",
     "preparation_tl": "Buksan ang mga pangyayari noong 1885, ang pahina ng mga alkalde at ang talaan para sa Plaza ng Pagkakaisa.",
     "preparation_uk": "Відкрийте події 1885 року, сторінку мерів і запис про Майдан Об’єднання.",
-    "preparation_ru": "Откройте события 1885 года, страницу мэров и запись площади Объединения."
+    "preparation_ru": "Откройте события 1885 года, страницу мэров и запись площади Объединения.",
+    "preparation_pl": "Otwórz wydarzenia z 1885 r., stronę burmistrzów i zapis Placu Zjednoczenia."
   }
 ]

@@ -84,7 +84,7 @@
           "activity_en": { "type": "string", "minLength": 20 }
         },
         "patternProperties": {
-          "^(phase|activity)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+          "^(phase|activity)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
         }
       }
     },
@@ -123,7 +123,7 @@
           "explanation_en": { "type": "string", "minLength": 10 }
         },
         "patternProperties": {
-          "^(question|explanation)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+          "^(question|explanation)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
         }
       }
     },
@@ -146,7 +146,7 @@
         }
       },
       "patternProperties": {
-        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 5 }
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 5 }
       }
     },
     "audio_tour": {
@@ -172,13 +172,13 @@
               "narration_en": { "type": "string", "minLength": 30 }
             },
             "patternProperties": {
-              "^(title|narration)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+              "^(title|narration)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
             }
           }
         }
       },
       "patternProperties": {
-        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 5 }
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 5 }
       }
     },
     "linked_event_ids": {
@@ -209,6 +209,6 @@
     "editorial": { "$ref": "historical-archive-item.schema.json#/definitions/editorial" }
   },
   "patternProperties": {
-    "^(audience|title|summary|driving_question|preparation)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+    "^(audience|title|summary|driving_question|preparation)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
   }
 }

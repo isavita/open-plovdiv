@@ -4,7 +4,7 @@ import process from "node:process";
 
 const root = process.cwd();
 const targetLang = process.argv[2] ?? "de";
-const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"]);
+const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"]);
 if (!supportedTargetLangs.has(targetLang)) {
   throw new Error(`Unsupported target language "${targetLang}". Expected one of: ${[...supportedTargetLangs].join(", ")}`);
 }
@@ -534,6 +534,24 @@ const manualTranslationsByLang = {
     "Atanas Samokovliev, also known as Atanas Samokovets (1832-1905), was a merchant, public figure and Plovdiv's first mayor after the Liberation. Born in Samokov, he was the son of icon painter Dimitar Zograf and brother of artist Stanislav Dospevski. After settling in Plovdiv he worked in tailoring and trade, helped administer the Holy Mother of God church and served in the city medjlis. The Provisional Russian Administration appointed him first mayor on 12 January 1878; he left office on 26 February that year. He later joined the Provisional Government after the Unification, was elected to parliament and was among the founders of the Plovdiv Chamber of Commerce and Industry. He was a deputy in the First Ordinary National Assembly and the Third Grand National Assembly.":
       "Atanas Samokovliev, также известный как Atanas Samokovets (1832-1905), был купцом, общественным деятелем и первым мэром Plovdiv после Освобождения. Родился в Самокове, был сыном иконописца Димитара Зографа и братом художника Станислава Доспевского. Поселившись в Plovdiv, занимался портняжным делом и торговлей, помогал управлять церковью Пресвятой Богородицы и служил в городском меджлисе. Временная русская администрация назначила его первым мэром 12 января 1878 года; он покинул пост 26 февраля того же года. Позже он вошёл во Временное правительство после Объединения, был избран в парламент и был среди основателей Пловдивской торгово-промышленной палаты. Был депутатом Первого обыкновенного народного собрания и Третьего великого народного собрания.",
     "Mayoral term(s) for Atanas Samokovliev.": "Мэрский срок: Atanas Samokovliev."
+  },
+  pl: {
+    // Full identity from the machine; pl polonises famous names ("Christo").
+    "Named after the poet Hristo Smirnenski (1898–1923).":
+      "Nazwany na cześć poety Hristo Smirnenskiego (1898–1923).",
+    "Public web reference; reuse terms not verified":
+      "Publiczne odniesienie internetowe; warunki ponownego wykorzystania niezweryfikowane",
+    "Wikimedia Commons file license, verify per file":
+      "Licencja pliku Wikimedia Commons; sprawdzaj dla każdego pliku",
+    "Creative Commons Attribution-ShareAlike 4.0 International":
+      "Creative Commons Attribution-ShareAlike 4.0 International",
+    "Creative Commons CC0 1.0 Universal": "Creative Commons CC0 1.0 Universal",
+    "Open Database License 1.0": "Open Database License 1.0",
+    "Open-license media; follow the stated license and attribution.":
+      "Materiały na otwartej licencji; przestrzegaj wskazanej licencji i zasad atrybucji.",
+    "Bulgarian Revival": "Bułgarskie odrodzenie narodowe",
+    "State targeted subsidy": "Celowa dotacja państwowa",
+    "Mayor of Plovdiv Municipality": "Burmistrz gminy Plovdiv"
   }
 };
 
@@ -621,6 +639,14 @@ const reviewedLandmarkSummaryTranslationsByLang = {
     "A caravanserai in Plovdiv.": "Караван-сарай в Пловдиве.",
     "A bath in Plovdiv, Bulgaria.": "Баня в Пловдиве, Болгария.",
     "A sports hall in Plovdiv.": "Спортивный зал в Пловдиве."
+  },
+  pl: {
+    "A road tunnel in Plovdiv.": "Tunel drogowy w Plovdivie.",
+    "A natural landmark in Bulgaria.": "Pomnik przyrody w Bułgarii.",
+    "An art gallery in Plovdiv.": "Galeria sztuki w Plovdivie.",
+    "A caravanserai in Plovdiv.": "Karawanseraj w Plovdivie.",
+    "A bath in Plovdiv, Bulgaria.": "Łaźnia w Plovdivie w Bułgarii.",
+    "A sports hall in Plovdiv.": "Hala sportowa w Plovdivie."
   }
 };
 
@@ -692,6 +718,12 @@ const reviewedEditorialNoticeTranslationsByLang = {
       "Эта архивная запись автоматически подготовлена на основе Wikimedia Commons и показана как предварительный справочный материал; независимая редакционная проверка и более точная геопривязка ещё ожидаются.",
     "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
       "Это сопоставление исторического изображения и справочной фотографии подготовлено автоматически и показано как предварительный справочный материал; независимая редакционная проверка визуального соответствия, сведений о лицензии и авторстве, а также контекста ещё ожидается."
+  },
+  pl: {
+    "This archive record was automatically prepared from Wikimedia Commons and is shown as a provisional reference; independent editorial review and more precise georeferencing are still pending.":
+      "Ten wpis archiwalny został automatycznie przygotowany na podstawie Wikimedia Commons i jest pokazywany jako materiał wstępny; niezależny przegląd redakcyjny i dokładniejsza georeferencja są wciąż w toku.",
+    "This pairing of a historical image and a reference photo was automatically prepared and is shown as a provisional reference; independent editorial review of the visual match, licence and attribution information, and context is still pending.":
+      "To zestawienie obrazu historycznego ze zdjęciem referencyjnym przygotowano automatycznie i pokazano jako materiał wstępny; niezależny przegląd redakcyjny zgodności wizualnej, informacji o licencji i autorstwie oraz kontekstu jest wciąż w toku."
   }
 };
 for (const [lang, translations] of Object.entries(reviewedEditorialNoticeTranslationsByLang)) {
@@ -711,7 +743,8 @@ const reviewedCurrentMayoralTermTranslationsByLang = {
   ja: "2023年11月8日 – 2026年7月9日現在、現職",
   tl: "8 Nobyembre 2023 – nanunungkulan noong 9 Hulyo 2026",
   uk: "8 листопада 2023 року — чинний станом на 9 липня 2026 року",
-  ru: "8 ноября 2023 года — действующий по состоянию на 9 июля 2026 года"
+  ru: "8 ноября 2023 года — действующий по состоянию на 9 июля 2026 года",
+  pl: "8 listopada 2023 — sprawuje urząd wg stanu na 9 lipca 2026"
 };
 for (const [lang, translation] of Object.entries(reviewedCurrentMayoralTermTranslationsByLang)) {
   manualTranslationsByLang[lang]["8 November 2023 – incumbent as of 9 July 2026"] = translation;
@@ -735,6 +768,22 @@ const protectedNameOverridesByLang = {
     ["Georgi Dzhezov", "Georgi Dzhevizov"],
     ["Nikolay Marinecheshki", "Nikolay Marincheshki"],
     ["Polis Karastoyanova", "Poli Karastoyanova"]
+  ],
+  // Polish declines and polonises person names inside free prose (v -> w,
+  // Stanislav -> Stanisław, plus a case ending). The templated mentions are
+  // recovered by namePatternsByLang.pl; these are the remaining prose forms,
+  // pinned back to the recorded spelling like every other locale keeps names.
+  pl: [
+    ["Hristo G. Danowem", "Hristo G. Danov"],
+    ["Hristo G. Danowa", "Hristo G. Danov"],
+    ["Iwanem Jewstratiewem Geszowem", "Ivan Evstratiev Geshov"],
+    ["Iwanie Perpeliewie", "Ivan Perpeliev"],
+    ["Kostakiego Peewa", "Kostaki Peev"],
+    ["Peewa", "Peev"],
+    ["Stanisław Dospevski", "Stanislav Dospevski"],
+    ["Bożidara Zdrawkowa", "Bozhidar Zdravkov"],
+    ["Bożidara Zdravkowa", "Bozhidar Zdravkov"],
+    ["Eugeniusz II Konstantynopola", "Eugenius II of Constantinople"]
   ]
 };
 
@@ -1128,6 +1177,43 @@ const namePatternsByLang = {
     ],
     archive: /(?:Мэр|Градоначальник)\s*:\s*([^"»]+)["»]\.?$/,
     relationshipPrefix: /^(?:Связь между людьми|Отношения между людьми|Личное родство|Родство)\s*:\s*/
+  },
+  pl: {
+    direct: (escapedName) => [
+      [`Biographical reference: ${escapedName}`, /^(?:Źródło|Odniesienie|Nota|Informacja) biograficzn[ae]\s*:\s*(.+)$/],
+      [`Birth of ${escapedName}`, /^(?:Narodziny|Urodziny|Urodzenie)\s*:?\s*(.+)$/],
+      [
+        `Birth year and birthplace for ${escapedName}.`,
+        /^Rok urodzenia i miejsce urodzenia\s*:?\s*(.+?)\.$/
+      ],
+      [
+        `Biographical data and Plovdiv birthplace link for ${escapedName}.`,
+        /^Dane biograficzne i link do miejsca urodzenia\s+(.+?)(?:\s+w Plovdiv\w*)?\.$/
+      ],
+      [`Mayor: ${escapedName}`, /^(?:Burmistrz|Prezydent miasta)\s*:\s*(.+)$/],
+      [`Mayoral term\\(s\\) for ${escapedName}.`, /^Kadencj[ae] burmistrza\s*:?\s*(.+?)\.$/],
+      [`Wikipedia [—–-] ${escapedName}`, /^Wikipedia\s*[—–:-]\s*(.+)$/],
+      [
+        `${escapedName}'s birthplace is Plovdiv; the recorded birth year is \\d+\\.`,
+        /^Miejsce urodzenia (.+?) to Plovdiv\w*\s*;/
+      ],
+      [
+        `A biographical source documents the relationship ".+?" between ${escapedName} and .+\\.`,
+        /(?:po)?między\s+(.+?)\s+(?:i|oraz|a)\s+.+\.$/
+      ],
+      [
+        `A biographical source documents the relationship ".+?" between .+ and ${escapedName}\\.`,
+        /(?:po)?między\s+.+\s+(?:i|oraz|a)\s+(.+?)\.$/
+      ],
+      [`See more works by ${escapedName} on Wikimedia Commons`, /^Zobacz więcej prac\s+(.+?)\s+w Wikimedia Commons$/],
+      [`Debati - interview with ${escapedName}`, /^Debati\s*[-–—]\s*wywiad ze?\s+(.+)$/],
+      [
+        `Description and historical context for ${escapedName} (?:house|House|Exposition|exposition)\\.`,
+        /^Opis i kontekst historyczny (?:domu|ekspozycji)\s+(.+?)\.$/
+      ]
+    ],
+    archive: /(?:Burmistrz|Prezydent miasta)\s*:\s*([^"”»]+)["”»]\.?$/,
+    relationshipPrefix: /^(?:Relacja osobowa|Relacja osobista|Powiązanie osobowe|Relacje osobiste|Pokrewieństwo)\s*:\s*/
   }
 };
 
@@ -1253,6 +1339,13 @@ const exonymByLang = {
     { form: "プロブディフ", guarded: true },
     { form: "フィリッポポリス", guarded: true },
     { form: "フィリベ", guarded: true }
+  ],
+  // Polish only ever uses "Płowdiw" for the modern city (the ancient one is
+  // "Filipopolis"), so the swap is unguarded. Replacing the stem keeps the case
+  // ending the machine attached: "Płowdiwie" -> "Plovdivie".
+  pl: [
+    { form: "Płowdiw", guarded: false },
+    { form: "Plowdiw", guarded: false }
   ]
 };
 function applyExonymFixups(translations) {
@@ -1850,6 +1943,68 @@ function applyRussianTemplateFixups(translations) {
 // machine translation expands these ("il dottor"/"Dott."/"Ing.") even for full
 // names not in the protected set; restore the source form wherever the English
 // source actually used the honorific, so names read identically across locales.
+// Polish is a heavily declined Latin-script language, so the same three defect
+// classes seen for uk/ru recur — but without a script change to make them
+// visible. Google renders the succession tag as anything from "odnosi sukces"
+// (achieves success) to "sukces", and polonises names inside prose
+// ("Ivan Totev" -> "Iwana Totewa"). Direction matches
+// generate_history_knowledge.mjs and PersonDetailView's relationshipLabelsPl:
+// succeeds => "to" is from's predecessor; succeeded_by => "to" is from's successor.
+const relationshipTagLabelsPl = { succeeds: "poprzednik", succeededBy: "następca" };
+function applyPolishTemplateFixups(translations) {
+  if (targetLang !== "pl") return;
+  for (const [source, translated] of Object.entries(translations)) {
+    if (typeof translated !== "string") continue;
+    let out = translated;
+
+    if (/ — succeeds — /.test(source) && / — .+? — /.test(out)) {
+      out = out.replace(/ — .+? — /, ` — ${relationshipTagLabelsPl.succeeds} — `);
+    } else if (/ — succeeded by — /.test(source) && / — .+? — /.test(out)) {
+      out = out.replace(/ — .+? — /, ` — ${relationshipTagLabelsPl.succeededBy} — `);
+    } else if (/ — succeeds — /.test(source)) {
+      const m = source.match(/^(?:Person relationship: )?(.+) — succeeds — (.+?)\.?$/);
+      if (m) out = source.startsWith("Person relationship:")
+        ? `Relacja osobowa: ${m[1]} — ${relationshipTagLabelsPl.succeeds} — ${m[2]}.`
+        : `${m[1]} — ${relationshipTagLabelsPl.succeeds} — ${m[2]}`;
+    } else if (/ — succeeded by — /.test(source)) {
+      const m = source.match(/^(?:Person relationship: )?(.+) — succeeded by — (.+?)\.?$/);
+      if (m) out = source.startsWith("Person relationship:")
+        ? `Relacja osobowa: ${m[1]} — ${relationshipTagLabelsPl.succeededBy} — ${m[2]}.`
+        : `${m[1]} — ${relationshipTagLabelsPl.succeededBy} — ${m[2]}`;
+    }
+
+    // Same as ru: the prose form is too unreliable to patch (the quoted tag is
+    // routinely paraphrased away and the names get declined), so rebuild it
+    // from the English source with both names in their recorded spelling.
+    const chronologyMatch = source.match(
+      /^The mayoral chronology links (.+) with (.+) through the relationship "(succeeds|succeeded by)"\.$/
+    );
+    if (chronologyMatch) {
+      const [, left, right, relation] = chronologyMatch;
+      const tag = relation === "succeeds" ? relationshipTagLabelsPl.succeeds : relationshipTagLabelsPl.succeededBy;
+      out = `Chronologia burmistrzów łączy ${left} z ${right} relacją „${tag}”.`;
+    }
+
+    // Bio leads ("First Middle Last (born ...) was a ...") get the name
+    // declined and polonised (v -> w, -ev -> -ewa). There is no reliable way to
+    // recover the recorded spelling from an arbitrary polonised form, so reset
+    // the leading name to the exact source-English form, as every other locale
+    // keeps it. Every word before the parenthesis must be capitalised so this
+    // only fires on an actual name — the looser "anything before the bracket"
+    // form used for uk/ru also matches descriptive leads ("Bulgarian film
+    // director and screenwriter (1926–2007)", "First of two consecutive terms
+    // as mayor of Plovdiv (1999–2003).") and pastes the English back verbatim.
+    const bioLead = source.match(
+      /^((?:[A-ZÀ-ž][^\s()]*)(?: [A-ZÀ-ž][^\s()]*){1,4}) \((?:b\.|born|c\.|active|fl\.|\d{3,4})/
+    );
+    if (bioLead) {
+      out = out.replace(/^.+?(?=\s*[（(])/, bioLead[1]);
+    }
+
+    if (out !== translated) translations[source] = out;
+  }
+}
+
 function applyHonorificFixups(translations) {
   if (!["it", "tr", "es", "el", "ja", "ru"].includes(targetLang)) return;
   for (const [source, translated] of Object.entries(translations)) {
@@ -1904,6 +2059,15 @@ function applyHonorificFixups(translations) {
       }
       if (/\bEng\.?\s/.test(source)) {
         out = out.replace(/[Ии]нж\.?\s/g, "Eng. ").replace(/[Ии]нженер\s/g, "Eng. ");
+      }
+    } else if (targetLang === "pl") {
+      // Polish writes "dr" lowercase and renders "Eng." as "inż."/"inżynier";
+      // restore the source convention so honorifics read alike across locales.
+      if (/\bDr\.?\s/.test(source)) {
+        out = out.replace(/\b[Dd]r\.?\s(?=[A-ZĄĆĘŁŃÓŚŹŻ])/g, "Dr. ").replace(/\b[Dd]oktor\s/g, "Dr. ");
+      }
+      if (/\bEng\.?\s/.test(source)) {
+        out = out.replace(/\b[Ii]nż\.?\s/g, "Eng. ").replace(/\b[Ii]nżynier(?:a|owi|em|ze)?\s/g, "Eng. ");
       }
     }
     translations[source] = out;
@@ -2887,6 +3051,7 @@ applyUkrainianTemplateFixups(translations);
 applyRussianDeclensionFixups(translations);
 applyRussianTemplateFixups(translations);
 applyTagalogTemplateFixups(translations);
+applyPolishTemplateFixups(translations);
 applyManualTranslations(translations, allStrings);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });

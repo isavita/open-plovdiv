@@ -44,6 +44,6 @@
     "editorial": { "$ref": "knowledge-event.schema.json#/definitions/editorial" }
   },
   "patternProperties": {
-    "^(name|summary)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+    "^(name|summary)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
   }
 }

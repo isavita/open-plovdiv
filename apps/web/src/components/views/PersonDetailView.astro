@@ -245,6 +245,26 @@ const labels =
         linkedEvent: "Связанное событие",
         imageCredit: "Кредит изображения"
       }
+      : lang === "pl"
+      ? {
+        back: "Wszyscy ludzie",
+        profile: "Profil",
+        facts: "Dane",
+        roles: "Role",
+        life: "Lata życia",
+        born: "Urodzony/urodzona",
+        wikidata: "Wikidata",
+        linkedEvents: "Powiązane wydarzenia",
+        relationships: "Powiązania z innymi osobami",
+        noRelationships: "Nie odnotowano jeszcze bezpośrednich powiązań z innymi osobami.",
+        evidence: "Źródła",
+        source: "Źródło",
+        accessed: "Dostęp",
+        license: "Licencja",
+        relationshipSource: "Źródło powiązania",
+        linkedEvent: "Powiązane wydarzenie",
+        imageCredit: "Autor zdjęcia"
+      }
       : {
         back: "All people",
         profile: "Profile",
@@ -510,6 +530,21 @@ const relationshipLabelsRu: Record<string, string> = {
   influenced_by: "под влиянием"
 };
 
+const relationshipLabelsPl: Record<string, string> = {
+  succeeds: "poprzednik",
+  succeeded_by: "następca",
+  spouse: "małżonek/małżonka",
+  father: "ojciec",
+  mother: "matka",
+  parent: "rodzic",
+  child: "dziecko",
+  sibling: "rodzeństwo",
+  mentor: "mentor",
+  student: "uczeń/student",
+  partner: "partner",
+  influenced_by: "pod wpływem"
+};
+
 const roleGroups: Record<string, RoleGroup> = {
   mayor: "governance",
   politician: "governance",
@@ -614,6 +649,7 @@ function relationshipLabel(type: string): string {
   if (lang === "tl") return relationshipLabelsTl[type] ?? type.replaceAll("_", " ");
   if (lang === "uk") return relationshipLabelsUk[type] ?? type.replaceAll("_", " ");
   if (lang === "ru") return relationshipLabelsRu[type] ?? type.replaceAll("_", " ");
+  if (lang === "pl") return relationshipLabelsPl[type] ?? type.replaceAll("_", " ");
   return relationshipLabels[type]?.[lang] ?? type.replaceAll("_", " ");
 }
 
@@ -626,6 +662,7 @@ function lifeLabel(item: KnowledgePerson): string {
   if (item.birth_year) return `${labels.born} ${item.birth_year}`;
   if (lang === "uk") return "невідомо";
   if (lang === "ru") return "неизвестно";
+  if (lang === "pl") return "brak danych";
   return lang === "ja" ? "不明" : "n/a";
 }
 

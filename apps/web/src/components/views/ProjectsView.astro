@@ -19,9 +19,9 @@ const statuses = Object.keys(projectStatusLabels[lang]);
 const years = Array.from(new Set(projects.map((p) => p.budget.year))).sort((a, b) => b - a);
 
 const config = {
-  of: lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : lang === "ja" ? "/" : lang === "tl" ? "sa" : lang === "uk" ? "з" : lang === "ru" ? "из" : "of",
-  one: lang === "bg" ? "проект" : lang === "de" ? "Projekt" : lang === "fr" ? "projet" : lang === "it" ? "progetto" : lang === "tr" ? "proje" : lang === "es" ? "proyecto" : lang === "el" ? "έργο" : lang === "ja" ? "プロジェクト" : lang === "tl" ? "proyekto" : lang === "uk" ? "проєкт" : lang === "ru" ? "проект" : "project",
-  many: lang === "bg" ? "проекта" : lang === "de" ? "Projekte" : lang === "fr" ? "projets" : lang === "it" ? "progetti" : lang === "tr" ? "proje" : lang === "es" ? "proyectos" : lang === "el" ? "έργα" : lang === "ja" ? "プロジェクト" : lang === "tl" ? "proyekto" : lang === "uk" ? "проєктів" : lang === "ru" ? "проектов" : "projects",
+  of: lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : lang === "ja" ? "/" : lang === "tl" ? "sa" : lang === "uk" ? "з" : lang === "ru" ? "из" : lang === "pl" ? "z" : "of",
+  one: lang === "bg" ? "проект" : lang === "de" ? "Projekt" : lang === "fr" ? "projet" : lang === "it" ? "progetto" : lang === "tr" ? "proje" : lang === "es" ? "proyecto" : lang === "el" ? "έργο" : lang === "ja" ? "プロジェクト" : lang === "tl" ? "proyekto" : lang === "uk" ? "проєкт" : lang === "ru" ? "проект" : lang === "pl" ? "projekt" : "project",
+  many: lang === "bg" ? "проекта" : lang === "de" ? "Projekte" : lang === "fr" ? "projets" : lang === "it" ? "progetti" : lang === "tr" ? "proje" : lang === "es" ? "proyectos" : lang === "el" ? "έργα" : lang === "ja" ? "プロジェクト" : lang === "tl" ? "proyekto" : lang === "uk" ? "проєктів" : lang === "ru" ? "проектов" : lang === "pl" ? "projektów" : "projects",
   empty: t.projects.empty
 };
 

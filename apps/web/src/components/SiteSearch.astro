@@ -79,7 +79,7 @@ const searchUiJson = JSON.stringify(siteSearchUi);
 
   type SearchPayload = { count: number; suggestions: string[]; items: SiteSearchItem[] };
 
-  const supportedLocales: Lang[] = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
+  const supportedLocales: Lang[] = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"];
   const pathLocale = window.location.pathname.split("/").filter(Boolean)[0] as Lang | undefined;
   const documentLocale = document.documentElement.lang as Lang;
   const searchLang: Lang = supportedLocales.includes(pathLocale as Lang)

@@ -167,6 +167,18 @@ const content: Record<Lang, Content> = {
     placesLink: "Прогуляться по местам",
     historyLink: "В историю",
     bubbles: ["Ещё пять минут… 😎", "Тсс. Айляк.", "Заходи завтра.", "Может, позже.", "Расслабься, друг."]
+  },
+  pl: {
+    eyebrow: "Błąd 404",
+    title: "Ta strona odpoczywa na ajlak.",
+    sub: "Ta strona nigdzie się nie spieszy — zgubiła się gdzieś pośród siedmiu wzgórz.",
+    pathTemplate: "Szedłeś do {path} — ale ona też postanowiła odpocząć.",
+    posLabel: "rzecz.",
+    definition: "Subtelna plovdiwska sztuka nigdzie się nie spieszyć i nic nie robić.",
+    backHome: "Na stronę główną",
+    placesLink: "Przejdź się po miejscach",
+    historyLink: "Do historii",
+    bubbles: ["Jeszcze pięć minut… 😎", "Ciii. Ajlak.", "Wpadnij jutro.", "Może później.", "Wyluzuj, przyjacielu."]
   }
 };
 
@@ -673,7 +685,7 @@ const contentJson = JSON.stringify(content);
   <script is:inline>
     (function () {
       var path = window.location.pathname || "/";
-      var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru"];
+      var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"];
       var segments = path.split("/").filter(Boolean);
       var hasLocalePrefix = segments.length > 0 && codes.indexOf(segments[0]) > -1;
       var loc = hasLocalePrefix ? segments[0] : "bg";

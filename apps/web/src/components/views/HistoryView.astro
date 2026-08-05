@@ -63,8 +63,8 @@ const historyDataVersion = createHash("sha1")
   .digest("hex")
   .slice(0, 12);
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
-const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string, ell: string, ja: string, tl: string, uk: string, ru: string): string =>
-  ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell, ja, tl, uk, ru } satisfies Record<Lang, string>)[lang];
+const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string, ell: string, ja: string, tl: string, uk: string, ru: string, pl: string): string =>
+  ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell, ja, tl, uk, ru, pl } satisfies Record<Lang, string>)[lang];
 
 const labels = ({
       bg: {
@@ -966,6 +966,81 @@ const labels = ({
         download: "Скачать",
         jsonData: "Данные JSON",
         csvData: "Таблицы CSV"
+      },
+      pl: {
+        people: "Ludzie",
+        places: "Miejsca",
+        contribute: "Prześlij zdjęcie lub wspomnienie",
+        records: "wpisów",
+        of: "z",
+        timelineTitle: "Szczegółowa chronologia",
+        timelineLead:
+          "Datowane wpisy od starożytności po dziś, w tym 68 kadencji burmistrzów i wydarzenia z archiwum miejskiego. Każdy wpis wskazuje swoje źródło.",
+        search: "Szukaj",
+        searchPlaceholder: "nazwisko, miejsce, wydarzenie…",
+        source: "Źródło",
+        sourcePlural: "Źródła",
+        conflictNote: "Uwaga o rozbieżności",
+        mapTitle: "Mapa historyczna",
+        mapLead:
+          "Udokumentowane miejsca pokazane na mapie z przybliżonymi współrzędnymi i osobnym źródłem dla kontekstu.",
+        mapLayer: "Warstwa według epoki",
+        allMapEras: "Wszystkie epoki",
+        mapRoutes: "Tematyczne trasy piesze",
+        noRoute: "Bez trasy",
+        visiblePlaces: "Widoczne miejsca",
+        mapArchiveLayer: "Warstwa archiwalna",
+        noArchiveOverlay: "Bez archiwum",
+        archiveOverlayMaps: "Stare mapy",
+        archiveOverlayAll: "Wszystkie materiały archiwalne",
+        archiveOverlayPhotos: "Zdjęcia i pocztówki",
+        archiveOverlayDocuments: "Dokumenty",
+        visibleArchiveItems: "znaczników archiwalnych",
+        archiveOverlayNote: "Ta warstwa nakłada stare mapy i zdjęcia na współczesną mapę. Dopasowanie jest przybliżone.",
+        routeStops: "punktów",
+        routeAncientTitle: "Antyczne Philippopolis",
+        routeAncientLead:
+          "Krótka trasa po obiektach rzymskich i późnoantycznych wokół Trzech Wzgórz.",
+        routeRevivalTitle: "Stare Miasto z czasów odrodzenia",
+        routeRevivalLead:
+          "Trasa piesza po domach, cerkwiach i budynkach szkolnych z epoki bułgarskiego odrodzenia.",
+        routeHillsTitle: "Wzgórza",
+        routeHillsLead:
+          "Trasa geograficzna po wzgórzach, które przechowują wczesną historię i pamięć miasta.",
+        openPlaces: "Wszystkie miejsca",
+        selectPlace: "Wybrane miejsce",
+        coordinates: "Współrzędne",
+        built: "Budowa/data",
+        architect: "Architekt",
+        builder: "Budowniczy",
+        creator: "Architekt/budowniczy",
+        archiveTitle: "Archiwum z georeferencją oraz kiedyś/dziś",
+        archiveLead:
+          "Warstwa archiwalna łączy historyczne mapy, zdjęcia i pocztówki z miejscami w mieście. Każdy element zachowuje źródło i licencję Wikimedia Commons.",
+        georeferencedItems: "obiektów archiwalnych z georeferencją",
+        thenNowPairs: "par kiedyś/dziś",
+        archiveDate: "Data",
+        archivePlace: "Miejsce",
+        georeference: "Georeferencja",
+        license: "Licencja",
+        thenNowTitle: "Porównania kiedyś/dziś",
+        thenNowLead:
+          "Suwaki zestawiają obraz archiwalny ze współczesnym zdjęciem na wolnej licencji z tego samego miejsca albo z najbliższego weryfikowalnego kontekstu miejskiego.",
+        thenLabel: "Kiedyś",
+        nowLabel: "Zdjęcie referencyjne",
+        peopleTitle: "Powiązania między ludźmi",
+        peopleLead:
+          "Sieć obejmuje wszystkie postacie, a następstwo burmistrzów tworzy w niej osobną warstwę.",
+        repeatTerms: "powtórzonych kadencji",
+        successionLinks: "powiązań następstwa",
+        openMayors: "Cała sieć osób",
+        dataTitle: "Otwarte dane i API",
+        dataLead:
+          "Pięć typów obiektów historycznych publikowanych w formatach JSON i CSV; statyczne ścieżki API zwracają te same wpisy.",
+        endpoint: "Ścieżka",
+        download: "Pobierz",
+        jsonData: "Dane JSON",
+        csvData: "Tabele CSV"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -1161,6 +1236,22 @@ const dataResourceLabels: Record<string, string> = ({
         education_resources: "Образовательные ресурсы",
         editorial_signoffs: "Редакционные подписи",
         editorial_review: "Редакционная проверка"
+      },
+      pl: {
+        index: "Indeks",
+        events: "Wydarzenia",
+        people: "Ludzie",
+        person_relationships: "Powiązania między ludźmi",
+        places: "Miejsca",
+        organizations: "Organizacje",
+        sources: "Źródła",
+        archive_items: "Obiekty archiwalne",
+        then_now_pairs: "Pary kiedyś/dziś",
+        primary_documents: "Dokumenty źródłowe",
+        story_longreads: "Rozbudowane opowieści",
+        education_resources: "Zasoby edukacyjne",
+        editorial_signoffs: "Akceptacje redakcyjne",
+        editorial_review: "Przegląd redakcyjny"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 
@@ -1196,22 +1287,22 @@ const downloadRows = Object.entries(historyKnowledgeIndex.downloads)
   });
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi", es: "Cronología", el: "Χρονολόγιο", ja: "年表", tl: "Talaan ng Kasaysayan", uk: "Хронологія", ru: "Хронология" },
-  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi", es: "Mandato de alcalde", el: "Θητεία δημάρχου", ja: "市長任期", tl: "Termino ng Alkalde", uk: "Мерська каденція", ru: "Мэрская каденция" },
-  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik", es: "Evento histórico", el: "Ιστορικό γεγονός", ja: "歴史的出来事", tl: "Makasaysayang Pangyayari", uk: "Історична подія", ru: "Историческое событие" },
-  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı", es: "Programa cultural", el: "Πολιτιστικό πρόγραμμα", ja: "文化プログラム", tl: "Programang Pangkultura", uk: "Культурна програма", ru: "Культурная программа" },
-  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans", es: "Finanzas históricas", el: "Ιστορικά οικονομικά", ja: "歴史的財政", tl: "Makasaysayang Pananalapi", uk: "Історичні фінанси", ru: "Исторические финансы" },
-  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı", es: "Programa municipal", el: "Δημοτικό πρόγραμμα", ja: "自治体プログラム", tl: "Programang Munisipal", uk: "Муніципальна програма", ru: "Муниципальная программа" },
-  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği", es: "Cambio de gobierno", el: "Αλλαγή διακυβέρνησης", ja: "行政上の変更", tl: "Pagbabago sa Pamamahala", uk: "Зміна врядування", ru: "Изменение управления" },
-  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu", es: "Nacimiento de una personalidad", el: "Γέννηση αξιόλογου προσώπου", ja: "著名人物の誕生", tl: "Kapanganakan ng Kilalang Tao", uk: "Народження відомої особи", ru: "Рождение известной личности" },
-  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı", es: "Fuente de archivo", el: "Πηγή αρχείου", ja: "アーカイブ出典", tl: "Pinagmulan ng Arkibo", uk: "Архівне джерело", ru: "Архивный источник" }
+  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi", es: "Cronología", el: "Χρονολόγιο", ja: "年表", tl: "Talaan ng Kasaysayan", uk: "Хронологія", ru: "Хронология", pl: "Chronologia" },
+  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi", es: "Mandato de alcalde", el: "Θητεία δημάρχου", ja: "市長任期", tl: "Termino ng Alkalde", uk: "Мерська каденція", ru: "Мэрская каденция", pl: "Kadencja burmistrza" },
+  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik", es: "Evento histórico", el: "Ιστορικό γεγονός", ja: "歴史的出来事", tl: "Makasaysayang Pangyayari", uk: "Історична подія", ru: "Историческое событие", pl: "Wydarzenie historyczne" },
+  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı", es: "Programa cultural", el: "Πολιτιστικό πρόγραμμα", ja: "文化プログラム", tl: "Programang Pangkultura", uk: "Культурна програма", ru: "Культурная программа", pl: "Program kulturalny" },
+  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans", es: "Finanzas históricas", el: "Ιστορικά οικονομικά", ja: "歴史的財政", tl: "Makasaysayang Pananalapi", uk: "Історичні фінанси", ru: "Исторические финансы", pl: "Finanse historyczne" },
+  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı", es: "Programa municipal", el: "Δημοτικό πρόγραμμα", ja: "自治体プログラム", tl: "Programang Munisipal", uk: "Муніципальна програма", ru: "Муниципальная программа", pl: "Program gminny" },
+  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği", es: "Cambio de gobierno", el: "Αλλαγή διακυβέρνησης", ja: "行政上の変更", tl: "Pagbabago sa Pamamahala", uk: "Зміна врядування", ru: "Изменение управления", pl: "Zmiana w zarządzaniu" },
+  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu", es: "Nacimiento de una personalidad", el: "Γέννηση αξιόλογου προσώπου", ja: "著名人物の誕生", tl: "Kapanganakan ng Kilalang Tao", uk: "Народження відомої особи", ru: "Рождение известной личности", pl: "Narodziny znanej osoby" },
+  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı", es: "Fuente de archivo", el: "Πηγή αρχείου", ja: "アーカイブ出典", tl: "Pinagmulan ng Arkibo", uk: "Архівне джерело", ru: "Архивный источник", pl: "Źródło archiwalne" }
 };
 
 // Timeline theme tags = the shared person-role labels plus two history-only tags.
 const themeLabels: Record<string, Record<Lang, string>> = {
   ...roleLabels,
-  people: { bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler", es: "Personas", el: "Πρόσωπα", ja: "人物", tl: "Mga Tao", uk: "Особи", ru: "Личности" },
-  birth: { bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum", es: "Nacimiento", el: "Γέννηση", ja: "誕生", tl: "Kapanganakan", uk: "Народження", ru: "Рождение" }
+  people: { bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler", es: "Personas", el: "Πρόσωπα", ja: "人物", tl: "Mga Tao", uk: "Особи", ru: "Личности", pl: "Postacie" },
+  birth: { bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum", es: "Nacimiento", el: "Γέννηση", ja: "誕生", tl: "Kapanganakan", uk: "Народження", ru: "Рождение", pl: "Narodziny" }
 };
 
 const hiddenThemeTags = new Set(["people", "birth"]);
@@ -1301,8 +1392,8 @@ const placesById = new Map(historyKnowledgePlaces.map((place) => [place.id, plac
 const orgsById = new Map(historyKnowledgeOrganizations.map((org) => [org.id, org]));
 
 const treeLabels = {
-  eyebrow: tr("Епохи и събития", "Eras & events", "Epochen & Ereignisse", "Époques & événements", "Epoche & eventi", "Çağlar ve olaylar", "Eras y eventos", "Εποχές & γεγονότα", "時代と出来事", "Mga yugto at kaganapan", "Епохи та події", "Эпохи и события"),
-  title: tr("Осем глави, един град", "Eight chapters, one city", "Acht Kapitel, eine Stadt", "Huit chapitres, une ville", "Otto capitoli, una città", "Sekiz bölüm, tek şehir", "Ocho capítulos, una ciudad", "Οκτώ κεφάλαια, μία πόλη", "8つの章、ひとつの街", "Walong kabanata, iisang lungsod", "Вісім розділів, одне місто", "Восемь глав, один город"),
+  eyebrow: tr("Епохи и събития", "Eras & events", "Epochen & Ereignisse", "Époques & événements", "Epoche & eventi", "Çağlar ve olaylar", "Eras y eventos", "Εποχές & γεγονότα", "時代と出来事", "Mga yugto at kaganapan", "Епохи та події", "Эпохи и события", "Epoki i wydarzenia"),
+  title: tr("Осем глави, един град", "Eight chapters, one city", "Acht Kapitel, eine Stadt", "Huit chapitres, une ville", "Otto capitoli, una città", "Sekiz bölüm, tek şehir", "Ocho capítulos, una ciudad", "Οκτώ κεφάλαια, μία πόλη", "8つの章、ひとつの街", "Walong kabanata, iisang lungsod", "Вісім розділів, одне місто", "Восемь глав, один город", "Osiem rozdziałów, jedno miasto"),
   lead: tr(
     "Следвайте града от първите селища по тепетата до съвременния Пловдив. Всяка глава съчетава образ, кратък разказ и проверими събития.",
     "Follow the city from its first hilltop settlements to present-day Plovdiv. Each chapter pairs a visual story with concise, verifiable events.",
@@ -1315,15 +1406,16 @@ const treeLabels = {
     "丘の上の最初の集落から現在のプロヴディフまでをたどります。各章はビジュアル、短い物語、検証可能な出来事を結びます。",
     "Sundan ang lungsod mula sa mga unang pamayanan sa mga burol hanggang sa Plovdiv ngayon. Pinag-uugnay ng bawat kabanata ang larawan, salaysay, at napapatunayang pangyayari.",
     "Пройдіть шлях міста від перших поселень на пагорбах до сучасного Пловдива. Кожен розділ поєднує образ, стислу оповідь і перевірені події.",
-    "Проследите путь города от первых поселений на холмах до современного Пловдива. Каждая глава соединяет образы, краткий рассказ и проверяемые события."
+    "Проследите путь города от первых поселений на холмах до современного Пловдива. Каждая глава соединяет образы, краткий рассказ и проверяемые события.",
+    "Prześledź miasto od pierwszych osad na wzgórzach po współczesny Plovdiv. Każdy rozdział łączy obraz z krótką opowieścią i weryfikowalnymi wydarzeniami."
   ),
-  chapter: tr("Глава", "Chapter", "Kapitel", "Chapitre", "Capitolo", "Bölüm", "Capítulo", "Κεφάλαιο", "章", "Kabanata", "Розділ", "Глава"),
-  contextImage: tr("Съвременен контекст", "Present-day context", "Heutiger Kontext", "Contexte actuel", "Contesto attuale", "Günümüz bağlamı", "Contexto actual", "Σύγχρονο πλαίσιο", "現在の文脈", "Kasalukuyang konteksto", "Сучасний контекст", "Современный контекст"),
-  archiveImage: tr("Архивна справка", "Archive reference", "Archivreferenz", "Référence d’archive", "Riferimento d’archivio", "Arşiv kaydı", "Referencia de archivo", "Αρχειακή αναφορά", "アーカイブ資料", "Sanggunian sa arkibo", "Архівна довідка", "Архивная справка"),
-  exploreEvents: tr("Разгледайте ключовите събития", "Explore key events", "Schlüsselereignisse ansehen", "Explorer les événements clés", "Esplora gli eventi chiave", "Önemli olayları keşfedin", "Explorar hechos clave", "Εξερευνήστε βασικά γεγονότα", "主な出来事を見る", "Tingnan ang mahahalagang pangyayari", "Переглянути ключові події", "Изучить ключевые события"),
-  highlights: tr("акцента", "highlights", "Höhepunkte", "temps forts", "momenti chiave", "öne çıkan", "destacados", "σημεία", "ハイライト", "tampok", "головних подій", "ключевых событий"),
-  exploreEra: tr("Цялата епоха в хронологията", "Open this era in the timeline", "Diese Epoche in der Zeitleiste", "Voir cette époque dans la chronologie", "Apri l’epoca nella cronologia", "Bu dönemi zaman çizelgesinde aç", "Abrir esta era en la cronología", "Άνοιγμα της εποχής στο χρονολόγιο", "年表でこの時代を見る", "Buksan ang yugtong ito sa talaan", "Відкрити епоху в хронології", "Открыть эпоху в хронологии"),
-  imageSource: tr("Източник на образа", "Image source", "Bildquelle", "Source de l’image", "Fonte dell’immagine", "Görsel kaynağı", "Fuente de la imagen", "Πηγή εικόνας", "画像の出典", "Pinagmulan ng larawan", "Джерело зображення", "Источник изображения"),
+  chapter: tr("Глава", "Chapter", "Kapitel", "Chapitre", "Capitolo", "Bölüm", "Capítulo", "Κεφάλαιο", "章", "Kabanata", "Розділ", "Глава", "Rozdział"),
+  contextImage: tr("Съвременен контекст", "Present-day context", "Heutiger Kontext", "Contexte actuel", "Contesto attuale", "Günümüz bağlamı", "Contexto actual", "Σύγχρονο πλαίσιο", "現在の文脈", "Kasalukuyang konteksto", "Сучасний контекст", "Современный контекст", "Kontekst współczesny"),
+  archiveImage: tr("Архивна справка", "Archive reference", "Archivreferenz", "Référence d’archive", "Riferimento d’archivio", "Arşiv kaydı", "Referencia de archivo", "Αρχειακή αναφορά", "アーカイブ資料", "Sanggunian sa arkibo", "Архівна довідка", "Архивная справка", "Odniesienie archiwalne"),
+  exploreEvents: tr("Разгледайте ключовите събития", "Explore key events", "Schlüsselereignisse ansehen", "Explorer les événements clés", "Esplora gli eventi chiave", "Önemli olayları keşfedin", "Explorar hechos clave", "Εξερευνήστε βασικά γεγονότα", "主な出来事を見る", "Tingnan ang mahahalagang pangyayari", "Переглянути ключові події", "Изучить ключевые события", "Poznaj kluczowe wydarzenia"),
+  highlights: tr("акцента", "highlights", "Höhepunkte", "temps forts", "momenti chiave", "öne çıkan", "destacados", "σημεία", "ハイライト", "tampok", "головних подій", "ключевых событий", "akcentów"),
+  exploreEra: tr("Цялата епоха в хронологията", "Open this era in the timeline", "Diese Epoche in der Zeitleiste", "Voir cette époque dans la chronologie", "Apri l’epoca nella cronologia", "Bu dönemi zaman çizelgesinde aç", "Abrir esta era en la cronología", "Άνοιγμα της εποχής στο χρονολόγιο", "年表でこの時代を見る", "Buksan ang yugtong ito sa talaan", "Відкрити епоху в хронології", "Открыть эпоху в хронологии", "Otwórz tę epokę w chronologii"),
+  imageSource: tr("Източник на образа", "Image source", "Bildquelle", "Source de l’image", "Fonte dell’immagine", "Görsel kaynağı", "Fuente de la imagen", "Πηγή εικόνας", "画像の出典", "Pinagmulan ng larawan", "Джерело зображення", "Источник изображения", "Źródło obrazu"),
   imageNote: tr(
     "Снимките показват съвременен контекст или архивни справки — не възстановки на всяка епоха. Архивните записи очакват независима редакторска проверка.",
     "Images show present-day context or archival references—not reconstructions of every era. Archive records remain pending independent editorial review.",
@@ -1336,17 +1428,18 @@ const treeLabels = {
     "画像は現在の文脈またはアーカイブ資料であり、各時代の復元図ではありません。アーカイブ記録は独立した編集確認を待っています。",
     "Ang mga larawan ay kasalukuyang konteksto o sangguniang arkibo, hindi muling pagbuo ng bawat panahon. Hinihintay pa ng mga rekord ang malayang editoryal na pagsusuri.",
     "Зображення показують сучасний контекст або архівні довідки, а не реконструкції кожної епохи. Архівні записи очікують незалежної редакторської перевірки.",
-    "Изображения показывают современный контекст или архивные справки, а не реконструкции каждой эпохи. Архивные записи ожидают независимой редакторской проверки."
+    "Изображения показывают современный контекст или архивные справки, а не реконструкции каждой эпохи. Архивные записи ожидают независимой редакторской проверки.",
+    "Zdjęcia pokazują współczesny kontekst lub odniesienia archiwalne — nie rekonstrukcje każdej epoki. Wpisy archiwalne czekają na niezależny przegląd redakcyjny."
   ),
-  people: tr("Личности", "People", "Personen", "Personnes", "Persone", "Kişiler", "Personas", "Πρόσωπα", "人物", "Mga Tao", "Особи", "Личности"),
-  places: tr("Места", "Places", "Orte", "Lieux", "Luoghi", "Yerler", "Lugares", "Τόποι", "場所", "Mga Lugar", "Місця", "Места"),
-  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα", "出来事", "kaganapan", "подій", "событий"),
-  noLinks: tr("Без посочени връзки", "No recorded links", "Keine Verknüpfungen", "Aucun lien enregistré", "Nessun legame registrato", "Kayıtlı bağ yok", "Sin vínculos registrados", "Χωρίς καταχωρημένες συνδέσεις", "記録されたリンクなし", "Walang naitalang koneksyon", "Без зафіксованих зв'язків", "Нет зафиксированных связей")
+  people: tr("Личности", "People", "Personen", "Personnes", "Persone", "Kişiler", "Personas", "Πρόσωπα", "人物", "Mga Tao", "Особи", "Личности", "Postacie"),
+  places: tr("Места", "Places", "Orte", "Lieux", "Luoghi", "Yerler", "Lugares", "Τόποι", "場所", "Mga Lugar", "Місця", "Места", "Miejsca"),
+  events: tr("събития", "events", "Ereignisse", "événements", "eventi", "etkinlik", "eventos", "γεγονότα", "出来事", "kaganapan", "подій", "событий", "wydarzeń"),
+  noLinks: tr("Без посочени връзки", "No recorded links", "Keine Verknüpfungen", "Aucun lien enregistré", "Nessun legame registrato", "Kayıtlı bağ yok", "Sin vínculos registrados", "Χωρίς καταχωρημένες συνδέσεις", "記録されたリンクなし", "Walang naitalang koneksyon", "Без зафіксованих зв'язків", "Нет зафиксированных связей", "Brak wskazanych powiązań")
 };
 
 const historyHeroLabels = {
-  startJourney: tr("Започнете с осемте епохи", "Start with the eight eras", "Mit den acht Epochen beginnen", "Commencer par les huit époques", "Inizia dalle otto epoche", "Sekiz dönemle başlayın", "Comenzar por las ocho eras", "Ξεκινήστε με τις οκτώ εποχές", "8つの時代から始める", "Magsimula sa walong yugto", "Почати з восьми епох", "Начать с восьми эпох"),
-  galleryLabel: tr("Пловдив през времето", "Plovdiv across time", "Plovdiv im Lauf der Zeit", "Plovdiv à travers le temps", "Plovdiv nel tempo", "Zaman içinde Plovdiv", "Plovdiv a través del tiempo", "Η Φιλιππούπολη στον χρόνο", "時を重ねるプロヴディフ", "Plovdiv sa paglipas ng panahon", "Пловдив крізь час", "Пловдив сквозь время")
+  startJourney: tr("Започнете с осемте епохи", "Start with the eight eras", "Mit den acht Epochen beginnen", "Commencer par les huit époques", "Inizia dalle otto epoche", "Sekiz dönemle başlayın", "Comenzar por las ocho eras", "Ξεκινήστε με τις οκτώ εποχές", "8つの時代から始める", "Magsimula sa walong yugto", "Почати з восьми епох", "Начать с восьми эпох", "Zacznij od ośmiu epok"),
+  galleryLabel: tr("Пловдив през времето", "Plovdiv across time", "Plovdiv im Lauf der Zeit", "Plovdiv à travers le temps", "Plovdiv nel tempo", "Zaman içinde Plovdiv", "Plovdiv a través del tiempo", "Η Φιλιππούπολη στον χρόνο", "時を重ねるプロヴディフ", "Plovdiv sa paglipas ng panahon", "Пловдив крізь час", "Пловдив сквозь время", "Plovdiv na przestrzeni czasu")
 };
 
 type HistoryChapterVisual = {
@@ -1412,7 +1505,8 @@ function modernCultureChapterVisual(): HistoryChapterVisual {
       "プロヴディフ2019へ向かうカパナ",
       "Kapana patungo sa Plovdiv 2019",
       "Капана на шляху до Пловдива 2019",
-      "Капана на пути к Пловдиву 2019"
+      "Капана на пути к Пловдиву 2019",
+      "Kapana w drodze do Plovdiv 2019"
     ),
     kind: "context",
     date: "",
@@ -1422,7 +1516,7 @@ function modernCultureChapterVisual(): HistoryChapterVisual {
 
 const chapterVisuals: Record<HistoryEra, HistoryChapterVisual> = {
   prehistory: placeChapterVisual("place-seven-hills"),
-  thracian: placeChapterVisual("place-nebet-tepe", tr("Гледка от Небет тепе", "View from Nebet Tepe", "Blick vom Nebet Tepe", "Vue depuis Nebet Tepe", "Vista dal Nebet Tepe", "Nebet Tepe'den görünüm", "Vista desde Nebet Tepe", "Θέα από το Νεμπέτ Τεπέ", "ネベット・テペからの眺め", "Tanawin mula sa Nebet Tepe", "Вид із Небет-Тепе", "Вид с Небет-Тепе")),
+  thracian: placeChapterVisual("place-nebet-tepe", tr("Гледка от Небет тепе", "View from Nebet Tepe", "Blick vom Nebet Tepe", "Vue depuis Nebet Tepe", "Vista dal Nebet Tepe", "Nebet Tepe'den görünüm", "Vista desde Nebet Tepe", "Θέα από το Νεμπέτ Τεπέ", "ネベット・テペからの眺め", "Tanawin mula sa Nebet Tepe", "Вид із Небет-Тепе", "Вид с Небет-Тепе", "Widok z Nebet Tepe")),
   roman: placeChapterVisual("place-ancient-theatre"),
   medieval: placeChapterVisual("place-hisar-kapia"),
   ottoman: placeChapterVisual("place-dzhumaya-mosque"),
@@ -1649,12 +1743,12 @@ const timelinePersonIds = new Set(timelinePeople.map((person) => person.id));
 // linked selects + atlas bar). Cross-section "events for this person/place"
 // hooks now feed the same box with a plain-text name query.
 const atlasL = {
-  personEvents: tr("Събития →", "Events →", "Ereignisse →", "Événements →", "Eventi →", "Olaylar →", "Eventos →", "Γεγονότα →", "出来事 →", "Mga kaganapan →", "Події →", "События →"),
-  placeEvents: tr("Събития на това място →", "Events at this place →", "Ereignisse an diesem Ort →", "Événements en ce lieu →", "Eventi in questo luogo →", "Bu yerdeki olaylar →", "Eventos en este lugar →", "Γεγονότα σε αυτό το μέρος →", "この場所の出来事 →", "Mga kaganapan sa lugar na ito →", "Події на цьому місці →", "События в этом месте →")
+  personEvents: tr("Събития →", "Events →", "Ereignisse →", "Événements →", "Eventi →", "Olaylar →", "Eventos →", "Γεγονότα →", "出来事 →", "Mga kaganapan →", "Події →", "События →", "Wydarzenia →"),
+  placeEvents: tr("Събития на това място →", "Events at this place →", "Ereignisse an diesem Ort →", "Événements en ce lieu →", "Eventi in questo luogo →", "Bu yerdeki olaylar →", "Eventos en este lugar →", "Γεγονότα σε αυτό το μέρος →", "この場所の出来事 →", "Mga kaganapan sa lugar na ito →", "Події на цьому місці →", "События в этом месте →", "Wydarzenia w tym miejscu →")
 };
 const searchL = {
-  suggestions: tr("Например:", "Try:", "Zum Beispiel:", "Par exemple :", "Ad esempio:", "Örneğin:", "Por ejemplo:", "Για παράδειγμα:", "例：", "Halimbawa:", "Наприклад:", "Например:"),
-  reset: tr("Изчисти търсенето", "Clear search", "Suche zurücksetzen", "Effacer la recherche", "Cancella la ricerca", "Aramayı temizle", "Borrar la búsqueda", "Καθαρισμός αναζήτησης", "検索をクリア", "I-clear ang paghahanap", "Очистити пошук", "Очистить поиск"),
+  suggestions: tr("Например:", "Try:", "Zum Beispiel:", "Par exemple :", "Ad esempio:", "Örneğin:", "Por ejemplo:", "Για παράδειγμα:", "例：", "Halimbawa:", "Наприклад:", "Например:", "Na przykład:"),
+  reset: tr("Изчисти търсенето", "Clear search", "Suche zurücksetzen", "Effacer la recherche", "Cancella la ricerca", "Aramayı temizle", "Borrar la búsqueda", "Καθαρισμός αναζήτησης", "検索をクリア", "I-clear ang paghahanap", "Очистити пошук", "Очистить поиск", "Wyczyść wyszukiwanie"),
   noResults: tr(
     "Нищо не открихме за това търсене. Опитайте друга дума или някое от предложенията.",
     "Nothing matches this search. Try another word or one of the suggestions.",
@@ -1667,7 +1761,8 @@ const searchL = {
     "この検索に一致する記録はありません。別の言葉か候補をお試しください。",
     "Walang tumutugma sa paghahanap na ito. Subukan ang ibang salita o isa sa mga mungkahi.",
     "Нічого не знайдено за цим пошуком. Спробуйте інше слово або одну з підказок.",
-    "Ничего не найдено по этому запросу. Попробуйте другое слово или одну из подсказок."
+    "Ничего не найдено по этому запросу. Попробуйте другое слово или одну из подсказок.",
+    "Nic nie pasuje do tego wyszukiwania. Spróbuj innego słowa albo jednej z podpowiedzi."
   )
 };
 const timelinePlaceNameById = new Map(timelinePlaces.map((place) => [place.id, place.name]));
@@ -2186,6 +2281,36 @@ const growth = ({
         mapLead: "Приблизительное расположение районов, окрашенных по эпохе возникновения.",
         approxNote: "Приблизительное расположение",
         source: "Источник"
+      },
+      pl: {
+        title: "Jak rosło miasto",
+        popQ: "Jak zmieniała się liczba mieszkańców?",
+        rateQ: "Kiedy miasto rosło najszybciej?",
+        popTitle: "Ludność Plovdivu według lat",
+        popLead:
+          "Dane historyczne do 2021 roku opierają się na spisach powszechnych i opublikowanych szeregach historycznych; lata 2022-2025 to roczne szacunki bułgarskiego Narodowego Instytutu Statystycznego na dzień 31 grudnia.",
+        peakWord: "Szczyt",
+        latestWord: "Ostatni szacunek",
+        growthWord: "Wzrost od",
+        rateTitle: "Tempo zmiany liczby ludności",
+        rateLead:
+          "Średnia roczna zmiana dla każdego okresu między sąsiednimi punktami odniesienia.",
+        perYear: "% rocznie",
+        rateUnitNote: "Wartości oznaczają średnią roczną zmianę w % na rok.",
+        densityTitle: "Gęstość zaludnienia",
+        areaLabel: "Powierzchnia miasta",
+        densityNow: "Gęstość",
+        densityPeak: "Gęstość w szczycie (1985)",
+        perKm: "os./km²",
+        densityNote:
+          "Gęstość obliczono względem obecnej powierzchni miasta (101,98 km²). Plovdiv jest najgęściej zaludnionym miastem Bułgarii.",
+        nbTitle: "Kiedy powstawały dzielnice",
+        nbLead:
+          "Wybrane dzielnice i osiedla Plovdivu uporządkowane według czasu powstania — każde z publicznym źródłem.",
+        mapTitle: "Dzielnice na mapie",
+        mapLead: "Przybliżone położenie dzielnic, pokolorowanych według epoki powstania.",
+        approxNote: "Położenie przybliżone",
+        source: "Źródło"
       }
     } satisfies Record<Lang, Record<string, string>>)[lang];
 const nbEraLabels: Record<NeighbourhoodEra, string> = ({
@@ -2200,7 +2325,8 @@ const nbEraLabels: Record<NeighbourhoodEra, string> = ({
       ja: { ottoman: "オスマン時代", revival: "民族復興期", modern: "近現代（20世紀）", socialist: "社会主義時代" },
       tl: { ottoman: "Panahong Ottoman", revival: "Pambansang Muling Pagsilang", modern: "Makabagong panahon (ika-20 siglo)", socialist: "Panahong Sosyalista" },
       uk: { ottoman: "Османський період", revival: "Відродження", modern: "Новітній час (XX ст.)", socialist: "Соціалістичний період" },
-      ru: { ottoman: "Османский период", revival: "Возрождение", modern: "Новейшее время (XX в.)", socialist: "Социалистический период" }
+      ru: { ottoman: "Османский период", revival: "Возрождение", modern: "Новейшее время (XX в.)", socialist: "Социалистический период" },
+      pl: { ottoman: "Okres osmański", revival: "Odrodzenie", modern: "Czasy nowoczesne (XX w.)", socialist: "Okres socjalistyczny" }
     } satisfies Record<Lang, Record<NeighbourhoodEra, string>>)[lang];
 
 // sticky in-page section navigation
@@ -2324,9 +2450,19 @@ const sectionNav = ({
         { id: "geography", label: "Геогр./климат" },
         { id: "city-growth", label: "Рост" },
         { id: "data", label: "Данные" }
+      ],
+      pl: [
+        { id: "history-tree", label: "Historia" },
+        { id: "landmarks", label: "Miejsca" },
+        { id: "archive-layer", label: "Archiwum" },
+        { id: "timeline", label: "Chronologia" },
+        { id: "people", label: "Ludzie" },
+        { id: "geography", label: "Geogr./klimat" },
+        { id: "city-growth", label: "Wzrost" },
+        { id: "data", label: "Dane" }
       ]
     } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
-const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página", el: "Ενότητες σελίδας", ja: "ページ内セクション", tl: "Mga Seksyon ng Pahina", uk: "Розділи сторінки", ru: "Разделы страницы" } satisfies Record<Lang, string>)[lang];
+const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página", el: "Ενότητες σελίδας", ja: "ページ内セクション", tl: "Mga Seksyon ng Pahina", uk: "Розділи сторінки", ru: "Разделы страницы", pl: "Sekcje strony" } satisfies Record<Lang, string>)[lang];
 
 const numberFmt = new Intl.NumberFormat(locale);
 
@@ -2729,6 +2865,33 @@ const geo = ({
           { label: "Годовое количество осадков", value: "502 мм" }
         ],
         source: "Источник"
+      },
+      pl: {
+        title: "Geografia i klimat",
+        lead:
+          "Plovdiv leży na syenitowych wzgórzach Niziny Górnotrackiej, po obu brzegach rzeki Maricy.",
+        geographyTitle: "Geografia",
+        climateTitle: "Klimat",
+        chartQ: "Jaka jest pogoda w ciągu roku?",
+        chartTitle: "Średnie miesięczne temperatury i opady",
+        legendTemp: "Temp. maks. / min.",
+        legendPrecip: "Opady",
+        months: ["S", "L", "M", "K", "M", "C", "L", "S", "W", "P", "L", "G"],
+        facts: [
+          { label: "Współrzędne", value: "42°09′ N, 24°45′ E" },
+          { label: "Wysokość n.p.m.", value: "164 m" },
+          { label: "Rzeka", value: "Marica" },
+          { label: "Nizina", value: "Nizina Górnotracka" },
+          { label: "Wzgórza", value: "6 zachowanych wzgórz (historycznie 7)" },
+          { label: "Powierzchnia", value: "101,98 km²" }
+        ],
+        stats: [
+          { label: "Typ klimatu", value: "Wilgotny subtropikalny" },
+          { label: "Średnie roczne maks./min.", value: "18,9 / 7,3 °C" },
+          { label: "Rekordy absolutne", value: "45,0 / −31,5 °C" },
+          { label: "Roczna suma opadów", value: "502 mm" }
+        ],
+        source: "Źródło"
       }
     })[lang];
 

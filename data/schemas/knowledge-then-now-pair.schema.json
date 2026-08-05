@@ -51,7 +51,7 @@
     }
   },
   "patternProperties": {
-    "^(title|caption)_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string" }
+    "^(title|caption)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string" }
   },
   "definitions": {
     "generated_media": {
@@ -80,7 +80,7 @@
         "source_id": { "type": "string", "pattern": "^source-[0-9a-z-]+$" }
       },
       "patternProperties": {
-        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 3 }
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 3 }
       }
     },
     "provenance": {
@@ -100,7 +100,7 @@
         "license_status": { "type": "string", "minLength": 3 }
       },
       "patternProperties": {
-        "^claim_(de|fr|it|tr|es|el|ja|tl|uk|ru)$": { "type": "string", "minLength": 10 }
+        "^claim_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": { "type": "string", "minLength": 10 }
       }
     }
   }
