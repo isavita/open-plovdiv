@@ -158,6 +158,15 @@ describe("ui dictionary parity", () => {
     // Brand names and shared loanwords (site.name, Facebook, Menu, Status) match.
     expect(identical.length).toBeLessThan(enPairs.length * 0.1);
   });
+
+  it("Polish UI uses the correct singular, paucal and plural noun forms", () => {
+    expect(ui.pl.projects.count(1)).toBe("1 projekt");
+    expect(ui.pl.projects.count(2)).toBe("2 projekty");
+    expect(ui.pl.projects.count(12)).toBe("12 projektów");
+    expect(ui.pl.projects.count(22)).toBe("22 projekty");
+    expect(ui.pl.mayors.yearsApprox(2)).toBe("2 lata");
+    expect(ui.pl.community.count(3)).toBe("3 inicjatywy");
+  });
 });
 
 describe("generated translation JSON", () => {

@@ -674,6 +674,17 @@ function plural(n: number, one: string, many: string): string {
   return n === 1 ? one : many;
 }
 
+function polishPlural(n: number, one: string, few: string, many: string): string {
+  const absolute = Math.abs(n);
+  const lastDigit = absolute % 10;
+  const lastTwoDigits = absolute % 100;
+  if (absolute === 1) return one;
+  if (lastDigit >= 2 && lastDigit <= 4 && (lastTwoDigits < 12 || lastTwoDigits > 14)) {
+    return few;
+  }
+  return many;
+}
+
 const romanNumerals = [
   "",
   "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
@@ -7275,7 +7286,7 @@ const pl: typeof bg = {
   home: {
     eyebrow: "Jedno z najstarszych miast świata",
     lead:
-      "Plovdiv jest nieprzerwanie zamieszkany od ponad 8000 lat. Jego dawne nazwy znaczą kolejnych władców i kultury — trackie Eumolpias, rzymskie Philippopolis/Trimontium i osmańskie Filibe. W 1885 roku miasto stało się centrum zjednoczenia Bułgarii, gdy Rumelia Wschodnia połączyła się z Księstwem Bułgarii.",
+      "Plovdiv jest nieprzerwanie zamieszkany od ponad 8000 lat. Jego dawne nazwy odzwierciedlają kolejnych władców i kultury — trackie Eumolpias, rzymskie Philippopolis i Trimontium oraz osmańskie Filibe. W 1885 roku miasto stało się centrum zjednoczenia Bułgarii, gdy Rumelia Wschodnia połączyła się z Księstwem Bułgarii.",
     ctaHistory: "Poznaj oś czasu",
     ctaMayors: "Burmistrzowie Plovdivu",
     statYearsValue: "8000+",
@@ -7431,9 +7442,9 @@ const pl: typeof bg = {
     currentOnly: "Tylko obecny",
     actingOnly: "Tylko pełniący obowiązki",
     reset: "Wyczyść filtry",
-    count: (n: number) => `${n} ${plural(n, "kadencja", "kadencji")}`,
+    count: (n: number) => `${n} ${polishPlural(n, "kadencja", "kadencje", "kadencji")}`,
     countFiltered: (visible: number, total: number) =>
-      `${visible} z ${total} ${plural(total, "kadencja", "kadencji")}`,
+      `${visible} z ${total} ${polishPlural(total, "kadencja", "kadencje", "kadencji")}`,
     empty: "Brak kadencji spełniających wybrane filtry.",
     timelineTitle: "Oś czasu kadencji",
     timelineLead:
@@ -7450,7 +7461,7 @@ const pl: typeof bg = {
     actingBadge: "Pełniący obowiązki",
     officialArchive: "Oficjalna lista",
     currentRegistry: "Rejestr Administracyjny",
-    yearsApprox: (n: number) => `${n} ${plural(n, "rok", "lat")}`,
+    yearsApprox: (n: number) => `${n} ${polishPlural(n, "rok", "lata", "lat")}`,
     centuryLabel: (century: number) =>
       `${romanNumeral(century)} wiek`,
     centuryRange: (start: number, end: number) => `${start}–${end}`,
@@ -7511,9 +7522,9 @@ const pl: typeof bg = {
     status: "Status",
     year: "Rok",
     reset: "Wyczyść filtry",
-    count: (n: number) => `${n} ${plural(n, "projekt", "projektów")}`,
+    count: (n: number) => `${n} ${polishPlural(n, "projekt", "projekty", "projektów")}`,
     countFiltered: (visible: number, total: number) =>
-      `${visible} z ${total} ${plural(total, "projekt", "projektów")}`,
+      `${visible} z ${total} ${polishPlural(total, "projekt", "projekty", "projektów")}`,
     empty: "Brak projektów spełniających wybrane filtry."
   },
   community: {
@@ -7537,9 +7548,9 @@ const pl: typeof bg = {
     viewSource: "Źródło",
     contact: "Kontakt / grupa",
     reset: "Wyczyść filtry",
-    count: (n: number) => `${n} ${plural(n, "inicjatywa", "inicjatyw")}`,
+    count: (n: number) => `${n} ${polishPlural(n, "inicjatywa", "inicjatywy", "inicjatyw")}`,
     countFiltered: (visible: number, total: number) =>
-      `${visible} z ${total} ${plural(total, "inicjatywa", "inicjatyw")}`,
+      `${visible} z ${total} ${polishPlural(total, "inicjatywa", "inicjatywy", "inicjatyw")}`,
     empty: "Brak inicjatyw spełniających wybrane filtry.",
     adminCta: "Administrator: dodaj lub zweryfikuj inicjatywę",
     seeProblems: "Zobacz problemy, przy których możesz pomóc",
@@ -7670,7 +7681,7 @@ const pl: typeof bg = {
       "Wyszukiwanie, streszczanie i weryfikację wykonuje AI. Gdy źródło nie podaje kwoty, statusu ani informacji o zakończeniu, strona musi pokazać to jako dane brakujące lub wstępne, zamiast je zmyślać.",
     correctTitle: "Poprawki",
     correctText:
-      "Poprawka musi dodać lub zmienić publiczne źródło, zaktualizować kurowany plik JSON oraz przejść automatyczną walidację i budowanie."
+      "Poprawka musi dodać lub zmienić publiczne źródło, zaktualizować ręcznie opracowany plik JSON oraz przejść automatyczną walidację i proces budowania."
   },
   privacy: {
     eyebrow: "Bez danych osobowych",
