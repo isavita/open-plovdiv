@@ -1881,7 +1881,7 @@ const eventGroups = Object.values(
   }, {})
 ).sort((a, b) => b.events.length - a.events.length || a.label.localeCompare(b.label, locale));
 const mapHref = place.coordinates
-  ? `https://www.openstreetmap.org/?mlat=${place.coordinates.lat}&mlon=${place.coordinates.lng}#map=17/${place.coordinates.lat}/${place.coordinates.lng}`
+  ? `https://www.openstreetmap.org/?locale=${encodeURIComponent(lang)}&mlat=${place.coordinates.lat}&mlon=${place.coordinates.lng}#map=17/${place.coordinates.lat}/${place.coordinates.lng}`
   : "";
 ---
 
