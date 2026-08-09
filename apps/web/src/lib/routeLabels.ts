@@ -819,21 +819,6 @@ const labelTable = {
     "Скачать GPX",
     "Pobierz GPX"
   ),
-  printRoute: tr(
-    "Принтирай / офлайн",
-    "Print / offline",
-    "Drucken / offline",
-    "Imprimer / hors ligne",
-    "Stampa / offline",
-    "Yazdır / çevrimdışı",
-    "Imprimir / sin conexión",
-    "Εκτύπωση / εκτός σύνδεσης",
-    "印刷・オフライン用",
-    "I-print / offline",
-    "Друк / офлайн",
-    "Печать / офлайн",
-    "Drukuj / offline"
-  ),
   shareRoute: tr(
     "Сподели маршрута",
     "Share route",
