@@ -204,7 +204,6 @@ const googleMapsUrl =
       }`
     : null;
 const gpxUrl = geometry ? `/data/route-geometry/${route.id}.gpx` : null;
-const startGeoUrl = stopCoordStrings.length ? `geo:${stopCoordStrings[0]}?q=${stopCoordStrings[0]}` : null;
 
 const eraLabels = uiT.history.eraLabels as Record<string, string>;
 
@@ -350,7 +349,6 @@ const structuredData = {
             {googleMapsUrl && (
               <a class="text-link" href={googleMapsUrl} target="_blank" rel="noreferrer">Google Maps ↗</a>
             )}
-            {startGeoUrl && <a class="text-link route-geo-link" href={startGeoUrl}>geo: ↗</a>}
             {gpxUrl && (
               <a class="text-link" href={gpxUrl} download={`${route.id}.gpx`}>{t.downloadGpx}</a>
             )}
@@ -535,8 +533,10 @@ const structuredData = {
 
     <nav class="route-start-bar" aria-label={t.startRoute}>
       <a class="button" href="#route-stop-1">{t.startRoute}</a>
-      {startGeoUrl && (
-        <a class="button secondary" href={startGeoUrl} aria-label={t.openInMaps}>{t.mapAppShort}</a>
+      {googleMapsUrl && (
+        <a class="button secondary" href={googleMapsUrl} target="_blank" rel="noreferrer" aria-label={t.openInMaps}>
+          {t.mapAppShort}
+        </a>
       )}
     </nav>
   </article>
