@@ -2,6 +2,7 @@ import fs from "node:fs";
 import http from "node:http";
 import https from "node:https";
 import { applyCompression } from "./compression.mjs";
+import { rejectUnsupportedStaticApiMethod } from "./request-policy.mjs";
 
 // Astro's standalone entry starts itself when imported. Disable that behavior
 // so this production boundary can preserve its handler and add safe encoding
@@ -13,6 +14,7 @@ const port = Number.parseInt(process.env.PORT ?? "", 10) || options.port || 4321
 const host = process.env.HOST ?? options.host ?? "0.0.0.0";
 
 const listener = (req, response) => {
+  if (rejectUnsupportedStaticApiMethod(req, response)) return;
   applyCompression(req, response);
   try {
     const result = handler(req, response);
