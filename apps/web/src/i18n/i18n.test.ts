@@ -237,11 +237,10 @@ describe("generated translation JSON", () => {
       );
       if (match) {
         const [, person, otherPerson, direction] = match;
-        const relation =
-          direction === "succeeded by"
-            ? `${person} został zastąpiony przez ${otherPerson}`
-            : `${person} zastąpił ${otherPerson}`;
-        expect(translated, source).toBe(`Według chronologii burmistrzów ${relation}.`);
+        const relation = direction === "succeeded by" ? "zastąpiony przez" : "zastąpił";
+        expect(translated, source).toBe(
+          `Chronologia burmistrzów: ${person} — ${relation} — ${otherPerson}.`
+        );
         summaryCount += 1;
         continue;
       }
