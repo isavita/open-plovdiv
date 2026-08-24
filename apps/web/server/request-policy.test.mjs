@@ -93,5 +93,6 @@ describe("static JSON API method policy", () => {
 
     expect(response.status).toBe(304);
     expect(response.headers.get("cache-control")).toBe("public, max-age=300");
+    expect(response.headers.get("vary")).toBe("Accept-Encoding");
   });
 });

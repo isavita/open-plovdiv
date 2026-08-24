@@ -145,6 +145,7 @@ export function applyCompression(req, response, { beforeCommit } = {}) {
     if (configured || response.headersSent) return;
 
     beforeCommit?.(req, response);
+    if (response.statusCode === 304) addVaryAcceptEncoding(response);
     const eligible = canTransform(req, response, emptyBodyHint);
     if (eligible) {
       // A cache must distinguish the identity and coded variants even when the
