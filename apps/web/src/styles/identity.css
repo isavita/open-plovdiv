@@ -34,18 +34,20 @@
   --plovdiv-timber: #17282d;
   --plovdiv-whitewash: #fffdf8;
 
-  --bg: #f2f5f3;
-  --bg-tint: #e7eeee;
-  --bg-deep: #d8e2e0;
+  /* Warm paper neutrals: the "ailyak" baseline. Cool greys read official;
+     sun-washed plaster reads like the Old Town at golden hour. */
+  --bg: #f6f3ec;
+  --bg-tint: #eeeadd;
+  --bg-deep: #e3ddcd;
   --surface: #fffdf8;
-  --surface-2: #edf2ef;
-  --surface-3: #dfe8e5;
-  --ink: #172329;
-  --ink-deep: #0d171c;
-  --ink-2: #3a4b50;
-  --muted: #586a6e;
-  --line: #ccd8d5;
-  --line-strong: #718388;
+  --surface-2: #f6f2e7;
+  --surface-3: #ebe5d6;
+  --ink: #1b2529;
+  --ink-deep: #101a1f;
+  --ink-2: #3a4a4e;
+  --muted: #5c6a68;
+  --line: #ded7c6;
+  --line-strong: #857f6e;
   --line-gold: #a87022;
 
   --brand: #205f7d;
@@ -105,20 +107,22 @@
   --warning: #8a4d08;
 
   --ring: 0 0 0 3px rgb(47 120 149 / 35%);
-  --shadow-sm: 0 1px 2px rgb(13 23 28 / 7%);
-  --shadow: 0 12px 28px rgb(13 23 28 / 9%);
-  --shadow-lg: 0 28px 70px rgb(13 23 28 / 18%);
-  --shadow-card: 0 1px 2px rgb(13 23 28 / 6%), 0 8px 22px rgb(13 23 28 / 5%);
-  --shadow-card-hover: 0 2px 3px rgb(13 23 28 / 7%), 0 16px 36px rgb(13 23 28 / 11%);
+  /* Depth is ambient, not heavy: two soft layers instead of one hard drop. */
+  --shadow-sm: 0 1px 2px rgb(27 32 24 / 6%);
+  --shadow: 0 10px 26px rgb(27 32 24 / 8%);
+  --shadow-lg: 0 26px 64px rgb(27 32 24 / 16%);
+  --shadow-card: 0 1px 2px rgb(27 32 24 / 5%), 0 8px 22px rgb(27 32 24 / 4%);
+  --shadow-card-hover: 0 2px 3px rgb(27 32 24 / 6%), 0 14px 34px rgb(27 32 24 / 9%);
   --glow-gold: none;
   --glow-brand: none;
 
-  --r-xs: 4px;
-  --r-sm: 7px;
-  --r: 11px;
-  --r-md: 14px;
-  --r-lg: 17px;
-  --r-xl: 24px;
+  /* Rounder corners everywhere: soft plaster edges, not machined bevels. */
+  --r-xs: 5px;
+  --r-sm: 9px;
+  --r: 13px;
+  --r-md: 16px;
+  --r-lg: 19px;
+  --r-xl: 26px;
   --r-pill: 999px;
 
   --maxw: 1240px;
@@ -552,23 +556,41 @@ small {
   position: sticky;
   top: 0;
   z-index: 60;
-  background: var(--plovdiv-timber);
-  border: 0;
-  box-shadow: 0 7px 20px rgb(8 19 23 / 16%);
+  /* Glass lives on the ::before layer, not the header box itself: a
+     backdrop-filter on the header would make it the containing block for the
+     fixed-position phone menu and pin the panel to the header's box. */
+  background: transparent;
+  /* global.css blurs the header box itself; that must stay off or the fixed
+     phone menu anchors to the header instead of the viewport. The glass
+     effect is painted by ::before below instead. */
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+  border: 0;
+  box-shadow: none;
+}
+
+.site-header::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  background: color-mix(in srgb, var(--plovdiv-timber) 88%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  backdrop-filter: blur(14px) saturate(1.15);
+  box-shadow: 0 6px 22px rgb(8 19 23 / 12%);
+  content: "";
 }
 
 .site-header::after {
   position: absolute;
   right: 0;
-  bottom: -5px;
+  bottom: -3px;
   left: 0;
   display: block;
-  height: 5px;
+  height: 3px;
   background: var(--facade-ribbon);
   content: "";
-  opacity: 1;
+  opacity: 0.9;
 }
 
 .nav {
@@ -787,7 +809,7 @@ small {
   left: 0;
   z-index: 2;
   display: block;
-  height: 6px;
+  height: 4px;
   background: linear-gradient(90deg, var(--section-accent) 0 42%, var(--plovdiv-ochre-bright) 42% 58%, var(--plovdiv-teal) 58% 100%);
   content: "";
 }
@@ -841,9 +863,10 @@ small {
   inset: 0;
   z-index: 0;
   display: block;
+  /* Facade light-shafts, kept whisper-quiet so type stays the hero. */
   background:
-    linear-gradient(90deg, transparent 0 66%, rgb(215 154 54 / 18%) 66% 75%, transparent 75%),
-    linear-gradient(90deg, transparent 0 78%, rgb(142 48 67 / 19%) 78% 88%, transparent 88%);
+    linear-gradient(90deg, transparent 0 66%, rgb(215 154 54 / 10%) 66% 75%, transparent 75%),
+    linear-gradient(90deg, transparent 0 78%, rgb(142 48 67 / 11%) 78% 88%, transparent 88%);
   content: "";
   pointer-events: none;
 }
@@ -854,9 +877,10 @@ small {
   bottom: 0;
   left: 0;
   z-index: 2;
-  height: 8px;
+  height: 5px;
   background: var(--facade-ribbon);
   content: "";
+  opacity: 0.92;
 }
 
 .hero[data-section="home"] .container {
@@ -1048,7 +1072,9 @@ small {
 .person-card,
 .nb-card {
   overflow: hidden;
-  border-top: 5px solid var(--entry-accent, var(--section-accent, var(--brand)));
+  /* The painted top edge stays, but is washed toward the plaster so long
+     catalogue lists don't shout one hard stripe per card. */
+  border-top: 4px solid color-mix(in srgb, var(--entry-accent, var(--section-accent, var(--brand))) 82%, var(--surface));
 }
 
 .entry-card {
@@ -1122,23 +1148,30 @@ small {
   padding: 11px 19px;
   background: var(--brand);
   border: 2px solid var(--brand);
-  border-radius: var(--r-sm);
+  border-radius: 12px;
   box-shadow: none;
   color: var(--brand-ink);
   font-family: var(--font-ui);
   font-size: 0.94rem;
   font-weight: 720;
   letter-spacing: 0.01em;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
 }
 
 .button:hover,
 .button:focus-visible {
   background: var(--brand-strong);
   border-color: var(--brand-strong);
-  box-shadow: none;
+  box-shadow: 0 8px 20px rgb(27 32 24 / 10%);
   color: var(--brand-ink);
   filter: none;
-  transform: none;
+  transform: translateY(-1px);
+}
+
+/* Gentle press feedback — the button yields slightly, like a well-oiled gate. */
+.button:active {
+  transform: translateY(0) scale(0.985);
+  box-shadow: none;
 }
 
 .button.secondary {
@@ -1716,10 +1749,10 @@ small {
 
 .page-subnav {
   top: 77px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--line-strong);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  backdrop-filter: blur(12px) saturate(1.1);
+  border-bottom: 1px solid var(--line);
 }
 
 .page-subnav a {
@@ -1875,9 +1908,10 @@ th {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 6px;
+  height: 4px;
   background: var(--facade-ribbon);
   content: "";
+  opacity: 0.9;
 }
 
 .ailyak-paces-inner {
@@ -2063,7 +2097,7 @@ a.mayor-frieze-more:focus-visible {
   padding: 17px 16px 15px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-top: 5px solid var(--tile-accent, var(--gold));
+  border-top: 4px solid color-mix(in srgb, var(--tile-accent, var(--gold)) 82%, var(--surface));
   border-radius: var(--r);
   box-shadow: var(--shadow-card);
 }
@@ -2238,10 +2272,10 @@ a.mayor-frieze-more:focus-visible {
   left: 0;
   z-index: 2;
   display: block;
-  height: 7px;
+  height: 5px;
   background: var(--facade-ribbon);
   content: "";
-  opacity: 1;
+  opacity: 0.92;
 }
 
 .site-footer .footer-skyline {
@@ -2318,6 +2352,18 @@ a.mayor-frieze-more:focus-visible {
   display: none;
 }
 
+/* The expanded phone menu settles in like a slow awning: one soft drop for
+   the sheet, then the links follow a beat apart. */
+@keyframes op-menu-in {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes op-menu-item {
+  from { opacity: 0; transform: translateY(-7px); }
+  to { opacity: 1; transform: none; }
+}
+
 @media (max-width: 1240px) {
   .nav-more {
     display: none;
@@ -2348,7 +2394,19 @@ a.mayor-frieze-more:focus-visible {
 
   .site-header[data-open="true"] .nav-links {
     display: block;
+    animation: op-menu-in 240ms cubic-bezier(0.33, 0.01, 0.2, 1) both;
   }
+
+  .site-header[data-open="true"] .nav-links > * {
+    animation: op-menu-item 320ms cubic-bezier(0.33, 0.01, 0.2, 1) both;
+  }
+
+  .site-header[data-open="true"] .nav-links > :nth-child(1) { animation-delay: 30ms; }
+  .site-header[data-open="true"] .nav-links > :nth-child(2) { animation-delay: 60ms; }
+  .site-header[data-open="true"] .nav-links > :nth-child(3) { animation-delay: 90ms; }
+  .site-header[data-open="true"] .nav-links > :nth-child(4) { animation-delay: 120ms; }
+  .site-header[data-open="true"] .nav-links > :nth-child(5) { animation-delay: 150ms; }
+  .site-header[data-open="true"] .nav-links > :nth-child(6) { animation-delay: 180ms; }
 
   .site-header .nav-links > a {
     min-height: 54px;
@@ -2429,7 +2487,7 @@ a.mayor-frieze-more:focus-visible {
   }
 
   .site-shell {
-    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
   }
 
   .nav {
@@ -2439,8 +2497,8 @@ a.mayor-frieze-more:focus-visible {
   }
 
   .site-header::after {
-    bottom: -4px;
-    height: 4px;
+    bottom: -3px;
+    height: 3px;
   }
 
   .site-header .nav-links {
@@ -2677,57 +2735,58 @@ a.mayor-frieze-more:focus-visible {
     scroll-margin-top: 130px;
   }
 
+  /* Floating glass dock: detached from the screen edge, blurred over the
+     page, with a quiet chip for the active tab instead of a hard colour bar. */
   .mobile-dock {
     position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    right: 10px;
+    bottom: calc(9px + env(safe-area-inset-bottom));
+    left: 10px;
     z-index: 58;
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 2px;
-    padding: 5px max(7px, env(safe-area-inset-right)) calc(5px + env(safe-area-inset-bottom)) max(7px, env(safe-area-inset-left));
-    background: var(--surface);
-    border: 0;
-    border-top: 1px solid var(--line-strong);
-    border-radius: 0;
-    box-shadow: 0 -8px 26px rgb(13 23 28 / 12%);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    padding: 6px;
+    background: color-mix(in srgb, var(--surface) 84%, transparent);
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    box-shadow: 0 18px 44px rgb(13 23 28 / 16%), 0 2px 8px rgb(13 23 28 / 7%);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    backdrop-filter: blur(18px) saturate(1.2);
   }
 
   .mobile-dock::before {
-    position: absolute;
-    top: -4px;
-    right: 0;
-    left: 0;
-    height: 4px;
-    background: var(--facade-ribbon);
-    content: "";
+    display: none;
   }
 
   .mobile-dock a,
   .mobile-dock button {
     appearance: none;
-    min-height: 60px;
+    min-height: 58px;
     display: grid;
     place-items: center;
     align-content: center;
     gap: 3px;
     background: transparent;
     border: 0;
-    border-radius: var(--r-sm);
+    border-radius: 20px;
     color: var(--muted);
     font: inherit;
     font-size: 0.68rem;
-    font-weight: 720;
+    font-weight: 700;
     line-height: 1.05;
     text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease, transform 120ms ease;
+  }
+
+  .mobile-dock a:active,
+  .mobile-dock button:active {
+    transform: scale(0.94);
   }
 
   .mobile-dock svg {
-    width: 22px;
-    height: 22px;
+    width: 23px;
+    height: 23px;
     fill: none;
     stroke: currentColor;
     stroke-linecap: round;
@@ -2735,13 +2794,16 @@ a.mayor-frieze-more:focus-visible {
     stroke-width: 1.9;
   }
 
-  .mobile-dock a[aria-current="page"],
-  .mobile-dock a:active,
-  .mobile-dock button:active {
-    background: var(--brand-soft);
+  .mobile-dock a[aria-current="page"] {
+    background: color-mix(in srgb, var(--brand) 15%, transparent);
     color: var(--brand-strong);
-    box-shadow: inset 0 4px 0 var(--plovdiv-oxblood);
-    transform: none;
+  }
+
+  .mobile-dock button[aria-expanded="true"],
+  .mobile-dock a:hover,
+  .mobile-dock button:hover {
+    background: color-mix(in srgb, var(--brand) 8%, transparent);
+    color: var(--brand-strong);
   }
 
   .main:has(.route-start-bar) + .mobile-dock {
@@ -2753,7 +2815,7 @@ a.mayor-frieze-more:focus-visible {
   }
 
   .map-sheet {
-    bottom: calc(72px + env(safe-area-inset-bottom));
+    bottom: calc(92px + env(safe-area-inset-bottom));
   }
 
   .site-footer {
@@ -2837,5 +2899,106 @@ a.mayor-frieze-more:focus-visible {
     background: #ffffff !important;
     color: #000000 !important;
     box-shadow: none !important;
+  }
+}
+
+/* ==========================================================================
+   Ailyak refinement layer
+   The calm pass: quieter ribbons, glass chrome, softer depth and unhurried
+   motion. Everything here degrades gracefully — reduced-motion users get
+   instant states through the global override above.
+   ========================================================================== */
+
+/* Dropdowns settle instead of snapping open. */
+@keyframes op-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.nav-more[open] .nav-more-panel,
+.lang-menu[open] .lang-options {
+  animation: op-pop 170ms cubic-bezier(0.33, 0.01, 0.2, 1) both;
+}
+
+/* Nav links ease their underline rather than flashing it. */
+.nav-links > a,
+.nav-more > summary,
+.icon-btn {
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+/* Cards acknowledge a touch press before navigation. */
+.card-link:active,
+.ailyak-pace-card:active,
+.place-card:active,
+.route-card:active,
+.story-card:active,
+.person-card:active,
+.nb-card:active {
+  transform: scale(0.988);
+}
+
+.button,
+.mobile-dock a,
+.mobile-dock button,
+.card-link,
+.ailyak-pace-card {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ailyak pace cards get the same gentle lift as the rest of the catalogue. */
+@media (hover: hover) and (pointer: fine) {
+  .ailyak-pace-card {
+    transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+  }
+
+  .ailyak-pace-card:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Search sheet: a grab handle reads instantly as "bottom sheet" on phones. */
+@media (max-width: 620px) {
+  .site-search-shell {
+    position: relative;
+  }
+
+  .site-search-shell::before {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 40px;
+    height: 4px;
+    border-radius: var(--r-pill);
+    background: var(--line-strong);
+    content: "";
+    opacity: 0.55;
+    transform: translateX(-50%);
+  }
+
+  .site-search-head {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 760px) {
+  /* A little more air between sections — calm needs whitespace. */
+  .section {
+    padding: 50px 0;
+  }
+
+  .hero[data-section="home"] .hero-skyline {
+    opacity: 0.19;
+  }
+
+  /* Full-width actions relax into slightly rounder slabs. */
+  .actions .button {
+    border-radius: 14px;
   }
 }
