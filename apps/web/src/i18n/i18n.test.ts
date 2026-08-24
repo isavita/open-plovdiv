@@ -213,6 +213,52 @@ describe("generated translation JSON", () => {
       expect(value.trim().length, `data/translations/ja.json:${key}`).toBeGreaterThan(0);
     }
   });
+
+  it("Polish mayor succession translations preserve the source direction", () => {
+    const translations = JSON.parse(
+      fs.readFileSync(path.join(repoRoot, "data/translations/pl.json"), "utf8")
+    ) as Record<string, string>;
+    let titleCount = 0;
+    let claimCount = 0;
+    let summaryCount = 0;
+
+    for (const [source, translated] of Object.entries(translations)) {
+      let match = source.match(/^Person relationship: (.+) — (succeeded by|succeeds) — (.+)\.$/);
+      if (match) {
+        const [, person, direction, otherPerson] = match;
+        const relation = direction === "succeeded by" ? "zastąpiony przez" : "zastąpił";
+        expect(translated, source).toBe(`Relacja osobowa: ${person} — ${relation} — ${otherPerson}.`);
+        claimCount += 1;
+        continue;
+      }
+
+      match = source.match(
+        /^The mayoral chronology links (.+) with (.+) through the relationship "(succeeded by|succeeds)"\.$/
+      );
+      if (match) {
+        const [, person, otherPerson, direction] = match;
+        const relation =
+          direction === "succeeded by"
+            ? `${person} został zastąpiony przez ${otherPerson}`
+            : `${person} zastąpił ${otherPerson}`;
+        expect(translated, source).toBe(`Według chronologii burmistrzów ${relation}.`);
+        summaryCount += 1;
+        continue;
+      }
+
+      match = source.match(/^(.+) — (succeeded by|succeeds) — (.+)$/);
+      if (match) {
+        const [, person, direction, otherPerson] = match;
+        const relation = direction === "succeeded by" ? "zastąpiony przez" : "zastąpił";
+        expect(translated, source).toBe(`${person} — ${relation} — ${otherPerson}`);
+        titleCount += 1;
+      }
+    }
+
+    expect(titleCount).toBeGreaterThan(100);
+    expect(claimCount).toBe(titleCount);
+    expect(summaryCount).toBe(titleCount);
+  });
 });
 
 describe("data-label maps", () => {
