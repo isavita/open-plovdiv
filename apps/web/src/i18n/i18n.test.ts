@@ -218,6 +218,7 @@ describe("generated translation JSON", () => {
     const translations = JSON.parse(
       fs.readFileSync(path.join(repoRoot, "data/translations/pl.json"), "utf8")
     ) as Record<string, string>;
+    const localizePersonName = (name: string) => name.replace(/^Eng\. /, "inż. ");
     let titleCount = 0;
     let claimCount = 0;
     let summaryCount = 0;
@@ -227,7 +228,9 @@ describe("generated translation JSON", () => {
       if (match) {
         const [, person, direction, otherPerson] = match;
         const relation = direction === "succeeded by" ? "zastąpiony przez" : "zastąpił";
-        expect(translated, source).toBe(`Relacja osobowa: ${person} — ${relation} — ${otherPerson}.`);
+        expect(translated, source).toBe(
+          `Relacja osobowa: ${localizePersonName(person)} — ${relation} — ${localizePersonName(otherPerson)}.`
+        );
         claimCount += 1;
         continue;
       }
@@ -239,7 +242,7 @@ describe("generated translation JSON", () => {
         const [, person, otherPerson, direction] = match;
         const relation = direction === "succeeded by" ? "zastąpiony przez" : "zastąpił";
         expect(translated, source).toBe(
-          `Chronologia burmistrzów: ${person} — ${relation} — ${otherPerson}.`
+          `Chronologia burmistrzów: ${localizePersonName(person)} — ${relation} — ${localizePersonName(otherPerson)}.`
         );
         summaryCount += 1;
         continue;
@@ -249,7 +252,9 @@ describe("generated translation JSON", () => {
       if (match) {
         const [, person, direction, otherPerson] = match;
         const relation = direction === "succeeded by" ? "zastąpiony przez" : "zastąpił";
-        expect(translated, source).toBe(`${person} — ${relation} — ${otherPerson}`);
+        expect(translated, source).toBe(
+          `${localizePersonName(person)} — ${relation} — ${localizePersonName(otherPerson)}`
+        );
         titleCount += 1;
       }
     }
