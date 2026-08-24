@@ -86,9 +86,24 @@ function assertAlternateLinks(url, html, bgHref, enHref) {
   }
 }
 
+function resolvePublicSiteOrigin() {
+  const configuredSiteUrl = process.env.PUBLIC_SITE_URL?.trim();
+  if (configuredSiteUrl) return new URL(configuredSiteUrl).origin;
+
+  const rootHtml = fs.readFileSync(fileForUrl("/"), "utf8");
+  const canonicalTag = rootHtml.match(/<link\b[^>]*\brel=["']canonical["'][^>]*>/i)?.[0];
+  const canonicalHref = canonicalTag?.match(/\bhref=["']([^"']+)["']/i)?.[1];
+  if (!canonicalHref) {
+    throw new Error("history surface: root page is missing a canonical URL");
+  }
+  return new URL(canonicalHref).origin;
+}
+
+const publicSiteOrigin = resolvePublicSiteOrigin();
+
 function absolutePageHref(url) {
-  const href = new URL(url, "https://openplovdiv.example").href;
-  return href.endsWith("/") && href !== "https://openplovdiv.example/" ? href.slice(0, -1) : href;
+  const href = new URL(url, `${publicSiteOrigin}/`).href;
+  return href.endsWith("/") && href !== `${publicSiteOrigin}/` ? href.slice(0, -1) : href;
 }
 
 function assertCountAtLeast(label, actual, target) {
