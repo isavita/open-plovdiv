@@ -3,6 +3,7 @@ import { field, localeCodes } from "../i18n/utils";
 import { historyKnowledgePlaces } from "./data";
 import {
   formatKm,
+  googleMapsDirectionsUrls,
   routeGeometry,
   routeGeometryById,
   routesThroughPlace,
@@ -75,5 +76,18 @@ describe("walking route registry", () => {
   it("formats kilometre values for display", () => {
     expect(formatKm(2712, "en-GB")).toBe("2.7");
     expect(formatKm(2712, "bg-BG")).toBe("2,7");
+  });
+
+  it("splits Google Maps directions at the mobile waypoint limit without losing stops", () => {
+    const coordinates = Array.from({ length: 8 }, (_, index) => `${index + 1},${index + 1}`);
+    const urls = googleMapsDirectionsUrls(coordinates);
+
+    expect(urls).toHaveLength(2);
+    expect(urls[0]).toContain("origin=1,1&destination=5,5");
+    expect(urls[0]).toContain("waypoints=2,2%7C3,3%7C4,4");
+    expect(urls[1]).toContain("origin=5,5&destination=8,8");
+    expect(urls[1]).toContain("waypoints=6,6%7C7,7");
+    expect(googleMapsDirectionsUrls([])).toEqual([]);
+    expect(googleMapsDirectionsUrls(["1,1"])).toEqual([]);
   });
 });

@@ -158,3 +158,32 @@ export function formatKm(distanceMeters: number, locale: string): string {
 export function walkingMinutes(geometry: RouteGeometry): number {
   return Math.round(geometry.walk_duration_s / 60);
 }
+
+const GOOGLE_MAPS_MOBILE_MAX_STOPS = 5;
+
+/**
+ * Google Maps mobile-browser URLs accept an origin, a destination and at most
+ * three waypoints. Split longer itineraries into overlapping segments so no
+ * curated stop is silently dropped when a route is opened outside the site.
+ */
+export function googleMapsDirectionsUrls(coordinates: string[]): string[] {
+  if (coordinates.length < 2) return [];
+
+  const urls: string[] = [];
+  let startIndex = 0;
+
+  while (startIndex < coordinates.length - 1) {
+    const segment = coordinates.slice(startIndex, startIndex + GOOGLE_MAPS_MOBILE_MAX_STOPS);
+    const origin = segment[0];
+    const destination = segment[segment.length - 1];
+    const waypoints = segment.slice(1, -1);
+    const waypointQuery = waypoints.length ? `&waypoints=${waypoints.join("%7C")}` : "";
+
+    urls.push(
+      `https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=${origin}&destination=${destination}${waypointQuery}`
+    );
+    startIndex += segment.length - 1;
+  }
+
+  return urls;
+}
