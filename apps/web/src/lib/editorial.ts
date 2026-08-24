@@ -1,4 +1,4 @@
-import { field, type Lang } from "@i18n/utils";
+import { field, type Lang } from "../i18n/utils";
 
 type EditorialRecord = {
   status?: string | null;

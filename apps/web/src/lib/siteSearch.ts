@@ -10,6 +10,7 @@ import {
 } from "./data";
 import { neighbourhoodHistories } from "./neighbourhoods";
 import { neighbourhoodLabels } from "./neighbourhoodLabels";
+import { editorialReviewStatusLabel } from "./editorial";
 import { routeLabels } from "./routeLabels";
 import { walkingRoutes } from "./routes";
 import {
@@ -198,7 +199,13 @@ function buildPageItems(lang: Lang): SiteSearchItem[] {
     ["/projects", t.nav.projects, t.projects.lead],
     ["/community", t.nav.community, t.community.lead],
     ["/archive", t.nav.archive, t.archive?.lead ?? fallback],
-    ["/data-sources", t.footer.sources, t.footer.dataNote]
+    ["/data-sources", t.footer.sources, t.footer.dataNote],
+    [
+      "/history/editorial-review",
+      editorialReviewStatusLabel(lang),
+      t.history?.sourceNote ?? fallback
+    ],
+    ["/privacy", t.privacy.title, t.privacy.lead]
   ];
   return pages.map(([path, title, description, aliases]) =>
     makeItem(

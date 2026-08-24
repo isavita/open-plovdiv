@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { localeCodes } from "../i18n/utils";
+import { localeCodes, localizePath } from "../i18n/utils";
+import { editorialReviewStatusLabel } from "./editorial";
 import { matchesSearchText, normalizeSearchText, rankSiteSearch } from "./searchCore";
 import { buildSiteSearchIndex } from "./siteSearch";
 
@@ -26,6 +27,22 @@ describe("universal site search", () => {
       for (const suggestion of index.suggestions) {
         expect(rankSiteSearch(index.items, suggestion, 3).length, `${lang}: ${suggestion}`).toBeGreaterThan(0);
       }
+    }
+  });
+
+  it("indexes privacy and editorial review in every locale", () => {
+    for (const lang of localeCodes) {
+      const index = buildSiteSearchIndex(lang);
+      expect(
+        index.items.find((item) => item.id === "page:history/editorial-review"),
+        `${lang} editorial review`
+      ).toMatchObject({
+        title: editorialReviewStatusLabel(lang),
+        href: localizePath("/history/editorial-review", lang)
+      });
+      expect(index.items.find((item) => item.id === "page:privacy"), `${lang} privacy`).toMatchObject({
+        href: localizePath("/privacy", lang)
+      });
     }
   });
 
