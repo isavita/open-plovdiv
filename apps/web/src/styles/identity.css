@@ -2803,7 +2803,13 @@ a.mayor-frieze-more:focus-visible {
 
   .mobile-dock a[aria-current="page"] {
     background: color-mix(in srgb, var(--brand) 15%, transparent);
+    box-shadow: none;
     color: var(--brand-strong);
+    transform: none;
+  }
+
+  .mobile-dock a[aria-current="page"]:active {
+    transform: scale(0.94);
   }
 
   .mobile-dock button[aria-expanded="true"],
