@@ -8,6 +8,7 @@ import addFormats from "ajv-formats";
 const root = process.cwd();
 const clientDir = path.join(root, "apps/web/dist/client");
 const schemaDir = path.join(root, "data/schemas");
+const generatedCsvDir = path.join(root, "data/generated/history-knowledge/csv");
 
 if (!fs.existsSync(clientDir)) {
   throw new Error("history API: apps/web/dist/client is missing; run npm run build first");
@@ -110,6 +111,22 @@ function countCsvRows(text) {
 
 function assertSameJson(label, left, right) {
   if (!isDeepStrictEqual(left, right)) fail(`${label} does not match downloadable JSON`);
+}
+
+function validateGeneratedCsvExports() {
+  if (!fs.existsSync(generatedCsvDir)) {
+    fail("generated history CSV directory is missing; run npm run data first");
+    return;
+  }
+
+  for (const entry of fs.readdirSync(generatedCsvDir, { withFileTypes: true })) {
+    if (!entry.isFile() || !entry.name.endsWith(".csv")) continue;
+    const url = `/data/history/csv/${entry.name}`;
+    const published = readText(url);
+    if (published == null) continue;
+    const generated = fs.readFileSync(path.join(generatedCsvDir, entry.name), "utf8");
+    if (published !== generated) fail(`${url} does not match the canonical generated CSV`);
+  }
 }
 
 loadSchemas();
@@ -287,6 +304,8 @@ if (index) {
     }
   }
 }
+
+validateGeneratedCsvExports();
 
 if (issues.length > 0) {
   console.error(`history API validation failed: ${issues.length} issue(s)`);
