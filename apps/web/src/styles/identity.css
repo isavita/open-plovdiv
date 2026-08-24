@@ -2875,8 +2875,16 @@ a.mayor-frieze-more:focus-visible {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .site-header[data-open="true"] .nav-links,
+  .site-header[data-open="true"] .nav-links > *,
+  .nav-more[open] .nav-more-panel,
+  .lang-menu[open] .lang-options {
+    animation: none !important;
   }
 }
 
