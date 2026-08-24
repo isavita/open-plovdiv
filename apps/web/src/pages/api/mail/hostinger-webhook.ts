@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import type { APIRoute } from "astro";
-import { json } from "@lib/server/http";
+import { json } from "../../../lib/server/http";
 
 export const prerender = false;
 
@@ -49,7 +49,17 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ error: "unauthorized" }, 401);
   }
 
-  const payload = await request.json().catch(() => null);
+  let payload: unknown;
+  try {
+    payload = await request.json();
+  } catch {
+    return json({ error: "invalid_json" }, 400);
+  }
+
+  if (!payload || typeof payload !== "object" || Array.isArray(payload) || Object.keys(payload).length === 0) {
+    return json({ error: "invalid_payload" }, 400);
+  }
+
   console.info("[hostinger-mail-webhook]", summarizePayload(payload));
 
   return json({ ok: true });
