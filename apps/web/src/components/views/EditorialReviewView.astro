@@ -1511,6 +1511,8 @@ const reviewConfig = {
 
   <script type="application/json" id="editorial-review-config" set:html={JSON.stringify(reviewConfig)}></script>
   <script>
+    import { localizePath, type Lang } from "@i18n/utils";
+
     const config = JSON.parse(document.getElementById("editorial-review-config")?.textContent ?? "{}");
     const search = document.querySelector<HTMLInputElement>("#editorial-review-search")!;
     const collection = document.querySelector<HTMLSelectElement>("#editorial-review-collection")!;
@@ -1607,7 +1609,9 @@ const reviewConfig = {
           const license = record.has_license_or_reuse_status
             ? config.labels.hasLicense
             : config.labels.missingLicense;
-          const reviewUrl = config.lang === "bg" ? record.review_url_bg : record.review_url_en;
+          const reviewUrl = record.review_url_bg
+            ? localizePath(record.review_url_bg, config.lang as Lang)
+            : "";
           const recordTitle = reviewUrl
             ? `<a class="review-record-link" href="${escapeHtml(reviewUrl)}">${escapeHtml(localizedTitle(record))}</a>`
             : `<strong>${escapeHtml(localizedTitle(record))}</strong>`;

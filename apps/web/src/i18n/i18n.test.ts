@@ -323,6 +323,14 @@ describe("localised routing", () => {
     }
   });
 
+  it("preserves hashes and trailing slashes when localising editorial-review links", () => {
+    expect(localizePath("/history#event-1", "de")).toBe("/de/history#event-1");
+    expect(localizePath("/people/person-1/#relationships", "uk")).toBe(
+      "/uk/people/person-1/#relationships"
+    );
+    expect(localizePath("/history#data", "bg")).toBe("/history#data");
+  });
+
   it("detects the locale from a URL and round-trips back to the logical path", () => {
     expect(getLangFromUrl("/de/projects")).toBe("de");
     expect(getLangFromUrl("/fr/history")).toBe("fr");
