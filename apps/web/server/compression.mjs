@@ -132,7 +132,7 @@ function createCompressor(encoding) {
  * skips byte ranges, streams and already-encoded data, and only adds Vary for
  * representations that can genuinely vary by Accept-Encoding.
  */
-export function applyCompression(req, response) {
+export function applyCompression(req, response, { beforeCommit } = {}) {
   const originalWriteHead = response.writeHead.bind(response);
   const originalWrite = response.write.bind(response);
   const originalEnd = response.end.bind(response);
@@ -144,6 +144,7 @@ export function applyCompression(req, response) {
   function commitHeaders(emptyBodyHint) {
     if (configured || response.headersSent) return;
 
+    beforeCommit?.(req, response);
     const eligible = canTransform(req, response, emptyBodyHint);
     if (eligible) {
       // A cache must distinguish the identity and coded variants even when the

@@ -1,5 +1,9 @@
 const STATIC_JSON_API_PATH = /^\/api\/(history|search)\/[^/]+\.json$/;
 const ALLOWED_STATIC_API_METHODS = new Set(["GET", "HEAD"]);
+const STATIC_API_CACHE_CONTROL = {
+  history: "public, max-age=300",
+  search: "public, max-age=3600"
+};
 
 export function matchStaticJsonApi(requestUrl) {
   let pathname;
@@ -30,4 +34,14 @@ export function rejectUnsupportedStaticApiMethod(request, response) {
   response.setHeader("Content-Length", Buffer.byteLength(body));
   response.end(body);
   return true;
+}
+
+export function applyStaticApiCachePolicy(request, response) {
+  const route = matchStaticJsonApi(request.url);
+  if (!route) return;
+
+  const statusCode = response.statusCode;
+  if ((statusCode >= 200 && statusCode < 300) || statusCode === 304) {
+    response.setHeader("Cache-Control", STATIC_API_CACHE_CONTROL[route.kind]);
+  }
 }

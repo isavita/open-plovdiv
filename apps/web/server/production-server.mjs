@@ -2,7 +2,10 @@ import fs from "node:fs";
 import http from "node:http";
 import https from "node:https";
 import { applyCompression } from "./compression.mjs";
-import { rejectUnsupportedStaticApiMethod } from "./request-policy.mjs";
+import {
+  applyStaticApiCachePolicy,
+  rejectUnsupportedStaticApiMethod
+} from "./request-policy.mjs";
 import { resolveTlsPaths } from "./runtime-config.mjs";
 
 // Astro's standalone entry starts itself when imported. Disable that behavior
@@ -17,7 +20,7 @@ const host = process.env.HOST ?? options.host ?? "0.0.0.0";
 
 const listener = (req, response) => {
   if (rejectUnsupportedStaticApiMethod(req, response)) return;
-  applyCompression(req, response);
+  applyCompression(req, response, { beforeCommit: applyStaticApiCachePolicy });
   try {
     const result = handler(req, response);
     Promise.resolve(result).catch((error) => {
