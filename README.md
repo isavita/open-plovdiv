@@ -26,9 +26,16 @@ The development server starts the website from `apps/web`.
 
 This repository is an npm workspace monorepo. Deploy it from the repository root so data generation runs before the Astro build. `railway.json` defines the build, start command and health check.
 
-The only site-specific production variable is optional:
+Railway supplies `RAILWAY_PUBLIC_DOMAIN` during the build automatically. For
+other production environments, configure the canonical origin explicitly:
 
-- `PUBLIC_SITE_URL`: the canonical public URL, for example the Railway domain
+- `PUBLIC_SITE_URL`: the required canonical public URL, for example `https://openplovdiv.example.org`
+
+Local production builds must also provide an origin, for example:
+
+```bash
+PUBLIC_SITE_URL=http://localhost:4321 npm run build
+```
 
 ## Common commands
 
