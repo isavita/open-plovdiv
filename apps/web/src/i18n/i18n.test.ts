@@ -167,6 +167,32 @@ describe("ui dictionary parity", () => {
     expect(ui.pl.mayors.yearsApprox(2)).toBe("2 lata");
     expect(ui.pl.community.count(3)).toBe("3 inicjatywy");
   });
+
+  it("Ukrainian and Russian UI use one, few and many forms at Slavic boundaries", () => {
+    expect(ui.uk.mayors.count(1)).toBe("1 каденція");
+    expect(ui.uk.mayors.count(2)).toBe("2 каденції");
+    expect(ui.uk.mayors.count(5)).toBe("5 каденцій");
+    expect(ui.uk.mayors.count(11)).toBe("11 каденцій");
+    expect(ui.uk.mayors.count(12)).toBe("12 каденцій");
+    expect(ui.uk.mayors.count(21)).toBe("21 каденція");
+    expect(ui.uk.mayors.count(22)).toBe("22 каденції");
+    expect(ui.uk.mayors.yearsApprox(2)).toBe("2 роки");
+    expect(ui.uk.projects.countFiltered(2, 22)).toBe("2 з 22 проєктів");
+    expect(ui.uk.projects.countFiltered(2, 21)).toBe("2 з 21 проєкту");
+    expect(ui.uk.community.count(3)).toBe("3 ініціативи");
+
+    expect(ui.ru.mayors.count(1)).toBe("1 каденция");
+    expect(ui.ru.mayors.count(2)).toBe("2 каденции");
+    expect(ui.ru.mayors.count(5)).toBe("5 каденций");
+    expect(ui.ru.mayors.count(11)).toBe("11 каденций");
+    expect(ui.ru.mayors.count(12)).toBe("12 каденций");
+    expect(ui.ru.mayors.count(21)).toBe("21 каденция");
+    expect(ui.ru.mayors.count(22)).toBe("22 каденции");
+    expect(ui.ru.mayors.yearsApprox(2)).toBe("2 года");
+    expect(ui.ru.projects.countFiltered(2, 22)).toBe("2 из 22 проектов");
+    expect(ui.ru.projects.countFiltered(2, 21)).toBe("2 из 21 проекта");
+    expect(ui.ru.community.count(3)).toBe("3 инициативы");
+  });
 });
 
 describe("generated translation JSON", () => {

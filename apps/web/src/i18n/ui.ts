@@ -685,6 +685,22 @@ function polishPlural(n: number, one: string, few: string, many: string): string
   return many;
 }
 
+function eastSlavicPlural(n: number, one: string, few: string, many: string): string {
+  const absolute = Math.abs(Math.trunc(n));
+  const lastDigit = absolute % 10;
+  const lastTwoDigits = absolute % 100;
+  if (lastDigit === 1 && lastTwoDigits !== 11) return one;
+  if (lastDigit >= 2 && lastDigit <= 4 && (lastTwoDigits < 12 || lastTwoDigits > 14)) {
+    return few;
+  }
+  return many;
+}
+
+function eastSlavicAfterOf(n: number, genitiveOne: string, genitiveMany: string): string {
+  const absolute = Math.abs(Math.trunc(n));
+  return absolute % 10 === 1 && absolute % 100 !== 11 ? genitiveOne : genitiveMany;
+}
+
 const romanNumerals = [
   "",
   "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
@@ -6150,9 +6166,9 @@ const uk: typeof bg = {
     currentOnly: "Лише чинний",
     actingOnly: "Лише виконувачі обов'язків",
     reset: "Скинути фільтри",
-    count: (n: number) => `${n} ${plural(n, "каденція", "каденцій")}`,
+    count: (n: number) => `${n} ${eastSlavicPlural(n, "каденція", "каденції", "каденцій")}`,
     countFiltered: (visible: number, total: number) =>
-      `${visible} з ${total} ${plural(total, "каденція", "каденцій")}`,
+      `${visible} з ${total} ${eastSlavicAfterOf(total, "каденції", "каденцій")}`,
     empty: "Немає каденцій за обраними фільтрами.",
     timelineTitle: "Часова шкала каденцій",
     timelineLead:
@@ -6169,7 +6185,7 @@ const uk: typeof bg = {
     actingBadge: "в.о. мера",
     officialArchive: "Офіційний список",
     currentRegistry: "Адміністративний реєстр",
-    yearsApprox: (n: number) => `${n} ${plural(n, "рік", "років")}`,
+    yearsApprox: (n: number) => `${n} ${eastSlavicPlural(n, "рік", "роки", "років")}`,
     centuryLabel: (century: number) => `${century} століття`,
     centuryRange: (start: number, end: number) => `${start}–${end}`,
     openSource: "Відкрити джерело",
@@ -6229,9 +6245,9 @@ const uk: typeof bg = {
     status: "Статус",
     year: "Рік",
     reset: "Скинути фільтри",
-    count: (n: number) => `${n} ${plural(n, "проєкт", "проєктів")}`,
+    count: (n: number) => `${n} ${eastSlavicPlural(n, "проєкт", "проєкти", "проєктів")}`,
     countFiltered: (visible: number, total: number) =>
-      `${visible} з ${total} ${plural(total, "проєкт", "проєктів")}`,
+      `${visible} з ${total} ${eastSlavicAfterOf(total, "проєкту", "проєктів")}`,
     empty: "Немає проєктів за обраними фільтрами."
   },
   community: {
@@ -6255,9 +6271,9 @@ const uk: typeof bg = {
     viewSource: "Джерело",
     contact: "Контакт / група",
     reset: "Скинути фільтри",
-    count: (n: number) => `${n} ${plural(n, "ініціатива", "ініціатив")}`,
+    count: (n: number) => `${n} ${eastSlavicPlural(n, "ініціатива", "ініціативи", "ініціатив")}`,
     countFiltered: (visible: number, total: number) =>
-      `${visible} з ${total} ${plural(total, "ініціатива", "ініціатив")}`,
+      `${visible} з ${total} ${eastSlavicAfterOf(total, "ініціативи", "ініціатив")}`,
     empty: "Немає ініціатив за обраними фільтрами.",
     adminCta: "Адмін: додати або перевірити ініціативу",
     seeProblems: "Перегляньте проблеми, з якими можна допомогти",
@@ -6796,9 +6812,9 @@ const ru: typeof bg = {
     currentOnly: "Только действующий",
     actingOnly: "Только исполняющие обязанности",
     reset: "Сбросить фильтры",
-    count: (n: number) => `${n} ${plural(n, "каденция", "каденций")}`,
+    count: (n: number) => `${n} ${eastSlavicPlural(n, "каденция", "каденции", "каденций")}`,
     countFiltered: (visible: number, total: number) =>
-      `${visible} из ${total} ${plural(total, "каденция", "каденций")}`,
+      `${visible} из ${total} ${eastSlavicAfterOf(total, "каденции", "каденций")}`,
     empty: "Нет каденций по выбранным фильтрам.",
     timelineTitle: "Временная шкала каденций",
     timelineLead:
@@ -6815,7 +6831,7 @@ const ru: typeof bg = {
     actingBadge: "и.о. мэра",
     officialArchive: "Официальный список",
     currentRegistry: "Административный реестр",
-    yearsApprox: (n: number) => `${n} ${plural(n, "год", "лет")}`,
+    yearsApprox: (n: number) => `${n} ${eastSlavicPlural(n, "год", "года", "лет")}`,
     centuryLabel: (century: number) => `${century} век`,
     centuryRange: (start: number, end: number) => `${start}–${end}`,
     openSource: "Открыть источник",
@@ -6875,9 +6891,9 @@ const ru: typeof bg = {
     status: "Статус",
     year: "Год",
     reset: "Сбросить фильтры",
-    count: (n: number) => `${n} ${plural(n, "проект", "проектов")}`,
+    count: (n: number) => `${n} ${eastSlavicPlural(n, "проект", "проекта", "проектов")}`,
     countFiltered: (visible: number, total: number) =>
-      `${visible} из ${total} ${plural(total, "проект", "проектов")}`,
+      `${visible} из ${total} ${eastSlavicAfterOf(total, "проекта", "проектов")}`,
     empty: "Нет проектов по выбранным фильтрам."
   },
   community: {
@@ -6901,9 +6917,9 @@ const ru: typeof bg = {
     viewSource: "Источник",
     contact: "Контакт / группа",
     reset: "Сбросить фильтры",
-    count: (n: number) => `${n} ${plural(n, "инициатива", "инициатив")}`,
+    count: (n: number) => `${n} ${eastSlavicPlural(n, "инициатива", "инициативы", "инициатив")}`,
     countFiltered: (visible: number, total: number) =>
-      `${visible} из ${total} ${plural(total, "инициатива", "инициатив")}`,
+      `${visible} из ${total} ${eastSlavicAfterOf(total, "инициативы", "инициатив")}`,
     empty: "Нет инициатив по выбранным фильтрам.",
     adminCta: "Админ: добавить или проверить инициативу",
     seeProblems: "Посмотрите проблемы, с которыми можно помочь",
