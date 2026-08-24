@@ -7,9 +7,6 @@ const root = process.cwd();
 const outDir = path.join(root, "data/generated/history-knowledge");
 const csvDir = path.join(outDir, "csv");
 
-const DATA_VERSION = "2026.06.19";
-const GENERATED_AT = "2026-06-19T00:00:00.000Z";
-
 const historyEntries = readJson("data/curated/plovdiv-history.json");
 const landmarks = readJson("data/curated/plovdiv-landmarks.json");
 const notablePeople = readJson("data/curated/notable-people.json");
@@ -28,11 +25,61 @@ const editorialSignoffs = readJson("data/curated/editorial-signoffs.json");
 const communityInitiatives = readJson("data/curated/community-initiatives.json");
 const sourceRegistry = readJson("data/curated/sources.json");
 
+const PROVENANCE_DATE_KEYS = new Set([
+  "accessed_at",
+  "discovered_at",
+  "last_checked_at",
+  "reviewed_at",
+  "updated_at"
+]);
+const SNAPSHOT_DATE = latestProvenanceDate([
+  historyEntries,
+  landmarks,
+  notablePeople,
+  personRelationships,
+  cityArchive,
+  historicalArchiveItems,
+  thenNowPairs,
+  primaryDocuments,
+  educationResources,
+  storyLongreads,
+  storyGalleries,
+  editorialSignoffs,
+  communityInitiatives,
+  sourceRegistry
+]);
+const DATA_VERSION = SNAPSHOT_DATE.replaceAll("-", ".");
+const GENERATED_AT = `${SNAPSHOT_DATE}T00:00:00.000Z`;
+
 const sourceByUrl = new Map();
 const sourceById = new Map();
 
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
+}
+
+function latestProvenanceDate(values) {
+  let latest = "";
+
+  function visit(value) {
+    if (Array.isArray(value)) {
+      value.forEach(visit);
+      return;
+    }
+    if (!value || typeof value !== "object") return;
+
+    for (const [key, child] of Object.entries(value)) {
+      if (PROVENANCE_DATE_KEYS.has(key) && typeof child === "string") {
+        const date = child.slice(0, 10);
+        if (/^\d{4}-\d{2}-\d{2}$/.test(date) && date > latest) latest = date;
+      }
+      visit(child);
+    }
+  }
+
+  values.forEach(visit);
+  if (!latest) throw new Error("history knowledge inputs contain no provenance date");
+  return latest;
 }
 
 function writeJson(filePath, value) {
@@ -1646,12 +1693,12 @@ function reviewPathFor(collectionId, record) {
     people: `/people/${record.id}/`,
     person_relationships: record.from_person_id ? `/people/${record.from_person_id}/#relationships` : "/people/",
     places: `/places/${record.id}/`,
-    organizations: "/history#open-data",
-    archive_items: "/history#archive",
-    then_now_pairs: "/history#then-now",
-    primary_documents: "/history#open-data",
+    organizations: "/history#data",
+    archive_items: "/history#archive-layer",
+    then_now_pairs: "/history#archive-layer",
+    primary_documents: "/history#data",
     story_longreads: `/stories/${record.id}/`,
-    education_resources: `/education#${record.id}`
+    education_resources: "/history#data"
   };
   const bg = anchors[collectionId] ?? "/history";
   const en = bg.startsWith("/en/") ? bg : `/en${bg}`;
