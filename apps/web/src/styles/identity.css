@@ -2742,7 +2742,9 @@ a.mayor-frieze-more:focus-visible {
     right: 10px;
     bottom: calc(9px + env(safe-area-inset-bottom));
     left: 10px;
-    z-index: 58;
+    /* Keep the dock controls above the open navigation sheet so the same
+       visible Menu button can close it again. */
+    z-index: 61;
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 2px;
