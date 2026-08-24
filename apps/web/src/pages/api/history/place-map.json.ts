@@ -39,10 +39,19 @@ function categoryLabel(category: string, lang: Lang): string {
   return categoryLabels[category]?.[lang] ?? category.replaceAll("_", " ");
 }
 
+type HistoryPlace = (typeof historyKnowledgePlaces)[number];
+type MappedHistoryPlace = HistoryPlace & {
+  coordinates: NonNullable<HistoryPlace["coordinates"]>;
+};
+
+function hasCoordinates(place: HistoryPlace): place is MappedHistoryPlace {
+  return place.coordinates != null;
+}
+
 function placeMapItems(lang: Lang) {
   const locale = localeForLang(lang);
   return [...historyKnowledgePlaces]
-    .filter((place) => place.coordinates)
+    .filter(hasCoordinates)
     .map((place) => ({
       lat: place.coordinates.lat,
       lng: place.coordinates.lng,
