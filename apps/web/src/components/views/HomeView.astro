@@ -1,23 +1,17 @@
 ---
-import HeroBackdrop from "@components/HeroBackdrop.astro";
 import Layout from "@layouts/Layout.astro";
+import VisitorPractical from "@components/VisitorPractical.astro";
 import { ui, type Lang } from "@i18n/ui";
-import { field, localizePath } from "@i18n/utils";
-import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
-import { bustGlyph, sectionMotifs } from "@lib/motifs";
-import { cityArchive, historyKnowledgePlaces } from "@lib/data";
-import { walkingRoutes } from "@lib/routes";
+import { field, localizePath, localeForLang } from "@i18n/utils";
+import { placeImageUrl } from "@lib/commons";
+import { historyKnowledgePlaces } from "@lib/data";
+import { walkingRoutes, routeGeometry, formatKm } from "@lib/routes";
 import { routeLabels } from "@lib/routeLabels";
-
-type Props = { lang: Lang };
-const { lang } = Astro.props;
+import { visitorGuide } from "@lib/visitorGuide";
+const { lang } = Astro.props as { lang: Lang };
 const t = ui[lang];
+const guide = visitorGuide(lang);
 const routeT = routeLabels(lang);
-
-const mayorTerms = cityArchive
-  .filter((r) => r.kind === "mayor_term")
-  .sort((a, b) => a.year_start - b.year_start);
-
 const tr = (
   bg: string,
   en: string,
@@ -95,22 +89,6 @@ const labels = {
     "Без списка дел. Выберите ритм и оставьте время на кофе, тень и неожиданный поворот.",
     "Żadnej listy do odhaczenia. Wybierz rytm i zostaw miejsce na kawę, cień i nieoczekiwany zakręt."
   ),
-  startTitle: tr("Започнете оттук", "Start here", "Hier beginnen", "Commencer ici", "Da dove iniziare", "Buradan başlayın", "Empiece aquí", "Ξεκινήστε από εδώ", "ここから始める", "Magsimula rito", "Почніть звідси", "Начните отсюда", "Zacznij tutaj"),
-  startLead: tr(
-    "Четири ясни начина да започнете — за гости, за любопитни и за всеки, който иска да опознае историята на Пловдив.",
-    "Four clear starting points for the city — for visitors, the curious, and anyone who wants to understand Plovdiv's history.",
-    "Vier klare Ausgangspunkte für die Stadt — für Gäste, Neugierige und alle, die Plovdivs Geschichte verstehen möchten.",
-    "Quatre points de départ clairs pour découvrir la ville — pour les visiteurs, les curieux et tous ceux qui veulent comprendre l'histoire de Plovdiv.",
-    "Quattro punti di partenza chiari per scoprire la città — per i visitatori, i curiosi e chi vuole capire la storia di Plovdiv.",
-    "Şehri keşfetmek için dört net başlangıç noktası — ziyaretçiler, meraklılar ve Plovdiv'in tarihini anlamak isteyen herkes için.",
-    "Cuatro puntos de partida claros para conocer la ciudad: para visitantes, curiosos y cualquiera que quiera comprender la historia de Plovdiv.",
-    "Τέσσερις καθαρές αφετηρίες για να γνωρίσετε την πόλη — για επισκέπτες, για όσους έχουν περιέργεια και για όσους θέλουν να κατανοήσουν την ιστορία του Πλόβντιβ.",
-    "街を知るための4つの出発点 — 旅行者にも、好奇心のある人にも、プロヴディフの歴史を理解したい人にも。",
-    "Apat na malinaw na panimulang punto para makilala ang lungsod — para sa mga bisita, sa mga mausisa, at sa sinumang gustong maintindihan ang kasaysayan ng Plovdiv.",
-    "Чотири зрозумілі точки старту для знайомства з містом — для гостей, допитливих і всіх, хто хоче зрозуміти історію Пловдива.",
-    "Четыре понятных отправных пункта для знакомства с городом — для гостей, любопытных и всех, кто хочет понять историю Пловдива.",
-    "Cztery jasne punkty wyjścia — dla odwiedzających, dla ciekawych i dla każdego, kto chce zrozumieć historię Plovdivu."
-  ),
   historyPath: tr("Разгледай историята", "Explore the history", "Geschichte erkunden", "Explorer l'histoire", "Esplora la storia", "Tarihi keşfet", "Explorar la historia", "Εξερεύνηση ιστορίας", "歴史を探る", "Galugarin ang kasaysayan", "Досліджуйте історію", "Изучите историю", "Poznaj historię"),
   historyPathText: tr(
     "Хронология, личности, разкази и източници от праисторията до днес.",
@@ -128,37 +106,6 @@ const labels = {
     "Oś czasu, postacie, opowieści i źródła od prehistorii po dziś."
   ),
   routesPath: tr("Тръгни по маршрутите", "Walk the routes", "Die Routen ablaufen", "Suivre les parcours", "Percorri gli itinerari", "Rotalarda yürü", "Recorrer las rutas", "Περπατήστε τις διαδρομές", "ルートを歩く", "Lakarin ang mga ruta", "Пройдіть маршрутами", "Пройдите маршрутами", "Przejdź trasy"),
-  routesPathText: tr(
-    "Пешеходни маршрути с реални разстояния и времена — от първия ден в града до тепета, музеи и разходки без стъпала.",
-    "Walking routes with real distances and timings — from a first day in the city to hills, museums and step-free walks.",
-    "Spazierwege mit echten Distanzen und Zeiten — vom ersten Tag in der Stadt bis zu Hügeln, Museen und stufenfreien Wegen.",
-    "Des parcours à pied avec distances et durées réelles — du premier jour en ville aux collines, musées et balades sans marches.",
-    "Percorsi a piedi con distanze e tempi reali — dal primo giorno in città a colline, musei e passeggiate senza gradini.",
-    "Gerçek mesafe ve sürelere sahip yürüyüş rotaları — şehirdeki ilk günden tepelere, müzelere ve basamaksız yürüyüşlere.",
-    "Rutas a pie con distancias y tiempos reales — del primer día en la ciudad a colinas, museos y paseos sin escalones.",
-    "Περιπατητικές διαδρομές με πραγματικές αποστάσεις και χρόνους — από την πρώτη μέρα στην πόλη ως λόφους, μουσεία και βόλτες χωρίς σκαλοπάτια.",
-    "実際の距離と所要時間つきの散策ルート。街での初日から、丘、博物館、段差のない散歩まで。",
-    "Mga rutang lalakaran na may totoong distansya at oras — mula sa unang araw sa lungsod hanggang sa mga burol, museo at lakad na walang hagdan.",
-    "Пішохідні маршрути зі справжніми відстанями й часом — від першого дня в місті до пагорбів, музеїв і прогулянок без сходинок.",
-    "Пешеходные маршруты с реальными расстояниями и временем — от первого дня в городе до холмов, музеев и прогулок без ступеней.",
-    "Trasy piesze z prawdziwymi dystansami i czasami — od pierwszego dnia w mieście po wzgórza, muzea i spacery bez schodów."
-  ),
-  placesPath: tr("Открий местата", "Find the places", "Orte entdecken", "Découvrir les lieux", "Scopri i luoghi", "Yerleri keşfet", "Descubrir los lugares", "Ανακαλύψτε τα μέρη", "場所を見つける", "Hanapin ang mga lugar", "Знайдіть місця", "Найдите места", "Odkryj miejsca"),
-  placesPathText: tr(
-    "Карта и каталог на местата и забележителностите — с епохи, снимки и източници.",
-    "A map and catalogue of the city's places and landmarks — with eras, photos and sources.",
-    "Karte und Katalog der Orte und Sehenswürdigkeiten — mit Epochen, Fotos und Quellen.",
-    "Une carte et un catalogue des lieux et monuments — avec époques, photos et sources.",
-    "Una mappa e un catalogo di luoghi e monumenti — con epoche, foto e fonti.",
-    "Yerlerin ve anıtların haritası ve kataloğu — dönemler, fotoğraflar ve kaynaklarla.",
-    "Un mapa y un catálogo de lugares y monumentos, con épocas, fotos y fuentes.",
-    "Χάρτης και κατάλογος τόπων και αξιοθέατων — με εποχές, φωτογραφίες και πηγές.",
-    "街の場所と名所を地図とカタログで — 時代、写真、出典つき。",
-    "Isang mapa at katalogo ng mga lugar at makasaysayang lugar ng lungsod — may yugto, larawan, at pinagmulan.",
-    "Карта та каталог місць і пам'яток міста — з епохами, фотографіями та джерелами.",
-    "Карта и каталог мест и достопримечательностей — с эпохами, фотографиями и источниками.",
-    "Mapa i katalog miejsc oraz zabytków miasta — z epokami, zdjęciami i źródłami."
-  ),
   storiesPath: tr("Прочети разказите", "Read the stories", "Die Geschichten lesen", "Lire les récits", "Leggi i racconti", "Anlatıları oku", "Leer los relatos", "Διαβάστε τις αφηγήσεις", "物語を読む", "Basahin ang mga kuwento", "Читайте розповіді", "Читайте истории", "Przeczytaj opowieści"),
   storiesPathText: tr(
     "Дълги разкази с архивни снимки — земетресението от 1928 г., панаирният град, тепетата и още.",
@@ -174,21 +121,6 @@ const labels = {
     "Розлогі розповіді з архівними фотографіями — землетрус 1928 року, ярмаркове місто, пагорби та інше.",
     "Подробные рассказы с архивными фотографиями — землетрясение 1928 года, ярмарочный город, холмы и многое другое.",
     "Dłuższe teksty z archiwalnymi zdjęciami — trzęsienie ziemi z 1928 roku, miasto targów, wzgórza i więcej."
-  ),
-  essentialsTitle: tr(
-    "Четири места, където айлякът се усеща",
-    "Four places to feel the ailyak",
-    "Vier Orte, an denen man das Ailyak spürt",
-    "Quatre lieux où sentir l'aïlyak",
-    "Quattro luoghi dove sentire l'ailyak",
-    "Aylak ruhunu hissedeceğiniz dört yer",
-    "Cuatro lugares donde sentir el ailyak",
-    "Τέσσερα μέρη όπου νιώθεις το αϊλιάκ",
-    "アイリャクを感じる4つの場所",
-    "Apat na lugar para maramdaman ang ailyak",
-    "Чотири місця, де відчувається айляк",
-    "Четыре места, где чувствуется айляк",
-    "Cztery miejsca, w których czuć ajlak"
   ),
   essentialsLead: tr(
     "Ако сте в града за първи път, започнете оттук — четири места на кратко пешеходно разстояние едно от друго.",
@@ -259,463 +191,151 @@ const labels = {
   nebetEyebrow: tr("Праистория", "Prehistory", "Vorgeschichte", "Préhistoire", "Preistoria", "Tarih öncesi", "Prehistoria", "Προϊστορία", "先史時代", "Prehistorya", "Праісторія", "Праистория", "Prehistoria"),
   nebetTitle: tr("Небет тепе", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Nebet Tepe", "Νεμπέτ Τεπέ", "ネベト・テペ", "Nebet Tepe", "Nebet Tepe", "Небет-тепе", "Nebet Tepe"),
   nebetText: tr(
-    "Най-старото обитавано място в града — праисторическо селище и най-хубавият залез над покривите.",
-    "The oldest inhabited spot in the city — a prehistoric settlement and the best sunset over the rooftops.",
-    "Der älteste besiedelte Ort der Stadt — eine prähistorische Siedlung und der schönste Sonnenuntergang über den Dächern.",
-    "Le plus ancien lieu habité de la ville — un site préhistorique et le plus beau coucher de soleil sur les toits.",
-    "Il luogo abitato più antico della città — un insediamento preistorico e il tramonto più bello sui tetti.",
-    "Şehrin en eski yerleşim noktası — tarih öncesi bir yerleşme ve çatıların üzerindeki en güzel gün batımı.",
-    "El lugar habitado más antiguo de la ciudad: un asentamiento prehistórico y la mejor puesta de sol sobre los tejados.",
-    "Το παλαιότερο κατοικημένο σημείο της πόλης — προϊστορικός οικισμός και το ωραιότερο ηλιοβασίλεμα πάνω από τις στέγες.",
-    "市内最古の居住地。先史時代の集落跡から、屋根越しに最高の夕日を望めます。",
-    "Ang pinakamatandang tinirhang lugar sa lungsod — isang prehistorikong pamayanan at ang pinakamagandang paglubog ng araw sa ibabaw ng mga bubong.",
-    "Найстаріше заселене місце в місті — праісторичне поселення і найкращий захід сонця над дахами.",
-    "Самое старое обитаемое место в городе — доисторическое поселение и лучший закат над крышами.",
-    "Najstarsze zamieszkane miejsce w mieście — osada prehistoryczna i najpiękniejszy zachód słońca nad dachami."
+    "Реставриран през 2025 г., древният хълм разкрива панорама над покривите на Пловдив.",
+    "Restored in 2025, this ancient hilltop opens out over the rooftops of Plovdiv.",
+    "Der 2025 restaurierte antike Hügel bietet einen weiten Blick über die Dächer von Plovdiv.",
+    "Restaurée en 2025, cette colline antique offre un panorama sur les toits de Plovdiv.",
+    "Restaurata nel 2025, questa antica collina offre una vista sui tetti di Plovdiv.",
+    "2025’te restore edilen bu antik tepe, Filibe’nin çatılarına uzanan bir manzara sunuyor.",
+    "Restaurada en 2025, esta antigua colina ofrece una panorámica sobre los tejados de Plovdiv.",
+    "Αποκατεστημένος το 2025, αυτός ο αρχαίος λόφος προσφέρει θέα στις στέγες του Πλόβντιβ.",
+    "2025年に修復された古代の丘。プロヴディフの街並みを一望できます。",
+    "Ibinalik sa ayos noong 2025, ang sinaunang burol na ito ay may malawak na tanawin ng mga bubong ng Plovdiv.",
+    "Відреставрований у 2025 році, цей давній пагорб відкриває панораму дахів Пловдива.",
+    "Отреставрированный в 2025 году, этот древний холм открывает панораму крыш Пловдива.",
+    "Odrestaurowane w 2025 roku starożytne wzgórze oferuje panoramę dachów Płowdiwu."
   ),
   allPlaces: tr("Всички места", "All places", "Alle Orte", "Tous les lieux", "Tutti i luoghi", "Tüm yerler", "Todos los lugares", "Όλα τα μέρη", "すべての場所", "Lahat ng lugar", "Усі місця", "Все места", "Wszystkie miejsca"),
-  mayorsTitle: tr(
-    "От първия кмет до днешния",
-    "From the first mayor to today's",
-    "Vom ersten Bürgermeister bis heute",
-    "Du premier maire à celui d'aujourd'hui",
-    "Dal primo sindaco a quello di oggi",
-    "İlk belediye başkanından bugünküne",
-    "Del primer alcalde al actual",
-    "Από τον πρώτο δήμαρχο έως τον σημερινό",
-    "初代市長から現職まで",
-    "Mula sa unang alkalde hanggang sa kasalukuyan",
-    "Від першого мера до нинішнього",
-    "От первого мэра до нынешнего",
-    "Od pierwszego burmistrza po dzisiejszego"
-  ),
-  mayorsLead: tr(
-    "По един кмет от началото на всеки политически период — от Освобождението до действащия мандат. Пълната хронология проследява всички мандати с биографии и източници.",
-    "One mayor from the start of each political period — from the Liberation to the current term. The full chronology traces every term with biographies and sources.",
-    "Je ein Bürgermeister vom Beginn jeder politischen Periode — von der Befreiung bis zur aktuellen Amtszeit. Die vollständige Chronologie erfasst jedes Mandat mit Biografien und Quellen.",
-    "Un maire au début de chaque période politique — de la Libération au mandat en cours. La chronologie complète retrace chaque mandat avec biographies et sources.",
-    "Un sindaco per l'inizio di ogni periodo politico — dalla Liberazione al mandato in corso. La cronologia completa ripercorre ogni mandato con biografie e fonti.",
-    "Her siyasi dönemin başından birer belediye başkanı — Kurtuluş'tan görevdeki başkana. Tam kronoloji, tüm görev sürelerini biyografiler ve kaynaklarla izler.",
-    "Un alcalde del inicio de cada periodo político: de la Liberación al mandato actual. La cronología completa recorre todos los mandatos con biografías y fuentes.",
-    "Ένας δήμαρχος από την αρχή κάθε πολιτικής περιόδου — από την Απελευθέρωση έως τη σημερινή θητεία. Το πλήρες χρονολόγιο καλύπτει όλες τις θητείες με βιογραφίες και πηγές.",
-    "各政治時代の最初の市長を一人ずつ — 解放から現職まで。完全な年譜では、すべての任期を経歴と出典つきでたどれます。",
-    "Isang alkalde mula sa simula ng bawat panahong pampulitika — mula sa Paglaya hanggang sa kasalukuyang termino. Sinusundan ng kumpletong kronolohiya ang bawat termino kasama ang talambuhay at pinagmulan.",
-    "По одному меру з початку кожного політичного періоду — від Визволення до чинної каденції. Повна хронологія простежує кожну каденцію з біографіями та джерелами.",
-    "По одному мэру с начала каждого политического периода — от Освобождения до действующего срока. Полная хронология охватывает все сроки с биографиями и источниками.",
-    "Po jednym burmistrzu z początku każdego okresu politycznego — od wyzwolenia po obecną kadencję. Pełna chronologia śledzi wszystkie kadencje z biografiami i źródłami."
-  ),
-  eraLiberation: tr("След Освобождението", "Post-Liberation", "Nach der Befreiung", "Après la Libération", "Post-Liberazione", "Kurtuluş sonrası", "Posliberación", "Μετά την Απελευθέρωση", "解放後", "Pagkatapos ng Paglaya", "Після Визволення", "После Освобождения", "Po wyzwoleniu"),
-  eraSocialist: tr("Социалистически период", "Socialist period", "Sozialistische Periode", "Période socialiste", "Periodo socialista", "Sosyalist dönem", "Periodo socialista", "Σοσιαλιστική περίοδος", "社会主義時代", "Panahong Sosyalista", "Соціалістичний період", "Социалистический период", "Okres socjalistyczny"),
-  eraDemocratic: tr("Демократичен период", "Democratic period", "Demokratische Periode", "Période démocratique", "Periodo democratico", "Demokratik dönem", "Periodo democrático", "Δημοκρατική περίοδος", "民主化以降", "Panahong Demokratiko", "Демократичний період", "Демократический период", "Okres demokratyczny"),
-  eraCurrent: tr("Настоящ мандат", "Current office", "Aktuelle Amtszeit", "Mandat en cours", "Mandato in corso", "Görevdeki başkan", "Mandato actual", "Τρέχουσα θητεία", "現職", "Kasalukuyang termino", "Чинна каденція", "Текущий срок", "Obecna kadencja"),
-  allMayors: tr("Всички кметове", "All mayors", "Alle Bürgermeister", "Tous les maires", "Tutti i sindaci", "Tüm başkanlar", "Todos los alcaldes", "Όλοι οι δήμαρχοι", "歴代市長一覧", "Lahat ng alkalde", "Усі мери", "Все мэры", "Wszyscy burmistrzowie"),
-  civicTitle: tr(
-    "Управление, участие и източници",
-    "Governance, participation and sources",
-    "Verwaltung, Beteiligung und Quellen",
-    "Gouvernance, participation et sources",
-    "Governo, partecipazione e fonti",
-    "Yönetim, katılım ve kaynaklar",
-    "Gobernanza, participación y fuentes",
-    "Διακυβέρνηση, συμμετοχή και πηγές",
-    "市政・参加・出典",
-    "Pamamahala, paglahok, at pinagmulan",
-    "Управління, участь і джерела",
-    "Управление, участие и источники",
-    "Zarządzanie, udział i źródła"
-  ),
-  civicLead: tr(
-    "Гражданската страна на сайта: архивът на управлението, тихи начини да помогнете и откъде идва всяко твърдение — без профили и без шум.",
-    "The civic side of the site: the governance archive, quiet ways to help, and where every claim comes from — no accounts, no noise.",
-    "Die bürgerschaftliche Seite: das Verwaltungsarchiv, stille Wege zu helfen und die Herkunft jeder Angabe — ohne Konten, ohne Lärm.",
-    "Le versant civique du site : les archives de la gouvernance, des façons discrètes d'aider et l'origine de chaque affirmation — sans comptes, sans bruit.",
-    "Il lato civico del sito: l'archivio del governo cittadino, modi discreti per aiutare e l'origine di ogni affermazione — senza account, senza rumore.",
-    "Sitenin yurttaş tarafı: yönetim arşivi, sessizce yardım etme yolları ve her ifadenin kaynağı — hesapsız, gürültüsüz.",
-    "El lado cívico del sitio: el archivo de la gobernanza, formas discretas de ayudar y el origen de cada afirmación, sin cuentas ni ruido.",
-    "Η πολιτική πλευρά του ιστότοπου: το αρχείο της διακυβέρνησης, ήσυχοι τρόποι να βοηθήσετε και η προέλευση κάθε ισχυρισμού — χωρίς λογαριασμούς, χωρίς θόρυβο.",
-    "サイトの市民的な側面。市政アーカイブ、静かに助ける方法、そしてすべての記述の出典 — アカウントは不要です。",
-    "Ang sibikong bahagi ng site: ang arkibo ng pamamahala, tahimik na paraan para tumulong, at kung saan nanggaling ang bawat pahayag — walang account, walang ingay.",
-    "Громадська частина сайту: архів управління, тихі способи допомогти та звідки походить кожне твердження — без профілів і без галасу.",
-    "Гражданская часть сайта: архив управления, тихие способы помочь и происхождение каждого утверждения — без учётных записей и без шума.",
-    "Obywatelska strona serwisu: archiwum zarządzania miastem, spokojne sposoby pomocy i informacja, skąd pochodzi każde twierdzenie — bez kont i bez szumu."
-  ),
-  govCardTitle: tr(
-    "Архивът на управлението",
-    "The governance archive",
-    "Das Verwaltungsarchiv",
-    "Les archives de la gouvernance",
-    "L'archivio del governo cittadino",
-    "Yönetim arşivi",
-    "El archivo de la gobernanza",
-    "Το αρχείο της διακυβέρνησης",
-    "市政アーカイブ",
-    "Ang arkibo ng pamamahala",
-    "Архів управління",
-    "Архив управления",
-    "Archiwum zarządzania"
-  ),
-  sourcesCardTitle: tr(
-    "Източници и методология",
-    "Sources and methodology",
-    "Quellen und Methodik",
-    "Sources et méthodologie",
-    "Fonti e metodologia",
-    "Kaynaklar ve yöntem",
-    "Fuentes y metodología",
-    "Πηγές και μεθοδολογία",
-    "出典と方法論",
-    "Mga pinagmulan at metodolohiya",
-    "Джерела та методологія",
-    "Источники и методология",
-    "Źródła i metodyka"
-  ),
-  sourcesCardText: tr(
-    "Регистър на всички използвани източници — какво покриват, какви са ограниченията им и кога са проверени.",
-    "A register of every source used — what it covers, its limitations, and when it was checked.",
-    "Ein Register aller verwendeten Quellen — was sie abdecken, ihre Grenzen und wann sie geprüft wurden.",
-    "Un registre de toutes les sources utilisées — ce qu'elles couvrent, leurs limites et la date de leur vérification.",
-    "Un registro di tutte le fonti utilizzate — cosa coprono, i loro limiti e quando sono state verificate.",
-    "Kullanılan tüm kaynakların kaydı — neyi kapsadıkları, sınırları ve ne zaman doğrulandıkları.",
-    "Un registro de todas las fuentes utilizadas: qué cubren, sus limitaciones y cuándo se comprobaron.",
-    "Μητρώο όλων των πηγών που χρησιμοποιούνται — τι καλύπτουν, τους περιορισμούς τους και πότε ελέγχθηκαν.",
-    "使用したすべての出典の一覧 — 対象範囲、限界、確認日を記載。",
-    "Isang rehistro ng bawat pinagmulang ginamit — ano ang saklaw nito, ang mga limitasyon, at kung kailan ito sinuri.",
-    "Реєстр усіх використаних джерел — що вони охоплюють, їхні обмеження та коли їх перевірено.",
-    "Реестр всех использованных источников — что они охватывают, их ограничения и когда они проверялись.",
-    "Rejestr wszystkich wykorzystanych źródeł — co obejmują, jakie mają ograniczenia i kiedy zostały sprawdzone."
-  ),
-  sourcesCount: tr("източника", "sources", "Quellen", "sources", "fonti", "kaynak", "fuentes", "πηγές", "件の出典", "pinagmulan", "джерел", "источников", "źródeł"),
-  moreLabel: tr("Разгледай още:", "Explore more:", "Mehr entdecken:", "À explorer aussi :", "Da esplorare:", "Daha fazlası:", "Más para explorar:", "Περισσότερα:", "さらに見る：", "Galugarin pa:", "Дізнатися більше:", "Изучите ещё:", "Zobacz więcej:"),
-  govCardText: tr(
-    "Архивни промени, проекти и източници — подредени като доказателства за това какво се е променило.",
-    "Archive changes, projects and sources — arranged as evidence of what changed.",
-    "Archivänderungen, Projekte und Quellen — geordnet als Belege dafür, was sich änderte.",
-    "Changements d'archives, projets et sources — présentés comme des preuves de ce qui a changé.",
-    "Cambiamenti d'archivio, progetti e fonti — ordinati come prove di ciò che è cambiato.",
-    "Arşiv değişiklikleri, projeler ve kaynaklar — neyin değiştiğinin kanıtı olarak düzenlendi.",
-    "Cambios de archivo, proyectos y fuentes, ordenados como evidencia de lo que cambió.",
-    "Αρχειακές αλλαγές, έργα και πηγές — ταξινομημένα ως τεκμήρια του τι άλλαξε.",
-    "アーカイブの変化、事業、出典 — 何が変わったかの証拠として整理。",
-    "Mga pagbabago sa arkibo, proyekto, at pinagmulan — inayos bilang ebidensya kung ano ang nagbago.",
-    "Зміни в архіві, проєкти та джерела — впорядковані як докази того, що змінилося.",
-    "Изменения в архиве, проекты и источники — представленные как свидетельства того, что изменилось.",
-    "Zmiany archiwalne, projekty i źródła — ułożone jako dowody na to, co się zmieniło."
-  ),
-  helpPath: t.community.title,
-  helpPathText: t.community.lead,
   openRoutes: tr("Маршрутите", "Walking routes", "Routen", "Parcours", "Percorsi", "Rotalar", "Rutas", "Διαδρομές", "散策ルート", "Mga ruta na lalakaran", "Пішохідні маршрути", "Пешеходные маршруты", "Trasy spacerowe"),
-  openGovernance: tr("Управление", "Governance", "Governance", "Gouvernance", "Governo", "Yönetim", "Gobernanza", "Διακυβέρνηση", "統治", "Pamamahala", "Управління", "Управление", "Zarządzanie"),
-  evidenceLabel: tr("с източници", "with sources", "mit Quellen", "avec sources", "con fonti", "kaynaklı", "con fuentes", "με πηγές", "出典付き", "may pinagmulan", "із джерелами", "с источниками", "ze źródłami"),
-  storiesCountLabel: tr("илюстрирани разказа", "illustrated stories", "illustrierte Geschichten", "récits illustrés", "racconti illustrati", "resimli anlatı", "relatos ilustrados", "εικονογραφημένες αφηγήσεις", "図版つきの物語", "may-larawang kuwento", "ілюстрованих розповідей", "иллюстрированных историй", "ilustrowanych opowieści")
+  evidenceLabel: tr("с източници", "with sources", "mit Quellen", "avec sources", "con fonti", "kaynaklı", "con fuentes", "με πηγές", "出典付き", "may pinagmulan", "із джерелами", "с источниками", "ze źródłami")
 };
 
-// Mayors preview: the first mayor to take office in each of the city's four
-// political periods (same bands as the /mayors chronology). A deterministic,
-// factual selection — from the Liberation to the incumbent.
-const mayorPeriods = [
-  { start: 1878, end: 1944, label: labels.eraLiberation },
-  { start: 1945, end: 1989, label: labels.eraSocialist },
-  { start: 1990, end: 2022, label: labels.eraDemocratic },
-  { start: 2023, end: null as number | null, label: labels.eraCurrent }
-]
-  .map((band) => {
-    const terms = mayorTerms.filter(
-      (m) => m.year_start >= band.start && (band.end == null || m.year_start <= band.end)
-    );
-    return { ...band, mayor: terms[0] };
-  })
-  .filter((band) => band.mayor);
-
-const termYears = (m: (typeof mayorTerms)[number]): string =>
-  m.year_end == null ? `${m.year_start}–` : m.year_end === m.year_start ? `${m.year_start}` : `${m.year_start}–${m.year_end}`;
-
-const initialsOf = (name: string): string =>
-  name
-    .replace(/^(д-р|Д-р|инж\.)\s+/u, "")
-    .trim()
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((w) => w[0] ?? "")
-    .join("");
-
-// Commons photo (with credit) for an essentials place card.
 const placeMedia = (id: string) => {
-  const media = historyKnowledgePlaces.find((p) => p.id === id)?.media?.[0];
-  return media
-    ? {
-        src: commonsImageUrl(media.url, 640),
-        credit: `${media.credit} · ${media.license}`,
-        isCommonsUpload: isCommonsUploadImageUrl(media.url)
-      }
-    : null;
+  const place = historyKnowledgePlaces.find((p) => p.id === id)!;
+  const media = place.media[0];
+  return { ...media, src: placeImageUrl(media.url, 960), medium: placeImageUrl(media.url, 768), small: placeImageUrl(media.url, 480) };
 };
-
-// The four visitor-first entry paths: history, routes, places, stories.
-// Motifs come from the shared section-motif registry (@lib/motifs).
-const entryPaths = [
-  {
-    key: "history",
-    href: localizePath("/history", lang),
-    eyebrow: t.nav.history,
-    title: labels.historyPath,
-    text: labels.historyPathText
-  },
-  {
-    key: "routes",
-    href: localizePath("/routes", lang),
-    eyebrow: labels.openRoutes,
-    title: labels.routesPath,
-    text: labels.routesPathText
-  },
-  {
-    key: "places",
-    href: localizePath("/places", lang),
-    eyebrow: t.nav.places,
-    title: labels.placesPath,
-    text: labels.placesPathText
-  },
-  {
-    key: "stories",
-    href: localizePath("/stories", lang),
-    eyebrow: t.nav.stories,
-    title: labels.storiesPath,
-    text: labels.storiesPathText
-  }
-];
-
-// First-visit "ailyak essentials" — four landmark pages within a short walk
-// of one another, each with a practical, unhurried tip.
 const essentials = [
-  {
-    href: localizePath("/places/place-old-town", lang),
-    eyebrow: labels.oldTownEyebrow,
-    title: labels.oldTownTitle,
-    text: labels.oldTownText,
-    media: placeMedia("place-old-town")
-  },
-  {
-    href: localizePath("/places/place-ancient-theatre", lang),
-    eyebrow: labels.theatreEyebrow,
-    title: labels.theatreTitle,
-    text: labels.theatreText,
-    media: placeMedia("place-ancient-theatre")
-  },
-  {
-    href: localizePath("/places/place-kapana-q12282547", lang),
-    eyebrow: labels.kapanaEyebrow,
-    title: labels.kapanaTitle,
-    text: labels.kapanaText,
-    media: placeMedia("place-kapana-q12282547")
-  },
-  {
-    href: localizePath("/places/place-nebet-tepe", lang),
-    eyebrow: labels.nebetEyebrow,
-    title: labels.nebetTitle,
-    text: labels.nebetText,
-    media: placeMedia("place-nebet-tepe")
-  }
-];
-
-// Three real routes arranged by time rather than by theme. This is the
-// homepage's practical expression of ailyak: visitors choose a comfortable
-// pace first and can let the city supply the detours.
-const ailyakRouteIds = ["kapana-creative-hour", "roman-plovdiv-90", "hills-and-sunsets"];
-const ailyakRoutes = ailyakRouteIds
-  .map((id) => walkingRoutes.find((route) => route.id === id))
-  .filter((route): route is (typeof walkingRoutes)[number] => Boolean(route))
-  .map((route) => ({
-    href: localizePath(`/routes/${route.id}`, lang),
+  { id: "place-old-town", title: labels.oldTownTitle, eyebrow: labels.oldTownEyebrow, text: labels.oldTownText },
+  { id: "place-ancient-theatre", title: labels.theatreTitle, eyebrow: labels.theatreEyebrow, text: labels.theatreText },
+  { id: "place-kapana-q12282547", title: labels.kapanaTitle, eyebrow: labels.kapanaEyebrow, text: labels.kapanaText },
+  { id: "place-nebet-tepe", title: labels.nebetTitle, eyebrow: labels.nebetEyebrow, text: labels.nebetText }
+].map(place => ({ ...place, media: placeMedia(place.id), href: localizePath(`/places/${place.id}`, lang) }));
+const hero = placeMedia("place-ancient-theatre");
+const routePhotos = ["place-kapana-q12282547", "place-ancient-theatre", "place-nebet-tepe"];
+const routes = ["kapana-creative-hour", "roman-plovdiv-90", "hills-and-sunsets"].map((id, index) => {
+  const route = walkingRoutes.find(route => route.id === id)!;
+  const geometry = routeGeometry(id);
+  return {
+    href: localizePath(`/routes/${id}`, lang),
     title: field(route as unknown as Record<string, unknown>, "short_title", lang),
-    bestTime: field(route as unknown as Record<string, unknown>, "best_time", lang),
+    text: field(route as unknown as Record<string, unknown>, "tagline", lang),
     minutes: route.duration_minutes,
-    accent: route.accent
-  }));
-
-// Quiet secondary destinations under the civic section.
-const moreLinks = [
-  { href: localizePath("/people", lang), label: t.nav.people },
-  { href: localizePath("/archive", lang), label: t.nav.archive },
-  { href: localizePath("/overview", lang), label: t.nav.overview },
-  { href: localizePath("/projects", lang), label: t.nav.projects }
-];
+    distance: geometry ? formatKm(geometry.distance_m, localeForLang(lang)) : null,
+    photo: placeMedia(routePhotos[index])
+  };
+});
+const eras = ["roman", "revival", "liberation"] as const;
 ---
 
-<Layout lang={lang} path="/" description={t.home.lead}>
-  <section class="hero" data-section="home">
-    <HeroBackdrop />
-    <div class="container">
-      <p class="eyebrow">{t.home.eyebrow}</p>
-      <h1>{t.site.name}</h1>
-      <p class="lead">{t.home.lead}</p>
-      <p class="hero-motto">{labels.heroMotto}</p>
-      <div class="actions">
-        <a class="button" href={localizePath("/history", lang)}>
-          {t.home.ctaHistory}<span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="button secondary" href={localizePath("/routes", lang)}>{labels.routesPath}</a>
+<Layout lang={lang} loadJapaneseWebfont={false} path="/" description={guide.intro} image={placeImageUrl(hero.url, 1600)} imageAlt={labels.theatreTitle}>
+  <div class="visitor-home">
+    <section class="visitor-hero" aria-labelledby="welcome-title">
+      <div class="container visitor-hero-layout">
+        <div class="visitor-hero-copy">
+          <p class="eyebrow">{guide.welcome}</p>
+          <h1 id="welcome-title">{guide.city}<span>.</span></h1>
+          <p class="visitor-headline">{guide.headline}</p>
+          <p class="visitor-intro">{guide.intro}</p>
+          <div class="actions">
+            <a class="button" href={localizePath("/routes/first-day-plovdiv", lang)}>{guide.firstDay}<span aria-hidden="true">→</span></a>
+            <a class="visitor-text-link" href="#plan-your-visit">{guide.plan}<span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <figure class="visitor-hero-photo">
+          <picture>
+            <source media="(max-width: 760px)" type="image/avif" srcset="/images/plovdiv/place-ancient-theatre-480.avif 480w, /images/plovdiv/place-ancient-theatre-768.avif 768w" sizes="calc(100vw - 36px)" />
+            <source media="(max-width: 760px)" srcset={`${hero.small} 480w, ${hero.medium} 768w, ${hero.src} 960w`} sizes="calc(100vw - 36px)" />
+          <img src={hero.src} srcset={`${hero.small} 480w, ${hero.medium} 768w, ${hero.src} 960w, ${placeImageUrl(hero.url, 1600)} 1500w`} sizes="(max-width: 760px) calc(100vw - 36px), 58vw" alt={labels.theatreTitle} width="1500" height="940" fetchpriority="high" decoding="async" />
+          </picture>
+          <figcaption><span>{labels.theatreTitle}</span><a href={hero.page_url} target="_blank" rel="noreferrer">© {hero.credit} · {hero.license} ↗</a></figcaption>
+          <span class="visitor-photo-index" aria-hidden="true">01 / PLOVDIV</span>
+        </figure>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="ailyak-paces" aria-labelledby="ailyak-paces-title">
-    <div class="container ailyak-paces-inner">
-      <div class="ailyak-paces-intro">
-        <p class="eyebrow">{labels.paceEyebrow}</p>
-        <h2 id="ailyak-paces-title">{labels.paceTitle}</h2>
-        <p>{labels.paceLead}</p>
-      </div>
-      <nav class="ailyak-pace-list" aria-label={labels.paceTitle}>
-        {ailyakRoutes.map((route) => (
-          <a class="ailyak-pace-card" href={route.href} style={`--pace-accent:${route.accent}`}>
-            <span class="ailyak-pace-time">{route.minutes} {routeT.minutes}</span>
-            <strong>{route.title}</strong>
-            <small>{route.bestTime}</small>
-            <span class="ailyak-pace-arrow" aria-hidden="true">↗</span>
-          </a>
-        ))}
-      </nav>
-    </div>
-  </section>
+    <nav class="visitor-quick-nav container" aria-label={guide.firstVisit}>
+      <span>{guide.firstVisit}</span>
+      <a href="#discover">{t.nav.places} <span aria-hidden="true">↗</span></a>
+      <a href="#choose-a-walk">{labels.openRoutes} <span aria-hidden="true">↗</span></a>
+      <a href="#city-stories">{t.nav.history} <span aria-hidden="true">↗</span></a>
+      <a href="#plan-your-visit">{guide.plan} <span aria-hidden="true">↗</span></a>
+    </nav>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>{labels.startTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.startLead}</p>
+    <section class="section visitor-discover" id="discover" aria-labelledby="discover-title">
+      <div class="container">
+        <div class="visitor-section-heading">
+          <div><p class="eyebrow">{t.nav.places}</p><h2 id="discover-title">{guide.essentials}</h2></div>
+          <a class="visitor-text-link" href={localizePath("/places", lang)}>{labels.allPlaces} <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="visitor-place-grid">
+          {essentials.map((place, index) => (
+            <article class="visitor-place">
+              <a class="visitor-place-image" href={place.href} tabindex="-1" aria-hidden="true">
+                <img src={place.media.src} srcset={`${place.media.small} 480w, ${place.media.medium} 768w, ${place.media.src} 960w`} sizes="(max-width: 600px) calc(100vw - 36px), (max-width: 1000px) 50vw, 25vw" alt="" width="640" height="480" loading="lazy" fetchpriority="low" decoding="async" />
+                <span class="visitor-place-number">0{index + 1}</span>
+              </a>
+              <div class="visitor-place-body"><p class="eyebrow">{place.eyebrow}</p><h3><a href={place.href}>{place.title} <span aria-hidden="true">↗</span></a></h3><p>{place.text}</p>{place.id === "place-nebet-tepe" && <a class="visitor-place-source" href="https://www.plovdiv.bg/20250320/" target="_blank" rel="noreferrer">{t.footer.sources} ↗</a>}</div>
+            </article>
+          ))}
         </div>
       </div>
-      <div class="grid grid-2 entry-grid">
-        {entryPaths.map((path) => (
-          <a class="card card-link entry-card" data-entry={path.key} href={path.href}>
-            <div class="entry-motif" aria-hidden="true" set:html={sectionMotifs[path.key]} />
-            <div class="entry-body">
-              <p class="eyebrow">{path.eyebrow}</p>
-              <h3>{path.title}</h3>
-              <p>{path.text}</p>
-              <span class="arrow" aria-hidden="true">→</span>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-tint">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>{labels.essentialsTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.essentialsLead}</p>
+    <section class="section visitor-walks" id="choose-a-walk" aria-labelledby="walk-title">
+      <div class="container">
+        <div class="visitor-section-heading">
+          <div><p class="eyebrow">{labels.paceEyebrow}</p><h2 id="walk-title">{labels.paceTitle}</h2></div>
+          <p>{labels.paceLead}</p>
         </div>
-        <a href={localizePath("/places", lang)}>{labels.allPlaces} →</a>
-      </div>
-      <div class="grid grid-2">
-        {essentials.map((place) => (
-          <a class="card card-link essential-card" href={place.href}>
-            {place.media && (
-              <figure class="essential-media">
-                <img
-                  src={place.media.src}
-                  alt={place.title}
-                  loading="lazy"
-                  decoding="async"
-                  width="640"
-                  height="400"
-                  crossorigin={place.media.isCommonsUpload ? "anonymous" : undefined}
-                  referrerpolicy={place.media.isCommonsUpload ? "no-referrer" : undefined}
-                />
-                <figcaption>{place.media.credit}</figcaption>
-              </figure>
-            )}
-            <div class="essential-body">
-              <p class="eyebrow">{place.eyebrow}</p>
-              <h3>{place.title}</h3>
-              <p>{place.text}</p>
-              <span class="arrow" aria-hidden="true">→</span>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">{t.nav.mayors} · 1878–{new Date().getFullYear()}</p>
-          <h2>{labels.mayorsTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.mayorsLead}</p>
+        <div class="visitor-walk-grid">
+          {routes.map((route) => (
+            <a class="visitor-walk" href={route.href}>
+              <img src={route.photo.src} srcset={`${route.photo.small} 480w, ${route.photo.medium} 768w, ${route.photo.src} 960w`} sizes="(max-width: 760px) 100vw, 33vw" alt="" width="600" height="420" loading="lazy" fetchpriority="low" decoding="async" />
+              <span class="visitor-walk-duration">{route.minutes} {routeT.minutes}{route.distance && ` · ${route.distance} km`}</span>
+              <div><h3>{route.title}</h3><p>{route.text}</p><span class="visitor-walk-arrow" aria-hidden="true">↗</span></div>
+            </a>
+          ))}
         </div>
-        <a href={localizePath("/mayors", lang)}>{labels.allMayors} →</a>
+        <a class="visitor-text-link visitor-all-routes" href={localizePath("/routes", lang)}>{labels.routesPath} <span aria-hidden="true">→</span></a>
       </div>
-      <div class="grid mayor-era-grid">
-        {mayorPeriods.map((band) => (
-          <a class="card card-link mayor-era-card" href={localizePath(`/mayors/${band.mayor.id}`, lang)}>
-            <p class="eyebrow">{band.label}</p>
-            {band.mayor.image ? (
-              <img
-                class="mayor-portrait mayor-era-portrait"
-                src={band.mayor.image}
-                alt={t.mayors.portraitAlt(field(band.mayor, "actor", lang))}
-                loading="lazy"
-                decoding="async"
-                width="108"
-                height="132"
-              />
-            ) : (
-              <span class="mayor-portrait mayor-portrait-fallback bust-fallback mayor-era-portrait" aria-hidden="true">
-                <Fragment set:html={bustGlyph} />
-                <span class="bust-mono">{initialsOf(field(band.mayor, "actor", lang))}</span>
-              </span>
-            )}
-            <h3>{field(band.mayor, "actor", lang)}</h3>
-            <p class="mayor-era-years">{termYears(band.mayor)}</p>
-            <span class="badge no-dot">
-              {band.end == null ? t.archive.currentMayor : `${band.start}–${band.end}`}
-            </span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-tint">
-    <div class="container">
-      <div class="section-head">
+    <section class="section visitor-history" id="city-stories" aria-labelledby="city-stories-title">
+      <div class="container visitor-history-layout">
         <div>
-          <h2>{labels.civicTitle}</h2>
-          <p class="meta" style="margin-top:8px;max-width:74ch">{labels.civicLead}</p>
+          <p class="eyebrow">{t.nav.history} · {labels.evidenceLabel}</p>
+          <h2 id="city-stories-title">{guide.history}</h2>
+          <p>{labels.historyPathText}</p>
+          <a class="button" href={localizePath("/history", lang)}>{labels.historyPath} <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="visitor-era-list">
+          {eras.map((era, index) => (
+            <a href={`${localizePath("/history", lang)}#chapter-${era}`}><span class="visitor-era-number">0{index + 1}</span><span><strong>{t.history.eraLabels[era]}</strong><small>{t.history.eraBlurbs[era]}</small></span><span aria-hidden="true">↗</span></a>
+          ))}
         </div>
       </div>
-      <div class="grid grid-3" style="align-items:start">
-        <a class="card card-link" href={localizePath("/governance", lang)}>
-          <p class="eyebrow">{labels.openGovernance}</p>
-          <h3>{labels.govCardTitle}</h3>
-          <p>{labels.govCardText}</p>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="card card-link" href={localizePath("/community", lang)}>
-          <p class="eyebrow">{t.nav.community}</p>
-          <h3>{labels.helpPath}</h3>
-          <p>{labels.helpPathText}</p>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="card card-link" href={localizePath("/data-sources", lang)}>
-          <p class="eyebrow">{t.footer.sources}</p>
-          <h3>{labels.sourcesCardTitle}</h3>
-          <p>{labels.sourcesCardText}</p>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-      <div class="pill-row home-more">
-        <span class="meta">{labels.moreLabel}</span>
-        {moreLinks.map((link) => (
-          <a class="meta" href={link.href}>{link.label}</a>
-        ))}
-      </div>
-    </div>
-  </section>
+      <div class="container visitor-story-link"><span>{labels.storiesPathText}</span><a href={localizePath("/stories", lang)}>{labels.storiesPath} <span aria-hidden="true">→</span></a></div>
+    </section>
+
+    <VisitorPractical lang={lang} />
+    <section class="visitor-signoff container" aria-label={t.footer.about}>
+      <p>{labels.heroMotto}</p>
+      <details class="visitor-photo-credits">
+        <summary>{t.footer.sources}</summary>
+        <p>{guide.photoNote}</p>
+        <ul>{essentials.map(place => <li><a href={place.media.page_url} target="_blank" rel="noreferrer">{place.title} · {place.media.credit}</a> · <a href={place.media.license_url} target="_blank" rel="noreferrer">{place.media.license}</a></li>)}</ul>
+      </details>
+    </section>
+  </div>
 </Layout>

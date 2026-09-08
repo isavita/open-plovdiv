@@ -13,6 +13,26 @@ export function commonsImageUrl(url: string, width: number): string {
   return `https://upload.wikimedia.org/wikipedia/commons/thumb/${sourcePath}/${thumbnailWidth}px-${fileName}`;
 }
 
+// Local, attributed derivatives keep the main city photographs available
+// when Wikimedia throttles image requests. Other archive media stays remote.
+const cityPhotoFiles: Record<string, string> = {
+  "Antique-theater-plovdiv.jpg": "place-ancient-theatre",
+  "View_from_Nebet_hill,_Plovdiv,_Bulgaria.jpg": "place-nebet-tepe",
+  "Renovated_house_in_plovdiv_old_town.jpg": "place-old-town",
+  "Plovdiv119.jpg": "place-kapana-q12282547",
+  "BASA-3K-7-327-1-International_Fair_Plovdiv,_1892.jpg": "archive-fair-1892",
+  "BASA-741K-2-124-2-Ivan_Vazov_National_Library,_Plovdiv.JPG": "archive-library-1928"
+};
+
+export function placeImageUrl(url: string, width: number): string {
+  const source = commonsSourcePath(url);
+  const file = source ? cityPhotoFiles[decodeURIComponent(source.split("/").at(-1)!)] : undefined;
+  if (!file) return commonsImageUrl(url, width);
+  const large = file === "place-ancient-theatre" || file === "place-nebet-tepe";
+  const size = width <= 480 ? 480 : width <= 768 ? 768 : width > 960 && large ? 1600 : 960;
+  return `/images/plovdiv/${file}-${size}.webp`;
+}
+
 export function isCommonsUploadImageUrl(url: string): boolean {
   return Boolean(commonsSourcePath(url));
 }

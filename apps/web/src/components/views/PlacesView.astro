@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
-import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
+import { placeImageUrl as commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { placeCategoryPlates, placeFallbackPlate, sectionMotifs } from "@lib/motifs";
 import { fallbackPlaceColor, placeColors } from "@lib/placeCategories";
 import { distanceMeters } from "@lib/geo";
@@ -922,6 +922,10 @@ const placesMapConfig = {
       <p class="eyebrow">{labels.eyebrow}</p>
       <h1>{labels.title}</h1>
       <p class="lead">{labels.lead}</p>
+      <nav class="places-view-switch" aria-label={labels.title}>
+        <a href="#places-results">{labels.title} <span aria-hidden="true">↓</span></a>
+        <a href="#places-map-section">{mapL.title} <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
   </section>
 
@@ -954,7 +958,7 @@ const placesMapConfig = {
         </div>
       </div>
 
-      <div class="places-map-head">
+      <div class="places-map-head" id="places-map-section">
         <h2>{mapL.title}</h2>
         <p class="meta" style="max-width:74ch;margin-top:6px">{mapL.lead}</p>
       </div>
@@ -987,7 +991,7 @@ const placesMapConfig = {
         ))}
       </div>
 
-      <div class="toolbar places-toolbar">
+      <div class="toolbar places-toolbar" id="places-results">
         <div class="catalog-search-layout">
           <div class="field">
             <label for="places-search">{labels.search}</label>
@@ -1264,7 +1268,7 @@ const placesMapConfig = {
       const source = image.dataset.src;
       if (!source) return;
       image.addEventListener("load", () => image.removeAttribute("data-src"), { once: true });
-      // Every photo is hotlinked from Commons. When one fails the card used to
+      // Some archive photos are hosted on Commons. When one fails the card used to
       // keep a blank grey band forever; swap in the category plate instead so
       // the tile still reads as finished.
       image.addEventListener(

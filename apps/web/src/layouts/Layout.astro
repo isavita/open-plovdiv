@@ -1,9 +1,12 @@
 ---
 import "@fontsource-variable/source-sans-3/wght.css";
 import "@fontsource-variable/source-sans-3/wght-italic.css";
+import latinTextFont from "@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2?url";
+import cyrillicTextFont from "@fontsource-variable/source-sans-3/files/source-sans-3-cyrillic-wght-normal.woff2?url";
 import notoSansJpCssUrl from "@fontsource-variable/noto-sans-jp/wght.css?url";
 import "../styles/global.css";
 import "../styles/identity.css";
+import "../styles/visitor.css";
 import PlovdivMark from "@components/PlovdivMark.astro";
 import PlovdivSkyline from "@components/PlovdivSkyline.astro";
 import SiteSearch from "@components/SiteSearch.astro";
@@ -86,14 +89,14 @@ const ailyakMottos = {
 const ailyakMotto = ailyakMottos[lang];
 
 // Primary nav is visitor-first: history, walking routes, places and stories
-// lead; political context sits last. Civic + reference links live in the
-// grouped menu, the footer and homepage action paths.
+// lead alongside neighbourhoods. Civic and reference links live in the
+// grouped menu and footer.
 const navItems = [
   { href: localizePath("/history", lang), base: "/history", label: t.nav.history },
   { href: localizePath("/routes", lang), base: "/routes", label: routesLabel },
   { href: localizePath("/places", lang), base: "/places", label: t.nav.places },
   { href: localizePath("/stories", lang), base: "/stories", label: t.nav.stories },
-  { href: localizePath("/governance", lang), base: "/governance", label: governanceLabel }
+  { href: localizePath("/neighbourhoods", lang), base: "/neighbourhoods", label: neighbourhoodsLabel }
 ];
 
 function isActive(base: string): boolean {
@@ -168,7 +171,7 @@ const footerAbout = [
 // Secondary destinations shown only inside the mobile menu, grouped so the
 // phone nav reaches every page without duplicating the 5 primary links.
 const menuExplore = [
-  { href: localizePath("/neighbourhoods", lang), base: "/neighbourhoods", label: neighbourhoodsLabel },
+  { href: localizePath("/governance", lang), base: "/governance", label: governanceLabel },
   { href: localizePath("/mayors", lang), base: "/mayors", label: t.nav.mayors },
   { href: localizePath("/people", lang), base: "/people", label: t.nav.people },
   { href: localizePath("/archive", lang), base: "/archive", label: t.nav.archive }
@@ -238,6 +241,9 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
+    <link rel="preload" as="font" type="font/woff2" href={latinTextFont} crossorigin="anonymous" />
+    {["bg", "uk", "ru"].includes(lang) && <link rel="preload" as="font" type="font/woff2" href={cyrillicTextFont} crossorigin="anonymous" />}
+    {path === "/history" && <link rel="preload" as="font" type="font/woff2" href="/fonts/PlovdivDisplay-Bold.woff2" crossorigin="anonymous" />}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />

@@ -1,12 +1,13 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { visitorGuide } from "@lib/visitorGuide";
 import HeroBackdrop from "@components/HeroBackdrop.astro";
 import SectionNav from "@components/SectionNav.astro";
 import { createHash } from "node:crypto";
 import { roleLabels, ui, type Lang } from "@i18n/ui";
 import { localeForLang, localizePath } from "@i18n/utils";
 import { publicArchiveItems } from "@lib/archive";
-import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
+import { placeImageUrl as commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { editorialReviewStatusLabel, pendingEditorialReviewNote } from "@lib/editorial";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import { publicThenNowPairs } from "@lib/thenNow";
@@ -31,6 +32,7 @@ import {
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
+const visitor = visitorGuide(lang);
 const locale = localeForLang(lang);
 
 const eraOrder: HistoryEra[] = [
@@ -1526,7 +1528,7 @@ const chapterVisuals: Record<HistoryEra, HistoryChapterVisual> = {
 };
 
 const historyHeroVisuals = [
-  placeChapterVisual("place-sahat-hill-in-plovdiv-q12293012"),
+  placeChapterVisual("place-nebet-tepe"),
   archiveChapterVisual("archive-photo-international-fair-1892-1"),
   archiveChapterVisual("archive-photo-ivan-vazov-library-earthquake-1928")
 ];
@@ -2931,16 +2933,20 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
             target="_blank"
             rel="noreferrer"
           >
+            <picture>
+              {visualIndex === 0 && <source media="(max-width: 760px)" type="image/avif" srcset="/images/plovdiv/place-nebet-tepe-480.avif 480w, /images/plovdiv/place-nebet-tepe-768.avif 768w" sizes="62vw" />}
             <img
               src={commonsImageUrl(visual.url, visualIndex === 0 ? 960 : 640)}
-              srcset={isCommonsUploadImageUrl(visual.url) ? `${commonsImageUrl(visual.url, 480)} 480w, ${commonsImageUrl(visual.url, 960)} 960w` : undefined}
+              srcset={isCommonsUploadImageUrl(visual.url) ? `${commonsImageUrl(visual.url, 480)} 480w, ${commonsImageUrl(visual.url, 768)} 768w, ${commonsImageUrl(visual.url, 960)} 960w` : undefined}
               sizes={visualIndex === 0 ? "(max-width: 760px) 62vw, 34vw" : "(max-width: 760px) 38vw, 18vw"}
               alt=""
               loading={visualIndex === 0 ? "eager" : "lazy"}
+              fetchpriority={visualIndex === 0 ? "high" : "low"}
               decoding="async"
               crossorigin={isCommonsUploadImageUrl(visual.url) ? "anonymous" : undefined}
               referrerpolicy="no-referrer"
             />
+            </picture>
             <span class="history-hero-kind">
               {visual.kind === "archive" ? treeLabels.archiveImage : treeLabels.contextImage}
               {visual.date && ` · ${visual.date}`}
@@ -2955,7 +2961,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     </div>
   </section>
 
-  <SectionNav items={sectionNav} label={sectionNavLabel} />
+  <SectionNav items={[...sectionNav.filter(item => !["people", "geography", "city-growth", "data"].includes(item.id)), { id: "history-research", label: visitor.research }]} label={sectionNavLabel} />
 
   <section class="section history-story-section" id="history-tree" data-subnav-target>
     <div class="container">
@@ -2970,7 +2976,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
       <div class="history-chapters">
         {historyTree.map((era) => (
-          <details class={`history-chapter era-${era.era}`} data-tree-era={era.era}>
+          <details class={`history-chapter era-${era.era}`} data-tree-era={era.era} id={`chapter-${era.era}`}>
             <summary
               class="history-chapter-summary"
               aria-label={`${era.label}. ${era.keyEvents.length} ${treeLabels.highlights}. ${treeLabels.exploreEvents}.`}
@@ -2982,6 +2988,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                   sizes="(max-width: 760px) 100vw, 42vw"
                   alt=""
                   loading="lazy"
+                  fetchpriority="low"
                   decoding="async"
                   crossorigin={isCommonsUploadImageUrl(era.visual.url) ? "anonymous" : undefined}
                   referrerpolicy="no-referrer"
@@ -3166,6 +3173,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                   sizes="(max-width: 760px) 100vw, 33vw"
                   alt={localized(item, "title")}
                   loading="lazy"
+                  fetchpriority="low"
                   decoding="async"
                   crossorigin="anonymous"
                   referrerpolicy="no-referrer"
@@ -3223,6 +3231,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                   sizes="(max-width: 760px) 100vw, 50vw"
                   alt=""
                   loading="lazy"
+                  fetchpriority="low"
                   decoding="async"
                   crossorigin="anonymous"
                   referrerpolicy="no-referrer"
@@ -3311,6 +3320,8 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     </div>
   </section>
 
+  <details class="history-research" id="history-research" data-subnav-target>
+    <summary><strong>{visitor.research}</strong><span>{visitor.researchLead}</span></summary>
   <section class="section" id="people" data-subnav-target>
     <div class="container">
       <div class="section-head">
@@ -3630,6 +3641,28 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
     </div>
   </section>
 
+  </details>
+
+  <script>
+    // Keep incoming era links and older links into research sections useful.
+    function revealHistoryAnchor() {
+      let id: string;
+      try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+      const target = id ? document.getElementById(id) : null;
+      if (!target) return;
+      const disclosures: HTMLDetailsElement[] = [];
+      let parent: HTMLElement | null = target;
+      while (parent) {
+        if (parent instanceof HTMLDetailsElement) disclosures.push(parent);
+        parent = parent.parentElement;
+      }
+      if (!disclosures.length) return;
+      disclosures.forEach(detail => { detail.open = true; });
+      requestAnimationFrame(() => target.scrollIntoView({ block: "start", behavior: "instant" }));
+    }
+    window.addEventListener("hashchange", revealHistoryAnchor);
+    revealHistoryAnchor();
+  </script>
   <script type="application/json" id="history-timeline-config" set:html={JSON.stringify(timelineConfig)}></script>
   <script type="application/json" id="history-map-config" set:html={JSON.stringify(historyMapConfig)}></script>
 

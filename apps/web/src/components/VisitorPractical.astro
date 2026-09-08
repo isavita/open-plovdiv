@@ -1,0 +1,37 @@
+---
+import { visitorGuide } from "@lib/visitorGuide";
+import { walkingRoutes } from "@lib/routes";
+import { field, localizePath } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+const { lang } = Astro.props as { lang: Lang };
+const guide = visitorGuide(lang);
+const routeTitle = (route: (typeof walkingRoutes)[number]) => field(route as unknown as Record<string, unknown>, "short_title", lang);
+---
+
+<section class="section visitor-practical" id="plan-your-visit" aria-labelledby="visitor-practical-title">
+  <div class="container">
+    <div class="visitor-section-heading">
+      <div>
+        <p class="eyebrow">{guide.plan}</p>
+        <h2 id="visitor-practical-title">{guide.practical}</h2>
+      </div>
+      <p>{guide.official}</p>
+    </div>
+    <div class="visitor-practical-grid">
+      {guide.items.map((item) => {
+        const route = item.route ? walkingRoutes.find((route) => route.id === item.route) : undefined;
+        return (
+          <article class="visitor-tip">
+            <span class="visitor-tip-icon" aria-hidden="true">{item.icon}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+              {item.href && <a href={item.href} target="_blank" rel="noreferrer">{item.link} <span aria-hidden="true">↗</span></a>}
+              {route && <a href={localizePath(`/routes/${route.id}`, lang)}>{routeTitle(route)} <span aria-hidden="true">→</span></a>}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>

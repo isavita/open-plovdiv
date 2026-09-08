@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
+import { placeImageUrl as commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import { json } from "@lib/server/http";
 import { thenNowCountByPlace } from "@lib/thenNow";

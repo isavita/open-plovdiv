@@ -8,3 +8,7 @@ apps/web/public/uploads/
 .env
 .env.*
 !.env.example
+
+output/playwright/
+
+.playwright-cli/

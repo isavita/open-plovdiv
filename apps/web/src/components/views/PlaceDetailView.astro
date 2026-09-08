@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { placeImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { field, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { knownHistoryLabel, sourceTitle } from "@lib/format";
 import { editorialReviewStatusLabel, pendingEditorialReviewNote } from "@lib/editorial";
@@ -1904,7 +1905,11 @@ const mapHref = place.coordinates
         </div>
         {image && (
           <figure class="place-detail-media">
-            <img src={image.url} alt={localized(place, "name")} />
+            <img src={placeImageUrl(image.url, 960)}
+              srcset={isCommonsUploadImageUrl(image.url) ? `${placeImageUrl(image.url, 480)} 480w, ${placeImageUrl(image.url, 960)} 960w` : undefined}
+              sizes="(max-width: 760px) 100vw, 50vw"
+              width="960" height="600" fetchpriority="high" decoding="async"
+              alt={localized(place, "name")} />
             <figcaption>
               {image.credit} · {image.license}
               <a href={image.page_url} target="_blank" rel="noreferrer">{labels.mediaLicense}</a>

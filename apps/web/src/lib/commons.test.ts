@@ -1,7 +1,23 @@
 import { describe, expect, it } from "vitest";
-import { commonsImageUrl, isCommonsUploadImageUrl } from "./commons";
+import { commonsImageUrl, isCommonsUploadImageUrl, placeImageUrl } from "./commons";
+import { existsSync } from "node:fs";
 
 describe("commons image URLs", () => {
+  it("serves the featured city photographs from existing local derivatives, including thumb inputs", () => {
+    const original = "https://upload.wikimedia.org/wikipedia/commons/7/72/View_from_Nebet_hill%2C_Plovdiv%2C_Bulgaria.jpg";
+    for (const width of [320, 480, 640, 960, 1500]) {
+      const src = placeImageUrl(original, width);
+      expect(src).toMatch(/^\/images\/plovdiv\/.+\.webp$/);
+      expect(existsSync(new URL(`../../public${src}`, import.meta.url))).toBe(true);
+      expect(placeImageUrl(commonsImageUrl(original, 640), width)).toBe(src);
+    }
+  });
+
+  it("keeps unbundled archive media and other hosts on their original image pipeline", () => {
+    const archive = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Dzhumayata.jpg";
+    expect(placeImageUrl(archive, 640)).toBe(commonsImageUrl(archive, 640));
+    expect(placeImageUrl("https://example.com/Antique-theater-plovdiv.jpg", 640)).toBe("https://example.com/Antique-theater-plovdiv.jpg");
+  });
   it("rounds non-standard requests up to a supported Commons thumbnail width", () => {
     expect(
       commonsImageUrl(
