@@ -194,7 +194,6 @@ const coordOf = (entry: (typeof stops)[number]) => {
 };
 const stopCoordStrings = stops.map(coordOf).filter((value): value is string => Boolean(value));
 const googleMapsUrls = googleMapsDirectionsUrls(stopCoordStrings);
-const firstGoogleMapsUrl = googleMapsUrls[0] ?? null;
 const gpxUrl = geometry ? `/data/route-geometry/${route.id}.gpx` : null;
 
 const eraLabels = uiT.history.eraLabels as Record<string, string>;
@@ -267,7 +266,7 @@ const structuredData = {
               {route.transit_required && <span class="route-badge">{t.toggleTransit}</span>}
             </div>
             <div class="route-hero-actions">
-              <a class="button" href="#route-stop-1">{t.startRoute}</a>
+              <a class="button" href="#route-itinerary">{t.startRoute}</a>
               <button type="button" class="button secondary" data-route-share data-copied-label={t.linkCopied}>
                 {t.shareRoute}
               </button>
@@ -376,7 +375,7 @@ const structuredData = {
             </div>
           </section>
 
-          <section aria-label={t.itinerary} class="route-itinerary-section">
+          <section id="route-itinerary" aria-label={t.itinerary} class="route-itinerary-section">
             <h2>{t.itinerary}</h2>
             <ol class="route-stop-cards">
               {stops.map((entry) => (
@@ -525,14 +524,6 @@ const structuredData = {
       </div>
     </section>
 
-    <nav class="route-start-bar" aria-label={t.startRoute}>
-      <a class="button" href="#route-stop-1">{t.startRoute}</a>
-      {firstGoogleMapsUrl && (
-        <a class="button secondary" href={firstGoogleMapsUrl} target="_blank" rel="noreferrer" aria-label={t.openInMaps}>
-          {t.mapAppShort}{googleMapsUrls.length > 1 ? ` 1/${googleMapsUrls.length}` : ""}
-        </a>
-      )}
-    </nav>
   </article>
 
   <script type="application/json" id="route-detail-config" set:html={JSON.stringify(mapConfig)}></script>
@@ -652,19 +643,6 @@ const structuredData = {
       });
     });
 
-    // The fixed mobile start bar can grow when localized labels wrap; reserve
-    // page bottom padding from its measured height instead of a fixed guess.
-    const startBar = document.querySelector<HTMLElement>(".route-start-bar");
-    if (startBar && "ResizeObserver" in window) {
-      const syncBarHeight = () => {
-        document.documentElement.style.setProperty(
-          "--route-start-bar-h",
-          `${Math.ceil(startBar.getBoundingClientRect().height)}px`
-        );
-      };
-      new ResizeObserver(syncBarHeight).observe(startBar);
-      syncBarHeight();
-    }
   </script>
 
   <style>
@@ -881,6 +859,8 @@ const structuredData = {
     .route-practical h2 {
       margin: 6px 0 14px;
     }
+
+    .route-itinerary-section { scroll-margin-top: 90px; }
 
     .route-stop-cards {
       list-style: none;
@@ -1119,10 +1099,6 @@ const structuredData = {
       padding-top: 12px;
     }
 
-    .route-start-bar {
-      display: none;
-    }
-
     @media (max-width: 920px) {
       .route-hero-grid,
       .route-body {
@@ -1154,31 +1130,6 @@ const structuredData = {
 
       .route-map {
         height: 320px;
-      }
-
-      .route-start-bar {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 40;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-        background: var(--surface);
-        border-top: 1px solid var(--line);
-        box-shadow: var(--shadow);
-      }
-
-      .route-start-bar .button {
-        flex: 1;
-        max-width: 240px;
-        text-align: center;
-      }
-
-      .route-page {
-        padding-bottom: var(--route-start-bar-h, 76px);
       }
 
       .route-breadcrumb a,

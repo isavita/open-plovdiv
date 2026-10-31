@@ -279,7 +279,8 @@ const mapConfig = {
             window.location.href = marker.href;
             return;
           }
-          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          const heading = card.querySelector<HTMLElement>("h3") ?? card;
+          heading.scrollIntoView({ behavior: "smooth", block: "start" });
           card.classList.remove("nb-card-flash");
           void card.offsetWidth;
           card.classList.add("nb-card-flash");
@@ -583,6 +584,7 @@ const mapConfig = {
     }
 
     .nb-card h3 {
+      scroll-margin-top: 90px;
       margin: 0;
       font-family: var(--font-display);
       font-size: clamp(1.38rem, 5.2vw, 1.68rem);

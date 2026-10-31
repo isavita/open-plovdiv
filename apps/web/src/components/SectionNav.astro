@@ -48,7 +48,7 @@ const { items, label } = Astro.props;
     const update = () => {
       ticking = false;
       const stickyNav = links[0]?.closest<HTMLElement>(".page-subnav");
-      const line = (stickyNav?.getBoundingClientRect().bottom ?? 124) + 16;
+      const line = (stickyNav?.getBoundingClientRect().bottom ?? 124) + Math.min(160, window.innerHeight * 0.2);
       let current = ids[0];
       for (const id of ids) {
         const el = document.getElementById(id);

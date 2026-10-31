@@ -2527,10 +2527,6 @@ a.mayor-frieze-more:focus-visible {
     display: none;
   }
 
-  body:has(.route-start-bar) .site-header .nav-toggle {
-    display: inline-grid;
-  }
-
   .icon-btn {
     min-width: 44px;
     height: 44px;
@@ -2819,14 +2815,6 @@ a.mayor-frieze-more:focus-visible {
     color: var(--brand-strong);
   }
 
-  .main:has(.route-start-bar) + .mobile-dock {
-    display: none;
-  }
-
-  .site-shell:has(.route-start-bar) {
-    padding-bottom: 0;
-  }
-
   .map-sheet {
     bottom: calc(92px + env(safe-area-inset-bottom));
   }
@@ -3021,5 +3009,29 @@ a.mayor-frieze-more:focus-visible {
   /* Full-width actions relax into slightly rounder slabs. */
   .actions .button {
     border-radius: 14px;
+  }
+}
+
+/* Keep phone controls compact and the entire language list above the dock. */
+@media (max-width: 760px) {
+  .lang-options {
+    right: -50px;
+    width: min(340px, calc(100vw - 24px));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: calc(100vh - 160px - env(safe-area-inset-bottom));
+    max-height: calc(100dvh - 160px - env(safe-area-inset-bottom));
+    align-content: start;
+  }
+  .lang-options a { min-height: 44px; padding: 8px; }
+  .mobile-dock { padding: 4px; border-radius: 22px; }
+  .mobile-dock a, .mobile-dock button { min-height: 48px; gap: 2px; border-radius: 16px; }
+  .mobile-dock svg { width: 20px; height: 20px; }
+  .site-shell { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  .story-detail-grid h1 {
+    font-size: clamp(2.3rem, 10vw, 3.4rem);
+    line-height: 1.04;
+    max-width: 18ch;
+    hyphens: manual;
+    overflow-wrap: normal;
   }
 }
