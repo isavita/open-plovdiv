@@ -29,7 +29,9 @@ const isActing =
   field(mayor, "period", "bg").toLocaleLowerCase("bg-BG").includes("и.д.") ||
   field(mayor, "period", "en").toLocaleLowerCase("en-GB").includes("acting") ||
   period.toLocaleLowerCase(locale).includes("amtierend");
-const yearLabel = `${mayor.year_start}${mayor.year_end ? `-${mayor.year_end}` : `-${currentYear}`}`;
+const yearLabel = mayor.year_end === mayor.year_start
+  ? String(mayor.year_start)
+  : `${mayor.year_start}-${mayor.year_end ?? currentYear}`;
 const century = Math.floor((mayor.year_start - 1) / 100) + 1;
 
 const otherTerms = terms.filter((r) => r.id !== mayor.id && field(r, "actor", lang) === name);

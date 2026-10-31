@@ -133,7 +133,9 @@ const filterConfig = {
         </div>
       </details>
 
-      <form class="route-filters" id="route-filters" aria-label={t.filterTitle}>
+      <details class="route-filter-panel" id="route-filter-panel">
+        <summary><span>{t.filterRoutes} <span class="route-filter-count" id="route-filter-count" hidden></span></span><span class="route-filter-toggle" aria-hidden="true"></span></summary>
+        <form class="route-filters" id="route-filters" aria-label={t.filterTitle}>
         <fieldset class="route-filter-group" data-filter-group="category">
           <legend>{t.filterTheme}</legend>
           <div class="route-filter-chips">
@@ -176,7 +178,8 @@ const filterConfig = {
             </button>
           </div>
         </fieldset>
-      </form>
+        </form>
+      </details>
 
       <p class="notice routes-no-matches" id={filterConfig.noMatchesId} hidden>
         <span class="notice-icon" aria-hidden="true">i</span>
@@ -306,6 +309,12 @@ const filterConfig = {
     }
 
     function syncButtons(): void {
+      const count = Number(Boolean(state.category)) + Number(Boolean(state.band)) + state.flags.size;
+      const filterCount = document.getElementById("route-filter-count");
+      if (filterCount) {
+        filterCount.hidden = count === 0;
+        filterCount.textContent = count ? `(${count})` : "";
+      }
       form?.querySelectorAll<HTMLButtonElement>("[data-filter-value]").forEach((button) => {
         const group = button.closest<HTMLElement>("[data-filter-group]")?.dataset.filterGroup;
         const current = group === "category" ? state.category : state.band;
@@ -358,8 +367,11 @@ const filterConfig = {
       for (const flag of (params.get("good") ?? "").split(",")) {
         if (flag in flagToDataKey) state.flags.add(flag);
       }
-      if (state.category || state.band || state.flags.size) applyState();
-      else syncButtons();
+      if (state.category || state.band || state.flags.size) {
+        const filterPanel = document.querySelector<HTMLDetailsElement>("#route-filter-panel");
+        if (filterPanel) filterPanel.open = true;
+        applyState();
+      } else syncButtons();
     }
   </script>
 
@@ -374,15 +386,38 @@ const filterConfig = {
       margin-top: 8px;
     }
 
+    .route-filter-panel {
+      margin: 20px 0 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      background: var(--surface);
+      overflow: hidden;
+    }
+    .route-filter-panel > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 56px;
+      padding: 12px 18px;
+      color: var(--ink);
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+    .route-filter-panel > summary::-webkit-details-marker { display: none; }
+    .route-filter-panel > summary:focus-visible { outline: 3px solid var(--brand); outline-offset: -4px; }
+    .route-filter-toggle { flex: none; width: 9px; height: 9px; margin-right: 5px; border-right: 2px solid var(--brand); border-bottom: 2px solid var(--brand); transform: rotate(45deg) translateY(-2px); }
+    .route-filter-panel[open] .route-filter-toggle { transform: rotate(225deg) translateY(-2px); }
     .route-filters {
       display: grid;
       gap: 16px;
-      margin: 20px 0 24px;
+      margin: 0;
       padding: clamp(16px, 2.5vw, 22px);
       background: var(--surface);
-      border: 1px solid var(--line);
-      border-left: 5px solid var(--section-accent);
-      border-radius: var(--r);
+      border: 0;
+      border-top: 1px solid var(--line);
+      border-radius: 0;
       box-shadow: none;
     }
 

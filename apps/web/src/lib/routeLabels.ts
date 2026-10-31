@@ -408,6 +408,12 @@ const labelTable = {
     "Найдите свой маршрут",
     "Znajdź swoją trasę"
   ),
+  filterRoutes: tr(
+    "Филтрирай маршрутите", "Filter routes", "Routen filtern", "Filtrer les parcours",
+    "Filtra i percorsi", "Rotaları filtrele", "Filtrar rutas", "Φιλτράρισμα διαδρομών",
+    "ルートを絞り込む", "Salain ang mga ruta", "Фільтрувати маршрути",
+    "Фильтровать маршруты", "Filtruj trasy"
+  ),
   filterLead: tr(
     "Филтрирайте по тема, продължителност и терен. Всеки маршрут показва реално изчислено разстояние и практични бележки.",
     "Filter by theme, length and terrain. Every route shows a real computed distance and practical notes.",

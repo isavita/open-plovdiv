@@ -2199,14 +2199,14 @@ a.mayor-frieze-more:focus-visible {
   box-shadow: var(--shadow) !important;
 }
 
-.leaflet-control a {
+.leaflet-control-zoom a {
   width: 44px;
   height: 44px;
   color: var(--ink) !important;
   line-height: 44px;
 }
 
-.leaflet-control a:hover {
+.leaflet-control-zoom a:hover {
   background: var(--surface-2);
 }
 

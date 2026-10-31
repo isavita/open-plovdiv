@@ -309,3 +309,24 @@
 @media (prefers-reduced-motion: reduce) {
   .visitor-text-link .link-icon, .chart-source .link-icon { transition: none; }
 }
+
+@media (max-width: 760px) {
+  .site-header .nav-links > a[aria-current="page"]::before { color: #a7d9e9; opacity: 1; }
+  .story-card.featured .story-card-body { padding: 20px; }
+  .story-card.featured h2 { font-size: clamp(1.55rem, 6vw, 2rem); line-height: 1.16; }
+  .story-card.featured .story-card-media img { aspect-ratio: 16 / 9; }
+  .story-detail-grid h1 { margin-block: 16px 14px; }
+}
+@media (max-width: 600px) {
+  .places-view-switch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .places-view-switch a { justify-content: space-between; min-width: 0; line-height: 1.25; overflow-wrap: anywhere; }
+}
+.mayor-frieze-count-mobile { display: none; }
+@media (max-width: 760px) {
+  .mayor-frieze > a:not(.mayor-frieze-more):nth-child(n+5) { display: none; }
+  .mayor-frieze-count-full { display: none; }
+  .mayor-frieze-count-mobile { display: inline; }
+}
+@media (max-width: 760px) {
+  .featured-person-media img { aspect-ratio: 4 / 3; object-position: 50% 20%; }
+}

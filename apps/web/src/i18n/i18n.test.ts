@@ -82,6 +82,12 @@ describe("i18n locales", () => {
       if (locale !== "en") expect(intro, locale).not.toBe(english);
     }
     expect(routeLabels("pt").indexIntro).toBe("Caminhe ao seu ritmo. Encontre um percurso para o tempo que tem.");
+    for (const locale of locales) {
+      const label = routeLabels(locale).filterRoutes;
+      expect(label.trim(), locale).toBeTruthy();
+      if (locale !== "en") expect(label, locale).not.toBe(routeLabels("en").filterRoutes);
+    }
+    expect(routeLabels("pt").filterRoutes).toBe("Filtrar percursos");
   });
 
   it("every locale exposes a non-empty display name", () => {

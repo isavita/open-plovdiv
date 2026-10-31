@@ -2354,7 +2354,7 @@ a.stat:focus-visible {
   overflow: hidden;
 }
 
-.leaflet-control a {
+.leaflet-control-zoom a {
   color: var(--ink);
   display: grid;
   font-weight: 800;
@@ -4153,7 +4153,7 @@ code {
 }
 
 .then-now-grid {
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
 }
 
 .archive-card,
@@ -9992,7 +9992,7 @@ details[open] > .htree-event-sum .htree-caret::after {
     bottom: calc(84px + env(safe-area-inset-bottom));
   }
 
-  .leaflet-control a {
+  .leaflet-control-zoom a {
     height: 44px;
     width: 44px;
     font-size: 1.25rem;

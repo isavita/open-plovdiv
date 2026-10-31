@@ -540,7 +540,8 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
           ))}
           {friezeMore > 0 && (
             <a class="mayor-frieze-more" href="#all-mayors" aria-label={t.mayors.detailsTitle}>
-              +{friezeMore}
+              <span class="mayor-frieze-count-full">+{friezeMore}</span>
+              <span class="mayor-frieze-count-mobile">+{Math.max(0, uniqueMayors.size - Math.min(4, friezeShown.length))}</span>
             </a>
           )}
         </div>
