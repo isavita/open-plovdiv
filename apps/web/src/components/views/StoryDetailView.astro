@@ -5,7 +5,6 @@ import Layout from "@layouts/Layout.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
 import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { sourceTitle } from "@lib/format";
-import { storyThemeTagLabel } from "@lib/storyTags";
 import { publicThenNowPairs } from "@lib/thenNow";
 import {
   historicalArchiveItems,
@@ -307,7 +306,6 @@ const relatedStories = storyLongreads
           <p class="lead">{localized(story, "dek")}</p>
           <div class="tag-row">
             {story.era_tags.map((tag) => <span>{t.history.eraLabels[tag]}</span>)}
-            {story.theme_tags.map((tag) => <span>{storyThemeTagLabel(tag, lang)}</span>)}
           </div>
         </div>
         {media && (
@@ -330,7 +328,10 @@ const relatedStories = storyLongreads
             </picture>
             <figcaption>
               {localized(story.hero, "caption")}
-              <a href={media.page_url} target="_blank" rel="noreferrer">{mediaAttribution(media.credit, lang)}</a>
+              <span class="story-detail-media-credit">
+                <a href={media.page_url} target="_blank" rel="noreferrer">{mediaAttribution(media.credit, lang)}</a>
+                {media.license && <> · <a href={media.license_url || media.page_url} target="_blank" rel="noreferrer">{mediaAttribution(media.license, lang)}</a></>}
+              </span>
             </figcaption>
           </figure>
         )}
@@ -339,6 +340,23 @@ const relatedStories = storyLongreads
 
     <section class="section">
       <div class="container story-detail-layout">
+        <details class="story-contents-mobile">
+          <summary>
+            <span>{labels.contents}</span>
+            <span class="story-contents-count" aria-hidden="true">{String(story.sections.length).padStart(2, "0")}</span>
+            <LinkIcon direction="down" />
+          </summary>
+          <ol>
+            {story.sections.map((section, index) => (
+              <li>
+                <a href={`#chapter-${index + 1}`}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  {localized(section, "heading")}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </details>
         <aside class="story-contents" aria-label={labels.contents}>
           <p class="eyebrow">{labels.contents}</p>
           <ol>

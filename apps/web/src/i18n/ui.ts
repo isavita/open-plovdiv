@@ -170,7 +170,7 @@ const bg = {
     eyebrow: "Хронология на града",
     title: "Историята на Пловдив",
     lead:
-      "Над осем хилядолетия върху седем хълма — от тракийската Евмолпия и римския Тримонциум, през османското Филибе и Възраждането, до Съединението и наши дни.",
+      "От праисторическите селища в района през тракийския, римския и османския град до Съединението и днешен Пловдив.",
     timelineTitle: "Хронология",
     timelineLead:
       "Ключови моменти от историята на града, подредени по епохи. Всеки запис сочи към публичен източник.",
@@ -859,7 +859,7 @@ const en: typeof bg = {
     eyebrow: "The city's timeline",
     title: "The history of Plovdiv",
     lead:
-      "Over eight millennia on seven hills — from Thracian Eumolpias and Roman Trimontium, through Ottoman Filibe and the National Revival, to the Unification and the present day.",
+      "From prehistoric settlements in the surrounding area through Thracian, Roman and Ottoman eras to the Unification and present-day Plovdiv.",
     timelineTitle: "Timeline",
     timelineLead:
       "Key moments in the city's history, arranged by era. Every entry links to a public source.",
@@ -1569,7 +1569,7 @@ const de: typeof bg = {
     eyebrow: "Die Zeitleiste der Stadt",
     title: "Die Geschichte von Plovdiv",
     lead:
-      "Über acht Jahrtausende auf sieben Hügeln — vom thrakischen Eumolpia und römischen Trimontium über das osmanische Filibe und die Nationale Wiedergeburt bis zur Vereinigung und Gegenwart.",
+      "Von prähistorischen Siedlungen in der Umgebung über die thrakische, römische und osmanische Zeit bis zur Vereinigung und zum heutigen Plovdiv.",
     timelineTitle: "Zeitleiste",
     timelineLead:
       "Schlüsselmomente der Stadtgeschichte, nach Epoche geordnet. Jeder Eintrag verweist auf eine öffentliche Quelle.",
@@ -2215,7 +2215,7 @@ const fr: typeof bg = {
     eyebrow: "La chronologie de la ville",
     title: "L'histoire de Plovdiv",
     lead:
-      "Plus de huit millénaires sur sept collines — de l'Eumolpias thrace et de la Trimontium romaine, en passant par la Filibe ottomane et la Renaissance nationale, jusqu'à l'Unification et nos jours.",
+      "Des établissements préhistoriques des environs aux époques thrace, romaine et ottomane, jusqu’à l’Unification et au Plovdiv actuel.",
     timelineTitle: "Chronologie",
     timelineLead:
       "Les moments clés de l'histoire de la ville, classés par époque. Chaque entrée renvoie à une source publique.",
@@ -2861,7 +2861,7 @@ const it: typeof bg = {
     eyebrow: "La cronologia della città",
     title: "La storia di Plovdiv",
     lead:
-      "Oltre otto millenni su sette colli — dall'Eumolpiade tracia e dalla Trimontium romana, passando per la Filibe ottomana e la Rinascita nazionale, fino all'Unificazione e ai giorni nostri.",
+      "Dagli insediamenti preistorici della zona alle epoche tracia, romana e ottomana, fino all’Unificazione e alla Plovdiv di oggi.",
     timelineTitle: "Cronologia",
     timelineLead:
       "I momenti chiave della storia della città, ordinati per epoca. Ogni voce rimanda a una fonte pubblica.",
@@ -3507,7 +3507,7 @@ const tr: typeof bg = {
     eyebrow: "Şehrin zaman çizelgesi",
     title: "Plovdiv'in tarihi",
     lead:
-      "Yedi tepe üzerinde sekiz binyılı aşkın bir süre — Trak Eumolpias'ı ve Roma Trimontium'undan, Osmanlı Filibe'si ve Ulusal Uyanış'tan geçerek Birleşme'ye ve günümüze kadar.",
+      "Çevredeki tarih öncesi yerleşimlerden Trak, Roma ve Osmanlı dönemlerine, Birleşme’ye ve günümüz Plovdiv’ine uzanan bir yolculuk.",
     timelineTitle: "Zaman çizelgesi",
     timelineLead:
       "Şehrin tarihindeki kilit anlar, döneme göre düzenlenmiştir. Her kayıt kamuya açık bir kaynağa bağlanır.",
@@ -4153,7 +4153,7 @@ const es: typeof bg = {
     eyebrow: "La cronología de la ciudad",
     title: "La historia de Plovdiv",
     lead:
-      "Más de ocho milenios sobre siete colinas — desde la Eumolpíade tracia y la Trimontium romana, pasando por la Filibe otomana y el Renacimiento Nacional, hasta la Unificación y nuestros días.",
+      "Desde los asentamientos prehistóricos de los alrededores, pasando por las épocas tracia, romana y otomana, hasta la Unificación y el Plovdiv actual.",
     timelineTitle: "Cronología",
     timelineLead:
       "Los momentos clave de la historia de la ciudad, ordenados por época. Cada entrada enlaza con una fuente pública.",
@@ -4799,7 +4799,7 @@ const el: typeof bg = {
     eyebrow: "Το χρονολόγιο της πόλης",
     title: "Η ιστορία του Plovdiv",
     lead:
-      "Πάνω από οκτώ χιλιετίες σε επτά λόφους — από τη θρακική Ευμολπία και τη ρωμαϊκή Τριμόντιον, μέσα από την οθωμανική Φιλιμπέ και την Εθνική Αναγέννηση, έως την Ένωση και τις μέρες μας.",
+      "Από τους προϊστορικούς οικισμούς της ευρύτερης περιοχής, στη θρακική, ρωμαϊκή και οθωμανική εποχή, έως την Ένωση και τη σημερινή Φιλιππούπολη.",
     timelineTitle: "Χρονολόγιο",
     timelineLead:
       "Οι βασικές στιγμές της ιστορίας της πόλης, ταξινομημένες ανά εποχή. Κάθε καταχώριση συνδέεται με δημόσια πηγή.",
@@ -5445,7 +5445,7 @@ const tl: typeof bg = {
     eyebrow: "Talaan ng Kasaysayan ng Lungsod",
     title: "Ang Kasaysayan ng Plovdiv",
     lead:
-      "Mahigit walong milenyo sa ibabaw ng pitong burol — mula sa Trakiang Eumolpias at Romanong Trimontium, sa Ottoman na Filibe at ang Pambansang Muling Pagsilang, hanggang sa Pagkakaisa at ngayon.",
+      "Mula sa mga pamayanang prehistoriko sa paligid, sa mga panahon ng Thrace, Roma at Ottoman, hanggang sa Pagkakaisa at Plovdiv ngayon.",
     timelineTitle: "Talaan ng Kasaysayan",
     timelineLead:
       "Mga mahalagang sandali sa kasaysayan ng lungsod, nakaayos ayon sa yugto. Bawat talaan ay may nakalagay na pampublikong pinagmulan.",
@@ -6091,7 +6091,7 @@ const uk: typeof bg = {
     eyebrow: "Хронологія міста",
     title: "Історія Пловдива",
     lead:
-      "Понад вісім тисячоліть на семи пагорбах — від фракійського Евмолпія та римського Трімонція, через османське Філібе й Відродження, до Об'єднання і наших днів.",
+      "Від доісторичних поселень у навколишній місцевості через фракійську, римську й османську доби до Об’єднання та сучасного Пловдива.",
     timelineTitle: "Хронологія",
     timelineLead:
       "Ключові моменти в історії міста, впорядковані за епохами. Кожен запис має публічне джерело.",
@@ -6737,7 +6737,7 @@ const ru: typeof bg = {
     eyebrow: "Хронология города",
     title: "История Пловдива",
     lead:
-      "Более восьми тысячелетий на семи холмах — от фракийской Эвмолпии и римского Тримонциума, через османский Филибе и Возрождение, до Объединения и наших дней.",
+      "От доисторических поселений в окрестностях через фракийскую, римскую и османскую эпохи до Объединения и современного Пловдива.",
     timelineTitle: "Хронология",
     timelineLead:
       "Ключевые моменты истории города, упорядоченные по эпохам. Каждая запись имеет публичный источник.",
@@ -7383,7 +7383,7 @@ const pl: typeof bg = {
     eyebrow: "Oś czasu miasta",
     title: "Historia Plovdivu",
     lead:
-      "Ponad osiem tysiącleci na siedmiu wzgórzach — od trackiego Eumolpias i rzymskiego Trimontium, przez osmańskie Filibe i odrodzenie narodowe, po zjednoczenie i czasy współczesne.",
+      "Od prehistorycznych osad w okolicy przez epoki tracką, rzymską i osmańską po zjednoczenie i współczesny Płowdiw.",
     timelineTitle: "Oś czasu",
     timelineLead:
       "Kluczowe momenty w dziejach miasta, uporządkowane według epok. Każdy wpis odsyła do publicznego źródła.",

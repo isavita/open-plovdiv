@@ -340,3 +340,57 @@
 @media (max-width: 760px) {
   .featured-person-media img { aspect-ratio: 4 / 3; object-position: 50% 20%; }
 }
+
+/* A compact, tappable table of contents for long stories on phones. */
+.story-contents-mobile { display: none; }
+.story-detail-media-credit { display: block; margin-top: 3px; }
+.story-detail-media figcaption .story-detail-media-credit a { display: inline; margin: 0; }
+@media (max-width: 760px) {
+  .story-detail-hero { padding-block: 30px 36px; }
+  .story-detail-grid .tag-row { margin-top: 14px; }
+  .story-detail-layout { gap: 26px; }
+  .story-detail-layout > .story-contents { display: none; }
+  .story-contents-mobile {
+    display: block;
+    min-width: 0;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .story-contents-mobile summary {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    font-weight: 750;
+    list-style: none;
+    min-height: 56px;
+    padding: 14px 16px;
+  }
+  .story-contents-mobile summary::-webkit-details-marker { display: none; }
+  .story-contents-mobile summary:focus-visible { outline: 3px solid var(--brand); outline-offset: -3px; }
+  .story-contents-mobile summary .link-icon { transition: transform .2s ease; }
+  .story-contents-mobile[open] summary .link-icon { transform: rotate(180deg); }
+  .story-contents-count { color: var(--muted); font-size: .82rem; font-variant-numeric: tabular-nums; margin-left: auto; }
+  .story-contents-mobile ol { list-style: none; margin: 0; padding: 0 16px 8px; }
+  .story-contents-mobile li { border-top: 1px solid var(--line); }
+  .story-contents-mobile li a {
+    align-items: baseline;
+    color: var(--ink-2);
+    display: grid;
+    font-size: .94rem;
+    font-weight: 700;
+    gap: 10px;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    line-height: 1.35;
+    min-height: 52px;
+    overflow-wrap: anywhere;
+    padding: 14px 0;
+    text-decoration: none;
+  }
+  .story-contents-mobile li a span { color: var(--brand); font-variant-numeric: tabular-nums; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-contents-mobile summary .link-icon { transition: none; }
+}

@@ -257,7 +257,7 @@ export const jaUiTranslations: Record<string, string> = {
     "Other roles held": "その他の役割",
     "Other terms by the same person": "同一人物による他の用語",
     "Ottoman period": "オスマン帝国時代",
-    "Over eight millennia on seven hills — from Thracian Eumolpias and Roman Trimontium, through Ottoman Filibe and the National Revival, to the Unification and the present day.": "トラキアのエウモルピアスとローマのトリモンティウムから、オスマン帝国のフィリベと民族復興期を経て、統一と現在に至るまで、7 つの丘の上で 8,000 年以上の歴史があります。",
+    "From prehistoric settlements in the surrounding area through Thracian, Roman and Ottoman eras to the Unification and present-day Plovdiv.": "周辺地域の先史時代の集落から、トラキア、ローマ、オスマン帝国の時代を経て、統一と現代のプロヴディフまで。",
     "Overview in charts": "チャートでの概要",
     "Overview": "概要",
     "Own revenue and carry-over": "自身の収益と繰越",
