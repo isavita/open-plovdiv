@@ -181,3 +181,24 @@
   .visitor-place-grid { grid-template-columns: repeat(2, 1fr); }
   .visitor-place, .visitor-tip { break-inside: avoid; }
 }
+
+/* A calmer, more tactile visitor experience at both ends of the viewport. */
+.visitor-hero-photo { border-radius: 12px 12px 72px 12px; }
+.visitor-place-image { border-radius: 10px; }
+.visitor-walk { border-radius: 12px; box-shadow: var(--shadow-card); transition: box-shadow 180ms ease, transform 180ms ease; }
+.visitor-walk:focus-visible { outline-offset: 4px; }
+.visitor-quick-nav a { border-radius: 6px; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .visitor-walk:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+}
+@media (max-width: 760px) {
+  .visitor-hero-copy { padding-block: 22px 18px; }
+  .visitor-hero h1 { font-size: clamp(3.6rem, 16vw, 5.5rem); }
+  .visitor-headline { font-size: 1.42rem; margin-bottom: 10px; }
+  .visitor-intro { line-height: 1.5; margin-bottom: 16px; }
+  .visitor-hero-photo { border-radius: 10px 10px 40px 10px; }
+  .visitor-quick-nav { column-gap: 12px; }
+  .visitor-quick-nav a, .visitor-quick-nav a:nth-of-type(2n) { padding-inline: 10px; margin: 0; border-bottom: 1px solid var(--line); }
+  .visitor-place-grid { gap: 34px; }
+  .visitor-walk-grid { gap: 16px; }
+}
