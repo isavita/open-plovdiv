@@ -314,6 +314,21 @@ const labelTable = {
     "Для гостей города",
     "Dla odwiedzających"
   ),
+  indexIntro: tr(
+    "Разходете се със свое темпо. Изберете маршрут според времето, с което разполагате.",
+    "Walk at your own pace. Find a route for the time you have.",
+    "Entdecken Sie die Stadt in Ihrem Tempo. Finden Sie eine Route für Ihre verfügbare Zeit.",
+    "Découvrez la ville à votre rythme. Choisissez un parcours selon le temps dont vous disposez.",
+    "Scoprite la città al vostro ritmo. Scegliete un percorso in base al tempo che avete.",
+    "Şehri kendi hızınızda keşfedin. Vaktinize uygun bir rota bulun.",
+    "Descubra la ciudad a su ritmo. Encuentre una ruta para el tiempo que tenga.",
+    "Ανακαλύψτε την πόλη με τον ρυθμό σας. Βρείτε μια διαδρομή για τον χρόνο που διαθέτετε.",
+    "自分のペースで街歩きを。時間に合ったルートを見つけましょう。",
+    "Maglakad sa sarili mong ritmo. Humanap ng rutang akma sa oras mo.",
+    "Гуляйте у власному темпі. Оберіть маршрут відповідно до часу, який маєте.",
+    "Гуляйте в своём темпе. Выберите маршрут по времени, которым располагаете.",
+    "Odkrywaj miasto we własnym tempie. Wybierz trasę dopasowaną do swojego czasu."
+  ),
   indexLead: tr(
     "Самостоятелни маршрути с реална пешеходна линия, времена и практични бележки — изградени от документираните места, разкази и източници на Open Plovdiv.",
     "Self-guided routes with real walking lines, timings and practical notes — built from the documented places, stories and sources of Open Plovdiv.",

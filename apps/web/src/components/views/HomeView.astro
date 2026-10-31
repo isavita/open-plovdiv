@@ -218,9 +218,9 @@ const placeMedia = (id: string) => {
   return { ...media, src: placeImageUrl(media.url, 960), medium: placeImageUrl(media.url, 768), small: placeImageUrl(media.url, 480) };
 };
 const essentials = [
+  { id: "place-kapana-q12282547", title: labels.kapanaTitle, eyebrow: labels.kapanaEyebrow, text: labels.kapanaText },
   { id: "place-old-town", title: labels.oldTownTitle, eyebrow: labels.oldTownEyebrow, text: labels.oldTownText },
   { id: "place-ancient-theatre", title: labels.theatreTitle, eyebrow: labels.theatreEyebrow, text: labels.theatreText },
-  { id: "place-kapana-q12282547", title: labels.kapanaTitle, eyebrow: labels.kapanaEyebrow, text: labels.kapanaText },
   { id: "place-nebet-tepe", title: labels.nebetTitle, eyebrow: labels.nebetEyebrow, text: labels.nebetText }
 ].map(place => ({ ...place, media: placeMedia(place.id), href: localizePath(`/places/${place.id}`, lang) }));
 const hero = placeMedia("place-ancient-theatre");
@@ -251,7 +251,6 @@ const eras = ["roman", "revival", "liberation"] as const;
           <p class="visitor-intro">{guide.intro}</p>
           <div class="actions">
             <a class="button" href={localizePath("/routes/first-day-plovdiv", lang)}>{guide.firstDay}<span aria-hidden="true">→</span></a>
-            <a class="visitor-text-link" href="#plan-your-visit">{guide.plan}<span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <figure class="visitor-hero-photo">
@@ -282,7 +281,7 @@ const eras = ["roman", "revival", "liberation"] as const;
         </div>
         <div class="visitor-place-grid">
           {essentials.map((place, index) => (
-            <article class="visitor-place">
+            <article class:list={["visitor-place", { "visitor-place-feature": index === 0 }]}>
               <a class="visitor-place-image" href={place.href} tabindex="-1" aria-hidden="true">
                 <img src={place.media.src} srcset={`${place.media.small} 480w, ${place.media.medium} 768w, ${place.media.src} 960w`} sizes="(max-width: 600px) calc(100vw - 36px), (max-width: 1000px) 50vw, 25vw" alt="" width="640" height="480" loading="lazy" fetchpriority="low" decoding="async" />
                 <span class="visitor-place-number">0{index + 1}</span>

@@ -18,6 +18,7 @@ import {
 } from "./ui";
 import { delocalizePath, field, getLangFromUrl, localizePath, localeForLang } from "./utils";
 import { ptText } from "./ptUiTranslations";
+import { routeLabels } from "../lib/routeLabels";
 
 const locales = Object.keys(languages) as Lang[];
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../..");
@@ -71,6 +72,16 @@ function collectStrings(
 describe("i18n locales", () => {
   it("registers every shipped locale", () => {
     expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl", "pt"]);
+  });
+
+  it("provides a localized walking-route introduction for every locale", () => {
+    const english = routeLabels("en").indexIntro;
+    for (const locale of locales) {
+      const intro = routeLabels(locale).indexIntro;
+      expect(intro.trim(), locale).toBeTruthy();
+      if (locale !== "en") expect(intro, locale).not.toBe(english);
+    }
+    expect(routeLabels("pt").indexIntro).toBe("Caminhe ao seu ritmo. Encontre um percurso para o tempo que tem.");
   });
 
   it("every locale exposes a non-empty display name", () => {
