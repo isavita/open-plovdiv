@@ -17,6 +17,7 @@ import {
   type Lang
 } from "./ui";
 import { delocalizePath, field, getLangFromUrl, localizePath, localeForLang } from "./utils";
+import { ptText } from "./ptUiTranslations";
 
 const locales = Object.keys(languages) as Lang[];
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../..");
@@ -211,6 +212,39 @@ describe("generated translation JSON", () => {
     }
     for (const [key, value] of Object.entries(translations.ja)) {
       expect(value.trim().length, `data/translations/ja.json:${key}`).toBeGreaterThan(0);
+    }
+  });
+
+  it("keeps Portuguese navigation and history terminology accurate", () => {
+    expect(ptText("All quarters")).toBe("Todos os bairros");
+    expect(ptText("Open quarter")).toBe("Abrir bairro");
+    expect(ptText("Open route")).toBe("Abrir percurso");
+    expect(ptText("Died in office")).toBe("Morreu no exercício do cargo");
+    expect(ptText("succeeds")).toBe("sucede a");
+    expect(ptText("m")).toBe("m");
+    expect(roleLabels.conductor.pt).toBe("maestro");
+    expect(roleLabels.general.pt).toBe("general");
+    expect(roleLabels.mayor.pt).toBe("autarca");
+    expect(categoryLabels.pt.sport).toBe("Desporto");
+    const content = JSON.parse(fs.readFileSync(path.join(repoRoot, "data/translations/pt.json"), "utf8")) as Record<string, string>;
+    expect(content["The quarter is level; the central lanes have the smoothest paving."]).toContain("bairro");
+    expect(content["Any time; the quarter is workaday by nature."]).not.toContain("trimestre");
+  });
+
+  it("preserves named placeholders in Portuguese interface text", () => {
+    const content = JSON.parse(fs.readFileSync(path.join(repoRoot, "data/translations/pt-ui.json"), "utf8")) as Record<string, string>;
+    const placeholders = (value: string) => (value.match(/\{[a-zA-Z_][\w]*\}/g) ?? []).sort();
+    for (const [source, translation] of Object.entries(content)) {
+      expect(placeholders(translation), source).toEqual(placeholders(source));
+    }
+  });
+
+  it("translates representative biographical snippets across locales", () => {
+    const source = "Bulgarian footballer (1944–2024)";
+    for (const lang of ["ja", "uk", "ru"]) {
+      const content = JSON.parse(fs.readFileSync(path.join(repoRoot, `data/translations/${lang}.json`), "utf8")) as Record<string, string>;
+      expect(content[source], lang).not.toBe(source);
+      expect(content[source], lang).toContain("1944–2024");
     }
   });
 

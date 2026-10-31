@@ -8184,20 +8184,20 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     pavement: "Pavimentos",
     street_lighting: "Iluminação",
     parks: "Parques",
-    waste: "Desperdício",
+    waste: "Resíduos",
     public_transport: "Transporte",
     accessibility: "Acessibilidade",
     drainage: "Drenagem",
     culture: "Cultura",
     education: "Educação",
     civic: "Iniciativas cívicas",
-    environment: "Meio Ambiente",
+    environment: "Ambiente",
     social: "Sociais",
-    sport: "Esporte",
+    sport: "Desporto",
     historic_photo: "Foto histórica",
     oral_memory: "Memória oral",
-    source_tip: "Líder de origem/ficheiro",
-    history_correction: "Correção de histórico",
+    source_tip: "Fonte ou pista de arquivo",
+    history_correction: "Correção histórica",
     other: "Outro"
   }};
 
@@ -8387,7 +8387,7 @@ export const projectStatusLabels: Record<Lang, Record<string, string>> = {
     unknown: "Nieznany"
   }
 , pt: {
-    planned: "Planejado",
+    planned: "Planeado",
     funded: "Financiado",
     contracted: "Contratado",
     in_progress: "Em curso",
@@ -8493,7 +8493,7 @@ export const communityStatusLabels: Record<Lang, Record<string, string>> = {
     active: "Ativo",
     recurring: "Recorrente",
     completed: "Concluído",
-    planned: "Planejado",
+    planned: "Planeado",
     unknown: "Estado desconhecido"
   }};
 
@@ -8720,8 +8720,8 @@ export const fixStatusDescriptions: Record<Lang, Record<string, string>> = {
     unverified: "O relatório foi publicado, mas ainda não foi verificado de forma independente.",
     verified: "Verificado por um editor ou fonte pública.",
     sent_to_municipality: "Marcado como enviado para uma instituição.",
-    in_progress: "Um reparo ou verificação em curso é anotado.",
-    fixed: "Marcado como fixo.",
+    in_progress: "Está assinalada uma reparação ou verificação em curso.",
+    fixed: "Assinalado como resolvido.",
     closed: "Encerrado sem próxima etapa ativa."
   }};
 
@@ -8816,8 +8816,8 @@ export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
   }
 , pt: {
     municipal_budget: "Orçamento municipal",
-    municipal_capital: "Programa capital municipal",
-    state_subsidy: "Subsídio direcionado ao estado",
+    municipal_capital: "Programa municipal de investimento",
+    state_subsidy: "Subsídio estatal específico",
     eu_program: "Programa da UE"
   }};
 
@@ -9051,9 +9051,9 @@ export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
     "Plovdiv24 — доброволци се заемат с реновирането на спирки": "Plovdiv24 — voluntários começam a renovar paragens de autocarro",
     "NOVA — доброволци реновират автобусни спирки": "NOVA — voluntários renovam paragens de autocarro",
     "Plovdiv24 — търсят се доброволци за почистване на 11 км от река Марица": "Plovdiv24 — Procuram-se voluntários para a limpeza de 11 km do rio Maritsa",
-    "BG Be Active — контакт": "BG Seja ativo - contacto",
+    "BG Be Active — контакт": "BG Be Active — contacto",
     "Красив Пловдив — будни граждани с кауза": "Krasiv Plovdiv — cidadãos activos com uma causa",
-    "Красив Пловдив — начало": "Krasiv Plovdiv – casa",
+    "Красив Пловдив — начало": "Krasiv Plovdiv — página inicial",
     "Община Пловдив — „Мисия Лаута 5“": "Município de Plovdiv – Missão Lauta 5",
     "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5": "TrafficNews — número recorde de voluntários na Missão Lauta 5",
     "БНТ — почистват квартал „Столипиново“": "BNT — limpeza em Stolipinovo",
@@ -9063,7 +9063,7 @@ export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
 // Shared person-role tags (objective: one source of truth for People + History).
 // Adding a locale to `Lang` forces a translation here via the Record<Lang> type.
 export const roleLabels: Record<string, Record<Lang, string>> = {
-  academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien", it: "accademico", tr: "akademisyen", es: "académico", el: "ακαδημαϊκός" , ja: "学者", tl: "akademiko", uk: "академік", ru: "академик", pl: "akademik" , pt: "acadêmico"},
+  academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien", it: "accademico", tr: "akademisyen", es: "académico", el: "ακαδημαϊκός" , ja: "学者", tl: "akademiko", uk: "академік", ru: "академик", pl: "akademik" , pt: "académico"},
   actor: { bg: "актьор", en: "actor", de: "Schauspieler", fr: "acteur", it: "attore", tr: "aktör", es: "actor", el: "ηθοποιός" , ja: "俳優", tl: "aktor", uk: "актор", ru: "актёр", pl: "aktor" , pt: "ator"},
   art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker", fr: "historien de l'art", it: "storico dell'arte", tr: "sanat tarihçisi", es: "historiador del arte", el: "ιστορικός τέχνης" , ja: "美術史家", tl: "istoryador ng sining", uk: "мистецтвознавець", ru: "искусствовед", pl: "historyk sztuki" , pt: "historiador da arte"},
   artist: { bg: "художник", en: "artist", de: "Künstler", fr: "artiste", it: "artista", tr: "sanatçı", es: "artista", el: "καλλιτέχνης" , ja: "芸術家", tl: "artista", uk: "художник", ru: "художник", pl: "artysta" , pt: "artista"},
@@ -9076,21 +9076,21 @@ export const roleLabels: Record<string, Record<Lang, string>> = {
   choreographer: { bg: "хореограф", en: "choreographer", de: "Choreograf", fr: "chorégraphe", it: "coreografo", tr: "koreograf", es: "coreógrafo", el: "χορογράφος" , ja: "振付家", tl: "koreograpo", uk: "хореограф", ru: "хореограф", pl: "choreograf" , pt: "coreógrafo"},
   clergy: { bg: "духовник", en: "clergy", de: "Geistlicher", fr: "ecclésiastique", it: "religioso", tr: "din adamı", es: "clérigo", el: "κληρικός" , ja: "聖職者", tl: "klero", uk: "духовна особа", ru: "духовное лицо", pl: "duchowny" , pt: "clero"},
   composer: { bg: "композитор", en: "composer", de: "Komponist", fr: "compositeur", it: "compositore", tr: "besteci", es: "compositor", el: "συνθέτης" , ja: "作曲家", tl: "kompositor", uk: "композитор", ru: "композитор", pl: "kompozytor" , pt: "compositor"},
-  conductor: { bg: "диригент", en: "conductor", de: "Dirigent", fr: "chef d'orchestre", it: "direttore d'orchestra", tr: "orkestra şefi", es: "director de orquesta", el: "μαέστρος" , ja: "指揮者", tl: "konduktor", uk: "диригент", ru: "дирижёр", pl: "dyrygent" , pt: "condutor"},
+  conductor: { bg: "диригент", en: "conductor", de: "Dirigent", fr: "chef d'orchestre", it: "direttore d'orchestra", tr: "orkestra şefi", es: "director de orquesta", el: "μαέστρος" , ja: "指揮者", tl: "konduktor", uk: "диригент", ru: "дирижёр", pl: "dyrygent" , pt: "maestro"},
   cultural_manager: { bg: "културен мениджър", en: "cultural manager", de: "Kulturmanager", fr: "gestionnaire culturel", it: "manager culturale", tr: "kültür yöneticisi", es: "gestor cultural", el: "πολιτιστικός διαχειριστής" , ja: "文化マネージャー", tl: "tagapamahala ng kultura", uk: "культурний менеджер", ru: "культурный менеджер", pl: "menedżer kultury" , pt: "gestor cultural"},
-  designer: { bg: "дизайнер", en: "designer", de: "Designer", fr: "designer", it: "designer", tr: "tasarımcı", es: "diseñador", el: "σχεδιαστής" , ja: "デザイナー", tl: "disenyador", uk: "дизайнер", ru: "дизайнер", pl: "projektant" , pt: "desenhista"},
+  designer: { bg: "дизайнер", en: "designer", de: "Designer", fr: "designer", it: "designer", tr: "tasarımcı", es: "diseñador", el: "σχεδιαστής" , ja: "デザイナー", tl: "disenyador", uk: "дизайнер", ru: "дизайнер", pl: "projektant" , pt: "designer"},
   diplomat: { bg: "дипломат", en: "diplomat", de: "Diplomat", fr: "diplomate", it: "diplomatico", tr: "diplomat", es: "diplomático", el: "διπλωμάτης" , ja: "外交官", tl: "diplomatiko", uk: "дипломат", ru: "дипломат", pl: "dyplomata" , pt: "diplomata"},
   economist: { bg: "икономист", en: "economist", de: "Ökonom", fr: "économiste", it: "economista", tr: "iktisatçı", es: "economista", el: "οικονομολόγος" , ja: "経済学者", tl: "ekonomista", uk: "економіст", ru: "экономист", pl: "ekonomista" , pt: "economista"},
   educator: { bg: "педагог", en: "educator", de: "Pädagoge", fr: "pédagogue", it: "pedagogo", tr: "eğitimci", es: "pedagogo", el: "παιδαγωγός" , ja: "教育者", tl: "edukador", uk: "педагог", ru: "педагог", pl: "pedagog" , pt: "educador"},
   electrical_engineer: { bg: "електроинженер", en: "electrical engineer", de: "Elektroingenieur", fr: "ingénieur électricien", it: "ingegnere elettrico", tr: "elektrik mühendisi", es: "ingeniero eléctrico", el: "ηλεκτρολόγος μηχανικός" , ja: "電気技師", tl: "inhinyerong elektrikal", uk: "інженер-електрик", ru: "инженер-электрик", pl: "inżynier elektryk" , pt: "engenheiro eletricista"},
   engineer: { bg: "инженер", en: "engineer", de: "Ingenieur", fr: "ingénieur", it: "ingegnere", tr: "mühendis", es: "ingeniero", el: "μηχανικός" , ja: "技師", tl: "inhinyero", uk: "інженер", ru: "инженер", pl: "inżynier" , pt: "engenheiro"},
-  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler", fr: "cavalier", it: "cavaliere", tr: "binici", es: "jinete", el: "ιππέας" , ja: "馬術選手", tl: "mangangabayo", uk: "вершник", ru: "наездник", pl: "jeździec" , pt: "equestre"},
+  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler", fr: "cavalier", it: "cavaliere", tr: "binici", es: "jinete", el: "ιππέας" , ja: "馬術選手", tl: "mangangabayo", uk: "вершник", ru: "наездник", pl: "jeździec" , pt: "cavaleiro"},
   fencer: { bg: "фехтовач", en: "fencer", de: "Fechter", fr: "escrimeur", it: "schermidore", tr: "eskrimci", es: "esgrimista", el: "ξιφομάχος" , ja: "フェンシング選手", tl: "esgrimista", uk: "фехтувальник", ru: "фехтовальщик", pl: "szermierz" , pt: "esgrimista"},
   film_director: { bg: "филмов режисьор", en: "film director", de: "Filmregisseur", fr: "réalisateur", it: "regista cinematografico", tr: "film yönetmeni", es: "director de cine", el: "σκηνοθέτης κινηματογράφου" , ja: "映画監督", tl: "direktor ng pelikula", uk: "кінорежисер", ru: "кинорежиссёр", pl: "reżyser filmowy" , pt: "diretor de cinema"},
   first_lady: { bg: "първа дама", en: "first lady", de: "First Lady", fr: "première dame", it: "first lady", tr: "first lady", es: "primera dama", el: "πρώτη κυρία" , ja: "ファーストレディー", tl: "Unang Ginang", uk: "перша леді", ru: "первая леди", pl: "pierwsza dama" , pt: "primeira-dama"},
   football_referee: { bg: "футболен съдия", en: "football referee", de: "Fußballschiedsrichter", fr: "arbitre de football", it: "arbitro di calcio", tr: "futbol hakemi", es: "árbitro de fútbol", el: "διαιτητής ποδοσφαίρου" , ja: "サッカー審判員", tl: "referi ng football", uk: "футбольний суддя", ru: "футбольный судья", pl: "sędzia piłkarski" , pt: "árbitro de futebol"},
   footballer: { bg: "футболист", en: "footballer", de: "Fußballspieler", fr: "footballeur", it: "calciatore", tr: "futbolcu", es: "futbolista", el: "ποδοσφαιριστής" , ja: "サッカー選手", tl: "manlalaro ng football", uk: "футболіст", ru: "футболист", pl: "piłkarz" , pt: "jogador de futebol"},
-  general: { bg: "генерал", en: "general", de: "General", fr: "général", it: "generale", tr: "general", es: "general", el: "στρατηγός" , ja: "将軍", tl: "heneral", uk: "генерал", ru: "генерал", pl: "generał" , pt: "geral"},
+  general: { bg: "генерал", en: "general", de: "General", fr: "général", it: "generale", tr: "general", es: "general", el: "στρατηγός" , ja: "将軍", tl: "heneral", uk: "генерал", ru: "генерал", pl: "generał" , pt: "general"},
   geographer: { bg: "географ", en: "geographer", de: "Geograf", fr: "géographe", it: "geografo", tr: "coğrafyacı", es: "geógrafo", el: "γεωγράφος" , ja: "地理学者", tl: "geograpo", uk: "географ", ru: "географ", pl: "geograf" , pt: "geógrafo"},
   gymnast: { bg: "гимнастик", en: "gymnast", de: "Turner", fr: "gymnaste", it: "ginnasta", tr: "jimnastikçi", es: "gimnasta", el: "γυμναστής" , ja: "体操選手", tl: "jimnasta", uk: "гімнаст", ru: "гимнаст", pl: "gimnastyk" , pt: "ginasta"},
   high_jumper: { bg: "скачач на височина", en: "high jumper", de: "Hochspringer", fr: "sauteur en hauteur", it: "saltatore in alto", tr: "yüksek atlamacı", es: "saltador de altura", el: "άλτης ύψους" , ja: "走高跳選手", tl: "tumatalon nang mataas", uk: "стрибун у висоту", ru: "прыгун в высоту", pl: "skoczek wzwyż" , pt: "saltador em altura"},
@@ -9100,7 +9100,7 @@ export const roleLabels: Record<string, Record<Lang, string>> = {
   jurist: { bg: "юрист", en: "jurist", de: "Jurist", fr: "juriste", it: "giurista", tr: "hukukçu", es: "jurista", el: "νομικός" , ja: "法律家", tl: "hurista", uk: "юрист", ru: "юрист", pl: "prawnik" , pt: "jurista"},
   martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist", de: "Kampfsportler", fr: "artiste martial", it: "artista marziale", tr: "dövüş sanatçısı", es: "artista marcial", el: "αθλητής πολεμικών τεχνών" , ja: "武道家", tl: "mandirigma", uk: "спортсмен бойових мистецтв", ru: "спортсмен по боевым искусствам", pl: "zawodnik sztuk walki" , pt: "artista marcial"},
   mathematician: { bg: "математик", en: "mathematician", de: "Mathematiker", fr: "mathématicien", it: "matematico", tr: "matematikçi", es: "matemático", el: "μαθηματικός" , ja: "数学者", tl: "matematiko", uk: "математик", ru: "математик", pl: "matematyk" , pt: "matemático"},
-  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister", fr: "maire", it: "sindaco", tr: "belediye başkanı", es: "alcalde", el: "δήμαρχος" , ja: "市長", tl: "alkalde", uk: "мер", ru: "мэр", pl: "burmistrz" , pt: "prefeito"},
+  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister", fr: "maire", it: "sindaco", tr: "belediye başkanı", es: "alcalde", el: "δήμαρχος" , ja: "市長", tl: "alkalde", uk: "мер", ru: "мэр", pl: "burmistrz" , pt: "autarca"},
   merchant: { bg: "търговец", en: "merchant", de: "Kaufmann", fr: "marchand", it: "mercante", tr: "tüccar", es: "comerciante", el: "έμπορος" , ja: "商人", tl: "mangangalakal", uk: "купець", ru: "купец", pl: "kupiec" , pt: "comerciante"},
   military_officer: { bg: "офицер", en: "military officer", de: "Offizier", fr: "officier", it: "ufficiale", tr: "subay", es: "oficial", el: "αξιωματικός" , ja: "軍人", tl: "opisyal militar", uk: "офіцер", ru: "офицер", pl: "oficer" , pt: "oficial militar"},
   mineralogist: { bg: "минералог", en: "mineralogist", de: "Mineraloge", fr: "minéralogiste", it: "mineralogista", tr: "mineralog", es: "mineralogista", el: "ορυκτολόγος" , ja: "鉱物学者", tl: "mineralogo", uk: "мінералог", ru: "минералог", pl: "mineralog" , pt: "mineralogista"},
@@ -9108,7 +9108,7 @@ export const roleLabels: Record<string, Record<Lang, string>> = {
   model: { bg: "модел", en: "model", de: "Model", fr: "mannequin", it: "modella", tr: "manken", es: "modelo", el: "μοντέλο" , ja: "モデル", tl: "modelo", uk: "модель", ru: "модель", pl: "model" , pt: "modelo"},
   modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete", de: "Moderner Fünfkämpfer", fr: "pentathlonien moderne", it: "pentatleta moderno", tr: "modern pentatlet", es: "pentatleta moderno", el: "αθλητής σύγχρονου πεντάθλου" , ja: "近代五種選手", tl: "atleta ng modernong pentahlon", uk: "спортсмен із сучасного п'ятиборства", ru: "спортсмен по современному пятиборью", pl: "pięcioboista nowoczesny" , pt: "pentatleta moderno"},
   musician: { bg: "музикант", en: "musician", de: "Musiker", fr: "musicien", it: "musicista", tr: "müzisyen", es: "músico", el: "μουσικός" , ja: "音楽家", tl: "musikero", uk: "музикант", ru: "музыкант", pl: "muzyk" , pt: "músico"},
-  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger", fr: "chanteur d'opéra", it: "cantante lirico", tr: "opera sanatçısı", es: "cantante de ópera", el: "λυρικός τραγουδιστής" , ja: "オペラ歌手", tl: "mang-aawit ng opera", uk: "оперний співак", ru: "оперный певец", pl: "śpiewak operowy" , pt: "cantora de ópera"},
+  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger", fr: "chanteur d'opéra", it: "cantante lirico", tr: "opera sanatçısı", es: "cantante de ópera", el: "λυρικός τραγουδιστής" , ja: "オペラ歌手", tl: "mang-aawit ng opera", uk: "оперний співак", ru: "оперный певец", pl: "śpiewak operowy" , pt: "cantor de ópera"},
   painter: { bg: "живописец", en: "painter", de: "Maler", fr: "peintre", it: "pittore", tr: "ressam", es: "pintor", el: "ζωγράφος" , ja: "画家", tl: "pintor", uk: "живописець", ru: "живописец", pl: "malarz" , pt: "pintor"},
   paleontologist: { bg: "палеонтолог", en: "paleontologist", de: "Paläontologe", fr: "paléontologue", it: "paleontologo", tr: "paleontolog", es: "paleontólogo", el: "παλαιοντολόγος" , ja: "古生物学者", tl: "paleontologo", uk: "палеонтолог", ru: "палеонтолог", pl: "paleontolog" , pt: "paleontólogo"},
   patriarch: { bg: "патриарх", en: "patriarch", de: "Patriarch", fr: "patriarche", it: "patriarca", tr: "patrik", es: "patriarca", el: "πατριάρχης" , ja: "総主教", tl: "patriyarka", uk: "патріарх", ru: "патриарх", pl: "patriarcha" , pt: "patriarca"},
@@ -9127,7 +9127,7 @@ export const roleLabels: Record<string, Record<Lang, string>> = {
   saint: { bg: "светец", en: "saint", de: "Heiliger", fr: "saint", it: "santo", tr: "aziz", es: "santo", el: "άγιος" , ja: "聖人", tl: "santo", uk: "святий", ru: "святой", pl: "święty" , pt: "santo"},
   scholar: { bg: "учен", en: "scholar", de: "Gelehrter", fr: "érudit", it: "studioso", tr: "âlim", es: "erudito", el: "λόγιος" , ja: "学者", tl: "iskolar", uk: "вчений", ru: "учёный", pl: "uczony" , pt: "estudioso"},
   scientist: { bg: "учен", en: "scientist", de: "Wissenschaftler", fr: "scientifique", it: "scienziato", tr: "bilim insanı", es: "científico", el: "επιστήμονας" , ja: "科学者", tl: "siyentista", uk: "науковець", ru: "научный деятель", pl: "naukowiec" , pt: "cientista"},
-  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor", fr: "scénariste", it: "sceneggiatore", tr: "senarist", es: "guionista", el: "σεναριογράφος" , ja: "脚本家", tl: "manunulat ng iskrip", uk: "сценарист", ru: "сценарист", pl: "scenarzysta" , pt: "roteirista"},
+  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor", fr: "scénariste", it: "sceneggiatore", tr: "senarist", es: "guionista", el: "σεναριογράφος" , ja: "脚本家", tl: "manunulat ng iskrip", uk: "сценарист", ru: "сценарист", pl: "scenarzysta" , pt: "argumentista"},
   sculptor: { bg: "скулптор", en: "sculptor", de: "Bildhauer", fr: "sculpteur", it: "scultore", tr: "heykeltıraş", es: "escultor", el: "γλύπτης" , ja: "彫刻家", tl: "eskultor", uk: "скульптор", ru: "скульптор", pl: "rzeźbiarz" , pt: "escultor"},
   singer: { bg: "певец", en: "singer", de: "Sänger", fr: "chanteur", it: "cantante", tr: "şarkıcı", es: "cantante", el: "τραγουδιστής" , ja: "歌手", tl: "mang-aawit", uk: "співак", ru: "певец", pl: "śpiewak" , pt: "cantor"},
   sports_shooter: { bg: "спортен стрелец", en: "sport shooter", de: "Sportschütze", fr: "tireur sportif", it: "tiratore sportivo", tr: "atıcı", es: "tirador deportivo", el: "σκοπευτής" , ja: "射撃選手", tl: "mamamaril sa isports", uk: "спортивний стрілець", ru: "спортивный стрелок", pl: "strzelec sportowy" , pt: "atirador desportivo"},

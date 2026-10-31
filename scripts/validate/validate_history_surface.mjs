@@ -335,7 +335,7 @@ if (!historyAssetScripts.includes("history-conflict-note")) {
   fail("history timeline bundle is missing conflict-note rendering");
 }
 
-const localePrefixes = ["", "/en", "/de", "/fr", "/it", "/tr", "/es", "/el", "/ja", "/uk", "/tl", "/ru"];
+const localePrefixes = ["", "/en", "/de", "/fr", "/it", "/tr", "/es", "/el", "/ja", "/uk", "/tl", "/ru", "/pl", "/pt"];
 const localeByPrefix = new Map([
   ["", "bg"],
   ["/en", "en"],
