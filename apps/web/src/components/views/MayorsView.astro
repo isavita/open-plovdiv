@@ -1,4 +1,5 @@
 ---
+import { ptText } from "@i18n/ptUiTranslations";
 import Layout from "@layouts/Layout.astro";
 import SectionNav from "@components/SectionNav.astro";
 import { ui, type Lang } from "@i18n/ui";
@@ -58,7 +59,7 @@ const sourceUrls = [...new Map(mayorTerms.map((term) => [term.source_document.ur
 
 const config = {
   countAll: t.mayors.count(mayorTerms.length),
-  countFiltered: "{visible} " + (lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : lang === "ja" ? "/" : lang === "tl" ? "sa" : lang === "uk" ? "з" : lang === "ru" ? "из" : lang === "pl" ? "z" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : lang === "de" ? "Mandaten" : lang === "fr" ? "mandats" : lang === "it" ? "mandati" : lang === "tr" ? "görev süresi" : lang === "es" ? "mandatos" : lang === "el" ? "θητείες" : lang === "ja" ? "任期" : lang === "tl" ? "na termino" : lang === "uk" ? "каденцій" : lang === "ru" ? "сроков полномочий" : lang === "pl" ? "kadencji" : "terms"),
+  countFiltered: "{visible} " + (lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : lang === "ja" ? "/" : lang === "tl" ? "sa" : lang === "uk" ? "з" : lang === "ru" ? "из" : lang === "pl" ? "z" : lang === "pt" ? "de" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : lang === "de" ? "Mandaten" : lang === "fr" ? "mandats" : lang === "it" ? "mandati" : lang === "tr" ? "görev süresi" : lang === "es" ? "mandatos" : lang === "el" ? "θητείες" : lang === "ja" ? "任期" : lang === "tl" ? "na termino" : lang === "uk" ? "каденцій" : lang === "ru" ? "сроков полномочий" : lang === "pl" ? "kadencji" : lang === "pt" ? "mandatos" : "terms"),
   empty: t.mayors.empty
 };
 
@@ -86,7 +87,7 @@ const multiTerm = [...groups.values()]
 
 // sourced family ties between mayors (kept only when both members exist as terms)
 const familyPairs = [
-  { a: "Христо Г. Данов", b: "Милош Данов", label_bg: "баща и син", label_en: "father & son", label_de: "Vater und Sohn", label_fr: "père et fils", label_it: "padre e figlio", label_tr: "baba ve oğul", label_es: "padre e hijo", label_el: "πατέρας και γιος", label_ja: "父と息子", label_tl: "ama at anak", label_uk: "батько і син", label_ru: "отец и сын", label_pl: "ojciec i syn" }
+  { a: "Христо Г. Данов", b: "Милош Данов", label_bg: "баща и син", label_en: "father & son", label_de: "Vater und Sohn", label_fr: "père et fils", label_it: "padre e figlio", label_tr: "baba ve oğul", label_es: "padre e hijo", label_el: "πατέρας και γιος", label_ja: "父と息子", label_tl: "ama at anak", label_uk: "батько і син", label_ru: "отец и сын", label_pl: "ojciec i syn", label_pt: "pai e filho" }
 ];
 const familyTies = familyPairs.filter(
   (pair) =>
@@ -137,7 +138,7 @@ const tr = (
   uk: string,
   ru: string,
   pl: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl } satisfies Record<Lang, string>)[lang];
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl, pt: ptText(en) } satisfies Record<Lang, string>)[lang];
 
 const periodBands = [
   {
@@ -499,8 +500,13 @@ const sectionNav = ({
         { id: "timeline", label: "Chronologia" },
         { id: "all-mayors", label: "Wszyscy" }
       ]
-    } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
-const sectionNavLabel = lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : lang === "tl" ? "Mga Seksyon ng Pahina" : lang === "uk" ? "Розділи сторінки" : lang === "ru" ? "Разделы страницы" : lang === "pl" ? "Sekcje strony" : "Page sections";
+    , pt: [
+        { id: "connections", label: "Conexões" },
+        { id: "birthplaces", label: "Locais de nascimento" },
+        { id: "timeline", label: "Linha do tempo" },
+        { id: "all-mayors", label: "Todos os autarcas" }
+      ]} satisfies Record<Lang, { id: string; label: string }[]>)[lang];
+const sectionNavLabel = lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : lang === "tl" ? "Mga Seksyon ng Pahina" : lang === "uk" ? "Розділи сторінки" : lang === "ru" ? "Разделы страницы" : lang === "pl" ? "Sekcje strony" : lang === "pt" ? "Secções da página" : "Page sections";
 ---
 
 <Layout lang={lang} path="/mayors" title={t.mayors.title} description={t.mayors.lead}>

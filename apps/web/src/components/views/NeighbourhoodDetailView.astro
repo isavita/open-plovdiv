@@ -1,4 +1,5 @@
 ---
+import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
 import { field, localeForLang, localizePath, type Lang } from "@i18n/utils";
 import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
@@ -216,9 +217,9 @@ const structuredData = {
                   )}
                 </a>
                 <figcaption>
-                  <a href={heroMedia.page_url} target="_blank" rel="noreferrer">{heroMedia.credit}</a>
+                  <a href={heroMedia.page_url} target="_blank" rel="noreferrer">{mediaAttribution(heroMedia.credit, lang)}</a>
                   <span aria-hidden="true">·</span>
-                  <a href={heroMedia.license_url} target="_blank" rel="noreferrer">{heroMedia.license}</a>
+                  <a href={heroMedia.license_url} target="_blank" rel="noreferrer">{mediaAttribution(heroMedia.license, lang)}</a>
                 </figcaption>
               </figure>
             )}

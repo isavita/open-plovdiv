@@ -64,7 +64,7 @@ const governanceTitles: Record<Lang, string> = {
   uk: "Управління",
   ru: "Управление",
   pl: "Zarządzanie"
-};
+, pt: "Governança"};
 
 function localized(record: unknown, base: string, lang: Lang): string {
   return field(record as Record<string, unknown>, base, lang).trim();

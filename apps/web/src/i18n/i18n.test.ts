@@ -46,9 +46,9 @@ const POLISH_ONLY_LETTERS = /[\u0105\u0107\u0119\u0142\u0144\u015b\u017a\u017c]/
 // Bulgarian's Cyrillic script, so a blanket "no Cyrillic" assertion would
 // false-positive on correctly translated text. See the dedicated "Ukrainian UI"
 // and "Russian UI" tests below instead.
-const NON_BG_SCRIPT_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "pl"];
+const NON_BG_SCRIPT_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "pl", "pt"];
 // Locales written in the Latin script (used for assertions that are Latin-only).
-const LATIN_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "tl", "pl"];
+const LATIN_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "tl", "pl", "pt"];
 
 /** Collect [dottedPath, value] for every *string* leaf; skip functions. */
 function collectStrings(
@@ -69,7 +69,7 @@ function collectStrings(
 
 describe("i18n locales", () => {
   it("registers every shipped locale", () => {
-    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"]);
+    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl", "pt"]);
   });
 
   it("every locale exposes a non-empty display name", () => {
@@ -197,7 +197,7 @@ describe("ui dictionary parity", () => {
 
 describe("generated translation JSON", () => {
   it("Japanese translations have exact key parity with the other generated locales and no blanks", () => {
-    const langs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"];
+    const langs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl", "pt"];
     const translations = Object.fromEntries(
       langs.map((lang) => [
         lang,
@@ -212,6 +212,23 @@ describe("generated translation JSON", () => {
     for (const [key, value] of Object.entries(translations.ja)) {
       expect(value.trim().length, `data/translations/ja.json:${key}`).toBeGreaterThan(0);
     }
+  });
+
+  it("Portuguese mayor succession records preserve names and direction", () => {
+    const translations = JSON.parse(fs.readFileSync(path.join(repoRoot, "data/translations/pt.json"), "utf8")) as Record<string, string>;
+    let count = 0;
+    for (const [source, translated] of Object.entries(translations)) {
+      const sourceNames = source.match(/Garabed Tomasyan/g)?.length ?? 0;
+      expect(translated.match(/Garabed Tomasyan/g)?.length ?? 0, source).toBeLessThanOrEqual(sourceNames);
+      const match = source.match(/^Person relationship: (.+) — (succeeded by|succeeds) — (.+)\.$/);
+      if (!match) continue;
+      const [, person, direction, other] = match;
+      expect(translated, source).toBe(`Relação entre pessoas: ${person} — ${direction === "succeeded by" ? "sucedido por" : "sucede a"} — ${other}.`);
+      count++;
+    }
+    expect(count).toBeGreaterThan(100);
+    expect(translations["Roman period, late 1st c."]).toBe("Período romano, final do século I");
+    expect(translations["1st c. AD"]).toBe("século I d.C.");
   });
 
   it("Polish mayor succession translations preserve the source direction", () => {
@@ -356,7 +373,7 @@ describe("data-label maps", () => {
 });
 
 describe("route parity", () => {
-  function routeFiles(locale: "en" | "ja" | "tl" | "uk" | "ru" | "pl") {
+  function routeFiles(locale: "en" | "ja" | "tl" | "uk" | "ru" | "pl" | "pt") {
     const base = path.join(repoRoot, "apps/web/src/pages", locale);
     const walk = (dir: string): string[] =>
       fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -385,6 +402,10 @@ describe("route parity", () => {
 
   it("/pl has exact source route parity with /en", () => {
     expect(routeFiles("pl")).toEqual(routeFiles("en"));
+  });
+
+  it("/pt has exact source route parity with /en", () => {
+    expect(routeFiles("pt")).toEqual(routeFiles("en"));
   });
 });
 
@@ -458,5 +479,6 @@ describe("localised routing", () => {
     expect(localeForLang("uk")).toBe("uk-UA");
     expect(localeForLang("ru")).toBe("ru-RU");
     expect(localeForLang("pl")).toBe("pl-PL");
+    expect(localeForLang("pt")).toBe("pt-PT");
   });
 });

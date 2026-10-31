@@ -4,7 +4,7 @@ import process from "node:process";
 
 const root = process.cwd();
 const targetLang = process.argv[2] ?? "de";
-const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"]);
+const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl", "pt"]);
 if (!supportedTargetLangs.has(targetLang)) {
   throw new Error(`Unsupported target language "${targetLang}". Expected one of: ${[...supportedTargetLangs].join(", ")}`);
 }
@@ -834,7 +834,7 @@ const landmarkFixupsByLang = {
     ["The Seven Hills", "七つの丘"]
   ]
 };
-const manualTranslations = manualTranslationsByLang[targetLang];
+const manualTranslations = manualTranslationsByLang[targetLang] ?? {};
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -984,6 +984,9 @@ function expandJapaneseNameFixups(fixups) {
 }
 
 async function buildProtectedNameFixups(protectedNames, existing) {
+  // Do not globally replace short machine-rendered names: a partial title such
+  // as "Dr." would inject a person into unrelated records.
+  if (targetLang === "pt") return [];
   const existingFixups = [...protectedNames]
     .map((name) => [existing[name], name])
     .filter(([translatedName, name]) => translatedName && translatedName !== name);
@@ -2946,6 +2949,29 @@ function applyTagalogTemplateFixups(translations) {
   }
 }
 
+function applyPortugueseRelationshipFixups(translations) {
+  if (targetLang !== "pt") return;
+  for (const source of Object.keys(translations)) {
+    let match = source.match(/^Person relationship: (.+) — (succeeded by|succeeds) — (.+)\.$/);
+    if (match) {
+      const [, person, direction, other] = match;
+      translations[source] = `Relação entre pessoas: ${person} — ${direction === "succeeded by" ? "sucedido por" : "sucede a"} — ${other}.`;
+      continue;
+    }
+    match = source.match(/^The mayoral chronology links (.+) with (.+) through the relationship "(succeeded by|succeeds)"\.$/);
+    if (match) {
+      const [, person, other, direction] = match;
+      translations[source] = `Cronologia dos autarcas: ${person} — ${direction === "succeeded by" ? "sucedido por" : "sucede a"} — ${other}.`;
+      continue;
+    }
+    match = source.match(/^(.+) — (succeeded by|succeeds) — (.+)$/);
+    if (match) {
+      const [, person, direction, other] = match;
+      translations[source] = `${person} — ${direction === "succeeded by" ? "sucedido por" : "sucede a"} — ${other}`;
+    }
+  }
+}
+
 const existing = fs.existsSync(outputPath) ? readJson(outputPath) : {};
 const allStrings = new Set();
 const protectedNames = new Set();
@@ -3052,6 +3078,7 @@ applyRussianDeclensionFixups(translations);
 applyRussianTemplateFixups(translations);
 applyTagalogTemplateFixups(translations);
 applyPolishTemplateFixups(translations);
+applyPortugueseRelationshipFixups(translations);
 applyManualTranslations(translations, allStrings);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });

@@ -1,4 +1,5 @@
 ---
+import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
 import {
   categoryColors,
@@ -214,7 +215,20 @@ const editorialCopy: Record<
     external: "Strona zewnętrzna",
     checked: "Sprawdzono"
   }
-};
+, pt: {
+    readOnly: "Diretório editorial · só leitura",
+    trust: "O Open Plovdiv apresenta iniciativas verificáveis a partir de fontes públicas. O site não aceita relatórios ou propostas de novas iniciativas.",
+    explore: "Explore as iniciativas",
+    visualContext: "Contexto de Plovdiv",
+    directoryTitle: "Grupos, causas e caminhos a seguir",
+    directoryLead: "Escolha um tema ou pesquise um local. Verifique diretamente com o organizador as datas atuais e as formas de participar.",
+    visitOrganizer: "Visite o organizador",
+    evidence: "Fontes e verificação",
+    location: "Localização",
+    related: "Projeto público relacionado",
+    external: "Página externa",
+    checked: "Verificado"
+  }};
 
 const copy = editorialCopy[lang];
 const categories = Array.from(new Set(communityInitiatives.map((item) => item.category))).sort();
@@ -353,7 +367,7 @@ const clientConfig = {
               </a>
               <figcaption>
                 <a href={visual.pageUrl} target="_blank" rel="noreferrer">
-                  {visual.credit} · {visual.license}
+                  {mediaAttribution(visual.credit, lang)} · {mediaAttribution(visual.license, lang)}
                 </a>
               </figcaption>
             </figure>
@@ -448,7 +462,7 @@ const clientConfig = {
                     />
                     <span class="community-media-context">{copy.visualContext}</span>
                     <a class="community-media-credit" href={visual.pageUrl} target="_blank" rel="noreferrer">
-                      {visual.credit} · {visual.license}
+                      {mediaAttribution(visual.credit, lang)} · {mediaAttribution(visual.license, lang)}
                     </a>
                   </>
                 ) : (

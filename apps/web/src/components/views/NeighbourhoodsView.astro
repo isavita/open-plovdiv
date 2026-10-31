@@ -1,4 +1,5 @@
 ---
+import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
 import { field, localeForLang, localizePath, type Lang } from "@i18n/utils";
 import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
@@ -149,7 +150,7 @@ const mapConfig = {
                 {media.scope === "district_context" && (
                   <span class="nb-card-media-context">{t.districtContextPhoto}</span>
                 )}
-                <span class="nb-card-media-credit">{media.credit} · {media.license}</span>
+                <span class="nb-card-media-credit">{mediaAttribution(media.credit, lang)} · {mediaAttribution(media.license, lang)}</span>
               </a>
             )}
             <div class="nb-card-body">

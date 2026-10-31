@@ -9,8 +9,9 @@ import {
   type Lang
 } from "../i18n/ui";
 import { translateEn } from "../i18n/deTranslations";
+import { ptText } from "../i18n/ptUiTranslations";
 
-const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP", tl: "fil-PH", uk: "uk-UA", ru: "ru-RU", pl: "pl-PL" };
+const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP", tl: "fil-PH", uk: "uk-UA", ru: "ru-RU", pl: "pl-PL" , pt: "pt-PT"};
 
 const knownHistoryText: Record<Lang, Record<string, string>> = {
   bg: {},
@@ -224,6 +225,17 @@ const knownHistoryText: Record<Lang, Record<string, string>> = {
     "Building or urban site from Plovdiv's Revival and early modern heritage.":
       "Budynek lub obiekt miejski z dziedzictwa odrodzenia i wczesnej nowoczesności Plovdivu."
   }
+, pt: {
+    wikidata_coordinate: "Coordenadas Wikidata", approximate_site: "localização aproximada",
+    district_centroid: "centro do bairro", citywide_reference: "referência para a cidade",
+    "Modern period": "Época moderna", "Bulgarian Revival": "Renascimento Nacional Búlgaro",
+    "Thracian era – Antiquity": "Época trácia – Antiguidade", "Roman period": "Período romano", "Ottoman period": "Período otomano",
+    "not identified in the current public source": "não identificado na fonte pública disponível",
+    "not applicable for a natural hill or terrain feature": "não aplicável a uma colina ou formação natural",
+    "Publicly documented historic site; detailed visiting status still needs verification.": "Local histórico documentado publicamente; as condições de visita ainda precisam de confirmação.",
+    "Publicly documented institution, building, or urban site in Plovdiv.": "Instituição, edifício ou local urbano de Plovdiv documentado publicamente.",
+    "Building or urban site from Plovdiv's Revival and early modern heritage.": "Edifício ou local urbano do património do Renascimento Nacional e do início da época moderna de Plovdiv."
+  }
 };
 
 export function formatMoney(
@@ -285,6 +297,17 @@ export function districtLabel(value: string | null, lang: Lang = "bg"): string {
   return lang === "bg" ? value : districtLabels[value] ?? value;
 }
 
+/** Preserve author names and license identifiers while localizing generic attribution terms. */
+export function mediaAttribution(value: string, lang: Lang): string {
+  if (lang !== "pt") return value;
+  return value
+    .replace(/(?:Unknown author){2,}/g, "Unknown author")
+    .replace(/Unknown author/gi, "Autor desconhecido")
+    .replace(/Unknown photographer/gi, "Fotógrafo desconhecido")
+    .replace(/Unknown artist/gi, "Artista desconhecido")
+    .replace(/Public domain/gi, "Domínio público");
+}
+
 export function sourceTitle(title: string, lang: Lang = "bg"): string {
   // Imported coordinate records are useful evidence, but their machine-like
   // source titles made otherwise editorial pages read like an export. Keep
@@ -305,10 +328,10 @@ export function sourceTitle(title: string, lang: Lang = "bg"): string {
       uk: "Координати (Wikidata)",
       ru: "Координаты (Wikidata)",
       pl: "Współrzędne (Wikidata)"
-    };
+    , pt: "Coordenadas (Wikidata)"};
     return `${coordinateLabels[lang]} · ${coordinateRecord[1]}`;
   }
-  return sourceTitleLabels[lang]?.[title] ?? translateEn(title, lang) ?? title;
+  return sourceTitleLabels[lang]?.[title] ?? translateEn(title, lang) ?? (lang === "pt" ? ptText(title) : title);
 }
 
 export function knownHistoryLabel(value: string | null | undefined, lang: Lang = "bg"): string {

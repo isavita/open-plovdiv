@@ -106,7 +106,7 @@
         }
       },
       "patternProperties": {
-        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": {
+        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": {
           "type": "string",
           "minLength": 10
         }
@@ -208,14 +208,14 @@
               }
             },
             "patternProperties": {
-              "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": {
+              "^label_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": {
                 "type": "string"
               }
             }
           }
         },
         "patternProperties": {
-          "^(heading|body|gallery_label)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": {
+          "^(heading|body|gallery_label)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": {
             "type": "string"
           }
         }
@@ -316,14 +316,14 @@
         }
       },
       "patternProperties": {
-        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": {
+        "^caption_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": {
           "type": "string"
         }
       }
     }
   },
   "patternProperties": {
-    "^(title|dek)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$": {
+    "^(title|dek)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": {
       "type": "string"
     }
   }

@@ -113,7 +113,7 @@ const mayorStoryLabels = ({
   uk: { eyebrow: "Історія мера", sourceTrail: "Слід джерел" },
   ru: { eyebrow: "История мэра", sourceTrail: "След источников" },
   pl: { eyebrow: "Historia burmistrza", sourceTrail: "Ślad źródeł" }
-} satisfies Record<Lang, { eyebrow: string; sourceTrail: string }>)[lang];
+, pt: { eyebrow: "História do autarca", sourceTrail: "Fontes" }} satisfies Record<Lang, { eyebrow: string; sourceTrail: string }>)[lang];
 
 // Lead with the real biography as clean prose; the structured facts (born,
 // studied, other roles) are surfaced separately rather than restated as
@@ -132,7 +132,7 @@ const bioHeading = ({
   uk: "Біографія",
   ru: "Биография",
   pl: "Biografia"
-} as Record<Lang, string>)[lang];
+, pt: "Biografia"} as Record<Lang, string>)[lang];
 const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filter(Boolean);
 ---
 
@@ -251,10 +251,10 @@ const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filt
             {sourceTitle(mayor.source_document.title, lang)}
           </a>
           {referenceLinks.slice(0, 3).map((link) => (
-            <a href={link.url} target="_blank" rel="noreferrer">{link.title}</a>
+            <a href={link.url} target="_blank" rel="noreferrer">{sourceTitle(link.title, lang)}</a>
           ))}
           {officialProfileUrl && officialProfileTitle && (
-            <a href={officialProfileUrl} target="_blank" rel="noreferrer">{officialProfileTitle}</a>
+            <a href={officialProfileUrl} target="_blank" rel="noreferrer">{sourceTitle(officialProfileTitle, lang)}</a>
           )}
         </div>
       </article>
@@ -275,7 +275,7 @@ const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filt
           {officialProfile && officialProfileUrl && officialProfileTitle && (
             <li>
               <a href={officialProfileUrl} target="_blank" rel="noreferrer">
-                {t.mayors.officialProfile}: {officialProfileTitle}
+                {t.mayors.officialProfile}: {sourceTitle(officialProfileTitle, lang)}
               </a>
               <span class="meta"> · {officialProfile.accessed_at}</span>
             </li>
@@ -283,7 +283,7 @@ const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filt
           {referenceLinks.map((link) => (
             <li>
               <a href={link.url} target="_blank" rel="noreferrer">
-                {t.mayors.referenceSource}: {link.title}
+                {t.mayors.referenceSource}: {sourceTitle(link.title, lang)}
               </a>
               <span class="meta"> · {link.accessed_at}</span>
             </li>

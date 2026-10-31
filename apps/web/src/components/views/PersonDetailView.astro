@@ -265,7 +265,25 @@ const labels =
         linkedEvent: "Powiązane wydarzenie",
         imageCredit: "Autor zdjęcia"
       }
-      : {
+      : (lang === "pt" ? {
+        back: "Todas as pessoas",
+        profile: "Perfil",
+        facts: "Fatos",
+        roles: "Funções",
+        life: "Datas de vida",
+        born: "Nascido",
+        wikidata: "Wikidados",
+        linkedEvents: "Eventos vinculados",
+        relationships: "Ligações com outras pessoas",
+        noRelationships: "Nenhuma ligação direta com outras pessoas foi ainda registada.",
+        evidence: "Fontes",
+        source: "Fonte",
+        accessed: "Acessado",
+        license: "Licença",
+        relationshipSource: "Fonte de relacionamento",
+        linkedEvent: "Evento vinculado",
+        imageCredit: "Crédito da imagem"
+      } : {
         back: "All people",
         profile: "Profile",
         facts: "Facts",
@@ -283,7 +301,7 @@ const labels =
         relationshipSource: "Relationship source",
         linkedEvent: "Linked event",
         imageCredit: "Image credit"
-      };
+      });
 
 const roleLabels: Record<string, { bg: string; en: string }> = {
   academic: { bg: "академик", en: "academic" },
@@ -545,6 +563,13 @@ const relationshipLabelsPl: Record<string, string> = {
   influenced_by: "pod wpływem"
 };
 
+const relationshipLabelsPt: Record<string, string> = {
+  succeeds: "sucede a", succeeded_by: "sucedido por", spouse: "cônjuge",
+  father: "pai", mother: "mãe", parent: "progenitor", child: "filho ou filha",
+  sibling: "irmão ou irmã", mentor: "mentor", student: "aluno ou aluna",
+  partner: "parceiro ou parceira", influenced_by: "influenciado por"
+};
+
 const roleGroups: Record<string, RoleGroup> = {
   mayor: "governance",
   politician: "governance",
@@ -650,6 +675,7 @@ function relationshipLabel(type: string): string {
   if (lang === "uk") return relationshipLabelsUk[type] ?? type.replaceAll("_", " ");
   if (lang === "ru") return relationshipLabelsRu[type] ?? type.replaceAll("_", " ");
   if (lang === "pl") return relationshipLabelsPl[type] ?? type.replaceAll("_", " ");
+  if (lang === "pt") return relationshipLabelsPt[type] ?? type.replaceAll("_", " ");
   return relationshipLabels[type]?.[lang] ?? type.replaceAll("_", " ");
 }
 
@@ -663,6 +689,7 @@ function lifeLabel(item: KnowledgePerson): string {
   if (lang === "uk") return "невідомо";
   if (lang === "ru") return "неизвестно";
   if (lang === "pl") return "brak danych";
+  if (lang === "pt") return "sem dados";
   return lang === "ja" ? "不明" : "n/a";
 }
 

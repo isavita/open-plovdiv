@@ -1,3 +1,4 @@
+import { ptText } from "../i18n/ptUiTranslations";
 import type { Lang } from "../i18n/ui";
 import type { NeighbourhoodArea, NeighbourhoodEraTag } from "./neighbourhoods";
 
@@ -22,7 +23,7 @@ const tr = (
   uk: string,
   ru: string,
   pl: string
-): Record<Lang, string> => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl });
+): Record<Lang, string> => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl, pt: ptText(en) });
 
 const pick = (table: Record<string, Record<Lang, string>>, lang: Lang): Record<string, string> =>
   Object.fromEntries(Object.entries(table).map(([key, values]) => [key, values[lang]]));

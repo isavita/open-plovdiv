@@ -1,4 +1,5 @@
 ---
+import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
 import { placeImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
 import { field, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
@@ -354,7 +355,32 @@ const labels =
         noArchive:
           "Dla tego miejsca nie ma jeszcze osobnego wpisu archiwalnego ani porównania „kiedyś/dziś”. Główne zdjęcie, współrzędne i źródła pozostają opublikowane."
       }
-      : {
+      : (lang === "pt" ? {
+        back: "Todos os locais",
+        facts: "Fatos",
+        currentStatus: "Estado atual",
+        visit: "Visita e orientação",
+        coordinates: "Coordenadas",
+        openMap: "Abrir mapa",
+        built: "Construção / data",
+        architect: "Arquiteto",
+        builder: "Construtor",
+        creator: "Arquiteto / construtor",
+        source: "Fonte",
+        sources: "Fontes",
+        mediaLicense: "Licença da imagem",
+        mediaFile: "Arquivo de mídia",
+        mediaCredit: "Crédito",
+        matchQuality: "Partida",
+        archiveTitle: "Arquivo para este lugar",
+        thenNowTitle: "Então/agora",
+        thenLabel: "Então",
+        nowLabel: "Foto de referência",
+        eventsTitle: "Eventos vinculados",
+        storiesTitle: "Histórias vinculadas",
+        noArchive:
+          "Nenhum ficheiro separado ou registo então/agora está disponível para este local ainda. A imagem principal, as coordenadas e as fontes permanecem publicadas."
+      } : {
         back: "All places",
         facts: "Facts",
         currentStatus: "Current status",
@@ -379,7 +405,7 @@ const labels =
         storiesTitle: "Linked stories",
         noArchive:
           "No separate archive or then/now record is available for this place yet. The main image, coordinates and sources remain published."
-      };
+      });
 
 type PlaceStoryLabels = {
   storyEyebrow: string;
@@ -1052,7 +1078,44 @@ const storyLabels = ({
     relatedPlacesSentence: (items: string) =>
       `Ipinapakita ng mga kaugnay na lugar na ang lugar na ito ay bahagi ng mas malawak na sistema ng lungsod: ${items}.`
   }
-} satisfies Record<Lang, PlaceStoryLabels>)[lang];
+,
+  pt: {
+    storyEyebrow: "História do lugar",
+    storyTitle: "Como conhecer este lugar",
+    whyTitle: "A sua importância",
+    originTitle: "Origens e épocas",
+    useTitle: "O lugar hoje",
+    stewardshipTitle: "Propriedade, conservação e instituições",
+    timelineTitle: "História ao longo do tempo",
+    evidenceTitle: "Vestígios e fontes",
+    aroundTitle: "Nas imediações",
+    peopleTitle: "Pessoas associadas",
+    organizationsTitle: "Instituições e comunidades",
+    relatedPlacesTitle: "Lugares relacionados",
+    noOwnership: "O registo público utilizado não identifica um historial de propriedade ou gestão. Esta página apresenta apenas as ligações institucionais e as fontes verificadas.",
+    noPeople: "Não há pessoas associadas na base de dados atual.",
+    noOrganizations: "Não há instituições associadas na base de dados atual.",
+    noRelatedPlaces: "Não há outros lugares associados aos mesmos acontecimentos.",
+    noTimeline: "Ainda não há acontecimentos específicos associados a este lugar. O texto baseia-se no seu registo, na sua origem e em fontes públicas.",
+    sourceBacked: "factos com fontes",
+    linkedEvents: "acontecimentos associados",
+    archiveSignals: "registos de arquivo",
+    thenNowSignals: "comparações entre passado e presente",
+    sourceCount: "fontes públicas",
+    dateLabel: "Datação",
+    creatorLabel: "Autoria",
+    statusLabel: "Estado atual",
+    sourceLabel: "Fontes",
+    storyIntro: (name: string, era: string) => `${name} é mais do que um ponto no mapa. Este registo de ${era} reúne vestígios da cidade, fontes públicas e histórias próximas.`,
+    dateSentence: (date: string, source: string) => `A datação publicada é ${date}${source ? `, com base em ${source}` : ""}.`,
+    creatorSentence: (creator: string) => `Quanto à autoria, o registo atual indica: ${creator}.`,
+    statusSentence: (status: string) => `O estado atual é descrito assim: ${status}`,
+    timelineSentence: (count: number) => `A história desenrola-se em ${count} acontecimentos associados, situando o lugar na cronologia mais ampla de Plovdiv.`,
+    archiveSentence: (archiveCount: number, pairCount: number) => `Registos de arquivo: ${archiveCount}; comparações visuais entre passado e presente: ${pairCount}.`,
+    stewardshipWithOrgs: (items: string) => `O contexto institucional inclui ${items}. Isto não constitui necessariamente um historial de propriedade; é uma ligação verificável à conservação, memória ou gestão pública.`,
+    peopleSentence: (items: string) => `As pessoas associadas a este lugar ajudam a contar a sua história através de biografias, acontecimentos e memória cívica: ${items}.`,
+    relatedPlacesSentence: (items: string) => `Os lugares relacionados mostram como este local faz parte de uma rede urbana mais ampla: ${items}.`
+  }} satisfies Record<Lang, PlaceStoryLabels>)[lang];
 
 const historyAtlasLabels =
   lang === "bg"
@@ -1343,7 +1406,29 @@ const historyAtlasLabels =
                       publicRecordNode: "pampublikong talaan",
                       sourcesNode: "pinagmulan"
                     }
-                  : {
+                  : (lang === "pt" ? {
+                      eyebrow: "Atlas de História",
+                      title: "Camadas, ligações e rastreios",
+                      lead: (events: number, stories: number, sources: number) =>
+                        `Este mapa reúne ${events} acontecimentos, ${stories} histórias e ${sources} fontes públicas, sem acrescentar afirmações não fundamentadas.`,
+                      contextTitle: "Rede de contexto",
+                      contextLead: "Os links mostram o que é verificado para o local: acontecimentos, histórias, pessoas, instituições, arquivos e registos públicos.",
+                      eventBrowserTitle: "Transmissão completa do evento",
+                      eventBrowserLead: (count: number) =>
+                        count > 0 ? `Os ${count} acontecimentos associados estão agrupados por tipo de registo.` : "Nenhum evento separado está ligado a este local.",
+                      eventCount: (count: number) => `${count} registos`,
+                      eventSources: (count: number) => `${count} fontes`,
+                      noEvents: "Nenhum evento separado está presente para este local na base de conhecimento atual; utilize o registo público, fontes e descrição.",
+                      rootNode: "lugar",
+                      eventsNode: "eventos",
+                      storiesNode: "histórias",
+                      peopleNode: "pessoas",
+                      organizationsNode: "instituições",
+                      archiveNode: "arquivo",
+                      thenNowNode: "então/agora",
+                      publicRecordNode: "registo público",
+                      sourcesNode: "fontes"
+                    } : {
                       eyebrow: "History atlas",
                       title: "Layers, links and traces",
                       lead: (events: number, stories: number, sources: number) =>
@@ -1365,7 +1450,7 @@ const historyAtlasLabels =
                       thenNowNode: "then/now",
                       publicRecordNode: "public record",
                       sourcesNode: "sources"
-                    };
+                    });
 
 const wikidataLabels =
   lang === "bg"
@@ -1572,7 +1657,22 @@ const wikidataLabels =
                       wikidata: "Talaan ng Wikidata",
                       wikipedia: "Wikipedia"
                     }
-                  : {
+                  : (lang === "pt" ? {
+                      title: "Registo público do Wikidata",
+                      description: "Descrição",
+                      instance_of: "Tipo",
+                      heritage_designation: "Estado/proteção",
+                      inception: "Início",
+                      start_time: "Data de início",
+                      architect: "Arquiteto",
+                      creator: "Criador",
+                      owned_by: "Propriedade de",
+                      operator: "Operador",
+                      location: "Localização",
+                      street_address: "Morada",
+                      wikidata: "Registo Wikidata",
+                      wikipedia: "Wikipédia"
+                    } : {
                       title: "Public Wikidata record",
                       description: "Description",
                       instance_of: "Type",
@@ -1587,7 +1687,7 @@ const wikidataLabels =
                       street_address: "Address",
                       wikidata: "Wikidata record",
                       wikipedia: "Wikipedia"
-                    };
+                    });
 
 function localized(record: Record<string, any> | null | undefined, base: string): string {
   return knownHistoryLabel(field(record, base, lang), lang);
@@ -1666,11 +1766,15 @@ const matchQualityLabels: Record<string, string> =
         same_place_close_viewpoint: "parehong lugar, malapit na punto ng tanaw",
         city_context: "konteksto ng lungsod"
       }
-      : {
+      : (lang === "pt" ? {
+        same_place_approximate_viewpoint: "mesmo lugar, ponto de vista aproximado",
+        same_place_close_viewpoint: "mesmo lugar, ponto de vista próximo",
+        city_context: "contexto da cidade"
+      } : {
         same_place_approximate_viewpoint: "same place, approximate viewpoint",
         same_place_close_viewpoint: "same place, close viewpoint",
         city_context: "city context"
-      };
+      });
 
 function matchQualityLabel(value: string): string {
   return matchQualityLabels[value] ?? value.replaceAll("_", " ");
@@ -1754,7 +1858,11 @@ const trx = (
   tl: string,
   ru: string,
   pl: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, uk, tl, ru, pl })[lang];
+): string => lang === "pt" ? ({
+  "On a walking route": "Num percurso pedestre", "Stop": "Paragem", "of": "de", "min": "min",
+  "Next stop": "Próxima paragem", "See the full route": "Ver o percurso completo", "Nearby": "Nas proximidades",
+  "Straight-line distances computed from the coordinates.": "Distâncias em linha reta calculadas a partir das coordenadas.", "m": "m"
+} as Record<string, string>)[en] ?? en : ({ bg, en, de, fr, it, tr: trk, es, el, ja, uk, tl, ru, pl })[lang];
 
 const discoveryL = {
   onRoute: trx("Част от маршрут", "On a walking route", "Teil einer Route", "Sur un parcours", "Su un percorso", "Bir rotanın parçası", "En una ruta", "Σε διαδρομή", "散策ルートの一部", "Частина маршруту", "Bahagi ng ruta", "Часть маршрута", "Na trasie spacerowej"),
@@ -1911,7 +2019,7 @@ const mapHref = place.coordinates
               width="960" height="600" fetchpriority="high" decoding="async"
               alt={localized(place, "name")} />
             <figcaption>
-              {image.credit} · {image.license}
+              {mediaAttribution(image.credit, lang)} · {mediaAttribution(image.license, lang)}
               <a href={image.page_url} target="_blank" rel="noreferrer">{labels.mediaLicense}</a>
             </figcaption>
           </figure>
@@ -2165,18 +2273,18 @@ const mapHref = place.coordinates
                       <div>
                         <dt>{labels.thenLabel}</dt>
                         <dd>
-                          <span>{labels.mediaCredit}: {pair.then_media.credit}</span>
+                          <span>{labels.mediaCredit}: {mediaAttribution(pair.then_media.credit, lang)}</span>
                           <a href={pair.then_media.page_url} target="_blank" rel="noreferrer">{labels.mediaFile}</a>
-                          <a href={pair.then_media.license_url} target="_blank" rel="noreferrer">{pair.then_media.license}</a>
+                          <a href={pair.then_media.license_url} target="_blank" rel="noreferrer">{mediaAttribution(pair.then_media.license, lang)}</a>
                           <span>{t.common.accessed} {pair.then_media.accessed_at}</span>
                         </dd>
                       </div>
                       <div>
                         <dt>{labels.nowLabel}</dt>
                         <dd>
-                          <span>{labels.mediaCredit}: {pair.now_media.credit}</span>
+                          <span>{labels.mediaCredit}: {mediaAttribution(pair.now_media.credit, lang)}</span>
                           <a href={pair.now_media.page_url} target="_blank" rel="noreferrer">{labels.mediaFile}</a>
-                          <a href={pair.now_media.license_url} target="_blank" rel="noreferrer">{pair.now_media.license}</a>
+                          <a href={pair.now_media.license_url} target="_blank" rel="noreferrer">{mediaAttribution(pair.now_media.license, lang)}</a>
                           <span>{t.common.accessed} {pair.now_media.accessed_at}</span>
                         </dd>
                       </div>
@@ -2195,7 +2303,7 @@ const mapHref = place.coordinates
                   <article class="archive-card" data-place-archive>
                     <figure class="archive-media">
                       <img src={item.media.url} alt={localized(item, "title")} loading="lazy" decoding="async" />
-                      <figcaption>{`${item.media.credit} · ${item.media.license}`}</figcaption>
+                      <figcaption>{`${mediaAttribution(item.media.credit, lang)} · ${mediaAttribution(item.media.license, lang)}`}</figcaption>
                     </figure>
                     <p class="eyebrow">{localized(item, "date_display")}</p>
                     <h3>{localized(item, "title")}</h3>

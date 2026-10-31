@@ -1,4 +1,6 @@
 ---
+import { mediaAttribution } from "@lib/format";
+import { ptText } from "@i18n/ptUiTranslations";
 import Layout from "@layouts/Layout.astro";
 import { visitorGuide } from "@lib/visitorGuide";
 import HeroBackdrop from "@components/HeroBackdrop.astro";
@@ -66,7 +68,7 @@ const historyDataVersion = createHash("sha1")
   .slice(0, 12);
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
 const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string, ell: string, ja: string, tl: string, uk: string, ru: string, pl: string): string =>
-  ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell, ja, tl, uk, ru, pl } satisfies Record<Lang, string>)[lang];
+  ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell, ja, tl, uk, ru, pl, pt: ptText(en) } satisfies Record<Lang, string>)[lang];
 
 const labels = ({
       bg: {
@@ -1044,7 +1046,81 @@ const labels = ({
         jsonData: "Dane JSON",
         csvData: "Tabele CSV"
       }
-    } satisfies Record<Lang, Record<string, string>>)[lang];
+    , pt: {
+        people: "Pessoas",
+        places: "Locais",
+        contribute: "Envie uma fotografia ou lembrança",
+        records: "registos",
+        of: "de",
+        timelineTitle: "Linha do tempo profunda",
+        timelineLead:
+          "Registos datados desde a pré-história até hoje, incluindo 68 mandatos de presidente da câmara e eventos de arquivo da cidade. Cada registo cita a sua fonte.",
+        search: "Pesquisar",
+        searchPlaceholder: "nome, local, evento...",
+        source: "Fonte",
+        sourcePlural: "Fontes",
+        conflictNote: "Nota de conflito",
+        mapTitle: "Mapa Histórico",
+        mapLead:
+          "Os locais documentados são mostrados com coordenadas aproximadas e uma fonte separada para o contexto.",
+        mapLayer: "Camada de era",
+        allMapEras: "Todas as épocas",
+        mapRoutes: "Percursos pedestres temáticos",
+        noRoute: "Sem rota",
+        visiblePlaces: "Lugares visíveis",
+        mapArchiveLayer: "Camada de arquivo",
+        noArchiveOverlay: "Nenhum ficheiro",
+        archiveOverlayMaps: "Mapas antigos",
+        archiveOverlayAll: "Todas as mídias de arquivo",
+        archiveOverlayPhotos: "Fotos e postais",
+        archiveOverlayDocuments: "Documentos",
+        visibleArchiveItems: "marcadores de ficheiro",
+        archiveOverlayNote: "A camada sobrepõe mapas e fotos antigas ao mapa moderno. O alinhamento é aproximado.",
+        routeStops: "para",
+        routeAncientTitle: "Antiga Filipópolis",
+        routeAncientLead:
+          "Uma curta rota pelos sítios romanos e da antiguidade tardia em redor das Três Colinas.",
+        routeRevivalTitle: "Renascimento da Cidade Velha",
+        routeRevivalLead:
+          "Um passeio pelas casas, igrejas e locais escolares do Reavivamento Nacional.",
+        routeHillsTitle: "As colinas",
+        routeHillsLead:
+          "Um percurso geográfico pelas colinas que guardam história antiga e memória urbana.",
+        openPlaces: "Todos os lugares",
+        selectPlace: "Local selecionado",
+        coordinates: "Coordenadas",
+        built: "Construído/data",
+        architect: "Arquiteto",
+        builder: "Construtor",
+        creator: "Arquiteto/construtor",
+        archiveTitle: "Ficheiro Georreferenciado e Antes/Agora",
+        archiveLead:
+          "A camada de arquivo liga mapas históricos, fotografias e postais a locais da cidade. Cada item mantém a sua fonte e licença Wikimedia Commons.",
+        georeferencedItems: "itens de arquivo georreferenciados",
+        thenNowPairs: "pares então/agora",
+        archiveDate: "Data",
+        archivePlace: "Lugar",
+        georeference: "Georreferenciação",
+        license: "Licença",
+        thenNowTitle: "Comparações antes/agora",
+        thenNowLead:
+          "Os controlos deslizantes comparam uma imagem de arquivo com uma foto moderna de licença aberta do mesmo local ou do contexto urbano verificável mais próximo.",
+        thenLabel: "Então",
+        nowLabel: "Foto de referência",
+        peopleTitle: "Conexões de pessoas",
+        peopleLead:
+          "A rede inclui todas as pessoas, enquanto a sucessão para presidente da câmara é uma camada separada dentro da mesma.",
+        repeatTerms: "repetir termos",
+        successionLinks: "vínculos de sucessão",
+        openMayors: "A rede completa de pessoas",
+        dataTitle: "Dados abertos e API",
+        dataLead:
+          "Os cinco tipos de objetos históricos são publicados como JSON e CSV, e as rotas estáticas da API devolvem os mesmos registos.",
+        endpoint: "Ponto final",
+        download: "Baixar",
+        jsonData: "Dados JSON",
+        csvData: "Tabelas CSV"
+      }} satisfies Record<Lang, Record<string, string>>)[lang];
 
 const dataResourceLabels: Record<string, string> = ({
       bg: {
@@ -1255,7 +1331,22 @@ const dataResourceLabels: Record<string, string> = ({
         editorial_signoffs: "Akceptacje redakcyjne",
         editorial_review: "Przegląd redakcyjny"
       }
-    } satisfies Record<Lang, Record<string, string>>)[lang];
+    , pt: {
+        index: "Índice",
+        events: "Eventos",
+        people: "Pessoas",
+        person_relationships: "Relacionamentos pessoais",
+        places: "Locais",
+        organizations: "Organizações",
+        sources: "Fontes",
+        archive_items: "Arquivar itens",
+        then_now_pairs: "Pares então/agora",
+        primary_documents: "Documentos primários",
+        story_longreads: "Leituras longas de histórias",
+        education_resources: "Recursos educativos",
+        editorial_signoffs: "Aprovações editoriais",
+        editorial_review: "Revisão editorial"
+      }} satisfies Record<Lang, Record<string, string>>)[lang];
 
 function dataResourceLabel(key: string) {
   return dataResourceLabels[key] ?? key.replaceAll("_", " ");
@@ -1289,22 +1380,22 @@ const downloadRows = Object.entries(historyKnowledgeIndex.downloads)
   });
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi", es: "Cronología", el: "Χρονολόγιο", ja: "年表", tl: "Talaan ng Kasaysayan", uk: "Хронологія", ru: "Хронология", pl: "Chronologia" },
-  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi", es: "Mandato de alcalde", el: "Θητεία δημάρχου", ja: "市長任期", tl: "Termino ng Alkalde", uk: "Мерська каденція", ru: "Мэрская каденция", pl: "Kadencja burmistrza" },
-  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik", es: "Evento histórico", el: "Ιστορικό γεγονός", ja: "歴史的出来事", tl: "Makasaysayang Pangyayari", uk: "Історична подія", ru: "Историческое событие", pl: "Wydarzenie historyczne" },
-  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı", es: "Programa cultural", el: "Πολιτιστικό πρόγραμμα", ja: "文化プログラム", tl: "Programang Pangkultura", uk: "Культурна програма", ru: "Культурная программа", pl: "Program kulturalny" },
-  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans", es: "Finanzas históricas", el: "Ιστορικά οικονομικά", ja: "歴史的財政", tl: "Makasaysayang Pananalapi", uk: "Історичні фінанси", ru: "Исторические финансы", pl: "Finanse historyczne" },
-  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı", es: "Programa municipal", el: "Δημοτικό πρόγραμμα", ja: "自治体プログラム", tl: "Programang Munisipal", uk: "Муніципальна програма", ru: "Муниципальная программа", pl: "Program gminny" },
-  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği", es: "Cambio de gobierno", el: "Αλλαγή διακυβέρνησης", ja: "行政上の変更", tl: "Pagbabago sa Pamamahala", uk: "Зміна врядування", ru: "Изменение управления", pl: "Zmiana w zarządzaniu" },
-  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu", es: "Nacimiento de una personalidad", el: "Γέννηση αξιόλογου προσώπου", ja: "著名人物の誕生", tl: "Kapanganakan ng Kilalang Tao", uk: "Народження відомої особи", ru: "Рождение известной личности", pl: "Narodziny znanej osoby" },
-  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı", es: "Fuente de archivo", el: "Πηγή αρχείου", ja: "アーカイブ出典", tl: "Pinagmulan ng Arkibo", uk: "Архівне джерело", ru: "Архивный источник", pl: "Źródło archiwalne" }
+  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi", es: "Cronología", el: "Χρονολόγιο", ja: "年表", tl: "Talaan ng Kasaysayan", uk: "Хронологія", ru: "Хронология", pl: "Chronologia" , pt: "Linha do tempo"},
+  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi", es: "Mandato de alcalde", el: "Θητεία δημάρχου", ja: "市長任期", tl: "Termino ng Alkalde", uk: "Мерська каденція", ru: "Мэрская каденция", pl: "Kadencja burmistrza" , pt: "Mandato de autarca"},
+  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik", es: "Evento histórico", el: "Ιστορικό γεγονός", ja: "歴史的出来事", tl: "Makasaysayang Pangyayari", uk: "Історична подія", ru: "Историческое событие", pl: "Wydarzenie historyczne" , pt: "Evento histórico"},
+  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı", es: "Programa cultural", el: "Πολιτιστικό πρόγραμμα", ja: "文化プログラム", tl: "Programang Pangkultura", uk: "Культурна програма", ru: "Культурная программа", pl: "Program kulturalny" , pt: "Programa cultural"},
+  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans", es: "Finanzas históricas", el: "Ιστορικά οικονομικά", ja: "歴史的財政", tl: "Makasaysayang Pananalapi", uk: "Історичні фінанси", ru: "Исторические финансы", pl: "Finanse historyczne" , pt: "Finanças históricas"},
+  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı", es: "Programa municipal", el: "Δημοτικό πρόγραμμα", ja: "自治体プログラム", tl: "Programang Munisipal", uk: "Муніципальна програма", ru: "Муниципальная программа", pl: "Program gminny" , pt: "Programa municipal"},
+  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği", es: "Cambio de gobierno", el: "Αλλαγή διακυβέρνησης", ja: "行政上の変更", tl: "Pagbabago sa Pamamahala", uk: "Зміна врядування", ru: "Изменение управления", pl: "Zmiana w zarządzaniu" , pt: "Mudança de governação"},
+  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu", es: "Nacimiento de una personalidad", el: "Γέννηση αξιόλογου προσώπου", ja: "著名人物の誕生", tl: "Kapanganakan ng Kilalang Tao", uk: "Народження відомої особи", ru: "Рождение известной личности", pl: "Narodziny znanej osoby" , pt: "Nascimento de pessoa notável"},
+  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı", es: "Fuente de archivo", el: "Πηγή αρχείου", ja: "アーカイブ出典", tl: "Pinagmulan ng Arkibo", uk: "Архівне джерело", ru: "Архивный источник", pl: "Źródło archiwalne" , pt: "Fonte do ficheiro"}
 };
 
 // Timeline theme tags = the shared person-role labels plus two history-only tags.
 const themeLabels: Record<string, Record<Lang, string>> = {
   ...roleLabels,
-  people: { bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler", es: "Personas", el: "Πρόσωπα", ja: "人物", tl: "Mga Tao", uk: "Особи", ru: "Личности", pl: "Postacie" },
-  birth: { bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum", es: "Nacimiento", el: "Γέννηση", ja: "誕生", tl: "Kapanganakan", uk: "Народження", ru: "Рождение", pl: "Narodziny" }
+  people: { bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler", es: "Personas", el: "Πρόσωπα", ja: "人物", tl: "Mga Tao", uk: "Особи", ru: "Личности", pl: "Postacie" , pt: "Pessoas"},
+  birth: { bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum", es: "Nacimiento", el: "Γέννηση", ja: "誕生", tl: "Kapanganakan", uk: "Народження", ru: "Рождение", pl: "Narodziny" , pt: "Nascimento"}
 };
 
 const hiddenThemeTags = new Set(["people", "birth"]);
@@ -1466,8 +1557,8 @@ function placeChapterVisual(id: string, titleOverride?: string): HistoryChapterV
   return {
     url: media.url,
     pageUrl: media.page_url ?? media.url,
-    credit: cleanMediaCredit(media.credit),
-    license: media.license,
+    credit: mediaAttribution(cleanMediaCredit(media.credit), lang),
+    license: mediaAttribution(media.license, lang),
     title: titleOverride ?? localized(place, "name"),
     kind: "context",
     date: ""
@@ -1481,8 +1572,8 @@ function archiveChapterVisual(id: string): HistoryChapterVisual {
   return {
     url: media.url,
     pageUrl: media.page_url ?? media.url,
-    credit: cleanMediaCredit(media.credit),
-    license: media.license,
+    credit: mediaAttribution(cleanMediaCredit(media.credit), lang),
+    license: mediaAttribution(media.license, lang),
     title: localized(item, "title"),
     kind: "archive",
     date: localized(item, "date_display") || String(item.date_year ?? "")
@@ -2314,7 +2405,36 @@ const growth = ({
         approxNote: "Położenie przybliżone",
         source: "Źródło"
       }
-    } satisfies Record<Lang, Record<string, string>>)[lang];
+    , pt: {
+        title: "Como a cidade cresceu",
+        popQ: "Como mudou a população?",
+        rateQ: "Quando é que a cidade cresceu mais depressa?",
+        popTitle: "População de Plovdiv ao longo do tempo",
+        popLead:
+          "Os pontos históricos até 2021 utilizam censos e séries históricas publicadas; 2022-2025 são estimativas anuais do NSI a 31 de dezembro.",
+        peakWord: "Pico",
+        latestWord: "Última estimativa",
+        growthWord: "Crescimento desde",
+        rateTitle: "Taxa de variação populacional",
+        rateLead:
+          "Variação anual média para cada período entre pontos de reporte adjacentes.",
+        perYear: "% ao ano",
+        rateUnitNote: "Os valores são a variação média anual, % ao ano.",
+        densityTitle: "Densidade populacional",
+        areaLabel: "Área da cidade",
+        densityNow: "Densidade",
+        densityPeak: "Densidade no pico (1985)",
+        perKm: "res./km²",
+        densityNote:
+          "A densidade é calculada em relação à área atual da cidade (101,98 km²). Plovdiv é a cidade mais densamente povoada da Bulgária.",
+        nbTitle: "Quando os bairros apareceram",
+        nbLead:
+          "Bairros e distritos selecionados de Plovdiv, ordenados por data de aparecimento - cada um com uma fonte pública.",
+        mapTitle: "Os bairros no mapa",
+        mapLead: "Localização aproximada dos bairros, colorida pela época em que surgiram.",
+        approxNote: "Localização aproximada",
+        source: "Fonte"
+      }} satisfies Record<Lang, Record<string, string>>)[lang];
 const nbEraLabels: Record<NeighbourhoodEra, string> = ({
       bg: { ottoman: "Османски период", revival: "Възраждане", modern: "Ново време (XX в.)", socialist: "Социалистически период" },
       en: { ottoman: "Ottoman period", revival: "National Revival", modern: "Modern era (20th c.)", socialist: "Socialist period" },
@@ -2329,7 +2449,7 @@ const nbEraLabels: Record<NeighbourhoodEra, string> = ({
       uk: { ottoman: "Османський період", revival: "Відродження", modern: "Новітній час (XX ст.)", socialist: "Соціалістичний період" },
       ru: { ottoman: "Османский период", revival: "Возрождение", modern: "Новейшее время (XX в.)", socialist: "Социалистический период" },
       pl: { ottoman: "Okres osmański", revival: "Odrodzenie", modern: "Czasy nowoczesne (XX w.)", socialist: "Okres socjalistyczny" }
-    } satisfies Record<Lang, Record<NeighbourhoodEra, string>>)[lang];
+    , pt: { ottoman: "Período otomano", revival: "Renascimento Nacional", modern: "Era moderna (séc. XX)", socialist: "Período socialista" }} satisfies Record<Lang, Record<NeighbourhoodEra, string>>)[lang];
 
 // sticky in-page section navigation
 const sectionNav = ({
@@ -2463,8 +2583,17 @@ const sectionNav = ({
         { id: "city-growth", label: "Wzrost" },
         { id: "data", label: "Dane" }
       ]
-    } satisfies Record<Lang, { id: string; label: string }[]>)[lang];
-const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página", el: "Ενότητες σελίδας", ja: "ページ内セクション", tl: "Mga Seksyon ng Pahina", uk: "Розділи сторінки", ru: "Разделы страницы", pl: "Sekcje strony" } satisfies Record<Lang, string>)[lang];
+    , pt: [
+        { id: "history-tree", label: "História" },
+        { id: "landmarks", label: "Marcos" },
+        { id: "archive-layer", label: "Arquivo" },
+        { id: "timeline", label: "Linha do tempo" },
+        { id: "people", label: "Pessoas" },
+        { id: "geography", label: "Geografia" },
+        { id: "city-growth", label: "Crescimento" },
+        { id: "data", label: "Dados" }
+      ]} satisfies Record<Lang, { id: string; label: string }[]>)[lang];
+const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página", el: "Ενότητες σελίδας", ja: "ページ内セクション", tl: "Mga Seksyon ng Pahina", uk: "Розділи сторінки", ru: "Разделы страницы", pl: "Sekcje strony" , pt: "Secções da página"} satisfies Record<Lang, string>)[lang];
 
 const numberFmt = new Intl.NumberFormat(locale);
 
@@ -2895,7 +3024,33 @@ const geo = ({
         ],
         source: "Źródło"
       }
-    })[lang];
+    , pt: {
+        title: "Geografia e clima",
+        lead:
+          "Plovdiv fica em colinas de sienito na planície da Trácia Superior, em ambas as margens do rio Maritsa.",
+        geographyTitle: "Geografia",
+        climateTitle: "Clima",
+        chartQ: "Qual é o clima durante o ano?",
+        chartTitle: "Temperaturas médias mensais e precipitação",
+        legendTemp: "Temperatura máxima / mínima",
+        legendPrecip: "Precipitação",
+        months: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+        facts: [
+          { label: "Coordenadas", value: "42°09′N, 24°45′E" },
+          { label: "Elevação", value: "164 metros" },
+          { label: "Rio", value: "Maritsa" },
+          { label: "Planície", value: "Planície da Alta Trácia" },
+          { label: "Colinas", value: "6 colinas sobreviventes (7 historicamente)" },
+          { label: "Área", value: "101,98 km²" }
+        ],
+        stats: [
+          { label: "Tipo climático", value: "Subtropical húmido" },
+          { label: "Média anual alta/baixa", value: "18,9 / 7,3ºC" },
+          { label: "Máxima / mínima registada", value: "45,0 / −31,5°C" },
+          { label: "Precipitação anual", value: "502 mm" }
+        ],
+        source: "Fonte"
+      }})[lang];
 
 const climate = [...plovdivClimate].sort((a, b) => a.month - b.month);
 const CW = 1000, CH = 360, cL = 44, cR = 44, cT = 24, cB = 44;
@@ -3124,7 +3279,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                     crossorigin="anonymous"
                     referrerpolicy="no-referrer"
                   />
-                  <figcaption>{`${image.credit} · ${image.license}`}</figcaption>
+                  <figcaption>{`${mediaAttribution(image.credit, lang)} · ${mediaAttribution(image.license, lang)}`}</figcaption>
                 </figure>
               )}
               <p class="eyebrow">{localized(place, "era")}</p>
@@ -3178,7 +3333,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                   crossorigin="anonymous"
                   referrerpolicy="no-referrer"
                 />
-                <figcaption>{`${item.media.credit} · ${item.media.license}`}</figcaption>
+                <figcaption>{`${mediaAttribution(item.media.credit, lang)} · ${mediaAttribution(item.media.license, lang)}`}</figcaption>
               </figure>
               <p class="eyebrow">{localized(item, "date_display")}</p>
               <h3>{localized(item, "title")}</h3>
@@ -3189,7 +3344,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
                 <dt>{labels.georeference}</dt>
                 <dd>{localized(item.georeference, "notes")}</dd>
                 <dt>{labels.license}</dt>
-                <dd>{item.media.license}</dd>
+                <dd>{mediaAttribution(item.media.license, lang)}</dd>
               </dl>
               {pendingEditorialReviewNote(item.editorial, lang) && (
                 <p class="editorial-caveat"><strong>{editorialReviewLabel}:</strong> {pendingEditorialReviewNote(item.editorial, lang)}</p>
@@ -3257,9 +3412,9 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
               <p class="editorial-caveat"><strong>{editorialReviewLabel}:</strong> {pendingEditorialReviewNote(pair.editorial, lang)}</p>
             )}
             <p class="meta">
-              {`${labels.thenLabel}${thenPhotoDate(pair) ? ` (${thenPhotoDate(pair)})` : ""}: ${pair.then_media.credit} · ${pair.then_media.license}`}
+              {`${labels.thenLabel}${thenPhotoDate(pair) ? ` (${thenPhotoDate(pair)})` : ""}: ${mediaAttribution(pair.then_media.credit, lang)} · ${mediaAttribution(pair.then_media.license, lang)}`}
               <br />
-              {`${labels.nowLabel}: ${pair.now_media.credit} · ${pair.now_media.license}`}
+              {`${labels.nowLabel}: ${mediaAttribution(pair.now_media.credit, lang)} · ${mediaAttribution(pair.now_media.license, lang)}`}
             </p>
           </article>
         ))}

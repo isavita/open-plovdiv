@@ -24,7 +24,7 @@ const intlLocaleByLang: Record<Lang, string> = {
   uk: "uk-UA",
   ru: "ru-RU",
   pl: "pl-PL"
-};
+, pt: "pt-PT"};
 const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builder"]);
 
 function isPersonLikeRecord(record: Record<string, unknown>): boolean {

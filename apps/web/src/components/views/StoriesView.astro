@@ -201,7 +201,20 @@ const labels = ({
     editorialNote:
       "Iniuugnay ng bawat kuwento ang beripikadong lugar, pangyayari, larawan, at pinagmulan sa isang mababasang ruta sa kasaysayan ng lungsod."
   }
-} satisfies Record<Lang, Record<string, string>>)[lang];
+, pt: {
+    title: "Histórias Históricas",
+    eyebrow: "Plovdiv, uma história de cada vez",
+    lead:
+      "Passe pelas ruas romanas, siga os vestígios de um terramoto e entre nos ateliers dos pintores de Plovdiv. Esta é a história de uma cidade que não pára de se refazer.",
+    stories: "histórias",
+    sources: "fontes",
+    archive: "arquivar recursos visuais",
+    minutes: "minutos de leitura",
+    read: "Leia",
+    evidence: "Registos vinculados",
+    editorialNote:
+      "Cada história liga lugares, eventos, imagens e fontes verificados numa rota legível pela história da cidade."
+  }} satisfies Record<Lang, Record<string, string>>)[lang];
 
 const archiveById = new Map(historicalArchiveItems.map((item) => [item.id, item]));
 const pairById = new Map(thenNowPairs.map((pair) => [pair.id, pair]));

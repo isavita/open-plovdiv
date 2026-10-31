@@ -180,7 +180,18 @@ const content: Record<Lang, Content> = {
     historyLink: "Do historii",
     bubbles: ["Jeszcze pięć minut… 😎", "Ciii. Ajlak.", "Wpadnij jutro.", "Może później.", "Wyluzuj, przyjacielu."]
   }
-};
+, pt: {
+    eyebrow: "Erro 404",
+    title: "Esta página está a facilitar.",
+    sub: "Esta página vagueou algures nas sete colinas.",
+    pathTemplate: "Foi para {path} — mas também decidiu descansar.",
+    posLabel: "substantivo",
+    definition: "O hábito tranquilo de Plovdiv de abrandar sem preocupação.",
+    backHome: "De regresso a casa",
+    placesLink: "Passeie pelos locais",
+    historyLink: "Na história",
+    bubbles: ["Mais cinco minutos… 😎", "Shh. Aylyak.", "Volte amanhã.", "Talvez mais tarde.", "Relaxe, amigo."]
+  }};
 
 // Server-rendered default for no-JS visitors and as the initial paint,
 // matching the site convention that an unprefixed path = Bulgarian.
@@ -685,7 +696,7 @@ const contentJson = JSON.stringify(content);
   <script is:inline>
     (function () {
       var path = window.location.pathname || "/";
-      var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"];
+      var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl", "pt"];
       var segments = path.split("/").filter(Boolean);
       var hasLocalePrefix = segments.length > 0 && codes.indexOf(segments[0]) > -1;
       var loc = hasLocalePrefix ? segments[0] : "bg";

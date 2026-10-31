@@ -9,9 +9,10 @@ import tlTranslationsJson from "../../../../data/translations/tl.json";
 import ukTranslationsJson from "../../../../data/translations/uk.json";
 import ruTranslationsJson from "../../../../data/translations/ru.json";
 import plTranslationsJson from "../../../../data/translations/pl.json";
+import ptTranslationsJson from "../../../../data/translations/pt.json";
 import type { Lang } from "./ui";
 
-type TranslationLang = Extract<Lang, "de" | "fr" | "it" | "tr" | "es" | "el" | "ja" | "tl" | "uk" | "ru" | "pl">;
+type TranslationLang = Extract<Lang, "de" | "fr" | "it" | "tr" | "es" | "el" | "ja" | "tl" | "uk" | "ru" | "pl" | "pt">;
 
 const translationsByLang: Record<TranslationLang, Record<string, string>> = {
   de: deTranslationsJson as Record<string, string>,
@@ -24,7 +25,8 @@ const translationsByLang: Record<TranslationLang, Record<string, string>> = {
   tl: tlTranslationsJson as Record<string, string>,
   uk: ukTranslationsJson as Record<string, string>,
   ru: ruTranslationsJson as Record<string, string>,
-  pl: plTranslationsJson as Record<string, string>
+  pl: plTranslationsJson as Record<string, string>,
+  pt: ptTranslationsJson as Record<string, string>
 };
 const translatedFieldLangs = Object.keys(translationsByLang) as TranslationLang[];
 const protectedFieldBases = new Set(["actor", "architect", "birthplace", "builder"]);

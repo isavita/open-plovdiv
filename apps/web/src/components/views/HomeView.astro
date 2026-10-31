@@ -1,4 +1,6 @@
 ---
+import { mediaAttribution } from "@lib/format";
+import { ptText } from "@i18n/ptUiTranslations";
 import Layout from "@layouts/Layout.astro";
 import VisitorPractical from "@components/VisitorPractical.astro";
 import { ui, type Lang } from "@i18n/ui";
@@ -26,7 +28,7 @@ const tr = (
   uk: string,
   ru: string,
   pl: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl } satisfies Record<Lang, string>)[lang];
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl, pt: ptText(en) } satisfies Record<Lang, string>)[lang];
 
 const labels = {
   heroMotto: tr(
@@ -258,7 +260,7 @@ const eras = ["roman", "revival", "liberation"] as const;
             <source media="(max-width: 760px)" srcset={`${hero.small} 480w, ${hero.medium} 768w, ${hero.src} 960w`} sizes="calc(100vw - 36px)" />
           <img src={hero.src} srcset={`${hero.small} 480w, ${hero.medium} 768w, ${hero.src} 960w, ${placeImageUrl(hero.url, 1600)} 1500w`} sizes="(max-width: 760px) calc(100vw - 36px), 58vw" alt={labels.theatreTitle} width="1500" height="940" fetchpriority="high" decoding="async" />
           </picture>
-          <figcaption><span>{labels.theatreTitle}</span><a href={hero.page_url} target="_blank" rel="noreferrer">© {hero.credit} · {hero.license} ↗</a></figcaption>
+          <figcaption><span>{labels.theatreTitle}</span><a href={hero.page_url} target="_blank" rel="noreferrer">© {mediaAttribution(hero.credit, lang)} · {mediaAttribution(hero.license, lang)} ↗</a></figcaption>
           <span class="visitor-photo-index" aria-hidden="true">01 / PLOVDIV</span>
         </figure>
       </div>
@@ -334,7 +336,7 @@ const eras = ["roman", "revival", "liberation"] as const;
       <details class="visitor-photo-credits">
         <summary>{t.footer.sources}</summary>
         <p>{guide.photoNote}</p>
-        <ul>{essentials.map(place => <li><a href={place.media.page_url} target="_blank" rel="noreferrer">{place.title} · {place.media.credit}</a> · <a href={place.media.license_url} target="_blank" rel="noreferrer">{place.media.license}</a></li>)}</ul>
+        <ul>{essentials.map(place => <li><a href={place.media.page_url} target="_blank" rel="noreferrer">{place.title} · {mediaAttribution(place.media.credit, lang)}</a> · <a href={place.media.license_url} target="_blank" rel="noreferrer">{mediaAttribution(place.media.license, lang)}</a></li>)}</ul>
       </details>
     </section>
   </div>

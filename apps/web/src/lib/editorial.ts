@@ -20,7 +20,7 @@ const reviewStatusLabels: Record<Lang, string> = {
   uk: "Редакційна перевірка",
   ru: "Редакционная проверка",
   pl: "Przegląd redakcyjny"
-};
+, pt: "Revisão editorial"};
 
 const pendingReviewLabels: Record<Lang, string> = {
   bg: "Чака независима редакторска проверка.",
@@ -36,7 +36,7 @@ const pendingReviewLabels: Record<Lang, string> = {
   uk: "Очікує незалежної редакційної перевірки.",
   ru: "Ожидает независимой редакционной проверки.",
   pl: "Oczekuje na niezależny przegląd redakcyjny."
-};
+, pt: "Aguarda revisão editorial independente."};
 
 export function editorialReviewStatusLabel(lang: Lang): string {
   return reviewStatusLabels[lang];

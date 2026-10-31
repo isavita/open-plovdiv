@@ -84,7 +84,12 @@ const readOnlyCopy = {
     secondTitle: "Linki zewnętrzne",
     secondText: "Linki do organizacji, stron zbiórek i źródeł publicznych prowadzą na zewnętrzne witryny z własnymi zasadami prywatności. Open Plovdiv nie otrzymuje informacji, które tam podajesz."
   }
-} satisfies Record<Lang, { firstTitle: string; firstText: string; secondTitle: string; secondText: string }>;
+, pt: {
+    firstTitle: "Apenas leitura por design",
+    firstText: "O Open Plovdiv não possui contas, comentários, relatórios, formulários ou propostas para novas iniciativas. O site não recolhe nomes, endereços de e-mail ou números de telefone através de formulários de utilizador.",
+    secondTitle: "Links externos",
+    secondText: "Links para organizações, páginas de donativos e fontes públicas abrem sites externos com as suas próprias regras de privacidade. O Open Plovdiv não recebe informações que partilhe lá."
+  }} satisfies Record<Lang, { firstTitle: string; firstText: string; secondTitle: string; secondText: string }>;
 const copy = readOnlyCopy[lang];
 ---
 

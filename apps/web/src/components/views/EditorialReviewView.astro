@@ -758,7 +758,67 @@ const labels =
         tableLimit: "Ipinapakita ang unang",
         tableLimitSuffix: "talaan para sa kasalukuyang filter. Available ang buong listahan sa CSV file."
       }
-      : {
+      : (lang === "pt" ? {
+        title: "Revisão Editorial",
+        eyebrow: "Revisão de dados históricos",
+        lead:
+          "Uma revisão de registos que ainda aguardam verificações editoriais humanas. Os dados são validados tecnicamente; esta página mostra onde ainda é necessário um fornecimento mais forte, licenciamento ou confirmação editorial.",
+        status: "Estado",
+        total: "registos rastreados",
+        signedOff: "aprovado",
+        needsReview: "aguardando revisão",
+        blockers: "com problemas",
+        trackingGaps: "lacunas de rastreamento",
+        sourceCoverageTitle: "Cobertura da fonte",
+        sourceCoverageLead:
+          "Uma auditoria separada dos mesmos registos: se cada linha tem uma fonte pública, metadados de licença/reutilização e se as linhas de fonte única são sinalizadas para uma revisão de evidência mais sólida.",
+        traceability: "rastreabilidade",
+        multiSourceReview: "revisão mais forte da fonte",
+        complete: "completo",
+        incomplete: "incompleto",
+        needsSourceReview: "precisa de revisão",
+        recordsWithSources: "com fontes",
+        missingSources: "sem fontes",
+        licenseReady: "licença/termos presentes",
+        missingLicenses: "licença/termos ausentes",
+        singleSource: "fonte única",
+        multiSource: "Mais de 2 fontes",
+        openLicenseRows: "linhas de licença aberta",
+        publicTermsRows: "linhas de referência públicas",
+        sourceCoverageApi: "Fontes JSON",
+        sourceCoverageCsv: "Fontes CSV",
+        requirement: "Requisito",
+        collections: "Coleções",
+        collection: "Coleção",
+        records: "Registros",
+        reviewer: "Revisão editorial",
+        sources: "Fontes",
+        sourceLicense: "Fontes e licença",
+        blockersLabel: "Problemas",
+        search: "Pesquisar",
+        searchPlaceholder: "registar, recolher, emitir...",
+        allCollections: "Todas as coleções",
+        allStatuses: "Todos os estados",
+        allBlockers: "Todos os problemas",
+        record: "Gravar",
+        visible: "Visível",
+        of: "de",
+        empty: "Nenhum registo corresponde a estes filtros.",
+        loading: "A carregar fila editorial...",
+        api: "Dados JSON",
+        csv: "Dados CSV",
+        openRecord: "Registo aberto",
+        openApi: "Dados",
+        signedOffStatus: "aprovado",
+        needsStatus: "aguardando revisão",
+        missingStatus: "estado ausente",
+        unsigned: "não revisto",
+        hasLicense: "licença/termos presentes",
+        missingLicense: "licença/termos ausentes",
+        reset: "Limpar filtros",
+        tableLimit: "Mostrando o primeiro",
+        tableLimitSuffix: "registos para o filtro atual. A lista completa está disponível no ficheiro CSV."
+      } : {
         title: "Editorial Review",
         eyebrow: "Historical data review",
         lead:
@@ -818,7 +878,7 @@ const labels =
         reset: "Clear filters",
         tableLimit: "Showing the first",
         tableLimitSuffix: "records for the current filter. The full list is available in the CSV file."
-      };
+      });
 
 const blockerLabels: Record<string, Record<Lang, string>> = {
   needs_independent_editorial_signoff: {
@@ -835,7 +895,7 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "потрібне незалежне редакційне затвердження",
     ru: "требуется независимое редакционное утверждение",
     pl: "wymaga niezależnego zatwierdzenia redakcyjnego"
-  },
+  , pt: "necessita de aprovação editorial independente"},
   missing_independent_editorial_signoff_log: {
     bg: "липсва име или дата на редактора",
     en: "missing reviewer name or date",
@@ -850,7 +910,7 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "відсутнє ім'я або дата рецензента",
     ru: "отсутствует имя или дата рецензента",
     pl: "brak nazwiska lub daty recenzenta"
-  },
+  , pt: "nome ou data do revisor em falta"},
   missing_source_reference: {
     bg: "липсва източникова връзка",
     en: "missing source reference",
@@ -865,7 +925,7 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "відсутнє посилання на джерело",
     ru: "отсутствует ссылка на источник",
     pl: "brak odniesienia do źródła"
-  },
+  , pt: "falta referência de fonte"},
   missing_license_or_reuse_status: {
     bg: "липсва лиценз или статус за повторна употреба",
     en: "missing license or reuse status",
@@ -880,7 +940,7 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "відсутня ліцензія або статус повторного використання",
     ru: "отсутствует лицензия или статус повторного использования",
     pl: "brak licencji lub statusu ponownego wykorzystania"
-  },
+  , pt: "licença em falta ou estado de reutilização"},
   missing_external_editorial_signoff_record: {
     bg: "липсва външен редакторски запис",
     en: "missing external editorial review record",
@@ -895,7 +955,7 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "відсутній запис зовнішньої редакційної перевірки",
     ru: "отсутствует запись внешней редакционной проверки",
     pl: "brak zapisu zewnętrznego przeglądu redakcyjnego"
-  },
+  , pt: "falta registo de revisão editorial externa"},
   editorial_signoff_log_mismatch: {
     bg: "несъответствие в редакторския запис",
     en: "editorial review record mismatch",
@@ -910,7 +970,7 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "невідповідність у записі редакційної перевірки",
     ru: "несоответствие в записи редакционной проверки",
     pl: "niezgodność w zapisie przeglądu redakcyjnego"
-  }
+  , pt: "incompatibilidade de registo de revisão editorial"}
 };
 
 const roleLabels: Record<string, Record<Lang, string>> = {
@@ -928,7 +988,7 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "основний запис",
     ru: "основная запись",
     pl: "wpis podstawowy"
-  },
+  , pt: "registo primário"},
   relationship_entity: {
     bg: "връзка между записи",
     en: "relationship record",
@@ -943,7 +1003,7 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "запис зв'язку",
     ru: "запись связи",
     pl: "wpis powiązania"
-  },
+  , pt: "registo de relacionamento"},
   supporting_archive: {
     bg: "архивен материал",
     en: "supporting archive item",
@@ -958,7 +1018,7 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "додатковий архівний матеріал",
     ru: "дополнительный архивный материал",
     pl: "uzupełniający materiał archiwalny"
-  },
+  , pt: "item de ficheiro de suporte"},
   primary_document: {
     bg: "първичен документ",
     en: "primary document",
@@ -973,7 +1033,7 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "первинний документ",
     ru: "первичный документ",
     pl: "dokument źródłowy"
-  },
+  , pt: "documento primário"},
   editorial_feature: {
     bg: "редакционен материал",
     en: "editorial feature",
@@ -988,7 +1048,7 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "редакційний матеріал",
     ru: "редакционный материал",
     pl: "materiał redakcyjny"
-  },
+  , pt: "recurso editorial"},
   education_material: {
     bg: "образователен материал",
     en: "education material",
@@ -1003,7 +1063,7 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "освітній матеріал",
     ru: "образовательный материал",
     pl: "materiał edukacyjny"
-  }
+  , pt: "material educativo"}
 };
 
 function blockerLabel(id: string) {
@@ -1182,6 +1242,14 @@ const collectionLabelsPl: Record<string, string> = {
   editorial_review: "Przegląd redakcyjny"
 };
 
+const collectionLabelsPt: Record<string, string> = {
+  events: "Acontecimentos", people: "Pessoas", person_relationships: "Relações entre pessoas",
+  places: "Lugares", organizations: "Organizações", sources: "Fontes", archive_items: "Registos de arquivo",
+  then_now_pairs: "Comparações entre passado e presente", primary_documents: "Documentos primários",
+  story_longreads: "Histórias aprofundadas", education_resources: "Recursos educativos",
+  editorial_signoffs: "Aprovações editoriais", editorial_review: "Revisão editorial"
+};
+
 function collectionLabel(id: string) {
   const collection = historyEditorialReview.collections[id];
   if (lang === "fr" && collectionLabelsFr[id]) return collectionLabelsFr[id];
@@ -1194,6 +1262,7 @@ function collectionLabel(id: string) {
   if (lang === "uk" && collectionLabelsUk[id]) return collectionLabelsUk[id];
   if (lang === "ru" && collectionLabelsRu[id]) return collectionLabelsRu[id];
   if (lang === "pl" && collectionLabelsPl[id]) return collectionLabelsPl[id];
+  if (lang === "pt" && collectionLabelsPt[id]) return collectionLabelsPt[id];
   return collection?.[`label_${lang}`] ?? collection?.label_en ?? collection?.label_bg ?? id.replaceAll("_", " ");
 }
 
@@ -1315,7 +1384,7 @@ const reviewConfig = {
         <div>
           <p class="eyebrow">{labels.status}</p>
           <h2>{historyEditorialReview.status === "complete" ? labels.signedOffStatus : labels.needsStatus}</h2>
-          <p class="meta">{labels.requirement}: {historyEditorialReview.acceptance_requirement}</p>
+          <p class="meta">{labels.requirement}: {lang === "pt" ? "É necessário registar uma aprovação editorial independente para 100% do conteúdo publicado antes de considerar concluída a plataforma de história." : historyEditorialReview.acceptance_requirement}</p>
           <p class="meta">{historyEditorialReview.version} · {generatedLabel}</p>
         </div>
         <div class="review-meter" aria-label={`${historyEditorialReview.summary.signed_off_percent}%`}>

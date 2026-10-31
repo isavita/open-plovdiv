@@ -1,4 +1,5 @@
 import { jaUiTranslations } from "./jaUiTranslations";
+import { translatePtUi } from "./ptUiTranslations";
 
 // Central multilingual string dictionary for Open Plovdiv. `bg` is the source
 // of truth for the shape; every other locale is typed against it (`typeof bg`)
@@ -17,7 +18,8 @@ export const languages = {
   tl: "Filipino",
   uk: "Українська",
   ru: "Русский",
-  pl: "Polski"
+  pl: "Polski",
+  pt: "Português"
 } as const;
 
 export type Lang = keyof typeof languages;
@@ -1361,6 +1363,30 @@ const en: typeof bg = {
     edit: "Edit",
     loading: "Loading…",
     actionError: "The action failed."
+  }
+};
+
+const pt: typeof bg = {
+  ...translatePtUi(en),
+  nav: { ...translatePtUi(en.nav), home: "Início" },
+  mayors: {
+    ...translatePtUi(en.mayors),
+    count: (n: number) => `${n} ${n === 1 ? "mandato" : "mandatos"}`,
+    countFiltered: (visible: number, total: number) => `${visible} de ${total} ${total === 1 ? "mandato" : "mandatos"}`,
+    yearsApprox: (n: number) => `${n} ${n === 1 ? "ano" : "anos"}`,
+    centuryLabel: (century: number) => `século ${century}`,
+    centuryRange: (start: number, end: number) => `${start}–${end}`,
+    portraitAlt: (name: string) => `Retrato de ${name}`
+  },
+  projects: {
+    ...translatePtUi(en.projects),
+    count: (n: number) => `${n} ${n === 1 ? "projeto" : "projetos"}`,
+    countFiltered: (visible: number, total: number) => `${visible} de ${total} ${total === 1 ? "projeto" : "projetos"}`
+  },
+  community: {
+    ...translatePtUi(en.community),
+    count: (n: number) => `${n} ${n === 1 ? "iniciativa" : "iniciativas"}`,
+    countFiltered: (visible: number, total: number) => `${visible} de ${total} ${total === 1 ? "iniciativa" : "iniciativas"}`
   }
 };
 
@@ -7860,7 +7886,7 @@ const pl: typeof bg = {
   }
 };
 
-export const ui = { bg, en, de, fr, it, tr, es, el, ja, tl, uk, ru, pl } as const;
+export const ui = { bg, en, de, fr, it, tr, es, el, ja, tl, uk, ru, pl, pt } as const;
 
 export type CategoryKey =
   | "roads"
@@ -8153,7 +8179,27 @@ export const categoryLabels: Record<Lang, Record<string, string>> = {
     history_correction: "Korekta historyczna",
     other: "Inne"
   }
-};
+, pt: {
+    roads: "Estradas",
+    pavement: "Pavimentos",
+    street_lighting: "Iluminação",
+    parks: "Parques",
+    waste: "Desperdício",
+    public_transport: "Transporte",
+    accessibility: "Acessibilidade",
+    drainage: "Drenagem",
+    culture: "Cultura",
+    education: "Educação",
+    civic: "Iniciativas cívicas",
+    environment: "Meio Ambiente",
+    social: "Sociais",
+    sport: "Esporte",
+    historic_photo: "Foto histórica",
+    oral_memory: "Memória oral",
+    source_tip: "Líder de origem/ficheiro",
+    history_correction: "Correção de histórico",
+    other: "Outro"
+  }};
 
 // Accent colour per category, used for map pins and category dots.
 export const categoryColors: Record<string, string> = {
@@ -8340,7 +8386,16 @@ export const projectStatusLabels: Record<Lang, Record<string, string>> = {
     postponed: "Odłożony",
     unknown: "Nieznany"
   }
-};
+, pt: {
+    planned: "Planejado",
+    funded: "Financiado",
+    contracted: "Contratado",
+    in_progress: "Em curso",
+    completed: "Concluído",
+    delayed: "Atrasado",
+    postponed: "Adiado",
+    unknown: "Desconhecido"
+  }};
 
 export const communityStatusLabels: Record<Lang, Record<string, string>> = {
   bg: {
@@ -8434,7 +8489,13 @@ export const communityStatusLabels: Record<Lang, Record<string, string>> = {
     planned: "Planowana",
     unknown: "Status nieznany"
   }
-};
+, pt: {
+    active: "Ativo",
+    recurring: "Recorrente",
+    completed: "Concluído",
+    planned: "Planejado",
+    unknown: "Estado desconhecido"
+  }};
 
 export const fixStatusLabels: Record<Lang, Record<string, string>> = {
   bg: {
@@ -8541,7 +8602,14 @@ export const fixStatusLabels: Record<Lang, Record<string, string>> = {
     fixed: "Naprawione",
     closed: "Zamknięte"
   }
-};
+, pt: {
+    unverified: "Não verificado",
+    verified: "Verificado",
+    sent_to_municipality: "Enviado",
+    in_progress: "Em curso",
+    fixed: "Corrigido",
+    closed: "Fechado"
+  }};
 
 export const fixStatusDescriptions: Record<Lang, Record<string, string>> = {
   bg: {
@@ -8648,7 +8716,14 @@ export const fixStatusDescriptions: Record<Lang, Record<string, string>> = {
     fixed: "Oznaczone jako naprawione.",
     closed: "Zamknięte bez aktywnego kolejnego kroku."
   }
-};
+, pt: {
+    unverified: "O relatório foi publicado, mas ainda não foi verificado de forma independente.",
+    verified: "Verificado por um editor ou fonte pública.",
+    sent_to_municipality: "Marcado como enviado para uma instituição.",
+    in_progress: "Um reparo ou verificação em curso é anotado.",
+    fixed: "Marcado como fixo.",
+    closed: "Encerrado sem próxima etapa ativa."
+  }};
 
 export const districtLabels: Record<string, string> = {
   Централен: "Tsentralen",
@@ -8739,7 +8814,12 @@ export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
     state_subsidy: "Celowa dotacja państwowa",
     eu_program: "Program UE"
   }
-};
+, pt: {
+    municipal_budget: "Orçamento municipal",
+    municipal_capital: "Programa capital municipal",
+    state_subsidy: "Subsídio direcionado ao estado",
+    eu_program: "Programa da UE"
+  }};
 
 // Citation titles embedded in records (project sources, budget source documents).
 // Original public-source titles get English equivalents so the EN site reads cleanly.
@@ -8961,87 +9041,104 @@ export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
     "БНТ — почистват квартал „Столипиново“": "BNT — sprzątanie dzielnicy Stolipinovo",
     "Радио Пловдив — доброволци чистят и облагородяват Столипиново": "Radio Plovdiv — wolontariusze sprzątają i upiększają Stolipinovo"
   }
-};
+, pt: {
+    "Община Пловдив — представяне на Бюджет 2025": "Município de Plovdiv — apresentação do orçamento para 2025",
+    "TrafficNews — бюджет на Пловдив за 2025 г.": "TrafficNews — Orçamento Plovdiv 2025",
+    "TrafficNews — проектобюджет 2026 и замразени проекти": "TrafficNews – projeto de orçamento para 2026 e projetos congelados",
+    "Под тепето — капиталова програма за 2026 г.": "Pod tepeto — programa de capital para 2026",
+    "Община Пловдив - Кметове на Пловдив": "Município de Plovdiv — Presidentes de Câmara de Plovdiv",
+    "Административен регистър - кмет на Община Пловдив": "Registo Administrativo — Presidente da Câmara Municipal de Plovdiv",
+    "Plovdiv24 — доброволци се заемат с реновирането на спирки": "Plovdiv24 — voluntários começam a renovar paragens de autocarro",
+    "NOVA — доброволци реновират автобусни спирки": "NOVA — voluntários renovam paragens de autocarro",
+    "Plovdiv24 — търсят се доброволци за почистване на 11 км от река Марица": "Plovdiv24 — Procuram-se voluntários para a limpeza de 11 km do rio Maritsa",
+    "BG Be Active — контакт": "BG Seja ativo - contacto",
+    "Красив Пловдив — будни граждани с кауза": "Krasiv Plovdiv — cidadãos activos com uma causa",
+    "Красив Пловдив — начало": "Krasiv Plovdiv – casa",
+    "Община Пловдив — „Мисия Лаута 5“": "Município de Plovdiv – Missão Lauta 5",
+    "TrafficNews — рекорден брой доброволци на „Мисия Лаута“ 5": "TrafficNews — número recorde de voluntários na Missão Lauta 5",
+    "БНТ — почистват квартал „Столипиново“": "BNT — limpeza em Stolipinovo",
+    "Радио Пловдив — доброволци чистят и облагородяват Столипиново": "Rádio Plovdiv — voluntários limpam e melhoram Stolipinovo"
+  }};
 
 // Shared person-role tags (objective: one source of truth for People + History).
 // Adding a locale to `Lang` forces a translation here via the Record<Lang> type.
 export const roleLabels: Record<string, Record<Lang, string>> = {
-  academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien", it: "accademico", tr: "akademisyen", es: "académico", el: "ακαδημαϊκός" , ja: "学者", tl: "akademiko", uk: "академік", ru: "академик", pl: "akademik" },
-  actor: { bg: "актьор", en: "actor", de: "Schauspieler", fr: "acteur", it: "attore", tr: "aktör", es: "actor", el: "ηθοποιός" , ja: "俳優", tl: "aktor", uk: "актор", ru: "актёр", pl: "aktor" },
-  art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker", fr: "historien de l'art", it: "storico dell'arte", tr: "sanat tarihçisi", es: "historiador del arte", el: "ιστορικός τέχνης" , ja: "美術史家", tl: "istoryador ng sining", uk: "мистецтвознавець", ru: "искусствовед", pl: "historyk sztuki" },
-  artist: { bg: "художник", en: "artist", de: "Künstler", fr: "artiste", it: "artista", tr: "sanatçı", es: "artista", el: "καλλιτέχνης" , ja: "芸術家", tl: "artista", uk: "художник", ru: "художник", pl: "artysta" },
-  athlete: { bg: "спортист", en: "athlete", de: "Sportler", fr: "athlète", it: "atleta", tr: "atlet", es: "atleta", el: "αθλητής" , ja: "アスリート", tl: "atleta", uk: "спортсмен", ru: "спортсмен", pl: "sportowiec" },
-  basketball_player: { bg: "баскетболист", en: "basketball player", de: "Basketballspieler", fr: "basketteur", it: "cestista", tr: "basketbolcu", es: "baloncestista", el: "καλαθοσφαιριστής" , ja: "バスケットボール選手", tl: "basketbolista", uk: "баскетболіст", ru: "баскетболист", pl: "koszykarz" },
-  boxer: { bg: "боксьор", en: "boxer", de: "Boxer", fr: "boxeur", it: "pugile", tr: "boksör", es: "boxeador", el: "πυγμάχος" , ja: "ボクサー", tl: "boksingero", uk: "боксер", ru: "боксёр", pl: "bokser" },
-  canoeist: { bg: "кануист", en: "canoeist", de: "Kanute", fr: "canoéiste", it: "canoista", tr: "kanocu", es: "piragüista", el: "κανοϊστής" , ja: "カヌー選手", tl: "manlalaro ng kanoa", uk: "каноїст", ru: "каноист", pl: "kajakarz" },
-  chef: { bg: "готвач", en: "chef", de: "Koch", fr: "chef cuisinier", it: "chef", tr: "aşçı", es: "chef", el: "σεφ" , ja: "料理人", tl: "chef", uk: "шеф-кухар", ru: "шеф-повар", pl: "kucharz" },
-  chess_player: { bg: "шахматист", en: "chess player", de: "Schachspieler", fr: "joueur d'échecs", it: "scacchista", tr: "satranç oyuncusu", es: "ajedrecista", el: "σκακιστής" , ja: "チェス選手", tl: "manlalaro ng ahedres", uk: "шахіст", ru: "шахматист", pl: "szachista" },
-  choreographer: { bg: "хореограф", en: "choreographer", de: "Choreograf", fr: "chorégraphe", it: "coreografo", tr: "koreograf", es: "coreógrafo", el: "χορογράφος" , ja: "振付家", tl: "koreograpo", uk: "хореограф", ru: "хореограф", pl: "choreograf" },
-  clergy: { bg: "духовник", en: "clergy", de: "Geistlicher", fr: "ecclésiastique", it: "religioso", tr: "din adamı", es: "clérigo", el: "κληρικός" , ja: "聖職者", tl: "klero", uk: "духовна особа", ru: "духовное лицо", pl: "duchowny" },
-  composer: { bg: "композитор", en: "composer", de: "Komponist", fr: "compositeur", it: "compositore", tr: "besteci", es: "compositor", el: "συνθέτης" , ja: "作曲家", tl: "kompositor", uk: "композитор", ru: "композитор", pl: "kompozytor" },
-  conductor: { bg: "диригент", en: "conductor", de: "Dirigent", fr: "chef d'orchestre", it: "direttore d'orchestra", tr: "orkestra şefi", es: "director de orquesta", el: "μαέστρος" , ja: "指揮者", tl: "konduktor", uk: "диригент", ru: "дирижёр", pl: "dyrygent" },
-  cultural_manager: { bg: "културен мениджър", en: "cultural manager", de: "Kulturmanager", fr: "gestionnaire culturel", it: "manager culturale", tr: "kültür yöneticisi", es: "gestor cultural", el: "πολιτιστικός διαχειριστής" , ja: "文化マネージャー", tl: "tagapamahala ng kultura", uk: "культурний менеджер", ru: "культурный менеджер", pl: "menedżer kultury" },
-  designer: { bg: "дизайнер", en: "designer", de: "Designer", fr: "designer", it: "designer", tr: "tasarımcı", es: "diseñador", el: "σχεδιαστής" , ja: "デザイナー", tl: "disenyador", uk: "дизайнер", ru: "дизайнер", pl: "projektant" },
-  diplomat: { bg: "дипломат", en: "diplomat", de: "Diplomat", fr: "diplomate", it: "diplomatico", tr: "diplomat", es: "diplomático", el: "διπλωμάτης" , ja: "外交官", tl: "diplomatiko", uk: "дипломат", ru: "дипломат", pl: "dyplomata" },
-  economist: { bg: "икономист", en: "economist", de: "Ökonom", fr: "économiste", it: "economista", tr: "iktisatçı", es: "economista", el: "οικονομολόγος" , ja: "経済学者", tl: "ekonomista", uk: "економіст", ru: "экономист", pl: "ekonomista" },
-  educator: { bg: "педагог", en: "educator", de: "Pädagoge", fr: "pédagogue", it: "pedagogo", tr: "eğitimci", es: "pedagogo", el: "παιδαγωγός" , ja: "教育者", tl: "edukador", uk: "педагог", ru: "педагог", pl: "pedagog" },
-  electrical_engineer: { bg: "електроинженер", en: "electrical engineer", de: "Elektroingenieur", fr: "ingénieur électricien", it: "ingegnere elettrico", tr: "elektrik mühendisi", es: "ingeniero eléctrico", el: "ηλεκτρολόγος μηχανικός" , ja: "電気技師", tl: "inhinyerong elektrikal", uk: "інженер-електрик", ru: "инженер-электрик", pl: "inżynier elektryk" },
-  engineer: { bg: "инженер", en: "engineer", de: "Ingenieur", fr: "ingénieur", it: "ingegnere", tr: "mühendis", es: "ingeniero", el: "μηχανικός" , ja: "技師", tl: "inhinyero", uk: "інженер", ru: "инженер", pl: "inżynier" },
-  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler", fr: "cavalier", it: "cavaliere", tr: "binici", es: "jinete", el: "ιππέας" , ja: "馬術選手", tl: "mangangabayo", uk: "вершник", ru: "наездник", pl: "jeździec" },
-  fencer: { bg: "фехтовач", en: "fencer", de: "Fechter", fr: "escrimeur", it: "schermidore", tr: "eskrimci", es: "esgrimista", el: "ξιφομάχος" , ja: "フェンシング選手", tl: "esgrimista", uk: "фехтувальник", ru: "фехтовальщик", pl: "szermierz" },
-  film_director: { bg: "филмов режисьор", en: "film director", de: "Filmregisseur", fr: "réalisateur", it: "regista cinematografico", tr: "film yönetmeni", es: "director de cine", el: "σκηνοθέτης κινηματογράφου" , ja: "映画監督", tl: "direktor ng pelikula", uk: "кінорежисер", ru: "кинорежиссёр", pl: "reżyser filmowy" },
-  first_lady: { bg: "първа дама", en: "first lady", de: "First Lady", fr: "première dame", it: "first lady", tr: "first lady", es: "primera dama", el: "πρώτη κυρία" , ja: "ファーストレディー", tl: "Unang Ginang", uk: "перша леді", ru: "первая леди", pl: "pierwsza dama" },
-  football_referee: { bg: "футболен съдия", en: "football referee", de: "Fußballschiedsrichter", fr: "arbitre de football", it: "arbitro di calcio", tr: "futbol hakemi", es: "árbitro de fútbol", el: "διαιτητής ποδοσφαίρου" , ja: "サッカー審判員", tl: "referi ng football", uk: "футбольний суддя", ru: "футбольный судья", pl: "sędzia piłkarski" },
-  footballer: { bg: "футболист", en: "footballer", de: "Fußballspieler", fr: "footballeur", it: "calciatore", tr: "futbolcu", es: "futbolista", el: "ποδοσφαιριστής" , ja: "サッカー選手", tl: "manlalaro ng football", uk: "футболіст", ru: "футболист", pl: "piłkarz" },
-  general: { bg: "генерал", en: "general", de: "General", fr: "général", it: "generale", tr: "general", es: "general", el: "στρατηγός" , ja: "将軍", tl: "heneral", uk: "генерал", ru: "генерал", pl: "generał" },
-  geographer: { bg: "географ", en: "geographer", de: "Geograf", fr: "géographe", it: "geografo", tr: "coğrafyacı", es: "geógrafo", el: "γεωγράφος" , ja: "地理学者", tl: "geograpo", uk: "географ", ru: "географ", pl: "geograf" },
-  gymnast: { bg: "гимнастик", en: "gymnast", de: "Turner", fr: "gymnaste", it: "ginnasta", tr: "jimnastikçi", es: "gimnasta", el: "γυμναστής" , ja: "体操選手", tl: "jimnasta", uk: "гімнаст", ru: "гимнаст", pl: "gimnastyk" },
-  high_jumper: { bg: "скачач на височина", en: "high jumper", de: "Hochspringer", fr: "sauteur en hauteur", it: "saltatore in alto", tr: "yüksek atlamacı", es: "saltador de altura", el: "άλτης ύψους" , ja: "走高跳選手", tl: "tumatalon nang mataas", uk: "стрибун у висоту", ru: "прыгун в высоту", pl: "skoczek wzwyż" },
-  illustrator: { bg: "илюстратор", en: "illustrator", de: "Illustrator", fr: "illustrateur", it: "illustratore", tr: "illüstratör", es: "ilustrador", el: "εικονογράφος" , ja: "イラストレーター", tl: "ilustrador", uk: "ілюстратор", ru: "иллюстратор", pl: "ilustrator" },
-  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower", de: "Speerwerfer", fr: "lanceur de javelot", it: "lanciatore di giavellotto", tr: "cirit atıcısı", es: "lanzador de jabalina", el: "ακοντιστής" , ja: "やり投げ選手", tl: "naghahagis ng habalina", uk: "метальник списа", ru: "метатель копья", pl: "oszczepnik" },
-  journalist: { bg: "журналист", en: "journalist", de: "Journalist", fr: "journaliste", it: "giornalista", tr: "gazeteci", es: "periodista", el: "δημοσιογράφος" , ja: "ジャーナリスト", tl: "mamamahayag", uk: "журналіст", ru: "журналист", pl: "dziennikarz" },
-  jurist: { bg: "юрист", en: "jurist", de: "Jurist", fr: "juriste", it: "giurista", tr: "hukukçu", es: "jurista", el: "νομικός" , ja: "法律家", tl: "hurista", uk: "юрист", ru: "юрист", pl: "prawnik" },
-  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist", de: "Kampfsportler", fr: "artiste martial", it: "artista marziale", tr: "dövüş sanatçısı", es: "artista marcial", el: "αθλητής πολεμικών τεχνών" , ja: "武道家", tl: "mandirigma", uk: "спортсмен бойових мистецтв", ru: "спортсмен по боевым искусствам", pl: "zawodnik sztuk walki" },
-  mathematician: { bg: "математик", en: "mathematician", de: "Mathematiker", fr: "mathématicien", it: "matematico", tr: "matematikçi", es: "matemático", el: "μαθηματικός" , ja: "数学者", tl: "matematiko", uk: "математик", ru: "математик", pl: "matematyk" },
-  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister", fr: "maire", it: "sindaco", tr: "belediye başkanı", es: "alcalde", el: "δήμαρχος" , ja: "市長", tl: "alkalde", uk: "мер", ru: "мэр", pl: "burmistrz" },
-  merchant: { bg: "търговец", en: "merchant", de: "Kaufmann", fr: "marchand", it: "mercante", tr: "tüccar", es: "comerciante", el: "έμπορος" , ja: "商人", tl: "mangangalakal", uk: "купець", ru: "купец", pl: "kupiec" },
-  military_officer: { bg: "офицер", en: "military officer", de: "Offizier", fr: "officier", it: "ufficiale", tr: "subay", es: "oficial", el: "αξιωματικός" , ja: "軍人", tl: "opisyal militar", uk: "офіцер", ru: "офицер", pl: "oficer" },
-  mineralogist: { bg: "минералог", en: "mineralogist", de: "Mineraloge", fr: "minéralogiste", it: "mineralogista", tr: "mineralog", es: "mineralogista", el: "ορυκτολόγος" , ja: "鉱物学者", tl: "mineralogo", uk: "мінералог", ru: "минералог", pl: "mineralog" },
-  missionary: { bg: "мисионер", en: "missionary", de: "Missionar", fr: "missionnaire", it: "missionario", tr: "misyoner", es: "misionero", el: "ιεραπόστολος" , ja: "宣教師", tl: "misyonero", uk: "місіонер", ru: "миссионер", pl: "misjonarz" },
-  model: { bg: "модел", en: "model", de: "Model", fr: "mannequin", it: "modella", tr: "manken", es: "modelo", el: "μοντέλο" , ja: "モデル", tl: "modelo", uk: "модель", ru: "модель", pl: "model" },
-  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete", de: "Moderner Fünfkämpfer", fr: "pentathlonien moderne", it: "pentatleta moderno", tr: "modern pentatlet", es: "pentatleta moderno", el: "αθλητής σύγχρονου πεντάθλου" , ja: "近代五種選手", tl: "atleta ng modernong pentahlon", uk: "спортсмен із сучасного п'ятиборства", ru: "спортсмен по современному пятиборью", pl: "pięcioboista nowoczesny" },
-  musician: { bg: "музикант", en: "musician", de: "Musiker", fr: "musicien", it: "musicista", tr: "müzisyen", es: "músico", el: "μουσικός" , ja: "音楽家", tl: "musikero", uk: "музикант", ru: "музыкант", pl: "muzyk" },
-  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger", fr: "chanteur d'opéra", it: "cantante lirico", tr: "opera sanatçısı", es: "cantante de ópera", el: "λυρικός τραγουδιστής" , ja: "オペラ歌手", tl: "mang-aawit ng opera", uk: "оперний співак", ru: "оперный певец", pl: "śpiewak operowy" },
-  painter: { bg: "живописец", en: "painter", de: "Maler", fr: "peintre", it: "pittore", tr: "ressam", es: "pintor", el: "ζωγράφος" , ja: "画家", tl: "pintor", uk: "живописець", ru: "живописец", pl: "malarz" },
-  paleontologist: { bg: "палеонтолог", en: "paleontologist", de: "Paläontologe", fr: "paléontologue", it: "paleontologo", tr: "paleontolog", es: "paleontólogo", el: "παλαιοντολόγος" , ja: "古生物学者", tl: "paleontologo", uk: "палеонтолог", ru: "палеонтолог", pl: "paleontolog" },
-  patriarch: { bg: "патриарх", en: "patriarch", de: "Patriarch", fr: "patriarche", it: "patriarca", tr: "patrik", es: "patriarca", el: "πατριάρχης" , ja: "総主教", tl: "patriyarka", uk: "патріарх", ru: "патриарх", pl: "patriarcha" },
-  philosopher: { bg: "философ", en: "philosopher", de: "Philosoph", fr: "philosophe", it: "filosofo", tr: "filozof", es: "filósofo", el: "φιλόσοφος" , ja: "哲学者", tl: "pilosopo", uk: "філософ", ru: "философ", pl: "filozof" },
-  physicist: { bg: "физик", en: "physicist", de: "Physiker", fr: "physicien", it: "fisico", tr: "fizikçi", es: "físico", el: "φυσικός" , ja: "物理学者", tl: "pisiko", uk: "фізик", ru: "физик", pl: "fizyk" },
-  pianist: { bg: "пианист", en: "pianist", de: "Pianist", fr: "pianiste", it: "pianista", tr: "piyanist", es: "pianista", el: "πιανίστας" , ja: "ピアニスト", tl: "pyanista", uk: "піаніст", ru: "пианист", pl: "pianista" },
-  poet: { bg: "поет", en: "poet", de: "Dichter", fr: "poète", it: "poeta", tr: "şair", es: "poeta", el: "ποιητής" , ja: "詩人", tl: "makata", uk: "поет", ru: "поэт", pl: "poeta" },
-  politician: { bg: "политик", en: "politician", de: "Politiker", fr: "politicien", it: "politico", tr: "siyasetçi", es: "político", el: "πολιτικός" , ja: "政治家", tl: "pulitiko", uk: "політик", ru: "политик", pl: "polityk" },
-  priest: { bg: "свещеник", en: "priest", de: "Priester", fr: "prêtre", it: "sacerdote", tr: "rahip", es: "sacerdote", el: "ιερέας" , ja: "司祭", tl: "pari", uk: "священник", ru: "священник", pl: "kapłan" },
-  printmaker: { bg: "график", en: "printmaker", de: "Grafiker", fr: "graveur", it: "incisore", tr: "gravürcü", es: "grabador", el: "χαράκτης" , ja: "版画家", tl: "tagagawa ng grabado", uk: "графік", ru: "график", pl: "grafik" },
-  producer: { bg: "продуцент", en: "producer", de: "Produzent", fr: "producteur", it: "produttore", tr: "yapımcı", es: "productor", el: "παραγωγός" , ja: "プロデューサー", tl: "produser", uk: "продюсер", ru: "продюсер", pl: "producent" },
-  public_figure: { bg: "обществена фигура", en: "public figure", de: "Person des öffentlichen Lebens", fr: "personnalité publique", it: "personaggio pubblico", tr: "kamusal figür", es: "figura pública", el: "δημόσιο πρόσωπο" , ja: "公人", tl: "pampublikong personalidad", uk: "громадський діяч", ru: "общественный деятель", pl: "postać publiczna" },
-  racing_driver: { bg: "автомобилен състезател", en: "racing driver", de: "Rennfahrer", fr: "pilote automobile", it: "pilota automobilistico", tr: "yarış pilotu", es: "piloto de carreras", el: "οδηγός αγώνων" , ja: "レーシングドライバー", tl: "drayber ng karera", uk: "автогонщик", ru: "автогонщик", pl: "kierowca wyścigowy" },
-  revolutionary: { bg: "революционер", en: "revolutionary", de: "Revolutionär", fr: "révolutionnaire", it: "rivoluzionario", tr: "devrimci", es: "revolucionario", el: "επαναστάτης" , ja: "革命家", tl: "rebolusyonaryo", uk: "революціонер", ru: "революционер", pl: "rewolucjonista" },
-  rower: { bg: "гребец", en: "rower", de: "Ruderer", fr: "rameur", it: "canottiere", tr: "kürekçi", es: "remero", el: "κωπηλάτης" , ja: "ボート選手", tl: "mananagwan", uk: "веслувальник", ru: "гребец", pl: "wioślarz" },
-  saint: { bg: "светец", en: "saint", de: "Heiliger", fr: "saint", it: "santo", tr: "aziz", es: "santo", el: "άγιος" , ja: "聖人", tl: "santo", uk: "святий", ru: "святой", pl: "święty" },
-  scholar: { bg: "учен", en: "scholar", de: "Gelehrter", fr: "érudit", it: "studioso", tr: "âlim", es: "erudito", el: "λόγιος" , ja: "学者", tl: "iskolar", uk: "вчений", ru: "учёный", pl: "uczony" },
-  scientist: { bg: "учен", en: "scientist", de: "Wissenschaftler", fr: "scientifique", it: "scienziato", tr: "bilim insanı", es: "científico", el: "επιστήμονας" , ja: "科学者", tl: "siyentista", uk: "науковець", ru: "научный деятель", pl: "naukowiec" },
-  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor", fr: "scénariste", it: "sceneggiatore", tr: "senarist", es: "guionista", el: "σεναριογράφος" , ja: "脚本家", tl: "manunulat ng iskrip", uk: "сценарист", ru: "сценарист", pl: "scenarzysta" },
-  sculptor: { bg: "скулптор", en: "sculptor", de: "Bildhauer", fr: "sculpteur", it: "scultore", tr: "heykeltıraş", es: "escultor", el: "γλύπτης" , ja: "彫刻家", tl: "eskultor", uk: "скульптор", ru: "скульптор", pl: "rzeźbiarz" },
-  singer: { bg: "певец", en: "singer", de: "Sänger", fr: "chanteur", it: "cantante", tr: "şarkıcı", es: "cantante", el: "τραγουδιστής" , ja: "歌手", tl: "mang-aawit", uk: "співак", ru: "певец", pl: "śpiewak" },
-  sports_shooter: { bg: "спортен стрелец", en: "sport shooter", de: "Sportschütze", fr: "tireur sportif", it: "tiratore sportivo", tr: "atıcı", es: "tirador deportivo", el: "σκοπευτής" , ja: "射撃選手", tl: "mamamaril sa isports", uk: "спортивний стрілець", ru: "спортивный стрелок", pl: "strzelec sportowy" },
-  swimmer: { bg: "плувец", en: "swimmer", de: "Schwimmer", fr: "nageur", it: "nuotatore", tr: "yüzücü", es: "nadador", el: "κολυμβητής" , ja: "水泳選手", tl: "manlalangoy", uk: "плавець", ru: "пловец", pl: "pływak" },
-  tennis_player: { bg: "тенисист", en: "tennis player", de: "Tennisspieler", fr: "joueur de tennis", it: "tennista", tr: "tenisçi", es: "tenista", el: "τενίστας" , ja: "テニス選手", tl: "manlalaro ng tenis", uk: "тенісист", ru: "теннисист", pl: "tenisista" },
-  theatre_director: { bg: "театрален режисьор", en: "theatre director", de: "Theaterregisseur", fr: "metteur en scène", it: "regista teatrale", tr: "tiyatro yönetmeni", es: "director de teatro", el: "σκηνοθέτης θεάτρου" , ja: "演劇演出家", tl: "direktor ng dulaan", uk: "театральний режисер", ru: "театральный режиссёр", pl: "reżyser teatralny" },
-  violinist: { bg: "цигулар", en: "violinist", de: "Geiger", fr: "violoniste", it: "violinista", tr: "kemancı", es: "violinista", el: "βιολιστής" , ja: "バイオリニスト", tl: "biyolinista", uk: "скрипаль", ru: "скрипач", pl: "skrzypek" },
-  visual_artist: { bg: "визуален художник", en: "visual artist", de: "Bildender Künstler", fr: "artiste visuel", it: "artista visivo", tr: "görsel sanatçı", es: "artista visual", el: "εικαστικός καλλιτέχνης" , ja: "ビジュアルアーティスト", tl: "biswal na artista", uk: "візуальний митець", ru: "визуальный художник", pl: "artysta wizualny" },
-  volleyball_player: { bg: "волейболист", en: "volleyball player", de: "Volleyballspieler", fr: "volleyeur", it: "pallavolista", tr: "voleybolcu", es: "voleibolista", el: "πετοσφαιριστής" , ja: "バレーボール選手", tl: "manlalaro ng volleyball", uk: "волейболіст", ru: "волейболист", pl: "siatkarz" },
-  weightlifter: { bg: "щангист", en: "weightlifter", de: "Gewichtheber", fr: "haltérophile", it: "sollevatore di pesi", tr: "halterci", es: "halterófilo", el: "αρσιβαρίστας" , ja: "重量挙げ選手", tl: "tagabuhat ng bigat", uk: "важкоатлет", ru: "тяжелоатлет", pl: "sztangista" },
-  wrestler: { bg: "борец", en: "wrestler", de: "Ringer", fr: "lutteur", it: "lottatore", tr: "güreşçi", es: "luchador", el: "παλαιστής" , ja: "レスリング選手", tl: "mambubuno", uk: "борець", ru: "борец", pl: "zapaśnik" },
-  writer: { bg: "писател", en: "writer", de: "Schriftsteller", fr: "écrivain", it: "scrittore", tr: "yazar", es: "escritor", el: "συγγραφέας" , ja: "作家", tl: "manunulat", uk: "письменник", ru: "писатель", pl: "pisarz" },
-  zoologist: { bg: "зоолог", en: "zoologist", de: "Zoologe", fr: "zoologiste", it: "zoologo", tr: "zoolog", es: "zoólogo", el: "ζωολόγος", ja: "動物学者", tl: "zoologo", uk: "зоолог", ru: "зоолог", pl: "zoolog" }
+  academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien", it: "accademico", tr: "akademisyen", es: "académico", el: "ακαδημαϊκός" , ja: "学者", tl: "akademiko", uk: "академік", ru: "академик", pl: "akademik" , pt: "acadêmico"},
+  actor: { bg: "актьор", en: "actor", de: "Schauspieler", fr: "acteur", it: "attore", tr: "aktör", es: "actor", el: "ηθοποιός" , ja: "俳優", tl: "aktor", uk: "актор", ru: "актёр", pl: "aktor" , pt: "ator"},
+  art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker", fr: "historien de l'art", it: "storico dell'arte", tr: "sanat tarihçisi", es: "historiador del arte", el: "ιστορικός τέχνης" , ja: "美術史家", tl: "istoryador ng sining", uk: "мистецтвознавець", ru: "искусствовед", pl: "historyk sztuki" , pt: "historiador da arte"},
+  artist: { bg: "художник", en: "artist", de: "Künstler", fr: "artiste", it: "artista", tr: "sanatçı", es: "artista", el: "καλλιτέχνης" , ja: "芸術家", tl: "artista", uk: "художник", ru: "художник", pl: "artysta" , pt: "artista"},
+  athlete: { bg: "спортист", en: "athlete", de: "Sportler", fr: "athlète", it: "atleta", tr: "atlet", es: "atleta", el: "αθλητής" , ja: "アスリート", tl: "atleta", uk: "спортсмен", ru: "спортсмен", pl: "sportowiec" , pt: "atleta"},
+  basketball_player: { bg: "баскетболист", en: "basketball player", de: "Basketballspieler", fr: "basketteur", it: "cestista", tr: "basketbolcu", es: "baloncestista", el: "καλαθοσφαιριστής" , ja: "バスケットボール選手", tl: "basketbolista", uk: "баскетболіст", ru: "баскетболист", pl: "koszykarz" , pt: "jogador de basquetebol"},
+  boxer: { bg: "боксьор", en: "boxer", de: "Boxer", fr: "boxeur", it: "pugile", tr: "boksör", es: "boxeador", el: "πυγμάχος" , ja: "ボクサー", tl: "boksingero", uk: "боксер", ru: "боксёр", pl: "bokser" , pt: "boxeador"},
+  canoeist: { bg: "кануист", en: "canoeist", de: "Kanute", fr: "canoéiste", it: "canoista", tr: "kanocu", es: "piragüista", el: "κανοϊστής" , ja: "カヌー選手", tl: "manlalaro ng kanoa", uk: "каноїст", ru: "каноист", pl: "kajakarz" , pt: "canoísta"},
+  chef: { bg: "готвач", en: "chef", de: "Koch", fr: "chef cuisinier", it: "chef", tr: "aşçı", es: "chef", el: "σεφ" , ja: "料理人", tl: "chef", uk: "шеф-кухар", ru: "шеф-повар", pl: "kucharz" , pt: "cozinheiro"},
+  chess_player: { bg: "шахматист", en: "chess player", de: "Schachspieler", fr: "joueur d'échecs", it: "scacchista", tr: "satranç oyuncusu", es: "ajedrecista", el: "σκακιστής" , ja: "チェス選手", tl: "manlalaro ng ahedres", uk: "шахіст", ru: "шахматист", pl: "szachista" , pt: "jogador de xadrez"},
+  choreographer: { bg: "хореограф", en: "choreographer", de: "Choreograf", fr: "chorégraphe", it: "coreografo", tr: "koreograf", es: "coreógrafo", el: "χορογράφος" , ja: "振付家", tl: "koreograpo", uk: "хореограф", ru: "хореограф", pl: "choreograf" , pt: "coreógrafo"},
+  clergy: { bg: "духовник", en: "clergy", de: "Geistlicher", fr: "ecclésiastique", it: "religioso", tr: "din adamı", es: "clérigo", el: "κληρικός" , ja: "聖職者", tl: "klero", uk: "духовна особа", ru: "духовное лицо", pl: "duchowny" , pt: "clero"},
+  composer: { bg: "композитор", en: "composer", de: "Komponist", fr: "compositeur", it: "compositore", tr: "besteci", es: "compositor", el: "συνθέτης" , ja: "作曲家", tl: "kompositor", uk: "композитор", ru: "композитор", pl: "kompozytor" , pt: "compositor"},
+  conductor: { bg: "диригент", en: "conductor", de: "Dirigent", fr: "chef d'orchestre", it: "direttore d'orchestra", tr: "orkestra şefi", es: "director de orquesta", el: "μαέστρος" , ja: "指揮者", tl: "konduktor", uk: "диригент", ru: "дирижёр", pl: "dyrygent" , pt: "condutor"},
+  cultural_manager: { bg: "културен мениджър", en: "cultural manager", de: "Kulturmanager", fr: "gestionnaire culturel", it: "manager culturale", tr: "kültür yöneticisi", es: "gestor cultural", el: "πολιτιστικός διαχειριστής" , ja: "文化マネージャー", tl: "tagapamahala ng kultura", uk: "культурний менеджер", ru: "культурный менеджер", pl: "menedżer kultury" , pt: "gestor cultural"},
+  designer: { bg: "дизайнер", en: "designer", de: "Designer", fr: "designer", it: "designer", tr: "tasarımcı", es: "diseñador", el: "σχεδιαστής" , ja: "デザイナー", tl: "disenyador", uk: "дизайнер", ru: "дизайнер", pl: "projektant" , pt: "desenhista"},
+  diplomat: { bg: "дипломат", en: "diplomat", de: "Diplomat", fr: "diplomate", it: "diplomatico", tr: "diplomat", es: "diplomático", el: "διπλωμάτης" , ja: "外交官", tl: "diplomatiko", uk: "дипломат", ru: "дипломат", pl: "dyplomata" , pt: "diplomata"},
+  economist: { bg: "икономист", en: "economist", de: "Ökonom", fr: "économiste", it: "economista", tr: "iktisatçı", es: "economista", el: "οικονομολόγος" , ja: "経済学者", tl: "ekonomista", uk: "економіст", ru: "экономист", pl: "ekonomista" , pt: "economista"},
+  educator: { bg: "педагог", en: "educator", de: "Pädagoge", fr: "pédagogue", it: "pedagogo", tr: "eğitimci", es: "pedagogo", el: "παιδαγωγός" , ja: "教育者", tl: "edukador", uk: "педагог", ru: "педагог", pl: "pedagog" , pt: "educador"},
+  electrical_engineer: { bg: "електроинженер", en: "electrical engineer", de: "Elektroingenieur", fr: "ingénieur électricien", it: "ingegnere elettrico", tr: "elektrik mühendisi", es: "ingeniero eléctrico", el: "ηλεκτρολόγος μηχανικός" , ja: "電気技師", tl: "inhinyerong elektrikal", uk: "інженер-електрик", ru: "инженер-электрик", pl: "inżynier elektryk" , pt: "engenheiro eletricista"},
+  engineer: { bg: "инженер", en: "engineer", de: "Ingenieur", fr: "ingénieur", it: "ingegnere", tr: "mühendis", es: "ingeniero", el: "μηχανικός" , ja: "技師", tl: "inhinyero", uk: "інженер", ru: "инженер", pl: "inżynier" , pt: "engenheiro"},
+  equestrian: { bg: "състезател по конен спорт", en: "equestrian", de: "Reitsportler", fr: "cavalier", it: "cavaliere", tr: "binici", es: "jinete", el: "ιππέας" , ja: "馬術選手", tl: "mangangabayo", uk: "вершник", ru: "наездник", pl: "jeździec" , pt: "equestre"},
+  fencer: { bg: "фехтовач", en: "fencer", de: "Fechter", fr: "escrimeur", it: "schermidore", tr: "eskrimci", es: "esgrimista", el: "ξιφομάχος" , ja: "フェンシング選手", tl: "esgrimista", uk: "фехтувальник", ru: "фехтовальщик", pl: "szermierz" , pt: "esgrimista"},
+  film_director: { bg: "филмов режисьор", en: "film director", de: "Filmregisseur", fr: "réalisateur", it: "regista cinematografico", tr: "film yönetmeni", es: "director de cine", el: "σκηνοθέτης κινηματογράφου" , ja: "映画監督", tl: "direktor ng pelikula", uk: "кінорежисер", ru: "кинорежиссёр", pl: "reżyser filmowy" , pt: "diretor de cinema"},
+  first_lady: { bg: "първа дама", en: "first lady", de: "First Lady", fr: "première dame", it: "first lady", tr: "first lady", es: "primera dama", el: "πρώτη κυρία" , ja: "ファーストレディー", tl: "Unang Ginang", uk: "перша леді", ru: "первая леди", pl: "pierwsza dama" , pt: "primeira-dama"},
+  football_referee: { bg: "футболен съдия", en: "football referee", de: "Fußballschiedsrichter", fr: "arbitre de football", it: "arbitro di calcio", tr: "futbol hakemi", es: "árbitro de fútbol", el: "διαιτητής ποδοσφαίρου" , ja: "サッカー審判員", tl: "referi ng football", uk: "футбольний суддя", ru: "футбольный судья", pl: "sędzia piłkarski" , pt: "árbitro de futebol"},
+  footballer: { bg: "футболист", en: "footballer", de: "Fußballspieler", fr: "footballeur", it: "calciatore", tr: "futbolcu", es: "futbolista", el: "ποδοσφαιριστής" , ja: "サッカー選手", tl: "manlalaro ng football", uk: "футболіст", ru: "футболист", pl: "piłkarz" , pt: "jogador de futebol"},
+  general: { bg: "генерал", en: "general", de: "General", fr: "général", it: "generale", tr: "general", es: "general", el: "στρατηγός" , ja: "将軍", tl: "heneral", uk: "генерал", ru: "генерал", pl: "generał" , pt: "geral"},
+  geographer: { bg: "географ", en: "geographer", de: "Geograf", fr: "géographe", it: "geografo", tr: "coğrafyacı", es: "geógrafo", el: "γεωγράφος" , ja: "地理学者", tl: "geograpo", uk: "географ", ru: "географ", pl: "geograf" , pt: "geógrafo"},
+  gymnast: { bg: "гимнастик", en: "gymnast", de: "Turner", fr: "gymnaste", it: "ginnasta", tr: "jimnastikçi", es: "gimnasta", el: "γυμναστής" , ja: "体操選手", tl: "jimnasta", uk: "гімнаст", ru: "гимнаст", pl: "gimnastyk" , pt: "ginasta"},
+  high_jumper: { bg: "скачач на височина", en: "high jumper", de: "Hochspringer", fr: "sauteur en hauteur", it: "saltatore in alto", tr: "yüksek atlamacı", es: "saltador de altura", el: "άλτης ύψους" , ja: "走高跳選手", tl: "tumatalon nang mataas", uk: "стрибун у висоту", ru: "прыгун в высоту", pl: "skoczek wzwyż" , pt: "saltador em altura"},
+  illustrator: { bg: "илюстратор", en: "illustrator", de: "Illustrator", fr: "illustrateur", it: "illustratore", tr: "illüstratör", es: "ilustrador", el: "εικονογράφος" , ja: "イラストレーター", tl: "ilustrador", uk: "ілюстратор", ru: "иллюстратор", pl: "ilustrator" , pt: "ilustrador"},
+  javelin_thrower: { bg: "копиехвъргач", en: "javelin thrower", de: "Speerwerfer", fr: "lanceur de javelot", it: "lanciatore di giavellotto", tr: "cirit atıcısı", es: "lanzador de jabalina", el: "ακοντιστής" , ja: "やり投げ選手", tl: "naghahagis ng habalina", uk: "метальник списа", ru: "метатель копья", pl: "oszczepnik" , pt: "lançador de dardo"},
+  journalist: { bg: "журналист", en: "journalist", de: "Journalist", fr: "journaliste", it: "giornalista", tr: "gazeteci", es: "periodista", el: "δημοσιογράφος" , ja: "ジャーナリスト", tl: "mamamahayag", uk: "журналіст", ru: "журналист", pl: "dziennikarz" , pt: "jornalista"},
+  jurist: { bg: "юрист", en: "jurist", de: "Jurist", fr: "juriste", it: "giurista", tr: "hukukçu", es: "jurista", el: "νομικός" , ja: "法律家", tl: "hurista", uk: "юрист", ru: "юрист", pl: "prawnik" , pt: "jurista"},
+  martial_artist: { bg: "състезател по бойни изкуства", en: "martial artist", de: "Kampfsportler", fr: "artiste martial", it: "artista marziale", tr: "dövüş sanatçısı", es: "artista marcial", el: "αθλητής πολεμικών τεχνών" , ja: "武道家", tl: "mandirigma", uk: "спортсмен бойових мистецтв", ru: "спортсмен по боевым искусствам", pl: "zawodnik sztuk walki" , pt: "artista marcial"},
+  mathematician: { bg: "математик", en: "mathematician", de: "Mathematiker", fr: "mathématicien", it: "matematico", tr: "matematikçi", es: "matemático", el: "μαθηματικός" , ja: "数学者", tl: "matematiko", uk: "математик", ru: "математик", pl: "matematyk" , pt: "matemático"},
+  mayor: { bg: "кмет", en: "mayor", de: "Bürgermeister", fr: "maire", it: "sindaco", tr: "belediye başkanı", es: "alcalde", el: "δήμαρχος" , ja: "市長", tl: "alkalde", uk: "мер", ru: "мэр", pl: "burmistrz" , pt: "prefeito"},
+  merchant: { bg: "търговец", en: "merchant", de: "Kaufmann", fr: "marchand", it: "mercante", tr: "tüccar", es: "comerciante", el: "έμπορος" , ja: "商人", tl: "mangangalakal", uk: "купець", ru: "купец", pl: "kupiec" , pt: "comerciante"},
+  military_officer: { bg: "офицер", en: "military officer", de: "Offizier", fr: "officier", it: "ufficiale", tr: "subay", es: "oficial", el: "αξιωματικός" , ja: "軍人", tl: "opisyal militar", uk: "офіцер", ru: "офицер", pl: "oficer" , pt: "oficial militar"},
+  mineralogist: { bg: "минералог", en: "mineralogist", de: "Mineraloge", fr: "minéralogiste", it: "mineralogista", tr: "mineralog", es: "mineralogista", el: "ορυκτολόγος" , ja: "鉱物学者", tl: "mineralogo", uk: "мінералог", ru: "минералог", pl: "mineralog" , pt: "mineralogista"},
+  missionary: { bg: "мисионер", en: "missionary", de: "Missionar", fr: "missionnaire", it: "missionario", tr: "misyoner", es: "misionero", el: "ιεραπόστολος" , ja: "宣教師", tl: "misyonero", uk: "місіонер", ru: "миссионер", pl: "misjonarz" , pt: "missionário"},
+  model: { bg: "модел", en: "model", de: "Model", fr: "mannequin", it: "modella", tr: "manken", es: "modelo", el: "μοντέλο" , ja: "モデル", tl: "modelo", uk: "модель", ru: "модель", pl: "model" , pt: "modelo"},
+  modern_pentathlete: { bg: "състезател по модерен петобой", en: "modern pentathlete", de: "Moderner Fünfkämpfer", fr: "pentathlonien moderne", it: "pentatleta moderno", tr: "modern pentatlet", es: "pentatleta moderno", el: "αθλητής σύγχρονου πεντάθλου" , ja: "近代五種選手", tl: "atleta ng modernong pentahlon", uk: "спортсмен із сучасного п'ятиборства", ru: "спортсмен по современному пятиборью", pl: "pięcioboista nowoczesny" , pt: "pentatleta moderno"},
+  musician: { bg: "музикант", en: "musician", de: "Musiker", fr: "musicien", it: "musicista", tr: "müzisyen", es: "músico", el: "μουσικός" , ja: "音楽家", tl: "musikero", uk: "музикант", ru: "музыкант", pl: "muzyk" , pt: "músico"},
+  opera_singer: { bg: "оперен певец", en: "opera singer", de: "Opernsänger", fr: "chanteur d'opéra", it: "cantante lirico", tr: "opera sanatçısı", es: "cantante de ópera", el: "λυρικός τραγουδιστής" , ja: "オペラ歌手", tl: "mang-aawit ng opera", uk: "оперний співак", ru: "оперный певец", pl: "śpiewak operowy" , pt: "cantora de ópera"},
+  painter: { bg: "живописец", en: "painter", de: "Maler", fr: "peintre", it: "pittore", tr: "ressam", es: "pintor", el: "ζωγράφος" , ja: "画家", tl: "pintor", uk: "живописець", ru: "живописец", pl: "malarz" , pt: "pintor"},
+  paleontologist: { bg: "палеонтолог", en: "paleontologist", de: "Paläontologe", fr: "paléontologue", it: "paleontologo", tr: "paleontolog", es: "paleontólogo", el: "παλαιοντολόγος" , ja: "古生物学者", tl: "paleontologo", uk: "палеонтолог", ru: "палеонтолог", pl: "paleontolog" , pt: "paleontólogo"},
+  patriarch: { bg: "патриарх", en: "patriarch", de: "Patriarch", fr: "patriarche", it: "patriarca", tr: "patrik", es: "patriarca", el: "πατριάρχης" , ja: "総主教", tl: "patriyarka", uk: "патріарх", ru: "патриарх", pl: "patriarcha" , pt: "patriarca"},
+  philosopher: { bg: "философ", en: "philosopher", de: "Philosoph", fr: "philosophe", it: "filosofo", tr: "filozof", es: "filósofo", el: "φιλόσοφος" , ja: "哲学者", tl: "pilosopo", uk: "філософ", ru: "философ", pl: "filozof" , pt: "filósofo"},
+  physicist: { bg: "физик", en: "physicist", de: "Physiker", fr: "physicien", it: "fisico", tr: "fizikçi", es: "físico", el: "φυσικός" , ja: "物理学者", tl: "pisiko", uk: "фізик", ru: "физик", pl: "fizyk" , pt: "físico"},
+  pianist: { bg: "пианист", en: "pianist", de: "Pianist", fr: "pianiste", it: "pianista", tr: "piyanist", es: "pianista", el: "πιανίστας" , ja: "ピアニスト", tl: "pyanista", uk: "піаніст", ru: "пианист", pl: "pianista" , pt: "pianista"},
+  poet: { bg: "поет", en: "poet", de: "Dichter", fr: "poète", it: "poeta", tr: "şair", es: "poeta", el: "ποιητής" , ja: "詩人", tl: "makata", uk: "поет", ru: "поэт", pl: "poeta" , pt: "poeta"},
+  politician: { bg: "политик", en: "politician", de: "Politiker", fr: "politicien", it: "politico", tr: "siyasetçi", es: "político", el: "πολιτικός" , ja: "政治家", tl: "pulitiko", uk: "політик", ru: "политик", pl: "polityk" , pt: "político"},
+  priest: { bg: "свещеник", en: "priest", de: "Priester", fr: "prêtre", it: "sacerdote", tr: "rahip", es: "sacerdote", el: "ιερέας" , ja: "司祭", tl: "pari", uk: "священник", ru: "священник", pl: "kapłan" , pt: "padre"},
+  printmaker: { bg: "график", en: "printmaker", de: "Grafiker", fr: "graveur", it: "incisore", tr: "gravürcü", es: "grabador", el: "χαράκτης" , ja: "版画家", tl: "tagagawa ng grabado", uk: "графік", ru: "график", pl: "grafik" , pt: "gravador"},
+  producer: { bg: "продуцент", en: "producer", de: "Produzent", fr: "producteur", it: "produttore", tr: "yapımcı", es: "productor", el: "παραγωγός" , ja: "プロデューサー", tl: "produser", uk: "продюсер", ru: "продюсер", pl: "producent" , pt: "produtor"},
+  public_figure: { bg: "обществена фигура", en: "public figure", de: "Person des öffentlichen Lebens", fr: "personnalité publique", it: "personaggio pubblico", tr: "kamusal figür", es: "figura pública", el: "δημόσιο πρόσωπο" , ja: "公人", tl: "pampublikong personalidad", uk: "громадський діяч", ru: "общественный деятель", pl: "postać publiczna" , pt: "figura pública"},
+  racing_driver: { bg: "автомобилен състезател", en: "racing driver", de: "Rennfahrer", fr: "pilote automobile", it: "pilota automobilistico", tr: "yarış pilotu", es: "piloto de carreras", el: "οδηγός αγώνων" , ja: "レーシングドライバー", tl: "drayber ng karera", uk: "автогонщик", ru: "автогонщик", pl: "kierowca wyścigowy" , pt: "piloto de corridas"},
+  revolutionary: { bg: "революционер", en: "revolutionary", de: "Revolutionär", fr: "révolutionnaire", it: "rivoluzionario", tr: "devrimci", es: "revolucionario", el: "επαναστάτης" , ja: "革命家", tl: "rebolusyonaryo", uk: "революціонер", ru: "революционер", pl: "rewolucjonista" , pt: "revolucionário"},
+  rower: { bg: "гребец", en: "rower", de: "Ruderer", fr: "rameur", it: "canottiere", tr: "kürekçi", es: "remero", el: "κωπηλάτης" , ja: "ボート選手", tl: "mananagwan", uk: "веслувальник", ru: "гребец", pl: "wioślarz" , pt: "remador"},
+  saint: { bg: "светец", en: "saint", de: "Heiliger", fr: "saint", it: "santo", tr: "aziz", es: "santo", el: "άγιος" , ja: "聖人", tl: "santo", uk: "святий", ru: "святой", pl: "święty" , pt: "santo"},
+  scholar: { bg: "учен", en: "scholar", de: "Gelehrter", fr: "érudit", it: "studioso", tr: "âlim", es: "erudito", el: "λόγιος" , ja: "学者", tl: "iskolar", uk: "вчений", ru: "учёный", pl: "uczony" , pt: "estudioso"},
+  scientist: { bg: "учен", en: "scientist", de: "Wissenschaftler", fr: "scientifique", it: "scienziato", tr: "bilim insanı", es: "científico", el: "επιστήμονας" , ja: "科学者", tl: "siyentista", uk: "науковець", ru: "научный деятель", pl: "naukowiec" , pt: "cientista"},
+  screenwriter: { bg: "сценарист", en: "screenwriter", de: "Drehbuchautor", fr: "scénariste", it: "sceneggiatore", tr: "senarist", es: "guionista", el: "σεναριογράφος" , ja: "脚本家", tl: "manunulat ng iskrip", uk: "сценарист", ru: "сценарист", pl: "scenarzysta" , pt: "roteirista"},
+  sculptor: { bg: "скулптор", en: "sculptor", de: "Bildhauer", fr: "sculpteur", it: "scultore", tr: "heykeltıraş", es: "escultor", el: "γλύπτης" , ja: "彫刻家", tl: "eskultor", uk: "скульптор", ru: "скульптор", pl: "rzeźbiarz" , pt: "escultor"},
+  singer: { bg: "певец", en: "singer", de: "Sänger", fr: "chanteur", it: "cantante", tr: "şarkıcı", es: "cantante", el: "τραγουδιστής" , ja: "歌手", tl: "mang-aawit", uk: "співак", ru: "певец", pl: "śpiewak" , pt: "cantor"},
+  sports_shooter: { bg: "спортен стрелец", en: "sport shooter", de: "Sportschütze", fr: "tireur sportif", it: "tiratore sportivo", tr: "atıcı", es: "tirador deportivo", el: "σκοπευτής" , ja: "射撃選手", tl: "mamamaril sa isports", uk: "спортивний стрілець", ru: "спортивный стрелок", pl: "strzelec sportowy" , pt: "atirador desportivo"},
+  swimmer: { bg: "плувец", en: "swimmer", de: "Schwimmer", fr: "nageur", it: "nuotatore", tr: "yüzücü", es: "nadador", el: "κολυμβητής" , ja: "水泳選手", tl: "manlalangoy", uk: "плавець", ru: "пловец", pl: "pływak" , pt: "nadador"},
+  tennis_player: { bg: "тенисист", en: "tennis player", de: "Tennisspieler", fr: "joueur de tennis", it: "tennista", tr: "tenisçi", es: "tenista", el: "τενίστας" , ja: "テニス選手", tl: "manlalaro ng tenis", uk: "тенісист", ru: "теннисист", pl: "tenisista" , pt: "tenista"},
+  theatre_director: { bg: "театрален режисьор", en: "theatre director", de: "Theaterregisseur", fr: "metteur en scène", it: "regista teatrale", tr: "tiyatro yönetmeni", es: "director de teatro", el: "σκηνοθέτης θεάτρου" , ja: "演劇演出家", tl: "direktor ng dulaan", uk: "театральний режисер", ru: "театральный режиссёр", pl: "reżyser teatralny" , pt: "diretor de teatro"},
+  violinist: { bg: "цигулар", en: "violinist", de: "Geiger", fr: "violoniste", it: "violinista", tr: "kemancı", es: "violinista", el: "βιολιστής" , ja: "バイオリニスト", tl: "biyolinista", uk: "скрипаль", ru: "скрипач", pl: "skrzypek" , pt: "violinista"},
+  visual_artist: { bg: "визуален художник", en: "visual artist", de: "Bildender Künstler", fr: "artiste visuel", it: "artista visivo", tr: "görsel sanatçı", es: "artista visual", el: "εικαστικός καλλιτέχνης" , ja: "ビジュアルアーティスト", tl: "biswal na artista", uk: "візуальний митець", ru: "визуальный художник", pl: "artysta wizualny" , pt: "artista visual"},
+  volleyball_player: { bg: "волейболист", en: "volleyball player", de: "Volleyballspieler", fr: "volleyeur", it: "pallavolista", tr: "voleybolcu", es: "voleibolista", el: "πετοσφαιριστής" , ja: "バレーボール選手", tl: "manlalaro ng volleyball", uk: "волейболіст", ru: "волейболист", pl: "siatkarz" , pt: "jogador de voleibol"},
+  weightlifter: { bg: "щангист", en: "weightlifter", de: "Gewichtheber", fr: "haltérophile", it: "sollevatore di pesi", tr: "halterci", es: "halterófilo", el: "αρσιβαρίστας" , ja: "重量挙げ選手", tl: "tagabuhat ng bigat", uk: "важкоатлет", ru: "тяжелоатлет", pl: "sztangista" , pt: "levantador de peso"},
+  wrestler: { bg: "борец", en: "wrestler", de: "Ringer", fr: "lutteur", it: "lottatore", tr: "güreşçi", es: "luchador", el: "παλαιστής" , ja: "レスリング選手", tl: "mambubuno", uk: "борець", ru: "борец", pl: "zapaśnik" , pt: "lutador"},
+  writer: { bg: "писател", en: "writer", de: "Schriftsteller", fr: "écrivain", it: "scrittore", tr: "yazar", es: "escritor", el: "συγγραφέας" , ja: "作家", tl: "manunulat", uk: "письменник", ru: "писатель", pl: "pisarz" , pt: "escritor"},
+  zoologist: { bg: "зоолог", en: "zoologist", de: "Zoologe", fr: "zoologiste", it: "zoologo", tr: "zoolog", es: "zoólogo", el: "ζωολόγος", ja: "動物学者", tl: "zoologo", uk: "зоолог", ru: "зоолог", pl: "zoolog" , pt: "zoólogo"}
 };
