@@ -34,6 +34,8 @@ export type NeighbourhoodPhoto = {
   accessed_at: string;
   source_id?: string;
   scope?: NeighbourhoodPhotoScope;
+  caption_bg?: string;
+  caption_en?: string;
 };
 
 export type NeighbourhoodTimelineEntry = {

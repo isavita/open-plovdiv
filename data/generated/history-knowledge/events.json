@@ -66,20 +66,20 @@
     "category": "historical_timeline",
     "era": "prehistory",
     "date": {
-      "year": -5000,
+      "year": -4200,
       "year_end": null,
       "month": null,
       "day": null,
       "precision": "display_period",
-      "display_bg": "VI–IV хилядолетие пр.н.е.",
-      "display_en": "6th–4th millennium BC"
+      "display_bg": "Краят на V – първата половина на IV хилядолетие пр.н.е.",
+      "display_en": "Late 5th–first half of the 4th millennium BC"
     },
     "title_bg": "Дългата селищна последователност на Небет тепе",
     "title_en": "Nebet Tepe’s long settlement sequence",
-    "summary_bg": "Общинските туристически източници поставят най-ранните следи на Небет тепе между неолита през VI хилядолетие пр.н.е. и IV хилядолетие пр.н.е. Слоевете на обекта свидетелстват за многохилядолетна последователност на обитаване, а не за една безспорно датирана „основателна“ година.",
-    "summary_en": "Municipal visitor sources place the earliest traces at Nebet Tepe between the Neolithic 6th millennium BC and the 4th millennium BC. Its layers show a settlement sequence spanning millennia, rather than one uncontested founding date.",
-    "conflict_notes_bg": "Два актуални общински туристически източника дават различни най-ранни ориентири — VI хилядолетие пр.н.е. и IV хилядолетие пр.н.е.; затова записът представя диапазон вместо привидно точна дата.",
-    "conflict_notes_en": "Two current municipal visitor sources give different earliest reference points — the 6th and the 4th millennium BC — so this record presents a range rather than a deceptively exact date.",
+    "summary_bg": "Регионалният археологически музей датира най-ранното засвидетелствано обитаване на Небет тепе към късния халколит — края на V и първата половина на IV хилядолетие пр.н.е. Данните за най-ранните пластове са ограничени.",
+    "summary_en": "The Regional Archaeological Museum dates the earliest attested occupation of Nebet Tepe to the late Chalcolithic, from the end of the 5th to the first half of the 4th millennium BC. Evidence from the earliest layers is limited.",
+    "conflict_notes_bg": "Общински туристически източници дават различни дати. Тук следваме публикуваното обобщение на Регионалния археологически музей за проучванията на самия хълм.",
+    "conflict_notes_en": "Municipal visitor sources give different dates. This record follows the Regional Archaeological Museum's published review of research on the hill itself.",
     "theme_tags": [
       "prehistory"
     ],
@@ -90,26 +90,26 @@
     ],
     "organization_ids": [],
     "source_ids": [
-      "source-visit-plovdiv-archaeological-complex-nebet-tepe",
-      "source-visit-plovdiv-discover-plovdiv-brochure"
+      "source-regional-archaeological-museum-plovdiv-the-fortress-of-nebet-tepe",
+      "source-visit-plovdiv-archaeological-complex-nebet-tepe"
     ],
     "provenance": [
+      {
+        "source_id": "source-regional-archaeological-museum-plovdiv-the-fortress-of-nebet-tepe",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Дългата селищна последователност на Небет тепе\".",
+        "claim_en": "Dating and summary for timeline record \"Nebet Tepe’s long settlement sequence\".",
+        "url": "https://ramplovdiv.com/%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D1%82%D0%B0-%D0%BD%D0%B0-%D0%BD%D0%B5%D0%B1%D0%B5%D1%82-%D1%82%D0%B5%D0%BF%D0%B5/",
+        "accessed_at": "2026-10-31",
+        "license_status": "public_reference_terms_unverified"
+      },
       {
         "source_id": "source-visit-plovdiv-archaeological-complex-nebet-tepe",
         "evidence_type": "public_source",
         "claim_bg": "Датиране и обобщение за хронологичния запис \"Дългата селищна последователност на Небет тепе\".",
         "claim_en": "Dating and summary for timeline record \"Nebet Tepe’s long settlement sequence\".",
         "url": "https://www.visitplovdiv.com/en/node/521",
-        "accessed_at": "2026-07-09",
-        "license_status": "public_reference_terms_unverified"
-      },
-      {
-        "source_id": "source-visit-plovdiv-discover-plovdiv-brochure",
-        "evidence_type": "public_source",
-        "claim_bg": "Датиране и обобщение за хронологичния запис \"Дългата селищна последователност на Небет тепе\".",
-        "claim_en": "Dating and summary for timeline record \"Nebet Tepe’s long settlement sequence\".",
-        "url": "https://www.visitplovdiv.com/sites/default/files/2026-05-11_visitplovdiv_brochure_discoverplovdiv_EN_DIGITAL.pdf",
-        "accessed_at": "2026-07-09",
+        "accessed_at": "2026-10-31",
         "license_status": "public_reference_terms_unverified"
       }
     ],
@@ -286,8 +286,8 @@
     },
     "title_bg": "Тракийският град Евмолпия",
     "title_en": "The Thracian town of Eumolpia",
-    "summary_bg": "Общинската историческа справка описва тракийското укрепено селище на Трихълмието като Евмолпия или Евмолпеида. С възхода на Одриското царство през V в. пр.н.е. селището и околностите му попадат в неговата политическа орбита.",
-    "summary_en": "The municipality’s historical overview describes the fortified Thracian settlement on the Three Hills as Eumolpia or Eumolpeida. With the rise of the Odrysian kingdom in the 5th century BC, the settlement and its surroundings entered its political orbit.",
+    "summary_bg": "Общински исторически справки използват имената Евмолпия и Евмолпеида за тракийското селище на Трихълмието. През V в. пр.н.е. околността попада в политическата орбита на Одриското царство.",
+    "summary_en": "Municipal histories use Eumolpias or Eumolpeida for the Thracian settlement on the Three Hills. In the 5th century BC, the surrounding area came under the influence of the Odrysian kingdom.",
     "conflict_notes_bg": null,
     "conflict_notes_en": null,
     "theme_tags": [
@@ -297,9 +297,7 @@
     "place_ids": [
       "place-seven-hills"
     ],
-    "organization_ids": [
-      "org-plovdiv-municipality"
-    ],
+    "organization_ids": [],
     "source_ids": [
       "source-plovdiv-municipality-history",
       "source-visit-plovdiv-antiquity"
@@ -563,9 +561,7 @@
     ],
     "person_ids": [],
     "place_ids": [],
-    "organization_ids": [
-      "org-regional-history-museum-plovdiv"
-    ],
+    "organization_ids": [],
     "source_ids": [
       "source-wikipedia-plovdiv"
     ],
@@ -615,9 +611,7 @@
     "place_ids": [
       "place-seven-hills"
     ],
-    "organization_ids": [
-      "org-regional-history-museum-plovdiv"
-    ],
+    "organization_ids": [],
     "source_ids": [
       "source-wikipedia-plovdiv"
     ],
@@ -667,9 +661,7 @@
     "place_ids": [
       "place-forum-philippopolis"
     ],
-    "organization_ids": [
-      "org-regional-history-museum-plovdiv"
-    ],
+    "organization_ids": [],
     "source_ids": [
       "source-wikipedia-plovdiv"
     ],
@@ -11120,9 +11112,7 @@
     "place_ids": [
       "place-plovdiv-city"
     ],
-    "organization_ids": [
-      "org-regional-history-museum-plovdiv"
-    ],
+    "organization_ids": [],
     "source_ids": [
       "source-wikipedia-plovdiv"
     ],
@@ -19313,6 +19303,117 @@
         "claim_en": "City archive record \"Mayor: Kostadin Dimitrov\".",
         "url": "https://iisda.government.bg/ras/governing_bodies/governing_body/4700",
         "accessed_at": "2026-06-17",
+        "license_status": "public_reference_terms_unverified"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-modern-nebet-tepe-reopens",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "modern",
+    "date": {
+      "year": 2025,
+      "year_end": null,
+      "month": 3,
+      "day": 20,
+      "precision": "day",
+      "display_bg": "2025 г.",
+      "display_en": "2025"
+    },
+    "title_bg": "Обновеното Небет тепе отваря за посетители",
+    "title_en": "Restored Nebet Tepe opens to visitors",
+    "summary_bg": "На 20 март 2025 г. археологическият комплекс Небет тепе е открит за посетители след консервация и реставрация.",
+    "summary_en": "On 20 March 2025, the Nebet Tepe archaeological complex opened to visitors after conservation and restoration.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "modern"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-nebet-tepe",
+      "place-seven-hills"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-plovdiv-municipality-nebet-tepe-reopening"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-plovdiv-municipality-nebet-tepe-reopening",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Обновеното Небет тепе отваря за посетители\".",
+        "claim_en": "Dating and summary for timeline record \"Restored Nebet Tepe opens to visitors\".",
+        "url": "https://www.plovdiv.bg/20250320/",
+        "accessed_at": "2026-10-31",
+        "license_status": "public_reference_terms_unverified"
+      }
+    ],
+    "editorial": {
+      "status": "needs_editorial_signoff",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes_bg": "Автоматично нормализиран запис от съществуващите курирани данни; изисква независим редакторски преглед преди да се брои като завършен.",
+      "notes_en": "Automatically normalized from the existing curated data; requires independent editorial review before counting as complete."
+    }
+  },
+  {
+    "id": "event-modern-giro-2026",
+    "type": "event",
+    "category": "historical_timeline",
+    "era": "modern",
+    "date": {
+      "year": 2026,
+      "year_end": null,
+      "month": 5,
+      "day": 10,
+      "precision": "day",
+      "display_bg": "2026 г.",
+      "display_en": "2026"
+    },
+    "title_bg": "Джиро д’Италия потегля от Пловдив",
+    "title_en": "Giro d’Italia starts a stage in Plovdiv",
+    "summary_bg": "На 10 май 2026 г. третият етап на Джиро д’Италия потегля от Пловдив към София, като част от старта на състезанието в България.",
+    "summary_en": "On 10 May 2026, the third stage of the Giro d’Italia set off from Plovdiv for Sofia, as part of the race’s start in Bulgaria.",
+    "conflict_notes_bg": null,
+    "conflict_notes_en": null,
+    "theme_tags": [
+      "modern"
+    ],
+    "person_ids": [],
+    "place_ids": [
+      "place-plovdiv-city"
+    ],
+    "organization_ids": [],
+    "source_ids": [
+      "source-giro-d-italia-stage-3-2026",
+      "source-giro-d-italia-stage-3-result"
+    ],
+    "provenance": [
+      {
+        "source_id": "source-giro-d-italia-stage-3-2026",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Джиро д’Италия потегля от Пловдив\".",
+        "claim_en": "Dating and summary for timeline record \"Giro d’Italia starts a stage in Plovdiv\".",
+        "url": "https://www.giroditalia.it/en/tappe/stage-3-of-the-giro-ditalia-2026-plovdiv-sofia/",
+        "accessed_at": "2026-10-31",
+        "license_status": "public_reference_terms_unverified"
+      },
+      {
+        "source_id": "source-giro-d-italia-stage-3-result",
+        "evidence_type": "public_source",
+        "claim_bg": "Датиране и обобщение за хронологичния запис \"Джиро д’Италия потегля от Пловдив\".",
+        "claim_en": "Dating and summary for timeline record \"Giro d’Italia starts a stage in Plovdiv\".",
+        "url": "https://www.giroditalia.it/en/news/paul-magnier-wins-stage-3-of-giro-ditalia-2026/",
+        "accessed_at": "2026-10-31",
         "license_status": "public_reference_terms_unverified"
       }
     ],

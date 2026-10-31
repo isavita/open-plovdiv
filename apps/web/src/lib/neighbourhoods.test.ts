@@ -71,6 +71,18 @@ describe("neighbourhood histories registry", () => {
     }
   });
 
+  it("identifies and credits the 2025 Youth Hill railway photograph in every language", () => {
+    const neighbourhood = neighbourhoodHistories.find((item) => item.id === "mladezhki-halm")!;
+    const photo = neighbourhoodLeadPhoto(neighbourhood, placesById)!;
+    expect(photo.credit).toBe("DemieK07");
+    expect(photo.license).toBe("CC BY-SA 4.0");
+    for (const lang of localeCodes) {
+      const caption = field(photo as unknown as Record<string, unknown>, "caption", lang);
+      expect(caption, lang).toContain("2025");
+      if (lang !== "en") expect(caption, lang).not.toBe(photo.caption_en);
+    }
+  });
+
   it("connects quarters to walking routes through shared places", () => {
     const kapana = neighbourhoodHistories.find((neighbourhood) => neighbourhood.id === "kapana");
     expect(kapana).toBeDefined();

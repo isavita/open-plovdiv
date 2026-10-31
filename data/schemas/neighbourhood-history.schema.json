@@ -182,6 +182,14 @@
             "neighbourhood",
             "district_context"
           ]
+        },
+        "caption_bg": {
+          "type": "string",
+          "minLength": 3
+        },
+        "caption_en": {
+          "type": "string",
+          "minLength": 3
         }
       }
     },

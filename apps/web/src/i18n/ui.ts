@@ -199,7 +199,7 @@ const bg = {
       modern: "Нова история"
     },
     eraBlurbs: {
-      prehistory: "Селища върху тепетата още от VI хилядолетие пр.н.е.",
+      prehistory: "Неолитни селища в по-широкия район на Пловдив.",
       thracian: "Тракийската Евмолпия и Филипопол на Филип II Македонски.",
       roman: "Тримонциум — блестящ римски град с театър и стадион.",
       medieval: "Векове на сменящо се владение между България и Византия.",
@@ -888,7 +888,7 @@ const en: typeof bg = {
       modern: "Modern era"
     },
     eraBlurbs: {
-      prehistory: "Settlements on the hills as early as the 6th millennium BC.",
+      prehistory: "Neolithic settlements in the wider Plovdiv area.",
       thracian: "Thracian Eumolpias and Philip II of Macedon's Philippopolis.",
       roman: "Trimontium — a brilliant Roman city with a theatre and stadium.",
       medieval: "Centuries of control alternating between Bulgaria and Byzantium.",
@@ -1598,7 +1598,7 @@ const de: typeof bg = {
       modern: "Moderne"
     },
     eraBlurbs: {
-      prehistory: "Siedlungen auf den Hügeln bereits im 6. Jahrtausend v. Chr.",
+      prehistory: "Jungsteinzeitliche Siedlungen im weiteren Raum Plowdiw.",
       thracian: "Das thrakische Eumolpia und das Philippopolis von Philipp II. von Makedonien.",
       roman: "Trimontium — eine glänzende römische Stadt mit Theater und Stadion.",
       medieval: "Jahrhunderte wechselnder Herrschaft zwischen Bulgarien und Byzanz.",
@@ -2244,7 +2244,7 @@ const fr: typeof bg = {
       modern: "Époque moderne"
     },
     eraBlurbs: {
-      prehistory: "Des établissements sur les collines dès le 6e millénaire av. J.-C.",
+      prehistory: "Des habitats néolithiques dans la région de Plovdiv.",
       thracian: "L'Eumolpias thrace et la Philippopolis de Philippe II de Macédoine.",
       roman: "Trimontium — une brillante cité romaine avec théâtre et stade.",
       medieval: "Des siècles de contrôle alternant entre la Bulgarie et Byzance.",
@@ -2890,7 +2890,7 @@ const it: typeof bg = {
       modern: "Epoca moderna"
     },
     eraBlurbs: {
-      prehistory: "Insediamenti sui colli già dal VI millennio a.C.",
+      prehistory: "Insediamenti neolitici nell’area più ampia di Plovdiv.",
       thracian: "L'Eumolpiade tracia e la Filippopoli di Filippo II di Macedonia.",
       roman: "Trimontium — una splendida città romana con teatro e stadio.",
       medieval: "Secoli di controllo alternato tra la Bulgaria e Bisanzio.",
@@ -3536,7 +3536,7 @@ const tr: typeof bg = {
       modern: "Modern dönem"
     },
     eraBlurbs: {
-      prehistory: "Tepelerde daha MÖ 6. binyıldan itibaren yerleşimler.",
+      prehistory: "Plovdiv’in daha geniş çevresinde Neolitik yerleşimler.",
       thracian: "Trak Eumolpias'ı ve Makedonyalı II. Filip'in Philippopolis'i.",
       roman: "Trimontium — tiyatrosu ve stadyumuyla görkemli bir Roma şehri.",
       medieval: "Bulgaristan ile Bizans arasında dönüşümlü yüzyıllarca süren egemenlik.",
@@ -4182,7 +4182,7 @@ const es: typeof bg = {
       modern: "Época moderna"
     },
     eraBlurbs: {
-      prehistory: "Asentamientos en las colinas ya desde el VI milenio a. C.",
+      prehistory: "Asentamientos neolíticos en el entorno de Plovdiv.",
       thracian: "La Eumolpíade tracia y la Filipópolis de Filipo II de Macedonia.",
       roman: "Trimontium — una espléndida ciudad romana con teatro y estadio.",
       medieval: "Siglos de control alternado entre Bulgaria y Bizancio.",
@@ -4828,7 +4828,7 @@ const el: typeof bg = {
       modern: "Σύγχρονη εποχή"
     },
     eraBlurbs: {
-      prehistory: "Οικισμοί στους λόφους ήδη από την 6η χιλιετία π.Χ.",
+      prehistory: "Νεολιθικοί οικισμοί στην ευρύτερη περιοχή του Πλόβντιβ.",
       thracian: "Η θρακική Ευμολπία και η Φιλιππούπολη του Φιλίππου Β΄ της Μακεδονίας.",
       roman: "Τριμόντιον — μια λαμπρή ρωμαϊκή πόλη με θέατρο και στάδιο.",
       medieval: "Αιώνες ελέγχου εναλλάξ ανάμεσα στη Βουλγαρία και το Βυζάντιο.",
@@ -5474,7 +5474,7 @@ const tl: typeof bg = {
       modern: "Makabagong Kasaysayan"
     },
     eraBlurbs: {
-      prehistory: "May mga pamayanan sa mga burol mula pa noong ika-6 na milenyo BCE.",
+      prehistory: "Mga pamayanang Neolitiko sa mas malawak na lugar ng Plovdiv.",
       thracian: "Ang Trakiang Eumolpias at Philippopolis ni Philip II ng Macedonia.",
       roman: "Ang Trimontium — isang makinang na lungsod na Romano may teatro at estadyum.",
       medieval: "Mga siglo ng nagpapalitang pamumuno sa pagitan ng Bulgaria at Byzantium.",
@@ -6120,7 +6120,7 @@ const uk: typeof bg = {
       modern: "Новітня історія"
     },
     eraBlurbs: {
-      prehistory: "Поселення на пагорбах ще з VI тисячоліття до н.е.",
+      prehistory: "Неолітичні поселення в ширшому районі Пловдива.",
       thracian: "Фракійський Евмолпій та Філіппополь Філіппа II Македонського.",
       roman: "Трімонцій — блискуче римське місто з театром і стадіоном.",
       medieval: "Століття почергового панування Болгарії та Візантії.",
@@ -6766,7 +6766,7 @@ const ru: typeof bg = {
       modern: "Новейшая история"
     },
     eraBlurbs: {
-      prehistory: "Поселения на холмах ещё с VI тысячелетия до н.э.",
+      prehistory: "Неолитические поселения в окрестностях Пловдива.",
       thracian: "Фракийская Эвмолпия и Филиппополь Филиппа II Македонского.",
       roman: "Тримонциум — блестящий римский город с театром и стадионом.",
       medieval: "Века поочерёдного господства Болгарии и Византии.",
@@ -7412,7 +7412,7 @@ const pl: typeof bg = {
       modern: "Epoka nowoczesna"
     },
     eraBlurbs: {
-      prehistory: "Osady na wzgórzach już w VI tysiącleciu p.n.e.",
+      prehistory: "Osady neolityczne w szerszej okolicy Płowdiwu.",
       thracian: "Trackie Eumolpias i Philippopolis Filipa II Macedońskiego.",
       roman: "Trimontium — świetne rzymskie miasto z teatrem i stadionem.",
       medieval: "Stulecia władzy przechodzącej między Bułgarią a Bizancjum.",
@@ -8824,7 +8824,13 @@ export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
 // Citation titles embedded in records (project sources, budget source documents).
 // Original public-source titles get English equivalents so the EN site reads cleanly.
 export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
-  bg: {},
+  bg: {
+    "Regional Archaeological Museum Plovdiv — The fortress of Nebet Tepe": "Регионален археологически музей – Пловдив — Крепостта на Небет тепе",
+    "Plovdiv Municipality — Nebet Tepe reopening": "Община Пловдив — Откриване на Небет тепе",
+    "Giro d’Italia — Stage 3, 2026": "Джиро д’Италия — трети етап, 2026 г.",
+    "Giro d’Italia — Stage 3 result": "Джиро д’Италия — резултат от третия етап",
+    "U.S. Commission — Muslim historic sites in Bulgaria": "Комисия на САЩ — Мюсюлмански исторически обекти в България"
+  },
   en: {
     "Община Пловдив — представяне на Бюджет 2025": "Plovdiv Municipality — 2025 budget presentation",
     "TrafficNews — бюджет на Пловдив за 2025 г.": "TrafficNews — Plovdiv 2025 budget",

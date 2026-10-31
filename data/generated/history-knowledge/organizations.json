@@ -8,7 +8,6 @@
     "summary_bg": "Нормализиран организационен запис, използван за връзки в историческата база: Община Пловдив.",
     "summary_en": "Normalized organization record used for links in the historical knowledge base: Plovdiv Municipality.",
     "event_ids": [
-      "event-thracian-eumolpias",
       "event-roman-theatre",
       "event-ottoman-1364",
       "event-mayor-01-atanas-samokovliev",
@@ -175,7 +174,6 @@
       "place-ancient-theatre",
       "place-ancient-stadium",
       "place-old-town",
-      "place-seven-hills",
       "place-plovdiv-city"
     ],
     "source_ids": [
@@ -264,9 +262,6 @@
     "summary_bg": "Нормализиран организационен запис, използван за връзки в историческата база: Регионален исторически музей — Пловдив.",
     "summary_en": "Normalized organization record used for links in the historical knowledge base: Regional History Museum — Plovdiv.",
     "event_ids": [
-      "event-thracian-lucullus",
-      "event-roman-trimontium",
-      "event-roman-forum",
       "event-finance-1897-bnb-refinance-loan",
       "event-finance-1898-actual-revenue",
       "event-finance-1898-planned-budget",
@@ -283,16 +278,13 @@
       "event-finance-1945-university-establishment",
       "event-finance-1946-horemag-enterprise",
       "event-programme-1947-fair-revival",
-      "event-modern-trolleybus",
       "event-programme-1969-old-plovdiv-restoration",
       "event-programme-1970-five-year-city-plan"
     ],
     "person_ids": [],
     "place_ids": [
       "place-old-town",
-      "place-seven-hills",
-      "place-plovdiv-city",
-      "place-forum-philippopolis"
+      "place-plovdiv-city"
     ],
     "source_ids": [
       "source-rim-plovdiv-municipality-1886-1944"

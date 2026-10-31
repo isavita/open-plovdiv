@@ -442,13 +442,13 @@ function assertReviewedTimelineFacts(historyTimeline) {
   const nebetTepe = byId.get("history-prehistory-nebet-tepe");
   if (
     !nebetTepe ||
-    nebetTepe.year !== -5000 ||
+    nebetTepe.year !== -4200 ||
     !nebetTepe.conflict_notes_bg ||
     !nebetTepe.conflict_notes_en ||
-    nebetTepe.source?.url !== "https://www.visitplovdiv.com/en/node/521"
+    nebetTepe.source?.url !== "https://ramplovdiv.com/%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D1%82%D0%B0-%D0%BD%D0%B0-%D0%BD%D0%B5%D0%B1%D0%B5%D1%82-%D1%82%D0%B5%D0%BF%D0%B5/"
   ) {
     throw new Error(
-      "history timeline: Nebet Tepe must preserve the reviewed source range and bilingual date uncertainty note"
+      "history timeline: Nebet Tepe must preserve the archaeological museum's reviewed date range and bilingual uncertainty note"
     );
   }
 }

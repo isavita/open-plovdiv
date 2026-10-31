@@ -87,7 +87,8 @@
       }
     ],
     "event_ids": [
-      "event-prehistory-nebet-tepe"
+      "event-prehistory-nebet-tepe",
+      "event-modern-nebet-tepe-reopens"
     ],
     "person_ids": [],
     "organization_ids": [],
@@ -2751,12 +2752,11 @@
       "event-thracian-celts",
       "event-thracian-philip-v",
       "event-roman-trimontium",
-      "event-event-1999-month-of-culture-scale"
+      "event-event-1999-month-of-culture-scale",
+      "event-modern-nebet-tepe-reopens"
     ],
     "person_ids": [],
     "organization_ids": [
-      "org-plovdiv-municipality",
-      "org-regional-history-museum-plovdiv",
       "org-plovdiv-2019-foundation"
     ],
     "archive_item_ids": [],
@@ -3564,7 +3564,8 @@
       "event-event-2019-european-capital-of-culture",
       "event-mayor-64-inzh-ivan-totev-2",
       "event-mayor-65-zdravko-dimitrov",
-      "event-mayor-68-kostadin-dimitrov"
+      "event-mayor-68-kostadin-dimitrov",
+      "event-modern-giro-2026"
     ],
     "person_ids": [
       "person-albena-branzova-q2830854",
@@ -4303,9 +4304,7 @@
       "event-roman-forum"
     ],
     "person_ids": [],
-    "organization_ids": [
-      "org-regional-history-museum-plovdiv"
-    ],
+    "organization_ids": [],
     "archive_item_ids": [],
     "then_now_pair_ids": [],
     "source_ids": [
@@ -34097,8 +34096,8 @@
     "era_en": "Ottoman period, 1445",
     "name_bg": "Шахбединова Имарет джамия",
     "name_en": "Şahabettin İmaret Mosque",
-    "summary_bg": "Имарет джамия — османска джамия в Пловдив.",
-    "summary_en": "The Imaret Mosque, an Ottoman-era mosque in Plovdiv.",
+    "summary_bg": "Османска джамия край Марица, построена през 1444–1445 г. за Шахбеддин паша. Първоначално сградата съчетава молитвен дом с имарет и помещения за пътници.",
+    "summary_en": "An Ottoman mosque near the Maritsa, built in 1444–1445 for Shihabuddin Pasha. The building originally combined a place of worship with an imaret and rooms for travellers.",
     "wikidata_id": "Q3409168",
     "built_year": 1445,
     "built_date": null,
@@ -34106,7 +34105,7 @@
       "precision": "year",
       "display_bg": "1445 г.",
       "display_en": "1445",
-      "source_id": "source-wikidata-sahabettin-imaret-mosque"
+      "source_id": "source-u-s-commission-muslim-historic-sites-in-bulgaria"
     },
     "architect_bg": null,
     "architect_en": null,
@@ -34116,7 +34115,7 @@
       "status": "not_identified",
       "display_bg": "не е идентифициран в текущия публичен източник",
       "display_en": "not identified in the current public source",
-      "source_id": "source-wikidata-sahabettin-imaret-mosque",
+      "source_id": "source-u-s-commission-muslim-historic-sites-in-bulgaria",
       "display_de": "in der aktuellen öffentlichen Quelle nicht identifiziert",
       "display_fr": "non identifié dans la source publique actuelle",
       "display_it": "non identificato nell'attuale fonte pubblica",
@@ -34134,7 +34133,7 @@
       "lat": 42.152394,
       "lng": 24.746673,
       "accuracy": "wikidata_coordinate",
-      "source_id": "source-wikidata-sahabettin-imaret-mosque"
+      "source_id": "source-wikidata-sahabettin-imaret-mosque-coordinates"
     },
     "current_status_bg": "Османски градски или религиозен обект, документиран с публични източници.",
     "current_status_en": "Ottoman-era urban or religious site documented with public sources.",
@@ -34169,18 +34168,19 @@
     "archive_item_ids": [],
     "then_now_pair_ids": [],
     "source_ids": [
-      "source-wikidata-sahabettin-imaret-mosque",
+      "source-u-s-commission-muslim-historic-sites-in-bulgaria",
+      "source-wikidata-sahabettin-imaret-mosque-coordinates",
       "source-wikimedia-commons-imaret-mosque-plovdiv-jpg"
     ],
     "provenance": [
       {
-        "source_id": "source-wikidata-sahabettin-imaret-mosque",
+        "source_id": "source-u-s-commission-muslim-historic-sites-in-bulgaria",
         "evidence_type": "public_source",
         "claim_bg": "Описание и исторически контекст за Шахбединова Имарет джамия.",
         "claim_en": "Description and historical context for Şahabettin İmaret Mosque.",
-        "url": "https://www.wikidata.org/wiki/Q3409168",
-        "accessed_at": "2026-06-19",
-        "license_status": "open_license",
+        "url": "https://www.heritageabroad.gov/wp-content/uploads/2022/10/Muslim_Historic_Sites_in_Bulgaria_FINAL_Web-3.11.10.pdf",
+        "accessed_at": "2026-10-31",
+        "license_status": "public_reference_terms_unverified",
         "claim_de": "Beschreibung und historischer Kontext der Şahabettin İmaret Mosque.",
         "claim_fr": "Description et contexte historique de la mosquée Şahabettin İmaret.",
         "claim_it": "Descrizione e contesto storico della Moschea Şahabettin İmaret.",
@@ -34195,7 +34195,7 @@
         "claim_pt": "Descrição e contexto histórico da Mesquita Şahabettin İmaret."
       },
       {
-        "source_id": "source-wikidata-sahabettin-imaret-mosque",
+        "source_id": "source-wikidata-sahabettin-imaret-mosque-coordinates",
         "evidence_type": "map_reference",
         "claim_bg": "Координати за Шахбединова Имарет джамия.",
         "claim_en": "Coordinates for Şahabettin İmaret Mosque.",
@@ -34486,18 +34486,18 @@
     "name_ru": "Мечеть Шахабеттин Имарет",
     "name_pl": "Meczet Şahabettin İmaret",
     "name_pt": "Mesquita Şahabettin İmaret",
-    "summary_de": "Die Imaret-Moschee, eine Moschee aus der osmanischen Zeit in Plovdiv.",
-    "summary_fr": "La mosquée Imaret, une mosquée de l'époque ottomane à Plovdiv.",
-    "summary_it": "La Moschea Imaret, una moschea di epoca ottomana a Plovdiv.",
-    "summary_tr": "Plovdiv'de Osmanlı döneminden kalma bir cami olan İmaret Camii.",
-    "summary_es": "La Mezquita Imaret, una mezquita de la era otomana en Plovdiv.",
-    "summary_el": "Το Τζαμί Ιμαρέτ, ένα τζαμί της οθωμανικής εποχής στο Plovdiv.",
-    "summary_ja": "Plovdivにあるオスマン帝国時代のモスク、イマレト・モスク。",
-    "summary_tl": "Ang Imaret Mosque, isang moske mula sa panahong Osmanli sa Plovdiv.",
-    "summary_uk": "Мечеть Імарет, мечеть Османської епохи в Plovdiv.",
-    "summary_ru": "Мечеть Имарет, мечеть османской эпохи в Plovdiv.",
-    "summary_pl": "Meczet Imaret, meczet z czasów osmańskich w Plovdivie.",
-    "summary_pt": "A Mesquita Imaret, uma mesquita da era otomana em Plovdiv.",
+    "summary_de": "Eine osmanische Moschee nahe der Mariza, 1444–1445 für Schihabuddin Pascha erbaut. Ursprünglich vereinte das Gebäude eine Gebetsstätte mit einem Imaret und Räumen für Reisende.",
+    "summary_fr": "Une mosquée ottomane près de la Maritsa, construite en 1444–1445 pour Şihabeddin Pacha. Le bâtiment associait à l’origine un lieu de culte, un imaret et des pièces pour les voyageurs.",
+    "summary_it": "Una moschea ottomana vicino alla Maritsa, costruita nel 1444–1445 per Şihabeddin Pascià. L’edificio univa in origine un luogo di culto, un imaret e stanze per i viaggiatori.",
+    "summary_tr": "Meriç yakınında, Şehabeddin Paşa için 1444–1445’te yaptırılmış bir Osmanlı camii. Yapı başlangıçta ibadet alanı, imaret ve yolcular için odaları bir araya getiriyordu.",
+    "summary_es": "Una mezquita otomana cerca del Maritsa, construida en 1444–1445 para Şihabeddin Pachá. El edificio reunía originalmente un lugar de culto, un imaret y habitaciones para viajeros.",
+    "summary_el": "Οθωμανικό τζαμί κοντά στον Έβρο, χτισμένο το 1444–1445 για τον Σιχαμπεντίν Πασά. Αρχικά το κτίριο συνδύαζε χώρο λατρείας, ιμαρέτ και δωμάτια για ταξιδιώτες.",
+    "summary_ja": "マリツァ川近くにあり、1444〜1445年にシハベッディン・パシャのために建てられたオスマン時代のモスク。当初は礼拝所、イマレット、旅人の宿泊室を兼ねていました。",
+    "summary_tl": "Isang moskeng Ottoman malapit sa Maritsa, itinayo noong 1444–1445 para kay Shihabuddin Pasha. Noong una, pinagsama ng gusali ang sambahan, imaret at mga silid para sa manlalakbay.",
+    "summary_uk": "Османська мечеть біля Мариці, збудована у 1444–1445 роках для Шихабеддіна-паші. Спочатку будівля поєднувала місце молитви, імарет і кімнати для мандрівників.",
+    "summary_ru": "Османская мечеть у Марицы, построенная в 1444–1445 годах для Шихабеддина-паши. Изначально здание объединяло место молитвы, имарет и комнаты для путешественников.",
+    "summary_pl": "Osmański meczet niedaleko Maricy, zbudowany w latach 1444–1445 dla Şihabeddina Paszy. Pierwotnie budynek łączył miejsce modlitwy, imaret i pokoje dla podróżnych.",
+    "summary_pt": "Uma mesquita otomana perto do Maritsa, construída em 1444–1445 para Shihabuddin Pasha. Originalmente, o edifício reunia um local de culto, um imaret e quartos para viajantes.",
     "current_status_de": "Mit öffentlichen Quellen dokumentierte städtische oder religiöse Stätte aus der osmanischen Zeit.",
     "current_status_fr": "Site urbain ou religieux de l'ère ottomane documenté par des sources publiques.",
     "current_status_it": "Sito urbano o religioso di epoca ottomana documentato da fonti pubbliche.",

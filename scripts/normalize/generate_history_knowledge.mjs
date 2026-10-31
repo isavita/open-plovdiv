@@ -475,7 +475,7 @@ function placeLinksForText(...parts) {
   if (text.includes("теат") || text.includes("theatre")) add("place-ancient-theatre");
   if (text.includes("стадион") || text.includes("stadium")) add("place-ancient-stadium");
   if (text.includes("джумая") || text.includes("dzhumaya")) add("place-dzhumaya-mosque");
-  if (text.includes("стар") || text.includes("old town") || text.includes("възрожден")) add("place-old-town");
+  if (/(?:^|[^\p{L}])стар(?!т)/u.test(text) || text.includes("old town") || text.includes("възрожден")) add("place-old-town");
   if (text.includes("пловдив") || text.includes("plovdiv") || text.includes("filibe")) add("place-plovdiv-city");
   if (text.includes("тепе") || text.includes("hill")) add("place-seven-hills");
   if (text.includes("форум") || text.includes("forum")) add("place-forum-philippopolis");
@@ -568,7 +568,7 @@ const orgIdByText = [
   [/общински съвет|council/i, "org-plovdiv-municipal-council"],
   [/панаир|fair/i, "org-international-fair-plovdiv"],
   [/култур|culture|2019/i, "org-plovdiv-2019-foundation"],
-  [/регионален исторически музей|рим|museum/i, "org-regional-history-museum-plovdiv"]
+  [/регионален исторически музей|regional histor(?:y|ical) museum/i, "org-regional-history-museum-plovdiv"]
 ];
 
 function organizationLinksForText(...parts) {

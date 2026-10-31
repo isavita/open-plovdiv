@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { localeCodes, localizePath } from "../i18n/utils";
 import { editorialReviewStatusLabel } from "./editorial";
+import { historyKnowledgeEvents } from "./data";
 import { matchesSearchText, normalizeSearchText, rankSiteSearch } from "./searchCore";
 import { buildSiteSearchIndex } from "./siteSearch";
 
@@ -17,7 +18,9 @@ describe("universal site search", () => {
     expect(index.items.some((item) => item.id === "neighbourhood:kapana")).toBe(true);
     expect(index.items.some((item) => item.kind === "project")).toBe(true);
     expect(index.items.some((item) => item.kind === "initiative")).toBe(true);
-    expect(index.items.filter((item) => item.kind === "event")).toHaveLength(365);
+    expect(index.items.filter((item) => item.kind === "event").map((item) => item.id).sort()).toEqual(
+      historyKnowledgeEvents.map((event) => `event:${event.id}`).sort()
+    );
   });
 
   it("makes every suggested query productive in every locale", () => {

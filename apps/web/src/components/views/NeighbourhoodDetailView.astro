@@ -127,6 +127,7 @@ const thenNowMedia = pairs.slice(0, 2).map((pair) => ({
 }));
 
 const heroMedia = neighbourhoodLeadPhoto(neighbourhood, placesById);
+const heroCaption = heroMedia ? localizedAny(heroMedia, "caption") : "";
 
 // Map: approximate quarter anchor + key place pins.
 const mapConfig = {
@@ -169,7 +170,7 @@ const structuredData = {
   title={name}
   description={summary}
   image={heroMedia ? commonsImageUrl(heroMedia.url, 1200) : undefined}
-  imageAlt={name}
+  imageAlt={heroCaption || name}
   structuredData={structuredData}
 >
   <article class="nb-page" style={`--nb-accent:${accent}`} data-section="neighbourhoods">
@@ -204,7 +205,7 @@ const structuredData = {
                 >
                   <img
                     src={commonsImageUrl(heroMedia.url, 960)}
-                    alt={heroMedia.scope === "district_context" ? `${t.districtContextPhoto}: ${name}` : name}
+                    alt={heroCaption || (heroMedia.scope === "district_context" ? `${t.districtContextPhoto}: ${name}` : name)}
                     width="960"
                     height="540"
                     loading="eager"
@@ -218,6 +219,7 @@ const structuredData = {
                   )}
                 </a>
                 <figcaption>
+                  {heroCaption && <span class="nb-hero-caption">{heroCaption}</span>}
                   <a href={heroMedia.page_url} target="_blank" rel="noreferrer">{mediaAttribution(heroMedia.credit, lang)}</a>
                   <span aria-hidden="true">·</span>
                   <a href={heroMedia.license_url} target="_blank" rel="noreferrer">{mediaAttribution(heroMedia.license, lang)}</a>
@@ -699,6 +701,8 @@ const structuredData = {
       text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
       text-underline-offset: 0.16em;
     }
+
+    .nb-hero-caption { flex-basis: 100%; color: var(--ink-2); }
 
     .nb-hero-media figcaption a:hover,
     .nb-hero-media figcaption a:focus-visible {

@@ -51,7 +51,8 @@
       }
     ],
     "event_ids": [
-      "event-prehistory-nebet-tepe"
+      "event-prehistory-nebet-tepe",
+      "event-modern-nebet-tepe-reopens"
     ],
     "person_ids": [],
     "organization_ids": [],
@@ -951,12 +952,11 @@
       "event-thracian-celts",
       "event-thracian-philip-v",
       "event-roman-trimontium",
-      "event-event-1999-month-of-culture-scale"
+      "event-event-1999-month-of-culture-scale",
+      "event-modern-nebet-tepe-reopens"
     ],
     "person_ids": [],
     "organization_ids": [
-      "org-plovdiv-municipality",
-      "org-regional-history-museum-plovdiv",
       "org-plovdiv-2019-foundation"
     ],
     "archive_item_ids": [],
@@ -1452,7 +1452,8 @@
       "event-event-2019-european-capital-of-culture",
       "event-mayor-64-inzh-ivan-totev-2",
       "event-mayor-65-zdravko-dimitrov",
-      "event-mayor-68-kostadin-dimitrov"
+      "event-mayor-68-kostadin-dimitrov",
+      "event-modern-giro-2026"
     ],
     "person_ids": [
       "person-albena-branzova-q2830854",
@@ -1891,9 +1892,7 @@
       "event-roman-forum"
     ],
     "person_ids": [],
-    "organization_ids": [
-      "org-regional-history-museum-plovdiv"
-    ],
+    "organization_ids": [],
     "archive_item_ids": [],
     "then_now_pair_ids": [],
     "source_ids": [
@@ -12689,8 +12688,8 @@
     "era_en": "Ottoman period, 1445",
     "name_bg": "Шахбединова Имарет джамия",
     "name_en": "Şahabettin İmaret Mosque",
-    "summary_bg": "Имарет джамия — османска джамия в Пловдив.",
-    "summary_en": "The Imaret Mosque, an Ottoman-era mosque in Plovdiv.",
+    "summary_bg": "Османска джамия край Марица, построена през 1444–1445 г. за Шахбеддин паша. Първоначално сградата съчетава молитвен дом с имарет и помещения за пътници.",
+    "summary_en": "An Ottoman mosque near the Maritsa, built in 1444–1445 for Shihabuddin Pasha. The building originally combined a place of worship with an imaret and rooms for travellers.",
     "wikidata_id": "Q3409168",
     "built_year": 1445,
     "built_date": null,
@@ -12698,7 +12697,7 @@
       "precision": "year",
       "display_bg": "1445 г.",
       "display_en": "1445",
-      "source_id": "source-wikidata-sahabettin-imaret-mosque"
+      "source_id": "source-u-s-commission-muslim-historic-sites-in-bulgaria"
     },
     "architect_bg": null,
     "architect_en": null,
@@ -12708,13 +12707,13 @@
       "status": "not_identified",
       "display_bg": "не е идентифициран в текущия публичен източник",
       "display_en": "not identified in the current public source",
-      "source_id": "source-wikidata-sahabettin-imaret-mosque"
+      "source_id": "source-u-s-commission-muslim-historic-sites-in-bulgaria"
     },
     "coordinates": {
       "lat": 42.152394,
       "lng": 24.746673,
       "accuracy": "wikidata_coordinate",
-      "source_id": "source-wikidata-sahabettin-imaret-mosque"
+      "source_id": "source-wikidata-sahabettin-imaret-mosque-coordinates"
     },
     "current_status_bg": "Османски градски или религиозен обект, документиран с публични източници.",
     "current_status_en": "Ottoman-era urban or religious site documented with public sources.",
@@ -12737,21 +12736,22 @@
     "archive_item_ids": [],
     "then_now_pair_ids": [],
     "source_ids": [
-      "source-wikidata-sahabettin-imaret-mosque",
+      "source-u-s-commission-muslim-historic-sites-in-bulgaria",
+      "source-wikidata-sahabettin-imaret-mosque-coordinates",
       "source-wikimedia-commons-imaret-mosque-plovdiv-jpg"
     ],
     "provenance": [
       {
-        "source_id": "source-wikidata-sahabettin-imaret-mosque",
+        "source_id": "source-u-s-commission-muslim-historic-sites-in-bulgaria",
         "evidence_type": "public_source",
         "claim_bg": "Описание и исторически контекст за Шахбединова Имарет джамия.",
         "claim_en": "Description and historical context for Şahabettin İmaret Mosque.",
-        "url": "https://www.wikidata.org/wiki/Q3409168",
-        "accessed_at": "2026-06-19",
-        "license_status": "open_license"
+        "url": "https://www.heritageabroad.gov/wp-content/uploads/2022/10/Muslim_Historic_Sites_in_Bulgaria_FINAL_Web-3.11.10.pdf",
+        "accessed_at": "2026-10-31",
+        "license_status": "public_reference_terms_unverified"
       },
       {
-        "source_id": "source-wikidata-sahabettin-imaret-mosque",
+        "source_id": "source-wikidata-sahabettin-imaret-mosque-coordinates",
         "evidence_type": "map_reference",
         "claim_bg": "Координати за Шахбединова Имарет джамия.",
         "claim_en": "Coordinates for Şahabettin İmaret Mosque.",

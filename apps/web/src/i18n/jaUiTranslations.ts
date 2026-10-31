@@ -338,7 +338,7 @@ export const jaUiTranslations: Record<string, string> = {
     "Select a report": "レポートを選択してください",
     "Selected point": "選択した点",
     "Selected records for social, cultural and governance actions that connect city leaders with real public programmes.": "都市のリーダーと実際の公共プログラムを結びつける、社会的、文化的、統治活動に関する厳選された記録。",
-    "Settlements on the hills as early as the 6th millennium BC.": "紀元前 6 千年紀には丘陵に定住していました。",
+    "Neolithic settlements in the wider Plovdiv area.": "プロヴディフ周辺にあった新石器時代の集落。",
     "Share of the capital programme (%)": "資本プログラムのシェア (%)",
     "Shared responsibility": "責任の共有",
     "Short title": "短いタイトル",

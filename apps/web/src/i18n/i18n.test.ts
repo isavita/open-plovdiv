@@ -95,6 +95,15 @@ describe("i18n locales", () => {
       expect(languages[loc]?.trim().length, `languages.${loc}`).toBeGreaterThan(0);
     }
   });
+
+  it("describes Neolithic evidence as regional rather than dating the hills to the sixth millennium", () => {
+    expect(ui.en.history.eraBlurbs.prehistory).toBe("Neolithic settlements in the wider Plovdiv area.");
+    for (const locale of locales) {
+      const blurb = ui[locale].history.eraBlurbs.prehistory;
+      expect(blurb.trim(), locale).toBeTruthy();
+      if (locale !== "en") expect(blurb, locale).not.toBe(ui.en.history.eraBlurbs.prehistory);
+    }
+  });
 });
 
 describe("ui dictionary parity", () => {
@@ -386,7 +395,7 @@ describe("data-label maps", () => {
   });
 
   it("source-title translations keep matching keys across translated locales", () => {
-    // bg intentionally keeps the original titles (empty map); translated locales localize them.
+    // Bulgarian usually keeps original titles; the translated locale maps share keys.
     const enKeys = Object.keys(sourceTitleLabels.en).sort();
     const deKeys = Object.keys(sourceTitleLabels.de).sort();
     const frKeys = Object.keys(sourceTitleLabels.fr).sort();

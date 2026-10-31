@@ -322,6 +322,16 @@
   .places-view-switch a { justify-content: space-between; min-width: 0; line-height: 1.25; overflow-wrap: anywhere; }
 }
 .mayor-frieze-count-mobile { display: none; }
+.mayor-frieze-block { align-self: center; min-width: 0; }
+.mayor-frieze-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin-top: 8px;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
 @media (max-width: 760px) {
   .mayor-frieze > a:not(.mayor-frieze-more):nth-child(n+5) { display: none; }
   .mayor-frieze-count-full { display: none; }

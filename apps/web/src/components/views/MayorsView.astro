@@ -369,19 +369,19 @@ const chronicleL = {
   eyebrow: tr("Из архива", "From the archive", "Aus dem Archiv", "Tiré des archives", "Dall'archivio", "Arşivden", "Del archivo", "Από το αρχείο", "アーカイブから", "Mula sa archive", "З архіву", "Из архива", "Z archiwum"),
   title: tr("Рекорди и любопитни факти", "Records and curiosities", "Rekorde und Kurioses", "Records et curiosités", "Record e curiosità", "Rekorlar ve ilginç bilgiler", "Récords y curiosidades", "Ρεκόρ και αξιοπερίεργα", "記録と豆知識", "Mga rekord at kakaibang detalye", "Рекорди та цікавинки", "Рекорды и любопытные факты", "Rekordy i ciekawostki"),
   lead: tr(
-    "Изчислено от датите и биографиите в архива — всяка плочка води към съответния мандат.",
-    "Computed from the dates and biographies in the archive — every tile links to its term.",
-    "Berechnet aus den Daten und Biografien des Archivs — jede Kachel führt zur jeweiligen Amtszeit.",
-    "Calculé à partir des dates et biographies des archives — chaque tuile mène au mandat correspondant.",
-    "Calcolato dalle date e dalle biografie dell'archivio — ogni riquadro porta al mandato corrispondente.",
-    "Arşivdeki tarihlerden ve biyografilerden hesaplandı — her kutucuk ilgili göreve gider.",
-    "Calculado a partir de las fechas y biografías del archivo — cada ficha lleva a su mandato.",
-    "Υπολογισμένο από τις ημερομηνίες και τις βιογραφίες του αρχείου — κάθε πλακίδιο οδηγεί στη θητεία του.",
-    "アーカイブの日付と伝記から算出。各タイルは該当する任期のページへつながっています。",
-    "Kinalkula mula sa mga petsa at talambuhay sa archive — bawat tile ay tumuturo sa kaukulang termino.",
-    "Обчислено з дат і біографій архіву — кожна плитка веде до відповідної каденції.",
-    "Вычислено по датам и биографиям архива — каждая плитка ведёт к соответствующему сроку.",
-    "Obliczone z dat i biografii w archiwum — każdy kafelek prowadzi do odpowiedniej kadencji."
+    "Изчисленията са сред записите с налични данни; възрастите са приблизителни. Всяка плочка води към съответния мандат.",
+    "Calculated from records with available data; ages are approximate. Each tile links to the relevant term.",
+    "Berechnet aus Einträgen mit verfügbaren Daten; Altersangaben sind ungefähr. Jede Kachel führt zur jeweiligen Amtszeit.",
+    "Calculs fondés sur les données disponibles ; les âges sont approximatifs. Chaque vignette mène au mandat concerné.",
+    "Calcoli basati sui dati disponibili; le età sono approssimative. Ogni riquadro porta al mandato corrispondente.",
+    "Hesaplamalar verisi bulunan kayıtlara dayanır; yaşlar yaklaşık değerlerdir. Her kutucuk ilgili görev süresine gider.",
+    "Cálculos basados en los registros con datos disponibles; las edades son aproximadas. Cada ficha lleva al mandato correspondiente.",
+    "Οι υπολογισμοί βασίζονται στις διαθέσιμες καταγραφές· οι ηλικίες είναι κατά προσέγγιση. Κάθε πλακίδιο οδηγεί στην αντίστοιχη θητεία.",
+    "データがある記録から算出しており、年齢は概算です。各タイルから該当する任期を開けます。",
+    "Kinuwenta mula sa mga talang may datos; tinatayang edad ang ipinapakita. Bawat tile ay may link sa kaukulang termino.",
+    "Розраховано за записами з наявними даними; вік приблизний. Кожна плитка веде до відповідної каденції.",
+    "Рассчитано по записям с доступными данными; возраст указан приблизительно. Каждая плитка ведёт к соответствующему сроку.",
+    "Obliczono na podstawie dostępnych danych; wiek jest przybliżony. Każdy kafelek prowadzi do odpowiedniej kadencji."
   ),
   shortest: tr("Най-кратък мандат", "Shortest term", "Kürzeste Amtszeit", "Mandat le plus court", "Mandato più breve", "En kısa görev", "Mandato más corto", "Συντομότερη θητεία", "最短の任期", "Pinakamaikling termino", "Найкоротша каденція", "Самый короткий срок", "Najkrótsza kadencja"),
   longest: tr("Най-дълъг мандат", "Longest term", "Längste Amtszeit", "Mandat le plus long", "Mandato più lungo", "En uzun görev", "Mandato más largo", "Μακροβιότερη θητεία", "最長の任期", "Pinakamahabang termino", "Найдовша каденція", "Самый долгий срок", "Najdłuższa kadencja"),
@@ -389,22 +389,7 @@ const chronicleL = {
   youngest: tr("Най-млад при встъпване", "Youngest on taking office", "Jüngster beim Amtsantritt", "Le plus jeune à l'entrée en fonction", "Il più giovane all'insediamento", "Göreve gelen en genç", "El más joven al asumir", "Νεότερος κατά την ανάληψη", "就任時最年少", "Pinakabata sa pag-upo", "Наймолодший на початку каденції", "Самый молодой при вступлении", "Najmłodszy w chwili objęcia urzędu"),
   oldest: tr("Най-възрастен при встъпване", "Oldest on taking office", "Ältester beim Amtsantritt", "Le plus âgé à l'entrée en fonction", "Il più anziano all'insediamento", "Göreve gelen en yaşlı", "El más mayor al asumir", "Γηραιότερος κατά την ανάληψη", "就任時最年長", "Pinakamatanda sa pag-upo", "Найстарший на початку каденції", "Самый старший при вступлении", "Najstarszy w chwili objęcia urzędu"),
   bornInCity: tr("Родени в Пловдив", "Born in Plovdiv", "In Plovdiv geboren", "Nés à Plovdiv", "Nati a Plovdiv", "Plovdiv doğumlu", "Nacidos en Plovdiv", "Γεννημένοι στη Φιλιππούπολη", "プロヴディフ生まれ", "Ipinanganak sa Plovdiv", "Народжені в Пловдиві", "Родившиеся в Пловдиве", "Urodzeni w Plovdivie"),
-  bornInCityNote: tr("личности с известно родно място", "people with a documented birthplace", "Personen mit belegtem Geburtsort", "personnes au lieu de naissance documenté", "persone con luogo di nascita documentato", "doğum yeri belgeli kişiler", "personas con lugar de nacimiento documentado", "πρόσωπα με τεκμηριωμένο τόπο γέννησης", "出生地が記録されている人物", "mga taong may dokumentadong lugar ng kapanganakan", "особи з відомим місцем народження", "люди с документированным местом рождения", "osób z udokumentowanym miejscem urodzenia"),
-  ailyak: tr(
-    "Айляк бележка: най-краткият мандат трая {daysText} — тъкмо колкото да се научиш да не бързаш.",
-    "Ailyak note: the shortest term lasted {daysText} — just long enough to learn not to hurry.",
-    "Ailyak-Notiz: Die kürzeste Amtszeit dauerte {daysText} — gerade lang genug, um zu lernen, nicht zu eilen.",
-    "Note aïlyak : le mandat le plus court a duré {daysText} — juste le temps d'apprendre à ne pas se presser.",
-    "Nota ailyak: il mandato più breve durò {daysText} — giusto il tempo di imparare a non avere fretta.",
-    "Aylyak notu: en kısa görev {daysText} sürdü — acele etmemeyi öğrenmeye tam yetecek kadar.",
-    "Nota ailyak: el mandato más corto duró {daysText} — justo lo suficiente para aprender a no tener prisa.",
-    "Σημείωση αϊλιάκ: η συντομότερη θητεία κράτησε {daysText} — ίσα ίσα για να μάθεις να μη βιάζεσαι.",
-    "アイリャクのひとこと：最短の任期はわずか{daysText}。急がないことを学ぶには、ちょうどよい長さでした。",
-    "Tala ng ailyak: tumagal ng {daysText} ang pinakamaikling termino — sapat lang para matutong huwag magmadali.",
-    "Айляк-нотатка: найкоротша каденція тривала {daysText} — якраз стільки, щоб навчитися не поспішати.",
-    "Айляк-заметка: самый короткий срок длился {daysText} — как раз достаточно, чтобы научиться не спешить.",
-    "Uwaga w duchu ajlak: najkrótsza kadencja trwała {daysText} — akurat tyle, żeby nauczyć się nie spieszyć."
-  )
+  bornInCityNote: tr("личности с известно родно място", "people with a documented birthplace", "Personen mit belegtem Geburtsort", "personnes au lieu de naissance documenté", "persone con luogo di nascita documentato", "doğum yeri belgeli kişiler", "personas con lugar de nacimiento documentado", "πρόσωπα με τεκμηριωμένο τόπο γέννησης", "出生地が記録されている人物", "mga taong may dokumentadong lugar ng kapanganakan", "особи з відомим місцем народження", "люди с документированным местом рождения", "osób z udokumentowanym miejscem urodzenia")
 };
 
 // --- portrait frieze in the page head -----------------------------------
@@ -520,10 +505,10 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
         <p class="meta" style="margin-top:10px">{t.mayors.sourceNote}</p>
       </div>
       {friezeShown.length > 0 && (
-        <div class="mayor-frieze" role="list">
+        <div class="mayor-frieze-block">
+        <div class="mayor-frieze">
           {friezeShown.map((term) => (
             <a
-              role="listitem"
               href={localizePath(`/mayors/${term.id}`, lang)}
               title={field(term, "actor", lang)}
               data-current={term.year_end == null ? "true" : undefined}
@@ -544,6 +529,8 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
               <span class="mayor-frieze-count-mobile">+{Math.max(0, uniqueMayors.size - Math.min(4, friezeShown.length))}</span>
             </a>
           )}
+        </div>
+        <a class="mayor-frieze-link" href="#all-mayors">{t.mayors.detailsTitle} <LinkIcon direction="down" /></a>
         </div>
       )}
     </div>
@@ -591,7 +578,7 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
         {youngestTerm && (
           <article class="chronicle-tile">
             <span class="chronicle-label">{chronicleL.youngest}</span>
-            <strong>{withUnit(youngestTerm.age, ageWord)}</strong>
+            <strong>≈{withUnit(youngestTerm.age, ageWord)}</strong>
             <a href={localizePath(`/mayors/${youngestTerm.term.id}`, lang)}>
               {field(youngestTerm.term, "actor", lang)} · {youngestTerm.term.year_start}
             </a>
@@ -600,7 +587,7 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
         {oldestTerm && oldestTerm !== youngestTerm && (
           <article class="chronicle-tile">
             <span class="chronicle-label">{chronicleL.oldest}</span>
-            <strong>{withUnit(oldestTerm.age, ageWord)}</strong>
+            <strong>≈{withUnit(oldestTerm.age, ageWord)}</strong>
             <a href={localizePath(`/mayors/${oldestTerm.term.id}`, lang)}>
               {field(oldestTerm.term, "actor", lang)} · {oldestTerm.term.year_start}
             </a>
@@ -614,14 +601,6 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
           </article>
         )}
       </div>
-      {shortestTerm && (
-        <p class="chronicle-ailyak">
-          {chronicleL.ailyak.replace(
-            "{daysText}",
-            withUnit(shortestTerm.days, lang === "ja" ? "日" : daysWord(shortestTerm.days))
-          )}
-        </p>
-      )}
     </div>
   </section>
 

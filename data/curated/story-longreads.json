@@ -1,10 +1,10 @@
 [
   {
     "id": "story-deep-time-seven-hills",
-    "title_bg": "Преди Пловдив: как селището се изкачва към тепетата",
-    "title_en": "Before Plovdiv: How a Settlement Climbed to the Hills",
-    "dek_bg": "От неолитното селище при Яса тепе до укрепената Евмолпия и завладяването на Филип II — най-ранната история на града е история на движение към височината.",
-    "dek_en": "From the Neolithic settlement at Yasa Tepe to fortified Eumolpias and the conquest by Philip II, Plovdiv's earliest history is a story of movement toward higher ground.",
+    "title_bg": "Преди Пловдив: следи из хълмовете и равнината",
+    "title_en": "Before Plovdiv: Traces Across the Hills and Plain",
+    "dek_bg": "От неолитните селищни могили до по-късните укрепления на Небет тепе археологическите следи разкриват различни глави от древното минало на района.",
+    "dek_en": "From Neolithic settlement mounds to Nebet Tepe's later fortifications, archaeological traces reveal different chapters in the region's deep past.",
     "reading_minutes": 4,
     "era_tags": [
       "prehistory",
@@ -16,10 +16,10 @@
       "urban_memory"
     ],
     "hero": {
-      "kind": "archive_item",
-      "ref_id": "archive-photo-dzhambaztepe-1892",
-      "caption_bg": "Застроеният склон на Джамбаз тепе през 1892 г.",
-      "caption_en": "The built-up slope of Dzhambaz Tepe in 1892."
+      "kind": "place_media",
+      "ref_id": "place-nebet-tepe",
+      "caption_bg": "Гледката от Небет тепе през 2012 г., преди скорошната реставрация.",
+      "caption_en": "The view from Nebet Tepe in 2012, before the recent restoration."
     },
     "sections": [
       {
@@ -37,22 +37,33 @@
           "place-dzhambaz-hill-in-plovdiv-q12277962"
         ],
         "media": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Plovdiv_Ivan_Karastoyanov.jpg",
-          "caption_bg": "Панорама на Пловдив от около 1908 г., с тепетата зад покривите на града.",
-          "caption_en": "A panorama of Plovdiv from around 1908, with the hills rising behind the city's roofs.",
-          "credit": "Wikimedia Commons · Public domain",
-          "width": 648,
-          "height": 486
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Dzhambaztepe_1892.jpg",
+          "page_url": "https://commons.wikimedia.org/wiki/File:Dzhambaztepe_1892.jpg",
+          "caption_bg": "Застроеният склон на Джамбаз тепе през 1892 г.",
+          "caption_en": "The built-up slope of Dzhambaz Tepe in 1892.",
+          "credit": "Ivan Karastoyanov · Public domain",
+          "width": 1978,
+          "height": 1359
         }
       },
       {
         "heading_bg": "По-старото начало при Яса тепе",
         "heading_en": "An Older Beginning at Yasa Tepe",
-        "body_bg": "Най-ранното познато начало не се намира на пощенската картичка на Стария град. Между 6000 и 5000 г. пр.н.е. неолитни общности вече живеят в района на днешен Пловдив. Сред най-добре проучените следи е селищната могила Яса тепе в сегашния квартал Лаута — далеч от романтичната представа, че всичко е започнало върху Трихълмието.\n\nТази разлика променя целия разказ. Първо е обитаван по-широкият пейзаж, а едва по-късно политическият и укрепен център се събира върху височините. Градът не се появява в един миг. Той израства от поредица избори къде да се живее, а движението към тепетата бележи прехода от ранно селище към място, което може да бъде защитавано и управлявано.",
-        "body_en": "The earliest known beginning is not found in the postcard view of the Old Town. Between 6000 and 5000 BC, Neolithic communities were already living in the area of present-day Plovdiv. Among the best-studied traces is the settlement mound of Yasa Tepe in today's Lauta district—well beyond the romantic idea that everything began on the Three Hills.\n\nThat distinction changes the story. The wider landscape was inhabited first; only later did a political and fortified centre gather on higher ground. The city did not appear in a single moment. It grew from repeated choices about where to live, and the movement toward the hills marks the passage from an early settlement to a place that could be defended and governed.",
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Clay_figure_in_the_Regional_archaeological_museum%2C_Plovdiv_01.jpg",
+          "page_url": "https://commons.wikimedia.org/wiki/File:Clay_figure_in_the_Regional_archaeological_museum,_Plovdiv_01.jpg",
+          "credit": "Kritzolina · CC BY-SA 4.0",
+          "caption_bg": "Глинен съд във формата на елен от Мулдава, край Асеновград, изложен в Археологическия музей в Пловдив. Находката е от ранния неолит и не произхожда от Яса тепе.",
+          "caption_en": "A deer-shaped clay vessel from Muldava, near Asenovgrad, in Plovdiv's Archaeological Museum. It dates to the Early Neolithic and was not found at Yasa Tepe.",
+          "width": 2389,
+          "height": 2479
+        },
+        "body_bg": "Най-ранното познато начало не се намира на пощенската картичка на Стария град. Между 6000 и 5000 г. пр.н.е. неолитни общности вече живеят в района на днешен Пловдив. Сред най-добре проучените следи е селищната могила Яса тепе в сегашния квартал Лаута — далеч от романтичната представа, че всичко е започнало върху Трихълмието.\n\nСледите от селища в по-широкия район на Пловдив са с хилядолетия по-стари от най-ранното засвидетелствано обитаване на Небет тепе. Това са различни археологически обекти; самите данни не доказват пряко преселване между тях.",
+        "body_en": "The earliest known beginning is not found in the postcard view of the Old Town. Between 6000 and 5000 BC, Neolithic communities were already living in the area of present-day Plovdiv. Among the best-studied traces is the settlement mound of Yasa Tepe in today's Lauta district—well beyond the romantic idea that everything began on the Three Hills.\n\nEvidence of settlement in the wider Plovdiv area predates the earliest attested occupation of Nebet Tepe by millennia. These are different archaeological sites; the evidence alone does not establish a direct migration between them.",
         "source_ids": [
           "source-visit-plovdiv-prehistory",
-          "source-plovdiv-municipality-ancient-plovdiv"
+          "source-plovdiv-municipality-ancient-plovdiv",
+          "source-regional-archaeological-museum-plovdiv-the-fortress-of-nebet-tepe"
         ],
         "linked_event_ids": [
           "event-prehistory-settlement"
@@ -64,11 +75,12 @@
       {
         "heading_bg": "Евмолпия се укрепва върху Трихълмието",
         "heading_en": "Eumolpias Takes the Three Hills",
-        "body_bg": "През V век пр.н.е. върху Трихълмието вече стои укрепено тракийско селище, познато като Евмолпия или Евмолпеида. С възхода на Одриското царство то и околността му влизат в по-широк политически свят. Височината вече не е само удобство за живеене: тя огражда ядро, от което може да се наблюдава равнината и да се пазят подстъпите.\n\nИменно тук разпръснатите следи от човешко присъствие започват да приличат на градска биография. Името обозначава общност, укреплението очертава граница, а хълмовете свързват двете. Евмолпия не е просто предишно име на Пловдив. Тя бележи момента, в който мястото вече принадлежи към политическия свят на древна Тракия.",
-        "body_en": "By the fifth century BC, a fortified Thracian settlement known as Eumolpias or Eumolpeida stood on the Three Hills. With the rise of the Odrysian kingdom, the settlement and its surroundings entered a wider political world. Height was no longer merely convenient ground on which to live: it enclosed a centre from which the plain could be watched and the approaches guarded.\n\nHere, scattered traces of human presence begin to resemble an urban biography. A name identifies a community, a fortification draws a boundary, and the hills bind the two together. Eumolpias is not simply an earlier label for Plovdiv. It marks the point at which the place belonged to the political world of ancient Thrace.",
+        "body_bg": "Общински исторически справки използват имената Евмолпия и Евмолпеида за тракийското селище на Трихълмието.\n\nРегионалният археологически музей датира първите сигурно установени укрепления на Небет тепе към втората половина на IV век пр.н.е., вероятно във връзка със завладяването на Тракия от Филип II. По-ранните пластове свидетелстват за дейност на хълма, но точната им функция остава неясна.",
+        "body_en": "Municipal histories use the names Eumolpias and Eumolpeida for the Thracian settlement on the Three Hills.\n\nThe Regional Archaeological Museum dates the earliest securely identified fortifications at Nebet Tepe to the second half of the fourth century BC, probably connected with Philip II's conquest of Thrace. Earlier layers show activity on the hill, but their precise function remains uncertain.",
         "source_ids": [
           "source-plovdiv-municipality-history",
-          "source-visit-plovdiv-antiquity"
+          "source-visit-plovdiv-antiquity",
+          "source-regional-archaeological-museum-plovdiv-the-fortress-of-nebet-tepe"
         ],
         "linked_event_ids": [
           "event-thracian-eumolpias"
@@ -92,8 +104,8 @@
         ],
         "media": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/7/72/View_from_Nebet_hill%2C_Plovdiv%2C_Bulgaria.jpg",
-          "caption_bg": "Градът и равнината, гледани от Небет тепе.",
-          "caption_en": "The city and plain seen from Nebet Tepe.",
+          "caption_bg": "Гледката от Небет тепе през 2012 г., преди скорошната реставрация.",
+          "caption_en": "The view from Nebet Tepe in 2012, before the recent restoration.",
           "credit": "Wikimedia Commons · CC BY-SA 3.0 · VladislavNedelev",
           "width": 3872,
           "height": 2592
@@ -120,11 +132,12 @@
       {
         "heading_bg": "Какво помнят тепетата",
         "heading_en": "What the Hills Remember",
-        "body_bg": "Днес Старият град се разстила върху Небет, Джамбаз и Таксим тепе. По склоновете му къщи, улици и по-късни паметници скриват части от древното ядро, но не променят основната му форма. От Небет тепе все още се вижда равнината, която свързва ранните селища, тракийската крепост и разрастващия се град.\n\nЗатова най-ранната история на Пловдив не е състезание за една-единствена начална дата. Тя започва с живот в широкия пейзаж, изкачва се към укрепените хълмове и продължава чрез всяка власт, която избира да строи върху тях. Имената се сменят; каменният релеф остава действаща част от града.",
-        "body_en": "Today the Old Town spreads across Nebet, Dzhambaz and Taksim Tepe. Houses, streets and later monuments conceal parts of the ancient centre, but they do not alter its basic form. From Nebet Tepe the plain is still visible—the same broad landscape that connects the early settlements, the Thracian stronghold and the expanding city.\n\nPlovdiv's earliest history is therefore not a contest for one founding date. It begins with life across a wider landscape, climbs toward the defended hills, and continues through every authority that chooses to build on them. The names change; the rocky terrain remains an active part of the city.",
+        "body_bg": "Днес Старият град се разстила върху Небет, Джамбаз и Таксим тепе. По склоновете му къщи, улици и по-късни паметници скриват части от древното ядро, но не променят основната му форма. От Небет тепе все още се вижда равнината, която свързва ранните селища, тракийската крепост и разрастващия се град.\n\nАрхеологическите следи обхващат различни места и времена. Музеят отбелязва, че данните за най-ранните пластове на хълма са ограничени. По-късните укрепления и днешният град принадлежат на този по-широк пейзаж.",
+        "body_en": "Today the Old Town spreads across Nebet, Dzhambaz and Taksim Tepe. Houses, streets and later monuments conceal parts of the ancient centre, but they do not alter its basic form. From Nebet Tepe the plain is still visible—the same broad landscape that connects the early settlements, the Thracian stronghold and the expanding city.\n\nThe archaeological record spans different places and periods. The museum notes that evidence from the hill’s earliest layers is limited. Later fortifications and today’s city belong to this wider landscape.",
         "source_ids": [
           "source-wikipedia-old-town-plovdiv",
-          "source-wikipedia-nebet-tepe"
+          "source-wikipedia-nebet-tepe",
+          "source-regional-archaeological-museum-plovdiv-the-fortress-of-nebet-tepe"
         ],
         "linked_event_ids": [],
         "linked_place_ids": [
@@ -163,7 +176,8 @@
       "source-wikipedia-old-town-plovdiv",
       "source-wikipedia-philippopolis",
       "source-wikidata-nebet-tepe-coordinates",
-      "source-wikimedia-commons-dzhambaztepe-1892-jpg"
+      "source-wikimedia-commons-dzhambaztepe-1892-jpg",
+      "source-regional-archaeological-museum-plovdiv-the-fortress-of-nebet-tepe"
     ],
     "data_quality": "public_source",
     "editorial": {
@@ -190,10 +204,10 @@
       "urbanism"
     ],
     "hero": {
-      "kind": "then_now_pair",
-      "ref_id": "then-now-ancient-theatre-uncovered-1",
-      "caption_bg": "Античният театър по време на разкриването му през XX век.",
-      "caption_en": "The Ancient Theatre during its twentieth-century excavation."
+      "kind": "place_media",
+      "ref_id": "place-ancient-theatre",
+      "caption_bg": "Античният театър на Филипопол — възстановен паметник и съвременна сцена.",
+      "caption_en": "The Ancient Theatre of Philippopolis, a restored monument and a venue today."
     },
     "sections": [
       {
@@ -534,7 +548,7 @@
     "title_en": "Ottoman Filibe: A City of Worship, Water and Shared Time",
     "dek_bg": "Между деветте купола на Джумая джамия, двойната баня, дервишкото теке и кулата на Сахат тепе се разкрива градски свят, а не списък от паметници.",
     "dek_en": "Between Dzhumaya Mosque's nine domes, a double bath, a dervish lodge and the tower on Sahat Tepe, an urban world emerges rather than a list of monuments.",
-    "reading_minutes": 4,
+    "reading_minutes": 5,
     "era_tags": [
       "ottoman",
       "revival"
@@ -545,10 +559,10 @@
       "urban_layers"
     ],
     "hero": {
-      "kind": "then_now_pair",
-      "ref_id": "then-now-ottoman-clock-tower-1936",
-      "caption_bg": "Часовниковата кула върху Сахат тепе на снимка от 17 април 1936 г.",
-      "caption_en": "The clock tower on Sahat Tepe in a photograph dated 17 April 1936."
+      "kind": "place_media",
+      "ref_id": "place-dzhumaya-mosque",
+      "caption_bg": "Джумая джамия в центъра на Пловдив — действащ храм от османския период.",
+      "caption_en": "Dzhumaya Mosque in central Plovdiv, an active place of worship from the Ottoman period."
     },
     "sections": [
       {
@@ -635,6 +649,28 @@
         ]
       },
       {
+        "heading_bg": "Имарет: молитва и гостоприемство край реката",
+        "heading_en": "Imaret: Worship and Hospitality by the River",
+        "body_bg": "Близо до Марица Имарет джамия е построена през 1444–1445 г. за Шахбеддин паша, османския управител на Румелия. Първоначално сградата съчетава джамия и имарет — благотворително учреждение, а страничните ѝ помещения дават подслон на пътници.\n\nС времето тя е преустроена само като джамия. При голяма реставрация през 60-те години на XX век е разкрит първоначалният под на централното входно помещение — още един пласт от историята на сградата.",
+        "body_en": "Near the Maritsa, the Imaret Mosque was built in 1444–1445 for Shihabuddin Pasha, the Ottoman governor of Rumelia. The building originally combined a mosque with an imaret, a charitable institution, and its side rooms offered lodging for travellers.\n\nOver time it was adapted to serve as a mosque alone. A major restoration in the 1960s exposed the original floor of the central entrance hall, revealing another layer in the building's history.",
+        "source_ids": [
+          "source-u-s-commission-muslim-historic-sites-in-bulgaria"
+        ],
+        "linked_event_ids": [],
+        "linked_place_ids": [
+          "place-sahabettin-imaret-mosque-q3409168"
+        ],
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/%C5%9Eahabettin_%C4%B0maret_Mosque_%2882305%29.jpg",
+          "page_url": "https://commons.wikimedia.org/wiki/File:%C5%9Eahabettin_%C4%B0maret_Mosque_(82305).jpg",
+          "caption_bg": "Молитвената зала на Имарет джамия, снимана през 2025 г.",
+          "caption_en": "The prayer hall of the Imaret Mosque, photographed in 2025.",
+          "credit": "Jojowrner · CC BY-SA 4.0",
+          "width": 3072,
+          "height": 4096
+        }
+      },
+      {
         "heading_bg": "Кулата над Сахат тепе",
         "heading_en": "The Tower Above Sahat Tepe",
         "body_bg": "На снимка от 17 април 1936 г. часовниковата кула стои сама върху скалистия връх на Сахат тепе. Градът е останал ниско под нея, а кулата се вижда от различни посоки. И днес същата кула се издига като ориентир върху един от сиенитните хълмове на Пловдив.\n\nКулата завършва разходката през османското Филибе с различен вид обществено място. Джамията събира вярващите, хамамът организира грижата за тялото, текето дава пространство на духовната практика, а часовникът предлага общ ориентир над покривите. Нито един от тези обекти сам не е градът. Заедно те показват как Филибе организира общ живот, чиито очертания остават видими в Пловдив.",
@@ -668,7 +704,8 @@
       "place-chifte-hamam",
       "place-mevlevi-hane",
       "place-sahat-hill-in-plovdiv-q12293012",
-      "place-old-town"
+      "place-old-town",
+      "place-sahabettin-imaret-mosque-q3409168"
     ],
     "linked_archive_item_ids": [
       "archive-photo-ottoman-clock-tower-1936",
@@ -689,7 +726,8 @@
       "source-wikidata-sahat-hill-in-plovdiv",
       "source-ottoman-clock-tower-in-plovdiv-on-old-photo-jpg",
       "source-wikimedia-commons-tower-from-old-town-plovdiv-jpg",
-      "source-wikimedia-commons-historical-images-plovdiv"
+      "source-wikimedia-commons-historical-images-plovdiv",
+      "source-u-s-commission-muslim-historic-sites-in-bulgaria"
     ],
     "data_quality": "public_source",
     "editorial": {
