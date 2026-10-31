@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import SourceList from "@components/SourceList.astro";
 import StatusBadge from "@components/StatusBadge.astro";
 import Layout from "@layouts/Layout.astro";
@@ -139,7 +140,7 @@ const note = field(project, "note", lang);
           <p class="meta">{t.project.communityInitiativesText}</p>
           {hasDonationLinks && <p class="meta">{t.community.donationDisclaimer}</p>}
         </div>
-        <a href={localizePath("/community", lang)}>{t.home.viewAll} →</a>
+        <a href={localizePath("/community", lang)}>{t.home.viewAll} <LinkIcon direction="right" /></a>
       </div>
       {
         relatedInitiatives.length ? (
@@ -160,7 +161,7 @@ const note = field(project, "note", lang);
                 <p class="meta">{t.community.organizer}: {field(initiative.organizer, "name", lang)}</p>
                 {initiative.donation_url && (
                   <div class="pill-row">
-                    <a class="button secondary" href={initiative.donation_url} target="_blank" rel="noreferrer">{t.community.donate} ↗</a>
+                    <a class="button secondary" href={initiative.donation_url} target="_blank" rel="noreferrer">{t.community.donate} <LinkIcon direction="up-right" /></a>
                   </div>
                 )}
                 {initiative.contact_links?.length ? (

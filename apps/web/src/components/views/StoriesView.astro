@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import Layout from "@layouts/Layout.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
 import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
@@ -304,7 +305,7 @@ function heroMedia(story: StoryLongread) {
                 <h2><a href={localizePath(`/stories/${story.id}`, lang)}>{localized(story, "title")}</a></h2>
                 <p class="story-card-dek">{localized(story, "dek")}</p>
                 <a class="text-link" href={localizePath(`/stories/${story.id}`, lang)}>
-                  {labels.read}<span class="arrow" aria-hidden="true"> →</span>
+                  {labels.read}<span class="arrow" aria-hidden="true"><LinkIcon direction="right" /></span>
                 </a>
               </div>
             </article>

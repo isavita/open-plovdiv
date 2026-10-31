@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import SectionNav from "@components/SectionNav.astro";
 import Layout from "@layouts/Layout.astro";
@@ -962,7 +963,7 @@ const mayorGroups = [
             <a
               href={localizePath(`/mayors/${currentMayor.id}`, lang)}
               aria-label={`${l.detail}: ${field(currentMayor, "actor", lang)}`}
-            >{l.detail} →</a>
+            >{l.detail} <LinkIcon direction="right" /></a>
           </div>
         </aside>
       )}
@@ -980,7 +981,7 @@ const mayorGroups = [
           <h2>{l.whoTitle}</h2>
           <p class="meta">{l.whoLead}</p>
         </div>
-        <a href={localizePath("/mayors", lang)}>{l.ctaMayors} →</a>
+        <a href={localizePath("/mayors", lang)}>{l.ctaMayors} <LinkIcon direction="right" /></a>
       </div>
 
       <div class="mayor-board">
@@ -995,7 +996,7 @@ const mayorGroups = [
                     <header>
                       <h4>
                         <a href={localizePath(`/mayors/${term.id}`, lang)}>
-                          {field(term, "actor", lang)} <span aria-hidden="true">→</span>
+                          {field(term, "actor", lang)} <span aria-hidden="true"><LinkIcon direction="right" /></span>
                         </a>
                       </h4>
                       <p class="term-period">{field(term, "period", lang)}</p>
@@ -1013,7 +1014,7 @@ const mayorGroups = [
                                 aria-label={`${field(record, "title", lang)}: ${sourceLabel(record.source_document)}`}
                               >
                                 <span>{record.year_start}</span>
-                                <strong>{field(record, "title", lang)} <span aria-hidden="true">↗</span></strong>
+                                <strong>{field(record, "title", lang)} <span aria-hidden="true"><LinkIcon direction="up-right" /></span></strong>
                               </a>
                             </li>
                           ))}
@@ -1037,7 +1038,7 @@ const mayorGroups = [
           <h2>{l.archiveTitle}</h2>
           <p class="meta">{l.archiveLead}</p>
         </div>
-        <a href={localizePath("/archive", lang)}>{l.ctaArchive} →</a>
+        <a href={localizePath("/archive", lang)}>{l.ctaArchive} <LinkIcon direction="right" /></a>
       </div>
 
       <div class="turning-grid">
@@ -1070,7 +1071,7 @@ const mayorGroups = [
                   <span class="turning-sequence" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                   <span class="visual-context">{turningImageLabels[record.id] ?? v.contextImage}</span>
                   <figcaption>
-                    <a href={visual.pageUrl} target="_blank" rel="noreferrer">{visualCredit(visual)} ↗</a>
+                    <a href={visual.pageUrl} target="_blank" rel="noreferrer">{visualCredit(visual)} <LinkIcon direction="up-right" /></a>
                   </figcaption>
                 </figure>
               )}
@@ -1099,7 +1100,7 @@ const mayorGroups = [
                     title={sourceLabel(record.source_document)}
                     aria-label={`${l.source}: ${sourceLabel(record.source_document)}`}
                   >
-                    {l.source} <span aria-hidden="true">↗</span>
+                    {l.source} <span aria-hidden="true"><LinkIcon direction="up-right" /></span>
                   </a>
                 </div>
               </div>
@@ -1118,7 +1119,7 @@ const mayorGroups = [
           <p class="meta">{l.projectLead}</p>
           <p class="project-visual-note">{v.projectVisualNote}</p>
         </div>
-        <a href={localizePath("/projects", lang)}>{l.ctaProjects} →</a>
+        <a href={localizePath("/projects", lang)}>{l.ctaProjects} <LinkIcon direction="right" /></a>
       </div>
 
       <div class="governance-projects">
@@ -1157,7 +1158,7 @@ const mayorGroups = [
                   </a>
                   <span class="visual-context">{projectImageLabels[project.id] ?? v.referenceImage}</span>
                   <figcaption>
-                    <a href={visual.pageUrl} target="_blank" rel="noreferrer">{visualCredit(visual)} ↗</a>
+                    <a href={visual.pageUrl} target="_blank" rel="noreferrer">{visualCredit(visual)} <LinkIcon direction="up-right" /></a>
                   </figcaption>
                 </figure>
               )}
@@ -1182,7 +1183,7 @@ const mayorGroups = [
                   {amount && <span><small>{amountLabel}</small><strong>{amount}</strong></span>}
                 </div>
                 <a class="project-detail" href={localizePath(`/projects/${project.id}`, lang)}>
-                  {l.projectDetail} <span aria-hidden="true">→</span>
+                  {l.projectDetail} <span aria-hidden="true"><LinkIcon direction="right" /></span>
                 </a>
               </div>
             </article>

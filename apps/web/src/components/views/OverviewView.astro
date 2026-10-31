@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { localizePath } from "@i18n/utils";
@@ -99,7 +100,7 @@ const maxCategory = Math.max(...categoryCounts.map(([, c]) => c), 1);
 
   <section class="section" style="padding-top:0">
     <div class="container">
-      <div class="chart-grid">
+      <div class="chart-grid overview-charts">
         <!-- Projects by status (donut) -->
         <div class="chart-card">
           <h3>{t.overview.byStatusTitle}</h3>
@@ -132,7 +133,7 @@ const maxCategory = Math.max(...categoryCounts.map(([, c]) => c), 1);
             </ul>
           </div>
           <p class="chart-source">
-            {t.overview.unitProjects} · <a href={localizePath("/projects", lang)}>{t.overview.viewProjects} →</a>
+            {t.overview.unitProjects} · <a href={localizePath("/projects", lang)}>{t.overview.viewProjects} <LinkIcon /></a>
           </p>
         </div>
 
@@ -155,7 +156,7 @@ const maxCategory = Math.max(...categoryCounts.map(([, c]) => c), 1);
             ))}
           </div>
           <p class="chart-source">
-            {t.overview.unitProjects} · <a href={localizePath("/projects", lang)}>{t.overview.viewProjects} →</a>
+            {t.overview.unitProjects} · <a href={localizePath("/projects", lang)}>{t.overview.viewProjects} <LinkIcon /></a>
           </p>
         </div>
       </div>

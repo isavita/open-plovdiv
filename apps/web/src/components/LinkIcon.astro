@@ -1,0 +1,9 @@
+---
+type Props = { direction?: "right" | "up-right" | "down" };
+const { direction = "right" } = Astro.props as Props;
+---
+<svg class="link-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  {direction === "right" && <path d="M4 10h11M11 5l5 5-5 5" />}
+  {direction === "up-right" && <path d="M5 15 15 5M6 5h9v9" />}
+  {direction === "down" && <path d="M10 4v11M5 11l5 5 5-5" />}
+</svg>

@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
 import { field, localeForLang, localizePath, type Lang } from "@i18n/utils";
@@ -466,7 +467,7 @@ const structuredData = {
                   </li>
                 ))}
               </ul>
-              <a class="text-link" href={localizePath("/projects", lang)}>{t.allProjects} →</a>
+              <a class="text-link" href={localizePath("/projects", lang)}>{t.allProjects} <LinkIcon direction="right" /></a>
             </section>
           )}
 

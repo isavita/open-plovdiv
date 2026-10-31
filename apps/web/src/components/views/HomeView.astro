@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import { ptText } from "@i18n/ptUiTranslations";
 import Layout from "@layouts/Layout.astro";
@@ -250,7 +251,7 @@ const eras = ["roman", "revival", "liberation"] as const;
           <p class="visitor-headline">{guide.headline}</p>
           <p class="visitor-intro">{guide.intro}</p>
           <div class="actions">
-            <a class="button" href={localizePath("/routes/first-day-plovdiv", lang)}>{guide.firstDay}<span aria-hidden="true">→</span></a>
+            <a class="button" href={localizePath("/routes/first-day-plovdiv", lang)}>{guide.firstDay}<span aria-hidden="true"><LinkIcon direction="right" /></span></a>
           </div>
         </div>
         <figure class="visitor-hero-photo">
@@ -259,7 +260,7 @@ const eras = ["roman", "revival", "liberation"] as const;
             <source media="(max-width: 760px)" srcset={`${hero.small} 480w, ${hero.medium} 768w, ${hero.src} 960w`} sizes="calc(100vw - 36px)" />
           <img src={hero.src} srcset={`${hero.small} 480w, ${hero.medium} 768w, ${hero.src} 960w, ${placeImageUrl(hero.url, 1600)} 1500w`} sizes="(max-width: 760px) calc(100vw - 36px), 58vw" alt={labels.theatreTitle} width="1500" height="940" fetchpriority="high" decoding="async" />
           </picture>
-          <figcaption><span>{labels.theatreTitle}</span><a href={hero.page_url} target="_blank" rel="noreferrer">© {mediaAttribution(hero.credit, lang)} · {mediaAttribution(hero.license, lang)} ↗</a></figcaption>
+          <figcaption><span>{labels.theatreTitle}</span><a href={hero.page_url} target="_blank" rel="noreferrer">© {mediaAttribution(hero.credit, lang)} · {mediaAttribution(hero.license, lang)} <LinkIcon direction="up-right" /></a></figcaption>
           <span class="visitor-photo-index" aria-hidden="true">01 / PLOVDIV</span>
         </figure>
       </div>
@@ -267,17 +268,17 @@ const eras = ["roman", "revival", "liberation"] as const;
 
     <nav class="visitor-quick-nav container" aria-label={guide.firstVisit}>
       <span>{guide.firstVisit}</span>
-      <a href="#discover">{t.nav.places} <span aria-hidden="true">↗</span></a>
-      <a href="#choose-a-walk">{labels.openRoutes} <span aria-hidden="true">↗</span></a>
-      <a href="#city-stories">{t.nav.history} <span aria-hidden="true">↗</span></a>
-      <a href="#plan-your-visit">{guide.plan} <span aria-hidden="true">↗</span></a>
+      <a href="#discover">{t.nav.places} <span aria-hidden="true"><LinkIcon direction="right" /></span></a>
+      <a href="#choose-a-walk">{labels.openRoutes} <span aria-hidden="true"><LinkIcon direction="right" /></span></a>
+      <a href="#city-stories">{t.nav.history} <span aria-hidden="true"><LinkIcon direction="right" /></span></a>
+      <a href="#plan-your-visit">{guide.plan} <span aria-hidden="true"><LinkIcon direction="right" /></span></a>
     </nav>
 
     <section class="section visitor-discover" id="discover" aria-labelledby="discover-title">
       <div class="container">
         <div class="visitor-section-heading">
           <div><p class="eyebrow">{t.nav.places}</p><h2 id="discover-title">{guide.essentials}</h2></div>
-          <a class="visitor-text-link" href={localizePath("/places", lang)}>{labels.allPlaces} <span aria-hidden="true">→</span></a>
+          <a class="visitor-text-link" href={localizePath("/places", lang)}>{labels.allPlaces} <span aria-hidden="true"><LinkIcon direction="right" /></span></a>
         </div>
         <div class="visitor-place-grid">
           {essentials.map((place, index) => (
@@ -286,7 +287,7 @@ const eras = ["roman", "revival", "liberation"] as const;
                 <img src={place.media.src} srcset={`${place.media.small} 480w, ${place.media.medium} 768w, ${place.media.src} 960w`} sizes="(max-width: 600px) calc(100vw - 36px), (max-width: 1000px) 50vw, 25vw" alt="" width="640" height="480" loading="lazy" fetchpriority="low" decoding="async" />
                 <span class="visitor-place-number">0{index + 1}</span>
               </a>
-              <div class="visitor-place-body"><p class="eyebrow">{place.eyebrow}</p><h3><a href={place.href}>{place.title} <span aria-hidden="true">↗</span></a></h3><p>{place.text}</p>{place.id === "place-nebet-tepe" && <a class="visitor-place-source" href="https://www.plovdiv.bg/20250320/" target="_blank" rel="noreferrer">{t.footer.sources} ↗</a>}</div>
+              <div class="visitor-place-body"><p class="eyebrow">{place.eyebrow}</p><h3><a href={place.href}>{place.title} <span aria-hidden="true"><LinkIcon direction="right" /></span></a></h3><p>{place.text}</p>{place.id === "place-nebet-tepe" && <a class="visitor-place-source" href="https://www.plovdiv.bg/20250320/" target="_blank" rel="noreferrer">{t.footer.sources} <LinkIcon direction="up-right" /></a>}</div>
             </article>
           ))}
         </div>
@@ -304,11 +305,11 @@ const eras = ["roman", "revival", "liberation"] as const;
             <a class="visitor-walk" href={route.href}>
               <img src={route.photo.src} srcset={`${route.photo.small} 480w, ${route.photo.medium} 768w, ${route.photo.src} 960w`} sizes="(max-width: 760px) 100vw, 33vw" alt="" width="600" height="420" loading="lazy" fetchpriority="low" decoding="async" />
               <span class="visitor-walk-duration">{route.minutes} {routeT.minutes}{route.distance && ` · ${route.distance} km`}</span>
-              <div><h3>{route.title}</h3><p>{route.text}</p><span class="visitor-walk-arrow" aria-hidden="true">↗</span></div>
+              <div><h3>{route.title}</h3><p>{route.text}</p><span class="visitor-walk-arrow" aria-hidden="true"><LinkIcon direction="right" /></span></div>
             </a>
           ))}
         </div>
-        <a class="visitor-text-link visitor-all-routes" href={localizePath("/routes", lang)}>{labels.routesPath} <span aria-hidden="true">→</span></a>
+        <a class="visitor-text-link visitor-all-routes" href={localizePath("/routes", lang)}>{labels.routesPath} <span aria-hidden="true"><LinkIcon direction="right" /></span></a>
       </div>
     </section>
 
@@ -318,15 +319,15 @@ const eras = ["roman", "revival", "liberation"] as const;
           <p class="eyebrow">{t.nav.history} · {labels.evidenceLabel}</p>
           <h2 id="city-stories-title">{guide.history}</h2>
           <p>{labels.historyPathText}</p>
-          <a class="button" href={localizePath("/history", lang)}>{labels.historyPath} <span aria-hidden="true">→</span></a>
+          <a class="button" href={localizePath("/history", lang)}>{labels.historyPath} <span aria-hidden="true"><LinkIcon direction="right" /></span></a>
         </div>
         <div class="visitor-era-list">
           {eras.map((era, index) => (
-            <a href={`${localizePath("/history", lang)}#chapter-${era}`}><span class="visitor-era-number">0{index + 1}</span><span><strong>{t.history.eraLabels[era]}</strong><small>{t.history.eraBlurbs[era]}</small></span><span aria-hidden="true">↗</span></a>
+            <a href={`${localizePath("/history", lang)}#chapter-${era}`}><span class="visitor-era-number">0{index + 1}</span><span><strong>{t.history.eraLabels[era]}</strong><small>{t.history.eraBlurbs[era]}</small></span><span aria-hidden="true"><LinkIcon direction="right" /></span></a>
           ))}
         </div>
       </div>
-      <div class="container visitor-story-link"><span>{labels.storiesPathText}</span><a href={localizePath("/stories", lang)}>{labels.storiesPath} <span aria-hidden="true">→</span></a></div>
+      <div class="container visitor-story-link"><span>{labels.storiesPathText}</span><a href={localizePath("/stories", lang)}>{labels.storiesPath} <span aria-hidden="true"><LinkIcon direction="right" /></span></a></div>
     </section>
 
     <VisitorPractical lang={lang} />

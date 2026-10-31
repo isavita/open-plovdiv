@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
 import { field, localeForLang, localizePath } from "@i18n/utils";
@@ -326,7 +327,7 @@ const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filt
               <p class="eyebrow">{term.year_start}{term.year_end ? `-${term.year_end}` : `-${currentYear}`}</p>
               <h3>{field(term, "actor", lang)}</h3>
               <p class="meta">{field(term, "period", lang)}</p>
-              <span class="arrow" aria-hidden="true">→</span>
+              <span class="arrow" aria-hidden="true"><LinkIcon direction="right" /></span>
             </a>
           ))}
         </div>
@@ -345,7 +346,7 @@ const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filt
         <a class="link-button" href={localizePath("/mayors", lang)}>{t.mayors.backToAll}</a>
         {next ? (
           <a class="button secondary" href={localizePath(`/mayors/${next.id}`, lang)}>
-            {t.mayors.nextTerm}: {field(next, "actor", lang)} <span class="arrow" aria-hidden="true">→</span>
+            {t.mayors.nextTerm}: {field(next, "actor", lang)} <span class="arrow" aria-hidden="true"><LinkIcon direction="right" /></span>
           </a>
         ) : <span></span>}
       </div>

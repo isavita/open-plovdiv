@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
 import {
@@ -339,7 +340,7 @@ const clientConfig = {
           </div>
         </div>
         <a class="button" href="#initiatives-directory">
-          {copy.explore}<span class="arrow" aria-hidden="true">↓</span>
+          {copy.explore}<span class="arrow" aria-hidden="true"><LinkIcon direction="down" /></span>
         </a>
       </div>
 
@@ -505,12 +506,12 @@ const clientConfig = {
                       rel="noreferrer"
                       aria-label={`${copy.visitOrganizer} · ${copy.external}`}
                     >
-                      {copy.visitOrganizer}<span aria-hidden="true">↗</span>
+                      {copy.visitOrganizer}<span aria-hidden="true"><LinkIcon direction="up-right" /></span>
                     </a>
                   )}
                   {item.donation_url && (
                     <a class="community-donation-link" href={item.donation_url} target="_blank" rel="noreferrer">
-                      {t.community.donate} ↗
+                      {t.community.donate} <LinkIcon direction="up-right" />
                     </a>
                   )}
                 </div>
@@ -558,7 +559,7 @@ const clientConfig = {
       </div>
 
       <aside class="community-disclaimer">
-        <span aria-hidden="true">↗</span>
+        <span aria-hidden="true"><LinkIcon direction="up-right" /></span>
         <p>{t.community.donationDisclaimer}</p>
       </aside>
     </div>

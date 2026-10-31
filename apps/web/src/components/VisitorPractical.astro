@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import { visitorGuide } from "@lib/visitorGuide";
 import { walkingRoutes } from "@lib/routes";
 import { field, localizePath } from "@i18n/utils";
@@ -26,8 +27,8 @@ const routeTitle = (route: (typeof walkingRoutes)[number]) => field(route as unk
             <div>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
-              {item.href && <a href={item.href} target="_blank" rel="noreferrer">{item.link} <span aria-hidden="true">↗</span></a>}
-              {route && <a href={localizePath(`/routes/${route.id}`, lang)}>{routeTitle(route)} <span aria-hidden="true">→</span></a>}
+              {item.href && <a href={item.href} target="_blank" rel="noreferrer">{item.link} <span aria-hidden="true"><LinkIcon direction="up-right" /></span></a>}
+              {route && <a href={localizePath(`/routes/${route.id}`, lang)}>{routeTitle(route)} <span aria-hidden="true"><LinkIcon direction="right" /></span></a>}
             </div>
           </article>
         );

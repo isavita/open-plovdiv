@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
 import { placeImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
@@ -2006,7 +2007,7 @@ const mapHref = place.coordinates
           {mapHref && (
             <div class="place-hero-actions">
               <a class="button place-map-button" href={mapHref} target="_blank" rel="noreferrer">
-                {labels.openMap} <span aria-hidden="true">↗</span>
+                {labels.openMap} <span aria-hidden="true"><LinkIcon direction="up-right" /></span>
               </a>
             </div>
           )}
@@ -2056,7 +2057,7 @@ const mapHref = place.coordinates
                           .map((para) => <p>{para}</p>)}
                         {section.source && (
                           <a class="src-link" href={section.source.url} target="_blank" rel="noreferrer">
-                            {storyLabels.sourceLabel}: {sourceTitle(section.source.title, lang)} ↗
+                            {storyLabels.sourceLabel}: {sourceTitle(section.source.title, lang)} <LinkIcon direction="up-right" />
                           </a>
                         )}
                       </section>
@@ -2078,7 +2079,7 @@ const mapHref = place.coordinates
               <p>{localized(place.date_context, "display")}</p>
               {dateSource && (
                 <a class="src-link" href={dateSource.url} target="_blank" rel="noreferrer">
-                  {storyLabels.sourceLabel}: {sourceTitle(localized(dateSource, "title"), lang)} ↗
+                  {storyLabels.sourceLabel}: {sourceTitle(localized(dateSource, "title"), lang)} <LinkIcon direction="up-right" />
                 </a>
               )}
             </article>
@@ -2088,7 +2089,7 @@ const mapHref = place.coordinates
               <p>{creatorDetail}</p>
               {creatorSource && (
                 <a class="src-link" href={creatorSource.url} target="_blank" rel="noreferrer">
-                  {storyLabels.sourceLabel}: {sourceTitle(localized(creatorSource, "title"), lang)} ↗
+                  {storyLabels.sourceLabel}: {sourceTitle(localized(creatorSource, "title"), lang)} <LinkIcon direction="up-right" />
                 </a>
               )}
             </article>
@@ -2096,7 +2097,7 @@ const mapHref = place.coordinates
               <span>{storyLabels.useTitle}</span>
               <h3>{storyLabels.statusLabel}</h3>
               <p>{localized(place, "current_status")}</p>
-              {mapHref && <a class="src-link" href={mapHref} target="_blank" rel="noreferrer">{labels.openMap} ↗</a>}
+              {mapHref && <a class="src-link" href={mapHref} target="_blank" rel="noreferrer">{labels.openMap} <LinkIcon direction="up-right" /></a>}
             </article>
           </section>
 
@@ -2116,11 +2117,11 @@ const mapHref = place.coordinates
               )}
               <div class="place-record-links">
                 <a class="src-link" href={wikidataRecord.wikidata_url} target="_blank" rel="noreferrer">
-                  {wikidataLabels.wikidata} ↗
+                  {wikidataLabels.wikidata} <LinkIcon direction="up-right" />
                 </a>
                 {wikidataArticle && (
                   <a class="src-link" href={wikidataArticle.url} target="_blank" rel="noreferrer">
-                    {wikidataLabels.wikipedia}: {wikidataArticle.title} ↗
+                    {wikidataLabels.wikipedia}: {wikidataArticle.title} <LinkIcon direction="up-right" />
                   </a>
                 )}
               </div>
@@ -2134,7 +2135,7 @@ const mapHref = place.coordinates
                 <li>
                   <p>{localized(item, "claim")}</p>
                   <a class="src-link" href={sourceById.get(item.source_id)?.url ?? item.url} target="_blank" rel="noreferrer">
-                    {storyLabels.sourceLabel}: {sourceTitle(localized(sourceById.get(item.source_id), "title"), lang) || sourceTitle(item.source_id, lang)} ↗
+                    {storyLabels.sourceLabel}: {sourceTitle(localized(sourceById.get(item.source_id), "title"), lang) || sourceTitle(item.source_id, lang)} <LinkIcon direction="up-right" />
                   </a>
                 </li>
               ))}
@@ -2312,7 +2313,7 @@ const mapHref = place.coordinates
                       <p class="editorial-caveat"><strong>{editorialReviewLabel}:</strong> {pendingEditorialReviewNote(item.editorial, lang)}</p>
                     )}
                     <a class="src-link" href={item.source.url} target="_blank" rel="noreferrer">
-                      {labels.source}: {sourceTitle(item.source.title, lang)} ↗
+                      {labels.source}: {sourceTitle(item.source.title, lang)} <LinkIcon direction="up-right" />
                     </a>
                   </article>
                 ))}
@@ -2341,7 +2342,7 @@ const mapHref = place.coordinates
                       {discoveryL.nextStop}: <a href={localizePath(`/places/${next.id}`, lang)}>{localized(next, "name")}</a>
                     </p>
                   )}
-                  <a class="text-link" href={localizePath(`/routes/${route.id}`, lang)}>{discoveryL.openRoute} →</a>
+                  <a class="text-link" href={localizePath(`/routes/${route.id}`, lang)}>{discoveryL.openRoute} <LinkIcon direction="right" /></a>
                 </div>
               ))}
             </section>
@@ -2406,7 +2407,7 @@ const mapHref = place.coordinates
               <p class="meta">{knownHistoryLabel(place.coordinates.accuracy, lang)}</p>
               {sourceById.get(place.coordinates.source_id) && (
                 <a class="src-link" href={sourceById.get(place.coordinates.source_id)!.url} target="_blank" rel="noreferrer">
-                  {labels.source}: {sourceTitle(localized(sourceById.get(place.coordinates.source_id)!, "title"), lang)} ↗
+                  {labels.source}: {sourceTitle(localized(sourceById.get(place.coordinates.source_id)!, "title"), lang)} <LinkIcon direction="up-right" />
                 </a>
               )}
             </section>

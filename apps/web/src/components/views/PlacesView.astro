@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
 import { localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
@@ -968,8 +969,8 @@ const placesMapConfig = {
       <h1>{labels.title}</h1>
       <p class="lead">{labels.lead}</p>
       <nav class="places-view-switch" aria-label={labels.title}>
-        <a href="#places-results">{labels.title} <span aria-hidden="true">↓</span></a>
-        <a href="#places-map-section">{mapL.title} <span aria-hidden="true">↗</span></a>
+        <a href="#places-results">{labels.title} <span aria-hidden="true"><LinkIcon direction="down" /></span></a>
+        <a href="#places-map-section">{mapL.title} <span aria-hidden="true"><LinkIcon direction="down" /></span></a>
       </nav>
     </div>
   </section>
@@ -989,7 +990,7 @@ const placesMapConfig = {
               </optgroup>
             ))}
           </select>
-          <a class="text-link route-picker-all" href={localizePath("/routes", lang)}>{sheetL.allRoutes} →</a>
+          <a class="text-link route-picker-all" href={localizePath("/routes", lang)}>{sheetL.allRoutes} <LinkIcon /></a>
         </div>
         <div class="route-active" id="places-route-active" hidden>
           <span class="route-strip-dot" aria-hidden="true"></span>
@@ -997,7 +998,7 @@ const placesMapConfig = {
             <strong id="places-route-active-title"></strong>
             <span class="meta" id="places-route-active-stats"></span>
           </span>
-          <a class="text-link" id="places-route-active-open" href="#">{sheetL.openRoute} →</a>
+          <a class="text-link" id="places-route-active-open" href="#">{sheetL.openRoute} <LinkIcon /></a>
           <button type="button" class="route-active-clear route-active-toggle" id="places-route-nearby" aria-label={sheetL.nearRoute} aria-pressed="false" hidden></button>
           <button type="button" class="route-active-clear" id="places-route-clear">{sheetL.clearRoute} ✕</button>
         </div>
@@ -1014,7 +1015,7 @@ const placesMapConfig = {
         <div class="map-sheet-body">
           <p class="eyebrow" id="places-sheet-kicker"></p>
           <h3 id="places-sheet-title"></h3>
-          <a class="text-link" id="places-sheet-open" href="#">{labels.open} →</a>
+          <a class="text-link" id="places-sheet-open" href="#">{labels.open} <LinkIcon /></a>
         </div>
         <button type="button" class="map-sheet-close" id="places-sheet-close" aria-label={sheetL.close}>✕</button>
       </div>
@@ -1122,7 +1123,7 @@ const placesMapConfig = {
                   <span class="place-card-built">{card.facts[0]?.value ?? card.eraLabel}</span>
                   <span class="place-card-go">
                     {labels.open}
-                    <span aria-hidden="true">→</span>
+                    <span aria-hidden="true"><LinkIcon direction="right" /></span>
                   </span>
                 </p>
               </div>

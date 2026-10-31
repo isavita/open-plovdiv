@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import Layout from "@layouts/Layout.astro";
 import { field, localeForLang, localizePath, type Lang } from "@i18n/utils";
 import { placeImageUrl as commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
@@ -99,7 +100,7 @@ const filterConfig = {
           <h2>{t.filterTitle}</h2>
           <p class="meta">{t.filterLead}</p>
         </div>
-        <a href={localizePath("/places", lang)}>{t.allPlaces} →</a>
+        <a href={localizePath("/places", lang)}>{t.allPlaces} <LinkIcon /></a>
       </div>
 
       <details class="summer-routes">

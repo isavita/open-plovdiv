@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import { ptText } from "@i18n/ptUiTranslations";
 import Layout from "@layouts/Layout.astro";
@@ -3077,7 +3078,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         <h1>{t.history.title}</h1>
         <p class="lead">{t.history.lead}</p>
         <div class="button-row history-hero-actions">
-          <a class="button" href="#history-tree">{historyHeroLabels.startJourney} ↓</a>
+          <a class="button" href="#history-tree">{historyHeroLabels.startJourney} <LinkIcon direction="down" /></a>
         </div>
       </div>
       <div class="history-hero-mosaic" role="group" aria-label={historyHeroLabels.galleryLabel}>
@@ -3108,7 +3109,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
             </span>
             <span class="history-hero-credit">
               <strong>{visual.title}</strong>
-              <small>{visual.credit} · {visual.license} ↗</small>
+              <small>{visual.credit} · {visual.license} <LinkIcon direction="up-right" /></small>
             </span>
           </a>
         ))}
@@ -3192,10 +3193,10 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
               </ol>
               <div class="history-chapter-actions">
                 <a href={`${localizePath("/history", lang)}?q=${encodeURIComponent(era.label)}#timeline`}>
-                  {treeLabels.exploreEra} →
+                  {treeLabels.exploreEra} <LinkIcon direction="right" />
                 </a>
                 <a href={era.visual.pageUrl} target="_blank" rel="noreferrer">
-                  {treeLabels.imageSource}: {era.visual.credit} · {era.visual.license} ↗
+                  {treeLabels.imageSource}: {era.visual.credit} · {era.visual.license} <LinkIcon direction="up-right" />
                 </a>
               </div>
             </div>
@@ -3212,7 +3213,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           <h2>{labels.mapTitle}</h2>
           <p class="meta" style="margin-top:8px;max-width:74ch">{labels.mapLead}</p>
         </div>
-        <a href={localizePath("/places", lang)}>{labels.openPlaces} →</a>
+        <a href={localizePath("/places", lang)}>{labels.openPlaces} <LinkIcon direction="right" /></a>
       </div>
       <div class="map-tools card">
         <div class="field map-era-field">
@@ -3484,7 +3485,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
           <h2>{labels.peopleTitle}</h2>
           <p class="meta" style="margin-top:8px;max-width:74ch">{labels.peopleLead}</p>
         </div>
-        <a href={localizePath("/people", lang)}>{labels.openMayors} →</a>
+        <a href={localizePath("/people", lang)}>{labels.openMayors} <LinkIcon direction="right" /></a>
       </div>
 
       <article class="card">
@@ -3756,7 +3757,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
         <div id="nb-map" class="nb-map"></div>
       </div>
       <p style="margin-top:12px">
-        <a class="text-link" href={localizePath("/neighbourhoods", lang)}>{neighbourhoodLabels(lang).indexTitle} →</a>
+        <a class="text-link" href={localizePath("/neighbourhoods", lang)}>{neighbourhoodLabels(lang).indexTitle} <LinkIcon direction="right" /></a>
       </p>
     </div>
   </section>

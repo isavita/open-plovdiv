@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import Layout from "@layouts/Layout.astro";
 import SectionNav from "@components/SectionNav.astro";
 import { roleLabels, ui, type Lang } from "@i18n/ui";
@@ -1577,7 +1578,7 @@ const nodeConfig = {
                   <h3><a href={`${languagePrefix}/people/${person.id}/`}>{localized(person, "name")}</a></h3>
                   <p>{localized(person, "summary")}</p>
                   <div class="featured-person-footer">
-                    <a class="text-link" href={`${languagePrefix}/people/${person.id}/`}>{labels.profile} →</a>
+                    <a class="text-link" href={`${languagePrefix}/people/${person.id}/`}>{labels.profile} <LinkIcon direction="right" /></a>
                     {media.image_page_url && (
                       <a
                         class="featured-person-credit"
@@ -1586,7 +1587,7 @@ const nodeConfig = {
                         rel="noreferrer"
                         aria-label={`${editorialLabels.imageSource}: ${localized(person, "name")}`}
                       >
-                        {media.image_license ?? editorialLabels.imageSource} ↗
+                        {media.image_license ?? editorialLabels.imageSource} <LinkIcon direction="up-right" />
                       </a>
                     )}
                   </div>
@@ -1645,7 +1646,7 @@ const nodeConfig = {
               </div>
               {source && (
                 <a class="relationship-preview-source" href={source.url} target="_blank" rel="noreferrer">
-                  {labels.source}: {localized(source, "title")} ↗
+                  {labels.source}: {localized(source, "title")} <LinkIcon direction="up-right" />
                 </a>
               )}
             </article>
@@ -1659,7 +1660,7 @@ const nodeConfig = {
           <p class="meta">{graphLabels.lead}</p>
         </div>
         <button type="button" id="people-graph-toggle" class="button" aria-expanded="false" aria-controls="people-graph-panel">
-          <span data-graph-toggle-text>{graphLabels.open}</span><span aria-hidden="true">↗</span>
+          <span data-graph-toggle-text>{graphLabels.open}</span><span aria-hidden="true"><LinkIcon direction="up-right" /></span>
         </button>
       </div>
 

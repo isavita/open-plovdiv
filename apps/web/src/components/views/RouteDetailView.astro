@@ -1,4 +1,5 @@
 ---
+import LinkIcon from "@components/LinkIcon.astro";
 import Layout from "@layouts/Layout.astro";
 import { field, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { placeImageUrl as commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
@@ -339,7 +340,7 @@ const structuredData = {
             <span class="route-map-links-label">{t.openInMaps}:</span>
             {googleMapsUrls.map((url, index) => (
               <a class="text-link" href={url} target="_blank" rel="noreferrer">
-                Google Maps{googleMapsUrls.length > 1 ? ` ${index + 1}/${googleMapsUrls.length}` : ""} ↗
+                Google Maps{googleMapsUrls.length > 1 ? ` ${index + 1}/${googleMapsUrls.length}` : ""} <LinkIcon direction="up-right" />
               </a>
             ))}
             {gpxUrl && (
@@ -404,7 +405,7 @@ const structuredData = {
                       <p class="route-stop-summary meta">{entry.summary}</p>
                       <p class="route-stop-facts">
                         <span>{t.suggestedStay}: ~{entry.stop.minutes} {t.minutes}</span>
-                        <a class="text-link" href={entry.href}>{t.openPlace} →</a>
+                        <a class="text-link" href={entry.href}>{t.openPlace} <LinkIcon /></a>
                       </p>
                     </div>
                   </article>
