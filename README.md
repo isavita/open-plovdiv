@@ -24,7 +24,13 @@ The development server starts the website from `apps/web`.
 
 ## Deploy on Railway
 
-This repository is an npm workspace monorepo. Deploy it from the repository root so data generation runs before the Astro build. `railway.json` defines the build, start command and health check.
+This repository is an npm workspace monorepo. Deploy it from the repository root so data generation runs before the Astro build. The Railway Infrastructure as Code definition in `.railway/railway.ts` manages this service as a named partial; variables remain managed in Railway. Keep secrets there, not in the repository.
+
+Changes to `.railway/railway.ts` require a Railway plan and apply: pushing the file alone does not apply infrastructure changes. With the Railway CLI linked to the correct project and production environment, run `railway config plan` and review the entire result, including domains, variables, services, volumes and databases. Apply only the intended changes with `railway config apply`; if the plan contains unexpected changes, stop and investigate. A saved plan (`railway config plan --out railway-plan.json`, followed by `railway config apply --plan railway-plan.json`) can pin the reviewed changes to the configuration and environment state. Do not commit the plan file, which may contain sensitive operational details.
+
+The GitHub integration deploys watched changes on `main` separately from applying the infrastructure definition. Railpack uses the Node version pinned in `.node-version`. Before any redeployment, check for persistent volumes, databases and any temporary data in the running container, and preserve anything needed. Review any new paid resources and their cost before adding them.
+
+If a plan repeatedly reports `ON_FAILURE` / 10 restart-policy drift, verify the resolved service instance through Railway's API before interpreting it as an unapplied change; see [Railway CLI issue 1184](https://github.com/railwayapp/cli/issues/1184).
 
 Railway supplies `RAILWAY_PUBLIC_DOMAIN` during the build automatically. For
 other production environments, configure the canonical origin explicitly:

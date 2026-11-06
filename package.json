@@ -38,6 +38,7 @@
     "ajv-formats": "^3.0.1"
   },
   "devDependencies": {
-    "lighthouse": "^13.4.0"
+    "lighthouse": "^13.4.0",
+    "railway": "^3.16.0"
   }
 }
