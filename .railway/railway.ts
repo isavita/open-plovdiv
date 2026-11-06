@@ -17,6 +17,9 @@ export default defineRailway(() => {
   });
 
   return project("lucky-education", {
+    // Railway's IaC runtime supports this generated setting, but SDK 3.16.0
+    // does not yet include it in ProjectDefinition.
+    // @ts-expect-error Keep existing Railway variables unmanaged.
     variables: { managed: false },
     resources: [_openPlovdivweb],
   });
