@@ -11,6 +11,7 @@ import { historyKnowledgePlaces } from "@lib/data";
 import { walkingRoutes, routeGeometry, formatKm } from "@lib/routes";
 import { routeLabels } from "@lib/routeLabels";
 import { visitorGuide } from "@lib/visitorGuide";
+import { llmsLabels } from "@lib/llmsLabels";
 const { lang } = Astro.props as { lang: Lang };
 const t = ui[lang];
 const guide = visitorGuide(lang);
@@ -252,6 +253,9 @@ const eras = ["prehistory", "roman", "ottoman"] as const;
           <p class="visitor-intro">{guide.intro}</p>
           <div class="actions">
             <a class="button" href={localizePath("/routes/first-day-plovdiv", lang)}>{guide.firstDay}<span aria-hidden="true"><LinkIcon direction="right" /></span></a>
+            <nav aria-label={llmsLabels[lang].guide}>
+              <a class="visitor-text-link home-llms-link" href="/llms.txt">{llmsLabels[lang].guide}<span aria-hidden="true"><LinkIcon direction="right" /></span></a>
+            </nav>
           </div>
         </div>
         <figure class="visitor-hero-photo">

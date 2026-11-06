@@ -9,9 +9,11 @@ import "../styles/identity.css";
 import "../styles/visitor.css";
 import PlovdivMark from "@components/PlovdivMark.astro";
 import PlovdivSkyline from "@components/PlovdivSkyline.astro";
+import PageMarkdownLink from "@components/PageMarkdownLink.astro";
 import SiteSearch from "@components/SiteSearch.astro";
 import { languages, localeCodes, localeForLang, localizePath, ui, type Lang } from "@i18n/utils";
 import { siteSearchUi } from "@lib/siteSearchI18n";
+import { llmsLabels } from "@lib/llmsLabels";
 import {
   absoluteUrl,
   buildPageStructuredData,
@@ -184,7 +186,8 @@ const menuCivic = [
 ];
 const menuAbout = [
   { href: localizePath("/data-sources", lang), base: "/data-sources", label: t.footer.sources },
-  { href: localizePath("/privacy", lang), base: "/privacy", label: t.footer.privacy }
+  { href: localizePath("/privacy", lang), base: "/privacy", label: t.footer.privacy },
+  { href: "/llms.txt", base: "/llms.txt", label: llmsLabels[lang].guide }
 ];
 const menuGroups = [
   { key: "explore", label: t.footer.explore, items: menuExplore },
@@ -226,7 +229,8 @@ const chromeI18n = localeDetect
               projects: l.nav.projects,
               community: l.footer.community,
               "data-sources": l.footer.sources,
-              privacy: l.footer.privacy
+              privacy: l.footer.privacy,
+              "llms.txt": llmsLabels[code].guide
             },
             groups: { explore: l.footer.explore, civic: l.footer.civic, about: l.footer.about },
             footer: { blurb: l.footer.blurb, motto: ailyakMottos[code], note: l.footer.note, dataNote: l.footer.dataNote }
@@ -351,7 +355,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
                   <div class="nav-more-group">
                     <span class="nav-group-label">{group.label}</span>
                     {group.items.map((item) => (
-                      <a href={item.href} aria-current={isActive(item.base) ? "page" : undefined}>
+                      <a href={item.href} data-menu-key={item.base.slice(1)} aria-current={isActive(item.base) ? "page" : undefined}>
                         {item.label}
                       </a>
                     ))}
@@ -426,6 +430,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
       </header>
 
       <main class="main" id="main">
+        {!localeDetect && !robots?.toLowerCase().includes("noindex") && <PageMarkdownLink lang={lang} path={path} />}
         <slot />
       </main>
 
@@ -722,7 +727,7 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
               var key = el.getAttribute("data-menu-key");
               if (c.nav[key]) {
                 setText(el, c.nav[key]);
-                el.setAttribute("href", lp("/" + key));
+                el.setAttribute("href", key === "llms.txt" ? "/llms.txt" : lp("/" + key));
               }
             });
             document.querySelectorAll("[data-footer-group]").forEach(function (el) {

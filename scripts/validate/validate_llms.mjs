@@ -3,6 +3,7 @@ import { createServer } from "node:net";
 import { resolve, sep } from "node:path";
 import { spawn } from "node:child_process";
 import { setTimeout as delay } from "node:timers/promises";
+import { parseHTML } from "linkedom";
 import { MAX_MARKDOWN_SOURCE_BYTES } from "../../apps/web/server/llm-markdown.mjs";
 
 // Exercise the actual production boundary, including dynamic Markdown responses.
@@ -42,6 +43,23 @@ function localPath(url) {
   const parsed = new URL(url, siteOrigin);
   assert(parsed.origin === siteOrigin && !parsed.username && !parsed.password, `Unexpected site URL: ${url}`);
   return `${parsed.pathname}${parsed.search}`;
+}
+
+function checkVisibleLinks(html, canonical, { home = false } = {}) {
+  const { document } = parseHTML(html);
+  for (const menu of [".nav-more", ".nav-groups"]) {
+    const guide = document.querySelector(`${menu} a[data-menu-key="llms.txt"]`);
+    assert(guide && guide.getAttribute("href") === "/llms.txt" && guide.textContent.trim(),
+      `${canonical}: missing labelled guide link in ${menu}`);
+  }
+  const pageLink = document.querySelector("main nav.page-markdown-tools a.page-markdown-link");
+  const expected = `${canonical.replace(/\/+$/, "")}/index.md`;
+  assert(pageLink && new URL(pageLink.getAttribute("href"), canonical).href === expected && pageLink.textContent.trim(),
+    `${canonical}: missing visible Markdown link`);
+  if (home) {
+    const guide = document.querySelector('main a.home-llms-link[href="/llms.txt"]');
+    assert(guide && guide.textContent.trim(), `${canonical}: homepage guide link missing`);
+  }
 }
 
 // Cover every listed page, not only the HTTP samples below. The converter
@@ -118,6 +136,7 @@ try {
   const indexUrls = [...index.matchAll(/^-\s+\[[^\]]+\]\(([^)]+)\)/gm)].map((match) => match[1]);
   const markdownUrls = [...new Set(indexUrls.filter((url) => new URL(url, siteOrigin).pathname.endsWith("/index.md")))];
   assert(markdownUrls.length >= 8, "/llms.txt should link to useful Markdown pages");
+  const visitedHomes = new Set();
   for (const url of markdownUrls) {
     const path = localPath(url);
     const pagePath = path.slice(0, -"index.md".length).replace(/\/$/, "") || "/";
@@ -126,8 +145,12 @@ try {
     const html = await response.text();
     const canonical = linkTags(html).find((link) => link.rel === "canonical")?.href;
     assert(canonical, `${pagePath}: missing canonical HTML URL`);
+    const home = /^\/(?:en|de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)?$/.test(pagePath);
+    if (home) visitedHomes.add(pagePath);
+    checkVisibleLinks(html, canonical, { home });
     await checkMarkdown(path, canonical);
   }
+  assert(visitedHomes.size === 14, `Expected guide links on 14 localized homepages; checked ${visitedHomes.size}`);
 
   const samples = ["/", "/en/history", "/history", "/ja/history", "/en/places"];
   for (const kind of ["places", "people", "stories", "routes", "neighbourhoods", "projects", "mayors"]) {
@@ -144,6 +167,7 @@ try {
     const alternate = links.find((link) => link.rel === "alternate" && link.type === "text/markdown")?.href;
     const describedBy = links.find((link) => link.rel === "describedby")?.href;
     assert(canonical && alternate && describedBy, `${path}: missing HTML discovery links`);
+    checkVisibleLinks(html, canonical, { home: path === "/" });
     assert(localPath(describedBy) === "/llms.txt", `${path}: wrong llms.txt discovery URL`);
     const expectedPath = `${path === "/" ? "" : path}/index.md`;
     assert(localPath(alternate) === expectedPath, `${path}: wrong Markdown alternate ${alternate}`);
@@ -160,9 +184,13 @@ try {
   assert(head.status === 200 && /^text\/markdown\b/i.test(head.headers.get("content-type") || "") && (await head.text()) === "", "Markdown HEAD request failed");
   const missing = await request("/en/no-such-page-llms-validation/index.md");
   assert(missing.status === 404, "Missing Markdown page should return 404");
+  const missingHtml = await request("/en/no-such-page-llms-validation");
+  assert(missingHtml.status === 404, "Missing HTML page should return 404");
+  const missingDocument = parseHTML(await missingHtml.text()).document;
+  assert(!missingDocument.querySelector("main nav.page-markdown-tools a.page-markdown-link"), "404 page must not advertise a Markdown version");
   const post = await request("/en/history/index.md", { method: "POST" });
   assert(post.status === 405 && /GET/.test(post.headers.get("allow") || "") && /HEAD/.test(post.headers.get("allow") || ""), "Markdown POST should return 405 with Allow");
-  console.log(`llms validation passed: ${pageUrls.length} sitemap pages, ${markdownUrls.length} index links, ${samples.length} HTML/Markdown page pairs, HEAD, missing page and method handling.`);
+  console.log(`llms validation passed: ${pageUrls.length} sitemap pages, 14 localized homepage links, desktop and mobile menus, ${samples.length} HTML/Markdown page pairs, HEAD, missing page and method handling.`);
 } finally {
   if (!exited) {
     server.kill("SIGTERM");

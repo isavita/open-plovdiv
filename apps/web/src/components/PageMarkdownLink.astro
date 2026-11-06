@@ -1,0 +1,30 @@
+---
+import { llmsLabels } from "@lib/llmsLabels";
+import { localizePath, type Lang } from "@i18n/utils";
+
+const { lang, path } = Astro.props as { lang: Lang; path: string };
+const pagePath = new URL(localizePath(path, lang), Astro.site ?? "https://openplovdiv.example").pathname;
+const markdownPath = `${pagePath.replace(/\/+$/, "")}/index.md`;
+const label = llmsLabels[lang].page;
+---
+
+<nav class="page-markdown-tools container" aria-label={label} data-markdown-link>
+  <a class="page-markdown-link" href={markdownPath} type="text/markdown">{label}</a>
+</nav>
+
+<style>
+  .page-markdown-tools {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .page-markdown-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ink-2);
+    font-size: 0.875rem;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+  .page-markdown-link:hover { color: var(--brand); }
+</style>
