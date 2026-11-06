@@ -32,6 +32,8 @@ The GitHub integration deploys watched changes on `main` separately from applyin
 
 CI uses that same Node version and checks the generated sitemap, language alternatives and representative page metadata after the build. Dependabot checks npm packages and GitHub Actions weekly; its pull requests still need review and CI before merging. Update the Node pin separately as new supported releases become available.
 
+The site provides an [`/llms.txt`](https://openplovdiv.com/llms.txt) guide and a Markdown alternate for each public page, linked from its HTML. The production server derives Markdown from the corresponding prerendered page on demand, so it follows content updates; interactive or client-loaded content may be absent. Source links and the original HTML remain important context. These endpoints follow the [llms.txt proposal](https://llmstxt.org/) and do not change crawler access rules.
+
 If a plan repeatedly reports `ON_FAILURE` / 10 restart-policy drift, verify the resolved service instance through Railway's API before interpreting it as an unapplied change; see [Railway CLI issue 1184](https://github.com/railwayapp/cli/issues/1184).
 
 Railway supplies `RAILWAY_PUBLIC_DOMAIN` during the build automatically. For
@@ -54,6 +56,7 @@ make data      # copy curated JSON into apps/web/public/data
 make validate  # validate curated data against JSON schemas
 make test      # run validation and unit tests
 npm run validate:seo  # check generated SEO artifacts after a production build
+npm run validate:llms # check the llms.txt guide and Markdown pages after a build
 ```
 
 ## Repository layout

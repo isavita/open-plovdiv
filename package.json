@@ -17,6 +17,7 @@
     "validate:history-api": "node scripts/validate/validate_history_api.mjs",
     "validate:history-surface": "node scripts/validate/validate_history_surface.mjs",
     "validate:seo": "node scripts/validate/validate_seo.mjs",
+    "validate:llms": "node scripts/validate/validate_llms.mjs",
     "validate:story-enrichment": "node scripts/validate/validate_story_enrichment_checklist.mjs",
     "validate:lighthouse": "node scripts/validate/validate_lighthouse_mobile.mjs",
     "brand:icons": "node scripts/brand/generate_icons.mjs",

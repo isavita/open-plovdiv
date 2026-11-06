@@ -2,6 +2,7 @@ import fs from "node:fs";
 import http from "node:http";
 import https from "node:https";
 import { applyCompression } from "./compression.mjs";
+import { isMarkdownRequest, serveMarkdownPage } from "./llm-markdown.mjs";
 import {
   applyStaticApiCachePolicy,
   redirectCanonicalPage,
@@ -20,6 +21,14 @@ const port = Number.parseInt(process.env.PORT ?? "", 10) || options.port || 4321
 const host = process.env.HOST ?? options.host ?? "0.0.0.0";
 
 const listener = (req, response) => {
+  if (isMarkdownRequest(req.url)) {
+    serveMarkdownPage(req, response).catch((error) => {
+      console.error("Markdown page error", error);
+      if (response.headersSent) response.destroy(error);
+      else { response.statusCode = 500; response.end("Internal server error"); }
+    });
+    return;
+  }
   if (rejectUnsupportedStaticApiMethod(req, response)) return;
   if (redirectCanonicalPage(req, response)) return;
   applyCompression(req, response, { beforeCommit: applyStaticApiCachePolicy });

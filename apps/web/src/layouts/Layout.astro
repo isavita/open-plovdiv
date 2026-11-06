@@ -106,6 +106,7 @@ function isActive(base: string): boolean {
 
 const site = Astro.site ?? new URL("https://openplovdiv.example");
 const canonical = new URL(localizePath(path, lang), site).href;
+const markdownAlternate = `${canonical.replace(/\/+$/, "")}/index.md`;
 const seoImage = absoluteUrl(image, site);
 const seoImageAlt = imageAlt ?? structuredTitle;
 const ogType = inferOpenGraphType(path);
@@ -249,6 +250,12 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
     <meta name="description" content={pageDescription} />
     {robots && <meta name="robots" content={robots} />}
     <link rel="canonical" href={canonical} />
+    {!localeDetect && !robots?.toLowerCase().includes("noindex") && (
+      <link rel="alternate" type="text/markdown" href={markdownAlternate} />
+    )}
+    {!localeDetect && !robots?.toLowerCase().includes("noindex") && (
+      <link rel="describedby" type="text/plain" href={new URL("/llms.txt", site).href} />
+    )}
     {altLinks.map((alt) => (
       <link rel="alternate" hreflang={alt.code} href={alt.href} />
     ))}

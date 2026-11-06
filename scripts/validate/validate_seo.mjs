@@ -54,6 +54,9 @@ for (const logicalPath of ["/", "/history", "/places", "/people", "/stories", "/
     const html = readFileSync(files.get(loc), "utf8");
     const head = html.split("</head>")[0];
     assert(head.includes(`<link rel="canonical" href="${loc}">`), `Wrong canonical on ${loc}`);
+    const markdownUrl = `${loc.replace(/\/+$/, "")}/index.md`;
+    assert(head.includes(`<link rel="alternate" type="text/markdown" href="${markdownUrl}">`), `Missing Markdown alternate on ${loc}`);
+    assert(head.includes(`<link rel="describedby" type="text/plain" href="${expectedOrigin}/llms.txt">`), `Missing llms.txt discovery on ${loc}`);
     assert(head.includes(`<link rel="alternate" hreflang="${locale}" href="${loc}">`), `Missing self hreflang on ${loc}`);
     assert(/<title>[^<]+<\/title>/.test(head) && /<meta name="description" content="[^"]+"/.test(head), `Missing title or description on ${loc}`);
     assert(!/<meta name="robots" content="[^"]*noindex/i.test(head), `Indexed page marked noindex: ${loc}`);
@@ -61,5 +64,10 @@ for (const logicalPath of ["/", "/history", "/places", "/people", "/stories", "/
     assert(jsonLd, `Missing structured data on ${loc}`);
     JSON.parse(jsonLd[1]);
   }
+}
+const notFoundPath = resolve(root, "404.html");
+if (existsSync(notFoundPath)) {
+  const head = readFileSync(notFoundPath, "utf8").split("</head>")[0];
+  assert(!head.includes('type="text/markdown"') && !head.includes('rel="describedby"'), "404 page must not advertise an unrelated Markdown alternate");
 }
 console.log(`SEO validation passed: ${urls.size} sitemap URLs, ${groups.size} reciprocal locale groups, and ${locales.length * 6} rendered pages.`);
