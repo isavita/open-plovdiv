@@ -4,6 +4,7 @@ import https from "node:https";
 import { applyCompression } from "./compression.mjs";
 import {
   applyStaticApiCachePolicy,
+  redirectCanonicalPage,
   rejectUnsupportedStaticApiMethod
 } from "./request-policy.mjs";
 import { resolveTlsPaths } from "./runtime-config.mjs";
@@ -20,6 +21,7 @@ const host = process.env.HOST ?? options.host ?? "0.0.0.0";
 
 const listener = (req, response) => {
   if (rejectUnsupportedStaticApiMethod(req, response)) return;
+  if (redirectCanonicalPage(req, response)) return;
   applyCompression(req, response, { beforeCommit: applyStaticApiCachePolicy });
   try {
     const result = handler(req, response);

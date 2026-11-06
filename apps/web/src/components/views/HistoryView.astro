@@ -3135,10 +3135,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
       <div class="history-chapters">
         {historyTree.map((era) => (
           <details class={`history-chapter era-${era.era}`} data-tree-era={era.era} id={`chapter-${era.era}`}>
-            <summary
-              class="history-chapter-summary"
-              aria-label={`${era.label}. ${era.keyEvents.length} ${treeLabels.highlights}. ${treeLabels.exploreEvents}.`}
-            >
+            <summary class="history-chapter-summary">
               <span class="history-chapter-media">
                 <img
                   src={commonsImageUrl(era.visual.url, 960)}

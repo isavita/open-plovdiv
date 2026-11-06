@@ -30,6 +30,8 @@ Changes to `.railway/railway.ts` require a Railway plan and apply: pushing the f
 
 The GitHub integration deploys watched changes on `main` separately from applying the infrastructure definition. Railpack uses the Node version pinned in `.node-version`. Before any redeployment, check for persistent volumes, databases and any temporary data in the running container, and preserve anything needed. Review any new paid resources and their cost before adding them.
 
+CI uses that same Node version and checks the generated sitemap, language alternatives and representative page metadata after the build. Dependabot checks npm packages and GitHub Actions weekly; its pull requests still need review and CI before merging. Update the Node pin separately as new supported releases become available.
+
 If a plan repeatedly reports `ON_FAILURE` / 10 restart-policy drift, verify the resolved service instance through Railway's API before interpreting it as an unapplied change; see [Railway CLI issue 1184](https://github.com/railwayapp/cli/issues/1184).
 
 Railway supplies `RAILWAY_PUBLIC_DOMAIN` during the build automatically. For
@@ -51,6 +53,7 @@ make build     # regenerate public JSON and build the site
 make data      # copy curated JSON into apps/web/public/data
 make validate  # validate curated data against JSON schemas
 make test      # run validation and unit tests
+npm run validate:seo  # check generated SEO artifacts after a production build
 ```
 
 ## Repository layout

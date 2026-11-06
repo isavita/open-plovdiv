@@ -19,7 +19,7 @@ describe("Railway production deployment contract", () => {
   });
 
   it("keeps the working build, start and health check", () => {
-    expect(readFileSync(new URL("../../../.node-version", import.meta.url), "utf8").trim()).toBe("22.23.3");
+    expect(readFileSync(new URL("../../../.node-version", import.meta.url), "utf8").trim()).toBe("22.23.4");
     expect(web.build).toMatchObject({ builder: "RAILPACK", buildCommand: "npm run build" });
     expect(web.deploy).toMatchObject({
       startCommand: "npm start", healthcheckPath: "/", healthcheckTimeout: 120,

@@ -16,6 +16,7 @@
     "validate:a11y": "node scripts/validate/validate_static_accessibility.mjs",
     "validate:history-api": "node scripts/validate/validate_history_api.mjs",
     "validate:history-surface": "node scripts/validate/validate_history_surface.mjs",
+    "validate:seo": "node scripts/validate/validate_seo.mjs",
     "validate:story-enrichment": "node scripts/validate/validate_story_enrichment_checklist.mjs",
     "validate:lighthouse": "node scripts/validate/validate_lighthouse_mobile.mjs",
     "brand:icons": "node scripts/brand/generate_icons.mjs",
@@ -24,21 +25,12 @@
     "validate": "node scripts/validate/validate_data.mjs",
     "test": "npm run validate && npm run validate:story-enrichment && npm --workspace apps/web run test"
   },
-  "overrides": {
-    "astro": {
-      "esbuild": "0.28.1"
-    },
-    "vite": {
-      "esbuild": "0.28.1"
-    },
-    "esbuild": "0.28.1"
-  },
   "dependencies": {
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1"
   },
   "devDependencies": {
-    "lighthouse": "^13.4.0",
+    "lighthouse": "^13.6.0",
     "railway": "^3.16.0"
   }
 }

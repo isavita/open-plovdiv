@@ -139,7 +139,7 @@ async function assertCompressedRepresentation(origin, route, label) {
 }
 
 async function validateCompression(origin) {
-  const html = await assertCompressedRepresentation(origin, "/routes/", "visitor routes HTML");
+  const html = await assertCompressedRepresentation(origin, "/routes", "visitor routes HTML");
   const stylesheetMatch = html.match(/<link[^>]+href=["']([^"']+\.css(?:\?[^"']*)?)["']/i);
   if (!stylesheetMatch) {
     throw new Error("lighthouse mobile: could not find a stylesheet to verify production compression");

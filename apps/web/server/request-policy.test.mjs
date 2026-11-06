@@ -3,6 +3,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { applyCompression } from "./compression.mjs";
 import {
   applyStaticApiCachePolicy,
+  redirectCanonicalPage,
   rejectUnsupportedStaticApiMethod
 } from "./request-policy.mjs";
 
@@ -12,6 +13,10 @@ let baseUrl;
 beforeAll(async () => {
   server = http.createServer((request, response) => {
     if (rejectUnsupportedStaticApiMethod(request, response)) return;
+    if (redirectCanonicalPage(request, response, {
+      RAILWAY_ENVIRONMENT_NAME: "production",
+      PUBLIC_SITE_URL: "https://example.org"
+    })) return;
     applyCompression(request, response, { beforeCommit: applyStaticApiCachePolicy });
     response.statusCode = 200;
     const searchParams = new URL(request.url, baseUrl ?? "http://localhost").searchParams;
@@ -26,6 +31,68 @@ beforeAll(async () => {
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
   const address = server.address();
   baseUrl = `http://127.0.0.1:${address.port}`;
+});
+
+describe("canonical redirects", () => {
+  it.each(["GET", "HEAD"])("redirects a page's trailing slash and keeps its query for %s", async (method) => {
+    const response = await fetch(`${baseUrl}/en/history/?from=search`, { method, redirect: "manual" });
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe("/en/history?from=search");
+  });
+
+  it("redirects only the configured production Railway alias to the canonical origin", () => {
+    const headers = {};
+    const response = { setHeader: (name, value) => { headers[name] = value; }, end: () => {} };
+    expect(redirectCanonicalPage({ method: "GET", url: "/places/?q=one", headers: { host: "open-plovdivweb-production.up.railway.app" } }, response, {
+      RAILWAY_ENVIRONMENT_NAME: "production",
+      PUBLIC_SITE_URL: "https://example.org"
+    })).toBe(true);
+    expect(response.statusCode).toBe(308);
+    expect(headers.Location).toBe("https://example.org/places?q=one");
+  });
+
+  it.each(["healthcheck.railway.app", "unknown.up.railway.app", "example.org"])(
+    "does not redirect the root for host %s", (host) => {
+      const response = { setHeader: () => { throw new Error("unexpected redirect"); } };
+      expect(redirectCanonicalPage({ method: "GET", url: "/", headers: { host } }, response, {
+        RAILWAY_ENVIRONMENT_NAME: "production", PUBLIC_SITE_URL: "https://example.org"
+      })).toBe(false);
+    }
+  );
+
+  it.each(["/api/history/events.json/", "/data/example.json/", "/images/example.webp/"])(
+    "does not alter API or file paths such as %s", async (path) => {
+      const response = await fetch(`${baseUrl}${path}`, { redirect: "manual" });
+      expect(response.status).toBe(200);
+    }
+  );
+
+  it("does not redirect a Railway preview to production", () => {
+    const response = { setHeader: () => { throw new Error("unexpected redirect"); } };
+    expect(redirectCanonicalPage({ method: "GET", url: "/", headers: { host: "preview.up.railway.app" } }, response, {
+      RAILWAY_ENVIRONMENT_NAME: "preview", RAILWAY_PUBLIC_DOMAIN: "preview.up.railway.app",
+      PUBLIC_SITE_URL: "https://example.org"
+    })).toBe(false);
+  });
+
+  it("leaves API requests on the Railway alias unchanged", () => {
+    const response = { setHeader: () => { throw new Error("unexpected redirect"); } };
+    expect(redirectCanonicalPage({ method: "GET", url: "/api/history/events.json", headers: { host: "open-plovdivweb-production.up.railway.app" } }, response, {
+      RAILWAY_ENVIRONMENT_NAME: "production", PUBLIC_SITE_URL: "https://example.org"
+    })).toBe(false);
+  });
+
+  it("ignores forwarded host headers, malformed targets and non-HTTPS configured origins", () => {
+    const response = { setHeader: () => { throw new Error("unexpected redirect"); } };
+    const environment = { RAILWAY_ENVIRONMENT_NAME: "production", PUBLIC_SITE_URL: "http://example.org" };
+    expect(redirectCanonicalPage({ method: "GET", url: "/", headers: {
+      host: "healthcheck.railway.app", "x-forwarded-host": "open-plovdivweb-production.up.railway.app"
+    } }, response, environment)).toBe(false);
+    expect(redirectCanonicalPage({ method: "GET", url: "/", headers: {
+      host: "open-plovdivweb-production.up.railway.app"
+    } }, response, environment)).toBe(false);
+    expect(redirectCanonicalPage({ method: "GET", url: "//other.example/", headers: {} }, response, environment)).toBe(false);
+  });
 });
 
 afterAll(async () => {
