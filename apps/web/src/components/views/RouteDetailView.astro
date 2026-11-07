@@ -153,7 +153,11 @@ const transitNote = localized(route as unknown as Record<string, unknown>, "tran
 const bestTime = localized(route as unknown as Record<string, unknown>, "best_time");
 const startGuidance = localized(route as unknown as Record<string, unknown>, "start_guidance");
 const endGuidance = localized(route as unknown as Record<string, unknown>, "end_guidance");
-const title = localizedAny(route, "title");
+// Make the English first-visit guide easy to recognise in search results and
+// on the page while retaining the curated title for the other locales.
+const title = lang === "en" && route.id === "first-day-plovdiv"
+  ? "One day in Plovdiv: a self-guided walking itinerary"
+  : localizedAny(route, "title");
 const tagline = localizedAny(route, "tagline");
 const summary = localizedAny(route, "summary");
 

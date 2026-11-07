@@ -14,7 +14,7 @@ export function visitorGuide(lang: Lang) {
     headline: tr("Един град. Много истории.", "One city. So many stories.", "Eine Stadt. So viele Geschichten.", "Une ville. Tant d’histoires.", "Una città. Tante storie.", "Bir şehir. Sayısız hikâye.", "Una ciudad. Tantas historias.", "Μια πόλη. Τόσες ιστορίες.", "ひとつの街に、数えきれない物語。", "Isang lungsod. Napakaraming kuwento.", "Одне місто. Безліч історій.", "Один город. Множество историй.", "Jedno miasto. Tyle historii."),
     intro: tr(
       "Античен театър, цветни възрожденски къщи и кафе в Капана. Опознайте Пловдив пеша, през историята и в собствения си ритъм.",
-      "A Roman theatre, colourful Revival houses and coffee in Kapana. Get to know Plovdiv on foot, through its history, and at your own pace.",
+      "Explore things to do in Plovdiv, Bulgaria: visit the Roman theatre, wander the Old Town and discover Kapana on foot.",
       "Ein römisches Theater, farbenfrohe Wiedergeburtshäuser und Kaffee in Kapana. Lernen Sie Plovdiv zu Fuß, durch seine Geschichte und in Ihrem eigenen Tempo kennen.",
       "Un théâtre romain, des maisons colorées du Réveil national et un café à Kapana. Découvrez Plovdiv à pied, à travers son histoire et à votre rythme.",
       "Un teatro romano, le case colorate della Rinascita bulgara e un caffè a Kapana. Scoprite Plovdiv a piedi, attraverso la sua storia e al vostro ritmo.",

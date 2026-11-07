@@ -1,4 +1,4 @@
-import { localizePath, type Lang } from "@i18n/utils";
+import { localizePath, type Lang } from "../i18n/utils";
 
 export type JsonLdScalar = string | number | boolean | null;
 export type JsonLdValue = JsonLdScalar | JsonLdObject | JsonLdValue[];
@@ -39,6 +39,7 @@ export function buildPageStructuredData(options: StructuredDataOptions): JsonLdO
   const organizationId = `${siteRoot}#organization`;
   const webpageId = `${options.canonical}#webpage`;
   const breadcrumbId = `${options.canonical}#breadcrumb`;
+  const hasBreadcrumb = splitPath(options.logicalPath).length > 0;
   const inferredEntity = inferPrimaryEntity(options);
 
   const defaults: JsonLdObject[] = [
@@ -68,11 +69,14 @@ export function buildPageStructuredData(options: StructuredDataOptions): JsonLdO
       inLanguage: options.locale,
       isPartOf: { "@id": websiteId },
       about: { "@id": organizationId },
-      breadcrumb: { "@id": breadcrumbId },
+      breadcrumb: hasBreadcrumb ? { "@id": breadcrumbId } : undefined,
       primaryImageOfPage: options.image ? { "@type": "ImageObject", url: options.image } : undefined,
       mainEntity: inferredEntity ? { "@id": inferredEntity["@id"] } : undefined
-    },
-    buildBreadcrumbList({
+    }
+  ];
+
+  if (hasBreadcrumb) {
+    defaults.push(buildBreadcrumbList({
       id: breadcrumbId,
       site: options.site,
       lang: options.lang,
@@ -80,11 +84,17 @@ export function buildPageStructuredData(options: StructuredDataOptions): JsonLdO
       currentTitle: options.title,
       homeLabel: options.breadcrumbLabels?.home ?? options.siteName,
       labels: options.breadcrumbLabels ?? {}
-    })
-  ];
-
+    }));
+  }
   if (inferredEntity) defaults.push(inferredEntity);
-  return dedupeJsonLd([...defaults, ...toJsonLdArray(options.additional)]);
+  // Each object in the top-level JSON-LD array has its own context; a
+  // context on one sibling does not apply to the others. Preserve callers'
+  // explicit contexts while supplying schema.org for extra page entities.
+  const additional = toJsonLdArray(options.additional).map((node) => ({
+    "@context": "https://schema.org",
+    ...node
+  }));
+  return dedupeJsonLd([...defaults, ...additional]);
 }
 
 export function serializeJsonLd(nodes: JsonLdObject[]): string {

@@ -69,7 +69,10 @@ for (const logicalPath of ["/", "/history", "/places", "/people", "/stories", "/
     assert(head.includes(`<link rel="alternate" hreflang="${locale}" href="${loc}">`), `Missing self hreflang on ${loc}`);
     assert(/<title>[^<]+<\/title>/.test(head) && /<meta name="description" content="[^"]+"/.test(head), `Missing title or description on ${loc}`);
     if (logicalPath === "/" && locale === "en") {
-      assert(/<title>Plovdiv city guide: history, places and walks · Open Plovdiv<\/title>/.test(head), `Missing descriptive English homepage title: ${loc}`);
+      assert(/<title>Plovdiv Travel Guide: Things to Do and Places · Open Plovdiv<\/title>/.test(head), `Missing descriptive English homepage title: ${loc}`);
+    }
+    if (logicalPath === "/" && locale === "pt") {
+      assert(html.includes("Descubra o que fazer em Plovdiv, Bulgária"), `Missing Portuguese homepage introduction: ${loc}`);
     }
     if (logicalPath === "/places") {
       const { document } = parseHTML(html);
@@ -81,6 +84,8 @@ for (const logicalPath of ["/", "/history", "/places", "/people", "/stories", "/
       assert(links.size === placeIds.length, `Place directory link count mismatch on ${loc}`);
       for (const id of placeIds) assert(links.has(`${prefix}/places/${id}`), `Missing crawlable place link ${id} on ${loc}`);
       if (locale === "en") {
+        assert(/<title>Places and Landmarks in Plovdiv · Open Plovdiv<\/title>/.test(head), `Missing English places title: ${loc}`);
+        assert(document.querySelector("h1")?.textContent.trim() === "Places and Landmarks in Plovdiv", `Missing English places heading: ${loc}`);
         for (const [id, name] of Object.entries(englishPlaceNames)) {
           const href = `/en/places/${id}`;
           const directoryLink = directory.querySelector(`a[href="${href}"]`);

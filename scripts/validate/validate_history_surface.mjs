@@ -101,6 +101,15 @@ function resolvePublicSiteOrigin() {
 
 const publicSiteOrigin = resolvePublicSiteOrigin();
 
+const englishFirstDay = readBuilt("/en/routes/first-day-plovdiv/");
+assertContains("/en/routes/first-day-plovdiv/", englishFirstDay, [
+  "<title>One day in Plovdiv: a self-guided walking itinerary · Open Plovdiv</title>",
+  /<h1\b[^>]*>One day in Plovdiv: a self-guided walking itinerary<\/h1>/
+]);
+assertContains("/routes/first-day-plovdiv/", readBuilt("/routes/first-day-plovdiv/"), [
+  /<h1\b[^>]*>Първи ден в Пловдив<\/h1>/
+]);
+
 // English place details must remain usable to visitors while preserving the
 // source spelling for local records and directions.
 for (const [url, expected] of [
