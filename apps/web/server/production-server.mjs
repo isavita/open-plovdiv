@@ -22,13 +22,19 @@ const host = process.env.HOST ?? options.host ?? "0.0.0.0";
 
 const listener = (req, response) => {
   if (isMarkdownRequest(req.url)) {
-    serveMarkdownPage(req, response).catch((error) => {
+    serveMarkdownPage(req, response).then((handled) => {
+      if (!handled) handlePage(req, response);
+    }).catch((error) => {
       console.error("Markdown page error", error);
       if (response.headersSent) response.destroy(error);
       else { response.statusCode = 500; response.end("Internal server error"); }
     });
     return;
   }
+  handlePage(req, response);
+};
+
+function handlePage(req, response) {
   if (rejectUnsupportedStaticApiMethod(req, response)) return;
   if (redirectCanonicalPage(req, response)) return;
   applyCompression(req, response, { beforeCommit: applyStaticApiCachePolicy });
@@ -50,7 +56,7 @@ const listener = (req, response) => {
       response.end("Internal server error");
     }
   }
-};
+}
 
 const server = tlsPaths
   ? https.createServer(

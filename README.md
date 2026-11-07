@@ -32,7 +32,7 @@ The GitHub integration deploys watched changes on `main` separately from applyin
 
 CI uses that same Node version and checks the generated sitemap, language alternatives and representative page metadata after the build. Dependabot checks npm packages and GitHub Actions weekly; its pull requests still need review and CI before merging. Update the Node pin separately as new supported releases become available.
 
-The site provides an [`/llms.txt`](https://openplovdiv.com/llms.txt) guide and a Markdown alternate for each public page, linked from its HTML. The production server derives Markdown from the corresponding prerendered page on demand, so it follows content updates; interactive or client-loaded content may be absent. Source links and the original HTML remain important context. These endpoints follow the [llms.txt proposal](https://llmstxt.org/) and do not change crawler access rules.
+The site provides an [`/llms.txt`](https://openplovdiv.com/llms.txt) guide and a Markdown alternate for each public page, linked from its HTML. For example, `/en/places.md` and `/en/places/index.md` both provide the English places page; the root page uses `/index.md`. The production server derives Markdown from the corresponding prerendered page on demand, so it follows content updates; interactive or client-loaded content may be absent. Source links and the original HTML remain important context. These endpoints follow the [llms.txt proposal](https://llmstxt.org/) and do not change crawler access rules.
 
 If a plan repeatedly reports `ON_FAILURE` / 10 restart-policy drift, verify the resolved service instance through Railway's API before interpreting it as an unapplied change; see [Railway CLI issue 1184](https://github.com/railwayapp/cli/issues/1184).
 

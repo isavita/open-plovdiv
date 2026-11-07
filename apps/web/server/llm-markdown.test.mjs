@@ -1,5 +1,5 @@
 import http from "node:http";
-import { mkdtemp, mkdir, rm, symlink, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
@@ -37,10 +37,14 @@ describe("LLM Markdown page conversion", () => {
   it("rejects traversal and encoded path separators", () => {
     expect(markdownPagePath("/en/history/index.md?q=1")).toBe("/en/history/index.html");
     expect(markdownPagePath("/index.md")).toBe("/index.html");
-    for (const path of ["/../index.md", "/%2e%2e/index.md", "/a%2fb/index.md", "/a%5cb/index.md", "//evil/index.md", "/a%00/index.md"]) {
+    expect(markdownPagePath("/en.md")).toBe("/en/index.html");
+    expect(markdownPagePath("/en/history.md?x=1")).toBe("/en/history/index.html");
+    expect(markdownPagePath("/ja/places/item.md")).toBe("/ja/places/item/index.html");
+    for (const path of ["/../index.md", "/%2e%2e/index.md", "/a%2fb/index.md", "/a%5cb/index.md", "//evil/index.md", "/a%00/index.md", "/en/%2e%2e/history.md", "/en%2fhistory.md", "/.md", "/en/.md"]) {
       expect(markdownPagePath(path)).toBeNull();
     }
     expect(isMarkdownRequest("/en/history/index.md?x=1")).toBe(true);
+    expect(isMarkdownRequest("/en/history.md?x=1")).toBe(true);
     expect(isMarkdownRequest("/en/history")).toBe(false);
   });
 });
@@ -51,12 +55,19 @@ describe("LLM Markdown HTTP responses", () => {
     root = await mkdtemp(join(tmpdir(), "open-plovdiv-markdown-"));
     outsideRoot = await mkdtemp(join(tmpdir(), "open-plovdiv-markdown-outside-"));
     await mkdir(join(root, "en/history"), { recursive: true });
+    await mkdir(join(root, "en/places/item"), { recursive: true });
+    await mkdir(join(root, "fonts"), { recursive: true });
     await writeFile(join(root, "en/history/index.html"), html);
+    await writeFile(join(root, "en/index.html"), html);
+    await writeFile(join(root, "en/places/item/index.html"), html);
+    await writeFile(join(root, "fonts/README.md"), "Static font documentation");
     await writeFile(join(root, "index.html"), html.replace('lang="en"', 'lang="bg"').replace("History</h1>", "История</h1>"));
     await writeFile(join(outsideRoot, "index.html"), html);
     await symlink(outsideRoot, join(root, "outside"));
     server = http.createServer((request, response) => {
-      serveMarkdownPage(request, response, { root }).catch(() => { response.statusCode = 500; response.end(); });
+      serveMarkdownPage(request, response, { root }).then(async (handled) => {
+        if (!handled) response.end(await readFile(join(root, "fonts/README.md")));
+      }).catch(() => { response.statusCode = 500; response.end(); });
     });
     await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
     origin = `http://127.0.0.1:${server.address().port}`;
@@ -73,10 +84,22 @@ describe("LLM Markdown HTTP responses", () => {
     expect(response.headers.get("content-type")).toBe("text/markdown; charset=utf-8");
     expect(response.headers.get("x-robots-tag")).toBe("noindex");
     expect(response.headers.get("link")).toBe('<https://example.org/en/history>; rel="canonical", </llms.txt>; rel="describedby"');
-    expect(await response.text()).toContain("# History");
+    const originalText = await response.text();
+    expect(originalText).toContain("# History");
+    const alias = await fetch(`${origin}/en/history.md?source=test`);
+    expect(alias.status).toBe(200);
+    expect(alias.headers.get("content-type")).toBe("text/markdown; charset=utf-8");
+    expect(alias.headers.get("link")).toBe(response.headers.get("link"));
+    expect(alias.headers.get("x-robots-tag")).toBe("noindex");
+    expect(await alias.text()).toBe(originalText);
+    expect((await fetch(`${origin}/en.md`)).status).toBe(200);
+    expect((await fetch(`${origin}/en/places/item.md`)).status).toBe(200);
     const head = await fetch(`${origin}/en/history/index.md`, { method: "HEAD" });
     expect(head.status).toBe(200);
     expect(await head.text()).toBe("");
+    const aliasHead = await fetch(`${origin}/en/history.md`, { method: "HEAD" });
+    expect(aliasHead.status).toBe(200);
+    expect(await aliasHead.text()).toBe("");
     const home = await fetch(`${origin}/index.md`);
     const homeText = await home.text();
     expect(homeText).toContain("Language: bg");
@@ -85,9 +108,21 @@ describe("LLM Markdown HTTP responses", () => {
 
   it("returns 404 for missing pages and symlinks, and 405 for writes", async () => {
     expect((await fetch(`${origin}/missing/index.md`)).status).toBe(404);
+    expect((await fetch(`${origin}/missing.md`)).status).toBe(404);
     expect((await fetch(`${origin}/outside/index.md`)).status).toBe(404);
+    expect((await fetch(`${origin}/outside.md`)).status).toBe(404);
     const response = await fetch(`${origin}/en/history/index.md`, { method: "POST" });
     expect(response.status).toBe(405);
     expect(response.headers.get("allow")).toBe("GET, HEAD");
+    const aliasPost = await fetch(`${origin}/en/history.md`, { method: "POST" });
+    expect(aliasPost.status).toBe(405);
+    expect(aliasPost.headers.get("allow")).toBe("GET, HEAD");
+  });
+
+  it("passes existing Markdown assets to the static handler", async () => {
+    const response = await fetch(`${origin}/fonts/README.md`);
+    expect(response.status).toBe(200);
+    expect(await response.text()).toBe("Static font documentation");
+    expect(response.headers.get("x-robots-tag")).toBeNull();
   });
 });

@@ -8,16 +8,23 @@ export const GET: APIRoute = ({ site }) => {
   const markdownUrl = (path: string) => new URL(`${path.replace(/\/+$/, "")}/index.md`, base).href;
   const link = (label: string, path: string, description: string) =>
     `- [${label}](${markdownUrl(path)}): ${description}`;
+  const shortLink = (label: string, path: string, description: string) =>
+    `- [${label}](${new URL(`${path}.md`, base).href}): ${description}`;
 
   const sections = [
-    link("History", "/en/history", "The city's eras, events and historical sources."),
-    link("Places", "/en/places", "Places and landmarks, with links to individual records."),
-    link("People", "/en/people", "People connected to Plovdiv and their source-backed records."),
-    link("Stories", "/en/stories", "Editorial stories about the city and its history."),
-    link("Walking routes", "/en/routes", "Routes and stops for exploring Plovdiv."),
-    link("Neighbourhoods", "/en/neighbourhoods", "Neighbourhood profiles and local history."),
-    link("Archive", "/en/archive", "Historical archive material and its sources."),
-    link("Data and sources", "/en/data-sources", "Sources, methods and data limitations.")
+    shortLink("City overview", "/en/overview", "An overview of the city and its public data."),
+    shortLink("History", "/en/history", "The city's eras, events and historical sources."),
+    shortLink("Places", "/en/places", "Places and landmarks, with links to individual records."),
+    shortLink("People", "/en/people", "People connected to Plovdiv and their source-backed records."),
+    shortLink("Stories", "/en/stories", "Editorial stories about the city and its history."),
+    shortLink("Walking routes", "/en/routes", "Routes and stops for exploring Plovdiv."),
+    shortLink("Neighbourhoods", "/en/neighbourhoods", "Neighbourhood profiles and local history."),
+    shortLink("Governance", "/en/governance", "Information on local governance and public records."),
+    shortLink("Mayors", "/en/mayors", "Mayoral terms and associated historical records."),
+    shortLink("Projects", "/en/projects", "Public project records, sources and status."),
+    shortLink("Community", "/en/community", "A directory of existing community initiatives."),
+    shortLink("Archive", "/en/archive", "Historical archive material and its sources."),
+    shortLink("Data and sources", "/en/data-sources", "Sources, methods and data limitations.")
   ];
 
   const body = [
@@ -27,7 +34,7 @@ export const GET: APIRoute = ({ site }) => {
     "",
     "The site is read-only. Follow the source links and check dates and editorial context when using its information. Content is available in 14 languages; some fields may fall back to another language where translations are unavailable.",
     "",
-    "Each public page has a Markdown alternative: append `/index.md` to its canonical URL (use `/index.md` for the root page). HTML pages also link to their Markdown alternative. These documents are derived from rendered page content; interactive or client-loaded features may be incomplete. Consult the HTML and cited sources for the authoritative presentation. The sitemap lists the public HTML pages and language variants.",
+    "Each public page has a Markdown alternative: append `/index.md` to its canonical URL (use `/index.md` for the root page). Short `.md` alternatives are also available for non-root pages, for example `/en/places.md` and `/en/routes.md`. HTML pages link to their Markdown alternative. These documents are derived from rendered page content; interactive or client-loaded features may be incomplete. Consult the HTML and cited sources for the authoritative presentation. The sitemap lists the public HTML pages and language variants.",
     "",
     "## Explore in English",
     "",
@@ -40,7 +47,8 @@ export const GET: APIRoute = ({ site }) => {
     "## Optional",
     "",
     `- [Sitemap](${new URL("/sitemap.xml", base).href}): Complete list of public HTML pages and language variants.`,
-    link("Privacy", "/en/privacy", "The site's privacy information."),
+    shortLink("History editorial review", "/en/history/editorial-review", "Notes on the review status of historical material."),
+    shortLink("Privacy", "/en/privacy", "The site's privacy information."),
     ""
   ].join("\n");
 

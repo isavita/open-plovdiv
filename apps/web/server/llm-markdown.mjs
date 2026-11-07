@@ -13,21 +13,28 @@ const maximumCacheEntries = 32;
 const cache = new Map();
 let cachedBytes = 0;
 
-// Match only the explicit Markdown representation of a generated page. Do
-// not let URL decoding or symlinks escape the immutable client build.
-export function markdownPagePath(requestUrl) {
+// Reject traversal and encoded separators before resolving either a page
+// alias or an existing static Markdown file inside the immutable build.
+function decodedMarkdownPath(requestUrl) {
   const raw = String(requestUrl ?? "").split("?")[0];
   if (!raw.startsWith("/") || /%(?:2f|5c|00)/i.test(raw) || raw.includes("\\")) return null;
   let decoded;
   try { decoded = decodeURIComponent(raw); } catch { return null; }
-  if (!decoded.endsWith("/index.md")) return null;
   if (decoded.startsWith("//") || decoded.includes("\0") || decoded.includes("\\") ||
       decoded.split("/").some((part) => part === "." || part === "..")) return null;
-  return decoded.slice(0, -"index.md".length) + "index.html";
+  return decoded.toLowerCase().endsWith(".md") ? decoded : null;
+}
+
+export function markdownPagePath(requestUrl) {
+  const decoded = decodedMarkdownPath(requestUrl);
+  if (!decoded) return null;
+  if (decoded.endsWith("/index.md")) return decoded.slice(0, -"index.md".length) + "index.html";
+  if (decoded.endsWith("/.md")) return null;
+  return decoded.slice(0, -".md".length) + "/index.html";
 }
 
 export function isMarkdownRequest(requestUrl) {
-  return String(requestUrl ?? "").split("?")[0].toLowerCase().endsWith("/index.md");
+  return String(requestUrl ?? "").split("?")[0].toLowerCase().endsWith(".md");
 }
 
 export function htmlToMarkdown(html, fallbackCanonical) {
@@ -91,21 +98,32 @@ function remember(key, value) {
 }
 
 export async function serveMarkdownPage(request, response, options = {}) {
+  const markdownPath = decodedMarkdownPath(request.url);
   const pagePath = markdownPagePath(request.url);
-  if (!pagePath) { response.statusCode = 404; response.end(); return; }
-  if (!["GET", "HEAD"].includes(String(request.method).toUpperCase())) {
-    response.statusCode = 405; response.setHeader("Allow", "GET, HEAD"); response.end(); return;
-  }
+  if (!pagePath || !markdownPath) { response.statusCode = 404; response.end(); return true; }
   const root = await realpath(options.root || defaultRoot);
+
+  // Real .md assets take precedence over generated page aliases. Let Astro's
+  // static handler serve them as before, including its normal method policy.
+  const assetCandidate = resolve(root, `.${markdownPath}`);
+  if (assetCandidate.startsWith(root + sep)) {
+    try {
+      const asset = await realpath(assetCandidate);
+      if (asset.startsWith(root + sep) && (await stat(asset)).isFile()) return false;
+    } catch { /* No static Markdown asset; try the corresponding page. */ }
+  }
+  if (!["GET", "HEAD"].includes(String(request.method).toUpperCase())) {
+    response.statusCode = 405; response.setHeader("Allow", "GET, HEAD"); response.end(); return true;
+  }
   const candidate = resolve(root, `.${pagePath}`);
-  if (!candidate.startsWith(root + sep)) { response.statusCode = 404; response.end(); return; }
+  if (!candidate.startsWith(root + sep)) { response.statusCode = 404; response.end(); return true; }
   let file, info;
   try {
     file = await realpath(candidate);
     if (!file.startsWith(root + sep)) throw new Error("outside build");
     info = await stat(file);
     if (!info.isFile() || info.size > MAX_MARKDOWN_SOURCE_BYTES) throw new Error("invalid page");
-  } catch { response.statusCode = 404; response.end(); return; }
+  } catch { response.statusCode = 404; response.end(); return true; }
 
   const key = `${file}\0${info.mtimeMs}\0${info.size}`;
   let result = cache.get(key);
@@ -119,7 +137,8 @@ export async function serveMarkdownPage(request, response, options = {}) {
   response.setHeader("Cache-Control", "public, max-age=300");
   response.setHeader("X-Robots-Tag", "noindex");
   response.setHeader("Link", `<${result.canonical}>; rel="canonical", </llms.txt>; rel="describedby"`);
-  if (String(request.method).toUpperCase() === "HEAD") { response.end(); return; }
+  if (String(request.method).toUpperCase() === "HEAD") { response.end(); return true; }
   applyCompression(request, response);
   response.end(result.markdown);
+  return true;
 }

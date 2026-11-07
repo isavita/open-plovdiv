@@ -1,10 +1,11 @@
 import { existsSync, readFileSync, realpathSync, statSync } from "node:fs";
 import { createServer } from "node:net";
+import { request as httpRequest } from "node:http";
 import { resolve, sep } from "node:path";
 import { spawn } from "node:child_process";
 import { setTimeout as delay } from "node:timers/promises";
 import { parseHTML } from "linkedom";
-import { MAX_MARKDOWN_SOURCE_BYTES } from "../../apps/web/server/llm-markdown.mjs";
+import { MAX_MARKDOWN_SOURCE_BYTES, markdownPagePath } from "../../apps/web/server/llm-markdown.mjs";
 
 // Exercise the actual production boundary, including dynamic Markdown responses.
 // The server runs locally; canonical URLs are checked but never fetched remotely.
@@ -53,7 +54,7 @@ function checkVisibleLinks(html, canonical, { home = false } = {}) {
       `${canonical}: missing labelled guide link in ${menu}`);
   }
   const pageLink = document.querySelector("main nav.page-markdown-tools a.page-markdown-link");
-  const expected = `${canonical.replace(/\/+$/, "")}/index.md`;
+  const expected = new URL(canonical).pathname === "/" ? `${canonical}index.md` : `${canonical}.md`;
   assert(pageLink && new URL(pageLink.getAttribute("href"), canonical).href === expected && pageLink.textContent.trim(),
     `${canonical}: missing visible Markdown link`);
   if (home) {
@@ -71,6 +72,16 @@ for (const page of pageUrls) {
   assert(file.startsWith(realClient + sep), `Page escapes build directory: ${page.href}`);
   const info = statSync(file);
   assert(info.isFile() && info.size <= MAX_MARKDOWN_SOURCE_BYTES, `Markdown source unavailable or too large: ${page.href}`);
+  // Both representations must map to the same immutable page for every
+  // sitemap entry, not just the live request samples below.
+  const pagePath = page.pathname.replace(/\/+$/, "");
+  const htmlPath = `${decodeURIComponent(pagePath)}/index.html`;
+  assert(markdownPagePath(`${pagePath}/index.md`) === htmlPath, `Directory Markdown mapping failed for ${page.href}`);
+  assert(!existsSync(resolve(realClient, `.${decodeURIComponent(pagePath)}/index.md`)), `Static file shadows the Markdown version of ${page.href}`);
+  if (pagePath) {
+    assert(markdownPagePath(`${pagePath}.md`) === htmlPath, `Short Markdown mapping failed for ${page.href}`);
+    assert(!existsSync(resolve(realClient, `.${decodeURIComponent(pagePath)}.md`)), `Static file shadows the short Markdown version of ${page.href}`);
+  }
   const html = readFileSync(file, "utf8");
   assert(/<main(?:\s|>)/i.test(html), `Markdown source has no main content: ${page.href}`);
   const head = html.slice(0, html.indexOf("</head>") + "</head>".length);
@@ -99,6 +110,20 @@ async function request(path, options = {}) {
   return fetch(`${origin}${path}`, { ...options, redirect: "manual", signal: AbortSignal.timeout(15000) });
 }
 
+// fetch() normalizes dot-segments before sending them. Use the raw HTTP path
+// so the production boundary actually receives the attempted traversal.
+async function rawStatus(path) {
+  return new Promise((resolveStatus, reject) => {
+    const req = httpRequest({ host: "127.0.0.1", port, path, method: "GET" }, (response) => {
+      response.resume();
+      response.on("end", () => resolveStatus(response.statusCode));
+    });
+    req.on("error", reject);
+    req.setTimeout(15000, () => req.destroy(new Error("Raw request timed out")));
+    req.end();
+  });
+}
+
 async function waitForServer() {
   const deadline = Date.now() + 30000;
   while (Date.now() < deadline && !exited) {
@@ -115,6 +140,7 @@ async function checkMarkdown(path, canonical) {
   const response = await request(path);
   assert(response.status === 200, `${path}: expected 200, got ${response.status}`);
   assert(/^text\/markdown\b/i.test(response.headers.get("content-type") || ""), `${path}: incorrect content type`);
+  assert(response.headers.get("x-robots-tag") === "noindex", `${path}: missing noindex header`);
   const links = response.headers.get("link") || "";
   assert(links.includes(`<${canonical}>; rel="canonical"`), `${path}: missing canonical source Link header`);
   assert(/<\/llms\.txt>;\s*rel="describedby"/i.test(links), `${path}: missing llms.txt Link header`);
@@ -134,12 +160,14 @@ try {
   assert(/^#\s+Open Plovdiv\s*$/m.test(index), "/llms.txt is missing its site heading");
   assert(/^>\s+\S/m.test(index) && /^##\s+\S/m.test(index), "/llms.txt is missing its summary or sections");
   const indexUrls = [...index.matchAll(/^-\s+\[[^\]]+\]\(([^)]+)\)/gm)].map((match) => match[1]);
-  const markdownUrls = [...new Set(indexUrls.filter((url) => new URL(url, siteOrigin).pathname.endsWith("/index.md")))];
+  const markdownUrls = [...new Set(indexUrls.filter((url) => new URL(url, siteOrigin).pathname.endsWith(".md")))];
   assert(markdownUrls.length >= 8, "/llms.txt should link to useful Markdown pages");
   const visitedHomes = new Set();
   for (const url of markdownUrls) {
     const path = localPath(url);
-    const pagePath = path.slice(0, -"index.md".length).replace(/\/$/, "") || "/";
+    const pagePath = path.endsWith("/index.md")
+      ? path.slice(0, -"index.md".length).replace(/\/$/, "") || "/"
+      : path.slice(0, -".md".length);
     const response = await request(pagePath);
     assert(response.status === 200, `${pagePath}: index link has no source HTML`);
     const html = await response.text();
@@ -148,7 +176,13 @@ try {
     const home = /^\/(?:en|de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)?$/.test(pagePath);
     if (home) visitedHomes.add(pagePath);
     checkVisibleLinks(html, canonical, { home });
-    await checkMarkdown(path, canonical);
+    const markdown = await checkMarkdown(path, canonical);
+    if (!path.endsWith("/index.md")) {
+      assert(await checkMarkdown(`${pagePath}/index.md`, canonical) === markdown, `${pagePath}: short and directory versions differ`);
+    }
+    if (home && pagePath !== "/") {
+      assert(await checkMarkdown(`${pagePath}.md`, canonical) === markdown, `${pagePath}.md: locale home alias differs`);
+    }
   }
   assert(visitedHomes.size === 14, `Expected guide links on 14 localized homepages; checked ${visitedHomes.size}`);
 
@@ -172,6 +206,12 @@ try {
     const expectedPath = `${path === "/" ? "" : path}/index.md`;
     assert(localPath(alternate) === expectedPath, `${path}: wrong Markdown alternate ${alternate}`);
     const markdown = await checkMarkdown(expectedPath, canonical);
+    if (path !== "/") {
+      const alias = `${path}.md`;
+      const shortMarkdown = await checkMarkdown(alias, canonical);
+      assert(shortMarkdown === markdown, `${alias}: differs from the directory Markdown version`);
+      assert(await checkMarkdown(`${alias}?source=check`, canonical) === markdown, `${alias}: query changes content`);
+    }
     // The first visible page heading should survive conversion on each sample.
     const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1];
     const heading = h1 && decode(h1.replace(/<[^>]*>/g, "")).replace(/\s+/g, "");
@@ -182,15 +222,31 @@ try {
 
   const head = await request("/en/history/index.md", { method: "HEAD" });
   assert(head.status === 200 && /^text\/markdown\b/i.test(head.headers.get("content-type") || "") && (await head.text()) === "", "Markdown HEAD request failed");
+  const shortHead = await request("/en/history.md", { method: "HEAD" });
+  assert(shortHead.status === 200 && /^text\/markdown\b/i.test(shortHead.headers.get("content-type") || "") && shortHead.headers.get("x-robots-tag") === "noindex" && (await shortHead.text()) === "", "Short Markdown HEAD request failed");
   const missing = await request("/en/no-such-page-llms-validation/index.md");
   assert(missing.status === 404, "Missing Markdown page should return 404");
+  const missingShort = await request("/en/no-such-page-llms-validation.md");
+  assert(missingShort.status === 404, "Missing short Markdown page should return 404");
   const missingHtml = await request("/en/no-such-page-llms-validation");
   assert(missingHtml.status === 404, "Missing HTML page should return 404");
   const missingDocument = parseHTML(await missingHtml.text()).document;
   assert(!missingDocument.querySelector("main nav.page-markdown-tools a.page-markdown-link"), "404 page must not advertise a Markdown version");
   const post = await request("/en/history/index.md", { method: "POST" });
   assert(post.status === 405 && /GET/.test(post.headers.get("allow") || "") && /HEAD/.test(post.headers.get("allow") || ""), "Markdown POST should return 405 with Allow");
-  console.log(`llms validation passed: ${pageUrls.length} sitemap pages, 14 localized homepage links, desktop and mobile menus, ${samples.length} HTML/Markdown page pairs, HEAD, missing page and method handling.`);
+  const shortPost = await request("/en/history.md", { method: "POST" });
+  assert(shortPost.status === 405 && /GET/.test(shortPost.headers.get("allow") || "") && /HEAD/.test(shortPost.headers.get("allow") || ""), "Short Markdown POST should return 405 with Allow");
+  for (const path of ["/fonts/README.md", "/images/plovdiv/README.md"]) {
+    const response = await request(path);
+    const expected = readFileSync(resolve("apps/web/public", `.${path}`), "utf8");
+    assert(response.status === 200 && await response.text() === expected, `${path}: static Markdown file changed or became unavailable`);
+    assert(!response.headers.get("x-robots-tag"), `${path}: static file should not inherit dynamic Markdown headers`);
+  }
+  for (const path of ["/%2e%2e/package.json.md", "/en/%2e%2e/package.json.md", "/en%2fhistory.md", "/en%5chistory.md", "/en/%00.md"]) {
+    const status = await rawStatus(path);
+    assert(status !== 200, `${path}: unsafe Markdown request unexpectedly succeeded`);
+  }
+  console.log(`llms validation passed: ${pageUrls.length} sitemap mappings, ${markdownUrls.length} index links, 14 localized homepage links, ${samples.length} HTML/Markdown pairs and short aliases; static files, traversal, HEAD, missing page and method handling verified.`);
 } finally {
   if (!exited) {
     server.kill("SIGTERM");

@@ -4,7 +4,7 @@ import { localizePath, type Lang } from "@i18n/utils";
 
 const { lang, path } = Astro.props as { lang: Lang; path: string };
 const pagePath = new URL(localizePath(path, lang), Astro.site ?? "https://openplovdiv.example").pathname;
-const markdownPath = `${pagePath.replace(/\/+$/, "")}/index.md`;
+const markdownPath = pagePath === "/" ? "/index.md" : `${pagePath.replace(/\/+$/, "")}.md`;
 const label = llmsLabels[lang].page;
 ---
 
