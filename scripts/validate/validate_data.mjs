@@ -1891,7 +1891,11 @@ function assertNeighbourhoodHistories(loaded) {
     }
   }
 
-  const translatedCount = assertTranslatedStrings("neighbourhood histories", neighbourhoods);
+  // Source titles retain their original language in non-English views. Their
+  // title_en is an English display label, not a translation promised in every
+  // locale, so do not require entries for it in the other translation maps.
+  const neighbourhoodCopy = neighbourhoods.map(({ sources, ...copy }) => copy);
+  const translatedCount = assertTranslatedStrings("neighbourhood histories", neighbourhoodCopy);
 
   // Tourist-completeness report (non-fatal): a quarter without mapped places
   // or without any route is legitimate (honest context treatment), but each

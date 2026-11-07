@@ -49,6 +49,16 @@ describe("neighbourhood histories registry", () => {
     }
   });
 
+  it("provides readable English source titles alongside the original titles", () => {
+    for (const neighbourhood of neighbourhoodHistories) {
+      for (const source of neighbourhood.sources) {
+        expect(source.title, source.url).toBeTruthy();
+        expect(source.title_en, source.url).toBeTruthy();
+        expect(source.title_en, source.url).not.toMatch(/[\u0400-\u04ff]/);
+      }
+    }
+  });
+
   it("maps every era tag to a colour and every area to the filter order", () => {
     for (const neighbourhood of neighbourhoodHistories) {
       for (const era of neighbourhood.era_tags) {

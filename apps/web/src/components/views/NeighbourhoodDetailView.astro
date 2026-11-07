@@ -479,7 +479,7 @@ const structuredData = {
               {neighbourhood.sources.map((source) => (
                 <li>
                   <a href={source.url} target="_blank" rel="noreferrer">
-                    {sourceTitle(source.title, lang)}
+                    {lang === "en" ? source.title_en : sourceTitle(source.title, lang)}
                   </a>
                 </li>
               ))}

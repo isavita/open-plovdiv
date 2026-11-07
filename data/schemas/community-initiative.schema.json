@@ -258,11 +258,16 @@
       "additionalProperties": false,
       "required": [
         "title",
+        "title_en",
         "url",
         "accessed_at"
       ],
       "properties": {
         "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "title_en": {
           "type": "string",
           "minLength": 3
         },

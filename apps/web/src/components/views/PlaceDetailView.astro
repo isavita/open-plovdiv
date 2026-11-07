@@ -21,6 +21,7 @@ import {
   type KnowledgePlace
 } from "@lib/data";
 import { routesThroughPlace } from "@lib/routes";
+import { englishBulgarianAddress, englishBulgarianName } from "@lib/bulgarianTransliteration";
 
 type Props = {
   lang: Lang;
@@ -1783,10 +1784,14 @@ function matchQualityLabel(value: string): string {
 
 function placeFacts(item: KnowledgePlace) {
   const hasNamedCreator = Boolean(localized(item, "architect") || localized(item, "builder"));
+  const creatorName = (key: "architect" | "builder") => {
+    const value = localized(item, key);
+    return lang === "en" ? englishBulgarianName(value) : value;
+  };
   return [
     localized(item.date_context, "display") ? { label: labels.built, value: localized(item.date_context, "display") } : null,
-    localized(item, "architect") ? { label: labels.architect, value: localized(item, "architect") } : null,
-    localized(item, "builder") ? { label: labels.builder, value: localized(item, "builder") } : null,
+    localized(item, "architect") ? { label: labels.architect, value: creatorName("architect") } : null,
+    localized(item, "builder") ? { label: labels.builder, value: creatorName("builder") } : null,
     !hasNamedCreator && localized(item.creator_context, "display")
       ? { label: labels.creator, value: localized(item.creator_context, "display") }
       : null
@@ -1822,7 +1827,12 @@ function wikidataClaimLabel(key: keyof typeof wikidataLabels): string {
 }
 
 function claimRow(key: keyof typeof wikidataLabels, values: PlaceWikidataClaimValue[] | undefined) {
-  const text = formatList((values ?? []).map(wikidataValueLabel).filter(Boolean), 5);
+  const text = formatList((values ?? []).map((value) =>
+    lang === "en" && key === "street_address" && value.type === "text" &&
+      (!value.language || value.language === "bg" || value.language === "und")
+      ? englishBulgarianAddress(value.text)
+      : wikidataValueLabel(value)
+  ).filter(Boolean), 5);
   return text ? { label: wikidataClaimLabel(key), value: text } : null;
 }
 

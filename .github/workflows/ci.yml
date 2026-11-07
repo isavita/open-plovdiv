@@ -22,4 +22,5 @@ jobs:
       - run: npm run validate:seo
         env:
           PUBLIC_SITE_URL: https://openplovdiv.test
+      - run: npm run validate:history-surface
       - run: npm run validate:llms

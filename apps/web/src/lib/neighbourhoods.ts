@@ -109,7 +109,7 @@ export type NeighbourhoodHistory = {
   route_ids: string[];
   getting_there_bg: string;
   getting_there_en: string;
-  sources: Array<{ title: string; url: string; accessed_at: string }>;
+  sources: Array<{ title: string; title_en: string; url: string; accessed_at: string }>;
   data_quality: string;
   updated_at: string;
 };

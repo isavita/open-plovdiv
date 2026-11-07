@@ -19,6 +19,13 @@ const urls = new Set();
 const groups = new Map();
 const files = new Map();
 const placeIds = JSON.parse(readFileSync("data/generated/history-knowledge/places.json", "utf8")).map((place) => place.id);
+const englishPlaceNames = {
+  "place-halm-na-osvoboditelite-q58079069": "Hill of the Liberators",
+  "place-sveta-petka-stara-q12293078": "St Petka Stara Church",
+  "place-pravoslavna-duhovna-akademiya-sv-sv-kiril-i-metodiy-q19706780": "Saints Cyril and Methodius Orthodox Theological Academy",
+  "place-panair-han-q60394704": "Panair Han",
+  "place-zala-stroitel-q61115940": "Stroitel Hall"
+};
 for (const [, rawLoc, body] of entries) {
   const loc = xmlDecode(rawLoc);
   const url = new URL(loc);
@@ -73,6 +80,17 @@ for (const logicalPath of ["/", "/history", "/places", "/people", "/stories", "/
       const prefix = locale === "bg" ? "" : `/${locale}`;
       assert(links.size === placeIds.length, `Place directory link count mismatch on ${loc}`);
       for (const id of placeIds) assert(links.has(`${prefix}/places/${id}`), `Missing crawlable place link ${id} on ${loc}`);
+      if (locale === "en") {
+        for (const [id, name] of Object.entries(englishPlaceNames)) {
+          const href = `/en/places/${id}`;
+          const directoryLink = directory.querySelector(`a[href="${href}"]`);
+          assert(directoryLink?.textContent.trim() === name, `Missing English directory name for ${id}`);
+          const detailUrl = new URL(href, expectedOrigin).href;
+          assert(files.has(detailUrl), `Missing English place detail ${detailUrl}`);
+          const detail = parseHTML(readFileSync(files.get(detailUrl), "utf8")).document;
+          assert(detail.querySelector("h1")?.textContent.trim() === name, `Missing English detail heading for ${id}`);
+        }
+      }
     }
     assert(!/<meta name="robots" content="[^"]*noindex/i.test(head), `Indexed page marked noindex: ${loc}`);
     const jsonLd = head.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);

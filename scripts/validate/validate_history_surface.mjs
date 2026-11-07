@@ -101,6 +101,17 @@ function resolvePublicSiteOrigin() {
 
 const publicSiteOrigin = resolvePublicSiteOrigin();
 
+// English place details must remain usable to visitors while preserving the
+// source spelling for local records and directions.
+for (const [url, expected] of [
+  ["/en/places/place-ancient-theatre/", ["Tsar Ivaylo", "Bulgarian:", "Цар Ивайло"]],
+  ["/en/places/place-chalakova-house/", ["Old Plovdiv", "Bulgarian:", "Старинен Пловдив"]],
+  ["/en/places/place-evangelical-cathedral-plovdiv-q57275218/", ["Georgi Fingov", "Bulgarian:", "Георги Фингов"]],
+  ["/en/places/place-st-nedelya-church-q12293066/", ["Petko Boz", "Bulgarian:", "Петко Боз"]]
+]) {
+  assertContains(url, readBuilt(url), expected);
+}
+
 function absolutePageHref(url) {
   const href = new URL(url, `${publicSiteOrigin}/`).href;
   return href.endsWith("/") && href !== `${publicSiteOrigin}/` ? href.slice(0, -1) : href;

@@ -30,6 +30,7 @@ import { withGermanFields } from "../i18n/deTranslations";
 
 export type Source = {
   title: string;
+  title_en?: string;
   url: string;
   accessed_at: string;
 };
