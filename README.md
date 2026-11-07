@@ -34,6 +34,12 @@ CI uses that same Node version and checks the generated sitemap, language altern
 
 The site provides an [`/llms.txt`](https://openplovdiv.com/llms.txt) guide and a Markdown alternate for each public page, linked from its HTML. For example, `/en/places.md` and `/en/places/index.md` both provide the English places page; the root page uses `/index.md`. The production server derives Markdown from the corresponding prerendered page on demand, so it follows content updates; interactive or client-loaded content may be absent. Source links and the original HTML remain important context. These endpoints follow the [llms.txt proposal](https://llmstxt.org/) and do not change crawler access rules.
 
+### IndexNow
+
+The IndexNow workflow runs after a successful Railway production deployment, verifies it is still the latest deployment, and compares rendered page content, search metadata and referenced local JSON data with its last saved snapshot. It notifies participating search engines only about added, changed or removed canonical pages. The first run establishes a baseline without automatically submitting the whole sitemap. Content loaded dynamically from sources not referenced in a page's JSON configuration may not be detected. IndexNow acknowledges notifications but does not guarantee crawling or indexing; Google does not use this integration.
+
+The same random `INDEXNOW_KEY` is stored as a Railway service variable and a GitHub Actions secret. Railway's build writes the required public key file to the built site; the key is not committed to this repository. A monthly maintenance job refreshes the unchanged snapshot before GitHub's 90-day artifact expiry. If the latest snapshot is deleted or expires—for example if GitHub disables schedules after prolonged inactivity—the workflow fails closed rather than guessing which changes were missed. Review unsent changes and restore or deliberately re-establish the baseline before resuming notifications. Failed batches do not advance the snapshot; retrying can resend an already accepted batch.
+
 If a plan repeatedly reports `ON_FAILURE` / 10 restart-policy drift, verify the resolved service instance through Railway's API before interpreting it as an unapplied change; see [Railway CLI issue 1184](https://github.com/railwayapp/cli/issues/1184).
 
 Railway supplies `RAILWAY_PUBLIC_DOMAIN` during the build automatically. For

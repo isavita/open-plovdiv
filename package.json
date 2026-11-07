@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "dev": "npm --workspace apps/web run dev -- --host 0.0.0.0",
-    "build": "npm run data && npm --workspace apps/web run build",
+    "build": "npm run data && npm --workspace apps/web run build && node scripts/indexnow/write-key.mjs",
     "start": "NODE_ENV=production npm --workspace apps/web run start",
     "preview": "npm --workspace apps/web run preview",
     "typecheck": "npm --workspace apps/web run typecheck",
@@ -24,7 +24,7 @@
     "audit:media": "node scripts/audit/audit_media_rights.mjs",
     "audit:media:strict": "node scripts/audit/audit_media_rights.mjs --strict",
     "validate": "node scripts/validate/validate_data.mjs",
-    "test": "npm run validate && npm run validate:story-enrichment && npm --workspace apps/web run test"
+    "test": "npm run validate && npm run validate:story-enrichment && node --test scripts/indexnow/indexnow.test.mjs && npm --workspace apps/web run test"
   },
   "dependencies": {
     "ajv": "^8.17.1",

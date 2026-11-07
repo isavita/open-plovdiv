@@ -1,0 +1,117 @@
+name: IndexNow
+run-name: IndexNow production ${{ github.event.deployment.sha }}
+
+on:
+  deployment_status:
+  # Refresh the snapshot before GitHub's 90-day artifact retention expires.
+  schedule:
+    - cron: '23 3 1 * *'
+
+permissions:
+  contents: read
+  actions: read
+  deployments: read
+
+concurrency:
+  group: indexnow-production
+  queue: max
+
+jobs:
+  notify:
+    if: >-
+      github.event_name == 'deployment_status' &&
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment_status.creator.login == 'railway-app[bot]' &&
+      github.event.deployment.creator.login == 'railway-app[bot]' &&
+      github.event.deployment.environment == 'lucky-education / production' &&
+      github.event.deployment.payload.environmentId == 'c1a0a96b-c810-475b-bef5-584d4ed26630'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DEPLOYMENT_ID: ${{ github.event.deployment.id }}
+      DEPLOYMENT_SHA: ${{ github.event.deployment.sha }}
+      DEPLOYED_AT: ${{ github.event.deployment_status.created_at }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.deployment.sha }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - name: Check production deployment
+        id: live
+        run: node scripts/indexnow/live.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Load prior snapshot
+        if: steps.live.outputs.current == 'true'
+        id: state
+        run: node scripts/indexnow/state.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Install dependencies
+        if: steps.live.outputs.current == 'true'
+        run: npm ci
+      - name: Build deployed commit
+        if: steps.live.outputs.current == 'true'
+        run: npm run build
+        env:
+          PUBLIC_SITE_URL: https://openplovdiv.com
+      - name: Create content snapshot
+        if: steps.live.outputs.current == 'true'
+        run: node scripts/indexnow/manifest.mjs build apps/web/dist/client .indexnow/current.json "$DEPLOYMENT_SHA" "$DEPLOYED_AT" "$DEPLOYMENT_ID"
+      - name: Compare with previous snapshot
+        if: steps.live.outputs.current == 'true' && steps.state.outputs.mode == 'artifact'
+        id: compare
+        run: node scripts/indexnow/compare.mjs
+      - name: Prepare first baseline
+        if: steps.live.outputs.current == 'true' && steps.state.outputs.mode == 'bootstrap'
+        run: node -e 'require("node:fs").writeFileSync(".indexnow/changed.json", "[]")'
+      - name: Recheck production deployment
+        if: steps.live.outputs.current == 'true' && steps.compare.outputs.stale != 'true'
+        id: live_final
+        run: node scripts/indexnow/live.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Notify IndexNow
+        if: steps.live_final.outputs.current == 'true' && steps.compare.outputs.stale != 'true'
+        run: node scripts/indexnow/submit.mjs .indexnow/changed.json
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      - name: Save IndexNow baseline
+        if: steps.live_final.outputs.current == 'true' && steps.compare.outputs.stale != 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: indexnow-manifest
+          path: .indexnow/current.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 90
+  refresh:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+      - name: Load prior snapshot
+        id: state
+        run: node scripts/indexnow/state.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          INDEXNOW_REFRESH: '1'
+      - name: Preserve snapshot unchanged
+        if: steps.state.outputs.mode == 'artifact'
+        run: cp .indexnow/previous/manifest.json .indexnow/current.json
+      - name: Save IndexNow baseline
+        if: steps.state.outputs.mode == 'artifact'
+        uses: actions/upload-artifact@v7
+        with:
+          name: indexnow-manifest
+          path: .indexnow/current.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 90

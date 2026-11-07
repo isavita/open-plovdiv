@@ -16,6 +16,23 @@ const { lang } = Astro.props as { lang: Lang };
 const t = ui[lang];
 const guide = visitorGuide(lang);
 const routeT = routeLabels(lang);
+// Give search results a clear description of the homepage in each language.
+const homePageTitles = {
+  bg: "Пловдив: пътеводител за града",
+  en: "Plovdiv city guide: history, places and walks",
+  de: "Plovdiv: Stadtführer für Geschichte, Orte und Spaziergänge",
+  fr: "Plovdiv : guide de la ville, histoire et promenades",
+  it: "Plovdiv: guida alla città, storia e passeggiate",
+  tr: "Filibe şehir rehberi: tarih, yerler ve yürüyüşler",
+  es: "Plovdiv: guía de la ciudad, historia y paseos",
+  el: "Πλόβντιβ: οδηγός πόλης, ιστορία και περίπατοι",
+  ja: "プロヴディフの街歩きガイド：歴史と見どころ",
+  tl: "Gabay sa Plovdiv: kasaysayan, mga lugar at paglalakad",
+  uk: "Путівник Пловдивом: історія, місця та прогулянки",
+  ru: "Путеводитель по Пловдиву: история, места и прогулки",
+  pl: "Przewodnik po Płowdiwie: historia, miejsca i spacery",
+  pt: "Plovdiv: guia da cidade, história e passeios"
+} satisfies Record<Lang, string>;
 const tr = (
   bg: string,
   en: string,
@@ -242,7 +259,7 @@ const routes = ["kapana-creative-hour", "roman-plovdiv-90", "hills-and-sunsets"]
 const eras = ["prehistory", "roman", "ottoman"] as const;
 ---
 
-<Layout lang={lang} loadJapaneseWebfont={false} path="/" description={guide.intro} image={placeImageUrl(hero.url, 1600)} imageAlt={labels.theatreTitle}>
+<Layout lang={lang} loadJapaneseWebfont={false} path="/" title={homePageTitles[lang]} description={guide.intro} image={placeImageUrl(hero.url, 1600)} imageAlt={labels.theatreTitle}>
   <div class="visitor-home">
     <section class="visitor-hero" aria-labelledby="welcome-title">
       <div class="container visitor-hero-layout">

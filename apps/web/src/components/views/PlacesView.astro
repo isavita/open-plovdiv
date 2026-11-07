@@ -558,6 +558,22 @@ const categories = [...new Set(places.map((place) => place.category))].sort((a, 
 );
 const placeholderImage = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
 const initialPlaceCount = 24;
+const directoryLabels = {
+  bg: "Разгледайте всички места",
+  en: "Browse all places",
+  de: "Alle Orte ansehen",
+  fr: "Voir tous les lieux",
+  it: "Esplora tutti i luoghi",
+  tr: "Tüm yerleri inceleyin",
+  es: "Ver todos los lugares",
+  el: "Δείτε όλα τα μέρη",
+  ja: "すべての場所を見る",
+  tl: "Tingnan ang lahat ng lugar",
+  uk: "Переглянути всі місця",
+  ru: "Посмотреть все места",
+  pl: "Zobacz wszystkie miejsca",
+  pt: "Ver todos os lugares"
+} satisfies Record<Lang, string>;
 
 /** Every card gets a visual: the licensed photo, or its category's plate. */
 function plateFor(category: string): string {
@@ -603,6 +619,10 @@ const placeCards = places.map((place) => {
   };
 });
 const initialPlaceCards = placeCards.slice(0, initialPlaceCount);
+// This lightweight directory keeps every place reachable without fetching or
+// rendering the remaining cards and their images. It is deliberately not
+// filtered: the interactive catalogue above continues to own filter state.
+const directoryCards = [...placeCards].sort((a, b) => a.name.localeCompare(b.name, locale));
 const config = {
   labels: {
     visible: labels.visible,
@@ -1135,8 +1155,21 @@ const placesMapConfig = {
       <button type="button" id="places-load-more" class="button secondary places-load-more">
         {labels.loadMore}
       </button>
+      <details class="places-directory" data-place-directory>
+        <summary>{directoryLabels[lang]} ({directoryCards.length})</summary>
+        <ul>
+          {directoryCards.map((card) => <li><a href={card.href}>{card.name}</a></li>)}
+        </ul>
+      </details>
     </div>
   </section>
+
+  <style>
+    .places-directory { margin-top: 1.5rem; padding: 1rem; border: 1px solid var(--line); border-radius: 0.5rem; }
+    .places-directory summary { cursor: pointer; font-weight: 650; }
+    .places-directory ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 0.4rem 1rem; margin: 1rem 0 0; padding-left: 1.25rem; }
+    .places-directory a { display: inline-block; padding: 0.25rem 0; }
+  </style>
 
   <script type="application/json" id="places-config" set:html={JSON.stringify(config)}></script>
   <script>

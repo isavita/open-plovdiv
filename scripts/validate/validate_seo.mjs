@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { resolve, sep } from "node:path";
+import { parseHTML } from "linkedom";
 
 // Run after a production build. Validate generated artifacts, not assumptions
 // about what the source templates ought to emit.
@@ -17,6 +18,7 @@ const expectedOrigin = process.env.PUBLIC_SITE_URL ? new URL(process.env.PUBLIC_
 const urls = new Set();
 const groups = new Map();
 const files = new Map();
+const placeIds = JSON.parse(readFileSync("data/generated/history-knowledge/places.json", "utf8")).map((place) => place.id);
 for (const [, rawLoc, body] of entries) {
   const loc = xmlDecode(rawLoc);
   const url = new URL(loc);
@@ -59,6 +61,19 @@ for (const logicalPath of ["/", "/history", "/places", "/people", "/stories", "/
     assert(head.includes(`<link rel="describedby" type="text/plain" href="${expectedOrigin}/llms.txt">`), `Missing llms.txt discovery on ${loc}`);
     assert(head.includes(`<link rel="alternate" hreflang="${locale}" href="${loc}">`), `Missing self hreflang on ${loc}`);
     assert(/<title>[^<]+<\/title>/.test(head) && /<meta name="description" content="[^"]+"/.test(head), `Missing title or description on ${loc}`);
+    if (logicalPath === "/" && locale === "en") {
+      assert(/<title>Plovdiv city guide: history, places and walks · Open Plovdiv<\/title>/.test(head), `Missing descriptive English homepage title: ${loc}`);
+    }
+    if (logicalPath === "/places") {
+      const { document } = parseHTML(html);
+      const directory = document.querySelector("details[data-place-directory]");
+      assert(directory && directory.querySelector("summary")?.textContent.trim(), `Missing accessible place directory on ${loc}`);
+      assert(!directory.querySelector("img"), `Place directory must not eagerly load images: ${loc}`);
+      const links = new Set([...directory.querySelectorAll("a[href]")].map((link) => link.getAttribute("href")));
+      const prefix = locale === "bg" ? "" : `/${locale}`;
+      assert(links.size === placeIds.length, `Place directory link count mismatch on ${loc}`);
+      for (const id of placeIds) assert(links.has(`${prefix}/places/${id}`), `Missing crawlable place link ${id} on ${loc}`);
+    }
     assert(!/<meta name="robots" content="[^"]*noindex/i.test(head), `Indexed page marked noindex: ${loc}`);
     const jsonLd = head.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
     assert(jsonLd, `Missing structured data on ${loc}`);
