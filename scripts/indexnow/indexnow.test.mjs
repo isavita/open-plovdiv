@@ -47,9 +47,9 @@ test("submit verifies the live key, uses canonical URLs, and fails closed", asyn
   const calls = [];
   const fetcher = async (target, options) => {
     calls.push({ target, options });
-    return target.endsWith(".txt") ? new Response(key, { status: 200 }) : new Response(null, { status: 202 });
+    return target.endsWith(".txt") ? new Response(key, { status: 200 }) : new Response(null, { status: 200 });
   };
-  assert.equal(await submitIndexNow(key, [url], fetcher), 202);
+  assert.equal(await submitIndexNow(key, [url], fetcher), 200);
   assert.equal(calls.length, 2);
   assert.deepEqual(JSON.parse(calls[1].options.body).urlList, [url]);
   await assert.rejects(submitIndexNow(key, ["https://other.example/"], fetcher));
@@ -58,6 +58,52 @@ test("submit verifies the live key, uses canonical URLs, and fails closed", asyn
   await assert.rejects(submitIndexNow(key, [url], badKey), /mismatched/);
   const reject = async (target) => target.endsWith(".txt") ? new Response(key) : new Response(null, { status: 429 });
   await assert.rejects(submitIndexNow(key, [url], reject), /429/);
+  const pending = async (target) => target.endsWith(".txt") ? new Response(key) : new Response(null, { status: 202 });
+  const delays = [];
+  await assert.rejects(submitIndexNow(key, [url], pending, async (ms) => delays.push(ms)), /validation pending \(202\) after retries; no baseline was advanced/);
+  assert.deepEqual(delays, [15000, 30000]);
+  let attempts = 0;
+  const eventuallyAccepted = async (target) => target.endsWith(".txt") ? new Response(key) : new Response(null, { status: ++attempts < 3 ? 202 : 200 });
+  assert.equal(await submitIndexNow(key, [url], eventuallyAccepted, async () => {}), 200);
+  assert.equal(attempts, 3);
+  const forbiddenCalls = [];
+  const forbidden = async (target) => {
+    forbiddenCalls.push(target);
+    return target.endsWith(".txt") ? new Response(key) : new Response(null, { status: 403 });
+  };
+  await assert.rejects(submitIndexNow(key, [url], forbidden, () => { throw new Error("403 must not be retried"); }), /403/);
+  assert.deepEqual(forbiddenCalls.slice(1), ["https://api.indexnow.org/indexnow", "https://yandex.com/indexnow"]);
+  const fallbackCalls = [];
+  const fallback = async (target) => {
+    fallbackCalls.push(target);
+    return target.endsWith(".txt") ? new Response(key) : new Response(null, { status: target === "https://yandex.com/indexnow" ? 200 : 403 });
+  };
+  assert.equal(await submitIndexNow(key, [url], fallback, async () => {}), 200);
+  assert.deepEqual(fallbackCalls.slice(1), ["https://api.indexnow.org/indexnow", "https://yandex.com/indexnow"]);
+  let primaryAfterPending = 0;
+  const pendingThenForbidden = async (target) => {
+    if (target.endsWith(".txt")) return new Response(key);
+    if (target === "https://yandex.com/indexnow") return new Response(null, { status: 200 });
+    return new Response(null, { status: ++primaryAfterPending === 1 ? 202 : 403 });
+  };
+  assert.equal(await submitIndexNow(key, [url], pendingThenForbidden, async () => {}), 200);
+  assert.equal(primaryAfterPending, 2);
+  let fallbackPendingCount = 0;
+  const fallbackPending = async (target) => {
+    if (target.endsWith(".txt")) return new Response(key);
+    if (target === "https://api.indexnow.org/indexnow") return new Response(null, { status: 403 });
+    fallbackPendingCount++;
+    return new Response(null, { status: 202 });
+  };
+  await assert.rejects(submitIndexNow(key, [url], fallbackPending, async () => {}), /validation pending.*no baseline was advanced/);
+  assert.equal(fallbackPendingCount, 3);
+  const errorCalls = [];
+  const unavailable = async (target) => {
+    errorCalls.push(target);
+    return target.endsWith(".txt") ? new Response(key) : new Response(null, { status: 503 });
+  };
+  await assert.rejects(submitIndexNow(key, [url], unavailable, async () => {}), /503/);
+  assert.deepEqual(errorCalls.slice(1), ["https://api.indexnow.org/indexnow"]);
   const largeList = Array.from({ length: 10001 }, (_, n) => `https://openplovdiv.com/page-${n}`);
   const batches = [];
   const largeFetcher = async (target, options) => {
@@ -67,6 +113,23 @@ test("submit verifies the live key, uses canonical URLs, and fails closed", asyn
   };
   await submitIndexNow(key, largeList, largeFetcher);
   assert.deepEqual(batches, [10000, 1]);
+  const fallbackBatches = [];
+  const largeFallback = async (target, options) => {
+    if (target.endsWith(".txt")) return new Response(key);
+    if (target === "https://api.indexnow.org/indexnow") return new Response(null, { status: 403 });
+    fallbackBatches.push(JSON.parse(options.body).urlList.length);
+    return new Response(null, { status: 200 });
+  };
+  assert.equal(await submitIndexNow(key, largeList, largeFallback, async () => {}), 200);
+  assert.deepEqual(fallbackBatches, [10000, 1]);
+  let submittedBatches = 0;
+  const partlyPending = async (target) => {
+    if (target.endsWith(".txt")) return new Response(key);
+    submittedBatches += 1;
+    return new Response(null, { status: submittedBatches === 1 ? 200 : 202 });
+  };
+  await assert.rejects(submitIndexNow(key, largeList, partlyPending, async () => {}), /validation pending/);
+  assert.equal(submittedBatches, 4);
 });
 
 test("baseline lookup fails closed for expired, deleted, or incomplete state", async () => {

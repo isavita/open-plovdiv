@@ -3,7 +3,9 @@ import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
 const HOST = "openplovdiv.com";
-export async function submitIndexNow(key, urls, fetcher = fetch) {
+const PENDING_RETRY_DELAYS_MS = [15000, 30000];
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+export async function submitIndexNow(key, urls, fetcher = fetch, wait = sleep) {
   if (!/^[a-zA-Z0-9-]{8,128}$/.test(key || "")) throw new Error("INDEXNOW_KEY missing or invalid");
   if (!Array.isArray(urls) || urls.length > 100000 || new Set(urls).size !== urls.length) throw new Error("Invalid URL list");
   for (const text of urls) {
@@ -17,13 +19,32 @@ export async function submitIndexNow(key, urls, fetcher = fetch) {
   let lastStatus = 0;
   for (let i = 0; i < urls.length; i += 10000) {
     const batch = urls.slice(i, i + 10000);
-    const response = await fetcher("https://api.indexnow.org/indexnow", {
-      method: "POST", headers: { "content-type": "application/json; charset=utf-8" },
-      body: JSON.stringify({ host: HOST, key, keyLocation, urlList: batch }), signal: AbortSignal.timeout(30000), redirect: "error"
-    });
-    if (response.status !== 200 && response.status !== 202) throw new Error(`IndexNow rejected a batch (${response.status}); no baseline was advanced`);
-    lastStatus = response.status;
-    console.log(`IndexNow accepted a batch of ${batch.length} URL(s), HTTP ${response.status}${response.status === 202 ? " (key validation pending)" : ""}.`);
+    let endpoint = "https://api.indexnow.org/indexnow";
+    let attempt = 0;
+    for (;;) {
+      const response = await fetcher(endpoint, {
+        method: "POST", headers: { "content-type": "application/json; charset=utf-8" },
+        body: JSON.stringify({ host: HOST, key, keyLocation, urlList: batch }), signal: AbortSignal.timeout(30000), redirect: "error"
+      });
+      if (response.status === 200) {
+        lastStatus = response.status;
+        console.log(`${endpoint === "https://yandex.com/indexnow" ? "Yandex IndexNow" : "IndexNow"} accepted a batch of ${batch.length} URL(s), HTTP ${response.status}.`);
+        break;
+      }
+      if (response.status === 403 && endpoint !== "https://yandex.com/indexnow") {
+        // Participating search engines share IndexNow submissions. Direct
+        // Bing validation can fail independently of another participant.
+        console.log("IndexNow returned 403; trying the Yandex participant.");
+        endpoint = "https://yandex.com/indexnow";
+        attempt = 0;
+        continue;
+      }
+      if (response.status !== 202) throw new Error(`IndexNow rejected a batch (${response.status}); no baseline was advanced`);
+      const delay = PENDING_RETRY_DELAYS_MS[attempt++];
+      if (delay === undefined) throw new Error("IndexNow key validation pending (202) after retries; no baseline was advanced. Re-run after the provider validates the ownership key.");
+      console.log(`IndexNow key validation pending (202); retrying in ${delay / 1000} seconds.`);
+      await wait(delay);
+    }
   }
   return lastStatus;
 }
