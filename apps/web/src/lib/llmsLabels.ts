@@ -11,6 +11,7 @@ export const llmsLabels = {
   es: { page: "Esta página en Markdown", guide: "Guía para IA (llms.txt)" },
   el: { page: "Αυτή η σελίδα σε Markdown", guide: "Οδηγός για AI (llms.txt)" },
   ja: { page: "このページのMarkdown版", guide: "AI向けガイド (llms.txt)" },
+  zh: { page: "此页面的 Markdown 版本", guide: "AI 指南 (llms.txt)" },
   tl: { page: "Ang pahinang ito sa Markdown", guide: "Gabay para sa AI (llms.txt)" },
   uk: { page: "Ця сторінка у форматі Markdown", guide: "Посібник для ШІ (llms.txt)" },
   ru: { page: "Эта страница в формате Markdown", guide: "Руководство для ИИ (llms.txt)" },

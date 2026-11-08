@@ -5,6 +5,7 @@ import trTranslationsJson from "../../../../data/translations/tr.json";
 import esTranslationsJson from "../../../../data/translations/es.json";
 import elTranslationsJson from "../../../../data/translations/el.json";
 import jaTranslationsJson from "../../../../data/translations/ja.json";
+import zhTranslationsJson from "../../../../data/translations/zh.json";
 import tlTranslationsJson from "../../../../data/translations/tl.json";
 import ukTranslationsJson from "../../../../data/translations/uk.json";
 import ruTranslationsJson from "../../../../data/translations/ru.json";
@@ -12,7 +13,7 @@ import plTranslationsJson from "../../../../data/translations/pl.json";
 import ptTranslationsJson from "../../../../data/translations/pt.json";
 import type { Lang } from "./ui";
 
-type TranslationLang = Extract<Lang, "de" | "fr" | "it" | "tr" | "es" | "el" | "ja" | "tl" | "uk" | "ru" | "pl" | "pt">;
+type TranslationLang = Extract<Lang, "de" | "fr" | "it" | "tr" | "es" | "el" | "ja" | "zh" | "tl" | "uk" | "ru" | "pl" | "pt">;
 
 const translationsByLang: Record<TranslationLang, Record<string, string>> = {
   de: deTranslationsJson as Record<string, string>,
@@ -22,6 +23,7 @@ const translationsByLang: Record<TranslationLang, Record<string, string>> = {
   es: esTranslationsJson as Record<string, string>,
   el: elTranslationsJson as Record<string, string>,
   ja: jaTranslationsJson as Record<string, string>,
+  zh: zhTranslationsJson as Record<string, string>,
   tl: tlTranslationsJson as Record<string, string>,
   uk: ukTranslationsJson as Record<string, string>,
   ru: ruTranslationsJson as Record<string, string>,

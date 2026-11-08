@@ -1,4 +1,6 @@
 ---
+import { localizeChineseUi } from "@i18n/zhUiTranslations";
+import { withZhLocale } from "@i18n/zhUiTranslations";
 import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
@@ -26,7 +28,7 @@ const searchUi = siteSearchUi[lang];
 const locale = localeForLang(lang);
 
 const labels =
-  lang === "bg"
+  localizeChineseUi(lang, (lang === "bg"
     ? {
         title: "Места и забележителности",
         eyebrow: "Градът, разказан чрез своите места",
@@ -512,22 +514,22 @@ const labels =
         creator: "Architect/builder",
         open: "Open",
         loadMore: "Load more"
-      });
+      })));
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain", it: "Spazio urbano", tr: "Kentsel alan", es: "Espacio urbano", el: "Αστικός χώρος", ja: "都市空間", tl: "Pampublikong espasyo", uk: "Міський простір", ru: "Городская среда", pl: "Przestrzeń miejska" , pt: "Cívico"},
-  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline", it: "Colle", tr: "Tepe", es: "Colina", el: "Λόφος", ja: "丘", tl: "Burol", uk: "Пагорб", ru: "Холм", pl: "Wzgórze" , pt: "Colina"},
-  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval", it: "Medievale", tr: "Orta Çağ", es: "Medieval", el: "Μεσαιωνικό", ja: "中世", tl: "Medyebal", uk: "Середньовіччя", ru: "Средневековье", pl: "Średniowiecze" , pt: "Medieval"},
-  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument", it: "Monumento", tr: "Anıt", es: "Monumento", el: "Μνημείο", ja: "記念碑", tl: "Monumento", uk: "Пам'ятник", ru: "Памятник", pl: "Pomnik" , pt: "Monumento"},
-  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman", it: "Ottomano", tr: "Osmanlı", es: "Otomano", el: "Οθωμανικό", ja: "オスマン層", tl: "Ottoman", uk: "Османський шар", ru: "Османский слой", pl: "Warstwa osmańska" , pt: "Otomano"},
-  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux", it: "Sito religioso", tr: "Dinî yapı", es: "Sitio religioso", el: "Θρησκευτικός χώρος", ja: "宗教施設", tl: "Relihiyoso", uk: "Релігійна споруда", ru: "Религиозный объект", pl: "Obiekt religijny" , pt: "Religioso"},
-  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale", tr: "Ulusal Uyanış", es: "Renacimiento Nacional", el: "Εθνική Αναγέννηση", ja: "民族復興期", tl: "Pambansang Muling Pagsilang", uk: "Доба Відродження", ru: "Эпоха национального возрождения", pl: "Odrodzenie narodowe" , pt: "Renascimento Nacional"},
-  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano", tr: "Roma", es: "Romano", el: "Ρωμαϊκό", ja: "ローマ層", tl: "Romano", uk: "Римський шар", ru: "Римский слой", pl: "Warstwa rzymska" , pt: "Romano"},
-  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio", tr: "Trak", es: "Tracio", el: "Θρακικό", ja: "トラキア層", tl: "Trakiano", uk: "Фракійський шар", ru: "Фракийский слой", pl: "Warstwa tracka" , pt: "Trácio"}
+  civic: withZhLocale({ bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain", it: "Spazio urbano", tr: "Kentsel alan", es: "Espacio urbano", el: "Αστικός χώρος", ja: "都市空間", tl: "Pampublikong espasyo", uk: "Міський простір", ru: "Городская среда", pl: "Przestrzeń miejska" , pt: "Cívico"}),
+  hill: withZhLocale({ bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline", it: "Colle", tr: "Tepe", es: "Colina", el: "Λόφος", ja: "丘", tl: "Burol", uk: "Пагорб", ru: "Холм", pl: "Wzgórze" , pt: "Colina"}),
+  medieval: withZhLocale({ bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval", it: "Medievale", tr: "Orta Çağ", es: "Medieval", el: "Μεσαιωνικό", ja: "中世", tl: "Medyebal", uk: "Середньовіччя", ru: "Средневековье", pl: "Średniowiecze" , pt: "Medieval"}),
+  monument: withZhLocale({ bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument", it: "Monumento", tr: "Anıt", es: "Monumento", el: "Μνημείο", ja: "記念碑", tl: "Monumento", uk: "Пам'ятник", ru: "Памятник", pl: "Pomnik" , pt: "Monumento"}),
+  ottoman: withZhLocale({ bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman", it: "Ottomano", tr: "Osmanlı", es: "Otomano", el: "Οθωμανικό", ja: "オスマン層", tl: "Ottoman", uk: "Османський шар", ru: "Османский слой", pl: "Warstwa osmańska" , pt: "Otomano"}),
+  religious: withZhLocale({ bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux", it: "Sito religioso", tr: "Dinî yapı", es: "Sitio religioso", el: "Θρησκευτικός χώρος", ja: "宗教施設", tl: "Relihiyoso", uk: "Релігійна споруда", ru: "Религиозный объект", pl: "Obiekt religijny" , pt: "Religioso"}),
+  revival: withZhLocale({ bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale", tr: "Ulusal Uyanış", es: "Renacimiento Nacional", el: "Εθνική Αναγέννηση", ja: "民族復興期", tl: "Pambansang Muling Pagsilang", uk: "Доба Відродження", ru: "Эпоха национального возрождения", pl: "Odrodzenie narodowe" , pt: "Renascimento Nacional"}),
+  roman: withZhLocale({ bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano", tr: "Roma", es: "Romano", el: "Ρωμαϊκό", ja: "ローマ層", tl: "Romano", uk: "Римський шар", ru: "Римский слой", pl: "Warstwa rzymska" , pt: "Romano"}),
+  thracian: withZhLocale({ bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio", tr: "Trak", es: "Tracio", el: "Θρακικό", ja: "トラキア層", tl: "Trakiano", uk: "Фракійський шар", ru: "Фракийский слой", pl: "Warstwa tracka" , pt: "Trácio"})
 };
 
 function localized(record: Record<string, any>, base: string): string {
-  return String(record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? "");
+  return String((lang === "zh" ? (record[`${base}_zh`] || record[`${base}_en`] || "") : (record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? "")));
 }
 
 function categoryLabel(category: string): string {
@@ -558,7 +560,7 @@ const categories = [...new Set(places.map((place) => place.category))].sort((a, 
 );
 const placeholderImage = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
 const initialPlaceCount = 24;
-const directoryLabels = {
+const directoryLabels = withZhLocale({
   bg: "Разгледайте всички места",
   en: "Browse all places",
   de: "Alle Orte ansehen",
@@ -573,7 +575,7 @@ const directoryLabels = {
   ru: "Посмотреть все места",
   pl: "Zobacz wszystkie miejsca",
   pt: "Ver todos os lugares"
-} satisfies Record<Lang, string>;
+}) satisfies Record<Lang, string>;
 
 /** Every card gets a visual: the licensed photo, or its category's plate. */
 function plateFor(category: string): string {
@@ -644,7 +646,7 @@ const config = {
 
 // --- all-places map (pins every place with coordinates, synced to filters) ---
 const mapL =
-  lang === "bg"
+  localizeChineseUi(lang, (lang === "bg"
     ? {
         title: "Карта на местата",
         lead: "Разгледайте града на карта. Изберете категория, потърсете място или следвайте готов маршрут."
@@ -710,7 +712,7 @@ const mapL =
       } : {
         title: "Map of the places",
         lead: "Explore the city on the map. Choose a category, search for a place or follow a ready-made route."
-      });
+      })));
 // --- discovery layer: guided route strip + clickable category legend -------
 const trd = (
   bg: string,
@@ -734,7 +736,7 @@ const trd = (
   "No route — all places": "Sem percurso — todos os locais", "Clear": "Limpar",
   "All routes": "Todos os percursos", "nearby": "nas proximidades",
   "nearby + detours": "nas proximidades + desvios", "Hide nearby": "Ocultar locais próximos"
-} as Record<string, string>)[en] ?? en : ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl })[lang];
+} as Record<string, string>)[en] ?? en : (withZhLocale({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl }))[lang];
 
 const discoverL = {
   routeStrip: trd(

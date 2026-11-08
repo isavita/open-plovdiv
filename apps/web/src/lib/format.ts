@@ -10,12 +10,23 @@ import {
 } from "../i18n/ui";
 import { translateEn } from "../i18n/deTranslations";
 import { ptText } from "../i18n/ptUiTranslations";
+import { zhText } from "../i18n/zhUiTranslations";
 
-const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP", tl: "fil-PH", uk: "uk-UA", ru: "ru-RU", pl: "pl-PL" , pt: "pt-PT"};
+const moneyLocale: Record<Lang, string> = { bg: "bg-BG", en: "en-GB", de: "de-DE", fr: "fr-FR", it: "it-IT", tr: "tr-TR", es: "es-ES", el: "el-GR", ja: "ja-JP", zh: "zh-CN", tl: "fil-PH", uk: "uk-UA", ru: "ru-RU", pl: "pl-PL" , pt: "pt-PT"};
 
 const knownHistoryText: Record<Lang, Record<string, string>> = {
   bg: {},
   en: {},
+  zh: {
+    historical_timeline: "历史年表",
+    historical_event: "历史事件",
+    historical_finance: "历史财政记录",
+    mayor_term: "市长任期",
+    governance_change: "治理变迁",
+    municipal_programme: "市政项目",
+    cultural_programme: "文化项目",
+    notable_person_birth: "知名人物出生"
+  },
   de: {
     "wikidata_coordinate": "Wikidata-Koordinaten",
     "approximate_site": "ungefährer Standort",
@@ -324,6 +335,7 @@ export function sourceTitle(title: string, lang: Lang = "bg"): string {
       es: "Coordenadas (Wikidata)",
       el: "Συντεταγμένες (Wikidata)",
       ja: "座標（Wikidata）",
+      zh: "坐标（Wikidata）",
       tl: "Mga coordinate (Wikidata)",
       uk: "Координати (Wikidata)",
       ru: "Координаты (Wikidata)",
@@ -331,7 +343,7 @@ export function sourceTitle(title: string, lang: Lang = "bg"): string {
     , pt: "Coordenadas (Wikidata)"};
     return `${coordinateLabels[lang]} · ${coordinateRecord[1]}`;
   }
-  return sourceTitleLabels[lang]?.[title] ?? translateEn(title, lang) ?? (lang === "pt" ? ptText(title) : title);
+  return sourceTitleLabels[lang]?.[title] ?? translateEn(title, lang) ?? (lang === "pt" ? ptText(title) : lang === "zh" ? zhText(title) : title);
 }
 
 export function knownHistoryLabel(value: string | null | undefined, lang: Lang = "bg"): string {
@@ -340,6 +352,8 @@ export function knownHistoryLabel(value: string | null | undefined, lang: Lang =
   if (direct) return direct;
   const translated = translateEn(value, lang);
   if (translated) return translated;
+
+  if (lang === "zh") return zhText(value);
 
   if (lang !== "de") return value;
 

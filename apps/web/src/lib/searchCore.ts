@@ -114,10 +114,16 @@ export function rankSiteSearch(
     let matchesEveryWord = true;
 
     for (const word of queryWords) {
+      // Chinese and Japanese text normally lacks spaces between words. A
+      // visitor searching for 剧场 should still find 古剧场, just as a
+      // catalogue substring search does. Keep Latin matching unchanged.
+      const unspacedScript = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(word);
       if (titleWords.includes(word)) score += 38;
       else if (titleWords.some((candidate) => candidate.startsWith(word))) score += 28;
+      else if (unspacedScript && titleWords.some((candidate) => candidate.includes(word))) score += 22;
       else if (haystackWords.includes(word)) score += 16;
       else if (haystackWords.some((candidate) => candidate.startsWith(word))) score += 10;
+      else if (unspacedScript && haystackWords.some((candidate) => candidate.includes(word))) score += 8;
       else if (fuzzyWordMatch(word, titleWords)) score += 12;
       else if (fuzzyWordMatch(word, haystackWords)) score += 5;
       else {

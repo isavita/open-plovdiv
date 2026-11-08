@@ -173,7 +173,7 @@ try {
     const html = await response.text();
     const canonical = linkTags(html).find((link) => link.rel === "canonical")?.href;
     assert(canonical, `${pagePath}: missing canonical HTML URL`);
-    const home = /^\/(?:en|de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)?$/.test(pagePath);
+    const home = /^\/(?:en|de|fr|it|tr|es|el|ja|zh|tl|uk|ru|pl|pt)?$/.test(pagePath);
     if (home) visitedHomes.add(pagePath);
     checkVisibleLinks(html, canonical, { home });
     const markdown = await checkMarkdown(path, canonical);
@@ -184,9 +184,9 @@ try {
       assert(await checkMarkdown(`${pagePath}.md`, canonical) === markdown, `${pagePath}.md: locale home alias differs`);
     }
   }
-  assert(visitedHomes.size === 14, `Expected guide links on 14 localized homepages; checked ${visitedHomes.size}`);
+  assert(visitedHomes.size === 15, `Expected guide links on 15 localized homepages; checked ${visitedHomes.size}`);
 
-  const samples = ["/", "/en/history", "/history", "/ja/history", "/en/places"];
+  const samples = ["/", "/en/history", "/history", "/ja/history", "/zh/history", "/en/places"];
   for (const kind of ["places", "people", "stories", "routes", "neighbourhoods", "projects", "mayors"]) {
     const sample = pageUrls.find((url) => new RegExp(`^/en/${kind}/[^/]+$`).test(url.pathname));
     assert(sample, `No sitemap sample for ${kind}`);
@@ -246,7 +246,7 @@ try {
     const status = await rawStatus(path);
     assert(status !== 200, `${path}: unsafe Markdown request unexpectedly succeeded`);
   }
-  console.log(`llms validation passed: ${pageUrls.length} sitemap mappings, ${markdownUrls.length} index links, 14 localized homepage links, ${samples.length} HTML/Markdown pairs and short aliases; static files, traversal, HEAD, missing page and method handling verified.`);
+  console.log(`llms validation passed: ${pageUrls.length} sitemap mappings, ${markdownUrls.length} index links, 15 localized homepage links, ${samples.length} HTML/Markdown pairs and short aliases; static files, traversal, HEAD, missing page and method handling verified.`);
 } finally {
   if (!exited) {
     server.kill("SIGTERM");

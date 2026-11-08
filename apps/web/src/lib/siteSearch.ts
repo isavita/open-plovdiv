@@ -60,6 +60,7 @@ const governanceTitles: Record<Lang, string> = {
   es: "Gobernanza",
   el: "Διακυβέρνηση",
   ja: "統治",
+  zh: "城市治理",
   tl: "Pamamahala",
   uk: "Управління",
   ru: "Управление",
@@ -97,7 +98,7 @@ function collectStrings(value: unknown, limit = 32): string[] {
   return result;
 }
 
-const localeKeySuffix = /_(bg|en|de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$/;
+const localeKeySuffix = /_(bg|en|de|fr|it|tr|es|el|ja|zh|tl|uk|ru|pl|pt)$/;
 
 /**
  * Like collectStrings, but object fields carrying another locale's suffix are
@@ -105,7 +106,7 @@ const localeKeySuffix = /_(bg|en|de|fr|it|tr|es|el|ja|tl|uk|ru|pl)$/;
  * story sections, quarter timelines) only in its own language. Cross-language
  * findability stays with names and titles, which are indexed as aliases.
  */
-function collectLocalizedStrings(value: unknown, lang: Lang, limit = 24): string[] {
+export function collectLocalizedStrings(value: unknown, lang: Lang, limit = 24): string[] {
   const result: string[] = [];
   const visit = (entry: unknown, depth: number) => {
     if (result.length >= limit || depth > 3 || entry == null) return;
@@ -123,9 +124,18 @@ function collectLocalizedStrings(value: unknown, lang: Lang, limit = 24): string
       return;
     }
     if (typeof entry === "object") {
-      for (const [key, item] of Object.entries(entry as Record<string, unknown>).slice(0, 48)) {
+      const record = entry as Record<string, unknown>;
+      for (const [key, item] of Object.entries(record).slice(0, 48)) {
         const suffix = localeKeySuffix.exec(key)?.[1];
-        if (suffix && suffix !== lang) continue;
+        if (suffix && suffix !== lang) {
+          // Chinese pages fall back to English when their own field is absent.
+          // Keep the searchable content in step with the displayed fallback.
+          const chineseValue = record[`${key.slice(0, -3)}_zh`];
+          const hasChinese = typeof chineseValue === "string"
+            ? chineseValue.trim().length > 0
+            : chineseValue != null && (!Array.isArray(chineseValue) || chineseValue.length > 0);
+          if (lang !== "zh" || suffix !== "en" || hasChinese) continue;
+        }
         visit(item, depth + 1);
       }
     }

@@ -2,6 +2,7 @@
 import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import { ptText } from "@i18n/ptUiTranslations";
+import { zhText } from "@i18n/zhUiTranslations";
 import Layout from "@layouts/Layout.astro";
 import VisitorPractical from "@components/VisitorPractical.astro";
 import { ui, type Lang } from "@i18n/ui";
@@ -27,6 +28,7 @@ const homePageTitles = {
   es: "Plovdiv: guía de la ciudad, historia y paseos",
   el: "Πλόβντιβ: οδηγός πόλης, ιστορία και περίπατοι",
   ja: "プロヴディフの街歩きガイド：歴史と見どころ",
+  zh: "普罗夫迪夫旅游指南：景点与游览",
   tl: "Gabay sa Plovdiv: kasaysayan, mga lugar at paglalakad",
   uk: "Путівник Пловдивом: історія, місця та прогулянки",
   ru: "Путеводитель по Пловдиву: история, места и прогулки",
@@ -47,7 +49,7 @@ const tr = (
   uk: string,
   ru: string,
   pl: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl, pt: ptText(en) } satisfies Record<Lang, string>)[lang];
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, zh: zhText(en), tl, uk, ru, pl, pt: ptText(en) } satisfies Record<Lang, string>)[lang];
 
 const labels = {
   heroMotto: tr(

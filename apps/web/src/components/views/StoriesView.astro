@@ -1,4 +1,5 @@
 ---
+import { withZhLocale } from "@i18n/zhUiTranslations";
 import LinkIcon from "@components/LinkIcon.astro";
 import Layout from "@layouts/Layout.astro";
 import { localizePath, ui, type Lang } from "@i18n/utils";
@@ -19,7 +20,7 @@ type Props = {
 const { lang } = Astro.props;
 const t = ui[lang];
 
-const labels = ({
+const labels = (withZhLocale({
   bg: {
     title: "Исторически разкази",
     eyebrow: "Пловдив, разказ след разказ",
@@ -215,7 +216,7 @@ const labels = ({
     evidence: "Registos associados",
     editorialNote:
       "Cada história reúne lugares, acontecimentos, imagens e fontes verificados num percurso pela história da cidade."
-  }} satisfies Record<Lang, Record<string, string>>)[lang];
+  }}) satisfies Record<Lang, Record<string, string>>)[lang];
 
 const archiveById = new Map(historicalArchiveItems.map((item) => [item.id, item]));
 const pairById = new Map(thenNowPairs.map((pair) => [pair.id, pair]));
@@ -245,7 +246,7 @@ const stories = [...storyLongreads].sort(
 
 function localized(record: Record<string, unknown>, field: string): string {
   return String(
-    record[`${field}_${lang}`] ?? record[`${field}_en`] ?? record[`${field}_bg`] ?? ""
+    (lang === "zh" ? (record[`${field}_zh`] || record[`${field}_en`] || "") : (record[`${field}_${lang}`] ?? record[`${field}_en`] ?? record[`${field}_bg`] ?? ""))
   );
 }
 

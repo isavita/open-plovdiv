@@ -11,21 +11,21 @@ import {
   thenNowPairs,
   type KnowledgePlace
 } from "@lib/data";
-import { localeForLang, type Lang } from "@i18n/utils";
+import { field, localeForLang, type Lang } from "@i18n/utils";
 import { sortPlacesForDiscovery } from "@lib/placeDiscovery";
 
 export const prerender = true;
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain", it: "Spazio urbano", tr: "Kentsel alan", es: "Espacio urbano", el: "Αστικός χώρος", ja: "都市空間", tl: "Pampublikong espasyo", uk: "Міське середовище", ru: "Городская среда", pl: "Przestrzeń miejska" , pt: "Cívico"},
-  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline", it: "Colle", tr: "Tepe", es: "Colina", el: "Λόφος", ja: "丘", tl: "Burol", uk: "Пагорб", ru: "Холм", pl: "Wzgórze" , pt: "Colina"},
-  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval", it: "Medievale", tr: "Orta Çağ", es: "Medieval", el: "Μεσαιωνικό", ja: "中世", tl: "Medyebal", uk: "Середньовіччя", ru: "Средневековье", pl: "Średniowiecze" , pt: "Medieval"},
-  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument", it: "Monumento", tr: "Anıt", es: "Monumento", el: "Μνημείο", ja: "記念碑", tl: "Monumento", uk: "Пам'ятник", ru: "Памятник", pl: "Pomnik" , pt: "Monumento"},
-  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman", it: "Ottomano", tr: "Osmanlı", es: "Otomano", el: "Οθωμανικό", ja: "オスマン層", tl: "Ottoman", uk: "Османський пласт", ru: "Османский пласт", pl: "Warstwa osmańska" , pt: "Otomano"},
-  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux", it: "Sito religioso", tr: "Dinî yapı", es: "Sitio religioso", el: "Θρησκευτικός χώρος", ja: "宗教施設", tl: "Relihiyoso", uk: "Релігійний об'єкт", ru: "Религиозный объект", pl: "Obiekt religijny" , pt: "Religioso"},
-  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale", tr: "Ulusal Uyanış", es: "Renacimiento Nacional", el: "Εθνική Αναγέννηση", ja: "民族復興期", tl: "Pambansang Muling Pagsilang", uk: "Відродження", ru: "Возрождение", pl: "Odrodzenie narodowe" , pt: "Renascimento Nacional"},
-  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano", tr: "Roma", es: "Romano", el: "Ρωμαϊκό", ja: "ローマ層", tl: "Romano", uk: "Римський пласт", ru: "Римский пласт", pl: "Warstwa rzymska" , pt: "Romano"},
-  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio", tr: "Trak", es: "Tracio", el: "Θρακικό", ja: "トラキア層", tl: "Trakiano", uk: "Фракійський пласт", ru: "Фракийский пласт", pl: "Warstwa tracka" , pt: "Trácio"}
+  civic: { bg: "Градска среда", en: "Civic", de: "Stadtraum", fr: "Espace urbain", it: "Spazio urbano", tr: "Kentsel alan", es: "Espacio urbano", el: "Αστικός χώρος", ja: "都市空間", zh: "城市空间", tl: "Pampublikong espasyo", uk: "Міське середовище", ru: "Городская среда", pl: "Przestrzeń miejska" , pt: "Cívico"},
+  hill: { bg: "Хълм", en: "Hill", de: "Hügel", fr: "Colline", it: "Colle", tr: "Tepe", es: "Colina", el: "Λόφος", ja: "丘", zh: "山丘", tl: "Burol", uk: "Пагорб", ru: "Холм", pl: "Wzgórze" , pt: "Colina"},
+  medieval: { bg: "Средновековие", en: "Medieval", de: "Mittelalterlich", fr: "Médiéval", it: "Medievale", tr: "Orta Çağ", es: "Medieval", el: "Μεσαιωνικό", ja: "中世", zh: "中世纪", tl: "Medyebal", uk: "Середньовіччя", ru: "Средневековье", pl: "Średniowiecze" , pt: "Medieval"},
+  monument: { bg: "Паметник", en: "Monument", de: "Denkmal", fr: "Monument", it: "Monumento", tr: "Anıt", es: "Monumento", el: "Μνημείο", ja: "記念碑", zh: "纪念碑", tl: "Monumento", uk: "Пам'ятник", ru: "Памятник", pl: "Pomnik" , pt: "Monumento"},
+  ottoman: { bg: "Османски пласт", en: "Ottoman", de: "Osmanisch", fr: "Ottoman", it: "Ottomano", tr: "Osmanlı", es: "Otomano", el: "Οθωμανικό", ja: "オスマン層", zh: "奥斯曼时期", tl: "Ottoman", uk: "Османський пласт", ru: "Османский пласт", pl: "Warstwa osmańska" , pt: "Otomano"},
+  religious: { bg: "Религиозен обект", en: "Religious", de: "Religiöser Ort", fr: "Site religieux", it: "Sito religioso", tr: "Dinî yapı", es: "Sitio religioso", el: "Θρησκευτικός χώρος", ja: "宗教施設", zh: "宗教建筑", tl: "Relihiyoso", uk: "Релігійний об'єкт", ru: "Религиозный объект", pl: "Obiekt religijny" , pt: "Religioso"},
+  revival: { bg: "Възраждане", en: "Revival", de: "Wiedergeburtszeit", fr: "Renaissance nationale", it: "Rinascita nazionale", tr: "Ulusal Uyanış", es: "Renacimiento Nacional", el: "Εθνική Αναγέννηση", ja: "民族復興期", zh: "民族复兴时期", tl: "Pambansang Muling Pagsilang", uk: "Відродження", ru: "Возрождение", pl: "Odrodzenie narodowe" , pt: "Renascimento Nacional"},
+  roman: { bg: "Римски пласт", en: "Roman", de: "Römisch", fr: "Romain", it: "Romano", tr: "Roma", es: "Romano", el: "Ρωμαϊκό", ja: "ローマ層", zh: "罗马时期", tl: "Romano", uk: "Римський пласт", ru: "Римский пласт", pl: "Warstwa rzymska" , pt: "Romano"},
+  thracian: { bg: "Тракийски пласт", en: "Thracian", de: "Thrakisch", fr: "Thrace", it: "Tracio", tr: "Trak", es: "Tracio", el: "Θρακικό", ja: "トラキア層", zh: "色雷斯时期", tl: "Trakiano", uk: "Фракійський пласт", ru: "Фракийский пласт", pl: "Warstwa tracka" , pt: "Trácio"}
 };
 
 const labels: Record<Lang, Record<string, string>> = {
@@ -77,6 +77,7 @@ const labels: Record<Lang, Record<string, string>> = {
     builder: "Κατασκευαστής",
     creator: "Αρχιτέκτονας/κατασκευαστής"
   },
+  zh: { built: "建造年代", architect: "建筑师", builder: "建造者", creator: "建筑师／建造者" },
   ja: {
     built: "建設・年代",
     architect: "建築家",
@@ -116,6 +117,7 @@ const labels: Record<Lang, Record<string, string>> = {
   }};
 
 function localized(record: Record<string, any>, base: string, lang: Lang): string {
+  if (lang === "zh") return knownHistoryLabel(field(record, base, lang), lang);
   return knownHistoryLabel(String(record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""), lang);
 }
 
@@ -205,6 +207,7 @@ const cards = {
   es: placeCards("es"),
   el: placeCards("el"),
   ja: placeCards("ja"),
+  zh: placeCards("zh"),
   tl: placeCards("tl"),
   uk: placeCards("uk"),
   ru: placeCards("ru"),

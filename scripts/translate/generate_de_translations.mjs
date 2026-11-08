@@ -4,7 +4,7 @@ import process from "node:process";
 
 const root = process.cwd();
 const targetLang = process.argv[2] ?? "de";
-const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl", "pt"]);
+const supportedTargetLangs = new Set(["de", "fr", "it", "tr", "es", "el", "ja", "zh", "tl", "uk", "ru", "pl", "pt"]);
 if (!supportedTargetLangs.has(targetLang)) {
   throw new Error(`Unsupported target language "${targetLang}". Expected one of: ${[...supportedTargetLangs].join(", ")}`);
 }
@@ -834,6 +834,33 @@ const landmarkFixupsByLang = {
     ["The Seven Hills", "七つの丘"]
   ]
 };
+// These source titles are Bulgarian even in the English source field, so an
+// English-to-Chinese translator cannot reliably interpret them. Translate the
+// titles from their Bulgarian wording, preserving the original year and number.
+manualTranslationsByLang.zh = {
+  "Общински съвет - Пловдив, Решение 33 за бюджет 2018": "普罗夫迪夫市议会——2018年预算第33号决议",
+  "Общински съвет - Пловдив, Решение №4 за бюджет 2014": "普罗夫迪夫市议会——2014年预算第4号决议",
+  "Общински съвет — Пловдив, Правилник за подпомагане на деца с изявени дарби": "普罗夫迪夫市议会——资助具有突出才能儿童的规定",
+  "Общински съвет — Пловдив, Решение №58 за отчет на бюджет 2010": "普罗夫迪夫市议会——2010年预算执行报告第58号决议",
+  // Preserve the original file name when it is used as an attribution.
+  "0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg": "0530 Вид на одну из улиц Филиппополя (Пловдива), январь 1878.jpg",
+  "Wikimedia Commons — Св.Св.Константин и Елена Пловдив.JPG": "维基共享资源 — Св.Св.Константин и Елена Пловдив.JPG",
+  "Coordinates for landmark: Şahabettin İmaret Mosque": "Şahabettin İmaret 清真寺地标的坐标",
+  "Coordinates for Şahabettin İmaret Mosque.": "Şahabettin İmaret 清真寺的坐标。",
+  "A development plan slates the quarter for clearance; an architects' campaign defends it, and in 1983 ten buildings are reconstructed.": "一项开发计划拟拆除该街区；建筑师发起保护行动，1983年有十栋建筑得到重建。",
+  "A fire destroys much of the fabric; the quarter is rebuilt, but trade slowly drifts away.": "一场火灾烧毁了街区的大部分建筑；街区重建后，商业活动仍逐渐流失。",
+  "Any time; the quarter is workaday by nature.": "任何时间均可；这个街区本就是日常生活的场所。",
+  "The market block on the western edge still feeds the quarter.": "西侧边缘的市场街区仍为当地居民提供食物。",
+  "The quarter is level; the central lanes have the smoothest paving.": "街区地势平坦；中心小巷的路面最平整。",
+  "Literally \"the sugar factory\" — after the Kristal sugar-products factory around which the quarter grew.": "字面意思是“糖厂”——得名于 Kristal 糖制品工厂，街区围绕工厂发展起来。",
+  "The studios and festivals since 2014 returned the quarter to its artisan gene.": "2014年以来，工作室与艺术节让这个街区重拾手工业传统。",
+  "A compact circuit of ancient Philippopolis: from the Nebet Tepe acropolis past the theatre and the Bishop's Basilica to the forum, the odeon and the stadium. Every leg follows the published records of the Roman city.": "一条紧凑的古菲利波波利斯环线：从内贝特山卫城出发，经过剧院和主教座堂，前往广场、小剧场和体育场。每一段行程都依据这座罗马城市的公开记录。"
+};
+// History-sensitive wording reviewed against the English and Bulgarian
+// sources lives separately so it is preserved across regeneration.
+if (targetLang === "zh") {
+  Object.assign(manualTranslationsByLang.zh, JSON.parse(fs.readFileSync(path.join(root, "data/translations/zh-reviewed.json"), "utf8")));
+}
 const manualTranslations = manualTranslationsByLang[targetLang] ?? {};
 
 function readJson(filePath) {
@@ -929,7 +956,7 @@ async function translateBatch(batch) {
   const url = new URL("https://translate.googleapis.com/translate_a/single");
   url.searchParams.set("client", "gtx");
   url.searchParams.set("sl", "en");
-  url.searchParams.set("tl", targetLang);
+  url.searchParams.set("tl", targetLang === "zh" ? "zh-CN" : targetLang);
   url.searchParams.set("dt", "t");
   url.searchParams.set("q", batch.join(splitToken));
 
@@ -2972,6 +2999,49 @@ function applyPortugueseRelationshipFixups(translations) {
   }
 }
 
+function applyChineseContentFixups(translations) {
+  if (targetLang !== "zh") return;
+  for (const [source, translated] of Object.entries(translations)) {
+    let value = translated;
+    // These relations are directional: "A succeeds B" means A took office
+    // after B; "A succeeded by B" means B took office after A. Machine output
+    // commonly mistakes succeeds for generic success or drops the direction.
+    const relation = source.match(/^(?:Person relationship: )?(.+?) — (succeeded by|succeeds) — (.+?)(?:\.)?$/u);
+    if (relation) {
+      const [, person, direction, other] = relation;
+      value = direction === "succeeds" ? `${person} 继任 ${other}` : `${person} 由 ${other} 接任`;
+      if (source.startsWith("Person relationship: ")) value = `人物关系：${value}。`;
+    }
+    const chronology = source.match(/^The mayoral chronology links (.+?) with (.+?) through the relationship "(succeeded by|succeeds)"\.$/u);
+    if (chronology) {
+      const [, person, other, direction] = chronology;
+      value = direction === "succeeds"
+        ? `市长年表显示：${person} 继任 ${other}。`
+        : `市长年表显示：${person} 由 ${other} 接任。`;
+    }
+    // Roma in an organization's name denotes the Roma people, not Rome.
+    if (/\bRoma-Plovdiv\b/u.test(source)) value = value.replaceAll("罗马-Plovdiv", "Roma-Plovdiv");
+    // In this city guide "quarter" refers to a neighbourhood, not a fiscal quarter.
+    if (/\bquarters?\b/iu.test(source)) value = value.replaceAll("季度", "街区");
+    // Public Ottoman bathhouses are cultural places, not domestic bathrooms;
+    // a "double bath" has separate sections rather than a bathtub for two.
+    if (/\b(?:baths?|bathhouses?|bath-houses?)\b/iu.test(source) && !/\b(?:private|marble|own)\s+bath\b/iu.test(source)) {
+      value = value.replaceAll("双人浴室", "双浴场").replaceAll("浴室", "浴场");
+    }
+    // Preserve original media file identifiers and the site/organization name.
+    if (!/\.(?:jpe?g|png|webp|gif|tiff?|svg)\b/iu.test(source) && !/\bRoma-Plovdiv\b/u.test(source)) {
+      value = value.replace(/(?<!Open )\bPlovdiv(?![A-Za-z]|\d+\.bg)/gu, "普罗夫迪夫");
+    }
+    // Generic proper-name repair can leave "Name (Name)" after transliteration.
+    value = value.replace(/([\p{L}][\p{L}’.'-]*(?: [\p{L}][\p{L}’.'-]*){1,5})\s*[（(]\1[）)]/gu, "$1");
+    // Wikimedia file titles are identifiers. Retain them byte-for-byte even
+    // if the surrounding Chinese attribution is translated.
+    const file = source.match(/(?:^|[:—]\s*)([^:—]*?\.(?:jpe?g|png|webp|gif|tiff?|svg))(?=[.\s)"']*$)/iu)?.[1];
+    if (file && !value.includes(file)) value = source === file ? file : `${value}（文件名：${file}）`;
+    translations[source] = value;
+  }
+}
+
 const existing = fs.existsSync(outputPath) ? readJson(outputPath) : {};
 const allStrings = new Set();
 const protectedNames = new Set();
@@ -2982,7 +3052,16 @@ for (const dir of sourceDirs) {
     collect(json, "", allStrings);
   }
 }
-for (const name of protectedNames) allStrings.delete(name);
+// Chinese must also retain earlier source-key aliases that Japanese covers,
+// even after the corresponding curated record is renamed or corrected.
+// Those aliases preserve cross-locale links and historical attribution text.
+const japaneseSourceKeys = targetLang === "zh"
+  ? new Set(Object.keys(readJson(path.join(root, "data/translations/ja.json"))))
+  : new Set();
+for (const key of japaneseSourceKeys) allStrings.add(key);
+for (const name of protectedNames) {
+  if (!japaneseSourceKeys.has(name)) allStrings.delete(name);
+}
 protectedNameFixups = await buildProtectedNameFixups(protectedNames, existing);
 
 const translations = {};
@@ -3003,7 +3082,7 @@ console.log(`${targetLang} translations: ${Object.keys(translations).length} cac
 // On long batched strings the endpoint sometimes returns the English source
 // verbatim or translates only the middle sentence. Detect those and retry the
 // string on its own (solo requests almost always succeed where batches fail).
-const NON_LATIN_TARGETS = new Set(["el", "ja", "uk", "ru"]);
+const NON_LATIN_TARGETS = new Set(["el", "ja", "zh", "uk", "ru"]);
 
 /** A run of >=6 consecutive ASCII-alphabetic words reads as untranslated English. */
 function longestLatinWordRun(text) {
@@ -3079,6 +3158,7 @@ applyRussianTemplateFixups(translations);
 applyTagalogTemplateFixups(translations);
 applyPolishTemplateFixups(translations);
 applyPortugueseRelationshipFixups(translations);
+applyChineseContentFixups(translations);
 applyManualTranslations(translations, allStrings);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });

@@ -1,11 +1,12 @@
 ---
+import { withZhLocale } from "@i18n/zhUiTranslations";
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/utils";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
-const readOnlyCopy = {
+const readOnlyCopy = withZhLocale({
   bg: {
     firstTitle: "Само за четене по замисъл",
     firstText: "Open Plovdiv не предлага профили, коментари, сигнали, формуляри или предложения за нови инициативи. Сайтът не събира имена, имейли или телефони чрез потребителски форми.",
@@ -89,7 +90,7 @@ const readOnlyCopy = {
     firstText: "O Open Plovdiv não possui contas, comentários, relatórios, formulários ou propostas para novas iniciativas. O site não recolhe nomes, endereços de e-mail ou números de telefone através de formulários de utilizador.",
     secondTitle: "Links externos",
     secondText: "Links para organizações, páginas de donativos e fontes públicas abrem sites externos com as suas próprias regras de privacidade. O Open Plovdiv não recebe informações que partilhe lá."
-  }} satisfies Record<Lang, { firstTitle: string; firstText: string; secondTitle: string; secondText: string }>;
+  }}) satisfies Record<Lang, { firstTitle: string; firstText: string; secondTitle: string; secondText: string }>;
 const copy = readOnlyCopy[lang];
 ---
 

@@ -1,4 +1,6 @@
 ---
+import { localizeChineseUi } from "@i18n/zhUiTranslations";
+import { withZhLocale } from "@i18n/zhUiTranslations";
 import Layout from "@layouts/Layout.astro";
 import { localeForLang, ui, type Lang } from "@i18n/utils";
 import {
@@ -14,7 +16,7 @@ const { lang } = Astro.props;
 const t = ui[lang];
 
 const labels =
-  lang === "bg"
+  localizeChineseUi(lang, (lang === "bg"
     ? {
         title: "Редакторски преглед",
         eyebrow: "Проверка на историческата база",
@@ -878,10 +880,10 @@ const labels =
         reset: "Clear filters",
         tableLimit: "Showing the first",
         tableLimitSuffix: "records for the current filter. The full list is available in the CSV file."
-      });
+      })));
 
 const blockerLabels: Record<string, Record<Lang, string>> = {
-  needs_independent_editorial_signoff: {
+  needs_independent_editorial_signoff: withZhLocale({
     bg: "нужен независим редакторски подпис",
     en: "needs independent editorial sign-off",
     de: "unabhängige redaktionelle Freigabe nötig",
@@ -895,8 +897,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "потрібне незалежне редакційне затвердження",
     ru: "требуется независимое редакционное утверждение",
     pl: "wymaga niezależnego zatwierdzenia redakcyjnego"
-  , pt: "necessita de aprovação editorial independente"},
-  missing_independent_editorial_signoff_log: {
+  , pt: "necessita de aprovação editorial independente"}),
+  missing_independent_editorial_signoff_log: withZhLocale({
     bg: "липсва име или дата на редактора",
     en: "missing reviewer name or date",
     de: "Name oder Datum der prüfenden Person fehlt",
@@ -910,8 +912,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "відсутнє ім'я або дата рецензента",
     ru: "отсутствует имя или дата рецензента",
     pl: "brak nazwiska lub daty recenzenta"
-  , pt: "nome ou data do revisor em falta"},
-  missing_source_reference: {
+  , pt: "nome ou data do revisor em falta"}),
+  missing_source_reference: withZhLocale({
     bg: "липсва източникова връзка",
     en: "missing source reference",
     de: "Quellenverweis fehlt",
@@ -925,8 +927,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "відсутнє посилання на джерело",
     ru: "отсутствует ссылка на источник",
     pl: "brak odniesienia do źródła"
-  , pt: "falta referência de fonte"},
-  missing_license_or_reuse_status: {
+  , pt: "falta referência de fonte"}),
+  missing_license_or_reuse_status: withZhLocale({
     bg: "липсва лиценз или статус за повторна употреба",
     en: "missing license or reuse status",
     de: "Lizenz oder Nachnutzungsstatus fehlt",
@@ -940,8 +942,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "відсутня ліцензія або статус повторного використання",
     ru: "отсутствует лицензия или статус повторного использования",
     pl: "brak licencji lub statusu ponownego wykorzystania"
-  , pt: "licença em falta ou estado de reutilização"},
-  missing_external_editorial_signoff_record: {
+  , pt: "licença em falta ou estado de reutilização"}),
+  missing_external_editorial_signoff_record: withZhLocale({
     bg: "липсва външен редакторски запис",
     en: "missing external editorial review record",
     de: "externer redaktioneller Prüfvermerk fehlt",
@@ -955,8 +957,8 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "відсутній запис зовнішньої редакційної перевірки",
     ru: "отсутствует запись внешней редакционной проверки",
     pl: "brak zapisu zewnętrznego przeglądu redakcyjnego"
-  , pt: "falta registo de revisão editorial externa"},
-  editorial_signoff_log_mismatch: {
+  , pt: "falta registo de revisão editorial externa"}),
+  editorial_signoff_log_mismatch: withZhLocale({
     bg: "несъответствие в редакторския запис",
     en: "editorial review record mismatch",
     de: "Widerspruch im redaktionellen Prüfvermerk",
@@ -970,11 +972,11 @@ const blockerLabels: Record<string, Record<Lang, string>> = {
     uk: "невідповідність у записі редакційної перевірки",
     ru: "несоответствие в записи редакционной проверки",
     pl: "niezgodność w zapisie przeglądu redakcyjnego"
-  , pt: "incompatibilidade de registo de revisão editorial"}
+  , pt: "incompatibilidade de registo de revisão editorial"})
 };
 
 const roleLabels: Record<string, Record<Lang, string>> = {
-  primary_entity: {
+  primary_entity: withZhLocale({
     bg: "основен запис",
     en: "primary record",
     de: "Haupteintrag",
@@ -988,8 +990,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "основний запис",
     ru: "основная запись",
     pl: "wpis podstawowy"
-  , pt: "registo primário"},
-  relationship_entity: {
+  , pt: "registo primário"}),
+  relationship_entity: withZhLocale({
     bg: "връзка между записи",
     en: "relationship record",
     de: "Beziehungseintrag",
@@ -1003,8 +1005,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "запис зв'язку",
     ru: "запись связи",
     pl: "wpis powiązania"
-  , pt: "registo de relacionamento"},
-  supporting_archive: {
+  , pt: "registo de relacionamento"}),
+  supporting_archive: withZhLocale({
     bg: "архивен материал",
     en: "supporting archive item",
     de: "unterstützendes Archivmaterial",
@@ -1018,8 +1020,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "додатковий архівний матеріал",
     ru: "дополнительный архивный материал",
     pl: "uzupełniający materiał archiwalny"
-  , pt: "item de ficheiro de suporte"},
-  primary_document: {
+  , pt: "item de ficheiro de suporte"}),
+  primary_document: withZhLocale({
     bg: "първичен документ",
     en: "primary document",
     de: "Primärdokument",
@@ -1033,8 +1035,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "первинний документ",
     ru: "первичный документ",
     pl: "dokument źródłowy"
-  , pt: "documento primário"},
-  editorial_feature: {
+  , pt: "documento primário"}),
+  editorial_feature: withZhLocale({
     bg: "редакционен материал",
     en: "editorial feature",
     de: "redaktioneller Beitrag",
@@ -1048,8 +1050,8 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "редакційний матеріал",
     ru: "редакционный материал",
     pl: "materiał redakcyjny"
-  , pt: "recurso editorial"},
-  education_material: {
+  , pt: "recurso editorial"}),
+  education_material: withZhLocale({
     bg: "образователен материал",
     en: "education material",
     de: "Bildungsmaterial",
@@ -1063,7 +1065,7 @@ const roleLabels: Record<string, Record<Lang, string>> = {
     uk: "освітній матеріал",
     ru: "образовательный материал",
     pl: "materiał edukacyjny"
-  , pt: "material educativo"}
+  , pt: "material educativo"})
 };
 
 function blockerLabel(id: string) {
@@ -1263,7 +1265,7 @@ function collectionLabel(id: string) {
   if (lang === "ru" && collectionLabelsRu[id]) return collectionLabelsRu[id];
   if (lang === "pl" && collectionLabelsPl[id]) return collectionLabelsPl[id];
   if (lang === "pt" && collectionLabelsPt[id]) return collectionLabelsPt[id];
-  return collection?.[`label_${lang}`] ?? collection?.label_en ?? collection?.label_bg ?? id.replaceAll("_", " ");
+  return collection?.[`label_${lang}`] || collection?.label_en || (lang === "zh" ? "" : collection?.label_bg) || id.replaceAll("_", " ");
 }
 
 function statusLabel(status: EditorialReviewRecord["editorial_status"]) {
@@ -1384,7 +1386,7 @@ const reviewConfig = {
         <div>
           <p class="eyebrow">{labels.status}</p>
           <h2>{historyEditorialReview.status === "complete" ? labels.signedOffStatus : labels.needsStatus}</h2>
-          <p class="meta">{labels.requirement}: {lang === "pt" ? "É necessário registar uma aprovação editorial independente para 100% do conteúdo publicado antes de considerar concluída a plataforma de história." : historyEditorialReview.acceptance_requirement}</p>
+          <p class="meta">{labels.requirement}: {lang === "zh" ? "在历史平台视为完成之前，必须为所有已发布内容记录独立编辑审核通过的结果。" : lang === "pt" ? "É necessário registar uma aprovação editorial independente para 100% do conteúdo publicado antes de considerar concluída a plataforma de história." : historyEditorialReview.acceptance_requirement}</p>
           <p class="meta">{historyEditorialReview.version} · {generatedLabel}</p>
         </div>
         <div class="review-meter" aria-label={`${historyEditorialReview.summary.signed_off_percent}%`}>
@@ -1613,7 +1615,7 @@ const reviewConfig = {
     }
 
     function localizedTitle(record) {
-      return record[`title_${config.lang}`] || record.title_en || record.title_bg || record.id;
+      return record[`title_${config.lang}`] || record.title_en || (config.lang === "zh" ? "" : record.title_bg) || record.id;
     }
 
     function recordSearchText(record) {
@@ -1691,7 +1693,7 @@ const reviewConfig = {
           const sourceLinks = sources
             .slice(0, 2)
             .map((source) => {
-              const title = source[`title_${config.lang}`] || source.title_en || source.title_bg || source.source_id || source.url;
+              const title = source[`title_${config.lang}`] || source.title_en || (config.lang === "zh" ? "" : source.title_bg) || source.source_id || source.url;
               return `<a class="src-link review-source-link" href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(title)}</a>`;
             })
             .join("");

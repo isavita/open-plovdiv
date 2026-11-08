@@ -27,8 +27,8 @@ export function englishBulgarianAddress(text: string): string {
   // names as transliterations rather than inventing an English name.
   const readable = text
     .replace(/Старинен Пловдив/g, "Old Plovdiv")
-    .replace(/ул\s*\./gi, "Street ")
     .replace(/бул\s*\./gi, "Boulevard ")
+    .replace(/ул\s*\./gi, "Street ")
     .replace(/гр\s*\./gi, "city of ")
     .replace(/град\s+/gi, "city of ")
     .replace(/площад\s+/gi, "Square ")

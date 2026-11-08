@@ -1,6 +1,7 @@
 ---
 import LinkIcon from "@components/LinkIcon.astro";
 import { ptText } from "@i18n/ptUiTranslations";
+import { zhText } from "@i18n/zhUiTranslations";
 import Layout from "@layouts/Layout.astro";
 import { field, ui, type Lang } from "@i18n/utils";
 import { sourceRegistry } from "@lib/data";
@@ -24,7 +25,7 @@ const trs = (
   uk: string,
   ru: string,
   pl: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl, pt: ptText(en) } satisfies Record<Lang, string>)[lang];
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, zh: zhText(en), tl, uk, ru, pl, pt: ptText(en) } satisfies Record<Lang, string>)[lang];
 
 // Provenance groups — a presentation-only classification of the registry by
 // domain, so a visitor can see at a glance whether a claim rests on an

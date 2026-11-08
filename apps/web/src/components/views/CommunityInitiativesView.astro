@@ -1,4 +1,5 @@
 ---
+import { withZhLocale } from "@i18n/zhUiTranslations";
 import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
@@ -33,7 +34,7 @@ const editorialCopy: Record<
     external: string;
     checked: string;
   }
-> = {
+> = withZhLocale({
   bg: {
     readOnly: "Редакционен каталог · само за четене",
     trust: "Open Plovdiv представя проверими инициативи от публични източници. Сайтът не приема сигнали или предложения за нови инициативи.",
@@ -229,7 +230,7 @@ const editorialCopy: Record<
     related: "Projeto público relacionado",
     external: "Página externa",
     checked: "Verificado"
-  }};
+  }});
 
 const copy = editorialCopy[lang];
 const categories = Array.from(new Set(communityInitiatives.map((item) => item.category))).sort();

@@ -1,10 +1,11 @@
 import { ptText } from "../i18n/ptUiTranslations";
+import { zhText } from "../i18n/zhUiTranslations";
 import type { Lang } from "@i18n/ui";
 
 // Keep new visitor-facing copy complete in all 13 supported languages.
 const langs: Lang[] = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl"];
 type Translations = [string, string, string, string, string, string, string, string, string, string, string, string, string];
-const translated = (lang: Lang, values: Translations) => lang === "pt" ? ptText(values[1]) : values[langs.indexOf(lang)];
+const translated = (lang: Lang, values: Translations) => lang === "pt" ? ptText(values[1]) : lang === "zh" ? zhText(values[1]) : values[langs.indexOf(lang)];
 
 export function visitorGuide(lang: Lang) {
   const tr = (...values: Translations) => translated(lang, values);

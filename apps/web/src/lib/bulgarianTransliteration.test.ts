@@ -11,6 +11,8 @@ describe("Bulgarian details on English pages", () => {
   it("keeps the source address intact and renders a readable Latin-script form", () => {
     const original = 'ул. "Цар Ивайло" № 2А, град Пловдив';
     expect(englishBulgarianAddress(original)).toBe('Street "Tsar Ivaylo" № 2A, city of Plovdiv (Bulgarian: ' + original + ")");
+    const boulevard = 'бул. "Цар Борис III Обединител"';
+    expect(englishBulgarianAddress(boulevard)).toBe('Boulevard "Tsar Boris III Obedinitel" (Bulgarian: ' + boulevard + ")");
     expect(englishBulgarianAddress("Старинен Пловдив")).toBe("Old Plovdiv (Bulgarian: Старинен Пловдив)");
     expect(englishBulgarianAddress("15 Main Street")).toBe("15 Main Street");
     expect(romanizeBulgarian("Шести септември")).toBe("Shesti septemvri");

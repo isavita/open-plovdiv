@@ -96,6 +96,7 @@
     "editorial": { "$ref": "knowledge-event.schema.json#/definitions/editorial" }
   },
   "patternProperties": {
-    "^summary_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 10 }
+    "^summary_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 10 },
+    "^summary_zh$": { "type": "string", "minLength": 1 }
   }
 }

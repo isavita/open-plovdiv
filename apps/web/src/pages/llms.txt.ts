@@ -32,7 +32,7 @@ export const GET: APIRoute = ({ site }) => {
     "",
     "> Open Plovdiv is a source-backed guide to Plovdiv, Bulgaria: its history, places, people, neighbourhoods and public life.",
     "",
-    "The site is read-only. Follow the source links and check dates and editorial context when using its information. Content is available in 14 languages; some fields may fall back to another language where translations are unavailable.",
+    "The site is read-only. Follow the source links and check dates and editorial context when using its information. Content is available in 15 languages; some fields may fall back to another language where translations are unavailable.",
     "",
     "Each public page has a Markdown alternative: append `/index.md` to its canonical URL (use `/index.md` for the root page). Short `.md` alternatives are also available for non-root pages, for example `/en/places.md` and `/en/routes.md`. HTML pages link to their Markdown alternative. These documents are derived from rendered page content; interactive or client-loaded features may be incomplete. Consult the HTML and cited sources for the authoritative presentation. The sitemap lists the public HTML pages and language variants.",
     "",

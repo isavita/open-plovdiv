@@ -1,7 +1,9 @@
 ---
+import { withZhLocale } from "@i18n/zhUiTranslations";
 import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import { ptText } from "@i18n/ptUiTranslations";
+import { zhText, withChineseUi } from "@i18n/zhUiTranslations";
 import Layout from "@layouts/Layout.astro";
 import { visitorGuide } from "@lib/visitorGuide";
 import HeroBackdrop from "@components/HeroBackdrop.astro";
@@ -69,9 +71,9 @@ const historyDataVersion = createHash("sha1")
   .slice(0, 12);
 const erasPresent = eraOrder.filter((era) => entries.some((e) => e.era === era));
 const tr = (bg: string, en: string, de: string, fr: string, it: string, trk: string, esp: string, ell: string, ja: string, tl: string, uk: string, ru: string, pl: string): string =>
-  ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell, ja, tl, uk, ru, pl, pt: ptText(en) } satisfies Record<Lang, string>)[lang];
+  ({ bg, en, de, fr, it, tr: trk, es: esp, el: ell, ja, zh: zhText(en), tl, uk, ru, pl, pt: ptText(en) } satisfies Record<Lang, string>)[lang];
 
-const labels = ({
+const labels = (withZhLocale({
       bg: {
         people: "Хора",
         places: "Места",
@@ -1121,9 +1123,9 @@ const labels = ({
         download: "Descarregar",
         jsonData: "Dados JSON",
         csvData: "Tabelas CSV"
-      }} satisfies Record<Lang, Record<string, string>>)[lang];
+      }}) satisfies Record<Lang, Record<string, string>>)[lang];
 
-const dataResourceLabels: Record<string, string> = ({
+const dataResourceLabels: Record<string, string> = (withZhLocale({
       bg: {
         index: "Индекс",
         events: "Събития",
@@ -1347,7 +1349,7 @@ const dataResourceLabels: Record<string, string> = ({
         education_resources: "Recursos educativos",
         editorial_signoffs: "Aprovações editoriais",
         editorial_review: "Revisão editorial"
-      }} satisfies Record<Lang, Record<string, string>>)[lang];
+      }}) satisfies Record<Lang, Record<string, string>>)[lang];
 
 function dataResourceLabel(key: string) {
   return dataResourceLabels[key] ?? key.replaceAll("_", " ");
@@ -1381,22 +1383,22 @@ const downloadRows = Object.entries(historyKnowledgeIndex.downloads)
   });
 
 const categoryLabels: Record<string, Record<Lang, string>> = {
-  historical_timeline: { bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi", es: "Cronología", el: "Χρονολόγιο", ja: "年表", tl: "Talaan ng Kasaysayan", uk: "Хронологія", ru: "Хронология", pl: "Chronologia" , pt: "Linha do tempo"},
-  mayor_term: { bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi", es: "Mandato de alcalde", el: "Θητεία δημάρχου", ja: "市長任期", tl: "Termino ng Alkalde", uk: "Мерська каденція", ru: "Мэрская каденция", pl: "Kadencja burmistrza" , pt: "Mandato de autarca"},
-  historical_event: { bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik", es: "Evento histórico", el: "Ιστορικό γεγονός", ja: "歴史的出来事", tl: "Makasaysayang Pangyayari", uk: "Історична подія", ru: "Историческое событие", pl: "Wydarzenie historyczne" , pt: "Evento histórico"},
-  cultural_programme: { bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı", es: "Programa cultural", el: "Πολιτιστικό πρόγραμμα", ja: "文化プログラム", tl: "Programang Pangkultura", uk: "Культурна програма", ru: "Культурная программа", pl: "Program kulturalny" , pt: "Programa cultural"},
-  historical_finance: { bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans", es: "Finanzas históricas", el: "Ιστορικά οικονομικά", ja: "歴史的財政", tl: "Makasaysayang Pananalapi", uk: "Історичні фінанси", ru: "Исторические финансы", pl: "Finanse historyczne" , pt: "Finanças históricas"},
-  municipal_programme: { bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı", es: "Programa municipal", el: "Δημοτικό πρόγραμμα", ja: "自治体プログラム", tl: "Programang Munisipal", uk: "Муніципальна програма", ru: "Муниципальная программа", pl: "Program gminny" , pt: "Programa municipal"},
-  governance_change: { bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği", es: "Cambio de gobierno", el: "Αλλαγή διακυβέρνησης", ja: "行政上の変更", tl: "Pagbabago sa Pamamahala", uk: "Зміна врядування", ru: "Изменение управления", pl: "Zmiana w zarządzaniu" , pt: "Mudança de governação"},
-  notable_person_birth: { bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu", es: "Nacimiento de una personalidad", el: "Γέννηση αξιόλογου προσώπου", ja: "著名人物の誕生", tl: "Kapanganakan ng Kilalang Tao", uk: "Народження відомої особи", ru: "Рождение известной личности", pl: "Narodziny znanej osoby" , pt: "Nascimento de pessoa notável"},
-  archive_source: { bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı", es: "Fuente de archivo", el: "Πηγή αρχείου", ja: "アーカイブ出典", tl: "Pinagmulan ng Arkibo", uk: "Архівне джерело", ru: "Архивный источник", pl: "Źródło archiwalne" , pt: "Fonte do ficheiro"}
+  historical_timeline: withZhLocale({ bg: "Хронология", en: "Timeline", de: "Zeitleiste", fr: "Chronologie", it: "Cronologia", tr: "Zaman çizelgesi", es: "Cronología", el: "Χρονολόγιο", ja: "年表", tl: "Talaan ng Kasaysayan", uk: "Хронологія", ru: "Хронология", pl: "Chronologia" , pt: "Linha do tempo"}),
+  mayor_term: withZhLocale({ bg: "Кметски мандат", en: "Mayoral term", de: "Bürgermeister-Amtszeit", fr: "Mandat de maire", it: "Mandato di sindaco", tr: "Belediye başkanlığı görev süresi", es: "Mandato de alcalde", el: "Θητεία δημάρχου", ja: "市長任期", tl: "Termino ng Alkalde", uk: "Мерська каденція", ru: "Мэрская каденция", pl: "Kadencja burmistrza" , pt: "Mandato de autarca"}),
+  historical_event: withZhLocale({ bg: "Историческо събитие", en: "Historical event", de: "Historisches Ereignis", fr: "Événement historique", it: "Evento storico", tr: "Tarihsel etkinlik", es: "Evento histórico", el: "Ιστορικό γεγονός", ja: "歴史的出来事", tl: "Makasaysayang Pangyayari", uk: "Історична подія", ru: "Историческое событие", pl: "Wydarzenie historyczne" , pt: "Evento histórico"}),
+  cultural_programme: withZhLocale({ bg: "Културна програма", en: "Cultural programme", de: "Kulturprogramm", fr: "Programme culturel", it: "Programma culturale", tr: "Kültür programı", es: "Programa cultural", el: "Πολιτιστικό πρόγραμμα", ja: "文化プログラム", tl: "Programang Pangkultura", uk: "Культурна програма", ru: "Культурная программа", pl: "Program kulturalny" , pt: "Programa cultural"}),
+  historical_finance: withZhLocale({ bg: "Исторически финанси", en: "Historical finance", de: "Historische Finanzen", fr: "Finances historiques", it: "Finanze storiche", tr: "Tarihsel finans", es: "Finanzas históricas", el: "Ιστορικά οικονομικά", ja: "歴史的財政", tl: "Makasaysayang Pananalapi", uk: "Історичні фінанси", ru: "Исторические финансы", pl: "Finanse historyczne" , pt: "Finanças históricas"}),
+  municipal_programme: withZhLocale({ bg: "Общинска програма", en: "Municipal programme", de: "Gemeindeprogramm", fr: "Programme municipal", it: "Programma comunale", tr: "Belediye programı", es: "Programa municipal", el: "Δημοτικό πρόγραμμα", ja: "自治体プログラム", tl: "Programang Munisipal", uk: "Муніципальна програма", ru: "Муниципальная программа", pl: "Program gminny" , pt: "Programa municipal"}),
+  governance_change: withZhLocale({ bg: "Управленска промяна", en: "Governance change", de: "Verwaltungswechsel", fr: "Changement de gouvernance", it: "Cambio di governo", tr: "Yönetim değişikliği", es: "Cambio de gobierno", el: "Αλλαγή διακυβέρνησης", ja: "行政上の変更", tl: "Pagbabago sa Pamamahala", uk: "Зміна врядування", ru: "Изменение управления", pl: "Zmiana w zarządzaniu" , pt: "Mudança de governação"}),
+  notable_person_birth: withZhLocale({ bg: "Раждане на известна личност", en: "Notable person birth", de: "Geburt einer bekannten Persönlichkeit", fr: "Naissance d'une personnalité", it: "Nascita di una personalità", tr: "Önemli bir kişinin doğumu", es: "Nacimiento de una personalidad", el: "Γέννηση αξιόλογου προσώπου", ja: "著名人物の誕生", tl: "Kapanganakan ng Kilalang Tao", uk: "Народження відомої особи", ru: "Рождение известной личности", pl: "Narodziny znanej osoby" , pt: "Nascimento de pessoa notável"}),
+  archive_source: withZhLocale({ bg: "Архивен източник", en: "Archive source", de: "Archivquelle", fr: "Source d'archives", it: "Fonte d'archivio", tr: "Arşiv kaynağı", es: "Fuente de archivo", el: "Πηγή αρχείου", ja: "アーカイブ出典", tl: "Pinagmulan ng Arkibo", uk: "Архівне джерело", ru: "Архивный источник", pl: "Źródło archiwalne" , pt: "Fonte do ficheiro"})
 };
 
 // Timeline theme tags = the shared person-role labels plus two history-only tags.
 const themeLabels: Record<string, Record<Lang, string>> = {
   ...roleLabels,
-  people: { bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler", es: "Personas", el: "Πρόσωπα", ja: "人物", tl: "Mga Tao", uk: "Особи", ru: "Личности", pl: "Postacie" , pt: "Pessoas"},
-  birth: { bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum", es: "Nacimiento", el: "Γέννηση", ja: "誕生", tl: "Kapanganakan", uk: "Народження", ru: "Рождение", pl: "Narodziny" , pt: "Nascimento"}
+  people: withZhLocale({ bg: "Личности", en: "People", de: "Personen", fr: "Personnalités", it: "Personalità", tr: "Kişiler", es: "Personas", el: "Πρόσωπα", ja: "人物", tl: "Mga Tao", uk: "Особи", ru: "Личности", pl: "Postacie" , pt: "Pessoas"}),
+  birth: withZhLocale({ bg: "Раждане", en: "Birth", de: "Geburt", fr: "Naissance", it: "Nascita", tr: "Doğum", es: "Nacimiento", el: "Γέννηση", ja: "誕生", tl: "Kapanganakan", uk: "Народження", ru: "Рождение", pl: "Narodziny" , pt: "Nascimento"})
 };
 
 const hiddenThemeTags = new Set(["people", "birth"]);
@@ -1418,7 +1420,7 @@ function shouldShowThemeTag(theme: string) {
 }
 
 function localized(record: Record<string, any>, base: string): string {
-  return knownHistoryLabel(String(record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""), lang);
+  return knownHistoryLabel(String((lang === "zh" ? (record[`${base}_zh`] || record[`${base}_en`] || "") : (record[`${base}_${lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""))), lang);
 }
 
 function dateLabel(event: KnowledgeEvent) {
@@ -1441,9 +1443,10 @@ function fmtYear(year: number): string {
   if (year < 0) {
     if (lang === "tr") return `MÖ ${abs}`;
     if (lang === "ja") return `紀元前${abs}年`;
+    if (lang === "zh") return `公元前${abs}年`;
     return `${abs} ${bceSuffix[lang] ?? "BC"}`;
   }
-  return lang === "ja" ? `${year}年` : `${year}`;
+  return lang === "ja" || lang === "zh" ? `${year}年` : `${year}`;
 }
 function fmtYearRange(min: number, max: number): string {
   if (min === max) return fmtYear(min);
@@ -1454,10 +1457,11 @@ function fmtYearRange(min: number, max: number): string {
     const b = Math.abs(max);
     if (lang === "tr") return `MÖ ${a}–${b}`;
     if (lang === "ja") return `紀元前${a}～${b}年`;
+    if (lang === "zh") return `公元前${a}—${b}年`;
     return `${a}–${b} ${bceSuffix[lang] ?? "BC"}`;
   }
   if (bothCe) {
-    return lang === "ja" ? `${min}–${max}年` : `${min}–${max}`;
+    return lang === "ja" || lang === "zh" ? `${min}–${max}年` : `${min}–${max}`;
   }
   return `${fmtYear(min)}–${fmtYear(max)}`;
 }
@@ -2017,7 +2021,7 @@ function thenPhotoDate(pair: { historical_archive_item_id?: string }): string {
 }
 
 // --- City growth: population chart + neighbourhood timeline ---
-const growth = ({
+const growth = (withZhLocale({
       bg: {
         title: "Как растеше градът",
         popQ: "Как се е променяло населението?",
@@ -2437,8 +2441,8 @@ const growth = ({
         mapLead: "Localização aproximada dos bairros, colorida pela época em que surgiram.",
         approxNote: "Localização aproximada",
         source: "Fonte"
-      }} satisfies Record<Lang, Record<string, string>>)[lang];
-const nbEraLabels: Record<NeighbourhoodEra, string> = ({
+      }}) satisfies Record<Lang, Record<string, string>>)[lang];
+const nbEraLabels: Record<NeighbourhoodEra, string> = (withZhLocale({
       bg: { ottoman: "Османски период", revival: "Възраждане", modern: "Ново време (XX в.)", socialist: "Социалистически период" },
       en: { ottoman: "Ottoman period", revival: "National Revival", modern: "Modern era (20th c.)", socialist: "Socialist period" },
       de: { ottoman: "Osmanische Zeit", revival: "Wiedergeburtszeit", modern: "Neuzeit (20. Jh.)", socialist: "Sozialistische Zeit" },
@@ -2452,10 +2456,10 @@ const nbEraLabels: Record<NeighbourhoodEra, string> = ({
       uk: { ottoman: "Османський період", revival: "Відродження", modern: "Новітній час (XX ст.)", socialist: "Соціалістичний період" },
       ru: { ottoman: "Османский период", revival: "Возрождение", modern: "Новейшее время (XX в.)", socialist: "Социалистический период" },
       pl: { ottoman: "Okres osmański", revival: "Odrodzenie", modern: "Czasy nowoczesne (XX w.)", socialist: "Okres socjalistyczny" }
-    , pt: { ottoman: "Período otomano", revival: "Renascimento Nacional", modern: "Era moderna (séc. XX)", socialist: "Período socialista" }} satisfies Record<Lang, Record<NeighbourhoodEra, string>>)[lang];
+    , pt: { ottoman: "Período otomano", revival: "Renascimento Nacional", modern: "Era moderna (séc. XX)", socialist: "Período socialista" }}) satisfies Record<Lang, Record<NeighbourhoodEra, string>>)[lang];
 
 // sticky in-page section navigation
-const sectionNav = ({
+const sectionNav = (withZhLocale({
       bg: [
         { id: "history-tree", label: "Разказ" },
         { id: "landmarks", label: "Места" },
@@ -2595,8 +2599,8 @@ const sectionNav = ({
         { id: "geography", label: "Geografia" },
         { id: "city-growth", label: "Crescimento" },
         { id: "data", label: "Dados" }
-      ]} satisfies Record<Lang, { id: string; label: string }[]>)[lang];
-const sectionNavLabel = ({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página", el: "Ενότητες σελίδας", ja: "ページ内セクション", tl: "Mga Seksyon ng Pahina", uk: "Розділи сторінки", ru: "Разделы страницы", pl: "Sekcje strony" , pt: "Secções da página"} satisfies Record<Lang, string>)[lang];
+      ]}) satisfies Record<Lang, { id: string; label: string }[]>)[lang];
+const sectionNavLabel = (withZhLocale({ bg: "Раздели на страницата", en: "Page sections", de: "Seitenabschnitte", fr: "Sections de la page", it: "Sezioni della pagina", tr: "Sayfa bölümleri", es: "Secciones de la página", el: "Ενότητες σελίδας", ja: "ページ内セクション", tl: "Mga Seksyon ng Pahina", uk: "Розділи сторінки", ru: "Разделы страницы", pl: "Sekcje strony" , pt: "Secções da página"}) satisfies Record<Lang, string>)[lang];
 
 const numberFmt = new Intl.NumberFormat(locale);
 
@@ -2675,7 +2679,7 @@ const nbByEra = nbOrder
   .filter((g) => g.items.length > 0);
 
 // --- Geography & climate ---
-const geo = ({
+const geo = (withZhLocale({
       bg: {
         title: "География и климат",
         lead:
@@ -3053,7 +3057,7 @@ const geo = ({
           { label: "Precipitação anual", value: "502 mm" }
         ],
         source: "Fonte"
-      }})[lang];
+      }}))[lang];
 
 const climate = [...plovdivClimate].sort((a, b) => a.month - b.month);
 const CW = 1000, CH = 360, cL = 44, cR = 44, cT = 24, cB = 44;
@@ -3866,7 +3870,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
     function localizedApi(record: Record<string, any> | undefined, base: string) {
       if (!record) return "";
-      return String(record[`${base}_${timelineConfig.lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? "");
+      return String((timelineConfig.lang === "zh" ? (record[`${base}_zh`] || record[`${base}_en`] || "") : (record[`${base}_${timelineConfig.lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? "")));
     }
 
     function dateApiLabel(event: any) {
@@ -4348,7 +4352,7 @@ const climateSourceUrl = climate[0]?.source.url ?? "https://en.wikipedia.org/wik
 
     function localizedMap(record: Record<string, any> | undefined, base: string) {
       if (!record) return "";
-      return knownMapLabel(String(record[`${base}_${config.lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""));
+      return knownMapLabel(String((config.lang === "zh" ? (record[`${base}_zh`] || record[`${base}_en`] || "") : (record[`${base}_${config.lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""))));
     }
 
     function mapPlaceFacts(place: any) {

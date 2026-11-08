@@ -151,7 +151,7 @@ const visibleWikidataClaimKeys = new Set([
 
 function hasVisibleWikidataValue(value, lang) {
   if (!value || typeof value !== "object") return false;
-  if (value.type === "item") return Boolean(value.labels?.[lang]);
+  if (value.type === "item") return Boolean(value.labels?.[lang] || (lang === "zh" && value.labels?.en));
   // Dates are formatted through Intl and source text values (for example a
   // street address) are deliberately retained as source-language facts.
   if (value.type === "time" || value.type === "text") return Boolean(value.time ?? value.text);
@@ -160,11 +160,10 @@ function hasVisibleWikidataValue(value, lang) {
 
 function hasWikidataPanel(record, lang) {
   if (!record) return false;
-  // PlaceDetail intentionally avoids an English/Bulgarian fallback for a
-  // visitor-facing Wikidata description, Wikipedia link, or item label.
-  // Mirror that policy here so the validator requires a panel only when the
-  // locale can render at least one useful, visible row.
-  if (record.descriptions?.[lang] || record.sitelinks?.[lang]) return true;
+  // Chinese pages fall back to English when Wikidata lacks a Chinese value.
+  // Other locales retain their existing own-language-only display policy.
+  if (record.descriptions?.[lang] || record.sitelinks?.[lang] ||
+      (lang === "zh" && (record.descriptions?.en || record.sitelinks?.en))) return true;
   return Object.entries(record.claims ?? {}).some(
     ([key, values]) =>
       visibleWikidataClaimKeys.has(key) &&
@@ -249,7 +248,7 @@ for (const pair of corePagePairs) {
 }
 
 const neighbourhoods = readSourceJson("data/curated/neighbourhood-histories.json");
-const neighbourhoodLocalePrefixes = ["", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl", "pt"];
+const neighbourhoodLocalePrefixes = ["", "en", "de", "fr", "it", "tr", "es", "el", "ja", "zh", "tl", "uk", "ru", "pl", "pt"];
 for (const prefix of neighbourhoodLocalePrefixes) {
   const localeRoot = prefix ? `/${prefix}` : "";
   const indexUrl = `${localeRoot}/neighbourhoods/`;
@@ -355,7 +354,7 @@ if (!historyAssetScripts.includes("history-conflict-note")) {
   fail("history timeline bundle is missing conflict-note rendering");
 }
 
-const localePrefixes = ["", "/en", "/de", "/fr", "/it", "/tr", "/es", "/el", "/ja", "/uk", "/tl", "/ru", "/pl", "/pt"];
+const localePrefixes = ["", "/en", "/de", "/fr", "/it", "/tr", "/es", "/el", "/ja", "/zh", "/uk", "/tl", "/ru", "/pl", "/pt"];
 const localeByPrefix = new Map([
   ["", "bg"],
   ["/en", "en"],
@@ -366,6 +365,7 @@ const localeByPrefix = new Map([
   ["/es", "es"],
   ["/el", "el"],
   ["/ja", "ja"],
+  ["/zh", "zh"],
   ["/uk", "uk"],
   ["/tl", "tl"],
   ["/ru", "ru"],

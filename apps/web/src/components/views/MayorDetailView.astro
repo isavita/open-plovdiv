@@ -1,4 +1,5 @@
 ---
+import { withZhLocale } from "@i18n/zhUiTranslations";
 import LinkIcon from "@components/LinkIcon.astro";
 import Layout from "@layouts/Layout.astro";
 import { ui, type Lang } from "@i18n/ui";
@@ -88,7 +89,9 @@ const education = (enrich?.education ?? []).map(enrichLink).filter((x) => x.name
 const roles = (enrich?.positions ?? [])
   .map(enrichLink)
   .filter((x) => x.name && !/^list of /i.test(x.name) && !/^списък на /i.test(x.name));
-const birthplaceName = enrich ? pick(enrich.birthplace_name_bg, enrich.birthplace_name_en) : field(mayor, "birthplace", lang) || null;
+const birthplaceName = enrich
+  ? (lang === "zh" ? field(enrich, "birthplace_name", lang) || field(mayor, "birthplace", lang) || null : pick(enrich.birthplace_name_bg, enrich.birthplace_name_en))
+  : field(mayor, "birthplace", lang) || null;
 const birthplaceUrl = enrich ? pick(enrich.birthplace_wikipedia_bg, enrich.birthplace_wikipedia_en) : null;
 const personWiki = enrich ? pick(enrich.person_wikipedia_bg, enrich.person_wikipedia_en) : null;
 // Avoid showing the same Wikipedia article twice (it may already be a reference link).
@@ -102,7 +105,7 @@ const showPersonWiki = Boolean(personWiki && !existingUrls.has(personWiki));
 // Only `eyebrow` and `sourceTrail` are rendered — the bio itself leads as
 // plain prose (see bioHeading/bioParagraphs below), so no per-language
 // formula-sentence builders are needed here.
-const mayorStoryLabels = ({
+const mayorStoryLabels = (withZhLocale({
   bg: { eyebrow: "Разказ за кмета", sourceTrail: "Източникова следа" },
   de: { eyebrow: "Geschichte des Bürgermeisters", sourceTrail: "Quellenspur" },
   fr: { eyebrow: "Récit du maire", sourceTrail: "Trace documentaire" },
@@ -116,12 +119,12 @@ const mayorStoryLabels = ({
   uk: { eyebrow: "Історія мера", sourceTrail: "Слід джерел" },
   ru: { eyebrow: "История мэра", sourceTrail: "След источников" },
   pl: { eyebrow: "Historia burmistrza", sourceTrail: "Ślad źródeł" }
-, pt: { eyebrow: "História do autarca", sourceTrail: "Fontes" }} satisfies Record<Lang, { eyebrow: string; sourceTrail: string }>)[lang];
+, pt: { eyebrow: "História do autarca", sourceTrail: "Fontes" }}) satisfies Record<Lang, { eyebrow: string; sourceTrail: string }>)[lang];
 
 // Lead with the real biography as clean prose; the structured facts (born,
 // studied, other roles) are surfaced separately rather than restated as
 // formula sentences. Falls back to the summary only if no bio exists.
-const bioHeading = ({
+const bioHeading = (withZhLocale({
   bg: "Биография",
   en: "Biography",
   de: "Biografie",
@@ -135,7 +138,7 @@ const bioHeading = ({
   uk: "Біографія",
   ru: "Биография",
   pl: "Biografia"
-, pt: "Biografia"} as Record<Lang, string>)[lang];
+, pt: "Biografia"}) as Record<Lang, string>)[lang];
 const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filter(Boolean);
 ---
 

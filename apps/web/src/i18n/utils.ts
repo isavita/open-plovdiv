@@ -20,6 +20,7 @@ const intlLocaleByLang: Record<Lang, string> = {
   es: "es-ES",
   el: "el-GR",
   ja: "ja-JP",
+  zh: "zh-CN",
   tl: "fil-PH",
   uk: "uk-UA",
   ru: "ru-RU",
@@ -94,7 +95,7 @@ export function field(
 ): string {
   if (!record) return "";
   const localized = record[`${base}_${lang}`];
-  if (typeof localized === "string" && localized.length > 0) return localized;
+  if (typeof localized === "string" && (lang === "zh" ? localized.trim().length > 0 : localized.length > 0)) return localized;
   // The unsuffixed field is the Bulgarian source value — on the default locale
   // it beats the English translation (e.g. sources.json `used_for`/`used_for_en`).
   if (lang === defaultLang) {
@@ -102,9 +103,12 @@ export function field(
     if (typeof bulgarianSource === "string" && bulgarianSource.length > 0) return bulgarianSource;
   }
   const english = record[`${base}_en`];
-  if (typeof english === "string" && english.length > 0) {
+  if (typeof english === "string" && (lang === "zh" ? english.trim().length > 0 : english.length > 0)) {
     return shouldTranslateField(record, base) ? translateEn(english, lang) ?? english : english;
   }
+  // Chinese pages must not silently fall back to Bulgarian when no English
+  // value exists. Keep the field empty instead of presenting the wrong language.
+  if (lang === "zh") return "";
   const fallback = record[`${base}_bg`];
   if (typeof fallback === "string" && fallback.length > 0) return fallback;
   const legacy = record[base];

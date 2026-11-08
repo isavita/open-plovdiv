@@ -1621,8 +1621,8 @@ for (const dataset of datasets) {
  * string is covered by all ten translation maps so no locale silently falls
  * back to English.
  */
-const translationLangs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl", "pt"];
-const nonLatinTranslationLangs = new Set(["el", "ja", "uk", "ru"]);
+const translationLangs = ["de", "fr", "it", "tr", "es", "el", "ja", "zh", "tl", "uk", "ru", "pl", "pt"];
+const nonLatinTranslationLangs = new Set(["el", "ja", "zh", "uk", "ru"]);
 let cachedTranslationsByLang = null;
 
 function translationsByLangMap() {

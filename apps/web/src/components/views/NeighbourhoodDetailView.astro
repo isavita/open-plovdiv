@@ -1,4 +1,5 @@
 ---
+import { zhText } from "@i18n/zhUiTranslations";
 import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
@@ -479,7 +480,7 @@ const structuredData = {
               {neighbourhood.sources.map((source) => (
                 <li>
                   <a href={source.url} target="_blank" rel="noreferrer">
-                    {lang === "en" ? source.title_en : sourceTitle(source.title, lang)}
+                    {lang === "zh" ? zhText(source.title_en) : lang === "en" ? source.title_en : sourceTitle(source.title, lang)}
                   </a>
                 </li>
               ))}

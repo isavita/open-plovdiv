@@ -49,6 +49,18 @@ const content: Record<Lang, Content> = {
     historyLink: "Into the history",
     bubbles: ["Five more minutes… 😎", "Shh. Aylyak.", "Come back tomorrow.", "Maybe later.", "Relax, friend."]
   },
+  zh: {
+    eyebrow: "错误 404",
+    title: "这个页面正在悠闲休息。",
+    sub: "这个页面在七座山丘之间迷路了。",
+    pathTemplate: "您要前往 {path}，但这个页面也决定休息一下。",
+    posLabel: "名词",
+    definition: "普罗夫迪夫人从容放慢脚步、不慌不忙的生活方式。",
+    backHome: "返回首页",
+    placesLink: "探索景点",
+    historyLink: "了解历史",
+    bubbles: ["再等五分钟…… 😎", "嘘，慢慢来。", "明天再来吧。", "也许晚一点。", "放轻松，朋友。"]
+  },
   de: {
     eyebrow: "Fehler 404",
     title: "Diese Seite macht gerade Pause.",
@@ -697,7 +709,7 @@ const contentJson = JSON.stringify(content);
   <script is:inline>
     (function () {
       var path = window.location.pathname || "/";
-      var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl", "pt"];
+      var codes = ["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "zh", "tl", "uk", "ru", "pl", "pt"];
       var segments = path.split("/").filter(Boolean);
       var hasLocalePrefix = segments.length > 0 && codes.indexOf(segments[0]) > -1;
       var loc = hasLocalePrefix ? segments[0] : "bg";

@@ -18,6 +18,7 @@ import {
 } from "./ui";
 import { delocalizePath, field, getLangFromUrl, localizePath, localeForLang } from "./utils";
 import { ptText } from "./ptUiTranslations";
+import { zhText } from "./zhUiTranslations";
 import { routeLabels } from "../lib/routeLabels";
 
 const locales = Object.keys(languages) as Lang[];
@@ -48,7 +49,7 @@ const POLISH_ONLY_LETTERS = /[\u0105\u0107\u0119\u0142\u0144\u015b\u017a\u017c]/
 // Bulgarian's Cyrillic script, so a blanket "no Cyrillic" assertion would
 // false-positive on correctly translated text. See the dedicated "Ukrainian UI"
 // and "Russian UI" tests below instead.
-const NON_BG_SCRIPT_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "pl", "pt"];
+const NON_BG_SCRIPT_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "el", "ja", "zh", "tl", "pl", "pt"];
 // Locales written in the Latin script (used for assertions that are Latin-only).
 const LATIN_LOCALES: Lang[] = ["en", "de", "fr", "it", "tr", "es", "tl", "pl", "pt"];
 
@@ -71,7 +72,7 @@ function collectStrings(
 
 describe("i18n locales", () => {
   it("registers every shipped locale", () => {
-    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl", "pt"]);
+    expect(locales).toEqual(["bg", "en", "de", "fr", "it", "tr", "es", "el", "ja", "zh", "tl", "uk", "ru", "pl", "pt"]);
   });
 
   it("provides a localized walking-route introduction for every locale", () => {
@@ -146,6 +147,12 @@ describe("ui dictionary parity", () => {
   it("Japanese UI is actually translated into Japanese script (not left in English)", () => {
     const japaneseStrings = collectStrings(ui.ja).filter(([, value]) => JAPANESE.test(value));
     expect(japaneseStrings.length).toBeGreaterThan(200);
+  });
+
+  it("Chinese UI uses Simplified Chinese with English as the missing-string fallback", () => {
+    const chineseStrings = collectStrings(ui.zh).filter(([, value]) => /[\u3400-\u9fff]/u.test(value));
+    expect(chineseStrings.length).toBeGreaterThan(200);
+    expect(zhText("Untranslated fallback for testing")).toBe("Untranslated fallback for testing");
   });
 
   it("Ukrainian UI is genuinely Ukrainian (uses letters absent from Bulgarian), not an untranslated bg passthrough", () => {
@@ -223,6 +230,13 @@ describe("ui dictionary parity", () => {
 });
 
 describe("generated translation JSON", () => {
+  it("covers every Japanese content key in Chinese without blank translations", () => {
+    const ja = JSON.parse(fs.readFileSync(path.join(repoRoot, "data/translations/ja.json"), "utf8")) as Record<string, string>;
+    const zh = JSON.parse(fs.readFileSync(path.join(repoRoot, "data/translations/zh.json"), "utf8")) as Record<string, string>;
+    const missing = Object.keys(ja).filter((key) => !zh[key]?.trim());
+    expect(missing, "Japanese keys missing or blank in Chinese").toEqual([]);
+  });
+
   it("Japanese translations have exact key parity with the other generated locales and no blanks", () => {
     const langs = ["de", "fr", "it", "tr", "es", "el", "ja", "tl", "uk", "ru", "pl", "pt"];
     const translations = Object.fromEntries(
@@ -433,7 +447,7 @@ describe("data-label maps", () => {
 });
 
 describe("route parity", () => {
-  function routeFiles(locale: "en" | "ja" | "tl" | "uk" | "ru" | "pl" | "pt") {
+  function routeFiles(locale: "en" | "ja" | "zh" | "tl" | "uk" | "ru" | "pl" | "pt") {
     const base = path.join(repoRoot, "apps/web/src/pages", locale);
     const walk = (dir: string): string[] =>
       fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -446,6 +460,11 @@ describe("route parity", () => {
 
   it("/ja has exact source route parity with /en", () => {
     expect(routeFiles("ja")).toEqual(routeFiles("en"));
+  });
+
+  it("/zh has exact source route parity with /en and /ja", () => {
+    expect(routeFiles("zh")).toEqual(routeFiles("en"));
+    expect(routeFiles("zh")).toEqual(routeFiles("ja"));
   });
 
   it("/tl has exact source route parity with /en", () => {
@@ -496,6 +515,7 @@ describe("localised routing", () => {
     expect(getLangFromUrl("/es/projects")).toBe("es");
     expect(getLangFromUrl("/el/history")).toBe("el");
     expect(getLangFromUrl("/ja/history")).toBe("ja");
+    expect(getLangFromUrl("/zh/history")).toBe("zh");
     expect(getLangFromUrl("/tl/history")).toBe("tl");
     expect(getLangFromUrl("/uk/history")).toBe("uk");
     expect(getLangFromUrl("/ru/history")).toBe("ru");
@@ -503,6 +523,7 @@ describe("localised routing", () => {
     expect(getLangFromUrl("/en/history")).toBe("en");
     expect(getLangFromUrl("/projects")).toBe("bg");
     expect(delocalizePath("/ja/projects")).toBe("/projects");
+    expect(delocalizePath("/zh/projects")).toBe("/projects");
     expect(delocalizePath("/tl/projects")).toBe("/projects");
     expect(delocalizePath("/uk/projects")).toBe("/projects");
     expect(delocalizePath("/ru/projects")).toBe("/projects");
@@ -523,6 +544,10 @@ describe("localised routing", () => {
     expect(field(record, "summary", "bg")).toBe("Български");
     expect(field(record, "summary", "ja")).toBe("English");
     expect(field({ summary_ja: "日本語", ...record }, "summary", "ja")).toBe("日本語");
+    expect(field(record, "summary", "zh")).toBe("English");
+    expect(field({ summary_zh: "中文", ...record }, "summary", "zh")).toBe("中文");
+    expect(field({ summary_zh: " ", ...record }, "summary", "zh")).toBe("English");
+    expect(field({ summary_bg: "само BG" }, "summary", "zh")).toBe("");
   });
 
   it("maps every supported language to an Intl locale", () => {
@@ -535,6 +560,7 @@ describe("localised routing", () => {
     expect(localeForLang("es")).toBe("es-ES");
     expect(localeForLang("el")).toBe("el-GR");
     expect(localeForLang("ja")).toBe("ja-JP");
+    expect(localeForLang("zh")).toBe("zh-CN");
     expect(localeForLang("tl")).toBe("fil-PH");
     expect(localeForLang("uk")).toBe("uk-UA");
     expect(localeForLang("ru")).toBe("ru-RU");

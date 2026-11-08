@@ -1,6 +1,7 @@
 import type { Lang } from "@i18n/ui";
+import { zhText } from "../i18n/zhUiTranslations";
 
-const tagLabels: Record<string, Record<Lang, string>> = {
+const tagLabels: Record<string, Record<Exclude<Lang, "zh">, string>> = {
   archaeology: { bg: "археология", en: "archaeology", de: "Archäologie", fr: "archéologie", it: "archeologia", tr: "arkeoloji", es: "arqueología", el: "αρχαιολογία", ja: "考古学", tl: "arkeolohiya", uk: "археологія", ru: "археология", pl: "archeologia" , pt: "arqueologia"},
   architecture: { bg: "архитектура", en: "architecture", de: "Architektur", fr: "architecture", it: "architettura", tr: "mimari", es: "arquitectura", el: "αρχιτεκτονική", ja: "建築", tl: "arkitektura", uk: "архітектура", ru: "архитектура", pl: "architektura" , pt: "arquitetura"},
   archive_media: { bg: "архивни медии", en: "archive media", de: "Archivmedien", fr: "archives visuelles", it: "media d'archivio", tr: "arşiv medyası", es: "material de archivo", el: "αρχειακό υλικό", ja: "アーカイブ資料", tl: "materyal mula sa arkibo", uk: "архівні матеріали", ru: "архивные материалы", pl: "materiały archiwalne" , pt: "imagens de arquivo"},
@@ -36,5 +37,6 @@ const tagLabels: Record<string, Record<Lang, string>> = {
 };
 
 export function storyThemeTagLabel(tag: string, lang: Lang): string {
+  if (lang === "zh") return zhText(tagLabels[tag]?.en ?? tag.replaceAll("_", " "));
   return tagLabels[tag]?.[lang] ?? tag.replaceAll("_", " ");
 }

@@ -1,6 +1,9 @@
 ---
+import { localizeChineseUi } from "@i18n/zhUiTranslations";
+import { withZhLocale } from "@i18n/zhUiTranslations";
 import LinkIcon from "@components/LinkIcon.astro";
 import { ptText } from "@i18n/ptUiTranslations";
+import { zhText, withChineseUi } from "@i18n/zhUiTranslations";
 import Layout from "@layouts/Layout.astro";
 import SectionNav from "@components/SectionNav.astro";
 import { ui, type Lang } from "@i18n/ui";
@@ -60,7 +63,7 @@ const sourceUrls = [...new Map(mayorTerms.map((term) => [term.source_document.ur
 
 const config = {
   countAll: t.mayors.count(mayorTerms.length),
-  countFiltered: "{visible} " + (lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : lang === "ja" ? "/" : lang === "tl" ? "sa" : lang === "uk" ? "з" : lang === "ru" ? "из" : lang === "pl" ? "z" : lang === "pt" ? "de" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : lang === "de" ? "Mandaten" : lang === "fr" ? "mandats" : lang === "it" ? "mandati" : lang === "tr" ? "görev süresi" : lang === "es" ? "mandatos" : lang === "el" ? "θητείες" : lang === "ja" ? "任期" : lang === "tl" ? "na termino" : lang === "uk" ? "каденцій" : lang === "ru" ? "сроков полномочий" : lang === "pl" ? "kadencji" : lang === "pt" ? "mandatos" : "terms"),
+  countFiltered: lang === "zh" ? `显示 {visible} / ${mayorTerms.length} 个任期` : "{visible} " + (lang === "bg" ? "от" : lang === "de" ? "von" : lang === "fr" ? "sur" : lang === "it" ? "di" : lang === "tr" ? "/" : lang === "es" ? "de" : lang === "el" ? "από" : lang === "ja" ? "/" : lang === "tl" ? "sa" : lang === "uk" ? "з" : lang === "ru" ? "из" : lang === "pl" ? "z" : lang === "pt" ? "de" : "of") + ` ${mayorTerms.length} ` + (lang === "bg" ? "мандата" : lang === "de" ? "Mandaten" : lang === "fr" ? "mandats" : lang === "it" ? "mandati" : lang === "tr" ? "görev süresi" : lang === "es" ? "mandatos" : lang === "el" ? "θητείες" : lang === "ja" ? "任期" : lang === "tl" ? "na termino" : lang === "uk" ? "каденцій" : lang === "ru" ? "сроков полномочий" : lang === "pl" ? "kadencji" : lang === "pt" ? "mandatos" : "terms"),
   empty: t.mayors.empty
 };
 
@@ -139,7 +142,7 @@ const tr = (
   uk: string,
   ru: string,
   pl: string
-): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl, pt: ptText(en) } satisfies Record<Lang, string>)[lang];
+): string => ({ bg, en, de, fr, it, tr: trk, es, el, ja, zh: zhText(en), tl, uk, ru, pl, pt: ptText(en) } satisfies Record<Lang, string>)[lang];
 
 const periodBands = [
   {
@@ -407,7 +410,7 @@ const friezePersons = (() => {
 const friezeShown = friezePersons.slice(0, 18);
 const friezeMore = Math.max(0, uniqueMayors.size - friezeShown.length);
 
-const sectionNav = ({
+const sectionNav = (withZhLocale({
       bg: [
         { id: "connections", label: "Връзки" },
         { id: "birthplaces", label: "Родни места" },
@@ -491,8 +494,8 @@ const sectionNav = ({
         { id: "birthplaces", label: "Locais de nascimento" },
         { id: "timeline", label: "Linha do tempo" },
         { id: "all-mayors", label: "Todos os autarcas" }
-      ]} satisfies Record<Lang, { id: string; label: string }[]>)[lang];
-const sectionNavLabel = lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : lang === "tl" ? "Mga Seksyon ng Pahina" : lang === "uk" ? "Розділи сторінки" : lang === "ru" ? "Разделы страницы" : lang === "pl" ? "Sekcje strony" : lang === "pt" ? "Secções da página" : "Page sections";
+      ]}) satisfies Record<Lang, { id: string; label: string }[]>)[lang];
+const sectionNavLabel = localizeChineseUi(lang, (lang === "bg" ? "Раздели на страницата" : lang === "de" ? "Seitenabschnitte" : lang === "fr" ? "Sections de la page" : lang === "it" ? "Sezioni della pagina" : lang === "tr" ? "Sayfa bölümleri" : lang === "es" ? "Secciones de la página" : lang === "el" ? "Ενότητες σελίδας" : lang === "ja" ? "ページ内セクション" : lang === "tl" ? "Mga Seksyon ng Pahina" : lang === "uk" ? "Розділи сторінки" : lang === "ru" ? "Разделы страницы" : lang === "pl" ? "Sekcje strony" : lang === "pt" ? "Secções da página" : "Page sections"));
 ---
 
 <Layout lang={lang} path="/mayors" title={t.mayors.title} description={t.mayors.lead}>
@@ -645,7 +648,7 @@ const sectionNavLabel = lang === "bg" ? "Раздели на страницат�
               {familyTies.map((pair) => (
                 <li>
                   <span>{`${pair.a} — ${pair.b}`}</span>
-                  <span class="connect-years">{pair[`label_${lang}`] ?? pair.label_en ?? pair.label_bg}</span>
+                  <span class="connect-years">{pair[`label_${lang}`] || pair.label_en || (lang === "zh" ? "" : pair.label_bg)}</span>
                 </li>
               ))}
             </ul>

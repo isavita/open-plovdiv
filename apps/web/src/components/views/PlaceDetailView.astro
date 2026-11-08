@@ -1,4 +1,6 @@
 ---
+import { localizeChineseUi, zhText } from "@i18n/zhUiTranslations";
+import { withZhLocale } from "@i18n/zhUiTranslations";
 import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
@@ -33,7 +35,7 @@ const t = ui[lang];
 const locale = localeForLang(lang);
 
 const labels =
-  lang === "bg"
+  localizeChineseUi(lang, (lang === "bg"
     ? {
         back: "Всички места",
         facts: "Данни",
@@ -407,7 +409,7 @@ const labels =
         storiesTitle: "Linked stories",
         noArchive:
           "No separate archive or then/now record is available for this place yet. The main image, coordinates and sources remain published."
-      });
+      })));
 
 type PlaceStoryLabels = {
   storyEyebrow: string;
@@ -469,7 +471,7 @@ type PlaceHistoryAtlasLabels = {
   sourcesNode: string;
 };
 
-const storyLabels = ({
+const storyLabelsBase = (withZhLocale({
   bg: {
     storyEyebrow: "Разказ за мястото",
     storyTitle: "Как да четем това място",
@@ -1117,10 +1119,22 @@ const storyLabels = ({
     stewardshipWithOrgs: (items: string) => `O contexto institucional inclui ${items}. Isto não constitui necessariamente um historial de propriedade; é uma ligação verificável à conservação, memória ou gestão pública.`,
     peopleSentence: (items: string) => `As pessoas associadas a este lugar ajudam a contar a sua história através de biografias, acontecimentos e memória cívica: ${items}.`,
     relatedPlacesSentence: (items: string) => `Os lugares relacionados mostram como este local faz parte de uma rede urbana mais ampla: ${items}.`
-  }} satisfies Record<Lang, PlaceStoryLabels>)[lang];
+  }}) satisfies Record<Lang, PlaceStoryLabels>)[lang];
+const storyLabels: PlaceStoryLabels = lang === "zh" ? {
+  ...storyLabelsBase,
+  storyIntro: (name, era) => `${name}不只是地图上的一个点。这是一条关于${era}的记录，串联城市历史层次、可见遗迹、公开来源和周边故事。`,
+  dateSentence: (date, source) => `公布的年代为${date}${source ? `，依据为${source}` : ""}。`,
+  creatorSentence: (creator) => `关于作者，当前记录显示：${creator}。`,
+  statusSentence: (status) => `目前状态记载为：${status}`,
+  timelineSentence: (count) => `这段历史通过${count}个相关事件展开，将此地置于普罗夫迪夫更广阔的历史脉络中。`,
+  archiveSentence: (archiveCount, pairCount) => `档案记录：${archiveCount}；今昔影像对比：${pairCount}。`,
+  stewardshipWithOrgs: (items) => `相关机构包括${items}。这并不自动构成所有权历史，而是公共保护、记忆或管理的一条可核实线索。`,
+  peopleSentence: (items) => `相关人物通过传记、事件和城市记忆帮助讲述这个地方的故事：${items}。`,
+  relatedPlacesSentence: (items) => `相关地点表明，此处是更广泛城市体系的一部分：${items}。`
+} : storyLabelsBase;
 
 const historyAtlasLabels =
-  lang === "bg"
+  localizeChineseUi(lang, (lang === "bg"
     ? {
         eyebrow: "Исторически атлас",
         title: "Пластове, връзки и следи",
@@ -1430,6 +1444,27 @@ const historyAtlasLabels =
                       thenNowNode: "então/agora",
                       publicRecordNode: "registo público",
                       sourcesNode: "fontes"
+                    } : lang === "zh" ? {
+                      eyebrow: "历史地图集",
+                      title: "历史层次、联系与痕迹",
+                      lead: (events: number, stories: number, sources: number) =>
+                        `这张地图汇集了${events}个事件、${stories}篇故事和${sources}个公开来源，不添加缺乏依据的说法。`,
+                      contextTitle: "背景关联网络",
+                      contextLead: "这些链接展示与此地点有关、已获核实的事件、故事、人物、机构、档案和公共记录。",
+                      eventBrowserTitle: "完整事件列表",
+                      eventBrowserLead: (count: number) => count > 0 ? `${count}个关联事件按记录类型分组。` : "目前没有单独的事件与此地点关联。",
+                      eventCount: (count: number) => `${count}条记录`,
+                      eventSources: (count: number) => `${count}个来源`,
+                      noEvents: "当前知识库中没有此地点的单独事件；请参阅公共记录、来源和说明。",
+                      rootNode: "地点",
+                      eventsNode: "事件",
+                      storiesNode: "故事",
+                      peopleNode: "人物",
+                      organizationsNode: "机构",
+                      archiveNode: "档案",
+                      thenNowNode: "今昔对比",
+                      publicRecordNode: "公共记录",
+                      sourcesNode: "来源"
                     } : {
                       eyebrow: "History atlas",
                       title: "Layers, links and traces",
@@ -1452,10 +1487,10 @@ const historyAtlasLabels =
                       thenNowNode: "then/now",
                       publicRecordNode: "public record",
                       sourcesNode: "sources"
-                    });
+                    })));
 
 const wikidataLabels =
-  lang === "bg"
+  localizeChineseUi(lang, (lang === "bg"
     ? {
         title: "Публичен запис в Wikidata",
         description: "Описание",
@@ -1689,14 +1724,14 @@ const wikidataLabels =
                       street_address: "Address",
                       wikidata: "Wikidata record",
                       wikipedia: "Wikipedia"
-                    });
+                    })));
 
 function localized(record: Record<string, any> | null | undefined, base: string): string {
   return knownHistoryLabel(field(record, base, lang), lang);
 }
 
 const matchQualityLabels: Record<string, string> =
-  lang === "bg"
+  localizeChineseUi(lang, (lang === "bg"
     ? {
         same_place_approximate_viewpoint: "същото място, приблизителна гледна точка",
         same_place_close_viewpoint: "същото място, близка гледна точка",
@@ -1776,7 +1811,7 @@ const matchQualityLabels: Record<string, string> =
         same_place_approximate_viewpoint: "same place, approximate viewpoint",
         same_place_close_viewpoint: "same place, close viewpoint",
         city_context: "city context"
-      });
+      })));
 
 function matchQualityLabel(value: string): string {
   return matchQualityLabels[value] ?? value.replaceAll("_", " ");
@@ -1806,6 +1841,7 @@ function formatList(items: string[], max = 4): string {
 }
 
 function localizedPublicRecordItemLabel(values: Partial<Record<Lang, string>> | undefined): string {
+  if (lang === "zh") return values?.zh || zhText(values?.en || "");
   // Unlike a proper name, a Wikidata item label is visitor-facing prose.
   // Leave the individual row out when its locale is unavailable instead of
   // mixing English/Bulgarian into an otherwise localized public record.
@@ -1828,9 +1864,9 @@ function wikidataClaimLabel(key: keyof typeof wikidataLabels): string {
 
 function claimRow(key: keyof typeof wikidataLabels, values: PlaceWikidataClaimValue[] | undefined) {
   const text = formatList((values ?? []).map((value) =>
-    lang === "en" && key === "street_address" && value.type === "text" &&
+    (lang === "en" || lang === "zh") && key === "street_address" && value.type === "text" &&
       (!value.language || value.language === "bg" || value.language === "und")
-      ? englishBulgarianAddress(value.text)
+      ? (lang === "zh" ? englishBulgarianAddress(value.text).replace("(Bulgarian: ", "（保加利亚语：").replace(/\)$/, "）") : englishBulgarianAddress(value.text))
       : wikidataValueLabel(value)
   ).filter(Boolean), 5);
   return text ? { label: wikidataClaimLabel(key), value: text } : null;
@@ -1873,7 +1909,7 @@ const trx = (
   "On a walking route": "Num percurso pedestre", "Stop": "Paragem", "of": "de", "min": "min",
   "Next stop": "Próxima paragem", "See the full route": "Ver o percurso completo", "Nearby": "Nas proximidades",
   "Straight-line distances computed from the coordinates.": "Distâncias em linha reta calculadas a partir das coordenadas.", "m": "m"
-} as Record<string, string>)[en] ?? en : ({ bg, en, de, fr, it, tr: trk, es, el, ja, uk, tl, ru, pl })[lang];
+} as Record<string, string>)[en] ?? en : (withZhLocale({ bg, en, de, fr, it, tr: trk, es, el, ja, uk, tl, ru, pl }))[lang];
 
 const discoveryL = {
   onRoute: trx("Част от маршрут", "On a walking route", "Teil einer Route", "Sur un parcours", "Su un percorso", "Bir rotanın parçası", "En una ruta", "Σε διαδρομή", "散策ルートの一部", "Частина маршруту", "Bahagi ng ruta", "Часть маршрута", "Na trasie spacerowej"),
@@ -1933,11 +1969,9 @@ const facts = placeFacts(place);
 const image = place.media[0];
 const sourceRecords = place.source_ids.map((sourceId) => sourceById.get(sourceId)).filter(Boolean);
 const wikidataRecord = placeWikidataEnrichment[place.id] ?? null;
-// A public-record description is prose, not a proper name. Do not present an
-// English or Bulgarian fallback under another locale: hiding an unavailable
-// description is more honest than a visibly untranslated detail panel.
-const wikidataDescription = wikidataRecord?.descriptions?.[lang] ?? "";
-const wikidataArticle = wikidataRecord?.sitelinks[lang] ?? null;
+// Chinese falls back to English when Wikidata has no Chinese description.
+const wikidataDescription = wikidataRecord?.descriptions?.[lang] || (lang === "zh" ? zhText(wikidataRecord?.descriptions?.en || "") : "") || "";
+const wikidataArticle = wikidataRecord?.sitelinks[lang] ?? (lang === "zh" ? wikidataRecord?.sitelinks.en : null) ?? null;
 const linkedPeople = place.person_ids.map((personId) => peopleById.get(personId)).filter(Boolean);
 const linkedOrganizations = place.organization_ids.map((organizationId) => organizationById.get(organizationId)).filter(Boolean);
 const relatedPlaceIds = [

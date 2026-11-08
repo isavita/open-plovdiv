@@ -3,9 +3,23 @@ import { localeCodes, localizePath } from "../i18n/utils";
 import { editorialReviewStatusLabel } from "./editorial";
 import { historyKnowledgeEvents } from "./data";
 import { matchesSearchText, normalizeSearchText, rankSiteSearch } from "./searchCore";
-import { buildSiteSearchIndex } from "./siteSearch";
+import { buildSiteSearchIndex, collectLocalizedStrings } from "./siteSearch";
 
 describe("universal site search", () => {
+  it("only includes the requested long-form locale, with English fallback for missing Chinese", () => {
+    const content = {
+      text_en: "English long form",
+      text_ja: "日本語本文",
+      text_zh: "中文正文",
+      text_pt: "Texto em português",
+      missing_en: "English fallback",
+      missing_zh: ""
+    };
+    expect(collectLocalizedStrings(content, "en")).toEqual(["English long form", "English fallback"]);
+    expect(collectLocalizedStrings(content, "ja")).toEqual(["日本語本文"]);
+    expect(collectLocalizedStrings(content, "zh")).toEqual(["中文正文", "English fallback"]);
+    expect(collectLocalizedStrings(content, "pt")).toEqual(["Texto em português"]);
+  });
   it("indexes every public content surface", () => {
     const index = buildSiteSearchIndex("bg");
     expect(index.count).toBe(index.items.length);
@@ -71,6 +85,18 @@ describe("universal site search", () => {
     const index = buildSiteSearchIndex("bg");
     expect(rankSiteSearch(index.items, "Kapana", 8).some((item) => item.id === "place:place-kapana-q12282547")).toBe(true);
     expect(rankSiteSearch(index.items, "ancint theatre", 8)[0]?.id).toBe("place:place-ancient-theatre");
+  });
+
+  it("finds Chinese and Japanese text when the search is inside an unspaced word", () => {
+    const fixture = {
+      id: "place:theatre", kind: "place" as const, typeLabel: "Place", title: "古剧场",
+      description: "普罗夫迪夫的古代剧院", href: "/zh/places/theatre",
+      titleSearch: "古剧场", titleAliases: ["古代劇場"], searchText: "古剧场 普罗夫迪夫的古代剧院", weight: 0
+    };
+    expect(rankSiteSearch([fixture], "剧场").map((item) => item.id)).toContain("place:theatre");
+    expect(rankSiteSearch([fixture], "劇場").map((item) => item.id)).toContain("place:theatre");
+    expect(rankSiteSearch([fixture], "罗夫").map((item) => item.id)).toContain("place:theatre");
+    expect(rankSiteSearch([fixture], "不存在")).toHaveLength(0);
   });
 
   it("normalizes accents, punctuation and catalogue word order", () => {

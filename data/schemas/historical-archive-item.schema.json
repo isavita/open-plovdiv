@@ -73,7 +73,8 @@
         "notes_en": { "type": "string", "minLength": 10 }
       },
       "patternProperties": {
-        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 10 }
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 10 },
+        "^notes_zh$": { "type": "string", "minLength": 1 }
       }
     },
     "overlay_bounds": { "$ref": "#/definitions/overlay_bounds" },
@@ -98,7 +99,8 @@
         }
       },
       "patternProperties": {
-        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 3 }
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 3 },
+        "^title_zh$": { "type": "string", "minLength": 1 }
       }
     },
     "commons_categories": { "type": "array", "items": { "type": "string", "minLength": 2 } },
@@ -106,7 +108,7 @@
     "editorial": { "$ref": "#/definitions/editorial" }
   },
   "patternProperties": {
-    "^(title|description|date_display)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string" }
+    "^(title|description|date_display)_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt|zh)$": { "type": "string" }
   },
   "definitions": {
     "overlay_bounds": {
@@ -123,7 +125,8 @@
         "notes_en": { "type": "string", "minLength": 20 }
       },
       "patternProperties": {
-        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 20 }
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 20 },
+        "^notes_zh$": { "type": "string", "minLength": 1 }
       }
     },
     "media": {
@@ -150,7 +153,8 @@
         "accessed_at": { "type": "string", "format": "date" }
       },
       "patternProperties": {
-        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 3 }
+        "^title_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 3 },
+        "^title_zh$": { "type": "string", "minLength": 1 }
       }
     },
     "editorial": {
@@ -179,7 +183,8 @@
         "notes_en": { "type": "string", "minLength": 10 }
       },
       "patternProperties": {
-        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 10 }
+        "^notes_(de|fr|it|tr|es|el|ja|tl|uk|ru|pl|pt)$": { "type": "string", "minLength": 10 },
+        "^notes_zh$": { "type": "string", "minLength": 1 }
       }
     }
   }

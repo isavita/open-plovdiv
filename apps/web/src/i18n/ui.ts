@@ -1,5 +1,6 @@
 import { jaUiTranslations } from "./jaUiTranslations";
 import { translatePtUi } from "./ptUiTranslations";
+import { zhText } from "./zhUiTranslations";
 
 // Central multilingual string dictionary for Open Plovdiv. `bg` is the source
 // of truth for the shape; every other locale is typed against it (`typeof bg`)
@@ -15,6 +16,7 @@ export const languages = {
   es: "Español",
   el: "Ελληνικά",
   ja: "日本語",
+  zh: "简体中文",
   tl: "Filipino",
   uk: "Українська",
   ru: "Русский",
@@ -7886,7 +7888,43 @@ const pl: typeof bg = {
   }
 };
 
-export const ui = { bg, en, de, fr, it, tr, es, el, ja, tl, uk, ru, pl, pt } as const;
+// This tree consists entirely of interface labels. Unlike arbitrary data
+// objects, keys such as `id` are labels here and also need translation.
+function translateZhUi<T>(value: T): T {
+  if (typeof value === "string") return zhText(value) as T;
+  if (Array.isArray(value)) return value.map((item) => translateZhUi(item)) as T;
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value as Record<string, unknown>).map(([key, child]) => [key, translateZhUi(child)])
+    ) as T;
+  }
+  return value;
+}
+
+const zh: typeof bg = {
+  ...translateZhUi(en),
+  mayors: {
+    ...translateZhUi(en.mayors),
+    count: (n: number) => `${n}任`,
+    countFiltered: (visible: number, total: number) => `${visible} / ${total}任`,
+    yearsApprox: (n: number) => `约${n}年`,
+    centuryLabel: (century: number) => `${century}世纪`,
+    centuryRange: (start: number, end: number) => `${start}–${end}`,
+    portraitAlt: (name: string) => `${name}的肖像`
+  },
+  projects: {
+    ...translateZhUi(en.projects),
+    count: (n: number) => `${n}个项目`,
+    countFiltered: (visible: number, total: number) => `${visible} / ${total}个项目`
+  },
+  community: {
+    ...translateZhUi(en.community),
+    count: (n: number) => `${n}项活动`,
+    countFiltered: (visible: number, total: number) => `${visible} / ${total}项活动`
+  }
+};
+
+export const ui = { bg, en, de, fr, it, tr, es, el, ja, zh, tl, uk, ru, pl, pt } as const;
 
 export type CategoryKey =
   | "roads"
@@ -7905,7 +7943,7 @@ export type CategoryKey =
   | "civic"
   | "other";
 
-export const categoryLabels: Record<Lang, Record<string, string>> = {
+const categoryLabelsBase: Record<Exclude<Lang, "zh">, Record<string, string>> = {
   bg: {
     roads: "Улици",
     pavement: "Тротоари",
@@ -8223,6 +8261,9 @@ export const categoryColors: Record<string, string> = {
   history_correction: "#8e3043",
   other: "#586a6e"
 };
+export const categoryLabels: Record<Lang, Record<string, string>> = {
+  ...categoryLabelsBase, zh: translateZhUi(categoryLabelsBase.en)
+};
 
 // Civic-action track per problem category: whether a problem typically needs
 // official (municipal) action, is open to civic participation, or both.
@@ -8255,7 +8296,7 @@ export const categoryHelpGroups: Record<string, string[]> = {
   other: ["civic", "environment", "social", "other"]
 };
 
-export const projectStatusLabels: Record<Lang, Record<string, string>> = {
+const projectStatusLabelsBase: Record<Exclude<Lang, "zh">, Record<string, string>> = {
   bg: {
     planned: "Планиран",
     funded: "Финансиран",
@@ -8397,7 +8438,7 @@ export const projectStatusLabels: Record<Lang, Record<string, string>> = {
     unknown: "Desconhecido"
   }};
 
-export const communityStatusLabels: Record<Lang, Record<string, string>> = {
+const communityStatusLabelsBase: Record<Exclude<Lang, "zh">, Record<string, string>> = {
   bg: {
     active: "Активна",
     recurring: "Повтаряща се",
@@ -8497,7 +8538,7 @@ export const communityStatusLabels: Record<Lang, Record<string, string>> = {
     unknown: "Estado desconhecido"
   }};
 
-export const fixStatusLabels: Record<Lang, Record<string, string>> = {
+const fixStatusLabelsBase: Record<Exclude<Lang, "zh">, Record<string, string>> = {
   bg: {
     unverified: "Непроверен",
     verified: "Проверен",
@@ -8611,7 +8652,7 @@ export const fixStatusLabels: Record<Lang, Record<string, string>> = {
     closed: "Fechado"
   }};
 
-export const fixStatusDescriptions: Record<Lang, Record<string, string>> = {
+const fixStatusDescriptionsBase: Record<Exclude<Lang, "zh">, Record<string, string>> = {
   bg: {
     unverified: "Сигналът е публикуван, но още не е независимо проверен.",
     verified: "Проверен е от редактор или публичен източник.",
@@ -8734,8 +8775,20 @@ export const districtLabels: Record<string, string> = {
   Източен: "Iztochen",
   "Стар град": "Old Town"
 };
+export const fixStatusDescriptions: Record<Lang, Record<string, string>> = {
+  ...fixStatusDescriptionsBase, zh: translateZhUi(fixStatusDescriptionsBase.en)
+};
+export const fixStatusLabels: Record<Lang, Record<string, string>> = {
+  ...fixStatusLabelsBase, zh: translateZhUi(fixStatusLabelsBase.en)
+};
+export const communityStatusLabels: Record<Lang, Record<string, string>> = {
+  ...communityStatusLabelsBase, zh: translateZhUi(communityStatusLabelsBase.en)
+};
+export const projectStatusLabels: Record<Lang, Record<string, string>> = {
+  ...projectStatusLabelsBase, zh: translateZhUi(projectStatusLabelsBase.en)
+};
 
-export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
+const fundingSourceLabelsBase: Record<Exclude<Lang, "zh">, Record<string, string>> = {
   bg: {
     municipal_budget: "Общински бюджет",
     municipal_capital: "Капиталова програма (общинска)",
@@ -8823,7 +8876,7 @@ export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
 
 // Citation titles embedded in records (project sources, budget source documents).
 // Original public-source titles get English equivalents so the EN site reads cleanly.
-export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
+const sourceTitleLabelsBase: Record<Exclude<Lang, "zh">, Record<string, string>> = {
   bg: {
     "Regional Archaeological Museum Plovdiv — The fortress of Nebet Tepe": "Регионален археологически музей – Пловдив — Крепостта на Небет тепе",
     "Plovdiv Municipality — Nebet Tepe reopening": "Община Пловдив — Откриване на Небет тепе",
@@ -9068,7 +9121,7 @@ export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
 
 // Shared person-role tags (objective: one source of truth for People + History).
 // Adding a locale to `Lang` forces a translation here via the Record<Lang> type.
-export const roleLabels: Record<string, Record<Lang, string>> = {
+const roleLabelsBase: Record<string, Record<Exclude<Lang, "zh">, string>> = {
   academic: { bg: "академик", en: "academic", de: "Akademiker", fr: "académicien", it: "accademico", tr: "akademisyen", es: "académico", el: "ακαδημαϊκός" , ja: "学者", tl: "akademiko", uk: "академік", ru: "академик", pl: "akademik" , pt: "académico"},
   actor: { bg: "актьор", en: "actor", de: "Schauspieler", fr: "acteur", it: "attore", tr: "aktör", es: "actor", el: "ηθοποιός" , ja: "俳優", tl: "aktor", uk: "актор", ru: "актёр", pl: "aktor" , pt: "ator"},
   art_historian: { bg: "изкуствовед", en: "art historian", de: "Kunsthistoriker", fr: "historien de l'art", it: "storico dell'arte", tr: "sanat tarihçisi", es: "historiador del arte", el: "ιστορικός τέχνης" , ja: "美術史家", tl: "istoryador ng sining", uk: "мистецтвознавець", ru: "искусствовед", pl: "historyk sztuki" , pt: "historiador da arte"},
@@ -9147,4 +9200,13 @@ export const roleLabels: Record<string, Record<Lang, string>> = {
   wrestler: { bg: "борец", en: "wrestler", de: "Ringer", fr: "lutteur", it: "lottatore", tr: "güreşçi", es: "luchador", el: "παλαιστής" , ja: "レスリング選手", tl: "mambubuno", uk: "борець", ru: "борец", pl: "zapaśnik" , pt: "lutador"},
   writer: { bg: "писател", en: "writer", de: "Schriftsteller", fr: "écrivain", it: "scrittore", tr: "yazar", es: "escritor", el: "συγγραφέας" , ja: "作家", tl: "manunulat", uk: "письменник", ru: "писатель", pl: "pisarz" , pt: "escritor"},
   zoologist: { bg: "зоолог", en: "zoologist", de: "Zoologe", fr: "zoologiste", it: "zoologo", tr: "zoolog", es: "zoólogo", el: "ζωολόγος", ja: "動物学者", tl: "zoologo", uk: "зоолог", ru: "зоолог", pl: "zoolog" , pt: "zoólogo"}
+};
+export const roleLabels: Record<string, Record<Lang, string>> = Object.fromEntries(
+  Object.entries(roleLabelsBase).map(([key, labels]) => [key, { ...labels, zh: translateZhUi(labels.en) }])
+);
+export const sourceTitleLabels: Record<Lang, Record<string, string>> = {
+  ...sourceTitleLabelsBase, zh: translateZhUi(sourceTitleLabelsBase.en)
+};
+export const fundingSourceLabels: Record<Lang, Record<string, string>> = {
+  ...fundingSourceLabelsBase, zh: translateZhUi(fundingSourceLabelsBase.en)
 };

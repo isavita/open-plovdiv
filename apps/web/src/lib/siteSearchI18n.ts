@@ -1,4 +1,5 @@
 import { ptText } from "../i18n/ptUiTranslations";
+import { zhText } from "../i18n/zhUiTranslations";
 import type { Lang } from "../i18n/ui";
 import type { SiteSearchKind } from "./searchCore";
 
@@ -16,7 +17,7 @@ const tr = (
   uk: string,
   ru: string,
   pl: string
-): Record<Lang, string> => ({ bg, en, de, fr, it, tr: trk, es, el, ja, tl, uk, ru, pl, pt: ptText(en) });
+): Record<Lang, string> => ({ bg, en, de, fr, it, tr: trk, es, el, ja, zh: zhText(en), tl, uk, ru, pl, pt: ptText(en) });
 
 const strings = {
   open: tr("Търсене", "Search", "Suche", "Rechercher", "Cerca", "Ara", "Buscar", "Αναζήτηση", "検索", "Maghanap", "Пошук", "Поиск", "Szukaj"),
@@ -64,6 +65,7 @@ const resultCountForms: Record<Lang, PluralForms> = {
   es: { one: "{count} resultado", other: "{count} resultados" },
   el: { one: "{count} αποτέλεσμα", other: "{count} αποτελέσματα" },
   ja: { other: "{count}件" },
+  zh: { other: "{count} 条结果" },
   tl: { other: "{count} resulta" },
   uk: { one: "{count} результат", few: "{count} результати", many: "{count} результатів", other: "{count} результату" },
   ru: { one: "{count} результат", few: "{count} результата", many: "{count} результатов", other: "{count} результата" },

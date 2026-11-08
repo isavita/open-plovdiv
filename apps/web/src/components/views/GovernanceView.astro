@@ -1,4 +1,5 @@
 ---
+import { withZhLocale } from "@i18n/zhUiTranslations";
 import LinkIcon from "@components/LinkIcon.astro";
 import { mediaAttribution } from "@lib/format";
 import SectionNav from "@components/SectionNav.astro";
@@ -57,7 +58,7 @@ type Copy = {
   ctaArchive: string;
 };
 
-const copy = {
+const copy = withZhLocale({
   bg: {
     eyebrow: "Политическа история",
     title: "Управление и политическа история",
@@ -505,7 +506,7 @@ const copy = {
     ctaMayors: "Todos os autarcas",
     ctaProjects: "Projetos",
     ctaArchive: "Arquivo"
-  }} satisfies Record<Lang, Copy>;
+  }}) satisfies Record<Lang, Copy>;
 
 type VisualCopy = {
   contextImage: string;
@@ -516,7 +517,7 @@ type VisualCopy = {
   listedFunding: string;
 };
 
-const visualCopy = {
+const visualCopy = withZhLocale({
   bg: {
     contextImage: "Контекстно изображение",
     referenceImage: "Справочна снимка",
@@ -628,9 +629,9 @@ const visualCopy = {
     projectVisualNote: "As imagens mostram o local ou a sua história, e não o progresso da construção.",
     provisionalRecord: "registo provisório",
     listedFunding: "financiamento listado"
-  }} satisfies Record<Lang, VisualCopy>;
+  }}) satisfies Record<Lang, VisualCopy>;
 
-const kindLabels = {
+const kindLabels = withZhLocale({
   bg: {
     mayor_term: "кметски мандат",
     historical_event: "историческо събитие",
@@ -756,7 +757,7 @@ const kindLabels = {
     municipal_programme: "programa municipal",
     governance_change: "mudança de governação",
     archive_source: "fonte de arquivo"
-  }} satisfies Record<Lang, Record<CityArchiveRecord["kind"], string>>;
+  }}) satisfies Record<Lang, Record<CityArchiveRecord["kind"], string>>;
 
 const l = copy[lang];
 const v = visualCopy[lang];
