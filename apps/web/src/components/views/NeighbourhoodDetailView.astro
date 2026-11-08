@@ -50,7 +50,7 @@ const storiesById = new Map(storyLongreads.map((story) => [story.id, story]));
 
 const fabricKindLabels = neighbourhoodFabricKindLabels(lang);
 const name = localizedAny(neighbourhood, "name");
-const titleDuplicatesPlace = (lang === "bg" || lang === "en") && historyKnowledgePlaces.some(
+const titleDuplicatesPlace = historyKnowledgePlaces.some(
   (place) => knownHistoryLabel(field(place, "name", lang), lang) === name
 );
 const tagline = localizedAny(neighbourhood, "tagline");

@@ -15,11 +15,13 @@ import {
 import { commonsImageUrl } from "@lib/commons";
 import { bustGlyph, sectionMotifs } from "@lib/motifs";
 import { siteSearchUi } from "@lib/siteSearchI18n";
+import { peopleCatalogMessages } from "@lib/peopleCatalogMessages";
 
 type Props = { lang: Lang };
 const { lang } = Astro.props;
 const t = ui[lang];
 const searchUi = siteSearchUi[lang];
+const catalogMessages = peopleCatalogMessages[lang];
 const locale = localeForLang(lang);
 
 const labels = (withZhLocale({
@@ -1489,9 +1491,7 @@ const nodeConfig = {
     of: labels.of,
     people: labels.people,
     noResults: labels.noResults,
-    unavailable: lang === "bg"
-      ? "Търсенето и филтрите временно не работят. Всички профили са изброени по-долу; презаредете страницата, за да опитате отново."
-      : "Search and filters are temporarily unavailable. All profiles remain listed below; reload the page to try again.",
+    unavailable: catalogMessages.unavailable,
     born: labels.born,
     ledgerRows: labels.ledgerRows,
     source: labels.source,
@@ -1735,7 +1735,7 @@ const nodeConfig = {
       </div>
 
       <div id="people-catalog-controls" class="people-catalog-controls">
-        <noscript><p class="meta">{lang === "bg" ? "Търсенето и филтрите изискват JavaScript. Всички профили са изброени по-долу." : "Search and filters require JavaScript. All profiles are listed below."}</p></noscript>
+        <noscript><p class="meta">{catalogMessages.noJavaScript}</p></noscript>
         <div class="map-legend people-legend" role="group" aria-label={legendLabel}>
           {groupLegend.map((item) => (
             <button

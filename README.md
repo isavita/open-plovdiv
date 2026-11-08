@@ -7,7 +7,7 @@ The public site is deliberately read-only. It has no user accounts, comments, co
 ## Stack
 
 - Astro + TypeScript
-- Bulgarian at the root plus English, German, French, Italian, Turkish, Spanish, Greek, Japanese, Filipino, Ukrainian, Russian, Polish and Portuguese locale routes
+- Bulgarian at the root plus English, German, French, Italian, Turkish, Spanish, Greek, Japanese, Simplified Chinese, Filipino, Ukrainian, Russian, Polish and Portuguese locale routes
 - Reviewed JSON as the source of truth
 - Node scripts for validation, normalization and public-data generation
 - Public source links and visible media attribution
@@ -32,7 +32,7 @@ The GitHub integration deploys watched changes on `main` separately from applyin
 
 CI uses that same Node version and checks the generated sitemap, language alternatives and representative page metadata after the build. Dependabot checks npm packages and GitHub Actions weekly; its pull requests still need review and CI before merging. Update the Node pin separately as new supported releases become available.
 
-The site provides an [`/llms.txt`](https://openplovdiv.com/llms.txt) guide and a Markdown alternate for each public page, linked from its HTML. For example, `/en/places.md` and `/en/places/index.md` both provide the English places page; the root page uses `/index.md`. The production server derives Markdown from the corresponding prerendered page on demand, so it follows content updates; interactive or client-loaded content may be absent. Source links and the original HTML remain important context. These endpoints follow the [llms.txt proposal](https://llmstxt.org/) and do not change crawler access rules.
+The site provides an [`/llms.txt`](https://openplovdiv.com/llms.txt) guide and a Markdown alternate for each public page, linked from its HTML. For example, `/en/places.md` and `/en/places/index.md` both provide the English places page, `/zh/places.md` provides the Simplified Chinese places page, and the root page uses `/index.md`. The production server derives Markdown from the corresponding prerendered page on demand, so it follows content updates; interactive or client-loaded content may be absent. Source links and the original HTML remain important context. These endpoints follow the [llms.txt proposal](https://llmstxt.org/) and do not change crawler access rules.
 
 ### IndexNow
 

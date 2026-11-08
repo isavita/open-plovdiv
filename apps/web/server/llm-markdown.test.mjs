@@ -21,6 +21,8 @@ describe("LLM Markdown page conversion", () => {
     expect(canonical).toBe("https://example.org/en/history");
     expect(markdown).toContain("# History");
     expect(markdown).toContain("Language: en");
+    expect(markdown).toContain("[LLM site index](https://example.org/llms.txt)");
+    expect(markdown).not.toContain("[Simplified Chinese (简体中文)]");
     expect(markdown).toContain("Interactive or dynamically loaded content may be omitted");
     expect(markdown).toContain("[Places](https://example.org/places)");
     expect(markdown).toContain("[Era](https://example.org/en/history#era)");
@@ -32,6 +34,24 @@ describe("LLM Markdown page conversion", () => {
     expect(markdown).toContain("Person in the atlas");
     expect(markdown).toContain("| Year | Event |");
     expect(markdown).not.toMatch(/Site header|Site footer|Page navigation|secret script|ornament|hidden content/);
+  });
+
+  it("links to a same-origin Chinese alternate as Markdown", () => {
+    const source = html.replace("</head>", '<link rel="alternate" hreflang="zh" href="https://example.org/zh/history/"></head>');
+    expect(htmlToMarkdown(source).markdown).toContain("[Simplified Chinese (简体中文)](https://example.org/zh/history/index.md)");
+    const relative = html.replace("</head>", '<link rel="alternate" hreflang="zh" href="/zh/history"></head>');
+    expect(htmlToMarkdown(relative).markdown).toContain("[Simplified Chinese (简体中文)](https://example.org/zh/history/index.md)");
+    const root = html.replace("</head>", '<link rel="alternate" hreflang="zh" href="/zh"></head>');
+    expect(htmlToMarkdown(root).markdown).toContain("[Simplified Chinese (简体中文)](https://example.org/zh/index.md)");
+    const detail = html.replace("</head>", '<link rel="alternate" hreflang="zh" href="/zh/places/example"></head>');
+    expect(htmlToMarkdown(detail).markdown).toContain("[Simplified Chinese (简体中文)](https://example.org/zh/places/example/index.md)");
+  });
+
+  it("does not invent a Chinese alternate or accept external or malformed URLs", () => {
+    for (const href of ["", "https://elsewhere.example/zh/history", "https://[broken", "/zh/%2fsecret", "/zh/%zz", "/zh/history?preview=1", "/zh/history#section"]) {
+      const source = html.replace("</head>", `<link rel="alternate" hreflang="zh" href="${href}"></head>`);
+      expect(htmlToMarkdown(source).markdown, href).not.toContain("[Simplified Chinese (简体中文)]");
+    }
   });
 
   it("rejects traversal and encoded path separators", () => {

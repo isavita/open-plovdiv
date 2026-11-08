@@ -2043,7 +2043,7 @@ const mapHref = place.coordinates
 <Layout lang={lang} path={`/places/${place.id}`} title={localized(place, "name")} description={placeSeoDescription(
   localized(place, "name"),
   localized(place, "summary"),
-  (lang === "bg" || lang === "en") && historyKnowledgePlaces.some((other) => other.id !== place.id && localized(other, "summary") === localized(place, "summary")),
+  historyKnowledgePlaces.some((other) => other.id !== place.id && localized(other, "summary") === localized(place, "summary")),
   lang
 )}>
   <article class="place-detail" data-section="places">

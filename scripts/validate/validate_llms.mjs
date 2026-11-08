@@ -146,6 +146,7 @@ async function checkMarkdown(path, canonical) {
   assert(/<\/llms\.txt>;\s*rel="describedby"/i.test(links), `${path}: missing llms.txt Link header`);
   const text = await response.text();
   assert(text.includes(`Source: ${canonical}`), `${path}: missing source URL`);
+  assert(text.includes(`[LLM site index](${siteOrigin}/llms.txt)`), `${path}: missing clickable llms.txt index`);
   assert(/^#\s+\S/m.test(text) && text.trim().length > 150, `${path}: missing useful page content`);
   assert(!/<(?:script|nav|html)\b/i.test(text), `${path}: contains HTML chrome`);
   return text;
@@ -159,6 +160,11 @@ try {
   const index = await indexResponse.text();
   assert(/^#\s+Open Plovdiv\s*$/m.test(index), "/llms.txt is missing its site heading");
   assert(/^>\s+\S/m.test(index) && /^##\s+\S/m.test(index), "/llms.txt is missing its summary or sections");
+  const chineseSection = index.match(/^## Explore in Simplified Chinese \(简体中文\)\s*\n([\s\S]*?)(?=^## |(?![\s\S]))/m)?.[1];
+  assert(chineseSection, "/llms.txt is missing the Simplified Chinese section");
+  for (const page of ["overview", "history", "places", "people", "stories", "routes", "neighbourhoods", "governance", "mayors", "projects", "community", "archive", "data-sources"]) {
+    assert(chineseSection.includes(`](${siteOrigin}/zh/${page}.md)`), `/llms.txt is missing the Chinese ${page} link`);
+  }
   const indexUrls = [...index.matchAll(/^-\s+\[[^\]]+\]\(([^)]+)\)/gm)].map((match) => match[1]);
   const markdownUrls = [...new Set(indexUrls.filter((url) => new URL(url, siteOrigin).pathname.endsWith(".md")))];
   assert(markdownUrls.length >= 8, "/llms.txt should link to useful Markdown pages");
@@ -186,7 +192,22 @@ try {
   }
   assert(visitedHomes.size === 15, `Expected guide links on 15 localized homepages; checked ${visitedHomes.size}`);
 
-  const samples = ["/", "/en/history", "/history", "/ja/history", "/zh/history", "/en/places"];
+  // The people directory is built into each localized HTML page. Its Markdown
+  // must retain every server-rendered profile link, not only featured people.
+  for (const home of visitedHomes) {
+    const peoplePath = `${home === "/" ? "" : home}/people`;
+    const html = await (await request(peoplePath)).text();
+    const { document } = parseHTML(html);
+    const cards = [...document.querySelectorAll("#people-list [data-person-card] h3 a[href]")];
+    assert(cards.length > 0, `${peoplePath}: no server-rendered people cards`);
+    const markdown = await checkMarkdown(`${peoplePath}.md`, `${siteOrigin}${peoplePath}`);
+    for (const card of cards) {
+      const profileUrl = new URL(card.getAttribute("href"), `${siteOrigin}${peoplePath}`).href;
+      assert(markdown.includes(`](${profileUrl})`), `${peoplePath}.md: missing profile ${profileUrl}`);
+    }
+  }
+
+  const samples = ["/", "/en", "/en/history", "/history", "/ja/history", "/zh/history", "/en/places"];
   for (const kind of ["places", "people", "stories", "routes", "neighbourhoods", "projects", "mayors"]) {
     const sample = pageUrls.find((url) => new RegExp(`^/en/${kind}/[^/]+$`).test(url.pathname));
     assert(sample, `No sitemap sample for ${kind}`);
@@ -206,6 +227,17 @@ try {
     const expectedPath = `${path === "/" ? "" : path}/index.md`;
     assert(localPath(alternate) === expectedPath, `${path}: wrong Markdown alternate ${alternate}`);
     const markdown = await checkMarkdown(expectedPath, canonical);
+    const chineseAlternate = links.find((link) => link.rel === "alternate" && link.hreflang === "zh")?.href;
+    if (path === "/" || path === "/en") assert(chineseAlternate, `${path}: Chinese homepage alternate is missing`);
+    if (chineseAlternate) {
+      const chinese = new URL(chineseAlternate, canonical);
+      assert(chinese.origin === siteOrigin && !chinese.search && !chinese.hash, `${path}: invalid Chinese alternate`);
+      const chineseMarkdownPath = `${chinese.pathname.replace(/\/+$/, "")}/index.md`;
+      assert(markdown.includes(`[Simplified Chinese (简体中文)](${siteOrigin}${chineseMarkdownPath})`), `${path}: missing Chinese Markdown link`);
+      assert((await request(chineseMarkdownPath)).status === 200, `${path}: Chinese Markdown link is unavailable`);
+    } else {
+      assert(!markdown.includes("[Simplified Chinese (简体中文)]"), `${path}: unexpected Chinese Markdown link`);
+    }
     if (path !== "/") {
       const alias = `${path}.md`;
       const shortMarkdown = await checkMarkdown(alias, canonical);

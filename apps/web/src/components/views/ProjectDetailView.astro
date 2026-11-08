@@ -23,7 +23,7 @@ const { lang, project } = Astro.props;
 const t = ui[lang];
 
 const title = field(project, "title", lang);
-const titleDuplicatesPlace = (lang === "bg" || lang === "en") && historyKnowledgePlaces.some(
+const titleDuplicatesPlace = historyKnowledgePlaces.some(
   (place) => knownHistoryLabel(field(place, "name", lang), lang) === title
 );
 const relatedBudget = budgetItems.find((item) => item.id === project.related_budget_item_id);

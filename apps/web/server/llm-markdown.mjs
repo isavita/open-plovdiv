@@ -37,6 +37,25 @@ export function isMarkdownRequest(requestUrl) {
   return String(requestUrl ?? "").split("?")[0].toLowerCase().endsWith(".md");
 }
 
+function chineseMarkdownAlternate(document, canonical) {
+  const origin = new URL(canonical).origin;
+  for (const link of document.querySelectorAll("link[hreflang][href]")) {
+    if (link.getAttribute("hreflang")?.toLowerCase() !== "zh" ||
+        !link.getAttribute("rel")?.toLowerCase().split(/\s+/).includes("alternate")) continue;
+    try {
+      const href = link.getAttribute("href")?.trim();
+      if (!href) continue;
+      const url = new URL(href, canonical);
+      if (url.origin !== origin || url.username || url.password || url.search || url.hash) continue;
+      const path = `${url.pathname.replace(/\/+$/, "")}/index.md`;
+      if (!markdownPagePath(path)) continue;
+      url.pathname = path;
+      return url.href.replace(/\(/g, "%28").replace(/\)/g, "%29");
+    } catch { /* Ignore malformed alternate links. */ }
+  }
+  return null;
+}
+
 export function htmlToMarkdown(html, fallbackCanonical) {
   const { document } = parseHTML(html);
   const main = document.querySelector("main");
@@ -48,6 +67,8 @@ export function htmlToMarkdown(html, fallbackCanonical) {
     if (!["http:", "https:"].includes(url.protocol) || url.username || url.password) throw new Error("Invalid origin");
     canonical = url.href;
   } catch { throw new Error("Generated page has no valid canonical URL"); }
+  const chineseAlternate = chineseMarkdownAlternate(document, canonical);
+  const llmsIndex = new URL("/llms.txt", canonical).href;
   const language = document.documentElement.getAttribute("lang") || "";
   const title = document.querySelector("title")?.textContent?.trim() || "Open Plovdiv";
   const primaryHeading = main.querySelector("h1");
@@ -81,7 +102,7 @@ export function htmlToMarkdown(html, fallbackCanonical) {
   const heading = `# ${pageHeading.replace(/\s+/g, " ")}\n\n`;
   return {
     canonical,
-    markdown: `${heading}Source: ${canonical}\n${language ? `Language: ${language}\n` : ""}\nThis is a text version of the server-rendered page. Interactive or dynamically loaded content may be omitted.\n\n${content}\n`
+    markdown: `${heading}Source: ${canonical}\n${language ? `Language: ${language}\n` : ""}[LLM site index](${llmsIndex})\n${chineseAlternate ? `[Simplified Chinese (简体中文)](${chineseAlternate})\n` : ""}\nThis is a text version of the server-rendered page. Interactive or dynamically loaded content may be omitted.\n\n${content}\n`
   };
 }
 
