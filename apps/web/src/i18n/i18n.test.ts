@@ -230,6 +230,36 @@ describe("ui dictionary parity", () => {
 });
 
 describe("generated translation JSON", () => {
+  it("preserves literal image filenames and human-reviewed content corrections across locales", () => {
+    const locales = ["de", "fr", "it", "tr", "es", "el", "ja", "zh", "tl", "uk", "ru", "pl", "pt"];
+    const reviewed = JSON.parse(fs.readFileSync(path.join(repoRoot, "data/translations/reviewed-overrides.json"), "utf8")) as Record<string, Record<string, string>>;
+    const filename = /^(?:Wikimedia Commons — )?(?:File:)?[^:\n]+\.(?:jpg|jpeg|png|webp|svg|tif|tiff|gif)$/i;
+    for (const locale of locales) {
+      const translations = JSON.parse(fs.readFileSync(path.join(repoRoot, `data/translations/${locale}.json`), "utf8")) as Record<string, string>;
+      for (const [source, value] of Object.entries(translations)) {
+        if (filename.test(source) && !/[.!?]\s/.test(source)) expect(value, `${locale}: ${source}`).toBe(source);
+      }
+      for (const [source, value] of Object.entries(reviewed[locale] ?? {})) {
+        expect(translations[source], `${locale}: ${source}`).toBe(value);
+      }
+    }
+  });
+
+  it("keeps key historical translations and biography dates accurate", () => {
+    const load = (locale: string) => JSON.parse(fs.readFileSync(path.join(repoRoot, `data/translations/${locale}.json`), "utf8")) as Record<string, string>;
+    expect(load("fr")["Sacked by the Goths"]).toContain("Pillée");
+    expect(load("es")["The first grammar school"]).toContain("secundaria");
+    expect(load("de")["1908: The Station Gained a Face"]).toContain("Bahnhof");
+    const greek = load("el");
+    const tomasyan = Object.keys(greek).find((source) => source.startsWith("Dr Garabed Tomasyan (1935-2014) was a Bulgarian public figure"));
+    const malchev = Object.keys(greek).find((source) => source.startsWith("Petar Malchev (1885-1964) was a Bulgarian public figure"));
+    expect(tomasyan).toBeDefined();
+    expect(malchev).toBeDefined();
+    expect(greek[tomasyan!]).toContain("1989");
+    expect(greek[malchev!]).toMatch(/1935\s*[-–]\s*1941/);
+    expect(greek[malchev!]).not.toContain("1993");
+  });
+
   it("covers every Japanese content key in Chinese without blank translations", () => {
     const ja = JSON.parse(fs.readFileSync(path.join(repoRoot, "data/translations/ja.json"), "utf8")) as Record<string, string>;
     const zh = JSON.parse(fs.readFileSync(path.join(repoRoot, "data/translations/zh.json"), "utf8")) as Record<string, string>;

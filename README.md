@@ -8,7 +8,7 @@ The public site is deliberately read-only. It has no user accounts, comments, co
 
 - Astro + TypeScript
 - Bulgarian at the root plus English, German, French, Italian, Turkish, Spanish, Greek, Japanese, Simplified Chinese, Filipino, Ukrainian, Russian, Polish and Portuguese locale routes
-- Reviewed JSON as the source of truth
+- Curated JSON as the source of truth
 - Node scripts for validation, normalization and public-data generation
 - Public source links and visible media attribution
 
@@ -87,3 +87,5 @@ tests/                 shared test fixtures
 ## Editorial model
 
 Open Plovdiv does not accept public submissions. Changes are made in the curated source files, must retain a public source where possible, and must pass validation and the production build before publication. Community initiatives remain external: Open Plovdiv neither operates them nor processes their donations.
+
+Translated content uses dictionaries in `data/translations/`; reviewed corrections are also kept in `reviewed-overrides.json` (and `zh-reviewed.json` for Chinese) so the translation generator retains them. Literal image filenames remain unchanged as source identifiers. Translation checks catch specific known mistakes and structural problems, but do not replace review of historical meaning, names and dates by a fluent reader.

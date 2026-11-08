@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { preserveSourceImageFilenames } from "./translation_guards.mjs";
 
 const root = process.cwd();
 const targetLang = process.argv[2] ?? "de";
@@ -861,6 +862,10 @@ manualTranslationsByLang.zh = {
 if (targetLang === "zh") {
   Object.assign(manualTranslationsByLang.zh, JSON.parse(fs.readFileSync(path.join(root, "data/translations/zh-reviewed.json"), "utf8")));
 }
+// Human-reviewed corrections remain authoritative when cached machine
+// translations and language-specific fixups are regenerated.
+const reviewedOverrides = JSON.parse(fs.readFileSync(path.join(root, "data/translations/reviewed-overrides.json"), "utf8"));
+Object.assign(manualTranslationsByLang[targetLang] ??= {}, reviewedOverrides[targetLang] ?? {});
 const manualTranslations = manualTranslationsByLang[targetLang] ?? {};
 
 function readJson(filePath) {
@@ -3160,6 +3165,7 @@ applyPolishTemplateFixups(translations);
 applyPortugueseRelationshipFixups(translations);
 applyChineseContentFixups(translations);
 applyManualTranslations(translations, allStrings);
+preserveSourceImageFilenames(translations);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, `${JSON.stringify(Object.fromEntries(Object.entries(translations).sort()), null, 2)}\n`);

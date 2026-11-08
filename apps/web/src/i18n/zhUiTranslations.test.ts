@@ -7,6 +7,12 @@ describe("Simplified Chinese interface translations", () => {
     expect(zhText("An unlisted English sentence")).toBe("An unlisted English sentence");
   });
 
+  it("uses the right sense for common navigation and mayoral labels", () => {
+    expect(zhText("Current office")).toBe("现任期");
+    expect(zhText("Records and curiosities")).toBe("历史记录与趣闻");
+    expect(zhText("Approx. duration")).toBe("预计时长");
+  });
+
   it("preserves travel, access and admission guidance in visitor copy", () => {
     expect(zhText("Check BDZ for your travel date. From the station, follow our walk into the centre.")).toContain("时刻表");
     expect(zhText("Wear comfortable shoes for the Old Town. For gentler terrain, read our step-free route and its access notes.")).toContain("无障碍说明");

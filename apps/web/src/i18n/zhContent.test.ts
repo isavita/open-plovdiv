@@ -62,6 +62,21 @@ describe("Simplified Chinese content fidelity", () => {
       expect(chinese[source], source).not.toMatch(/酒店|宾馆|旅馆/);
     }
   });
+  it("distinguishes archaeological sites from websites", () => {
+    const sources = [
+      "Excavation began in the mid-1980s",
+      "The remains were discovered by chance in 1988",
+      "Which site best opens a discussion of the city's earliest layers?",
+      "Which site is connected with public performances?",
+      "Which type of site can show educational history?"
+    ];
+    for (const prefix of sources) {
+      const matches = Object.keys(chinese).filter((source) => source.startsWith(prefix));
+      expect(matches, prefix).toHaveLength(1);
+      expect(chinese[matches[0]], prefix).not.toContain("网站");
+    }
+    expect(chinese["The official Plovdiv 2019 site frames 2019 as twenty years after Plovdiv hosted the Month of Culture in 1999."]).toContain("网站");
+  });
   it("preserves the drainage purpose, theatre hills and historical period", () => {
     const library = Object.keys(chinese).find((source) => source.startsWith("The rectangular brick building was about 20 by 15 m,"));
     const theatre = Object.keys(chinese).find((source) => source.startsWith("In the late first century, the theatre was built in the saddle between Dzhambaz and Taksim Tepe."));
