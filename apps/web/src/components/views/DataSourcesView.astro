@@ -3,7 +3,7 @@ import LinkIcon from "@components/LinkIcon.astro";
 import { ptText } from "@i18n/ptUiTranslations";
 import { zhText } from "@i18n/zhUiTranslations";
 import Layout from "@layouts/Layout.astro";
-import { field, ui, type Lang } from "@i18n/utils";
+import { field, localizePath, ui, type Lang } from "@i18n/utils";
 import { sourceRegistry } from "@lib/data";
 import { sectionMotifs } from "@lib/motifs";
 
@@ -144,6 +144,7 @@ const groupMeta: Record<SourceGroup, { label: string; blurb: string }> = {
 };
 
 const labels = {
+  editorialReview: trs("Редакторски преглед", "Editorial review", "Redaktionelle Prüfung", "Revue éditoriale", "Revisione editoriale", "Editöryal inceleme", "Revisión editorial", "Συντακτικός έλεγχος", "編集レビュー", "Pagsusuring Editoryal", "Редакційна перевірка", "Редакционная проверка", "Przegląd redakcyjny"),
   statChecked: trs("Последна проверка", "Last checked", "Zuletzt geprüft", "Dernière vérification", "Ultima verifica", "Son kontrol", "Última comprobación", "Τελευταίος έλεγχος", "最終確認", "Huling sinuri", "Остання перевірка", "Последняя проверка", "Ostatnie sprawdzenie"),
   usedFor: trs("Използва се за", "Used for", "Verwendet für", "Utilisée pour", "Usata per", "Kullanım amacı", "Se usa para", "Χρησιμοποιείται για", "用途", "Ginagamit para sa", "Використовується для", "Используется для", "Wykorzystywane do"),
   limits: trs("Ограничения", "Limitations", "Einschränkungen", "Limites", "Limiti", "Sınırlamalar", "Limitaciones", "Περιορισμοί", "限界", "Limitasyon", "Обмеження", "Ограничения", "Ograniczenia"),
@@ -175,6 +176,7 @@ const groupOrder: SourceGroup[] = ["official", "media", "open"];
         <h1>{t.sources.title}</h1>
         <p class="lead">{t.sources.lead}</p>
         {lastChecked && <p class="meta" style="margin-top:12px">{labels.statChecked}: {lastChecked}</p>}
+        <p class="meta" style="margin-top:12px"><a class="text-link" href={localizePath("/history/editorial-review", lang)}>{labels.editorialReview} <LinkIcon direction="right" /></a></p>
       </div>
       <div class="section-plate" aria-hidden="true" set:html={sectionMotifs["data-sources"]} />
     </div>

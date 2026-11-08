@@ -79,3 +79,17 @@ The same list is shown to visitors at `/data-sources` (and `/en/data-sources`).
 - **Education resources are draft teaching packs.** `data/curated/education-resources.json` links lesson plans, quizzes, printable tasks and BG/EN audio-tour scripts back to source-backed knowledge records. They still require pedagogical review, recorded audio production and independent editorial sign-off before being treated as final curriculum.
 - **No per-project completion list.** The municipality does not publish a single, citable "completed in 2025" status per project. Statuses here reflect what is sourced and each project page shows a source-backed timeline where available: started/continuing, new for 2026, or postponed (frozen with BGN 0 for 2025–2026).
 - **Locations are approximate**, placed by street/district and marked as such on each project.
+
+### Bulgarian place-name references
+
+The following Bulgarian labels supplement the Wikidata records, whose Bulgarian labels were unavailable when checked on 8 November 2026. The Wikidata coordinates and existing image sources remain unchanged.
+
+| Wikidata record | Bulgarian label | Source |
+| --- | --- | --- |
+| Q113564786 | Къща на Ритора | [Община Пловдив — къща „Клианти“ и съседните сгради](https://www.plovdiv.bg/%D0%BE%D1%82%D0%BA%D1%80%D0%B8%D0%B2%D0%B0%D0%BD%D0%B5-%D0%BA%D1%8A%D1%89%D0%B0-%D0%BA%D0%BB%D0%B8%D0%B0%D0%BD%D1%82%D0%B8/) |
+| Q117750038 | Къща „Бирдас“ | [Община Пловдив — локации в Стария град](https://www.plovdiv.bg/20241113-5/) |
+| Q113632624 | Музейна аптека „Хипократ“ | [Visit Plovdiv — къщата на д-р Сотир Антониади](https://www.visitplovdiv.com/bg/node/480) |
+| Q105581474 | Къща на Георги Данчов – Зографина | [Visit Plovdiv — Данчовата къща](https://www.visitplovdiv.com/bg/node/485) |
+| Q105415800 | Къща „Георги Павлити“ | [Община Пловдив — „Синята къща“](https://www.plovdiv.bg/%D1%81%D0%B8%D0%BD%D1%8F%D1%82%D0%B0-%D0%BA%D1%8A%D1%89%D0%B0-%D0%B2-%D1%81%D1%82%D0%B0%D1%80%D0%B8%D1%8F-%D0%B3%D1%80%D0%B0%D0%B4-%D0%B2%D1%80%D1%8A%D1%89%D0%B0-%D0%B0%D0%B2%D1%82/) |
+| Q117750307 | Бакалова къща | [Visit Plovdiv — Бакалова къща](https://www.visitplovdiv.com/bg/node/853) |
+| Q105622469 | Къща на Касандра Баятова | [Visit Plovdiv — ансамбълът на къщите Бакалова и Баятова](https://www.visitplovdiv.com/bg/node/853) |

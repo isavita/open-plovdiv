@@ -5,7 +5,8 @@ import StatusBadge from "@components/StatusBadge.astro";
 import Layout from "@layouts/Layout.astro";
 import { categoryColors, ui, type Lang } from "@i18n/ui";
 import { field, localizePath } from "@i18n/utils";
-import { budgetItems, communityInitiatives, type Project } from "@lib/data";
+import { budgetItems, communityInitiatives, historyKnowledgePlaces, type Project } from "@lib/data";
+import { contextualEntitySeoTitle } from "@lib/detailSeo";
 import {
   categoryLabel,
   communityStatusLabel,
@@ -13,6 +14,7 @@ import {
   formatDate,
   formatMoney,
   fundingSourceLabel,
+  knownHistoryLabel,
   sourceTitle
 } from "@lib/format";
 
@@ -21,6 +23,9 @@ const { lang, project } = Astro.props;
 const t = ui[lang];
 
 const title = field(project, "title", lang);
+const titleDuplicatesPlace = (lang === "bg" || lang === "en") && historyKnowledgePlaces.some(
+  (place) => knownHistoryLabel(field(place, "name", lang), lang) === title
+);
 const relatedBudget = budgetItems.find((item) => item.id === project.related_budget_item_id);
 const relatedInitiatives = communityInitiatives.filter((item) =>
   item.related_project_ids?.includes(project.id)
@@ -45,7 +50,7 @@ const isProvisional = project.data_quality === "provisional";
 const note = field(project, "note", lang);
 ---
 
-<Layout lang={lang} path={`/projects/${project.id}`} title={title} description={field(project, "summary", lang)}>
+<Layout lang={lang} path={`/projects/${project.id}`} title={contextualEntitySeoTitle(title, "project", titleDuplicatesPlace, lang)} description={field(project, "summary", lang)}>
   <section class="page-head" data-section="projects">
     <div class="container">
       <nav class="breadcrumb" aria-label={t.common.breadcrumb}>

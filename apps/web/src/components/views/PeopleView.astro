@@ -1489,6 +1489,9 @@ const nodeConfig = {
     of: labels.of,
     people: labels.people,
     noResults: labels.noResults,
+    unavailable: lang === "bg"
+      ? "Търсенето и филтрите временно не работят. Всички профили са изброени по-долу; презаредете страницата, за да опитате отново."
+      : "Search and filters are temporarily unavailable. All profiles remain listed below; reload the page to try again.",
     born: labels.born,
     ledgerRows: labels.ledgerRows,
     source: labels.source,
@@ -1568,7 +1571,7 @@ const nodeConfig = {
             const group = roleGroups[person.roles?.[0] ?? ""] ?? "civic";
             return (
               <article class={`featured-person people-group-${group}`}>
-                <a class="featured-person-media" href={`${languagePrefix}/people/${person.id}/`}>
+                <a class="featured-person-media" href={`${languagePrefix}/people/${person.id}`}>
                   <img
                     src={commonsImageUrl(person.image!, 500)}
                     alt={localized(person, "name")}
@@ -1578,10 +1581,10 @@ const nodeConfig = {
                   <span class="featured-person-group">{groupLabels[group]}</span>
                 </a>
                 <div class="featured-person-copy">
-                  <h3><a href={`${languagePrefix}/people/${person.id}/`}>{localized(person, "name")}</a></h3>
+                  <h3><a href={`${languagePrefix}/people/${person.id}`}>{localized(person, "name")}</a></h3>
                   <p>{localized(person, "summary")}</p>
                   <div class="featured-person-footer">
-                    <a class="text-link" href={`${languagePrefix}/people/${person.id}/`}>{labels.profile} <LinkIcon direction="right" /></a>
+                    <a class="text-link" href={`${languagePrefix}/people/${person.id}`}>{labels.profile} <LinkIcon direction="right" /></a>
                     {media.image_page_url && (
                       <a
                         class="featured-person-credit"
@@ -1626,7 +1629,7 @@ const nodeConfig = {
                 {row.edge.category === "succession" && <time>{row.year}</time>}
               </div>
               <div class="relationship-preview-people">
-                <a class="relationship-preview-person" href={`${languagePrefix}/people/${from.id}/`}>
+                <a class="relationship-preview-person" href={`${languagePrefix}/people/${from.id}`}>
                   {from.image ? (
                     <img src={commonsImageUrl(from.image, 330)} alt="" loading="lazy" decoding="async" />
                   ) : (
@@ -1638,7 +1641,7 @@ const nodeConfig = {
                   <span>{row.typeLabels.join(" / ")}</span>
                   <i aria-hidden="true">{row.edge.category === "succession" ? "→" : "—"}</i>
                 </div>
-                <a class="relationship-preview-person" href={`${languagePrefix}/people/${to.id}/`}>
+                <a class="relationship-preview-person" href={`${languagePrefix}/people/${to.id}`}>
                   {to.image ? (
                     <img src={commonsImageUrl(to.image, 330)} alt="" loading="lazy" decoding="async" />
                   ) : (
@@ -1732,6 +1735,7 @@ const nodeConfig = {
       </div>
 
       <div id="people-catalog-controls" class="people-catalog-controls">
+        <noscript><p class="meta">{lang === "bg" ? "Търсенето и филтрите изискват JavaScript. Всички профили са изброени по-долу." : "Search and filters require JavaScript. All profiles are listed below."}</p></noscript>
         <div class="map-legend people-legend" role="group" aria-label={legendLabel}>
           {groupLegend.map((item) => (
             <button
@@ -1791,7 +1795,24 @@ const nodeConfig = {
         </div>
       </div>
 
-      <div class="person-grid" id="people-list" aria-live="polite"></div>
+      <p id="people-load-error" class="error" role="status" hidden></p>
+      <div class="person-grid" id="people-list" aria-live="polite">
+        {people.map((person) => {
+          const group = roleGroups[person.roles?.[0] ?? ""] ?? "civic";
+          return (
+            <article class={`person-card people-group-${group}`} data-person-card={person.id}>
+              <header>
+                <div>
+                  <p class="eyebrow">{groupLabels[group]}</p>
+                  <h3><a href={`${languagePrefix}/people/${person.id}`}>{localized(person, "name")}</a></h3>
+                  <p class="meta">{lifeLabel(person)}</p>
+                </div>
+              </header>
+              <p>{localized(person, "summary")}</p>
+            </article>
+          );
+        })}
+      </div>
       <p id="people-empty" class="empty" hidden>{labels.noResults}</p>
     </div>
   </section>
@@ -1809,6 +1830,7 @@ const nodeConfig = {
     const count = document.querySelector<HTMLElement>("#people-count")!;
     const reset = document.querySelector<HTMLButtonElement>("#people-reset")!;
     const empty = document.querySelector<HTMLElement>("#people-empty")!;
+    const loadError = document.querySelector<HTMLElement>("#people-load-error")!;
     const list = document.querySelector<HTMLElement>("#people-list")!;
     const relationshipList = document.querySelector<HTMLElement>("#people-relationship-list")!;
     const relationshipCount = document.querySelector<HTMLElement>("#people-relationship-count");
@@ -2052,7 +2074,7 @@ const nodeConfig = {
 
     function renderPersonCard(card: any) {
       const prefix = config.lang === "bg" ? "" : `/${config.lang}`;
-      const profileHref = `${prefix}/people/${encodeURIComponent(card.id)}/`;
+      const profileHref = `${prefix}/people/${encodeURIComponent(card.id)}`;
       const avatar = card.avatar
         ? `<img class="person-avatar" src="${escapePeopleHtml(commonsImageUrl(card.avatar, 330))}" alt="${escapePeopleHtml(card.name)}" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" />`
         : `<span class="person-avatar person-avatar-fallback bust-fallback" aria-hidden="true">${config.bustGlyph ?? ""}<span class="bust-mono">${escapePeopleHtml(card.initials)}</span></span>`;
@@ -2124,17 +2146,42 @@ const nodeConfig = {
 
     function refreshPeopleCatalogue() {
       loadPeopleCards()
-        .then(() => applyPeopleFilters())
+        .then(() => {
+          loadError.hidden = true;
+          setPeopleControlsEnabled(true);
+          applyPeopleFilters();
+        })
         .catch((error) => {
           console.error("people catalogue load failed", error);
-          empty.hidden = false;
-          empty.textContent = config.labels.noResults;
+          // A second in-flight request may already have loaded the cards.
+          if (cards.length) {
+            applyPeopleFilters();
+            return;
+          }
+          // Preserve the server-rendered catalogue and make the disabled
+          // controls explicit instead of presenting a false empty result.
+          search.value = "";
+          group.value = "all";
+          century.value = "all";
+          relationship.value = "all";
+          syncGroupLegend();
+          count.textContent = `${config.total} ${config.labels.people}`;
+          empty.hidden = true;
+          reset.hidden = true;
+          loadError.textContent = config.labels.unavailable;
+          loadError.hidden = false;
+          setPeopleControlsEnabled(false);
         });
     }
 
     // Legend chips mirror the group select: click toggles the filter, and
     // any group change (select or reset) re-syncs the pressed state.
     const groupChips = [...document.querySelectorAll<HTMLButtonElement>("[data-group-chip]")];
+    function setPeopleControlsEnabled(enabled: boolean) {
+      for (const control of [search, group, century, relationship, ...groupChips]) {
+        control.disabled = !enabled;
+      }
+    }
     function syncGroupLegend() {
       for (const chip of groupChips) {
         chip.setAttribute("aria-pressed", String(chip.dataset.groupChip === group.value));
@@ -2421,7 +2468,7 @@ const nodeConfig = {
         ${roleRow}
         <p class="graph-detail-degree">${escapePeopleHtml(String(node.data("degree")))} ${escapePeopleHtml(config.graph.connectionsWord)}</p>
         ${connections ? `<ul class="graph-detail-links">${connections}</ul>` : ""}
-        <a class="button secondary graph-detail-profile" href="${prefix}/people/${encodeURIComponent(id)}/">${escapePeopleHtml(config.graph.viewProfile)} →</a>
+        <a class="button secondary graph-detail-profile" href="${prefix}/people/${encodeURIComponent(id)}">${escapePeopleHtml(config.graph.viewProfile)} →</a>
       `;
       graphDetail.hidden = false;
       if (graphDetailHint) graphDetailHint.hidden = true;

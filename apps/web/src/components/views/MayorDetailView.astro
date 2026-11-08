@@ -7,6 +7,7 @@ import { field, localeForLang, localizePath } from "@i18n/utils";
 import { cityArchive, mayorWikidataEnrichment, type CityArchiveRecord } from "@lib/data";
 import { sourceTitle } from "@lib/format";
 import { bustGlyph } from "@lib/motifs";
+import { mayorTermSeoTitle } from "@lib/detailSeo";
 
 type Props = { lang: Lang; mayor: CityArchiveRecord };
 const { lang, mayor } = Astro.props;
@@ -142,7 +143,7 @@ const bioHeading = (withZhLocale({
 const bioParagraphs = (bio ?? field(mayor, "summary", lang)).split(/\n\n+/).filter(Boolean);
 ---
 
-<Layout lang={lang} path={`/mayors/${mayor.id}`} title={name} description={field(mayor, "summary", lang)}>
+<Layout lang={lang} path={`/mayors/${mayor.id}`} title={mayorTermSeoTitle(name, mayor.year_start, mayor.year_end, isActing, lang)} description={field(mayor, "summary", lang)}>
   <section class="page-head" data-section="mayors">
     <div class="container">
       <nav class="breadcrumb" aria-label={t.common.breadcrumb}>

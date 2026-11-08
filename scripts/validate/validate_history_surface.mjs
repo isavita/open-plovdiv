@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { parseHTML } from "linkedom";
 
 const root = process.cwd();
 const clientDir = path.join(root, "apps/web/dist/client");
@@ -420,6 +421,27 @@ for (const prefix of localePrefixes) {
     'id="people-catalog-controls"',
     '"events":"/api/history/events.json"'
   ]);
+}
+for (const prefix of localePrefixes) {
+  const url = `${prefix}/people/`;
+  const document = parseHTML(readBuilt(url)).document;
+  const catalogue = document.querySelector("#people-list");
+  const profileLinks = new Set(
+    [...(catalogue?.querySelectorAll("a[href]") ?? [])]
+      .filter((link) => link.textContent.trim() && !link.closest('[hidden], [aria-hidden="true"], noscript'))
+      .map((link) => link.getAttribute("href"))
+  );
+  for (const person of people) {
+    const profile = `${prefix}/people/${person.id}`;
+    if (!profileLinks.has(profile)) fail(`${url} must render a visible, crawlable link to ${profile}`);
+  }
+  const sourcesUrl = `${prefix}/data-sources/`;
+  const sourcesDocument = parseHTML(readBuilt(sourcesUrl)).document;
+  const reviewPath = `${prefix}/history/editorial-review`;
+  if (![...sourcesDocument.querySelectorAll("main a[href]")].some((link) =>
+    link.getAttribute("href") === reviewPath && link.textContent.trim() &&
+    !link.closest('[hidden], [aria-hidden="true"], noscript')
+  )) fail(`${sourcesUrl} must link visibly to ${reviewPath}`);
 }
 for (const person of people) {
   const hooks = [

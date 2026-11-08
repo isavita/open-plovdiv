@@ -24,6 +24,7 @@ import {
 } from "@lib/data";
 import { routesThroughPlace } from "@lib/routes";
 import { englishBulgarianAddress, englishBulgarianName } from "@lib/bulgarianTransliteration";
+import { placeSeoDescription } from "@lib/detailSeo";
 
 type Props = {
   lang: Lang;
@@ -2039,7 +2040,12 @@ const mapHref = place.coordinates
   : "";
 ---
 
-<Layout lang={lang} path={`/places/${place.id}`} title={localized(place, "name")} description={localized(place, "summary")}>
+<Layout lang={lang} path={`/places/${place.id}`} title={localized(place, "name")} description={placeSeoDescription(
+  localized(place, "name"),
+  localized(place, "summary"),
+  (lang === "bg" || lang === "en") && historyKnowledgePlaces.some((other) => other.id !== place.id && localized(other, "summary") === localized(place, "summary")),
+  lang
+)}>
   <article class="place-detail" data-section="places">
     <header class="section place-detail-hero">
       <div class="container place-detail-grid">

@@ -5,7 +5,8 @@ import { mediaAttribution } from "@lib/format";
 import Layout from "@layouts/Layout.astro";
 import { field, localeForLang, localizePath, type Lang } from "@i18n/utils";
 import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
-import { districtLabel, sourceTitle } from "@lib/format";
+import { districtLabel, knownHistoryLabel, sourceTitle } from "@lib/format";
+import { contextualEntitySeoTitle } from "@lib/detailSeo";
 import { publicThenNowPairs } from "@lib/thenNow";
 import {
   historicalArchiveItems,
@@ -49,6 +50,9 @@ const storiesById = new Map(storyLongreads.map((story) => [story.id, story]));
 
 const fabricKindLabels = neighbourhoodFabricKindLabels(lang);
 const name = localizedAny(neighbourhood, "name");
+const titleDuplicatesPlace = (lang === "bg" || lang === "en") && historyKnowledgePlaces.some(
+  (place) => knownHistoryLabel(field(place, "name", lang), lang) === name
+);
 const tagline = localizedAny(neighbourhood, "tagline");
 const summary = localizedAny(neighbourhood, "summary");
 const nameOrigin = localizedAny(neighbourhood, "name_origin");
@@ -168,7 +172,7 @@ const structuredData = {
 <Layout
   lang={lang}
   path={`/neighbourhoods/${neighbourhood.id}`}
-  title={name}
+  title={contextualEntitySeoTitle(name, "neighbourhood", titleDuplicatesPlace, lang)}
   description={summary}
   image={heroMedia ? commonsImageUrl(heroMedia.url, 1200) : undefined}
   imageAlt={heroCaption || name}
