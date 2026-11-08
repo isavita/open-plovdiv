@@ -105,6 +105,7 @@ jobs:
         run: node .indexnow-tooling/scripts/indexnow/submit.mjs .indexnow/changed.json
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          INDEXNOW_PREVIOUS_KEY: ${{ secrets.INDEXNOW_PREVIOUS_KEY }}
       - name: Save IndexNow baseline
         if: steps.live_final.outputs.current == 'true' && steps.compare.outputs.stale != 'true'
         uses: actions/upload-artifact@v7

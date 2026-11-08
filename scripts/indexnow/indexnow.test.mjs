@@ -132,6 +132,58 @@ test("submit verifies the live key, uses canonical URLs, and fails closed", asyn
   assert.equal(submittedBatches, 4);
 });
 
+test("rotation uses only a publicly verified previous key when the current file is absent or mismatched", async () => {
+  const key = "newkey1234567890", previous = "oldkey1234567890", url = "https://openplovdiv.com/en/places";
+  const wait = async () => {};
+  const requests = [];
+  const primaryWorks = async (target, options) => {
+    requests.push(target);
+    if (target.endsWith(`${key}.txt`)) return new Response(key);
+    if (target.endsWith(`${previous}.txt`)) throw new Error("previous key should not be checked");
+    assert.equal(JSON.parse(options.body).key, key);
+    return new Response(null, { status: 200 });
+  };
+  assert.equal(await submitIndexNow(key, [url], primaryWorks, wait, previous), 200);
+  assert.equal(requests.length, 2);
+
+  for (const currentResponse of [new Response(null, { status: 404 }), new Response("different")]) {
+    let posted = false;
+    const rotated = async (target, options) => {
+      if (target.endsWith(`${key}.txt`)) return currentResponse;
+      if (target.endsWith(`${previous}.txt`)) return new Response(previous);
+      const payload = JSON.parse(options.body);
+      assert.equal(payload.key, previous);
+      assert.equal(payload.keyLocation, `https://openplovdiv.com/${previous}.txt`);
+      posted = true;
+      return new Response(null, { status: 200 });
+    };
+    assert.equal(await submitIndexNow(key, [url], rotated, wait, previous), 200);
+    assert.equal(posted, true);
+  }
+  let previousChecked = false;
+  const bothMismatch = async (target) => {
+    if (target.endsWith(`${key}.txt`)) return new Response("wrong");
+    if (target.endsWith(`${previous}.txt`)) { previousChecked = true; return new Response("wrong"); }
+    throw new Error("must not submit");
+  };
+  await assert.rejects(submitIndexNow(key, [url], bothMismatch, wait, previous), /missing or mismatched/);
+  assert.equal(previousChecked, true);
+  for (const failure of [() => { throw new Error(`network error containing ${key}`); }, () => new Response(null, { status: 503 })]) {
+    let count = 0;
+    await assert.rejects(submitIndexNow(key, [url], async () => { count++; return failure(); }, wait, previous), (error) => !error.message.includes(key) && /Could not check/.test(error.message));
+    assert.equal(count, 1, "network failures and server errors must not trigger previous-key fallback");
+  }
+  let posts = 0;
+  const pending = async (target) => {
+    if (target.endsWith(`${key}.txt`)) return new Response(null, { status: 404 });
+    if (target.endsWith(`${previous}.txt`)) return new Response(previous);
+    posts++;
+    return new Response(null, { status: 202 });
+  };
+  await assert.rejects(submitIndexNow(key, [url], pending, wait, previous), /validation pending.*no baseline was advanced/);
+  assert.equal(posts, 3);
+});
+
 test("baseline lookup fails closed for expired, deleted, or incomplete state", async () => {
   const { findBaselineRun } = await import("./state.mjs");
   const runs = [{ id: 1, updated_at: "2026-01-01T00:00:00Z" }, { id: 2, updated_at: "2026-02-01T00:00:00Z" }];

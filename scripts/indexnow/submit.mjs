@@ -5,16 +5,32 @@ import { pathToFileURL } from "node:url";
 const HOST = "openplovdiv.com";
 const PENDING_RETRY_DELAYS_MS = [15000, 30000];
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-export async function submitIndexNow(key, urls, fetcher = fetch, wait = sleep) {
+export async function submitIndexNow(key, urls, fetcher = fetch, wait = sleep, previousKey = "") {
   if (!/^[a-zA-Z0-9-]{8,128}$/.test(key || "")) throw new Error("INDEXNOW_KEY missing or invalid");
   if (!Array.isArray(urls) || urls.length > 100000 || new Set(urls).size !== urls.length) throw new Error("Invalid URL list");
   for (const text of urls) {
     const url = new URL(text);
     if (url.origin !== `https://${HOST}` || url.search || url.hash || url.username || url.password) throw new Error("Refusing noncanonical URL");
   }
+  async function verify(candidate) {
+    let response, body;
+    try {
+      response = await fetcher(`https://${HOST}/${candidate}.txt`, { redirect: "error", signal: AbortSignal.timeout(20000), cache: "no-store" });
+      if (response.status === 404 || response.status === 410) return false;
+      if (!response.ok) throw new Error("Unexpected response");
+      body = await response.text();
+    } catch {
+      // Do not include a potentially key-bearing URL in an exception or logs.
+      throw new Error("Could not check the live IndexNow ownership file");
+    }
+    return body.trim() === candidate;
+  }
+  if (!await verify(key)) {
+    if (!previousKey || !/^[a-zA-Z0-9-]{8,128}$/.test(previousKey) || previousKey === key || !await verify(previousKey)) throw new Error("Live IndexNow ownership file is missing or mismatched");
+    key = previousKey;
+    console.log("Using the verified previous IndexNow key during rotation.");
+  }
   const keyLocation = `https://${HOST}/${key}.txt`;
-  const verification = await fetcher(keyLocation, { redirect: "error", signal: AbortSignal.timeout(20000), cache: "no-store" });
-  if (!verification.ok || (await verification.text()).trim() !== key) throw new Error("Live IndexNow ownership file is missing or mismatched");
   if (!urls.length) { console.log("IndexNow ownership file verified; no changed URLs to submit."); return 0; }
   let lastStatus = 0;
   for (let i = 0; i < urls.length; i += 10000) {
@@ -51,5 +67,5 @@ export async function submitIndexNow(key, urls, fetcher = fetch, wait = sleep) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const urls = JSON.parse(await readFile(process.argv[2], "utf8"));
-  await submitIndexNow(process.env.INDEXNOW_KEY, urls);
+  await submitIndexNow(process.env.INDEXNOW_KEY, urls, fetch, sleep, process.env.INDEXNOW_PREVIOUS_KEY);
 }
