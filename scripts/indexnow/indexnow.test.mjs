@@ -152,3 +152,33 @@ test("older and repeated deployments cannot advance the baseline", async () => {
   assert.equal(isStaleDeployment(previous, { ...previous, deploymentId: 11 }), false);
   assert.equal(isStaleDeployment(previous, { ...previous, deployedAt: "2025-01-01T00:00:00Z", deploymentId: 11 }), true);
 });
+
+test("scheduled retries select only the latest successful Railway production deployment", async () => {
+  const { latestProductionDeployment } = await import("./live.mjs");
+  const bot = { __typename: "Bot", login: "railway-app" };
+  const deployment = (id, timestamp, changes = {}) => ({
+    databaseId: id, commitOid: sha, creator: bot,
+    payload: JSON.stringify({ environmentId: "c1a0a96b-c810-475b-bef5-584d4ed26630" }),
+    statuses: { nodes: [{ state: "SUCCESS", createdAt: timestamp, creator: bot }] }, ...changes
+  });
+  const first = deployment(1, "2026-11-01T00:00:00Z");
+  const latest = deployment(2, "2026-11-02T00:00:00Z");
+  const otherEnvironment = deployment(3, "2026-11-03T00:00:00Z", { payload: "{}" });
+  const untrusted = deployment(4, "2026-11-04T00:00:00Z", { creator: { __typename: "User", login: "railway-app" } });
+  const failed = deployment(5, "2026-11-05T00:00:00Z", { statuses: { nodes: [{ state: "FAILURE", createdAt: "2026-11-05T00:00:00Z", creator: bot }] } });
+  assert.equal(latestProductionDeployment([first, otherEnvironment, untrusted, failed, latest]).id, 2);
+  assert.throws(() => latestProductionDeployment([otherEnvironment, untrusted, failed]), /Could not establish/);
+});
+
+test("retry refreshes only an already accepted deployment and rejects an older or inconsistent baseline", async () => {
+  const { sameDeployment } = await import("./baseline-status.mjs");
+  const previous = { schema: 1, sha, deployedAt, deploymentId: 10, pages: {} };
+  assert.equal(sameDeployment(previous, { id: 10, sha, deployedAt }), true);
+  assert.equal(sameDeployment(previous, { id: 10, sha, deployedAt: "2026-11-08T00:00:00Z" }), true);
+  assert.equal(sameDeployment(previous, { id: 11, sha, deployedAt: "2026-11-08T00:00:00Z" }), false);
+  assert.throws(() => sameDeployment(previous, { id: 9, sha, deployedAt: "2026-11-06T00:00:00Z" }), /predates/);
+  assert.throws(() => sameDeployment(previous, { id: 10, sha: "b".repeat(40), deployedAt }), /conflicts/);
+  assert.throws(() => sameDeployment({ ...previous, schema: 2 }, { id: 10, sha, deployedAt }), /Invalid/);
+  assert.throws(() => sameDeployment({ ...previous, pages: { "https://other.example/": "a".repeat(64) } }, { id: 10, sha, deployedAt }), /Invalid IndexNow page/);
+  assert.throws(() => sameDeployment({ ...previous, pages: { "https://openplovdiv.com/": "bad-hash" } }, { id: 10, sha, deployedAt }), /Invalid IndexNow page/);
+});

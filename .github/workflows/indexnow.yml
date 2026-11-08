@@ -1,11 +1,12 @@
 name: IndexNow
-run-name: IndexNow production ${{ github.event.deployment.sha }}
+run-name: IndexNow ${{ github.event_name }} ${{ github.event.deployment.sha || github.sha }}
 
 on:
   deployment_status:
-  # Refresh the snapshot before GitHub's 90-day artifact retention expires.
+  workflow_dispatch:
+  # Retry failed notifications even when no later deployment occurs.
   schedule:
-    - cron: '23 3 1 * *'
+    - cron: '23 */6 * * *'
 
 permissions:
   contents: read
@@ -19,95 +20,93 @@ concurrency:
 jobs:
   notify:
     if: >-
-      github.event_name == 'deployment_status' &&
+      github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'deployment_status' &&
       github.event.deployment_status.state == 'success' &&
       github.event.deployment_status.creator.login == 'railway-app[bot]' &&
       github.event.deployment.creator.login == 'railway-app[bot]' &&
       github.event.deployment.environment == 'lucky-education / production' &&
-      github.event.deployment.payload.environmentId == 'c1a0a96b-c810-475b-bef5-584d4ed26630'
+      github.event.deployment.payload.environmentId == 'c1a0a96b-c810-475b-bef5-584d4ed26630')
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    env:
-      DEPLOYMENT_ID: ${{ github.event.deployment.id }}
-      DEPLOYMENT_SHA: ${{ github.event.deployment.sha }}
-      DEPLOYED_AT: ${{ github.event.deployment_status.created_at }}
     steps:
+      # Keep the current workflow tooling separate from the exact deployed
+      # source, which may lag behind the default branch during a rollout.
       - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.deployment.sha }}
+          ref: ${{ github.event.repository.default_branch }}
+          path: .indexnow-tooling
       - uses: actions/setup-node@v7
         with:
-          node-version-file: .node-version
-          cache: npm
+          node-version-file: .indexnow-tooling/.node-version
       - name: Check production deployment
         id: live
-        run: node scripts/indexnow/live.mjs
+        run: node .indexnow-tooling/scripts/indexnow/live.mjs
         env:
           GH_TOKEN: ${{ github.token }}
+          DEPLOYMENT_ID: ${{ github.event.deployment.id }}
+          DEPLOYMENT_SHA: ${{ github.event.deployment.sha }}
+      - name: Set deployment context
+        if: steps.live.outputs.current == 'true'
+        run: |
+          echo "DEPLOYMENT_ID=${{ steps.live.outputs.deployment_id }}" >> "$GITHUB_ENV"
+          echo "DEPLOYMENT_SHA=${{ steps.live.outputs.sha }}" >> "$GITHUB_ENV"
+          echo "DEPLOYED_AT=${{ steps.live.outputs.deployed_at }}" >> "$GITHUB_ENV"
+      - uses: actions/checkout@v7
+        if: steps.live.outputs.current == 'true'
+        with:
+          ref: ${{ steps.live.outputs.sha }}
+          path: deployed
       - name: Load prior snapshot
         if: steps.live.outputs.current == 'true'
         id: state
-        run: node scripts/indexnow/state.mjs
+        run: node .indexnow-tooling/scripts/indexnow/state.mjs
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+      - name: Check whether this deployment is already submitted
+        if: steps.live.outputs.current == 'true' && steps.state.outputs.mode == 'artifact'
+        id: baseline
+        run: node .indexnow-tooling/scripts/indexnow/baseline-status.mjs
       - name: Install dependencies
-        if: steps.live.outputs.current == 'true'
+        if: steps.live.outputs.current == 'true' && steps.baseline.outputs.same != 'true'
+        working-directory: deployed
         run: npm ci
+      - name: Link tooling dependencies
+        if: steps.live.outputs.current == 'true' && steps.baseline.outputs.same != 'true'
+        run: ln -s "$GITHUB_WORKSPACE/deployed/node_modules" "$GITHUB_WORKSPACE/.indexnow-tooling/node_modules"
       - name: Build deployed commit
-        if: steps.live.outputs.current == 'true'
+        if: steps.live.outputs.current == 'true' && steps.baseline.outputs.same != 'true'
+        working-directory: deployed
         run: npm run build
         env:
           PUBLIC_SITE_URL: https://openplovdiv.com
       - name: Create content snapshot
-        if: steps.live.outputs.current == 'true'
-        run: node scripts/indexnow/manifest.mjs build apps/web/dist/client .indexnow/current.json "$DEPLOYMENT_SHA" "$DEPLOYED_AT" "$DEPLOYMENT_ID"
+        if: steps.live.outputs.current == 'true' && steps.baseline.outputs.same != 'true'
+        run: node .indexnow-tooling/scripts/indexnow/manifest.mjs build deployed/apps/web/dist/client .indexnow/current.json "$DEPLOYMENT_SHA" "$DEPLOYED_AT" "$DEPLOYMENT_ID"
       - name: Compare with previous snapshot
-        if: steps.live.outputs.current == 'true' && steps.state.outputs.mode == 'artifact'
+        if: steps.live.outputs.current == 'true' && steps.baseline.outputs.same != 'true' && steps.state.outputs.mode == 'artifact'
         id: compare
-        run: node scripts/indexnow/compare.mjs
+        run: node .indexnow-tooling/scripts/indexnow/compare.mjs
       - name: Prepare first baseline
         if: steps.live.outputs.current == 'true' && steps.state.outputs.mode == 'bootstrap'
+        run: node -e 'require("node:fs").writeFileSync(".indexnow/changed.json", "[]")'
+      - name: Prepare unchanged baseline
+        if: steps.live.outputs.current == 'true' && steps.baseline.outputs.same == 'true'
         run: node -e 'require("node:fs").writeFileSync(".indexnow/changed.json", "[]")'
       - name: Recheck production deployment
         if: steps.live.outputs.current == 'true' && steps.compare.outputs.stale != 'true'
         id: live_final
-        run: node scripts/indexnow/live.mjs
+        run: node .indexnow-tooling/scripts/indexnow/live.mjs
         env:
           GH_TOKEN: ${{ github.token }}
       - name: Notify IndexNow
         if: steps.live_final.outputs.current == 'true' && steps.compare.outputs.stale != 'true'
-        run: node scripts/indexnow/submit.mjs .indexnow/changed.json
+        run: node .indexnow-tooling/scripts/indexnow/submit.mjs .indexnow/changed.json
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
       - name: Save IndexNow baseline
         if: steps.live_final.outputs.current == 'true' && steps.compare.outputs.stale != 'true'
-        uses: actions/upload-artifact@v7
-        with:
-          name: indexnow-manifest
-          path: .indexnow/current.json
-          include-hidden-files: true
-          if-no-files-found: error
-          retention-days: 90
-  refresh:
-    if: github.event_name == 'schedule'
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version-file: .node-version
-      - name: Load prior snapshot
-        id: state
-        run: node scripts/indexnow/state.mjs
-        env:
-          GH_TOKEN: ${{ github.token }}
-          INDEXNOW_REFRESH: '1'
-      - name: Preserve snapshot unchanged
-        if: steps.state.outputs.mode == 'artifact'
-        run: cp .indexnow/previous/manifest.json .indexnow/current.json
-      - name: Save IndexNow baseline
-        if: steps.state.outputs.mode == 'artifact'
         uses: actions/upload-artifact@v7
         with:
           name: indexnow-manifest

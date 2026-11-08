@@ -3,6 +3,9 @@ import { readFile, realpath, stat, writeFile } from "node:fs/promises";
 import { resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
 import { htmlToMarkdown, MAX_MARKDOWN_SOURCE_BYTES } from "../../apps/web/server/llm-markdown.mjs";
+import { validateManifest } from "./validate-baseline.mjs";
+
+export { validateManifest } from "./validate-baseline.mjs";
 
 const ORIGIN = "https://openplovdiv.com";
 const decode = (s) => s.replace(/&(amp|lt|gt|quot|apos);/g, (_, n) => ({ amp: "&", lt: "<", gt: ">", quot: '"', apos: "'" })[n]);
@@ -82,14 +85,6 @@ export async function buildManifest(directory, sha, deployedAt, deploymentId) {
     pages[url.href] = createHash("sha256").update(relevantHead(html)).update("\n").update(page.markdown).update("\n").update(clientData).digest("hex");
   }
   return { schema: 1, sha, deployedAt, deploymentId, pages };
-}
-
-export function validateManifest(manifest) {
-  if (manifest?.schema !== 1 || !/^[a-f0-9]{40}$/.test(manifest.sha || "") || !Number.isFinite(Date.parse(manifest.deployedAt)) || !Number.isSafeInteger(manifest.deploymentId) || manifest.deploymentId < 1 || !manifest.pages || Array.isArray(manifest.pages)) throw new Error("Invalid IndexNow baseline");
-  for (const [url, hash] of Object.entries(manifest.pages)) {
-    if (new URL(url).origin !== ORIGIN || !/^[a-f0-9]{64}$/.test(hash)) throw new Error("Invalid IndexNow page in baseline");
-  }
-  return manifest;
 }
 
 export function changedUrls(previous, current) {
