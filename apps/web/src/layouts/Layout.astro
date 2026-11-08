@@ -17,6 +17,7 @@ import { llmsLabels } from "@lib/llmsLabels";
 import {
   absoluteUrl,
   buildPageStructuredData,
+  conciseDescription,
   inferOpenGraphType,
   serializeJsonLd,
   type JsonLdObject
@@ -61,7 +62,8 @@ const t = ui[lang];
 const searchT = siteSearchUi[lang];
 
 const pageTitle = title ? `${title} · ${t.site.name}` : t.site.name;
-const pageDescription = description ?? t.site.tagline;
+const fullPageDescription = description ?? t.site.tagline;
+const pageDescription = conciseDescription(fullPageDescription, lang);
 const structuredTitle = title ?? t.site.name;
 
 const ogLocales: Record<Lang, string> = { bg: "bg_BG", en: "en_GB", de: "de_DE", fr: "fr_FR", it: "it_IT", tr: "tr_TR", es: "es_ES", el: "el_GR", ja: "ja_JP", zh: "zh_CN", tl: "fil_PH", uk: "uk_UA", ru: "ru_RU", pl: "pl_PL" , pt: "pt_PT"};
@@ -128,7 +130,7 @@ const structuredDataJson = serializeJsonLd(
     logicalPath: path,
     canonical,
     title: structuredTitle,
-    description: pageDescription,
+    description: fullPageDescription,
     image: seoImage,
     additional: structuredData,
     breadcrumbLabels: {

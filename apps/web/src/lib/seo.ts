@@ -22,6 +22,56 @@ export type StructuredDataOptions = {
   additional?: JsonLdObject | JsonLdObject[];
 };
 
+/**
+ * Keep page-specific descriptions useful as a search or social preview.
+ * This is a presentation target, not a search-engine character limit. Keep
+ * complete sentences where possible and preserve word boundaries for longer
+ * sentences, including languages that do not use spaces between words.
+ */
+export function conciseDescription(description: string, lang: Lang): string {
+  const limit = 160;
+  if ([...description].length <= limit) return description;
+  const text = description.trim().replace(/\s+/gu, " ");
+  if ([...text].length <= limit) return text;
+
+  let complete = "";
+  const sentences = new Intl.Segmenter(lang, { granularity: "sentence" }).segment(text);
+  for (const { segment } of sentences) {
+    const next = (complete + segment).trim();
+    if ([...next].length > limit) break;
+    complete += segment;
+  }
+  complete = complete.trim();
+  if ([...complete].length >= 40) return complete;
+
+  let excerpt = "";
+  const words = new Intl.Segmenter(lang, { granularity: "word" }).segment(text);
+  for (const { segment } of words) {
+    if ([...excerpt, ...segment].length > limit - 1) break;
+    excerpt += segment;
+  }
+  excerpt = excerpt.trimEnd().replace(/[\s,;:，；：、]+$/u, "");
+  // Avoid leaving an opening parenthesis or an English linking word dangling
+  // immediately before the ellipsis when a sentence is unusually long.
+  excerpt = excerpt.replace(/\s*[(（\[「『]+\s*$/u, "");
+  if (lang === "en" && /\b(?:and|or|the|of|to|for|in|on|with|by|from|a|an)$/iu.test(excerpt)) {
+    const breaks = [...excerpt.matchAll(/[,;:，；：、]/gu)].filter(({ index }) =>
+      !( /\d/u.test(excerpt[index - 1] || "") && /\d/u.test(excerpt[index + 1] || "") )
+    );
+    const boundary = breaks.at(-1);
+    if (boundary && boundary.index >= 40) excerpt = excerpt.slice(0, boundary.index).trimEnd();
+  }
+  if (!excerpt) {
+    // A single oversized token has no word boundary. As a last resort, cut
+    // at a grapheme boundary so emoji or combining marks remain intact.
+    for (const { segment } of new Intl.Segmenter(lang, { granularity: "grapheme" }).segment(text)) {
+      if ([...excerpt, ...segment].length > limit - 1) break;
+      excerpt += segment;
+    }
+  }
+  return `${excerpt}…`;
+}
+
 export function absoluteUrl(pathOrUrl: string | undefined, site: URL): string | undefined {
   if (!pathOrUrl) return undefined;
   return new URL(pathOrUrl, site).href;
