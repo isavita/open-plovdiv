@@ -7,12 +7,12 @@ import { roleLabels, ui, type Lang } from "@i18n/ui";
 import { localeForLang } from "@i18n/utils";
 import {
   historyKnowledgeEvents,
-  historyKnowledgeIndex,
   historyKnowledgePeople,
   historyKnowledgeSources,
   type KnowledgePerson
 } from "@lib/data";
-import { commonsImageUrl } from "@lib/commons";
+import { commonsImageUrl, isCommonsUploadImageUrl } from "@lib/commons";
+import { featuredPortraitDerivative } from "@lib/featuredPortraits";
 import { bustGlyph, sectionMotifs } from "@lib/motifs";
 import { siteSearchUi } from "@lib/siteSearchI18n";
 import { peopleCatalogMessages } from "@lib/peopleCatalogMessages";
@@ -1347,6 +1347,12 @@ const featuredPortraitIds = [
 const featuredPeople = featuredPortraitIds
   .map((id) => personById.get(id))
   .filter((person): person is KnowledgePerson => Boolean(person?.image));
+const resizedLabel: Record<Lang, string> = {
+  bg: "преоразмерено", en: "resized", de: "verkleinert", fr: "redimensionnée",
+  it: "ridimensionata", tr: "yeniden boyutlandırıldı", es: "redimensionada",
+  el: "αλλαγή μεγέθους", ja: "サイズ変更", zh: "已调整大小", tl: "binago ang laki",
+  uk: "розмір змінено", ru: "размер изменён", pl: "zmieniono rozmiar", pt: "redimensionada"
+};
 
 const personIndex = people.map((person) => ({
   id: person.id,
@@ -1474,10 +1480,7 @@ const nodeConfig = {
   lang,
   locale,
   api: {
-    people: historyKnowledgeIndex.endpoints.people,
-    personRelationships: historyKnowledgeIndex.endpoints.person_relationships,
-    sources: historyKnowledgeIndex.endpoints.sources,
-    events: historyKnowledgeIndex.endpoints.events
+    catalog: `/api/history/people-catalog/v1/${lang}.json`
   },
   groupLabels,
   groupColors,
@@ -1567,15 +1570,24 @@ const nodeConfig = {
             const media = person as KnowledgePerson & {
               image_page_url?: string | null;
               image_license?: string | null;
+              image_license_url?: string | null;
+              image_credit?: string | null;
             };
             const group = roleGroups[person.roles?.[0] ?? ""] ?? "civic";
+            const derivative = media.image_page_url && media.image_license && media.image_license_url && media.image_credit
+              ? featuredPortraitDerivative(person.id, person.image!) : null;
+            const source330 = derivative?.small ?? commonsImageUrl(person.image!, 330);
+            const source500 = derivative?.large ?? commonsImageUrl(person.image!, 500);
             return (
               <article class={`featured-person people-group-${group}`}>
                 <a class="featured-person-media" href={`${languagePrefix}/people/${person.id}`}>
                   <img
-                    src={commonsImageUrl(person.image!, 500)}
+                    src={source500}
+                    srcset={derivative || isCommonsUploadImageUrl(person.image!) ? `${source330} 330w, ${source500} 500w` : undefined}
+                    sizes="(max-width: 760px) min(76vw, 282px), (max-width: 1100px) 33vw, 25vw"
                     alt={localized(person, "name")}
-                    loading={index < 4 ? "eager" : "lazy"}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchpriority={index === 0 ? undefined : "low"}
                     decoding="async"
                   />
                   <span class="featured-person-group">{groupLabels[group]}</span>
@@ -1585,7 +1597,14 @@ const nodeConfig = {
                   <p>{localized(person, "summary")}</p>
                   <div class="featured-person-footer">
                     <a class="text-link" href={`${languagePrefix}/people/${person.id}`}>{labels.profile} <LinkIcon direction="right" /></a>
-                    {media.image_page_url && (
+                    {media.image_page_url && derivative ? (
+                      <span class="featured-person-credit">
+                        {media.image_credit && <>{media.image_credit} · </>}
+                        <a href={media.image_page_url} target="_blank" rel="noreferrer">{editorialLabels.imageSource}</a>
+                        {media.image_license && <> · {media.image_license_url ? <a href={media.image_license_url} target="_blank" rel="noreferrer">{media.image_license}</a> : media.image_license}</>}
+                        {` · ${resizedLabel[lang]} · WebP`}
+                      </span>
+                    ) : media.image_page_url && (
                       <a
                         class="featured-person-credit"
                         href={media.image_page_url}
@@ -1837,6 +1856,7 @@ const nodeConfig = {
     const relationshipCount = document.querySelector<HTMLElement>("#people-relationship-count");
     let cards: any[] = [];
     let relationshipRows = [...document.querySelectorAll<HTMLElement>("[data-relationship-row]")];
+    let catalogRequest: Promise<any> | null = null;
 
     function escapePeopleHtml(value: unknown): string {
       return String(value)
@@ -1853,6 +1873,23 @@ const nodeConfig = {
       return await response.json();
     }
 
+    // Share one compact locale-specific request between catalogue, ledger and
+    // graph; a failed request can be retried by opening the relevant feature.
+    function loadCatalogData() {
+      if (!catalogRequest) {
+        catalogRequest = fetchPeopleJson(config.api.catalog).then((payload) => {
+          if (![payload.people, payload.sources, payload.person_relationships, payload.events].every(Array.isArray)) {
+            throw new Error("Invalid people catalogue data");
+          }
+          return payload;
+        }).catch((error) => {
+          catalogRequest = null;
+          throw error;
+        });
+      }
+      return catalogRequest;
+    }
+
     function collectionFromPayload(payload: any, preferredKey: string) {
       if (Array.isArray(payload)) return payload;
       if (payload && Array.isArray(payload[preferredKey])) return payload[preferredKey];
@@ -1861,6 +1898,7 @@ const nodeConfig = {
 
     function localizedPerson(record: Record<string, any> | undefined, base: string) {
       if (!record) return "";
+      if (typeof record[base] === "string") return record[base];
       return String(
         (config.lang === "zh" ? (record[`${base}_zh`] || record[`${base}_en`] || "") : (record[`${base}_${config.lang}`] ?? record[`${base}_en`] ?? record[`${base}_bg`] ?? ""))
       );
@@ -1899,14 +1937,10 @@ const nodeConfig = {
 
     async function loadPeopleCards() {
       if (cards.length > 0) return cards;
-      const api = config.api ?? {};
-      const [peoplePayload, sourcePayload] = await Promise.all([
-        fetchPeopleJson(api.people),
-        fetchPeopleJson(api.sources)
-      ]);
-      const people = collectionFromPayload(peoplePayload, "people");
+      const catalog = await loadCatalogData();
+      const people = collectionFromPayload(catalog.people, "people");
       const personById = new Map(people.map((person: any) => [person.id, person]));
-      const sourceById = new Map(collectionFromPayload(sourcePayload, "sources").map((source: any) => [source.id, source]));
+      const sourceById = new Map(collectionFromPayload(catalog.sources, "sources").map((source: any) => [source.id, source]));
       cards = people
         .sort((a: any, b: any) =>
           localizedPerson(a, "name").localeCompare(localizedPerson(b, "name"), config.locale)
@@ -2002,19 +2036,13 @@ const nodeConfig = {
 
     async function loadRelationshipRows() {
       if (relationshipRows.length > 0) return relationshipRows;
-      const api = config.api ?? {};
-      const [relationshipPayload, peoplePayload, sourcePayload, eventPayload] = await Promise.all([
-        fetchPeopleJson(api.personRelationships),
-        fetchPeopleJson(api.people),
-        fetchPeopleJson(api.sources),
-        fetchPeopleJson(api.events)
-      ]);
-      const peopleById = new Map(collectionFromPayload(peoplePayload, "people").map((person: any) => [person.id, person]));
-      const sourcesById = new Map(collectionFromPayload(sourcePayload, "sources").map((source: any) => [source.id, source]));
-      const eventsById = new Map(collectionFromPayload(eventPayload, "events").map((event: any) => [event.id, event]));
+      const catalog = await loadCatalogData();
+      const peopleById = new Map(collectionFromPayload(catalog.people, "people").map((person: any) => [person.id, person]));
+      const sourcesById = new Map(collectionFromPayload(catalog.sources, "sources").map((source: any) => [source.id, source]));
+      const eventsById = new Map(collectionFromPayload(catalog.events, "events").map((event: any) => [event.id, event]));
       const dedupedRelationships: any[] = [];
       const seenRelationships = new Set<string>();
-      for (const item of collectionFromPayload(relationshipPayload, "person_relationships")) {
+      for (const item of collectionFromPayload(catalog.person_relationships, "person_relationships")) {
         const relationship = item as any;
         if (relationship.relationship_type === "succeeds") continue;
         const category = relationship.relationship_type === "succeeded_by" ? "succession" : "family";
@@ -2290,15 +2318,10 @@ const nodeConfig = {
     }
 
     async function buildGraphData() {
-      const api = config.api ?? {};
-      const [peoplePayload, relPayload, eventPayload] = await Promise.all([
-        fetchPeopleJson(api.people),
-        fetchPeopleJson(api.personRelationships),
-        fetchPeopleJson(config.api.events)
-      ]);
-      const peopleArr = collectionFromPayload(peoplePayload, "people");
-      const rels = collectionFromPayload(relPayload, "person_relationships");
-      const events = collectionFromPayload(eventPayload, "events");
+      const catalog = await loadCatalogData();
+      const peopleArr = collectionFromPayload(catalog.people, "people");
+      const rels = collectionFromPayload(catalog.person_relationships, "person_relationships");
+      const events = collectionFromPayload(catalog.events, "events");
       const eventYearById = new Map(
         events.map((event: any) => [event.id, Number(event?.date?.year) || null])
       );

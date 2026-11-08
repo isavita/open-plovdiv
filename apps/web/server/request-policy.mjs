@@ -1,6 +1,8 @@
 const STATIC_JSON_API_PATH = /^\/api\/(history|search)\/[^/]+\.json$/;
+const LOCALIZED_PEOPLE_CATALOG_PATH = /^\/api\/history\/people-catalog\/v1\/[a-z]{2}\.json$/;
 const ALLOWED_STATIC_API_METHODS = new Set(["GET", "HEAD"]);
 const STATIC_API_CACHE_CONTROL = {
+  catalog: "public, max-age=600",
   history: "public, max-age=300",
   search: "public, max-age=3600"
 };
@@ -58,6 +60,7 @@ export function matchStaticJsonApi(requestUrl) {
     return null;
   }
 
+  if (LOCALIZED_PEOPLE_CATALOG_PATH.test(pathname)) return { kind: "catalog", pathname };
   const match = STATIC_JSON_API_PATH.exec(pathname);
   return match ? { kind: match[1], pathname } : null;
 }

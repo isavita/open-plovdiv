@@ -1,4 +1,5 @@
 import { readFile, realpath, stat } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { dirname, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseHTML } from "linkedom";
@@ -151,13 +152,28 @@ export async function serveMarkdownPage(request, response, options = {}) {
   if (result) { cache.delete(key); cache.set(key, result); }
   else {
     result = htmlToMarkdown(await readFile(file, "utf8"), options.fallbackCanonical);
+    // The same Markdown may be served using different content encodings. A
+    // weak validator compares its semantic content without conflating bytes.
+    result.etag = `W/"${createHash("sha256").update(result.markdown).digest("base64url")}"`;
     remember(key, result);
   }
   response.statusCode = 200;
   response.setHeader("Content-Type", "text/markdown; charset=utf-8");
-  response.setHeader("Cache-Control", "public, max-age=300");
+  response.setHeader("Cache-Control", "public, max-age=600");
+  response.setHeader("ETag", result.etag);
+  response.setHeader("Vary", "Accept-Encoding");
   response.setHeader("X-Robots-Tag", "noindex");
   response.setHeader("Link", `<${result.canonical}>; rel="canonical", </llms.txt>; rel="describedby"`);
+  const ifNoneMatch = String(request.headers["if-none-match"] ?? "");
+  const matches = ifNoneMatch.split(",").some((candidate) => {
+    const token = candidate.trim();
+    return token === "*" || token.replace(/^W\//i, "") === result.etag.slice(2);
+  });
+  if (matches) {
+    response.statusCode = 304;
+    response.end();
+    return true;
+  }
   if (String(request.method).toUpperCase() === "HEAD") { response.end(); return true; }
   applyCompression(request, response);
   response.end(result.markdown);

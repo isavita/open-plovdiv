@@ -214,7 +214,7 @@ const corePagePairs = [
       'id="featured-people"',
       'id="relationship-preview"',
       'id="people-catalog-controls"',
-      '"events":"/api/history/events.json"'
+      '"catalog":"/api/history/people-catalog/v1/'
     ]
   },
   {
@@ -410,17 +410,75 @@ assertContains("PeopleView.astro", peopleViewSource, [
   'id="featured-people"',
   'id="relationship-preview"',
   'id="people-catalog-controls"',
-  "events: historyKnowledgeIndex.endpoints.events",
-  "config.api.events"
+  "config.api.catalog",
+  "loadCatalogData()",
+  "catalog.events",
+  "catalog.person_relationships"
 ]);
+const fullRelationships = collectionFromPayload(readJson("/api/history/person-relationships.json"), "person_relationships") ?? [];
+const fullSources = collectionFromPayload(readJson("/api/history/sources.json"), "sources") ?? [];
+const originalEventsById = new Map(historyEvents.map((event) => [event.id, event]));
+const originalPeopleById = new Map(people.map((person) => [person.id, person]));
+const originalSourcesById = new Map(fullSources.map((source) => [source.id, source]));
+const originalRelationshipsById = new Map(fullRelationships.map((relationship) => [relationship.id, relationship]));
+const localized = (record, base, lang) => String(lang === "zh"
+  ? (record?.[`${base}_zh`] || record?.[`${base}_en`] || "")
+  : (record?.[`${base}_${lang}`] ?? record?.[`${base}_en`] ?? record?.[`${base}_bg`] ?? ""));
 for (const prefix of localePrefixes) {
+  const lang = localeByPrefix.get(prefix);
   const url = `${prefix}/people/`;
   assertContains(url, readBuilt(url), [
     'id="featured-people"',
     'id="relationship-preview"',
     'id="people-catalog-controls"',
-    '"events":"/api/history/events.json"'
+    'id="people-graph-toggle"',
+    'id="people-relationship-list"',
+    `"catalog":"/api/history/people-catalog/v1/${lang}.json"`
   ]);
+
+  const catalogUrl = `/api/history/people-catalog/v1/${lang}.json`;
+  const catalog = readJson(catalogUrl);
+  if (!catalog || ![catalog.people, catalog.sources, catalog.person_relationships, catalog.events].every(Array.isArray)) {
+    fail(`${catalogUrl} must include people, sources, relationships and events arrays`);
+    continue;
+  }
+  const peopleById = new Map(catalog.people.map((person) => [person.id, person]));
+  const sourcesById = new Map(catalog.sources.map((source) => [source.id, source]));
+  const eventsById = new Map(catalog.events.map((event) => [event.id, event]));
+  const relationshipsById = new Map(catalog.person_relationships.map((relationship) => [relationship.id, relationship]));
+  if (peopleById.size !== people.length || catalog.people.length !== people.length) fail(`${catalogUrl} must contain every person exactly once`);
+  if (relationshipsById.size !== fullRelationships.length || catalog.person_relationships.length !== fullRelationships.length) fail(`${catalogUrl} must contain every relationship exactly once`);
+  if (sourcesById.size !== catalog.sources.length || eventsById.size !== catalog.events.length) fail(`${catalogUrl} has duplicate source or event IDs`);
+
+  for (const person of people) {
+    const compact = peopleById.get(person.id);
+    if (!compact) { fail(`${catalogUrl} missing person ${person.id}`); continue; }
+    if (compact.name !== localized(person, "name", lang) || compact.summary !== localized(person, "summary", lang)) fail(`${catalogUrl} has incorrect localized name or summary for ${person.id}`);
+    if (JSON.stringify(compact.roles) !== JSON.stringify(person.roles) || JSON.stringify(compact.relationships) !== JSON.stringify(person.relationships) || JSON.stringify(compact.term_events) !== JSON.stringify(person.term_events)) fail(`${catalogUrl} changed roles, relationships or term events for ${person.id}`);
+    if (JSON.stringify(compact.source_ids) !== JSON.stringify(person.source_ids.slice(0, 1))) fail(`${catalogUrl} changed the primary source for ${person.id}`);
+    if (compact.birth_year !== person.birth_year || compact.death_year !== person.death_year || compact.image !== person.image) fail(`${catalogUrl} changed biographical data for ${person.id}`);
+    for (const id of compact.term_events ?? []) if (originalEventsById.has(id) && !eventsById.has(id)) fail(`${catalogUrl} missing person term event ${id}`);
+    for (const id of compact.source_ids ?? []) if (originalSourcesById.has(id) && !sourcesById.has(id)) fail(`${catalogUrl} missing person source ${id}`);
+    for (const relationship of compact.relationships ?? []) if (originalSourcesById.has(relationship.source_id) && !sourcesById.has(relationship.source_id)) fail(`${catalogUrl} missing relationship source ${relationship.source_id}`);
+  }
+  for (const relationship of catalog.person_relationships) {
+    const original = originalRelationshipsById.get(relationship.id);
+    if (!original) { fail(`${catalogUrl} has unexpected relationship ${relationship.id}`); continue; }
+    for (const key of ["relationship_type", "from_person_id", "to_person_id", "event_id", "evidence_property", "source_ids"]) {
+      if (JSON.stringify(relationship[key]) !== JSON.stringify(original[key])) fail(`${catalogUrl} changed ${key} for relationship ${relationship.id}`);
+    }
+    for (const id of [relationship.from_person_id, relationship.to_person_id]) if (originalPeopleById.has(id) && !peopleById.has(id)) fail(`${catalogUrl} missing related person ${id}`);
+    if (relationship.event_id && originalEventsById.has(relationship.event_id) && !eventsById.has(relationship.event_id)) fail(`${catalogUrl} missing relationship event ${relationship.event_id}`);
+    for (const id of relationship.source_ids ?? []) if (originalSourcesById.has(id) && !sourcesById.has(id)) fail(`${catalogUrl} missing relationship source ${id}`);
+  }
+  for (const event of catalog.events) {
+    const original = originalEventsById.get(event.id);
+    if (!original || event.title !== localized(original, "title", lang) || event.date?.year !== original.date?.year || event.date?.display !== localized(original.date, "display", lang)) fail(`${catalogUrl} has incorrect title or date for event ${event.id}`);
+  }
+  for (const source of catalog.sources) {
+    const original = originalSourcesById.get(source.id);
+    if (!original || source.url !== original.url || source.title !== localized(original, "title", lang)) fail(`${catalogUrl} has incorrect source ${source.id}`);
+  }
 }
 for (const prefix of localePrefixes) {
   const url = `${prefix}/people/`;

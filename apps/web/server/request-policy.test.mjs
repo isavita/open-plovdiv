@@ -140,6 +140,7 @@ describe("static JSON API method policy", () => {
 
   it.each([
     ["/api/history/events.json", "public, max-age=300"],
+    ["/api/history/people-catalog/v1/zh.json", "public, max-age=600"],
     ["/api/search/bg.json", "public, max-age=3600"]
   ])("sets the production cache policy for %s", async (path, expected) => {
     const response = await fetch(`${baseUrl}${path}`);
@@ -153,6 +154,30 @@ describe("static JSON API method policy", () => {
 
     expect(response.status).toBe(500);
     expect(response.headers.get("cache-control")).toBe("private, no-store");
+  });
+
+  it("rejects writes and preserves errors for nested localized catalog endpoints", async () => {
+    const response = await fetch(`${baseUrl}/api/history/people-catalog/v1/en.json`, { method: "POST" });
+    expect(response.status).toBe(405);
+    expect(response.headers.get("cache-control")).toBe("no-store");
+    const failure = await fetch(`${baseUrl}/api/history/people-catalog/v1/en.json?fail=1`);
+    expect(failure.status).toBe(500);
+    expect(failure.headers.get("cache-control")).toBe("private, no-store");
+  });
+
+  it("does not apply static caching or method restrictions to unrelated nested APIs", async () => {
+    const path = `${baseUrl}/api/history/other/action.json`;
+    const post = await fetch(path, { method: "POST" });
+    expect(post.status).toBe(200);
+    expect(post.headers.get("cache-control")).toBeNull();
+    const get = await fetch(path);
+    expect(get.headers.get("cache-control")).toBeNull();
+  });
+
+  it("keeps the ten-minute cache policy on a conditional catalog response", async () => {
+    const response = await fetch(`${baseUrl}/api/history/people-catalog/v1/en.json?not-modified=1`);
+    expect(response.status).toBe(304);
+    expect(response.headers.get("cache-control")).toBe("public, max-age=600");
   });
 
   it("keeps cache policy on conditional static API responses", async () => {

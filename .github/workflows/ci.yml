@@ -24,3 +24,26 @@ jobs:
           PUBLIC_SITE_URL: https://openplovdiv.test
       - run: npm run validate:history-surface
       - run: npm run validate:llms
+      - name: Advisory mobile performance report
+        env:
+          LIGHTHOUSE_ROUTES: "/,/en,/en/people"
+          LIGHTHOUSE_MIN_SCORE: "0.80"
+          LIGHTHOUSE_REPORT_ONLY: "1"
+          LIGHTHOUSE_BLOCK_EXTERNAL_HTTPS: "1"
+        run: |
+          CHROME_EXECUTABLE="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME_EXECUTABLE" ]; then
+            echo "::warning::Mobile performance report skipped: Chrome or Chromium was not found on the runner."
+            exit 0
+          fi
+          export CHROME_PATH="$CHROME_EXECUTABLE"
+          if ! npm run validate:lighthouse; then
+            echo "::warning::Mobile performance report could not be completed; review the Lighthouse log."
+          fi
+      - name: Upload mobile performance report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-mobile-${{ github.sha }}
+          path: apps/web/dist/lighthouse-mobile-summary.json
+          if-no-files-found: warn
+          retention-days: 14

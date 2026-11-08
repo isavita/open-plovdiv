@@ -76,10 +76,12 @@ describe("LLM Markdown HTTP responses", () => {
     outsideRoot = await mkdtemp(join(tmpdir(), "open-plovdiv-markdown-outside-"));
     await mkdir(join(root, "en/history"), { recursive: true });
     await mkdir(join(root, "en/places/item"), { recursive: true });
+    await mkdir(join(root, "en/cache"), { recursive: true });
     await mkdir(join(root, "fonts"), { recursive: true });
     await writeFile(join(root, "en/history/index.html"), html);
     await writeFile(join(root, "en/index.html"), html);
     await writeFile(join(root, "en/places/item/index.html"), html);
+    await writeFile(join(root, "en/cache/index.html"), html);
     await writeFile(join(root, "fonts/README.md"), "Static font documentation");
     await writeFile(join(root, "index.html"), html.replace('lang="en"', 'lang="bg"').replace("History</h1>", "История</h1>"));
     await writeFile(join(outsideRoot, "index.html"), html);
@@ -137,6 +139,33 @@ describe("LLM Markdown HTTP responses", () => {
     const aliasPost = await fetch(`${origin}/en/history.md`, { method: "POST" });
     expect(aliasPost.status).toBe(405);
     expect(aliasPost.headers.get("allow")).toBe("GET, HEAD");
+  });
+
+  it("revalidates cached Markdown and changes its validator when content changes", async () => {
+    const first = await fetch(`${origin}/en/cache.md`);
+    const etag = first.headers.get("etag");
+    expect(first.headers.get("cache-control")).toBe("public, max-age=600");
+    expect(first.headers.get("vary")).toContain("Accept-Encoding");
+    expect(etag).toMatch(/^W\/"[A-Za-z0-9_-]+"$/);
+    await first.text();
+    for (const candidate of [etag, etag.slice(2), `"another-tag", ${etag}`, "*"]) {
+      const response = await fetch(`${origin}/en/cache.md`, { headers: { "If-None-Match": candidate } });
+      expect(response.status, candidate).toBe(304);
+      expect(response.headers.get("etag")).toBe(etag);
+      expect(response.headers.get("vary")).toContain("Accept-Encoding");
+      expect(await response.text()).toBe("");
+    }
+    const head = await fetch(`${origin}/en/cache.md`, { method: "HEAD", headers: { "If-None-Match": etag } });
+    expect(head.status).toBe(304);
+    expect(head.headers.get("cache-control")).toBe("public, max-age=600");
+    const mismatch = await fetch(`${origin}/en/cache.md`, { headers: { "If-None-Match": '"different"' } });
+    expect(mismatch.status).toBe(200);
+    await mismatch.text();
+    await writeFile(join(root, "en/cache/index.html"), html.replace("Ancient", "Updated ancient"));
+    const updated = await fetch(`${origin}/en/cache.md`, { headers: { "If-None-Match": etag } });
+    expect(updated.status).toBe(200);
+    expect(updated.headers.get("etag")).not.toBe(etag);
+    expect(await updated.text()).toContain("Updated ancient");
   });
 
   it("passes existing Markdown assets to the static handler", async () => {

@@ -32,7 +32,11 @@ The GitHub integration deploys watched changes on `main` separately from applyin
 
 CI uses that same Node version and checks the generated sitemap, language alternatives and representative page metadata after the build. Dependabot checks npm packages and GitHub Actions weekly; its pull requests still need review and CI before merging. Update the Node pin separately as new supported releases become available.
 
+CI also publishes an advisory Lighthouse mobile report for the Bulgarian and English homepages and the English people directory. Scores below 80 and audit failures are shown as warnings rather than blocking a change, because single-run lab scores vary. The report includes LCP, CLS, blocking time and transferred bytes; external HTTPS requests are blocked so the report measures local assets without depending on third-party hosts. It does not measure real-user performance or the effect of external images. Download the `lighthouse-mobile` workflow artifact to compare runs; run `npm run validate:lighthouse` after a build for the stricter local check.
+
 The site provides an [`/llms.txt`](https://openplovdiv.com/llms.txt) guide and a Markdown alternate for each public page, linked from its HTML. For example, `/en/places.md` and `/en/places/index.md` both provide the English places page, `/zh/places.md` provides the Simplified Chinese places page, and the root page uses `/index.md`. The production server derives Markdown from the corresponding prerendered page on demand, so it follows content updates; interactive or client-loaded content may be absent. Source links and the original HTML remain important context. These endpoints follow the [llms.txt proposal](https://llmstxt.org/) and do not change crawler access rules.
+
+The localized people-catalogue API at `/api/history/people-catalog/v1/<locale>.json` is browser-cached for 600 seconds. Keep its v1 response compatible for existing pages and open tabs; publish an incompatible response under a new versioned URL and retain v1 while those clients may still request it. HTML pages continue to revalidate, so the ten-minute data cache does not make the page itself fresh for ten minutes.
 
 ### IndexNow
 

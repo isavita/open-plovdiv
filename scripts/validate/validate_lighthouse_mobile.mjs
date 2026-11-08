@@ -13,11 +13,19 @@ const serverEntry = path.join(root, "apps/web/dist/server/entry.mjs");
 const productionServer = path.join(root, "apps/web/server/production-server.mjs");
 const outputPath = path.join(root, "apps/web/dist/lighthouse-mobile-summary.json");
 const minimumScore = Number.parseFloat(process.env.LIGHTHOUSE_MIN_SCORE ?? "0.95");
+const reportOnly = process.env.LIGHTHOUSE_REPORT_ONLY === "1";
+// CI can measure the local site without depending on third-party image hosts.
+const blockExternalHttps = process.env.LIGHTHOUSE_BLOCK_EXTERNAL_HTTPS === "1";
 const routes = (process.env.LIGHTHOUSE_ROUTES ?? "/,/history/,/en/history/,/people/,/places/,/stories/,/routes/")
   .split(",")
   .map((route) => route.trim())
   .filter(Boolean);
 const categories = ["performance", "accessibility", "best-practices", "seo"];
+
+if (!Number.isFinite(minimumScore) || minimumScore < 0 || minimumScore > 1) {
+  throw new Error("lighthouse mobile: LIGHTHOUSE_MIN_SCORE must be between 0 and 1");
+}
+if (!routes.length) throw new Error("lighthouse mobile: at least one route is required");
 
 if (!fs.existsSync(serverEntry)) {
   throw new Error("lighthouse mobile: apps/web/dist/server/entry.mjs is missing; run npm run build first");
@@ -252,6 +260,10 @@ function formatScore(score) {
   return Math.round(score * 100);
 }
 
+function formatMilliseconds(value) {
+  return typeof value === "number" ? `${Math.round(value)}ms` : "n/a";
+}
+
 function assertScore(route, category, score, issues) {
   if (typeof score !== "number") {
     issues.push(`${route}: missing Lighthouse ${category} score`);
@@ -279,7 +291,8 @@ async function auditRoute(origin, route, chrome) {
         deviceScaleFactor: 3,
         disabled: false
       },
-      throttlingMethod: "simulate"
+      throttlingMethod: "simulate",
+      ...(blockExternalHttps ? { blockedUrlPatterns: ["https://*"] } : {})
     },
     undefined
   );
@@ -287,10 +300,13 @@ async function auditRoute(origin, route, chrome) {
   const scores = Object.fromEntries(
     categories.map((category) => [category, result.lhr.categories[category]?.score ?? null])
   );
+  const metricIds = ["first-contentful-paint", "largest-contentful-paint", "cumulative-layout-shift", "total-blocking-time", "total-byte-weight"];
+  const metrics = Object.fromEntries(metricIds.map((id) => [id, result.lhr.audits[id]?.numericValue ?? null]));
   return {
     route,
     finalUrl: result.lhr.finalDisplayedUrl,
-    scores
+    scores,
+    metrics
   };
 }
 
@@ -320,6 +336,7 @@ try {
   for (const route of routes) {
     const result = await auditRoute(origin, route, chrome);
     results.push(result);
+    console.log(`lighthouse mobile ${route}: ${categories.map((category) => `${category}=${result.scores[category] == null ? "n/a" : formatScore(result.scores[category])}`).join(", ")}; LCP=${formatMilliseconds(result.metrics["largest-contentful-paint"])}, CLS=${result.metrics["cumulative-layout-shift"] ?? "n/a"}, TBT=${formatMilliseconds(result.metrics["total-blocking-time"])}`);
     for (const category of categories) {
       assertScore(route, category, result.scores[category], issues);
     }
@@ -332,6 +349,9 @@ try {
         audited_at: new Date().toISOString(),
         origin,
         minimum_score: minimumScore,
+        advisory: reportOnly,
+        external_https_blocked: blockExternalHttps,
+        issues,
         routes: results
       },
       null,
@@ -340,20 +360,20 @@ try {
   );
 
   if (issues.length > 0) {
-    console.error(`lighthouse mobile validation failed: ${issues.length} issue(s)`);
+    console.error(`lighthouse mobile ${reportOnly ? "advisory" : "validation failed"}: ${issues.length} issue(s)`);
     for (const result of results) {
       const scores = categories
         .map((category) => `${category}=${formatScore(result.scores[category] ?? 0)}`)
         .join(", ");
       console.error(`- ${result.route}: ${scores}`);
     }
-    for (const issue of issues) console.error(`- ${issue}`);
-    process.exit(1);
+    for (const issue of issues) console.error(`${reportOnly && process.env.GITHUB_ACTIONS ? "::warning::" : "- "}${issue}`);
+    if (!reportOnly) process.exitCode = 1;
+  } else {
+    console.log(
+      `lighthouse mobile ${reportOnly ? "report" : "validation"} passed: ${routes.length} route(s), minimum score ${formatScore(minimumScore)}`
+    );
   }
-
-  console.log(
-    `lighthouse mobile validation passed: ${routes.length} route(s), minimum score ${formatScore(minimumScore)}`
-  );
 } finally {
   if (chrome) await chrome.kill();
   await stopServer(server);
