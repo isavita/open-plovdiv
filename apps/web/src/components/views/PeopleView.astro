@@ -1742,6 +1742,7 @@ const nodeConfig = {
               type="button"
               class="map-legend-chip"
               data-group-chip={item.group}
+              disabled
               aria-pressed="false"
               title={legendLabel}
               style={`--dot:${item.color}`}
@@ -1757,28 +1758,28 @@ const nodeConfig = {
           <div class="catalog-search-layout">
             <div class="field">
               <label for="people-search">{labels.search}</label>
-              <input id="people-search" type="search" placeholder={labels.searchPlaceholder} />
+              <input id="people-search" type="search" placeholder={labels.searchPlaceholder} disabled />
             </div>
             <details class="catalog-filter-disclosure">
               <summary>{searchUi.filters}</summary>
               <div class="catalog-filter-grid">
                 <div class="field">
                   <label for="people-group">{labels.group}</label>
-                  <select id="people-group">
+                  <select id="people-group" disabled>
                     <option value="all">{labels.allGroups}</option>
                     {groupOrder.map((group) => <option value={group}>{groupLabels[group]}</option>)}
                   </select>
                 </div>
                 <div class="field">
                   <label for="people-century">{labels.century}</label>
-                  <select id="people-century">
+                  <select id="people-century" disabled>
                     <option value="all">{labels.allCenturies}</option>
                     {centuries.map((century) => <option value={century}>{century}</option>)}
                   </select>
                 </div>
                 <div class="field">
                   <label for="people-relationship">{labels.relationship}</label>
-                  <select id="people-relationship">
+                  <select id="people-relationship" disabled>
                     <option value="all">{labels.allRelationships}</option>
                     <option value="with">{labels.withRelationships}</option>
                     <option value="without">{labels.withoutRelationships}</option>
@@ -1791,7 +1792,7 @@ const nodeConfig = {
 
         <div class="results-bar">
           <p id="people-count" class="meta">{personIndex.length} {labels.people}</p>
-          <button type="button" id="people-reset" class="link-button" hidden>{labels.reset}</button>
+          <button type="button" id="people-reset" class="link-button" hidden disabled>{labels.reset}</button>
         </div>
       </div>
 
@@ -2178,7 +2179,7 @@ const nodeConfig = {
     // any group change (select or reset) re-syncs the pressed state.
     const groupChips = [...document.querySelectorAll<HTMLButtonElement>("[data-group-chip]")];
     function setPeopleControlsEnabled(enabled: boolean) {
-      for (const control of [search, group, century, relationship, ...groupChips]) {
+      for (const control of [search, group, century, relationship, reset, ...groupChips]) {
         control.disabled = !enabled;
       }
     }
