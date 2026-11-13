@@ -41,7 +41,7 @@ jobs:
             echo "::warning::Mobile performance report could not be completed; review the Lighthouse log."
           fi
       - name: Upload mobile performance report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: lighthouse-mobile-${{ github.sha }}
           path: apps/web/dist/lighthouse-mobile-summary.json
