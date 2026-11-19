@@ -236,7 +236,7 @@ const labels = {
 const placeMedia = (id: string) => {
   const place = historyKnowledgePlaces.find((p) => p.id === id)!;
   const media = place.media[0];
-  return { ...media, src: placeImageUrl(media.url, 960), medium: placeImageUrl(media.url, 768), small: placeImageUrl(media.url, 480) };
+  return { ...media, name: field(place as unknown as Record<string, unknown>, "name", lang), src: placeImageUrl(media.url, 960), medium: placeImageUrl(media.url, 768), small: placeImageUrl(media.url, 480) };
 };
 const essentials = [
   { id: "place-kapana-q12282547", title: labels.kapanaTitle, eyebrow: labels.kapanaEyebrow, text: labels.kapanaText },
@@ -245,7 +245,9 @@ const essentials = [
   { id: "place-nebet-tepe", title: labels.nebetTitle, eyebrow: labels.nebetEyebrow, text: labels.nebetText }
 ].map(place => ({ ...place, media: placeMedia(place.id), href: localizePath(`/places/${place.id}`, lang) }));
 const hero = placeMedia("place-ancient-theatre");
-const routePhotos = ["place-kapana-q12282547", "place-ancient-theatre", "place-nebet-tepe"];
+// Each walk shows a stop the places strip above does not, so the page never
+// repeats a photograph: the art-filled bathhouse, the Odeon, Dzhendem Tepe.
+const routePhotos = ["place-chifte-hamam", "place-odeon-of-philippopolis-q26046109", "place-dzhendem-tepe-q5319673"];
 const routes = ["kapana-creative-hour", "roman-plovdiv-90", "hills-and-sunsets"].map((id, index) => {
   const route = walkingRoutes.find(route => route.id === id)!;
   const geometry = routeGeometry(id);
@@ -259,6 +261,11 @@ const routes = ["kapana-creative-hour", "roman-plovdiv-90", "hills-and-sunsets"]
   };
 });
 const eras = ["prehistory", "roman", "ottoman"] as const;
+// Every photograph on the page, credited once, in the order it appears.
+const photoCredits = [
+  ...essentials.map((place) => ({ ...place.media, label: place.title })),
+  ...routes.map((route) => ({ ...route.photo, label: route.photo.name }))
+];
 ---
 
 <Layout lang={lang} loadJapaneseWebfont={false} path="/" title={homePageTitles[lang]} description={guide.intro} image={placeImageUrl(hero.url, 1600)} imageAlt={labels.theatreTitle}>
@@ -272,9 +279,6 @@ const eras = ["prehistory", "roman", "ottoman"] as const;
           <p class="visitor-intro">{guide.intro}</p>
           <div class="actions">
             <a class="button" href={localizePath("/routes/first-day-plovdiv", lang)}>{guide.firstDay}<span aria-hidden="true"><LinkIcon direction="right" /></span></a>
-            <nav aria-label={llmsLabels[lang].guide}>
-              <a class="visitor-text-link home-llms-link" href="/llms.txt">{llmsLabels[lang].guide}<span aria-hidden="true"><LinkIcon direction="right" /></span></a>
-            </nav>
           </div>
         </div>
         <figure class="visitor-hero-photo">
@@ -284,7 +288,6 @@ const eras = ["prehistory", "roman", "ottoman"] as const;
           <img src={hero.src} srcset={`${hero.small} 480w, ${hero.medium} 768w, ${hero.src} 960w, ${placeImageUrl(hero.url, 1600)} 1500w`} sizes="(max-width: 760px) calc(100vw - 36px), 58vw" alt={labels.theatreTitle} width="1500" height="940" fetchpriority="high" decoding="async" />
           </picture>
           <figcaption><span>{labels.theatreTitle}</span><a href={hero.page_url} target="_blank" rel="noreferrer">© {mediaAttribution(hero.credit, lang)} · {mediaAttribution(hero.license, lang)} <LinkIcon direction="up-right" /></a></figcaption>
-          <span class="visitor-photo-index" aria-hidden="true">01 / PLOVDIV</span>
         </figure>
       </div>
     </section>
@@ -356,11 +359,14 @@ const eras = ["prehistory", "roman", "ottoman"] as const;
     <VisitorPractical lang={lang} />
     <section class="visitor-signoff container" aria-label={t.footer.about}>
       <p>{labels.heroMotto}</p>
-      <details class="visitor-photo-credits">
-        <summary>{t.footer.sources}</summary>
-        <p>{guide.photoNote}</p>
-        <ul>{essentials.map(place => <li><a href={place.media.page_url} target="_blank" rel="noreferrer">{place.title} · {mediaAttribution(place.media.credit, lang)}</a> · <a href={place.media.license_url} target="_blank" rel="noreferrer">{mediaAttribution(place.media.license, lang)}</a></li>)}</ul>
-      </details>
+      <div class="visitor-signoff-links">
+        <details class="visitor-photo-credits">
+          <summary>{t.footer.sources}</summary>
+          <p>{guide.photoNote}</p>
+          <ul>{photoCredits.map(photo => <li><a href={photo.page_url} target="_blank" rel="noreferrer">{photo.label} · {mediaAttribution(photo.credit, lang)}</a> · <a href={photo.license_url} target="_blank" rel="noreferrer">{mediaAttribution(photo.license, lang)}</a></li>)}</ul>
+        </details>
+        <a class="home-llms-link" href="/llms.txt">{llmsLabels[lang].guide} <LinkIcon direction="right" /></a>
+      </div>
     </section>
   </div>
 </Layout>

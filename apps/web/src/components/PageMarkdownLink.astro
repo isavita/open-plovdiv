@@ -13,18 +13,21 @@ const label = llmsLabels[lang].page;
 </nav>
 
 <style>
+  /* Sits quietly after the page content, so the first screen belongs to the city. */
   .page-markdown-tools {
     display: flex;
     justify-content: flex-end;
+    padding-block: 8px 12px;
   }
   .page-markdown-link {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    color: var(--ink-2);
-    font-size: 0.875rem;
+    color: var(--muted);
+    font-size: 0.8rem;
     text-decoration: underline;
-    text-underline-offset: 0.18em;
+    text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+    text-underline-offset: 0.2em;
   }
-  .page-markdown-link:hover { color: var(--brand); }
+  .page-markdown-link:hover { color: var(--brand); text-decoration-color: currentColor; }
 </style>

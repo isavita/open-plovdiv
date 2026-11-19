@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340">
+  <!-- Mask image for the faint skyline in page heroes. Same horizon as
+       src/components/PlovdivSkyline.astro (hill and Nebet Tepe ruins, a
+       Revival house, the Ancient Theatre, the clock tower, Dzhumaya mosque,
+       a Roman arch); windows, clock face and arcade are cut out so the
+       silhouette keeps its detail at low opacity. Keep the two in step. -->
+  <defs>
+    <mask id="details" maskUnits="userSpaceOnUse" x="0" y="0" width="1200" height="340">
+      <rect width="1200" height="340" fill="#fff" />
+      <g fill="#000">
+        <rect x="272" y="214" width="14" height="26" />
+        <rect x="306" y="214" width="14" height="26" />
+        <rect x="340" y="214" width="14" height="26" />
+        <rect x="290" y="268" width="16" height="30" />
+        <rect x="334" y="268" width="16" height="30" />
+        <path d="M948 320v-12a9 9 0 0 1 18 0v12ZM984 320v-12a9 9 0 0 1 18 0v12ZM1020 320v-12a9 9 0 0 1 18 0v12Z" />
+      </g>
+      <circle cx="792" cy="188" r="11" fill="none" stroke="#000" stroke-width="3" />
+      <path d="M792 180v8h7" fill="none" stroke="#000" stroke-width="2.5" />
+    </mask>
+  </defs>
+  <g fill="#000" opacity="0.45">
+    <path d="M0 322C90 246 210 240 300 262c60 14 130 40 190 60Z" />
+    <path d="M780 322c120-20 260-28 420-64v64Z" />
+  </g>
+  <g fill="#000" mask="url(#details)">
+    <rect x="0" y="320" width="1200" height="3" />
+    <rect x="96" y="272" width="28" height="48" />
+    <rect x="130" y="288" width="44" height="32" />
+    <rect x="180" y="258" width="26" height="62" />
+    <rect x="184" y="248" width="5" height="12" />
+    <rect x="197" y="248" width="5" height="12" />
+    <rect x="268" y="248" width="104" height="72" />
+    <rect x="252" y="204" width="136" height="48" />
+    <rect x="246" y="198" width="148" height="7" />
+    <polygon points="246,200 292,158 348,158 394,200" />
+    <rect x="352" y="138" width="10" height="36" />
+    <rect x="464" y="306" width="240" height="14" />
+    <rect x="476" y="292" width="216" height="14" />
+    <rect x="484" y="196" width="16" height="96" />
+    <rect x="530" y="196" width="16" height="96" />
+    <rect x="576" y="196" width="16" height="96" />
+    <rect x="622" y="196" width="16" height="96" />
+    <rect x="668" y="196" width="16" height="96" />
+    <rect x="472" y="178" width="224" height="18" />
+    <polygon points="472,178 584,140 696,178" />
+    <rect x="770" y="158" width="44" height="162" />
+    <rect x="762" y="148" width="60" height="10" />
+    <polygon points="762,150 792,116 822,150" />
+    <rect x="789" y="98" width="6" height="22" />
+    <circle cx="792" cy="95" r="5" />
+    <rect x="872" y="150" width="16" height="170" />
+    <rect x="866" y="184" width="28" height="6" />
+    <polygon points="868,150 880,118 892,150" />
+    <circle cx="880" cy="114" r="4" />
+    <rect x="918" y="220" width="150" height="100" />
+    <path d="M918 222a75 58 0 0 1 150 0Z" />
+    <rect x="990" y="146" width="6" height="22" />
+    <circle cx="993" cy="143" r="4.5" />
+    <rect x="1074" y="164" width="112" height="16" />
+    <path d="M1082 180h96v140h-24v-80a24 24 0 0 0-48 0v80h-24Z" />
+  </g>
+</svg>

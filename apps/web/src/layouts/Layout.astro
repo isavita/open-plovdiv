@@ -433,8 +433,8 @@ const chromeI18nJson = chromeI18n ? JSON.stringify(chromeI18n) : "";
       </header>
 
       <main class="main" id="main">
-        {!localeDetect && !robots?.toLowerCase().includes("noindex") && <PageMarkdownLink lang={lang} path={path} />}
         <slot />
+        {!localeDetect && !robots?.toLowerCase().includes("noindex") && <PageMarkdownLink lang={lang} path={path} />}
       </main>
 
       <nav class="mobile-dock" aria-label={t.footer.explore}>

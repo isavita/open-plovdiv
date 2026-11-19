@@ -762,27 +762,27 @@ small {
   padding: clamp(48px, 7vw, 92px) 0 clamp(42px, 6vw, 76px);
 }
 
+/* The city's own horizon (Nebet Tepe, a Revival house, the theatre, the clock
+   tower, the mosque, a Roman arch) rises faintly from the hero's lower edge
+   in the section colour. The drawing lives in /images/plovdiv-skyline.svg. */
 .hero:not([data-section="home"])::after,
 .page-head::after {
   position: absolute;
   right: max(var(--gutter), calc((100vw - var(--maxw)) / 2));
-  bottom: -1px;
+  bottom: 3px;
   z-index: -1;
-  width: min(36vw, 430px);
-  height: 68%;
+  width: min(44vw, 600px);
+  aspect-ratio: 1200 / 340;
   background: var(--section-accent, var(--brand));
-  clip-path: polygon(
-    0 100%, 0 68%, 9% 68%, 9% 49%, 19% 49%, 19% 74%, 30% 74%,
-    30% 32%, 42% 32%, 42% 59%, 53% 59%, 53% 18%, 66% 18%,
-    66% 51%, 77% 51%, 77% 39%, 88% 39%, 88% 66%, 100% 66%, 100% 100%
-  );
+  -webkit-mask: url("/images/plovdiv-skyline.svg") center bottom / 100% auto no-repeat;
+  mask: url("/images/plovdiv-skyline.svg") center bottom / 100% auto no-repeat;
   content: "";
-  opacity: 0.09;
+  opacity: 0.1;
   pointer-events: none;
 }
 
-/* On narrow viewports the silhouette sits behind text and stat tiles, where
-   its fragments read as stray blocks rather than a skyline. Wide screens only. */
+/* On narrow viewports the silhouette would sit behind text and stat tiles.
+   Wide screens only. */
 @media (max-width: 1239px) {
   .hero:not([data-section="home"])::after,
   .page-head::after {
@@ -2278,18 +2278,23 @@ a.mayor-frieze-more:focus-visible {
   opacity: 0.92;
 }
 
+/* The horizon stands on the footer's floor, so every page ends on the city. */
 .site-footer .footer-skyline {
   position: absolute;
-  top: -44px;
-  right: -5%;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: auto;
   z-index: 0;
   display: block;
-  width: min(78vw, 980px);
+  width: min(100%, 1120px);
   height: auto;
   color: #4b98b5;
   filter: none;
-  opacity: 0.12;
+  opacity: 0.1;
   pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 22%);
+  mask-image: linear-gradient(90deg, transparent, #000 22%);
 }
 
 .site-footer > .container {
@@ -2335,6 +2340,22 @@ a.mayor-frieze-more:focus-visible {
 
 .footer-col a:hover {
   color: #ffffff;
+}
+
+/* Explore is the long list: two short columns instead of one tall one.
+   (Phones already lay every footer list out in two columns.) */
+@media (min-width: 521px) {
+  .footer-top > .footer-col:nth-child(2) ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    gap: 9px 32px;
+  }
+}
+
+@media (min-width: 901px) {
+  .footer-top {
+    grid-template-columns: minmax(240px, 1.4fr) minmax(280px, 1.2fr) repeat(2, minmax(130px, 0.7fr));
+  }
 }
 
 .footer-motto {
@@ -2486,8 +2507,14 @@ a.mayor-frieze-more:focus-visible {
     line-height: 1.55;
   }
 
+  /* The dock's clearance belongs to the footer, so the page ends in footer
+     colour instead of a strip of paper below it. */
   .site-shell {
-    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+    padding-bottom: 0;
+  }
+
+  .site-footer {
+    padding-bottom: calc(32px + 76px + env(safe-area-inset-bottom));
   }
 
   .nav {
@@ -2824,9 +2851,9 @@ a.mayor-frieze-more:focus-visible {
   }
 
   .site-footer .footer-skyline {
-    top: -10px;
-    right: -80%;
-    width: 210vw;
+    right: -30%;
+    bottom: calc(76px + env(safe-area-inset-bottom));
+    width: 150vw;
     opacity: 0.1;
   }
 }
@@ -3026,7 +3053,7 @@ a.mayor-frieze-more:focus-visible {
   .mobile-dock { padding: 4px; border-radius: 22px; }
   .mobile-dock a, .mobile-dock button { min-height: 48px; gap: 2px; border-radius: 16px; }
   .mobile-dock svg { width: 20px; height: 20px; }
-  .site-shell { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+
   .story-detail-grid h1 {
     font-size: clamp(2.3rem, 10vw, 3.4rem);
     line-height: 1.04;
