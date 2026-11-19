@@ -187,7 +187,7 @@ const manualTranslationsByLang = {
     "Hadzhi Hasan Mahala": "Χατζή Χασάν μαχαλά",
     // Route title: "χωρίς βήμα" reads as "without a step (in a dance)";
     // stairs are what the route avoids.
-    "Step-free Plovdiv": "Plovdiv χωρίς σκαλοπάτια",
+    "Plovdiv without stairs": "Plovdiv χωρίς σκαλοπάτια",
     "Public web reference; reuse terms not verified":
       "Δημόσια διαδικτυακή αναφορά· οι όροι επαναχρησιμοποίησης δεν επαληθεύτηκαν",
     "Wikimedia Commons file license, verify per file":
@@ -422,7 +422,7 @@ const manualTranslationsByLang = {
     "Unification and civic memory": "Об'єднання і громадянська пам'ять",
     "The tepeta and their sunsets": "Тепета та їхні заходи сонця",
     "A museum day for the rain": "Музейний день — і в дощ",
-    "Step-free Plovdiv": "Plovdiv без сходинок",
+    "Plovdiv without stairs": "Plovdiv без сходинок",
     "Public web reference; reuse terms not verified":
       "Публічне вебпосилання; умови повторного використання не перевірено",
     "Wikimedia Commons file license, verify per file":
@@ -499,7 +499,7 @@ const manualTranslationsByLang = {
     // and left a stray trailing period on the 20th-century title.
     "A museum day for the rain": "Музейный день — и в дождь",
     "Modern Plovdiv of the 20th century": "Современный Plovdiv XX века",
-    "Step-free Plovdiv": "Plovdiv без ступеней",
+    "Plovdiv without stairs": "Plovdiv без ступеней",
     "Public web reference; reuse terms not verified":
       "Публичная веб-ссылка; условия повторного использования не проверены",
     "Wikimedia Commons file license, verify per file":

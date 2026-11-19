@@ -16,7 +16,7 @@
     "difficulty": "moderate",
     "wheelchair": "partial",
     "wheelchair_note_bg": "Равно по главната улица и в Капана; калдъръмът и наклонът в Стария град са трудни за колела — за маршрут без стъпала вижте „Пловдив без стъпала“.",
-    "wheelchair_note_en": "Level along the main street and in Kapana; the Old Town's cobbles and slopes are hard on wheels — see the step-free route for a fully level walk.",
+    "wheelchair_note_en": "Level along the main street and in Kapana; the Old Town's cobbles and slopes are hard on wheels — see the no-stairs route for a fully level walk.",
     "family_friendly": true,
     "rainy_day_ok": false,
     "transit_required": false,
@@ -1029,8 +1029,8 @@
       }
     ],
     "detours": [],
-    "start_guidance_bg": "Градината „Цар Симеон“ огражда центъра от юг; с кола паркирайте в подземния паркинг наблизо.",
-    "start_guidance_en": "Tzar Simeon Garden edges the centre from the south; by car, use the underground parking nearby.",
+    "start_guidance_bg": "Градината „Цар Симеон“ огражда центъра от юг.",
+    "start_guidance_en": "Tzar Simeon Garden edges the centre from the south.",
     "end_guidance_bg": "От Дондуковата градина сте на 5 минути от площад Съединение и на 10 от Джумая.",
     "end_guidance_en": "From the Dondukova garden you are 5 minutes from Unification square and 10 from Dzhumaya.",
     "practical": [
@@ -1046,8 +1046,8 @@
       },
       {
         "kind": "water",
-        "text_bg": "Чешми има в двете градини; през лятото фонтаните са най-хладното място в центъра.",
-        "text_en": "Both gardens have drinking fountains; in summer the fountain plazas are the centre's coolest spot."
+        "text_bg": "Носете си вода; през лятото фонтаните са най-хладното място в центъра.",
+        "text_en": "Carry water; in summer the fountain plazas are the centre's coolest spot."
       }
     ],
     "caveats": [
@@ -1062,9 +1062,9 @@
   {
     "id": "step-free-plovdiv",
     "title_bg": "Пловдив без стъпала",
-    "title_en": "Step-free Plovdiv",
+    "title_en": "Plovdiv without stairs",
     "short_title_bg": "Без стъпала",
-    "short_title_en": "Step-free",
+    "short_title_en": "No stairs",
     "tagline_bg": "центърът на равно — за колела, колички и спокойни крачки",
     "tagline_en": "the level centre — for wheels, strollers and unhurried steps",
     "summary_bg": "Най-доброто от центъра без нито едно тепе: градините, пешеходната главна улица, погледът към античния стадион от нивото на площада, Капана и площад Съединение. Маршрут, планиран за достъпност, а не като компромис.",
@@ -1092,8 +1092,8 @@
       {
         "place_id": "place-stefan-stambolov-square-plovdiv-q59441964",
         "minutes": 10,
-        "note_bg": "Гладък площад с рампи към главната улица.",
-        "note_en": "A smooth square with ramped access onto the main street."
+        "note_bg": "Широк пешеходен площад, който излиза направо на главната улица.",
+        "note_en": "A broad pedestrian square that opens straight onto the main street."
       },
       {
         "place_id": "place-ancient-stadium",
@@ -1139,8 +1139,8 @@
     ],
     "caveats": [
       {
-        "text_bg": "Оценката „на равно“ описва терена, а не официална сертификация за достъпност — подходите към отделни сгради се различават.",
-        "text_en": "\"Step-free\" describes the terrain, not a formal accessibility certification — individual building entrances vary."
+        "text_bg": "Оценката „без стъпала“ описва терена, а не официална сертификация за достъпност — бордюрите, пресичанията и входовете на сградите се различават.",
+        "text_en": "\"No stairs\" describes the terrain, not a formal accessibility certification — kerbs, crossings and building entrances vary."
       }
     ],
     "data_quality": "editorial_route_guidance",
@@ -1631,8 +1631,8 @@
     "duration_band": "half-day",
     "difficulty": "easy",
     "wheelchair": "good",
-    "wheelchair_note_bg": "Равен маршрут по широки булеварди и алеи; мостът е с рампи.",
-    "wheelchair_note_en": "A level walk on wide boulevards and alleys; the bridge has ramps.",
+    "wheelchair_note_bg": "Равен маршрут по широки булеварди и алеи; достъпът с колела към моста не е проверен.",
+    "wheelchair_note_en": "A level walk on wide boulevards and alleys; access onto the bridge with wheels has not been verified.",
     "family_friendly": true,
     "rainy_day_ok": false,
     "transit_required": false,

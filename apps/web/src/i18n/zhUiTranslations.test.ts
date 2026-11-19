@@ -15,7 +15,7 @@ describe("Simplified Chinese interface translations", () => {
 
   it("preserves travel, access and admission guidance in visitor copy", () => {
     expect(zhText("Check BDZ for your travel date. From the station, follow our walk into the centre.")).toContain("时刻表");
-    expect(zhText("Wear comfortable shoes for the Old Town. For gentler terrain, read our step-free route and its access notes.")).toContain("无障碍说明");
+    expect(zhText("Wear comfortable shoes for the Old Town. For gentler terrain, read our no-stairs route and its access notes.")).toContain("无障碍说明");
     expect(zhText("Check opening hours and admission before you go. A museum walk is a good starting point for a rainy day.")).toContain("门票费用");
     expect(zhText("Exhibitions, concerts and festivals. Check the official calendar for the dates of your stay.")).toContain("逗留期间的活动");
   });

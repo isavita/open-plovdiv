@@ -109,7 +109,7 @@ describe("Simplified Chinese content fidelity", () => {
     expect(sourceStartingWith("In the early 20th century the hill was destroyed")).toContain("采出的石料用于铺设");
     expect(sourceStartingWith("At Christmas 1859 and on 10 January 1860")).toContain("自治教会");
     expect(sourceStartingWith("The re-establishment of the Bulgarian Church (the Exarchate) in 1870")).not.toContain("总督");
-    expect(sourceStartingWith('"Step-free" describes the terrain')).toContain("并不代表经过正式无障碍认证");
+    expect(sourceStartingWith('"No stairs" describes the terrain')).toContain("并不代表经过正式无障碍认证");
     expect(sourceStartingWith("Stroller- and toddler-proof")).toContain("全程没有台阶");
     expect(sourceStartingWith("The tepe's trails are rocky")).toContain("下坡时容易打滑");
     expect(sourceStartingWith("Long exposed stretches")).toContain("夏天务必带水和帽子");
